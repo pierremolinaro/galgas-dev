@@ -433,31 +433,16 @@ void cCollectionElement_data::description (C_String & ioString, const int32_t in
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                            const typeEnumerationOrder inEnumerationOrder) const {
+void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const {
   const int32_t count = mData.length () ;
   inEnumerationArray.setCapacity ((uint32_t) count) ;
-  switch (inEnumerationOrder) {
-  case kENUMERATION_UP:
-    for (int32_t i=0 ; i<count ; i++) {
-      cCollectionElement_data * p = NULL ;
-      macroMyNew (p, cCollectionElement_data (GALGAS_uint (mData (i COMMA_HERE)) COMMA_HERE)) ;
-      capCollectionElement object ;
-      object.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      inEnumerationArray.addObject (object) ;
-    }
-    break ;
-  case kENUMERATION_DOWN:
-    for (int32_t i=0 ; i<count ; i++) {
-      cCollectionElement_data * p = NULL ;
-      macroMyNew (p, cCollectionElement_data (GALGAS_uint (mData (mData.length () - i - 1 COMMA_HERE)) COMMA_HERE)) ;
-      capCollectionElement object ;
-      object.setPointer (p) ;
-      macroDetachSharedObject (p) ;
-      inEnumerationArray.addObject (object) ;
-    }
-    break ;
+  for (int32_t i=0 ; i<count ; i++) {
+    cCollectionElement_data * p = NULL ;
+    macroMyNew (p, cCollectionElement_data (GALGAS_uint (mData (i COMMA_HERE)) COMMA_HERE)) ;
+    capCollectionElement object ;
+    object.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    inEnumerationArray.addObject (object) ;
   }
 }
 
@@ -466,7 +451,7 @@ void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumer
 cEnumerator_data::cEnumerator_data (const GALGAS_data & inEnumeratedObject,
                                     const typeEnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, kENUMERATION_UP) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

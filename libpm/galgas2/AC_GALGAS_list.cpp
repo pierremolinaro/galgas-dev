@@ -42,8 +42,7 @@ class cSharedList : public C_SharedObject {
 
   protected : void copyFrom (const cSharedList * inSource) ;
 
-  protected : void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                             const typeEnumerationOrder inEnumerationOrder) const ;
+  protected : void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 
   protected : void readFirst (capCollectionElement & outObjectAttributeArray,
                               C_Compiler * inCompiler
@@ -429,20 +428,10 @@ void cSharedList::appendList (const cSharedList * inListToAppend) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cSharedList::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                            const typeEnumerationOrder inEnumerationOrder) const {
+void cSharedList::populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const {
   inEnumerationArray.setCapacity (mObjectArray.count ()) ;
-  switch (inEnumerationOrder) {
-  case kENUMERATION_UP  :
-    for (uint32_t i=0 ; i<mObjectArray.count () ; i++) {
-      inEnumerationArray.addObject (mObjectArray.objectAtIndex (i COMMA_HERE)) ;
-    }
-    break ;
-  case kENUMERATION_DOWN :
-    for (uint32_t i=mObjectArray.count () ; i>0 ; i--) {
-      inEnumerationArray.addObject (mObjectArray.objectAtIndex (i - 1 COMMA_HERE)) ;
-    }
-    break ;
+  for (uint32_t i=0 ; i<mObjectArray.count () ; i++) {
+    inEnumerationArray.addObject (mObjectArray.objectAtIndex (i COMMA_HERE)) ;
   }
 }
 
@@ -543,10 +532,9 @@ void AC_GALGAS_list::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                               const typeEnumerationOrder inEnumerationOrder) const {
+void AC_GALGAS_list::populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const {
   if (isValid ()) {
-    mSharedList->populateEnumerationArray (inEnumerationArray, inEnumerationOrder) ;
+    mSharedList->populateEnumerationArray (inEnumerationArray) ;
   }
 }
 
@@ -731,8 +719,8 @@ typeComparisonResult cSharedList::listCompare (const cSharedList * inOperand) co
   }else if (count () > inOperand->count ()) {
     r = kFirstOperandGreaterThanSecond ;
   }else{
-    capCollectionElementArray array ; populateEnumerationArray (array, kENUMERATION_UP) ;
-    capCollectionElementArray operandArray ; inOperand->populateEnumerationArray (operandArray, kENUMERATION_UP) ;
+    capCollectionElementArray array ; populateEnumerationArray (array) ;
+    capCollectionElementArray operandArray ; inOperand->populateEnumerationArray (operandArray) ;
     for (uint32_t i=0 ; (i<array.count ()) && (kOperandEqual == r) ; i++) {
       const capCollectionElement leftObject = array.objectAtIndex (i COMMA_HERE) ;
       const capCollectionElement rightObject = operandArray.objectAtIndex (i COMMA_HERE) ;
@@ -845,8 +833,7 @@ class cSharedListMapRoot : public C_SharedObject {
   public : VIRTUAL_IN_DEBUG cSharedList * listForKey (const C_String & inKey) const ;
 
 //--------------------------------- Support for enumeration
-  public : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray,
-                                                           const typeEnumerationOrder inEnumerationOrder) const ;
+  public : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult listmapCompare (const cSharedListMapRoot * inOperand) const ;
 } ;
@@ -984,8 +971,8 @@ typeComparisonResult cSharedListMapRoot::listmapCompare (const cSharedListMapRoo
   }else if (count () > inOperand->count ()) {
     result = kFirstOperandGreaterThanSecond ;
   }else{
-    capCollectionElementArray array ; populateEnumerationArray (array, kENUMERATION_UP) ;
-    capCollectionElementArray operandArray ; inOperand->populateEnumerationArray (operandArray, kENUMERATION_UP) ;
+    capCollectionElementArray array ; populateEnumerationArray (array) ;
+    capCollectionElementArray operandArray ; inOperand->populateEnumerationArray (operandArray) ;
     for (uint32_t i=0 ; (i<array.count ()) && (kOperandEqual == result) ; i++) {
       result = array.objectAtIndex (i COMMA_HERE).compare (operandArray.objectAtIndex (i COMMA_HERE)) ;
     }
@@ -1358,43 +1345,18 @@ static void enterAscendingEnumeration (const cListMapNode * inNode,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void enterDescendingEnumeration (const cListMapNode * inNode,
-                                        capCollectionElementArray & ioEnumerationArray) {
-  if (inNode != NULL) {
-    enterDescendingEnumeration (inNode->mSupPtr, ioEnumerationArray) ;
-    cListMapElement * p = NULL ;
-    macroMyNew (p, cListMapElement (inNode->mKey, inNode->mSharedList COMMA_HERE)) ;
-    capCollectionElement element ;
-    element.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    ioEnumerationArray.addObject (element) ;
-    enterDescendingEnumeration (inNode->mInfPtr, ioEnumerationArray) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cSharedListMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray,
-                                                   const typeEnumerationOrder inEnumerationOrder) const {
+void cSharedListMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
   // printf ("MAP COUNT %u\n", count ()) ;
   ioEnumerationArray.setCapacity (mCount) ;
-  switch (inEnumerationOrder) {
-  case kENUMERATION_UP  :
-    enterAscendingEnumeration (mRoot, ioEnumerationArray) ;
-    break ;
-  case kENUMERATION_DOWN :
-    enterDescendingEnumeration (mRoot, ioEnumerationArray) ;
-    break ;
-  }
+  enterAscendingEnumeration (mRoot, ioEnumerationArray) ;
   MF_Assert (mCount == ioEnumerationArray.count (), "mCount (%lld) != ioEnumerationArray.count () (%lld)", mCount, ioEnumerationArray.count ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_listmap::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray,
-                                                  const typeEnumerationOrder inEnumerationOrder) const {
+void AC_GALGAS_listmap::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
   if (isValid ()) {
-    mSharedListMap->populateEnumerationArray (ioEnumerationArray, inEnumerationOrder) ;
+    mSharedListMap->populateEnumerationArray (ioEnumerationArray) ;
   }
 }
 
