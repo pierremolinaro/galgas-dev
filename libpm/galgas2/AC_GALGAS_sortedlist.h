@@ -72,8 +72,7 @@ class AC_GALGAS_sortedlist : public AC_GALGAS_root {
                                      const int32_t inIndentation) const ;
 
 //--- Enumeration handling
-  protected : void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                             const typeEnumerationOrder inEnumerationOrder) const ;
+  protected : void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 
 //--- Adding an object
   protected : void addObject (capSortedListElement & inAttributeList) ;

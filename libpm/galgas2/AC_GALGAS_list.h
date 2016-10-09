@@ -78,8 +78,7 @@ class AC_GALGAS_list : public AC_GALGAS_root {
   protected : VIRTUAL_IN_DEBUG void createNewEmptyList (LOCATION_ARGS) ;
 
 //--- Enumeration
-  protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & outEnumerationArray,
-                                                              const typeEnumerationOrder inEnumerationOrder) const ;
+  protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & outEnumerationArray) const ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const AC_GALGAS_list & inOperand) const ;
@@ -238,8 +237,7 @@ class AC_GALGAS_listmap : public AC_GALGAS_root {
                                      const int32_t inIndentation) const ;
 
 //--- Internal methods for enumeration
-  protected : virtual void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                                     const typeEnumerationOrder inEnumerationOrder) const ;
+  protected : virtual void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const AC_GALGAS_listmap & inOperand) const ;

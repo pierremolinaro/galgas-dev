@@ -159,8 +159,7 @@ class cSharedUniqueMapRoot : public C_SharedObject {
                                               const uint32_t inLevel) const ;
 
 //--------------------------------- Internal method for enumeration
-  protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray,
-                                                              const typeEnumerationOrder inEnumerationOrder) const ;
+  protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
 
 //--------------------------------- Comparison
   public : VIRTUAL_IN_DEBUG typeComparisonResult mapCompare (const cSharedUniqueMapRoot * inOperand) const ;
@@ -1493,8 +1492,8 @@ typeComparisonResult cSharedUniqueMapRoot::mapCompare (const cSharedUniqueMapRoo
   }else if (count () < inOperand->count ()) {
     result = kFirstOperandGreaterThanSecond ;
   }else{
-    capCollectionElementArray array ; populateEnumerationArray (array, kENUMERATION_UP) ;
-    capCollectionElementArray operandArray ; inOperand->populateEnumerationArray (operandArray, kENUMERATION_UP) ;
+    capCollectionElementArray array ; populateEnumerationArray (array) ;
+    capCollectionElementArray operandArray ; inOperand->populateEnumerationArray (operandArray) ;
     for (uint32_t i=0 ; (i<array.count ()) && (kOperandEqual == result) ; i++) {
       result = array.objectAtIndex (i COMMA_HERE).compare (operandArray.objectAtIndex (i COMMA_HERE)) ;
     }
@@ -2001,31 +2000,10 @@ static void enterAscendingEnumeration (cUniqueMapNode * inNode,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void enterDescendingEnumeration (cUniqueMapNode * inNode,
-                                        capCollectionElementArray & ioEnumerationArray) {
-  if (inNode != NULL) {
-    enterDescendingEnumeration (inNode->mSupPtr, ioEnumerationArray) ;
-    if (NULL != inNode->mAttributes.ptr ()) {
-      ioEnumerationArray.addObject (inNode->mAttributes) ;
-    }
-    enterDescendingEnumeration (inNode->mInfPtr, ioEnumerationArray) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cSharedUniqueMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray,
-                                                     const typeEnumerationOrder inEnumerationOrder) const {
+void cSharedUniqueMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
   // printf ("MAP COUNT %u\n", count ()) ;
   ioEnumerationArray.setCapacity (mNodeCount) ;
-  switch (inEnumerationOrder) {
-  case kENUMERATION_UP  :
-    enterAscendingEnumeration (mRoot, ioEnumerationArray) ;
-    break ;
-  case kENUMERATION_DOWN :
-    enterDescendingEnumeration (mRoot, ioEnumerationArray) ;
-    break ;
-  }
+  enterAscendingEnumeration (mRoot, ioEnumerationArray) ;
   MF_Assert (mNodeCount == (uint32_t) ioEnumerationArray.count (),
              "mNodeCount (%lld) != ioEnumerationArray.count () (%lld)",
              mNodeCount, ioEnumerationArray.count ()) ;
@@ -2033,11 +2011,10 @@ void cSharedUniqueMapRoot::populateEnumerationArray (capCollectionElementArray &
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_uniqueMap::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray,
-                                                    const typeEnumerationOrder inEnumerationOrder) const {
+void AC_GALGAS_uniqueMap::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
   // printf ("MAP COUNT %u\n", count ()) ;
   if (isValid ()) {
-    mSharedMap->populateEnumerationArray (ioEnumerationArray, inEnumerationOrder) ;
+    mSharedMap->populateEnumerationArray (ioEnumerationArray) ;
   }
 }
 

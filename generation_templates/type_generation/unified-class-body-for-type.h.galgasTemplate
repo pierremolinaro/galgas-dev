@@ -349,8 +349,7 @@ end
 %
 if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods ()) != 0) then
 %//--------------------------------- Enumeration helper methods
-  protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                                              const typeEnumerationOrder inOrder) const ;
+  protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 
 %end
 

@@ -940,31 +940,10 @@ static void enterAscendingEnumeration (const cStringsetNode * inNode,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void enterDescendingEnumeration (const cStringsetNode * inNode,
-                                        capCollectionElementArray & ioResult) {
-  if (inNode != NULL) {
-    enterDescendingEnumeration (inNode->mSupPtr, ioResult) ;
-    cCollectionElement_stringset * p = NULL ;
-    GALGAS_string str (GALGAS_string (inNode->mKey)) ;
-    macroMyNew (p, cCollectionElement_stringset (str COMMA_HERE)) ;
-    capCollectionElement object ;
-    object.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    ioResult.addObject (object) ;
-    enterDescendingEnumeration (inNode->mInfPtr, ioResult) ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                                 const typeEnumerationOrder inEnumerationOrder) const {
+void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const {
   if (isValid ()) {
     inEnumerationArray.setCapacity (mSharedRoot->count ()) ;
-    switch (inEnumerationOrder) {
-    case kENUMERATION_UP: enterAscendingEnumeration (mSharedRoot->root (), inEnumerationArray) ; break ;
-    case kENUMERATION_DOWN: enterDescendingEnumeration (mSharedRoot->root (), inEnumerationArray) ; break ;
-    }
+    enterAscendingEnumeration (mSharedRoot->root (), inEnumerationArray) ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
       MF_Assert (mSharedRoot->count () == inEnumerationArray.count (),
                  "mSharedRoot->count () %lld != inEnumerationArray.count () %lld",
@@ -978,7 +957,7 @@ void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & inE
 cEnumerator_stringset::cEnumerator_stringset (const GALGAS_stringset & inEnumeratedObject,
                                               const typeEnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, kENUMERATION_UP) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

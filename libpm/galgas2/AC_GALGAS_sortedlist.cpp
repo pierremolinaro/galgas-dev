@@ -129,8 +129,7 @@ class cSharedSortedListRoot : public C_SharedObject {
                                      const int32_t inIndentation) const ;
 
 //--- Enumeration handling
-  protected : virtual void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                                     const typeEnumerationOrder inEnumerationOrder) const ;
+  protected : virtual void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 
 //--- Object Compare
   protected : typeComparisonResult objectCompare (const cSharedSortedListRoot * inOperand) const ;
@@ -892,28 +891,14 @@ void AC_GALGAS_sortedlist::greatestObjectAttributeList (capSortedListElement & o
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cSharedSortedListRoot::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                                      const typeEnumerationOrder inEnumerationOrder) const {
+void cSharedSortedListRoot::populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const {
   inEnumerationArray.setCapacity (mCount) ;
-  switch (inEnumerationOrder) {
-  case kENUMERATION_UP : {
-    cSortedListNode * p = mFirst ;
-    while (p != NULL) {
-      capCollectionElement object ;
-      object.setPointer (p->mAttributes.ptr ()) ;
-      inEnumerationArray.addObject (object) ;
-      p = p->mNextPtr ;
-    }
-  }break ;
-  case kENUMERATION_DOWN : {
-    cSortedListNode * p = mLast ;
-    while (p != NULL) {
-      capCollectionElement object ;
-      object.setPointer (p->mAttributes.ptr ()) ;
-      inEnumerationArray.addObject (object) ;
-      p = p->mPreviousPtr ;
-    }
-  }break ;
+  cSortedListNode * p = mFirst ;
+  while (p != NULL) {
+    capCollectionElement object ;
+    object.setPointer (p->mAttributes.ptr ()) ;
+    inEnumerationArray.addObject (object) ;
+    p = p->mNextPtr ;
   }
   MF_Assert (mCount == inEnumerationArray.count (), "mCount %lld != inEnumerationArray.count () %lld", mCount, inEnumerationArray.count ()) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -923,10 +908,9 @@ void cSharedSortedListRoot::populateEnumerationArray (capCollectionElementArray 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_sortedlist::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                                     const typeEnumerationOrder inEnumerationOrder) const {
+void AC_GALGAS_sortedlist::populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const {
   if (mSharedRoot != NULL) {
-    mSharedRoot->populateEnumerationArray (inEnumerationArray, inEnumerationOrder) ;
+    mSharedRoot->populateEnumerationArray (inEnumerationArray) ;
   }
 }
 
