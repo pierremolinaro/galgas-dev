@@ -140,7 +140,7 @@ template <typename TYPE> class TC_Array {
   public : void removeObjectFromOrderedArray (const TYPE & inKey) ;
 
 // Test is based on 'compare' method, and inValue is copied, object is added if not already in array
-  public : void addUniqueObjectInOrderedArray (const TYPE & inKey) ;
+  public : void appendUniqueObjectInOrderedArray (const TYPE & inKey) ;
 
 //--- Return -1 if not found
   public : int32_t indexOfObjectInOrderedArray (const TYPE & inKey) const ;
@@ -537,18 +537,18 @@ template <typename TYPE> void TC_Array <TYPE>::insertObjectAtIndex (const TYPE &
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   addUniqueObjectInOrderedArray                                                                                     *
+//   appendUniqueObjectInOrderedArray                                                                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-template <typename TYPE> void TC_Array <TYPE>::addUniqueObjectInOrderedArray (const TYPE & inKey) {
+template <typename TYPE> void TC_Array <TYPE>::appendUniqueObjectInOrderedArray (const TYPE & inKey) {
   if (NULL == mSharedArray) {
     macroMyNew (mSharedArray, cSharedArray <TYPE>) ;
   }else{
     insulate () ;
   }
   macroUniqueSharedObject (mSharedArray) ;
-  mSharedArray->addUniqueObjectInOrderedArray (inKey) ;
+  mSharedArray->appendUniqueObjectInOrderedArray (inKey) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
