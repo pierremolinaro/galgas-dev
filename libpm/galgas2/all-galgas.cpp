@@ -16,6 +16,7 @@
 #include "capCollectionElementArray.cpp"
 #include "cSortedListElement.cpp"
 #include "capSortedListElement.cpp"
+#include "cGenericAbstractEnumerator.cpp"
 #include "cEnumerator_range.cpp"
 #include "cIndexingDictionary.cpp"
 #include "cLexiqueIntrospection.cpp"

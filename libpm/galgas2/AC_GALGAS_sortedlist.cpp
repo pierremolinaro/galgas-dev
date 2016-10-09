@@ -894,7 +894,7 @@ void AC_GALGAS_sortedlist::greatestObjectAttributeList (capSortedListElement & o
 
 void cSharedSortedListRoot::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
                                                       const typeEnumerationOrder inEnumerationOrder) const {
-  inEnumerationArray.setCapacity ((int32_t) mCount) ;
+  inEnumerationArray.setCapacity (mCount) ;
   switch (inEnumerationOrder) {
   case kENUMERATION_UP : {
     cSortedListNode * p = mFirst ;
@@ -915,9 +915,7 @@ void cSharedSortedListRoot::populateEnumerationArray (capCollectionElementArray 
     }
   }break ;
   }
-  MF_Assert (mCount == (uint32_t) inEnumerationArray.count (),
-            "mCount %lld != inEnumerationArray.count () %lld",
-             mCount, inEnumerationArray.count ()) ;
+  MF_Assert (mCount == inEnumerationArray.count (), "mCount %lld != inEnumerationArray.count () %lld", mCount, inEnumerationArray.count ()) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkSortedList (mRoot, mCount, mFirst, mLast COMMA_HERE) ;
   #endif

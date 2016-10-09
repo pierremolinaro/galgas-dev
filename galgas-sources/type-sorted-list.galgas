@@ -200,10 +200,6 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !@methodQualifier.isBasic
     !"" # No error message
   ]
-#--- Enumeration variants
-  var enumerationVariants =@stringlist {}
-  enumerationVariants += !"UP"
-  enumerationVariants += !"DOWN"
 #--- Add Categories
   addExtensions (
     !inExtensionMethodMapForBuildingContext
@@ -232,15 +228,12 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !enumerationDescriptor
-#    !enumerationVariants
     !doNotGenererateObjectCompare () | plusEqualOperatorWithExpression ()
     !constructorAttributeTypeList
     !{}
     !{}
     !@mapSearchMethodListAST.emptyList
     !@mapSearchMethodListAST.emptyList
-#    !{} # 'with" accessor is not handled
-#    ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptySortedList" # Default constructor

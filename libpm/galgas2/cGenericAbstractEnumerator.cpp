@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  'cEnumerator_range' : galgas range enumerator                                                                      *
+//  GALGAS_enumerable : Base class for GALGAS enumerable object                                                        *
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2012, ..., 2012 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -20,48 +20,24 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef RANGE_ENUMERATOR_CLASS_DEFINED
-#define RANGE_ENUMERATOR_CLASS_DEFINED
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 #include "galgas2/cGenericAbstractEnumerator.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_range ;
-class GALGAS_uint ;
+cGenericAbstractEnumerator::cGenericAbstractEnumerator (void) :
+mEnumerationArray (),
+mIndex (0) {
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_range {
-//--- Constructor
-  public : cEnumerator_range (const GALGAS_range & inEnumeratedRange,
-                              const typeEnumerationOrder inOrder) ;
-
-//--- Virtual destructor
-  public : virtual ~ cEnumerator_range (void) ;
-
-//--- No copy
-  private : cEnumerator_range (const cEnumerator_range &) ;
-  private : cEnumerator_range & operator = (const cEnumerator_range &) ;
-
-//--- 
-  public : bool hasCurrentObject (void) const ;
-  public : bool hasNextObject (void) const ;
-  public : void gotoNextObject (void) ;
-
-//--- Current element access
-  public : GALGAS_uint current (LOCATION_ARGS) const ;
-
-//---- Attributes
-  private : const bool mIsValid ;
-  private : const bool mAscending ;
-  private : const int64_t mStart ;
-  private : const int64_t mLength ;
-  private : int64_t mCurrent ;
-} ;
+cGenericAbstractEnumerator::~ cGenericAbstractEnumerator (void) {
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#endif
+const cCollectionElement * cGenericAbstractEnumerator::currentObjectPtr (LOCATION_ARGS) const {
+  return mEnumerationArray.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*

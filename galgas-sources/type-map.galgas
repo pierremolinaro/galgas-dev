@@ -163,18 +163,26 @@ syntax extension galgas3DeclarationsSyntax {
 #   ASSOCIATED ELEMENT                                                                                                 *
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @mapDeclarationAST addAssociatedElement ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  @propertyInCollectionListAST structAttributeList = {}
-  structAttributeList += !["lstring" nowhere] !["lkey" nowhere] !@lstringlist {}
+override method @mapDeclarationAST addAssociatedElement
+  ?!@semanticDeclarationListAST ioSemanticDeclarationList {
+  var structAttributeList =@propertyInCollectionListAST {}
+  structAttributeList +=
+#    !false # Is not private
+    !["lstring" nowhere]
+    !["lkey" nowhere]
+    !@lstringlist.emptyList
   for () in mPropertyList do
-    structAttributeList += !mPropertyTypeName !mPropertyName !{}
+    structAttributeList +=
+#      !mIsPrivate
+      !mPropertyTypeName
+      !mPropertyName
+      !@lstringlist.emptyList
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !mIsPredefined
     !@lstring.new {!mMapTypeName.string + elementTypeNameSuffix () !mMapTypeName.location}
     !structAttributeList
-    !""
-  }
+    !""}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

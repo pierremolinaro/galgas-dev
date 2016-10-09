@@ -149,10 +149,6 @@ override method @listmapDeclarationAST enterInSemanticContext
   for () in listTypedAttributeList do
     addAssignOperatorDescription += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
   end
-#--- Enumeration variants
-  @stringlist enumerationVariants = {}
-  enumerationVariants += !"UP"
-  enumerationVariants += !"DOWN"
 #--- Add Categories
   addExtensions (
     !inExtensionMethodMapForBuildingContext
@@ -187,7 +183,6 @@ override method @listmapDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !enumeratorDescriptor
-#    !enumerationVariants
     !doNotGenererateObjectCompare ()
     !addAssignOperatorDescription
     !{}
