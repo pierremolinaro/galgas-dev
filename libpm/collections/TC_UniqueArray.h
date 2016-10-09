@@ -167,13 +167,12 @@ template <typename TYPE> class TC_UniqueArray {
 
 //--- Add objects at the end of the array
   public : void appendObject (const TYPE & inValue) ; // inValue is copied
-  public : void addObjectIfUnique (const TYPE & inValue) ; // Test is based on == operator, and inValue is copied
+  public : void appendObjectIfUnique (const TYPE & inValue) ; // Test is based on == operator, and inValue is copied
 
-  public : void addObjectUsingSwap (TYPE & ioValue) ;
-  public : void addDefaultObjectUsingSwap (void) ;
-  public : void addObjects (const int32_t inCount, const TYPE & inValue) ; // inValue is copied
-  public : void addObjectsUsingClear (const int32_t inObjectCount) ;
-  public : void addObjectsFromArray (const TC_UniqueArray <TYPE> &  inObjectArray) ; // New objects are copied
+  public : void appendObjectUsingSwap (TYPE & ioValue) ;
+  public : void appendDefaultObjectUsingSwap (void) ;
+  public : void appendObjects (const int32_t inCount, const TYPE & inValue) ; // inValue is copied
+  public : void appendObjectsFromArray (const TC_UniqueArray <TYPE> &  inObjectArray) ; // New objects are copied
 
 //--- Force entry
   public : void forceObjectAtIndex (const int32_t inIndex,
@@ -535,7 +534,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::appendObject (const TYPE & 
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::addObjectIfUnique (const TYPE & inValue) {
+template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjectIfUnique (const TYPE & inValue) {
   bool found = false ;
   for (int32_t i=0 ; (i<mCount) && ! found ; i++) {
     found = mArray [i] == inValue ;
@@ -553,7 +552,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::addObjectIfUnique (const TY
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::addObjects (const int32_t inCount, const TYPE & inValue) {
+template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjects (const int32_t inCount, const TYPE & inValue) {
   if (inCount > 0) {
     const int32_t newCount = mCount + inCount ;
     setCapacity (newCount) ;
@@ -570,7 +569,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::addObjects (const int32_t i
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::addObjectUsingSwap (TYPE & ioValue) {
+template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjectUsingSwap (TYPE & ioValue) {
   setCapacityUsingSwap (mCount + 1) ;
   swap (mArray [mCount], ioValue) ;
   mCount ++ ;
@@ -582,27 +581,11 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::addObjectUsingSwap (TYPE & 
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::addDefaultObjectUsingSwap (void) {
+template <typename TYPE> void TC_UniqueArray <TYPE>::appendDefaultObjectUsingSwap (void) {
   setCapacityUsingSwap (mCount + 1) ;
   TYPE value ;
   swap (mArray [mCount], value) ;
   mCount ++ ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//   Add objects at the end of the array                                                                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-template <typename TYPE> void TC_UniqueArray <TYPE>::addObjectsUsingClear (const int32_t inObjectCount) {
-  if (inObjectCount > 0) {
-    setCapacity (mCount + inObjectCount) ;
-    for (int32_t i=0 ; i<mCount ; i++) {
-      mArray [i + mCount].clear () ;
-    }
-    mCount += inObjectCount ;
-  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -612,7 +595,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::addObjectsUsingClear (const
 //---------------------------------------------------------------------------------------------------------------------*
 
 template <typename TYPE> void TC_UniqueArray <TYPE>::
-addObjectsFromArray (const TC_UniqueArray <TYPE> &  inObjectArray) {
+appendObjectsFromArray (const TC_UniqueArray <TYPE> &  inObjectArray) {
   if (inObjectArray.mCount > 0) {
     setCapacity (mCount + inObjectArray.mCount) ;
     for (int32_t i=0 ; i<inObjectArray.mCount ; i++) {

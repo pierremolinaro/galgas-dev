@@ -79,7 +79,7 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
   mOriginalGrammarSymbolsCount = mStringsArray.count () ;
 //--- For all symbols of original grammar, don't generate choice
   mGenerateChoiceArray.setCountToZero () ;
-  mGenerateChoiceArray.addObjects (mOriginalGrammarSymbolsCount, false) ;
+  mGenerateChoiceArray.appendObjects (mOriginalGrammarSymbolsCount, false) ;
 //--- Define pure BNF grammar start symbol index
   mStartSymbol = mTerminalSymbolsCount + (int32_t) inOriginalGrammarStartSymbol ;
 }
