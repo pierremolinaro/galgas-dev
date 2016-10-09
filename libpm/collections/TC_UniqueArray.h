@@ -91,11 +91,11 @@ template <typename TYPE> class TC_UniqueArray {
   public : void setCapacity (const int32_t inNewCapacity) ;
   public : void setCapacityUsingSwap (const int32_t inNewCapacity) ;
   
-//--- Allocation with provided data
+//--- Allocation with provided data (ioDataPtr is captured, and NULL is returned)
   public : void setDataFromPointer (TYPE * & ioDataPtr,
                                     const int32_t inDataLength) ;
   
-//--- Append data
+//--- Append data (inDataPtr is not released)
   public : void appendDataFromPointer (const TYPE * inDataPtr,
                                        const int32_t inDataLength) ;
   
@@ -118,7 +118,7 @@ template <typename TYPE> class TC_UniqueArray {
   public : void removeObjectFromOrderedArray (const TYPE & inKey) ;
 
 // Test is based on 'compare' method, and inValue is copied, object is added if not already in array
-  public : void addUniqueObjectInOrderedArray (const TYPE & inValue) ;
+  public : void appendUniqueObjectInOrderedArray (const TYPE & inValue) ;
 
 //--- Return -1 if not found
   public : int32_t indexOfObjectInOrderedArray (const TYPE & inValue) const ;
@@ -165,7 +165,7 @@ template <typename TYPE> class TC_UniqueArray {
   public : void decrementAtIndex (const int32_t inIndex
                                   COMMA_LOCATION_ARGS) ; // -- on object
 
-//--- Add objects at the end of the array
+//--- Append objects at the end of the array
   public : void appendObject (const TYPE & inValue) ; // inValue is copied
   public : void appendObjectIfUnique (const TYPE & inValue) ; // Test is based on == operator, and inValue is copied
 
@@ -1453,7 +1453,7 @@ void swap (TC_UniqueArray <TYPE> & ioOperand1,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::addUniqueObjectInOrderedArray (const TYPE & inKey) {
+template <typename TYPE> void TC_UniqueArray <TYPE>::appendUniqueObjectInOrderedArray (const TYPE & inKey) {
 //--- Search
   bool found = false ;
   int32_t low = 0 ;

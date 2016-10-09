@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2010, ..., 2013 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2010, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -101,7 +101,7 @@ void capCollectionElementArray::appendObject (const capCollectionElement & inObj
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void capCollectionElementArray::addObjectAtIndex (const capCollectionElement & inObject,
+void capCollectionElementArray::insertObjectAtIndex (const capCollectionElement & inObject,
                                                   const uint32_t inInsertionIndex,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {

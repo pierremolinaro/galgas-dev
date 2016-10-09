@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2010, ..., 2013 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2010, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -55,7 +55,7 @@ class capCollectionElementArray {
 //    Added object should not be NULL
   public : void appendObject (const capCollectionElement & inObject) ;
 
-  public : void addObjectAtIndex (const capCollectionElement & inObject,
+  public : void insertObjectAtIndex (const capCollectionElement & inObject,
                                   const uint32_t inInsertionIndex,
                                   C_Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;

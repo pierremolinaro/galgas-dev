@@ -49,7 +49,7 @@ class GALGAS_range ;
 
 class AC_GALGAS_list : public AC_GALGAS_root {
 //--- Private Data member
-  private : class cSharedList * mSharedList ;
+  private : class cSharedList * mySharedList ;
 
 //--- Default constructor
   public : AC_GALGAS_list (void) ;
@@ -64,7 +64,7 @@ class AC_GALGAS_list : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG uint32_t count (void) const ;
 
 //--- isValid
-  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSharedList != NULL ; }
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mySharedList != NULL ; }
 
 //--- drop
   public : VIRTUAL_IN_DEBUG void drop (void) ;
@@ -96,7 +96,7 @@ class AC_GALGAS_list : public AC_GALGAS_root {
 //--- Internal methods for handling list
   protected : VIRTUAL_IN_DEBUG void appendObject (const capCollectionElement & inElementToAdd) ;
 
-  protected : VIRTUAL_IN_DEBUG void addObjectAtIndex (const capCollectionElement & inElementToAdd,
+  protected : VIRTUAL_IN_DEBUG void insertObjectAtIndex (const capCollectionElement & inElementToAdd,
                                                       const uint32_t inInsertionIndex,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
