@@ -44,6 +44,10 @@ class capCollectionRoot : public C_SharedObject {
   
 //--- Destructor
   public : virtual ~ capCollectionRoot (void) ;
+
+//--- No copy
+  private : capCollectionRoot (const capCollectionRoot &) ;
+  private : capCollectionRoot & operator = (const capCollectionRoot &) ;
   
 //--- Private properties
   private : capCollectionElement * mArray ;
@@ -198,10 +202,7 @@ void capCollectionElementArray::insertObjectAtIndex (const capCollectionElement 
                                                      COMMA_LOCATION_ARGS) {
   setCapacity (count () + 1) ;
   macroUniqueSharedObject (mSharedRoot) ;
-  MF_Assert (count () < capacity (),
-             "mCount (%lld) >= mCapacity (%lld)",
-             count (),
-             capacity ()) ;
+  MF_Assert (count () < capacity (), "mCount (%lld) >= mCapacity (%lld)", count (), capacity ()) ;
   if (inInsertionIndex <= mSharedRoot->mCount) {
     for (uint32_t i=mSharedRoot->mCount ; i>inInsertionIndex ; i--) {
       mSharedRoot->mArray [i] = mSharedRoot->mArray [i-1] ;
@@ -212,6 +213,91 @@ void capCollectionElementArray::insertObjectAtIndex (const capCollectionElement 
     C_String s = "insertAtIndex: insertion index (" ;
     s << cStringWithUnsigned (inInsertionIndex) << ") > length (" << cStringWithUnsigned (count ()) << ")" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void capCollectionElementArray::removeObjectAtIndex (capCollectionElement & outObject,
+                                                     const uint32_t inIndex,
+                                                     C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) {
+  insulateOrCreate () ;
+  macroUniqueSharedObject (mSharedRoot) ;
+  MF_Assert (count () > 0, "empty array", 0, 0) ;
+  if (inIndex < mSharedRoot->mCount) {
+    outObject = mSharedRoot->mArray [inIndex] ;
+    for (uint32_t i=inIndex + 1 ; i<mSharedRoot->mCount ; i++) {
+      mSharedRoot->mArray [i-1] = mSharedRoot->mArray [i] ;
+    }
+    mSharedRoot->mCount -- ;
+  }else{
+    C_String s = "removeObjectAtIndex: index (" ;
+    s << cStringWithUnsigned (inIndex) << ") >= length (" << cStringWithUnsigned (count ()) << ")" ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void capCollectionElementArray::removeFirstObject (capCollectionElement & outObject,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+  insulateOrCreate () ;
+  macroUniqueSharedObject (mSharedRoot) ;
+  if (count () == 0) {
+    C_String s = "removeFirstObject: empty list" ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    outObject = mSharedRoot->mArray [0] ;
+    for (uint32_t i=1 ; i<mSharedRoot->mCount ; i++) {
+      mSharedRoot->mArray [i-1] = mSharedRoot->mArray [i] ;
+    }
+    mSharedRoot->mCount -- ;
+    mSharedRoot->mArray [mSharedRoot->mCount].drop () ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void capCollectionElementArray::readFirstObject (capCollectionElement & outObject,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const {
+  if (count () == 0) {
+    C_String s = "firstObject: empty list" ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    outObject = mSharedRoot->mArray [0] ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void capCollectionElementArray::removeLastObject (capCollectionElement & outObject,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  insulateOrCreate () ;
+  macroUniqueSharedObject (mSharedRoot) ;
+  if (count () == 0) {
+    C_String s = "removeLastObject: empty list" ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    mSharedRoot->mCount -- ;
+    outObject = mSharedRoot->mArray [mSharedRoot->mCount] ;
+    mSharedRoot->mArray [mSharedRoot->mCount].drop () ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void capCollectionElementArray::readLastObject (capCollectionElement & outObject,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const {
+  if (count () == 0) {
+    C_String s = "lastObject: empty list" ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    outObject = mSharedRoot->mArray [mSharedRoot->mCount - 1] ;
   }
 }
 
@@ -292,6 +378,21 @@ void capCollectionElementArray::removeAllObjects (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void capCollectionElementArray::appendObjects (const capCollectionElementArray inObjects) {
+  const uint32_t operandCount = inObjects.count () ;
+  if (operandCount > 0) {
+    const uint32_t receiverCount = count () ;
+    setCapacity (receiverCount + inObjects.count ()) ;
+    macroUniqueSharedObject (mSharedRoot) ;
+    for (uint32_t i=0 ; i<operandCount ; i++) {
+      mSharedRoot->mArray [receiverCount + i] = inObjects.mSharedRoot->mArray [i] ;
+    }
+    mSharedRoot->mCount += receiverCount ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 typeComparisonResult capCollectionElementArray::compareCollectionElementArray (const capCollectionElementArray & inOperand) const {
   typeComparisonResult result = kOperandEqual ;
   if (count () < inOperand.count ()) {
@@ -304,6 +405,98 @@ typeComparisonResult capCollectionElementArray::compareCollectionElementArray (c
     }
   }
   return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void capCollectionElementArray::description (C_String & ioString,
+                                             const int32_t inIndentation) const {
+  for (uint32_t i=0 ; i<count () ; i++) {
+    ioString << "\n" ;
+    ioString.writeStringMultiple ("| ", inIndentation) ;
+    ioString << "|-at " << cStringWithUnsigned (i) ;
+    mSharedRoot->mArray [i].description (ioString, inIndentation + 1) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void capCollectionElementArray::subListToIndex (capCollectionElementArray & outSubList,
+                                                const uint32_t inIndex,
+                                                bool & outOk,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const {
+  outSubList.removeAllObjects () ;
+  outOk = false ;
+  if (inIndex >= count ()) {
+    C_String s ;
+    s << "Cannot get a sub list from index "
+      << cStringWithUnsigned (inIndex)
+      << " with a list of length "
+      << cStringWithUnsigned (count ()) ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const uint32_t length = inIndex + 1 ;
+    outSubList.setCapacity (length) ;
+    for (uint32_t i=0 ; i<length ; i++) {
+      outSubList.appendObject (mSharedRoot->mArray [i]) ;
+    }
+    outOk = true ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void capCollectionElementArray::subListWithRange (capCollectionElementArray & outSubList,
+                                                  const uint32_t inStartIndex,
+                                                  const uint32_t inLength,
+                                                  bool & outOk,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
+  outOk = false ;
+  outSubList.removeAllObjects () ;
+  if ((inStartIndex + inLength) > count ()) {
+    C_String s ;
+    s << "Cannot get a sub list of range ["
+      << cStringWithUnsigned (inStartIndex)
+      << ":"
+      << cStringWithUnsigned (inLength)
+      << "] from a list of length "
+      << cStringWithUnsigned (count ()) ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    outSubList.setCapacity (inLength) ;
+    for (uint32_t i=0 ; i<inLength ; i++) {
+      outSubList.appendObject (mSharedRoot->mArray [inStartIndex + i]) ;
+    }
+    outOk = true ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void capCollectionElementArray::subListFromIndex (capCollectionElementArray & outSubList,
+                                                  const uint32_t inIndex,
+                                                  bool & outOk,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
+  outOk = false ;
+  outSubList.removeAllObjects () ;
+  if (inIndex > count ()) {
+    C_String s ;
+    s << "Cannot get a sub list from index "
+      << cStringWithUnsigned (inIndex)
+      << " with a list of length "
+      << cStringWithUnsigned (count ()) ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const uint32_t length = count () - inIndex ;
+    outSubList.setCapacity (length) ;
+    for (uint32_t i=0 ; i<length ; i++) {
+      outSubList.appendObject (mSharedRoot->mArray [inIndex + i]) ;
+    }
+    outOk = true ;
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

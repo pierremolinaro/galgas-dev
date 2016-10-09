@@ -50,21 +50,40 @@ class capCollectionElementArray {
 //--- Set capacity
   public : void setCapacity (const uint32_t inNewCapacity) ;
 
-//--- Add Object (at index mCount, the end of array)
-//    Array should be allocated (with setCapacity)
-//    Added object should not be NULL
+//--- Append Object
   public : void appendObject (const capCollectionElement & inObject) ;
 
   public : void insertObjectAtIndex (const capCollectionElement & inObject,
-                                  const uint32_t inInsertionIndex,
+                                     const uint32_t inInsertionIndex,
+                                     C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public : void removeObjectAtIndex (capCollectionElement & outObject,
+                                     const uint32_t inInsertionIndex,
+                                     C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
+  public : void removeFirstObject (capCollectionElement & outObject,
+                                   C_Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
+  public : void readFirstObject (capCollectionElement & outObject,
+                                 C_Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) const ;
+
+  public : void removeLastObject (capCollectionElement & outObject,
                                   C_Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-//--- Replace Object
-//    Argument object should not be NULL
+  public : void readLastObject (capCollectionElement & outObject,
+                                C_Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) const ;
+
   public : void replaceObjectAtIndex (const capCollectionElement & inObject,
                                       const uint32_t inIndex
                                       COMMA_LOCATION_ARGS) ;
+
+  public : void appendObjects (const capCollectionElementArray inObjects) ; // Passing using copy constructor
 
 //--- Get object
   public : capCollectionElement objectAtIndex (const uint32_t inIndex COMMA_LOCATION_ARGS) const ;
@@ -92,8 +111,32 @@ class capCollectionElementArray {
 //--- Remove all objects (without changing capacity)
   public : void removeAllObjects (void) ;
 
+//--- Sublists
+  public : void subListToIndex (capCollectionElementArray & outSubList,
+                                const uint32_t inIndex,
+                                bool & outOk,
+                                C_Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) const ;
+
+  public : void subListWithRange (capCollectionElementArray & ioSubList,
+                                  const uint32_t inStartIndex,
+                                  const uint32_t inLength,
+                                  bool & outOk,
+                                  C_Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) const ;
+
+  public : void subListFromIndex (capCollectionElementArray & ioSubList,
+                                  const uint32_t inIndex,
+                                  bool & outOk,
+                                  C_Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) const ;
+
 //--- Compare
   public : typeComparisonResult compareCollectionElementArray (const capCollectionElementArray & inOperand) const ;
+
+//--- Description
+  public : void description (C_String & ioString,
+                             const int32_t inIndentation) const ;
 
 //--- Internal
   private : void insulateOrCreate (void) ;

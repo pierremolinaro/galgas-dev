@@ -44,6 +44,7 @@ see https://www.gnu.org/licenses/.  */
 #define __GMP_IMPL_H__
 
 #pragma GCC diagnostic ignored "-Wconversion"
+#pragma GCC diagnostic ignored "-Wsign-conversion"
 #pragma GCC diagnostic ignored "-Wsign-compare"
 #pragma GCC diagnostic ignored "-Wunused-value"
 #pragma GCC diagnostic ignored "-Wunused-parameter"
@@ -51,9 +52,11 @@ see https://www.gnu.org/licenses/.  */
 #pragma GCC diagnostic ignored "-Wparentheses"
 #pragma GCC diagnostic ignored "-Wall"
 #pragma GCC diagnostic ignored "-Wpointer-arith"
-#pragma GCC diagnostic ignored "-Werror"
 #pragma GCC diagnostic ignored "-Wundef"
-#pragma GCC diagnostic error "-w"
+#if __GNUC__ < 6
+  #pragma GCC diagnostic ignored "-Werror"
+  #pragma GCC diagnostic error "-w"
+#endif
 
 #ifdef __cplusplus
   #error "C++"
