@@ -793,9 +793,9 @@ static void enterNodes (const cUniqueMapNode * inNode,
                         TC_UniqueArray <const cUniqueMapNode *> & ioNodeArray) {
   if (NULL != inNode) {
     enterNodes (inNode->mInfPtr, ioArray, ioNodeArray) ;
-    ioNodeArray.addObject (inNode) ;
+    ioNodeArray.appendObject (inNode) ;
     const int32_t idx = ioArray.count () ;
-    ioArray.addObject (cTopologicalSortElement ()) ;
+    ioArray.appendObject (cTopologicalSortElement ()) ;
     GALGAS_lstring lkey ;
     lkey.mAttribute_string = inNode->mKey ;
     lkey.mAttribute_location = inNode->mDefinitionLocation ;
@@ -819,7 +819,7 @@ void cSharedUniqueMapRoot::internalTopologicalSort (GALGAS_lstringlist & outSort
     cTopologicalSortElement & source = array (sourceNodeID COMMA_HERE) ;
     cTopologicalSortElement & target = array (targetNodeID COMMA_HERE) ;
     source.mDependencyCount ++ ;
-    target.mDependenceArray.addObject (sourceNodeID) ;
+    target.mDependenceArray.appendObject (sourceNodeID) ;
   }
 //--- Make exploration link
   for (int32_t i=1 ; i<array.count () ; i++) {
@@ -1248,9 +1248,9 @@ static void findNearestKeyForNode (const C_String & inKey,
     if (ioBestDistance > distance) {
       ioBestDistance = distance ;
       ioNearestKeyArray.setCountToZero () ;
-      ioNearestKeyArray.addObject (inCurrentNode->mKey) ;
+      ioNearestKeyArray.appendObject (inCurrentNode->mKey) ;
     }else if (ioBestDistance == distance) {
-      ioNearestKeyArray.addObject (inCurrentNode->mKey) ;
+      ioNearestKeyArray.appendObject (inCurrentNode->mKey) ;
     }
     findNearestKeyForNode (inKey, inCurrentNode->mInfPtr, ioBestDistance, ioNearestKeyArray) ;
     findNearestKeyForNode (inKey, inCurrentNode->mSupPtr, ioBestDistance, ioNearestKeyArray) ;
@@ -1992,7 +1992,7 @@ static void enterAscendingEnumeration (cUniqueMapNode * inNode,
   if (inNode != NULL) {
     enterAscendingEnumeration (inNode->mInfPtr, ioEnumerationArray) ;
     if (NULL != inNode->mAttributes.ptr ()) {
-      ioEnumerationArray.addObject (inNode->mAttributes) ;
+      ioEnumerationArray.appendObject (inNode->mAttributes) ;
     }
     enterAscendingEnumeration (inNode->mSupPtr, ioEnumerationArray) ;
   }
@@ -2316,7 +2316,7 @@ static cUniqueMapNode * internalInsertProxy (cUniqueMapNode * & ioRootPtr,
     capCollectionElement emptyAttributes ;
     macroMyNew (ioRootPtr, cUniqueMapNode (inKey, 0, emptyAttributes)) ;
     if (inLocation.isValidAndNotNowhere ()) {
-      ioRootPtr->mInvocationLocationArray.addObject (inLocation) ;
+      ioRootPtr->mInvocationLocationArray.appendObject (inLocation) ;
     }
     ioExtension = true ;
     matchingEntry = ioRootPtr ;
@@ -2354,7 +2354,7 @@ static cUniqueMapNode * internalInsertProxy (cUniqueMapNode * & ioRootPtr,
     }else{ // Ok, entry already exists
       matchingEntry = ioRootPtr ;
       if (inLocation.isValidAndNotNowhere () && (! ioRootPtr->isSolved ())) {
-        ioRootPtr->mInvocationLocationArray.addObject (inLocation) ;
+        ioRootPtr->mInvocationLocationArray.appendObject (inLocation) ;
       }
       ioExtension = false ;
     }

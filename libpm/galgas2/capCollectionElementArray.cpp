@@ -50,7 +50,7 @@ mCapacity (0),
 mCount (0) {
   setCapacity (inSource.mCount) ;
   for (uint32_t i=0 ; i<inSource.mCount ; i++) {
-    addObject (inSource.objectAtIndex (i COMMA_HERE)) ;
+    appendObject (inSource.objectAtIndex (i COMMA_HERE)) ;
   }
 }
 
@@ -60,7 +60,7 @@ capCollectionElementArray & capCollectionElementArray::operator = (const capColl
   removeAllObjects () ;
   setCapacity (inSource.mCount) ;
   for (uint32_t i=0 ; i<inSource.mCount ; i++) {
-    addObject (inSource.objectAtIndex (i COMMA_HERE)) ;
+    appendObject (inSource.objectAtIndex (i COMMA_HERE)) ;
   }
   return *this ;
 }
@@ -93,7 +93,7 @@ void capCollectionElementArray::setCapacity (const uint32_t inNewCapacity) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void capCollectionElementArray::addObject (const capCollectionElement & inObject) {
+void capCollectionElementArray::appendObject (const capCollectionElement & inObject) {
   MF_Assert (mCount < mCapacity, "mCount (%lld) >= mCapacity (%lld)", mCount, mCapacity) ;
   mArray [mCount] = inObject ;
   mCount ++ ;

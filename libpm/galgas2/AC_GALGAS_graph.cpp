@@ -196,7 +196,7 @@ mReferenceLocationArray (),
 mIsDefined (inNode->mIsDefined) {
   mReferenceLocationArray.setCapacity (inNode->mReferenceLocationArray.count ()) ;
   for (int32_t i=0 ; i<inNode->mReferenceLocationArray.count () ; i++) {
-    mReferenceLocationArray.addObject (inNode->mReferenceLocationArray (i COMMA_HERE)) ;
+    mReferenceLocationArray.appendObject (inNode->mReferenceLocationArray (i COMMA_HERE)) ;
   }
   if (NULL != inNode->mInfPtr) {
     macroMyNew (mInfPtr, cGraphNode (inNode->mInfPtr)) ;
@@ -549,7 +549,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
     TC_UniqueArray <C_String> nodeNames ;
     for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
       const cGraphNode * nodePtr = mNodeArray (i COMMA_THERE) ;
-      nodeNames.addObject (nodePtr->mKey) ;
+      nodeNames.appendObject (nodePtr->mKey) ;
     }
   #endif
 //--- Build sub graph
@@ -745,7 +745,7 @@ cGraphNode * cSharedGraph::internalInsert (cGraphNode * & ioRootPtr,
   if (ioRootPtr == NULL) {
     macroMyNew (ioRootPtr, cGraphNode (inKey, (uint32_t) mNodeArray.count ())) ;
     mDirectedGraph.addNode ((uint32_t) mNodeArray.count ()) ;
-    mNodeArray.addObject (ioRootPtr) ;
+    mNodeArray.appendObject (ioRootPtr) ;
     ioExtension = true ;
     matchingEntry = ioRootPtr ;
   }else{
@@ -858,7 +858,7 @@ void AC_GALGAS_graph::setter_noteNode (const GALGAS_lstring & inKey
       : mSharedGraph->findOrAddNodeForKey (inKey.mAttribute_string.stringValue ())
     ;
     if (NULL != node) {
-      node->mReferenceLocationArray.addObject (inKey.mAttribute_location) ;
+      node->mReferenceLocationArray.appendObject (inKey.mAttribute_location) ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
       mSharedGraph->checkGraph (HERE) ;
@@ -882,8 +882,8 @@ void cSharedGraph::addEdge (const C_String & inSourceNodeKey,
   macroValidPointer (sourceNode) ;
   cGraphNode * targetNode = findOrAddNodeForKey (inTargetNodeKey) ;
   macroValidPointer (targetNode) ;
-  sourceNode->mReferenceLocationArray.addObject (inSourceNodeLocation) ;
-  targetNode->mReferenceLocationArray.addObject (inTargetNodeLocation) ;
+  sourceNode->mReferenceLocationArray.appendObject (inSourceNodeLocation) ;
+  targetNode->mReferenceLocationArray.appendObject (inTargetNodeLocation) ;
   mDirectedGraph.addEdge (sourceNode->mNodeID, targetNode->mNodeID) ;
 }
 
@@ -918,7 +918,7 @@ void AC_GALGAS_graph::setter_addEdge (const GALGAS_lstring & inSourceNodeKey,
 C_String cSharedGraph::getter_graphviz (void) const {
   TC_UniqueArray <C_String> nodeNameArray ;
   for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
-    nodeNameArray.addObject (mNodeArray (i COMMA_HERE)->mKey) ;
+    nodeNameArray.appendObject (mNodeArray (i COMMA_HERE)->mKey) ;
   }
   return mDirectedGraph.graphvizString (nodeNameArray) ;
 }

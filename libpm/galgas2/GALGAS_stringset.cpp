@@ -547,7 +547,7 @@ static void recursiveBuildKeyList (const cStringsetNode * inNode,
                                    TC_UniqueArray <C_String> & ioList) {
   if (inNode != NULL) {
     recursiveBuildKeyList (inNode->mInfPtr, ioList) ;
-    ioList.addObject (inNode->mKey) ;
+    ioList.appendObject (inNode->mKey) ;
     recursiveBuildKeyList (inNode->mSupPtr, ioList) ;
   }
 }
@@ -933,7 +933,7 @@ static void enterAscendingEnumeration (const cStringsetNode * inNode,
     capCollectionElement object ;
     object.setPointer (p) ;
     macroDetachSharedObject (p) ;
-    ioResult.addObject (object) ;
+    ioResult.appendObject (object) ;
     enterAscendingEnumeration (inNode->mSupPtr, ioResult) ;
   }
 }

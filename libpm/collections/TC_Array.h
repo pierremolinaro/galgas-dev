@@ -109,7 +109,7 @@ template <typename TYPE> class TC_Array {
   public : const TYPE * unsafeArrayPointer (void) const ;
 
 //--- Add objects at the end of the array
-  public : void addObject (const TYPE & inValue) ; // inValue is copied
+  public : void appendObject (const TYPE & inValue) ; // inValue is copied
 
 //--- Set Count To zero
   public : void setCountToZero (void) ;
@@ -312,17 +312,17 @@ template <typename TYPE> void TC_Array <TYPE>::insulate (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   addObject (inValue is copied)                                                                                     *
+//   appendObject (inValue is copied)                                                                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-template <typename TYPE> void TC_Array <TYPE>::addObject (const TYPE & inValue) {
+template <typename TYPE> void TC_Array <TYPE>::appendObject (const TYPE & inValue) {
   if (NULL == mSharedArray) {
     macroMyNew (mSharedArray, cSharedArray <TYPE> ()) ;
   }else{
     insulate () ;
   }
-  mSharedArray->addObject (inValue) ;
+  mSharedArray->appendObject (inValue) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

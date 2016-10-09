@@ -328,17 +328,17 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
                   TC_UniqueArray <C_ProductionNameDescriptor> & ioProductionRuleDescription,
                   TC_UniqueArray <int16_t> & ioFirstProductionRuleIndex,
                   AC_OutputStream & inCppFile) {
-  ioFirstProductionRuleIndex.addObject ((int16_t) ioProductionRulesIndex.count ()) ;
+  ioFirstProductionRuleIndex.appendObject ((int16_t) ioProductionRulesIndex.count ()) ;
   const int32_t firstProduction = inPureBNFproductions.tableauIndicePremiereProduction (inNonterminalIndex COMMA_HERE) ;
   if (firstProduction >= 0) {
     const int32_t lastProduction = inPureBNFproductions.tableauIndiceDerniereProduction (inNonterminalIndex COMMA_HERE) ;
     for (int32_t j=firstProduction ; j<=lastProduction ; j++) {
-      ioProductionRulesIndex.addObject (ioProductionIndex) ;
+      ioProductionRulesIndex.appendObject (ioProductionIndex) ;
       cProduction & p = inPureBNFproductions (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
       C_String title ;
       inVocabulary.printInFile (title, p.leftNonTerminalIndex () COMMA_HERE) ;
       const C_ProductionNameDescriptor description (title, p.sourceFileName (), (uint32_t) ioProductionIndex) ;
-      ioProductionRuleDescription.addObject (description) ;
+      ioProductionRuleDescription.appendObject (description) ;
       title << ", in file '" 
             << p.sourceFileName ()
             << ".ggs', line "
@@ -393,7 +393,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
                     int16_t & ioDecisionTableIndex,
                     TC_UniqueArray <int16_t> & ioProductionDecisionTableIndex,
                     AC_OutputStream & inCppFile) {
-  ioProductionDecisionTableIndex.addObject (ioDecisionTableIndex) ;
+  ioProductionDecisionTableIndex.appendObject (ioDecisionTableIndex) ;
   inCppFile << "// At index "
             << cStringWithSigned (ioDecisionTableIndex)
             << " : <"

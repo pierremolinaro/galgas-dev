@@ -285,7 +285,7 @@ class cLR1ItemUniqueArray {
   public : void free (void) ;
   
 //--- Add objects at the end of the array
-  public : void addObject (const cLR1_items_AVL_tree * inValue) ;
+  public : void appendObject (const cLR1_items_AVL_tree * inValue) ;
 
 //--- Array access (with index checking)
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -410,7 +410,7 @@ void cLR1ItemUniqueArray::free (void) {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cLR1ItemUniqueArray::addObject (const cLR1_items_AVL_tree * inValue) {
+void cLR1ItemUniqueArray::appendObject (const cLR1_items_AVL_tree * inValue) {
   if (mCount >= mCapacity) {
     makeRoom (mCount + 1) ;
   }
@@ -574,7 +574,7 @@ void c_LR1_items_set::
 recursiveBuildSortedArray (cLR1_items_AVL_tree * inPointer) {
   if (inPointer != NULL) {
     recursiveBuildSortedArray (inPointer->mPtrToSup) ;
-    mItemsSet.addObject (inPointer) ;
+    mItemsSet.appendObject (inPointer) ;
     recursiveBuildSortedArray (inPointer->mPtrToInf) ;
   }
 }
@@ -593,7 +593,7 @@ add_LR1_item (const int32_t inProductionRuleIndex,
                                                        extension) ;
 //--- If not found, add it
   if (p != NULL) {
-    mItemsSet.addObject (p) ;
+    mItemsSet.appendObject (p) ;
     mArrayIsSorted = false ;
     mHashCode ^= item.mHashCode ;
   }
@@ -621,19 +621,19 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
         while (emptyStringAccepted && (derivationIndex < derivationLength)) {
           const int32_t symbol = p.derivationAtIndex (derivationIndex COMMA_HERE) ;
           if (symbol < inTerminalSymbolsCount) {
-            theFirst.addObject (symbol) ;
+            theFirst.appendObject (symbol) ;
             emptyStringAccepted = false ;
           }else{
             const int32_t nFirst = inFIRSTarray (symbol COMMA_HERE).count () ;
             for (int32_t s=0 ; s<nFirst ; s++) {
-              theFirst.addObject ((int32_t) inFIRSTarray (symbol COMMA_HERE) (s COMMA_HERE)) ;
+              theFirst.appendObject ((int32_t) inFIRSTarray (symbol COMMA_HERE) (s COMMA_HERE)) ;
             }
             emptyStringAccepted = inVocabularyDerivingToEmpty_Array (symbol COMMA_HERE) ;
           }
           derivationIndex ++ ;
         }
         if (emptyStringAccepted) {
-          theFirst.addObject (mItemsSet (i COMMA_HERE).mTerminalSymbol) ;
+          theFirst.appendObject (mItemsSet (i COMMA_HERE).mTerminalSymbol) ;
         }
         const int32_t first = inProductionRules.tableauIndicePremiereProduction (prodX COMMA_HERE) ;
         if (first >= 0) { // first < 0 means the non terminal symbol is unuseful
@@ -723,8 +723,8 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
     const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     if (location == p.derivationLength ()) {
-      outProductionsSet.addObject (productionRuleIndex) ;
-      outTerminalArray.addObject (mItemsSet (i COMMA_HERE).mTerminalSymbol) ;
+      outProductionsSet.appendObject (productionRuleIndex) ;
+      outTerminalArray.appendObject (mItemsSet (i COMMA_HERE).mTerminalSymbol) ;
     }
     if ((productionRuleIndex == (inProductionRules.length () - 1)) && (location == 1)) {
       outAcceptCondition = true ;
@@ -1159,7 +1159,7 @@ generate_LR1_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
   bool isFirst = true ;
   int32_t startIndex = 0 ;
   for (int32_t i=0 ; i<rowsCount ; i++) {
-    startIndexArray.addObject (startIndex) ;
+    startIndexArray.appendObject (startIndex) ;
     ioCppFileContents <<"\n// State S" << cStringWithSigned (i) << " (index = " << cStringWithSigned (startIndex) << ")" ;
     for (int32_t j=0 ; j<columnsCount ; j++) {
       const int32_t parameter = inSLRdecisionTable (i, j COMMA_HERE).parameter () ;

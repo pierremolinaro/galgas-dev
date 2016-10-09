@@ -719,7 +719,7 @@ void C_String::linesArray (TC_UniqueArray <C_String> & outStringArray) const {
   const int32_t currentStringLength = length () ;
   if (currentStringLength > 0) {
     int32_t index = outStringArray.count () ;
-    outStringArray.addObject (C_String ()) ;
+    outStringArray.appendObject (C_String ()) ;
     typedef enum {kAppendToCurrentLine, kGotCarriageReturn, kGotLineFeed} enumState ;
     enumState state = kAppendToCurrentLine ;
     for (int32_t i=0 ; i<currentStringLength ; i++) {
@@ -743,11 +743,11 @@ void C_String::linesArray (TC_UniqueArray <C_String> & outStringArray) const {
           state = kGotLineFeed ;
           break ;
         case '\r' : // CR
-          outStringArray.addObject (C_String ()) ;
+          outStringArray.appendObject (C_String ()) ;
           index ++ ;
           break ;
         default: // Other character
-          outStringArray.addObject (C_String ()) ;
+          outStringArray.appendObject (C_String ()) ;
           index ++ ;
           outStringArray (index COMMA_HERE).appendUnicodeCharacter (c COMMA_HERE) ;
           state = kAppendToCurrentLine ;
@@ -756,16 +756,16 @@ void C_String::linesArray (TC_UniqueArray <C_String> & outStringArray) const {
       case kGotLineFeed :
         switch (UNICODE_VALUE (c)) {
         case '\n' : // LF
-          outStringArray.addObject (C_String ()) ;
+          outStringArray.appendObject (C_String ()) ;
           index ++ ;
           break ;
         case '\r' : // CR
-          outStringArray.addObject (C_String ()) ;
+          outStringArray.appendObject (C_String ()) ;
           index ++ ;
           state = kGotCarriageReturn ;
           break ;
         default: // Other character
-          outStringArray.addObject (C_String ()) ;
+          outStringArray.appendObject (C_String ()) ;
           index ++ ;
           outStringArray (index COMMA_HERE).appendUnicodeCharacter (c COMMA_HERE) ;
           state = kAppendToCurrentLine ;
@@ -838,7 +838,7 @@ void C_String::componentsSeparatedByString (const C_String & inSeparatorString,
   outResult.setCountToZero () ;
   const utf32 * sourcePtr = utf32String (HERE) ;
   if (sourcePtr == NULL) {
-    outResult.addObject (C_String ()) ;
+    outResult.appendObject (C_String ()) ;
   }else{
     const int32_t splitStringLength = inSeparatorString.length () ;
     const utf32 * separator = inSeparatorString.utf32String (HERE) ;
@@ -847,12 +847,12 @@ void C_String::componentsSeparatedByString (const C_String & inSeparatorString,
       while (p != NULL) {
         C_String s ;
         s.genericUnicodeArrayOutput (sourcePtr, (int32_t) ((p - sourcePtr) & INT32_MAX)) ;
-        outResult.addObject (s) ;
+        outResult.appendObject (s) ;
         sourcePtr = p + splitStringLength ;
         p = ::utf32_strstr (sourcePtr, separator) ;
       }
     }
-    outResult.addObject (C_String (sourcePtr)) ;
+    outResult.appendObject (C_String (sourcePtr)) ;
   }
 }
 

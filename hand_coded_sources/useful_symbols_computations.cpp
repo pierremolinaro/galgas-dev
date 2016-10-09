@@ -97,7 +97,7 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
     if (uselessSymbols.containsValue (0, nt COMMA_HERE)) {
       uselessSymbolsForWarning.andWith (~ C_Relation (uselessSymbols.configuration (), 0, C_BDD::kEqual, nt COMMA_HERE) COMMA_HERE) ;
     }else{
-      usedSymbolDeclaredAsUnusedArray.addObject (uselessSymbols.configuration ().constantNameForVariableAndValue (0, nt COMMA_HERE)) ;
+      usedSymbolDeclaredAsUnusedArray.appendObject (uselessSymbols.configuration ().constantNameForVariableAndValue (0, nt COMMA_HERE)) ;
     }
     currentNT.gotoNextObject () ;
   }

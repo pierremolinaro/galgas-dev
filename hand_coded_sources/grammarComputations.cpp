@@ -319,9 +319,9 @@ analyzeGrammar (C_Compiler * inCompiler,
     grammarClass = kLR1grammar ;
   }else{ // Unknown class... error !
     TC_Array <C_FixItDescription> fixItArray ;
-    fixItArray.addObject (C_FixItDescription (kFixItReplace, "LL1")) ;
-    fixItArray.addObject (C_FixItDescription (kFixItReplace, "SLR")) ;
-    fixItArray.addObject (C_FixItDescription (kFixItReplace, "LR1")) ;
+    fixItArray.appendObject (C_FixItDescription (kFixItReplace, "LL1")) ;
+    fixItArray.appendObject (C_FixItDescription (kFixItReplace, "SLR")) ;
+    fixItArray.appendObject (C_FixItDescription (kFixItReplace, "LR1")) ;
     inCompiler->semanticErrorAtLocation (inGrammarClass.mAttribute_location, "Unknown grammar class", fixItArray COMMA_HERE) ;
   }
 
@@ -689,7 +689,7 @@ routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFil
     TC_UniqueArray <C_String> implementationFileHeaderList ;
     cEnumerator_stringset enumerator_30239 (inImplementationFileHeaderSet, kENUMERATION_UP) ;
     while (enumerator_30239.hasCurrentObject ()) {
-      implementationFileHeaderList.addObject (enumerator_30239.current_key (HERE).stringValue()) ;
+      implementationFileHeaderList.appendObject (enumerator_30239.current_key (HERE).stringValue()) ;
       enumerator_30239.gotoNextObject () ;
     }
 

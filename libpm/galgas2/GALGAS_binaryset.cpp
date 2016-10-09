@@ -731,9 +731,9 @@ GALGAS_string GALGAS_binaryset::getter_print (const GALGAS_stringlist & inVariab
     cEnumerator_uintlist bddCountEnumerator (inBDDCount, kENUMERATION_UP) ;
     while (variableEnumerator.hasCurrentObject () && bddCountEnumerator.hasCurrentObject ()) {
       const C_String name = variableEnumerator.current_mValue (HERE).stringValue () ;
-      variablesNames.addObject (name) ;
+      variablesNames.appendObject (name) ;
       const uint32_t bddCount = bddCountEnumerator.current_mValue (HERE).uintValue () ;
-      bitCounts.addObject ((int32_t) bddCount) ;
+      bitCounts.appendObject ((int32_t) bddCount) ;
       variableEnumerator.gotoNextObject () ;
       bddCountEnumerator.gotoNextObject () ;
     }
@@ -786,7 +786,7 @@ GALGAS_string GALGAS_binaryset::getter_graphviz (const GALGAS_stringlist & inBit
     cEnumerator_stringlist variableEnumerator (inBitNameList, kENUMERATION_UP) ;
     while (variableEnumerator.hasCurrentObject ()) {
       const C_String name = variableEnumerator.current_mValue (HERE).stringValue () ;
-      bitNameArray.addObject (name) ;
+      bitNameArray.appendObject (name) ;
       variableEnumerator.gotoNextObject () ;
     }
     result = GALGAS_string (mBDD.graphvizRepresentationWithNames (bitNameArray)) ;

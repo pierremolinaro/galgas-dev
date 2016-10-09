@@ -1048,9 +1048,9 @@ static void findNearestKeyForNode (const C_String & inKey,
     if (ioBestDistance > distance) {
       ioBestDistance = distance ;
       ioNearestKeyArray.setCountToZero () ;
-      ioNearestKeyArray.addObject (inCurrentNode->mKey) ;
+      ioNearestKeyArray.appendObject (inCurrentNode->mKey) ;
     }else if (ioBestDistance == distance) {
-      ioNearestKeyArray.addObject (inCurrentNode->mKey) ;
+      ioNearestKeyArray.appendObject (inCurrentNode->mKey) ;
     }
     findNearestKeyForNode (inKey, inCurrentNode->mInfPtr, ioBestDistance, ioNearestKeyArray) ;
     findNearestKeyForNode (inKey, inCurrentNode->mSupPtr, ioBestDistance, ioNearestKeyArray) ;
@@ -1500,7 +1500,7 @@ static void enterAscendingEnumeration (cMapNode * inNode,
   if (inNode != NULL) {
     enterAscendingEnumeration (inNode->mInfPtr, ioEnumerationArray) ;
     if (NULL != inNode->mAttributes.ptr ()) {
-      ioEnumerationArray.addObject (inNode->mAttributes) ;
+      ioEnumerationArray.appendObject (inNode->mAttributes) ;
     }
     enterAscendingEnumeration (inNode->mSupPtr, ioEnumerationArray) ;
   }

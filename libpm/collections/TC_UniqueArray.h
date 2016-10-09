@@ -166,7 +166,7 @@ template <typename TYPE> class TC_UniqueArray {
                                   COMMA_LOCATION_ARGS) ; // -- on object
 
 //--- Add objects at the end of the array
-  public : void addObject (const TYPE & inValue) ; // inValue is copied
+  public : void appendObject (const TYPE & inValue) ; // inValue is copied
   public : void addObjectIfUnique (const TYPE & inValue) ; // Test is based on == operator, and inValue is copied
 
   public : void addObjectUsingSwap (TYPE & ioValue) ;
@@ -390,7 +390,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::setDataFromPointer (TYPE * 
 template <typename TYPE> void TC_UniqueArray <TYPE>::appendDataFromPointer (const TYPE * inDataPtr,
                                                                             const int32_t inDataLength) {
   for (int32_t i=0 ; i<inDataLength ; i++) {
-    addObject (inDataPtr [i]) ;
+    appendObject (inDataPtr [i]) ;
   }
 }
 
@@ -423,7 +423,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::setCountToZero (void) {
 template <typename TYPE> void TC_UniqueArray <TYPE>::copyTo (TC_UniqueArray <TYPE> & outArray) const {
   outArray.setCountToZero () ;
   for (int32_t i=0 ; i<mCount ; i++) {
-    outArray.addObject (mArray [i]) ;
+    outArray.appendObject (mArray [i]) ;
   }
 }
 
@@ -521,7 +521,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::free (void) {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::addObject (const TYPE & inValue) {
+template <typename TYPE> void TC_UniqueArray <TYPE>::appendObject (const TYPE & inValue) {
   if (mCount >= mCapacity) {
     setCapacity (mCount + 1 + mCount / 2) ;
   }
@@ -918,7 +918,7 @@ subArrayUsingFunction (bool (* inFunction) (const TYPE & inObject),
     outResult.setCapacity (mCount) ;
     for (int32_t i=0 ; i<mCount ; i++) {
       if (inFunction (mArray [i])) {
-        outResult.addObject (mArray [i]) ;
+        outResult.appendObject (mArray [i]) ;
       }
     }
   }
@@ -1349,7 +1349,7 @@ intersectionWithArray (const TC_UniqueArray <TYPE> & inOperand,
         found = inOperand.mArray [j] == mArray [i] ;
       }
       if (found) {
-        outResult.addObject (mArray [i]) ;
+        outResult.appendObject (mArray [i]) ;
       }
     }
   }
@@ -1379,8 +1379,8 @@ multiSetIntersectionWithArray (const TC_UniqueArray <TYPE> & inOperand,
       }
     }
     if (! found) {
-      set.addObject (mArray [i]) ;
-      setCount.addObject (1) ;
+      set.appendObject (mArray [i]) ;
+      setCount.appendObject (1) ;
     }
   }
 //--- loop throught counted set
@@ -1391,7 +1391,7 @@ multiSetIntersectionWithArray (const TC_UniqueArray <TYPE> & inOperand,
     }
     const int32_t resultCount = countInOperand < setCount.mArray [i] ? countInOperand : setCount.mArray [i] ;
     for (int32_t j=0 ; j<resultCount ; j++) {
-      outResult.addObject (set.mArray [i]) ;
+      outResult.appendObject (set.mArray [i]) ;
     }
   }
 }
@@ -1409,7 +1409,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::unionWithArray (const TC_Un
   outResult.setCapacity (mCount + inOperand.mCount) ;
 //--- Copy current object
   for (int32_t i=0 ; i<mCount ; i++) {
-    outResult.addObject (mArray [i]) ;
+    outResult.appendObject (mArray [i]) ;
   }
 //--- Remove duplicates
   outResult.removeIdenticalObjects () ;
@@ -1420,7 +1420,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::unionWithArray (const TC_Un
       found = outResult.mArray [j] == inOperand.mArray [i] ;
     }
     if (! found) {
-      outResult.addObject (inOperand.mArray [i]) ;
+      outResult.appendObject (inOperand.mArray [i]) ;
     }
   }
 }
@@ -1550,7 +1550,7 @@ void TC_UniqueArray <TYPE>::intersectionOfOrderedArraies (const TC_UniqueArray<T
     }else if (r > 0) {
       rightIdx ++ ;
     }else{
-      outResult.addObject (inOperand (rightIdx COMMA_HERE)) ;
+      outResult.appendObject (inOperand (rightIdx COMMA_HERE)) ;
       leftIdx ++ ;
       rightIdx ++ ;
     }
@@ -1575,23 +1575,23 @@ void TC_UniqueArray <TYPE>::unionOfOrderedArraies (const TC_UniqueArray<TYPE> & 
   while ((leftIdx < count ()) && (rightIdx < inOperand.count ())) {
     const int32_t r = (*this) (leftIdx COMMA_HERE).compare (inOperand (rightIdx COMMA_HERE)) ;
     if (r < 0) {
-      outResult.addObject ((*this) (leftIdx COMMA_HERE)) ;
+      outResult.appendObject ((*this) (leftIdx COMMA_HERE)) ;
       leftIdx ++ ;
     }else if (r > 0) {
-      outResult.addObject (inOperand (rightIdx COMMA_HERE)) ;
+      outResult.appendObject (inOperand (rightIdx COMMA_HERE)) ;
       rightIdx ++ ;
     }else{
-      outResult.addObject (inOperand (rightIdx COMMA_HERE)) ;
+      outResult.appendObject (inOperand (rightIdx COMMA_HERE)) ;
       leftIdx ++ ;
       rightIdx ++ ;
     }
   }
   while (leftIdx < count ()) {
-    outResult.addObject ((*this) (leftIdx COMMA_HERE)) ;
+    outResult.appendObject ((*this) (leftIdx COMMA_HERE)) ;
     leftIdx ++ ;
   }
   while (rightIdx < inOperand.count ()) {
-    outResult.addObject (inOperand (rightIdx COMMA_HERE)) ;
+    outResult.appendObject (inOperand (rightIdx COMMA_HERE)) ;
     rightIdx ++ ;
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -1614,7 +1614,7 @@ void TC_UniqueArray <TYPE>::substractOfOrderedArraies (const TC_UniqueArray<TYPE
   while ((leftIdx < count ()) && (rightIdx < inSubstractedSet.count ())) {
     const int32_t r = (*this) (leftIdx COMMA_HERE).compare (inSubstractedSet (rightIdx COMMA_HERE)) ;
     if (r < 0) {
-      outResult.addObject ((*this) (leftIdx COMMA_HERE)) ;
+      outResult.appendObject ((*this) (leftIdx COMMA_HERE)) ;
       leftIdx ++ ;
     }else if (r > 0) {
       rightIdx ++ ;
@@ -1624,7 +1624,7 @@ void TC_UniqueArray <TYPE>::substractOfOrderedArraies (const TC_UniqueArray<TYPE
     }
   }
   while (leftIdx < count ()) {
-    outResult.addObject ((*this) (leftIdx COMMA_HERE)) ;
+    outResult.appendObject ((*this) (leftIdx COMMA_HERE)) ;
     leftIdx ++ ;
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS

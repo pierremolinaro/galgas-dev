@@ -52,7 +52,7 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
   mTerminalSymbolsCount = (int32_t) inTerminalSymbolMap.count () ;
   cEnumerator_terminalSymbolsMapForGrammarAnalysis t (inTerminalSymbolMap, kENUMERATION_UP) ;
   while (t.hasCurrentObject ()) {
-    mStringsArray.addObject ("") ;  
+    mStringsArray.appendObject ("") ;  
     t.gotoNextObject () ;
   }
   t.rewind () ;
@@ -63,12 +63,12 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
     t.gotoNextObject () ;
   }
 //--- One more entry for the empty string symbol (displayed '$$')
-  mStringsArray.addObject ("") ; // Empty string symbol
+  mStringsArray.appendObject ("") ; // Empty string symbol
   mTerminalSymbolsCount ++ ;
 //--- Append non terminal symbols from original grammar
   cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, kENUMERATION_UP) ;
   while (nonTerminal.hasCurrentObject ()) {
-    mStringsArray.addObject (nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ()) ;  
+    mStringsArray.appendObject (nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ()) ;  
     nonTerminal.gotoNextObject () ;
   }
 /* for (int32_t i=0 ; i<mStringsArray.count () ; i++) {
@@ -132,15 +132,15 @@ void cVocabulary::addNonTerminalSymbol (const char * inPrefix,
      << inClassName.identifierRepresentation ()
      << "_" ;
   nt.appendSigned (inOrderInSourceFile) ;
-  mStringsArray.addObject (nt) ;
-  mGenerateChoiceArray.addObject (inGenerateChoice) ;
+  mStringsArray.appendObject (nt) ;
+  mGenerateChoiceArray.appendObject (inGenerateChoice) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cVocabulary::addAugmentedSymbol (void) {
-  mStringsArray.addObject ("") ;
-  mGenerateChoiceArray.addObject (false) ;
+  mStringsArray.appendObject ("") ;
+  mGenerateChoiceArray.appendObject (false) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -167,10 +167,10 @@ void cVocabulary::printInFile (AC_OutputStream & inHTMLfile,
 C_RelationSingleType cVocabulary::getVocabularyBDDType (void) const {
   TC_UniqueArray <C_String> constantNameArray ;
   for (int32_t i=0 ; i<mTerminalSymbolsCount ; i++) {
-    constantNameArray.addObject (C_String ("$") + mStringsArray (i COMMA_HERE) + "$") ;
+    constantNameArray.appendObject (C_String ("$") + mStringsArray (i COMMA_HERE) + "$") ;
   }
   for (int32_t i=mTerminalSymbolsCount ; i<mStringsArray.count () ; i++) {
-    constantNameArray.addObject (C_String ("<") + mStringsArray (i COMMA_HERE) + ">") ;
+    constantNameArray.appendObject (C_String ("<") + mStringsArray (i COMMA_HERE) + ">") ;
   }
   return C_RelationSingleType (".vocabulary.", constantNameArray COMMA_HERE) ;
 }

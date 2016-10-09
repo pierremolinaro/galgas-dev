@@ -360,7 +360,7 @@ if [LEXICAL_TOKEN_LIST_MAP count] == 0 then %/* ioList */% else %ioList% end
 %) {
 %
 for () in LEXICAL_TOKEN_LIST_MAP do
-  %  ioList.addObject (%![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8Representation]%) ;\n%
+  %  ioList.appendObject (%![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8Representation]%) ;\n%
 end
 %}
 
@@ -375,7 +375,7 @@ for () in LEXICAL_TOKEN_LIST_MAP do
   %  if (inIdentifier == %![LEXIQUE_COMPONENT_NAME + ":" + lkey utf8Representation]%) {\n%
   %    ioFound = true ;\n%
   for () in mTokenSortedList do
-    %    ioList.addObject (%![mName utf8Representation]%) ;\n%
+    %    ioList.appendObject (%![mName utf8Representation]%) ;\n%
   end
   %    ioList.sortArrayUsingCompareMethod() ;\n%
   %  }\n%
