@@ -12,637 +12,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_OptionComponentSyntax::rule_galgas_33_OptionComponentSyntax_declaration_i0_ (GALGAS_galgas_33_DeclarationAST & ioArgument_ioDeclarations,
-                                                                                                    C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_option) COMMA_SOURCE_FILE ("optionCompilation.galgas", 38)) ;
-  GALGAS_lstring var_optionComponentName_1571 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("optionCompilation.galgas", 39)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 40)) ;
-  GALGAS_commandLineOptionListAST var_options_1617 = GALGAS_commandLineOptionListAST::constructor_emptyList (SOURCE_FILE ("optionCompilation.galgas", 41)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_OptionComponentSyntax_0 (inCompiler)) {
-    case 2: {
-      nt_option_5F_declaration_ (var_options_1617, inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 46)) ;
-  ioArgument_ioDeclarations.mAttribute_mDeclarationList.addAssign_operation (GALGAS_optionComponentDeclarationAST::constructor_new (GALGAS_bool (false), var_optionComponentName_1571, var_options_1617  COMMA_SOURCE_FILE ("optionCompilation.galgas", 47))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 47)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_OptionComponentSyntax::rule_galgas_33_OptionComponentSyntax_declaration_i0_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_option) COMMA_SOURCE_FILE ("optionCompilation.galgas", 38)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("optionCompilation.galgas", 39)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 40)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_OptionComponentSyntax_0 (inCompiler)) {
-    case 2: {
-      nt_option_5F_declaration_parse (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 46)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_OptionComponentSyntax::rule_galgas_33_OptionComponentSyntax_declaration_i0_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_option) COMMA_SOURCE_FILE ("optionCompilation.galgas", 38)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("optionCompilation.galgas", 39)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 40)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_OptionComponentSyntax_0 (inCompiler)) {
-    case 2: {
-      nt_option_5F_declaration_indexing (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 46)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_OptionComponentSyntax::rule_galgas_33_OptionComponentSyntax_option_5F_declaration_i1_ (GALGAS_commandLineOptionListAST & ioArgument_ioCommandLineOptionList,
-                                                                                                              C_Lexique_galgas_33_Scanner * inCompiler) {
-  GALGAS_lstring var_mOptionTypeName_2086 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__40_type) COMMA_SOURCE_FILE ("optionCompilation.galgas", 57)) ;
-  GALGAS_lstring var_mOptionInternalName_2137 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("optionCompilation.galgas", 58)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 59)) ;
-  GALGAS_lchar var_mOptionInvocationLetter_2194 = inCompiler->synthetizedAttribute_charValue () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__27_char_27_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 60)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 61)) ;
-  GALGAS_lstring var_mOptionInvocationString_2255 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 62)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 63)) ;
-  GALGAS_lstring var_mOptionComment_2308 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 64)) ;
-  GALGAS_lstring var_defaultValue_2329 = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("optionCompilation.galgas", 65))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 65)) ;
-  GALGAS_optionDefaultValueEnumAST var_optionDefaultValueKind_2418 ;
-  switch (select_galgas_33_OptionComponentSyntax_1 (inCompiler)) {
-  case 1: {
-    var_optionDefaultValueKind_2418 = GALGAS_optionDefaultValueEnumAST::constructor_noDefaultValue (SOURCE_FILE ("optionCompilation.galgas", 68)) ;
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_default) COMMA_SOURCE_FILE ("optionCompilation.galgas", 70)) ;
-    switch (select_galgas_33_OptionComponentSyntax_2 (inCompiler)) {
-    case 1: {
-      var_defaultValue_2329 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 72)) ;
-      var_optionDefaultValueKind_2418 = GALGAS_optionDefaultValueEnumAST::constructor_stringDefaultValue (SOURCE_FILE ("optionCompilation.galgas", 73)) ;
-    } break ;
-    case 2: {
-      GALGAS_luint var_v_2694 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 75)) ;
-      var_defaultValue_2329 = GALGAS_lstring::constructor_new (var_v_2694.getter_uint (SOURCE_FILE ("optionCompilation.galgas", 76)).getter_string (SOURCE_FILE ("optionCompilation.galgas", 76)), var_v_2694.getter_location (SOURCE_FILE ("optionCompilation.galgas", 76))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 76)) ;
-      var_optionDefaultValueKind_2418 = GALGAS_optionDefaultValueEnumAST::constructor_unsignedDefaultValue (SOURCE_FILE ("optionCompilation.galgas", 77)) ;
-    } break ;
-    default:
-      break ;
-    }
-  } break ;
-  default:
-    break ;
-  }
-  ioArgument_ioCommandLineOptionList.addAssign_operation (var_mOptionTypeName_2086, var_mOptionInternalName_2137, var_mOptionInvocationLetter_2194, var_mOptionInvocationString_2255, var_mOptionComment_2308, var_defaultValue_2329, var_optionDefaultValueKind_2418  COMMA_SOURCE_FILE ("optionCompilation.galgas", 80)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_OptionComponentSyntax::rule_galgas_33_OptionComponentSyntax_option_5F_declaration_i1_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__40_type) COMMA_SOURCE_FILE ("optionCompilation.galgas", 57)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("optionCompilation.galgas", 58)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 59)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__27_char_27_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 60)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 61)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 62)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 63)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 64)) ;
-  switch (select_galgas_33_OptionComponentSyntax_1 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_default) COMMA_SOURCE_FILE ("optionCompilation.galgas", 70)) ;
-    switch (select_galgas_33_OptionComponentSyntax_2 (inCompiler)) {
-    case 1: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 72)) ;
-    } break ;
-    case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 75)) ;
-    } break ;
-    default:
-      break ;
-    }
-  } break ;
-  default:
-    break ;
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_OptionComponentSyntax::rule_galgas_33_OptionComponentSyntax_option_5F_declaration_i1_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__40_type) COMMA_SOURCE_FILE ("optionCompilation.galgas", 57)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("optionCompilation.galgas", 58)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 59)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__27_char_27_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 60)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 61)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 62)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 63)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 64)) ;
-  switch (select_galgas_33_OptionComponentSyntax_1 (inCompiler)) {
-  case 1: {
-  } break ;
-  case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_default) COMMA_SOURCE_FILE ("optionCompilation.galgas", 70)) ;
-    switch (select_galgas_33_OptionComponentSyntax_2 (inCompiler)) {
-    case 1: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 72)) ;
-    } break ;
-    case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_) COMMA_SOURCE_FILE ("optionCompilation.galgas", 75)) ;
-    } break ;
-    default:
-      break ;
-    }
-  } break ;
-  default:
-    break ;
-  }
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_declaration_i0_ (GALGAS_galgas_33_DeclarationAST & ioArgument_ioDeclarations,
-                                                                                              C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_gui) COMMA_SOURCE_FILE ("guiCompilation.galgas", 93)) ;
-  GALGAS_lstring var_mGUIName_3136 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 94)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 95)) ;
-  GALGAS_lstringlist var_importedOptionList_3180 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 96)) ;
-  GALGAS_guiSimpleAttributeListAST var_simpleGlobalAttributes_3239 = GALGAS_guiSimpleAttributeListAST::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 97)) ;
-  GALGAS_withLexiqueListAST var_withLexiqueList_3284 = GALGAS_withLexiqueListAST::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 98)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_GuiComponentSyntax_0 (inCompiler)) {
-    case 2: {
-      nt_gui_5F_attributes_ (var_simpleGlobalAttributes_3239, inCompiler) ;
-    } break ;
-    case 3: {
-      nt_gui_5F_with_5F_option_5F_declaration_ (var_importedOptionList_3180, inCompiler) ;
-    } break ;
-    case 4: {
-      nt_gui_5F_with_5F_lexique_5F_declaration_ (var_withLexiqueList_3284, inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 108)) ;
-  ioArgument_ioDeclarations.mAttribute_mGUIComponentList.addAssign_operation (var_mGUIName_3136, var_importedOptionList_3180, var_simpleGlobalAttributes_3239, var_withLexiqueList_3284  COMMA_SOURCE_FILE ("guiCompilation.galgas", 109)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_declaration_i0_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_gui) COMMA_SOURCE_FILE ("guiCompilation.galgas", 93)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 94)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 95)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_GuiComponentSyntax_0 (inCompiler)) {
-    case 2: {
-      nt_gui_5F_attributes_parse (inCompiler) ;
-    } break ;
-    case 3: {
-      nt_gui_5F_with_5F_option_5F_declaration_parse (inCompiler) ;
-    } break ;
-    case 4: {
-      nt_gui_5F_with_5F_lexique_5F_declaration_parse (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 108)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_declaration_i0_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_gui) COMMA_SOURCE_FILE ("guiCompilation.galgas", 93)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 94)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 95)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_GuiComponentSyntax_0 (inCompiler)) {
-    case 2: {
-      nt_gui_5F_attributes_indexing (inCompiler) ;
-    } break ;
-    case 3: {
-      nt_gui_5F_with_5F_option_5F_declaration_indexing (inCompiler) ;
-    } break ;
-    case 4: {
-      nt_gui_5F_with_5F_lexique_5F_declaration_indexing (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 108)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_lexique_5F_declaration_i1_ (GALGAS_withLexiqueListAST & ioArgument_ioWithLexiqueList,
-                                                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("guiCompilation.galgas", 119)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_lexique) COMMA_SOURCE_FILE ("guiCompilation.galgas", 120)) ;
-  GALGAS_lstring var_lexiqueReference_3932 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 121)) ;
-  GALGAS_guiLabelListAST var_labels_3960 = GALGAS_guiLabelListAST::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 122)) ;
-  GALGAS_guiSimpleAttributeListAST var_simpleAttributes_4013 = GALGAS_guiSimpleAttributeListAST::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 123)) ;
-  GALGAS_guiCompoundAttributeListAST var_compoundAttributes_4070 = GALGAS_guiCompoundAttributeListAST::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 124)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 125)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_GuiComponentSyntax_1 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_label) COMMA_SOURCE_FILE ("guiCompilation.galgas", 128)) ;
-      GALGAS_uint var_displayStyle_4143 ;
-      switch (select_galgas_33_GuiComponentSyntax_2 (inCompiler)) {
-      case 1: {
-        var_displayStyle_4143 = GALGAS_uint ((uint32_t) 0U) ;
-      } break ;
-      case 2: {
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2A_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 133)) ;
-        var_displayStyle_4143 = GALGAS_uint ((uint32_t) 1U) ;
-      } break ;
-      default:
-        break ;
-      }
-      GALGAS_terminalLabelListAST var_terminalList_4278 = GALGAS_terminalLabelListAST::constructor_emptyList (SOURCE_FILE ("guiCompilation.galgas", 136)) ;
-      bool repeatFlag_1 = true ;
-      while (repeatFlag_1) {
-        GALGAS_lstring var_terminal_4343 = inCompiler->synthetizedAttribute_tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__24_terminal_24_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 138)) ;
-        GALGAS_uint var_displayFlags_4370 ;
-        switch (select_galgas_33_GuiComponentSyntax_4 (inCompiler)) {
-        case 1: {
-          var_displayFlags_4370 = GALGAS_uint ((uint32_t) 0U) ;
-        } break ;
-        case 2: {
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2D_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 143)) ;
-          var_displayFlags_4370 = GALGAS_uint ((uint32_t) 65535U) ;
-        } break ;
-        case 3: {
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__28_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 146)) ;
-          GALGAS_luint var_leadingStrip_4564 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 147)) ;
-          const enumGalgasBool test_2 = GALGAS_bool (kIsSupOrEqual, var_leadingStrip_4564.mAttribute_uint.objectCompare (GALGAS_uint ((uint32_t) 15U))).boolEnum () ;
-          if (kBoolTrue == test_2) {
-            TC_Array <C_FixItDescription> fixItArray3 ;
-            inCompiler->emitSemanticError (var_leadingStrip_4564.getter_location (SOURCE_FILE ("guiCompilation.galgas", 149)), GALGAS_string ("leading strip should be < 15"), fixItArray3  COMMA_SOURCE_FILE ("guiCompilation.galgas", 149)) ;
-          }
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 151)) ;
-          GALGAS_luint var_endingStrip_4739 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 152)) ;
-          const enumGalgasBool test_4 = GALGAS_bool (kIsSupOrEqual, var_endingStrip_4739.mAttribute_uint.objectCompare (GALGAS_uint ((uint32_t) 15U))).boolEnum () ;
-          if (kBoolTrue == test_4) {
-            TC_Array <C_FixItDescription> fixItArray5 ;
-            inCompiler->emitSemanticError (var_endingStrip_4739.getter_location (SOURCE_FILE ("guiCompilation.galgas", 154)), GALGAS_string ("tail strip should be < 15"), fixItArray5  COMMA_SOURCE_FILE ("guiCompilation.galgas", 154)) ;
-          }
-          var_displayFlags_4370 = var_leadingStrip_4564.mAttribute_uint.left_shift_operation (GALGAS_uint ((uint32_t) 4U) COMMA_SOURCE_FILE ("guiCompilation.galgas", 156)).operator_or (var_endingStrip_4739.getter_uint (SOURCE_FILE ("guiCompilation.galgas", 156)) COMMA_SOURCE_FILE ("guiCompilation.galgas", 156)) ;
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__29_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 157)) ;
-        } break ;
-        default:
-          break ;
-        }
-        var_terminalList_4278.addAssign_operation (var_terminal_4343, var_displayFlags_4370  COMMA_SOURCE_FILE ("guiCompilation.galgas", 159)) ;
-        switch (select_galgas_33_GuiComponentSyntax_3 (inCompiler)) {
-        case 2: {
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 161)) ;
-        } break ;
-        default:
-          repeatFlag_1 = false ;
-          break ;
-        }
-      }
-      var_labels_3960.addAssign_operation (var_displayStyle_4143, var_terminalList_4278, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas", 163))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 163)) ;
-    } break ;
-    case 3: {
-      GALGAS_lstring var_key_5130 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 165)) ;
-      GALGAS_lstring var_name_5166 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 166)) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 167)) ;
-      GALGAS_lstring var_value_5192 = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas", 168))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 168)) ;
-      bool repeatFlag_6 = true ;
-      while (repeatFlag_6) {
-        GALGAS_lstring var_v_5275 = inCompiler->synthetizedAttribute_tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 170)) ;
-        var_value_5192 = GALGAS_lstring::constructor_new (var_value_5192.getter_string (SOURCE_FILE ("guiCompilation.galgas", 171)).add_operation (var_v_5275.getter_string (SOURCE_FILE ("guiCompilation.galgas", 171)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 171)), var_v_5275.getter_location (SOURCE_FILE ("guiCompilation.galgas", 171))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 171)) ;
-        switch (select_galgas_33_GuiComponentSyntax_5 (inCompiler)) {
-        case 2: {
-        } break ;
-        default:
-          repeatFlag_6 = false ;
-          break ;
-        }
-      }
-      var_compoundAttributes_4070.addAssign_operation (var_key_5130, var_name_5166, var_value_5192  COMMA_SOURCE_FILE ("guiCompilation.galgas", 174)) ;
-    } break ;
-    case 4: {
-      GALGAS_lstring var_name_5465 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 176)) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 177)) ;
-      GALGAS_lstring var_value_5512 = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 178)) ;
-      var_simpleAttributes_4013.addAssign_operation (var_name_5465, var_value_5512  COMMA_SOURCE_FILE ("guiCompilation.galgas", 179)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 181)) ;
-  ioArgument_ioWithLexiqueList.addAssign_operation (var_lexiqueReference_3932, var_labels_3960, var_simpleAttributes_4013, var_compoundAttributes_4070  COMMA_SOURCE_FILE ("guiCompilation.galgas", 182)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_lexique_5F_declaration_i1_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("guiCompilation.galgas", 119)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_lexique) COMMA_SOURCE_FILE ("guiCompilation.galgas", 120)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 121)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 125)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_GuiComponentSyntax_1 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_label) COMMA_SOURCE_FILE ("guiCompilation.galgas", 128)) ;
-      switch (select_galgas_33_GuiComponentSyntax_2 (inCompiler)) {
-      case 1: {
-      } break ;
-      case 2: {
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2A_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 133)) ;
-      } break ;
-      default:
-        break ;
-      }
-      bool repeatFlag_1 = true ;
-      while (repeatFlag_1) {
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__24_terminal_24_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 138)) ;
-        switch (select_galgas_33_GuiComponentSyntax_4 (inCompiler)) {
-        case 1: {
-        } break ;
-        case 2: {
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2D_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 143)) ;
-        } break ;
-        case 3: {
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__28_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 146)) ;
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 147)) ;
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 151)) ;
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 152)) ;
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__29_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 157)) ;
-        } break ;
-        default:
-          break ;
-        }
-        switch (select_galgas_33_GuiComponentSyntax_3 (inCompiler)) {
-        case 2: {
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 161)) ;
-        } break ;
-        default:
-          repeatFlag_1 = false ;
-          break ;
-        }
-      }
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 165)) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 166)) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 167)) ;
-      bool repeatFlag_2 = true ;
-      while (repeatFlag_2) {
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 170)) ;
-        switch (select_galgas_33_GuiComponentSyntax_5 (inCompiler)) {
-        case 2: {
-        } break ;
-        default:
-          repeatFlag_2 = false ;
-          break ;
-        }
-      }
-    } break ;
-    case 4: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 176)) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 177)) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 178)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 181)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_lexique_5F_declaration_i1_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("guiCompilation.galgas", 119)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_lexique) COMMA_SOURCE_FILE ("guiCompilation.galgas", 120)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 121)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 125)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_GuiComponentSyntax_1 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_label) COMMA_SOURCE_FILE ("guiCompilation.galgas", 128)) ;
-      switch (select_galgas_33_GuiComponentSyntax_2 (inCompiler)) {
-      case 1: {
-      } break ;
-      case 2: {
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2A_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 133)) ;
-      } break ;
-      default:
-        break ;
-      }
-      bool repeatFlag_1 = true ;
-      while (repeatFlag_1) {
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__24_terminal_24_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 138)) ;
-        switch (select_galgas_33_GuiComponentSyntax_4 (inCompiler)) {
-        case 1: {
-        } break ;
-        case 2: {
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2D_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 143)) ;
-        } break ;
-        case 3: {
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__28_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 146)) ;
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 147)) ;
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 151)) ;
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 152)) ;
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__29_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 157)) ;
-        } break ;
-        default:
-          break ;
-        }
-        switch (select_galgas_33_GuiComponentSyntax_3 (inCompiler)) {
-        case 2: {
-          inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 161)) ;
-        } break ;
-        default:
-          repeatFlag_1 = false ;
-          break ;
-        }
-      }
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 165)) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 166)) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 167)) ;
-      bool repeatFlag_2 = true ;
-      while (repeatFlag_2) {
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 170)) ;
-        switch (select_galgas_33_GuiComponentSyntax_5 (inCompiler)) {
-        case 2: {
-        } break ;
-        default:
-          repeatFlag_2 = false ;
-          break ;
-        }
-      }
-    } break ;
-    case 4: {
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 176)) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 177)) ;
-      inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 178)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 181)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_option_5F_declaration_i2_ (GALGAS_lstringlist & ioArgument_ioImportedOptionList,
-                                                                                                                       C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("guiCompilation.galgas", 188)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_option) COMMA_SOURCE_FILE ("guiCompilation.galgas", 189)) ;
-  GALGAS_lstring var_optionReference_5934 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 190)) ;
-  ioArgument_ioImportedOptionList.addAssign_operation (var_optionReference_5934  COMMA_SOURCE_FILE ("guiCompilation.galgas", 191)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_option_5F_declaration_i2_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("guiCompilation.galgas", 188)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_option) COMMA_SOURCE_FILE ("guiCompilation.galgas", 189)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 190)) ;
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_gui_5F_with_5F_option_5F_declaration_i2_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("guiCompilation.galgas", 188)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_option) COMMA_SOURCE_FILE ("guiCompilation.galgas", 189)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 190)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_gui_5F_attributes_i3_ (GALGAS_guiSimpleAttributeListAST & ioArgument_ioSimpleGlobalAttributes,
-                                                                                                    C_Lexique_galgas_33_Scanner * inCompiler) {
-  GALGAS_lstring var_mKey_6224 = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 197)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 198)) ;
-  GALGAS_lstring var_mValue_6247 = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("guiCompilation.galgas", 199))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 199)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    GALGAS_lstring var_value_6323 = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 201)) ;
-    var_mValue_6247 = GALGAS_lstring::constructor_new (var_mValue_6247.getter_string (SOURCE_FILE ("guiCompilation.galgas", 202)).add_operation (var_value_6323.getter_string (SOURCE_FILE ("guiCompilation.galgas", 202)), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 202)), var_value_6323.getter_location (SOURCE_FILE ("guiCompilation.galgas", 202))  COMMA_SOURCE_FILE ("guiCompilation.galgas", 202)) ;
-    switch (select_galgas_33_GuiComponentSyntax_6 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  ioArgument_ioSimpleGlobalAttributes.addAssign_operation (var_mKey_6224, var_mValue_6247  COMMA_SOURCE_FILE ("guiCompilation.galgas", 205)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_gui_5F_attributes_i3_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 197)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 198)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 201)) ;
-    switch (select_galgas_33_GuiComponentSyntax_6 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_gui_5F_attributes_i3_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("guiCompilation.galgas", 197)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 198)) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 201)) ;
-    switch (select_galgas_33_GuiComponentSyntax_6 (inCompiler)) {
-    case 2: {
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSyntax_declaration_i0_ (GALGAS_galgas_33_DeclarationAST & ioArgument_ioDeclarations,
                                                                                                     C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_syntax) COMMA_SOURCE_FILE ("galgas3SyntaxComponentSyntax.galgas", 42)) ;
@@ -3625,103 +2994,9 @@ GALGAS_projectQualifiedFeatureMap GALGAS_projectQualifiedFeatureMap::extractObje
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-// class GALGAS_list_XCodeGroupList : public TC_UniqueArray <GALGAS_XCodeGroupList_2D_element>, public C_SharedObject {
-//} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cCollectionElement_XCodeGroupList : public cCollectionElement {
-  public : GALGAS_XCodeGroupList_2D_element mObject ;
-
-//--- Constructor
-  public : cCollectionElement_XCodeGroupList (const GALGAS_string & in_mGroupReference,
-                                              const GALGAS_string & in_mGroupName,
-                                              const GALGAS_string & in_mGroupPath,
-                                              const GALGAS_stringlist & in_mChildrenRefs
-                                              COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cCollectionElement_XCodeGroupList::cCollectionElement_XCodeGroupList (const GALGAS_string & in_mGroupReference,
-                                                                      const GALGAS_string & in_mGroupName,
-                                                                      const GALGAS_string & in_mGroupPath,
-                                                                      const GALGAS_stringlist & in_mChildrenRefs
-                                                                      COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (in_mGroupReference, in_mGroupName, in_mGroupPath, in_mChildrenRefs) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cCollectionElement_XCodeGroupList::isValid (void) const {
-  return mObject.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cCollectionElement * cCollectionElement_XCodeGroupList::copy (void) {
-  cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_XCodeGroupList (mObject.mAttribute_mGroupReference, mObject.mAttribute_mGroupName, mObject.mAttribute_mGroupPath, mObject.mAttribute_mChildrenRefs COMMA_HERE)) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cCollectionElement_XCodeGroupList::description (C_String & ioString, const int32_t inIndentation) const {
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mGroupReference" ":" ;
-  mObject.mAttribute_mGroupReference.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mGroupName" ":" ;
-  mObject.mAttribute_mGroupName.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mGroupPath" ":" ;
-  mObject.mAttribute_mGroupPath.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mChildrenRefs" ":" ;
-  mObject.mAttribute_mChildrenRefs.description (ioString, inIndentation) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cCollectionElement_XCodeGroupList::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_XCodeGroupList * operand = (cCollectionElement_XCodeGroupList *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_XCodeGroupList) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_XCodeGroupList::GALGAS_XCodeGroupList (void) :
-AC_GALGAS_list (),
+GALGAS_XCodeGroupList::GALGAS_XCodeGroupList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid),
 mArray () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_XCodeGroupList::GALGAS_XCodeGroupList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr),
-mArray () {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3731,10 +3006,47 @@ GALGAS_XCodeGroupList::~ GALGAS_XCodeGroupList (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeGroupList GALGAS_XCodeGroupList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_XCodeGroupList result ;
-  result.createNewEmptyList (THERE) ;
+GALGAS_XCodeGroupList GALGAS_XCodeGroupList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_XCodeGroupList (true) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_XCodeGroupList::getter_length (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (isValid ()) {
+    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
+  }
   return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_range GALGAS_XCodeGroupList::getter_range (UNUSED_LOCATION_ARGS) const {
+  GALGAS_range result ;
+  if (isValid ()) {
+    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_XCodeGroupList::description (C_String & ioString,
+                                         const int32_t inIndentation) const {
+  ioString << "<list @XCodeGroupList:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    ioString << " ("
+             << cStringWithSigned (mArray.count ())
+             << " object" << ((mArray.count () > 1) ? "s" : "")
+             << "): " ;
+    for (int32_t i=0 ; i<mArray.count () ; i++) {
+      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
+    }
+  }
+  ioString << ">" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3746,16 +3058,14 @@ GALGAS_XCodeGroupList GALGAS_XCodeGroupList::constructor_listWithValue (const GA
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_XCodeGroupList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result.createNewEmptyList (THERE) ;
-    capCollectionElement attributes ;
-    GALGAS_XCodeGroupList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result = GALGAS_XCodeGroupList (true) ;
+    result.addAssign_operation (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
+/*
 void GALGAS_XCodeGroupList::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                        const GALGAS_string & in_mGroupReference,
                                                        const GALGAS_string & in_mGroupName,
@@ -3770,21 +3080,17 @@ void GALGAS_XCodeGroupList::makeAttributesFromObjects (capCollectionElement & ou
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-
+*/
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_XCodeGroupList::addAssign_operation (const GALGAS_string & inOperand0,
                                                  const GALGAS_string & inOperand1,
                                                  const GALGAS_string & inOperand2,
                                                  const GALGAS_stringlist & inOperand3
-                                                 COMMA_LOCATION_ARGS) {
+                                                 COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_XCodeGroupList (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    const GALGAS_XCodeGroupList_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3) ;
+    mArray.addObject (element) ;
   }
 }
 
@@ -3798,12 +3104,15 @@ void GALGAS_XCodeGroupList::setter_insertAtIndex (const GALGAS_string inOperand0
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_XCodeGroupList (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+    const GALGAS_XCodeGroupList_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3) ;
+    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
+    if (index <= mArray.count ()) {
+      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
+    }else{
+      C_String s = "insertAtIndex: insertion index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -3815,22 +3124,24 @@ void GALGAS_XCodeGroupList::setter_removeAtIndex (GALGAS_string & outOperand0,
                                                   GALGAS_stringlist & outOperand3,
                                                   const GALGAS_uint inRemoveIndex,
                                                   C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
+                                                  COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
-    if (NULL == p) {
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      outOperand2.drop () ;
-      outOperand3.drop () ;
+    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
+    if (index <= mArray.count ()) {
+      const GALGAS_XCodeGroupList_2D_element element = mArray (index COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mGroupReference ;
+      outOperand1 = element.mAttribute_mGroupName ;
+      outOperand2 = element.mAttribute_mGroupPath ;
+      outOperand3 = element.mAttribute_mChildrenRefs ;
+      mArray.removeObjectAtIndex (index COMMA_THERE) ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
-      outOperand0 = p->mObject.mAttribute_mGroupReference ;
-      outOperand1 = p->mObject.mAttribute_mGroupName ;
-      outOperand2 = p->mObject.mAttribute_mGroupPath ;
-      outOperand3 = p->mObject.mAttribute_mChildrenRefs ;
+      C_String s = "removeAtIndex: remove index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }
   }
 }
@@ -3842,21 +3153,23 @@ void GALGAS_XCodeGroupList::setter_popFirst (GALGAS_string & outOperand0,
                                              GALGAS_string & outOperand2,
                                              GALGAS_stringlist & outOperand3,
                                              C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
-    outOperand0 = p->mObject.mAttribute_mGroupReference ;
-    outOperand1 = p->mObject.mAttribute_mGroupName ;
-    outOperand2 = p->mObject.mAttribute_mGroupPath ;
-    outOperand3 = p->mObject.mAttribute_mChildrenRefs ;
+                                             COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const GALGAS_XCodeGroupList_2D_element element = mArray (0 COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mGroupReference ;
+      outOperand1 = element.mAttribute_mGroupName ;
+      outOperand2 = element.mAttribute_mGroupPath ;
+      outOperand3 = element.mAttribute_mChildrenRefs ;
+      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
+    }else{
+      C_String s = "popFirst: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -3867,21 +3180,24 @@ void GALGAS_XCodeGroupList::setter_popLast (GALGAS_string & outOperand0,
                                             GALGAS_string & outOperand2,
                                             GALGAS_stringlist & outOperand3,
                                             C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
-    outOperand0 = p->mObject.mAttribute_mGroupReference ;
-    outOperand1 = p->mObject.mAttribute_mGroupName ;
-    outOperand2 = p->mObject.mAttribute_mGroupPath ;
-    outOperand3 = p->mObject.mAttribute_mChildrenRefs ;
+                                            COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const int32_t index = mArray.count () - 1 ;
+      const GALGAS_XCodeGroupList_2D_element element = mArray (index COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mGroupReference ;
+      outOperand1 = element.mAttribute_mGroupName ;
+      outOperand2 = element.mAttribute_mGroupPath ;
+      outOperand3 = element.mAttribute_mChildrenRefs ;
+      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    }else{
+      C_String s = "popLast: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -3893,20 +3209,22 @@ void GALGAS_XCodeGroupList::method_first (GALGAS_string & outOperand0,
                                           GALGAS_stringlist & outOperand3,
                                           C_Compiler * inCompiler
                                           COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
-    outOperand0 = p->mObject.mAttribute_mGroupReference ;
-    outOperand1 = p->mObject.mAttribute_mGroupName ;
-    outOperand2 = p->mObject.mAttribute_mGroupPath ;
-    outOperand3 = p->mObject.mAttribute_mChildrenRefs ;
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const GALGAS_XCodeGroupList_2D_element element = mArray (0 COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mGroupReference ;
+      outOperand1 = element.mAttribute_mGroupName ;
+      outOperand2 = element.mAttribute_mGroupPath ;
+      outOperand3 = element.mAttribute_mChildrenRefs ;
+    }else{
+      C_String s = "popFirst: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -3918,20 +3236,23 @@ void GALGAS_XCodeGroupList::method_last (GALGAS_string & outOperand0,
                                          GALGAS_stringlist & outOperand3,
                                          C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
-    outOperand0 = p->mObject.mAttribute_mGroupReference ;
-    outOperand1 = p->mObject.mAttribute_mGroupName ;
-    outOperand2 = p->mObject.mAttribute_mGroupPath ;
-    outOperand3 = p->mObject.mAttribute_mChildrenRefs ;
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const int32_t index = mArray.count () - 1 ;
+      const GALGAS_XCodeGroupList_2D_element element = mArray (index COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mGroupReference ;
+      outOperand1 = element.mAttribute_mGroupName ;
+      outOperand2 = element.mAttribute_mGroupPath ;
+      outOperand3 = element.mAttribute_mChildrenRefs ;
+    }else{
+      C_String s = "popLast: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -3939,11 +3260,14 @@ void GALGAS_XCodeGroupList::method_last (GALGAS_string & outOperand0,
 
 GALGAS_XCodeGroupList GALGAS_XCodeGroupList::add_operation (const GALGAS_XCodeGroupList & inOperand,
                                                             C_Compiler * /* inCompiler */
-                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+                                                            COMMA_LOCATION_ARGS) const {
   GALGAS_XCodeGroupList result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
+      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
+    }
   }
   return result ;
 }
@@ -3953,8 +3277,22 @@ GALGAS_XCodeGroupList GALGAS_XCodeGroupList::add_operation (const GALGAS_XCodeGr
 GALGAS_XCodeGroupList GALGAS_XCodeGroupList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_XCodeGroupList result = GALGAS_XCodeGroupList::constructor_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GALGAS_XCodeGroupList result ;
+  if (isValid () && inRange.isValid ()) {
+    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
+    const uint32_t length = inRange.mAttribute_length.uintValue () ;
+    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
+      result = GALGAS_XCodeGroupList (true) ;
+      result.mArray.setCapacity ((int32_t) length) ;
+      for (uint32_t i=0 ; i<length ; i++) {
+        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
+      }
+    }else{
+      C_String s = "subListWithRange: max index (" ;
+      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 
@@ -3963,8 +3301,21 @@ GALGAS_XCodeGroupList GALGAS_XCodeGroupList::getter_subListWithRange (const GALG
 GALGAS_XCodeGroupList GALGAS_XCodeGroupList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
-  GALGAS_XCodeGroupList result = GALGAS_XCodeGroupList::constructor_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GALGAS_XCodeGroupList result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index <= mArray.count ()) {
+      result = GALGAS_XCodeGroupList (true) ;
+      result.mArray.setCapacity (mArray.count () + 1 - index) ;
+      for (int32_t i=index ; i<mArray.count () ; i++) {
+        result.mArray.addObject (mArray (i COMMA_THERE)) ;
+      }
+    }else{
+      C_String s = "subListFromIndex: index (" ;
+      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 
@@ -3973,8 +3324,21 @@ GALGAS_XCodeGroupList GALGAS_XCodeGroupList::getter_subListFromIndex (const GALG
 GALGAS_XCodeGroupList GALGAS_XCodeGroupList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS_XCodeGroupList result = GALGAS_XCodeGroupList::constructor_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GALGAS_XCodeGroupList result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = GALGAS_XCodeGroupList (true) ;
+      result.mArray.setCapacity (index + 1) ;
+      for (int32_t i=0 ; i<=index ; i++) {
+        result.mArray.addObject (mArray (i COMMA_THERE)) ;
+      }
+    }else{
+      C_String s = "subListFromIndex: index (" ;
+      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 
@@ -3982,8 +3346,13 @@ GALGAS_XCodeGroupList GALGAS_XCodeGroupList::getter_subListToIndex (const GALGAS
 
 void GALGAS_XCodeGroupList::plusAssign_operation (const GALGAS_XCodeGroupList inOperand,
                                                   C_Compiler * /* inCompiler */
-                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+                                                  COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
+      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3991,12 +3360,16 @@ void GALGAS_XCodeGroupList::plusAssign_operation (const GALGAS_XCodeGroupList in
 GALGAS_string GALGAS_XCodeGroupList::getter_mGroupReferenceAtIndex (const GALGAS_uint & inIndex,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
-    result = p->mObject.mAttribute_mGroupReference ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mGroupReference ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -4006,12 +3379,16 @@ GALGAS_string GALGAS_XCodeGroupList::getter_mGroupReferenceAtIndex (const GALGAS
 GALGAS_string GALGAS_XCodeGroupList::getter_mGroupNameAtIndex (const GALGAS_uint & inIndex,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
-    result = p->mObject.mAttribute_mGroupName ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mGroupName ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -4021,12 +3398,16 @@ GALGAS_string GALGAS_XCodeGroupList::getter_mGroupNameAtIndex (const GALGAS_uint
 GALGAS_string GALGAS_XCodeGroupList::getter_mGroupPathAtIndex (const GALGAS_uint & inIndex,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
-    result = p->mObject.mAttribute_mGroupPath ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mGroupPath ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -4036,17 +3417,40 @@ GALGAS_string GALGAS_XCodeGroupList::getter_mGroupPathAtIndex (const GALGAS_uint
 GALGAS_stringlist GALGAS_XCodeGroupList::getter_mChildrenRefsAtIndex (const GALGAS_uint & inIndex,
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeGroupList * p = (cCollectionElement_XCodeGroupList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
-    result = p->mObject.mAttribute_mChildrenRefs ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mChildrenRefs ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
 
 
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_XCodeGroupList::objectCompare (const GALGAS_XCodeGroupList & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    int32_t r = mArray.count () - inOperand.mArray.count () ;
+    if (r < 0) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (r > 0) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
+        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
+      }
+    }
+  }
+  return result ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4056,7 +3460,7 @@ mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0),
 mOrder (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
+  mEnumerationArray = inEnumeratedObject.mArray ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4067,60 +3471,70 @@ cEnumerator_XCodeGroupList::~ cEnumerator_XCodeGroupList (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cEnumerator_XCodeGroupList::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArrayEx.count () ;
+  return mIndex < mEnumerationArray.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cEnumerator_XCodeGroupList::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArrayEx.count () ;
+  return (mIndex + 1) < mEnumerationArray.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const cCollectionElement * cEnumerator_XCodeGroupList::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-}
+//const cCollectionElement * cEnumerator_XCodeGroupList::currentObjectPtr (LOCATION_ARGS) const {
+//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_XCodeGroupList_2D_element cEnumerator_XCodeGroupList::current (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeGroupList * p = (const cCollectionElement_XCodeGroupList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
-  return p->mObject ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE) ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeGroupList::current_mGroupReference (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeGroupList * p = (const cCollectionElement_XCodeGroupList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
-  return p->mObject.mAttribute_mGroupReference ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mGroupReference ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeGroupList::current_mGroupName (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeGroupList * p = (const cCollectionElement_XCodeGroupList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
-  return p->mObject.mAttribute_mGroupName ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mGroupName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeGroupList::current_mGroupPath (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeGroupList * p = (const cCollectionElement_XCodeGroupList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
-  return p->mObject.mAttribute_mGroupPath ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mGroupPath ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist cEnumerator_XCodeGroupList::current_mChildrenRefs (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeGroupList * p = (const cCollectionElement_XCodeGroupList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeGroupList) ;
-  return p->mObject.mAttribute_mChildrenRefs ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mChildrenRefs ;
 }
 
 
@@ -4171,145 +3585,9 @@ GALGAS_XCodeGroupList GALGAS_XCodeGroupList::extractObject (const GALGAS_object 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-// class GALGAS_list_XCodeToolTargetList : public TC_UniqueArray <GALGAS_XCodeToolTargetList_2D_element>, public C_SharedObject {
-//} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cCollectionElement_XCodeToolTargetList : public cCollectionElement {
-  public : GALGAS_XCodeToolTargetList_2D_element mObject ;
-
-//--- Constructor
-  public : cCollectionElement_XCodeToolTargetList (const GALGAS_string & in_mTargetRef,
-                                                   const GALGAS_string & in_mTargetName,
-                                                   const GALGAS_string & in_mProductFileReference,
-                                                   const GALGAS_string & in_mProductFileName,
-                                                   const GALGAS_stringlist & in_mBuildPhaseRefList,
-                                                   const GALGAS_string & in_mBuildPhaseRef,
-                                                   const GALGAS_string & in_mBuildConfigurationListRef,
-                                                   const GALGAS_stringlist & in_mBuildConfigurationSettingList,
-                                                   const GALGAS_string & in_mBuildConfigurationRef,
-                                                   const GALGAS_stringlist & in_mFrameworksFileRefList,
-                                                   const GALGAS_string & in_mFrameworkBuildPhaseRef
-                                                   COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cCollectionElement_XCodeToolTargetList::cCollectionElement_XCodeToolTargetList (const GALGAS_string & in_mTargetRef,
-                                                                                const GALGAS_string & in_mTargetName,
-                                                                                const GALGAS_string & in_mProductFileReference,
-                                                                                const GALGAS_string & in_mProductFileName,
-                                                                                const GALGAS_stringlist & in_mBuildPhaseRefList,
-                                                                                const GALGAS_string & in_mBuildPhaseRef,
-                                                                                const GALGAS_string & in_mBuildConfigurationListRef,
-                                                                                const GALGAS_stringlist & in_mBuildConfigurationSettingList,
-                                                                                const GALGAS_string & in_mBuildConfigurationRef,
-                                                                                const GALGAS_stringlist & in_mFrameworksFileRefList,
-                                                                                const GALGAS_string & in_mFrameworkBuildPhaseRef
-                                                                                COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (in_mTargetRef, in_mTargetName, in_mProductFileReference, in_mProductFileName, in_mBuildPhaseRefList, in_mBuildPhaseRef, in_mBuildConfigurationListRef, in_mBuildConfigurationSettingList, in_mBuildConfigurationRef, in_mFrameworksFileRefList, in_mFrameworkBuildPhaseRef) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cCollectionElement_XCodeToolTargetList::isValid (void) const {
-  return mObject.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cCollectionElement * cCollectionElement_XCodeToolTargetList::copy (void) {
-  cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_XCodeToolTargetList (mObject.mAttribute_mTargetRef, mObject.mAttribute_mTargetName, mObject.mAttribute_mProductFileReference, mObject.mAttribute_mProductFileName, mObject.mAttribute_mBuildPhaseRefList, mObject.mAttribute_mBuildPhaseRef, mObject.mAttribute_mBuildConfigurationListRef, mObject.mAttribute_mBuildConfigurationSettingList, mObject.mAttribute_mBuildConfigurationRef, mObject.mAttribute_mFrameworksFileRefList, mObject.mAttribute_mFrameworkBuildPhaseRef COMMA_HERE)) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cCollectionElement_XCodeToolTargetList::description (C_String & ioString, const int32_t inIndentation) const {
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mTargetRef" ":" ;
-  mObject.mAttribute_mTargetRef.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mTargetName" ":" ;
-  mObject.mAttribute_mTargetName.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mProductFileReference" ":" ;
-  mObject.mAttribute_mProductFileReference.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mProductFileName" ":" ;
-  mObject.mAttribute_mProductFileName.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mBuildPhaseRefList" ":" ;
-  mObject.mAttribute_mBuildPhaseRefList.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mBuildPhaseRef" ":" ;
-  mObject.mAttribute_mBuildPhaseRef.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mBuildConfigurationListRef" ":" ;
-  mObject.mAttribute_mBuildConfigurationListRef.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mBuildConfigurationSettingList" ":" ;
-  mObject.mAttribute_mBuildConfigurationSettingList.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mBuildConfigurationRef" ":" ;
-  mObject.mAttribute_mBuildConfigurationRef.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mFrameworksFileRefList" ":" ;
-  mObject.mAttribute_mFrameworksFileRefList.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mFrameworkBuildPhaseRef" ":" ;
-  mObject.mAttribute_mFrameworkBuildPhaseRef.description (ioString, inIndentation) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cCollectionElement_XCodeToolTargetList::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_XCodeToolTargetList * operand = (cCollectionElement_XCodeToolTargetList *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_XCodeToolTargetList) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_XCodeToolTargetList::GALGAS_XCodeToolTargetList (void) :
-AC_GALGAS_list (),
+GALGAS_XCodeToolTargetList::GALGAS_XCodeToolTargetList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid),
 mArray () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_XCodeToolTargetList::GALGAS_XCodeToolTargetList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr),
-mArray () {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4319,10 +3597,47 @@ GALGAS_XCodeToolTargetList::~ GALGAS_XCodeToolTargetList (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_XCodeToolTargetList result ;
-  result.createNewEmptyList (THERE) ;
+GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_XCodeToolTargetList (true) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_XCodeToolTargetList::getter_length (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (isValid ()) {
+    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
+  }
   return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_range GALGAS_XCodeToolTargetList::getter_range (UNUSED_LOCATION_ARGS) const {
+  GALGAS_range result ;
+  if (isValid ()) {
+    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_XCodeToolTargetList::description (C_String & ioString,
+                                              const int32_t inIndentation) const {
+  ioString << "<list @XCodeToolTargetList:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    ioString << " ("
+             << cStringWithSigned (mArray.count ())
+             << " object" << ((mArray.count () > 1) ? "s" : "")
+             << "): " ;
+    for (int32_t i=0 ; i<mArray.count () ; i++) {
+      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
+    }
+  }
+  ioString << ">" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4341,16 +3656,14 @@ GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::constructor_listWithValue
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_XCodeToolTargetList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid ()) {
-    result.createNewEmptyList (THERE) ;
-    capCollectionElement attributes ;
-    GALGAS_XCodeToolTargetList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result = GALGAS_XCodeToolTargetList (true) ;
+    result.addAssign_operation (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10 COMMA_THERE) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
+/*
 void GALGAS_XCodeToolTargetList::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                             const GALGAS_string & in_mTargetRef,
                                                             const GALGAS_string & in_mTargetName,
@@ -4379,7 +3692,7 @@ void GALGAS_XCodeToolTargetList::makeAttributesFromObjects (capCollectionElement
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-
+*/
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_XCodeToolTargetList::addAssign_operation (const GALGAS_string & inOperand0,
@@ -4393,14 +3706,10 @@ void GALGAS_XCodeToolTargetList::addAssign_operation (const GALGAS_string & inOp
                                                       const GALGAS_string & inOperand8,
                                                       const GALGAS_stringlist & inOperand9,
                                                       const GALGAS_string & inOperand10
-                                                      COMMA_LOCATION_ARGS) {
+                                                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_XCodeToolTargetList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    const GALGAS_XCodeToolTargetList_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10) ;
+    mArray.addObject (element) ;
   }
 }
 
@@ -4421,12 +3730,15 @@ void GALGAS_XCodeToolTargetList::setter_insertAtIndex (const GALGAS_string inOpe
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_XCodeToolTargetList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+    const GALGAS_XCodeToolTargetList_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10) ;
+    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
+    if (index <= mArray.count ()) {
+      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
+    }else{
+      C_String s = "insertAtIndex: insertion index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -4445,36 +3757,38 @@ void GALGAS_XCodeToolTargetList::setter_removeAtIndex (GALGAS_string & outOperan
                                                        GALGAS_string & outOperand10,
                                                        const GALGAS_uint inRemoveIndex,
                                                        C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) {
+                                                       COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+  outOperand4.drop () ;
+  outOperand5.drop () ;
+  outOperand6.drop () ;
+  outOperand7.drop () ;
+  outOperand8.drop () ;
+  outOperand9.drop () ;
+  outOperand10.drop () ;
+
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
-    if (NULL == p) {
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      outOperand2.drop () ;
-      outOperand3.drop () ;
-      outOperand4.drop () ;
-      outOperand5.drop () ;
-      outOperand6.drop () ;
-      outOperand7.drop () ;
-      outOperand8.drop () ;
-      outOperand9.drop () ;
-      outOperand10.drop () ;
+    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
+    if (index <= mArray.count ()) {
+      const GALGAS_XCodeToolTargetList_2D_element element = mArray (index COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mTargetRef ;
+      outOperand1 = element.mAttribute_mTargetName ;
+      outOperand2 = element.mAttribute_mProductFileReference ;
+      outOperand3 = element.mAttribute_mProductFileName ;
+      outOperand4 = element.mAttribute_mBuildPhaseRefList ;
+      outOperand5 = element.mAttribute_mBuildPhaseRef ;
+      outOperand6 = element.mAttribute_mBuildConfigurationListRef ;
+      outOperand7 = element.mAttribute_mBuildConfigurationSettingList ;
+      outOperand8 = element.mAttribute_mBuildConfigurationRef ;
+      outOperand9 = element.mAttribute_mFrameworksFileRefList ;
+      outOperand10 = element.mAttribute_mFrameworkBuildPhaseRef ;
+      mArray.removeObjectAtIndex (index COMMA_THERE) ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-      outOperand0 = p->mObject.mAttribute_mTargetRef ;
-      outOperand1 = p->mObject.mAttribute_mTargetName ;
-      outOperand2 = p->mObject.mAttribute_mProductFileReference ;
-      outOperand3 = p->mObject.mAttribute_mProductFileName ;
-      outOperand4 = p->mObject.mAttribute_mBuildPhaseRefList ;
-      outOperand5 = p->mObject.mAttribute_mBuildPhaseRef ;
-      outOperand6 = p->mObject.mAttribute_mBuildConfigurationListRef ;
-      outOperand7 = p->mObject.mAttribute_mBuildConfigurationSettingList ;
-      outOperand8 = p->mObject.mAttribute_mBuildConfigurationRef ;
-      outOperand9 = p->mObject.mAttribute_mFrameworksFileRefList ;
-      outOperand10 = p->mObject.mAttribute_mFrameworkBuildPhaseRef ;
+      C_String s = "removeAtIndex: remove index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }
   }
 }
@@ -4493,35 +3807,37 @@ void GALGAS_XCodeToolTargetList::setter_popFirst (GALGAS_string & outOperand0,
                                                   GALGAS_stringlist & outOperand9,
                                                   GALGAS_string & outOperand10,
                                                   C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
-    outOperand7.drop () ;
-    outOperand8.drop () ;
-    outOperand9.drop () ;
-    outOperand10.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-    outOperand0 = p->mObject.mAttribute_mTargetRef ;
-    outOperand1 = p->mObject.mAttribute_mTargetName ;
-    outOperand2 = p->mObject.mAttribute_mProductFileReference ;
-    outOperand3 = p->mObject.mAttribute_mProductFileName ;
-    outOperand4 = p->mObject.mAttribute_mBuildPhaseRefList ;
-    outOperand5 = p->mObject.mAttribute_mBuildPhaseRef ;
-    outOperand6 = p->mObject.mAttribute_mBuildConfigurationListRef ;
-    outOperand7 = p->mObject.mAttribute_mBuildConfigurationSettingList ;
-    outOperand8 = p->mObject.mAttribute_mBuildConfigurationRef ;
-    outOperand9 = p->mObject.mAttribute_mFrameworksFileRefList ;
-    outOperand10 = p->mObject.mAttribute_mFrameworkBuildPhaseRef ;
+                                                  COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+  outOperand4.drop () ;
+  outOperand5.drop () ;
+  outOperand6.drop () ;
+  outOperand7.drop () ;
+  outOperand8.drop () ;
+  outOperand9.drop () ;
+  outOperand10.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const GALGAS_XCodeToolTargetList_2D_element element = mArray (0 COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mTargetRef ;
+      outOperand1 = element.mAttribute_mTargetName ;
+      outOperand2 = element.mAttribute_mProductFileReference ;
+      outOperand3 = element.mAttribute_mProductFileName ;
+      outOperand4 = element.mAttribute_mBuildPhaseRefList ;
+      outOperand5 = element.mAttribute_mBuildPhaseRef ;
+      outOperand6 = element.mAttribute_mBuildConfigurationListRef ;
+      outOperand7 = element.mAttribute_mBuildConfigurationSettingList ;
+      outOperand8 = element.mAttribute_mBuildConfigurationRef ;
+      outOperand9 = element.mAttribute_mFrameworksFileRefList ;
+      outOperand10 = element.mAttribute_mFrameworkBuildPhaseRef ;
+      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
+    }else{
+      C_String s = "popFirst: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -4539,35 +3855,38 @@ void GALGAS_XCodeToolTargetList::setter_popLast (GALGAS_string & outOperand0,
                                                  GALGAS_stringlist & outOperand9,
                                                  GALGAS_string & outOperand10,
                                                  C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
-    outOperand7.drop () ;
-    outOperand8.drop () ;
-    outOperand9.drop () ;
-    outOperand10.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-    outOperand0 = p->mObject.mAttribute_mTargetRef ;
-    outOperand1 = p->mObject.mAttribute_mTargetName ;
-    outOperand2 = p->mObject.mAttribute_mProductFileReference ;
-    outOperand3 = p->mObject.mAttribute_mProductFileName ;
-    outOperand4 = p->mObject.mAttribute_mBuildPhaseRefList ;
-    outOperand5 = p->mObject.mAttribute_mBuildPhaseRef ;
-    outOperand6 = p->mObject.mAttribute_mBuildConfigurationListRef ;
-    outOperand7 = p->mObject.mAttribute_mBuildConfigurationSettingList ;
-    outOperand8 = p->mObject.mAttribute_mBuildConfigurationRef ;
-    outOperand9 = p->mObject.mAttribute_mFrameworksFileRefList ;
-    outOperand10 = p->mObject.mAttribute_mFrameworkBuildPhaseRef ;
+                                                 COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+  outOperand4.drop () ;
+  outOperand5.drop () ;
+  outOperand6.drop () ;
+  outOperand7.drop () ;
+  outOperand8.drop () ;
+  outOperand9.drop () ;
+  outOperand10.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const int32_t index = mArray.count () - 1 ;
+      const GALGAS_XCodeToolTargetList_2D_element element = mArray (index COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mTargetRef ;
+      outOperand1 = element.mAttribute_mTargetName ;
+      outOperand2 = element.mAttribute_mProductFileReference ;
+      outOperand3 = element.mAttribute_mProductFileName ;
+      outOperand4 = element.mAttribute_mBuildPhaseRefList ;
+      outOperand5 = element.mAttribute_mBuildPhaseRef ;
+      outOperand6 = element.mAttribute_mBuildConfigurationListRef ;
+      outOperand7 = element.mAttribute_mBuildConfigurationSettingList ;
+      outOperand8 = element.mAttribute_mBuildConfigurationRef ;
+      outOperand9 = element.mAttribute_mFrameworksFileRefList ;
+      outOperand10 = element.mAttribute_mFrameworkBuildPhaseRef ;
+      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    }else{
+      C_String s = "popLast: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -4586,34 +3905,36 @@ void GALGAS_XCodeToolTargetList::method_first (GALGAS_string & outOperand0,
                                                GALGAS_string & outOperand10,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
-    outOperand7.drop () ;
-    outOperand8.drop () ;
-    outOperand9.drop () ;
-    outOperand10.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-    outOperand0 = p->mObject.mAttribute_mTargetRef ;
-    outOperand1 = p->mObject.mAttribute_mTargetName ;
-    outOperand2 = p->mObject.mAttribute_mProductFileReference ;
-    outOperand3 = p->mObject.mAttribute_mProductFileName ;
-    outOperand4 = p->mObject.mAttribute_mBuildPhaseRefList ;
-    outOperand5 = p->mObject.mAttribute_mBuildPhaseRef ;
-    outOperand6 = p->mObject.mAttribute_mBuildConfigurationListRef ;
-    outOperand7 = p->mObject.mAttribute_mBuildConfigurationSettingList ;
-    outOperand8 = p->mObject.mAttribute_mBuildConfigurationRef ;
-    outOperand9 = p->mObject.mAttribute_mFrameworksFileRefList ;
-    outOperand10 = p->mObject.mAttribute_mFrameworkBuildPhaseRef ;
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+  outOperand4.drop () ;
+  outOperand5.drop () ;
+  outOperand6.drop () ;
+  outOperand7.drop () ;
+  outOperand8.drop () ;
+  outOperand9.drop () ;
+  outOperand10.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const GALGAS_XCodeToolTargetList_2D_element element = mArray (0 COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mTargetRef ;
+      outOperand1 = element.mAttribute_mTargetName ;
+      outOperand2 = element.mAttribute_mProductFileReference ;
+      outOperand3 = element.mAttribute_mProductFileName ;
+      outOperand4 = element.mAttribute_mBuildPhaseRefList ;
+      outOperand5 = element.mAttribute_mBuildPhaseRef ;
+      outOperand6 = element.mAttribute_mBuildConfigurationListRef ;
+      outOperand7 = element.mAttribute_mBuildConfigurationSettingList ;
+      outOperand8 = element.mAttribute_mBuildConfigurationRef ;
+      outOperand9 = element.mAttribute_mFrameworksFileRefList ;
+      outOperand10 = element.mAttribute_mFrameworkBuildPhaseRef ;
+    }else{
+      C_String s = "popFirst: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -4632,34 +3953,37 @@ void GALGAS_XCodeToolTargetList::method_last (GALGAS_string & outOperand0,
                                               GALGAS_string & outOperand10,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
-    outOperand7.drop () ;
-    outOperand8.drop () ;
-    outOperand9.drop () ;
-    outOperand10.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-    outOperand0 = p->mObject.mAttribute_mTargetRef ;
-    outOperand1 = p->mObject.mAttribute_mTargetName ;
-    outOperand2 = p->mObject.mAttribute_mProductFileReference ;
-    outOperand3 = p->mObject.mAttribute_mProductFileName ;
-    outOperand4 = p->mObject.mAttribute_mBuildPhaseRefList ;
-    outOperand5 = p->mObject.mAttribute_mBuildPhaseRef ;
-    outOperand6 = p->mObject.mAttribute_mBuildConfigurationListRef ;
-    outOperand7 = p->mObject.mAttribute_mBuildConfigurationSettingList ;
-    outOperand8 = p->mObject.mAttribute_mBuildConfigurationRef ;
-    outOperand9 = p->mObject.mAttribute_mFrameworksFileRefList ;
-    outOperand10 = p->mObject.mAttribute_mFrameworkBuildPhaseRef ;
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+  outOperand4.drop () ;
+  outOperand5.drop () ;
+  outOperand6.drop () ;
+  outOperand7.drop () ;
+  outOperand8.drop () ;
+  outOperand9.drop () ;
+  outOperand10.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const int32_t index = mArray.count () - 1 ;
+      const GALGAS_XCodeToolTargetList_2D_element element = mArray (index COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mTargetRef ;
+      outOperand1 = element.mAttribute_mTargetName ;
+      outOperand2 = element.mAttribute_mProductFileReference ;
+      outOperand3 = element.mAttribute_mProductFileName ;
+      outOperand4 = element.mAttribute_mBuildPhaseRefList ;
+      outOperand5 = element.mAttribute_mBuildPhaseRef ;
+      outOperand6 = element.mAttribute_mBuildConfigurationListRef ;
+      outOperand7 = element.mAttribute_mBuildConfigurationSettingList ;
+      outOperand8 = element.mAttribute_mBuildConfigurationRef ;
+      outOperand9 = element.mAttribute_mFrameworksFileRefList ;
+      outOperand10 = element.mAttribute_mFrameworkBuildPhaseRef ;
+    }else{
+      C_String s = "popLast: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -4667,11 +3991,14 @@ void GALGAS_XCodeToolTargetList::method_last (GALGAS_string & outOperand0,
 
 GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::add_operation (const GALGAS_XCodeToolTargetList & inOperand,
                                                                       C_Compiler * /* inCompiler */
-                                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+                                                                      COMMA_LOCATION_ARGS) const {
   GALGAS_XCodeToolTargetList result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
+      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
+    }
   }
   return result ;
 }
@@ -4681,8 +4008,22 @@ GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::add_operation (const GALG
 GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_XCodeToolTargetList result = GALGAS_XCodeToolTargetList::constructor_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GALGAS_XCodeToolTargetList result ;
+  if (isValid () && inRange.isValid ()) {
+    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
+    const uint32_t length = inRange.mAttribute_length.uintValue () ;
+    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
+      result = GALGAS_XCodeToolTargetList (true) ;
+      result.mArray.setCapacity ((int32_t) length) ;
+      for (uint32_t i=0 ; i<length ; i++) {
+        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
+      }
+    }else{
+      C_String s = "subListWithRange: max index (" ;
+      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 
@@ -4691,8 +4032,21 @@ GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::getter_subListWithRange (
 GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_XCodeToolTargetList result = GALGAS_XCodeToolTargetList::constructor_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GALGAS_XCodeToolTargetList result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index <= mArray.count ()) {
+      result = GALGAS_XCodeToolTargetList (true) ;
+      result.mArray.setCapacity (mArray.count () + 1 - index) ;
+      for (int32_t i=index ; i<mArray.count () ; i++) {
+        result.mArray.addObject (mArray (i COMMA_THERE)) ;
+      }
+    }else{
+      C_String s = "subListFromIndex: index (" ;
+      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 
@@ -4701,8 +4055,21 @@ GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::getter_subListFromIndex (
 GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_XCodeToolTargetList result = GALGAS_XCodeToolTargetList::constructor_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GALGAS_XCodeToolTargetList result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = GALGAS_XCodeToolTargetList (true) ;
+      result.mArray.setCapacity (index + 1) ;
+      for (int32_t i=0 ; i<=index ; i++) {
+        result.mArray.addObject (mArray (i COMMA_THERE)) ;
+      }
+    }else{
+      C_String s = "subListFromIndex: index (" ;
+      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 
@@ -4710,8 +4077,13 @@ GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::getter_subListToIndex (co
 
 void GALGAS_XCodeToolTargetList::plusAssign_operation (const GALGAS_XCodeToolTargetList inOperand,
                                                        C_Compiler * /* inCompiler */
-                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+                                                       COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
+      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4719,12 +4091,16 @@ void GALGAS_XCodeToolTargetList::plusAssign_operation (const GALGAS_XCodeToolTar
 GALGAS_string GALGAS_XCodeToolTargetList::getter_mTargetRefAtIndex (const GALGAS_uint & inIndex,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-    result = p->mObject.mAttribute_mTargetRef ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mTargetRef ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -4734,12 +4110,16 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mTargetRefAtIndex (const GALGAS
 GALGAS_string GALGAS_XCodeToolTargetList::getter_mTargetNameAtIndex (const GALGAS_uint & inIndex,
                                                                      C_Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-    result = p->mObject.mAttribute_mTargetName ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mTargetName ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -4749,12 +4129,16 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mTargetNameAtIndex (const GALGA
 GALGAS_string GALGAS_XCodeToolTargetList::getter_mProductFileReferenceAtIndex (const GALGAS_uint & inIndex,
                                                                                C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-    result = p->mObject.mAttribute_mProductFileReference ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mProductFileReference ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -4764,12 +4148,16 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mProductFileReferenceAtIndex (c
 GALGAS_string GALGAS_XCodeToolTargetList::getter_mProductFileNameAtIndex (const GALGAS_uint & inIndex,
                                                                           C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-    result = p->mObject.mAttribute_mProductFileName ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mProductFileName ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -4779,12 +4167,16 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mProductFileNameAtIndex (const 
 GALGAS_stringlist GALGAS_XCodeToolTargetList::getter_mBuildPhaseRefListAtIndex (const GALGAS_uint & inIndex,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-    result = p->mObject.mAttribute_mBuildPhaseRefList ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mBuildPhaseRefList ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -4794,12 +4186,16 @@ GALGAS_stringlist GALGAS_XCodeToolTargetList::getter_mBuildPhaseRefListAtIndex (
 GALGAS_string GALGAS_XCodeToolTargetList::getter_mBuildPhaseRefAtIndex (const GALGAS_uint & inIndex,
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-    result = p->mObject.mAttribute_mBuildPhaseRef ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mBuildPhaseRef ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -4809,12 +4205,16 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mBuildPhaseRefAtIndex (const GA
 GALGAS_string GALGAS_XCodeToolTargetList::getter_mBuildConfigurationListRefAtIndex (const GALGAS_uint & inIndex,
                                                                                     C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-    result = p->mObject.mAttribute_mBuildConfigurationListRef ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mBuildConfigurationListRef ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -4824,12 +4224,16 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mBuildConfigurationListRefAtInd
 GALGAS_stringlist GALGAS_XCodeToolTargetList::getter_mBuildConfigurationSettingListAtIndex (const GALGAS_uint & inIndex,
                                                                                             C_Compiler * inCompiler
                                                                                             COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-    result = p->mObject.mAttribute_mBuildConfigurationSettingList ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mBuildConfigurationSettingList ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -4839,12 +4243,16 @@ GALGAS_stringlist GALGAS_XCodeToolTargetList::getter_mBuildConfigurationSettingL
 GALGAS_string GALGAS_XCodeToolTargetList::getter_mBuildConfigurationRefAtIndex (const GALGAS_uint & inIndex,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-    result = p->mObject.mAttribute_mBuildConfigurationRef ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mBuildConfigurationRef ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -4854,12 +4262,16 @@ GALGAS_string GALGAS_XCodeToolTargetList::getter_mBuildConfigurationRefAtIndex (
 GALGAS_stringlist GALGAS_XCodeToolTargetList::getter_mFrameworksFileRefListAtIndex (const GALGAS_uint & inIndex,
                                                                                     C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-    result = p->mObject.mAttribute_mFrameworksFileRefList ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mFrameworksFileRefList ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -4869,17 +4281,40 @@ GALGAS_stringlist GALGAS_XCodeToolTargetList::getter_mFrameworksFileRefListAtInd
 GALGAS_string GALGAS_XCodeToolTargetList::getter_mFrameworkBuildPhaseRefAtIndex (const GALGAS_uint & inIndex,
                                                                                  C_Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeToolTargetList * p = (cCollectionElement_XCodeToolTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-    result = p->mObject.mAttribute_mFrameworkBuildPhaseRef ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mFrameworkBuildPhaseRef ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
 
 
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_XCodeToolTargetList::objectCompare (const GALGAS_XCodeToolTargetList & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    int32_t r = mArray.count () - inOperand.mArray.count () ;
+    if (r < 0) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (r > 0) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
+        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
+      }
+    }
+  }
+  return result ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4889,7 +4324,7 @@ mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0),
 mOrder (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
+  mEnumerationArray = inEnumeratedObject.mArray ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4900,116 +4335,140 @@ cEnumerator_XCodeToolTargetList::~ cEnumerator_XCodeToolTargetList (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cEnumerator_XCodeToolTargetList::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArrayEx.count () ;
+  return mIndex < mEnumerationArray.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cEnumerator_XCodeToolTargetList::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArrayEx.count () ;
+  return (mIndex + 1) < mEnumerationArray.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const cCollectionElement * cEnumerator_XCodeToolTargetList::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-}
+//const cCollectionElement * cEnumerator_XCodeToolTargetList::currentObjectPtr (LOCATION_ARGS) const {
+//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_XCodeToolTargetList_2D_element cEnumerator_XCodeToolTargetList::current (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeToolTargetList * p = (const cCollectionElement_XCodeToolTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-  return p->mObject ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE) ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeToolTargetList::current_mTargetRef (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeToolTargetList * p = (const cCollectionElement_XCodeToolTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-  return p->mObject.mAttribute_mTargetRef ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mTargetRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeToolTargetList::current_mTargetName (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeToolTargetList * p = (const cCollectionElement_XCodeToolTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-  return p->mObject.mAttribute_mTargetName ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mTargetName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeToolTargetList::current_mProductFileReference (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeToolTargetList * p = (const cCollectionElement_XCodeToolTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-  return p->mObject.mAttribute_mProductFileReference ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mProductFileReference ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeToolTargetList::current_mProductFileName (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeToolTargetList * p = (const cCollectionElement_XCodeToolTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-  return p->mObject.mAttribute_mProductFileName ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mProductFileName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist cEnumerator_XCodeToolTargetList::current_mBuildPhaseRefList (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeToolTargetList * p = (const cCollectionElement_XCodeToolTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-  return p->mObject.mAttribute_mBuildPhaseRefList ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mBuildPhaseRefList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeToolTargetList::current_mBuildPhaseRef (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeToolTargetList * p = (const cCollectionElement_XCodeToolTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-  return p->mObject.mAttribute_mBuildPhaseRef ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mBuildPhaseRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeToolTargetList::current_mBuildConfigurationListRef (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeToolTargetList * p = (const cCollectionElement_XCodeToolTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-  return p->mObject.mAttribute_mBuildConfigurationListRef ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mBuildConfigurationListRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist cEnumerator_XCodeToolTargetList::current_mBuildConfigurationSettingList (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeToolTargetList * p = (const cCollectionElement_XCodeToolTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-  return p->mObject.mAttribute_mBuildConfigurationSettingList ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mBuildConfigurationSettingList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeToolTargetList::current_mBuildConfigurationRef (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeToolTargetList * p = (const cCollectionElement_XCodeToolTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-  return p->mObject.mAttribute_mBuildConfigurationRef ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mBuildConfigurationRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist cEnumerator_XCodeToolTargetList::current_mFrameworksFileRefList (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeToolTargetList * p = (const cCollectionElement_XCodeToolTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-  return p->mObject.mAttribute_mFrameworksFileRefList ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mFrameworksFileRefList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeToolTargetList::current_mFrameworkBuildPhaseRef (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeToolTargetList * p = (const cCollectionElement_XCodeToolTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeToolTargetList) ;
-  return p->mObject.mAttribute_mFrameworkBuildPhaseRef ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mFrameworkBuildPhaseRef ;
 }
 
 
@@ -5060,163 +4519,9 @@ GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::extractObject (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-// class GALGAS_list_XCodeAppTargetList : public TC_UniqueArray <GALGAS_XCodeAppTargetList_2D_element>, public C_SharedObject {
-//} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cCollectionElement_XCodeAppTargetList : public cCollectionElement {
-  public : GALGAS_XCodeAppTargetList_2D_element mObject ;
-
-//--- Constructor
-  public : cCollectionElement_XCodeAppTargetList (const GALGAS_string & in_mTargetRef,
-                                                  const GALGAS_string & in_mTargetName,
-                                                  const GALGAS_string & in_mProductFileReference,
-                                                  const GALGAS_string & in_mProductFileName,
-                                                  const GALGAS_stringlist & in_mBuildPhaseRefList,
-                                                  const GALGAS_string & in_mBuildPhaseRef,
-                                                  const GALGAS_string & in_mBuildConfigurationListRef,
-                                                  const GALGAS_stringlist & in_mBuildConfigurationSettingList,
-                                                  const GALGAS_string & in_mBuildConfigurationRef,
-                                                  const GALGAS_stringlist & in_mFrameworksFileRefList,
-                                                  const GALGAS_string & in_mFrameworkBuildPhaseRef,
-                                                  const GALGAS__32_stringlist & in_mDependentTargets,
-                                                  const GALGAS_string & in_mResourceBuildRef,
-                                                  const GALGAS_stringlist & in_mResourceFileBuildRefs
-                                                  COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cCollectionElement_XCodeAppTargetList::cCollectionElement_XCodeAppTargetList (const GALGAS_string & in_mTargetRef,
-                                                                              const GALGAS_string & in_mTargetName,
-                                                                              const GALGAS_string & in_mProductFileReference,
-                                                                              const GALGAS_string & in_mProductFileName,
-                                                                              const GALGAS_stringlist & in_mBuildPhaseRefList,
-                                                                              const GALGAS_string & in_mBuildPhaseRef,
-                                                                              const GALGAS_string & in_mBuildConfigurationListRef,
-                                                                              const GALGAS_stringlist & in_mBuildConfigurationSettingList,
-                                                                              const GALGAS_string & in_mBuildConfigurationRef,
-                                                                              const GALGAS_stringlist & in_mFrameworksFileRefList,
-                                                                              const GALGAS_string & in_mFrameworkBuildPhaseRef,
-                                                                              const GALGAS__32_stringlist & in_mDependentTargets,
-                                                                              const GALGAS_string & in_mResourceBuildRef,
-                                                                              const GALGAS_stringlist & in_mResourceFileBuildRefs
-                                                                              COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (in_mTargetRef, in_mTargetName, in_mProductFileReference, in_mProductFileName, in_mBuildPhaseRefList, in_mBuildPhaseRef, in_mBuildConfigurationListRef, in_mBuildConfigurationSettingList, in_mBuildConfigurationRef, in_mFrameworksFileRefList, in_mFrameworkBuildPhaseRef, in_mDependentTargets, in_mResourceBuildRef, in_mResourceFileBuildRefs) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cCollectionElement_XCodeAppTargetList::isValid (void) const {
-  return mObject.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cCollectionElement * cCollectionElement_XCodeAppTargetList::copy (void) {
-  cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_XCodeAppTargetList (mObject.mAttribute_mTargetRef, mObject.mAttribute_mTargetName, mObject.mAttribute_mProductFileReference, mObject.mAttribute_mProductFileName, mObject.mAttribute_mBuildPhaseRefList, mObject.mAttribute_mBuildPhaseRef, mObject.mAttribute_mBuildConfigurationListRef, mObject.mAttribute_mBuildConfigurationSettingList, mObject.mAttribute_mBuildConfigurationRef, mObject.mAttribute_mFrameworksFileRefList, mObject.mAttribute_mFrameworkBuildPhaseRef, mObject.mAttribute_mDependentTargets, mObject.mAttribute_mResourceBuildRef, mObject.mAttribute_mResourceFileBuildRefs COMMA_HERE)) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cCollectionElement_XCodeAppTargetList::description (C_String & ioString, const int32_t inIndentation) const {
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mTargetRef" ":" ;
-  mObject.mAttribute_mTargetRef.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mTargetName" ":" ;
-  mObject.mAttribute_mTargetName.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mProductFileReference" ":" ;
-  mObject.mAttribute_mProductFileReference.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mProductFileName" ":" ;
-  mObject.mAttribute_mProductFileName.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mBuildPhaseRefList" ":" ;
-  mObject.mAttribute_mBuildPhaseRefList.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mBuildPhaseRef" ":" ;
-  mObject.mAttribute_mBuildPhaseRef.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mBuildConfigurationListRef" ":" ;
-  mObject.mAttribute_mBuildConfigurationListRef.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mBuildConfigurationSettingList" ":" ;
-  mObject.mAttribute_mBuildConfigurationSettingList.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mBuildConfigurationRef" ":" ;
-  mObject.mAttribute_mBuildConfigurationRef.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mFrameworksFileRefList" ":" ;
-  mObject.mAttribute_mFrameworksFileRefList.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mFrameworkBuildPhaseRef" ":" ;
-  mObject.mAttribute_mFrameworkBuildPhaseRef.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mDependentTargets" ":" ;
-  mObject.mAttribute_mDependentTargets.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mResourceBuildRef" ":" ;
-  mObject.mAttribute_mResourceBuildRef.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mResourceFileBuildRefs" ":" ;
-  mObject.mAttribute_mResourceFileBuildRefs.description (ioString, inIndentation) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cCollectionElement_XCodeAppTargetList::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_XCodeAppTargetList * operand = (cCollectionElement_XCodeAppTargetList *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_XCodeAppTargetList) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_XCodeAppTargetList::GALGAS_XCodeAppTargetList (void) :
-AC_GALGAS_list (),
+GALGAS_XCodeAppTargetList::GALGAS_XCodeAppTargetList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid),
 mArray () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_XCodeAppTargetList::GALGAS_XCodeAppTargetList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr),
-mArray () {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5226,10 +4531,47 @@ GALGAS_XCodeAppTargetList::~ GALGAS_XCodeAppTargetList (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_XCodeAppTargetList result ;
-  result.createNewEmptyList (THERE) ;
+GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_XCodeAppTargetList (true) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_XCodeAppTargetList::getter_length (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (isValid ()) {
+    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
+  }
   return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_range GALGAS_XCodeAppTargetList::getter_range (UNUSED_LOCATION_ARGS) const {
+  GALGAS_range result ;
+  if (isValid ()) {
+    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_XCodeAppTargetList::description (C_String & ioString,
+                                             const int32_t inIndentation) const {
+  ioString << "<list @XCodeAppTargetList:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    ioString << " ("
+             << cStringWithSigned (mArray.count ())
+             << " object" << ((mArray.count () > 1) ? "s" : "")
+             << "): " ;
+    for (int32_t i=0 ; i<mArray.count () ; i++) {
+      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
+    }
+  }
+  ioString << ">" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5251,16 +4593,14 @@ GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::constructor_listWithValue (
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_XCodeAppTargetList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid ()) {
-    result.createNewEmptyList (THERE) ;
-    capCollectionElement attributes ;
-    GALGAS_XCodeAppTargetList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result = GALGAS_XCodeAppTargetList (true) ;
+    result.addAssign_operation (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13 COMMA_THERE) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
+/*
 void GALGAS_XCodeAppTargetList::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                            const GALGAS_string & in_mTargetRef,
                                                            const GALGAS_string & in_mTargetName,
@@ -5295,7 +4635,7 @@ void GALGAS_XCodeAppTargetList::makeAttributesFromObjects (capCollectionElement 
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-
+*/
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_XCodeAppTargetList::addAssign_operation (const GALGAS_string & inOperand0,
@@ -5312,14 +4652,10 @@ void GALGAS_XCodeAppTargetList::addAssign_operation (const GALGAS_string & inOpe
                                                      const GALGAS__32_stringlist & inOperand11,
                                                      const GALGAS_string & inOperand12,
                                                      const GALGAS_stringlist & inOperand13
-                                                     COMMA_LOCATION_ARGS) {
+                                                     COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_XCodeAppTargetList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    const GALGAS_XCodeAppTargetList_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13) ;
+    mArray.addObject (element) ;
   }
 }
 
@@ -5343,12 +4679,15 @@ void GALGAS_XCodeAppTargetList::setter_insertAtIndex (const GALGAS_string inOper
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_XCodeAppTargetList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+    const GALGAS_XCodeAppTargetList_2D_element element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13) ;
+    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
+    if (index <= mArray.count ()) {
+      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
+    }else{
+      C_String s = "insertAtIndex: insertion index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -5370,42 +4709,44 @@ void GALGAS_XCodeAppTargetList::setter_removeAtIndex (GALGAS_string & outOperand
                                                       GALGAS_stringlist & outOperand13,
                                                       const GALGAS_uint inRemoveIndex,
                                                       C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
+                                                      COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+  outOperand4.drop () ;
+  outOperand5.drop () ;
+  outOperand6.drop () ;
+  outOperand7.drop () ;
+  outOperand8.drop () ;
+  outOperand9.drop () ;
+  outOperand10.drop () ;
+  outOperand11.drop () ;
+  outOperand12.drop () ;
+  outOperand13.drop () ;
+
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
-    if (NULL == p) {
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      outOperand2.drop () ;
-      outOperand3.drop () ;
-      outOperand4.drop () ;
-      outOperand5.drop () ;
-      outOperand6.drop () ;
-      outOperand7.drop () ;
-      outOperand8.drop () ;
-      outOperand9.drop () ;
-      outOperand10.drop () ;
-      outOperand11.drop () ;
-      outOperand12.drop () ;
-      outOperand13.drop () ;
+    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
+    if (index <= mArray.count ()) {
+      const GALGAS_XCodeAppTargetList_2D_element element = mArray (index COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mTargetRef ;
+      outOperand1 = element.mAttribute_mTargetName ;
+      outOperand2 = element.mAttribute_mProductFileReference ;
+      outOperand3 = element.mAttribute_mProductFileName ;
+      outOperand4 = element.mAttribute_mBuildPhaseRefList ;
+      outOperand5 = element.mAttribute_mBuildPhaseRef ;
+      outOperand6 = element.mAttribute_mBuildConfigurationListRef ;
+      outOperand7 = element.mAttribute_mBuildConfigurationSettingList ;
+      outOperand8 = element.mAttribute_mBuildConfigurationRef ;
+      outOperand9 = element.mAttribute_mFrameworksFileRefList ;
+      outOperand10 = element.mAttribute_mFrameworkBuildPhaseRef ;
+      outOperand11 = element.mAttribute_mDependentTargets ;
+      outOperand12 = element.mAttribute_mResourceBuildRef ;
+      outOperand13 = element.mAttribute_mResourceFileBuildRefs ;
+      mArray.removeObjectAtIndex (index COMMA_THERE) ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-      outOperand0 = p->mObject.mAttribute_mTargetRef ;
-      outOperand1 = p->mObject.mAttribute_mTargetName ;
-      outOperand2 = p->mObject.mAttribute_mProductFileReference ;
-      outOperand3 = p->mObject.mAttribute_mProductFileName ;
-      outOperand4 = p->mObject.mAttribute_mBuildPhaseRefList ;
-      outOperand5 = p->mObject.mAttribute_mBuildPhaseRef ;
-      outOperand6 = p->mObject.mAttribute_mBuildConfigurationListRef ;
-      outOperand7 = p->mObject.mAttribute_mBuildConfigurationSettingList ;
-      outOperand8 = p->mObject.mAttribute_mBuildConfigurationRef ;
-      outOperand9 = p->mObject.mAttribute_mFrameworksFileRefList ;
-      outOperand10 = p->mObject.mAttribute_mFrameworkBuildPhaseRef ;
-      outOperand11 = p->mObject.mAttribute_mDependentTargets ;
-      outOperand12 = p->mObject.mAttribute_mResourceBuildRef ;
-      outOperand13 = p->mObject.mAttribute_mResourceFileBuildRefs ;
+      C_String s = "removeAtIndex: remove index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }
   }
 }
@@ -5427,41 +4768,43 @@ void GALGAS_XCodeAppTargetList::setter_popFirst (GALGAS_string & outOperand0,
                                                  GALGAS_string & outOperand12,
                                                  GALGAS_stringlist & outOperand13,
                                                  C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
-    outOperand7.drop () ;
-    outOperand8.drop () ;
-    outOperand9.drop () ;
-    outOperand10.drop () ;
-    outOperand11.drop () ;
-    outOperand12.drop () ;
-    outOperand13.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    outOperand0 = p->mObject.mAttribute_mTargetRef ;
-    outOperand1 = p->mObject.mAttribute_mTargetName ;
-    outOperand2 = p->mObject.mAttribute_mProductFileReference ;
-    outOperand3 = p->mObject.mAttribute_mProductFileName ;
-    outOperand4 = p->mObject.mAttribute_mBuildPhaseRefList ;
-    outOperand5 = p->mObject.mAttribute_mBuildPhaseRef ;
-    outOperand6 = p->mObject.mAttribute_mBuildConfigurationListRef ;
-    outOperand7 = p->mObject.mAttribute_mBuildConfigurationSettingList ;
-    outOperand8 = p->mObject.mAttribute_mBuildConfigurationRef ;
-    outOperand9 = p->mObject.mAttribute_mFrameworksFileRefList ;
-    outOperand10 = p->mObject.mAttribute_mFrameworkBuildPhaseRef ;
-    outOperand11 = p->mObject.mAttribute_mDependentTargets ;
-    outOperand12 = p->mObject.mAttribute_mResourceBuildRef ;
-    outOperand13 = p->mObject.mAttribute_mResourceFileBuildRefs ;
+                                                 COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+  outOperand4.drop () ;
+  outOperand5.drop () ;
+  outOperand6.drop () ;
+  outOperand7.drop () ;
+  outOperand8.drop () ;
+  outOperand9.drop () ;
+  outOperand10.drop () ;
+  outOperand11.drop () ;
+  outOperand12.drop () ;
+  outOperand13.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const GALGAS_XCodeAppTargetList_2D_element element = mArray (0 COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mTargetRef ;
+      outOperand1 = element.mAttribute_mTargetName ;
+      outOperand2 = element.mAttribute_mProductFileReference ;
+      outOperand3 = element.mAttribute_mProductFileName ;
+      outOperand4 = element.mAttribute_mBuildPhaseRefList ;
+      outOperand5 = element.mAttribute_mBuildPhaseRef ;
+      outOperand6 = element.mAttribute_mBuildConfigurationListRef ;
+      outOperand7 = element.mAttribute_mBuildConfigurationSettingList ;
+      outOperand8 = element.mAttribute_mBuildConfigurationRef ;
+      outOperand9 = element.mAttribute_mFrameworksFileRefList ;
+      outOperand10 = element.mAttribute_mFrameworkBuildPhaseRef ;
+      outOperand11 = element.mAttribute_mDependentTargets ;
+      outOperand12 = element.mAttribute_mResourceBuildRef ;
+      outOperand13 = element.mAttribute_mResourceFileBuildRefs ;
+      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
+    }else{
+      C_String s = "popFirst: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -5482,41 +4825,44 @@ void GALGAS_XCodeAppTargetList::setter_popLast (GALGAS_string & outOperand0,
                                                 GALGAS_string & outOperand12,
                                                 GALGAS_stringlist & outOperand13,
                                                 C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
-    outOperand7.drop () ;
-    outOperand8.drop () ;
-    outOperand9.drop () ;
-    outOperand10.drop () ;
-    outOperand11.drop () ;
-    outOperand12.drop () ;
-    outOperand13.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    outOperand0 = p->mObject.mAttribute_mTargetRef ;
-    outOperand1 = p->mObject.mAttribute_mTargetName ;
-    outOperand2 = p->mObject.mAttribute_mProductFileReference ;
-    outOperand3 = p->mObject.mAttribute_mProductFileName ;
-    outOperand4 = p->mObject.mAttribute_mBuildPhaseRefList ;
-    outOperand5 = p->mObject.mAttribute_mBuildPhaseRef ;
-    outOperand6 = p->mObject.mAttribute_mBuildConfigurationListRef ;
-    outOperand7 = p->mObject.mAttribute_mBuildConfigurationSettingList ;
-    outOperand8 = p->mObject.mAttribute_mBuildConfigurationRef ;
-    outOperand9 = p->mObject.mAttribute_mFrameworksFileRefList ;
-    outOperand10 = p->mObject.mAttribute_mFrameworkBuildPhaseRef ;
-    outOperand11 = p->mObject.mAttribute_mDependentTargets ;
-    outOperand12 = p->mObject.mAttribute_mResourceBuildRef ;
-    outOperand13 = p->mObject.mAttribute_mResourceFileBuildRefs ;
+                                                COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+  outOperand4.drop () ;
+  outOperand5.drop () ;
+  outOperand6.drop () ;
+  outOperand7.drop () ;
+  outOperand8.drop () ;
+  outOperand9.drop () ;
+  outOperand10.drop () ;
+  outOperand11.drop () ;
+  outOperand12.drop () ;
+  outOperand13.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const int32_t index = mArray.count () - 1 ;
+      const GALGAS_XCodeAppTargetList_2D_element element = mArray (index COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mTargetRef ;
+      outOperand1 = element.mAttribute_mTargetName ;
+      outOperand2 = element.mAttribute_mProductFileReference ;
+      outOperand3 = element.mAttribute_mProductFileName ;
+      outOperand4 = element.mAttribute_mBuildPhaseRefList ;
+      outOperand5 = element.mAttribute_mBuildPhaseRef ;
+      outOperand6 = element.mAttribute_mBuildConfigurationListRef ;
+      outOperand7 = element.mAttribute_mBuildConfigurationSettingList ;
+      outOperand8 = element.mAttribute_mBuildConfigurationRef ;
+      outOperand9 = element.mAttribute_mFrameworksFileRefList ;
+      outOperand10 = element.mAttribute_mFrameworkBuildPhaseRef ;
+      outOperand11 = element.mAttribute_mDependentTargets ;
+      outOperand12 = element.mAttribute_mResourceBuildRef ;
+      outOperand13 = element.mAttribute_mResourceFileBuildRefs ;
+      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    }else{
+      C_String s = "popLast: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -5538,40 +4884,42 @@ void GALGAS_XCodeAppTargetList::method_first (GALGAS_string & outOperand0,
                                               GALGAS_stringlist & outOperand13,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
-    outOperand7.drop () ;
-    outOperand8.drop () ;
-    outOperand9.drop () ;
-    outOperand10.drop () ;
-    outOperand11.drop () ;
-    outOperand12.drop () ;
-    outOperand13.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    outOperand0 = p->mObject.mAttribute_mTargetRef ;
-    outOperand1 = p->mObject.mAttribute_mTargetName ;
-    outOperand2 = p->mObject.mAttribute_mProductFileReference ;
-    outOperand3 = p->mObject.mAttribute_mProductFileName ;
-    outOperand4 = p->mObject.mAttribute_mBuildPhaseRefList ;
-    outOperand5 = p->mObject.mAttribute_mBuildPhaseRef ;
-    outOperand6 = p->mObject.mAttribute_mBuildConfigurationListRef ;
-    outOperand7 = p->mObject.mAttribute_mBuildConfigurationSettingList ;
-    outOperand8 = p->mObject.mAttribute_mBuildConfigurationRef ;
-    outOperand9 = p->mObject.mAttribute_mFrameworksFileRefList ;
-    outOperand10 = p->mObject.mAttribute_mFrameworkBuildPhaseRef ;
-    outOperand11 = p->mObject.mAttribute_mDependentTargets ;
-    outOperand12 = p->mObject.mAttribute_mResourceBuildRef ;
-    outOperand13 = p->mObject.mAttribute_mResourceFileBuildRefs ;
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+  outOperand4.drop () ;
+  outOperand5.drop () ;
+  outOperand6.drop () ;
+  outOperand7.drop () ;
+  outOperand8.drop () ;
+  outOperand9.drop () ;
+  outOperand10.drop () ;
+  outOperand11.drop () ;
+  outOperand12.drop () ;
+  outOperand13.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const GALGAS_XCodeAppTargetList_2D_element element = mArray (0 COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mTargetRef ;
+      outOperand1 = element.mAttribute_mTargetName ;
+      outOperand2 = element.mAttribute_mProductFileReference ;
+      outOperand3 = element.mAttribute_mProductFileName ;
+      outOperand4 = element.mAttribute_mBuildPhaseRefList ;
+      outOperand5 = element.mAttribute_mBuildPhaseRef ;
+      outOperand6 = element.mAttribute_mBuildConfigurationListRef ;
+      outOperand7 = element.mAttribute_mBuildConfigurationSettingList ;
+      outOperand8 = element.mAttribute_mBuildConfigurationRef ;
+      outOperand9 = element.mAttribute_mFrameworksFileRefList ;
+      outOperand10 = element.mAttribute_mFrameworkBuildPhaseRef ;
+      outOperand11 = element.mAttribute_mDependentTargets ;
+      outOperand12 = element.mAttribute_mResourceBuildRef ;
+      outOperand13 = element.mAttribute_mResourceFileBuildRefs ;
+    }else{
+      C_String s = "popFirst: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -5593,40 +4941,43 @@ void GALGAS_XCodeAppTargetList::method_last (GALGAS_string & outOperand0,
                                              GALGAS_stringlist & outOperand13,
                                              C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-    outOperand3.drop () ;
-    outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
-    outOperand7.drop () ;
-    outOperand8.drop () ;
-    outOperand9.drop () ;
-    outOperand10.drop () ;
-    outOperand11.drop () ;
-    outOperand12.drop () ;
-    outOperand13.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    outOperand0 = p->mObject.mAttribute_mTargetRef ;
-    outOperand1 = p->mObject.mAttribute_mTargetName ;
-    outOperand2 = p->mObject.mAttribute_mProductFileReference ;
-    outOperand3 = p->mObject.mAttribute_mProductFileName ;
-    outOperand4 = p->mObject.mAttribute_mBuildPhaseRefList ;
-    outOperand5 = p->mObject.mAttribute_mBuildPhaseRef ;
-    outOperand6 = p->mObject.mAttribute_mBuildConfigurationListRef ;
-    outOperand7 = p->mObject.mAttribute_mBuildConfigurationSettingList ;
-    outOperand8 = p->mObject.mAttribute_mBuildConfigurationRef ;
-    outOperand9 = p->mObject.mAttribute_mFrameworksFileRefList ;
-    outOperand10 = p->mObject.mAttribute_mFrameworkBuildPhaseRef ;
-    outOperand11 = p->mObject.mAttribute_mDependentTargets ;
-    outOperand12 = p->mObject.mAttribute_mResourceBuildRef ;
-    outOperand13 = p->mObject.mAttribute_mResourceFileBuildRefs ;
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+  outOperand3.drop () ;
+  outOperand4.drop () ;
+  outOperand5.drop () ;
+  outOperand6.drop () ;
+  outOperand7.drop () ;
+  outOperand8.drop () ;
+  outOperand9.drop () ;
+  outOperand10.drop () ;
+  outOperand11.drop () ;
+  outOperand12.drop () ;
+  outOperand13.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const int32_t index = mArray.count () - 1 ;
+      const GALGAS_XCodeAppTargetList_2D_element element = mArray (index COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mTargetRef ;
+      outOperand1 = element.mAttribute_mTargetName ;
+      outOperand2 = element.mAttribute_mProductFileReference ;
+      outOperand3 = element.mAttribute_mProductFileName ;
+      outOperand4 = element.mAttribute_mBuildPhaseRefList ;
+      outOperand5 = element.mAttribute_mBuildPhaseRef ;
+      outOperand6 = element.mAttribute_mBuildConfigurationListRef ;
+      outOperand7 = element.mAttribute_mBuildConfigurationSettingList ;
+      outOperand8 = element.mAttribute_mBuildConfigurationRef ;
+      outOperand9 = element.mAttribute_mFrameworksFileRefList ;
+      outOperand10 = element.mAttribute_mFrameworkBuildPhaseRef ;
+      outOperand11 = element.mAttribute_mDependentTargets ;
+      outOperand12 = element.mAttribute_mResourceBuildRef ;
+      outOperand13 = element.mAttribute_mResourceFileBuildRefs ;
+    }else{
+      C_String s = "popLast: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -5634,11 +4985,14 @@ void GALGAS_XCodeAppTargetList::method_last (GALGAS_string & outOperand0,
 
 GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::add_operation (const GALGAS_XCodeAppTargetList & inOperand,
                                                                     C_Compiler * /* inCompiler */
-                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+                                                                    COMMA_LOCATION_ARGS) const {
   GALGAS_XCodeAppTargetList result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
+      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
+    }
   }
   return result ;
 }
@@ -5648,8 +5002,22 @@ GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::add_operation (const GALGAS
 GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_XCodeAppTargetList result = GALGAS_XCodeAppTargetList::constructor_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GALGAS_XCodeAppTargetList result ;
+  if (isValid () && inRange.isValid ()) {
+    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
+    const uint32_t length = inRange.mAttribute_length.uintValue () ;
+    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
+      result = GALGAS_XCodeAppTargetList (true) ;
+      result.mArray.setCapacity ((int32_t) length) ;
+      for (uint32_t i=0 ; i<length ; i++) {
+        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
+      }
+    }else{
+      C_String s = "subListWithRange: max index (" ;
+      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 
@@ -5658,8 +5026,21 @@ GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::getter_subListWithRange (co
 GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_XCodeAppTargetList result = GALGAS_XCodeAppTargetList::constructor_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GALGAS_XCodeAppTargetList result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index <= mArray.count ()) {
+      result = GALGAS_XCodeAppTargetList (true) ;
+      result.mArray.setCapacity (mArray.count () + 1 - index) ;
+      for (int32_t i=index ; i<mArray.count () ; i++) {
+        result.mArray.addObject (mArray (i COMMA_THERE)) ;
+      }
+    }else{
+      C_String s = "subListFromIndex: index (" ;
+      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 
@@ -5668,8 +5049,21 @@ GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::getter_subListFromIndex (co
 GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_XCodeAppTargetList result = GALGAS_XCodeAppTargetList::constructor_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GALGAS_XCodeAppTargetList result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = GALGAS_XCodeAppTargetList (true) ;
+      result.mArray.setCapacity (index + 1) ;
+      for (int32_t i=0 ; i<=index ; i++) {
+        result.mArray.addObject (mArray (i COMMA_THERE)) ;
+      }
+    }else{
+      C_String s = "subListFromIndex: index (" ;
+      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 
@@ -5677,8 +5071,13 @@ GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::getter_subListToIndex (cons
 
 void GALGAS_XCodeAppTargetList::plusAssign_operation (const GALGAS_XCodeAppTargetList inOperand,
                                                       C_Compiler * /* inCompiler */
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+                                                      COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
+      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5686,12 +5085,16 @@ void GALGAS_XCodeAppTargetList::plusAssign_operation (const GALGAS_XCodeAppTarge
 GALGAS_string GALGAS_XCodeAppTargetList::getter_mTargetRefAtIndex (const GALGAS_uint & inIndex,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    result = p->mObject.mAttribute_mTargetRef ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mTargetRef ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -5701,12 +5104,16 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mTargetRefAtIndex (const GALGAS_
 GALGAS_string GALGAS_XCodeAppTargetList::getter_mTargetNameAtIndex (const GALGAS_uint & inIndex,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    result = p->mObject.mAttribute_mTargetName ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mTargetName ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -5716,12 +5123,16 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mTargetNameAtIndex (const GALGAS
 GALGAS_string GALGAS_XCodeAppTargetList::getter_mProductFileReferenceAtIndex (const GALGAS_uint & inIndex,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    result = p->mObject.mAttribute_mProductFileReference ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mProductFileReference ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -5731,12 +5142,16 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mProductFileReferenceAtIndex (co
 GALGAS_string GALGAS_XCodeAppTargetList::getter_mProductFileNameAtIndex (const GALGAS_uint & inIndex,
                                                                          C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    result = p->mObject.mAttribute_mProductFileName ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mProductFileName ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -5746,12 +5161,16 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mProductFileNameAtIndex (const G
 GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mBuildPhaseRefListAtIndex (const GALGAS_uint & inIndex,
                                                                                C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    result = p->mObject.mAttribute_mBuildPhaseRefList ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mBuildPhaseRefList ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -5761,12 +5180,16 @@ GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mBuildPhaseRefListAtIndex (c
 GALGAS_string GALGAS_XCodeAppTargetList::getter_mBuildPhaseRefAtIndex (const GALGAS_uint & inIndex,
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    result = p->mObject.mAttribute_mBuildPhaseRef ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mBuildPhaseRef ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -5776,12 +5199,16 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mBuildPhaseRefAtIndex (const GAL
 GALGAS_string GALGAS_XCodeAppTargetList::getter_mBuildConfigurationListRefAtIndex (const GALGAS_uint & inIndex,
                                                                                    C_Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    result = p->mObject.mAttribute_mBuildConfigurationListRef ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mBuildConfigurationListRef ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -5791,12 +5218,16 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mBuildConfigurationListRefAtInde
 GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mBuildConfigurationSettingListAtIndex (const GALGAS_uint & inIndex,
                                                                                            C_Compiler * inCompiler
                                                                                            COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    result = p->mObject.mAttribute_mBuildConfigurationSettingList ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mBuildConfigurationSettingList ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -5806,12 +5237,16 @@ GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mBuildConfigurationSettingLi
 GALGAS_string GALGAS_XCodeAppTargetList::getter_mBuildConfigurationRefAtIndex (const GALGAS_uint & inIndex,
                                                                                C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    result = p->mObject.mAttribute_mBuildConfigurationRef ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mBuildConfigurationRef ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -5821,12 +5256,16 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mBuildConfigurationRefAtIndex (c
 GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mFrameworksFileRefListAtIndex (const GALGAS_uint & inIndex,
                                                                                    C_Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    result = p->mObject.mAttribute_mFrameworksFileRefList ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mFrameworksFileRefList ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -5836,12 +5275,16 @@ GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mFrameworksFileRefListAtInde
 GALGAS_string GALGAS_XCodeAppTargetList::getter_mFrameworkBuildPhaseRefAtIndex (const GALGAS_uint & inIndex,
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    result = p->mObject.mAttribute_mFrameworkBuildPhaseRef ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mFrameworkBuildPhaseRef ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -5851,12 +5294,16 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mFrameworkBuildPhaseRefAtIndex (
 GALGAS__32_stringlist GALGAS_XCodeAppTargetList::getter_mDependentTargetsAtIndex (const GALGAS_uint & inIndex,
                                                                                   C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS__32_stringlist result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    result = p->mObject.mAttribute_mDependentTargets ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mDependentTargets ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -5866,12 +5313,16 @@ GALGAS__32_stringlist GALGAS_XCodeAppTargetList::getter_mDependentTargetsAtIndex
 GALGAS_string GALGAS_XCodeAppTargetList::getter_mResourceBuildRefAtIndex (const GALGAS_uint & inIndex,
                                                                           C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    result = p->mObject.mAttribute_mResourceBuildRef ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mResourceBuildRef ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -5881,17 +5332,40 @@ GALGAS_string GALGAS_XCodeAppTargetList::getter_mResourceBuildRefAtIndex (const 
 GALGAS_stringlist GALGAS_XCodeAppTargetList::getter_mResourceFileBuildRefsAtIndex (const GALGAS_uint & inIndex,
                                                                                    C_Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_XCodeAppTargetList * p = (cCollectionElement_XCodeAppTargetList *) attributes.ptr () ;
   GALGAS_stringlist result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-    result = p->mObject.mAttribute_mResourceFileBuildRefs ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mResourceFileBuildRefs ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
 
 
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_XCodeAppTargetList::objectCompare (const GALGAS_XCodeAppTargetList & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    int32_t r = mArray.count () - inOperand.mArray.count () ;
+    if (r < 0) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (r > 0) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
+        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
+      }
+    }
+  }
+  return result ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5901,7 +5375,7 @@ mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0),
 mOrder (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
+  mEnumerationArray = inEnumeratedObject.mArray ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5912,140 +5386,170 @@ cEnumerator_XCodeAppTargetList::~ cEnumerator_XCodeAppTargetList (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cEnumerator_XCodeAppTargetList::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArrayEx.count () ;
+  return mIndex < mEnumerationArray.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cEnumerator_XCodeAppTargetList::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArrayEx.count () ;
+  return (mIndex + 1) < mEnumerationArray.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const cCollectionElement * cEnumerator_XCodeAppTargetList::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-}
+//const cCollectionElement * cEnumerator_XCodeAppTargetList::currentObjectPtr (LOCATION_ARGS) const {
+//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_XCodeAppTargetList_2D_element cEnumerator_XCodeAppTargetList::current (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeAppTargetList * p = (const cCollectionElement_XCodeAppTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-  return p->mObject ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE) ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeAppTargetList::current_mTargetRef (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeAppTargetList * p = (const cCollectionElement_XCodeAppTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-  return p->mObject.mAttribute_mTargetRef ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mTargetRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeAppTargetList::current_mTargetName (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeAppTargetList * p = (const cCollectionElement_XCodeAppTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-  return p->mObject.mAttribute_mTargetName ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mTargetName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeAppTargetList::current_mProductFileReference (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeAppTargetList * p = (const cCollectionElement_XCodeAppTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-  return p->mObject.mAttribute_mProductFileReference ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mProductFileReference ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeAppTargetList::current_mProductFileName (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeAppTargetList * p = (const cCollectionElement_XCodeAppTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-  return p->mObject.mAttribute_mProductFileName ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mProductFileName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist cEnumerator_XCodeAppTargetList::current_mBuildPhaseRefList (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeAppTargetList * p = (const cCollectionElement_XCodeAppTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-  return p->mObject.mAttribute_mBuildPhaseRefList ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mBuildPhaseRefList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeAppTargetList::current_mBuildPhaseRef (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeAppTargetList * p = (const cCollectionElement_XCodeAppTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-  return p->mObject.mAttribute_mBuildPhaseRef ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mBuildPhaseRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeAppTargetList::current_mBuildConfigurationListRef (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeAppTargetList * p = (const cCollectionElement_XCodeAppTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-  return p->mObject.mAttribute_mBuildConfigurationListRef ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mBuildConfigurationListRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist cEnumerator_XCodeAppTargetList::current_mBuildConfigurationSettingList (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeAppTargetList * p = (const cCollectionElement_XCodeAppTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-  return p->mObject.mAttribute_mBuildConfigurationSettingList ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mBuildConfigurationSettingList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeAppTargetList::current_mBuildConfigurationRef (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeAppTargetList * p = (const cCollectionElement_XCodeAppTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-  return p->mObject.mAttribute_mBuildConfigurationRef ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mBuildConfigurationRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist cEnumerator_XCodeAppTargetList::current_mFrameworksFileRefList (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeAppTargetList * p = (const cCollectionElement_XCodeAppTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-  return p->mObject.mAttribute_mFrameworksFileRefList ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mFrameworksFileRefList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeAppTargetList::current_mFrameworkBuildPhaseRef (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeAppTargetList * p = (const cCollectionElement_XCodeAppTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-  return p->mObject.mAttribute_mFrameworkBuildPhaseRef ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mFrameworkBuildPhaseRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS__32_stringlist cEnumerator_XCodeAppTargetList::current_mDependentTargets (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeAppTargetList * p = (const cCollectionElement_XCodeAppTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-  return p->mObject.mAttribute_mDependentTargets ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mDependentTargets ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_XCodeAppTargetList::current_mResourceBuildRef (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeAppTargetList * p = (const cCollectionElement_XCodeAppTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-  return p->mObject.mAttribute_mResourceBuildRef ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mResourceBuildRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist cEnumerator_XCodeAppTargetList::current_mResourceFileBuildRefs (LOCATION_ARGS) const {
-  const cCollectionElement_XCodeAppTargetList * p = (const cCollectionElement_XCodeAppTargetList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_XCodeAppTargetList) ;
-  return p->mObject.mAttribute_mResourceFileBuildRefs ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mResourceFileBuildRefs ;
 }
 
 
@@ -6096,97 +5600,9 @@ GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::extractObject (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-// class GALGAS_list_BuildFileList : public TC_UniqueArray <GALGAS_BuildFileList_2D_element>, public C_SharedObject {
-//} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cCollectionElement_BuildFileList : public cCollectionElement {
-  public : GALGAS_BuildFileList_2D_element mObject ;
-
-//--- Constructor
-  public : cCollectionElement_BuildFileList (const GALGAS_string & in_mFileReference,
-                                             const GALGAS_string & in_mFileName,
-                                             const GALGAS_string & in_mBuildReference
-                                             COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cCollectionElement_BuildFileList::cCollectionElement_BuildFileList (const GALGAS_string & in_mFileReference,
-                                                                    const GALGAS_string & in_mFileName,
-                                                                    const GALGAS_string & in_mBuildReference
-                                                                    COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (in_mFileReference, in_mFileName, in_mBuildReference) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cCollectionElement_BuildFileList::isValid (void) const {
-  return mObject.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cCollectionElement * cCollectionElement_BuildFileList::copy (void) {
-  cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_BuildFileList (mObject.mAttribute_mFileReference, mObject.mAttribute_mFileName, mObject.mAttribute_mBuildReference COMMA_HERE)) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cCollectionElement_BuildFileList::description (C_String & ioString, const int32_t inIndentation) const {
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mFileReference" ":" ;
-  mObject.mAttribute_mFileReference.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mFileName" ":" ;
-  mObject.mAttribute_mFileName.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mBuildReference" ":" ;
-  mObject.mAttribute_mBuildReference.description (ioString, inIndentation) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cCollectionElement_BuildFileList::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_BuildFileList * operand = (cCollectionElement_BuildFileList *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_BuildFileList) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_BuildFileList::GALGAS_BuildFileList (void) :
-AC_GALGAS_list (),
+GALGAS_BuildFileList::GALGAS_BuildFileList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid),
 mArray () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_BuildFileList::GALGAS_BuildFileList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr),
-mArray () {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6196,10 +5612,47 @@ GALGAS_BuildFileList::~ GALGAS_BuildFileList (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_BuildFileList GALGAS_BuildFileList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_BuildFileList result ;
-  result.createNewEmptyList (THERE) ;
+GALGAS_BuildFileList GALGAS_BuildFileList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_BuildFileList (true) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_BuildFileList::getter_length (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (isValid ()) {
+    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
+  }
   return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_range GALGAS_BuildFileList::getter_range (UNUSED_LOCATION_ARGS) const {
+  GALGAS_range result ;
+  if (isValid ()) {
+    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_BuildFileList::description (C_String & ioString,
+                                        const int32_t inIndentation) const {
+  ioString << "<list @BuildFileList:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    ioString << " ("
+             << cStringWithSigned (mArray.count ())
+             << " object" << ((mArray.count () > 1) ? "s" : "")
+             << "): " ;
+    for (int32_t i=0 ; i<mArray.count () ; i++) {
+      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
+    }
+  }
+  ioString << ">" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6210,16 +5663,14 @@ GALGAS_BuildFileList GALGAS_BuildFileList::constructor_listWithValue (const GALG
                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_BuildFileList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result.createNewEmptyList (THERE) ;
-    capCollectionElement attributes ;
-    GALGAS_BuildFileList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
-    result.addObject (attributes) ;
+    result = GALGAS_BuildFileList (true) ;
+    result.addAssign_operation (inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
+/*
 void GALGAS_BuildFileList::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                       const GALGAS_string & in_mFileReference,
                                                       const GALGAS_string & in_mFileName,
@@ -6232,20 +5683,16 @@ void GALGAS_BuildFileList::makeAttributesFromObjects (capCollectionElement & out
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-
+*/
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_BuildFileList::addAssign_operation (const GALGAS_string & inOperand0,
                                                 const GALGAS_string & inOperand1,
                                                 const GALGAS_string & inOperand2
-                                                COMMA_LOCATION_ARGS) {
+                                                COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_BuildFileList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    const GALGAS_BuildFileList_2D_element element (inOperand0, inOperand1, inOperand2) ;
+    mArray.addObject (element) ;
   }
 }
 
@@ -6258,12 +5705,15 @@ void GALGAS_BuildFileList::setter_insertAtIndex (const GALGAS_string inOperand0,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
   if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_BuildFileList (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+    const GALGAS_BuildFileList_2D_element element (inOperand0, inOperand1, inOperand2) ;
+    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
+    if (index <= mArray.count ()) {
+      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
+    }else{
+      C_String s = "insertAtIndex: insertion index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -6274,20 +5724,22 @@ void GALGAS_BuildFileList::setter_removeAtIndex (GALGAS_string & outOperand0,
                                                  GALGAS_string & outOperand2,
                                                  const GALGAS_uint inRemoveIndex,
                                                  C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
+                                                 COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_BuildFileList * p = (cCollectionElement_BuildFileList *) attributes.ptr () ;
-    if (NULL == p) {
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-      outOperand2.drop () ;
+    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
+    if (index <= mArray.count ()) {
+      const GALGAS_BuildFileList_2D_element element = mArray (index COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mFileReference ;
+      outOperand1 = element.mAttribute_mFileName ;
+      outOperand2 = element.mAttribute_mBuildReference ;
+      mArray.removeObjectAtIndex (index COMMA_THERE) ;
     }else{
-      macroValidSharedObject (p, cCollectionElement_BuildFileList) ;
-      outOperand0 = p->mObject.mAttribute_mFileReference ;
-      outOperand1 = p->mObject.mAttribute_mFileName ;
-      outOperand2 = p->mObject.mAttribute_mBuildReference ;
+      C_String s = "removeAtIndex: remove index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }
   }
 }
@@ -6298,19 +5750,21 @@ void GALGAS_BuildFileList::setter_popFirst (GALGAS_string & outOperand0,
                                             GALGAS_string & outOperand1,
                                             GALGAS_string & outOperand2,
                                             C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_BuildFileList * p = (cCollectionElement_BuildFileList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_BuildFileList) ;
-    outOperand0 = p->mObject.mAttribute_mFileReference ;
-    outOperand1 = p->mObject.mAttribute_mFileName ;
-    outOperand2 = p->mObject.mAttribute_mBuildReference ;
+                                            COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const GALGAS_BuildFileList_2D_element element = mArray (0 COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mFileReference ;
+      outOperand1 = element.mAttribute_mFileName ;
+      outOperand2 = element.mAttribute_mBuildReference ;
+      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
+    }else{
+      C_String s = "popFirst: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -6320,19 +5774,22 @@ void GALGAS_BuildFileList::setter_popLast (GALGAS_string & outOperand0,
                                            GALGAS_string & outOperand1,
                                            GALGAS_string & outOperand2,
                                            C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_BuildFileList * p = (cCollectionElement_BuildFileList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_BuildFileList) ;
-    outOperand0 = p->mObject.mAttribute_mFileReference ;
-    outOperand1 = p->mObject.mAttribute_mFileName ;
-    outOperand2 = p->mObject.mAttribute_mBuildReference ;
+                                           COMMA_LOCATION_ARGS) {  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const int32_t index = mArray.count () - 1 ;
+      const GALGAS_BuildFileList_2D_element element = mArray (index COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mFileReference ;
+      outOperand1 = element.mAttribute_mFileName ;
+      outOperand2 = element.mAttribute_mBuildReference ;
+      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    }else{
+      C_String s = "popLast: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -6343,18 +5800,20 @@ void GALGAS_BuildFileList::method_first (GALGAS_string & outOperand0,
                                          GALGAS_string & outOperand2,
                                          C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_BuildFileList * p = (cCollectionElement_BuildFileList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_BuildFileList) ;
-    outOperand0 = p->mObject.mAttribute_mFileReference ;
-    outOperand1 = p->mObject.mAttribute_mFileName ;
-    outOperand2 = p->mObject.mAttribute_mBuildReference ;
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const GALGAS_BuildFileList_2D_element element = mArray (0 COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mFileReference ;
+      outOperand1 = element.mAttribute_mFileName ;
+      outOperand2 = element.mAttribute_mBuildReference ;
+    }else{
+      C_String s = "popFirst: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -6365,18 +5824,21 @@ void GALGAS_BuildFileList::method_last (GALGAS_string & outOperand0,
                                         GALGAS_string & outOperand2,
                                         C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_BuildFileList * p = (cCollectionElement_BuildFileList *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-    outOperand2.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_BuildFileList) ;
-    outOperand0 = p->mObject.mAttribute_mFileReference ;
-    outOperand1 = p->mObject.mAttribute_mFileName ;
-    outOperand2 = p->mObject.mAttribute_mBuildReference ;
+  outOperand0.drop () ;
+  outOperand1.drop () ;
+  outOperand2.drop () ;
+
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const int32_t index = mArray.count () - 1 ;
+      const GALGAS_BuildFileList_2D_element element = mArray (index COMMA_THERE) ;
+      outOperand0 = element.mAttribute_mFileReference ;
+      outOperand1 = element.mAttribute_mFileName ;
+      outOperand2 = element.mAttribute_mBuildReference ;
+    }else{
+      C_String s = "popLast: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -6384,11 +5846,14 @@ void GALGAS_BuildFileList::method_last (GALGAS_string & outOperand0,
 
 GALGAS_BuildFileList GALGAS_BuildFileList::add_operation (const GALGAS_BuildFileList & inOperand,
                                                           C_Compiler * /* inCompiler */
-                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+                                                          COMMA_LOCATION_ARGS) const {
   GALGAS_BuildFileList result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
+      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
+    }
   }
   return result ;
 }
@@ -6398,8 +5863,22 @@ GALGAS_BuildFileList GALGAS_BuildFileList::add_operation (const GALGAS_BuildFile
 GALGAS_BuildFileList GALGAS_BuildFileList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS_BuildFileList result = GALGAS_BuildFileList::constructor_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GALGAS_BuildFileList result ;
+  if (isValid () && inRange.isValid ()) {
+    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
+    const uint32_t length = inRange.mAttribute_length.uintValue () ;
+    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
+      result = GALGAS_BuildFileList (true) ;
+      result.mArray.setCapacity ((int32_t) length) ;
+      for (uint32_t i=0 ; i<length ; i++) {
+        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
+      }
+    }else{
+      C_String s = "subListWithRange: max index (" ;
+      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 
@@ -6408,8 +5887,21 @@ GALGAS_BuildFileList GALGAS_BuildFileList::getter_subListWithRange (const GALGAS
 GALGAS_BuildFileList GALGAS_BuildFileList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) const {
-  GALGAS_BuildFileList result = GALGAS_BuildFileList::constructor_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GALGAS_BuildFileList result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index <= mArray.count ()) {
+      result = GALGAS_BuildFileList (true) ;
+      result.mArray.setCapacity (mArray.count () + 1 - index) ;
+      for (int32_t i=index ; i<mArray.count () ; i++) {
+        result.mArray.addObject (mArray (i COMMA_THERE)) ;
+      }
+    }else{
+      C_String s = "subListFromIndex: index (" ;
+      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 
@@ -6418,8 +5910,21 @@ GALGAS_BuildFileList GALGAS_BuildFileList::getter_subListFromIndex (const GALGAS
 GALGAS_BuildFileList GALGAS_BuildFileList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
-  GALGAS_BuildFileList result = GALGAS_BuildFileList::constructor_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GALGAS_BuildFileList result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = GALGAS_BuildFileList (true) ;
+      result.mArray.setCapacity (index + 1) ;
+      for (int32_t i=0 ; i<=index ; i++) {
+        result.mArray.addObject (mArray (i COMMA_THERE)) ;
+      }
+    }else{
+      C_String s = "subListFromIndex: index (" ;
+      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 
@@ -6427,8 +5932,13 @@ GALGAS_BuildFileList GALGAS_BuildFileList::getter_subListToIndex (const GALGAS_u
 
 void GALGAS_BuildFileList::plusAssign_operation (const GALGAS_BuildFileList inOperand,
                                                  C_Compiler * /* inCompiler */
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+                                                 COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
+      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6436,12 +5946,16 @@ void GALGAS_BuildFileList::plusAssign_operation (const GALGAS_BuildFileList inOp
 GALGAS_string GALGAS_BuildFileList::getter_mFileReferenceAtIndex (const GALGAS_uint & inIndex,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_BuildFileList * p = (cCollectionElement_BuildFileList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_BuildFileList) ;
-    result = p->mObject.mAttribute_mFileReference ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mFileReference ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -6451,12 +5965,16 @@ GALGAS_string GALGAS_BuildFileList::getter_mFileReferenceAtIndex (const GALGAS_u
 GALGAS_string GALGAS_BuildFileList::getter_mFileNameAtIndex (const GALGAS_uint & inIndex,
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_BuildFileList * p = (cCollectionElement_BuildFileList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_BuildFileList) ;
-    result = p->mObject.mAttribute_mFileName ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mFileName ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -6466,17 +5984,40 @@ GALGAS_string GALGAS_BuildFileList::getter_mFileNameAtIndex (const GALGAS_uint &
 GALGAS_string GALGAS_BuildFileList::getter_mBuildReferenceAtIndex (const GALGAS_uint & inIndex,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_BuildFileList * p = (cCollectionElement_BuildFileList *) attributes.ptr () ;
   GALGAS_string result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_BuildFileList) ;
-    result = p->mObject.mAttribute_mBuildReference ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = mArray (index COMMA_THERE).mAttribute_mBuildReference ;
+    }else{
+      C_String s = "getter mValueAtIndex: index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
   return result ;
 }
 
 
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_BuildFileList::objectCompare (const GALGAS_BuildFileList & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    int32_t r = mArray.count () - inOperand.mArray.count () ;
+    if (r < 0) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (r > 0) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
+        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
+      }
+    }
+  }
+  return result ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6486,7 +6027,7 @@ mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0),
 mOrder (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
+  mEnumerationArray = inEnumeratedObject.mArray ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6497,52 +6038,60 @@ cEnumerator_BuildFileList::~ cEnumerator_BuildFileList (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cEnumerator_BuildFileList::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArrayEx.count () ;
+  return mIndex < mEnumerationArray.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cEnumerator_BuildFileList::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArrayEx.count () ;
+  return (mIndex + 1) < mEnumerationArray.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const cCollectionElement * cEnumerator_BuildFileList::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-}
+//const cCollectionElement * cEnumerator_BuildFileList::currentObjectPtr (LOCATION_ARGS) const {
+//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_BuildFileList_2D_element cEnumerator_BuildFileList::current (LOCATION_ARGS) const {
-  const cCollectionElement_BuildFileList * p = (const cCollectionElement_BuildFileList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_BuildFileList) ;
-  return p->mObject ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE) ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_BuildFileList::current_mFileReference (LOCATION_ARGS) const {
-  const cCollectionElement_BuildFileList * p = (const cCollectionElement_BuildFileList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_BuildFileList) ;
-  return p->mObject.mAttribute_mFileReference ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mFileReference ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_BuildFileList::current_mFileName (LOCATION_ARGS) const {
-  const cCollectionElement_BuildFileList * p = (const cCollectionElement_BuildFileList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_BuildFileList) ;
-  return p->mObject.mAttribute_mFileName ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mFileName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_BuildFileList::current_mBuildReference (LOCATION_ARGS) const {
-  const cCollectionElement_BuildFileList * p = (const cCollectionElement_BuildFileList *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_BuildFileList) ;
-  return p->mObject.mAttribute_mBuildReference ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE).mAttribute_mBuildReference ;
 }
 
 
@@ -14035,6 +13584,1099 @@ GALGAS_genericExtensionMethodListMap_2D_element GALGAS_genericExtensionMethodLis
       result = *p ;
     }else{
       inCompiler->castError ("genericExtensionMethodListMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_descendantClassListMap_2D_element::GALGAS_descendantClassListMap_2D_element (void) :
+mAttribute_key (),
+mAttribute_mList () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_descendantClassListMap_2D_element::~ GALGAS_descendantClassListMap_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_descendantClassListMap_2D_element::GALGAS_descendantClassListMap_2D_element (const GALGAS_string & inOperand0,
+                                                                                    const GALGAS_unifiedTypeMapProxyList & inOperand1) :
+mAttribute_key (inOperand0),
+mAttribute_mList (inOperand1) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_descendantClassListMap_2D_element GALGAS_descendantClassListMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_descendantClassListMap_2D_element (GALGAS_string::constructor_default (HERE),
+                                                   GALGAS_unifiedTypeMapProxyList::constructor_emptyList (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_descendantClassListMap_2D_element GALGAS_descendantClassListMap_2D_element::constructor_new (const GALGAS_string & inOperand0,
+                                                                                                    const GALGAS_unifiedTypeMapProxyList & inOperand1 
+                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_descendantClassListMap_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GALGAS_descendantClassListMap_2D_element (inOperand0, inOperand1) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_descendantClassListMap_2D_element::objectCompare (const GALGAS_descendantClassListMap_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_key.objectCompare (inOperand.mAttribute_key) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mList.objectCompare (inOperand.mAttribute_mList) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_descendantClassListMap_2D_element::isValid (void) const {
+  return mAttribute_key.isValid () && mAttribute_mList.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_descendantClassListMap_2D_element::drop (void) {
+  mAttribute_key.drop () ;
+  mAttribute_mList.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_descendantClassListMap_2D_element::description (C_String & ioString,
+                                                            const int32_t inIndentation) const {
+  ioString << "<struct @descendantClassListMap-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_key.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mList.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_descendantClassListMap_2D_element::getter_key (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_key ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMapProxyList GALGAS_descendantClassListMap_2D_element::getter_mList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mList ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                        @descendantClassListMap-element type                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_descendantClassListMap_2D_element ("descendantClassListMap-element",
+                                                          NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_descendantClassListMap_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_descendantClassListMap_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_descendantClassListMap_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_descendantClassListMap_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_descendantClassListMap_2D_element GALGAS_descendantClassListMap_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                  C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_descendantClassListMap_2D_element result ;
+  const GALGAS_descendantClassListMap_2D_element * p = (const GALGAS_descendantClassListMap_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_descendantClassListMap_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("descendantClassListMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeGroupList_2D_element::GALGAS_XCodeGroupList_2D_element (void) :
+mAttribute_mGroupReference (),
+mAttribute_mGroupName (),
+mAttribute_mGroupPath (),
+mAttribute_mChildrenRefs () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeGroupList_2D_element::~ GALGAS_XCodeGroupList_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeGroupList_2D_element::GALGAS_XCodeGroupList_2D_element (const GALGAS_string & inOperand0,
+                                                                    const GALGAS_string & inOperand1,
+                                                                    const GALGAS_string & inOperand2,
+                                                                    const GALGAS_stringlist & inOperand3) :
+mAttribute_mGroupReference (inOperand0),
+mAttribute_mGroupName (inOperand1),
+mAttribute_mGroupPath (inOperand2),
+mAttribute_mChildrenRefs (inOperand3) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeGroupList_2D_element GALGAS_XCodeGroupList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_XCodeGroupList_2D_element (GALGAS_string::constructor_default (HERE),
+                                           GALGAS_string::constructor_default (HERE),
+                                           GALGAS_string::constructor_default (HERE),
+                                           GALGAS_stringlist::constructor_emptyList (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeGroupList_2D_element GALGAS_XCodeGroupList_2D_element::constructor_new (const GALGAS_string & inOperand0,
+                                                                                    const GALGAS_string & inOperand1,
+                                                                                    const GALGAS_string & inOperand2,
+                                                                                    const GALGAS_stringlist & inOperand3 
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_XCodeGroupList_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
+    result = GALGAS_XCodeGroupList_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_XCodeGroupList_2D_element::objectCompare (const GALGAS_XCodeGroupList_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mGroupReference.objectCompare (inOperand.mAttribute_mGroupReference) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mGroupName.objectCompare (inOperand.mAttribute_mGroupName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mGroupPath.objectCompare (inOperand.mAttribute_mGroupPath) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mChildrenRefs.objectCompare (inOperand.mAttribute_mChildrenRefs) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_XCodeGroupList_2D_element::isValid (void) const {
+  return mAttribute_mGroupReference.isValid () && mAttribute_mGroupName.isValid () && mAttribute_mGroupPath.isValid () && mAttribute_mChildrenRefs.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_XCodeGroupList_2D_element::drop (void) {
+  mAttribute_mGroupReference.drop () ;
+  mAttribute_mGroupName.drop () ;
+  mAttribute_mGroupPath.drop () ;
+  mAttribute_mChildrenRefs.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_XCodeGroupList_2D_element::description (C_String & ioString,
+                                                    const int32_t inIndentation) const {
+  ioString << "<struct @XCodeGroupList-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mGroupReference.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mGroupName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mGroupPath.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mChildrenRefs.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeGroupList_2D_element::getter_mGroupReference (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mGroupReference ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeGroupList_2D_element::getter_mGroupName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mGroupName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeGroupList_2D_element::getter_mGroupPath (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mGroupPath ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_XCodeGroupList_2D_element::getter_mChildrenRefs (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mChildrenRefs ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                            @XCodeGroupList-element type                                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_XCodeGroupList_2D_element ("XCodeGroupList-element",
+                                                  NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_XCodeGroupList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_XCodeGroupList_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_XCodeGroupList_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_XCodeGroupList_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeGroupList_2D_element GALGAS_XCodeGroupList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_XCodeGroupList_2D_element result ;
+  const GALGAS_XCodeGroupList_2D_element * p = (const GALGAS_XCodeGroupList_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_XCodeGroupList_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("XCodeGroupList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeToolTargetList_2D_element::GALGAS_XCodeToolTargetList_2D_element (void) :
+mAttribute_mTargetRef (),
+mAttribute_mTargetName (),
+mAttribute_mProductFileReference (),
+mAttribute_mProductFileName (),
+mAttribute_mBuildPhaseRefList (),
+mAttribute_mBuildPhaseRef (),
+mAttribute_mBuildConfigurationListRef (),
+mAttribute_mBuildConfigurationSettingList (),
+mAttribute_mBuildConfigurationRef (),
+mAttribute_mFrameworksFileRefList (),
+mAttribute_mFrameworkBuildPhaseRef () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeToolTargetList_2D_element::~ GALGAS_XCodeToolTargetList_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeToolTargetList_2D_element::GALGAS_XCodeToolTargetList_2D_element (const GALGAS_string & inOperand0,
+                                                                              const GALGAS_string & inOperand1,
+                                                                              const GALGAS_string & inOperand2,
+                                                                              const GALGAS_string & inOperand3,
+                                                                              const GALGAS_stringlist & inOperand4,
+                                                                              const GALGAS_string & inOperand5,
+                                                                              const GALGAS_string & inOperand6,
+                                                                              const GALGAS_stringlist & inOperand7,
+                                                                              const GALGAS_string & inOperand8,
+                                                                              const GALGAS_stringlist & inOperand9,
+                                                                              const GALGAS_string & inOperand10) :
+mAttribute_mTargetRef (inOperand0),
+mAttribute_mTargetName (inOperand1),
+mAttribute_mProductFileReference (inOperand2),
+mAttribute_mProductFileName (inOperand3),
+mAttribute_mBuildPhaseRefList (inOperand4),
+mAttribute_mBuildPhaseRef (inOperand5),
+mAttribute_mBuildConfigurationListRef (inOperand6),
+mAttribute_mBuildConfigurationSettingList (inOperand7),
+mAttribute_mBuildConfigurationRef (inOperand8),
+mAttribute_mFrameworksFileRefList (inOperand9),
+mAttribute_mFrameworkBuildPhaseRef (inOperand10) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeToolTargetList_2D_element GALGAS_XCodeToolTargetList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_XCodeToolTargetList_2D_element (GALGAS_string::constructor_default (HERE),
+                                                GALGAS_string::constructor_default (HERE),
+                                                GALGAS_string::constructor_default (HERE),
+                                                GALGAS_string::constructor_default (HERE),
+                                                GALGAS_stringlist::constructor_emptyList (HERE),
+                                                GALGAS_string::constructor_default (HERE),
+                                                GALGAS_string::constructor_default (HERE),
+                                                GALGAS_stringlist::constructor_emptyList (HERE),
+                                                GALGAS_string::constructor_default (HERE),
+                                                GALGAS_stringlist::constructor_emptyList (HERE),
+                                                GALGAS_string::constructor_default (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeToolTargetList_2D_element GALGAS_XCodeToolTargetList_2D_element::constructor_new (const GALGAS_string & inOperand0,
+                                                                                              const GALGAS_string & inOperand1,
+                                                                                              const GALGAS_string & inOperand2,
+                                                                                              const GALGAS_string & inOperand3,
+                                                                                              const GALGAS_stringlist & inOperand4,
+                                                                                              const GALGAS_string & inOperand5,
+                                                                                              const GALGAS_string & inOperand6,
+                                                                                              const GALGAS_stringlist & inOperand7,
+                                                                                              const GALGAS_string & inOperand8,
+                                                                                              const GALGAS_stringlist & inOperand9,
+                                                                                              const GALGAS_string & inOperand10 
+                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_XCodeToolTargetList_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid ()) {
+    result = GALGAS_XCodeToolTargetList_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_XCodeToolTargetList_2D_element::objectCompare (const GALGAS_XCodeToolTargetList_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mTargetRef.objectCompare (inOperand.mAttribute_mTargetRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mTargetName.objectCompare (inOperand.mAttribute_mTargetName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mProductFileReference.objectCompare (inOperand.mAttribute_mProductFileReference) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mProductFileName.objectCompare (inOperand.mAttribute_mProductFileName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildPhaseRefList.objectCompare (inOperand.mAttribute_mBuildPhaseRefList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildPhaseRef.objectCompare (inOperand.mAttribute_mBuildPhaseRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildConfigurationListRef.objectCompare (inOperand.mAttribute_mBuildConfigurationListRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildConfigurationSettingList.objectCompare (inOperand.mAttribute_mBuildConfigurationSettingList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildConfigurationRef.objectCompare (inOperand.mAttribute_mBuildConfigurationRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mFrameworksFileRefList.objectCompare (inOperand.mAttribute_mFrameworksFileRefList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mFrameworkBuildPhaseRef.objectCompare (inOperand.mAttribute_mFrameworkBuildPhaseRef) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_XCodeToolTargetList_2D_element::isValid (void) const {
+  return mAttribute_mTargetRef.isValid () && mAttribute_mTargetName.isValid () && mAttribute_mProductFileReference.isValid () && mAttribute_mProductFileName.isValid () && mAttribute_mBuildPhaseRefList.isValid () && mAttribute_mBuildPhaseRef.isValid () && mAttribute_mBuildConfigurationListRef.isValid () && mAttribute_mBuildConfigurationSettingList.isValid () && mAttribute_mBuildConfigurationRef.isValid () && mAttribute_mFrameworksFileRefList.isValid () && mAttribute_mFrameworkBuildPhaseRef.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_XCodeToolTargetList_2D_element::drop (void) {
+  mAttribute_mTargetRef.drop () ;
+  mAttribute_mTargetName.drop () ;
+  mAttribute_mProductFileReference.drop () ;
+  mAttribute_mProductFileName.drop () ;
+  mAttribute_mBuildPhaseRefList.drop () ;
+  mAttribute_mBuildPhaseRef.drop () ;
+  mAttribute_mBuildConfigurationListRef.drop () ;
+  mAttribute_mBuildConfigurationSettingList.drop () ;
+  mAttribute_mBuildConfigurationRef.drop () ;
+  mAttribute_mFrameworksFileRefList.drop () ;
+  mAttribute_mFrameworkBuildPhaseRef.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_XCodeToolTargetList_2D_element::description (C_String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString << "<struct @XCodeToolTargetList-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mTargetRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mTargetName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mProductFileReference.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mProductFileName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildPhaseRefList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildPhaseRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildConfigurationListRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildConfigurationSettingList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildConfigurationRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mFrameworksFileRefList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mFrameworkBuildPhaseRef.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mTargetRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTargetRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mTargetName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTargetName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mProductFileReference (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mProductFileReference ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mProductFileName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mProductFileName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_XCodeToolTargetList_2D_element::getter_mBuildPhaseRefList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildPhaseRefList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildPhaseRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mBuildConfigurationListRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildConfigurationListRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_XCodeToolTargetList_2D_element::getter_mBuildConfigurationSettingList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildConfigurationSettingList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mBuildConfigurationRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildConfigurationRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_XCodeToolTargetList_2D_element::getter_mFrameworksFileRefList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFrameworksFileRefList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::getter_mFrameworkBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFrameworkBuildPhaseRef ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                          @XCodeToolTargetList-element type                                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_XCodeToolTargetList_2D_element ("XCodeToolTargetList-element",
+                                                       NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_XCodeToolTargetList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_XCodeToolTargetList_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_XCodeToolTargetList_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_XCodeToolTargetList_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeToolTargetList_2D_element GALGAS_XCodeToolTargetList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_XCodeToolTargetList_2D_element result ;
+  const GALGAS_XCodeToolTargetList_2D_element * p = (const GALGAS_XCodeToolTargetList_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_XCodeToolTargetList_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("XCodeToolTargetList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeAppTargetList_2D_element::GALGAS_XCodeAppTargetList_2D_element (void) :
+mAttribute_mTargetRef (),
+mAttribute_mTargetName (),
+mAttribute_mProductFileReference (),
+mAttribute_mProductFileName (),
+mAttribute_mBuildPhaseRefList (),
+mAttribute_mBuildPhaseRef (),
+mAttribute_mBuildConfigurationListRef (),
+mAttribute_mBuildConfigurationSettingList (),
+mAttribute_mBuildConfigurationRef (),
+mAttribute_mFrameworksFileRefList (),
+mAttribute_mFrameworkBuildPhaseRef (),
+mAttribute_mDependentTargets (),
+mAttribute_mResourceBuildRef (),
+mAttribute_mResourceFileBuildRefs () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeAppTargetList_2D_element::~ GALGAS_XCodeAppTargetList_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeAppTargetList_2D_element::GALGAS_XCodeAppTargetList_2D_element (const GALGAS_string & inOperand0,
+                                                                            const GALGAS_string & inOperand1,
+                                                                            const GALGAS_string & inOperand2,
+                                                                            const GALGAS_string & inOperand3,
+                                                                            const GALGAS_stringlist & inOperand4,
+                                                                            const GALGAS_string & inOperand5,
+                                                                            const GALGAS_string & inOperand6,
+                                                                            const GALGAS_stringlist & inOperand7,
+                                                                            const GALGAS_string & inOperand8,
+                                                                            const GALGAS_stringlist & inOperand9,
+                                                                            const GALGAS_string & inOperand10,
+                                                                            const GALGAS__32_stringlist & inOperand11,
+                                                                            const GALGAS_string & inOperand12,
+                                                                            const GALGAS_stringlist & inOperand13) :
+mAttribute_mTargetRef (inOperand0),
+mAttribute_mTargetName (inOperand1),
+mAttribute_mProductFileReference (inOperand2),
+mAttribute_mProductFileName (inOperand3),
+mAttribute_mBuildPhaseRefList (inOperand4),
+mAttribute_mBuildPhaseRef (inOperand5),
+mAttribute_mBuildConfigurationListRef (inOperand6),
+mAttribute_mBuildConfigurationSettingList (inOperand7),
+mAttribute_mBuildConfigurationRef (inOperand8),
+mAttribute_mFrameworksFileRefList (inOperand9),
+mAttribute_mFrameworkBuildPhaseRef (inOperand10),
+mAttribute_mDependentTargets (inOperand11),
+mAttribute_mResourceBuildRef (inOperand12),
+mAttribute_mResourceFileBuildRefs (inOperand13) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeAppTargetList_2D_element GALGAS_XCodeAppTargetList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_XCodeAppTargetList_2D_element (GALGAS_string::constructor_default (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS_stringlist::constructor_emptyList (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS_stringlist::constructor_emptyList (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS_stringlist::constructor_emptyList (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS__32_stringlist::constructor_emptyList (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS_stringlist::constructor_emptyList (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeAppTargetList_2D_element GALGAS_XCodeAppTargetList_2D_element::constructor_new (const GALGAS_string & inOperand0,
+                                                                                            const GALGAS_string & inOperand1,
+                                                                                            const GALGAS_string & inOperand2,
+                                                                                            const GALGAS_string & inOperand3,
+                                                                                            const GALGAS_stringlist & inOperand4,
+                                                                                            const GALGAS_string & inOperand5,
+                                                                                            const GALGAS_string & inOperand6,
+                                                                                            const GALGAS_stringlist & inOperand7,
+                                                                                            const GALGAS_string & inOperand8,
+                                                                                            const GALGAS_stringlist & inOperand9,
+                                                                                            const GALGAS_string & inOperand10,
+                                                                                            const GALGAS__32_stringlist & inOperand11,
+                                                                                            const GALGAS_string & inOperand12,
+                                                                                            const GALGAS_stringlist & inOperand13 
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_XCodeAppTargetList_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid ()) {
+    result = GALGAS_XCodeAppTargetList_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_XCodeAppTargetList_2D_element::objectCompare (const GALGAS_XCodeAppTargetList_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mTargetRef.objectCompare (inOperand.mAttribute_mTargetRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mTargetName.objectCompare (inOperand.mAttribute_mTargetName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mProductFileReference.objectCompare (inOperand.mAttribute_mProductFileReference) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mProductFileName.objectCompare (inOperand.mAttribute_mProductFileName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildPhaseRefList.objectCompare (inOperand.mAttribute_mBuildPhaseRefList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildPhaseRef.objectCompare (inOperand.mAttribute_mBuildPhaseRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildConfigurationListRef.objectCompare (inOperand.mAttribute_mBuildConfigurationListRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildConfigurationSettingList.objectCompare (inOperand.mAttribute_mBuildConfigurationSettingList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildConfigurationRef.objectCompare (inOperand.mAttribute_mBuildConfigurationRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mFrameworksFileRefList.objectCompare (inOperand.mAttribute_mFrameworksFileRefList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mFrameworkBuildPhaseRef.objectCompare (inOperand.mAttribute_mFrameworkBuildPhaseRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mDependentTargets.objectCompare (inOperand.mAttribute_mDependentTargets) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mResourceBuildRef.objectCompare (inOperand.mAttribute_mResourceBuildRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mResourceFileBuildRefs.objectCompare (inOperand.mAttribute_mResourceFileBuildRefs) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_XCodeAppTargetList_2D_element::isValid (void) const {
+  return mAttribute_mTargetRef.isValid () && mAttribute_mTargetName.isValid () && mAttribute_mProductFileReference.isValid () && mAttribute_mProductFileName.isValid () && mAttribute_mBuildPhaseRefList.isValid () && mAttribute_mBuildPhaseRef.isValid () && mAttribute_mBuildConfigurationListRef.isValid () && mAttribute_mBuildConfigurationSettingList.isValid () && mAttribute_mBuildConfigurationRef.isValid () && mAttribute_mFrameworksFileRefList.isValid () && mAttribute_mFrameworkBuildPhaseRef.isValid () && mAttribute_mDependentTargets.isValid () && mAttribute_mResourceBuildRef.isValid () && mAttribute_mResourceFileBuildRefs.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_XCodeAppTargetList_2D_element::drop (void) {
+  mAttribute_mTargetRef.drop () ;
+  mAttribute_mTargetName.drop () ;
+  mAttribute_mProductFileReference.drop () ;
+  mAttribute_mProductFileName.drop () ;
+  mAttribute_mBuildPhaseRefList.drop () ;
+  mAttribute_mBuildPhaseRef.drop () ;
+  mAttribute_mBuildConfigurationListRef.drop () ;
+  mAttribute_mBuildConfigurationSettingList.drop () ;
+  mAttribute_mBuildConfigurationRef.drop () ;
+  mAttribute_mFrameworksFileRefList.drop () ;
+  mAttribute_mFrameworkBuildPhaseRef.drop () ;
+  mAttribute_mDependentTargets.drop () ;
+  mAttribute_mResourceBuildRef.drop () ;
+  mAttribute_mResourceFileBuildRefs.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_XCodeAppTargetList_2D_element::description (C_String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString << "<struct @XCodeAppTargetList-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mTargetRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mTargetName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mProductFileReference.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mProductFileName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildPhaseRefList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildPhaseRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildConfigurationListRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildConfigurationSettingList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildConfigurationRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mFrameworksFileRefList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mFrameworkBuildPhaseRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mDependentTargets.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mResourceBuildRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mResourceFileBuildRefs.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mTargetRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTargetRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mTargetName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTargetName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mProductFileReference (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mProductFileReference ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mProductFileName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mProductFileName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::getter_mBuildPhaseRefList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildPhaseRefList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildPhaseRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mBuildConfigurationListRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildConfigurationListRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::getter_mBuildConfigurationSettingList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildConfigurationSettingList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mBuildConfigurationRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildConfigurationRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::getter_mFrameworksFileRefList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFrameworksFileRefList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mFrameworkBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFrameworkBuildPhaseRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS__32_stringlist GALGAS_XCodeAppTargetList_2D_element::getter_mDependentTargets (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mDependentTargets ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::getter_mResourceBuildRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mResourceBuildRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::getter_mResourceFileBuildRefs (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mResourceFileBuildRefs ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                          @XCodeAppTargetList-element type                                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_XCodeAppTargetList_2D_element ("XCodeAppTargetList-element",
+                                                      NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_XCodeAppTargetList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_XCodeAppTargetList_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_XCodeAppTargetList_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_XCodeAppTargetList_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeAppTargetList_2D_element GALGAS_XCodeAppTargetList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_XCodeAppTargetList_2D_element result ;
+  const GALGAS_XCodeAppTargetList_2D_element * p = (const GALGAS_XCodeAppTargetList_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_XCodeAppTargetList_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("XCodeAppTargetList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_BuildFileList_2D_element::GALGAS_BuildFileList_2D_element (void) :
+mAttribute_mFileReference (),
+mAttribute_mFileName (),
+mAttribute_mBuildReference () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_BuildFileList_2D_element::~ GALGAS_BuildFileList_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_BuildFileList_2D_element::GALGAS_BuildFileList_2D_element (const GALGAS_string & inOperand0,
+                                                                  const GALGAS_string & inOperand1,
+                                                                  const GALGAS_string & inOperand2) :
+mAttribute_mFileReference (inOperand0),
+mAttribute_mFileName (inOperand1),
+mAttribute_mBuildReference (inOperand2) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_BuildFileList_2D_element GALGAS_BuildFileList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_BuildFileList_2D_element (GALGAS_string::constructor_default (HERE),
+                                          GALGAS_string::constructor_default (HERE),
+                                          GALGAS_string::constructor_default (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_BuildFileList_2D_element GALGAS_BuildFileList_2D_element::constructor_new (const GALGAS_string & inOperand0,
+                                                                                  const GALGAS_string & inOperand1,
+                                                                                  const GALGAS_string & inOperand2 
+                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_BuildFileList_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    result = GALGAS_BuildFileList_2D_element (inOperand0, inOperand1, inOperand2) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_BuildFileList_2D_element::objectCompare (const GALGAS_BuildFileList_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mFileReference.objectCompare (inOperand.mAttribute_mFileReference) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mFileName.objectCompare (inOperand.mAttribute_mFileName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildReference.objectCompare (inOperand.mAttribute_mBuildReference) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_BuildFileList_2D_element::isValid (void) const {
+  return mAttribute_mFileReference.isValid () && mAttribute_mFileName.isValid () && mAttribute_mBuildReference.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_BuildFileList_2D_element::drop (void) {
+  mAttribute_mFileReference.drop () ;
+  mAttribute_mFileName.drop () ;
+  mAttribute_mBuildReference.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_BuildFileList_2D_element::description (C_String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString << "<struct @BuildFileList-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mFileReference.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mFileName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildReference.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_BuildFileList_2D_element::getter_mFileReference (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFileReference ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_BuildFileList_2D_element::getter_mFileName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFileName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_BuildFileList_2D_element::getter_mBuildReference (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildReference ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                             @BuildFileList-element type                                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_BuildFileList_2D_element ("BuildFileList-element",
+                                                 NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_BuildFileList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_BuildFileList_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_BuildFileList_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_BuildFileList_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_BuildFileList_2D_element GALGAS_BuildFileList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_BuildFileList_2D_element result ;
+  const GALGAS_BuildFileList_2D_element * p = (const GALGAS_BuildFileList_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_BuildFileList_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("BuildFileList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

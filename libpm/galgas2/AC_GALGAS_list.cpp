@@ -719,255 +719,256 @@ cCollectionElement * AC_GALGAS_list::objectPointerAtIndex (const GALGAS_uint & i
 //    AC_GALGAS_list_new                                                                                               *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::makeNewSharedList (cSharedList * & outSharedList
-                                   COMMA_LOCATION_ARGS) {
-  macroMyNew (outSharedList, cSharedList (THERE)) ;
-}
+//void AC_GALGAS_list_new::makeNewSharedList (cSharedList * & outSharedList
+//                                   COMMA_LOCATION_ARGS) {
+//  macroMyNew (outSharedList, cSharedList (THERE)) ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::insertInSharedList (cSharedList * inSharedList,
-                                         const capCollectionElement & inAttributes) {
-  macroValidSharedObject (inSharedList, cSharedList) ;
-  inSharedList->addObject (inAttributes) ;
-}
+//void AC_GALGAS_list_new::insertInSharedList (cSharedList * inSharedList,
+//                                         const capCollectionElement & inAttributes) {
+//  macroValidSharedObject (inSharedList, cSharedList) ;
+//  inSharedList->addObject (inAttributes) ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::detachSharedList (cSharedList * & ioSharedList) {
-  macroDetachSharedObject (ioSharedList) ;
-}
+//void AC_GALGAS_list_new::detachSharedList (cSharedList * & ioSharedList) {
+//  macroDetachSharedObject (ioSharedList) ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_list_new::AC_GALGAS_list_new (void) :
+AC_GALGAS_list_new::AC_GALGAS_list_new (const bool inIsValid) :
 AC_GALGAS_root (),
-mSharedList (NULL) {
+mIsValid (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_list_new::AC_GALGAS_list_new (cSharedList * inSharedListPtr) :
-AC_GALGAS_root (),
-mSharedList (NULL) {
-  macroAssignSharedObject (mSharedList, inSharedListPtr) ;
-}
+//AC_GALGAS_list_new::AC_GALGAS_list_new (cSharedList * inSharedListPtr) :
+//AC_GALGAS_root (),
+//mSharedList (NULL) {
+//  macroAssignSharedObject (mSharedList, inSharedListPtr) ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 AC_GALGAS_list_new::~ AC_GALGAS_list_new (void) {
-  macroDetachSharedObject (mSharedList) ;
+//  macroDetachSharedObject (mSharedList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_list_new::AC_GALGAS_list_new (const AC_GALGAS_list_new & inSource) :
-AC_GALGAS_root (),
-mSharedList (NULL) {
-  macroAssignSharedObject (mSharedList, inSource.mSharedList) ;
-}
+//AC_GALGAS_list_new::AC_GALGAS_list_new (const AC_GALGAS_list_new &) :
+//AC_GALGAS_root (),
+//mIsValid (false) {
+////  macroAssignSharedObject (mSharedList, inSource.mSharedList) ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_list_new & AC_GALGAS_list_new::operator = (const AC_GALGAS_list_new & inSource) {
-  macroAssignSharedObject (mSharedList, inSource.mSharedList) ;
-  return * this ;
-}
+//AC_GALGAS_list_new & AC_GALGAS_list_new::operator = (const AC_GALGAS_list_new & inSource) {
+//  macroAssignSharedObject (mSharedList, inSource.mSharedList) ;
+//  return * this ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::createNewEmptyList (LOCATION_ARGS) {
-  macroMyNew (mSharedList, cSharedList (THERE)) ;
-}
+//void AC_GALGAS_list_new::createNewEmptyList (LOCATION_ARGS) {
+//  macroMyNew (mSharedList, cSharedList (THERE)) ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::description (C_String & ioString,
-                                  const int32_t inIndentation) const {
-  ioString << "<list @"
-           << staticTypeDescriptor ()->mGalgasTypeName ;
-  if (isValid ()) {
-    mSharedList->description (ioString, inIndentation) ;
-  }else{
-    ioString << " not built" ;
-  }
-  ioString << ">" ;
-}
+//void AC_GALGAS_list_new::description (C_String & ioString,
+//                                  const int32_t inIndentation) const {
+//  ioString << "<list @"
+//           << staticTypeDescriptor ()->mGalgasTypeName ;
+//  if (isValid ()) {
+//    mSharedList->description (ioString, inIndentation) ;
+//  }else{
+//    ioString << " not built" ;
+//  }
+//  ioString << ">" ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                               const typeEnumerationOrder inEnumerationOrder) const {
-  if (isValid ()) {
-    mSharedList->populateEnumerationArray (inEnumerationArray, inEnumerationOrder) ;
-  }
-}
+//void AC_GALGAS_list_new::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
+//                                               const typeEnumerationOrder inEnumerationOrder) const {
+//  if (isValid ()) {
+//    mSharedList->populateEnumerationArray (inEnumerationArray, inEnumerationOrder) ;
+//  }
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-uint32_t AC_GALGAS_list_new::count () const {
-  int32_t result = 0 ;
-  if (isValid ()) {
-    result = mSharedList->count () ;
-  }
-  return (uint32_t) result ;
-}
+//uint32_t AC_GALGAS_list_new::count () const {
+//  int32_t result = 0 ;
+//  if (isValid ()) {
+//    result = mSharedList->count () ;
+//  }
+//  return (uint32_t) result ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint AC_GALGAS_list_new::getter_length (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (isValid ()) {
-    result = GALGAS_uint ((uint32_t) mSharedList->count ()) ;
-  }
-  return result ;
-}
+//GALGAS_uint AC_GALGAS_list_new::getter_length (UNUSED_LOCATION_ARGS) const {
+//  GALGAS_uint result ;
+//  if (isValid ()) {
+//    result = GALGAS_uint ((uint32_t) mSharedList->count ()) ;
+//  }
+//  return result ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range AC_GALGAS_list_new::getter_range (UNUSED_LOCATION_ARGS) const {
-  GALGAS_range result ;
-  if (isValid ()) {
-    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mSharedList->count ())) ;
-  }
-  return result ;
-}
+//GALGAS_range AC_GALGAS_list_new::getter_range (UNUSED_LOCATION_ARGS) const {
+//  GALGAS_range result ;
+//  if (isValid ()) {
+//    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mSharedList->count ())) ;
+//  }
+//  return result ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_list_new::drop (void) {
-  macroDetachSharedObject (mSharedList) ;
+  mIsValid = false ;
+//  macroDetachSharedObject (mSharedList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::insulateList (LOCATION_ARGS) {
-  if ((mSharedList != NULL) && (mSharedList->retainCount () > 1)) {
-    cSharedList * p = NULL ;
-    macroMyNew (p, cSharedList (THERE)) ;
-    p->copyFrom (mSharedList) ;
-    macroAssignSharedObject (mSharedList, p) ;
-    macroDetachSharedObject (p) ;
-  }
-}
+//void AC_GALGAS_list_new::insulateList (LOCATION_ARGS) {
+//  if ((mSharedList != NULL) && (mSharedList->retainCount () > 1)) {
+//    cSharedList * p = NULL ;
+//    macroMyNew (p, cSharedList (THERE)) ;
+//    p->copyFrom (mSharedList) ;
+//    macroAssignSharedObject (mSharedList, p) ;
+//    macroDetachSharedObject (p) ;
+//  }
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::addObject (const capCollectionElement & inElementToAdd) {
-  insulateList (HERE) ;
-  if (NULL != mSharedList) {
-    mSharedList->addObject (inElementToAdd) ;
-  }
-}
+//void AC_GALGAS_list_new::addObject (const capCollectionElement & inElementToAdd) {
+//  insulateList (HERE) ;
+//  if (NULL != mSharedList) {
+//    mSharedList->addObject (inElementToAdd) ;
+//  }
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::addObjectAtIndex (const capCollectionElement & inElementToAdd,
-                                       const uint32_t inInsertionIndex,
-                                       C_Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) {
-  insulateList (HERE) ;
-  if (NULL != mSharedList) {
-    mSharedList->addObjectAtIndex (inElementToAdd, (int32_t) inInsertionIndex, inCompiler COMMA_THERE) ;
-  }
-}
+//void AC_GALGAS_list_new::addObjectAtIndex (const capCollectionElement & inElementToAdd,
+//                                       const uint32_t inInsertionIndex,
+//                                       C_Compiler * inCompiler
+//                                       COMMA_LOCATION_ARGS) {
+//  insulateList (HERE) ;
+//  if (NULL != mSharedList) {
+//    mSharedList->addObjectAtIndex (inElementToAdd, (int32_t) inInsertionIndex, inCompiler COMMA_THERE) ;
+//  }
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::readFirst (capCollectionElement & outAttributes,
-                                C_Compiler * inCompiler
-                                COMMA_LOCATION_ARGS) const {
-  if (NULL != mSharedList) {
-    mSharedList->readFirst (outAttributes, inCompiler COMMA_THERE) ;
-  }
-}
+//void AC_GALGAS_list_new::readFirst (capCollectionElement & outAttributes,
+//                                C_Compiler * inCompiler
+//                                COMMA_LOCATION_ARGS) const {
+//  if (NULL != mSharedList) {
+//    mSharedList->readFirst (outAttributes, inCompiler COMMA_THERE) ;
+//  }
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::readLast (capCollectionElement & outAttributes,
-                               C_Compiler * inCompiler
-                               COMMA_LOCATION_ARGS) const {
-  if (NULL != mSharedList) {
-    mSharedList->readLast (outAttributes, inCompiler COMMA_THERE) ;
-  }
-}
+//void AC_GALGAS_list_new::readLast (capCollectionElement & outAttributes,
+//                               C_Compiler * inCompiler
+//                               COMMA_LOCATION_ARGS) const {
+//  if (NULL != mSharedList) {
+//    mSharedList->readLast (outAttributes, inCompiler COMMA_THERE) ;
+//  }
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::subListWithRange (AC_GALGAS_list_new & outList,
-                                       const GALGAS_range & inRange,
-                                       C_Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) const {
-  if (isValid ()) {
-    mSharedList->subListWithRange (outList.mSharedList, inRange, inCompiler COMMA_THERE) ;
-  }else{
-    outList.drop () ;
-  }
-}
+//void AC_GALGAS_list_new::subListWithRange (AC_GALGAS_list_new & outList,
+//                                       const GALGAS_range & inRange,
+//                                       C_Compiler * inCompiler
+//                                       COMMA_LOCATION_ARGS) const {
+//  if (isValid ()) {
+//    mSharedList->subListWithRange (outList.mSharedList, inRange, inCompiler COMMA_THERE) ;
+//  }else{
+//    outList.drop () ;
+//  }
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::subListFromIndex (AC_GALGAS_list_new & outList,
-                                       const GALGAS_uint & inIndex,
-                                       C_Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) const {
-  if (isValid ()) {
-    mSharedList->subListFromIndex (outList.mSharedList, inIndex, inCompiler COMMA_THERE) ;
-  }else{
-    outList.drop () ;
-  }
-}
+//void AC_GALGAS_list_new::subListFromIndex (AC_GALGAS_list_new & outList,
+//                                       const GALGAS_uint & inIndex,
+//                                       C_Compiler * inCompiler
+//                                       COMMA_LOCATION_ARGS) const {
+//  if (isValid ()) {
+//    mSharedList->subListFromIndex (outList.mSharedList, inIndex, inCompiler COMMA_THERE) ;
+//  }else{
+//    outList.drop () ;
+//  }
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::subListToIndex (AC_GALGAS_list_new & outList,
-                                     const GALGAS_uint & inIndex,
-                                     C_Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) const {
-  if (isValid ()) {
-    mSharedList->subListToIndex (outList.mSharedList, inIndex, inCompiler COMMA_THERE) ;
-  }else{
-    outList.drop () ;
-  }
-}
+//void AC_GALGAS_list_new::subListToIndex (AC_GALGAS_list_new & outList,
+//                                     const GALGAS_uint & inIndex,
+//                                     C_Compiler * inCompiler
+//                                     COMMA_LOCATION_ARGS) const {
+//  if (isValid ()) {
+//    mSharedList->subListToIndex (outList.mSharedList, inIndex, inCompiler COMMA_THERE) ;
+//  }else{
+//    outList.drop () ;
+//  }
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::appendList (const AC_GALGAS_list_new & inList) {
-  if ((NULL != mSharedList) && (NULL != inList.mSharedList)) {
-    insulateList (HERE) ;
-    mSharedList->appendList (inList.mSharedList) ;
-  }else{
-    drop () ;
-  }
-}
+//void AC_GALGAS_list_new::appendList (const AC_GALGAS_list_new & inList) {
+//  if ((NULL != mSharedList) && (NULL != inList.mSharedList)) {
+//    insulateList (HERE) ;
+//    mSharedList->appendList (inList.mSharedList) ;
+//  }else{
+//    drop () ;
+//  }
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-capCollectionElement AC_GALGAS_list_new::readObjectAtIndex (const GALGAS_uint & inIndex,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) const {
-  capCollectionElement result ;
-  if (isValid ()) {
-    result = mSharedList->readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  }
-  return result ;
-}
+//capCollectionElement AC_GALGAS_list_new::readObjectAtIndex (const GALGAS_uint & inIndex,
+//                                                        C_Compiler * inCompiler
+//                                                        COMMA_LOCATION_ARGS) const {
+//  capCollectionElement result ;
+//  if (isValid ()) {
+//    result = mSharedList->readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+//  }
+//  return result ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cCollectionElement * AC_GALGAS_list_new::objectPointerAtIndex (const GALGAS_uint & inIndex,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  cCollectionElement * result = NULL ;
-  if (isValid ()) {
-    insulateList (HERE) ;
-    if (NULL != mSharedList) {
-      result = mSharedList->objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
+//cCollectionElement * AC_GALGAS_list_new::objectPointerAtIndex (const GALGAS_uint & inIndex,
+//                                                           C_Compiler * inCompiler
+//                                                           COMMA_LOCATION_ARGS) {
+//  cCollectionElement * result = NULL ;
+//  if (isValid ()) {
+//    insulateList (HERE) ;
+//    if (NULL != mSharedList) {
+//      result = mSharedList->objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+//    }
+//  }
+//  return result ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1007,13 +1008,13 @@ typeComparisonResult AC_GALGAS_list::objectCompare (const AC_GALGAS_list & inOpe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult AC_GALGAS_list_new::objectCompare (const AC_GALGAS_list_new & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    result = mSharedList->listCompare (inOperand.mSharedList) ;
-  }
-  return result ;
-}
+//typeComparisonResult AC_GALGAS_list_new::objectCompare (const AC_GALGAS_list_new & inOperand) const {
+//  typeComparisonResult result = kOperandNotValid ;
+//  if (isValid () && inOperand.isValid ()) {
+//    result = mSharedList->listCompare (inOperand.mSharedList) ;
+//  }
+//  return result ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

@@ -3078,17 +3078,28 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_type ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_stringlist : public AC_GALGAS_list {
+class GALGAS_stringlist : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_stringlist_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_stringlist (void) ;
+  public : GALGAS_stringlist (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_stringlist (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_stringlist (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_stringlist & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -3234,17 +3245,28 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lstringlist : public AC_GALGAS_list {
+class GALGAS_lstringlist : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_lstringlist_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_lstringlist (void) ;
+  public : GALGAS_lstringlist (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_lstringlist (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_lstringlist (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_lstringlist & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -3390,17 +3412,28 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstringlist ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS__32_lstringlist : public AC_GALGAS_list {
+class GALGAS__32_lstringlist : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS__32_lstringlist_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS__32_lstringlist (void) ;
+  public : GALGAS__32_lstringlist (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS__32_lstringlist (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS__32_lstringlist (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS__32_lstringlist & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -3636,17 +3669,28 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbool ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS__32_stringlist : public AC_GALGAS_list {
+class GALGAS__32_stringlist : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS__32_stringlist_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS__32_stringlist (void) ;
+  public : GALGAS__32_stringlist (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS__32_stringlist (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS__32_stringlist (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS__32_stringlist & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -3811,17 +3855,28 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_functionlist : public AC_GALGAS_list {
+class GALGAS_functionlist : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_functionlist_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_functionlist (void) ;
+  public : GALGAS_functionlist (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_functionlist (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_functionlist (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_functionlist & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -3967,17 +4022,28 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_luintlist : public AC_GALGAS_list {
+class GALGAS_luintlist : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_luintlist_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_luintlist (void) ;
+  public : GALGAS_luintlist (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_luintlist (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_luintlist (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_luintlist & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -4123,17 +4189,28 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luintlist ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_objectlist : public AC_GALGAS_list {
+class GALGAS_objectlist : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_objectlist_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_objectlist (void) ;
+  public : GALGAS_objectlist (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_objectlist (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_objectlist (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_objectlist & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -4279,17 +4356,28 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_typelist : public AC_GALGAS_list {
+class GALGAS_typelist : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_typelist_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_typelist (void) ;
+  public : GALGAS_typelist (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_typelist (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_typelist (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_typelist & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -4435,17 +4523,28 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uintlist : public AC_GALGAS_list {
+class GALGAS_uintlist : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_uintlist_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_uintlist (void) ;
+  public : GALGAS_uintlist (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_uintlist (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_uintlist (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_uintlist & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -4591,17 +4690,28 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_uint_36__34_list : public AC_GALGAS_list {
+class GALGAS_uint_36__34_list : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_uint_36__34_list_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_uint_36__34_list (void) ;
+  public : GALGAS_uint_36__34_list (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_uint_36__34_list (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_uint_36__34_list (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_uint_36__34_list & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -4747,17 +4857,28 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_bigintlist : public AC_GALGAS_list {
+class GALGAS_bigintlist : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_bigintlist_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_bigintlist (void) ;
+  public : GALGAS_bigintlist (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_bigintlist (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_bigintlist (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_bigintlist & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -4903,17 +5024,28 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintlist ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lbigintlist : public AC_GALGAS_list {
+class GALGAS_lbigintlist : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_lbigintlist_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_lbigintlist (void) ;
+  public : GALGAS_lbigintlist (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_lbigintlist (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_lbigintlist (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_lbigintlist & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,

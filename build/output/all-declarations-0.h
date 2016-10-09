@@ -350,17 +350,28 @@ class cPtr_templateInstructionAST : public acPtr_class {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateInstructionListAST : public AC_GALGAS_list {
+class GALGAS_templateInstructionListAST : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_templateInstructionListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_templateInstructionListAST (void) ;
+  public : GALGAS_templateInstructionListAST (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_templateInstructionListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_templateInstructionListAST (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_templateInstructionListAST & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -633,17 +644,28 @@ class cPtr_templateExpressionAST : public acPtr_class {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateExpressionListAST : public AC_GALGAS_list {
+class GALGAS_templateExpressionListAST : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_templateExpressionListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_templateExpressionListAST (void) ;
+  public : GALGAS_templateExpressionListAST (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_templateExpressionListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_templateExpressionListAST (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_templateExpressionListAST & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -3138,17 +3160,28 @@ class cPtr_templateInstructionGotoColumnLocationAST : public cPtr_templateInstru
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateInstructionIfBranchListAST : public AC_GALGAS_list {
+class GALGAS_templateInstructionIfBranchListAST : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_templateInstructionIfBranchListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_templateInstructionIfBranchListAST (void) ;
+  public : GALGAS_templateInstructionIfBranchListAST (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_templateInstructionIfBranchListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_templateInstructionIfBranchListAST (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_templateInstructionIfBranchListAST & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -3461,17 +3494,28 @@ class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateInstructionSwitchBranchListAST : public AC_GALGAS_list {
+class GALGAS_templateInstructionSwitchBranchListAST : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_templateInstructionSwitchBranchListAST_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_templateInstructionSwitchBranchListAST (void) ;
+  public : GALGAS_templateInstructionSwitchBranchListAST (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_templateInstructionSwitchBranchListAST (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_templateInstructionSwitchBranchListAST (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_templateInstructionSwitchBranchListAST & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -5609,17 +5653,28 @@ class cPtr_templateInstructionForGeneration : public acPtr_class {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateInstructionListForGeneration : public AC_GALGAS_list {
+class GALGAS_templateInstructionListForGeneration : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_templateInstructionListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_templateInstructionListForGeneration (void) ;
+  public : GALGAS_templateInstructionListForGeneration (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_templateInstructionListForGeneration (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_templateInstructionListForGeneration (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_templateInstructionListForGeneration & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -5979,17 +6034,28 @@ class cPtr_templateInstructionGotoColumnLocationForGeneration : public cPtr_temp
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateInstructionIfBranchListForGeneration : public AC_GALGAS_list {
+class GALGAS_templateInstructionIfBranchListForGeneration : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_templateInstructionIfBranchListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_templateInstructionIfBranchListForGeneration (void) ;
+  public : GALGAS_templateInstructionIfBranchListForGeneration (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_templateInstructionIfBranchListForGeneration (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_templateInstructionIfBranchListForGeneration (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_templateInstructionIfBranchListForGeneration & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -6512,17 +6578,28 @@ class cPtr_templateInstructionIfForGeneration : public cPtr_templateInstructionF
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateInstructionSwitchBranchListForGeneration : public AC_GALGAS_list {
+class GALGAS_templateInstructionSwitchBranchListForGeneration : public AC_GALGAS_list_new {
   private : TC_Array <class GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element> mArray ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_templateInstructionSwitchBranchListForGeneration (void) ;
+  public : GALGAS_templateInstructionSwitchBranchListForGeneration (const bool inIsValid = false) ;
 
 //--------------------------------- Destructor
   public : virtual ~ GALGAS_templateInstructionSwitchBranchListForGeneration (void) ;
 
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_templateInstructionSwitchBranchListForGeneration (cSharedList * inSharedListPtr) ;
+//--- count
+  public : VIRTUAL_IN_DEBUG inline uint32_t count (void) const { return (uint32_t) mArray.count () ; }
+
+//--- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_length (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_range getter_range (LOCATION_ARGS) const ;
+
+//--- Description
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Object compare
+  public : typeComparisonResult objectCompare (const GALGAS_templateInstructionSwitchBranchListForGeneration & inOperand) const ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,

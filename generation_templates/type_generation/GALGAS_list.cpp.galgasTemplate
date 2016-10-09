@@ -1,107 +1,8 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
-// class GALGAS_list_%!TYPE_IDENTIFIER% : public TC_UniqueArray <GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]%>, public C_SharedObject {
-//} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
-  public : GALGAS_%!TYPE_IDENTIFIER%_2D_element mObject ;
-
-//--- Constructor
-  public : cCollectionElement_%!TYPE_IDENTIFIER% (%?^
-  for () in ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
-    between %,\n%!^
-  end
-%\n%
-!^%COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cCollectionElement_%!TYPE_IDENTIFIER%::cCollectionElement_%!TYPE_IDENTIFIER% (%?^
-  for () in ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
-    between %,\n%!^
-  end
-%\n%
-!^%COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (%
-for () in ATTRIBUTE_LIST
-  do %in_%![mAttributeName identifierRepresentation]
-  between %, %
-end
-%) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cCollectionElement_%!TYPE_IDENTIFIER%::isValid (void) const {
-  return mObject.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
-  cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_%!TYPE_IDENTIFIER% (%
-    for () in ATTRIBUTE_LIST
-      do %mObject.mAttribute_%![mAttributeName identifierRepresentation]
-      between %, %
-    end
-  % COMMA_HERE)) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, const int32_t inIndentation) const {
-%
-  for () in ATTRIBUTE_LIST do
-    %  ioString << "\\n" ;\n%
-    %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
-    %  ioString << %![mAttributeName utf8Representation]% ":" ;\n%
-    %  mObject.mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
-  end
-%}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_%!TYPE_IDENTIFIER% * operand = (cCollectionElement_%!TYPE_IDENTIFIER% *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_%!TYPE_IDENTIFIER%) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
-AC_GALGAS_list (),
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid),
 mArray () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr),
-mArray () {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -111,10 +12,47 @@ GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
-  result.createNewEmptyList (THERE) ;
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_%!TYPE_IDENTIFIER% (true) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::getter_length (UNUSED_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (isValid ()) {
+    result = GALGAS_uint ((uint32_t) mArray.count ()) ;
+  }
   return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_range GALGAS_%!TYPE_IDENTIFIER%::getter_range (UNUSED_LOCATION_ARGS) const {
+  GALGAS_range result ;
+  if (isValid ()) {
+    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint ((uint32_t) mArray.count ())) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
+                    %!^%const int32_t inIndentation) const {
+  ioString << "<list @%!TYPE_IDENTIFIER%:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    ioString << " ("
+             << cStringWithSigned (mArray.count ())
+             << " object" << ((mArray.count () > 1) ? "s" : "")
+             << "): " ;
+    for (int32_t i=0 ; i<mArray.count () ; i++) {
+      mArray (i COMMA_HERE).description (ioString, inIndentation + 2) ;
+    }
+  }
+  ioString << ">" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -132,20 +70,19 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (
   between % && %
   end
   %) {
-    result.createNewEmptyList (THERE) ;
-    capCollectionElement attributes ;
-    GALGAS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (attributes%
+    result = GALGAS_%!TYPE_IDENTIFIER% (true) ;
+    result.addAssign_operation (%
     for () in ATTRIBUTE_LIST
-    do index IDX %, inOperand%![IDX string]
+    do index IDX %inOperand%![IDX string]
+    between %, %
     end
     % COMMA_THERE) ;
-    result.addObject (attributes) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
+/*
 void GALGAS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
   for () in ATTRIBUTE_LIST
     do %,\n%!^%const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
@@ -162,7 +99,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (%?^%capCollectionElem
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
-
+*/
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
@@ -170,23 +107,19 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
-  %\n%!^%COMMA_LOCATION_ARGS) {
+  %\n%!^%COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid ()%
   for () in ATTRIBUTE_LIST
   do index IDX % && inOperand%![IDX string]%.isValid ()%
   end
   %) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
+    const GALGAS_%!TYPE_IDENTIFIER%_2D_element element (%
     for () in ATTRIBUTE_LIST
     do index IDX %inOperand%![IDX string]
     between %, %
     end
-    % COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    addObject (attributes) ;
+    %) ;
+    mArray.addObject (element) ;
   }
 }
 
@@ -204,17 +137,20 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^
   do index IDX % && inOperand%![IDX string]%.isValid ()%
   end
   %) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
+    const GALGAS_%!TYPE_IDENTIFIER%_2D_element element (%
     for () in ATTRIBUTE_LIST
     do index IDX %inOperand%![IDX string]
     between %, %
     end
-    % COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+    %) ;
+    const int32_t index = (int32_t) inInsertionIndex.uintValue () ;
+    if (index <= mArray.count ()) {
+      mArray.insertObjectAtIndex (element, index COMMA_THERE) ;
+    }else{
+      C_String s = "insertAtIndex: insertion index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
@@ -226,135 +162,148 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^
   end
    %const GALGAS_uint inRemoveIndex,\n%!^
    %C_Compiler * inCompiler\n%!^
-   %COMMA_LOCATION_ARGS) {
+   %COMMA_LOCATION_ARGS) {%
+ for () in ATTRIBUTE_LIST do index IDX
+    %  outOperand%![IDX string] %.drop () ;\n%
+  end
+%
   if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
-    if (NULL == p) {
+    const int32_t index = (int32_t) inRemoveIndex.uintValue () ;
+    if (index <= mArray.count ()) {
+      const GALGAS_%!TYPE_IDENTIFIER%_2D_element element = mArray (index COMMA_THERE) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %      outOperand%![IDX string] %.drop () ;\n%
+    %      outOperand%![IDX string] % = element.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end
-%    }else{
-      macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
-%
- for () in ATTRIBUTE_LIST do index IDX
-    %      outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-  end
-%    }
+%      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    }else{
+      C_String s = "removeAtIndex: remove index (" ;
+      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^
-  for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  for () in ATTRIBUTE_LIST do index IDX
+    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string]%,\n%!^
   end
-  %C_Compiler * inCompiler
-  %!^%COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
-  if (NULL == p) {
+   %C_Compiler * inCompiler\n%!^
+   %COMMA_LOCATION_ARGS) {%
+ for () in ATTRIBUTE_LIST do index IDX
+    %  outOperand%![IDX string] %.drop () ;\n%
+  end
+%
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const GALGAS_%!TYPE_IDENTIFIER%_2D_element element = mArray (0 COMMA_THERE) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] %.drop () ;\n%
+    %      outOperand%![IDX string] % = element.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end
-%  }else{
-    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
-%
- for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-  end
-%  }
+%      mArray.removeObjectAtIndex (0 COMMA_THERE) ;
+    }else{
+      C_String s = "popFirst: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_popLast (%?^
-  for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  for () in ATTRIBUTE_LIST do index IDX
+    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string]%,\n%!^
   end
-  %C_Compiler * inCompiler
-  %!^%COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
-  if (NULL == p) {
+   %C_Compiler * inCompiler\n%!^
+   %COMMA_LOCATION_ARGS) {%
+ for () in ATTRIBUTE_LIST do index IDX
+    %  outOperand%![IDX string] %.drop () ;\n%
+  end
+%
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const int32_t index = mArray.count () - 1 ;
+      const GALGAS_%!TYPE_IDENTIFIER%_2D_element element = mArray (index COMMA_THERE) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] %.drop () ;\n%
+    %      outOperand%![IDX string] % = element.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end
-%  }else{
-    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
-%
- for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-  end
-%  }
+%      mArray.removeObjectAtIndex (index COMMA_THERE) ;
+    }else{
+      C_String s = "popLast: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
-  for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  for () in ATTRIBUTE_LIST do index IDX
+    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string]%,\n%!^
   end
-  %C_Compiler * inCompiler
-  %!^%COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
-  if (NULL == p) {
+   %C_Compiler * inCompiler\n%!^
+   %COMMA_LOCATION_ARGS) const {\n%
+ for () in ATTRIBUTE_LIST do index IDX
+    %  outOperand%![IDX string] %.drop () ;\n%
+  end
+%
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const GALGAS_%!TYPE_IDENTIFIER%_2D_element element = mArray (0 COMMA_THERE) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] %.drop () ;\n%
+    %      outOperand%![IDX string] % = element.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end
-%  }else{
-    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
-%
- for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-  end
-%  }
+%    }else{
+      C_String s = "popFirst: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
-  for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  for () in ATTRIBUTE_LIST do index IDX
+    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string]%,\n%!^
   end
-  %C_Compiler * inCompiler
-  %!^%COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
-  if (NULL == p) {
+   %C_Compiler * inCompiler\n%!^
+   %COMMA_LOCATION_ARGS) const {\n%
+ for () in ATTRIBUTE_LIST do index IDX
+    %  outOperand%![IDX string] %.drop () ;\n%
+  end
+%
+  if (isValid ()) {
+    if (mArray.count () > 0) {
+      const int32_t index = mArray.count () - 1 ;
+      const GALGAS_%!TYPE_IDENTIFIER%_2D_element element = mArray (index COMMA_THERE) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] %.drop () ;\n%
+    %      outOperand%![IDX string] % = element.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end
-%  }else{
-    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
-%
- for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-  end
-%  }
+%    }else{
+      C_String s = "popLast: list is empty" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,
                                             %!^%C_Compiler * /* inCompiler */
-                                            %!^%COMMA_UNUSED_LOCATION_ARGS) const {
+                                            %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   if (isValid () && inOperand.isValid ()) {
     result = *this ;
-    result.appendList (inOperand) ;
+    result.mArray.setCapacity (result.mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
+      result.mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
+    }
   }
   return result ;
 }
@@ -364,8 +313,22 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GA
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListWithRange (%?^%const GALGAS_range & inRange,
                                                %!^%C_Compiler * inCompiler
                                                %!^%COMMA_LOCATION_ARGS) const {
-  GALGAS_%!TYPE_IDENTIFIER% result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  if (isValid () && inRange.isValid ()) {
+    const uint32_t startIdx = inRange.mAttribute_start.uintValue () ;
+    const uint32_t length = inRange.mAttribute_length.uintValue () ;
+    if ((startIdx + length) <= (uint32_t) mArray.count ()) {
+      result = GALGAS_%!TYPE_IDENTIFIER% (true) ;
+      result.mArray.setCapacity ((int32_t) length) ;
+      for (uint32_t i=0 ; i<length ; i++) {
+        result.mArray.addObject (mArray ((int32_t) (startIdx + i) COMMA_THERE)) ;
+      }
+    }else{
+      C_String s = "subListWithRange: max index (" ;
+      s << cStringWithUnsigned (startIdx + length) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 
@@ -374,8 +337,21 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListWithRange (%?
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListFromIndex (%?^%const GALGAS_uint & inIndex,
                                                %!^%C_Compiler * inCompiler
                                                %!^%COMMA_LOCATION_ARGS) const {
-  GALGAS_%!TYPE_IDENTIFIER% result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index <= mArray.count ()) {
+      result = GALGAS_%!TYPE_IDENTIFIER% (true) ;
+      result.mArray.setCapacity (mArray.count () + 1 - index) ;
+      for (int32_t i=index ; i<mArray.count () ; i++) {
+        result.mArray.addObject (mArray (i COMMA_THERE)) ;
+      }
+    }else{
+      C_String s = "subListFromIndex: index (" ;
+      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 
@@ -384,8 +360,21 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListFromIndex (%?
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListToIndex (%?^%const GALGAS_uint & inIndex,
                                                %!^%C_Compiler * inCompiler
                                                %!^%COMMA_LOCATION_ARGS) const {
-  GALGAS_%!TYPE_IDENTIFIER% result = GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  if (isValid () && inIndex.isValid ()) {
+    const int32_t index = (int32_t) inIndex.uintValue () ;
+    if (index < mArray.count ()) {
+      result = GALGAS_%!TYPE_IDENTIFIER% (true) ;
+      result.mArray.setCapacity (index + 1) ;
+      for (int32_t i=0 ; i<=index ; i++) {
+        result.mArray.addObject (mArray (i COMMA_THERE)) ;
+      }
+    }else{
+      C_String s = "subListFromIndex: index (" ;
+      s << cStringWithSigned (index) << ") > length (" << cStringWithSigned (mArray.count ()) << ")" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
   return result ;
 }
 
@@ -393,8 +382,13 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListToIndex (%?^%
 
 void GALGAS_%!TYPE_IDENTIFIER%::plusAssign_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% inOperand,
                           %!^%C_Compiler * /* inCompiler */
-                          %!^%COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
+                          %!^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand.isValid ()) {
+    mArray.setCapacity (mArray.count () + inOperand.mArray.count ()) ;
+    for (int32_t i=0 ; i<inOperand.mArray.count () ; i++) {
+      mArray.addObject (inOperand.mArray (i COMMA_THERE)) ;
+    }
+  }
 }
 
 %
@@ -405,11 +399,15 @@ for () in ATTRIBUTE_LIST do index IDX
   %                                              %!^%GALGAS_uint inIndex,\n%
   %                                              %!^%C_Compiler * inCompiler\n%
   %                                              %!^%COMMA_LOCATION_ARGS) {\n%
-  %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
-  %  if (NULL != p) {\n%
-  %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
-  %    macroUniqueSharedObject (p) ;\n%
-  %    p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% = inOperand ;\n%
+  %  if (isValid () && inOperand.isValid () && inIndex.isValid ()) {\n%
+  %    const int32_t index = (int32_t) inIndex.uintValue () ;\n%
+  %    if (index <= mArray.count ()) {\n%
+  %      mArray (index COMMA_THERE).mAttribute_%![mAttributeName identifierRepresentation]% = inOperand ;\n%
+  %    }else{\n%
+  %      C_String s = "set%![mAttributeName stringByCapitalizingFirstCharacter]%AtIndex: index (" ;\n%
+  %      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;\n%
+  %      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
+  %    }\n%
   %  }\n%
   %}\n\n%
   end
@@ -419,12 +417,16 @@ for () in ATTRIBUTE_LIST do index IDX
     %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mAttributeName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint & inIndex,\n%
     %                                              %!^%C_Compiler * inCompiler\n%
     %                                              %!^%COMMA_LOCATION_ARGS) const {\n%
-    %  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
-    %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%
     %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
-    %  if (NULL != p) {\n%
-    %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
-    %    result = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %  if (isValid () && inIndex.isValid ()) {\n%
+    %    const int32_t index = (int32_t) inIndex.uintValue () ;\n%
+    %    if (index < mArray.count ()) {\n%
+    %      result = mArray (index COMMA_THERE).mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    }else{\n%
+    %      C_String s = "getter mValueAtIndex: index (" ;\n%
+    %      s << cStringWithSigned (index) << ") >= length (" << cStringWithSigned (mArray.count ()) << ")" ;\n%
+    %      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
+    %    }\n%
     %  }\n%
     %  return result ;\n%
     %}\n\n%
@@ -434,13 +436,32 @@ end
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    int32_t r = mArray.count () - inOperand.mArray.count () ;
+    if (r < 0) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (r > 0) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      for (int32_t i=0 ; (i<mArray.count ()) && (result == kOperandEqual) ; i++) {
+        result = mArray (i COMMA_HERE).objectCompare (inOperand.mArray (i COMMA_HERE)) ;
+      }
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                    %!^%const typeEnumerationOrder inOrder) :
 mEnumerationArrayEx (),
 mEnumerationArray (),
 mIndex (0),
 mOrder (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArrayEx, inOrder) ;
+  mEnumerationArray = inEnumeratedObject.mArray ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -451,36 +472,40 @@ cEnumerator_%!TYPE_IDENTIFIER%::~ cEnumerator_%!TYPE_IDENTIFIER% (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cEnumerator_%!TYPE_IDENTIFIER%::hasCurrentObject (void) const {
-  return mIndex < mEnumerationArrayEx.count () ;
+  return mIndex < mEnumerationArray.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cEnumerator_%!TYPE_IDENTIFIER%::hasNextObject (void) const {
-  return (mIndex + 1) < mEnumerationArrayEx.count () ;
+  return (mIndex + 1) < mEnumerationArray.count () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const cCollectionElement * cEnumerator_%!TYPE_IDENTIFIER%::currentObjectPtr (LOCATION_ARGS) const {
-  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
-}
+//const cCollectionElement * cEnumerator_%!TYPE_IDENTIFIER%::currentObjectPtr (LOCATION_ARGS) const {
+//  return mEnumerationArrayEx.pointerAtIndexForReadAccess (mIndex COMMA_THERE) ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
-  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
-  return p->mObject ;
+  const int32_t idx = (mOrder == kENUMERATION_UP)
+    ? mIndex
+    : mEnumerationArray.count () - 1 - mIndex
+  ;
+  return mEnumerationArray (idx COMMA_THERE) ;
 }
 
 
 %for () in ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
-  %  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
-  %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
-  %  return p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  %  const int32_t idx = (mOrder == kENUMERATION_UP)\n%
+  %    ? mIndex\n%
+  %    : mEnumerationArray.count () - 1 - mIndex\n%
+  %  ;\n%
+  %  return mEnumerationArray (idx COMMA_THERE).mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 end
 %
