@@ -577,7 +577,7 @@ void AC_GALGAS_list::drop (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_list::insulateList (LOCATION_ARGS) {
-  if ((mySharedList != NULL) && (mySharedList->retainCount () > 1)) {
+  if ((mySharedList != NULL) && !mySharedList->isUniquelyReferenced ()) {
     cSharedList * p = NULL ;
     macroMyNew (p, cSharedList (THERE)) ;
     p->copyFrom (mySharedList) ;
@@ -1085,7 +1085,7 @@ void cSharedListMapRoot::copyFrom (const cSharedListMapRoot * inSource) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_listmap::insulateListMap (LOCATION_ARGS) {
-  if ((mSharedListMap != NULL) && (mSharedListMap->retainCount () > 1)) {
+  if ((mSharedListMap != NULL) && !mSharedListMap->isUniquelyReferenced ()) {
     cSharedListMapRoot * p = NULL ;
     macroMyNew (p, cSharedListMapRoot (THERE)) ;
     p->copyFrom (mSharedListMap) ;
@@ -1213,7 +1213,7 @@ void cSharedListMapRoot::addObjectInListMap (const C_String & inKey,
   macroValidPointer (entry) ;
   macroValidSharedObject (entry->mySharedList, cSharedList) ;
 //--- Insulate list ?
-  if (entry->mySharedList->retainCount () > 1) {
+  if (!entry->mySharedList->isUniquelyReferenced ()) {
     cSharedList * p = NULL ;
     macroMyNew (p, cSharedList (HERE)) ;
     p->copyFrom (entry->mySharedList) ;

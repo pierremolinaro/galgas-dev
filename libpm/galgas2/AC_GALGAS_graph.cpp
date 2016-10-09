@@ -334,7 +334,7 @@ void AC_GALGAS_graph::drop (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_graph::insulateGraph (LOCATION_ARGS) {
-  if ((mSharedGraph != NULL) && (mSharedGraph->retainCount () > 1)) {
+  if ((mSharedGraph != NULL) && !mSharedGraph->isUniquelyReferenced ()) {
     cSharedGraph * p = NULL ;
     macroMyNew (p, cSharedGraph (THERE)) ;
     p->copyFrom (mSharedGraph) ;
