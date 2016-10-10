@@ -89,8 +89,8 @@ class capCollectionElementArray {
   public : capCollectionElement objectAtIndex (const uint32_t inIndex COMMA_LOCATION_ARGS) const ;
 
 //--- Get object pointer for writing (perform implicitly an "insulate" action)
-  public : cCollectionElement * pointerAtIndex (const uint32_t inIndex
-                                                COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement * uniquelyReferencedPointerAtIndex (const uint32_t inIndex
+                                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Get object pointer for reading
   public : const cCollectionElement * pointerAtIndexForReadAccess (const uint32_t inIndex

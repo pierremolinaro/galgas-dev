@@ -123,8 +123,16 @@ class cSharedGraph : public C_SharedObject {
                                          cSharedList * & outUnsortedList,
                                          GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
 
+  public : void internalTopologicalSort (capCollectionElementArray & outSortedList,
+                                         GALGAS_lstringlist & outSortedNodeKeyList,
+                                         capCollectionElementArray & outUnsortedList,
+                                         GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
+
 
   public : void internalFindCircularities (cSharedList * & outInfoList,
+                                           GALGAS_lstringlist & outNodeKeyList) const ;
+
+  public : void internalFindCircularities (capCollectionElementArray & outInfoList,
                                            GALGAS_lstringlist & outNodeKeyList) const ;
 
   public : void internalNodesWithNoPredecessor (cSharedList * & outInfoList,
@@ -133,9 +141,20 @@ class cSharedGraph : public C_SharedObject {
   public : void internalNodesWithNoSuccessor (cSharedList * & outInfoList,
                                               GALGAS_lstringlist & outNodeKeyList) const ;
 
+  public : void internalNodesWithNoPredecessor (capCollectionElementArray & outInfoList,
+                                                GALGAS_lstringlist & outNodeKeyList) const ;
+
+  public : void internalNodesWithNoSuccessor (capCollectionElementArray & outInfoList,
+                                              GALGAS_lstringlist & outNodeKeyList) const ;
+
   public : void internalDepthFirstTopologicalSort (cSharedList * & outSortedList,
                                                    GALGAS_lstringlist & outSortedNodeKeyList,
                                                    cSharedList * & outUnsortedList,
+                                                   GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
+
+  public : void internalDepthFirstTopologicalSort (capCollectionElementArray & outSortedList,
+                                                   GALGAS_lstringlist & outSortedNodeKeyList,
+                                                   capCollectionElementArray & outUnsortedList,
                                                    GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
 
   public : void subGraph (AC_GALGAS_graph & outResultingGraph,
@@ -1049,7 +1068,39 @@ void cSharedGraph::internalFindCircularities (cSharedList * & outInfoList,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cSharedGraph::internalFindCircularities (capCollectionElementArray & outInfoList,
+                                              GALGAS_lstringlist & outNodeKeyList) const {
+  TC_UniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesInvolvedInCircularities (nodeArray) ;
+//--- Add nodes
+  outInfoList.removeAllObjects() ;
+//  AC_GALGAS_list::makeNewSharedList (outInfoList COMMA_HERE) ;
+  outNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  for (int32_t i=0 ; i<nodeArray.count () ; i++) {
+    const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
+    const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outInfoList.appendObject (nodePtr->mAttributes) ;
+    // AC_GALGAS_list::insertInSharedList (outInfoList, nodePtr->mAttributes) ;
+    GALGAS_lstring lkey ;
+    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
+    lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
+    outNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void AC_GALGAS_graph::internalFindCircularities (cSharedList * & outInfoList,
+                                                 GALGAS_lstringlist & outNodeKeyList
+                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+  outNodeKeyList.drop () ;
+  if (isValid ()) {
+    mSharedGraph->internalFindCircularities (outInfoList, outNodeKeyList) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void AC_GALGAS_graph::internalFindCircularities (capCollectionElementArray & outInfoList,
                                                  GALGAS_lstringlist & outNodeKeyList
                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   outNodeKeyList.drop () ;
@@ -1063,6 +1114,27 @@ void AC_GALGAS_graph::internalFindCircularities (cSharedList * & outInfoList,
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Nodes with no predecessor
 #endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cSharedGraph::internalNodesWithNoPredecessor (capCollectionElementArray & outInfoList,
+                                                   GALGAS_lstringlist & outNodeKeyList) const {
+  TC_UniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoPredecessor (nodeArray) ;
+//--- Add nodes
+  outInfoList.removeAllObjects() ;
+//  AC_GALGAS_list::makeNewSharedList (outInfoList COMMA_HERE) ;
+  outNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  for (int32_t i=0 ; i<nodeArray.count () ; i++) {
+    const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
+    const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outInfoList.appendObject (nodePtr->mAttributes) ;
+    // AC_GALGAS_list::insertInSharedList (outInfoList, nodePtr->mAttributes) ;
+    GALGAS_lstring lkey ;
+    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
+    lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
+    outNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
+  }
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1086,6 +1158,17 @@ void cSharedGraph::internalNodesWithNoPredecessor (cSharedList * & outInfoList,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_graph::internalNodesWithNoPredecessor (cSharedList * & outInfoList,
+                                                      GALGAS_lstringlist & outNodeKeyList
+                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+  outNodeKeyList.drop () ;
+  if (isValid ()) {
+    mSharedGraph->internalNodesWithNoPredecessor (outInfoList, outNodeKeyList) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void AC_GALGAS_graph::internalNodesWithNoPredecessor (capCollectionElementArray & outInfoList,
                                                       GALGAS_lstringlist & outNodeKeyList
                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   outNodeKeyList.drop () ;
@@ -1121,9 +1204,41 @@ void cSharedGraph::internalNodesWithNoSuccessor (cSharedList * & outInfoList,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cSharedGraph::internalNodesWithNoSuccessor (capCollectionElementArray & outInfoList,
+                                                 GALGAS_lstringlist & outNodeKeyList) const {
+  TC_UniqueArray <uint32_t> nodeArray ; mDirectedGraph.getNodesWithNoSuccessor (nodeArray) ;
+//--- Add nodes
+  outInfoList.removeAllObjects() ;
+//  AC_GALGAS_list::makeNewSharedList (outInfoList COMMA_HERE) ;
+  outNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  for (int32_t i=0 ; i<nodeArray.count () ; i++) {
+    const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
+    const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outInfoList.appendObject (nodePtr->mAttributes) ;
+  //  AC_GALGAS_list::insertInSharedList (outInfoList, nodePtr->mAttributes) ;
+    GALGAS_lstring lkey ;
+    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
+    lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
+    outNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void AC_GALGAS_graph::internalNodesWithNoSuccessor (cSharedList * & outInfoList,
-                                                      GALGAS_lstringlist & outNodeKeyList
-                                                      COMMA_UNUSED_LOCATION_ARGS) const {
+                                                    GALGAS_lstringlist & outNodeKeyList
+                                                    COMMA_UNUSED_LOCATION_ARGS) const {
+  outNodeKeyList.drop () ;
+  if (isValid ()) {
+    mSharedGraph->internalNodesWithNoSuccessor (outInfoList, outNodeKeyList) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void AC_GALGAS_graph::internalNodesWithNoSuccessor (capCollectionElementArray & outInfoList,
+                                                    GALGAS_lstringlist & outNodeKeyList
+                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   outNodeKeyList.drop () ;
   if (isValid ()) {
     mSharedGraph->internalNodesWithNoSuccessor (outInfoList, outNodeKeyList) ;
@@ -1135,6 +1250,45 @@ void AC_GALGAS_graph::internalNodesWithNoSuccessor (cSharedList * & outInfoList,
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Breath First Topological sort
 #endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cSharedGraph::internalTopologicalSort (capCollectionElementArray & outSortedList,
+                                            GALGAS_lstringlist & outSortedNodeKeyList,
+                                            capCollectionElementArray & outUnsortedList,
+                                            GALGAS_lstringlist & outUnsortedNodeKeyList) const {
+  TC_UniqueArray <uint32_t> sortedNodes ;
+  TC_UniqueArray <uint32_t> unsortedNodes ;
+  mDirectedGraph.topologicalSort (sortedNodes, unsortedNodes) ;
+//--- Add sorted nodes
+  outSortedList.removeAllObjects() ;
+//  AC_GALGAS_list::makeNewSharedList (outSortedList COMMA_HERE) ;
+  outSortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  for (int32_t i=0 ; i<sortedNodes.count () ; i++) {
+    const uint32_t nodeIndex = sortedNodes (i COMMA_HERE) ;
+    const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outSortedList.appendObject (nodePtr->mAttributes) ;
+//    AC_GALGAS_list::insertInSharedList (outSortedList, nodePtr->mAttributes) ;
+    GALGAS_lstring lkey ;
+    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
+    lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
+    outSortedNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
+  }
+//--- Add unsorted nodes
+  outUnsortedList.removeAllObjects() ;
+//  AC_GALGAS_list::makeNewSharedList (outUnsortedList COMMA_HERE) ;
+  outUnsortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  for (int32_t i=0 ; i<unsortedNodes.count () ; i++) {
+    const uint32_t nodeIndex = unsortedNodes (i COMMA_HERE) ;
+    const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outUnsortedList.appendObject (nodePtr->mAttributes) ;
+//    AC_GALGAS_list::insertInSharedList (outUnsortedList, nodePtr->mAttributes) ;
+    GALGAS_lstring lkey ;
+    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
+    lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
+    outUnsortedNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
+  }
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1201,9 +1355,76 @@ void AC_GALGAS_graph::internalTopologicalSort (cSharedList * & outSortedList,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void AC_GALGAS_graph::internalTopologicalSort (capCollectionElementArray & outSortedList,
+                                               GALGAS_lstringlist & outSortedNodeKeyList,
+                                               capCollectionElementArray & outUnsortedList,
+                                               GALGAS_lstringlist & outUnsortedNodeKeyList,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
+  outSortedNodeKeyList.drop () ;
+  outUnsortedNodeKeyList.drop () ;
+  if (isValid ()) {
+    uint32_t undefinedNodeCount = 0 ;
+    countUndefinedNodeCount (mSharedGraph->root (), undefinedNodeCount) ;
+    if (0 != undefinedNodeCount) {
+      C_String s ;
+      s << "Cannot apply graph topologicalSort: there " ;
+      if (undefinedNodeCount > 1) {
+        s << "are " << cStringWithUnsigned (undefinedNodeCount) << " undefined nodes" ;
+      }else{
+        s << "is 1 undefined node" ;
+      }
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }else{
+      mSharedGraph->internalTopologicalSort (outSortedList, outSortedNodeKeyList, outUnsortedList, outUnsortedNodeKeyList) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Depth First Topological sort
 #endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cSharedGraph::internalDepthFirstTopologicalSort (capCollectionElementArray & outSortedList,
+                                                      GALGAS_lstringlist & outSortedNodeKeyList,
+                                                      capCollectionElementArray & outUnsortedList,
+                                                      GALGAS_lstringlist & outUnsortedNodeKeyList) const {
+  TC_UniqueArray <uint32_t> sortedNodes ;
+  TC_UniqueArray <uint32_t> unsortedNodes ;
+  mDirectedGraph.depthFirstTopologicalSort (sortedNodes, unsortedNodes) ;
+//--- Add sorted nodes
+  outSortedList.removeAllObjects() ;
+//  AC_GALGAS_list::makeNewSharedList (outSortedList COMMA_HERE) ;
+  outSortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  for (int32_t i=0 ; i<sortedNodes.count () ; i++) {
+    const uint32_t nodeIndex = sortedNodes (i COMMA_HERE) ;
+    const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outSortedList.appendObject (nodePtr->mAttributes) ;
+ //   AC_GALGAS_list::insertInSharedList (outSortedList, nodePtr->mAttributes) ;
+    GALGAS_lstring lkey ;
+    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
+    lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
+    outSortedNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
+  }
+//--- Add unsorted nodes
+  outUnsortedList.removeAllObjects() ;
+//  AC_GALGAS_list::makeNewSharedList (outUnsortedList COMMA_HERE) ;
+  outUnsortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  for (int32_t i=0 ; i<unsortedNodes.count () ; i++) {
+    const uint32_t nodeIndex = unsortedNodes (i COMMA_HERE) ;
+    const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_HERE) ;
+    outUnsortedList.appendObject (nodePtr->mAttributes) ;
+//    AC_GALGAS_list::insertInSharedList (outUnsortedList, nodePtr->mAttributes) ;
+    GALGAS_lstring lkey ;
+    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
+    lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
+    outUnsortedNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
+  }
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1245,6 +1466,34 @@ void cSharedGraph::internalDepthFirstTopologicalSort (cSharedList * & outSortedL
 void AC_GALGAS_graph::internalDepthFirstTopologicalSort (cSharedList * & outSortedList,
                                                          GALGAS_lstringlist & outSortedNodeKeyList,
                                                          cSharedList * & outUnsortedList,
+                                                         GALGAS_lstringlist & outUnsortedNodeKeyList,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  outSortedNodeKeyList.drop () ;
+  outUnsortedNodeKeyList.drop () ;
+  if (isValid ()) {
+    uint32_t undefinedNodeCount = 0 ;
+    countUndefinedNodeCount (mSharedGraph->root (), undefinedNodeCount) ;
+    if (0 != undefinedNodeCount) {
+      C_String s ;
+      s << "Cannot apply graph topologicalSort: there " ;
+      if (undefinedNodeCount > 1) {
+        s << "are " << cStringWithUnsigned (undefinedNodeCount) << " undefined nodes" ;
+      }else{
+        s << "is 1 undefined node" ;
+      }
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }else{
+      mSharedGraph->internalDepthFirstTopologicalSort (outSortedList, outSortedNodeKeyList, outUnsortedList, outUnsortedNodeKeyList) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void AC_GALGAS_graph::internalDepthFirstTopologicalSort (capCollectionElementArray & outSortedList,
+                                                         GALGAS_lstringlist & outSortedNodeKeyList,
+                                                         capCollectionElementArray & outUnsortedList,
                                                          GALGAS_lstringlist & outUnsortedNodeKeyList,
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) const {

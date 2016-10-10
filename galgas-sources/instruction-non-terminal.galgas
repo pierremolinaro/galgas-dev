@@ -87,14 +87,10 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount
 {
-#  let usefulnessName = ruleNameForUsefulEntitiesGraph (!inComponentName !mNonterminalName)
-#  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
-#---
-  @nonterminalLabelMap labelMap
-  [inNonterminalMap searchKey !mNonterminalName ?labelMap]
+  [inNonterminalMap searchKey !mNonterminalName ?let @nonterminalLabelMap labelMap]
   @formalParameterSignature signature
   if [mLabelName string] == "parse" then
-    signature = @formalParameterSignature.emptyList
+    signature = {}
   else
     [labelMap searchKey !mLabelName ?* ?signature ?*]
   end

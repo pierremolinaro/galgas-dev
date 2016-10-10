@@ -4,14 +4,14 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_list {
+class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public : GALGAS_%!TYPE_IDENTIFIER% (const bool inIsValid = false) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_%!TYPE_IDENTIFIER% (cSharedList * inSharedListPtr) ;
+  public : GALGAS_%!TYPE_IDENTIFIER% (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
   for () in ATTRIBUTE_LIST
     do %,\n%!^%const class GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]

@@ -46,13 +46,11 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_topologicalSort (%?^%GALGAS_%![ASSOCIATED
                        %!^%GALGAS_lstringlist & outUnsortedKeyList,
                        %!^%C_Compiler * inCompiler
                        %!^%COMMA_LOCATION_ARGS) const {
-  cSharedList * sortedList = NULL ;
-  cSharedList * unsortedList = NULL ;
+  capCollectionElementArray sortedList ;
+  capCollectionElementArray unsortedList ;
   internalTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
   outSortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (sortedList) ;
   outUnsortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (unsortedList) ;
-  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (sortedList) ;
-  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (unsortedList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -63,13 +61,11 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_depthFirstTopologicalSort (%?^%GALGAS_%![
                        %!^%GALGAS_lstringlist & outUnsortedKeyList,
                        %!^%C_Compiler * inCompiler
                        %!^%COMMA_LOCATION_ARGS) const {
-  cSharedList * sortedList = NULL ;
-  cSharedList * unsortedList = NULL ;
+  capCollectionElementArray sortedList ;
+  capCollectionElementArray unsortedList ;
   internalDepthFirstTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
   outSortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (sortedList) ;
   outUnsortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (unsortedList) ;
-  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (sortedList) ;
-  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (unsortedList) ;
 }
 
 
@@ -86,10 +82,9 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_reversedGraph (LOCAT
 void GALGAS_%!TYPE_IDENTIFIER%::method_circularities (%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
                        %!^%GALGAS_lstringlist & outKeyList
                        %!^%COMMA_LOCATION_ARGS) const {
-  cSharedList * infoList = NULL ;
+  capCollectionElementArray infoList ;
   internalFindCircularities (infoList, outKeyList COMMA_THERE) ;
   outInfoList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
-  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (infoList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -97,10 +92,9 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_circularities (%?^%GALGAS_%![ASSOCIATED_L
 void GALGAS_%!TYPE_IDENTIFIER%::method_nodesWithNoSuccessor (%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
                        %!^%GALGAS_lstringlist & outKeyList
                        %!^%COMMA_LOCATION_ARGS) const {
-  cSharedList * infoList = NULL ;
+  capCollectionElementArray infoList ;
   internalNodesWithNoSuccessor (infoList, outKeyList COMMA_THERE) ;
   outInfoList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
-  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (infoList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -108,10 +102,9 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_nodesWithNoSuccessor (%?^%GALGAS_%![ASSOC
 void GALGAS_%!TYPE_IDENTIFIER%::method_nodesWithNoPredecessor (%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
                        %!^%GALGAS_lstringlist & outKeyList
                        %!^%COMMA_LOCATION_ARGS) const {
-  cSharedList * infoList = NULL ;
+  capCollectionElementArray infoList ;
   internalNodesWithNoPredecessor (infoList, outKeyList COMMA_THERE) ;
   outInfoList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
-  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (infoList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

@@ -171,25 +171,20 @@ typeComparisonResult cCollectionElement_stringlist::compare (const cCollectionEl
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist::GALGAS_stringlist (void) :
-AC_GALGAS_list () {
+GALGAS_stringlist::GALGAS_stringlist (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist::GALGAS_stringlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_stringlist::GALGAS_stringlist (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_stringlist::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_stringlist result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_stringlist GALGAS_stringlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_stringlist  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -198,7 +193,7 @@ GALGAS_stringlist GALGAS_stringlist::constructor_listWithValue (const GALGAS_str
                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_stringlist result ;
   if (inOperand0.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_stringlist (true) ;
     capCollectionElement attributes ;
     GALGAS_stringlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -387,7 +382,7 @@ void GALGAS_stringlist::setter_setMValueAtIndex (GALGAS_string inOperand,
                                                  GALGAS_uint inIndex,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
-  cCollectionElement_stringlist * p = (cCollectionElement_stringlist *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_stringlist * p = (cCollectionElement_stringlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_stringlist) ;
     macroUniqueSharedObject (p) ;
@@ -636,25 +631,20 @@ typeComparisonResult cCollectionElement_lstringlist::compare (const cCollectionE
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist::GALGAS_lstringlist (void) :
-AC_GALGAS_list () {
+GALGAS_lstringlist::GALGAS_lstringlist (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist::GALGAS_lstringlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_lstringlist::GALGAS_lstringlist (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_lstringlist::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_lstringlist result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_lstringlist GALGAS_lstringlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_lstringlist  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -663,7 +653,7 @@ GALGAS_lstringlist GALGAS_lstringlist::constructor_listWithValue (const GALGAS_l
                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_lstringlist result ;
   if (inOperand0.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_lstringlist (true) ;
     capCollectionElement attributes ;
     GALGAS_lstringlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -852,7 +842,7 @@ void GALGAS_lstringlist::setter_setMValueAtIndex (GALGAS_lstring inOperand,
                                                   GALGAS_uint inIndex,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
-  cCollectionElement_lstringlist * p = (cCollectionElement_lstringlist *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_lstringlist * p = (cCollectionElement_lstringlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_lstringlist) ;
     macroUniqueSharedObject (p) ;
@@ -1150,25 +1140,20 @@ typeComparisonResult cCollectionElement__32_lstringlist::compare (const cCollect
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_lstringlist::GALGAS__32_lstringlist (void) :
-AC_GALGAS_list () {
+GALGAS__32_lstringlist::GALGAS__32_lstringlist (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_lstringlist::GALGAS__32_lstringlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS__32_lstringlist::GALGAS__32_lstringlist (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_lstringlist GALGAS__32_lstringlist::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS__32_lstringlist result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS__32_lstringlist GALGAS__32_lstringlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS__32_lstringlist  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1178,7 +1163,7 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::constructor_listWithValue (const 
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS__32_lstringlist result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS__32_lstringlist (true) ;
     capCollectionElement attributes ;
     GALGAS__32_lstringlist::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -1386,7 +1371,7 @@ void GALGAS__32_lstringlist::setter_setMValue_30_AtIndex (GALGAS_lstring inOpera
                                                           GALGAS_uint inIndex,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
-  cCollectionElement__32_lstringlist * p = (cCollectionElement__32_lstringlist *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement__32_lstringlist * p = (cCollectionElement__32_lstringlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
     macroUniqueSharedObject (p) ;
@@ -1415,7 +1400,7 @@ void GALGAS__32_lstringlist::setter_setMValue_31_AtIndex (GALGAS_lstring inOpera
                                                           GALGAS_uint inIndex,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
-  cCollectionElement__32_lstringlist * p = (cCollectionElement__32_lstringlist *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement__32_lstringlist * p = (cCollectionElement__32_lstringlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
     macroUniqueSharedObject (p) ;
@@ -1944,25 +1929,20 @@ typeComparisonResult cCollectionElement__32_stringlist::compare (const cCollecti
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist::GALGAS__32_stringlist (void) :
-AC_GALGAS_list () {
+GALGAS__32_stringlist::GALGAS__32_stringlist (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist::GALGAS__32_stringlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS__32_stringlist::GALGAS__32_stringlist (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS__32_stringlist GALGAS__32_stringlist::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS__32_stringlist result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS__32_stringlist GALGAS__32_stringlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS__32_stringlist  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1972,7 +1952,7 @@ GALGAS__32_stringlist GALGAS__32_stringlist::constructor_listWithValue (const GA
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS__32_stringlist result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS__32_stringlist (true) ;
     capCollectionElement attributes ;
     GALGAS__32_stringlist::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -2180,7 +2160,7 @@ void GALGAS__32_stringlist::setter_setMValue_30_AtIndex (GALGAS_string inOperand
                                                          GALGAS_uint inIndex,
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
-  cCollectionElement__32_stringlist * p = (cCollectionElement__32_stringlist *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement__32_stringlist * p = (cCollectionElement__32_stringlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
     macroUniqueSharedObject (p) ;
@@ -2209,7 +2189,7 @@ void GALGAS__32_stringlist::setter_setMValue_31_AtIndex (GALGAS_string inOperand
                                                          GALGAS_uint inIndex,
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) {
-  cCollectionElement__32_stringlist * p = (cCollectionElement__32_stringlist *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement__32_stringlist * p = (cCollectionElement__32_stringlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
     macroUniqueSharedObject (p) ;
@@ -2724,25 +2704,20 @@ typeComparisonResult cCollectionElement_functionlist::compare (const cCollection
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_functionlist::GALGAS_functionlist (void) :
-AC_GALGAS_list () {
+GALGAS_functionlist::GALGAS_functionlist (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_functionlist::GALGAS_functionlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_functionlist::GALGAS_functionlist (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_functionlist GALGAS_functionlist::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_functionlist result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_functionlist GALGAS_functionlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_functionlist  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2751,7 +2726,7 @@ GALGAS_functionlist GALGAS_functionlist::constructor_listWithValue (const GALGAS
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_functionlist result ;
   if (inOperand0.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_functionlist (true) ;
     capCollectionElement attributes ;
     GALGAS_functionlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -2940,7 +2915,7 @@ void GALGAS_functionlist::setter_setMValueAtIndex (GALGAS_function inOperand,
                                                    GALGAS_uint inIndex,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) {
-  cCollectionElement_functionlist * p = (cCollectionElement_functionlist *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_functionlist * p = (cCollectionElement_functionlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_functionlist) ;
     macroUniqueSharedObject (p) ;
@@ -3103,25 +3078,20 @@ typeComparisonResult cCollectionElement_luintlist::compare (const cCollectionEle
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luintlist::GALGAS_luintlist (void) :
-AC_GALGAS_list () {
+GALGAS_luintlist::GALGAS_luintlist (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luintlist::GALGAS_luintlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_luintlist::GALGAS_luintlist (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_luintlist GALGAS_luintlist::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_luintlist result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_luintlist GALGAS_luintlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_luintlist  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3130,7 +3100,7 @@ GALGAS_luintlist GALGAS_luintlist::constructor_listWithValue (const GALGAS_luint
                                                               COMMA_LOCATION_ARGS) {
   GALGAS_luintlist result ;
   if (inOperand0.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_luintlist (true) ;
     capCollectionElement attributes ;
     GALGAS_luintlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -3319,7 +3289,7 @@ void GALGAS_luintlist::setter_setMValueAtIndex (GALGAS_luint inOperand,
                                                 GALGAS_uint inIndex,
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) {
-  cCollectionElement_luintlist * p = (cCollectionElement_luintlist *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_luintlist * p = (cCollectionElement_luintlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_luintlist) ;
     macroUniqueSharedObject (p) ;
@@ -3482,25 +3452,20 @@ typeComparisonResult cCollectionElement_objectlist::compare (const cCollectionEl
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_objectlist::GALGAS_objectlist (void) :
-AC_GALGAS_list () {
+GALGAS_objectlist::GALGAS_objectlist (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_objectlist::GALGAS_objectlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_objectlist::GALGAS_objectlist (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_objectlist GALGAS_objectlist::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_objectlist result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_objectlist GALGAS_objectlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_objectlist  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3509,7 +3474,7 @@ GALGAS_objectlist GALGAS_objectlist::constructor_listWithValue (const GALGAS_obj
                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_objectlist result ;
   if (inOperand0.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_objectlist (true) ;
     capCollectionElement attributes ;
     GALGAS_objectlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -3698,7 +3663,7 @@ void GALGAS_objectlist::setter_setMValueAtIndex (GALGAS_object inOperand,
                                                  GALGAS_uint inIndex,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
-  cCollectionElement_objectlist * p = (cCollectionElement_objectlist *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_objectlist * p = (cCollectionElement_objectlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_objectlist) ;
     macroUniqueSharedObject (p) ;
@@ -3861,25 +3826,20 @@ typeComparisonResult cCollectionElement_typelist::compare (const cCollectionElem
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typelist::GALGAS_typelist (void) :
-AC_GALGAS_list () {
+GALGAS_typelist::GALGAS_typelist (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typelist::GALGAS_typelist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_typelist::GALGAS_typelist (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typelist GALGAS_typelist::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_typelist result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_typelist GALGAS_typelist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_typelist  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3888,7 +3848,7 @@ GALGAS_typelist GALGAS_typelist::constructor_listWithValue (const GALGAS_type & 
                                                             COMMA_LOCATION_ARGS) {
   GALGAS_typelist result ;
   if (inOperand0.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_typelist (true) ;
     capCollectionElement attributes ;
     GALGAS_typelist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -4077,7 +4037,7 @@ void GALGAS_typelist::setter_setMValueAtIndex (GALGAS_type inOperand,
                                                GALGAS_uint inIndex,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
-  cCollectionElement_typelist * p = (cCollectionElement_typelist *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_typelist * p = (cCollectionElement_typelist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_typelist) ;
     macroUniqueSharedObject (p) ;
@@ -4240,25 +4200,20 @@ typeComparisonResult cCollectionElement_uintlist::compare (const cCollectionElem
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uintlist::GALGAS_uintlist (void) :
-AC_GALGAS_list () {
+GALGAS_uintlist::GALGAS_uintlist (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uintlist::GALGAS_uintlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_uintlist::GALGAS_uintlist (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uintlist GALGAS_uintlist::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_uintlist result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_uintlist GALGAS_uintlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_uintlist  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4267,7 +4222,7 @@ GALGAS_uintlist GALGAS_uintlist::constructor_listWithValue (const GALGAS_uint & 
                                                             COMMA_LOCATION_ARGS) {
   GALGAS_uintlist result ;
   if (inOperand0.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_uintlist (true) ;
     capCollectionElement attributes ;
     GALGAS_uintlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -4456,7 +4411,7 @@ void GALGAS_uintlist::setter_setMValueAtIndex (GALGAS_uint inOperand,
                                                GALGAS_uint inIndex,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) {
-  cCollectionElement_uintlist * p = (cCollectionElement_uintlist *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_uintlist * p = (cCollectionElement_uintlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_uintlist) ;
     macroUniqueSharedObject (p) ;
@@ -4619,25 +4574,20 @@ typeComparisonResult cCollectionElement_uint_36__34_list::compare (const cCollec
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint_36__34_list::GALGAS_uint_36__34_list (void) :
-AC_GALGAS_list () {
+GALGAS_uint_36__34_list::GALGAS_uint_36__34_list (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint_36__34_list::GALGAS_uint_36__34_list (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_uint_36__34_list::GALGAS_uint_36__34_list (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint_36__34_list GALGAS_uint_36__34_list::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_uint_36__34_list result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_uint_36__34_list GALGAS_uint_36__34_list::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_uint_36__34_list  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4646,7 +4596,7 @@ GALGAS_uint_36__34_list GALGAS_uint_36__34_list::constructor_listWithValue (cons
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_uint_36__34_list result ;
   if (inOperand0.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_uint_36__34_list (true) ;
     capCollectionElement attributes ;
     GALGAS_uint_36__34_list::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -4835,7 +4785,7 @@ void GALGAS_uint_36__34_list::setter_setMValueAtIndex (GALGAS_uint_36__34_ inOpe
                                                        GALGAS_uint inIndex,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
-  cCollectionElement_uint_36__34_list * p = (cCollectionElement_uint_36__34_list *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_uint_36__34_list * p = (cCollectionElement_uint_36__34_list *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
     macroUniqueSharedObject (p) ;
@@ -4998,25 +4948,20 @@ typeComparisonResult cCollectionElement_bigintlist::compare (const cCollectionEl
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bigintlist::GALGAS_bigintlist (void) :
-AC_GALGAS_list () {
+GALGAS_bigintlist::GALGAS_bigintlist (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bigintlist::GALGAS_bigintlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_bigintlist::GALGAS_bigintlist (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bigintlist GALGAS_bigintlist::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_bigintlist result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_bigintlist GALGAS_bigintlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_bigintlist  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5025,7 +4970,7 @@ GALGAS_bigintlist GALGAS_bigintlist::constructor_listWithValue (const GALGAS_big
                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_bigintlist result ;
   if (inOperand0.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_bigintlist (true) ;
     capCollectionElement attributes ;
     GALGAS_bigintlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -5214,7 +5159,7 @@ void GALGAS_bigintlist::setter_setMValueAtIndex (GALGAS_bigint inOperand,
                                                  GALGAS_uint inIndex,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
-  cCollectionElement_bigintlist * p = (cCollectionElement_bigintlist *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_bigintlist * p = (cCollectionElement_bigintlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_bigintlist) ;
     macroUniqueSharedObject (p) ;
@@ -5377,25 +5322,20 @@ typeComparisonResult cCollectionElement_lbigintlist::compare (const cCollectionE
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lbigintlist::GALGAS_lbigintlist (void) :
-AC_GALGAS_list () {
+GALGAS_lbigintlist::GALGAS_lbigintlist (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lbigintlist::GALGAS_lbigintlist (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_lbigintlist::GALGAS_lbigintlist (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lbigintlist GALGAS_lbigintlist::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_lbigintlist result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_lbigintlist GALGAS_lbigintlist::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_lbigintlist  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5404,7 +5344,7 @@ GALGAS_lbigintlist GALGAS_lbigintlist::constructor_listWithValue (const GALGAS_l
                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_lbigintlist result ;
   if (inOperand0.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_lbigintlist (true) ;
     capCollectionElement attributes ;
     GALGAS_lbigintlist::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -5593,7 +5533,7 @@ void GALGAS_lbigintlist::setter_setMValueAtIndex (GALGAS_lbigint inOperand,
                                                   GALGAS_uint inIndex,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
-  cCollectionElement_lbigintlist * p = (cCollectionElement_lbigintlist *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_lbigintlist * p = (cCollectionElement_lbigintlist *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
     macroUniqueSharedObject (p) ;
