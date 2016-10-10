@@ -15,14 +15,14 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_BuildFileList : public AC_GALGAS_list {
+class GALGAS_BuildFileList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_BuildFileList (void) ;
+  public : GALGAS_BuildFileList (const bool inIsValid = false) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_BuildFileList (cSharedList * inSharedListPtr) ;
+  public : GALGAS_BuildFileList (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_string & in_mFileReference,
                                                   const class GALGAS_string & in_mFileName,

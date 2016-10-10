@@ -7396,14 +7396,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectQualifiedFea
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_XCodeGroupList : public AC_GALGAS_list {
+class GALGAS_XCodeGroupList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_XCodeGroupList (void) ;
+  public : GALGAS_XCodeGroupList (const bool inIsValid = false) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_XCodeGroupList (cSharedList * inSharedListPtr) ;
+  public : GALGAS_XCodeGroupList (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_string & in_mGroupReference,
                                                   const class GALGAS_string & in_mGroupName,
@@ -7642,14 +7642,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeGroupList_2D_e
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_XCodeToolTargetList : public AC_GALGAS_list {
+class GALGAS_XCodeToolTargetList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_XCodeToolTargetList (void) ;
+  public : GALGAS_XCodeToolTargetList (const bool inIsValid = false) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_XCodeToolTargetList (cSharedList * inSharedListPtr) ;
+  public : GALGAS_XCodeToolTargetList (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_string & in_mTargetRef,
                                                   const class GALGAS_string & in_mTargetName,
@@ -8021,14 +8021,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeToolTargetList
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_XCodeAppTargetList : public AC_GALGAS_list {
+class GALGAS_XCodeAppTargetList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_XCodeAppTargetList (void) ;
+  public : GALGAS_XCodeAppTargetList (const bool inIsValid = false) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_XCodeAppTargetList (cSharedList * inSharedListPtr) ;
+  public : GALGAS_XCodeAppTargetList (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_string & in_mTargetRef,
                                                   const class GALGAS_string & in_mTargetName,

@@ -441,25 +441,20 @@ typeComparisonResult cCollectionElement_lexicalFunctionFormalArgumentList::compa
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalFunctionFormalArgumentList::GALGAS_lexicalFunctionFormalArgumentList (void) :
-AC_GALGAS_list () {
+GALGAS_lexicalFunctionFormalArgumentList::GALGAS_lexicalFunctionFormalArgumentList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalFunctionFormalArgumentList::GALGAS_lexicalFunctionFormalArgumentList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_lexicalFunctionFormalArgumentList::GALGAS_lexicalFunctionFormalArgumentList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_lexicalFunctionFormalArgumentList result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_lexicalFunctionFormalArgumentList  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -469,7 +464,7 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentLis
                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_lexicalFunctionFormalArgumentList result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_lexicalFunctionFormalArgumentList (true) ;
     capCollectionElement attributes ;
     GALGAS_lexicalFunctionFormalArgumentList::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -1272,25 +1267,20 @@ typeComparisonResult cCollectionElement_templateDelimitorList::compare (const cC
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateDelimitorList::GALGAS_templateDelimitorList (void) :
-AC_GALGAS_list () {
+GALGAS_templateDelimitorList::GALGAS_templateDelimitorList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateDelimitorList::GALGAS_templateDelimitorList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_templateDelimitorList::GALGAS_templateDelimitorList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateDelimitorList GALGAS_templateDelimitorList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_templateDelimitorList result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_templateDelimitorList GALGAS_templateDelimitorList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_templateDelimitorList  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1301,7 +1291,7 @@ GALGAS_templateDelimitorList GALGAS_templateDelimitorList::constructor_listWithV
                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_templateDelimitorList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_templateDelimitorList (true) ;
     capCollectionElement attributes ;
     GALGAS_templateDelimitorList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -4177,25 +4167,20 @@ typeComparisonResult cCollectionElement_commandLineOptionListAST::compare (const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_commandLineOptionListAST::GALGAS_commandLineOptionListAST (void) :
-AC_GALGAS_list () {
+GALGAS_commandLineOptionListAST::GALGAS_commandLineOptionListAST (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_commandLineOptionListAST::GALGAS_commandLineOptionListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_commandLineOptionListAST::GALGAS_commandLineOptionListAST (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_commandLineOptionListAST result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_commandLineOptionListAST  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4210,7 +4195,7 @@ GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::constructor_lis
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_commandLineOptionListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_commandLineOptionListAST (true) ;
     capCollectionElement attributes ;
     GALGAS_commandLineOptionListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -5217,25 +5202,20 @@ typeComparisonResult cCollectionElement_guiSimpleAttributeListAST::compare (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiSimpleAttributeListAST::GALGAS_guiSimpleAttributeListAST (void) :
-AC_GALGAS_list () {
+GALGAS_guiSimpleAttributeListAST::GALGAS_guiSimpleAttributeListAST (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiSimpleAttributeListAST::GALGAS_guiSimpleAttributeListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_guiSimpleAttributeListAST::GALGAS_guiSimpleAttributeListAST (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_guiSimpleAttributeListAST result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_guiSimpleAttributeListAST  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5245,7 +5225,7 @@ GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::constructor_l
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_guiSimpleAttributeListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_guiSimpleAttributeListAST (true) ;
     capCollectionElement attributes ;
     GALGAS_guiSimpleAttributeListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -5637,25 +5617,20 @@ typeComparisonResult cCollectionElement_guiCompoundAttributeListAST::compare (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiCompoundAttributeListAST::GALGAS_guiCompoundAttributeListAST (void) :
-AC_GALGAS_list () {
+GALGAS_guiCompoundAttributeListAST::GALGAS_guiCompoundAttributeListAST (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiCompoundAttributeListAST::GALGAS_guiCompoundAttributeListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_guiCompoundAttributeListAST::GALGAS_guiCompoundAttributeListAST (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_guiCompoundAttributeListAST result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_guiCompoundAttributeListAST  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5666,7 +5641,7 @@ GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::construct
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_guiCompoundAttributeListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_guiCompoundAttributeListAST (true) ;
     capCollectionElement attributes ;
     GALGAS_guiCompoundAttributeListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -6094,25 +6069,20 @@ typeComparisonResult cCollectionElement_terminalLabelListAST::compare (const cCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_terminalLabelListAST::GALGAS_terminalLabelListAST (void) :
-AC_GALGAS_list () {
+GALGAS_terminalLabelListAST::GALGAS_terminalLabelListAST (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_terminalLabelListAST::GALGAS_terminalLabelListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_terminalLabelListAST::GALGAS_terminalLabelListAST (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_terminalLabelListAST result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_terminalLabelListAST  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6122,7 +6092,7 @@ GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::constructor_listWithVal
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_terminalLabelListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_terminalLabelListAST (true) ;
     capCollectionElement attributes ;
     GALGAS_terminalLabelListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -6514,25 +6484,20 @@ typeComparisonResult cCollectionElement_guiLabelListAST::compare (const cCollect
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiLabelListAST::GALGAS_guiLabelListAST (void) :
-AC_GALGAS_list () {
+GALGAS_guiLabelListAST::GALGAS_guiLabelListAST (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiLabelListAST::GALGAS_guiLabelListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_guiLabelListAST::GALGAS_guiLabelListAST (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiLabelListAST GALGAS_guiLabelListAST::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_guiLabelListAST result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_guiLabelListAST GALGAS_guiLabelListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_guiLabelListAST  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6543,7 +6508,7 @@ GALGAS_guiLabelListAST GALGAS_guiLabelListAST::constructor_listWithValue (const 
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_guiLabelListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_guiLabelListAST (true) ;
     capCollectionElement attributes ;
     GALGAS_guiLabelListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -6983,25 +6948,20 @@ typeComparisonResult cCollectionElement_withLexiqueListAST::compare (const cColl
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_withLexiqueListAST::GALGAS_withLexiqueListAST (void) :
-AC_GALGAS_list () {
+GALGAS_withLexiqueListAST::GALGAS_withLexiqueListAST (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_withLexiqueListAST::GALGAS_withLexiqueListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_withLexiqueListAST::GALGAS_withLexiqueListAST (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_withLexiqueListAST result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_withLexiqueListAST  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7013,7 +6973,7 @@ GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::constructor_listWithValue (
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_withLexiqueListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_withLexiqueListAST (true) ;
     capCollectionElement attributes ;
     GALGAS_withLexiqueListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -7501,25 +7461,20 @@ typeComparisonResult cCollectionElement_guiCommandLineOptionList::compare (const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiCommandLineOptionList::GALGAS_guiCommandLineOptionList (void) :
-AC_GALGAS_list () {
+GALGAS_guiCommandLineOptionList::GALGAS_guiCommandLineOptionList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiCommandLineOptionList::GALGAS_guiCommandLineOptionList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_guiCommandLineOptionList::GALGAS_guiCommandLineOptionList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_guiCommandLineOptionList GALGAS_guiCommandLineOptionList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_guiCommandLineOptionList result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_guiCommandLineOptionList GALGAS_guiCommandLineOptionList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_guiCommandLineOptionList  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7532,7 +7487,7 @@ GALGAS_guiCommandLineOptionList GALGAS_guiCommandLineOptionList::constructor_lis
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_guiCommandLineOptionList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_guiCommandLineOptionList (true) ;
     capCollectionElement attributes ;
     GALGAS_guiCommandLineOptionList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -8280,25 +8235,20 @@ typeComparisonResult cCollectionElement_textMacroList::compare (const cCollectio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_textMacroList::GALGAS_textMacroList (void) :
-AC_GALGAS_list () {
+GALGAS_textMacroList::GALGAS_textMacroList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_textMacroList::GALGAS_textMacroList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_textMacroList::GALGAS_textMacroList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_textMacroList GALGAS_textMacroList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_textMacroList result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_textMacroList GALGAS_textMacroList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_textMacroList  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8308,7 +8258,7 @@ GALGAS_textMacroList GALGAS_textMacroList::constructor_listWithValue (const GALG
                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_textMacroList result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_textMacroList (true) ;
     capCollectionElement attributes ;
     GALGAS_textMacroList::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -8712,25 +8662,20 @@ typeComparisonResult cCollectionElement_importedLexiqueList::compare (const cCol
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_importedLexiqueList::GALGAS_importedLexiqueList (void) :
-AC_GALGAS_list () {
+GALGAS_importedLexiqueList::GALGAS_importedLexiqueList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_importedLexiqueList::GALGAS_importedLexiqueList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_importedLexiqueList::GALGAS_importedLexiqueList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_importedLexiqueList GALGAS_importedLexiqueList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_importedLexiqueList result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_importedLexiqueList GALGAS_importedLexiqueList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_importedLexiqueList  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8743,7 +8688,7 @@ GALGAS_importedLexiqueList GALGAS_importedLexiqueList::constructor_listWithValue
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_importedLexiqueList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_importedLexiqueList (true) ;
     capCollectionElement attributes ;
     GALGAS_importedLexiqueList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -9267,25 +9212,20 @@ typeComparisonResult cCollectionElement_galgas_33_GUIComponentListAST::compare (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_galgas_33_GUIComponentListAST::GALGAS_galgas_33_GUIComponentListAST (void) :
-AC_GALGAS_list () {
+GALGAS_galgas_33_GUIComponentListAST::GALGAS_galgas_33_GUIComponentListAST (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_galgas_33_GUIComponentListAST::GALGAS_galgas_33_GUIComponentListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_galgas_33_GUIComponentListAST::GALGAS_galgas_33_GUIComponentListAST (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_galgas_33_GUIComponentListAST GALGAS_galgas_33_GUIComponentListAST::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_galgas_33_GUIComponentListAST result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_galgas_33_GUIComponentListAST GALGAS_galgas_33_GUIComponentListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_galgas_33_GUIComponentListAST  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9297,7 +9237,7 @@ GALGAS_galgas_33_GUIComponentListAST GALGAS_galgas_33_GUIComponentListAST::const
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_galgas_33_GUIComponentListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_galgas_33_GUIComponentListAST (true) ;
     capCollectionElement attributes ;
     GALGAS_galgas_33_GUIComponentListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -10231,25 +10171,20 @@ typeComparisonResult cCollectionElement_propertyInCollectionListAST::compare (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_propertyInCollectionListAST::GALGAS_propertyInCollectionListAST (void) :
-AC_GALGAS_list () {
+GALGAS_propertyInCollectionListAST::GALGAS_propertyInCollectionListAST (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_propertyInCollectionListAST::GALGAS_propertyInCollectionListAST (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_propertyInCollectionListAST::GALGAS_propertyInCollectionListAST (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_propertyInCollectionListAST result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_propertyInCollectionListAST  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10260,7 +10195,7 @@ GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::construct
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_propertyInCollectionListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_propertyInCollectionListAST (true) ;
     capCollectionElement attributes ;
     GALGAS_propertyInCollectionListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -10700,25 +10635,20 @@ typeComparisonResult cCollectionElement_typedPropertyList::compare (const cColle
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList::GALGAS_typedPropertyList (void) :
-AC_GALGAS_list () {
+GALGAS_typedPropertyList::GALGAS_typedPropertyList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList::GALGAS_typedPropertyList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_typedPropertyList::GALGAS_typedPropertyList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedPropertyList GALGAS_typedPropertyList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_typedPropertyList result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_typedPropertyList GALGAS_typedPropertyList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_typedPropertyList  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10730,7 +10660,7 @@ GALGAS_typedPropertyList GALGAS_typedPropertyList::constructor_listWithValue (co
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_typedPropertyList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_typedPropertyList (true) ;
     capCollectionElement attributes ;
     GALGAS_typedPropertyList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -11200,25 +11130,20 @@ typeComparisonResult cCollectionElement_enumConstantList::compare (const cCollec
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_enumConstantList::GALGAS_enumConstantList (void) :
-AC_GALGAS_list () {
+GALGAS_enumConstantList::GALGAS_enumConstantList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_enumConstantList::GALGAS_enumConstantList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_enumConstantList::GALGAS_enumConstantList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_enumConstantList GALGAS_enumConstantList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_enumConstantList result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_enumConstantList GALGAS_enumConstantList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_enumConstantList  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11228,7 +11153,7 @@ GALGAS_enumConstantList GALGAS_enumConstantList::constructor_listWithValue (cons
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_enumConstantList result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_enumConstantList (true) ;
     capCollectionElement attributes ;
     GALGAS_enumConstantList::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -11614,25 +11539,20 @@ typeComparisonResult cCollectionElement_enumConstantListForGeneration::compare (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_enumConstantListForGeneration::GALGAS_enumConstantListForGeneration (void) :
-AC_GALGAS_list () {
+GALGAS_enumConstantListForGeneration::GALGAS_enumConstantListForGeneration (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_enumConstantListForGeneration::GALGAS_enumConstantListForGeneration (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_enumConstantListForGeneration::GALGAS_enumConstantListForGeneration (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_enumConstantListForGeneration GALGAS_enumConstantListForGeneration::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_enumConstantListForGeneration result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_enumConstantListForGeneration GALGAS_enumConstantListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_enumConstantListForGeneration  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11642,7 +11562,7 @@ GALGAS_enumConstantListForGeneration GALGAS_enumConstantListForGeneration::const
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_enumConstantListForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_enumConstantListForGeneration (true) ;
     capCollectionElement attributes ;
     GALGAS_enumConstantListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -12022,25 +11942,20 @@ typeComparisonResult cCollectionElement_unifiedTypeMapProxyList::compare (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxyList::GALGAS_unifiedTypeMapProxyList (void) :
-AC_GALGAS_list () {
+GALGAS_unifiedTypeMapProxyList::GALGAS_unifiedTypeMapProxyList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxyList::GALGAS_unifiedTypeMapProxyList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_unifiedTypeMapProxyList::GALGAS_unifiedTypeMapProxyList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxyList GALGAS_unifiedTypeMapProxyList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapProxyList result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_unifiedTypeMapProxyList GALGAS_unifiedTypeMapProxyList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_unifiedTypeMapProxyList  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12049,7 +11964,7 @@ GALGAS_unifiedTypeMapProxyList GALGAS_unifiedTypeMapProxyList::constructor_listW
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapProxyList result ;
   if (inOperand0.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_unifiedTypeMapProxyList (true) ;
     capCollectionElement attributes ;
     GALGAS_unifiedTypeMapProxyList::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -12399,25 +12314,20 @@ typeComparisonResult cCollectionElement_externTypeConstructorList::compare (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeConstructorList::GALGAS_externTypeConstructorList (void) :
-AC_GALGAS_list () {
+GALGAS_externTypeConstructorList::GALGAS_externTypeConstructorList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeConstructorList::GALGAS_externTypeConstructorList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_externTypeConstructorList::GALGAS_externTypeConstructorList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeConstructorList GALGAS_externTypeConstructorList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_externTypeConstructorList result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_externTypeConstructorList GALGAS_externTypeConstructorList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_externTypeConstructorList  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12428,7 +12338,7 @@ GALGAS_externTypeConstructorList GALGAS_externTypeConstructorList::constructor_l
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_externTypeConstructorList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_externTypeConstructorList (true) ;
     capCollectionElement attributes ;
     GALGAS_externTypeConstructorList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -12862,25 +12772,20 @@ typeComparisonResult cCollectionElement_externTypeGetterList::compare (const cCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeGetterList::GALGAS_externTypeGetterList (void) :
-AC_GALGAS_list () {
+GALGAS_externTypeGetterList::GALGAS_externTypeGetterList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeGetterList::GALGAS_externTypeGetterList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_externTypeGetterList::GALGAS_externTypeGetterList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeGetterList GALGAS_externTypeGetterList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_externTypeGetterList result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_externTypeGetterList GALGAS_externTypeGetterList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_externTypeGetterList  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12891,7 +12796,7 @@ GALGAS_externTypeGetterList GALGAS_externTypeGetterList::constructor_listWithVal
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_externTypeGetterList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_externTypeGetterList (true) ;
     capCollectionElement attributes ;
     GALGAS_externTypeGetterList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -13319,25 +13224,20 @@ typeComparisonResult cCollectionElement_externTypeSetterList::compare (const cCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeSetterList::GALGAS_externTypeSetterList (void) :
-AC_GALGAS_list () {
+GALGAS_externTypeSetterList::GALGAS_externTypeSetterList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeSetterList::GALGAS_externTypeSetterList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_externTypeSetterList::GALGAS_externTypeSetterList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeSetterList GALGAS_externTypeSetterList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_externTypeSetterList result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_externTypeSetterList GALGAS_externTypeSetterList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_externTypeSetterList  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13347,7 +13247,7 @@ GALGAS_externTypeSetterList GALGAS_externTypeSetterList::constructor_listWithVal
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_externTypeSetterList result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_externTypeSetterList (true) ;
     capCollectionElement attributes ;
     GALGAS_externTypeSetterList::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -13739,25 +13639,20 @@ typeComparisonResult cCollectionElement_externTypeMethodList::compare (const cCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeMethodList::GALGAS_externTypeMethodList (void) :
-AC_GALGAS_list () {
+GALGAS_externTypeMethodList::GALGAS_externTypeMethodList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeMethodList::GALGAS_externTypeMethodList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_externTypeMethodList::GALGAS_externTypeMethodList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_externTypeMethodList GALGAS_externTypeMethodList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_externTypeMethodList result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_externTypeMethodList GALGAS_externTypeMethodList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_externTypeMethodList  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13768,7 +13663,7 @@ GALGAS_externTypeMethodList GALGAS_externTypeMethodList::constructor_listWithVal
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_externTypeMethodList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_externTypeMethodList (true) ;
     capCollectionElement attributes ;
     GALGAS_externTypeMethodList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -14202,25 +14097,20 @@ typeComparisonResult cCollectionElement_typeNameFormalParameterNameList::compare
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typeNameFormalParameterNameList::GALGAS_typeNameFormalParameterNameList (void) :
-AC_GALGAS_list () {
+GALGAS_typeNameFormalParameterNameList::GALGAS_typeNameFormalParameterNameList (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typeNameFormalParameterNameList::GALGAS_typeNameFormalParameterNameList (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_typeNameFormalParameterNameList::GALGAS_typeNameFormalParameterNameList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_typeNameFormalParameterNameList result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_typeNameFormalParameterNameList  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14231,7 +14121,7 @@ GALGAS_typeNameFormalParameterNameList GALGAS_typeNameFormalParameterNameList::c
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_typeNameFormalParameterNameList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_typeNameFormalParameterNameList (true) ;
     capCollectionElement attributes ;
     GALGAS_typeNameFormalParameterNameList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;

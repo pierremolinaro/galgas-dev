@@ -88,25 +88,20 @@ typeComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cColl
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
-AC_GALGAS_list () {
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const bool inIsValid) :
+AC_GALGAS_list_new (inIsValid) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (cSharedList * inSharedListPtr) :
-AC_GALGAS_list (inSharedListPtr) {
-  if (NULL == inSharedListPtr) {
-    createNewEmptyList (HERE) ;
-  }
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list_new (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (LOCATION_ARGS) {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
-  result.createNewEmptyList (THERE) ;
-  return result ;
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_%!TYPE_IDENTIFIER%  (true) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -124,7 +119,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (
   between % && %
   end
   %) {
-    result.createNewEmptyList (THERE) ;
+    result = GALGAS_%!TYPE_IDENTIFIER% (true) ;
     capCollectionElement attributes ;
     GALGAS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (attributes%
     for () in ATTRIBUTE_LIST
@@ -397,7 +392,7 @@ for () in ATTRIBUTE_LIST do index IDX
   %                                              %!^%GALGAS_uint inIndex,\n%
   %                                              %!^%C_Compiler * inCompiler\n%
   %                                              %!^%COMMA_LOCATION_ARGS) {\n%
-  %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
+  %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
   %  if (NULL != p) {\n%
   %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %    macroUniqueSharedObject (p) ;\n%

@@ -15,14 +15,14 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
+class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_productionRuleListForGrammarAnalysis (void) ;
+  public : GALGAS_productionRuleListForGrammarAnalysis (const bool inIsValid = false) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_productionRuleListForGrammarAnalysis (cSharedList * inSharedListPtr) ;
+  public : GALGAS_productionRuleListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_lstring & in_mLeftNonterminalSymbol,
                                                   const class GALGAS_uint & in_mLeftNonterminalSymbolIndex,
@@ -629,14 +629,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolSo
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_branchListForGrammarAnalysis : public AC_GALGAS_list {
+class GALGAS_branchListForGrammarAnalysis : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_branchListForGrammarAnalysis (void) ;
+  public : GALGAS_branchListForGrammarAnalysis (const bool inIsValid = false) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_branchListForGrammarAnalysis (cSharedList * inSharedListPtr) ;
+  public : GALGAS_branchListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_syntaxInstructionListForGrammarAnalysis & in_mSyntaxInstructionList
                                                   COMMA_LOCATION_ARGS) ;
@@ -940,14 +940,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionFo
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
+class GALGAS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_syntaxComponentListForGrammarAnalysis (void) ;
+  public : GALGAS_syntaxComponentListForGrammarAnalysis (const bool inIsValid = false) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_syntaxComponentListForGrammarAnalysis (cSharedList * inSharedListPtr) ;
+  public : GALGAS_syntaxComponentListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_productionRuleListForGrammarAnalysis & in_mProductionRulesList,
                                                   const class GALGAS_lstring & in_mSyntaxComponentName
@@ -1398,14 +1398,14 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const class GALGAS_syntaxInst
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_rowList : public AC_GALGAS_list {
+class GALGAS_rowList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_rowList (void) ;
+  public : GALGAS_rowList (const bool inIsValid = false) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_rowList (cSharedList * inSharedListPtr) ;
+  public : GALGAS_rowList (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS__32_stringlist & in_columns
                                                   COMMA_LOCATION_ARGS) ;
@@ -1643,14 +1643,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rowList_2D_element 
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_programListForGeneration : public AC_GALGAS_list {
+class GALGAS_programListForGeneration : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_programListForGeneration (void) ;
+  public : GALGAS_programListForGeneration (const bool inIsValid = false) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_programListForGeneration (cSharedList * inSharedListPtr) ;
+  public : GALGAS_programListForGeneration (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_semanticDeclarationForGeneration & in_mDeclaration
                                                   COMMA_LOCATION_ARGS) ;
@@ -1829,7 +1829,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programListForGener
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_genericExtensionMethodListMap : public AC_GALGAS_listmap {
+class GALGAS_genericExtensionMethodListMap : public AC_GALGAS_listmap_new {
 //--------------------------------- Default constructor
   public : GALGAS_genericExtensionMethodListMap (void) ;
 
@@ -2010,7 +2010,7 @@ void callExtensionMethod_buildExtensionListMaps (const class cPtr_semanticDeclar
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_descendantClassListMap : public AC_GALGAS_listmap {
+class GALGAS_descendantClassListMap : public AC_GALGAS_listmap_new {
 //--------------------------------- Default constructor
   public : GALGAS_descendantClassListMap (void) ;
 
@@ -3054,14 +3054,14 @@ class cParser_galgas_33_ProjectSyntax {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
+class GALGAS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_galgas_33_QualifiedFeatureList (void) ;
+  public : GALGAS_galgas_33_QualifiedFeatureList (const bool inIsValid = false) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_galgas_33_QualifiedFeatureList (cSharedList * inSharedListPtr) ;
+  public : GALGAS_galgas_33_QualifiedFeatureList (const capCollectionElementArray & inSharedArray) ;
 
-//--------------------------------- Element constructor used by listmap
+//--------------------------------- Element constructor
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_lstring & in_mFeatureName,
                                                   const class GALGAS_lstring & in_mFeatureValue

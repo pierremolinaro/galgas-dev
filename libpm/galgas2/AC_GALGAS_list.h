@@ -187,13 +187,6 @@ class AC_GALGAS_list_new : public AC_GALGAS_root {
 //--- drop
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
-//--- Handle copy
-  public : AC_GALGAS_list_new (const AC_GALGAS_list_new & inSource) ;
-  public : AC_GALGAS_list_new & operator = (const AC_GALGAS_list_new & inSource) ;
-
-//--- Create a new list
-//  protected : VIRTUAL_IN_DEBUG void createNewEmptyList (LOCATION_ARGS) ;
-
 //--- Enumeration
   protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & outEnumerationArray) const ;
 
@@ -218,8 +211,6 @@ class AC_GALGAS_list_new : public AC_GALGAS_root {
                                                       const uint32_t inInsertionIndex,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
-
-//  private : VIRTUAL_IN_DEBUG void insulateList (LOCATION_ARGS) ;
 
   protected : VIRTUAL_IN_DEBUG void removeObjectAtIndex (capCollectionElement & outAttributes,
                                                          const uint32_t inRemoveIndex,
@@ -264,16 +255,10 @@ class AC_GALGAS_list_new : public AC_GALGAS_root {
                                                                        COMMA_LOCATION_ARGS) const ;
 
 
-  protected : VIRTUAL_IN_DEBUG cCollectionElement * objectPointerAtIndex (const GALGAS_uint & inIndex,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//  public : static void makeNewSharedList (cSharedList * & outSharedList COMMA_LOCATION_ARGS) ;
-
-//  public : static void insertInSharedList (cSharedList * inSharedList,
-//                                           const capCollectionElement & inAttributes) ;
-
-//  public : static void detachSharedList (cSharedList * & ioSharedList) ;
+  protected : VIRTUAL_IN_DEBUG
+  cCollectionElement * uniquelyReferencedPointerAtIndex (const GALGAS_uint & inIndex,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -312,12 +297,6 @@ class cListMapElement : public cCollectionElement {
 //                                                                                                                     *
 //  A C _ G A L G A S _ l i s t m a p                                                                                  *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class cSharedListMapRoot ;
-class GALGAS_stringset ;
-class GALGAS_stringlist ;
-
 //---------------------------------------------------------------------------------------------------------------------*
 
 class AC_GALGAS_listmap : public AC_GALGAS_root {
@@ -368,12 +347,102 @@ class AC_GALGAS_listmap : public AC_GALGAS_root {
 //--------------------------------- Readers
   public : VIRTUAL_IN_DEBUG GALGAS_uint getter_count (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG GALGAS_stringset getter_allKeys (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_stringset getter_allKeys (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG GALGAS_stringlist getter_keyList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_stringlist getter_keyList (LOCATION_ARGS) const ;
 
 //--- Attribute
-  private : cSharedListMapRoot * mSharedListMap ;
+  private : class cSharedListMapRoot * mSharedListMap ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cListMapElement_new : public cCollectionElement {
+//--- Attributes
+  public : C_String mKey ;
+  public : capCollectionElementArray mSharedListMapList ;
+
+//--- Default constructor
+  public : cListMapElement_new (const C_String & inKey,
+                                const capCollectionElementArray & inSharedList
+                                COMMA_LOCATION_ARGS) ;
+
+//--- Destructor
+  public : virtual ~ cListMapElement_new (void) ;
+
+//--- No copy
+  private : cListMapElement_new (const cListMapElement_new &) ;
+  private : cListMapElement_new & operator = (const cListMapElement_new &) ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class AC_GALGAS_listmap_new : public AC_GALGAS_root {
+//--- Constructor
+  protected : AC_GALGAS_listmap_new (void) ;
+
+//--- Virtual destructor
+  public : virtual ~ AC_GALGAS_listmap_new (void) ;
+
+//--- Handle copy
+  public : AC_GALGAS_listmap_new (const AC_GALGAS_listmap_new & inSource) ;
+  public : AC_GALGAS_listmap_new & operator = (const AC_GALGAS_listmap_new & inSource) ;
+
+//--- count
+  public : VIRTUAL_IN_DEBUG uint32_t count (void) const ;
+
+//--- isValid
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSharedListMap != NULL ; }
+
+//--- drop
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--- Create a new empty list map
+  protected : VIRTUAL_IN_DEBUG void makeNewEmptyListMap (LOCATION_ARGS) ;
+
+//--- Adding a new object
+  protected : void addObjectInListMap (const GALGAS_string & inKey,
+                                       capCollectionElement & inAttributeArray) ;
+//--- introspection
+  public : virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const = 0 ;
+
+//--------------------------------- Implementation of reader 'description'
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+//--- Internal methods for enumeration
+  protected : virtual void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const AC_GALGAS_listmap_new & inOperand) const ;
+
+//--------------------------------- Insulate
+  private : VIRTUAL_IN_DEBUG void insulateListMap (LOCATION_ARGS) ;
+
+//--------------------------------- Support for 'listForKey' reader
+  protected : capCollectionElementArray listForKey (const GALGAS_string & inKey) const ;
+
+//--------------------------------- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint getter_count (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_stringset getter_allKeys (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_stringlist getter_keyList (LOCATION_ARGS) const ;
+
+//--- Attribute
+  private : class cSharedListMapRoot_new * mSharedListMap ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
