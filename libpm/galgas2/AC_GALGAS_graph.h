@@ -122,13 +122,6 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
 
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_undefinedNodeReferenceList (LOCATION_ARGS) const ;
 
-  protected : VIRTUAL_IN_DEBUG void internalTopologicalSort (cSharedList * & outSortedList,
-                                                             GALGAS_lstringlist & outSortedNodeKeyList,
-                                                             cSharedList * & outUnsortedList,
-                                                             GALGAS_lstringlist & outUnsortedNodeKeyList,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const ;
-
   protected : VIRTUAL_IN_DEBUG void internalTopologicalSort (capCollectionElementArray & outSortedList,
                                                              GALGAS_lstringlist & outSortedNodeKeyList,
                                                              capCollectionElementArray & outUnsortedList,
@@ -140,18 +133,6 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
                                                                GALGAS_lstringlist & outNodeKeyList
                                                                COMMA_UNUSED_LOCATION_ARGS) const ;
 
-  protected : VIRTUAL_IN_DEBUG void internalFindCircularities (cSharedList * & outInfoList,
-                                                               GALGAS_lstringlist & outNodeKeyList
-                                                               COMMA_UNUSED_LOCATION_ARGS) const ;
-
-  protected : VIRTUAL_IN_DEBUG void internalNodesWithNoPredecessor (cSharedList * & outSortedList,
-                                                                    GALGAS_lstringlist & outSortedNodeKeyList
-                                                                    COMMA_LOCATION_ARGS) const ;
-
-  protected : VIRTUAL_IN_DEBUG void internalNodesWithNoSuccessor (cSharedList * & outSortedList,
-                                                                  GALGAS_lstringlist & outSortedNodeKeyList
-                                                                  COMMA_LOCATION_ARGS) const ;
-
   protected : VIRTUAL_IN_DEBUG void internalNodesWithNoPredecessor (capCollectionElementArray & outSortedList,
                                                                     GALGAS_lstringlist & outSortedNodeKeyList
                                                                     COMMA_LOCATION_ARGS) const ;
@@ -160,13 +141,6 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
                                                                   GALGAS_lstringlist & outSortedNodeKeyList
                                                                   COMMA_LOCATION_ARGS) const ;
 
-
-  protected : VIRTUAL_IN_DEBUG void internalDepthFirstTopologicalSort (cSharedList * & outSortedList,
-                                                                       GALGAS_lstringlist & outSortedNodeKeyList,
-                                                                       cSharedList * & outUnsortedList,
-                                                                       GALGAS_lstringlist & outUnsortedNodeKeyList,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const ;
 
   protected : VIRTUAL_IN_DEBUG void internalDepthFirstTopologicalSort (capCollectionElementArray & outSortedList,
                                                                        GALGAS_lstringlist & outSortedNodeKeyList,
