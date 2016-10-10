@@ -258,7 +258,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineMap_2
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalFunctionFormalArgumentList : public AC_GALGAS_list_new {
+class GALGAS_lexicalFunctionFormalArgumentList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalFunctionFormalArgumentList (void) ;
 
@@ -723,7 +723,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionMap_
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateDelimitorList : public AC_GALGAS_list_new {
+class GALGAS_templateDelimitorList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_templateDelimitorList (void) ;
 
@@ -2098,7 +2098,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionDefaultValueE
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_commandLineOptionListAST : public AC_GALGAS_list_new {
+class GALGAS_commandLineOptionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_commandLineOptionListAST (void) ;
 
@@ -2661,7 +2661,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionMa
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_guiSimpleAttributeListAST : public AC_GALGAS_list_new {
+class GALGAS_guiSimpleAttributeListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_guiSimpleAttributeListAST (void) ;
 
@@ -2869,7 +2869,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiSimpleAttributeL
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_guiCompoundAttributeListAST : public AC_GALGAS_list_new {
+class GALGAS_guiCompoundAttributeListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_guiCompoundAttributeListAST (void) ;
 
@@ -3096,7 +3096,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiCompoundAttribut
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_terminalLabelListAST : public AC_GALGAS_list_new {
+class GALGAS_terminalLabelListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_terminalLabelListAST (void) ;
 
@@ -3304,7 +3304,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalLabelListAS
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_guiLabelListAST : public AC_GALGAS_list_new {
+class GALGAS_guiLabelListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_guiLabelListAST (void) ;
 
@@ -3531,7 +3531,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiLabelListAST_2D_
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_withLexiqueListAST : public AC_GALGAS_list_new {
+class GALGAS_withLexiqueListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_withLexiqueListAST (void) ;
 
@@ -3777,7 +3777,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_withLexiqueListAST_
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_guiCommandLineOptionList : public AC_GALGAS_list_new {
+class GALGAS_guiCommandLineOptionList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_guiCommandLineOptionList (void) ;
 
@@ -4236,7 +4236,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMap_2D_ele
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_textMacroList : public AC_GALGAS_list_new {
+class GALGAS_textMacroList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_textMacroList (void) ;
 
@@ -4444,7 +4444,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_textMacroList_2D_el
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_importedLexiqueList : public AC_GALGAS_list_new {
+class GALGAS_importedLexiqueList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_importedLexiqueList (void) ;
 
@@ -4709,7 +4709,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_importedLexiqueList
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_galgas_33_GUIComponentListAST : public AC_GALGAS_list_new {
+class GALGAS_galgas_33_GUIComponentListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_galgas_33_GUIComponentListAST (void) ;
 
@@ -5245,7 +5245,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapF
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list_new {
+class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_propertyInCollectionListAST (void) ;
 
@@ -5624,7 +5624,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantList_2D
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_enumConstantListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_enumConstantListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_enumConstantListForGeneration (void) ;
 
@@ -5761,7 +5761,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantListFor
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_unifiedTypeMapProxyList : public AC_GALGAS_list_new {
+class GALGAS_unifiedTypeMapProxyList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_unifiedTypeMapProxyList (void) ;
 
@@ -6021,7 +6021,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapProxy
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_externTypeConstructorList : public AC_GALGAS_list_new {
+class GALGAS_externTypeConstructorList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_externTypeConstructorList (void) ;
 
@@ -6172,7 +6172,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstruct
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_typeNameFormalParameterNameList : public AC_GALGAS_list_new {
+class GALGAS_typeNameFormalParameterNameList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_typeNameFormalParameterNameList (void) ;
 
@@ -6399,7 +6399,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstruct
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_externTypeGetterList : public AC_GALGAS_list_new {
+class GALGAS_externTypeGetterList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_externTypeGetterList (void) ;
 
@@ -6626,7 +6626,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeGetterLis
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_externTypeSetterList : public AC_GALGAS_list_new {
+class GALGAS_externTypeSetterList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_externTypeSetterList (void) ;
 
@@ -6763,7 +6763,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeSetterLis
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_formalParameterListAST : public AC_GALGAS_list_new {
+class GALGAS_formalParameterListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_formalParameterListAST (void) ;
 
@@ -6997,7 +6997,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeSetterLis
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_externTypeMethodList : public AC_GALGAS_list_new {
+class GALGAS_externTypeMethodList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_externTypeMethodList (void) ;
 

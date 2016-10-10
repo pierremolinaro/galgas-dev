@@ -1434,13 +1434,13 @@ typeComparisonResult cCollectionElement_enumerationDescriptorList::compare (cons
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_enumerationDescriptorList::GALGAS_enumerationDescriptorList (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_enumerationDescriptorList::GALGAS_enumerationDescriptorList (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

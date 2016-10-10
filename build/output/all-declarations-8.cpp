@@ -94,13 +94,13 @@ typeComparisonResult cCollectionElement_productionRuleListForGrammarAnalysis::co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_productionRuleListForGrammarAnalysis::GALGAS_productionRuleListForGrammarAnalysis (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_productionRuleListForGrammarAnalysis::GALGAS_productionRuleListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1140,13 +1140,13 @@ typeComparisonResult cCollectionElement_branchListForGrammarAnalysis::compare (c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_branchListForGrammarAnalysis::GALGAS_branchListForGrammarAnalysis (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_branchListForGrammarAnalysis::GALGAS_branchListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1890,13 +1890,13 @@ typeComparisonResult cCollectionElement_syntaxComponentListForGrammarAnalysis::c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxComponentListForGrammarAnalysis::GALGAS_syntaxComponentListForGrammarAnalysis (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxComponentListForGrammarAnalysis::GALGAS_syntaxComponentListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2653,13 +2653,13 @@ typeComparisonResult cCollectionElement_rowList::compare (const cCollectionEleme
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_rowList::GALGAS_rowList (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_rowList::GALGAS_rowList (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3136,13 +3136,13 @@ typeComparisonResult cCollectionElement_programListForGeneration::compare (const
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_programListForGeneration::GALGAS_programListForGeneration (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_programListForGeneration::GALGAS_programListForGeneration (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3431,7 +3431,7 @@ GALGAS_programListForGeneration GALGAS_programListForGeneration::extractObject (
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_genericExtensionMethodListMap::GALGAS_genericExtensionMethodListMap (void) :
-AC_GALGAS_listmap_new () {
+AC_GALGAS_listmap () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3472,24 +3472,24 @@ cGenericAbstractEnumerator (inOrder) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_genericExtensionMethodListMap_2D_element cEnumerator_genericExtensionMethodListMap::current (LOCATION_ARGS) const {
-  const cListMapElement_new * p = (const cListMapElement_new *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cListMapElement_new) ;
+  const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cListMapElement) ;
   return GALGAS_genericExtensionMethodListMap_2D_element (p->mKey, p->mSharedListMapList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_genericExtensionMethodListMap::current_key (LOCATION_ARGS) const {
-  const cListMapElement_new * p = (const cListMapElement_new *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cListMapElement_new) ;
+  const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cListMapElement) ;
   return GALGAS_string (p->mKey) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstringlist cEnumerator_genericExtensionMethodListMap::current_mList (LOCATION_ARGS) const {
-  const cListMapElement_new * p = (const cListMapElement_new *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cListMapElement_new) ;
+  const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cListMapElement) ;
   return GALGAS_lstringlist (p->mSharedListMapList) ;
 }
 
@@ -3633,7 +3633,7 @@ C_PrologueEpilogue gMethod_semanticDeclarationAST_buildExtensionListMaps (define
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_descendantClassListMap::GALGAS_descendantClassListMap (void) :
-AC_GALGAS_listmap_new () {
+AC_GALGAS_listmap () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3674,24 +3674,24 @@ cGenericAbstractEnumerator (inOrder) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_descendantClassListMap_2D_element cEnumerator_descendantClassListMap::current (LOCATION_ARGS) const {
-  const cListMapElement_new * p = (const cListMapElement_new *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cListMapElement_new) ;
+  const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cListMapElement) ;
   return GALGAS_descendantClassListMap_2D_element (p->mKey, p->mSharedListMapList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_descendantClassListMap::current_key (LOCATION_ARGS) const {
-  const cListMapElement_new * p = (const cListMapElement_new *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cListMapElement_new) ;
+  const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cListMapElement) ;
   return GALGAS_string (p->mKey) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_unifiedTypeMapProxyList cEnumerator_descendantClassListMap::current_mList (LOCATION_ARGS) const {
-  const cListMapElement_new * p = (const cListMapElement_new *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cListMapElement_new) ;
+  const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cListMapElement) ;
   return GALGAS_unifiedTypeMapProxyList (p->mSharedListMapList) ;
 }
 
@@ -8832,13 +8832,13 @@ typeComparisonResult cCollectionElement_galgas_33_QualifiedFeatureList::compare 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_galgas_33_QualifiedFeatureList::GALGAS_galgas_33_QualifiedFeatureList (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_galgas_33_QualifiedFeatureList::GALGAS_galgas_33_QualifiedFeatureList (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

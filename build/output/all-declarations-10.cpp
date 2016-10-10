@@ -88,13 +88,13 @@ typeComparisonResult cCollectionElement_BuildFileList::compare (const cCollectio
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_BuildFileList::GALGAS_BuildFileList (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_BuildFileList::GALGAS_BuildFileList (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

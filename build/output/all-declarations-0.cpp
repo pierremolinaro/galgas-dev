@@ -4527,13 +4527,13 @@ typeComparisonResult cCollectionElement_templateInstructionListAST::compare (con
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionListAST::GALGAS_templateInstructionListAST (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionListAST::GALGAS_templateInstructionListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4986,13 +4986,13 @@ typeComparisonResult cCollectionElement_templateExpressionListAST::compare (cons
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionListAST::GALGAS_templateExpressionListAST (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionListAST::GALGAS_templateExpressionListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10140,13 +10140,13 @@ typeComparisonResult cCollectionElement_templateInstructionIfBranchListAST::comp
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionIfBranchListAST::GALGAS_templateInstructionIfBranchListAST (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionIfBranchListAST::GALGAS_templateInstructionIfBranchListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10733,13 +10733,13 @@ typeComparisonResult cCollectionElement_templateInstructionSwitchBranchListAST::
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionSwitchBranchListAST::GALGAS_templateInstructionSwitchBranchListAST (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionSwitchBranchListAST::GALGAS_templateInstructionSwitchBranchListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12899,13 +12899,13 @@ typeComparisonResult cCollectionElement_templateInstructionListForGeneration::co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionListForGeneration::GALGAS_templateInstructionListForGeneration (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionListForGeneration::GALGAS_templateInstructionListForGeneration (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13515,13 +13515,13 @@ typeComparisonResult cCollectionElement_templateInstructionIfBranchListForGenera
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionIfBranchListForGeneration::GALGAS_templateInstructionIfBranchListForGeneration (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionIfBranchListForGeneration::GALGAS_templateInstructionIfBranchListForGeneration (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14108,13 +14108,13 @@ typeComparisonResult cCollectionElement_templateInstructionSwitchBranchListForGe
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionSwitchBranchListForGeneration::GALGAS_templateInstructionSwitchBranchListForGeneration (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionSwitchBranchListForGeneration::GALGAS_templateInstructionSwitchBranchListForGeneration (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

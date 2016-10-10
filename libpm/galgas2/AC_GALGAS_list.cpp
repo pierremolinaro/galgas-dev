@@ -32,7 +32,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::removeObjectAtIndex (capCollectionElement & outAttributes,
+void AC_GALGAS_list::removeObjectAtIndex (capCollectionElement & outAttributes,
                                               const uint32_t inRemoveIndex,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
@@ -47,7 +47,7 @@ void AC_GALGAS_list_new::removeObjectAtIndex (capCollectionElement & outAttribut
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::removeFirstObject (capCollectionElement & outAttributes,
+void AC_GALGAS_list::removeFirstObject (capCollectionElement & outAttributes,
                                             C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) {
   mSharedArray.removeFirstObject (outAttributes, inCompiler COMMA_THERE) ;
@@ -61,7 +61,7 @@ void AC_GALGAS_list_new::removeFirstObject (capCollectionElement & outAttributes
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::removeLastObject (capCollectionElement & outAttributes,
+void AC_GALGAS_list::removeLastObject (capCollectionElement & outAttributes,
                                            C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) {
   mSharedArray.removeLastObject (outAttributes, inCompiler COMMA_THERE) ;
@@ -71,7 +71,7 @@ void AC_GALGAS_list_new::removeLastObject (capCollectionElement & outAttributes,
 //    AC_GALGAS_list                                                                                                   *
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_list_new::AC_GALGAS_list_new (void) :
+AC_GALGAS_list::AC_GALGAS_list (void) :
 AC_GALGAS_root (),
 mSharedArray (),
 mIsValid (false) {
@@ -79,7 +79,7 @@ mIsValid (false) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_list_new::AC_GALGAS_list_new (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list::AC_GALGAS_list (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_root (),
 mSharedArray (inSharedArray),
 mIsValid (true) {
@@ -87,12 +87,12 @@ mIsValid (true) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_list_new::~ AC_GALGAS_list_new (void) {
+AC_GALGAS_list::~ AC_GALGAS_list (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::description (C_String & ioString,
+void AC_GALGAS_list::description (C_String & ioString,
                                       const int32_t inIndentation) const {
   ioString << "<list @"
            << staticTypeDescriptor ()->mGalgasTypeName ;
@@ -106,7 +106,7 @@ void AC_GALGAS_list_new::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::populateEnumerationArray (capCollectionElementArray & outEnumerationArray) const {
+void AC_GALGAS_list::populateEnumerationArray (capCollectionElementArray & outEnumerationArray) const {
   if (isValid ()) {
     outEnumerationArray = mSharedArray ;
   }
@@ -114,7 +114,7 @@ void AC_GALGAS_list_new::populateEnumerationArray (capCollectionElementArray & o
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-uint32_t AC_GALGAS_list_new::count () const {
+uint32_t AC_GALGAS_list::count () const {
   uint32_t result = 0 ;
   if (isValid ()) {
     result = mSharedArray.count () ;
@@ -124,7 +124,7 @@ uint32_t AC_GALGAS_list_new::count () const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint AC_GALGAS_list_new::getter_length (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint AC_GALGAS_list::getter_length (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
     result = GALGAS_uint (mSharedArray.count ()) ;
@@ -134,7 +134,7 @@ GALGAS_uint AC_GALGAS_list_new::getter_length (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_range AC_GALGAS_list_new::getter_range (UNUSED_LOCATION_ARGS) const {
+GALGAS_range AC_GALGAS_list::getter_range (UNUSED_LOCATION_ARGS) const {
   GALGAS_range result ;
   if (isValid ()) {
     result = GALGAS_range (GALGAS_uint (0), GALGAS_uint (mSharedArray.count ())) ;
@@ -144,20 +144,20 @@ GALGAS_range AC_GALGAS_list_new::getter_range (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::drop (void) {
+void AC_GALGAS_list::drop (void) {
   mIsValid = false ;
   mSharedArray.removeAllObjects () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::appendObject (const capCollectionElement & inElementToAdd) {
+void AC_GALGAS_list::appendObject (const capCollectionElement & inElementToAdd) {
   mSharedArray.appendObject (inElementToAdd) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::insertObjectAtIndex (const capCollectionElement & inElementToAdd,
+void AC_GALGAS_list::insertObjectAtIndex (const capCollectionElement & inElementToAdd,
                                               const uint32_t inInsertionIndex,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
@@ -166,7 +166,7 @@ void AC_GALGAS_list_new::insertObjectAtIndex (const capCollectionElement & inEle
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::readFirst (capCollectionElement & outAttributes,
+void AC_GALGAS_list::readFirst (capCollectionElement & outAttributes,
                                     C_Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) const {
   mSharedArray.readFirstObject (outAttributes, inCompiler COMMA_THERE) ;
@@ -174,7 +174,7 @@ void AC_GALGAS_list_new::readFirst (capCollectionElement & outAttributes,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::readLast (capCollectionElement & outAttributes,
+void AC_GALGAS_list::readLast (capCollectionElement & outAttributes,
                                    C_Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) const {
   mSharedArray.readLastObject (outAttributes, inCompiler COMMA_THERE) ;
@@ -182,7 +182,7 @@ void AC_GALGAS_list_new::readLast (capCollectionElement & outAttributes,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::subListWithRange (AC_GALGAS_list_new & outList,
+void AC_GALGAS_list::subListWithRange (AC_GALGAS_list & outList,
                                            const GALGAS_range & inRange,
                                            C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const {
@@ -201,7 +201,7 @@ void AC_GALGAS_list_new::subListWithRange (AC_GALGAS_list_new & outList,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::subListFromIndex (AC_GALGAS_list_new & outList,
+void AC_GALGAS_list::subListFromIndex (AC_GALGAS_list & outList,
                                            const GALGAS_uint & inIndex,
                                            C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const {
@@ -216,7 +216,7 @@ void AC_GALGAS_list_new::subListFromIndex (AC_GALGAS_list_new & outList,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::subListToIndex (AC_GALGAS_list_new & outList,
+void AC_GALGAS_list::subListToIndex (AC_GALGAS_list & outList,
                                          const GALGAS_uint & inIndex,
                                          C_Compiler * inCompiler
                                          COMMA_LOCATION_ARGS) const {
@@ -231,7 +231,7 @@ void AC_GALGAS_list_new::subListToIndex (AC_GALGAS_list_new & outList,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_list_new::appendList (const AC_GALGAS_list_new & inList) {
+void AC_GALGAS_list::appendList (const AC_GALGAS_list & inList) {
   if (isValid () && inList.isValid ()) {
     mSharedArray.appendObjects (inList.mSharedArray) ;
   }
@@ -239,7 +239,7 @@ void AC_GALGAS_list_new::appendList (const AC_GALGAS_list_new & inList) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-capCollectionElement AC_GALGAS_list_new::readObjectAtIndex (const GALGAS_uint & inIndex,
+capCollectionElement AC_GALGAS_list::readObjectAtIndex (const GALGAS_uint & inIndex,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   capCollectionElement result ;
@@ -258,7 +258,7 @@ capCollectionElement AC_GALGAS_list_new::readObjectAtIndex (const GALGAS_uint & 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cCollectionElement * AC_GALGAS_list_new::uniquelyReferencedPointerAtIndex (const GALGAS_uint & inIndex,
+cCollectionElement * AC_GALGAS_list::uniquelyReferencedPointerAtIndex (const GALGAS_uint & inIndex,
                                                                            C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) {
   cCollectionElement * result = NULL ;
@@ -284,7 +284,7 @@ cCollectionElement * AC_GALGAS_list_new::uniquelyReferencedPointerAtIndex (const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult AC_GALGAS_list_new::objectCompare (const AC_GALGAS_list_new & inOperand) const {
+typeComparisonResult AC_GALGAS_list::objectCompare (const AC_GALGAS_list & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     result = mSharedArray.compareCollectionElementArray (inOperand.mSharedArray) ;
@@ -298,28 +298,28 @@ typeComparisonResult AC_GALGAS_list_new::objectCompare (const AC_GALGAS_list_new
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cListMapNode_new {
-  public : cListMapNode_new * mInfPtr ;
-  public : cListMapNode_new * mSupPtr ;
+class cListMapNode {
+  public : cListMapNode * mInfPtr ;
+  public : cListMapNode * mSupPtr ;
   public : int32_t mBalance ;
   public : C_String mKey ;
   public : capCollectionElementArray myList ;
 
 //--- Constructors
-  public : cListMapNode_new (const C_String & inKey) ;
-  public : cListMapNode_new (const cListMapNode_new * inNode) ;
+  public : cListMapNode (const C_String & inKey) ;
+  public : cListMapNode (const cListMapNode * inNode) ;
 
 //--- Destructor
-  public : virtual ~ cListMapNode_new (void) ;
+  public : virtual ~ cListMapNode (void) ;
 
 //--- No copy
-  private : cListMapNode_new (const cListMapNode_new &) ;
-  private : cListMapNode_new & operator = (const cListMapNode_new &) ;
+  private : cListMapNode (const cListMapNode &) ;
+  private : cListMapNode & operator = (const cListMapNode &) ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cListMapNode_new::cListMapNode_new (const C_String & inKey) :
+cListMapNode::cListMapNode (const C_String & inKey) :
 mInfPtr (NULL),
 mSupPtr (NULL),
 mBalance (0),
@@ -329,35 +329,35 @@ myList () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cListMapNode_new::~ cListMapNode_new (void) {
+cListMapNode::~ cListMapNode (void) {
   macroMyDelete (mInfPtr) ;
   macroMyDelete (mSupPtr) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  cSharedListMapRoot_new                                                                                                 *
+//  cSharedListMapRoot                                                                                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cSharedListMapRoot_new : public C_SharedObject {
+class cSharedListMapRoot : public C_SharedObject {
 //--- Attributes
-  private : cListMapNode_new * mRoot ;
-  public : const cListMapNode_new * root (void) const { return mRoot ; }
+  private : cListMapNode * mRoot ;
+  public : const cListMapNode * root (void) const { return mRoot ; }
   private : uint32_t mCount ;
 
 //--- Default constructor
-  public : cSharedListMapRoot_new (LOCATION_ARGS) ;
+  public : cSharedListMapRoot (LOCATION_ARGS) ;
 
 //--- Destructor
-  public : virtual ~ cSharedListMapRoot_new (void) ;
+  public : virtual ~ cSharedListMapRoot (void) ;
 
 //--- No copy
-  private : cSharedListMapRoot_new (const cSharedListMapRoot_new &) ;
-  private : cSharedListMapRoot_new & operator = (const cSharedListMapRoot_new &) ;
+  private : cSharedListMapRoot (const cSharedListMapRoot &) ;
+  private : cSharedListMapRoot & operator = (const cSharedListMapRoot &) ;
 
 //--- Copy from
-  public : VIRTUAL_IN_DEBUG void copyFrom (const cSharedListMapRoot_new * inSource) ;
+  public : VIRTUAL_IN_DEBUG void copyFrom (const cSharedListMapRoot * inSource) ;
 
 //--- Count
   public : VIRTUAL_IN_DEBUG uint32_t count (void) const { return mCount ; }
@@ -366,14 +366,14 @@ class cSharedListMapRoot_new : public C_SharedObject {
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 
-  public : static void internalDescription (cListMapNode_new * inNode,
+  public : static void internalDescription (cListMapNode * inNode,
                                             C_String & ioString,
                                             const int32_t inIndentation,
                                             uint32_t & ioIdx) ;
 //--- Find or add entry
-  public : VIRTUAL_IN_DEBUG void findOrAddEntry (cListMapNode_new * & ioRootPtr,
+  public : VIRTUAL_IN_DEBUG void findOrAddEntry (cListMapNode * & ioRootPtr,
                                                  const C_String & inKey,
-                                                 cListMapNode_new * & outEntry,
+                                                 cListMapNode * & outEntry,
                                                  bool & ioExtension) ;
 
   public : VIRTUAL_IN_DEBUG void addObjectInListMap (const C_String & inKey,
@@ -385,12 +385,12 @@ class cSharedListMapRoot_new : public C_SharedObject {
 //--------------------------------- Support for enumeration
   public : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult listmapCompare (const cSharedListMapRoot_new * inOperand) const ;
+  public : typeComparisonResult listmapCompare (const cSharedListMapRoot * inOperand) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cSharedListMapRoot_new::cSharedListMapRoot_new (LOCATION_ARGS) :
+cSharedListMapRoot::cSharedListMapRoot (LOCATION_ARGS) :
 C_SharedObject (THERE),
 mRoot (NULL),
 mCount (0) {
@@ -398,7 +398,7 @@ mCount (0) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cSharedListMapRoot_new::~cSharedListMapRoot_new (void) {
+cSharedListMapRoot::~cSharedListMapRoot (void) {
   macroMyDelete (mRoot) ;
 }
 
@@ -410,26 +410,26 @@ cSharedListMapRoot_new::~cSharedListMapRoot_new (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_listmap_new::AC_GALGAS_listmap_new (void) :
+AC_GALGAS_listmap::AC_GALGAS_listmap (void) :
 AC_GALGAS_root (),
 mSharedListMap (NULL) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_listmap_new::~ AC_GALGAS_listmap_new (void) {
+AC_GALGAS_listmap::~ AC_GALGAS_listmap (void) {
   macroDetachSharedObject (mSharedListMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_listmap_new::drop (void) {
+void AC_GALGAS_listmap::drop (void) {
   macroDetachSharedObject (mSharedListMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_listmap_new::AC_GALGAS_listmap_new (const AC_GALGAS_listmap_new & inSource) :
+AC_GALGAS_listmap::AC_GALGAS_listmap (const AC_GALGAS_listmap & inSource) :
 AC_GALGAS_root (),
 mSharedListMap (NULL) {
   macroAssignSharedObject (mSharedListMap, inSource.mSharedListMap) ;
@@ -437,14 +437,14 @@ mSharedListMap (NULL) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_listmap_new & AC_GALGAS_listmap_new::operator = (const AC_GALGAS_listmap_new & inSource) {
+AC_GALGAS_listmap & AC_GALGAS_listmap::operator = (const AC_GALGAS_listmap & inSource) {
   macroAssignSharedObject (mSharedListMap, inSource.mSharedListMap) ;
   return * this ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-uint32_t AC_GALGAS_listmap_new::count (void) const {
+uint32_t AC_GALGAS_listmap::count (void) const {
   uint32_t result = 0 ;
   if (NULL != mSharedListMap) {
     result = mSharedListMap->count () ;
@@ -454,7 +454,7 @@ uint32_t AC_GALGAS_listmap_new::count (void) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint AC_GALGAS_listmap_new::getter_count (UNUSED_LOCATION_ARGS) const {
+GALGAS_uint AC_GALGAS_listmap::getter_count (UNUSED_LOCATION_ARGS) const {
   return GALGAS_uint (count ()) ;
 }
 
@@ -466,7 +466,7 @@ GALGAS_uint AC_GALGAS_listmap_new::getter_count (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void enterAllKeys (const cListMapNode_new * inNode, GALGAS_stringset & ioResult) {
+static void enterAllKeys (const cListMapNode * inNode, GALGAS_stringset & ioResult) {
   if (inNode != NULL) {
     enterAllKeys (inNode->mInfPtr, ioResult) ;
     ioResult.addAssign_operation (GALGAS_string (inNode->mKey) COMMA_HERE) ;
@@ -476,7 +476,7 @@ static void enterAllKeys (const cListMapNode_new * inNode, GALGAS_stringset & io
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringset AC_GALGAS_listmap_new::getter_allKeys (LOCATION_ARGS) const {
+GALGAS_stringset AC_GALGAS_listmap::getter_allKeys (LOCATION_ARGS) const {
   GALGAS_stringset result ;
   if (isValid ()) {
     result = GALGAS_stringset::constructor_emptySet (THERE) ;
@@ -487,7 +487,7 @@ GALGAS_stringset AC_GALGAS_listmap_new::getter_allKeys (LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void enterKeyList (const cListMapNode_new * inNode, GALGAS_stringlist & ioResult) {
+static void enterKeyList (const cListMapNode * inNode, GALGAS_stringlist & ioResult) {
   if (inNode != NULL) {
     enterKeyList (inNode->mInfPtr, ioResult) ;
     ioResult.addAssign_operation (GALGAS_string (inNode->mKey) COMMA_HERE) ;
@@ -497,7 +497,7 @@ static void enterKeyList (const cListMapNode_new * inNode, GALGAS_stringlist & i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist AC_GALGAS_listmap_new::getter_keyList (LOCATION_ARGS) const {
+GALGAS_stringlist AC_GALGAS_listmap::getter_keyList (LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (isValid ()) {
     result = GALGAS_stringlist::constructor_emptyList (THERE) ;
@@ -514,7 +514,7 @@ GALGAS_stringlist AC_GALGAS_listmap_new::getter_keyList (LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cSharedListMapRoot_new::listmapCompare (const cSharedListMapRoot_new * inOperand) const {
+typeComparisonResult cSharedListMapRoot::listmapCompare (const cSharedListMapRoot * inOperand) const {
   typeComparisonResult result = kOperandEqual ;
   if (count () < inOperand->count ()) {
     result = kFirstOperandLowerThanSecond ;
@@ -532,7 +532,7 @@ typeComparisonResult cSharedListMapRoot_new::listmapCompare (const cSharedListMa
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult AC_GALGAS_listmap_new::objectCompare (const AC_GALGAS_listmap_new & inOperand) const {
+typeComparisonResult AC_GALGAS_listmap::objectCompare (const AC_GALGAS_listmap & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     result = mSharedListMap->listmapCompare (inOperand.mSharedListMap) ;
@@ -548,7 +548,7 @@ typeComparisonResult AC_GALGAS_listmap_new::objectCompare (const AC_GALGAS_listm
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cSharedListMapRoot_new::internalDescription (cListMapNode_new * inNode,
+void cSharedListMapRoot::internalDescription (cListMapNode * inNode,
                                               C_String & ioString,
                                               const int32_t inIndentation,
                                               uint32_t & ioIdx) {
@@ -566,7 +566,7 @@ void cSharedListMapRoot_new::internalDescription (cListMapNode_new * inNode,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cSharedListMapRoot_new::description (C_String & ioString,
+void cSharedListMapRoot::description (C_String & ioString,
                                           const int32_t inIndentation) const {
   ioString << " ("
            << cStringWithUnsigned (count ())
@@ -579,7 +579,7 @@ void cSharedListMapRoot_new::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_listmap_new::description (C_String & ioString,
+void AC_GALGAS_listmap::description (C_String & ioString,
                                          const int32_t inIndentation) const {
   ioString << "<@" << staticTypeDescriptor ()->mGalgasTypeName << ": " ;
   if (isValid ()) {
@@ -598,7 +598,7 @@ void AC_GALGAS_listmap_new::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cListMapNode_new::cListMapNode_new (const cListMapNode_new * inNode) :
+cListMapNode::cListMapNode (const cListMapNode * inNode) :
 mInfPtr (NULL),
 mSupPtr (NULL),
 mBalance (0),
@@ -606,10 +606,10 @@ mKey (),
 myList () {
   macroValidPointer (inNode) ;
   if (inNode->mInfPtr != NULL) {
-    macroMyNew (mInfPtr, cListMapNode_new (inNode->mInfPtr)) ;
+    macroMyNew (mInfPtr, cListMapNode (inNode->mInfPtr)) ;
   }
   if (inNode->mSupPtr != NULL) {
-    macroMyNew (mSupPtr, cListMapNode_new (inNode->mSupPtr)) ;
+    macroMyNew (mSupPtr, cListMapNode (inNode->mSupPtr)) ;
   }
   mKey = inNode->mKey ;
   mBalance = inNode->mBalance ;
@@ -618,14 +618,14 @@ myList () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cSharedListMapRoot_new::copyFrom (const cSharedListMapRoot_new * inSource) {
+void cSharedListMapRoot::copyFrom (const cSharedListMapRoot * inSource) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     // inSource->checkMap (HERE) ;
   #endif
-  macroValidSharedObject (inSource, cSharedListMapRoot_new) ;
+  macroValidSharedObject (inSource, cSharedListMapRoot) ;
   mCount = inSource->mCount ;
   if (NULL != inSource->mRoot) {
-    macroMyNew (mRoot, cListMapNode_new (inSource->mRoot)) ;
+    macroMyNew (mRoot, cListMapNode (inSource->mRoot)) ;
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS
     // checkMap (HERE) ;
@@ -634,10 +634,10 @@ void cSharedListMapRoot_new::copyFrom (const cSharedListMapRoot_new * inSource) 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_listmap_new::insulateListMap (LOCATION_ARGS) {
+void AC_GALGAS_listmap::insulateListMap (LOCATION_ARGS) {
   if ((mSharedListMap != NULL) && !mSharedListMap->isUniquelyReferenced ()) {
-    cSharedListMapRoot_new * p = NULL ;
-    macroMyNew (p, cSharedListMapRoot_new (THERE)) ;
+    cSharedListMapRoot * p = NULL ;
+    macroMyNew (p, cSharedListMapRoot (THERE)) ;
     p->copyFrom (mSharedListMap) ;
     macroAssignSharedObject (mSharedListMap, p) ;
     macroDetachSharedObject (p) ;
@@ -652,8 +652,8 @@ void AC_GALGAS_listmap_new::insulateListMap (LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_listmap_new::makeNewEmptyListMap (LOCATION_ARGS) {
-  macroMyNew (mSharedListMap, cSharedListMapRoot_new (THERE)) ;
+void AC_GALGAS_listmap::makeNewEmptyListMap (LOCATION_ARGS) {
+  macroMyNew (mSharedListMap, cSharedListMapRoot (THERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -664,8 +664,8 @@ void AC_GALGAS_listmap_new::makeNewEmptyListMap (LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void rotateLeft (cListMapNode_new * & ioRootPtr) {
-  cListMapNode_new * b = ioRootPtr->mSupPtr ;
+static void rotateLeft (cListMapNode * & ioRootPtr) {
+  cListMapNode * b = ioRootPtr->mSupPtr ;
   ioRootPtr->mSupPtr = b->mInfPtr ;
   b->mInfPtr = ioRootPtr;
 
@@ -685,8 +685,8 @@ static void rotateLeft (cListMapNode_new * & ioRootPtr) {
 
 //---------------------------------------------------------------------
 
-static void rotateRight (cListMapNode_new * & ioRootPtr) {
-  cListMapNode_new * b = ioRootPtr->mInfPtr ;
+static void rotateRight (cListMapNode * & ioRootPtr) {
+  cListMapNode * b = ioRootPtr->mInfPtr ;
   ioRootPtr->mInfPtr = b->mSupPtr ;
   b->mSupPtr = ioRootPtr ;
 
@@ -705,12 +705,12 @@ static void rotateRight (cListMapNode_new * & ioRootPtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cSharedListMapRoot_new::findOrAddEntry (cListMapNode_new * & ioRootPtr,
+void cSharedListMapRoot::findOrAddEntry (cListMapNode * & ioRootPtr,
                                          const C_String & inKey,
-                                         cListMapNode_new * & outEntry,
+                                         cListMapNode * & outEntry,
                                          bool & ioExtension) {
   if (ioRootPtr == NULL) {
-    macroMyNew (ioRootPtr, cListMapNode_new (inKey)) ;
+    macroMyNew (ioRootPtr, cListMapNode (inKey)) ;
     outEntry = ioRootPtr ;
     mCount ++ ;
     ioExtension = true ;
@@ -754,10 +754,10 @@ void cSharedListMapRoot_new::findOrAddEntry (cListMapNode_new * & ioRootPtr,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cSharedListMapRoot_new::addObjectInListMap (const C_String & inKey,
+void cSharedListMapRoot::addObjectInListMap (const C_String & inKey,
                                                  capCollectionElement & inAttributeArray) {
   macroUniqueSharedObject (this) ;
-  cListMapNode_new * entry = NULL ;
+  cListMapNode * entry = NULL ;
   bool extension = false ; // Unused
   findOrAddEntry (mRoot, inKey, entry, extension) ;
   macroValidPointer (entry) ;
@@ -766,7 +766,7 @@ void cSharedListMapRoot_new::addObjectInListMap (const C_String & inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_listmap_new::addObjectInListMap (const GALGAS_string & inKey,
+void AC_GALGAS_listmap::addObjectInListMap (const GALGAS_string & inKey,
                                             capCollectionElement & inAttributeArray) {
   if (isValid () && inKey.isValid ()) {
     insulateListMap (HERE) ;
@@ -784,10 +784,10 @@ void AC_GALGAS_listmap_new::addObjectInListMap (const GALGAS_string & inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-capCollectionElementArray cSharedListMapRoot_new::listForKey (const C_String & inKey) const {
+capCollectionElementArray cSharedListMapRoot::listForKey (const C_String & inKey) const {
   capCollectionElementArray result ;
   bool found = false ;
-  const cListMapNode_new * p = mRoot ;
+  const cListMapNode * p = mRoot ;
   while ((p != NULL) && !found) {
     const int32_t comparaison = p->mKey.compare (inKey) ;
     if (comparaison > 0) {
@@ -804,7 +804,7 @@ capCollectionElementArray cSharedListMapRoot_new::listForKey (const C_String & i
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-capCollectionElementArray AC_GALGAS_listmap_new::listForKey (const GALGAS_string & inKey) const {
+capCollectionElementArray AC_GALGAS_listmap::listForKey (const GALGAS_string & inKey) const {
   capCollectionElementArray result ;
   if (isValid () && inKey.isValid ()) {
     result = mSharedListMap->listForKey (inKey.stringValue ()) ;
@@ -820,7 +820,7 @@ capCollectionElementArray AC_GALGAS_listmap_new::listForKey (const GALGAS_string
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cListMapElement_new::cListMapElement_new (const C_String & inKey,
+cListMapElement::cListMapElement (const C_String & inKey,
                                           const capCollectionElementArray & inSharedList
                                           COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
@@ -830,31 +830,31 @@ mSharedListMapList (inSharedList) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cListMapElement_new::~ cListMapElement_new (void) {
+cListMapElement::~ cListMapElement (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool cListMapElement_new::isValid (void) const {
+bool cListMapElement::isValid (void) const {
   return true ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cListMapElement_new::compare (const cCollectionElement * /* inOperand */) const {
+typeComparisonResult cListMapElement::compare (const cCollectionElement * /* inOperand */) const {
   return kOperandNotValid ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cCollectionElement * cListMapElement_new::copy (void) {
+cCollectionElement * cListMapElement::copy (void) {
   return NULL ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cListMapElement_new::description (C_String & /* ioString */,
+void cListMapElement::description (C_String & /* ioString */,
                                    const int32_t /* inIndentation */) const {
 }
 
@@ -870,12 +870,12 @@ void cListMapElement_new::description (C_String & /* ioString */,
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void enterAscendingEnumeration (const cListMapNode_new * inNode,
+static void enterAscendingEnumeration (const cListMapNode * inNode,
                                        capCollectionElementArray & ioEnumerationArray) {
   if (inNode != NULL) {
     enterAscendingEnumeration (inNode->mInfPtr, ioEnumerationArray) ;
-    cListMapElement_new * p = NULL ;
-    macroMyNew (p, cListMapElement_new (inNode->mKey, inNode->myList COMMA_HERE)) ;
+    cListMapElement * p = NULL ;
+    macroMyNew (p, cListMapElement (inNode->mKey, inNode->myList COMMA_HERE)) ;
     capCollectionElement element ;
     element.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -886,7 +886,7 @@ static void enterAscendingEnumeration (const cListMapNode_new * inNode,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cSharedListMapRoot_new::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
+void cSharedListMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
   // printf ("MAP COUNT %u\n", count ()) ;
   ioEnumerationArray.setCapacity (mCount) ;
   enterAscendingEnumeration (mRoot, ioEnumerationArray) ;
@@ -895,7 +895,7 @@ void cSharedListMapRoot_new::populateEnumerationArray (capCollectionElementArray
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void AC_GALGAS_listmap_new::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
+void AC_GALGAS_listmap::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
   if (isValid ()) {
     mSharedListMap->populateEnumerationArray (ioEnumerationArray) ;
   }

@@ -258,7 +258,7 @@ class cPtr_lexicalInstructionAST : public acPtr_class {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalInstructionListAST : public AC_GALGAS_list_new {
+class GALGAS_lexicalInstructionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalInstructionListAST (void) ;
 
@@ -440,7 +440,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalInstructionL
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_metamodelTemplateDelimitorListAST : public AC_GALGAS_list_new {
+class GALGAS_metamodelTemplateDelimitorListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_metamodelTemplateDelimitorListAST (void) ;
 
@@ -655,7 +655,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_metamodelTemplateDe
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateReplacementListAST : public AC_GALGAS_list_new {
+class GALGAS_templateReplacementListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_templateReplacementListAST (void) ;
 
@@ -939,7 +939,7 @@ class cPtr_abstractLexicalRuleAST : public acPtr_class {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalRuleListAST : public AC_GALGAS_list_new {
+class GALGAS_lexicalRuleListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalRuleListAST (void) ;
 
@@ -1208,7 +1208,7 @@ class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalMessageDeclarationListAST : public AC_GALGAS_list_new {
+class GALGAS_lexicalMessageDeclarationListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalMessageDeclarationListAST (void) ;
 
@@ -1408,7 +1408,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageDecla
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalAttributeListAST : public AC_GALGAS_list_new {
+class GALGAS_lexicalAttributeListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalAttributeListAST (void) ;
 
@@ -1608,7 +1608,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeLis
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalStyleListAST : public AC_GALGAS_list_new {
+class GALGAS_lexicalStyleListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalStyleListAST (void) ;
 
@@ -1808,7 +1808,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStyleListAST
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_terminalDeclarationListAST : public AC_GALGAS_list_new {
+class GALGAS_terminalDeclarationListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_terminalDeclarationListAST (void) ;
 
@@ -1967,7 +1967,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalDeclaration
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_sentLexicalAttributeListAST : public AC_GALGAS_list_new {
+class GALGAS_sentLexicalAttributeListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_sentLexicalAttributeListAST (void) ;
 
@@ -2261,7 +2261,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sentLexicalAttribut
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalListEntryListAST : public AC_GALGAS_list_new {
+class GALGAS_lexicalListEntryListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalListEntryListAST (void) ;
 
@@ -2476,7 +2476,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalListEntryLis
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalListDeclarationListAST : public AC_GALGAS_list_new {
+class GALGAS_lexicalListDeclarationListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalListDeclarationListAST (void) ;
 
@@ -2808,7 +2808,7 @@ class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalSendSearchListAST : public AC_GALGAS_list_new {
+class GALGAS_lexicalSendSearchListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalSendSearchListAST (void) ;
 
@@ -3164,7 +3164,7 @@ class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionA
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalWhileBranchListAST : public AC_GALGAS_list_new {
+class GALGAS_lexicalWhileBranchListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalWhileBranchListAST (void) ;
 
@@ -3451,7 +3451,7 @@ class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalSelectBranchListAST : public AC_GALGAS_list_new {
+class GALGAS_lexicalSelectBranchListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalSelectBranchListAST (void) ;
 
@@ -3812,7 +3812,7 @@ class cPtr_abstractLexicalRoutineActualArgumentAST : public acPtr_class {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalRoutineCallActualArgumentListAST : public AC_GALGAS_list_new {
+class GALGAS_lexicalRoutineCallActualArgumentListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalRoutineCallActualArgumentListAST (void) ;
 
@@ -4146,7 +4146,7 @@ class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineAct
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalFunctionCallActualArgumentListAST : public AC_GALGAS_list_new {
+class GALGAS_lexicalFunctionCallActualArgumentListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalFunctionCallActualArgumentListAST (void) ;
 
@@ -4597,7 +4597,7 @@ class GALGAS_string extensionGetter_cocoaPointerInFormalArgument (const class GA
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalExternRoutineFormalArgumentListAST : public AC_GALGAS_list_new {
+class GALGAS_lexicalExternRoutineFormalArgumentListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalExternRoutineFormalArgumentListAST (void) ;
 
@@ -4809,7 +4809,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExternRoutin
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_externRoutineListAST : public AC_GALGAS_list_new {
+class GALGAS_externRoutineListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_externRoutineListAST (void) ;
 
@@ -5024,7 +5024,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externRoutineListAS
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalExternFunctionFormalArgumentListAST : public AC_GALGAS_list_new {
+class GALGAS_lexicalExternFunctionFormalArgumentListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalExternFunctionFormalArgumentListAST (void) ;
 
@@ -5224,7 +5224,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExternFuncti
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_externFunctionListAST : public AC_GALGAS_list_new {
+class GALGAS_externFunctionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_externFunctionListAST (void) ;
 
@@ -5439,7 +5439,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externFunctionListA
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_indexingListAST : public AC_GALGAS_list_new {
+class GALGAS_indexingListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_indexingListAST (void) ;
 
@@ -5736,7 +5736,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeEnum ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalSentValueList : public AC_GALGAS_list_new {
+class GALGAS_lexicalSentValueList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalSentValueList (void) ;
 
@@ -6563,7 +6563,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeMap
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_terminalList : public AC_GALGAS_list_new {
+class GALGAS_terminalList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_terminalList (void) ;
 
@@ -7710,7 +7710,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageMap_2
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_lexicalRoutineFormalArgumentList : public AC_GALGAS_list_new {
+class GALGAS_lexicalRoutineFormalArgumentList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_lexicalRoutineFormalArgumentList (void) ;
 

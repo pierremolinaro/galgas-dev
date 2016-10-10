@@ -15,7 +15,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_BuildFileList : public AC_GALGAS_list_new {
+class GALGAS_BuildFileList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_BuildFileList (void) ;
 

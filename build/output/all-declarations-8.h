@@ -15,7 +15,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list_new {
+class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_productionRuleListForGrammarAnalysis (void) ;
 
@@ -629,7 +629,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolSo
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_branchListForGrammarAnalysis : public AC_GALGAS_list_new {
+class GALGAS_branchListForGrammarAnalysis : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_branchListForGrammarAnalysis (void) ;
 
@@ -940,7 +940,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionFo
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list_new {
+class GALGAS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_syntaxComponentListForGrammarAnalysis (void) ;
 
@@ -1398,7 +1398,7 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const class GALGAS_syntaxInst
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_rowList : public AC_GALGAS_list_new {
+class GALGAS_rowList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_rowList (void) ;
 
@@ -1643,7 +1643,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rowList_2D_element 
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_programListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_programListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_programListForGeneration (void) ;
 
@@ -1829,7 +1829,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programListForGener
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_genericExtensionMethodListMap : public AC_GALGAS_listmap_new {
+class GALGAS_genericExtensionMethodListMap : public AC_GALGAS_listmap {
 //--------------------------------- Default constructor
   public : GALGAS_genericExtensionMethodListMap (void) ;
 
@@ -2010,7 +2010,7 @@ void callExtensionMethod_buildExtensionListMaps (const class cPtr_semanticDeclar
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_descendantClassListMap : public AC_GALGAS_listmap_new {
+class GALGAS_descendantClassListMap : public AC_GALGAS_listmap {
 //--------------------------------- Default constructor
   public : GALGAS_descendantClassListMap (void) ;
 
@@ -3054,7 +3054,7 @@ class cParser_galgas_33_ProjectSyntax {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list_new {
+class GALGAS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_galgas_33_QualifiedFeatureList (void) ;
 

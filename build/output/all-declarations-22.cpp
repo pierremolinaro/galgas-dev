@@ -3793,7 +3793,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeHeader_31_ (
     "\n"
     "class GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
-  result << " : public AC_GALGAS_listmap_new {\n"
+  result << " : public AC_GALGAS_listmap {\n"
     "//--------------------------------- Default constructor\n"
     "  public : GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -3822,7 +3822,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
   result << "::GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (void) :\n"
-    "AC_GALGAS_listmap_new () {\n"
+    "AC_GALGAS_listmap () {\n"
     "}\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -3846,33 +3846,33 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
   result << "::addAssign_operation (" ;
   columnMarker = result.currentColumn () ;
   result << "const GALGAS_string & inKey" ;
-  GALGAS_uint index_771_IDX (0) ;
+  GALGAS_uint index_767_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_771 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_771.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_767 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_767.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "const GALGAS_" ;
-      result << enumerator_771.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_listmap.cpp.galgasTemplate", 19)).stringValue () ;
+      result << enumerator_767.current_mAttributeTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_listmap.cpp.galgasTemplate", 19)).stringValue () ;
       result << " & inOperand" ;
-      result << index_771_IDX.getter_string (SOURCE_FILE ("GALGAS_listmap.cpp.galgasTemplate", 19)).stringValue () ;
-      index_771_IDX.increment () ;
-      enumerator_771.gotoNextObject () ;
+      result << index_767_IDX.getter_string (SOURCE_FILE ("GALGAS_listmap.cpp.galgasTemplate", 19)).stringValue () ;
+      index_767_IDX.increment () ;
+      enumerator_767.gotoNextObject () ;
     }
   }
   result << "\n" ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) {\n"
     "  if (isValid () && inKey.isValid ()" ;
-  GALGAS_uint index_988_IDX (0) ;
+  GALGAS_uint index_984_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_988 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_988.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_984 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_984.hasCurrentObject ()) {
       result << " && inOperand" ;
-      result << index_988_IDX.getter_string (SOURCE_FILE ("GALGAS_listmap.cpp.galgasTemplate", 24)).stringValue () ;
+      result << index_984_IDX.getter_string (SOURCE_FILE ("GALGAS_listmap.cpp.galgasTemplate", 24)).stringValue () ;
       result << ".isValid ()" ;
-      index_988_IDX.increment () ;
-      enumerator_988.gotoNextObject () ;
+      index_984_IDX.increment () ;
+      enumerator_984.gotoNextObject () ;
     }
   }
   result << ") {\n"
@@ -3880,14 +3880,14 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
     "    GALGAS_" ;
   result << in_ASSOCIATED_5F_LIST_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::makeAttributesFromObjects (attributes" ;
-  GALGAS_uint index_1217_IDX (0) ;
+  GALGAS_uint index_1213_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_1217 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1217.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_1213 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1213.hasCurrentObject ()) {
       result << ", inOperand" ;
-      result << index_1217_IDX.getter_string (SOURCE_FILE ("GALGAS_listmap.cpp.galgasTemplate", 30)).stringValue () ;
-      index_1217_IDX.increment () ;
-      enumerator_1217.gotoNextObject () ;
+      result << index_1213_IDX.getter_string (SOURCE_FILE ("GALGAS_listmap.cpp.galgasTemplate", 30)).stringValue () ;
+      index_1213_IDX.increment () ;
+      enumerator_1213.gotoNextObject () ;
     }
   }
   result << " COMMA_THERE) ;\n"
@@ -3936,8 +3936,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
   result << "_2D_element cEnumerator_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::current (LOCATION_ARGS) const {\n"
-    "  const cListMapElement_new * p = (const cListMapElement_new *) currentObjectPtr (THERE) ;\n"
-    "  macroValidSharedObject (p, cListMapElement_new) ;\n"
+    "  const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;\n"
+    "  macroValidSharedObject (p, cListMapElement) ;\n"
     "  return GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "_2D_element (p->mKey, p->mSharedListMapList) ;\n"
@@ -3948,8 +3948,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
     "GALGAS_string cEnumerator_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::current_key (LOCATION_ARGS) const {\n"
-    "  const cListMapElement_new * p = (const cListMapElement_new *) currentObjectPtr (THERE) ;\n"
-    "  macroValidSharedObject (p, cListMapElement_new) ;\n"
+    "  const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;\n"
+    "  macroValidSharedObject (p, cListMapElement) ;\n"
     "  return GALGAS_string (p->mKey) ;\n"
     "}\n"
     "\n"
@@ -3960,8 +3960,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
   result << " cEnumerator_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::current_mList (LOCATION_ARGS) const {\n"
-    "  const cListMapElement_new * p = (const cListMapElement_new *) currentObjectPtr (THERE) ;\n"
-    "  macroValidSharedObject (p, cListMapElement_new) ;\n"
+    "  const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;\n"
+    "  macroValidSharedObject (p, cListMapElement) ;\n"
     "  return GALGAS_" ;
   result << in_ASSOCIATED_5F_LIST_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (p->mSharedListMapList) ;\n"

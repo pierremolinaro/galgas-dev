@@ -172,13 +172,13 @@ typeComparisonResult cCollectionElement_stringlist::compare (const cCollectionEl
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist::GALGAS_stringlist (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist::GALGAS_stringlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -632,13 +632,13 @@ typeComparisonResult cCollectionElement_lstringlist::compare (const cCollectionE
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstringlist::GALGAS_lstringlist (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstringlist::GALGAS_lstringlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1141,13 +1141,13 @@ typeComparisonResult cCollectionElement__32_lstringlist::compare (const cCollect
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS__32_lstringlist::GALGAS__32_lstringlist (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS__32_lstringlist::GALGAS__32_lstringlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1930,13 +1930,13 @@ typeComparisonResult cCollectionElement__32_stringlist::compare (const cCollecti
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS__32_stringlist::GALGAS__32_stringlist (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS__32_stringlist::GALGAS__32_stringlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2705,13 +2705,13 @@ typeComparisonResult cCollectionElement_functionlist::compare (const cCollection
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_functionlist::GALGAS_functionlist (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_functionlist::GALGAS_functionlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3079,13 +3079,13 @@ typeComparisonResult cCollectionElement_luintlist::compare (const cCollectionEle
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luintlist::GALGAS_luintlist (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luintlist::GALGAS_luintlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3453,13 +3453,13 @@ typeComparisonResult cCollectionElement_objectlist::compare (const cCollectionEl
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_objectlist::GALGAS_objectlist (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_objectlist::GALGAS_objectlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3827,13 +3827,13 @@ typeComparisonResult cCollectionElement_typelist::compare (const cCollectionElem
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_typelist::GALGAS_typelist (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_typelist::GALGAS_typelist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4201,13 +4201,13 @@ typeComparisonResult cCollectionElement_uintlist::compare (const cCollectionElem
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uintlist::GALGAS_uintlist (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uintlist::GALGAS_uintlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4575,13 +4575,13 @@ typeComparisonResult cCollectionElement_uint_36__34_list::compare (const cCollec
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_list::GALGAS_uint_36__34_list (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_list::GALGAS_uint_36__34_list (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4949,13 +4949,13 @@ typeComparisonResult cCollectionElement_bigintlist::compare (const cCollectionEl
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bigintlist::GALGAS_bigintlist (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bigintlist::GALGAS_bigintlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5323,13 +5323,13 @@ typeComparisonResult cCollectionElement_lbigintlist::compare (const cCollectionE
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lbigintlist::GALGAS_lbigintlist (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lbigintlist::GALGAS_lbigintlist (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

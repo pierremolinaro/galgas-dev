@@ -175,7 +175,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterList
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_graphInsertModifierList : public AC_GALGAS_list_new {
+class GALGAS_graphInsertModifierList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_graphInsertModifierList (void) ;
 
@@ -375,7 +375,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifier
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_insertMethodListAST : public AC_GALGAS_list_new {
+class GALGAS_insertMethodListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_insertMethodListAST (void) ;
 
@@ -681,7 +681,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapSearchMethodList
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_mapRemoveMethodListAST : public AC_GALGAS_list_new {
+class GALGAS_mapRemoveMethodListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_mapRemoveMethodListAST (void) ;
 
@@ -881,7 +881,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapRemoveMethodList
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_insertOrReplaceDeclarationListAST : public AC_GALGAS_list_new {
+class GALGAS_insertOrReplaceDeclarationListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_insertOrReplaceDeclarationListAST (void) ;
 
@@ -1488,7 +1488,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapAutomatonMessage
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_mapStateTransitionList : public AC_GALGAS_list_new {
+class GALGAS_mapStateTransitionList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_mapStateTransitionList (void) ;
 
@@ -1715,7 +1715,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateTransitionL
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_mapStateList : public AC_GALGAS_list_new {
+class GALGAS_mapStateList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_mapStateList (void) ;
 
@@ -1942,7 +1942,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateList_2D_ele
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_mapOverrideBlockDescriptorAST : public AC_GALGAS_list_new {
+class GALGAS_mapOverrideBlockDescriptorAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_mapOverrideBlockDescriptorAST (void) ;
 
@@ -2184,7 +2184,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideBlockDes
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_mapOverrideBlockListAST : public AC_GALGAS_list_new {
+class GALGAS_mapOverrideBlockListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_mapOverrideBlockListAST (void) ;
 
@@ -2399,7 +2399,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideBlockLis
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_sharedMapAttributeListAST : public AC_GALGAS_list_new {
+class GALGAS_sharedMapAttributeListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_sharedMapAttributeListAST (void) ;
 
@@ -3682,7 +3682,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_branchBehaviourSort
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_mapOverrideList : public AC_GALGAS_list_new {
+class GALGAS_mapOverrideList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_mapOverrideList (void) ;
 
@@ -3909,7 +3909,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideList_2D_
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_sortedListSortDescriptorListAST : public AC_GALGAS_list_new {
+class GALGAS_sortedListSortDescriptorListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_sortedListSortDescriptorListAST (void) ;
 
@@ -4109,7 +4109,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListSortDescr
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_sortDescriptorListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_sortDescriptorListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_sortDescriptorListForGeneration (void) ;
 
@@ -4336,7 +4336,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortDescriptorListF
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_formalInputParameterListAST : public AC_GALGAS_list_new {
+class GALGAS_formalInputParameterListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_formalInputParameterListAST (void) ;
 
@@ -4581,7 +4581,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParamete
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_formalInputParameterListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_formalInputParameterListForGeneration (void) ;
 
@@ -4846,7 +4846,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParamete
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_formalParameterListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_formalParameterListForGeneration (void) ;
 
@@ -5108,7 +5108,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterList
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_semanticInstructionListAST : public AC_GALGAS_list_new {
+class GALGAS_semanticInstructionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_semanticInstructionListAST (void) ;
 
@@ -5434,7 +5434,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticInstruction
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_semanticInstructionListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_semanticInstructionListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_semanticInstructionListForGeneration (void) ;
 
@@ -5758,7 +5758,7 @@ class cPtr_semanticExpressionAST : public acPtr_class {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_actualOutputExpressionList : public AC_GALGAS_list_new {
+class GALGAS_actualOutputExpressionList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_actualOutputExpressionList (void) ;
 
@@ -5970,7 +5970,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualOutputExpress
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_semanticExpressionListAST : public AC_GALGAS_list_new {
+class GALGAS_semanticExpressionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_semanticExpressionListAST (void) ;
 
