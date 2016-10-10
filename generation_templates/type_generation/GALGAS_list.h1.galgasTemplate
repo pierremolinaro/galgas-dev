@@ -6,7 +6,7 @@
 
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (const bool inIsValid = false) ;
+  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_%!TYPE_IDENTIFIER% (const capCollectionElementArray & inSharedArray) ;

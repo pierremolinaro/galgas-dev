@@ -493,10 +493,10 @@ mySharedList (NULL) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_list_new::AC_GALGAS_list_new (const bool inIsValid) :
+AC_GALGAS_list_new::AC_GALGAS_list_new (void) :
 AC_GALGAS_root (),
 mSharedArray (),
-mIsValid (inIsValid) {
+mIsValid (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

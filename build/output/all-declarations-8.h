@@ -17,7 +17,7 @@
 
 class GALGAS_productionRuleListForGrammarAnalysis : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_productionRuleListForGrammarAnalysis (const bool inIsValid = false) ;
+  public : GALGAS_productionRuleListForGrammarAnalysis (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_productionRuleListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) ;
@@ -631,7 +631,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolSo
 
 class GALGAS_branchListForGrammarAnalysis : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_branchListForGrammarAnalysis (const bool inIsValid = false) ;
+  public : GALGAS_branchListForGrammarAnalysis (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_branchListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) ;
@@ -942,7 +942,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_repeatInstructionFo
 
 class GALGAS_syntaxComponentListForGrammarAnalysis : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_syntaxComponentListForGrammarAnalysis (const bool inIsValid = false) ;
+  public : GALGAS_syntaxComponentListForGrammarAnalysis (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_syntaxComponentListForGrammarAnalysis (const capCollectionElementArray & inSharedArray) ;
@@ -1400,7 +1400,7 @@ void extensionMethod_tikzNodeForSyntaxInstruction (const class GALGAS_syntaxInst
 
 class GALGAS_rowList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_rowList (const bool inIsValid = false) ;
+  public : GALGAS_rowList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_rowList (const capCollectionElementArray & inSharedArray) ;
@@ -1645,7 +1645,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rowList_2D_element 
 
 class GALGAS_programListForGeneration : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_programListForGeneration (const bool inIsValid = false) ;
+  public : GALGAS_programListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_programListForGeneration (const capCollectionElementArray & inSharedArray) ;
@@ -3056,7 +3056,7 @@ class cParser_galgas_33_ProjectSyntax {
 
 class GALGAS_galgas_33_QualifiedFeatureList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_galgas_33_QualifiedFeatureList (const bool inIsValid = false) ;
+  public : GALGAS_galgas_33_QualifiedFeatureList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_galgas_33_QualifiedFeatureList (const capCollectionElementArray & inSharedArray) ;

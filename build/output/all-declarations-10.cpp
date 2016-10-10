@@ -87,8 +87,8 @@ typeComparisonResult cCollectionElement_BuildFileList::compare (const cCollectio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_BuildFileList::GALGAS_BuildFileList (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_BuildFileList::GALGAS_BuildFileList (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -100,7 +100,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_BuildFileList GALGAS_BuildFileList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_BuildFileList  (true) ;
+  return GALGAS_BuildFileList  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -111,7 +111,7 @@ GALGAS_BuildFileList GALGAS_BuildFileList::constructor_listWithValue (const GALG
                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_BuildFileList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_BuildFileList (true) ;
+    result = GALGAS_BuildFileList (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_BuildFileList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
