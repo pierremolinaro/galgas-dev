@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_listmap_new {
+class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_listmap {
 //--------------------------------- Default constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 

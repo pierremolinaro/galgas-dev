@@ -350,7 +350,7 @@ class cPtr_templateInstructionAST : public acPtr_class {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateInstructionListAST : public AC_GALGAS_list_new {
+class GALGAS_templateInstructionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionListAST (void) ;
 
@@ -605,7 +605,7 @@ class cPtr_templateExpressionAST : public acPtr_class {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateExpressionListAST : public AC_GALGAS_list_new {
+class GALGAS_templateExpressionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_templateExpressionListAST (void) ;
 
@@ -3082,7 +3082,7 @@ class cPtr_templateInstructionGotoColumnLocationAST : public cPtr_templateInstru
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateInstructionIfBranchListAST : public AC_GALGAS_list_new {
+class GALGAS_templateInstructionIfBranchListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionIfBranchListAST (void) ;
 
@@ -3377,7 +3377,7 @@ class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateInstructionSwitchBranchListAST : public AC_GALGAS_list_new {
+class GALGAS_templateInstructionSwitchBranchListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionSwitchBranchListAST (void) ;
 
@@ -5497,7 +5497,7 @@ class cPtr_templateInstructionForGeneration : public acPtr_class {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateInstructionListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_templateInstructionListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionListForGeneration (void) ;
 
@@ -5839,7 +5839,7 @@ class cPtr_templateInstructionGotoColumnLocationForGeneration : public cPtr_temp
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateInstructionIfBranchListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_templateInstructionIfBranchListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionIfBranchListForGeneration (void) ;
 
@@ -6344,7 +6344,7 @@ class cPtr_templateInstructionIfForGeneration : public cPtr_templateInstructionF
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_templateInstructionSwitchBranchListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_templateInstructionSwitchBranchListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_templateInstructionSwitchBranchListForGeneration (void) ;
 
@@ -8228,7 +8228,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeKindEnum ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_enumConstantList : public AC_GALGAS_list_new {
+class GALGAS_enumConstantList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_enumConstantList (void) ;
 
@@ -8365,7 +8365,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantList ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_enumerationDescriptorList : public AC_GALGAS_list_new {
+class GALGAS_enumerationDescriptorList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_enumerationDescriptorList (void) ;
 
@@ -8502,7 +8502,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumerationDescript
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_functionSignature : public AC_GALGAS_list_new {
+class GALGAS_functionSignature : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_functionSignature (void) ;
 
@@ -8653,7 +8653,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionSignature ;
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_mapSearchMethodListAST : public AC_GALGAS_list_new {
+class GALGAS_mapSearchMethodListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_mapSearchMethodListAST (void) ;
 
@@ -8792,7 +8792,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapSearchMethodList
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_typedPropertyList : public AC_GALGAS_list_new {
+class GALGAS_typedPropertyList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_typedPropertyList (void) ;
 

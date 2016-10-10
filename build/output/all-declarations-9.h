@@ -7396,7 +7396,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectQualifiedFea
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_XCodeGroupList : public AC_GALGAS_list_new {
+class GALGAS_XCodeGroupList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_XCodeGroupList (void) ;
 
@@ -7642,7 +7642,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeGroupList_2D_e
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_XCodeToolTargetList : public AC_GALGAS_list_new {
+class GALGAS_XCodeToolTargetList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_XCodeToolTargetList (void) ;
 
@@ -8021,7 +8021,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeToolTargetList
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_XCodeAppTargetList : public AC_GALGAS_list_new {
+class GALGAS_XCodeAppTargetList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_XCodeAppTargetList (void) ;
 

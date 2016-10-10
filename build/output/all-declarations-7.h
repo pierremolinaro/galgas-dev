@@ -15,7 +15,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_castInstructionBranchListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_castInstructionBranchListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_castInstructionBranchListForGeneration (void) ;
 
@@ -505,7 +505,7 @@ class cEnumAssociatedValues_fixitElementAST_fixItInsertBefore : public cEnumAsso
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_fixitListAST : public AC_GALGAS_list_new {
+class GALGAS_fixitListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_fixitListAST (void) ;
 
@@ -803,7 +803,7 @@ void extensionMethod_enterFixItListInSemanticContext (const class GALGAS_fixitLi
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_fixitListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_fixitListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_fixitListForGeneration (void) ;
 
@@ -1185,7 +1185,7 @@ void callExtensionMethod_generateExpression (const class cPtr_semanticExpression
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_list_new {
+class GALGAS_forInstructionEnumeratedObjectElementListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_forInstructionEnumeratedObjectElementListAST (void) ;
 
@@ -1553,7 +1553,7 @@ class cPtr_enumeratedCollectionCstListInExpAST : public cPtr_abstractEnumeratedC
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_forInstructionEnumeratedObjectListAST : public AC_GALGAS_list_new {
+class GALGAS_forInstructionEnumeratedObjectListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_forInstructionEnumeratedObjectListAST (void) ;
 
@@ -1816,7 +1816,7 @@ void callExtensionMethod_analyzeEnumeration (const class cPtr_abstractEnumerated
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_forInstructionEnumeratedObjectListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_forInstructionEnumeratedObjectListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_forInstructionEnumeratedObjectListForGeneration (void) ;
 
@@ -2542,7 +2542,7 @@ class cPtr_ifInstructionAST : public cPtr_semanticInstructionAST {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_logListAST : public AC_GALGAS_list_new {
+class GALGAS_logListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_logListAST (void) ;
 
@@ -2964,7 +2964,7 @@ class cPtr_loopInstructionAST : public cPtr_semanticInstructionAST {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_matchEntryListAST : public AC_GALGAS_list_new {
+class GALGAS_matchEntryListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_matchEntryListAST (void) ;
 
@@ -3179,7 +3179,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchEntryListAST_2
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_matchInstructionBranchListAST : public AC_GALGAS_list_new {
+class GALGAS_matchInstructionBranchListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_matchInstructionBranchListAST (void) ;
 
@@ -3513,7 +3513,7 @@ class cPtr_matchInstructionAST : public cPtr_semanticInstructionAST {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_matchListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_matchListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_matchListForGeneration (void) ;
 
@@ -3740,7 +3740,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchListForGenerat
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_matchInstructionBranchListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_matchInstructionBranchListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_matchInstructionBranchListForGeneration (void) ;
 
@@ -4628,7 +4628,7 @@ class cPtr_selfDivEqualExpressionInstructionAST : public cPtr_semanticInstructio
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_switchExtractedValuesListAST : public AC_GALGAS_list_new {
+class GALGAS_switchExtractedValuesListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_switchExtractedValuesListAST (void) ;
 
@@ -4855,7 +4855,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchExtractedValu
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_switchBranchesAST : public AC_GALGAS_list_new {
+class GALGAS_switchBranchesAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_switchBranchesAST (void) ;
 
@@ -5202,7 +5202,7 @@ class cPtr_switchInstructionAST : public cPtr_semanticInstructionAST {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list_new {
+class GALGAS_extractedAssociatedValuesForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_extractedAssociatedValuesForGeneration (void) ;
 
@@ -5429,7 +5429,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractedAssociated
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_switchBranchesForGeneration : public AC_GALGAS_list_new {
+class GALGAS_switchBranchesForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_switchBranchesForGeneration (void) ;
 
@@ -6860,7 +6860,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractSyntaxInstr
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_list_new {
+class GALGAS_syntaxInstructionListForGrammarAnalysis : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_syntaxInstructionListForGrammarAnalysis (void) ;
 

@@ -69,7 +69,7 @@ void callExtensionMethod_addAssociatedElement (const class cPtr_semanticDeclarat
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_semanticExpressionListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_semanticExpressionListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_semanticExpressionListForGeneration (void) ;
 
@@ -255,7 +255,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionL
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_actualParameterListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_actualParameterListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_actualParameterListForGeneration (void) ;
 
@@ -630,7 +630,7 @@ class cPtr_semanticBlockInstructionForGeneration : public cPtr_semanticInstructi
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_listOfSemanticInstructionListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_listOfSemanticInstructionListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_listOfSemanticInstructionListForGeneration (void) ;
 
@@ -1035,7 +1035,7 @@ class GALGAS_headerKind callExtensionGetter_headerKind (const class cPtr_semanti
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_semanticDeclarationListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_semanticDeclarationListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_semanticDeclarationListForGeneration (void) ;
 
@@ -1240,7 +1240,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclaration
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_signatureForGrammarAnalysis : public AC_GALGAS_list_new {
+class GALGAS_signatureForGrammarAnalysis : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_signatureForGrammarAnalysis (void) ;
 
@@ -1871,7 +1871,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolMa
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_nonTerminalToAddList : public AC_GALGAS_list_new {
+class GALGAS_nonTerminalToAddList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_nonTerminalToAddList (void) ;
 
@@ -2079,7 +2079,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalToAddLis
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_terminalCheckAssignementList : public AC_GALGAS_list_new {
+class GALGAS_terminalCheckAssignementList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_terminalCheckAssignementList (void) ;
 
@@ -2380,7 +2380,7 @@ class cPtr_syntaxInstructionForGeneration : public cPtr_semanticInstructionForGe
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_filewrapperTemplateListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_filewrapperTemplateListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_filewrapperTemplateListForGeneration (void) ;
 
@@ -3288,7 +3288,7 @@ void callExtensionMethod_analyze (const class cPtr_abstractCollectionValueElemen
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_collectionValueElementListForGeneration : public AC_GALGAS_list_new {
+class GALGAS_collectionValueElementListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_collectionValueElementListForGeneration (void) ;
 
@@ -3665,7 +3665,7 @@ void callExtensionMethod_analyzeSemanticInstruction (const class cPtr_semanticIn
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_localConstantList : public AC_GALGAS_list_new {
+class GALGAS_localConstantList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_localConstantList (void) ;
 
@@ -3911,7 +3911,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localConstantList_2
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_localInitializedVariableList : public AC_GALGAS_list_new {
+class GALGAS_localInitializedVariableList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_localInitializedVariableList (void) ;
 
@@ -4963,7 +4963,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalMap_2D_e
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_ruleLabelImplementationList : public AC_GALGAS_list_new {
+class GALGAS_ruleLabelImplementationList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_ruleLabelImplementationList (void) ;
 
@@ -5228,7 +5228,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ruleLabelImplementa
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_ruleDeclarationList : public AC_GALGAS_list_new {
+class GALGAS_ruleDeclarationList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_ruleDeclarationList (void) ;
 
@@ -6096,7 +6096,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uselessEntityLocati
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_castInstructionBranchListAST : public AC_GALGAS_list_new {
+class GALGAS_castInstructionBranchListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_castInstructionBranchListAST (void) ;
 

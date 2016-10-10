@@ -4654,13 +4654,13 @@ typeComparisonResult cCollectionElement_actualParameterListAST::compare (const c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_actualParameterListAST::GALGAS_actualParameterListAST (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_actualParameterListAST::GALGAS_actualParameterListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5232,13 +5232,13 @@ typeComparisonResult cCollectionElement_actualInputParameterListAST::compare (co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_actualInputParameterListAST::GALGAS_actualInputParameterListAST (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_actualInputParameterListAST::GALGAS_actualInputParameterListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5830,13 +5830,13 @@ typeComparisonResult cCollectionElement_semanticDeclarationListAST::compare (con
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticDeclarationListAST::GALGAS_semanticDeclarationListAST (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticDeclarationListAST::GALGAS_semanticDeclarationListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6193,13 +6193,13 @@ typeComparisonResult cCollectionElement_formalTemplateInputParameterListAST::com
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalTemplateInputParameterListAST::GALGAS_formalTemplateInputParameterListAST (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalTemplateInputParameterListAST::GALGAS_formalTemplateInputParameterListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6649,13 +6649,13 @@ typeComparisonResult cCollectionElement_filewrapperTemplateListAST::compare (con
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_filewrapperTemplateListAST::GALGAS_filewrapperTemplateListAST (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_filewrapperTemplateListAST::GALGAS_filewrapperTemplateListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7050,13 +7050,13 @@ typeComparisonResult cCollectionElement_syntaxInstructionList::compare (const cC
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxInstructionList::GALGAS_syntaxInstructionList (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxInstructionList::GALGAS_syntaxInstructionList (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7407,13 +7407,13 @@ typeComparisonResult cCollectionElement_nonTerminalLabelListAST::compare (const 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_nonTerminalLabelListAST::GALGAS_nonTerminalLabelListAST (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_nonTerminalLabelListAST::GALGAS_nonTerminalLabelListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7814,13 +7814,13 @@ typeComparisonResult cCollectionElement_nonterminalDeclarationListAST::compare (
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_nonterminalDeclarationListAST::GALGAS_nonterminalDeclarationListAST (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_nonterminalDeclarationListAST::GALGAS_nonterminalDeclarationListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8211,13 +8211,13 @@ typeComparisonResult cCollectionElement_syntaxRuleLabelListAST::compare (const c
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxRuleLabelListAST::GALGAS_syntaxRuleLabelListAST (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxRuleLabelListAST::GALGAS_syntaxRuleLabelListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8674,13 +8674,13 @@ typeComparisonResult cCollectionElement_syntaxRuleListAST::compare (const cColle
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxRuleListAST::GALGAS_syntaxRuleListAST (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxRuleListAST::GALGAS_syntaxRuleListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9053,13 +9053,13 @@ typeComparisonResult cCollectionElement_listOfSyntaxInstructionList::compare (co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_listOfSyntaxInstructionList::GALGAS_listOfSyntaxInstructionList (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_listOfSyntaxInstructionList::GALGAS_listOfSyntaxInstructionList (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9426,13 +9426,13 @@ typeComparisonResult cCollectionElement_collectionValueElementList::compare (con
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_collectionValueElementList::GALGAS_collectionValueElementList (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_collectionValueElementList::GALGAS_collectionValueElementList (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10269,13 +10269,13 @@ typeComparisonResult cCollectionElement_galgas_33_SyntaxComponentListAST::compar
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_galgas_33_SyntaxComponentListAST::GALGAS_galgas_33_SyntaxComponentListAST (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_galgas_33_SyntaxComponentListAST::GALGAS_galgas_33_SyntaxComponentListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10899,13 +10899,13 @@ typeComparisonResult cCollectionElement_galgas_33_SyntaxExtensionListAST::compar
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_galgas_33_SyntaxExtensionListAST::GALGAS_galgas_33_SyntaxExtensionListAST (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_galgas_33_SyntaxExtensionListAST::GALGAS_galgas_33_SyntaxExtensionListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11280,7 +11280,7 @@ GALGAS_galgas_33_SyntaxExtensionListAST GALGAS_galgas_33_SyntaxExtensionListAST:
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxExtensions::GALGAS_syntaxExtensions (void) :
-AC_GALGAS_listmap_new () {
+AC_GALGAS_listmap () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11323,24 +11323,24 @@ cGenericAbstractEnumerator (inOrder) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxExtensions_2D_element cEnumerator_syntaxExtensions::current (LOCATION_ARGS) const {
-  const cListMapElement_new * p = (const cListMapElement_new *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cListMapElement_new) ;
+  const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cListMapElement) ;
   return GALGAS_syntaxExtensions_2D_element (p->mKey, p->mSharedListMapList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_syntaxExtensions::current_key (LOCATION_ARGS) const {
-  const cListMapElement_new * p = (const cListMapElement_new *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cListMapElement_new) ;
+  const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cListMapElement) ;
   return GALGAS_string (p->mKey) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_galgas_33_SyntaxExtensionListAST cEnumerator_syntaxExtensions::current_mList (LOCATION_ARGS) const {
-  const cListMapElement_new * p = (const cListMapElement_new *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cListMapElement_new) ;
+  const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cListMapElement) ;
   return GALGAS_galgas_33_SyntaxExtensionListAST (p->mSharedListMapList) ;
 }
 
@@ -11461,13 +11461,13 @@ typeComparisonResult cCollectionElement_prologueEpilogueList::compare (const cCo
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_prologueEpilogueList::GALGAS_prologueEpilogueList (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_prologueEpilogueList::GALGAS_prologueEpilogueList (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11900,13 +11900,13 @@ typeComparisonResult cCollectionElement_programRuleList::compare (const cCollect
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_programRuleList::GALGAS_programRuleList (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_programRuleList::GALGAS_programRuleList (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12752,13 +12752,13 @@ typeComparisonResult cCollectionElement_functionSignature::compare (const cColle
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_functionSignature::GALGAS_functionSignature (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_functionSignature::GALGAS_functionSignature (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14452,13 +14452,13 @@ typeComparisonResult cCollectionElement_formalParameterSignature::compare (const
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterSignature::GALGAS_formalParameterSignature (void) :
-AC_GALGAS_list_new () {
+AC_GALGAS_list () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterSignature::GALGAS_formalParameterSignature (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list_new (inSharedArray) {
+AC_GALGAS_list (inSharedArray) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
