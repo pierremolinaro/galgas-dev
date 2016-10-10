@@ -99,8 +99,8 @@ typeComparisonResult cCollectionElement_formalParameterListAST::compare (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalParameterListAST::GALGAS_formalParameterListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_formalParameterListAST::GALGAS_formalParameterListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -112,7 +112,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterListAST GALGAS_formalParameterListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_formalParameterListAST  (true) ;
+  return GALGAS_formalParameterListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -125,7 +125,7 @@ GALGAS_formalParameterListAST GALGAS_formalParameterListAST::constructor_listWit
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_formalParameterListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    result = GALGAS_formalParameterListAST (true) ;
+    result = GALGAS_formalParameterListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_formalParameterListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -577,8 +577,8 @@ typeComparisonResult cCollectionElement_graphInsertModifierList::compare (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_graphInsertModifierList::GALGAS_graphInsertModifierList (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_graphInsertModifierList::GALGAS_graphInsertModifierList (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -590,7 +590,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_graphInsertModifierList GALGAS_graphInsertModifierList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_graphInsertModifierList  (true) ;
+  return GALGAS_graphInsertModifierList  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -600,7 +600,7 @@ GALGAS_graphInsertModifierList GALGAS_graphInsertModifierList::constructor_listW
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_graphInsertModifierList result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_graphInsertModifierList (true) ;
+    result = GALGAS_graphInsertModifierList (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_graphInsertModifierList::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -968,8 +968,8 @@ typeComparisonResult cCollectionElement_insertMethodListAST::compare (const cCol
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_insertMethodListAST::GALGAS_insertMethodListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_insertMethodListAST::GALGAS_insertMethodListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -981,7 +981,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_insertMethodListAST GALGAS_insertMethodListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_insertMethodListAST  (true) ;
+  return GALGAS_insertMethodListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -993,7 +993,7 @@ GALGAS_insertMethodListAST GALGAS_insertMethodListAST::constructor_listWithValue
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_insertMethodListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_insertMethodListAST (true) ;
+    result = GALGAS_insertMethodListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_insertMethodListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -1409,8 +1409,8 @@ typeComparisonResult cCollectionElement_mapSearchMethodListAST::compare (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapSearchMethodListAST::GALGAS_mapSearchMethodListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_mapSearchMethodListAST::GALGAS_mapSearchMethodListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1422,7 +1422,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapSearchMethodListAST GALGAS_mapSearchMethodListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_mapSearchMethodListAST  (true) ;
+  return GALGAS_mapSearchMethodListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1433,7 +1433,7 @@ GALGAS_mapSearchMethodListAST GALGAS_mapSearchMethodListAST::constructor_listWit
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_mapSearchMethodListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_mapSearchMethodListAST (true) ;
+    result = GALGAS_mapSearchMethodListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_mapSearchMethodListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -1816,8 +1816,8 @@ typeComparisonResult cCollectionElement_mapRemoveMethodListAST::compare (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapRemoveMethodListAST::GALGAS_mapRemoveMethodListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_mapRemoveMethodListAST::GALGAS_mapRemoveMethodListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1829,7 +1829,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapRemoveMethodListAST GALGAS_mapRemoveMethodListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_mapRemoveMethodListAST  (true) ;
+  return GALGAS_mapRemoveMethodListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1839,7 +1839,7 @@ GALGAS_mapRemoveMethodListAST GALGAS_mapRemoveMethodListAST::constructor_listWit
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_mapRemoveMethodListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_mapRemoveMethodListAST (true) ;
+    result = GALGAS_mapRemoveMethodListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_mapRemoveMethodListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -2189,8 +2189,8 @@ typeComparisonResult cCollectionElement_insertOrReplaceDeclarationListAST::compa
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_insertOrReplaceDeclarationListAST::GALGAS_insertOrReplaceDeclarationListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_insertOrReplaceDeclarationListAST::GALGAS_insertOrReplaceDeclarationListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2202,7 +2202,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_insertOrReplaceDeclarationListAST GALGAS_insertOrReplaceDeclarationListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_insertOrReplaceDeclarationListAST  (true) ;
+  return GALGAS_insertOrReplaceDeclarationListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2211,7 +2211,7 @@ GALGAS_insertOrReplaceDeclarationListAST GALGAS_insertOrReplaceDeclarationListAS
                                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_insertOrReplaceDeclarationListAST result ;
   if (inOperand0.isValid ()) {
-    result = GALGAS_insertOrReplaceDeclarationListAST (true) ;
+    result = GALGAS_insertOrReplaceDeclarationListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_insertOrReplaceDeclarationListAST::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -3052,8 +3052,8 @@ typeComparisonResult cCollectionElement_mapStateTransitionList::compare (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapStateTransitionList::GALGAS_mapStateTransitionList (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_mapStateTransitionList::GALGAS_mapStateTransitionList (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3065,7 +3065,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapStateTransitionList GALGAS_mapStateTransitionList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_mapStateTransitionList  (true) ;
+  return GALGAS_mapStateTransitionList  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3077,7 +3077,7 @@ GALGAS_mapStateTransitionList GALGAS_mapStateTransitionList::constructor_listWit
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_mapStateTransitionList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_mapStateTransitionList (true) ;
+    result = GALGAS_mapStateTransitionList (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_mapStateTransitionList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -3499,8 +3499,8 @@ typeComparisonResult cCollectionElement_mapStateList::compare (const cCollection
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapStateList::GALGAS_mapStateList (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_mapStateList::GALGAS_mapStateList (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3512,7 +3512,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapStateList GALGAS_mapStateList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_mapStateList  (true) ;
+  return GALGAS_mapStateList  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3524,7 +3524,7 @@ GALGAS_mapStateList GALGAS_mapStateList::constructor_listWithValue (const GALGAS
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_mapStateList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_mapStateList (true) ;
+    result = GALGAS_mapStateList (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_mapStateList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -3952,8 +3952,8 @@ typeComparisonResult cCollectionElement_mapOverrideBlockDescriptorAST::compare (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapOverrideBlockDescriptorAST::GALGAS_mapOverrideBlockDescriptorAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_mapOverrideBlockDescriptorAST::GALGAS_mapOverrideBlockDescriptorAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3965,7 +3965,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapOverrideBlockDescriptorAST GALGAS_mapOverrideBlockDescriptorAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_mapOverrideBlockDescriptorAST  (true) ;
+  return GALGAS_mapOverrideBlockDescriptorAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3978,7 +3978,7 @@ GALGAS_mapOverrideBlockDescriptorAST GALGAS_mapOverrideBlockDescriptorAST::const
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_mapOverrideBlockDescriptorAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    result = GALGAS_mapOverrideBlockDescriptorAST (true) ;
+    result = GALGAS_mapOverrideBlockDescriptorAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_mapOverrideBlockDescriptorAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -4421,8 +4421,8 @@ typeComparisonResult cCollectionElement_mapOverrideBlockListAST::compare (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapOverrideBlockListAST::GALGAS_mapOverrideBlockListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_mapOverrideBlockListAST::GALGAS_mapOverrideBlockListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4434,7 +4434,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapOverrideBlockListAST GALGAS_mapOverrideBlockListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_mapOverrideBlockListAST  (true) ;
+  return GALGAS_mapOverrideBlockListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4445,7 +4445,7 @@ GALGAS_mapOverrideBlockListAST GALGAS_mapOverrideBlockListAST::constructor_listW
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_mapOverrideBlockListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_mapOverrideBlockListAST (true) ;
+    result = GALGAS_mapOverrideBlockListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_mapOverrideBlockListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -4834,8 +4834,8 @@ typeComparisonResult cCollectionElement_sharedMapAttributeListAST::compare (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sharedMapAttributeListAST::GALGAS_sharedMapAttributeListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_sharedMapAttributeListAST::GALGAS_sharedMapAttributeListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4847,7 +4847,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sharedMapAttributeListAST GALGAS_sharedMapAttributeListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_sharedMapAttributeListAST  (true) ;
+  return GALGAS_sharedMapAttributeListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4858,7 +4858,7 @@ GALGAS_sharedMapAttributeListAST GALGAS_sharedMapAttributeListAST::constructor_l
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_sharedMapAttributeListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_sharedMapAttributeListAST (true) ;
+    result = GALGAS_sharedMapAttributeListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_sharedMapAttributeListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -7105,8 +7105,8 @@ typeComparisonResult cCollectionElement_mapOverrideList::compare (const cCollect
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_mapOverrideList::GALGAS_mapOverrideList (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_mapOverrideList::GALGAS_mapOverrideList (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7118,7 +7118,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_mapOverrideList GALGAS_mapOverrideList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_mapOverrideList  (true) ;
+  return GALGAS_mapOverrideList  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7129,7 +7129,7 @@ GALGAS_mapOverrideList GALGAS_mapOverrideList::constructor_listWithValue (const 
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_mapOverrideList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_mapOverrideList (true) ;
+    result = GALGAS_mapOverrideList (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_mapOverrideList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -7557,8 +7557,8 @@ typeComparisonResult cCollectionElement_sortedListSortDescriptorListAST::compare
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sortedListSortDescriptorListAST::GALGAS_sortedListSortDescriptorListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_sortedListSortDescriptorListAST::GALGAS_sortedListSortDescriptorListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7570,7 +7570,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sortedListSortDescriptorListAST GALGAS_sortedListSortDescriptorListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_sortedListSortDescriptorListAST  (true) ;
+  return GALGAS_sortedListSortDescriptorListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7580,7 +7580,7 @@ GALGAS_sortedListSortDescriptorListAST GALGAS_sortedListSortDescriptorListAST::c
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_sortedListSortDescriptorListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_sortedListSortDescriptorListAST (true) ;
+    result = GALGAS_sortedListSortDescriptorListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_sortedListSortDescriptorListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -7942,8 +7942,8 @@ typeComparisonResult cCollectionElement_sortDescriptorListForGeneration::compare
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_sortDescriptorListForGeneration::GALGAS_sortDescriptorListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_sortDescriptorListForGeneration::GALGAS_sortDescriptorListForGeneration (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7955,7 +7955,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sortDescriptorListForGeneration GALGAS_sortDescriptorListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_sortDescriptorListForGeneration  (true) ;
+  return GALGAS_sortDescriptorListForGeneration  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7966,7 +7966,7 @@ GALGAS_sortDescriptorListForGeneration GALGAS_sortDescriptorListForGeneration::c
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_sortDescriptorListForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_sortDescriptorListForGeneration (true) ;
+    result = GALGAS_sortDescriptorListForGeneration (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_sortDescriptorListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -8412,8 +8412,8 @@ typeComparisonResult cCollectionElement_formalInputParameterListAST::compare (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalInputParameterListAST::GALGAS_formalInputParameterListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_formalInputParameterListAST::GALGAS_formalInputParameterListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8425,7 +8425,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalInputParameterListAST GALGAS_formalInputParameterListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_formalInputParameterListAST  (true) ;
+  return GALGAS_formalInputParameterListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8438,7 +8438,7 @@ GALGAS_formalInputParameterListAST GALGAS_formalInputParameterListAST::construct
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_formalInputParameterListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    result = GALGAS_formalInputParameterListAST (true) ;
+    result = GALGAS_formalInputParameterListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_formalInputParameterListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -8893,8 +8893,8 @@ typeComparisonResult cCollectionElement_formalInputParameterListForGeneration::c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalInputParameterListForGeneration::GALGAS_formalInputParameterListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_formalInputParameterListForGeneration::GALGAS_formalInputParameterListForGeneration (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8906,7 +8906,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalInputParameterListForGeneration GALGAS_formalInputParameterListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_formalInputParameterListForGeneration  (true) ;
+  return GALGAS_formalInputParameterListForGeneration  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8919,7 +8919,7 @@ GALGAS_formalInputParameterListForGeneration GALGAS_formalInputParameterListForG
                                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_formalInputParameterListForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    result = GALGAS_formalInputParameterListForGeneration (true) ;
+    result = GALGAS_formalInputParameterListForGeneration (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_formalInputParameterListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -9449,8 +9449,8 @@ typeComparisonResult cCollectionElement_formalParameterListForGeneration::compar
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_formalParameterListForGeneration::GALGAS_formalParameterListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_formalParameterListForGeneration::GALGAS_formalParameterListForGeneration (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9462,7 +9462,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterListForGeneration GALGAS_formalParameterListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_formalParameterListForGeneration  (true) ;
+  return GALGAS_formalParameterListForGeneration  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9475,7 +9475,7 @@ GALGAS_formalParameterListForGeneration GALGAS_formalParameterListForGeneration:
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_formalParameterListForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    result = GALGAS_formalParameterListForGeneration (true) ;
+    result = GALGAS_formalParameterListForGeneration (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_formalParameterListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -9981,8 +9981,8 @@ typeComparisonResult cCollectionElement_semanticInstructionListAST::compare (con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListAST::GALGAS_semanticInstructionListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_semanticInstructionListAST::GALGAS_semanticInstructionListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9994,7 +9994,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListAST GALGAS_semanticInstructionListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_semanticInstructionListAST  (true) ;
+  return GALGAS_semanticInstructionListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10003,7 +10003,7 @@ GALGAS_semanticInstructionListAST GALGAS_semanticInstructionListAST::constructor
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_semanticInstructionListAST result ;
   if (inOperand0.isValid ()) {
-    result = GALGAS_semanticInstructionListAST (true) ;
+    result = GALGAS_semanticInstructionListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_semanticInstructionListAST::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -10326,8 +10326,8 @@ typeComparisonResult cCollectionElement_semanticInstructionListForGeneration::co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticInstructionListForGeneration::GALGAS_semanticInstructionListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_semanticInstructionListForGeneration::GALGAS_semanticInstructionListForGeneration (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10339,7 +10339,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListForGeneration GALGAS_semanticInstructionListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_semanticInstructionListForGeneration  (true) ;
+  return GALGAS_semanticInstructionListForGeneration  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10348,7 +10348,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_semanticInstructionListForGen
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_semanticInstructionListForGeneration result ;
   if (inOperand0.isValid ()) {
-    result = GALGAS_semanticInstructionListForGeneration (true) ;
+    result = GALGAS_semanticInstructionListForGeneration (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_semanticInstructionListForGeneration::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -10785,8 +10785,8 @@ typeComparisonResult cCollectionElement_actualOutputExpressionList::compare (con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_actualOutputExpressionList::GALGAS_actualOutputExpressionList (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_actualOutputExpressionList::GALGAS_actualOutputExpressionList (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10798,7 +10798,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_actualOutputExpressionList GALGAS_actualOutputExpressionList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_actualOutputExpressionList  (true) ;
+  return GALGAS_actualOutputExpressionList  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10809,7 +10809,7 @@ GALGAS_actualOutputExpressionList GALGAS_actualOutputExpressionList::constructor
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_actualOutputExpressionList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_actualOutputExpressionList (true) ;
+    result = GALGAS_actualOutputExpressionList (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_actualOutputExpressionList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -11192,8 +11192,8 @@ typeComparisonResult cCollectionElement_semanticExpressionListAST::compare (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_semanticExpressionListAST::GALGAS_semanticExpressionListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_semanticExpressionListAST::GALGAS_semanticExpressionListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11205,7 +11205,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticExpressionListAST GALGAS_semanticExpressionListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_semanticExpressionListAST  (true) ;
+  return GALGAS_semanticExpressionListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11215,7 +11215,7 @@ GALGAS_semanticExpressionListAST GALGAS_semanticExpressionListAST::constructor_l
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_semanticExpressionListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_semanticExpressionListAST (true) ;
+    result = GALGAS_semanticExpressionListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_semanticExpressionListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;

@@ -170,10 +170,10 @@ class AC_GALGAS_list_new : public AC_GALGAS_root {
   private : bool mIsValid ;
 
 //--- Default constructor
-  public : AC_GALGAS_list_new (const bool inIsValid = false) ;
+  protected : AC_GALGAS_list_new (void) ;
 
 //--- Constructor used by list map
-  public : AC_GALGAS_list_new (const capCollectionElementArray & inSharedArray) ;
+  protected : AC_GALGAS_list_new (const capCollectionElementArray & inSharedArray) ;
 
 //--- Virtual destructor
   public : virtual ~ AC_GALGAS_list_new (void) ;

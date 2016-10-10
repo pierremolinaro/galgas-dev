@@ -88,8 +88,8 @@ typeComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cColl
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -101,7 +101,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_%!TYPE_IDENTIFIER%  (true) ;
+  return GALGAS_%!TYPE_IDENTIFIER%  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -119,7 +119,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (
   between % && %
   end
   %) {
-    result = GALGAS_%!TYPE_IDENTIFIER% (true) ;
+    result = GALGAS_%!TYPE_IDENTIFIER% (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (attributes%
     for () in ATTRIBUTE_LIST

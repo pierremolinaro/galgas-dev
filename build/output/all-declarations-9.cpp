@@ -9714,8 +9714,8 @@ typeComparisonResult cCollectionElement_XCodeGroupList::compare (const cCollecti
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeGroupList::GALGAS_XCodeGroupList (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_XCodeGroupList::GALGAS_XCodeGroupList (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9727,7 +9727,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_XCodeGroupList GALGAS_XCodeGroupList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_XCodeGroupList  (true) ;
+  return GALGAS_XCodeGroupList  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9739,7 +9739,7 @@ GALGAS_XCodeGroupList GALGAS_XCodeGroupList::constructor_listWithValue (const GA
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_XCodeGroupList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_XCodeGroupList (true) ;
+    result = GALGAS_XCodeGroupList (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_XCodeGroupList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -10263,8 +10263,8 @@ typeComparisonResult cCollectionElement_XCodeToolTargetList::compare (const cCol
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeToolTargetList::GALGAS_XCodeToolTargetList (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_XCodeToolTargetList::GALGAS_XCodeToolTargetList (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10276,7 +10276,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_XCodeToolTargetList  (true) ;
+  return GALGAS_XCodeToolTargetList  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10295,7 +10295,7 @@ GALGAS_XCodeToolTargetList GALGAS_XCodeToolTargetList::constructor_listWithValue
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_XCodeToolTargetList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid ()) {
-    result = GALGAS_XCodeToolTargetList (true) ;
+    result = GALGAS_XCodeToolTargetList (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_XCodeToolTargetList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -11131,8 +11131,8 @@ typeComparisonResult cCollectionElement_XCodeAppTargetList::compare (const cColl
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeAppTargetList::GALGAS_XCodeAppTargetList (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_XCodeAppTargetList::GALGAS_XCodeAppTargetList (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11144,7 +11144,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_XCodeAppTargetList  (true) ;
+  return GALGAS_XCodeAppTargetList  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11166,7 +11166,7 @@ GALGAS_XCodeAppTargetList GALGAS_XCodeAppTargetList::constructor_listWithValue (
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_XCodeAppTargetList result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid ()) {
-    result = GALGAS_XCodeAppTargetList (true) ;
+    result = GALGAS_XCodeAppTargetList (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_XCodeAppTargetList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13 COMMA_THERE) ;
     result.appendObject (attributes) ;

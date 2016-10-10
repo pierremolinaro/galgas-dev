@@ -3028,7 +3028,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_type ;
 
 class GALGAS_stringlist : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_stringlist (const bool inIsValid = false) ;
+  public : GALGAS_stringlist (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_stringlist (const capCollectionElementArray & inSharedArray) ;
@@ -3156,7 +3156,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist ;
 
 class GALGAS_lstringlist : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_lstringlist (const bool inIsValid = false) ;
+  public : GALGAS_lstringlist (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_lstringlist (const capCollectionElementArray & inSharedArray) ;
@@ -3284,7 +3284,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstringlist ;
 
 class GALGAS__32_lstringlist : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS__32_lstringlist (const bool inIsValid = false) ;
+  public : GALGAS__32_lstringlist (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS__32_lstringlist (const capCollectionElementArray & inSharedArray) ;
@@ -3502,7 +3502,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lbool ;
 
 class GALGAS__32_stringlist : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS__32_stringlist (const bool inIsValid = false) ;
+  public : GALGAS__32_stringlist (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS__32_stringlist (const capCollectionElementArray & inSharedArray) ;
@@ -3649,7 +3649,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist ;
 
 class GALGAS_functionlist : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_functionlist (const bool inIsValid = false) ;
+  public : GALGAS_functionlist (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_functionlist (const capCollectionElementArray & inSharedArray) ;
@@ -3777,7 +3777,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist ;
 
 class GALGAS_luintlist : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_luintlist (const bool inIsValid = false) ;
+  public : GALGAS_luintlist (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_luintlist (const capCollectionElementArray & inSharedArray) ;
@@ -3905,7 +3905,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luintlist ;
 
 class GALGAS_objectlist : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_objectlist (const bool inIsValid = false) ;
+  public : GALGAS_objectlist (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_objectlist (const capCollectionElementArray & inSharedArray) ;
@@ -4033,7 +4033,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist ;
 
 class GALGAS_typelist : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_typelist (const bool inIsValid = false) ;
+  public : GALGAS_typelist (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_typelist (const capCollectionElementArray & inSharedArray) ;
@@ -4161,7 +4161,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist ;
 
 class GALGAS_uintlist : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_uintlist (const bool inIsValid = false) ;
+  public : GALGAS_uintlist (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_uintlist (const capCollectionElementArray & inSharedArray) ;
@@ -4289,7 +4289,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist ;
 
 class GALGAS_uint_36__34_list : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_uint_36__34_list (const bool inIsValid = false) ;
+  public : GALGAS_uint_36__34_list (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_uint_36__34_list (const capCollectionElementArray & inSharedArray) ;
@@ -4417,7 +4417,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list ;
 
 class GALGAS_bigintlist : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_bigintlist (const bool inIsValid = false) ;
+  public : GALGAS_bigintlist (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_bigintlist (const capCollectionElementArray & inSharedArray) ;
@@ -4545,7 +4545,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintlist ;
 
 class GALGAS_lbigintlist : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_lbigintlist (const bool inIsValid = false) ;
+  public : GALGAS_lbigintlist (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_lbigintlist (const capCollectionElementArray & inSharedArray) ;

@@ -3936,8 +3936,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
   result << "_2D_element cEnumerator_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::current (LOCATION_ARGS) const {\n"
-    "  const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;\n"
-    "  macroValidSharedObject (p, cListMapElement) ;\n"
+    "  const cListMapElement_new * p = (const cListMapElement_new *) currentObjectPtr (THERE) ;\n"
+    "  macroValidSharedObject (p, cListMapElement_new) ;\n"
     "  return GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "_2D_element (p->mKey, p->mSharedListMapList) ;\n"
@@ -3948,8 +3948,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
     "GALGAS_string cEnumerator_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::current_key (LOCATION_ARGS) const {\n"
-    "  const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;\n"
-    "  macroValidSharedObject (p, cListMapElement) ;\n"
+    "  const cListMapElement_new * p = (const cListMapElement_new *) currentObjectPtr (THERE) ;\n"
+    "  macroValidSharedObject (p, cListMapElement_new) ;\n"
     "  return GALGAS_string (p->mKey) ;\n"
     "}\n"
     "\n"
@@ -3960,8 +3960,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_listmapTypeSpecificImpl
   result << " cEnumerator_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "::current_mList (LOCATION_ARGS) const {\n"
-    "  const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;\n"
-    "  macroValidSharedObject (p, cListMapElement) ;\n"
+    "  const cListMapElement_new * p = (const cListMapElement_new *) currentObjectPtr (THERE) ;\n"
+    "  macroValidSharedObject (p, cListMapElement_new) ;\n"
     "  return GALGAS_" ;
   result << in_ASSOCIATED_5F_LIST_5F_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (p->mSharedListMapList) ;\n"

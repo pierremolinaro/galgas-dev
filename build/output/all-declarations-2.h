@@ -260,7 +260,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineMap_2
 
 class GALGAS_lexicalFunctionFormalArgumentList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_lexicalFunctionFormalArgumentList (const bool inIsValid = false) ;
+  public : GALGAS_lexicalFunctionFormalArgumentList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_lexicalFunctionFormalArgumentList (const capCollectionElementArray & inSharedArray) ;
@@ -725,7 +725,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionMap_
 
 class GALGAS_templateDelimitorList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_templateDelimitorList (const bool inIsValid = false) ;
+  public : GALGAS_templateDelimitorList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_templateDelimitorList (const capCollectionElementArray & inSharedArray) ;
@@ -2100,7 +2100,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionDefaultValueE
 
 class GALGAS_commandLineOptionListAST : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_commandLineOptionListAST (const bool inIsValid = false) ;
+  public : GALGAS_commandLineOptionListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_commandLineOptionListAST (const capCollectionElementArray & inSharedArray) ;
@@ -2663,7 +2663,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionMa
 
 class GALGAS_guiSimpleAttributeListAST : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_guiSimpleAttributeListAST (const bool inIsValid = false) ;
+  public : GALGAS_guiSimpleAttributeListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_guiSimpleAttributeListAST (const capCollectionElementArray & inSharedArray) ;
@@ -2871,7 +2871,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiSimpleAttributeL
 
 class GALGAS_guiCompoundAttributeListAST : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_guiCompoundAttributeListAST (const bool inIsValid = false) ;
+  public : GALGAS_guiCompoundAttributeListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_guiCompoundAttributeListAST (const capCollectionElementArray & inSharedArray) ;
@@ -3098,7 +3098,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiCompoundAttribut
 
 class GALGAS_terminalLabelListAST : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_terminalLabelListAST (const bool inIsValid = false) ;
+  public : GALGAS_terminalLabelListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_terminalLabelListAST (const capCollectionElementArray & inSharedArray) ;
@@ -3306,7 +3306,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalLabelListAS
 
 class GALGAS_guiLabelListAST : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_guiLabelListAST (const bool inIsValid = false) ;
+  public : GALGAS_guiLabelListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_guiLabelListAST (const capCollectionElementArray & inSharedArray) ;
@@ -3533,7 +3533,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiLabelListAST_2D_
 
 class GALGAS_withLexiqueListAST : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_withLexiqueListAST (const bool inIsValid = false) ;
+  public : GALGAS_withLexiqueListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_withLexiqueListAST (const capCollectionElementArray & inSharedArray) ;
@@ -3779,7 +3779,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_withLexiqueListAST_
 
 class GALGAS_guiCommandLineOptionList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_guiCommandLineOptionList (const bool inIsValid = false) ;
+  public : GALGAS_guiCommandLineOptionList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_guiCommandLineOptionList (const capCollectionElementArray & inSharedArray) ;
@@ -4238,7 +4238,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMap_2D_ele
 
 class GALGAS_textMacroList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_textMacroList (const bool inIsValid = false) ;
+  public : GALGAS_textMacroList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_textMacroList (const capCollectionElementArray & inSharedArray) ;
@@ -4446,7 +4446,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_textMacroList_2D_el
 
 class GALGAS_importedLexiqueList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_importedLexiqueList (const bool inIsValid = false) ;
+  public : GALGAS_importedLexiqueList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_importedLexiqueList (const capCollectionElementArray & inSharedArray) ;
@@ -4711,7 +4711,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_importedLexiqueList
 
 class GALGAS_galgas_33_GUIComponentListAST : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_galgas_33_GUIComponentListAST (const bool inIsValid = false) ;
+  public : GALGAS_galgas_33_GUIComponentListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_galgas_33_GUIComponentListAST (const capCollectionElementArray & inSharedArray) ;
@@ -5247,7 +5247,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapF
 
 class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_propertyInCollectionListAST (const bool inIsValid = false) ;
+  public : GALGAS_propertyInCollectionListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_propertyInCollectionListAST (const capCollectionElementArray & inSharedArray) ;
@@ -5626,7 +5626,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantList_2D
 
 class GALGAS_enumConstantListForGeneration : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_enumConstantListForGeneration (const bool inIsValid = false) ;
+  public : GALGAS_enumConstantListForGeneration (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_enumConstantListForGeneration (const capCollectionElementArray & inSharedArray) ;
@@ -5763,7 +5763,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantListFor
 
 class GALGAS_unifiedTypeMapProxyList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_unifiedTypeMapProxyList (const bool inIsValid = false) ;
+  public : GALGAS_unifiedTypeMapProxyList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_unifiedTypeMapProxyList (const capCollectionElementArray & inSharedArray) ;
@@ -6023,7 +6023,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapProxy
 
 class GALGAS_externTypeConstructorList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_externTypeConstructorList (const bool inIsValid = false) ;
+  public : GALGAS_externTypeConstructorList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_externTypeConstructorList (const capCollectionElementArray & inSharedArray) ;
@@ -6174,7 +6174,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstruct
 
 class GALGAS_typeNameFormalParameterNameList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_typeNameFormalParameterNameList (const bool inIsValid = false) ;
+  public : GALGAS_typeNameFormalParameterNameList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_typeNameFormalParameterNameList (const capCollectionElementArray & inSharedArray) ;
@@ -6401,7 +6401,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstruct
 
 class GALGAS_externTypeGetterList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_externTypeGetterList (const bool inIsValid = false) ;
+  public : GALGAS_externTypeGetterList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_externTypeGetterList (const capCollectionElementArray & inSharedArray) ;
@@ -6628,7 +6628,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeGetterLis
 
 class GALGAS_externTypeSetterList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_externTypeSetterList (const bool inIsValid = false) ;
+  public : GALGAS_externTypeSetterList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_externTypeSetterList (const capCollectionElementArray & inSharedArray) ;
@@ -6765,7 +6765,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeSetterLis
 
 class GALGAS_formalParameterListAST : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_formalParameterListAST (const bool inIsValid = false) ;
+  public : GALGAS_formalParameterListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_formalParameterListAST (const capCollectionElementArray & inSharedArray) ;
@@ -6999,7 +6999,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeSetterLis
 
 class GALGAS_externTypeMethodList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_externTypeMethodList (const bool inIsValid = false) ;
+  public : GALGAS_externTypeMethodList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_externTypeMethodList (const capCollectionElementArray & inSharedArray) ;

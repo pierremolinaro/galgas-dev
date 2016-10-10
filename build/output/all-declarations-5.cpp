@@ -1433,8 +1433,8 @@ typeComparisonResult cCollectionElement_enumerationDescriptorList::compare (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_enumerationDescriptorList::GALGAS_enumerationDescriptorList (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_enumerationDescriptorList::GALGAS_enumerationDescriptorList (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1446,7 +1446,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_enumerationDescriptorList GALGAS_enumerationDescriptorList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_enumerationDescriptorList  (true) ;
+  return GALGAS_enumerationDescriptorList  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1456,7 +1456,7 @@ GALGAS_enumerationDescriptorList GALGAS_enumerationDescriptorList::constructor_l
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_enumerationDescriptorList result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_enumerationDescriptorList (true) ;
+    result = GALGAS_enumerationDescriptorList (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_enumerationDescriptorList::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;

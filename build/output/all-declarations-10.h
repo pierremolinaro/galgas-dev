@@ -17,7 +17,7 @@
 
 class GALGAS_BuildFileList : public AC_GALGAS_list_new {
 //--------------------------------- Default constructor
-  public : GALGAS_BuildFileList (const bool inIsValid = false) ;
+  public : GALGAS_BuildFileList (void) ;
 
 //--------------------------------- List constructor used by listmap
   public : GALGAS_BuildFileList (const capCollectionElementArray & inSharedArray) ;

@@ -4526,8 +4526,8 @@ typeComparisonResult cCollectionElement_templateInstructionListAST::compare (con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionListAST::GALGAS_templateInstructionListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_templateInstructionListAST::GALGAS_templateInstructionListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4539,7 +4539,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_templateInstructionListAST  (true) ;
+  return GALGAS_templateInstructionListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4548,7 +4548,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionListAST::constructor
                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionListAST result ;
   if (inOperand0.isValid ()) {
-    result = GALGAS_templateInstructionListAST (true) ;
+    result = GALGAS_templateInstructionListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_templateInstructionListAST::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -4985,8 +4985,8 @@ typeComparisonResult cCollectionElement_templateExpressionListAST::compare (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateExpressionListAST::GALGAS_templateExpressionListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_templateExpressionListAST::GALGAS_templateExpressionListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4998,7 +4998,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_templateExpressionListAST  (true) ;
+  return GALGAS_templateExpressionListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5009,7 +5009,7 @@ GALGAS_templateExpressionListAST GALGAS_templateExpressionListAST::constructor_l
                                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_templateExpressionListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_templateExpressionListAST (true) ;
+    result = GALGAS_templateExpressionListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_templateExpressionListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -10139,8 +10139,8 @@ typeComparisonResult cCollectionElement_templateInstructionIfBranchListAST::comp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionIfBranchListAST::GALGAS_templateInstructionIfBranchListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_templateInstructionIfBranchListAST::GALGAS_templateInstructionIfBranchListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10152,7 +10152,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_templateInstructionIfBranchListAST  (true) ;
+  return GALGAS_templateInstructionIfBranchListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10162,7 +10162,7 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfBranchList
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionIfBranchListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_templateInstructionIfBranchListAST (true) ;
+    result = GALGAS_templateInstructionIfBranchListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_templateInstructionIfBranchListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -10732,8 +10732,8 @@ typeComparisonResult cCollectionElement_templateInstructionSwitchBranchListAST::
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionSwitchBranchListAST::GALGAS_templateInstructionSwitchBranchListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_templateInstructionSwitchBranchListAST::GALGAS_templateInstructionSwitchBranchListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10745,7 +10745,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchBranchListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_templateInstructionSwitchBranchListAST  (true) ;
+  return GALGAS_templateInstructionSwitchBranchListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10755,7 +10755,7 @@ GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchBr
                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionSwitchBranchListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_templateInstructionSwitchBranchListAST (true) ;
+    result = GALGAS_templateInstructionSwitchBranchListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_templateInstructionSwitchBranchListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -12898,8 +12898,8 @@ typeComparisonResult cCollectionElement_templateInstructionListForGeneration::co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionListForGeneration::GALGAS_templateInstructionListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_templateInstructionListForGeneration::GALGAS_templateInstructionListForGeneration (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12911,7 +12911,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_templateInstructionListForGeneration  (true) ;
+  return GALGAS_templateInstructionListForGeneration  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12920,7 +12920,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionListForGen
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionListForGeneration result ;
   if (inOperand0.isValid ()) {
-    result = GALGAS_templateInstructionListForGeneration (true) ;
+    result = GALGAS_templateInstructionListForGeneration (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_templateInstructionListForGeneration::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -13514,8 +13514,8 @@ typeComparisonResult cCollectionElement_templateInstructionIfBranchListForGenera
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionIfBranchListForGeneration::GALGAS_templateInstructionIfBranchListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_templateInstructionIfBranchListForGeneration::GALGAS_templateInstructionIfBranchListForGeneration (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13527,7 +13527,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionIfBranchListForGeneration GALGAS_templateInstructionIfBranchListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_templateInstructionIfBranchListForGeneration  (true) ;
+  return GALGAS_templateInstructionIfBranchListForGeneration  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13537,7 +13537,7 @@ GALGAS_templateInstructionIfBranchListForGeneration GALGAS_templateInstructionIf
                                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionIfBranchListForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_templateInstructionIfBranchListForGeneration (true) ;
+    result = GALGAS_templateInstructionIfBranchListForGeneration (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_templateInstructionIfBranchListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -14107,8 +14107,8 @@ typeComparisonResult cCollectionElement_templateInstructionSwitchBranchListForGe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_templateInstructionSwitchBranchListForGeneration::GALGAS_templateInstructionSwitchBranchListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_templateInstructionSwitchBranchListForGeneration::GALGAS_templateInstructionSwitchBranchListForGeneration (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14120,7 +14120,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructionSwitchBranchListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_templateInstructionSwitchBranchListForGeneration  (true) ;
+  return GALGAS_templateInstructionSwitchBranchListForGeneration  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14130,7 +14130,7 @@ GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructi
                                                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_templateInstructionSwitchBranchListForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_templateInstructionSwitchBranchListForGeneration (true) ;
+    result = GALGAS_templateInstructionSwitchBranchListForGeneration (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_templateInstructionSwitchBranchListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;

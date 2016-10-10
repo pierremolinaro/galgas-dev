@@ -93,8 +93,8 @@ typeComparisonResult cCollectionElement_castInstructionBranchListForGeneration::
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_castInstructionBranchListForGeneration::GALGAS_castInstructionBranchListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_castInstructionBranchListForGeneration::GALGAS_castInstructionBranchListForGeneration (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -106,7 +106,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_castInstructionBranchListForGeneration  (true) ;
+  return GALGAS_castInstructionBranchListForGeneration  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -118,7 +118,7 @@ GALGAS_castInstructionBranchListForGeneration GALGAS_castInstructionBranchListFo
                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_castInstructionBranchListForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_castInstructionBranchListForGeneration (true) ;
+    result = GALGAS_castInstructionBranchListForGeneration (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_castInstructionBranchListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -1074,8 +1074,8 @@ typeComparisonResult cCollectionElement_fixitListAST::compare (const cCollection
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_fixitListAST::GALGAS_fixitListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_fixitListAST::GALGAS_fixitListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1087,7 +1087,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_fixitListAST GALGAS_fixitListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_fixitListAST  (true) ;
+  return GALGAS_fixitListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1096,7 +1096,7 @@ GALGAS_fixitListAST GALGAS_fixitListAST::constructor_listWithValue (const GALGAS
                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_fixitListAST result ;
   if (inOperand0.isValid ()) {
-    result = GALGAS_fixitListAST (true) ;
+    result = GALGAS_fixitListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_fixitListAST::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -1716,8 +1716,8 @@ typeComparisonResult cCollectionElement_fixitListForGeneration::compare (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_fixitListForGeneration::GALGAS_fixitListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_fixitListForGeneration::GALGAS_fixitListForGeneration (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1729,7 +1729,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_fixitListForGeneration GALGAS_fixitListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_fixitListForGeneration  (true) ;
+  return GALGAS_fixitListForGeneration  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1738,7 +1738,7 @@ GALGAS_fixitListForGeneration GALGAS_fixitListForGeneration::constructor_listWit
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_fixitListForGeneration result ;
   if (inOperand0.isValid ()) {
-    result = GALGAS_fixitListForGeneration (true) ;
+    result = GALGAS_fixitListForGeneration (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_fixitListForGeneration::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -2145,8 +2145,8 @@ typeComparisonResult cCollectionElement_forInstructionEnumeratedObjectElementLis
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_forInstructionEnumeratedObjectElementListAST::GALGAS_forInstructionEnumeratedObjectElementListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_forInstructionEnumeratedObjectElementListAST::GALGAS_forInstructionEnumeratedObjectElementListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2158,7 +2158,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumeratedObjectElementListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_forInstructionEnumeratedObjectElementListAST  (true) ;
+  return GALGAS_forInstructionEnumeratedObjectElementListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2168,7 +2168,7 @@ GALGAS_forInstructionEnumeratedObjectElementListAST GALGAS_forInstructionEnumera
                                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_forInstructionEnumeratedObjectElementListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_forInstructionEnumeratedObjectElementListAST (true) ;
+    result = GALGAS_forInstructionEnumeratedObjectElementListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_forInstructionEnumeratedObjectElementListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -2839,8 +2839,8 @@ typeComparisonResult cCollectionElement_forInstructionEnumeratedObjectListAST::c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_forInstructionEnumeratedObjectListAST::GALGAS_forInstructionEnumeratedObjectListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_forInstructionEnumeratedObjectListAST::GALGAS_forInstructionEnumeratedObjectListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2852,7 +2852,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_forInstructionEnumeratedObjectListAST GALGAS_forInstructionEnumeratedObjectListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_forInstructionEnumeratedObjectListAST  (true) ;
+  return GALGAS_forInstructionEnumeratedObjectListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2862,7 +2862,7 @@ GALGAS_forInstructionEnumeratedObjectListAST GALGAS_forInstructionEnumeratedObje
                                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_forInstructionEnumeratedObjectListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_forInstructionEnumeratedObjectListAST (true) ;
+    result = GALGAS_forInstructionEnumeratedObjectListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_forInstructionEnumeratedObjectListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -3382,8 +3382,8 @@ typeComparisonResult cCollectionElement_forInstructionEnumeratedObjectListForGen
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_forInstructionEnumeratedObjectListForGeneration::GALGAS_forInstructionEnumeratedObjectListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_forInstructionEnumeratedObjectListForGeneration::GALGAS_forInstructionEnumeratedObjectListForGeneration (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3395,7 +3395,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_forInstructionEnumeratedObjectListForGeneration GALGAS_forInstructionEnumeratedObjectListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_forInstructionEnumeratedObjectListForGeneration  (true) ;
+  return GALGAS_forInstructionEnumeratedObjectListForGeneration  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3406,7 +3406,7 @@ GALGAS_forInstructionEnumeratedObjectListForGeneration GALGAS_forInstructionEnum
                                                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_forInstructionEnumeratedObjectListForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_forInstructionEnumeratedObjectListForGeneration (true) ;
+    result = GALGAS_forInstructionEnumeratedObjectListForGeneration (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_forInstructionEnumeratedObjectListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -4800,8 +4800,8 @@ typeComparisonResult cCollectionElement_logListAST::compare (const cCollectionEl
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_logListAST::GALGAS_logListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_logListAST::GALGAS_logListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4813,7 +4813,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_logListAST GALGAS_logListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_logListAST  (true) ;
+  return GALGAS_logListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4823,7 +4823,7 @@ GALGAS_logListAST GALGAS_logListAST::constructor_listWithValue (const GALGAS_lst
                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_logListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_logListAST (true) ;
+    result = GALGAS_logListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_logListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -5745,8 +5745,8 @@ typeComparisonResult cCollectionElement_matchEntryListAST::compare (const cColle
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchEntryListAST::GALGAS_matchEntryListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_matchEntryListAST::GALGAS_matchEntryListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5758,7 +5758,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_matchEntryListAST GALGAS_matchEntryListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_matchEntryListAST  (true) ;
+  return GALGAS_matchEntryListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5769,7 +5769,7 @@ GALGAS_matchEntryListAST GALGAS_matchEntryListAST::constructor_listWithValue (co
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_matchEntryListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_matchEntryListAST (true) ;
+    result = GALGAS_matchEntryListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_matchEntryListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -6164,8 +6164,8 @@ typeComparisonResult cCollectionElement_matchInstructionBranchListAST::compare (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchInstructionBranchListAST::GALGAS_matchInstructionBranchListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_matchInstructionBranchListAST::GALGAS_matchInstructionBranchListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6177,7 +6177,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_matchInstructionBranchListAST GALGAS_matchInstructionBranchListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_matchInstructionBranchListAST  (true) ;
+  return GALGAS_matchInstructionBranchListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6189,7 +6189,7 @@ GALGAS_matchInstructionBranchListAST GALGAS_matchInstructionBranchListAST::const
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_matchInstructionBranchListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_matchInstructionBranchListAST (true) ;
+    result = GALGAS_matchInstructionBranchListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_matchInstructionBranchListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -6851,8 +6851,8 @@ typeComparisonResult cCollectionElement_matchListForGeneration::compare (const c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchListForGeneration::GALGAS_matchListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_matchListForGeneration::GALGAS_matchListForGeneration (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6864,7 +6864,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_matchListForGeneration GALGAS_matchListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_matchListForGeneration  (true) ;
+  return GALGAS_matchListForGeneration  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6875,7 +6875,7 @@ GALGAS_matchListForGeneration GALGAS_matchListForGeneration::constructor_listWit
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_matchListForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_matchListForGeneration (true) ;
+    result = GALGAS_matchListForGeneration (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_matchListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -7303,8 +7303,8 @@ typeComparisonResult cCollectionElement_matchInstructionBranchListForGeneration:
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_matchInstructionBranchListForGeneration::GALGAS_matchInstructionBranchListForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_matchInstructionBranchListForGeneration::GALGAS_matchInstructionBranchListForGeneration (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7316,7 +7316,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_matchInstructionBranchListForGeneration GALGAS_matchInstructionBranchListForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_matchInstructionBranchListForGeneration  (true) ;
+  return GALGAS_matchInstructionBranchListForGeneration  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7326,7 +7326,7 @@ GALGAS_matchInstructionBranchListForGeneration GALGAS_matchInstructionBranchList
                                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_matchInstructionBranchListForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_matchInstructionBranchListForGeneration (true) ;
+    result = GALGAS_matchInstructionBranchListForGeneration (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_matchInstructionBranchListForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -9036,8 +9036,8 @@ typeComparisonResult cCollectionElement_switchExtractedValuesListAST::compare (c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_switchExtractedValuesListAST::GALGAS_switchExtractedValuesListAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_switchExtractedValuesListAST::GALGAS_switchExtractedValuesListAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9049,7 +9049,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_switchExtractedValuesListAST  (true) ;
+  return GALGAS_switchExtractedValuesListAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9060,7 +9060,7 @@ GALGAS_switchExtractedValuesListAST GALGAS_switchExtractedValuesListAST::constru
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_switchExtractedValuesListAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_switchExtractedValuesListAST (true) ;
+    result = GALGAS_switchExtractedValuesListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_switchExtractedValuesListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -9500,8 +9500,8 @@ typeComparisonResult cCollectionElement_switchBranchesAST::compare (const cColle
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_switchBranchesAST::GALGAS_switchBranchesAST (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_switchBranchesAST::GALGAS_switchBranchesAST (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9513,7 +9513,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesAST GALGAS_switchBranchesAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_switchBranchesAST  (true) ;
+  return GALGAS_switchBranchesAST  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9525,7 +9525,7 @@ GALGAS_switchBranchesAST GALGAS_switchBranchesAST::constructor_listWithValue (co
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_switchBranchesAST result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_switchBranchesAST (true) ;
+    result = GALGAS_switchBranchesAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_switchBranchesAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -10236,8 +10236,8 @@ typeComparisonResult cCollectionElement_extractedAssociatedValuesForGeneration::
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_extractedAssociatedValuesForGeneration::GALGAS_extractedAssociatedValuesForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_extractedAssociatedValuesForGeneration::GALGAS_extractedAssociatedValuesForGeneration (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10249,7 +10249,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_extractedAssociatedValuesForGeneration  (true) ;
+  return GALGAS_extractedAssociatedValuesForGeneration  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10260,7 +10260,7 @@ GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesFo
                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_extractedAssociatedValuesForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_extractedAssociatedValuesForGeneration (true) ;
+    result = GALGAS_extractedAssociatedValuesForGeneration (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_extractedAssociatedValuesForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -10700,8 +10700,8 @@ typeComparisonResult cCollectionElement_switchBranchesForGeneration::compare (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_switchBranchesForGeneration::GALGAS_switchBranchesForGeneration (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_switchBranchesForGeneration::GALGAS_switchBranchesForGeneration (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10713,7 +10713,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesForGeneration GALGAS_switchBranchesForGeneration::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_switchBranchesForGeneration  (true) ;
+  return GALGAS_switchBranchesForGeneration  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10725,7 +10725,7 @@ GALGAS_switchBranchesForGeneration GALGAS_switchBranchesForGeneration::construct
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_switchBranchesForGeneration result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_switchBranchesForGeneration (true) ;
+    result = GALGAS_switchBranchesForGeneration (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_switchBranchesForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
     result.appendObject (attributes) ;
@@ -13913,8 +13913,8 @@ typeComparisonResult cCollectionElement_syntaxInstructionListForGrammarAnalysis:
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_syntaxInstructionListForGrammarAnalysis::GALGAS_syntaxInstructionListForGrammarAnalysis (const bool inIsValid) :
-AC_GALGAS_list_new (inIsValid) {
+GALGAS_syntaxInstructionListForGrammarAnalysis::GALGAS_syntaxInstructionListForGrammarAnalysis (void) :
+AC_GALGAS_list_new () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13926,7 +13926,7 @@ AC_GALGAS_list_new (inSharedArray) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_syntaxInstructionListForGrammarAnalysis GALGAS_syntaxInstructionListForGrammarAnalysis::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_syntaxInstructionListForGrammarAnalysis  (true) ;
+  return GALGAS_syntaxInstructionListForGrammarAnalysis  (capCollectionElementArray ()) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13935,7 +13935,7 @@ GALGAS_syntaxInstructionListForGrammarAnalysis GALGAS_syntaxInstructionListForGr
                                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_syntaxInstructionListForGrammarAnalysis result ;
   if (inOperand0.isValid ()) {
-    result = GALGAS_syntaxInstructionListForGrammarAnalysis (true) ;
+    result = GALGAS_syntaxInstructionListForGrammarAnalysis (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
     GALGAS_syntaxInstructionListForGrammarAnalysis::makeAttributesFromObjects (attributes, inOperand0 COMMA_THERE) ;
     result.appendObject (attributes) ;
