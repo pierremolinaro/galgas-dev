@@ -31,8 +31,8 @@
 
 class cCollectionElement_stringset : public cCollectionElement {
 //--- Private member
-  protected : GALGAS_string mAttribute_key ;
-  public : inline GALGAS_string attribute_key (void) const { return mAttribute_key ; }
+  protected : GALGAS_string mProperty_key ;
+  public : inline GALGAS_string attribute_key (void) const { return mProperty_key ; }
 
 //--- Default constructor
   public : cCollectionElement_stringset (const GALGAS_string & inString
@@ -60,13 +60,13 @@ class cCollectionElement_stringset : public cCollectionElement {
 cCollectionElement_stringset::cCollectionElement_stringset (const GALGAS_string & inKey
                                                             COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mAttribute_key (inKey) {
+mProperty_key (inKey) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cCollectionElement_stringset::isValid (void) const {
-  return mAttribute_key.isValid () ;
+  return mProperty_key.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -74,14 +74,14 @@ bool cCollectionElement_stringset::isValid (void) const {
 typeComparisonResult cCollectionElement_stringset::compare (const cCollectionElement * inOperand) const {
   const cCollectionElement_stringset * operand = (const cCollectionElement_stringset *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement_stringset) ;
-  return mAttribute_key.objectCompare (operand->mAttribute_key) ;
+  return mProperty_key.objectCompare (operand->mProperty_key) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cCollectionElement * cCollectionElement_stringset::copy (void) {
   cCollectionElement_stringset * p = NULL ;
-  macroMyNew (p, cCollectionElement_stringset (mAttribute_key COMMA_HERE)) ;
+  macroMyNew (p, cCollectionElement_stringset (mProperty_key COMMA_HERE)) ;
   return p ;
 }
 
@@ -89,7 +89,7 @@ cCollectionElement * cCollectionElement_stringset::copy (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cCollectionElement_stringset::description (C_String & ioString, const int32_t inIndentation) const {
-  mAttribute_key.description (ioString, inIndentation) ;
+  mProperty_key.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

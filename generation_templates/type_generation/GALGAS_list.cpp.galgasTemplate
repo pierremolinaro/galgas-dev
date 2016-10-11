@@ -59,7 +59,7 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
   cCollectionElement * result = NULL ;
   macroMyNew (result, cCollectionElement_%!TYPE_IDENTIFIER% (%
     for () in ATTRIBUTE_LIST
-      do %mObject.mAttribute_%![mAttributeName identifierRepresentation]
+      do %mObject.mProperty_%![mAttributeName identifierRepresentation]
       between %, %
     end
   % COMMA_HERE)) ;
@@ -74,7 +74,7 @@ void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, co
     %  ioString << "\\n" ;\n%
     %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
     %  ioString << %![mAttributeName utf8Representation]% ":" ;\n%
-    %  mObject.mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
+    %  mObject.mProperty_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end
 %}
 
@@ -227,7 +227,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^
       macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %      outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %      outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
   end
 %    }
   }
@@ -253,7 +253,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -278,7 +278,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popLast (%?^
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -303,7 +303,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -328,7 +328,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -396,7 +396,7 @@ for () in ATTRIBUTE_LIST do index IDX
   %  if (NULL != p) {\n%
   %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %    macroUniqueSharedObject (p) ;\n%
-  %    p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% = inOperand ;\n%
+  %    p->mObject.mProperty_%![mAttributeName identifierRepresentation]% = inOperand ;\n%
   %  }\n%
   %}\n\n%
   end
@@ -411,7 +411,7 @@ for () in ATTRIBUTE_LIST do index IDX
     %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
     %  if (NULL != p) {\n%
     %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
-    %    result = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    result = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
     %  }\n%
     %  return result ;\n%
     %}\n\n%
@@ -441,7 +441,7 @@ GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LO
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
-  %  return p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  %  return p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 end
 %

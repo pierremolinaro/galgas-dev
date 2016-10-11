@@ -361,8 +361,8 @@ void GALGAS_data::method_writeToExecutableFile (GALGAS_string inFilePath,
 
 class cCollectionElement_data : public cCollectionElement {
 //--- Private member
-  protected : GALGAS_uint mAttribute_data ;
-  public : inline GALGAS_uint attribute_data (void) const { return mAttribute_data ; }
+  protected : GALGAS_uint mProperty_data ;
+  public : inline GALGAS_uint attribute_data (void) const { return mProperty_data ; }
 
 //--- Default constructor
   public : cCollectionElement_data (const GALGAS_uint & inData
@@ -390,13 +390,13 @@ class cCollectionElement_data : public cCollectionElement {
 cCollectionElement_data::cCollectionElement_data (const GALGAS_uint & inData
                                                   COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mAttribute_data (inData) {
+mProperty_data (inData) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cCollectionElement_data::isValid (void) const {
-  return mAttribute_data.isValid () ;
+  return mProperty_data.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -404,21 +404,21 @@ bool cCollectionElement_data::isValid (void) const {
 typeComparisonResult cCollectionElement_data::compare (const cCollectionElement * inOperand) const {
   const cCollectionElement_data * operand = (const cCollectionElement_data *) inOperand ;
   macroValidSharedObject (operand, cCollectionElement_data) ;
-  return mAttribute_data.objectCompare (operand->mAttribute_data) ;
+  return mProperty_data.objectCompare (operand->mProperty_data) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cCollectionElement * cCollectionElement_data::copy (void) {
   cCollectionElement_data * p = NULL ;
-  macroMyNew (p, cCollectionElement_data (mAttribute_data COMMA_HERE)) ;
+  macroMyNew (p, cCollectionElement_data (mProperty_data COMMA_HERE)) ;
   return p ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cCollectionElement_data::description (C_String & ioString, const int32_t inIndentation) const {
-  mAttribute_data.description (ioString, inIndentation) ;
+  mProperty_data.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

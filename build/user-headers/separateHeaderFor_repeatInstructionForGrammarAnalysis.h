@@ -29,8 +29,8 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_branchListForGrammarAnalysis mAttribute_mRepeatBranchList ;
-  public : GALGAS_uint mAttribute_mAddedNonTerminalSymbolIndex ;
+  public : GALGAS_branchListForGrammarAnalysis mProperty_mRepeatBranchList ;
+  public : GALGAS_uint mProperty_mAddedNonTerminalSymbolIndex ;
 
 //--- Constructor
   public : cPtr_repeatInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation,

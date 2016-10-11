@@ -29,8 +29,8 @@ class cPtr_selectInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_branchListForGrammarAnalysis mAttribute_mSelectBranchList ;
-  public : GALGAS_uint mAttribute_mAddedNonTerminalSymbolIndex ;
+  public : GALGAS_branchListForGrammarAnalysis mProperty_mSelectBranchList ;
+  public : GALGAS_uint mProperty_mAddedNonTerminalSymbolIndex ;
 
 //--- Constructor
   public : cPtr_selectInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation,

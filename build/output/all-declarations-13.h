@@ -87,12 +87,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualnstruction
 
 class cPtr_plusEqualnstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_string mAttribute_mReceiverCppName ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mTargetType ;
-  public : GALGAS_string mAttribute_mNameForCheckingFormalParameterUsing ;
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_semanticExpressionListForGeneration mAttribute_mExpressionList ;
+  public : GALGAS_string mProperty_mReceiverCppName ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mTargetType ;
+  public : GALGAS_string mProperty_mNameForCheckingFormalParameterUsing ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public : GALGAS_semanticExpressionListForGeneration mProperty_mExpressionList ;
 
 //--- Constructor
   public : cPtr_plusEqualnstructionForGeneration (const GALGAS_string & in_mReceiverCppName,
@@ -195,11 +195,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionFo
 
 class cPtr_incDecInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_string mAttribute_mReceiverCppName ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_incDecKind mAttribute_mKind ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_string mProperty_mReceiverCppName ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReceiverType ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public : GALGAS_incDecKind mProperty_mKind ;
 
 //--- Constructor
   public : cPtr_incDecInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -300,11 +300,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecNoOVFInstruct
 
 class cPtr_incDecNoOVFInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_string mAttribute_mReceiverCppName ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_incDecKind mAttribute_mKind ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_string mProperty_mReceiverCppName ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReceiverType ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public : GALGAS_incDecKind mProperty_mKind ;
 
 //--- Constructor
   public : cPtr_incDecNoOVFInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -399,8 +399,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_undefinedLocalConst
 
 class cPtr_undefinedLocalConstantDeclarationForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mTargetType ;
-  public : GALGAS_string mAttribute_mCppVariableName ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mTargetType ;
+  public : GALGAS_string mProperty_mCppVariableName ;
 
 //--- Constructor
   public : cPtr_undefinedLocalConstantDeclarationForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTargetType,
@@ -489,8 +489,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procCallInstruction
 
 class cPtr_procCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mRoutineName ;
-  public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
+  public : GALGAS_lstring mProperty_mRoutineName ;
+  public : GALGAS_actualParameterListForGeneration mProperty_mActualParameterList ;
 
 //--- Constructor
   public : cPtr_procCallInstructionForGeneration (const GALGAS_lstring & in_mRoutineName,
@@ -603,17 +603,17 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterCallInstructi
 
 class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_string mAttribute_mReceiverCppName ;
-  public : GALGAS_string mAttribute_mReceiverBaseName ;
-  public : GALGAS_lstringlist mAttribute_mReceiverStructAttributes ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mCastType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_lstring mAttribute_mSetterName ;
-  public : GALGAS_methodKind mAttribute_mKind ;
-  public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
-  public : GALGAS_bool mAttribute_mHasCompilerArgument ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mMethodBaseType ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_string mProperty_mReceiverCppName ;
+  public : GALGAS_string mProperty_mReceiverBaseName ;
+  public : GALGAS_lstringlist mProperty_mReceiverStructAttributes ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mCastType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReceiverType ;
+  public : GALGAS_lstring mProperty_mSetterName ;
+  public : GALGAS_methodKind mProperty_mKind ;
+  public : GALGAS_actualParameterListForGeneration mProperty_mActualParameterList ;
+  public : GALGAS_bool mProperty_mHasCompilerArgument ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mMethodBaseType ;
 
 //--- Constructor
   public : cPtr_setterCallInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -729,12 +729,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfSetterCallInstr
 
 class cPtr_selfSetterCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_string mAttribute_mSelfCppName ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_lstring mAttribute_mSetterName ;
-  public : GALGAS_methodKind mAttribute_mKind ;
-  public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
-  public : GALGAS_bool mAttribute_mHasCompilerArgument ;
+  public : GALGAS_string mProperty_mSelfCppName ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReceiverType ;
+  public : GALGAS_lstring mProperty_mSetterName ;
+  public : GALGAS_methodKind mProperty_mKind ;
+  public : GALGAS_actualParameterListForGeneration mProperty_mActualParameterList ;
+  public : GALGAS_bool mProperty_mHasCompilerArgument ;
 
 //--- Constructor
   public : cPtr_selfSetterCallInstructionForGeneration (const GALGAS_string & in_mSelfCppName,
@@ -837,10 +837,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeMethodCallInstr
 
 class cPtr_typeMethodCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_lstring mAttribute_mMethodName ;
-  public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
-  public : GALGAS_bool mAttribute_mHasCompilerArgument ;
+  public : GALGAS_lstring mProperty_mTypeName ;
+  public : GALGAS_lstring mProperty_mMethodName ;
+  public : GALGAS_actualParameterListForGeneration mProperty_mActualParameterList ;
+  public : GALGAS_bool mProperty_mHasCompilerArgument ;
 
 //--- Constructor
   public : cPtr_typeMethodCallInstructionForGeneration (const GALGAS_lstring & in_mTypeName,
@@ -933,8 +933,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableDeclar
 
 class cPtr_localVariableDeclarationForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mVariableType ;
-  public : GALGAS_string mAttribute_mCppVariableName ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mVariableType ;
+  public : GALGAS_string mProperty_mCppVariableName ;
 
 //--- Constructor
   public : cPtr_localVariableDeclarationForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mVariableType,
@@ -1033,12 +1033,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstru
 
 class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mTerminalName ;
-  public : GALGAS_string mAttribute_mLexiqueIdentifier ;
-  public : GALGAS_terminalCheckAssignementList mAttribute_mTerminalCheckAssignementList ;
-  public : GALGAS__32_lstringlist mAttribute_mIndexingKeyList ;
-  public : GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mAttribute_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
-  public : GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mAttribute_mGrammarInstructionSyntaxDirectedTranslationToken ;
+  public : GALGAS_lstring mProperty_mTerminalName ;
+  public : GALGAS_string mProperty_mLexiqueIdentifier ;
+  public : GALGAS_terminalCheckAssignementList mProperty_mTerminalCheckAssignementList ;
+  public : GALGAS__32_lstringlist mProperty_mIndexingKeyList ;
+  public : GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mProperty_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
+  public : GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mProperty_mGrammarInstructionSyntaxDirectedTranslationToken ;
 
 //--- Constructor
   public : cPtr_terminalCheckInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,

@@ -11,6 +11,6 @@
 cMapElement::cMapElement (const GALGAS_lstring & inLKey
                           COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mAttribute_lkey (inLKey) {
+mProperty_lkey (inLKey) {
 }
 

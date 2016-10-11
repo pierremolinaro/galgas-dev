@@ -18,24 +18,24 @@ cMapElement_setterMap::cMapElement_setterMap (const GALGAS_lstring & inKey,
                                               const GALGAS_string & in_mErrorMessage
                                               COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mKind (in_mKind),
-mAttribute_mParameterList (in_mParameterList),
-mAttribute_mHasCompilerArgument (in_mHasCompilerArgument),
-mAttribute_mQualifier (in_mQualifier),
-mAttribute_mErrorMessage (in_mErrorMessage) {
+mProperty_mKind (in_mKind),
+mProperty_mParameterList (in_mParameterList),
+mProperty_mHasCompilerArgument (in_mHasCompilerArgument),
+mProperty_mQualifier (in_mQualifier),
+mProperty_mErrorMessage (in_mErrorMessage) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_setterMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mKind.isValid () && mAttribute_mParameterList.isValid () && mAttribute_mHasCompilerArgument.isValid () && mAttribute_mQualifier.isValid () && mAttribute_mErrorMessage.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mKind.isValid () && mProperty_mParameterList.isValid () && mProperty_mHasCompilerArgument.isValid () && mProperty_mQualifier.isValid () && mProperty_mErrorMessage.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_setterMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_setterMap (mAttribute_lkey, mAttribute_mKind, mAttribute_mParameterList, mAttribute_mHasCompilerArgument, mAttribute_mQualifier, mAttribute_mErrorMessage COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_setterMap (mProperty_lkey, mProperty_mKind, mProperty_mParameterList, mProperty_mHasCompilerArgument, mProperty_mQualifier, mProperty_mErrorMessage COMMA_HERE)) ;
   return result ;
 }
 
@@ -45,44 +45,44 @@ void cMapElement_setterMap::description (C_String & ioString, const int32_t inIn
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mKind" ":" ;
-  mAttribute_mKind.description (ioString, inIndentation) ;
+  mProperty_mKind.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mParameterList" ":" ;
-  mAttribute_mParameterList.description (ioString, inIndentation) ;
+  mProperty_mParameterList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mHasCompilerArgument" ":" ;
-  mAttribute_mHasCompilerArgument.description (ioString, inIndentation) ;
+  mProperty_mHasCompilerArgument.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mQualifier" ":" ;
-  mAttribute_mQualifier.description (ioString, inIndentation) ;
+  mProperty_mQualifier.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mErrorMessage" ":" ;
-  mAttribute_mErrorMessage.description (ioString, inIndentation) ;
+  mProperty_mErrorMessage.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_setterMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_setterMap * operand = (cMapElement_setterMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (operand->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (operand->mProperty_mKind) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mParameterList.objectCompare (operand->mAttribute_mParameterList) ;
+    result = mProperty_mParameterList.objectCompare (operand->mProperty_mParameterList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mHasCompilerArgument.objectCompare (operand->mAttribute_mHasCompilerArgument) ;
+    result = mProperty_mHasCompilerArgument.objectCompare (operand->mProperty_mHasCompilerArgument) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mQualifier.objectCompare (operand->mAttribute_mQualifier) ;
+    result = mProperty_mQualifier.objectCompare (operand->mProperty_mQualifier) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mErrorMessage.objectCompare (operand->mAttribute_mErrorMessage) ;
+    result = mProperty_mErrorMessage.objectCompare (operand->mProperty_mErrorMessage) ;
   }
   return result ;
 }
@@ -198,11 +198,11 @@ void GALGAS_setterMap::method_searchKey (GALGAS_lstring inKey,
     outArgument4.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_setterMap) ;
-    outArgument0 = p->mAttribute_mKind ;
-    outArgument1 = p->mAttribute_mParameterList ;
-    outArgument2 = p->mAttribute_mHasCompilerArgument ;
-    outArgument3 = p->mAttribute_mQualifier ;
-    outArgument4 = p->mAttribute_mErrorMessage ;
+    outArgument0 = p->mProperty_mKind ;
+    outArgument1 = p->mProperty_mParameterList ;
+    outArgument2 = p->mProperty_mHasCompilerArgument ;
+    outArgument3 = p->mProperty_mQualifier ;
+    outArgument4 = p->mProperty_mErrorMessage ;
   }
 }
 
@@ -233,7 +233,7 @@ GALGAS_methodKind GALGAS_setterMap::getter_mKindForKey (const GALGAS_string & in
   GALGAS_methodKind result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_setterMap) ;
-    result = p->mAttribute_mKind ;
+    result = p->mProperty_mKind ;
   }
   return result ;
 }
@@ -248,7 +248,7 @@ GALGAS_formalParameterSignature GALGAS_setterMap::getter_mParameterListForKey (c
   GALGAS_formalParameterSignature result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_setterMap) ;
-    result = p->mAttribute_mParameterList ;
+    result = p->mProperty_mParameterList ;
   }
   return result ;
 }
@@ -263,7 +263,7 @@ GALGAS_bool GALGAS_setterMap::getter_mHasCompilerArgumentForKey (const GALGAS_st
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_setterMap) ;
-    result = p->mAttribute_mHasCompilerArgument ;
+    result = p->mProperty_mHasCompilerArgument ;
   }
   return result ;
 }
@@ -278,7 +278,7 @@ GALGAS_methodQualifier GALGAS_setterMap::getter_mQualifierForKey (const GALGAS_s
   GALGAS_methodQualifier result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_setterMap) ;
-    result = p->mAttribute_mQualifier ;
+    result = p->mProperty_mQualifier ;
   }
   return result ;
 }
@@ -293,7 +293,7 @@ GALGAS_string GALGAS_setterMap::getter_mErrorMessageForKey (const GALGAS_string 
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_setterMap) ;
-    result = p->mAttribute_mErrorMessage ;
+    result = p->mProperty_mErrorMessage ;
   }
   return result ;
 }
@@ -308,7 +308,7 @@ void GALGAS_setterMap::setter_setMKindForKey (GALGAS_methodKind inAttributeValue
   cMapElement_setterMap * p = (cMapElement_setterMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_setterMap) ;
-    p->mAttribute_mKind = inAttributeValue ;
+    p->mProperty_mKind = inAttributeValue ;
   }
 }
 
@@ -322,7 +322,7 @@ void GALGAS_setterMap::setter_setMParameterListForKey (GALGAS_formalParameterSig
   cMapElement_setterMap * p = (cMapElement_setterMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_setterMap) ;
-    p->mAttribute_mParameterList = inAttributeValue ;
+    p->mProperty_mParameterList = inAttributeValue ;
   }
 }
 
@@ -336,7 +336,7 @@ void GALGAS_setterMap::setter_setMHasCompilerArgumentForKey (GALGAS_bool inAttri
   cMapElement_setterMap * p = (cMapElement_setterMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_setterMap) ;
-    p->mAttribute_mHasCompilerArgument = inAttributeValue ;
+    p->mProperty_mHasCompilerArgument = inAttributeValue ;
   }
 }
 
@@ -350,7 +350,7 @@ void GALGAS_setterMap::setter_setMQualifierForKey (GALGAS_methodQualifier inAttr
   cMapElement_setterMap * p = (cMapElement_setterMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_setterMap) ;
-    p->mAttribute_mQualifier = inAttributeValue ;
+    p->mProperty_mQualifier = inAttributeValue ;
   }
 }
 
@@ -364,7 +364,7 @@ void GALGAS_setterMap::setter_setMErrorMessageForKey (GALGAS_string inAttributeV
   cMapElement_setterMap * p = (cMapElement_setterMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_setterMap) ;
-    p->mAttribute_mErrorMessage = inAttributeValue ;
+    p->mProperty_mErrorMessage = inAttributeValue ;
   }
 }
 
@@ -391,7 +391,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_setterMap_2D_element cEnumerator_setterMap::current (LOCATION_ARGS) const {
   const cMapElement_setterMap * p = (const cMapElement_setterMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_setterMap) ;
-  return GALGAS_setterMap_2D_element (p->mAttribute_lkey, p->mAttribute_mKind, p->mAttribute_mParameterList, p->mAttribute_mHasCompilerArgument, p->mAttribute_mQualifier, p->mAttribute_mErrorMessage) ;
+  return GALGAS_setterMap_2D_element (p->mProperty_lkey, p->mProperty_mKind, p->mProperty_mParameterList, p->mProperty_mHasCompilerArgument, p->mProperty_mQualifier, p->mProperty_mErrorMessage) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -399,7 +399,7 @@ GALGAS_setterMap_2D_element cEnumerator_setterMap::current (LOCATION_ARGS) const
 GALGAS_lstring cEnumerator_setterMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -407,7 +407,7 @@ GALGAS_lstring cEnumerator_setterMap::current_lkey (LOCATION_ARGS) const {
 GALGAS_methodKind cEnumerator_setterMap::current_mKind (LOCATION_ARGS) const {
   const cMapElement_setterMap * p = (const cMapElement_setterMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_setterMap) ;
-  return p->mAttribute_mKind ;
+  return p->mProperty_mKind ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -415,7 +415,7 @@ GALGAS_methodKind cEnumerator_setterMap::current_mKind (LOCATION_ARGS) const {
 GALGAS_formalParameterSignature cEnumerator_setterMap::current_mParameterList (LOCATION_ARGS) const {
   const cMapElement_setterMap * p = (const cMapElement_setterMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_setterMap) ;
-  return p->mAttribute_mParameterList ;
+  return p->mProperty_mParameterList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -423,7 +423,7 @@ GALGAS_formalParameterSignature cEnumerator_setterMap::current_mParameterList (L
 GALGAS_bool cEnumerator_setterMap::current_mHasCompilerArgument (LOCATION_ARGS) const {
   const cMapElement_setterMap * p = (const cMapElement_setterMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_setterMap) ;
-  return p->mAttribute_mHasCompilerArgument ;
+  return p->mProperty_mHasCompilerArgument ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -431,7 +431,7 @@ GALGAS_bool cEnumerator_setterMap::current_mHasCompilerArgument (LOCATION_ARGS) 
 GALGAS_methodQualifier cEnumerator_setterMap::current_mQualifier (LOCATION_ARGS) const {
   const cMapElement_setterMap * p = (const cMapElement_setterMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_setterMap) ;
-  return p->mAttribute_mQualifier ;
+  return p->mProperty_mQualifier ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -439,7 +439,7 @@ GALGAS_methodQualifier cEnumerator_setterMap::current_mQualifier (LOCATION_ARGS)
 GALGAS_string cEnumerator_setterMap::current_mErrorMessage (LOCATION_ARGS) const {
   const cMapElement_setterMap * p = (const cMapElement_setterMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_setterMap) ;
-  return p->mAttribute_mErrorMessage ;
+  return p->mProperty_mErrorMessage ;
 }
 
 
@@ -498,25 +498,25 @@ cMapElement_instanceMethodMap::cMapElement_instanceMethodMap (const GALGAS_lstri
                                                               const GALGAS_string & in_mErrorMessage
                                                               COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mKind (in_mKind),
-mAttribute_mParameterList (in_mParameterList),
-mAttribute_mDeclarationLocation (in_mDeclarationLocation),
-mAttribute_mHasCompilerArgument (in_mHasCompilerArgument),
-mAttribute_mQualifier (in_mQualifier),
-mAttribute_mErrorMessage (in_mErrorMessage) {
+mProperty_mKind (in_mKind),
+mProperty_mParameterList (in_mParameterList),
+mProperty_mDeclarationLocation (in_mDeclarationLocation),
+mProperty_mHasCompilerArgument (in_mHasCompilerArgument),
+mProperty_mQualifier (in_mQualifier),
+mProperty_mErrorMessage (in_mErrorMessage) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_instanceMethodMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mKind.isValid () && mAttribute_mParameterList.isValid () && mAttribute_mDeclarationLocation.isValid () && mAttribute_mHasCompilerArgument.isValid () && mAttribute_mQualifier.isValid () && mAttribute_mErrorMessage.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mKind.isValid () && mProperty_mParameterList.isValid () && mProperty_mDeclarationLocation.isValid () && mProperty_mHasCompilerArgument.isValid () && mProperty_mQualifier.isValid () && mProperty_mErrorMessage.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_instanceMethodMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_instanceMethodMap (mAttribute_lkey, mAttribute_mKind, mAttribute_mParameterList, mAttribute_mDeclarationLocation, mAttribute_mHasCompilerArgument, mAttribute_mQualifier, mAttribute_mErrorMessage COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_instanceMethodMap (mProperty_lkey, mProperty_mKind, mProperty_mParameterList, mProperty_mDeclarationLocation, mProperty_mHasCompilerArgument, mProperty_mQualifier, mProperty_mErrorMessage COMMA_HERE)) ;
   return result ;
 }
 
@@ -526,51 +526,51 @@ void cMapElement_instanceMethodMap::description (C_String & ioString, const int3
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mKind" ":" ;
-  mAttribute_mKind.description (ioString, inIndentation) ;
+  mProperty_mKind.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mParameterList" ":" ;
-  mAttribute_mParameterList.description (ioString, inIndentation) ;
+  mProperty_mParameterList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mDeclarationLocation" ":" ;
-  mAttribute_mDeclarationLocation.description (ioString, inIndentation) ;
+  mProperty_mDeclarationLocation.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mHasCompilerArgument" ":" ;
-  mAttribute_mHasCompilerArgument.description (ioString, inIndentation) ;
+  mProperty_mHasCompilerArgument.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mQualifier" ":" ;
-  mAttribute_mQualifier.description (ioString, inIndentation) ;
+  mProperty_mQualifier.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mErrorMessage" ":" ;
-  mAttribute_mErrorMessage.description (ioString, inIndentation) ;
+  mProperty_mErrorMessage.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_instanceMethodMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_instanceMethodMap * operand = (cMapElement_instanceMethodMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (operand->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (operand->mProperty_mKind) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mParameterList.objectCompare (operand->mAttribute_mParameterList) ;
+    result = mProperty_mParameterList.objectCompare (operand->mProperty_mParameterList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mDeclarationLocation.objectCompare (operand->mAttribute_mDeclarationLocation) ;
+    result = mProperty_mDeclarationLocation.objectCompare (operand->mProperty_mDeclarationLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mHasCompilerArgument.objectCompare (operand->mAttribute_mHasCompilerArgument) ;
+    result = mProperty_mHasCompilerArgument.objectCompare (operand->mProperty_mHasCompilerArgument) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mQualifier.objectCompare (operand->mAttribute_mQualifier) ;
+    result = mProperty_mQualifier.objectCompare (operand->mProperty_mQualifier) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mErrorMessage.objectCompare (operand->mAttribute_mErrorMessage) ;
+    result = mProperty_mErrorMessage.objectCompare (operand->mProperty_mErrorMessage) ;
   }
   return result ;
 }
@@ -690,12 +690,12 @@ void GALGAS_instanceMethodMap::method_searchKey (GALGAS_lstring inKey,
     outArgument5.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-    outArgument0 = p->mAttribute_mKind ;
-    outArgument1 = p->mAttribute_mParameterList ;
-    outArgument2 = p->mAttribute_mDeclarationLocation ;
-    outArgument3 = p->mAttribute_mHasCompilerArgument ;
-    outArgument4 = p->mAttribute_mQualifier ;
-    outArgument5 = p->mAttribute_mErrorMessage ;
+    outArgument0 = p->mProperty_mKind ;
+    outArgument1 = p->mProperty_mParameterList ;
+    outArgument2 = p->mProperty_mDeclarationLocation ;
+    outArgument3 = p->mProperty_mHasCompilerArgument ;
+    outArgument4 = p->mProperty_mQualifier ;
+    outArgument5 = p->mProperty_mErrorMessage ;
   }
 }
 
@@ -727,12 +727,12 @@ void GALGAS_instanceMethodMap::method_searchInheritedKey (GALGAS_lstring inKey,
     outArgument5.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-    outArgument0 = p->mAttribute_mKind ;
-    outArgument1 = p->mAttribute_mParameterList ;
-    outArgument2 = p->mAttribute_mDeclarationLocation ;
-    outArgument3 = p->mAttribute_mHasCompilerArgument ;
-    outArgument4 = p->mAttribute_mQualifier ;
-    outArgument5 = p->mAttribute_mErrorMessage ;
+    outArgument0 = p->mProperty_mKind ;
+    outArgument1 = p->mProperty_mParameterList ;
+    outArgument2 = p->mProperty_mDeclarationLocation ;
+    outArgument3 = p->mProperty_mHasCompilerArgument ;
+    outArgument4 = p->mProperty_mQualifier ;
+    outArgument5 = p->mProperty_mErrorMessage ;
   }
 }
 
@@ -746,7 +746,7 @@ GALGAS_methodKind GALGAS_instanceMethodMap::getter_mKindForKey (const GALGAS_str
   GALGAS_methodKind result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-    result = p->mAttribute_mKind ;
+    result = p->mProperty_mKind ;
   }
   return result ;
 }
@@ -761,7 +761,7 @@ GALGAS_formalParameterSignature GALGAS_instanceMethodMap::getter_mParameterListF
   GALGAS_formalParameterSignature result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-    result = p->mAttribute_mParameterList ;
+    result = p->mProperty_mParameterList ;
   }
   return result ;
 }
@@ -776,7 +776,7 @@ GALGAS_location GALGAS_instanceMethodMap::getter_mDeclarationLocationForKey (con
   GALGAS_location result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-    result = p->mAttribute_mDeclarationLocation ;
+    result = p->mProperty_mDeclarationLocation ;
   }
   return result ;
 }
@@ -791,7 +791,7 @@ GALGAS_bool GALGAS_instanceMethodMap::getter_mHasCompilerArgumentForKey (const G
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-    result = p->mAttribute_mHasCompilerArgument ;
+    result = p->mProperty_mHasCompilerArgument ;
   }
   return result ;
 }
@@ -806,7 +806,7 @@ GALGAS_methodQualifier GALGAS_instanceMethodMap::getter_mQualifierForKey (const 
   GALGAS_methodQualifier result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-    result = p->mAttribute_mQualifier ;
+    result = p->mProperty_mQualifier ;
   }
   return result ;
 }
@@ -821,7 +821,7 @@ GALGAS_string GALGAS_instanceMethodMap::getter_mErrorMessageForKey (const GALGAS
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-    result = p->mAttribute_mErrorMessage ;
+    result = p->mProperty_mErrorMessage ;
   }
   return result ;
 }
@@ -836,7 +836,7 @@ void GALGAS_instanceMethodMap::setter_setMKindForKey (GALGAS_methodKind inAttrib
   cMapElement_instanceMethodMap * p = (cMapElement_instanceMethodMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-    p->mAttribute_mKind = inAttributeValue ;
+    p->mProperty_mKind = inAttributeValue ;
   }
 }
 
@@ -850,7 +850,7 @@ void GALGAS_instanceMethodMap::setter_setMParameterListForKey (GALGAS_formalPara
   cMapElement_instanceMethodMap * p = (cMapElement_instanceMethodMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-    p->mAttribute_mParameterList = inAttributeValue ;
+    p->mProperty_mParameterList = inAttributeValue ;
   }
 }
 
@@ -864,7 +864,7 @@ void GALGAS_instanceMethodMap::setter_setMDeclarationLocationForKey (GALGAS_loca
   cMapElement_instanceMethodMap * p = (cMapElement_instanceMethodMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-    p->mAttribute_mDeclarationLocation = inAttributeValue ;
+    p->mProperty_mDeclarationLocation = inAttributeValue ;
   }
 }
 
@@ -878,7 +878,7 @@ void GALGAS_instanceMethodMap::setter_setMHasCompilerArgumentForKey (GALGAS_bool
   cMapElement_instanceMethodMap * p = (cMapElement_instanceMethodMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-    p->mAttribute_mHasCompilerArgument = inAttributeValue ;
+    p->mProperty_mHasCompilerArgument = inAttributeValue ;
   }
 }
 
@@ -892,7 +892,7 @@ void GALGAS_instanceMethodMap::setter_setMQualifierForKey (GALGAS_methodQualifie
   cMapElement_instanceMethodMap * p = (cMapElement_instanceMethodMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-    p->mAttribute_mQualifier = inAttributeValue ;
+    p->mProperty_mQualifier = inAttributeValue ;
   }
 }
 
@@ -906,7 +906,7 @@ void GALGAS_instanceMethodMap::setter_setMErrorMessageForKey (GALGAS_string inAt
   cMapElement_instanceMethodMap * p = (cMapElement_instanceMethodMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-    p->mAttribute_mErrorMessage = inAttributeValue ;
+    p->mProperty_mErrorMessage = inAttributeValue ;
   }
 }
 
@@ -933,7 +933,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_instanceMethodMap_2D_element cEnumerator_instanceMethodMap::current (LOCATION_ARGS) const {
   const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-  return GALGAS_instanceMethodMap_2D_element (p->mAttribute_lkey, p->mAttribute_mKind, p->mAttribute_mParameterList, p->mAttribute_mDeclarationLocation, p->mAttribute_mHasCompilerArgument, p->mAttribute_mQualifier, p->mAttribute_mErrorMessage) ;
+  return GALGAS_instanceMethodMap_2D_element (p->mProperty_lkey, p->mProperty_mKind, p->mProperty_mParameterList, p->mProperty_mDeclarationLocation, p->mProperty_mHasCompilerArgument, p->mProperty_mQualifier, p->mProperty_mErrorMessage) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -941,7 +941,7 @@ GALGAS_instanceMethodMap_2D_element cEnumerator_instanceMethodMap::current (LOCA
 GALGAS_lstring cEnumerator_instanceMethodMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -949,7 +949,7 @@ GALGAS_lstring cEnumerator_instanceMethodMap::current_lkey (LOCATION_ARGS) const
 GALGAS_methodKind cEnumerator_instanceMethodMap::current_mKind (LOCATION_ARGS) const {
   const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-  return p->mAttribute_mKind ;
+  return p->mProperty_mKind ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -957,7 +957,7 @@ GALGAS_methodKind cEnumerator_instanceMethodMap::current_mKind (LOCATION_ARGS) c
 GALGAS_formalParameterSignature cEnumerator_instanceMethodMap::current_mParameterList (LOCATION_ARGS) const {
   const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-  return p->mAttribute_mParameterList ;
+  return p->mProperty_mParameterList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -965,7 +965,7 @@ GALGAS_formalParameterSignature cEnumerator_instanceMethodMap::current_mParamete
 GALGAS_location cEnumerator_instanceMethodMap::current_mDeclarationLocation (LOCATION_ARGS) const {
   const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-  return p->mAttribute_mDeclarationLocation ;
+  return p->mProperty_mDeclarationLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -973,7 +973,7 @@ GALGAS_location cEnumerator_instanceMethodMap::current_mDeclarationLocation (LOC
 GALGAS_bool cEnumerator_instanceMethodMap::current_mHasCompilerArgument (LOCATION_ARGS) const {
   const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-  return p->mAttribute_mHasCompilerArgument ;
+  return p->mProperty_mHasCompilerArgument ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -981,7 +981,7 @@ GALGAS_bool cEnumerator_instanceMethodMap::current_mHasCompilerArgument (LOCATIO
 GALGAS_methodQualifier cEnumerator_instanceMethodMap::current_mQualifier (LOCATION_ARGS) const {
   const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-  return p->mAttribute_mQualifier ;
+  return p->mProperty_mQualifier ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -989,7 +989,7 @@ GALGAS_methodQualifier cEnumerator_instanceMethodMap::current_mQualifier (LOCATI
 GALGAS_string cEnumerator_instanceMethodMap::current_mErrorMessage (LOCATION_ARGS) const {
   const cMapElement_instanceMethodMap * p = (const cMapElement_instanceMethodMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_instanceMethodMap) ;
-  return p->mAttribute_mErrorMessage ;
+  return p->mProperty_mErrorMessage ;
 }
 
 
@@ -1044,21 +1044,21 @@ cMapElement_classMethodMap::cMapElement_classMethodMap (const GALGAS_lstring & i
                                                         const GALGAS_bool & in_mHasCompilerArgument
                                                         COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mParameterList (in_mParameterList),
-mAttribute_mHasCompilerArgument (in_mHasCompilerArgument) {
+mProperty_mParameterList (in_mParameterList),
+mProperty_mHasCompilerArgument (in_mHasCompilerArgument) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_classMethodMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mParameterList.isValid () && mAttribute_mHasCompilerArgument.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mParameterList.isValid () && mProperty_mHasCompilerArgument.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_classMethodMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_classMethodMap (mAttribute_lkey, mAttribute_mParameterList, mAttribute_mHasCompilerArgument COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_classMethodMap (mProperty_lkey, mProperty_mParameterList, mProperty_mHasCompilerArgument COMMA_HERE)) ;
   return result ;
 }
 
@@ -1068,23 +1068,23 @@ void cMapElement_classMethodMap::description (C_String & ioString, const int32_t
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mParameterList" ":" ;
-  mAttribute_mParameterList.description (ioString, inIndentation) ;
+  mProperty_mParameterList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mHasCompilerArgument" ":" ;
-  mAttribute_mHasCompilerArgument.description (ioString, inIndentation) ;
+  mProperty_mHasCompilerArgument.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_classMethodMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_classMethodMap * operand = (cMapElement_classMethodMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mParameterList.objectCompare (operand->mAttribute_mParameterList) ;
+    result = mProperty_mParameterList.objectCompare (operand->mProperty_mParameterList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mHasCompilerArgument.objectCompare (operand->mAttribute_mHasCompilerArgument) ;
+    result = mProperty_mHasCompilerArgument.objectCompare (operand->mProperty_mHasCompilerArgument) ;
   }
   return result ;
 }
@@ -1188,8 +1188,8 @@ void GALGAS_classMethodMap::method_searchKey (GALGAS_lstring inKey,
     outArgument1.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_classMethodMap) ;
-    outArgument0 = p->mAttribute_mParameterList ;
-    outArgument1 = p->mAttribute_mHasCompilerArgument ;
+    outArgument0 = p->mProperty_mParameterList ;
+    outArgument1 = p->mProperty_mHasCompilerArgument ;
   }
 }
 
@@ -1217,7 +1217,7 @@ GALGAS_formalParameterSignature GALGAS_classMethodMap::getter_mParameterListForK
   GALGAS_formalParameterSignature result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_classMethodMap) ;
-    result = p->mAttribute_mParameterList ;
+    result = p->mProperty_mParameterList ;
   }
   return result ;
 }
@@ -1232,7 +1232,7 @@ GALGAS_bool GALGAS_classMethodMap::getter_mHasCompilerArgumentForKey (const GALG
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_classMethodMap) ;
-    result = p->mAttribute_mHasCompilerArgument ;
+    result = p->mProperty_mHasCompilerArgument ;
   }
   return result ;
 }
@@ -1247,7 +1247,7 @@ void GALGAS_classMethodMap::setter_setMParameterListForKey (GALGAS_formalParamet
   cMapElement_classMethodMap * p = (cMapElement_classMethodMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_classMethodMap) ;
-    p->mAttribute_mParameterList = inAttributeValue ;
+    p->mProperty_mParameterList = inAttributeValue ;
   }
 }
 
@@ -1261,7 +1261,7 @@ void GALGAS_classMethodMap::setter_setMHasCompilerArgumentForKey (GALGAS_bool in
   cMapElement_classMethodMap * p = (cMapElement_classMethodMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_classMethodMap) ;
-    p->mAttribute_mHasCompilerArgument = inAttributeValue ;
+    p->mProperty_mHasCompilerArgument = inAttributeValue ;
   }
 }
 
@@ -1288,7 +1288,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_classMethodMap_2D_element cEnumerator_classMethodMap::current (LOCATION_ARGS) const {
   const cMapElement_classMethodMap * p = (const cMapElement_classMethodMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_classMethodMap) ;
-  return GALGAS_classMethodMap_2D_element (p->mAttribute_lkey, p->mAttribute_mParameterList, p->mAttribute_mHasCompilerArgument) ;
+  return GALGAS_classMethodMap_2D_element (p->mProperty_lkey, p->mProperty_mParameterList, p->mProperty_mHasCompilerArgument) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1296,7 +1296,7 @@ GALGAS_classMethodMap_2D_element cEnumerator_classMethodMap::current (LOCATION_A
 GALGAS_lstring cEnumerator_classMethodMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1304,7 +1304,7 @@ GALGAS_lstring cEnumerator_classMethodMap::current_lkey (LOCATION_ARGS) const {
 GALGAS_formalParameterSignature cEnumerator_classMethodMap::current_mParameterList (LOCATION_ARGS) const {
   const cMapElement_classMethodMap * p = (const cMapElement_classMethodMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_classMethodMap) ;
-  return p->mAttribute_mParameterList ;
+  return p->mProperty_mParameterList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1312,7 +1312,7 @@ GALGAS_formalParameterSignature cEnumerator_classMethodMap::current_mParameterLi
 GALGAS_bool cEnumerator_classMethodMap::current_mHasCompilerArgument (LOCATION_ARGS) const {
   const cMapElement_classMethodMap * p = (const cMapElement_classMethodMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_classMethodMap) ;
-  return p->mAttribute_mHasCompilerArgument ;
+  return p->mProperty_mHasCompilerArgument ;
 }
 
 
@@ -1406,7 +1406,7 @@ bool cCollectionElement_enumerationDescriptorList::isValid (void) const {
 
 cCollectionElement * cCollectionElement_enumerationDescriptorList::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_enumerationDescriptorList (mObject.mAttribute_mEnumeratedType, mObject.mAttribute_mEnumerationName COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_enumerationDescriptorList (mObject.mProperty_mEnumeratedType, mObject.mProperty_mEnumerationName COMMA_HERE)) ;
   return result ;
 }
 
@@ -1416,11 +1416,11 @@ void cCollectionElement_enumerationDescriptorList::description (C_String & ioStr
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mEnumeratedType" ":" ;
-  mObject.mAttribute_mEnumeratedType.description (ioString, inIndentation) ;
+  mObject.mProperty_mEnumeratedType.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mEnumerationName" ":" ;
-  mObject.mAttribute_mEnumerationName.description (ioString, inIndentation) ;
+  mObject.mProperty_mEnumerationName.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1525,8 +1525,8 @@ void GALGAS_enumerationDescriptorList::setter_removeAtIndex (GALGAS_unifiedTypeM
       outOperand1.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_enumerationDescriptorList) ;
-      outOperand0 = p->mObject.mAttribute_mEnumeratedType ;
-      outOperand1 = p->mObject.mAttribute_mEnumerationName ;
+      outOperand0 = p->mObject.mProperty_mEnumeratedType ;
+      outOperand1 = p->mObject.mProperty_mEnumerationName ;
     }
   }
 }
@@ -1545,8 +1545,8 @@ void GALGAS_enumerationDescriptorList::setter_popFirst (GALGAS_unifiedTypeMap_2D
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_enumerationDescriptorList) ;
-    outOperand0 = p->mObject.mAttribute_mEnumeratedType ;
-    outOperand1 = p->mObject.mAttribute_mEnumerationName ;
+    outOperand0 = p->mObject.mProperty_mEnumeratedType ;
+    outOperand1 = p->mObject.mProperty_mEnumerationName ;
   }
 }
 
@@ -1564,8 +1564,8 @@ void GALGAS_enumerationDescriptorList::setter_popLast (GALGAS_unifiedTypeMap_2D_
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_enumerationDescriptorList) ;
-    outOperand0 = p->mObject.mAttribute_mEnumeratedType ;
-    outOperand1 = p->mObject.mAttribute_mEnumerationName ;
+    outOperand0 = p->mObject.mProperty_mEnumeratedType ;
+    outOperand1 = p->mObject.mProperty_mEnumerationName ;
   }
 }
 
@@ -1583,8 +1583,8 @@ void GALGAS_enumerationDescriptorList::method_first (GALGAS_unifiedTypeMap_2D_pr
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_enumerationDescriptorList) ;
-    outOperand0 = p->mObject.mAttribute_mEnumeratedType ;
-    outOperand1 = p->mObject.mAttribute_mEnumerationName ;
+    outOperand0 = p->mObject.mProperty_mEnumeratedType ;
+    outOperand1 = p->mObject.mProperty_mEnumerationName ;
   }
 }
 
@@ -1602,8 +1602,8 @@ void GALGAS_enumerationDescriptorList::method_last (GALGAS_unifiedTypeMap_2D_pro
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_enumerationDescriptorList) ;
-    outOperand0 = p->mObject.mAttribute_mEnumeratedType ;
-    outOperand1 = p->mObject.mAttribute_mEnumerationName ;
+    outOperand0 = p->mObject.mProperty_mEnumeratedType ;
+    outOperand1 = p->mObject.mProperty_mEnumerationName ;
   }
 }
 
@@ -1668,7 +1668,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_enumerationDescriptorList::getter_mEnumera
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_enumerationDescriptorList) ;
-    result = p->mObject.mAttribute_mEnumeratedType ;
+    result = p->mObject.mProperty_mEnumeratedType ;
   }
   return result ;
 }
@@ -1683,7 +1683,7 @@ GALGAS_string GALGAS_enumerationDescriptorList::getter_mEnumerationNameAtIndex (
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_enumerationDescriptorList) ;
-    result = p->mObject.mAttribute_mEnumerationName ;
+    result = p->mObject.mProperty_mEnumerationName ;
   }
   return result ;
 }
@@ -1712,7 +1712,7 @@ GALGAS_enumerationDescriptorList_2D_element cEnumerator_enumerationDescriptorLis
 GALGAS_unifiedTypeMap_2D_proxy cEnumerator_enumerationDescriptorList::current_mEnumeratedType (LOCATION_ARGS) const {
   const cCollectionElement_enumerationDescriptorList * p = (const cCollectionElement_enumerationDescriptorList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_enumerationDescriptorList) ;
-  return p->mObject.mAttribute_mEnumeratedType ;
+  return p->mObject.mProperty_mEnumeratedType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1720,7 +1720,7 @@ GALGAS_unifiedTypeMap_2D_proxy cEnumerator_enumerationDescriptorList::current_mE
 GALGAS_string cEnumerator_enumerationDescriptorList::current_mEnumerationName (LOCATION_ARGS) const {
   const cCollectionElement_enumerationDescriptorList * p = (const cCollectionElement_enumerationDescriptorList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_enumerationDescriptorList) ;
-  return p->mObject.mAttribute_mEnumerationName ;
+  return p->mObject.mProperty_mEnumerationName ;
 }
 
 
@@ -2500,20 +2500,20 @@ cMapElement_attributeMap::cMapElement_attributeMap (const GALGAS_lstring & inKey
                                                     const GALGAS_unifiedTypeMap_2D_proxy & in_mAttributeType
                                                     COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mAttributeType (in_mAttributeType) {
+mProperty_mAttributeType (in_mAttributeType) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_attributeMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mAttributeType.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mAttributeType.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_attributeMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_attributeMap (mAttribute_lkey, mAttribute_mAttributeType COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_attributeMap (mProperty_lkey, mProperty_mAttributeType COMMA_HERE)) ;
   return result ;
 }
 
@@ -2523,16 +2523,16 @@ void cMapElement_attributeMap::description (C_String & ioString, const int32_t i
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mAttributeType" ":" ;
-  mAttribute_mAttributeType.description (ioString, inIndentation) ;
+  mProperty_mAttributeType.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_attributeMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_attributeMap * operand = (cMapElement_attributeMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mAttributeType.objectCompare (operand->mAttribute_mAttributeType) ;
+    result = mProperty_mAttributeType.objectCompare (operand->mProperty_mAttributeType) ;
   }
   return result ;
 }
@@ -2632,7 +2632,7 @@ void GALGAS_attributeMap::method_searchKey (GALGAS_lstring inKey,
     outArgument0.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_attributeMap) ;
-    outArgument0 = p->mAttribute_mAttributeType ;
+    outArgument0 = p->mProperty_mAttributeType ;
   }
 }
 
@@ -2646,7 +2646,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_attributeMap::getter_mAttributeTypeForKey 
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_attributeMap) ;
-    result = p->mAttribute_mAttributeType ;
+    result = p->mProperty_mAttributeType ;
   }
   return result ;
 }
@@ -2661,7 +2661,7 @@ void GALGAS_attributeMap::setter_setMAttributeTypeForKey (GALGAS_unifiedTypeMap_
   cMapElement_attributeMap * p = (cMapElement_attributeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_attributeMap) ;
-    p->mAttribute_mAttributeType = inAttributeValue ;
+    p->mProperty_mAttributeType = inAttributeValue ;
   }
 }
 
@@ -2688,7 +2688,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_attributeMap_2D_element cEnumerator_attributeMap::current (LOCATION_ARGS) const {
   const cMapElement_attributeMap * p = (const cMapElement_attributeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_attributeMap) ;
-  return GALGAS_attributeMap_2D_element (p->mAttribute_lkey, p->mAttribute_mAttributeType) ;
+  return GALGAS_attributeMap_2D_element (p->mProperty_lkey, p->mProperty_mAttributeType) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2696,7 +2696,7 @@ GALGAS_attributeMap_2D_element cEnumerator_attributeMap::current (LOCATION_ARGS)
 GALGAS_lstring cEnumerator_attributeMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2704,7 +2704,7 @@ GALGAS_lstring cEnumerator_attributeMap::current_lkey (LOCATION_ARGS) const {
 GALGAS_unifiedTypeMap_2D_proxy cEnumerator_attributeMap::current_mAttributeType (LOCATION_ARGS) const {
   const cMapElement_attributeMap * p = (const cMapElement_attributeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_attributeMap) ;
-  return p->mAttribute_mAttributeType ;
+  return p->mProperty_mAttributeType ;
 }
 
 
@@ -2883,21 +2883,21 @@ cMapElement_constantIndexMap::cMapElement_constantIndexMap (const GALGAS_lstring
                                                             const GALGAS_unifiedTypeMapProxyList & in_mAssociatedTypeList
                                                             COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mIndex (in_mIndex),
-mAttribute_mAssociatedTypeList (in_mAssociatedTypeList) {
+mProperty_mIndex (in_mIndex),
+mProperty_mAssociatedTypeList (in_mAssociatedTypeList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_constantIndexMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mIndex.isValid () && mAttribute_mAssociatedTypeList.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mIndex.isValid () && mProperty_mAssociatedTypeList.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_constantIndexMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_constantIndexMap (mAttribute_lkey, mAttribute_mIndex, mAttribute_mAssociatedTypeList COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_constantIndexMap (mProperty_lkey, mProperty_mIndex, mProperty_mAssociatedTypeList COMMA_HERE)) ;
   return result ;
 }
 
@@ -2907,23 +2907,23 @@ void cMapElement_constantIndexMap::description (C_String & ioString, const int32
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mIndex" ":" ;
-  mAttribute_mIndex.description (ioString, inIndentation) ;
+  mProperty_mIndex.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mAssociatedTypeList" ":" ;
-  mAttribute_mAssociatedTypeList.description (ioString, inIndentation) ;
+  mProperty_mAssociatedTypeList.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_constantIndexMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_constantIndexMap * operand = (cMapElement_constantIndexMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIndex.objectCompare (operand->mAttribute_mIndex) ;
+    result = mProperty_mIndex.objectCompare (operand->mProperty_mIndex) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mAssociatedTypeList.objectCompare (operand->mAttribute_mAssociatedTypeList) ;
+    result = mProperty_mAssociatedTypeList.objectCompare (operand->mProperty_mAssociatedTypeList) ;
   }
   return result ;
 }
@@ -3027,8 +3027,8 @@ void GALGAS_constantIndexMap::method_searchKey (GALGAS_lstring inKey,
     outArgument1.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_constantIndexMap) ;
-    outArgument0 = p->mAttribute_mIndex ;
-    outArgument1 = p->mAttribute_mAssociatedTypeList ;
+    outArgument0 = p->mProperty_mIndex ;
+    outArgument1 = p->mProperty_mAssociatedTypeList ;
   }
 }
 
@@ -3042,7 +3042,7 @@ GALGAS_uint GALGAS_constantIndexMap::getter_mIndexForKey (const GALGAS_string & 
   GALGAS_uint result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_constantIndexMap) ;
-    result = p->mAttribute_mIndex ;
+    result = p->mProperty_mIndex ;
   }
   return result ;
 }
@@ -3057,7 +3057,7 @@ GALGAS_unifiedTypeMapProxyList GALGAS_constantIndexMap::getter_mAssociatedTypeLi
   GALGAS_unifiedTypeMapProxyList result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_constantIndexMap) ;
-    result = p->mAttribute_mAssociatedTypeList ;
+    result = p->mProperty_mAssociatedTypeList ;
   }
   return result ;
 }
@@ -3072,7 +3072,7 @@ void GALGAS_constantIndexMap::setter_setMIndexForKey (GALGAS_uint inAttributeVal
   cMapElement_constantIndexMap * p = (cMapElement_constantIndexMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_constantIndexMap) ;
-    p->mAttribute_mIndex = inAttributeValue ;
+    p->mProperty_mIndex = inAttributeValue ;
   }
 }
 
@@ -3086,7 +3086,7 @@ void GALGAS_constantIndexMap::setter_setMAssociatedTypeListForKey (GALGAS_unifie
   cMapElement_constantIndexMap * p = (cMapElement_constantIndexMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_constantIndexMap) ;
-    p->mAttribute_mAssociatedTypeList = inAttributeValue ;
+    p->mProperty_mAssociatedTypeList = inAttributeValue ;
   }
 }
 
@@ -3113,7 +3113,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_constantIndexMap_2D_element cEnumerator_constantIndexMap::current (LOCATION_ARGS) const {
   const cMapElement_constantIndexMap * p = (const cMapElement_constantIndexMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_constantIndexMap) ;
-  return GALGAS_constantIndexMap_2D_element (p->mAttribute_lkey, p->mAttribute_mIndex, p->mAttribute_mAssociatedTypeList) ;
+  return GALGAS_constantIndexMap_2D_element (p->mProperty_lkey, p->mProperty_mIndex, p->mProperty_mAssociatedTypeList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3121,7 +3121,7 @@ GALGAS_constantIndexMap_2D_element cEnumerator_constantIndexMap::current (LOCATI
 GALGAS_lstring cEnumerator_constantIndexMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3129,7 +3129,7 @@ GALGAS_lstring cEnumerator_constantIndexMap::current_lkey (LOCATION_ARGS) const 
 GALGAS_uint cEnumerator_constantIndexMap::current_mIndex (LOCATION_ARGS) const {
   const cMapElement_constantIndexMap * p = (const cMapElement_constantIndexMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_constantIndexMap) ;
-  return p->mAttribute_mIndex ;
+  return p->mProperty_mIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3137,7 +3137,7 @@ GALGAS_uint cEnumerator_constantIndexMap::current_mIndex (LOCATION_ARGS) const {
 GALGAS_unifiedTypeMapProxyList cEnumerator_constantIndexMap::current_mAssociatedTypeList (LOCATION_ARGS) const {
   const cMapElement_constantIndexMap * p = (const cMapElement_constantIndexMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_constantIndexMap) ;
-  return p->mAttribute_mAssociatedTypeList ;
+  return p->mProperty_mAssociatedTypeList ;
 }
 
 
@@ -3215,44 +3215,44 @@ cMapElement_unifiedTypeMap::cMapElement_unifiedTypeMap (const GALGAS_lstring & i
                                                         const GALGAS_headerKind & in_mHeaderKind
                                                         COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mIsPredefined (in_mIsPredefined),
-mAttribute_mIsConcrete (in_mIsConcrete),
-mAttribute_mSuperType (in_mSuperType),
-mAttribute_mTypeKindEnum (in_mTypeKindEnum),
-mAttribute_mSupportCollectionValue (in_mSupportCollectionValue),
-mAttribute_mAllTypedAttributeList (in_mAllTypedAttributeList),
-mAttribute_mAttributeMap (in_mAttributeMap),
-mAttribute_mCurrentTypedAttributeList (in_mCurrentTypedAttributeList),
-mAttribute_mConstructorMap (in_mConstructorMap),
-mAttribute_mGetterMap (in_mGetterMap),
-mAttribute_mSetterMap (in_mSetterMap),
-mAttribute_mInstanceMethodMap (in_mInstanceMethodMap),
-mAttribute_mClassMethodMap (in_mClassMethodMap),
-mAttribute_mEnumerationDescriptor (in_mEnumerationDescriptor),
-mAttribute_mHandledOperatorFlags (in_mHandledOperatorFlags),
-mAttribute_mAddAssignOperatorArguments (in_mAddAssignOperatorArguments),
-mAttribute_mEnumConstantMap (in_mEnumConstantMap),
-mAttribute_mEnumConstantList (in_mEnumConstantList),
-mAttribute_mMapSearchMethodList (in_mMapSearchMethodList),
-mAttribute_mMapProxySearchConstructorList (in_mMapProxySearchConstructorList),
-mAttribute_mGenerateHeaderInSeparateFile (in_mGenerateHeaderInSeparateFile),
-mAttribute_mTypeForEnumeratedElement (in_mTypeForEnumeratedElement),
-mAttribute_mDefaultConstructorName (in_mDefaultConstructorName),
-mAttribute_mHeaderFileName (in_mHeaderFileName),
-mAttribute_mHeaderKind (in_mHeaderKind) {
+mProperty_mIsPredefined (in_mIsPredefined),
+mProperty_mIsConcrete (in_mIsConcrete),
+mProperty_mSuperType (in_mSuperType),
+mProperty_mTypeKindEnum (in_mTypeKindEnum),
+mProperty_mSupportCollectionValue (in_mSupportCollectionValue),
+mProperty_mAllTypedAttributeList (in_mAllTypedAttributeList),
+mProperty_mAttributeMap (in_mAttributeMap),
+mProperty_mCurrentTypedAttributeList (in_mCurrentTypedAttributeList),
+mProperty_mConstructorMap (in_mConstructorMap),
+mProperty_mGetterMap (in_mGetterMap),
+mProperty_mSetterMap (in_mSetterMap),
+mProperty_mInstanceMethodMap (in_mInstanceMethodMap),
+mProperty_mClassMethodMap (in_mClassMethodMap),
+mProperty_mEnumerationDescriptor (in_mEnumerationDescriptor),
+mProperty_mHandledOperatorFlags (in_mHandledOperatorFlags),
+mProperty_mAddAssignOperatorArguments (in_mAddAssignOperatorArguments),
+mProperty_mEnumConstantMap (in_mEnumConstantMap),
+mProperty_mEnumConstantList (in_mEnumConstantList),
+mProperty_mMapSearchMethodList (in_mMapSearchMethodList),
+mProperty_mMapProxySearchConstructorList (in_mMapProxySearchConstructorList),
+mProperty_mGenerateHeaderInSeparateFile (in_mGenerateHeaderInSeparateFile),
+mProperty_mTypeForEnumeratedElement (in_mTypeForEnumeratedElement),
+mProperty_mDefaultConstructorName (in_mDefaultConstructorName),
+mProperty_mHeaderFileName (in_mHeaderFileName),
+mProperty_mHeaderKind (in_mHeaderKind) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_unifiedTypeMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mIsPredefined.isValid () && mAttribute_mIsConcrete.isValid () && mAttribute_mSuperType.isValid () && mAttribute_mTypeKindEnum.isValid () && mAttribute_mSupportCollectionValue.isValid () && mAttribute_mAllTypedAttributeList.isValid () && mAttribute_mAttributeMap.isValid () && mAttribute_mCurrentTypedAttributeList.isValid () && mAttribute_mConstructorMap.isValid () && mAttribute_mGetterMap.isValid () && mAttribute_mSetterMap.isValid () && mAttribute_mInstanceMethodMap.isValid () && mAttribute_mClassMethodMap.isValid () && mAttribute_mEnumerationDescriptor.isValid () && mAttribute_mHandledOperatorFlags.isValid () && mAttribute_mAddAssignOperatorArguments.isValid () && mAttribute_mEnumConstantMap.isValid () && mAttribute_mEnumConstantList.isValid () && mAttribute_mMapSearchMethodList.isValid () && mAttribute_mMapProxySearchConstructorList.isValid () && mAttribute_mGenerateHeaderInSeparateFile.isValid () && mAttribute_mTypeForEnumeratedElement.isValid () && mAttribute_mDefaultConstructorName.isValid () && mAttribute_mHeaderFileName.isValid () && mAttribute_mHeaderKind.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mIsPredefined.isValid () && mProperty_mIsConcrete.isValid () && mProperty_mSuperType.isValid () && mProperty_mTypeKindEnum.isValid () && mProperty_mSupportCollectionValue.isValid () && mProperty_mAllTypedAttributeList.isValid () && mProperty_mAttributeMap.isValid () && mProperty_mCurrentTypedAttributeList.isValid () && mProperty_mConstructorMap.isValid () && mProperty_mGetterMap.isValid () && mProperty_mSetterMap.isValid () && mProperty_mInstanceMethodMap.isValid () && mProperty_mClassMethodMap.isValid () && mProperty_mEnumerationDescriptor.isValid () && mProperty_mHandledOperatorFlags.isValid () && mProperty_mAddAssignOperatorArguments.isValid () && mProperty_mEnumConstantMap.isValid () && mProperty_mEnumConstantList.isValid () && mProperty_mMapSearchMethodList.isValid () && mProperty_mMapProxySearchConstructorList.isValid () && mProperty_mGenerateHeaderInSeparateFile.isValid () && mProperty_mTypeForEnumeratedElement.isValid () && mProperty_mDefaultConstructorName.isValid () && mProperty_mHeaderFileName.isValid () && mProperty_mHeaderKind.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_unifiedTypeMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_unifiedTypeMap (mAttribute_lkey, mAttribute_mIsPredefined, mAttribute_mIsConcrete, mAttribute_mSuperType, mAttribute_mTypeKindEnum, mAttribute_mSupportCollectionValue, mAttribute_mAllTypedAttributeList, mAttribute_mAttributeMap, mAttribute_mCurrentTypedAttributeList, mAttribute_mConstructorMap, mAttribute_mGetterMap, mAttribute_mSetterMap, mAttribute_mInstanceMethodMap, mAttribute_mClassMethodMap, mAttribute_mEnumerationDescriptor, mAttribute_mHandledOperatorFlags, mAttribute_mAddAssignOperatorArguments, mAttribute_mEnumConstantMap, mAttribute_mEnumConstantList, mAttribute_mMapSearchMethodList, mAttribute_mMapProxySearchConstructorList, mAttribute_mGenerateHeaderInSeparateFile, mAttribute_mTypeForEnumeratedElement, mAttribute_mDefaultConstructorName, mAttribute_mHeaderFileName, mAttribute_mHeaderKind COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_unifiedTypeMap (mProperty_lkey, mProperty_mIsPredefined, mProperty_mIsConcrete, mProperty_mSuperType, mProperty_mTypeKindEnum, mProperty_mSupportCollectionValue, mProperty_mAllTypedAttributeList, mProperty_mAttributeMap, mProperty_mCurrentTypedAttributeList, mProperty_mConstructorMap, mProperty_mGetterMap, mProperty_mSetterMap, mProperty_mInstanceMethodMap, mProperty_mClassMethodMap, mProperty_mEnumerationDescriptor, mProperty_mHandledOperatorFlags, mProperty_mAddAssignOperatorArguments, mProperty_mEnumConstantMap, mProperty_mEnumConstantList, mProperty_mMapSearchMethodList, mProperty_mMapProxySearchConstructorList, mProperty_mGenerateHeaderInSeparateFile, mProperty_mTypeForEnumeratedElement, mProperty_mDefaultConstructorName, mProperty_mHeaderFileName, mProperty_mHeaderKind COMMA_HERE)) ;
   return result ;
 }
 
@@ -3262,184 +3262,184 @@ void cMapElement_unifiedTypeMap::description (C_String & ioString, const int32_t
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mIsPredefined" ":" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mIsConcrete" ":" ;
-  mAttribute_mIsConcrete.description (ioString, inIndentation) ;
+  mProperty_mIsConcrete.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSuperType" ":" ;
-  mAttribute_mSuperType.description (ioString, inIndentation) ;
+  mProperty_mSuperType.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTypeKindEnum" ":" ;
-  mAttribute_mTypeKindEnum.description (ioString, inIndentation) ;
+  mProperty_mTypeKindEnum.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSupportCollectionValue" ":" ;
-  mAttribute_mSupportCollectionValue.description (ioString, inIndentation) ;
+  mProperty_mSupportCollectionValue.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mAllTypedAttributeList" ":" ;
-  mAttribute_mAllTypedAttributeList.description (ioString, inIndentation) ;
+  mProperty_mAllTypedAttributeList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mAttributeMap" ":" ;
-  mAttribute_mAttributeMap.description (ioString, inIndentation) ;
+  mProperty_mAttributeMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mCurrentTypedAttributeList" ":" ;
-  mAttribute_mCurrentTypedAttributeList.description (ioString, inIndentation) ;
+  mProperty_mCurrentTypedAttributeList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mConstructorMap" ":" ;
-  mAttribute_mConstructorMap.description (ioString, inIndentation) ;
+  mProperty_mConstructorMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mGetterMap" ":" ;
-  mAttribute_mGetterMap.description (ioString, inIndentation) ;
+  mProperty_mGetterMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSetterMap" ":" ;
-  mAttribute_mSetterMap.description (ioString, inIndentation) ;
+  mProperty_mSetterMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstanceMethodMap" ":" ;
-  mAttribute_mInstanceMethodMap.description (ioString, inIndentation) ;
+  mProperty_mInstanceMethodMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mClassMethodMap" ":" ;
-  mAttribute_mClassMethodMap.description (ioString, inIndentation) ;
+  mProperty_mClassMethodMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mEnumerationDescriptor" ":" ;
-  mAttribute_mEnumerationDescriptor.description (ioString, inIndentation) ;
+  mProperty_mEnumerationDescriptor.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mHandledOperatorFlags" ":" ;
-  mAttribute_mHandledOperatorFlags.description (ioString, inIndentation) ;
+  mProperty_mHandledOperatorFlags.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mAddAssignOperatorArguments" ":" ;
-  mAttribute_mAddAssignOperatorArguments.description (ioString, inIndentation) ;
+  mProperty_mAddAssignOperatorArguments.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mEnumConstantMap" ":" ;
-  mAttribute_mEnumConstantMap.description (ioString, inIndentation) ;
+  mProperty_mEnumConstantMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mEnumConstantList" ":" ;
-  mAttribute_mEnumConstantList.description (ioString, inIndentation) ;
+  mProperty_mEnumConstantList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mMapSearchMethodList" ":" ;
-  mAttribute_mMapSearchMethodList.description (ioString, inIndentation) ;
+  mProperty_mMapSearchMethodList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mMapProxySearchConstructorList" ":" ;
-  mAttribute_mMapProxySearchConstructorList.description (ioString, inIndentation) ;
+  mProperty_mMapProxySearchConstructorList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mGenerateHeaderInSeparateFile" ":" ;
-  mAttribute_mGenerateHeaderInSeparateFile.description (ioString, inIndentation) ;
+  mProperty_mGenerateHeaderInSeparateFile.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTypeForEnumeratedElement" ":" ;
-  mAttribute_mTypeForEnumeratedElement.description (ioString, inIndentation) ;
+  mProperty_mTypeForEnumeratedElement.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mDefaultConstructorName" ":" ;
-  mAttribute_mDefaultConstructorName.description (ioString, inIndentation) ;
+  mProperty_mDefaultConstructorName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mHeaderFileName" ":" ;
-  mAttribute_mHeaderFileName.description (ioString, inIndentation) ;
+  mProperty_mHeaderFileName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mHeaderKind" ":" ;
-  mAttribute_mHeaderKind.description (ioString, inIndentation) ;
+  mProperty_mHeaderKind.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_unifiedTypeMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_unifiedTypeMap * operand = (cMapElement_unifiedTypeMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (operand->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (operand->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mIsConcrete.objectCompare (operand->mAttribute_mIsConcrete) ;
+    result = mProperty_mIsConcrete.objectCompare (operand->mProperty_mIsConcrete) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mSuperType.objectCompare (operand->mAttribute_mSuperType) ;
+    result = mProperty_mSuperType.objectCompare (operand->mProperty_mSuperType) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mTypeKindEnum.objectCompare (operand->mAttribute_mTypeKindEnum) ;
+    result = mProperty_mTypeKindEnum.objectCompare (operand->mProperty_mTypeKindEnum) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mSupportCollectionValue.objectCompare (operand->mAttribute_mSupportCollectionValue) ;
+    result = mProperty_mSupportCollectionValue.objectCompare (operand->mProperty_mSupportCollectionValue) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mAllTypedAttributeList.objectCompare (operand->mAttribute_mAllTypedAttributeList) ;
+    result = mProperty_mAllTypedAttributeList.objectCompare (operand->mProperty_mAllTypedAttributeList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mAttributeMap.objectCompare (operand->mAttribute_mAttributeMap) ;
+    result = mProperty_mAttributeMap.objectCompare (operand->mProperty_mAttributeMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mCurrentTypedAttributeList.objectCompare (operand->mAttribute_mCurrentTypedAttributeList) ;
+    result = mProperty_mCurrentTypedAttributeList.objectCompare (operand->mProperty_mCurrentTypedAttributeList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mConstructorMap.objectCompare (operand->mAttribute_mConstructorMap) ;
+    result = mProperty_mConstructorMap.objectCompare (operand->mProperty_mConstructorMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mGetterMap.objectCompare (operand->mAttribute_mGetterMap) ;
+    result = mProperty_mGetterMap.objectCompare (operand->mProperty_mGetterMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mSetterMap.objectCompare (operand->mAttribute_mSetterMap) ;
+    result = mProperty_mSetterMap.objectCompare (operand->mProperty_mSetterMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mInstanceMethodMap.objectCompare (operand->mAttribute_mInstanceMethodMap) ;
+    result = mProperty_mInstanceMethodMap.objectCompare (operand->mProperty_mInstanceMethodMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mClassMethodMap.objectCompare (operand->mAttribute_mClassMethodMap) ;
+    result = mProperty_mClassMethodMap.objectCompare (operand->mProperty_mClassMethodMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mEnumerationDescriptor.objectCompare (operand->mAttribute_mEnumerationDescriptor) ;
+    result = mProperty_mEnumerationDescriptor.objectCompare (operand->mProperty_mEnumerationDescriptor) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mHandledOperatorFlags.objectCompare (operand->mAttribute_mHandledOperatorFlags) ;
+    result = mProperty_mHandledOperatorFlags.objectCompare (operand->mProperty_mHandledOperatorFlags) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mAddAssignOperatorArguments.objectCompare (operand->mAttribute_mAddAssignOperatorArguments) ;
+    result = mProperty_mAddAssignOperatorArguments.objectCompare (operand->mProperty_mAddAssignOperatorArguments) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mEnumConstantMap.objectCompare (operand->mAttribute_mEnumConstantMap) ;
+    result = mProperty_mEnumConstantMap.objectCompare (operand->mProperty_mEnumConstantMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mEnumConstantList.objectCompare (operand->mAttribute_mEnumConstantList) ;
+    result = mProperty_mEnumConstantList.objectCompare (operand->mProperty_mEnumConstantList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mMapSearchMethodList.objectCompare (operand->mAttribute_mMapSearchMethodList) ;
+    result = mProperty_mMapSearchMethodList.objectCompare (operand->mProperty_mMapSearchMethodList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mMapProxySearchConstructorList.objectCompare (operand->mAttribute_mMapProxySearchConstructorList) ;
+    result = mProperty_mMapProxySearchConstructorList.objectCompare (operand->mProperty_mMapProxySearchConstructorList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mGenerateHeaderInSeparateFile.objectCompare (operand->mAttribute_mGenerateHeaderInSeparateFile) ;
+    result = mProperty_mGenerateHeaderInSeparateFile.objectCompare (operand->mProperty_mGenerateHeaderInSeparateFile) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mTypeForEnumeratedElement.objectCompare (operand->mAttribute_mTypeForEnumeratedElement) ;
+    result = mProperty_mTypeForEnumeratedElement.objectCompare (operand->mProperty_mTypeForEnumeratedElement) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mDefaultConstructorName.objectCompare (operand->mAttribute_mDefaultConstructorName) ;
+    result = mProperty_mDefaultConstructorName.objectCompare (operand->mProperty_mDefaultConstructorName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mHeaderFileName.objectCompare (operand->mAttribute_mHeaderFileName) ;
+    result = mProperty_mHeaderFileName.objectCompare (operand->mProperty_mHeaderFileName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mHeaderKind.objectCompare (operand->mAttribute_mHeaderKind) ;
+    result = mProperty_mHeaderKind.objectCompare (operand->mProperty_mHeaderKind) ;
   }
   return result ;
 }
@@ -3606,31 +3606,31 @@ void GALGAS_unifiedTypeMap::method_searchKey (GALGAS_lstring inKey,
     outArgument24.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    outArgument0 = p->mAttribute_mIsPredefined ;
-    outArgument1 = p->mAttribute_mIsConcrete ;
-    outArgument2 = p->mAttribute_mSuperType ;
-    outArgument3 = p->mAttribute_mTypeKindEnum ;
-    outArgument4 = p->mAttribute_mSupportCollectionValue ;
-    outArgument5 = p->mAttribute_mAllTypedAttributeList ;
-    outArgument6 = p->mAttribute_mAttributeMap ;
-    outArgument7 = p->mAttribute_mCurrentTypedAttributeList ;
-    outArgument8 = p->mAttribute_mConstructorMap ;
-    outArgument9 = p->mAttribute_mGetterMap ;
-    outArgument10 = p->mAttribute_mSetterMap ;
-    outArgument11 = p->mAttribute_mInstanceMethodMap ;
-    outArgument12 = p->mAttribute_mClassMethodMap ;
-    outArgument13 = p->mAttribute_mEnumerationDescriptor ;
-    outArgument14 = p->mAttribute_mHandledOperatorFlags ;
-    outArgument15 = p->mAttribute_mAddAssignOperatorArguments ;
-    outArgument16 = p->mAttribute_mEnumConstantMap ;
-    outArgument17 = p->mAttribute_mEnumConstantList ;
-    outArgument18 = p->mAttribute_mMapSearchMethodList ;
-    outArgument19 = p->mAttribute_mMapProxySearchConstructorList ;
-    outArgument20 = p->mAttribute_mGenerateHeaderInSeparateFile ;
-    outArgument21 = p->mAttribute_mTypeForEnumeratedElement ;
-    outArgument22 = p->mAttribute_mDefaultConstructorName ;
-    outArgument23 = p->mAttribute_mHeaderFileName ;
-    outArgument24 = p->mAttribute_mHeaderKind ;
+    outArgument0 = p->mProperty_mIsPredefined ;
+    outArgument1 = p->mProperty_mIsConcrete ;
+    outArgument2 = p->mProperty_mSuperType ;
+    outArgument3 = p->mProperty_mTypeKindEnum ;
+    outArgument4 = p->mProperty_mSupportCollectionValue ;
+    outArgument5 = p->mProperty_mAllTypedAttributeList ;
+    outArgument6 = p->mProperty_mAttributeMap ;
+    outArgument7 = p->mProperty_mCurrentTypedAttributeList ;
+    outArgument8 = p->mProperty_mConstructorMap ;
+    outArgument9 = p->mProperty_mGetterMap ;
+    outArgument10 = p->mProperty_mSetterMap ;
+    outArgument11 = p->mProperty_mInstanceMethodMap ;
+    outArgument12 = p->mProperty_mClassMethodMap ;
+    outArgument13 = p->mProperty_mEnumerationDescriptor ;
+    outArgument14 = p->mProperty_mHandledOperatorFlags ;
+    outArgument15 = p->mProperty_mAddAssignOperatorArguments ;
+    outArgument16 = p->mProperty_mEnumConstantMap ;
+    outArgument17 = p->mProperty_mEnumConstantList ;
+    outArgument18 = p->mProperty_mMapSearchMethodList ;
+    outArgument19 = p->mProperty_mMapProxySearchConstructorList ;
+    outArgument20 = p->mProperty_mGenerateHeaderInSeparateFile ;
+    outArgument21 = p->mProperty_mTypeForEnumeratedElement ;
+    outArgument22 = p->mProperty_mDefaultConstructorName ;
+    outArgument23 = p->mProperty_mHeaderFileName ;
+    outArgument24 = p->mProperty_mHeaderKind ;
   }
 }
 
@@ -3644,7 +3644,7 @@ GALGAS_bool GALGAS_unifiedTypeMap::getter_mIsPredefinedForKey (const GALGAS_stri
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mIsPredefined ;
+    result = p->mProperty_mIsPredefined ;
   }
   return result ;
 }
@@ -3659,7 +3659,7 @@ GALGAS_bool GALGAS_unifiedTypeMap::getter_mIsConcreteForKey (const GALGAS_string
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mIsConcrete ;
+    result = p->mProperty_mIsConcrete ;
   }
   return result ;
 }
@@ -3674,7 +3674,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMap::getter_mSuperTypeForKey (c
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mSuperType ;
+    result = p->mProperty_mSuperType ;
   }
   return result ;
 }
@@ -3689,7 +3689,7 @@ GALGAS_typeKindEnum GALGAS_unifiedTypeMap::getter_mTypeKindEnumForKey (const GAL
   GALGAS_typeKindEnum result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mTypeKindEnum ;
+    result = p->mProperty_mTypeKindEnum ;
   }
   return result ;
 }
@@ -3704,7 +3704,7 @@ GALGAS_bool GALGAS_unifiedTypeMap::getter_mSupportCollectionValueForKey (const G
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mSupportCollectionValue ;
+    result = p->mProperty_mSupportCollectionValue ;
   }
   return result ;
 }
@@ -3719,7 +3719,7 @@ GALGAS_typedPropertyList GALGAS_unifiedTypeMap::getter_mAllTypedAttributeListFor
   GALGAS_typedPropertyList result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mAllTypedAttributeList ;
+    result = p->mProperty_mAllTypedAttributeList ;
   }
   return result ;
 }
@@ -3734,7 +3734,7 @@ GALGAS_attributeMap GALGAS_unifiedTypeMap::getter_mAttributeMapForKey (const GAL
   GALGAS_attributeMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mAttributeMap ;
+    result = p->mProperty_mAttributeMap ;
   }
   return result ;
 }
@@ -3749,7 +3749,7 @@ GALGAS_typedPropertyList GALGAS_unifiedTypeMap::getter_mCurrentTypedAttributeLis
   GALGAS_typedPropertyList result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mCurrentTypedAttributeList ;
+    result = p->mProperty_mCurrentTypedAttributeList ;
   }
   return result ;
 }
@@ -3764,7 +3764,7 @@ GALGAS_constructorMap GALGAS_unifiedTypeMap::getter_mConstructorMapForKey (const
   GALGAS_constructorMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mConstructorMap ;
+    result = p->mProperty_mConstructorMap ;
   }
   return result ;
 }
@@ -3779,7 +3779,7 @@ GALGAS_getterMap GALGAS_unifiedTypeMap::getter_mGetterMapForKey (const GALGAS_st
   GALGAS_getterMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mGetterMap ;
+    result = p->mProperty_mGetterMap ;
   }
   return result ;
 }
@@ -3794,7 +3794,7 @@ GALGAS_setterMap GALGAS_unifiedTypeMap::getter_mSetterMapForKey (const GALGAS_st
   GALGAS_setterMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mSetterMap ;
+    result = p->mProperty_mSetterMap ;
   }
   return result ;
 }
@@ -3809,7 +3809,7 @@ GALGAS_instanceMethodMap GALGAS_unifiedTypeMap::getter_mInstanceMethodMapForKey 
   GALGAS_instanceMethodMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mInstanceMethodMap ;
+    result = p->mProperty_mInstanceMethodMap ;
   }
   return result ;
 }
@@ -3824,7 +3824,7 @@ GALGAS_classMethodMap GALGAS_unifiedTypeMap::getter_mClassMethodMapForKey (const
   GALGAS_classMethodMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mClassMethodMap ;
+    result = p->mProperty_mClassMethodMap ;
   }
   return result ;
 }
@@ -3839,7 +3839,7 @@ GALGAS_enumerationDescriptorList GALGAS_unifiedTypeMap::getter_mEnumerationDescr
   GALGAS_enumerationDescriptorList result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mEnumerationDescriptor ;
+    result = p->mProperty_mEnumerationDescriptor ;
   }
   return result ;
 }
@@ -3854,7 +3854,7 @@ GALGAS_uint GALGAS_unifiedTypeMap::getter_mHandledOperatorFlagsForKey (const GAL
   GALGAS_uint result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mHandledOperatorFlags ;
+    result = p->mProperty_mHandledOperatorFlags ;
   }
   return result ;
 }
@@ -3869,7 +3869,7 @@ GALGAS_functionSignature GALGAS_unifiedTypeMap::getter_mAddAssignOperatorArgumen
   GALGAS_functionSignature result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mAddAssignOperatorArguments ;
+    result = p->mProperty_mAddAssignOperatorArguments ;
   }
   return result ;
 }
@@ -3884,7 +3884,7 @@ GALGAS_constantIndexMap GALGAS_unifiedTypeMap::getter_mEnumConstantMapForKey (co
   GALGAS_constantIndexMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mEnumConstantMap ;
+    result = p->mProperty_mEnumConstantMap ;
   }
   return result ;
 }
@@ -3899,7 +3899,7 @@ GALGAS_enumConstantList GALGAS_unifiedTypeMap::getter_mEnumConstantListForKey (c
   GALGAS_enumConstantList result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mEnumConstantList ;
+    result = p->mProperty_mEnumConstantList ;
   }
   return result ;
 }
@@ -3914,7 +3914,7 @@ GALGAS_mapSearchMethodListAST GALGAS_unifiedTypeMap::getter_mMapSearchMethodList
   GALGAS_mapSearchMethodListAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mMapSearchMethodList ;
+    result = p->mProperty_mMapSearchMethodList ;
   }
   return result ;
 }
@@ -3929,7 +3929,7 @@ GALGAS_mapSearchMethodListAST GALGAS_unifiedTypeMap::getter_mMapProxySearchConst
   GALGAS_mapSearchMethodListAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mMapProxySearchConstructorList ;
+    result = p->mProperty_mMapProxySearchConstructorList ;
   }
   return result ;
 }
@@ -3944,7 +3944,7 @@ GALGAS_bool GALGAS_unifiedTypeMap::getter_mGenerateHeaderInSeparateFileForKey (c
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mGenerateHeaderInSeparateFile ;
+    result = p->mProperty_mGenerateHeaderInSeparateFile ;
   }
   return result ;
 }
@@ -3959,7 +3959,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMap::getter_mTypeForEnumeratedE
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mTypeForEnumeratedElement ;
+    result = p->mProperty_mTypeForEnumeratedElement ;
   }
   return result ;
 }
@@ -3974,7 +3974,7 @@ GALGAS_string GALGAS_unifiedTypeMap::getter_mDefaultConstructorNameForKey (const
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mDefaultConstructorName ;
+    result = p->mProperty_mDefaultConstructorName ;
   }
   return result ;
 }
@@ -3989,7 +3989,7 @@ GALGAS_string GALGAS_unifiedTypeMap::getter_mHeaderFileNameForKey (const GALGAS_
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mHeaderFileName ;
+    result = p->mProperty_mHeaderFileName ;
   }
   return result ;
 }
@@ -4004,7 +4004,7 @@ GALGAS_headerKind GALGAS_unifiedTypeMap::getter_mHeaderKindForKey (const GALGAS_
   GALGAS_headerKind result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mHeaderKind ;
+    result = p->mProperty_mHeaderKind ;
   }
   return result ;
 }
@@ -4019,7 +4019,7 @@ void GALGAS_unifiedTypeMap::setter_setMIsPredefinedForKey (GALGAS_bool inAttribu
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mIsPredefined = inAttributeValue ;
+    p->mProperty_mIsPredefined = inAttributeValue ;
   }
 }
 
@@ -4033,7 +4033,7 @@ void GALGAS_unifiedTypeMap::setter_setMIsConcreteForKey (GALGAS_bool inAttribute
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mIsConcrete = inAttributeValue ;
+    p->mProperty_mIsConcrete = inAttributeValue ;
   }
 }
 
@@ -4047,7 +4047,7 @@ void GALGAS_unifiedTypeMap::setter_setMSuperTypeForKey (GALGAS_unifiedTypeMap_2D
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mSuperType = inAttributeValue ;
+    p->mProperty_mSuperType = inAttributeValue ;
   }
 }
 
@@ -4061,7 +4061,7 @@ void GALGAS_unifiedTypeMap::setter_setMTypeKindEnumForKey (GALGAS_typeKindEnum i
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mTypeKindEnum = inAttributeValue ;
+    p->mProperty_mTypeKindEnum = inAttributeValue ;
   }
 }
 
@@ -4075,7 +4075,7 @@ void GALGAS_unifiedTypeMap::setter_setMSupportCollectionValueForKey (GALGAS_bool
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mSupportCollectionValue = inAttributeValue ;
+    p->mProperty_mSupportCollectionValue = inAttributeValue ;
   }
 }
 
@@ -4089,7 +4089,7 @@ void GALGAS_unifiedTypeMap::setter_setMAllTypedAttributeListForKey (GALGAS_typed
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mAllTypedAttributeList = inAttributeValue ;
+    p->mProperty_mAllTypedAttributeList = inAttributeValue ;
   }
 }
 
@@ -4103,7 +4103,7 @@ void GALGAS_unifiedTypeMap::setter_setMAttributeMapForKey (GALGAS_attributeMap i
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mAttributeMap = inAttributeValue ;
+    p->mProperty_mAttributeMap = inAttributeValue ;
   }
 }
 
@@ -4117,7 +4117,7 @@ void GALGAS_unifiedTypeMap::setter_setMCurrentTypedAttributeListForKey (GALGAS_t
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mCurrentTypedAttributeList = inAttributeValue ;
+    p->mProperty_mCurrentTypedAttributeList = inAttributeValue ;
   }
 }
 
@@ -4131,7 +4131,7 @@ void GALGAS_unifiedTypeMap::setter_setMConstructorMapForKey (GALGAS_constructorM
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mConstructorMap = inAttributeValue ;
+    p->mProperty_mConstructorMap = inAttributeValue ;
   }
 }
 
@@ -4145,7 +4145,7 @@ void GALGAS_unifiedTypeMap::setter_setMGetterMapForKey (GALGAS_getterMap inAttri
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mGetterMap = inAttributeValue ;
+    p->mProperty_mGetterMap = inAttributeValue ;
   }
 }
 
@@ -4159,7 +4159,7 @@ void GALGAS_unifiedTypeMap::setter_setMSetterMapForKey (GALGAS_setterMap inAttri
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mSetterMap = inAttributeValue ;
+    p->mProperty_mSetterMap = inAttributeValue ;
   }
 }
 
@@ -4173,7 +4173,7 @@ void GALGAS_unifiedTypeMap::setter_setMInstanceMethodMapForKey (GALGAS_instanceM
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mInstanceMethodMap = inAttributeValue ;
+    p->mProperty_mInstanceMethodMap = inAttributeValue ;
   }
 }
 
@@ -4187,7 +4187,7 @@ void GALGAS_unifiedTypeMap::setter_setMClassMethodMapForKey (GALGAS_classMethodM
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mClassMethodMap = inAttributeValue ;
+    p->mProperty_mClassMethodMap = inAttributeValue ;
   }
 }
 
@@ -4201,7 +4201,7 @@ void GALGAS_unifiedTypeMap::setter_setMEnumerationDescriptorForKey (GALGAS_enume
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mEnumerationDescriptor = inAttributeValue ;
+    p->mProperty_mEnumerationDescriptor = inAttributeValue ;
   }
 }
 
@@ -4215,7 +4215,7 @@ void GALGAS_unifiedTypeMap::setter_setMHandledOperatorFlagsForKey (GALGAS_uint i
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mHandledOperatorFlags = inAttributeValue ;
+    p->mProperty_mHandledOperatorFlags = inAttributeValue ;
   }
 }
 
@@ -4229,7 +4229,7 @@ void GALGAS_unifiedTypeMap::setter_setMAddAssignOperatorArgumentsForKey (GALGAS_
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mAddAssignOperatorArguments = inAttributeValue ;
+    p->mProperty_mAddAssignOperatorArguments = inAttributeValue ;
   }
 }
 
@@ -4243,7 +4243,7 @@ void GALGAS_unifiedTypeMap::setter_setMEnumConstantMapForKey (GALGAS_constantInd
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mEnumConstantMap = inAttributeValue ;
+    p->mProperty_mEnumConstantMap = inAttributeValue ;
   }
 }
 
@@ -4257,7 +4257,7 @@ void GALGAS_unifiedTypeMap::setter_setMEnumConstantListForKey (GALGAS_enumConsta
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mEnumConstantList = inAttributeValue ;
+    p->mProperty_mEnumConstantList = inAttributeValue ;
   }
 }
 
@@ -4271,7 +4271,7 @@ void GALGAS_unifiedTypeMap::setter_setMMapSearchMethodListForKey (GALGAS_mapSear
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mMapSearchMethodList = inAttributeValue ;
+    p->mProperty_mMapSearchMethodList = inAttributeValue ;
   }
 }
 
@@ -4285,7 +4285,7 @@ void GALGAS_unifiedTypeMap::setter_setMMapProxySearchConstructorListForKey (GALG
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mMapProxySearchConstructorList = inAttributeValue ;
+    p->mProperty_mMapProxySearchConstructorList = inAttributeValue ;
   }
 }
 
@@ -4299,7 +4299,7 @@ void GALGAS_unifiedTypeMap::setter_setMGenerateHeaderInSeparateFileForKey (GALGA
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mGenerateHeaderInSeparateFile = inAttributeValue ;
+    p->mProperty_mGenerateHeaderInSeparateFile = inAttributeValue ;
   }
 }
 
@@ -4313,7 +4313,7 @@ void GALGAS_unifiedTypeMap::setter_setMTypeForEnumeratedElementForKey (GALGAS_un
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mTypeForEnumeratedElement = inAttributeValue ;
+    p->mProperty_mTypeForEnumeratedElement = inAttributeValue ;
   }
 }
 
@@ -4327,7 +4327,7 @@ void GALGAS_unifiedTypeMap::setter_setMDefaultConstructorNameForKey (GALGAS_stri
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mDefaultConstructorName = inAttributeValue ;
+    p->mProperty_mDefaultConstructorName = inAttributeValue ;
   }
 }
 
@@ -4341,7 +4341,7 @@ void GALGAS_unifiedTypeMap::setter_setMHeaderFileNameForKey (GALGAS_string inAtt
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mHeaderFileName = inAttributeValue ;
+    p->mProperty_mHeaderFileName = inAttributeValue ;
   }
 }
 
@@ -4355,7 +4355,7 @@ void GALGAS_unifiedTypeMap::setter_setMHeaderKindForKey (GALGAS_headerKind inAtt
   cMapElement_unifiedTypeMap * p = (cMapElement_unifiedTypeMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    p->mAttribute_mHeaderKind = inAttributeValue ;
+    p->mProperty_mHeaderKind = inAttributeValue ;
   }
 }
 
@@ -4382,7 +4382,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_lstring cEnumerator_unifiedTypeMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4390,7 +4390,7 @@ GALGAS_lstring cEnumerator_unifiedTypeMap::current_lkey (LOCATION_ARGS) const {
 GALGAS_bool cEnumerator_unifiedTypeMap::current_mIsPredefined (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mIsPredefined ;
+  return p->mProperty_mIsPredefined ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4398,7 +4398,7 @@ GALGAS_bool cEnumerator_unifiedTypeMap::current_mIsPredefined (LOCATION_ARGS) co
 GALGAS_bool cEnumerator_unifiedTypeMap::current_mIsConcrete (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mIsConcrete ;
+  return p->mProperty_mIsConcrete ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4406,7 +4406,7 @@ GALGAS_bool cEnumerator_unifiedTypeMap::current_mIsConcrete (LOCATION_ARGS) cons
 GALGAS_unifiedTypeMap_2D_proxy cEnumerator_unifiedTypeMap::current_mSuperType (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mSuperType ;
+  return p->mProperty_mSuperType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4414,7 +4414,7 @@ GALGAS_unifiedTypeMap_2D_proxy cEnumerator_unifiedTypeMap::current_mSuperType (L
 GALGAS_typeKindEnum cEnumerator_unifiedTypeMap::current_mTypeKindEnum (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mTypeKindEnum ;
+  return p->mProperty_mTypeKindEnum ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4422,7 +4422,7 @@ GALGAS_typeKindEnum cEnumerator_unifiedTypeMap::current_mTypeKindEnum (LOCATION_
 GALGAS_bool cEnumerator_unifiedTypeMap::current_mSupportCollectionValue (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mSupportCollectionValue ;
+  return p->mProperty_mSupportCollectionValue ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4430,7 +4430,7 @@ GALGAS_bool cEnumerator_unifiedTypeMap::current_mSupportCollectionValue (LOCATIO
 GALGAS_typedPropertyList cEnumerator_unifiedTypeMap::current_mAllTypedAttributeList (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mAllTypedAttributeList ;
+  return p->mProperty_mAllTypedAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4438,7 +4438,7 @@ GALGAS_typedPropertyList cEnumerator_unifiedTypeMap::current_mAllTypedAttributeL
 GALGAS_attributeMap cEnumerator_unifiedTypeMap::current_mAttributeMap (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mAttributeMap ;
+  return p->mProperty_mAttributeMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4446,7 +4446,7 @@ GALGAS_attributeMap cEnumerator_unifiedTypeMap::current_mAttributeMap (LOCATION_
 GALGAS_typedPropertyList cEnumerator_unifiedTypeMap::current_mCurrentTypedAttributeList (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mCurrentTypedAttributeList ;
+  return p->mProperty_mCurrentTypedAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4454,7 +4454,7 @@ GALGAS_typedPropertyList cEnumerator_unifiedTypeMap::current_mCurrentTypedAttrib
 GALGAS_constructorMap cEnumerator_unifiedTypeMap::current_mConstructorMap (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mConstructorMap ;
+  return p->mProperty_mConstructorMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4462,7 +4462,7 @@ GALGAS_constructorMap cEnumerator_unifiedTypeMap::current_mConstructorMap (LOCAT
 GALGAS_getterMap cEnumerator_unifiedTypeMap::current_mGetterMap (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mGetterMap ;
+  return p->mProperty_mGetterMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4470,7 +4470,7 @@ GALGAS_getterMap cEnumerator_unifiedTypeMap::current_mGetterMap (LOCATION_ARGS) 
 GALGAS_setterMap cEnumerator_unifiedTypeMap::current_mSetterMap (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mSetterMap ;
+  return p->mProperty_mSetterMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4478,7 +4478,7 @@ GALGAS_setterMap cEnumerator_unifiedTypeMap::current_mSetterMap (LOCATION_ARGS) 
 GALGAS_instanceMethodMap cEnumerator_unifiedTypeMap::current_mInstanceMethodMap (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mInstanceMethodMap ;
+  return p->mProperty_mInstanceMethodMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4486,7 +4486,7 @@ GALGAS_instanceMethodMap cEnumerator_unifiedTypeMap::current_mInstanceMethodMap 
 GALGAS_classMethodMap cEnumerator_unifiedTypeMap::current_mClassMethodMap (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mClassMethodMap ;
+  return p->mProperty_mClassMethodMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4494,7 +4494,7 @@ GALGAS_classMethodMap cEnumerator_unifiedTypeMap::current_mClassMethodMap (LOCAT
 GALGAS_enumerationDescriptorList cEnumerator_unifiedTypeMap::current_mEnumerationDescriptor (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mEnumerationDescriptor ;
+  return p->mProperty_mEnumerationDescriptor ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4502,7 +4502,7 @@ GALGAS_enumerationDescriptorList cEnumerator_unifiedTypeMap::current_mEnumeratio
 GALGAS_uint cEnumerator_unifiedTypeMap::current_mHandledOperatorFlags (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mHandledOperatorFlags ;
+  return p->mProperty_mHandledOperatorFlags ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4510,7 +4510,7 @@ GALGAS_uint cEnumerator_unifiedTypeMap::current_mHandledOperatorFlags (LOCATION_
 GALGAS_functionSignature cEnumerator_unifiedTypeMap::current_mAddAssignOperatorArguments (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mAddAssignOperatorArguments ;
+  return p->mProperty_mAddAssignOperatorArguments ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4518,7 +4518,7 @@ GALGAS_functionSignature cEnumerator_unifiedTypeMap::current_mAddAssignOperatorA
 GALGAS_constantIndexMap cEnumerator_unifiedTypeMap::current_mEnumConstantMap (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mEnumConstantMap ;
+  return p->mProperty_mEnumConstantMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4526,7 +4526,7 @@ GALGAS_constantIndexMap cEnumerator_unifiedTypeMap::current_mEnumConstantMap (LO
 GALGAS_enumConstantList cEnumerator_unifiedTypeMap::current_mEnumConstantList (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mEnumConstantList ;
+  return p->mProperty_mEnumConstantList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4534,7 +4534,7 @@ GALGAS_enumConstantList cEnumerator_unifiedTypeMap::current_mEnumConstantList (L
 GALGAS_mapSearchMethodListAST cEnumerator_unifiedTypeMap::current_mMapSearchMethodList (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mMapSearchMethodList ;
+  return p->mProperty_mMapSearchMethodList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4542,7 +4542,7 @@ GALGAS_mapSearchMethodListAST cEnumerator_unifiedTypeMap::current_mMapSearchMeth
 GALGAS_mapSearchMethodListAST cEnumerator_unifiedTypeMap::current_mMapProxySearchConstructorList (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mMapProxySearchConstructorList ;
+  return p->mProperty_mMapProxySearchConstructorList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4550,7 +4550,7 @@ GALGAS_mapSearchMethodListAST cEnumerator_unifiedTypeMap::current_mMapProxySearc
 GALGAS_bool cEnumerator_unifiedTypeMap::current_mGenerateHeaderInSeparateFile (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mGenerateHeaderInSeparateFile ;
+  return p->mProperty_mGenerateHeaderInSeparateFile ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4558,7 +4558,7 @@ GALGAS_bool cEnumerator_unifiedTypeMap::current_mGenerateHeaderInSeparateFile (L
 GALGAS_unifiedTypeMap_2D_proxy cEnumerator_unifiedTypeMap::current_mTypeForEnumeratedElement (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mTypeForEnumeratedElement ;
+  return p->mProperty_mTypeForEnumeratedElement ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4566,7 +4566,7 @@ GALGAS_unifiedTypeMap_2D_proxy cEnumerator_unifiedTypeMap::current_mTypeForEnume
 GALGAS_string cEnumerator_unifiedTypeMap::current_mDefaultConstructorName (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mDefaultConstructorName ;
+  return p->mProperty_mDefaultConstructorName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4574,7 +4574,7 @@ GALGAS_string cEnumerator_unifiedTypeMap::current_mDefaultConstructorName (LOCAT
 GALGAS_string cEnumerator_unifiedTypeMap::current_mHeaderFileName (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mHeaderFileName ;
+  return p->mProperty_mHeaderFileName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4582,7 +4582,7 @@ GALGAS_string cEnumerator_unifiedTypeMap::current_mHeaderFileName (LOCATION_ARGS
 GALGAS_headerKind cEnumerator_unifiedTypeMap::current_mHeaderKind (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-  return p->mAttribute_mHeaderKind ;
+  return p->mProperty_mHeaderKind ;
 }
 
 
@@ -4672,7 +4672,7 @@ GALGAS_string GALGAS_predefinedTypeAST::getter_mPredefinedTypeName (UNUSED_LOCAT
   if (NULL != mObjectPtr) {
     const cPtr_predefinedTypeAST * p = (const cPtr_predefinedTypeAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_predefinedTypeAST) ;
-    result = p->mAttribute_mPredefinedTypeName ;
+    result = p->mProperty_mPredefinedTypeName ;
   }
   return result ;
 }
@@ -4680,7 +4680,7 @@ GALGAS_string GALGAS_predefinedTypeAST::getter_mPredefinedTypeName (UNUSED_LOCAT
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cPtr_predefinedTypeAST::getter_mPredefinedTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mPredefinedTypeName ;
+  return mProperty_mPredefinedTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4690,7 +4690,7 @@ GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeAST::getter_mKind (UNUSED_LOC
   if (NULL != mObjectPtr) {
     const cPtr_predefinedTypeAST * p = (const cPtr_predefinedTypeAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_predefinedTypeAST) ;
-    result = p->mAttribute_mKind ;
+    result = p->mProperty_mKind ;
   }
   return result ;
 }
@@ -4698,7 +4698,7 @@ GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeAST::getter_mKind (UNUSED_LOC
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_predefinedTypeKindEnum cPtr_predefinedTypeAST::getter_mKind (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mKind ;
+  return mProperty_mKind ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4710,8 +4710,8 @@ cPtr_predefinedTypeAST::cPtr_predefinedTypeAST (const GALGAS_bool & in_mIsPredef
                                                 const GALGAS_predefinedTypeKindEnum & in_mKind
                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
-mAttribute_mPredefinedTypeName (in_mPredefinedTypeName),
-mAttribute_mKind (in_mKind) {
+mProperty_mPredefinedTypeName (in_mPredefinedTypeName),
+mProperty_mKind (in_mKind) {
 }
 
 
@@ -4767,13 +4767,13 @@ typeComparisonResult cPtr_applicationPredefinedTypeAST::dynamicObjectCompare (co
   const cPtr_applicationPredefinedTypeAST * p = (const cPtr_applicationPredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_applicationPredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -4843,11 +4843,11 @@ const C_galgas_type_descriptor * cPtr_applicationPredefinedTypeAST::classDescrip
 void cPtr_applicationPredefinedTypeAST::description (C_String & ioString,
                                                      const int32_t inIndentation) const {
   ioString << "[@applicationPredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -4855,7 +4855,7 @@ void cPtr_applicationPredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_applicationPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_applicationPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_applicationPredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -4912,13 +4912,13 @@ typeComparisonResult cPtr_bigintPredefinedTypeAST::dynamicObjectCompare (const a
   const cPtr_bigintPredefinedTypeAST * p = (const cPtr_bigintPredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_bigintPredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -4988,11 +4988,11 @@ const C_galgas_type_descriptor * cPtr_bigintPredefinedTypeAST::classDescriptor (
 void cPtr_bigintPredefinedTypeAST::description (C_String & ioString,
                                                 const int32_t inIndentation) const {
   ioString << "[@bigintPredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5000,7 +5000,7 @@ void cPtr_bigintPredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_bigintPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_bigintPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_bigintPredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -5057,13 +5057,13 @@ typeComparisonResult cPtr_objectPredefinedTypeAST::dynamicObjectCompare (const a
   const cPtr_objectPredefinedTypeAST * p = (const cPtr_objectPredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_objectPredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -5133,11 +5133,11 @@ const C_galgas_type_descriptor * cPtr_objectPredefinedTypeAST::classDescriptor (
 void cPtr_objectPredefinedTypeAST::description (C_String & ioString,
                                                 const int32_t inIndentation) const {
   ioString << "[@objectPredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5145,7 +5145,7 @@ void cPtr_objectPredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_objectPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_objectPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_objectPredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -5202,13 +5202,13 @@ typeComparisonResult cPtr_filewrapperPredefinedTypeAST::dynamicObjectCompare (co
   const cPtr_filewrapperPredefinedTypeAST * p = (const cPtr_filewrapperPredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_filewrapperPredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -5278,11 +5278,11 @@ const C_galgas_type_descriptor * cPtr_filewrapperPredefinedTypeAST::classDescrip
 void cPtr_filewrapperPredefinedTypeAST::description (C_String & ioString,
                                                      const int32_t inIndentation) const {
   ioString << "[@filewrapperPredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5290,7 +5290,7 @@ void cPtr_filewrapperPredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_filewrapperPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_filewrapperPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_filewrapperPredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -5347,13 +5347,13 @@ typeComparisonResult cPtr_binarysetPredefinedTypeAST::dynamicObjectCompare (cons
   const cPtr_binarysetPredefinedTypeAST * p = (const cPtr_binarysetPredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_binarysetPredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -5423,11 +5423,11 @@ const C_galgas_type_descriptor * cPtr_binarysetPredefinedTypeAST::classDescripto
 void cPtr_binarysetPredefinedTypeAST::description (C_String & ioString,
                                                    const int32_t inIndentation) const {
   ioString << "[@binarysetPredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5435,7 +5435,7 @@ void cPtr_binarysetPredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_binarysetPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_binarysetPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_binarysetPredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -5492,13 +5492,13 @@ typeComparisonResult cPtr_boolPredefinedTypeAST::dynamicObjectCompare (const acP
   const cPtr_boolPredefinedTypeAST * p = (const cPtr_boolPredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_boolPredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -5568,11 +5568,11 @@ const C_galgas_type_descriptor * cPtr_boolPredefinedTypeAST::classDescriptor (vo
 void cPtr_boolPredefinedTypeAST::description (C_String & ioString,
                                               const int32_t inIndentation) const {
   ioString << "[@boolPredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5580,7 +5580,7 @@ void cPtr_boolPredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_boolPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_boolPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_boolPredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -5637,13 +5637,13 @@ typeComparisonResult cPtr_uintPredefinedTypeAST::dynamicObjectCompare (const acP
   const cPtr_uintPredefinedTypeAST * p = (const cPtr_uintPredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_uintPredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -5713,11 +5713,11 @@ const C_galgas_type_descriptor * cPtr_uintPredefinedTypeAST::classDescriptor (vo
 void cPtr_uintPredefinedTypeAST::description (C_String & ioString,
                                               const int32_t inIndentation) const {
   ioString << "[@uintPredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5725,7 +5725,7 @@ void cPtr_uintPredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_uintPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_uintPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_uintPredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -5782,13 +5782,13 @@ typeComparisonResult cPtr_uint_36__34_PredefinedTypeAST::dynamicObjectCompare (c
   const cPtr_uint_36__34_PredefinedTypeAST * p = (const cPtr_uint_36__34_PredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_uint_36__34_PredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -5858,11 +5858,11 @@ const C_galgas_type_descriptor * cPtr_uint_36__34_PredefinedTypeAST::classDescri
 void cPtr_uint_36__34_PredefinedTypeAST::description (C_String & ioString,
                                                       const int32_t inIndentation) const {
   ioString << "[@uint64PredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5870,7 +5870,7 @@ void cPtr_uint_36__34_PredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_uint_36__34_PredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_uint_36__34_PredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_uint_36__34_PredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -5927,13 +5927,13 @@ typeComparisonResult cPtr_sintPredefinedTypeAST::dynamicObjectCompare (const acP
   const cPtr_sintPredefinedTypeAST * p = (const cPtr_sintPredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_sintPredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -6003,11 +6003,11 @@ const C_galgas_type_descriptor * cPtr_sintPredefinedTypeAST::classDescriptor (vo
 void cPtr_sintPredefinedTypeAST::description (C_String & ioString,
                                               const int32_t inIndentation) const {
   ioString << "[@sintPredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6015,7 +6015,7 @@ void cPtr_sintPredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_sintPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_sintPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_sintPredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6072,13 +6072,13 @@ typeComparisonResult cPtr_sint_36__34_PredefinedTypeAST::dynamicObjectCompare (c
   const cPtr_sint_36__34_PredefinedTypeAST * p = (const cPtr_sint_36__34_PredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_sint_36__34_PredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -6148,11 +6148,11 @@ const C_galgas_type_descriptor * cPtr_sint_36__34_PredefinedTypeAST::classDescri
 void cPtr_sint_36__34_PredefinedTypeAST::description (C_String & ioString,
                                                       const int32_t inIndentation) const {
   ioString << "[@sint64PredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6160,7 +6160,7 @@ void cPtr_sint_36__34_PredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_sint_36__34_PredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_sint_36__34_PredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_sint_36__34_PredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6217,13 +6217,13 @@ typeComparisonResult cPtr_charPredefinedTypeAST::dynamicObjectCompare (const acP
   const cPtr_charPredefinedTypeAST * p = (const cPtr_charPredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_charPredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -6293,11 +6293,11 @@ const C_galgas_type_descriptor * cPtr_charPredefinedTypeAST::classDescriptor (vo
 void cPtr_charPredefinedTypeAST::description (C_String & ioString,
                                               const int32_t inIndentation) const {
   ioString << "[@charPredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6305,7 +6305,7 @@ void cPtr_charPredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_charPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_charPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_charPredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6362,13 +6362,13 @@ typeComparisonResult cPtr_doublePredefinedTypeAST::dynamicObjectCompare (const a
   const cPtr_doublePredefinedTypeAST * p = (const cPtr_doublePredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_doublePredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -6438,11 +6438,11 @@ const C_galgas_type_descriptor * cPtr_doublePredefinedTypeAST::classDescriptor (
 void cPtr_doublePredefinedTypeAST::description (C_String & ioString,
                                                 const int32_t inIndentation) const {
   ioString << "[@doublePredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6450,7 +6450,7 @@ void cPtr_doublePredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_doublePredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_doublePredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_doublePredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6507,13 +6507,13 @@ typeComparisonResult cPtr_stringPredefinedTypeAST::dynamicObjectCompare (const a
   const cPtr_stringPredefinedTypeAST * p = (const cPtr_stringPredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_stringPredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -6583,11 +6583,11 @@ const C_galgas_type_descriptor * cPtr_stringPredefinedTypeAST::classDescriptor (
 void cPtr_stringPredefinedTypeAST::description (C_String & ioString,
                                                 const int32_t inIndentation) const {
   ioString << "[@stringPredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6595,7 +6595,7 @@ void cPtr_stringPredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_stringPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_stringPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_stringPredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6652,13 +6652,13 @@ typeComparisonResult cPtr_locationPredefinedTypeAST::dynamicObjectCompare (const
   const cPtr_locationPredefinedTypeAST * p = (const cPtr_locationPredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_locationPredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -6728,11 +6728,11 @@ const C_galgas_type_descriptor * cPtr_locationPredefinedTypeAST::classDescriptor
 void cPtr_locationPredefinedTypeAST::description (C_String & ioString,
                                                   const int32_t inIndentation) const {
   ioString << "[@locationPredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6740,7 +6740,7 @@ void cPtr_locationPredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_locationPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_locationPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_locationPredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6797,13 +6797,13 @@ typeComparisonResult cPtr_stringsetPredefinedTypeAST::dynamicObjectCompare (cons
   const cPtr_stringsetPredefinedTypeAST * p = (const cPtr_stringsetPredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_stringsetPredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -6873,11 +6873,11 @@ const C_galgas_type_descriptor * cPtr_stringsetPredefinedTypeAST::classDescripto
 void cPtr_stringsetPredefinedTypeAST::description (C_String & ioString,
                                                    const int32_t inIndentation) const {
   ioString << "[@stringsetPredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6885,7 +6885,7 @@ void cPtr_stringsetPredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_stringsetPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_stringsetPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_stringsetPredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6942,13 +6942,13 @@ typeComparisonResult cPtr_functionPredefinedTypeAST::dynamicObjectCompare (const
   const cPtr_functionPredefinedTypeAST * p = (const cPtr_functionPredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_functionPredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -7018,11 +7018,11 @@ const C_galgas_type_descriptor * cPtr_functionPredefinedTypeAST::classDescriptor
 void cPtr_functionPredefinedTypeAST::description (C_String & ioString,
                                                   const int32_t inIndentation) const {
   ioString << "[@functionPredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -7030,7 +7030,7 @@ void cPtr_functionPredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_functionPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_functionPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_functionPredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -7087,13 +7087,13 @@ typeComparisonResult cPtr_typePredefinedTypeAST::dynamicObjectCompare (const acP
   const cPtr_typePredefinedTypeAST * p = (const cPtr_typePredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_typePredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -7163,11 +7163,11 @@ const C_galgas_type_descriptor * cPtr_typePredefinedTypeAST::classDescriptor (vo
 void cPtr_typePredefinedTypeAST::description (C_String & ioString,
                                               const int32_t inIndentation) const {
   ioString << "[@typePredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -7175,7 +7175,7 @@ void cPtr_typePredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_typePredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_typePredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_typePredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -7232,13 +7232,13 @@ typeComparisonResult cPtr_dataPredefinedTypeAST::dynamicObjectCompare (const acP
   const cPtr_dataPredefinedTypeAST * p = (const cPtr_dataPredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_dataPredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -7308,11 +7308,11 @@ const C_galgas_type_descriptor * cPtr_dataPredefinedTypeAST::classDescriptor (vo
 void cPtr_dataPredefinedTypeAST::description (C_String & ioString,
                                               const int32_t inIndentation) const {
   ioString << "[@dataPredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -7320,7 +7320,7 @@ void cPtr_dataPredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_dataPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_dataPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_dataPredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -7377,13 +7377,13 @@ typeComparisonResult cPtr_timerPredefinedTypeAST::dynamicObjectCompare (const ac
   const cPtr_timerPredefinedTypeAST * p = (const cPtr_timerPredefinedTypeAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_timerPredefinedTypeAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (p->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mPredefinedTypeName.objectCompare (p->mAttribute_mPredefinedTypeName) ;
+    result = mProperty_mPredefinedTypeName.objectCompare (p->mProperty_mPredefinedTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mKind.objectCompare (p->mAttribute_mKind) ;
+    result = mProperty_mKind.objectCompare (p->mProperty_mKind) ;
   }
   return result ;
 }
@@ -7453,11 +7453,11 @@ const C_galgas_type_descriptor * cPtr_timerPredefinedTypeAST::classDescriptor (v
 void cPtr_timerPredefinedTypeAST::description (C_String & ioString,
                                                const int32_t inIndentation) const {
   ioString << "[@timerPredefinedTypeAST:" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation+1) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mPredefinedTypeName.description (ioString, inIndentation+1) ;
+  mProperty_mPredefinedTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mKind.description (ioString, inIndentation+1) ;
+  mProperty_mKind.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -7465,7 +7465,7 @@ void cPtr_timerPredefinedTypeAST::description (C_String & ioString,
 
 acPtr_class * cPtr_timerPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_timerPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_timerPredefinedTypeAST (mProperty_mIsPredefined, mProperty_mPredefinedTypeName, mProperty_mKind COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -8337,20 +8337,20 @@ cMapElement_grammarLabelMap::cMapElement_grammarLabelMap (const GALGAS_lstring &
                                                           const GALGAS_formalParameterSignature & in_mLabelSignature
                                                           COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mLabelSignature (in_mLabelSignature) {
+mProperty_mLabelSignature (in_mLabelSignature) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_grammarLabelMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mLabelSignature.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mLabelSignature.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_grammarLabelMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_grammarLabelMap (mAttribute_lkey, mAttribute_mLabelSignature COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_grammarLabelMap (mProperty_lkey, mProperty_mLabelSignature COMMA_HERE)) ;
   return result ;
 }
 
@@ -8360,16 +8360,16 @@ void cMapElement_grammarLabelMap::description (C_String & ioString, const int32_
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLabelSignature" ":" ;
-  mAttribute_mLabelSignature.description (ioString, inIndentation) ;
+  mProperty_mLabelSignature.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_grammarLabelMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_grammarLabelMap * operand = (cMapElement_grammarLabelMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mLabelSignature.objectCompare (operand->mAttribute_mLabelSignature) ;
+    result = mProperty_mLabelSignature.objectCompare (operand->mProperty_mLabelSignature) ;
   }
   return result ;
 }
@@ -8469,7 +8469,7 @@ void GALGAS_grammarLabelMap::method_searchKey (GALGAS_lstring inKey,
     outArgument0.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_grammarLabelMap) ;
-    outArgument0 = p->mAttribute_mLabelSignature ;
+    outArgument0 = p->mProperty_mLabelSignature ;
   }
 }
 
@@ -8483,7 +8483,7 @@ GALGAS_formalParameterSignature GALGAS_grammarLabelMap::getter_mLabelSignatureFo
   GALGAS_formalParameterSignature result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_grammarLabelMap) ;
-    result = p->mAttribute_mLabelSignature ;
+    result = p->mProperty_mLabelSignature ;
   }
   return result ;
 }
@@ -8498,7 +8498,7 @@ void GALGAS_grammarLabelMap::setter_setMLabelSignatureForKey (GALGAS_formalParam
   cMapElement_grammarLabelMap * p = (cMapElement_grammarLabelMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_grammarLabelMap) ;
-    p->mAttribute_mLabelSignature = inAttributeValue ;
+    p->mProperty_mLabelSignature = inAttributeValue ;
   }
 }
 
@@ -8525,7 +8525,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_grammarLabelMap_2D_element cEnumerator_grammarLabelMap::current (LOCATION_ARGS) const {
   const cMapElement_grammarLabelMap * p = (const cMapElement_grammarLabelMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_grammarLabelMap) ;
-  return GALGAS_grammarLabelMap_2D_element (p->mAttribute_lkey, p->mAttribute_mLabelSignature) ;
+  return GALGAS_grammarLabelMap_2D_element (p->mProperty_lkey, p->mProperty_mLabelSignature) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8533,7 +8533,7 @@ GALGAS_grammarLabelMap_2D_element cEnumerator_grammarLabelMap::current (LOCATION
 GALGAS_lstring cEnumerator_grammarLabelMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8541,7 +8541,7 @@ GALGAS_lstring cEnumerator_grammarLabelMap::current_lkey (LOCATION_ARGS) const {
 GALGAS_formalParameterSignature cEnumerator_grammarLabelMap::current_mLabelSignature (LOCATION_ARGS) const {
   const cMapElement_grammarLabelMap * p = (const cMapElement_grammarLabelMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_grammarLabelMap) ;
-  return p->mAttribute_mLabelSignature ;
+  return p->mProperty_mLabelSignature ;
 }
 
 
@@ -8597,22 +8597,22 @@ cMapElement_grammarMap::cMapElement_grammarMap (const GALGAS_lstring & inKey,
                                                 const GALGAS_bool & in_mHasTranslateFeature
                                                 COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mLabelMap (in_mLabelMap),
-mAttribute_mHasIndexing (in_mHasIndexing),
-mAttribute_mHasTranslateFeature (in_mHasTranslateFeature) {
+mProperty_mLabelMap (in_mLabelMap),
+mProperty_mHasIndexing (in_mHasIndexing),
+mProperty_mHasTranslateFeature (in_mHasTranslateFeature) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_grammarMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mLabelMap.isValid () && mAttribute_mHasIndexing.isValid () && mAttribute_mHasTranslateFeature.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mLabelMap.isValid () && mProperty_mHasIndexing.isValid () && mProperty_mHasTranslateFeature.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_grammarMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_grammarMap (mAttribute_lkey, mAttribute_mLabelMap, mAttribute_mHasIndexing, mAttribute_mHasTranslateFeature COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_grammarMap (mProperty_lkey, mProperty_mLabelMap, mProperty_mHasIndexing, mProperty_mHasTranslateFeature COMMA_HERE)) ;
   return result ;
 }
 
@@ -8622,30 +8622,30 @@ void cMapElement_grammarMap::description (C_String & ioString, const int32_t inI
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLabelMap" ":" ;
-  mAttribute_mLabelMap.description (ioString, inIndentation) ;
+  mProperty_mLabelMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mHasIndexing" ":" ;
-  mAttribute_mHasIndexing.description (ioString, inIndentation) ;
+  mProperty_mHasIndexing.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mHasTranslateFeature" ":" ;
-  mAttribute_mHasTranslateFeature.description (ioString, inIndentation) ;
+  mProperty_mHasTranslateFeature.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_grammarMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_grammarMap * operand = (cMapElement_grammarMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mLabelMap.objectCompare (operand->mAttribute_mLabelMap) ;
+    result = mProperty_mLabelMap.objectCompare (operand->mProperty_mLabelMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mHasIndexing.objectCompare (operand->mAttribute_mHasIndexing) ;
+    result = mProperty_mHasIndexing.objectCompare (operand->mProperty_mHasIndexing) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mHasTranslateFeature.objectCompare (operand->mAttribute_mHasTranslateFeature) ;
+    result = mProperty_mHasTranslateFeature.objectCompare (operand->mProperty_mHasTranslateFeature) ;
   }
   return result ;
 }
@@ -8753,9 +8753,9 @@ void GALGAS_grammarMap::method_searchKey (GALGAS_lstring inKey,
     outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_grammarMap) ;
-    outArgument0 = p->mAttribute_mLabelMap ;
-    outArgument1 = p->mAttribute_mHasIndexing ;
-    outArgument2 = p->mAttribute_mHasTranslateFeature ;
+    outArgument0 = p->mProperty_mLabelMap ;
+    outArgument1 = p->mProperty_mHasIndexing ;
+    outArgument2 = p->mProperty_mHasTranslateFeature ;
   }
 }
 
@@ -8769,7 +8769,7 @@ GALGAS_grammarLabelMap GALGAS_grammarMap::getter_mLabelMapForKey (const GALGAS_s
   GALGAS_grammarLabelMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_grammarMap) ;
-    result = p->mAttribute_mLabelMap ;
+    result = p->mProperty_mLabelMap ;
   }
   return result ;
 }
@@ -8784,7 +8784,7 @@ GALGAS_bool GALGAS_grammarMap::getter_mHasIndexingForKey (const GALGAS_string & 
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_grammarMap) ;
-    result = p->mAttribute_mHasIndexing ;
+    result = p->mProperty_mHasIndexing ;
   }
   return result ;
 }
@@ -8799,7 +8799,7 @@ GALGAS_bool GALGAS_grammarMap::getter_mHasTranslateFeatureForKey (const GALGAS_s
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_grammarMap) ;
-    result = p->mAttribute_mHasTranslateFeature ;
+    result = p->mProperty_mHasTranslateFeature ;
   }
   return result ;
 }
@@ -8814,7 +8814,7 @@ void GALGAS_grammarMap::setter_setMLabelMapForKey (GALGAS_grammarLabelMap inAttr
   cMapElement_grammarMap * p = (cMapElement_grammarMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_grammarMap) ;
-    p->mAttribute_mLabelMap = inAttributeValue ;
+    p->mProperty_mLabelMap = inAttributeValue ;
   }
 }
 
@@ -8828,7 +8828,7 @@ void GALGAS_grammarMap::setter_setMHasIndexingForKey (GALGAS_bool inAttributeVal
   cMapElement_grammarMap * p = (cMapElement_grammarMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_grammarMap) ;
-    p->mAttribute_mHasIndexing = inAttributeValue ;
+    p->mProperty_mHasIndexing = inAttributeValue ;
   }
 }
 
@@ -8842,7 +8842,7 @@ void GALGAS_grammarMap::setter_setMHasTranslateFeatureForKey (GALGAS_bool inAttr
   cMapElement_grammarMap * p = (cMapElement_grammarMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_grammarMap) ;
-    p->mAttribute_mHasTranslateFeature = inAttributeValue ;
+    p->mProperty_mHasTranslateFeature = inAttributeValue ;
   }
 }
 
@@ -8869,7 +8869,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_grammarMap_2D_element cEnumerator_grammarMap::current (LOCATION_ARGS) const {
   const cMapElement_grammarMap * p = (const cMapElement_grammarMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_grammarMap) ;
-  return GALGAS_grammarMap_2D_element (p->mAttribute_lkey, p->mAttribute_mLabelMap, p->mAttribute_mHasIndexing, p->mAttribute_mHasTranslateFeature) ;
+  return GALGAS_grammarMap_2D_element (p->mProperty_lkey, p->mProperty_mLabelMap, p->mProperty_mHasIndexing, p->mProperty_mHasTranslateFeature) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8877,7 +8877,7 @@ GALGAS_grammarMap_2D_element cEnumerator_grammarMap::current (LOCATION_ARGS) con
 GALGAS_lstring cEnumerator_grammarMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8885,7 +8885,7 @@ GALGAS_lstring cEnumerator_grammarMap::current_lkey (LOCATION_ARGS) const {
 GALGAS_grammarLabelMap cEnumerator_grammarMap::current_mLabelMap (LOCATION_ARGS) const {
   const cMapElement_grammarMap * p = (const cMapElement_grammarMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_grammarMap) ;
-  return p->mAttribute_mLabelMap ;
+  return p->mProperty_mLabelMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8893,7 +8893,7 @@ GALGAS_grammarLabelMap cEnumerator_grammarMap::current_mLabelMap (LOCATION_ARGS)
 GALGAS_bool cEnumerator_grammarMap::current_mHasIndexing (LOCATION_ARGS) const {
   const cMapElement_grammarMap * p = (const cMapElement_grammarMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_grammarMap) ;
-  return p->mAttribute_mHasIndexing ;
+  return p->mProperty_mHasIndexing ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8901,7 +8901,7 @@ GALGAS_bool cEnumerator_grammarMap::current_mHasIndexing (LOCATION_ARGS) const {
 GALGAS_bool cEnumerator_grammarMap::current_mHasTranslateFeature (LOCATION_ARGS) const {
   const cMapElement_grammarMap * p = (const cMapElement_grammarMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_grammarMap) ;
-  return p->mAttribute_mHasTranslateFeature ;
+  return p->mProperty_mHasTranslateFeature ;
 }
 
 
@@ -8956,21 +8956,21 @@ cMapElement_routineMap::cMapElement_routineMap (const GALGAS_lstring & inKey,
                                                 const GALGAS_bool & in_mIsInternal
                                                 COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mRoutineSignature (in_mRoutineSignature),
-mAttribute_mIsInternal (in_mIsInternal) {
+mProperty_mRoutineSignature (in_mRoutineSignature),
+mProperty_mIsInternal (in_mIsInternal) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_routineMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mRoutineSignature.isValid () && mAttribute_mIsInternal.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mRoutineSignature.isValid () && mProperty_mIsInternal.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_routineMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_routineMap (mAttribute_lkey, mAttribute_mRoutineSignature, mAttribute_mIsInternal COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_routineMap (mProperty_lkey, mProperty_mRoutineSignature, mProperty_mIsInternal COMMA_HERE)) ;
   return result ;
 }
 
@@ -8980,23 +8980,23 @@ void cMapElement_routineMap::description (C_String & ioString, const int32_t inI
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mRoutineSignature" ":" ;
-  mAttribute_mRoutineSignature.description (ioString, inIndentation) ;
+  mProperty_mRoutineSignature.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mIsInternal" ":" ;
-  mAttribute_mIsInternal.description (ioString, inIndentation) ;
+  mProperty_mIsInternal.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_routineMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_routineMap * operand = (cMapElement_routineMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mRoutineSignature.objectCompare (operand->mAttribute_mRoutineSignature) ;
+    result = mProperty_mRoutineSignature.objectCompare (operand->mProperty_mRoutineSignature) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mIsInternal.objectCompare (operand->mAttribute_mIsInternal) ;
+    result = mProperty_mIsInternal.objectCompare (operand->mProperty_mIsInternal) ;
   }
   return result ;
 }
@@ -9100,8 +9100,8 @@ void GALGAS_routineMap::method_searchKey (GALGAS_lstring inKey,
     outArgument1.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_routineMap) ;
-    outArgument0 = p->mAttribute_mRoutineSignature ;
-    outArgument1 = p->mAttribute_mIsInternal ;
+    outArgument0 = p->mProperty_mRoutineSignature ;
+    outArgument1 = p->mProperty_mIsInternal ;
   }
 }
 
@@ -9115,7 +9115,7 @@ GALGAS_formalParameterSignature GALGAS_routineMap::getter_mRoutineSignatureForKe
   GALGAS_formalParameterSignature result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_routineMap) ;
-    result = p->mAttribute_mRoutineSignature ;
+    result = p->mProperty_mRoutineSignature ;
   }
   return result ;
 }
@@ -9130,7 +9130,7 @@ GALGAS_bool GALGAS_routineMap::getter_mIsInternalForKey (const GALGAS_string & i
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_routineMap) ;
-    result = p->mAttribute_mIsInternal ;
+    result = p->mProperty_mIsInternal ;
   }
   return result ;
 }
@@ -9145,7 +9145,7 @@ void GALGAS_routineMap::setter_setMRoutineSignatureForKey (GALGAS_formalParamete
   cMapElement_routineMap * p = (cMapElement_routineMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_routineMap) ;
-    p->mAttribute_mRoutineSignature = inAttributeValue ;
+    p->mProperty_mRoutineSignature = inAttributeValue ;
   }
 }
 
@@ -9159,7 +9159,7 @@ void GALGAS_routineMap::setter_setMIsInternalForKey (GALGAS_bool inAttributeValu
   cMapElement_routineMap * p = (cMapElement_routineMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_routineMap) ;
-    p->mAttribute_mIsInternal = inAttributeValue ;
+    p->mProperty_mIsInternal = inAttributeValue ;
   }
 }
 
@@ -9186,7 +9186,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_routineMap_2D_element cEnumerator_routineMap::current (LOCATION_ARGS) const {
   const cMapElement_routineMap * p = (const cMapElement_routineMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_routineMap) ;
-  return GALGAS_routineMap_2D_element (p->mAttribute_lkey, p->mAttribute_mRoutineSignature, p->mAttribute_mIsInternal) ;
+  return GALGAS_routineMap_2D_element (p->mProperty_lkey, p->mProperty_mRoutineSignature, p->mProperty_mIsInternal) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9194,7 +9194,7 @@ GALGAS_routineMap_2D_element cEnumerator_routineMap::current (LOCATION_ARGS) con
 GALGAS_lstring cEnumerator_routineMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9202,7 +9202,7 @@ GALGAS_lstring cEnumerator_routineMap::current_lkey (LOCATION_ARGS) const {
 GALGAS_formalParameterSignature cEnumerator_routineMap::current_mRoutineSignature (LOCATION_ARGS) const {
   const cMapElement_routineMap * p = (const cMapElement_routineMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_routineMap) ;
-  return p->mAttribute_mRoutineSignature ;
+  return p->mProperty_mRoutineSignature ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9210,7 +9210,7 @@ GALGAS_formalParameterSignature cEnumerator_routineMap::current_mRoutineSignatur
 GALGAS_bool cEnumerator_routineMap::current_mIsInternal (LOCATION_ARGS) const {
   const cMapElement_routineMap * p = (const cMapElement_routineMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_routineMap) ;
-  return p->mAttribute_mIsInternal ;
+  return p->mProperty_mIsInternal ;
 }
 
 
@@ -9266,22 +9266,22 @@ cMapElement_functionMap::cMapElement_functionMap (const GALGAS_lstring & inKey,
                                                   const GALGAS_bool & in_mIsInternal
                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mFunctionSignature (in_mFunctionSignature),
-mAttribute_mResultType (in_mResultType),
-mAttribute_mIsInternal (in_mIsInternal) {
+mProperty_mFunctionSignature (in_mFunctionSignature),
+mProperty_mResultType (in_mResultType),
+mProperty_mIsInternal (in_mIsInternal) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_functionMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mFunctionSignature.isValid () && mAttribute_mResultType.isValid () && mAttribute_mIsInternal.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mFunctionSignature.isValid () && mProperty_mResultType.isValid () && mProperty_mIsInternal.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_functionMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_functionMap (mAttribute_lkey, mAttribute_mFunctionSignature, mAttribute_mResultType, mAttribute_mIsInternal COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_functionMap (mProperty_lkey, mProperty_mFunctionSignature, mProperty_mResultType, mProperty_mIsInternal COMMA_HERE)) ;
   return result ;
 }
 
@@ -9291,30 +9291,30 @@ void cMapElement_functionMap::description (C_String & ioString, const int32_t in
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFunctionSignature" ":" ;
-  mAttribute_mFunctionSignature.description (ioString, inIndentation) ;
+  mProperty_mFunctionSignature.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mResultType" ":" ;
-  mAttribute_mResultType.description (ioString, inIndentation) ;
+  mProperty_mResultType.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mIsInternal" ":" ;
-  mAttribute_mIsInternal.description (ioString, inIndentation) ;
+  mProperty_mIsInternal.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_functionMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_functionMap * operand = (cMapElement_functionMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mFunctionSignature.objectCompare (operand->mAttribute_mFunctionSignature) ;
+    result = mProperty_mFunctionSignature.objectCompare (operand->mProperty_mFunctionSignature) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mResultType.objectCompare (operand->mAttribute_mResultType) ;
+    result = mProperty_mResultType.objectCompare (operand->mProperty_mResultType) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mIsInternal.objectCompare (operand->mAttribute_mIsInternal) ;
+    result = mProperty_mIsInternal.objectCompare (operand->mProperty_mIsInternal) ;
   }
   return result ;
 }
@@ -9422,9 +9422,9 @@ void GALGAS_functionMap::method_searchKey (GALGAS_lstring inKey,
     outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_functionMap) ;
-    outArgument0 = p->mAttribute_mFunctionSignature ;
-    outArgument1 = p->mAttribute_mResultType ;
-    outArgument2 = p->mAttribute_mIsInternal ;
+    outArgument0 = p->mProperty_mFunctionSignature ;
+    outArgument1 = p->mProperty_mResultType ;
+    outArgument2 = p->mProperty_mIsInternal ;
   }
 }
 
@@ -9438,7 +9438,7 @@ GALGAS_functionSignature GALGAS_functionMap::getter_mFunctionSignatureForKey (co
   GALGAS_functionSignature result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_functionMap) ;
-    result = p->mAttribute_mFunctionSignature ;
+    result = p->mProperty_mFunctionSignature ;
   }
   return result ;
 }
@@ -9453,7 +9453,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_functionMap::getter_mResultTypeForKey (con
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_functionMap) ;
-    result = p->mAttribute_mResultType ;
+    result = p->mProperty_mResultType ;
   }
   return result ;
 }
@@ -9468,7 +9468,7 @@ GALGAS_bool GALGAS_functionMap::getter_mIsInternalForKey (const GALGAS_string & 
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_functionMap) ;
-    result = p->mAttribute_mIsInternal ;
+    result = p->mProperty_mIsInternal ;
   }
   return result ;
 }
@@ -9483,7 +9483,7 @@ void GALGAS_functionMap::setter_setMFunctionSignatureForKey (GALGAS_functionSign
   cMapElement_functionMap * p = (cMapElement_functionMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_functionMap) ;
-    p->mAttribute_mFunctionSignature = inAttributeValue ;
+    p->mProperty_mFunctionSignature = inAttributeValue ;
   }
 }
 
@@ -9497,7 +9497,7 @@ void GALGAS_functionMap::setter_setMResultTypeForKey (GALGAS_unifiedTypeMap_2D_p
   cMapElement_functionMap * p = (cMapElement_functionMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_functionMap) ;
-    p->mAttribute_mResultType = inAttributeValue ;
+    p->mProperty_mResultType = inAttributeValue ;
   }
 }
 
@@ -9511,7 +9511,7 @@ void GALGAS_functionMap::setter_setMIsInternalForKey (GALGAS_bool inAttributeVal
   cMapElement_functionMap * p = (cMapElement_functionMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_functionMap) ;
-    p->mAttribute_mIsInternal = inAttributeValue ;
+    p->mProperty_mIsInternal = inAttributeValue ;
   }
 }
 
@@ -9538,7 +9538,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_functionMap_2D_element cEnumerator_functionMap::current (LOCATION_ARGS) const {
   const cMapElement_functionMap * p = (const cMapElement_functionMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_functionMap) ;
-  return GALGAS_functionMap_2D_element (p->mAttribute_lkey, p->mAttribute_mFunctionSignature, p->mAttribute_mResultType, p->mAttribute_mIsInternal) ;
+  return GALGAS_functionMap_2D_element (p->mProperty_lkey, p->mProperty_mFunctionSignature, p->mProperty_mResultType, p->mProperty_mIsInternal) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9546,7 +9546,7 @@ GALGAS_functionMap_2D_element cEnumerator_functionMap::current (LOCATION_ARGS) c
 GALGAS_lstring cEnumerator_functionMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9554,7 +9554,7 @@ GALGAS_lstring cEnumerator_functionMap::current_lkey (LOCATION_ARGS) const {
 GALGAS_functionSignature cEnumerator_functionMap::current_mFunctionSignature (LOCATION_ARGS) const {
   const cMapElement_functionMap * p = (const cMapElement_functionMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_functionMap) ;
-  return p->mAttribute_mFunctionSignature ;
+  return p->mProperty_mFunctionSignature ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9562,7 +9562,7 @@ GALGAS_functionSignature cEnumerator_functionMap::current_mFunctionSignature (LO
 GALGAS_unifiedTypeMap_2D_proxy cEnumerator_functionMap::current_mResultType (LOCATION_ARGS) const {
   const cMapElement_functionMap * p = (const cMapElement_functionMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_functionMap) ;
-  return p->mAttribute_mResultType ;
+  return p->mProperty_mResultType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9570,7 +9570,7 @@ GALGAS_unifiedTypeMap_2D_proxy cEnumerator_functionMap::current_mResultType (LOC
 GALGAS_bool cEnumerator_functionMap::current_mIsInternal (LOCATION_ARGS) const {
   const cMapElement_functionMap * p = (const cMapElement_functionMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_functionMap) ;
-  return p->mAttribute_mIsInternal ;
+  return p->mProperty_mIsInternal ;
 }
 
 
@@ -9627,23 +9627,23 @@ cMapElement_wrapperFileMap::cMapElement_wrapperFileMap (const GALGAS_lstring & i
                                                         const GALGAS_uint & in_mWrapperFileIndex
                                                         COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mAbsoluteFilePath (in_mAbsoluteFilePath),
-mAttribute_mIsTextFile (in_mIsTextFile),
-mAttribute_mWrapperDirectoryIndex (in_mWrapperDirectoryIndex),
-mAttribute_mWrapperFileIndex (in_mWrapperFileIndex) {
+mProperty_mAbsoluteFilePath (in_mAbsoluteFilePath),
+mProperty_mIsTextFile (in_mIsTextFile),
+mProperty_mWrapperDirectoryIndex (in_mWrapperDirectoryIndex),
+mProperty_mWrapperFileIndex (in_mWrapperFileIndex) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_wrapperFileMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mAbsoluteFilePath.isValid () && mAttribute_mIsTextFile.isValid () && mAttribute_mWrapperDirectoryIndex.isValid () && mAttribute_mWrapperFileIndex.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mAbsoluteFilePath.isValid () && mProperty_mIsTextFile.isValid () && mProperty_mWrapperDirectoryIndex.isValid () && mProperty_mWrapperFileIndex.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_wrapperFileMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_wrapperFileMap (mAttribute_lkey, mAttribute_mAbsoluteFilePath, mAttribute_mIsTextFile, mAttribute_mWrapperDirectoryIndex, mAttribute_mWrapperFileIndex COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_wrapperFileMap (mProperty_lkey, mProperty_mAbsoluteFilePath, mProperty_mIsTextFile, mProperty_mWrapperDirectoryIndex, mProperty_mWrapperFileIndex COMMA_HERE)) ;
   return result ;
 }
 
@@ -9653,37 +9653,37 @@ void cMapElement_wrapperFileMap::description (C_String & ioString, const int32_t
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mAbsoluteFilePath" ":" ;
-  mAttribute_mAbsoluteFilePath.description (ioString, inIndentation) ;
+  mProperty_mAbsoluteFilePath.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mIsTextFile" ":" ;
-  mAttribute_mIsTextFile.description (ioString, inIndentation) ;
+  mProperty_mIsTextFile.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mWrapperDirectoryIndex" ":" ;
-  mAttribute_mWrapperDirectoryIndex.description (ioString, inIndentation) ;
+  mProperty_mWrapperDirectoryIndex.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mWrapperFileIndex" ":" ;
-  mAttribute_mWrapperFileIndex.description (ioString, inIndentation) ;
+  mProperty_mWrapperFileIndex.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_wrapperFileMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_wrapperFileMap * operand = (cMapElement_wrapperFileMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mAbsoluteFilePath.objectCompare (operand->mAttribute_mAbsoluteFilePath) ;
+    result = mProperty_mAbsoluteFilePath.objectCompare (operand->mProperty_mAbsoluteFilePath) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mIsTextFile.objectCompare (operand->mAttribute_mIsTextFile) ;
+    result = mProperty_mIsTextFile.objectCompare (operand->mProperty_mIsTextFile) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mWrapperDirectoryIndex.objectCompare (operand->mAttribute_mWrapperDirectoryIndex) ;
+    result = mProperty_mWrapperDirectoryIndex.objectCompare (operand->mProperty_mWrapperDirectoryIndex) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mWrapperFileIndex.objectCompare (operand->mAttribute_mWrapperFileIndex) ;
+    result = mProperty_mWrapperFileIndex.objectCompare (operand->mProperty_mWrapperFileIndex) ;
   }
   return result ;
 }
@@ -9795,10 +9795,10 @@ void GALGAS_wrapperFileMap::method_searchKey (GALGAS_lstring inKey,
     outArgument3.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_wrapperFileMap) ;
-    outArgument0 = p->mAttribute_mAbsoluteFilePath ;
-    outArgument1 = p->mAttribute_mIsTextFile ;
-    outArgument2 = p->mAttribute_mWrapperDirectoryIndex ;
-    outArgument3 = p->mAttribute_mWrapperFileIndex ;
+    outArgument0 = p->mProperty_mAbsoluteFilePath ;
+    outArgument1 = p->mProperty_mIsTextFile ;
+    outArgument2 = p->mProperty_mWrapperDirectoryIndex ;
+    outArgument3 = p->mProperty_mWrapperFileIndex ;
   }
 }
 
@@ -9812,7 +9812,7 @@ GALGAS_string GALGAS_wrapperFileMap::getter_mAbsoluteFilePathForKey (const GALGA
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_wrapperFileMap) ;
-    result = p->mAttribute_mAbsoluteFilePath ;
+    result = p->mProperty_mAbsoluteFilePath ;
   }
   return result ;
 }
@@ -9827,7 +9827,7 @@ GALGAS_bool GALGAS_wrapperFileMap::getter_mIsTextFileForKey (const GALGAS_string
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_wrapperFileMap) ;
-    result = p->mAttribute_mIsTextFile ;
+    result = p->mProperty_mIsTextFile ;
   }
   return result ;
 }
@@ -9842,7 +9842,7 @@ GALGAS_uint GALGAS_wrapperFileMap::getter_mWrapperDirectoryIndexForKey (const GA
   GALGAS_uint result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_wrapperFileMap) ;
-    result = p->mAttribute_mWrapperDirectoryIndex ;
+    result = p->mProperty_mWrapperDirectoryIndex ;
   }
   return result ;
 }
@@ -9857,7 +9857,7 @@ GALGAS_uint GALGAS_wrapperFileMap::getter_mWrapperFileIndexForKey (const GALGAS_
   GALGAS_uint result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_wrapperFileMap) ;
-    result = p->mAttribute_mWrapperFileIndex ;
+    result = p->mProperty_mWrapperFileIndex ;
   }
   return result ;
 }
@@ -9872,7 +9872,7 @@ void GALGAS_wrapperFileMap::setter_setMAbsoluteFilePathForKey (GALGAS_string inA
   cMapElement_wrapperFileMap * p = (cMapElement_wrapperFileMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_wrapperFileMap) ;
-    p->mAttribute_mAbsoluteFilePath = inAttributeValue ;
+    p->mProperty_mAbsoluteFilePath = inAttributeValue ;
   }
 }
 
@@ -9886,7 +9886,7 @@ void GALGAS_wrapperFileMap::setter_setMIsTextFileForKey (GALGAS_bool inAttribute
   cMapElement_wrapperFileMap * p = (cMapElement_wrapperFileMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_wrapperFileMap) ;
-    p->mAttribute_mIsTextFile = inAttributeValue ;
+    p->mProperty_mIsTextFile = inAttributeValue ;
   }
 }
 
@@ -9900,7 +9900,7 @@ void GALGAS_wrapperFileMap::setter_setMWrapperDirectoryIndexForKey (GALGAS_uint 
   cMapElement_wrapperFileMap * p = (cMapElement_wrapperFileMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_wrapperFileMap) ;
-    p->mAttribute_mWrapperDirectoryIndex = inAttributeValue ;
+    p->mProperty_mWrapperDirectoryIndex = inAttributeValue ;
   }
 }
 
@@ -9914,7 +9914,7 @@ void GALGAS_wrapperFileMap::setter_setMWrapperFileIndexForKey (GALGAS_uint inAtt
   cMapElement_wrapperFileMap * p = (cMapElement_wrapperFileMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_wrapperFileMap) ;
-    p->mAttribute_mWrapperFileIndex = inAttributeValue ;
+    p->mProperty_mWrapperFileIndex = inAttributeValue ;
   }
 }
 
@@ -9941,7 +9941,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_wrapperFileMap_2D_element cEnumerator_wrapperFileMap::current (LOCATION_ARGS) const {
   const cMapElement_wrapperFileMap * p = (const cMapElement_wrapperFileMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_wrapperFileMap) ;
-  return GALGAS_wrapperFileMap_2D_element (p->mAttribute_lkey, p->mAttribute_mAbsoluteFilePath, p->mAttribute_mIsTextFile, p->mAttribute_mWrapperDirectoryIndex, p->mAttribute_mWrapperFileIndex) ;
+  return GALGAS_wrapperFileMap_2D_element (p->mProperty_lkey, p->mProperty_mAbsoluteFilePath, p->mProperty_mIsTextFile, p->mProperty_mWrapperDirectoryIndex, p->mProperty_mWrapperFileIndex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9949,7 +9949,7 @@ GALGAS_wrapperFileMap_2D_element cEnumerator_wrapperFileMap::current (LOCATION_A
 GALGAS_lstring cEnumerator_wrapperFileMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9957,7 +9957,7 @@ GALGAS_lstring cEnumerator_wrapperFileMap::current_lkey (LOCATION_ARGS) const {
 GALGAS_string cEnumerator_wrapperFileMap::current_mAbsoluteFilePath (LOCATION_ARGS) const {
   const cMapElement_wrapperFileMap * p = (const cMapElement_wrapperFileMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_wrapperFileMap) ;
-  return p->mAttribute_mAbsoluteFilePath ;
+  return p->mProperty_mAbsoluteFilePath ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9965,7 +9965,7 @@ GALGAS_string cEnumerator_wrapperFileMap::current_mAbsoluteFilePath (LOCATION_AR
 GALGAS_bool cEnumerator_wrapperFileMap::current_mIsTextFile (LOCATION_ARGS) const {
   const cMapElement_wrapperFileMap * p = (const cMapElement_wrapperFileMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_wrapperFileMap) ;
-  return p->mAttribute_mIsTextFile ;
+  return p->mProperty_mIsTextFile ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9973,7 +9973,7 @@ GALGAS_bool cEnumerator_wrapperFileMap::current_mIsTextFile (LOCATION_ARGS) cons
 GALGAS_uint cEnumerator_wrapperFileMap::current_mWrapperDirectoryIndex (LOCATION_ARGS) const {
   const cMapElement_wrapperFileMap * p = (const cMapElement_wrapperFileMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_wrapperFileMap) ;
-  return p->mAttribute_mWrapperDirectoryIndex ;
+  return p->mProperty_mWrapperDirectoryIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9981,7 +9981,7 @@ GALGAS_uint cEnumerator_wrapperFileMap::current_mWrapperDirectoryIndex (LOCATION
 GALGAS_uint cEnumerator_wrapperFileMap::current_mWrapperFileIndex (LOCATION_ARGS) const {
   const cMapElement_wrapperFileMap * p = (const cMapElement_wrapperFileMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_wrapperFileMap) ;
-  return p->mAttribute_mWrapperFileIndex ;
+  return p->mProperty_mWrapperFileIndex ;
 }
 
 
@@ -10037,22 +10037,22 @@ cMapElement_wrapperDirectoryMap::cMapElement_wrapperDirectoryMap (const GALGAS_l
                                                                   const GALGAS_uint & in_mWrapperDirectoryIndex
                                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mRegularFileMap (in_mRegularFileMap),
-mAttribute_mDirectoryMap (in_mDirectoryMap),
-mAttribute_mWrapperDirectoryIndex (in_mWrapperDirectoryIndex) {
+mProperty_mRegularFileMap (in_mRegularFileMap),
+mProperty_mDirectoryMap (in_mDirectoryMap),
+mProperty_mWrapperDirectoryIndex (in_mWrapperDirectoryIndex) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_wrapperDirectoryMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mRegularFileMap.isValid () && mAttribute_mDirectoryMap.isValid () && mAttribute_mWrapperDirectoryIndex.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mRegularFileMap.isValid () && mProperty_mDirectoryMap.isValid () && mProperty_mWrapperDirectoryIndex.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_wrapperDirectoryMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_wrapperDirectoryMap (mAttribute_lkey, mAttribute_mRegularFileMap, mAttribute_mDirectoryMap, mAttribute_mWrapperDirectoryIndex COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_wrapperDirectoryMap (mProperty_lkey, mProperty_mRegularFileMap, mProperty_mDirectoryMap, mProperty_mWrapperDirectoryIndex COMMA_HERE)) ;
   return result ;
 }
 
@@ -10062,30 +10062,30 @@ void cMapElement_wrapperDirectoryMap::description (C_String & ioString, const in
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mRegularFileMap" ":" ;
-  mAttribute_mRegularFileMap.description (ioString, inIndentation) ;
+  mProperty_mRegularFileMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mDirectoryMap" ":" ;
-  mAttribute_mDirectoryMap.description (ioString, inIndentation) ;
+  mProperty_mDirectoryMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mWrapperDirectoryIndex" ":" ;
-  mAttribute_mWrapperDirectoryIndex.description (ioString, inIndentation) ;
+  mProperty_mWrapperDirectoryIndex.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_wrapperDirectoryMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_wrapperDirectoryMap * operand = (cMapElement_wrapperDirectoryMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mRegularFileMap.objectCompare (operand->mAttribute_mRegularFileMap) ;
+    result = mProperty_mRegularFileMap.objectCompare (operand->mProperty_mRegularFileMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mDirectoryMap.objectCompare (operand->mAttribute_mDirectoryMap) ;
+    result = mProperty_mDirectoryMap.objectCompare (operand->mProperty_mDirectoryMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mWrapperDirectoryIndex.objectCompare (operand->mAttribute_mWrapperDirectoryIndex) ;
+    result = mProperty_mWrapperDirectoryIndex.objectCompare (operand->mProperty_mWrapperDirectoryIndex) ;
   }
   return result ;
 }
@@ -10193,9 +10193,9 @@ void GALGAS_wrapperDirectoryMap::method_searchKey (GALGAS_lstring inKey,
     outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_wrapperDirectoryMap) ;
-    outArgument0 = p->mAttribute_mRegularFileMap ;
-    outArgument1 = p->mAttribute_mDirectoryMap ;
-    outArgument2 = p->mAttribute_mWrapperDirectoryIndex ;
+    outArgument0 = p->mProperty_mRegularFileMap ;
+    outArgument1 = p->mProperty_mDirectoryMap ;
+    outArgument2 = p->mProperty_mWrapperDirectoryIndex ;
   }
 }
 
@@ -10209,7 +10209,7 @@ GALGAS_wrapperFileMap GALGAS_wrapperDirectoryMap::getter_mRegularFileMapForKey (
   GALGAS_wrapperFileMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_wrapperDirectoryMap) ;
-    result = p->mAttribute_mRegularFileMap ;
+    result = p->mProperty_mRegularFileMap ;
   }
   return result ;
 }
@@ -10224,7 +10224,7 @@ GALGAS_wrapperDirectoryMap GALGAS_wrapperDirectoryMap::getter_mDirectoryMapForKe
   GALGAS_wrapperDirectoryMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_wrapperDirectoryMap) ;
-    result = p->mAttribute_mDirectoryMap ;
+    result = p->mProperty_mDirectoryMap ;
   }
   return result ;
 }
@@ -10239,7 +10239,7 @@ GALGAS_uint GALGAS_wrapperDirectoryMap::getter_mWrapperDirectoryIndexForKey (con
   GALGAS_uint result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_wrapperDirectoryMap) ;
-    result = p->mAttribute_mWrapperDirectoryIndex ;
+    result = p->mProperty_mWrapperDirectoryIndex ;
   }
   return result ;
 }
@@ -10254,7 +10254,7 @@ void GALGAS_wrapperDirectoryMap::setter_setMRegularFileMapForKey (GALGAS_wrapper
   cMapElement_wrapperDirectoryMap * p = (cMapElement_wrapperDirectoryMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_wrapperDirectoryMap) ;
-    p->mAttribute_mRegularFileMap = inAttributeValue ;
+    p->mProperty_mRegularFileMap = inAttributeValue ;
   }
 }
 
@@ -10268,7 +10268,7 @@ void GALGAS_wrapperDirectoryMap::setter_setMDirectoryMapForKey (GALGAS_wrapperDi
   cMapElement_wrapperDirectoryMap * p = (cMapElement_wrapperDirectoryMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_wrapperDirectoryMap) ;
-    p->mAttribute_mDirectoryMap = inAttributeValue ;
+    p->mProperty_mDirectoryMap = inAttributeValue ;
   }
 }
 
@@ -10282,7 +10282,7 @@ void GALGAS_wrapperDirectoryMap::setter_setMWrapperDirectoryIndexForKey (GALGAS_
   cMapElement_wrapperDirectoryMap * p = (cMapElement_wrapperDirectoryMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_wrapperDirectoryMap) ;
-    p->mAttribute_mWrapperDirectoryIndex = inAttributeValue ;
+    p->mProperty_mWrapperDirectoryIndex = inAttributeValue ;
   }
 }
 
@@ -10309,7 +10309,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_wrapperDirectoryMap_2D_element cEnumerator_wrapperDirectoryMap::current (LOCATION_ARGS) const {
   const cMapElement_wrapperDirectoryMap * p = (const cMapElement_wrapperDirectoryMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_wrapperDirectoryMap) ;
-  return GALGAS_wrapperDirectoryMap_2D_element (p->mAttribute_lkey, p->mAttribute_mRegularFileMap, p->mAttribute_mDirectoryMap, p->mAttribute_mWrapperDirectoryIndex) ;
+  return GALGAS_wrapperDirectoryMap_2D_element (p->mProperty_lkey, p->mProperty_mRegularFileMap, p->mProperty_mDirectoryMap, p->mProperty_mWrapperDirectoryIndex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10317,7 +10317,7 @@ GALGAS_wrapperDirectoryMap_2D_element cEnumerator_wrapperDirectoryMap::current (
 GALGAS_lstring cEnumerator_wrapperDirectoryMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10325,7 +10325,7 @@ GALGAS_lstring cEnumerator_wrapperDirectoryMap::current_lkey (LOCATION_ARGS) con
 GALGAS_wrapperFileMap cEnumerator_wrapperDirectoryMap::current_mRegularFileMap (LOCATION_ARGS) const {
   const cMapElement_wrapperDirectoryMap * p = (const cMapElement_wrapperDirectoryMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_wrapperDirectoryMap) ;
-  return p->mAttribute_mRegularFileMap ;
+  return p->mProperty_mRegularFileMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10333,7 +10333,7 @@ GALGAS_wrapperFileMap cEnumerator_wrapperDirectoryMap::current_mRegularFileMap (
 GALGAS_wrapperDirectoryMap cEnumerator_wrapperDirectoryMap::current_mDirectoryMap (LOCATION_ARGS) const {
   const cMapElement_wrapperDirectoryMap * p = (const cMapElement_wrapperDirectoryMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_wrapperDirectoryMap) ;
-  return p->mAttribute_mDirectoryMap ;
+  return p->mProperty_mDirectoryMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10341,7 +10341,7 @@ GALGAS_wrapperDirectoryMap cEnumerator_wrapperDirectoryMap::current_mDirectoryMa
 GALGAS_uint cEnumerator_wrapperDirectoryMap::current_mWrapperDirectoryIndex (LOCATION_ARGS) const {
   const cMapElement_wrapperDirectoryMap * p = (const cMapElement_wrapperDirectoryMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_wrapperDirectoryMap) ;
-  return p->mAttribute_mWrapperDirectoryIndex ;
+  return p->mProperty_mWrapperDirectoryIndex ;
 }
 
 
@@ -10396,21 +10396,21 @@ cMapElement_filewrapperTemplateMap::cMapElement_filewrapperTemplateMap (const GA
                                                                         const GALGAS_lstring & in_mFilewrapperTemplatePath
                                                                         COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mTemplateSignature (in_mTemplateSignature),
-mAttribute_mFilewrapperTemplatePath (in_mFilewrapperTemplatePath) {
+mProperty_mTemplateSignature (in_mTemplateSignature),
+mProperty_mFilewrapperTemplatePath (in_mFilewrapperTemplatePath) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_filewrapperTemplateMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mTemplateSignature.isValid () && mAttribute_mFilewrapperTemplatePath.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mTemplateSignature.isValid () && mProperty_mFilewrapperTemplatePath.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_filewrapperTemplateMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_filewrapperTemplateMap (mAttribute_lkey, mAttribute_mTemplateSignature, mAttribute_mFilewrapperTemplatePath COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_filewrapperTemplateMap (mProperty_lkey, mProperty_mTemplateSignature, mProperty_mFilewrapperTemplatePath COMMA_HERE)) ;
   return result ;
 }
 
@@ -10420,23 +10420,23 @@ void cMapElement_filewrapperTemplateMap::description (C_String & ioString, const
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTemplateSignature" ":" ;
-  mAttribute_mTemplateSignature.description (ioString, inIndentation) ;
+  mProperty_mTemplateSignature.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFilewrapperTemplatePath" ":" ;
-  mAttribute_mFilewrapperTemplatePath.description (ioString, inIndentation) ;
+  mProperty_mFilewrapperTemplatePath.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_filewrapperTemplateMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_filewrapperTemplateMap * operand = (cMapElement_filewrapperTemplateMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mTemplateSignature.objectCompare (operand->mAttribute_mTemplateSignature) ;
+    result = mProperty_mTemplateSignature.objectCompare (operand->mProperty_mTemplateSignature) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mFilewrapperTemplatePath.objectCompare (operand->mAttribute_mFilewrapperTemplatePath) ;
+    result = mProperty_mFilewrapperTemplatePath.objectCompare (operand->mProperty_mFilewrapperTemplatePath) ;
   }
   return result ;
 }
@@ -10540,8 +10540,8 @@ void GALGAS_filewrapperTemplateMap::method_searchKey (GALGAS_lstring inKey,
     outArgument1.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_filewrapperTemplateMap) ;
-    outArgument0 = p->mAttribute_mTemplateSignature ;
-    outArgument1 = p->mAttribute_mFilewrapperTemplatePath ;
+    outArgument0 = p->mProperty_mTemplateSignature ;
+    outArgument1 = p->mProperty_mFilewrapperTemplatePath ;
   }
 }
 
@@ -10555,7 +10555,7 @@ GALGAS_functionSignature GALGAS_filewrapperTemplateMap::getter_mTemplateSignatur
   GALGAS_functionSignature result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperTemplateMap) ;
-    result = p->mAttribute_mTemplateSignature ;
+    result = p->mProperty_mTemplateSignature ;
   }
   return result ;
 }
@@ -10570,7 +10570,7 @@ GALGAS_lstring GALGAS_filewrapperTemplateMap::getter_mFilewrapperTemplatePathFor
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperTemplateMap) ;
-    result = p->mAttribute_mFilewrapperTemplatePath ;
+    result = p->mProperty_mFilewrapperTemplatePath ;
   }
   return result ;
 }
@@ -10585,7 +10585,7 @@ void GALGAS_filewrapperTemplateMap::setter_setMTemplateSignatureForKey (GALGAS_f
   cMapElement_filewrapperTemplateMap * p = (cMapElement_filewrapperTemplateMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperTemplateMap) ;
-    p->mAttribute_mTemplateSignature = inAttributeValue ;
+    p->mProperty_mTemplateSignature = inAttributeValue ;
   }
 }
 
@@ -10599,7 +10599,7 @@ void GALGAS_filewrapperTemplateMap::setter_setMFilewrapperTemplatePathForKey (GA
   cMapElement_filewrapperTemplateMap * p = (cMapElement_filewrapperTemplateMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperTemplateMap) ;
-    p->mAttribute_mFilewrapperTemplatePath = inAttributeValue ;
+    p->mProperty_mFilewrapperTemplatePath = inAttributeValue ;
   }
 }
 
@@ -10626,7 +10626,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_filewrapperTemplateMap_2D_element cEnumerator_filewrapperTemplateMap::current (LOCATION_ARGS) const {
   const cMapElement_filewrapperTemplateMap * p = (const cMapElement_filewrapperTemplateMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_filewrapperTemplateMap) ;
-  return GALGAS_filewrapperTemplateMap_2D_element (p->mAttribute_lkey, p->mAttribute_mTemplateSignature, p->mAttribute_mFilewrapperTemplatePath) ;
+  return GALGAS_filewrapperTemplateMap_2D_element (p->mProperty_lkey, p->mProperty_mTemplateSignature, p->mProperty_mFilewrapperTemplatePath) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10634,7 +10634,7 @@ GALGAS_filewrapperTemplateMap_2D_element cEnumerator_filewrapperTemplateMap::cur
 GALGAS_lstring cEnumerator_filewrapperTemplateMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10642,7 +10642,7 @@ GALGAS_lstring cEnumerator_filewrapperTemplateMap::current_lkey (LOCATION_ARGS) 
 GALGAS_functionSignature cEnumerator_filewrapperTemplateMap::current_mTemplateSignature (LOCATION_ARGS) const {
   const cMapElement_filewrapperTemplateMap * p = (const cMapElement_filewrapperTemplateMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_filewrapperTemplateMap) ;
-  return p->mAttribute_mTemplateSignature ;
+  return p->mProperty_mTemplateSignature ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10650,7 +10650,7 @@ GALGAS_functionSignature cEnumerator_filewrapperTemplateMap::current_mTemplateSi
 GALGAS_lstring cEnumerator_filewrapperTemplateMap::current_mFilewrapperTemplatePath (LOCATION_ARGS) const {
   const cMapElement_filewrapperTemplateMap * p = (const cMapElement_filewrapperTemplateMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_filewrapperTemplateMap) ;
-  return p->mAttribute_mFilewrapperTemplatePath ;
+  return p->mProperty_mFilewrapperTemplatePath ;
 }
 
 
@@ -10709,25 +10709,25 @@ cMapElement_filewrapperMap::cMapElement_filewrapperMap (const GALGAS_lstring & i
                                                         const GALGAS_bool & in_mIsInternal
                                                         COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mFilewrapperPath (in_mFilewrapperPath),
-mAttribute_mFilewrapperExtensionList (in_mFilewrapperExtensionList),
-mAttribute_mFilewrapperFileMap (in_mFilewrapperFileMap),
-mAttribute_mFilewrapperDirectoryMap (in_mFilewrapperDirectoryMap),
-mAttribute_mFilewrapperTemplateMap (in_mFilewrapperTemplateMap),
-mAttribute_mIsInternal (in_mIsInternal) {
+mProperty_mFilewrapperPath (in_mFilewrapperPath),
+mProperty_mFilewrapperExtensionList (in_mFilewrapperExtensionList),
+mProperty_mFilewrapperFileMap (in_mFilewrapperFileMap),
+mProperty_mFilewrapperDirectoryMap (in_mFilewrapperDirectoryMap),
+mProperty_mFilewrapperTemplateMap (in_mFilewrapperTemplateMap),
+mProperty_mIsInternal (in_mIsInternal) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_filewrapperMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mFilewrapperPath.isValid () && mAttribute_mFilewrapperExtensionList.isValid () && mAttribute_mFilewrapperFileMap.isValid () && mAttribute_mFilewrapperDirectoryMap.isValid () && mAttribute_mFilewrapperTemplateMap.isValid () && mAttribute_mIsInternal.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mFilewrapperPath.isValid () && mProperty_mFilewrapperExtensionList.isValid () && mProperty_mFilewrapperFileMap.isValid () && mProperty_mFilewrapperDirectoryMap.isValid () && mProperty_mFilewrapperTemplateMap.isValid () && mProperty_mIsInternal.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_filewrapperMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_filewrapperMap (mAttribute_lkey, mAttribute_mFilewrapperPath, mAttribute_mFilewrapperExtensionList, mAttribute_mFilewrapperFileMap, mAttribute_mFilewrapperDirectoryMap, mAttribute_mFilewrapperTemplateMap, mAttribute_mIsInternal COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_filewrapperMap (mProperty_lkey, mProperty_mFilewrapperPath, mProperty_mFilewrapperExtensionList, mProperty_mFilewrapperFileMap, mProperty_mFilewrapperDirectoryMap, mProperty_mFilewrapperTemplateMap, mProperty_mIsInternal COMMA_HERE)) ;
   return result ;
 }
 
@@ -10737,51 +10737,51 @@ void cMapElement_filewrapperMap::description (C_String & ioString, const int32_t
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFilewrapperPath" ":" ;
-  mAttribute_mFilewrapperPath.description (ioString, inIndentation) ;
+  mProperty_mFilewrapperPath.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFilewrapperExtensionList" ":" ;
-  mAttribute_mFilewrapperExtensionList.description (ioString, inIndentation) ;
+  mProperty_mFilewrapperExtensionList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFilewrapperFileMap" ":" ;
-  mAttribute_mFilewrapperFileMap.description (ioString, inIndentation) ;
+  mProperty_mFilewrapperFileMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFilewrapperDirectoryMap" ":" ;
-  mAttribute_mFilewrapperDirectoryMap.description (ioString, inIndentation) ;
+  mProperty_mFilewrapperDirectoryMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFilewrapperTemplateMap" ":" ;
-  mAttribute_mFilewrapperTemplateMap.description (ioString, inIndentation) ;
+  mProperty_mFilewrapperTemplateMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mIsInternal" ":" ;
-  mAttribute_mIsInternal.description (ioString, inIndentation) ;
+  mProperty_mIsInternal.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_filewrapperMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_filewrapperMap * operand = (cMapElement_filewrapperMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mFilewrapperPath.objectCompare (operand->mAttribute_mFilewrapperPath) ;
+    result = mProperty_mFilewrapperPath.objectCompare (operand->mProperty_mFilewrapperPath) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mFilewrapperExtensionList.objectCompare (operand->mAttribute_mFilewrapperExtensionList) ;
+    result = mProperty_mFilewrapperExtensionList.objectCompare (operand->mProperty_mFilewrapperExtensionList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mFilewrapperFileMap.objectCompare (operand->mAttribute_mFilewrapperFileMap) ;
+    result = mProperty_mFilewrapperFileMap.objectCompare (operand->mProperty_mFilewrapperFileMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mFilewrapperDirectoryMap.objectCompare (operand->mAttribute_mFilewrapperDirectoryMap) ;
+    result = mProperty_mFilewrapperDirectoryMap.objectCompare (operand->mProperty_mFilewrapperDirectoryMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mFilewrapperTemplateMap.objectCompare (operand->mAttribute_mFilewrapperTemplateMap) ;
+    result = mProperty_mFilewrapperTemplateMap.objectCompare (operand->mProperty_mFilewrapperTemplateMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mIsInternal.objectCompare (operand->mAttribute_mIsInternal) ;
+    result = mProperty_mIsInternal.objectCompare (operand->mProperty_mIsInternal) ;
   }
   return result ;
 }
@@ -10901,12 +10901,12 @@ void GALGAS_filewrapperMap::method_searchKey (GALGAS_lstring inKey,
     outArgument5.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-    outArgument0 = p->mAttribute_mFilewrapperPath ;
-    outArgument1 = p->mAttribute_mFilewrapperExtensionList ;
-    outArgument2 = p->mAttribute_mFilewrapperFileMap ;
-    outArgument3 = p->mAttribute_mFilewrapperDirectoryMap ;
-    outArgument4 = p->mAttribute_mFilewrapperTemplateMap ;
-    outArgument5 = p->mAttribute_mIsInternal ;
+    outArgument0 = p->mProperty_mFilewrapperPath ;
+    outArgument1 = p->mProperty_mFilewrapperExtensionList ;
+    outArgument2 = p->mProperty_mFilewrapperFileMap ;
+    outArgument3 = p->mProperty_mFilewrapperDirectoryMap ;
+    outArgument4 = p->mProperty_mFilewrapperTemplateMap ;
+    outArgument5 = p->mProperty_mIsInternal ;
   }
 }
 
@@ -10920,7 +10920,7 @@ GALGAS_lstring GALGAS_filewrapperMap::getter_mFilewrapperPathForKey (const GALGA
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-    result = p->mAttribute_mFilewrapperPath ;
+    result = p->mProperty_mFilewrapperPath ;
   }
   return result ;
 }
@@ -10935,7 +10935,7 @@ GALGAS_lstringlist GALGAS_filewrapperMap::getter_mFilewrapperExtensionListForKey
   GALGAS_lstringlist result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-    result = p->mAttribute_mFilewrapperExtensionList ;
+    result = p->mProperty_mFilewrapperExtensionList ;
   }
   return result ;
 }
@@ -10950,7 +10950,7 @@ GALGAS_wrapperFileMap GALGAS_filewrapperMap::getter_mFilewrapperFileMapForKey (c
   GALGAS_wrapperFileMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-    result = p->mAttribute_mFilewrapperFileMap ;
+    result = p->mProperty_mFilewrapperFileMap ;
   }
   return result ;
 }
@@ -10965,7 +10965,7 @@ GALGAS_wrapperDirectoryMap GALGAS_filewrapperMap::getter_mFilewrapperDirectoryMa
   GALGAS_wrapperDirectoryMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-    result = p->mAttribute_mFilewrapperDirectoryMap ;
+    result = p->mProperty_mFilewrapperDirectoryMap ;
   }
   return result ;
 }
@@ -10980,7 +10980,7 @@ GALGAS_filewrapperTemplateMap GALGAS_filewrapperMap::getter_mFilewrapperTemplate
   GALGAS_filewrapperTemplateMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-    result = p->mAttribute_mFilewrapperTemplateMap ;
+    result = p->mProperty_mFilewrapperTemplateMap ;
   }
   return result ;
 }
@@ -10995,7 +10995,7 @@ GALGAS_bool GALGAS_filewrapperMap::getter_mIsInternalForKey (const GALGAS_string
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-    result = p->mAttribute_mIsInternal ;
+    result = p->mProperty_mIsInternal ;
   }
   return result ;
 }
@@ -11010,7 +11010,7 @@ void GALGAS_filewrapperMap::setter_setMFilewrapperPathForKey (GALGAS_lstring inA
   cMapElement_filewrapperMap * p = (cMapElement_filewrapperMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-    p->mAttribute_mFilewrapperPath = inAttributeValue ;
+    p->mProperty_mFilewrapperPath = inAttributeValue ;
   }
 }
 
@@ -11024,7 +11024,7 @@ void GALGAS_filewrapperMap::setter_setMFilewrapperExtensionListForKey (GALGAS_ls
   cMapElement_filewrapperMap * p = (cMapElement_filewrapperMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-    p->mAttribute_mFilewrapperExtensionList = inAttributeValue ;
+    p->mProperty_mFilewrapperExtensionList = inAttributeValue ;
   }
 }
 
@@ -11038,7 +11038,7 @@ void GALGAS_filewrapperMap::setter_setMFilewrapperFileMapForKey (GALGAS_wrapperF
   cMapElement_filewrapperMap * p = (cMapElement_filewrapperMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-    p->mAttribute_mFilewrapperFileMap = inAttributeValue ;
+    p->mProperty_mFilewrapperFileMap = inAttributeValue ;
   }
 }
 
@@ -11052,7 +11052,7 @@ void GALGAS_filewrapperMap::setter_setMFilewrapperDirectoryMapForKey (GALGAS_wra
   cMapElement_filewrapperMap * p = (cMapElement_filewrapperMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-    p->mAttribute_mFilewrapperDirectoryMap = inAttributeValue ;
+    p->mProperty_mFilewrapperDirectoryMap = inAttributeValue ;
   }
 }
 
@@ -11066,7 +11066,7 @@ void GALGAS_filewrapperMap::setter_setMFilewrapperTemplateMapForKey (GALGAS_file
   cMapElement_filewrapperMap * p = (cMapElement_filewrapperMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-    p->mAttribute_mFilewrapperTemplateMap = inAttributeValue ;
+    p->mProperty_mFilewrapperTemplateMap = inAttributeValue ;
   }
 }
 
@@ -11080,7 +11080,7 @@ void GALGAS_filewrapperMap::setter_setMIsInternalForKey (GALGAS_bool inAttribute
   cMapElement_filewrapperMap * p = (cMapElement_filewrapperMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-    p->mAttribute_mIsInternal = inAttributeValue ;
+    p->mProperty_mIsInternal = inAttributeValue ;
   }
 }
 
@@ -11107,7 +11107,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_filewrapperMap_2D_element cEnumerator_filewrapperMap::current (LOCATION_ARGS) const {
   const cMapElement_filewrapperMap * p = (const cMapElement_filewrapperMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-  return GALGAS_filewrapperMap_2D_element (p->mAttribute_lkey, p->mAttribute_mFilewrapperPath, p->mAttribute_mFilewrapperExtensionList, p->mAttribute_mFilewrapperFileMap, p->mAttribute_mFilewrapperDirectoryMap, p->mAttribute_mFilewrapperTemplateMap, p->mAttribute_mIsInternal) ;
+  return GALGAS_filewrapperMap_2D_element (p->mProperty_lkey, p->mProperty_mFilewrapperPath, p->mProperty_mFilewrapperExtensionList, p->mProperty_mFilewrapperFileMap, p->mProperty_mFilewrapperDirectoryMap, p->mProperty_mFilewrapperTemplateMap, p->mProperty_mIsInternal) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11115,7 +11115,7 @@ GALGAS_filewrapperMap_2D_element cEnumerator_filewrapperMap::current (LOCATION_A
 GALGAS_lstring cEnumerator_filewrapperMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11123,7 +11123,7 @@ GALGAS_lstring cEnumerator_filewrapperMap::current_lkey (LOCATION_ARGS) const {
 GALGAS_lstring cEnumerator_filewrapperMap::current_mFilewrapperPath (LOCATION_ARGS) const {
   const cMapElement_filewrapperMap * p = (const cMapElement_filewrapperMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-  return p->mAttribute_mFilewrapperPath ;
+  return p->mProperty_mFilewrapperPath ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11131,7 +11131,7 @@ GALGAS_lstring cEnumerator_filewrapperMap::current_mFilewrapperPath (LOCATION_AR
 GALGAS_lstringlist cEnumerator_filewrapperMap::current_mFilewrapperExtensionList (LOCATION_ARGS) const {
   const cMapElement_filewrapperMap * p = (const cMapElement_filewrapperMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-  return p->mAttribute_mFilewrapperExtensionList ;
+  return p->mProperty_mFilewrapperExtensionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11139,7 +11139,7 @@ GALGAS_lstringlist cEnumerator_filewrapperMap::current_mFilewrapperExtensionList
 GALGAS_wrapperFileMap cEnumerator_filewrapperMap::current_mFilewrapperFileMap (LOCATION_ARGS) const {
   const cMapElement_filewrapperMap * p = (const cMapElement_filewrapperMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-  return p->mAttribute_mFilewrapperFileMap ;
+  return p->mProperty_mFilewrapperFileMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11147,7 +11147,7 @@ GALGAS_wrapperFileMap cEnumerator_filewrapperMap::current_mFilewrapperFileMap (L
 GALGAS_wrapperDirectoryMap cEnumerator_filewrapperMap::current_mFilewrapperDirectoryMap (LOCATION_ARGS) const {
   const cMapElement_filewrapperMap * p = (const cMapElement_filewrapperMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-  return p->mAttribute_mFilewrapperDirectoryMap ;
+  return p->mProperty_mFilewrapperDirectoryMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11155,7 +11155,7 @@ GALGAS_wrapperDirectoryMap cEnumerator_filewrapperMap::current_mFilewrapperDirec
 GALGAS_filewrapperTemplateMap cEnumerator_filewrapperMap::current_mFilewrapperTemplateMap (LOCATION_ARGS) const {
   const cMapElement_filewrapperMap * p = (const cMapElement_filewrapperMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-  return p->mAttribute_mFilewrapperTemplateMap ;
+  return p->mProperty_mFilewrapperTemplateMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11163,7 +11163,7 @@ GALGAS_filewrapperTemplateMap cEnumerator_filewrapperMap::current_mFilewrapperTe
 GALGAS_bool cEnumerator_filewrapperMap::current_mIsInternal (LOCATION_ARGS) const {
   const cMapElement_filewrapperMap * p = (const cMapElement_filewrapperMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_filewrapperMap) ;
-  return p->mAttribute_mIsInternal ;
+  return p->mProperty_mIsInternal ;
 }
 
 
@@ -11221,24 +11221,24 @@ cMapElement_optionComponentMapForSemanticAnalysis::cMapElement_optionComponentMa
                                                                                                       const GALGAS_commandLineOptionMap & in_mStringListOptionMap
                                                                                                       COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mIsPredefined (in_mIsPredefined),
-mAttribute_mBoolOptionMap (in_mBoolOptionMap),
-mAttribute_mUIntOptionMap (in_mUIntOptionMap),
-mAttribute_mStringOptionMap (in_mStringOptionMap),
-mAttribute_mStringListOptionMap (in_mStringListOptionMap) {
+mProperty_mIsPredefined (in_mIsPredefined),
+mProperty_mBoolOptionMap (in_mBoolOptionMap),
+mProperty_mUIntOptionMap (in_mUIntOptionMap),
+mProperty_mStringOptionMap (in_mStringOptionMap),
+mProperty_mStringListOptionMap (in_mStringListOptionMap) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_optionComponentMapForSemanticAnalysis::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mIsPredefined.isValid () && mAttribute_mBoolOptionMap.isValid () && mAttribute_mUIntOptionMap.isValid () && mAttribute_mStringOptionMap.isValid () && mAttribute_mStringListOptionMap.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mIsPredefined.isValid () && mProperty_mBoolOptionMap.isValid () && mProperty_mUIntOptionMap.isValid () && mProperty_mStringOptionMap.isValid () && mProperty_mStringListOptionMap.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_optionComponentMapForSemanticAnalysis::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_optionComponentMapForSemanticAnalysis (mAttribute_lkey, mAttribute_mIsPredefined, mAttribute_mBoolOptionMap, mAttribute_mUIntOptionMap, mAttribute_mStringOptionMap, mAttribute_mStringListOptionMap COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_optionComponentMapForSemanticAnalysis (mProperty_lkey, mProperty_mIsPredefined, mProperty_mBoolOptionMap, mProperty_mUIntOptionMap, mProperty_mStringOptionMap, mProperty_mStringListOptionMap COMMA_HERE)) ;
   return result ;
 }
 
@@ -11248,44 +11248,44 @@ void cMapElement_optionComponentMapForSemanticAnalysis::description (C_String & 
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mIsPredefined" ":" ;
-  mAttribute_mIsPredefined.description (ioString, inIndentation) ;
+  mProperty_mIsPredefined.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mBoolOptionMap" ":" ;
-  mAttribute_mBoolOptionMap.description (ioString, inIndentation) ;
+  mProperty_mBoolOptionMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mUIntOptionMap" ":" ;
-  mAttribute_mUIntOptionMap.description (ioString, inIndentation) ;
+  mProperty_mUIntOptionMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mStringOptionMap" ":" ;
-  mAttribute_mStringOptionMap.description (ioString, inIndentation) ;
+  mProperty_mStringOptionMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mStringListOptionMap" ":" ;
-  mAttribute_mStringListOptionMap.description (ioString, inIndentation) ;
+  mProperty_mStringListOptionMap.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_optionComponentMapForSemanticAnalysis::compare (const cCollectionElement * inOperand) const {
   cMapElement_optionComponentMapForSemanticAnalysis * operand = (cMapElement_optionComponentMapForSemanticAnalysis *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mIsPredefined.objectCompare (operand->mAttribute_mIsPredefined) ;
+    result = mProperty_mIsPredefined.objectCompare (operand->mProperty_mIsPredefined) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mBoolOptionMap.objectCompare (operand->mAttribute_mBoolOptionMap) ;
+    result = mProperty_mBoolOptionMap.objectCompare (operand->mProperty_mBoolOptionMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mUIntOptionMap.objectCompare (operand->mAttribute_mUIntOptionMap) ;
+    result = mProperty_mUIntOptionMap.objectCompare (operand->mProperty_mUIntOptionMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mStringOptionMap.objectCompare (operand->mAttribute_mStringOptionMap) ;
+    result = mProperty_mStringOptionMap.objectCompare (operand->mProperty_mStringOptionMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mStringListOptionMap.objectCompare (operand->mAttribute_mStringListOptionMap) ;
+    result = mProperty_mStringListOptionMap.objectCompare (operand->mProperty_mStringListOptionMap) ;
   }
   return result ;
 }
@@ -11401,11 +11401,11 @@ void GALGAS_optionComponentMapForSemanticAnalysis::method_searchKey (GALGAS_lstr
     outArgument4.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-    outArgument0 = p->mAttribute_mIsPredefined ;
-    outArgument1 = p->mAttribute_mBoolOptionMap ;
-    outArgument2 = p->mAttribute_mUIntOptionMap ;
-    outArgument3 = p->mAttribute_mStringOptionMap ;
-    outArgument4 = p->mAttribute_mStringListOptionMap ;
+    outArgument0 = p->mProperty_mIsPredefined ;
+    outArgument1 = p->mProperty_mBoolOptionMap ;
+    outArgument2 = p->mProperty_mUIntOptionMap ;
+    outArgument3 = p->mProperty_mStringOptionMap ;
+    outArgument4 = p->mProperty_mStringListOptionMap ;
   }
 }
 
@@ -11419,7 +11419,7 @@ GALGAS_bool GALGAS_optionComponentMapForSemanticAnalysis::getter_mIsPredefinedFo
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-    result = p->mAttribute_mIsPredefined ;
+    result = p->mProperty_mIsPredefined ;
   }
   return result ;
 }
@@ -11434,7 +11434,7 @@ GALGAS_commandLineOptionMap GALGAS_optionComponentMapForSemanticAnalysis::getter
   GALGAS_commandLineOptionMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-    result = p->mAttribute_mBoolOptionMap ;
+    result = p->mProperty_mBoolOptionMap ;
   }
   return result ;
 }
@@ -11449,7 +11449,7 @@ GALGAS_commandLineOptionMap GALGAS_optionComponentMapForSemanticAnalysis::getter
   GALGAS_commandLineOptionMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-    result = p->mAttribute_mUIntOptionMap ;
+    result = p->mProperty_mUIntOptionMap ;
   }
   return result ;
 }
@@ -11464,7 +11464,7 @@ GALGAS_commandLineOptionMap GALGAS_optionComponentMapForSemanticAnalysis::getter
   GALGAS_commandLineOptionMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-    result = p->mAttribute_mStringOptionMap ;
+    result = p->mProperty_mStringOptionMap ;
   }
   return result ;
 }
@@ -11479,7 +11479,7 @@ GALGAS_commandLineOptionMap GALGAS_optionComponentMapForSemanticAnalysis::getter
   GALGAS_commandLineOptionMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-    result = p->mAttribute_mStringListOptionMap ;
+    result = p->mProperty_mStringListOptionMap ;
   }
   return result ;
 }
@@ -11494,7 +11494,7 @@ void GALGAS_optionComponentMapForSemanticAnalysis::setter_setMIsPredefinedForKey
   cMapElement_optionComponentMapForSemanticAnalysis * p = (cMapElement_optionComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-    p->mAttribute_mIsPredefined = inAttributeValue ;
+    p->mProperty_mIsPredefined = inAttributeValue ;
   }
 }
 
@@ -11508,7 +11508,7 @@ void GALGAS_optionComponentMapForSemanticAnalysis::setter_setMBoolOptionMapForKe
   cMapElement_optionComponentMapForSemanticAnalysis * p = (cMapElement_optionComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-    p->mAttribute_mBoolOptionMap = inAttributeValue ;
+    p->mProperty_mBoolOptionMap = inAttributeValue ;
   }
 }
 
@@ -11522,7 +11522,7 @@ void GALGAS_optionComponentMapForSemanticAnalysis::setter_setMUIntOptionMapForKe
   cMapElement_optionComponentMapForSemanticAnalysis * p = (cMapElement_optionComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-    p->mAttribute_mUIntOptionMap = inAttributeValue ;
+    p->mProperty_mUIntOptionMap = inAttributeValue ;
   }
 }
 
@@ -11536,7 +11536,7 @@ void GALGAS_optionComponentMapForSemanticAnalysis::setter_setMStringOptionMapFor
   cMapElement_optionComponentMapForSemanticAnalysis * p = (cMapElement_optionComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-    p->mAttribute_mStringOptionMap = inAttributeValue ;
+    p->mProperty_mStringOptionMap = inAttributeValue ;
   }
 }
 
@@ -11550,7 +11550,7 @@ void GALGAS_optionComponentMapForSemanticAnalysis::setter_setMStringListOptionMa
   cMapElement_optionComponentMapForSemanticAnalysis * p = (cMapElement_optionComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-    p->mAttribute_mStringListOptionMap = inAttributeValue ;
+    p->mProperty_mStringListOptionMap = inAttributeValue ;
   }
 }
 
@@ -11577,7 +11577,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_optionComponentMapForSemanticAnalysis_2D_element cEnumerator_optionComponentMapForSemanticAnalysis::current (LOCATION_ARGS) const {
   const cMapElement_optionComponentMapForSemanticAnalysis * p = (const cMapElement_optionComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-  return GALGAS_optionComponentMapForSemanticAnalysis_2D_element (p->mAttribute_lkey, p->mAttribute_mIsPredefined, p->mAttribute_mBoolOptionMap, p->mAttribute_mUIntOptionMap, p->mAttribute_mStringOptionMap, p->mAttribute_mStringListOptionMap) ;
+  return GALGAS_optionComponentMapForSemanticAnalysis_2D_element (p->mProperty_lkey, p->mProperty_mIsPredefined, p->mProperty_mBoolOptionMap, p->mProperty_mUIntOptionMap, p->mProperty_mStringOptionMap, p->mProperty_mStringListOptionMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11585,7 +11585,7 @@ GALGAS_optionComponentMapForSemanticAnalysis_2D_element cEnumerator_optionCompon
 GALGAS_lstring cEnumerator_optionComponentMapForSemanticAnalysis::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11593,7 +11593,7 @@ GALGAS_lstring cEnumerator_optionComponentMapForSemanticAnalysis::current_lkey (
 GALGAS_bool cEnumerator_optionComponentMapForSemanticAnalysis::current_mIsPredefined (LOCATION_ARGS) const {
   const cMapElement_optionComponentMapForSemanticAnalysis * p = (const cMapElement_optionComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-  return p->mAttribute_mIsPredefined ;
+  return p->mProperty_mIsPredefined ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11601,7 +11601,7 @@ GALGAS_bool cEnumerator_optionComponentMapForSemanticAnalysis::current_mIsPredef
 GALGAS_commandLineOptionMap cEnumerator_optionComponentMapForSemanticAnalysis::current_mBoolOptionMap (LOCATION_ARGS) const {
   const cMapElement_optionComponentMapForSemanticAnalysis * p = (const cMapElement_optionComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-  return p->mAttribute_mBoolOptionMap ;
+  return p->mProperty_mBoolOptionMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11609,7 +11609,7 @@ GALGAS_commandLineOptionMap cEnumerator_optionComponentMapForSemanticAnalysis::c
 GALGAS_commandLineOptionMap cEnumerator_optionComponentMapForSemanticAnalysis::current_mUIntOptionMap (LOCATION_ARGS) const {
   const cMapElement_optionComponentMapForSemanticAnalysis * p = (const cMapElement_optionComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-  return p->mAttribute_mUIntOptionMap ;
+  return p->mProperty_mUIntOptionMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11617,7 +11617,7 @@ GALGAS_commandLineOptionMap cEnumerator_optionComponentMapForSemanticAnalysis::c
 GALGAS_commandLineOptionMap cEnumerator_optionComponentMapForSemanticAnalysis::current_mStringOptionMap (LOCATION_ARGS) const {
   const cMapElement_optionComponentMapForSemanticAnalysis * p = (const cMapElement_optionComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-  return p->mAttribute_mStringOptionMap ;
+  return p->mProperty_mStringOptionMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11625,7 +11625,7 @@ GALGAS_commandLineOptionMap cEnumerator_optionComponentMapForSemanticAnalysis::c
 GALGAS_commandLineOptionMap cEnumerator_optionComponentMapForSemanticAnalysis::current_mStringListOptionMap (LOCATION_ARGS) const {
   const cMapElement_optionComponentMapForSemanticAnalysis * p = (const cMapElement_optionComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_optionComponentMapForSemanticAnalysis) ;
-  return p->mAttribute_mStringListOptionMap ;
+  return p->mProperty_mStringListOptionMap ;
 }
 
 
@@ -11681,22 +11681,22 @@ cMapElement_lexiqueComponentMapForSemanticAnalysis::cMapElement_lexiqueComponent
                                                                                                         const GALGAS_lstring & in_mIndexingDirectory
                                                                                                         COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mTerminalMap (in_mTerminalMap),
-mAttribute_mIndexingListAST (in_mIndexingListAST),
-mAttribute_mIndexingDirectory (in_mIndexingDirectory) {
+mProperty_mTerminalMap (in_mTerminalMap),
+mProperty_mIndexingListAST (in_mIndexingListAST),
+mProperty_mIndexingDirectory (in_mIndexingDirectory) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_lexiqueComponentMapForSemanticAnalysis::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mTerminalMap.isValid () && mAttribute_mIndexingListAST.isValid () && mAttribute_mIndexingDirectory.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mTerminalMap.isValid () && mProperty_mIndexingListAST.isValid () && mProperty_mIndexingDirectory.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_lexiqueComponentMapForSemanticAnalysis::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_lexiqueComponentMapForSemanticAnalysis (mAttribute_lkey, mAttribute_mTerminalMap, mAttribute_mIndexingListAST, mAttribute_mIndexingDirectory COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_lexiqueComponentMapForSemanticAnalysis (mProperty_lkey, mProperty_mTerminalMap, mProperty_mIndexingListAST, mProperty_mIndexingDirectory COMMA_HERE)) ;
   return result ;
 }
 
@@ -11706,30 +11706,30 @@ void cMapElement_lexiqueComponentMapForSemanticAnalysis::description (C_String &
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTerminalMap" ":" ;
-  mAttribute_mTerminalMap.description (ioString, inIndentation) ;
+  mProperty_mTerminalMap.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mIndexingListAST" ":" ;
-  mAttribute_mIndexingListAST.description (ioString, inIndentation) ;
+  mProperty_mIndexingListAST.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mIndexingDirectory" ":" ;
-  mAttribute_mIndexingDirectory.description (ioString, inIndentation) ;
+  mProperty_mIndexingDirectory.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_lexiqueComponentMapForSemanticAnalysis::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexiqueComponentMapForSemanticAnalysis * operand = (cMapElement_lexiqueComponentMapForSemanticAnalysis *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mTerminalMap.objectCompare (operand->mAttribute_mTerminalMap) ;
+    result = mProperty_mTerminalMap.objectCompare (operand->mProperty_mTerminalMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mIndexingListAST.objectCompare (operand->mAttribute_mIndexingListAST) ;
+    result = mProperty_mIndexingListAST.objectCompare (operand->mProperty_mIndexingListAST) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mIndexingDirectory.objectCompare (operand->mAttribute_mIndexingDirectory) ;
+    result = mProperty_mIndexingDirectory.objectCompare (operand->mProperty_mIndexingDirectory) ;
   }
   return result ;
 }
@@ -11837,9 +11837,9 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis::method_searchKey (GALGAS_lst
     outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
-    outArgument0 = p->mAttribute_mTerminalMap ;
-    outArgument1 = p->mAttribute_mIndexingListAST ;
-    outArgument2 = p->mAttribute_mIndexingDirectory ;
+    outArgument0 = p->mProperty_mTerminalMap ;
+    outArgument1 = p->mProperty_mIndexingListAST ;
+    outArgument2 = p->mProperty_mIndexingDirectory ;
   }
 }
 
@@ -11853,7 +11853,7 @@ GALGAS_terminalMap GALGAS_lexiqueComponentMapForSemanticAnalysis::getter_mTermin
   GALGAS_terminalMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
-    result = p->mAttribute_mTerminalMap ;
+    result = p->mProperty_mTerminalMap ;
   }
   return result ;
 }
@@ -11868,7 +11868,7 @@ GALGAS_indexingListAST GALGAS_lexiqueComponentMapForSemanticAnalysis::getter_mIn
   GALGAS_indexingListAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
-    result = p->mAttribute_mIndexingListAST ;
+    result = p->mProperty_mIndexingListAST ;
   }
   return result ;
 }
@@ -11883,7 +11883,7 @@ GALGAS_lstring GALGAS_lexiqueComponentMapForSemanticAnalysis::getter_mIndexingDi
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
-    result = p->mAttribute_mIndexingDirectory ;
+    result = p->mProperty_mIndexingDirectory ;
   }
   return result ;
 }
@@ -11898,7 +11898,7 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis::setter_setMTerminalMapForKey
   cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (cMapElement_lexiqueComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
-    p->mAttribute_mTerminalMap = inAttributeValue ;
+    p->mProperty_mTerminalMap = inAttributeValue ;
   }
 }
 
@@ -11912,7 +11912,7 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis::setter_setMIndexingListASTFo
   cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (cMapElement_lexiqueComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
-    p->mAttribute_mIndexingListAST = inAttributeValue ;
+    p->mProperty_mIndexingListAST = inAttributeValue ;
   }
 }
 
@@ -11926,7 +11926,7 @@ void GALGAS_lexiqueComponentMapForSemanticAnalysis::setter_setMIndexingDirectory
   cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (cMapElement_lexiqueComponentMapForSemanticAnalysis *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
-    p->mAttribute_mIndexingDirectory = inAttributeValue ;
+    p->mProperty_mIndexingDirectory = inAttributeValue ;
   }
 }
 
@@ -11953,7 +11953,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element cEnumerator_lexiqueComponentMapForSemanticAnalysis::current (LOCATION_ARGS) const {
   const cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (const cMapElement_lexiqueComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
-  return GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (p->mAttribute_lkey, p->mAttribute_mTerminalMap, p->mAttribute_mIndexingListAST, p->mAttribute_mIndexingDirectory) ;
+  return GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (p->mProperty_lkey, p->mProperty_mTerminalMap, p->mProperty_mIndexingListAST, p->mProperty_mIndexingDirectory) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11961,7 +11961,7 @@ GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element cEnumerator_lexiqueComp
 GALGAS_lstring cEnumerator_lexiqueComponentMapForSemanticAnalysis::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11969,7 +11969,7 @@ GALGAS_lstring cEnumerator_lexiqueComponentMapForSemanticAnalysis::current_lkey 
 GALGAS_terminalMap cEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mTerminalMap (LOCATION_ARGS) const {
   const cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (const cMapElement_lexiqueComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
-  return p->mAttribute_mTerminalMap ;
+  return p->mProperty_mTerminalMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11977,7 +11977,7 @@ GALGAS_terminalMap cEnumerator_lexiqueComponentMapForSemanticAnalysis::current_m
 GALGAS_indexingListAST cEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mIndexingListAST (LOCATION_ARGS) const {
   const cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (const cMapElement_lexiqueComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
-  return p->mAttribute_mIndexingListAST ;
+  return p->mProperty_mIndexingListAST ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11985,7 +11985,7 @@ GALGAS_indexingListAST cEnumerator_lexiqueComponentMapForSemanticAnalysis::curre
 GALGAS_lstring cEnumerator_lexiqueComponentMapForSemanticAnalysis::current_mIndexingDirectory (LOCATION_ARGS) const {
   const cMapElement_lexiqueComponentMapForSemanticAnalysis * p = (const cMapElement_lexiqueComponentMapForSemanticAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexiqueComponentMapForSemanticAnalysis) ;
-  return p->mAttribute_mIndexingDirectory ;
+  return p->mProperty_mIndexingDirectory ;
 }
 
 
@@ -12042,23 +12042,23 @@ cMapElement_syntaxComponentMap::cMapElement_syntaxComponentMap (const GALGAS_lst
                                                                 const GALGAS_bool & in_mHasTranslateFeature
                                                                 COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mLexiqueName (in_mLexiqueName),
-mAttribute_mNonterminalDeclarationList (in_mNonterminalDeclarationList),
-mAttribute_mRuleList (in_mRuleList),
-mAttribute_mHasTranslateFeature (in_mHasTranslateFeature) {
+mProperty_mLexiqueName (in_mLexiqueName),
+mProperty_mNonterminalDeclarationList (in_mNonterminalDeclarationList),
+mProperty_mRuleList (in_mRuleList),
+mProperty_mHasTranslateFeature (in_mHasTranslateFeature) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_syntaxComponentMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mLexiqueName.isValid () && mAttribute_mNonterminalDeclarationList.isValid () && mAttribute_mRuleList.isValid () && mAttribute_mHasTranslateFeature.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mLexiqueName.isValid () && mProperty_mNonterminalDeclarationList.isValid () && mProperty_mRuleList.isValid () && mProperty_mHasTranslateFeature.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_syntaxComponentMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_syntaxComponentMap (mAttribute_lkey, mAttribute_mLexiqueName, mAttribute_mNonterminalDeclarationList, mAttribute_mRuleList, mAttribute_mHasTranslateFeature COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_syntaxComponentMap (mProperty_lkey, mProperty_mLexiqueName, mProperty_mNonterminalDeclarationList, mProperty_mRuleList, mProperty_mHasTranslateFeature COMMA_HERE)) ;
   return result ;
 }
 
@@ -12068,37 +12068,37 @@ void cMapElement_syntaxComponentMap::description (C_String & ioString, const int
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexiqueName" ":" ;
-  mAttribute_mLexiqueName.description (ioString, inIndentation) ;
+  mProperty_mLexiqueName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mNonterminalDeclarationList" ":" ;
-  mAttribute_mNonterminalDeclarationList.description (ioString, inIndentation) ;
+  mProperty_mNonterminalDeclarationList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mRuleList" ":" ;
-  mAttribute_mRuleList.description (ioString, inIndentation) ;
+  mProperty_mRuleList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mHasTranslateFeature" ":" ;
-  mAttribute_mHasTranslateFeature.description (ioString, inIndentation) ;
+  mProperty_mHasTranslateFeature.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_syntaxComponentMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_syntaxComponentMap * operand = (cMapElement_syntaxComponentMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mLexiqueName.objectCompare (operand->mAttribute_mLexiqueName) ;
+    result = mProperty_mLexiqueName.objectCompare (operand->mProperty_mLexiqueName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mNonterminalDeclarationList.objectCompare (operand->mAttribute_mNonterminalDeclarationList) ;
+    result = mProperty_mNonterminalDeclarationList.objectCompare (operand->mProperty_mNonterminalDeclarationList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRuleList.objectCompare (operand->mAttribute_mRuleList) ;
+    result = mProperty_mRuleList.objectCompare (operand->mProperty_mRuleList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mHasTranslateFeature.objectCompare (operand->mAttribute_mHasTranslateFeature) ;
+    result = mProperty_mHasTranslateFeature.objectCompare (operand->mProperty_mHasTranslateFeature) ;
   }
   return result ;
 }
@@ -12210,10 +12210,10 @@ void GALGAS_syntaxComponentMap::method_searchKey (GALGAS_lstring inKey,
     outArgument3.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_syntaxComponentMap) ;
-    outArgument0 = p->mAttribute_mLexiqueName ;
-    outArgument1 = p->mAttribute_mNonterminalDeclarationList ;
-    outArgument2 = p->mAttribute_mRuleList ;
-    outArgument3 = p->mAttribute_mHasTranslateFeature ;
+    outArgument0 = p->mProperty_mLexiqueName ;
+    outArgument1 = p->mProperty_mNonterminalDeclarationList ;
+    outArgument2 = p->mProperty_mRuleList ;
+    outArgument3 = p->mProperty_mHasTranslateFeature ;
   }
 }
 
@@ -12227,7 +12227,7 @@ GALGAS_lstring GALGAS_syntaxComponentMap::getter_mLexiqueNameForKey (const GALGA
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_syntaxComponentMap) ;
-    result = p->mAttribute_mLexiqueName ;
+    result = p->mProperty_mLexiqueName ;
   }
   return result ;
 }
@@ -12242,7 +12242,7 @@ GALGAS_nonterminalDeclarationListAST GALGAS_syntaxComponentMap::getter_mNontermi
   GALGAS_nonterminalDeclarationListAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_syntaxComponentMap) ;
-    result = p->mAttribute_mNonterminalDeclarationList ;
+    result = p->mProperty_mNonterminalDeclarationList ;
   }
   return result ;
 }
@@ -12257,7 +12257,7 @@ GALGAS_syntaxRuleListAST GALGAS_syntaxComponentMap::getter_mRuleListForKey (cons
   GALGAS_syntaxRuleListAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_syntaxComponentMap) ;
-    result = p->mAttribute_mRuleList ;
+    result = p->mProperty_mRuleList ;
   }
   return result ;
 }
@@ -12272,7 +12272,7 @@ GALGAS_bool GALGAS_syntaxComponentMap::getter_mHasTranslateFeatureForKey (const 
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_syntaxComponentMap) ;
-    result = p->mAttribute_mHasTranslateFeature ;
+    result = p->mProperty_mHasTranslateFeature ;
   }
   return result ;
 }
@@ -12287,7 +12287,7 @@ void GALGAS_syntaxComponentMap::setter_setMLexiqueNameForKey (GALGAS_lstring inA
   cMapElement_syntaxComponentMap * p = (cMapElement_syntaxComponentMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_syntaxComponentMap) ;
-    p->mAttribute_mLexiqueName = inAttributeValue ;
+    p->mProperty_mLexiqueName = inAttributeValue ;
   }
 }
 
@@ -12301,7 +12301,7 @@ void GALGAS_syntaxComponentMap::setter_setMNonterminalDeclarationListForKey (GAL
   cMapElement_syntaxComponentMap * p = (cMapElement_syntaxComponentMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_syntaxComponentMap) ;
-    p->mAttribute_mNonterminalDeclarationList = inAttributeValue ;
+    p->mProperty_mNonterminalDeclarationList = inAttributeValue ;
   }
 }
 
@@ -12315,7 +12315,7 @@ void GALGAS_syntaxComponentMap::setter_setMRuleListForKey (GALGAS_syntaxRuleList
   cMapElement_syntaxComponentMap * p = (cMapElement_syntaxComponentMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_syntaxComponentMap) ;
-    p->mAttribute_mRuleList = inAttributeValue ;
+    p->mProperty_mRuleList = inAttributeValue ;
   }
 }
 
@@ -12329,7 +12329,7 @@ void GALGAS_syntaxComponentMap::setter_setMHasTranslateFeatureForKey (GALGAS_boo
   cMapElement_syntaxComponentMap * p = (cMapElement_syntaxComponentMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_syntaxComponentMap) ;
-    p->mAttribute_mHasTranslateFeature = inAttributeValue ;
+    p->mProperty_mHasTranslateFeature = inAttributeValue ;
   }
 }
 
@@ -12356,7 +12356,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_syntaxComponentMap_2D_element cEnumerator_syntaxComponentMap::current (LOCATION_ARGS) const {
   const cMapElement_syntaxComponentMap * p = (const cMapElement_syntaxComponentMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_syntaxComponentMap) ;
-  return GALGAS_syntaxComponentMap_2D_element (p->mAttribute_lkey, p->mAttribute_mLexiqueName, p->mAttribute_mNonterminalDeclarationList, p->mAttribute_mRuleList, p->mAttribute_mHasTranslateFeature) ;
+  return GALGAS_syntaxComponentMap_2D_element (p->mProperty_lkey, p->mProperty_mLexiqueName, p->mProperty_mNonterminalDeclarationList, p->mProperty_mRuleList, p->mProperty_mHasTranslateFeature) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12364,7 +12364,7 @@ GALGAS_syntaxComponentMap_2D_element cEnumerator_syntaxComponentMap::current (LO
 GALGAS_lstring cEnumerator_syntaxComponentMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12372,7 +12372,7 @@ GALGAS_lstring cEnumerator_syntaxComponentMap::current_lkey (LOCATION_ARGS) cons
 GALGAS_lstring cEnumerator_syntaxComponentMap::current_mLexiqueName (LOCATION_ARGS) const {
   const cMapElement_syntaxComponentMap * p = (const cMapElement_syntaxComponentMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_syntaxComponentMap) ;
-  return p->mAttribute_mLexiqueName ;
+  return p->mProperty_mLexiqueName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12380,7 +12380,7 @@ GALGAS_lstring cEnumerator_syntaxComponentMap::current_mLexiqueName (LOCATION_AR
 GALGAS_nonterminalDeclarationListAST cEnumerator_syntaxComponentMap::current_mNonterminalDeclarationList (LOCATION_ARGS) const {
   const cMapElement_syntaxComponentMap * p = (const cMapElement_syntaxComponentMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_syntaxComponentMap) ;
-  return p->mAttribute_mNonterminalDeclarationList ;
+  return p->mProperty_mNonterminalDeclarationList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12388,7 +12388,7 @@ GALGAS_nonterminalDeclarationListAST cEnumerator_syntaxComponentMap::current_mNo
 GALGAS_syntaxRuleListAST cEnumerator_syntaxComponentMap::current_mRuleList (LOCATION_ARGS) const {
   const cMapElement_syntaxComponentMap * p = (const cMapElement_syntaxComponentMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_syntaxComponentMap) ;
-  return p->mAttribute_mRuleList ;
+  return p->mProperty_mRuleList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12396,7 +12396,7 @@ GALGAS_syntaxRuleListAST cEnumerator_syntaxComponentMap::current_mRuleList (LOCA
 GALGAS_bool cEnumerator_syntaxComponentMap::current_mHasTranslateFeature (LOCATION_ARGS) const {
   const cMapElement_syntaxComponentMap * p = (const cMapElement_syntaxComponentMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_syntaxComponentMap) ;
-  return p->mAttribute_mHasTranslateFeature ;
+  return p->mProperty_mHasTranslateFeature ;
 }
 
 
@@ -12450,20 +12450,20 @@ cMapElement_extensionMethodMapForType::cMapElement_extensionMethodMapForType (co
                                                                               const GALGAS_formalParameterListAST & in_mFormalParameterList
                                                                               COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mFormalParameterList (in_mFormalParameterList) {
+mProperty_mFormalParameterList (in_mFormalParameterList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_extensionMethodMapForType::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mFormalParameterList.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mFormalParameterList.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_extensionMethodMapForType::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_extensionMethodMapForType (mAttribute_lkey, mAttribute_mFormalParameterList COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_extensionMethodMapForType (mProperty_lkey, mProperty_mFormalParameterList COMMA_HERE)) ;
   return result ;
 }
 
@@ -12473,16 +12473,16 @@ void cMapElement_extensionMethodMapForType::description (C_String & ioString, co
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFormalParameterList" ":" ;
-  mAttribute_mFormalParameterList.description (ioString, inIndentation) ;
+  mProperty_mFormalParameterList.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_extensionMethodMapForType::compare (const cCollectionElement * inOperand) const {
   cMapElement_extensionMethodMapForType * operand = (cMapElement_extensionMethodMapForType *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mFormalParameterList.objectCompare (operand->mAttribute_mFormalParameterList) ;
+    result = mProperty_mFormalParameterList.objectCompare (operand->mProperty_mFormalParameterList) ;
   }
   return result ;
 }
@@ -12574,7 +12574,7 @@ GALGAS_formalParameterListAST GALGAS_extensionMethodMapForType::getter_mFormalPa
   GALGAS_formalParameterListAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_extensionMethodMapForType) ;
-    result = p->mAttribute_mFormalParameterList ;
+    result = p->mProperty_mFormalParameterList ;
   }
   return result ;
 }
@@ -12589,7 +12589,7 @@ void GALGAS_extensionMethodMapForType::setter_setMFormalParameterListForKey (GAL
   cMapElement_extensionMethodMapForType * p = (cMapElement_extensionMethodMapForType *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_extensionMethodMapForType) ;
-    p->mAttribute_mFormalParameterList = inAttributeValue ;
+    p->mProperty_mFormalParameterList = inAttributeValue ;
   }
 }
 
@@ -12616,7 +12616,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_extensionMethodMapForType_2D_element cEnumerator_extensionMethodMapForType::current (LOCATION_ARGS) const {
   const cMapElement_extensionMethodMapForType * p = (const cMapElement_extensionMethodMapForType *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_extensionMethodMapForType) ;
-  return GALGAS_extensionMethodMapForType_2D_element (p->mAttribute_lkey, p->mAttribute_mFormalParameterList) ;
+  return GALGAS_extensionMethodMapForType_2D_element (p->mProperty_lkey, p->mProperty_mFormalParameterList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12624,7 +12624,7 @@ GALGAS_extensionMethodMapForType_2D_element cEnumerator_extensionMethodMapForTyp
 GALGAS_lstring cEnumerator_extensionMethodMapForType::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12632,7 +12632,7 @@ GALGAS_lstring cEnumerator_extensionMethodMapForType::current_lkey (LOCATION_ARG
 GALGAS_formalParameterListAST cEnumerator_extensionMethodMapForType::current_mFormalParameterList (LOCATION_ARGS) const {
   const cMapElement_extensionMethodMapForType * p = (const cMapElement_extensionMethodMapForType *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_extensionMethodMapForType) ;
-  return p->mAttribute_mFormalParameterList ;
+  return p->mProperty_mFormalParameterList ;
 }
 
 
@@ -12686,20 +12686,20 @@ cMapElement_extensionMethodMapForBuildingContext::cMapElement_extensionMethodMap
                                                                                                     const GALGAS_extensionMethodMapForType & in_mExtensionMethodMapForType
                                                                                                     COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mExtensionMethodMapForType (in_mExtensionMethodMapForType) {
+mProperty_mExtensionMethodMapForType (in_mExtensionMethodMapForType) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_extensionMethodMapForBuildingContext::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mExtensionMethodMapForType.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mExtensionMethodMapForType.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_extensionMethodMapForBuildingContext::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_extensionMethodMapForBuildingContext (mAttribute_lkey, mAttribute_mExtensionMethodMapForType COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_extensionMethodMapForBuildingContext (mProperty_lkey, mProperty_mExtensionMethodMapForType COMMA_HERE)) ;
   return result ;
 }
 
@@ -12709,16 +12709,16 @@ void cMapElement_extensionMethodMapForBuildingContext::description (C_String & i
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mExtensionMethodMapForType" ":" ;
-  mAttribute_mExtensionMethodMapForType.description (ioString, inIndentation) ;
+  mProperty_mExtensionMethodMapForType.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_extensionMethodMapForBuildingContext::compare (const cCollectionElement * inOperand) const {
   cMapElement_extensionMethodMapForBuildingContext * operand = (cMapElement_extensionMethodMapForBuildingContext *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mExtensionMethodMapForType.objectCompare (operand->mAttribute_mExtensionMethodMapForType) ;
+    result = mProperty_mExtensionMethodMapForType.objectCompare (operand->mProperty_mExtensionMethodMapForType) ;
   }
   return result ;
 }
@@ -12818,7 +12818,7 @@ void GALGAS_extensionMethodMapForBuildingContext::method_searchKey (GALGAS_lstri
     outArgument0.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_extensionMethodMapForBuildingContext) ;
-    outArgument0 = p->mAttribute_mExtensionMethodMapForType ;
+    outArgument0 = p->mProperty_mExtensionMethodMapForType ;
   }
 }
 
@@ -12832,7 +12832,7 @@ GALGAS_extensionMethodMapForType GALGAS_extensionMethodMapForBuildingContext::ge
   GALGAS_extensionMethodMapForType result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_extensionMethodMapForBuildingContext) ;
-    result = p->mAttribute_mExtensionMethodMapForType ;
+    result = p->mProperty_mExtensionMethodMapForType ;
   }
   return result ;
 }
@@ -12847,7 +12847,7 @@ void GALGAS_extensionMethodMapForBuildingContext::setter_setMExtensionMethodMapF
   cMapElement_extensionMethodMapForBuildingContext * p = (cMapElement_extensionMethodMapForBuildingContext *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_extensionMethodMapForBuildingContext) ;
-    p->mAttribute_mExtensionMethodMapForType = inAttributeValue ;
+    p->mProperty_mExtensionMethodMapForType = inAttributeValue ;
   }
 }
 
@@ -12874,7 +12874,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_extensionMethodMapForBuildingContext_2D_element cEnumerator_extensionMethodMapForBuildingContext::current (LOCATION_ARGS) const {
   const cMapElement_extensionMethodMapForBuildingContext * p = (const cMapElement_extensionMethodMapForBuildingContext *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_extensionMethodMapForBuildingContext) ;
-  return GALGAS_extensionMethodMapForBuildingContext_2D_element (p->mAttribute_lkey, p->mAttribute_mExtensionMethodMapForType) ;
+  return GALGAS_extensionMethodMapForBuildingContext_2D_element (p->mProperty_lkey, p->mProperty_mExtensionMethodMapForType) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12882,7 +12882,7 @@ GALGAS_extensionMethodMapForBuildingContext_2D_element cEnumerator_extensionMeth
 GALGAS_lstring cEnumerator_extensionMethodMapForBuildingContext::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12890,7 +12890,7 @@ GALGAS_lstring cEnumerator_extensionMethodMapForBuildingContext::current_lkey (L
 GALGAS_extensionMethodMapForType cEnumerator_extensionMethodMapForBuildingContext::current_mExtensionMethodMapForType (LOCATION_ARGS) const {
   const cMapElement_extensionMethodMapForBuildingContext * p = (const cMapElement_extensionMethodMapForBuildingContext *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_extensionMethodMapForBuildingContext) ;
-  return p->mAttribute_mExtensionMethodMapForType ;
+  return p->mProperty_mExtensionMethodMapForType ;
 }
 
 
@@ -12944,20 +12944,20 @@ cMapElement_extensionSetterMapForType::cMapElement_extensionSetterMapForType (co
                                                                               const GALGAS_formalParameterListAST & in_mFormalParameterList
                                                                               COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mFormalParameterList (in_mFormalParameterList) {
+mProperty_mFormalParameterList (in_mFormalParameterList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_extensionSetterMapForType::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mFormalParameterList.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mFormalParameterList.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_extensionSetterMapForType::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_extensionSetterMapForType (mAttribute_lkey, mAttribute_mFormalParameterList COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_extensionSetterMapForType (mProperty_lkey, mProperty_mFormalParameterList COMMA_HERE)) ;
   return result ;
 }
 
@@ -12967,16 +12967,16 @@ void cMapElement_extensionSetterMapForType::description (C_String & ioString, co
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFormalParameterList" ":" ;
-  mAttribute_mFormalParameterList.description (ioString, inIndentation) ;
+  mProperty_mFormalParameterList.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_extensionSetterMapForType::compare (const cCollectionElement * inOperand) const {
   cMapElement_extensionSetterMapForType * operand = (cMapElement_extensionSetterMapForType *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mFormalParameterList.objectCompare (operand->mAttribute_mFormalParameterList) ;
+    result = mProperty_mFormalParameterList.objectCompare (operand->mProperty_mFormalParameterList) ;
   }
   return result ;
 }
@@ -13068,7 +13068,7 @@ GALGAS_formalParameterListAST GALGAS_extensionSetterMapForType::getter_mFormalPa
   GALGAS_formalParameterListAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_extensionSetterMapForType) ;
-    result = p->mAttribute_mFormalParameterList ;
+    result = p->mProperty_mFormalParameterList ;
   }
   return result ;
 }
@@ -13083,7 +13083,7 @@ void GALGAS_extensionSetterMapForType::setter_setMFormalParameterListForKey (GAL
   cMapElement_extensionSetterMapForType * p = (cMapElement_extensionSetterMapForType *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_extensionSetterMapForType) ;
-    p->mAttribute_mFormalParameterList = inAttributeValue ;
+    p->mProperty_mFormalParameterList = inAttributeValue ;
   }
 }
 
@@ -13110,7 +13110,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_extensionSetterMapForType_2D_element cEnumerator_extensionSetterMapForType::current (LOCATION_ARGS) const {
   const cMapElement_extensionSetterMapForType * p = (const cMapElement_extensionSetterMapForType *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_extensionSetterMapForType) ;
-  return GALGAS_extensionSetterMapForType_2D_element (p->mAttribute_lkey, p->mAttribute_mFormalParameterList) ;
+  return GALGAS_extensionSetterMapForType_2D_element (p->mProperty_lkey, p->mProperty_mFormalParameterList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13118,7 +13118,7 @@ GALGAS_extensionSetterMapForType_2D_element cEnumerator_extensionSetterMapForTyp
 GALGAS_lstring cEnumerator_extensionSetterMapForType::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13126,7 +13126,7 @@ GALGAS_lstring cEnumerator_extensionSetterMapForType::current_lkey (LOCATION_ARG
 GALGAS_formalParameterListAST cEnumerator_extensionSetterMapForType::current_mFormalParameterList (LOCATION_ARGS) const {
   const cMapElement_extensionSetterMapForType * p = (const cMapElement_extensionSetterMapForType *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_extensionSetterMapForType) ;
-  return p->mAttribute_mFormalParameterList ;
+  return p->mProperty_mFormalParameterList ;
 }
 
 
@@ -13180,20 +13180,20 @@ cMapElement_extensionSetterMapForBuildingContext::cMapElement_extensionSetterMap
                                                                                                     const GALGAS_extensionSetterMapForType & in_mExtensionSetterMapForType
                                                                                                     COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mExtensionSetterMapForType (in_mExtensionSetterMapForType) {
+mProperty_mExtensionSetterMapForType (in_mExtensionSetterMapForType) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_extensionSetterMapForBuildingContext::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mExtensionSetterMapForType.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mExtensionSetterMapForType.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_extensionSetterMapForBuildingContext::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_extensionSetterMapForBuildingContext (mAttribute_lkey, mAttribute_mExtensionSetterMapForType COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_extensionSetterMapForBuildingContext (mProperty_lkey, mProperty_mExtensionSetterMapForType COMMA_HERE)) ;
   return result ;
 }
 
@@ -13203,16 +13203,16 @@ void cMapElement_extensionSetterMapForBuildingContext::description (C_String & i
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mExtensionSetterMapForType" ":" ;
-  mAttribute_mExtensionSetterMapForType.description (ioString, inIndentation) ;
+  mProperty_mExtensionSetterMapForType.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_extensionSetterMapForBuildingContext::compare (const cCollectionElement * inOperand) const {
   cMapElement_extensionSetterMapForBuildingContext * operand = (cMapElement_extensionSetterMapForBuildingContext *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mExtensionSetterMapForType.objectCompare (operand->mAttribute_mExtensionSetterMapForType) ;
+    result = mProperty_mExtensionSetterMapForType.objectCompare (operand->mProperty_mExtensionSetterMapForType) ;
   }
   return result ;
 }
@@ -13312,7 +13312,7 @@ void GALGAS_extensionSetterMapForBuildingContext::method_searchKey (GALGAS_lstri
     outArgument0.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_extensionSetterMapForBuildingContext) ;
-    outArgument0 = p->mAttribute_mExtensionSetterMapForType ;
+    outArgument0 = p->mProperty_mExtensionSetterMapForType ;
   }
 }
 
@@ -13326,7 +13326,7 @@ GALGAS_extensionSetterMapForType GALGAS_extensionSetterMapForBuildingContext::ge
   GALGAS_extensionSetterMapForType result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_extensionSetterMapForBuildingContext) ;
-    result = p->mAttribute_mExtensionSetterMapForType ;
+    result = p->mProperty_mExtensionSetterMapForType ;
   }
   return result ;
 }
@@ -13341,7 +13341,7 @@ void GALGAS_extensionSetterMapForBuildingContext::setter_setMExtensionSetterMapF
   cMapElement_extensionSetterMapForBuildingContext * p = (cMapElement_extensionSetterMapForBuildingContext *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_extensionSetterMapForBuildingContext) ;
-    p->mAttribute_mExtensionSetterMapForType = inAttributeValue ;
+    p->mProperty_mExtensionSetterMapForType = inAttributeValue ;
   }
 }
 
@@ -13368,7 +13368,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_extensionSetterMapForBuildingContext_2D_element cEnumerator_extensionSetterMapForBuildingContext::current (LOCATION_ARGS) const {
   const cMapElement_extensionSetterMapForBuildingContext * p = (const cMapElement_extensionSetterMapForBuildingContext *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_extensionSetterMapForBuildingContext) ;
-  return GALGAS_extensionSetterMapForBuildingContext_2D_element (p->mAttribute_lkey, p->mAttribute_mExtensionSetterMapForType) ;
+  return GALGAS_extensionSetterMapForBuildingContext_2D_element (p->mProperty_lkey, p->mProperty_mExtensionSetterMapForType) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13376,7 +13376,7 @@ GALGAS_extensionSetterMapForBuildingContext_2D_element cEnumerator_extensionSett
 GALGAS_lstring cEnumerator_extensionSetterMapForBuildingContext::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13384,7 +13384,7 @@ GALGAS_lstring cEnumerator_extensionSetterMapForBuildingContext::current_lkey (L
 GALGAS_extensionSetterMapForType cEnumerator_extensionSetterMapForBuildingContext::current_mExtensionSetterMapForType (LOCATION_ARGS) const {
   const cMapElement_extensionSetterMapForBuildingContext * p = (const cMapElement_extensionSetterMapForBuildingContext *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_extensionSetterMapForBuildingContext) ;
-  return p->mAttribute_mExtensionSetterMapForType ;
+  return p->mProperty_mExtensionSetterMapForType ;
 }
 
 
@@ -13439,21 +13439,21 @@ cMapElement_extensionGetterMapForType::cMapElement_extensionGetterMapForType (co
                                                                               const GALGAS_formalInputParameterListAST & in_mInputFormalParameterList
                                                                               COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mResultTypeName (in_mResultTypeName),
-mAttribute_mInputFormalParameterList (in_mInputFormalParameterList) {
+mProperty_mResultTypeName (in_mResultTypeName),
+mProperty_mInputFormalParameterList (in_mInputFormalParameterList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_extensionGetterMapForType::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mResultTypeName.isValid () && mAttribute_mInputFormalParameterList.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mResultTypeName.isValid () && mProperty_mInputFormalParameterList.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_extensionGetterMapForType::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_extensionGetterMapForType (mAttribute_lkey, mAttribute_mResultTypeName, mAttribute_mInputFormalParameterList COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_extensionGetterMapForType (mProperty_lkey, mProperty_mResultTypeName, mProperty_mInputFormalParameterList COMMA_HERE)) ;
   return result ;
 }
 
@@ -13463,23 +13463,23 @@ void cMapElement_extensionGetterMapForType::description (C_String & ioString, co
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mResultTypeName" ":" ;
-  mAttribute_mResultTypeName.description (ioString, inIndentation) ;
+  mProperty_mResultTypeName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInputFormalParameterList" ":" ;
-  mAttribute_mInputFormalParameterList.description (ioString, inIndentation) ;
+  mProperty_mInputFormalParameterList.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_extensionGetterMapForType::compare (const cCollectionElement * inOperand) const {
   cMapElement_extensionGetterMapForType * operand = (cMapElement_extensionGetterMapForType *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mResultTypeName.objectCompare (operand->mAttribute_mResultTypeName) ;
+    result = mProperty_mResultTypeName.objectCompare (operand->mProperty_mResultTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mInputFormalParameterList.objectCompare (operand->mAttribute_mInputFormalParameterList) ;
+    result = mProperty_mInputFormalParameterList.objectCompare (operand->mProperty_mInputFormalParameterList) ;
   }
   return result ;
 }
@@ -13573,7 +13573,7 @@ GALGAS_lstring GALGAS_extensionGetterMapForType::getter_mResultTypeNameForKey (c
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_extensionGetterMapForType) ;
-    result = p->mAttribute_mResultTypeName ;
+    result = p->mProperty_mResultTypeName ;
   }
   return result ;
 }
@@ -13588,7 +13588,7 @@ GALGAS_formalInputParameterListAST GALGAS_extensionGetterMapForType::getter_mInp
   GALGAS_formalInputParameterListAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_extensionGetterMapForType) ;
-    result = p->mAttribute_mInputFormalParameterList ;
+    result = p->mProperty_mInputFormalParameterList ;
   }
   return result ;
 }
@@ -13603,7 +13603,7 @@ void GALGAS_extensionGetterMapForType::setter_setMResultTypeNameForKey (GALGAS_l
   cMapElement_extensionGetterMapForType * p = (cMapElement_extensionGetterMapForType *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_extensionGetterMapForType) ;
-    p->mAttribute_mResultTypeName = inAttributeValue ;
+    p->mProperty_mResultTypeName = inAttributeValue ;
   }
 }
 
@@ -13617,7 +13617,7 @@ void GALGAS_extensionGetterMapForType::setter_setMInputFormalParameterListForKey
   cMapElement_extensionGetterMapForType * p = (cMapElement_extensionGetterMapForType *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_extensionGetterMapForType) ;
-    p->mAttribute_mInputFormalParameterList = inAttributeValue ;
+    p->mProperty_mInputFormalParameterList = inAttributeValue ;
   }
 }
 
@@ -13644,7 +13644,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_extensionGetterMapForType_2D_element cEnumerator_extensionGetterMapForType::current (LOCATION_ARGS) const {
   const cMapElement_extensionGetterMapForType * p = (const cMapElement_extensionGetterMapForType *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_extensionGetterMapForType) ;
-  return GALGAS_extensionGetterMapForType_2D_element (p->mAttribute_lkey, p->mAttribute_mResultTypeName, p->mAttribute_mInputFormalParameterList) ;
+  return GALGAS_extensionGetterMapForType_2D_element (p->mProperty_lkey, p->mProperty_mResultTypeName, p->mProperty_mInputFormalParameterList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13652,7 +13652,7 @@ GALGAS_extensionGetterMapForType_2D_element cEnumerator_extensionGetterMapForTyp
 GALGAS_lstring cEnumerator_extensionGetterMapForType::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13660,7 +13660,7 @@ GALGAS_lstring cEnumerator_extensionGetterMapForType::current_lkey (LOCATION_ARG
 GALGAS_lstring cEnumerator_extensionGetterMapForType::current_mResultTypeName (LOCATION_ARGS) const {
   const cMapElement_extensionGetterMapForType * p = (const cMapElement_extensionGetterMapForType *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_extensionGetterMapForType) ;
-  return p->mAttribute_mResultTypeName ;
+  return p->mProperty_mResultTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13668,7 +13668,7 @@ GALGAS_lstring cEnumerator_extensionGetterMapForType::current_mResultTypeName (L
 GALGAS_formalInputParameterListAST cEnumerator_extensionGetterMapForType::current_mInputFormalParameterList (LOCATION_ARGS) const {
   const cMapElement_extensionGetterMapForType * p = (const cMapElement_extensionGetterMapForType *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_extensionGetterMapForType) ;
-  return p->mAttribute_mInputFormalParameterList ;
+  return p->mProperty_mInputFormalParameterList ;
 }
 
 
@@ -13722,20 +13722,20 @@ cMapElement_extensionGetterMapForBuildingContext::cMapElement_extensionGetterMap
                                                                                                     const GALGAS_extensionGetterMapForType & in_mExtensionGetterMapForType
                                                                                                     COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mExtensionGetterMapForType (in_mExtensionGetterMapForType) {
+mProperty_mExtensionGetterMapForType (in_mExtensionGetterMapForType) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_extensionGetterMapForBuildingContext::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mExtensionGetterMapForType.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mExtensionGetterMapForType.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_extensionGetterMapForBuildingContext::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_extensionGetterMapForBuildingContext (mAttribute_lkey, mAttribute_mExtensionGetterMapForType COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_extensionGetterMapForBuildingContext (mProperty_lkey, mProperty_mExtensionGetterMapForType COMMA_HERE)) ;
   return result ;
 }
 
@@ -13745,16 +13745,16 @@ void cMapElement_extensionGetterMapForBuildingContext::description (C_String & i
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mExtensionGetterMapForType" ":" ;
-  mAttribute_mExtensionGetterMapForType.description (ioString, inIndentation) ;
+  mProperty_mExtensionGetterMapForType.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_extensionGetterMapForBuildingContext::compare (const cCollectionElement * inOperand) const {
   cMapElement_extensionGetterMapForBuildingContext * operand = (cMapElement_extensionGetterMapForBuildingContext *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mExtensionGetterMapForType.objectCompare (operand->mAttribute_mExtensionGetterMapForType) ;
+    result = mProperty_mExtensionGetterMapForType.objectCompare (operand->mProperty_mExtensionGetterMapForType) ;
   }
   return result ;
 }
@@ -13854,7 +13854,7 @@ void GALGAS_extensionGetterMapForBuildingContext::method_searchKey (GALGAS_lstri
     outArgument0.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_extensionGetterMapForBuildingContext) ;
-    outArgument0 = p->mAttribute_mExtensionGetterMapForType ;
+    outArgument0 = p->mProperty_mExtensionGetterMapForType ;
   }
 }
 
@@ -13868,7 +13868,7 @@ GALGAS_extensionGetterMapForType GALGAS_extensionGetterMapForBuildingContext::ge
   GALGAS_extensionGetterMapForType result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_extensionGetterMapForBuildingContext) ;
-    result = p->mAttribute_mExtensionGetterMapForType ;
+    result = p->mProperty_mExtensionGetterMapForType ;
   }
   return result ;
 }
@@ -13883,7 +13883,7 @@ void GALGAS_extensionGetterMapForBuildingContext::setter_setMExtensionGetterMapF
   cMapElement_extensionGetterMapForBuildingContext * p = (cMapElement_extensionGetterMapForBuildingContext *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_extensionGetterMapForBuildingContext) ;
-    p->mAttribute_mExtensionGetterMapForType = inAttributeValue ;
+    p->mProperty_mExtensionGetterMapForType = inAttributeValue ;
   }
 }
 
@@ -13910,7 +13910,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_extensionGetterMapForBuildingContext_2D_element cEnumerator_extensionGetterMapForBuildingContext::current (LOCATION_ARGS) const {
   const cMapElement_extensionGetterMapForBuildingContext * p = (const cMapElement_extensionGetterMapForBuildingContext *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_extensionGetterMapForBuildingContext) ;
-  return GALGAS_extensionGetterMapForBuildingContext_2D_element (p->mAttribute_lkey, p->mAttribute_mExtensionGetterMapForType) ;
+  return GALGAS_extensionGetterMapForBuildingContext_2D_element (p->mProperty_lkey, p->mProperty_mExtensionGetterMapForType) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13918,7 +13918,7 @@ GALGAS_extensionGetterMapForBuildingContext_2D_element cEnumerator_extensionGett
 GALGAS_lstring cEnumerator_extensionGetterMapForBuildingContext::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13926,7 +13926,7 @@ GALGAS_lstring cEnumerator_extensionGetterMapForBuildingContext::current_lkey (L
 GALGAS_extensionGetterMapForType cEnumerator_extensionGetterMapForBuildingContext::current_mExtensionGetterMapForType (LOCATION_ARGS) const {
   const cMapElement_extensionGetterMapForBuildingContext * p = (const cMapElement_extensionGetterMapForBuildingContext *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_extensionGetterMapForBuildingContext) ;
-  return p->mAttribute_mExtensionGetterMapForType ;
+  return p->mProperty_mExtensionGetterMapForType ;
 }
 
 
@@ -14196,14 +14196,14 @@ cMapElement (inKey COMMA_THERE) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_wrapperExtensionMap::isValid (void) const {
-  return mAttribute_lkey.isValid () ;
+  return mProperty_lkey.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_wrapperExtensionMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_wrapperExtensionMap (mAttribute_lkey COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_wrapperExtensionMap (mProperty_lkey COMMA_HERE)) ;
   return result ;
 }
 
@@ -14216,7 +14216,7 @@ void cMapElement_wrapperExtensionMap::description (C_String & /* ioString */, co
 
 typeComparisonResult cMapElement_wrapperExtensionMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_wrapperExtensionMap * operand = (cMapElement_wrapperExtensionMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   return result ;
 }
 
@@ -14318,7 +14318,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_wrapperExtensionMap_2D_element cEnumerator_wrapperExtensionMap::current (LOCATION_ARGS) const {
   const cMapElement_wrapperExtensionMap * p = (const cMapElement_wrapperExtensionMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_wrapperExtensionMap) ;
-  return GALGAS_wrapperExtensionMap_2D_element (p->mAttribute_lkey) ;
+  return GALGAS_wrapperExtensionMap_2D_element (p->mProperty_lkey) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14326,7 +14326,7 @@ GALGAS_wrapperExtensionMap_2D_element cEnumerator_wrapperExtensionMap::current (
 GALGAS_lstring cEnumerator_wrapperExtensionMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 

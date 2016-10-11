@@ -309,20 +309,20 @@ analyzeGrammar (C_Compiler * inCompiler,
 //--- Depending of grammar class, fix operations to perform
   typedef enum {kDefaultBehavior, kLL1grammar, kSLRgrammar, kLR1grammar, kGrammarClassError} enumGrammarClass ;
   enumGrammarClass grammarClass = kGrammarClassError ;
-  if (inGrammarClass.mAttribute_string.stringValue ().length () == 0) { // Default behavior
+  if (inGrammarClass.mProperty_string.stringValue ().length () == 0) { // Default behavior
     grammarClass = kDefaultBehavior ;
-  }else if (inGrammarClass.mAttribute_string.stringValue ().compare ("LL1") == 0) { // Force LL (1) grammar
+  }else if (inGrammarClass.mProperty_string.stringValue ().compare ("LL1") == 0) { // Force LL (1) grammar
     grammarClass = kLL1grammar ;
-  }else if (inGrammarClass.mAttribute_string.stringValue ().compare ("SLR") == 0) { // Force SLR grammar
+  }else if (inGrammarClass.mProperty_string.stringValue ().compare ("SLR") == 0) { // Force SLR grammar
     grammarClass = kSLRgrammar ;
-  }else if (inGrammarClass.mAttribute_string.stringValue ().compare ("LR1") == 0) { // Force LR (1) grammar
+  }else if (inGrammarClass.mProperty_string.stringValue ().compare ("LR1") == 0) { // Force LR (1) grammar
     grammarClass = kLR1grammar ;
   }else{ // Unknown class... error !
     TC_Array <C_FixItDescription> fixItArray ;
     fixItArray.appendObject (C_FixItDescription (kFixItReplace, "LL1")) ;
     fixItArray.appendObject (C_FixItDescription (kFixItReplace, "SLR")) ;
     fixItArray.appendObject (C_FixItDescription (kFixItReplace, "LR1")) ;
-    inCompiler->semanticErrorAtLocation (inGrammarClass.mAttribute_location, "Unknown grammar class", fixItArray COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (inGrammarClass.mProperty_location, "Unknown grammar class", fixItArray COMMA_HERE) ;
   }
 
 //--- Error flag
@@ -333,7 +333,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   const bool verboseOptionOn = verboseOutput () ;
 
 //--- Create output HTML file
-  const C_String title = C_String ("'") + inTargetFileName.mAttribute_string.stringValue () + "' grammar" ;
+  const C_String title = C_String ("'") + inTargetFileName.mProperty_string.stringValue () + "' grammar" ;
   outHTMLHelperFileContents.writeStartCode (title,
                                             "", // No css file
                                             k_default_style) ; // Style definition
@@ -546,7 +546,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                       FOLLOWsets,
                       inNonTerminalSymbolSortedListForGrammarAnalysis,
                       inOriginalGrammarStartSymbol.uintValue (),
-                      inTargetFileName.mAttribute_string.stringValue (),
+                      inTargetFileName.mProperty_string.stringValue (),
                       ioCppFileContents,
                       inLexiqueName,
                       ok,
@@ -570,7 +570,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                       FOLLOWarray,
                       inNonTerminalSymbolSortedListForGrammarAnalysis,
                       inOriginalGrammarStartSymbol.uintValue (),
-                      inTargetFileName.mAttribute_string.stringValue (),
+                      inTargetFileName.mProperty_string.stringValue (),
                       ioCppFileContents,
                       inLexiqueName,
                       ok,
@@ -598,7 +598,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                       vocabularyDerivingToEmpty_Array,
                       inNonTerminalSymbolSortedListForGrammarAnalysis,
                       inOriginalGrammarStartSymbol.uintValue (),
-                      inTargetFileName.mAttribute_string.stringValue (),
+                      inTargetFileName.mProperty_string.stringValue (),
                       ioCppFileContents,
                       inLexiqueName,
                       ok,
@@ -645,7 +645,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     if (inPopulateHTMLHelperString) {
       warningMessage << "see file 'file://" << inHTMLFileName << "'" ;
     }else{
-      warningMessage << "turn on '-H' command line option, and see generated '" << inTargetFileName.mAttribute_string.stringValue () << ".html' file" ;
+      warningMessage << "turn on '-H' command line option, and see generated '" << inTargetFileName.mProperty_string.stringValue () << ".html' file" ;
     }
     inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
   }else{

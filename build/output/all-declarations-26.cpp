@@ -111,7 +111,7 @@ static void routine_after (C_Compiler * /* inCompiler */
 static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_inSourceFile,
                                          C_Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_parentDirectory_3729 = constinArgument_inSourceFile.mAttribute_string.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 60)).getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 60)) ;
+  GALGAS_string var_parentDirectory_3729 = constinArgument_inSourceFile.mProperty_string.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 60)).getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 60)) ;
   GALGAS_stringlist temp_0 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 61)) ;
   temp_0.addAssign_operation (GALGAS_string ("galgasProject")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 61)) ;
   GALGAS_stringlist var_candidateProjectFiles_3851 = var_parentDirectory_3729.getter_regularFilesWithExtensions (GALGAS_bool (false), temp_0 COMMA_SOURCE_FILE ("galgas_prgm.galgas", 61)) ;
@@ -134,7 +134,7 @@ static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_in
     }else if (kBoolFalse == test_3) {
       GALGAS_string var_projectFilePath_4300 = var_parentDirectory_3729.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 71)).add_operation (var_candidateProjectFiles_3851.getter_mValueAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 71)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 71)) ;
       {
-      routine_parseAndAnalyzeProject (GALGAS_lstring::constructor_new (var_projectFilePath_4300, constinArgument_inSourceFile.mAttribute_location  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 72)), constinArgument_inSourceFile.mAttribute_string, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 72)) ;
+      routine_parseAndAnalyzeProject (GALGAS_lstring::constructor_new (var_projectFilePath_4300, constinArgument_inSourceFile.mProperty_location  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 72)), constinArgument_inSourceFile.mProperty_string, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 72)) ;
       }
     }
   }

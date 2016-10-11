@@ -4503,7 +4503,7 @@ bool cCollectionElement_templateInstructionListAST::isValid (void) const {
 
 cCollectionElement * cCollectionElement_templateInstructionListAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_templateInstructionListAST (mObject.mAttribute_mInstruction COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_templateInstructionListAST (mObject.mProperty_mInstruction COMMA_HERE)) ;
   return result ;
 }
 
@@ -4513,7 +4513,7 @@ void cCollectionElement_templateInstructionListAST::description (C_String & ioSt
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstruction" ":" ;
-  mObject.mAttribute_mInstruction.description (ioString, inIndentation) ;
+  mObject.mProperty_mInstruction.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4611,7 +4611,7 @@ void GALGAS_templateInstructionListAST::setter_removeAtIndex (GALGAS_templateIns
       outOperand0.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_templateInstructionListAST) ;
-      outOperand0 = p->mObject.mAttribute_mInstruction ;
+      outOperand0 = p->mObject.mProperty_mInstruction ;
     }
   }
 }
@@ -4628,7 +4628,7 @@ void GALGAS_templateInstructionListAST::setter_popFirst (GALGAS_templateInstruct
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionListAST) ;
-    outOperand0 = p->mObject.mAttribute_mInstruction ;
+    outOperand0 = p->mObject.mProperty_mInstruction ;
   }
 }
 
@@ -4644,7 +4644,7 @@ void GALGAS_templateInstructionListAST::setter_popLast (GALGAS_templateInstructi
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionListAST) ;
-    outOperand0 = p->mObject.mAttribute_mInstruction ;
+    outOperand0 = p->mObject.mProperty_mInstruction ;
   }
 }
 
@@ -4660,7 +4660,7 @@ void GALGAS_templateInstructionListAST::method_first (GALGAS_templateInstruction
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionListAST) ;
-    outOperand0 = p->mObject.mAttribute_mInstruction ;
+    outOperand0 = p->mObject.mProperty_mInstruction ;
   }
 }
 
@@ -4676,7 +4676,7 @@ void GALGAS_templateInstructionListAST::method_last (GALGAS_templateInstructionA
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionListAST) ;
-    outOperand0 = p->mObject.mAttribute_mInstruction ;
+    outOperand0 = p->mObject.mProperty_mInstruction ;
   }
 }
 
@@ -4741,7 +4741,7 @@ GALGAS_templateInstructionAST GALGAS_templateInstructionListAST::getter_mInstruc
   GALGAS_templateInstructionAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_templateInstructionListAST) ;
-    result = p->mObject.mAttribute_mInstruction ;
+    result = p->mObject.mProperty_mInstruction ;
   }
   return result ;
 }
@@ -4770,7 +4770,7 @@ GALGAS_templateInstructionListAST_2D_element cEnumerator_templateInstructionList
 GALGAS_templateInstructionAST cEnumerator_templateInstructionListAST::current_mInstruction (LOCATION_ARGS) const {
   const cCollectionElement_templateInstructionListAST * p = (const cCollectionElement_templateInstructionListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_templateInstructionListAST) ;
-  return p->mObject.mAttribute_mInstruction ;
+  return p->mObject.mProperty_mInstruction ;
 }
 
 
@@ -4954,7 +4954,7 @@ bool cCollectionElement_templateExpressionListAST::isValid (void) const {
 
 cCollectionElement * cCollectionElement_templateExpressionListAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_templateExpressionListAST (mObject.mAttribute_mActualSelector, mObject.mAttribute_mExpression, mObject.mAttribute_mEndOfExpressionLocation COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_templateExpressionListAST (mObject.mProperty_mActualSelector, mObject.mProperty_mExpression, mObject.mProperty_mEndOfExpressionLocation COMMA_HERE)) ;
   return result ;
 }
 
@@ -4964,15 +4964,15 @@ void cCollectionElement_templateExpressionListAST::description (C_String & ioStr
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mActualSelector" ":" ;
-  mObject.mAttribute_mActualSelector.description (ioString, inIndentation) ;
+  mObject.mProperty_mActualSelector.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mExpression" ":" ;
-  mObject.mAttribute_mExpression.description (ioString, inIndentation) ;
+  mObject.mProperty_mExpression.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mEndOfExpressionLocation" ":" ;
-  mObject.mAttribute_mEndOfExpressionLocation.description (ioString, inIndentation) ;
+  mObject.mProperty_mEndOfExpressionLocation.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5084,9 +5084,9 @@ void GALGAS_templateExpressionListAST::setter_removeAtIndex (GALGAS_lstring & ou
       outOperand2.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_templateExpressionListAST) ;
-      outOperand0 = p->mObject.mAttribute_mActualSelector ;
-      outOperand1 = p->mObject.mAttribute_mExpression ;
-      outOperand2 = p->mObject.mAttribute_mEndOfExpressionLocation ;
+      outOperand0 = p->mObject.mProperty_mActualSelector ;
+      outOperand1 = p->mObject.mProperty_mExpression ;
+      outOperand2 = p->mObject.mProperty_mEndOfExpressionLocation ;
     }
   }
 }
@@ -5107,9 +5107,9 @@ void GALGAS_templateExpressionListAST::setter_popFirst (GALGAS_lstring & outOper
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateExpressionListAST) ;
-    outOperand0 = p->mObject.mAttribute_mActualSelector ;
-    outOperand1 = p->mObject.mAttribute_mExpression ;
-    outOperand2 = p->mObject.mAttribute_mEndOfExpressionLocation ;
+    outOperand0 = p->mObject.mProperty_mActualSelector ;
+    outOperand1 = p->mObject.mProperty_mExpression ;
+    outOperand2 = p->mObject.mProperty_mEndOfExpressionLocation ;
   }
 }
 
@@ -5129,9 +5129,9 @@ void GALGAS_templateExpressionListAST::setter_popLast (GALGAS_lstring & outOpera
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateExpressionListAST) ;
-    outOperand0 = p->mObject.mAttribute_mActualSelector ;
-    outOperand1 = p->mObject.mAttribute_mExpression ;
-    outOperand2 = p->mObject.mAttribute_mEndOfExpressionLocation ;
+    outOperand0 = p->mObject.mProperty_mActualSelector ;
+    outOperand1 = p->mObject.mProperty_mExpression ;
+    outOperand2 = p->mObject.mProperty_mEndOfExpressionLocation ;
   }
 }
 
@@ -5151,9 +5151,9 @@ void GALGAS_templateExpressionListAST::method_first (GALGAS_lstring & outOperand
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateExpressionListAST) ;
-    outOperand0 = p->mObject.mAttribute_mActualSelector ;
-    outOperand1 = p->mObject.mAttribute_mExpression ;
-    outOperand2 = p->mObject.mAttribute_mEndOfExpressionLocation ;
+    outOperand0 = p->mObject.mProperty_mActualSelector ;
+    outOperand1 = p->mObject.mProperty_mExpression ;
+    outOperand2 = p->mObject.mProperty_mEndOfExpressionLocation ;
   }
 }
 
@@ -5173,9 +5173,9 @@ void GALGAS_templateExpressionListAST::method_last (GALGAS_lstring & outOperand0
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateExpressionListAST) ;
-    outOperand0 = p->mObject.mAttribute_mActualSelector ;
-    outOperand1 = p->mObject.mAttribute_mExpression ;
-    outOperand2 = p->mObject.mAttribute_mEndOfExpressionLocation ;
+    outOperand0 = p->mObject.mProperty_mActualSelector ;
+    outOperand1 = p->mObject.mProperty_mExpression ;
+    outOperand2 = p->mObject.mProperty_mEndOfExpressionLocation ;
   }
 }
 
@@ -5240,7 +5240,7 @@ GALGAS_lstring GALGAS_templateExpressionListAST::getter_mActualSelectorAtIndex (
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_templateExpressionListAST) ;
-    result = p->mObject.mAttribute_mActualSelector ;
+    result = p->mObject.mProperty_mActualSelector ;
   }
   return result ;
 }
@@ -5255,7 +5255,7 @@ GALGAS_templateExpressionAST GALGAS_templateExpressionListAST::getter_mExpressio
   GALGAS_templateExpressionAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_templateExpressionListAST) ;
-    result = p->mObject.mAttribute_mExpression ;
+    result = p->mObject.mProperty_mExpression ;
   }
   return result ;
 }
@@ -5270,7 +5270,7 @@ GALGAS_location GALGAS_templateExpressionListAST::getter_mEndOfExpressionLocatio
   GALGAS_location result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_templateExpressionListAST) ;
-    result = p->mObject.mAttribute_mEndOfExpressionLocation ;
+    result = p->mObject.mProperty_mEndOfExpressionLocation ;
   }
   return result ;
 }
@@ -5299,7 +5299,7 @@ GALGAS_templateExpressionListAST_2D_element cEnumerator_templateExpressionListAS
 GALGAS_lstring cEnumerator_templateExpressionListAST::current_mActualSelector (LOCATION_ARGS) const {
   const cCollectionElement_templateExpressionListAST * p = (const cCollectionElement_templateExpressionListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_templateExpressionListAST) ;
-  return p->mObject.mAttribute_mActualSelector ;
+  return p->mObject.mProperty_mActualSelector ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5307,7 +5307,7 @@ GALGAS_lstring cEnumerator_templateExpressionListAST::current_mActualSelector (L
 GALGAS_templateExpressionAST cEnumerator_templateExpressionListAST::current_mExpression (LOCATION_ARGS) const {
   const cCollectionElement_templateExpressionListAST * p = (const cCollectionElement_templateExpressionListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_templateExpressionListAST) ;
-  return p->mObject.mAttribute_mExpression ;
+  return p->mObject.mProperty_mExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5315,7 +5315,7 @@ GALGAS_templateExpressionAST cEnumerator_templateExpressionListAST::current_mExp
 GALGAS_location cEnumerator_templateExpressionListAST::current_mEndOfExpressionLocation (LOCATION_ARGS) const {
   const cCollectionElement_templateExpressionListAST * p = (const cCollectionElement_templateExpressionListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_templateExpressionListAST) ;
-  return p->mObject.mAttribute_mEndOfExpressionLocation ;
+  return p->mObject.mProperty_mEndOfExpressionLocation ;
 }
 
 
@@ -5373,13 +5373,13 @@ typeComparisonResult cPtr_templateAndOperationAST::dynamicObjectCompare (const a
   const cPtr_templateAndOperationAST * p = (const cPtr_templateAndOperationAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateAndOperationAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -5436,7 +5436,7 @@ GALGAS_location GALGAS_templateAndOperationAST::getter_mOperatorLocation (UNUSED
   if (NULL != mObjectPtr) {
     const cPtr_templateAndOperationAST * p = (const cPtr_templateAndOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateAndOperationAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -5444,7 +5444,7 @@ GALGAS_location GALGAS_templateAndOperationAST::getter_mOperatorLocation (UNUSED
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateAndOperationAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5454,7 +5454,7 @@ GALGAS_templateExpressionAST GALGAS_templateAndOperationAST::getter_mLeftExpress
   if (NULL != mObjectPtr) {
     const cPtr_templateAndOperationAST * p = (const cPtr_templateAndOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateAndOperationAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -5462,7 +5462,7 @@ GALGAS_templateExpressionAST GALGAS_templateAndOperationAST::getter_mLeftExpress
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateAndOperationAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5472,7 +5472,7 @@ GALGAS_templateExpressionAST GALGAS_templateAndOperationAST::getter_mRightExpres
   if (NULL != mObjectPtr) {
     const cPtr_templateAndOperationAST * p = (const cPtr_templateAndOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateAndOperationAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -5480,7 +5480,7 @@ GALGAS_templateExpressionAST GALGAS_templateAndOperationAST::getter_mRightExpres
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateAndOperationAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5492,9 +5492,9 @@ cPtr_templateAndOperationAST::cPtr_templateAndOperationAST (const GALGAS_locatio
                                                             const GALGAS_templateExpressionAST & in_mRightExpression
                                                             COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5506,11 +5506,11 @@ const C_galgas_type_descriptor * cPtr_templateAndOperationAST::classDescriptor (
 void cPtr_templateAndOperationAST::description (C_String & ioString,
                                                 const int32_t inIndentation) const {
   ioString << "[@templateAndOperationAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5518,7 +5518,7 @@ void cPtr_templateAndOperationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateAndOperationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateAndOperationAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateAndOperationAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -5575,13 +5575,13 @@ typeComparisonResult cPtr_templateOrOperationAST::dynamicObjectCompare (const ac
   const cPtr_templateOrOperationAST * p = (const cPtr_templateOrOperationAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateOrOperationAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -5638,7 +5638,7 @@ GALGAS_location GALGAS_templateOrOperationAST::getter_mOperatorLocation (UNUSED_
   if (NULL != mObjectPtr) {
     const cPtr_templateOrOperationAST * p = (const cPtr_templateOrOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateOrOperationAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -5646,7 +5646,7 @@ GALGAS_location GALGAS_templateOrOperationAST::getter_mOperatorLocation (UNUSED_
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateOrOperationAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5656,7 +5656,7 @@ GALGAS_templateExpressionAST GALGAS_templateOrOperationAST::getter_mLeftExpressi
   if (NULL != mObjectPtr) {
     const cPtr_templateOrOperationAST * p = (const cPtr_templateOrOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateOrOperationAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -5664,7 +5664,7 @@ GALGAS_templateExpressionAST GALGAS_templateOrOperationAST::getter_mLeftExpressi
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateOrOperationAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5674,7 +5674,7 @@ GALGAS_templateExpressionAST GALGAS_templateOrOperationAST::getter_mRightExpress
   if (NULL != mObjectPtr) {
     const cPtr_templateOrOperationAST * p = (const cPtr_templateOrOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateOrOperationAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -5682,7 +5682,7 @@ GALGAS_templateExpressionAST GALGAS_templateOrOperationAST::getter_mRightExpress
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateOrOperationAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5694,9 +5694,9 @@ cPtr_templateOrOperationAST::cPtr_templateOrOperationAST (const GALGAS_location 
                                                           const GALGAS_templateExpressionAST & in_mRightExpression
                                                           COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5708,11 +5708,11 @@ const C_galgas_type_descriptor * cPtr_templateOrOperationAST::classDescriptor (v
 void cPtr_templateOrOperationAST::description (C_String & ioString,
                                                const int32_t inIndentation) const {
   ioString << "[@templateOrOperationAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5720,7 +5720,7 @@ void cPtr_templateOrOperationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateOrOperationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateOrOperationAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateOrOperationAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -5777,13 +5777,13 @@ typeComparisonResult cPtr_templateXorOperationAST::dynamicObjectCompare (const a
   const cPtr_templateXorOperationAST * p = (const cPtr_templateXorOperationAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateXorOperationAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -5840,7 +5840,7 @@ GALGAS_location GALGAS_templateXorOperationAST::getter_mOperatorLocation (UNUSED
   if (NULL != mObjectPtr) {
     const cPtr_templateXorOperationAST * p = (const cPtr_templateXorOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateXorOperationAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -5848,7 +5848,7 @@ GALGAS_location GALGAS_templateXorOperationAST::getter_mOperatorLocation (UNUSED
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateXorOperationAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5858,7 +5858,7 @@ GALGAS_templateExpressionAST GALGAS_templateXorOperationAST::getter_mLeftExpress
   if (NULL != mObjectPtr) {
     const cPtr_templateXorOperationAST * p = (const cPtr_templateXorOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateXorOperationAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -5866,7 +5866,7 @@ GALGAS_templateExpressionAST GALGAS_templateXorOperationAST::getter_mLeftExpress
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateXorOperationAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5876,7 +5876,7 @@ GALGAS_templateExpressionAST GALGAS_templateXorOperationAST::getter_mRightExpres
   if (NULL != mObjectPtr) {
     const cPtr_templateXorOperationAST * p = (const cPtr_templateXorOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateXorOperationAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -5884,7 +5884,7 @@ GALGAS_templateExpressionAST GALGAS_templateXorOperationAST::getter_mRightExpres
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateXorOperationAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5896,9 +5896,9 @@ cPtr_templateXorOperationAST::cPtr_templateXorOperationAST (const GALGAS_locatio
                                                             const GALGAS_templateExpressionAST & in_mRightExpression
                                                             COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5910,11 +5910,11 @@ const C_galgas_type_descriptor * cPtr_templateXorOperationAST::classDescriptor (
 void cPtr_templateXorOperationAST::description (C_String & ioString,
                                                 const int32_t inIndentation) const {
   ioString << "[@templateXorOperationAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5922,7 +5922,7 @@ void cPtr_templateXorOperationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateXorOperationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateXorOperationAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateXorOperationAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -5979,7 +5979,7 @@ typeComparisonResult cPtr_templateTrueBoolAST::dynamicObjectCompare (const acPtr
   const cPtr_templateTrueBoolAST * p = (const cPtr_templateTrueBoolAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateTrueBoolAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mLocation.objectCompare (p->mAttribute_mLocation) ;
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
   }
   return result ;
 }
@@ -6041,7 +6041,7 @@ GALGAS_location GALGAS_templateTrueBoolAST::getter_mLocation (UNUSED_LOCATION_AR
   if (NULL != mObjectPtr) {
     const cPtr_templateTrueBoolAST * p = (const cPtr_templateTrueBoolAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateTrueBoolAST) ;
-    result = p->mAttribute_mLocation ;
+    result = p->mProperty_mLocation ;
   }
   return result ;
 }
@@ -6049,7 +6049,7 @@ GALGAS_location GALGAS_templateTrueBoolAST::getter_mLocation (UNUSED_LOCATION_AR
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateTrueBoolAST::getter_mLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLocation ;
+  return mProperty_mLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6059,7 +6059,7 @@ GALGAS_location cPtr_templateTrueBoolAST::getter_mLocation (UNUSED_LOCATION_ARGS
 cPtr_templateTrueBoolAST::cPtr_templateTrueBoolAST (const GALGAS_location & in_mLocation
                                                     COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mLocation (in_mLocation) {
+mProperty_mLocation (in_mLocation) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6071,7 +6071,7 @@ const C_galgas_type_descriptor * cPtr_templateTrueBoolAST::classDescriptor (void
 void cPtr_templateTrueBoolAST::description (C_String & ioString,
                                             const int32_t inIndentation) const {
   ioString << "[@templateTrueBoolAST:" ;
-  mAttribute_mLocation.description (ioString, inIndentation+1) ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6079,7 +6079,7 @@ void cPtr_templateTrueBoolAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateTrueBoolAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateTrueBoolAST (mAttribute_mLocation COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateTrueBoolAST (mProperty_mLocation COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6136,7 +6136,7 @@ typeComparisonResult cPtr_templateFalseBoolAST::dynamicObjectCompare (const acPt
   const cPtr_templateFalseBoolAST * p = (const cPtr_templateFalseBoolAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateFalseBoolAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mLocation.objectCompare (p->mAttribute_mLocation) ;
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
   }
   return result ;
 }
@@ -6198,7 +6198,7 @@ GALGAS_location GALGAS_templateFalseBoolAST::getter_mLocation (UNUSED_LOCATION_A
   if (NULL != mObjectPtr) {
     const cPtr_templateFalseBoolAST * p = (const cPtr_templateFalseBoolAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateFalseBoolAST) ;
-    result = p->mAttribute_mLocation ;
+    result = p->mProperty_mLocation ;
   }
   return result ;
 }
@@ -6206,7 +6206,7 @@ GALGAS_location GALGAS_templateFalseBoolAST::getter_mLocation (UNUSED_LOCATION_A
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateFalseBoolAST::getter_mLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLocation ;
+  return mProperty_mLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6216,7 +6216,7 @@ GALGAS_location cPtr_templateFalseBoolAST::getter_mLocation (UNUSED_LOCATION_ARG
 cPtr_templateFalseBoolAST::cPtr_templateFalseBoolAST (const GALGAS_location & in_mLocation
                                                       COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mLocation (in_mLocation) {
+mProperty_mLocation (in_mLocation) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6228,7 +6228,7 @@ const C_galgas_type_descriptor * cPtr_templateFalseBoolAST::classDescriptor (voi
 void cPtr_templateFalseBoolAST::description (C_String & ioString,
                                              const int32_t inIndentation) const {
   ioString << "[@templateFalseBoolAST:" ;
-  mAttribute_mLocation.description (ioString, inIndentation+1) ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6236,7 +6236,7 @@ void cPtr_templateFalseBoolAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateFalseBoolAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateFalseBoolAST (mAttribute_mLocation COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateFalseBoolAST (mProperty_mLocation COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6293,10 +6293,10 @@ typeComparisonResult cPtr_templateNotOperatorAST::dynamicObjectCompare (const ac
   const cPtr_templateNotOperatorAST * p = (const cPtr_templateNotOperatorAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateNotOperatorAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mExpression.objectCompare (p->mAttribute_mExpression) ;
+    result = mProperty_mExpression.objectCompare (p->mProperty_mExpression) ;
   }
   return result ;
 }
@@ -6352,7 +6352,7 @@ GALGAS_location GALGAS_templateNotOperatorAST::getter_mOperatorLocation (UNUSED_
   if (NULL != mObjectPtr) {
     const cPtr_templateNotOperatorAST * p = (const cPtr_templateNotOperatorAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateNotOperatorAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -6360,7 +6360,7 @@ GALGAS_location GALGAS_templateNotOperatorAST::getter_mOperatorLocation (UNUSED_
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateNotOperatorAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6370,7 +6370,7 @@ GALGAS_templateExpressionAST GALGAS_templateNotOperatorAST::getter_mExpression (
   if (NULL != mObjectPtr) {
     const cPtr_templateNotOperatorAST * p = (const cPtr_templateNotOperatorAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateNotOperatorAST) ;
-    result = p->mAttribute_mExpression ;
+    result = p->mProperty_mExpression ;
   }
   return result ;
 }
@@ -6378,7 +6378,7 @@ GALGAS_templateExpressionAST GALGAS_templateNotOperatorAST::getter_mExpression (
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateNotOperatorAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mExpression ;
+  return mProperty_mExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6389,8 +6389,8 @@ cPtr_templateNotOperatorAST::cPtr_templateNotOperatorAST (const GALGAS_location 
                                                           const GALGAS_templateExpressionAST & in_mExpression
                                                           COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mExpression (in_mExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mExpression (in_mExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6402,9 +6402,9 @@ const C_galgas_type_descriptor * cPtr_templateNotOperatorAST::classDescriptor (v
 void cPtr_templateNotOperatorAST::description (C_String & ioString,
                                                const int32_t inIndentation) const {
   ioString << "[@templateNotOperatorAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mExpression.description (ioString, inIndentation+1) ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6412,7 +6412,7 @@ void cPtr_templateNotOperatorAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateNotOperatorAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateNotOperatorAST (mAttribute_mOperatorLocation, mAttribute_mExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateNotOperatorAST (mProperty_mOperatorLocation, mProperty_mExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6469,10 +6469,10 @@ typeComparisonResult cPtr_templateLogicalNegateAST::dynamicObjectCompare (const 
   const cPtr_templateLogicalNegateAST * p = (const cPtr_templateLogicalNegateAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateLogicalNegateAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mExpression.objectCompare (p->mAttribute_mExpression) ;
+    result = mProperty_mExpression.objectCompare (p->mProperty_mExpression) ;
   }
   return result ;
 }
@@ -6528,7 +6528,7 @@ GALGAS_location GALGAS_templateLogicalNegateAST::getter_mOperatorLocation (UNUSE
   if (NULL != mObjectPtr) {
     const cPtr_templateLogicalNegateAST * p = (const cPtr_templateLogicalNegateAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateLogicalNegateAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -6536,7 +6536,7 @@ GALGAS_location GALGAS_templateLogicalNegateAST::getter_mOperatorLocation (UNUSE
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateLogicalNegateAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6546,7 +6546,7 @@ GALGAS_templateExpressionAST GALGAS_templateLogicalNegateAST::getter_mExpression
   if (NULL != mObjectPtr) {
     const cPtr_templateLogicalNegateAST * p = (const cPtr_templateLogicalNegateAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateLogicalNegateAST) ;
-    result = p->mAttribute_mExpression ;
+    result = p->mProperty_mExpression ;
   }
   return result ;
 }
@@ -6554,7 +6554,7 @@ GALGAS_templateExpressionAST GALGAS_templateLogicalNegateAST::getter_mExpression
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateLogicalNegateAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mExpression ;
+  return mProperty_mExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6565,8 +6565,8 @@ cPtr_templateLogicalNegateAST::cPtr_templateLogicalNegateAST (const GALGAS_locat
                                                               const GALGAS_templateExpressionAST & in_mExpression
                                                               COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mExpression (in_mExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mExpression (in_mExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6578,9 +6578,9 @@ const C_galgas_type_descriptor * cPtr_templateLogicalNegateAST::classDescriptor 
 void cPtr_templateLogicalNegateAST::description (C_String & ioString,
                                                  const int32_t inIndentation) const {
   ioString << "[@templateLogicalNegateAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mExpression.description (ioString, inIndentation+1) ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6588,7 +6588,7 @@ void cPtr_templateLogicalNegateAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateLogicalNegateAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateLogicalNegateAST (mAttribute_mOperatorLocation, mAttribute_mExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateLogicalNegateAST (mProperty_mOperatorLocation, mProperty_mExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6645,13 +6645,13 @@ typeComparisonResult cPtr_templateAddOperationAST::dynamicObjectCompare (const a
   const cPtr_templateAddOperationAST * p = (const cPtr_templateAddOperationAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateAddOperationAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -6708,7 +6708,7 @@ GALGAS_location GALGAS_templateAddOperationAST::getter_mOperatorLocation (UNUSED
   if (NULL != mObjectPtr) {
     const cPtr_templateAddOperationAST * p = (const cPtr_templateAddOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateAddOperationAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -6716,7 +6716,7 @@ GALGAS_location GALGAS_templateAddOperationAST::getter_mOperatorLocation (UNUSED
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateAddOperationAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6726,7 +6726,7 @@ GALGAS_templateExpressionAST GALGAS_templateAddOperationAST::getter_mLeftExpress
   if (NULL != mObjectPtr) {
     const cPtr_templateAddOperationAST * p = (const cPtr_templateAddOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateAddOperationAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -6734,7 +6734,7 @@ GALGAS_templateExpressionAST GALGAS_templateAddOperationAST::getter_mLeftExpress
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateAddOperationAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6744,7 +6744,7 @@ GALGAS_templateExpressionAST GALGAS_templateAddOperationAST::getter_mRightExpres
   if (NULL != mObjectPtr) {
     const cPtr_templateAddOperationAST * p = (const cPtr_templateAddOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateAddOperationAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -6752,7 +6752,7 @@ GALGAS_templateExpressionAST GALGAS_templateAddOperationAST::getter_mRightExpres
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateAddOperationAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6764,9 +6764,9 @@ cPtr_templateAddOperationAST::cPtr_templateAddOperationAST (const GALGAS_locatio
                                                             const GALGAS_templateExpressionAST & in_mRightExpression
                                                             COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6778,11 +6778,11 @@ const C_galgas_type_descriptor * cPtr_templateAddOperationAST::classDescriptor (
 void cPtr_templateAddOperationAST::description (C_String & ioString,
                                                 const int32_t inIndentation) const {
   ioString << "[@templateAddOperationAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6790,7 +6790,7 @@ void cPtr_templateAddOperationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateAddOperationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateAddOperationAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateAddOperationAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6847,13 +6847,13 @@ typeComparisonResult cPtr_templateSubOperationAST::dynamicObjectCompare (const a
   const cPtr_templateSubOperationAST * p = (const cPtr_templateSubOperationAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateSubOperationAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -6910,7 +6910,7 @@ GALGAS_location GALGAS_templateSubOperationAST::getter_mOperatorLocation (UNUSED
   if (NULL != mObjectPtr) {
     const cPtr_templateSubOperationAST * p = (const cPtr_templateSubOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateSubOperationAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -6918,7 +6918,7 @@ GALGAS_location GALGAS_templateSubOperationAST::getter_mOperatorLocation (UNUSED
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateSubOperationAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6928,7 +6928,7 @@ GALGAS_templateExpressionAST GALGAS_templateSubOperationAST::getter_mLeftExpress
   if (NULL != mObjectPtr) {
     const cPtr_templateSubOperationAST * p = (const cPtr_templateSubOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateSubOperationAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -6936,7 +6936,7 @@ GALGAS_templateExpressionAST GALGAS_templateSubOperationAST::getter_mLeftExpress
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateSubOperationAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6946,7 +6946,7 @@ GALGAS_templateExpressionAST GALGAS_templateSubOperationAST::getter_mRightExpres
   if (NULL != mObjectPtr) {
     const cPtr_templateSubOperationAST * p = (const cPtr_templateSubOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateSubOperationAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -6954,7 +6954,7 @@ GALGAS_templateExpressionAST GALGAS_templateSubOperationAST::getter_mRightExpres
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateSubOperationAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6966,9 +6966,9 @@ cPtr_templateSubOperationAST::cPtr_templateSubOperationAST (const GALGAS_locatio
                                                             const GALGAS_templateExpressionAST & in_mRightExpression
                                                             COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6980,11 +6980,11 @@ const C_galgas_type_descriptor * cPtr_templateSubOperationAST::classDescriptor (
 void cPtr_templateSubOperationAST::description (C_String & ioString,
                                                 const int32_t inIndentation) const {
   ioString << "[@templateSubOperationAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6992,7 +6992,7 @@ void cPtr_templateSubOperationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateSubOperationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateSubOperationAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateSubOperationAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -7049,13 +7049,13 @@ typeComparisonResult cPtr_templateMultiplyOperationAST::dynamicObjectCompare (co
   const cPtr_templateMultiplyOperationAST * p = (const cPtr_templateMultiplyOperationAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateMultiplyOperationAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -7112,7 +7112,7 @@ GALGAS_location GALGAS_templateMultiplyOperationAST::getter_mOperatorLocation (U
   if (NULL != mObjectPtr) {
     const cPtr_templateMultiplyOperationAST * p = (const cPtr_templateMultiplyOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateMultiplyOperationAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -7120,7 +7120,7 @@ GALGAS_location GALGAS_templateMultiplyOperationAST::getter_mOperatorLocation (U
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateMultiplyOperationAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7130,7 +7130,7 @@ GALGAS_templateExpressionAST GALGAS_templateMultiplyOperationAST::getter_mLeftEx
   if (NULL != mObjectPtr) {
     const cPtr_templateMultiplyOperationAST * p = (const cPtr_templateMultiplyOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateMultiplyOperationAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -7138,7 +7138,7 @@ GALGAS_templateExpressionAST GALGAS_templateMultiplyOperationAST::getter_mLeftEx
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateMultiplyOperationAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7148,7 +7148,7 @@ GALGAS_templateExpressionAST GALGAS_templateMultiplyOperationAST::getter_mRightE
   if (NULL != mObjectPtr) {
     const cPtr_templateMultiplyOperationAST * p = (const cPtr_templateMultiplyOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateMultiplyOperationAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -7156,7 +7156,7 @@ GALGAS_templateExpressionAST GALGAS_templateMultiplyOperationAST::getter_mRightE
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateMultiplyOperationAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7168,9 +7168,9 @@ cPtr_templateMultiplyOperationAST::cPtr_templateMultiplyOperationAST (const GALG
                                                                       const GALGAS_templateExpressionAST & in_mRightExpression
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7182,11 +7182,11 @@ const C_galgas_type_descriptor * cPtr_templateMultiplyOperationAST::classDescrip
 void cPtr_templateMultiplyOperationAST::description (C_String & ioString,
                                                      const int32_t inIndentation) const {
   ioString << "[@templateMultiplyOperationAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -7194,7 +7194,7 @@ void cPtr_templateMultiplyOperationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateMultiplyOperationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateMultiplyOperationAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateMultiplyOperationAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -7251,13 +7251,13 @@ typeComparisonResult cPtr_templateDivideOperationAST::dynamicObjectCompare (cons
   const cPtr_templateDivideOperationAST * p = (const cPtr_templateDivideOperationAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateDivideOperationAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -7314,7 +7314,7 @@ GALGAS_location GALGAS_templateDivideOperationAST::getter_mOperatorLocation (UNU
   if (NULL != mObjectPtr) {
     const cPtr_templateDivideOperationAST * p = (const cPtr_templateDivideOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateDivideOperationAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -7322,7 +7322,7 @@ GALGAS_location GALGAS_templateDivideOperationAST::getter_mOperatorLocation (UNU
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateDivideOperationAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7332,7 +7332,7 @@ GALGAS_templateExpressionAST GALGAS_templateDivideOperationAST::getter_mLeftExpr
   if (NULL != mObjectPtr) {
     const cPtr_templateDivideOperationAST * p = (const cPtr_templateDivideOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateDivideOperationAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -7340,7 +7340,7 @@ GALGAS_templateExpressionAST GALGAS_templateDivideOperationAST::getter_mLeftExpr
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateDivideOperationAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7350,7 +7350,7 @@ GALGAS_templateExpressionAST GALGAS_templateDivideOperationAST::getter_mRightExp
   if (NULL != mObjectPtr) {
     const cPtr_templateDivideOperationAST * p = (const cPtr_templateDivideOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateDivideOperationAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -7358,7 +7358,7 @@ GALGAS_templateExpressionAST GALGAS_templateDivideOperationAST::getter_mRightExp
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateDivideOperationAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7370,9 +7370,9 @@ cPtr_templateDivideOperationAST::cPtr_templateDivideOperationAST (const GALGAS_l
                                                                   const GALGAS_templateExpressionAST & in_mRightExpression
                                                                   COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7384,11 +7384,11 @@ const C_galgas_type_descriptor * cPtr_templateDivideOperationAST::classDescripto
 void cPtr_templateDivideOperationAST::description (C_String & ioString,
                                                    const int32_t inIndentation) const {
   ioString << "[@templateDivideOperationAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -7396,7 +7396,7 @@ void cPtr_templateDivideOperationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateDivideOperationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateDivideOperationAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateDivideOperationAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -7453,13 +7453,13 @@ typeComparisonResult cPtr_templateModuloOperationAST::dynamicObjectCompare (cons
   const cPtr_templateModuloOperationAST * p = (const cPtr_templateModuloOperationAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateModuloOperationAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -7516,7 +7516,7 @@ GALGAS_location GALGAS_templateModuloOperationAST::getter_mOperatorLocation (UNU
   if (NULL != mObjectPtr) {
     const cPtr_templateModuloOperationAST * p = (const cPtr_templateModuloOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateModuloOperationAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -7524,7 +7524,7 @@ GALGAS_location GALGAS_templateModuloOperationAST::getter_mOperatorLocation (UNU
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateModuloOperationAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7534,7 +7534,7 @@ GALGAS_templateExpressionAST GALGAS_templateModuloOperationAST::getter_mLeftExpr
   if (NULL != mObjectPtr) {
     const cPtr_templateModuloOperationAST * p = (const cPtr_templateModuloOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateModuloOperationAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -7542,7 +7542,7 @@ GALGAS_templateExpressionAST GALGAS_templateModuloOperationAST::getter_mLeftExpr
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateModuloOperationAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7552,7 +7552,7 @@ GALGAS_templateExpressionAST GALGAS_templateModuloOperationAST::getter_mRightExp
   if (NULL != mObjectPtr) {
     const cPtr_templateModuloOperationAST * p = (const cPtr_templateModuloOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateModuloOperationAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -7560,7 +7560,7 @@ GALGAS_templateExpressionAST GALGAS_templateModuloOperationAST::getter_mRightExp
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateModuloOperationAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7572,9 +7572,9 @@ cPtr_templateModuloOperationAST::cPtr_templateModuloOperationAST (const GALGAS_l
                                                                   const GALGAS_templateExpressionAST & in_mRightExpression
                                                                   COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7586,11 +7586,11 @@ const C_galgas_type_descriptor * cPtr_templateModuloOperationAST::classDescripto
 void cPtr_templateModuloOperationAST::description (C_String & ioString,
                                                    const int32_t inIndentation) const {
   ioString << "[@templateModuloOperationAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -7598,7 +7598,7 @@ void cPtr_templateModuloOperationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateModuloOperationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateModuloOperationAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateModuloOperationAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -7655,10 +7655,10 @@ typeComparisonResult cPtr_templateUnaryMinusOperationAST::dynamicObjectCompare (
   const cPtr_templateUnaryMinusOperationAST * p = (const cPtr_templateUnaryMinusOperationAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateUnaryMinusOperationAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mExpression.objectCompare (p->mAttribute_mExpression) ;
+    result = mProperty_mExpression.objectCompare (p->mProperty_mExpression) ;
   }
   return result ;
 }
@@ -7714,7 +7714,7 @@ GALGAS_location GALGAS_templateUnaryMinusOperationAST::getter_mOperatorLocation 
   if (NULL != mObjectPtr) {
     const cPtr_templateUnaryMinusOperationAST * p = (const cPtr_templateUnaryMinusOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateUnaryMinusOperationAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -7722,7 +7722,7 @@ GALGAS_location GALGAS_templateUnaryMinusOperationAST::getter_mOperatorLocation 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateUnaryMinusOperationAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7732,7 +7732,7 @@ GALGAS_templateExpressionAST GALGAS_templateUnaryMinusOperationAST::getter_mExpr
   if (NULL != mObjectPtr) {
     const cPtr_templateUnaryMinusOperationAST * p = (const cPtr_templateUnaryMinusOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateUnaryMinusOperationAST) ;
-    result = p->mAttribute_mExpression ;
+    result = p->mProperty_mExpression ;
   }
   return result ;
 }
@@ -7740,7 +7740,7 @@ GALGAS_templateExpressionAST GALGAS_templateUnaryMinusOperationAST::getter_mExpr
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateUnaryMinusOperationAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mExpression ;
+  return mProperty_mExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7751,8 +7751,8 @@ cPtr_templateUnaryMinusOperationAST::cPtr_templateUnaryMinusOperationAST (const 
                                                                           const GALGAS_templateExpressionAST & in_mExpression
                                                                           COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mExpression (in_mExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mExpression (in_mExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7764,9 +7764,9 @@ const C_galgas_type_descriptor * cPtr_templateUnaryMinusOperationAST::classDescr
 void cPtr_templateUnaryMinusOperationAST::description (C_String & ioString,
                                                        const int32_t inIndentation) const {
   ioString << "[@templateUnaryMinusOperationAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mExpression.description (ioString, inIndentation+1) ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -7774,7 +7774,7 @@ void cPtr_templateUnaryMinusOperationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateUnaryMinusOperationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateUnaryMinusOperationAST (mAttribute_mOperatorLocation, mAttribute_mExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateUnaryMinusOperationAST (mProperty_mOperatorLocation, mProperty_mExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -7831,13 +7831,13 @@ typeComparisonResult cPtr_templateEqualTestAST::dynamicObjectCompare (const acPt
   const cPtr_templateEqualTestAST * p = (const cPtr_templateEqualTestAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateEqualTestAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -7894,7 +7894,7 @@ GALGAS_location GALGAS_templateEqualTestAST::getter_mOperatorLocation (UNUSED_LO
   if (NULL != mObjectPtr) {
     const cPtr_templateEqualTestAST * p = (const cPtr_templateEqualTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateEqualTestAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -7902,7 +7902,7 @@ GALGAS_location GALGAS_templateEqualTestAST::getter_mOperatorLocation (UNUSED_LO
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateEqualTestAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7912,7 +7912,7 @@ GALGAS_templateExpressionAST GALGAS_templateEqualTestAST::getter_mLeftExpression
   if (NULL != mObjectPtr) {
     const cPtr_templateEqualTestAST * p = (const cPtr_templateEqualTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateEqualTestAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -7920,7 +7920,7 @@ GALGAS_templateExpressionAST GALGAS_templateEqualTestAST::getter_mLeftExpression
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateEqualTestAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7930,7 +7930,7 @@ GALGAS_templateExpressionAST GALGAS_templateEqualTestAST::getter_mRightExpressio
   if (NULL != mObjectPtr) {
     const cPtr_templateEqualTestAST * p = (const cPtr_templateEqualTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateEqualTestAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -7938,7 +7938,7 @@ GALGAS_templateExpressionAST GALGAS_templateEqualTestAST::getter_mRightExpressio
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateEqualTestAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7950,9 +7950,9 @@ cPtr_templateEqualTestAST::cPtr_templateEqualTestAST (const GALGAS_location & in
                                                       const GALGAS_templateExpressionAST & in_mRightExpression
                                                       COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7964,11 +7964,11 @@ const C_galgas_type_descriptor * cPtr_templateEqualTestAST::classDescriptor (voi
 void cPtr_templateEqualTestAST::description (C_String & ioString,
                                              const int32_t inIndentation) const {
   ioString << "[@templateEqualTestAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -7976,7 +7976,7 @@ void cPtr_templateEqualTestAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateEqualTestAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateEqualTestAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateEqualTestAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -8033,13 +8033,13 @@ typeComparisonResult cPtr_templateNonEqualTestAST::dynamicObjectCompare (const a
   const cPtr_templateNonEqualTestAST * p = (const cPtr_templateNonEqualTestAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateNonEqualTestAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -8096,7 +8096,7 @@ GALGAS_location GALGAS_templateNonEqualTestAST::getter_mOperatorLocation (UNUSED
   if (NULL != mObjectPtr) {
     const cPtr_templateNonEqualTestAST * p = (const cPtr_templateNonEqualTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateNonEqualTestAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -8104,7 +8104,7 @@ GALGAS_location GALGAS_templateNonEqualTestAST::getter_mOperatorLocation (UNUSED
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateNonEqualTestAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8114,7 +8114,7 @@ GALGAS_templateExpressionAST GALGAS_templateNonEqualTestAST::getter_mLeftExpress
   if (NULL != mObjectPtr) {
     const cPtr_templateNonEqualTestAST * p = (const cPtr_templateNonEqualTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateNonEqualTestAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -8122,7 +8122,7 @@ GALGAS_templateExpressionAST GALGAS_templateNonEqualTestAST::getter_mLeftExpress
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateNonEqualTestAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8132,7 +8132,7 @@ GALGAS_templateExpressionAST GALGAS_templateNonEqualTestAST::getter_mRightExpres
   if (NULL != mObjectPtr) {
     const cPtr_templateNonEqualTestAST * p = (const cPtr_templateNonEqualTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateNonEqualTestAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -8140,7 +8140,7 @@ GALGAS_templateExpressionAST GALGAS_templateNonEqualTestAST::getter_mRightExpres
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateNonEqualTestAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8152,9 +8152,9 @@ cPtr_templateNonEqualTestAST::cPtr_templateNonEqualTestAST (const GALGAS_locatio
                                                             const GALGAS_templateExpressionAST & in_mRightExpression
                                                             COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8166,11 +8166,11 @@ const C_galgas_type_descriptor * cPtr_templateNonEqualTestAST::classDescriptor (
 void cPtr_templateNonEqualTestAST::description (C_String & ioString,
                                                 const int32_t inIndentation) const {
   ioString << "[@templateNonEqualTestAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -8178,7 +8178,7 @@ void cPtr_templateNonEqualTestAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateNonEqualTestAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateNonEqualTestAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateNonEqualTestAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -8235,13 +8235,13 @@ typeComparisonResult cPtr_templateStrictInfTestAST::dynamicObjectCompare (const 
   const cPtr_templateStrictInfTestAST * p = (const cPtr_templateStrictInfTestAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateStrictInfTestAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -8298,7 +8298,7 @@ GALGAS_location GALGAS_templateStrictInfTestAST::getter_mOperatorLocation (UNUSE
   if (NULL != mObjectPtr) {
     const cPtr_templateStrictInfTestAST * p = (const cPtr_templateStrictInfTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateStrictInfTestAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -8306,7 +8306,7 @@ GALGAS_location GALGAS_templateStrictInfTestAST::getter_mOperatorLocation (UNUSE
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateStrictInfTestAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8316,7 +8316,7 @@ GALGAS_templateExpressionAST GALGAS_templateStrictInfTestAST::getter_mLeftExpres
   if (NULL != mObjectPtr) {
     const cPtr_templateStrictInfTestAST * p = (const cPtr_templateStrictInfTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateStrictInfTestAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -8324,7 +8324,7 @@ GALGAS_templateExpressionAST GALGAS_templateStrictInfTestAST::getter_mLeftExpres
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateStrictInfTestAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8334,7 +8334,7 @@ GALGAS_templateExpressionAST GALGAS_templateStrictInfTestAST::getter_mRightExpre
   if (NULL != mObjectPtr) {
     const cPtr_templateStrictInfTestAST * p = (const cPtr_templateStrictInfTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateStrictInfTestAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -8342,7 +8342,7 @@ GALGAS_templateExpressionAST GALGAS_templateStrictInfTestAST::getter_mRightExpre
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateStrictInfTestAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8354,9 +8354,9 @@ cPtr_templateStrictInfTestAST::cPtr_templateStrictInfTestAST (const GALGAS_locat
                                                               const GALGAS_templateExpressionAST & in_mRightExpression
                                                               COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8368,11 +8368,11 @@ const C_galgas_type_descriptor * cPtr_templateStrictInfTestAST::classDescriptor 
 void cPtr_templateStrictInfTestAST::description (C_String & ioString,
                                                  const int32_t inIndentation) const {
   ioString << "[@templateStrictInfTestAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -8380,7 +8380,7 @@ void cPtr_templateStrictInfTestAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateStrictInfTestAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateStrictInfTestAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateStrictInfTestAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -8437,13 +8437,13 @@ typeComparisonResult cPtr_templateInfOrEqualTestAST::dynamicObjectCompare (const
   const cPtr_templateInfOrEqualTestAST * p = (const cPtr_templateInfOrEqualTestAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateInfOrEqualTestAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -8500,7 +8500,7 @@ GALGAS_location GALGAS_templateInfOrEqualTestAST::getter_mOperatorLocation (UNUS
   if (NULL != mObjectPtr) {
     const cPtr_templateInfOrEqualTestAST * p = (const cPtr_templateInfOrEqualTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInfOrEqualTestAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -8508,7 +8508,7 @@ GALGAS_location GALGAS_templateInfOrEqualTestAST::getter_mOperatorLocation (UNUS
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateInfOrEqualTestAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8518,7 +8518,7 @@ GALGAS_templateExpressionAST GALGAS_templateInfOrEqualTestAST::getter_mLeftExpre
   if (NULL != mObjectPtr) {
     const cPtr_templateInfOrEqualTestAST * p = (const cPtr_templateInfOrEqualTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInfOrEqualTestAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -8526,7 +8526,7 @@ GALGAS_templateExpressionAST GALGAS_templateInfOrEqualTestAST::getter_mLeftExpre
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateInfOrEqualTestAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8536,7 +8536,7 @@ GALGAS_templateExpressionAST GALGAS_templateInfOrEqualTestAST::getter_mRightExpr
   if (NULL != mObjectPtr) {
     const cPtr_templateInfOrEqualTestAST * p = (const cPtr_templateInfOrEqualTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInfOrEqualTestAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -8544,7 +8544,7 @@ GALGAS_templateExpressionAST GALGAS_templateInfOrEqualTestAST::getter_mRightExpr
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateInfOrEqualTestAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8556,9 +8556,9 @@ cPtr_templateInfOrEqualTestAST::cPtr_templateInfOrEqualTestAST (const GALGAS_loc
                                                                 const GALGAS_templateExpressionAST & in_mRightExpression
                                                                 COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8570,11 +8570,11 @@ const C_galgas_type_descriptor * cPtr_templateInfOrEqualTestAST::classDescriptor
 void cPtr_templateInfOrEqualTestAST::description (C_String & ioString,
                                                   const int32_t inIndentation) const {
   ioString << "[@templateInfOrEqualTestAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -8582,7 +8582,7 @@ void cPtr_templateInfOrEqualTestAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateInfOrEqualTestAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateInfOrEqualTestAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateInfOrEqualTestAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -8639,13 +8639,13 @@ typeComparisonResult cPtr_templateStrictSupTestAST::dynamicObjectCompare (const 
   const cPtr_templateStrictSupTestAST * p = (const cPtr_templateStrictSupTestAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateStrictSupTestAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -8702,7 +8702,7 @@ GALGAS_location GALGAS_templateStrictSupTestAST::getter_mOperatorLocation (UNUSE
   if (NULL != mObjectPtr) {
     const cPtr_templateStrictSupTestAST * p = (const cPtr_templateStrictSupTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateStrictSupTestAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -8710,7 +8710,7 @@ GALGAS_location GALGAS_templateStrictSupTestAST::getter_mOperatorLocation (UNUSE
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateStrictSupTestAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8720,7 +8720,7 @@ GALGAS_templateExpressionAST GALGAS_templateStrictSupTestAST::getter_mLeftExpres
   if (NULL != mObjectPtr) {
     const cPtr_templateStrictSupTestAST * p = (const cPtr_templateStrictSupTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateStrictSupTestAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -8728,7 +8728,7 @@ GALGAS_templateExpressionAST GALGAS_templateStrictSupTestAST::getter_mLeftExpres
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateStrictSupTestAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8738,7 +8738,7 @@ GALGAS_templateExpressionAST GALGAS_templateStrictSupTestAST::getter_mRightExpre
   if (NULL != mObjectPtr) {
     const cPtr_templateStrictSupTestAST * p = (const cPtr_templateStrictSupTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateStrictSupTestAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -8746,7 +8746,7 @@ GALGAS_templateExpressionAST GALGAS_templateStrictSupTestAST::getter_mRightExpre
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateStrictSupTestAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8758,9 +8758,9 @@ cPtr_templateStrictSupTestAST::cPtr_templateStrictSupTestAST (const GALGAS_locat
                                                               const GALGAS_templateExpressionAST & in_mRightExpression
                                                               COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8772,11 +8772,11 @@ const C_galgas_type_descriptor * cPtr_templateStrictSupTestAST::classDescriptor 
 void cPtr_templateStrictSupTestAST::description (C_String & ioString,
                                                  const int32_t inIndentation) const {
   ioString << "[@templateStrictSupTestAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -8784,7 +8784,7 @@ void cPtr_templateStrictSupTestAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateStrictSupTestAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateStrictSupTestAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateStrictSupTestAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -8841,13 +8841,13 @@ typeComparisonResult cPtr_templateSupOrEqualTestAST::dynamicObjectCompare (const
   const cPtr_templateSupOrEqualTestAST * p = (const cPtr_templateSupOrEqualTestAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateSupOrEqualTestAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -8904,7 +8904,7 @@ GALGAS_location GALGAS_templateSupOrEqualTestAST::getter_mOperatorLocation (UNUS
   if (NULL != mObjectPtr) {
     const cPtr_templateSupOrEqualTestAST * p = (const cPtr_templateSupOrEqualTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateSupOrEqualTestAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -8912,7 +8912,7 @@ GALGAS_location GALGAS_templateSupOrEqualTestAST::getter_mOperatorLocation (UNUS
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateSupOrEqualTestAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8922,7 +8922,7 @@ GALGAS_templateExpressionAST GALGAS_templateSupOrEqualTestAST::getter_mLeftExpre
   if (NULL != mObjectPtr) {
     const cPtr_templateSupOrEqualTestAST * p = (const cPtr_templateSupOrEqualTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateSupOrEqualTestAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -8930,7 +8930,7 @@ GALGAS_templateExpressionAST GALGAS_templateSupOrEqualTestAST::getter_mLeftExpre
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateSupOrEqualTestAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8940,7 +8940,7 @@ GALGAS_templateExpressionAST GALGAS_templateSupOrEqualTestAST::getter_mRightExpr
   if (NULL != mObjectPtr) {
     const cPtr_templateSupOrEqualTestAST * p = (const cPtr_templateSupOrEqualTestAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateSupOrEqualTestAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -8948,7 +8948,7 @@ GALGAS_templateExpressionAST GALGAS_templateSupOrEqualTestAST::getter_mRightExpr
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateSupOrEqualTestAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8960,9 +8960,9 @@ cPtr_templateSupOrEqualTestAST::cPtr_templateSupOrEqualTestAST (const GALGAS_loc
                                                                 const GALGAS_templateExpressionAST & in_mRightExpression
                                                                 COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8974,11 +8974,11 @@ const C_galgas_type_descriptor * cPtr_templateSupOrEqualTestAST::classDescriptor
 void cPtr_templateSupOrEqualTestAST::description (C_String & ioString,
                                                   const int32_t inIndentation) const {
   ioString << "[@templateSupOrEqualTestAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -8986,7 +8986,7 @@ void cPtr_templateSupOrEqualTestAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateSupOrEqualTestAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateSupOrEqualTestAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateSupOrEqualTestAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -9043,13 +9043,13 @@ typeComparisonResult cPtr_templateLeftShiftOperationAST::dynamicObjectCompare (c
   const cPtr_templateLeftShiftOperationAST * p = (const cPtr_templateLeftShiftOperationAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateLeftShiftOperationAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -9106,7 +9106,7 @@ GALGAS_location GALGAS_templateLeftShiftOperationAST::getter_mOperatorLocation (
   if (NULL != mObjectPtr) {
     const cPtr_templateLeftShiftOperationAST * p = (const cPtr_templateLeftShiftOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateLeftShiftOperationAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -9114,7 +9114,7 @@ GALGAS_location GALGAS_templateLeftShiftOperationAST::getter_mOperatorLocation (
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateLeftShiftOperationAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9124,7 +9124,7 @@ GALGAS_templateExpressionAST GALGAS_templateLeftShiftOperationAST::getter_mLeftE
   if (NULL != mObjectPtr) {
     const cPtr_templateLeftShiftOperationAST * p = (const cPtr_templateLeftShiftOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateLeftShiftOperationAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -9132,7 +9132,7 @@ GALGAS_templateExpressionAST GALGAS_templateLeftShiftOperationAST::getter_mLeftE
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateLeftShiftOperationAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9142,7 +9142,7 @@ GALGAS_templateExpressionAST GALGAS_templateLeftShiftOperationAST::getter_mRight
   if (NULL != mObjectPtr) {
     const cPtr_templateLeftShiftOperationAST * p = (const cPtr_templateLeftShiftOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateLeftShiftOperationAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -9150,7 +9150,7 @@ GALGAS_templateExpressionAST GALGAS_templateLeftShiftOperationAST::getter_mRight
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateLeftShiftOperationAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9162,9 +9162,9 @@ cPtr_templateLeftShiftOperationAST::cPtr_templateLeftShiftOperationAST (const GA
                                                                         const GALGAS_templateExpressionAST & in_mRightExpression
                                                                         COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9176,11 +9176,11 @@ const C_galgas_type_descriptor * cPtr_templateLeftShiftOperationAST::classDescri
 void cPtr_templateLeftShiftOperationAST::description (C_String & ioString,
                                                       const int32_t inIndentation) const {
   ioString << "[@templateLeftShiftOperationAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -9188,7 +9188,7 @@ void cPtr_templateLeftShiftOperationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateLeftShiftOperationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateLeftShiftOperationAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateLeftShiftOperationAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -9245,13 +9245,13 @@ typeComparisonResult cPtr_templateRightShiftOperationAST::dynamicObjectCompare (
   const cPtr_templateRightShiftOperationAST * p = (const cPtr_templateRightShiftOperationAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateRightShiftOperationAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+    result = mProperty_mOperatorLocation.objectCompare (p->mProperty_mOperatorLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
   }
   return result ;
 }
@@ -9308,7 +9308,7 @@ GALGAS_location GALGAS_templateRightShiftOperationAST::getter_mOperatorLocation 
   if (NULL != mObjectPtr) {
     const cPtr_templateRightShiftOperationAST * p = (const cPtr_templateRightShiftOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateRightShiftOperationAST) ;
-    result = p->mAttribute_mOperatorLocation ;
+    result = p->mProperty_mOperatorLocation ;
   }
   return result ;
 }
@@ -9316,7 +9316,7 @@ GALGAS_location GALGAS_templateRightShiftOperationAST::getter_mOperatorLocation 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateRightShiftOperationAST::getter_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mOperatorLocation ;
+  return mProperty_mOperatorLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9326,7 +9326,7 @@ GALGAS_templateExpressionAST GALGAS_templateRightShiftOperationAST::getter_mLeft
   if (NULL != mObjectPtr) {
     const cPtr_templateRightShiftOperationAST * p = (const cPtr_templateRightShiftOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateRightShiftOperationAST) ;
-    result = p->mAttribute_mLeftExpression ;
+    result = p->mProperty_mLeftExpression ;
   }
   return result ;
 }
@@ -9334,7 +9334,7 @@ GALGAS_templateExpressionAST GALGAS_templateRightShiftOperationAST::getter_mLeft
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateRightShiftOperationAST::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLeftExpression ;
+  return mProperty_mLeftExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9344,7 +9344,7 @@ GALGAS_templateExpressionAST GALGAS_templateRightShiftOperationAST::getter_mRigh
   if (NULL != mObjectPtr) {
     const cPtr_templateRightShiftOperationAST * p = (const cPtr_templateRightShiftOperationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateRightShiftOperationAST) ;
-    result = p->mAttribute_mRightExpression ;
+    result = p->mProperty_mRightExpression ;
   }
   return result ;
 }
@@ -9352,7 +9352,7 @@ GALGAS_templateExpressionAST GALGAS_templateRightShiftOperationAST::getter_mRigh
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateRightShiftOperationAST::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRightExpression ;
+  return mProperty_mRightExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9364,9 +9364,9 @@ cPtr_templateRightShiftOperationAST::cPtr_templateRightShiftOperationAST (const 
                                                                           const GALGAS_templateExpressionAST & in_mRightExpression
                                                                           COMMA_LOCATION_ARGS) :
 cPtr_templateExpressionAST (THERE),
-mAttribute_mOperatorLocation (in_mOperatorLocation),
-mAttribute_mLeftExpression (in_mLeftExpression),
-mAttribute_mRightExpression (in_mRightExpression) {
+mProperty_mOperatorLocation (in_mOperatorLocation),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9378,11 +9378,11 @@ const C_galgas_type_descriptor * cPtr_templateRightShiftOperationAST::classDescr
 void cPtr_templateRightShiftOperationAST::description (C_String & ioString,
                                                        const int32_t inIndentation) const {
   ioString << "[@templateRightShiftOperationAST:" ;
-  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  mProperty_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -9390,7 +9390,7 @@ void cPtr_templateRightShiftOperationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateRightShiftOperationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateRightShiftOperationAST (mAttribute_mOperatorLocation, mAttribute_mLeftExpression, mAttribute_mRightExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateRightShiftOperationAST (mProperty_mOperatorLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -9447,10 +9447,10 @@ typeComparisonResult cPtr_templateInstructionExpressionAST::dynamicObjectCompare
   const cPtr_templateInstructionExpressionAST * p = (const cPtr_templateInstructionExpressionAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateInstructionExpressionAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mExpression.objectCompare (p->mAttribute_mExpression) ;
+    result = mProperty_mExpression.objectCompare (p->mProperty_mExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLocation.objectCompare (p->mAttribute_mLocation) ;
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
   }
   return result ;
 }
@@ -9506,7 +9506,7 @@ GALGAS_templateExpressionAST GALGAS_templateInstructionExpressionAST::getter_mEx
   if (NULL != mObjectPtr) {
     const cPtr_templateInstructionExpressionAST * p = (const cPtr_templateInstructionExpressionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionExpressionAST) ;
-    result = p->mAttribute_mExpression ;
+    result = p->mProperty_mExpression ;
   }
   return result ;
 }
@@ -9514,7 +9514,7 @@ GALGAS_templateExpressionAST GALGAS_templateInstructionExpressionAST::getter_mEx
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateInstructionExpressionAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mExpression ;
+  return mProperty_mExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9524,7 +9524,7 @@ GALGAS_location GALGAS_templateInstructionExpressionAST::getter_mLocation (UNUSE
   if (NULL != mObjectPtr) {
     const cPtr_templateInstructionExpressionAST * p = (const cPtr_templateInstructionExpressionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionExpressionAST) ;
-    result = p->mAttribute_mLocation ;
+    result = p->mProperty_mLocation ;
   }
   return result ;
 }
@@ -9532,7 +9532,7 @@ GALGAS_location GALGAS_templateInstructionExpressionAST::getter_mLocation (UNUSE
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateInstructionExpressionAST::getter_mLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLocation ;
+  return mProperty_mLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9543,8 +9543,8 @@ cPtr_templateInstructionExpressionAST::cPtr_templateInstructionExpressionAST (co
                                                                               const GALGAS_location & in_mLocation
                                                                               COMMA_LOCATION_ARGS) :
 cPtr_templateInstructionAST (THERE),
-mAttribute_mExpression (in_mExpression),
-mAttribute_mLocation (in_mLocation) {
+mProperty_mExpression (in_mExpression),
+mProperty_mLocation (in_mLocation) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9556,9 +9556,9 @@ const C_galgas_type_descriptor * cPtr_templateInstructionExpressionAST::classDes
 void cPtr_templateInstructionExpressionAST::description (C_String & ioString,
                                                          const int32_t inIndentation) const {
   ioString << "[@templateInstructionExpressionAST:" ;
-  mAttribute_mExpression.description (ioString, inIndentation+1) ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLocation.description (ioString, inIndentation+1) ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -9566,7 +9566,7 @@ void cPtr_templateInstructionExpressionAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateInstructionExpressionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateInstructionExpressionAST (mAttribute_mExpression, mAttribute_mLocation COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateInstructionExpressionAST (mProperty_mExpression, mProperty_mLocation COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -9623,13 +9623,13 @@ typeComparisonResult cPtr_templateBlockInstructionAST::dynamicObjectCompare (con
   const cPtr_templateBlockInstructionAST * p = (const cPtr_templateBlockInstructionAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateBlockInstructionAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mExpression.objectCompare (p->mAttribute_mExpression) ;
+    result = mProperty_mExpression.objectCompare (p->mProperty_mExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLocation.objectCompare (p->mAttribute_mLocation) ;
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mBlockInstructionList.objectCompare (p->mAttribute_mBlockInstructionList) ;
+    result = mProperty_mBlockInstructionList.objectCompare (p->mProperty_mBlockInstructionList) ;
   }
   return result ;
 }
@@ -9686,7 +9686,7 @@ GALGAS_templateExpressionAST GALGAS_templateBlockInstructionAST::getter_mExpress
   if (NULL != mObjectPtr) {
     const cPtr_templateBlockInstructionAST * p = (const cPtr_templateBlockInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateBlockInstructionAST) ;
-    result = p->mAttribute_mExpression ;
+    result = p->mProperty_mExpression ;
   }
   return result ;
 }
@@ -9694,7 +9694,7 @@ GALGAS_templateExpressionAST GALGAS_templateBlockInstructionAST::getter_mExpress
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateBlockInstructionAST::getter_mExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mExpression ;
+  return mProperty_mExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9704,7 +9704,7 @@ GALGAS_location GALGAS_templateBlockInstructionAST::getter_mLocation (UNUSED_LOC
   if (NULL != mObjectPtr) {
     const cPtr_templateBlockInstructionAST * p = (const cPtr_templateBlockInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateBlockInstructionAST) ;
-    result = p->mAttribute_mLocation ;
+    result = p->mProperty_mLocation ;
   }
   return result ;
 }
@@ -9712,7 +9712,7 @@ GALGAS_location GALGAS_templateBlockInstructionAST::getter_mLocation (UNUSED_LOC
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateBlockInstructionAST::getter_mLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLocation ;
+  return mProperty_mLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9722,7 +9722,7 @@ GALGAS_templateInstructionListAST GALGAS_templateBlockInstructionAST::getter_mBl
   if (NULL != mObjectPtr) {
     const cPtr_templateBlockInstructionAST * p = (const cPtr_templateBlockInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateBlockInstructionAST) ;
-    result = p->mAttribute_mBlockInstructionList ;
+    result = p->mProperty_mBlockInstructionList ;
   }
   return result ;
 }
@@ -9730,7 +9730,7 @@ GALGAS_templateInstructionListAST GALGAS_templateBlockInstructionAST::getter_mBl
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionListAST cPtr_templateBlockInstructionAST::getter_mBlockInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mBlockInstructionList ;
+  return mProperty_mBlockInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9742,9 +9742,9 @@ cPtr_templateBlockInstructionAST::cPtr_templateBlockInstructionAST (const GALGAS
                                                                     const GALGAS_templateInstructionListAST & in_mBlockInstructionList
                                                                     COMMA_LOCATION_ARGS) :
 cPtr_templateInstructionAST (THERE),
-mAttribute_mExpression (in_mExpression),
-mAttribute_mLocation (in_mLocation),
-mAttribute_mBlockInstructionList (in_mBlockInstructionList) {
+mProperty_mExpression (in_mExpression),
+mProperty_mLocation (in_mLocation),
+mProperty_mBlockInstructionList (in_mBlockInstructionList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9756,11 +9756,11 @@ const C_galgas_type_descriptor * cPtr_templateBlockInstructionAST::classDescript
 void cPtr_templateBlockInstructionAST::description (C_String & ioString,
                                                     const int32_t inIndentation) const {
   ioString << "[@templateBlockInstructionAST:" ;
-  mAttribute_mExpression.description (ioString, inIndentation+1) ;
+  mProperty_mExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLocation.description (ioString, inIndentation+1) ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mBlockInstructionList.description (ioString, inIndentation+1) ;
+  mProperty_mBlockInstructionList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -9768,7 +9768,7 @@ void cPtr_templateBlockInstructionAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateBlockInstructionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateBlockInstructionAST (mAttribute_mExpression, mAttribute_mLocation, mAttribute_mBlockInstructionList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateBlockInstructionAST (mProperty_mExpression, mProperty_mLocation, mProperty_mBlockInstructionList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -10112,7 +10112,7 @@ bool cCollectionElement_templateInstructionIfBranchListAST::isValid (void) const
 
 cCollectionElement * cCollectionElement_templateInstructionIfBranchListAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_templateInstructionIfBranchListAST (mObject.mAttribute_mExpression, mObject.mAttribute_mInstructionList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_templateInstructionIfBranchListAST (mObject.mProperty_mExpression, mObject.mProperty_mInstructionList COMMA_HERE)) ;
   return result ;
 }
 
@@ -10122,11 +10122,11 @@ void cCollectionElement_templateInstructionIfBranchListAST::description (C_Strin
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mExpression" ":" ;
-  mObject.mAttribute_mExpression.description (ioString, inIndentation) ;
+  mObject.mProperty_mExpression.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstructionList" ":" ;
-  mObject.mAttribute_mInstructionList.description (ioString, inIndentation) ;
+  mObject.mProperty_mInstructionList.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10231,8 +10231,8 @@ void GALGAS_templateInstructionIfBranchListAST::setter_removeAtIndex (GALGAS_tem
       outOperand1.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListAST) ;
-      outOperand0 = p->mObject.mAttribute_mExpression ;
-      outOperand1 = p->mObject.mAttribute_mInstructionList ;
+      outOperand0 = p->mObject.mProperty_mExpression ;
+      outOperand1 = p->mObject.mProperty_mInstructionList ;
     }
   }
 }
@@ -10251,8 +10251,8 @@ void GALGAS_templateInstructionIfBranchListAST::setter_popFirst (GALGAS_template
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListAST) ;
-    outOperand0 = p->mObject.mAttribute_mExpression ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mExpression ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -10270,8 +10270,8 @@ void GALGAS_templateInstructionIfBranchListAST::setter_popLast (GALGAS_templateE
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListAST) ;
-    outOperand0 = p->mObject.mAttribute_mExpression ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mExpression ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -10289,8 +10289,8 @@ void GALGAS_templateInstructionIfBranchListAST::method_first (GALGAS_templateExp
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListAST) ;
-    outOperand0 = p->mObject.mAttribute_mExpression ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mExpression ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -10308,8 +10308,8 @@ void GALGAS_templateInstructionIfBranchListAST::method_last (GALGAS_templateExpr
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListAST) ;
-    outOperand0 = p->mObject.mAttribute_mExpression ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mExpression ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -10374,7 +10374,7 @@ GALGAS_templateExpressionAST GALGAS_templateInstructionIfBranchListAST::getter_m
   GALGAS_templateExpressionAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListAST) ;
-    result = p->mObject.mAttribute_mExpression ;
+    result = p->mObject.mProperty_mExpression ;
   }
   return result ;
 }
@@ -10389,7 +10389,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionIfBranchListAST::get
   GALGAS_templateInstructionListAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListAST) ;
-    result = p->mObject.mAttribute_mInstructionList ;
+    result = p->mObject.mProperty_mInstructionList ;
   }
   return result ;
 }
@@ -10418,7 +10418,7 @@ GALGAS_templateInstructionIfBranchListAST_2D_element cEnumerator_templateInstruc
 GALGAS_templateExpressionAST cEnumerator_templateInstructionIfBranchListAST::current_mExpression (LOCATION_ARGS) const {
   const cCollectionElement_templateInstructionIfBranchListAST * p = (const cCollectionElement_templateInstructionIfBranchListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListAST) ;
-  return p->mObject.mAttribute_mExpression ;
+  return p->mObject.mProperty_mExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10426,7 +10426,7 @@ GALGAS_templateExpressionAST cEnumerator_templateInstructionIfBranchListAST::cur
 GALGAS_templateInstructionListAST cEnumerator_templateInstructionIfBranchListAST::current_mInstructionList (LOCATION_ARGS) const {
   const cCollectionElement_templateInstructionIfBranchListAST * p = (const cCollectionElement_templateInstructionIfBranchListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListAST) ;
-  return p->mObject.mAttribute_mInstructionList ;
+  return p->mObject.mProperty_mInstructionList ;
 }
 
 
@@ -10484,10 +10484,10 @@ typeComparisonResult cPtr_templateInstructionIfAST::dynamicObjectCompare (const 
   const cPtr_templateInstructionIfAST * p = (const cPtr_templateInstructionIfAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateInstructionIfAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mTemplateInstructionIfBranchList.objectCompare (p->mAttribute_mTemplateInstructionIfBranchList) ;
+    result = mProperty_mTemplateInstructionIfBranchList.objectCompare (p->mProperty_mTemplateInstructionIfBranchList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mElseInstructionList.objectCompare (p->mAttribute_mElseInstructionList) ;
+    result = mProperty_mElseInstructionList.objectCompare (p->mProperty_mElseInstructionList) ;
   }
   return result ;
 }
@@ -10551,7 +10551,7 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfAST::gette
   if (NULL != mObjectPtr) {
     const cPtr_templateInstructionIfAST * p = (const cPtr_templateInstructionIfAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionIfAST) ;
-    result = p->mAttribute_mTemplateInstructionIfBranchList ;
+    result = p->mProperty_mTemplateInstructionIfBranchList ;
   }
   return result ;
 }
@@ -10559,7 +10559,7 @@ GALGAS_templateInstructionIfBranchListAST GALGAS_templateInstructionIfAST::gette
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionIfBranchListAST cPtr_templateInstructionIfAST::getter_mTemplateInstructionIfBranchList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTemplateInstructionIfBranchList ;
+  return mProperty_mTemplateInstructionIfBranchList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10569,7 +10569,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionIfAST::getter_mElseI
   if (NULL != mObjectPtr) {
     const cPtr_templateInstructionIfAST * p = (const cPtr_templateInstructionIfAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionIfAST) ;
-    result = p->mAttribute_mElseInstructionList ;
+    result = p->mProperty_mElseInstructionList ;
   }
   return result ;
 }
@@ -10577,7 +10577,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionIfAST::getter_mElseI
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionListAST cPtr_templateInstructionIfAST::getter_mElseInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mElseInstructionList ;
+  return mProperty_mElseInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10588,8 +10588,8 @@ cPtr_templateInstructionIfAST::cPtr_templateInstructionIfAST (const GALGAS_templ
                                                               const GALGAS_templateInstructionListAST & in_mElseInstructionList
                                                               COMMA_LOCATION_ARGS) :
 cPtr_templateInstructionAST (THERE),
-mAttribute_mTemplateInstructionIfBranchList (in_mTemplateInstructionIfBranchList),
-mAttribute_mElseInstructionList (in_mElseInstructionList) {
+mProperty_mTemplateInstructionIfBranchList (in_mTemplateInstructionIfBranchList),
+mProperty_mElseInstructionList (in_mElseInstructionList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10601,9 +10601,9 @@ const C_galgas_type_descriptor * cPtr_templateInstructionIfAST::classDescriptor 
 void cPtr_templateInstructionIfAST::description (C_String & ioString,
                                                  const int32_t inIndentation) const {
   ioString << "[@templateInstructionIfAST:" ;
-  mAttribute_mTemplateInstructionIfBranchList.description (ioString, inIndentation+1) ;
+  mProperty_mTemplateInstructionIfBranchList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mElseInstructionList.description (ioString, inIndentation+1) ;
+  mProperty_mElseInstructionList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -10611,7 +10611,7 @@ void cPtr_templateInstructionIfAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateInstructionIfAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateInstructionIfAST (mAttribute_mTemplateInstructionIfBranchList, mAttribute_mElseInstructionList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateInstructionIfAST (mProperty_mTemplateInstructionIfBranchList, mProperty_mElseInstructionList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -10705,7 +10705,7 @@ bool cCollectionElement_templateInstructionSwitchBranchListAST::isValid (void) c
 
 cCollectionElement * cCollectionElement_templateInstructionSwitchBranchListAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_templateInstructionSwitchBranchListAST (mObject.mAttribute_mConstantList, mObject.mAttribute_mInstructionList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_templateInstructionSwitchBranchListAST (mObject.mProperty_mConstantList, mObject.mProperty_mInstructionList COMMA_HERE)) ;
   return result ;
 }
 
@@ -10715,11 +10715,11 @@ void cCollectionElement_templateInstructionSwitchBranchListAST::description (C_S
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mConstantList" ":" ;
-  mObject.mAttribute_mConstantList.description (ioString, inIndentation) ;
+  mObject.mProperty_mConstantList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstructionList" ":" ;
-  mObject.mAttribute_mInstructionList.description (ioString, inIndentation) ;
+  mObject.mProperty_mInstructionList.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10824,8 +10824,8 @@ void GALGAS_templateInstructionSwitchBranchListAST::setter_removeAtIndex (GALGAS
       outOperand1.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListAST) ;
-      outOperand0 = p->mObject.mAttribute_mConstantList ;
-      outOperand1 = p->mObject.mAttribute_mInstructionList ;
+      outOperand0 = p->mObject.mProperty_mConstantList ;
+      outOperand1 = p->mObject.mProperty_mInstructionList ;
     }
   }
 }
@@ -10844,8 +10844,8 @@ void GALGAS_templateInstructionSwitchBranchListAST::setter_popFirst (GALGAS_lstr
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListAST) ;
-    outOperand0 = p->mObject.mAttribute_mConstantList ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mConstantList ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -10863,8 +10863,8 @@ void GALGAS_templateInstructionSwitchBranchListAST::setter_popLast (GALGAS_lstri
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListAST) ;
-    outOperand0 = p->mObject.mAttribute_mConstantList ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mConstantList ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -10882,8 +10882,8 @@ void GALGAS_templateInstructionSwitchBranchListAST::method_first (GALGAS_lstring
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListAST) ;
-    outOperand0 = p->mObject.mAttribute_mConstantList ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mConstantList ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -10901,8 +10901,8 @@ void GALGAS_templateInstructionSwitchBranchListAST::method_last (GALGAS_lstringl
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListAST) ;
-    outOperand0 = p->mObject.mAttribute_mConstantList ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mConstantList ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -10967,7 +10967,7 @@ GALGAS_lstringlist GALGAS_templateInstructionSwitchBranchListAST::getter_mConsta
   GALGAS_lstringlist result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListAST) ;
-    result = p->mObject.mAttribute_mConstantList ;
+    result = p->mObject.mProperty_mConstantList ;
   }
   return result ;
 }
@@ -10982,7 +10982,7 @@ GALGAS_templateInstructionListAST GALGAS_templateInstructionSwitchBranchListAST:
   GALGAS_templateInstructionListAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListAST) ;
-    result = p->mObject.mAttribute_mInstructionList ;
+    result = p->mObject.mProperty_mInstructionList ;
   }
   return result ;
 }
@@ -11011,7 +11011,7 @@ GALGAS_templateInstructionSwitchBranchListAST_2D_element cEnumerator_templateIns
 GALGAS_lstringlist cEnumerator_templateInstructionSwitchBranchListAST::current_mConstantList (LOCATION_ARGS) const {
   const cCollectionElement_templateInstructionSwitchBranchListAST * p = (const cCollectionElement_templateInstructionSwitchBranchListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListAST) ;
-  return p->mObject.mAttribute_mConstantList ;
+  return p->mObject.mProperty_mConstantList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11019,7 +11019,7 @@ GALGAS_lstringlist cEnumerator_templateInstructionSwitchBranchListAST::current_m
 GALGAS_templateInstructionListAST cEnumerator_templateInstructionSwitchBranchListAST::current_mInstructionList (LOCATION_ARGS) const {
   const cCollectionElement_templateInstructionSwitchBranchListAST * p = (const cCollectionElement_templateInstructionSwitchBranchListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListAST) ;
-  return p->mObject.mAttribute_mInstructionList ;
+  return p->mObject.mProperty_mInstructionList ;
 }
 
 
@@ -11077,13 +11077,13 @@ typeComparisonResult cPtr_templateInstructionSwitchAST::dynamicObjectCompare (co
   const cPtr_templateInstructionSwitchAST * p = (const cPtr_templateInstructionSwitchAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateInstructionSwitchAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mSwitchExpression.objectCompare (p->mAttribute_mSwitchExpression) ;
+    result = mProperty_mSwitchExpression.objectCompare (p->mProperty_mSwitchExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mSwitchExpressionEndLocation.objectCompare (p->mAttribute_mSwitchExpressionEndLocation) ;
+    result = mProperty_mSwitchExpressionEndLocation.objectCompare (p->mProperty_mSwitchExpressionEndLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mTemplateInstructionSwitchBranchList.objectCompare (p->mAttribute_mTemplateInstructionSwitchBranchList) ;
+    result = mProperty_mTemplateInstructionSwitchBranchList.objectCompare (p->mProperty_mTemplateInstructionSwitchBranchList) ;
   }
   return result ;
 }
@@ -11140,7 +11140,7 @@ GALGAS_templateExpressionAST GALGAS_templateInstructionSwitchAST::getter_mSwitch
   if (NULL != mObjectPtr) {
     const cPtr_templateInstructionSwitchAST * p = (const cPtr_templateInstructionSwitchAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionSwitchAST) ;
-    result = p->mAttribute_mSwitchExpression ;
+    result = p->mProperty_mSwitchExpression ;
   }
   return result ;
 }
@@ -11148,7 +11148,7 @@ GALGAS_templateExpressionAST GALGAS_templateInstructionSwitchAST::getter_mSwitch
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST cPtr_templateInstructionSwitchAST::getter_mSwitchExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSwitchExpression ;
+  return mProperty_mSwitchExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11158,7 +11158,7 @@ GALGAS_location GALGAS_templateInstructionSwitchAST::getter_mSwitchExpressionEnd
   if (NULL != mObjectPtr) {
     const cPtr_templateInstructionSwitchAST * p = (const cPtr_templateInstructionSwitchAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionSwitchAST) ;
-    result = p->mAttribute_mSwitchExpressionEndLocation ;
+    result = p->mProperty_mSwitchExpressionEndLocation ;
   }
   return result ;
 }
@@ -11166,7 +11166,7 @@ GALGAS_location GALGAS_templateInstructionSwitchAST::getter_mSwitchExpressionEnd
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_templateInstructionSwitchAST::getter_mSwitchExpressionEndLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSwitchExpressionEndLocation ;
+  return mProperty_mSwitchExpressionEndLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11176,7 +11176,7 @@ GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchAS
   if (NULL != mObjectPtr) {
     const cPtr_templateInstructionSwitchAST * p = (const cPtr_templateInstructionSwitchAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionSwitchAST) ;
-    result = p->mAttribute_mTemplateInstructionSwitchBranchList ;
+    result = p->mProperty_mTemplateInstructionSwitchBranchList ;
   }
   return result ;
 }
@@ -11184,7 +11184,7 @@ GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchAS
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionSwitchBranchListAST cPtr_templateInstructionSwitchAST::getter_mTemplateInstructionSwitchBranchList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTemplateInstructionSwitchBranchList ;
+  return mProperty_mTemplateInstructionSwitchBranchList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11196,9 +11196,9 @@ cPtr_templateInstructionSwitchAST::cPtr_templateInstructionSwitchAST (const GALG
                                                                       const GALGAS_templateInstructionSwitchBranchListAST & in_mTemplateInstructionSwitchBranchList
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_templateInstructionAST (THERE),
-mAttribute_mSwitchExpression (in_mSwitchExpression),
-mAttribute_mSwitchExpressionEndLocation (in_mSwitchExpressionEndLocation),
-mAttribute_mTemplateInstructionSwitchBranchList (in_mTemplateInstructionSwitchBranchList) {
+mProperty_mSwitchExpression (in_mSwitchExpression),
+mProperty_mSwitchExpressionEndLocation (in_mSwitchExpressionEndLocation),
+mProperty_mTemplateInstructionSwitchBranchList (in_mTemplateInstructionSwitchBranchList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11210,11 +11210,11 @@ const C_galgas_type_descriptor * cPtr_templateInstructionSwitchAST::classDescrip
 void cPtr_templateInstructionSwitchAST::description (C_String & ioString,
                                                      const int32_t inIndentation) const {
   ioString << "[@templateInstructionSwitchAST:" ;
-  mAttribute_mSwitchExpression.description (ioString, inIndentation+1) ;
+  mProperty_mSwitchExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mSwitchExpressionEndLocation.description (ioString, inIndentation+1) ;
+  mProperty_mSwitchExpressionEndLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mTemplateInstructionSwitchBranchList.description (ioString, inIndentation+1) ;
+  mProperty_mTemplateInstructionSwitchBranchList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -11222,7 +11222,7 @@ void cPtr_templateInstructionSwitchAST::description (C_String & ioString,
 
 acPtr_class * cPtr_templateInstructionSwitchAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateInstructionSwitchAST (mAttribute_mSwitchExpression, mAttribute_mSwitchExpressionEndLocation, mAttribute_mTemplateInstructionSwitchBranchList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateInstructionSwitchAST (mProperty_mSwitchExpression, mProperty_mSwitchExpressionEndLocation, mProperty_mTemplateInstructionSwitchBranchList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -11628,7 +11628,7 @@ void cParser_templateSyntax::rule_templateSyntax_factor_i5_ (GALGAS_templateExpr
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgasTemplateScanner::kToken__2E_) COMMA_SOURCE_FILE ("templateSyntax.galgas", 207)) ;
       GALGAS_lstring var_structFieldName_11138 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgasTemplateScanner::kToken_identifier) COMMA_SOURCE_FILE ("templateSyntax.galgas", 208)) ;
-      outArgument_outExpression = GALGAS_structFieldAccessTemplateExpressionAST::constructor_new (var_structFieldName_11138.mAttribute_location, outArgument_outExpression, var_structFieldName_11138  COMMA_SOURCE_FILE ("templateSyntax.galgas", 209)) ;
+      outArgument_outExpression = GALGAS_structFieldAccessTemplateExpressionAST::constructor_new (var_structFieldName_11138.mProperty_location, outArgument_outExpression, var_structFieldName_11138  COMMA_SOURCE_FILE ("templateSyntax.galgas", 209)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -12132,7 +12132,7 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i23_ (G
                                                                                C_Lexique_galgasTemplateScanner * inCompiler) {
   GALGAS_lstring var_selector_28463 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgasTemplateScanner::kToken__21_) COMMA_SOURCE_FILE ("templateSyntax.galgas", 500)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_selector_28463.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_selector_28463.mProperty_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_0) {
     TC_Array <C_FixItDescription> fixItArray1 ;
     inCompiler->emitSemanticError (var_selector_28463.getter_location (SOURCE_FILE ("templateSyntax.galgas", 502)), GALGAS_string ("the selector should be '!'"), fixItArray1  COMMA_SOURCE_FILE ("templateSyntax.galgas", 502)) ;
@@ -12875,7 +12875,7 @@ bool cCollectionElement_templateInstructionListForGeneration::isValid (void) con
 
 cCollectionElement * cCollectionElement_templateInstructionListForGeneration::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_templateInstructionListForGeneration (mObject.mAttribute_mInstruction COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_templateInstructionListForGeneration (mObject.mProperty_mInstruction COMMA_HERE)) ;
   return result ;
 }
 
@@ -12885,7 +12885,7 @@ void cCollectionElement_templateInstructionListForGeneration::description (C_Str
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstruction" ":" ;
-  mObject.mAttribute_mInstruction.description (ioString, inIndentation) ;
+  mObject.mProperty_mInstruction.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12983,7 +12983,7 @@ void GALGAS_templateInstructionListForGeneration::setter_removeAtIndex (GALGAS_t
       outOperand0.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-      outOperand0 = p->mObject.mAttribute_mInstruction ;
+      outOperand0 = p->mObject.mProperty_mInstruction ;
     }
   }
 }
@@ -13000,7 +13000,7 @@ void GALGAS_templateInstructionListForGeneration::setter_popFirst (GALGAS_templa
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mInstruction ;
+    outOperand0 = p->mObject.mProperty_mInstruction ;
   }
 }
 
@@ -13016,7 +13016,7 @@ void GALGAS_templateInstructionListForGeneration::setter_popLast (GALGAS_templat
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mInstruction ;
+    outOperand0 = p->mObject.mProperty_mInstruction ;
   }
 }
 
@@ -13032,7 +13032,7 @@ void GALGAS_templateInstructionListForGeneration::method_first (GALGAS_templateI
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mInstruction ;
+    outOperand0 = p->mObject.mProperty_mInstruction ;
   }
 }
 
@@ -13048,7 +13048,7 @@ void GALGAS_templateInstructionListForGeneration::method_last (GALGAS_templateIn
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mInstruction ;
+    outOperand0 = p->mObject.mProperty_mInstruction ;
   }
 }
 
@@ -13113,7 +13113,7 @@ GALGAS_templateInstructionForGeneration GALGAS_templateInstructionListForGenerat
   GALGAS_templateInstructionForGeneration result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-    result = p->mObject.mAttribute_mInstruction ;
+    result = p->mObject.mProperty_mInstruction ;
   }
   return result ;
 }
@@ -13142,7 +13142,7 @@ GALGAS_templateInstructionListForGeneration_2D_element cEnumerator_templateInstr
 GALGAS_templateInstructionForGeneration cEnumerator_templateInstructionListForGeneration::current_mInstruction (LOCATION_ARGS) const {
   const cCollectionElement_templateInstructionListForGeneration * p = (const cCollectionElement_templateInstructionListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_templateInstructionListForGeneration) ;
-  return p->mObject.mAttribute_mInstruction ;
+  return p->mObject.mProperty_mInstruction ;
 }
 
 
@@ -13487,7 +13487,7 @@ bool cCollectionElement_templateInstructionIfBranchListForGeneration::isValid (v
 
 cCollectionElement * cCollectionElement_templateInstructionIfBranchListForGeneration::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_templateInstructionIfBranchListForGeneration (mObject.mAttribute_mExpression, mObject.mAttribute_mInstructionList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_templateInstructionIfBranchListForGeneration (mObject.mProperty_mExpression, mObject.mProperty_mInstructionList COMMA_HERE)) ;
   return result ;
 }
 
@@ -13497,11 +13497,11 @@ void cCollectionElement_templateInstructionIfBranchListForGeneration::descriptio
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mExpression" ":" ;
-  mObject.mAttribute_mExpression.description (ioString, inIndentation) ;
+  mObject.mProperty_mExpression.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstructionList" ":" ;
-  mObject.mAttribute_mInstructionList.description (ioString, inIndentation) ;
+  mObject.mProperty_mInstructionList.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13606,8 +13606,8 @@ void GALGAS_templateInstructionIfBranchListForGeneration::setter_removeAtIndex (
       outOperand1.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListForGeneration) ;
-      outOperand0 = p->mObject.mAttribute_mExpression ;
-      outOperand1 = p->mObject.mAttribute_mInstructionList ;
+      outOperand0 = p->mObject.mProperty_mExpression ;
+      outOperand1 = p->mObject.mProperty_mInstructionList ;
     }
   }
 }
@@ -13626,8 +13626,8 @@ void GALGAS_templateInstructionIfBranchListForGeneration::setter_popFirst (GALGA
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mExpression ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mExpression ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -13645,8 +13645,8 @@ void GALGAS_templateInstructionIfBranchListForGeneration::setter_popLast (GALGAS
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mExpression ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mExpression ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -13664,8 +13664,8 @@ void GALGAS_templateInstructionIfBranchListForGeneration::method_first (GALGAS_s
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mExpression ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mExpression ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -13683,8 +13683,8 @@ void GALGAS_templateInstructionIfBranchListForGeneration::method_last (GALGAS_se
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mExpression ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mExpression ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -13749,7 +13749,7 @@ GALGAS_semanticExpressionForGeneration GALGAS_templateInstructionIfBranchListFor
   GALGAS_semanticExpressionForGeneration result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListForGeneration) ;
-    result = p->mObject.mAttribute_mExpression ;
+    result = p->mObject.mProperty_mExpression ;
   }
   return result ;
 }
@@ -13764,7 +13764,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionIfBranchLi
   GALGAS_templateInstructionListForGeneration result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListForGeneration) ;
-    result = p->mObject.mAttribute_mInstructionList ;
+    result = p->mObject.mProperty_mInstructionList ;
   }
   return result ;
 }
@@ -13793,7 +13793,7 @@ GALGAS_templateInstructionIfBranchListForGeneration_2D_element cEnumerator_templ
 GALGAS_semanticExpressionForGeneration cEnumerator_templateInstructionIfBranchListForGeneration::current_mExpression (LOCATION_ARGS) const {
   const cCollectionElement_templateInstructionIfBranchListForGeneration * p = (const cCollectionElement_templateInstructionIfBranchListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListForGeneration) ;
-  return p->mObject.mAttribute_mExpression ;
+  return p->mObject.mProperty_mExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13801,7 +13801,7 @@ GALGAS_semanticExpressionForGeneration cEnumerator_templateInstructionIfBranchLi
 GALGAS_templateInstructionListForGeneration cEnumerator_templateInstructionIfBranchListForGeneration::current_mInstructionList (LOCATION_ARGS) const {
   const cCollectionElement_templateInstructionIfBranchListForGeneration * p = (const cCollectionElement_templateInstructionIfBranchListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_templateInstructionIfBranchListForGeneration) ;
-  return p->mObject.mAttribute_mInstructionList ;
+  return p->mObject.mProperty_mInstructionList ;
 }
 
 
@@ -13859,10 +13859,10 @@ typeComparisonResult cPtr_templateInstructionIfForGeneration::dynamicObjectCompa
   const cPtr_templateInstructionIfForGeneration * p = (const cPtr_templateInstructionIfForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_templateInstructionIfForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mTemplateInstructionIfBranchList.objectCompare (p->mAttribute_mTemplateInstructionIfBranchList) ;
+    result = mProperty_mTemplateInstructionIfBranchList.objectCompare (p->mProperty_mTemplateInstructionIfBranchList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mElseInstructionList.objectCompare (p->mAttribute_mElseInstructionList) ;
+    result = mProperty_mElseInstructionList.objectCompare (p->mProperty_mElseInstructionList) ;
   }
   return result ;
 }
@@ -13926,7 +13926,7 @@ GALGAS_templateInstructionIfBranchListForGeneration GALGAS_templateInstructionIf
   if (NULL != mObjectPtr) {
     const cPtr_templateInstructionIfForGeneration * p = (const cPtr_templateInstructionIfForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionIfForGeneration) ;
-    result = p->mAttribute_mTemplateInstructionIfBranchList ;
+    result = p->mProperty_mTemplateInstructionIfBranchList ;
   }
   return result ;
 }
@@ -13934,7 +13934,7 @@ GALGAS_templateInstructionIfBranchListForGeneration GALGAS_templateInstructionIf
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionIfBranchListForGeneration cPtr_templateInstructionIfForGeneration::getter_mTemplateInstructionIfBranchList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTemplateInstructionIfBranchList ;
+  return mProperty_mTemplateInstructionIfBranchList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13944,7 +13944,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionIfForGener
   if (NULL != mObjectPtr) {
     const cPtr_templateInstructionIfForGeneration * p = (const cPtr_templateInstructionIfForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_templateInstructionIfForGeneration) ;
-    result = p->mAttribute_mElseInstructionList ;
+    result = p->mProperty_mElseInstructionList ;
   }
   return result ;
 }
@@ -13952,7 +13952,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionIfForGener
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionListForGeneration cPtr_templateInstructionIfForGeneration::getter_mElseInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mElseInstructionList ;
+  return mProperty_mElseInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13963,8 +13963,8 @@ cPtr_templateInstructionIfForGeneration::cPtr_templateInstructionIfForGeneration
                                                                                   const GALGAS_templateInstructionListForGeneration & in_mElseInstructionList
                                                                                   COMMA_LOCATION_ARGS) :
 cPtr_templateInstructionForGeneration (THERE),
-mAttribute_mTemplateInstructionIfBranchList (in_mTemplateInstructionIfBranchList),
-mAttribute_mElseInstructionList (in_mElseInstructionList) {
+mProperty_mTemplateInstructionIfBranchList (in_mTemplateInstructionIfBranchList),
+mProperty_mElseInstructionList (in_mElseInstructionList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13976,9 +13976,9 @@ const C_galgas_type_descriptor * cPtr_templateInstructionIfForGeneration::classD
 void cPtr_templateInstructionIfForGeneration::description (C_String & ioString,
                                                            const int32_t inIndentation) const {
   ioString << "[@templateInstructionIfForGeneration:" ;
-  mAttribute_mTemplateInstructionIfBranchList.description (ioString, inIndentation+1) ;
+  mProperty_mTemplateInstructionIfBranchList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mElseInstructionList.description (ioString, inIndentation+1) ;
+  mProperty_mElseInstructionList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -13986,7 +13986,7 @@ void cPtr_templateInstructionIfForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_templateInstructionIfForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_templateInstructionIfForGeneration (mAttribute_mTemplateInstructionIfBranchList, mAttribute_mElseInstructionList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_templateInstructionIfForGeneration (mProperty_mTemplateInstructionIfBranchList, mProperty_mElseInstructionList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -14080,7 +14080,7 @@ bool cCollectionElement_templateInstructionSwitchBranchListForGeneration::isVali
 
 cCollectionElement * cCollectionElement_templateInstructionSwitchBranchListForGeneration::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_templateInstructionSwitchBranchListForGeneration (mObject.mAttribute_mConstantList, mObject.mAttribute_mInstructionList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_templateInstructionSwitchBranchListForGeneration (mObject.mProperty_mConstantList, mObject.mProperty_mInstructionList COMMA_HERE)) ;
   return result ;
 }
 
@@ -14090,11 +14090,11 @@ void cCollectionElement_templateInstructionSwitchBranchListForGeneration::descri
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mConstantList" ":" ;
-  mObject.mAttribute_mConstantList.description (ioString, inIndentation) ;
+  mObject.mProperty_mConstantList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstructionList" ":" ;
-  mObject.mAttribute_mInstructionList.description (ioString, inIndentation) ;
+  mObject.mProperty_mInstructionList.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14199,8 +14199,8 @@ void GALGAS_templateInstructionSwitchBranchListForGeneration::setter_removeAtInd
       outOperand1.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
-      outOperand0 = p->mObject.mAttribute_mConstantList ;
-      outOperand1 = p->mObject.mAttribute_mInstructionList ;
+      outOperand0 = p->mObject.mProperty_mConstantList ;
+      outOperand1 = p->mObject.mProperty_mInstructionList ;
     }
   }
 }
@@ -14219,8 +14219,8 @@ void GALGAS_templateInstructionSwitchBranchListForGeneration::setter_popFirst (G
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mConstantList ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mConstantList ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -14238,8 +14238,8 @@ void GALGAS_templateInstructionSwitchBranchListForGeneration::setter_popLast (GA
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mConstantList ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mConstantList ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -14257,8 +14257,8 @@ void GALGAS_templateInstructionSwitchBranchListForGeneration::method_first (GALG
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mConstantList ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mConstantList ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -14276,8 +14276,8 @@ void GALGAS_templateInstructionSwitchBranchListForGeneration::method_last (GALGA
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mConstantList ;
-    outOperand1 = p->mObject.mAttribute_mInstructionList ;
+    outOperand0 = p->mObject.mProperty_mConstantList ;
+    outOperand1 = p->mObject.mProperty_mInstructionList ;
   }
 }
 
@@ -14342,7 +14342,7 @@ GALGAS_lstringlist GALGAS_templateInstructionSwitchBranchListForGeneration::gett
   GALGAS_lstringlist result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
-    result = p->mObject.mAttribute_mConstantList ;
+    result = p->mObject.mProperty_mConstantList ;
   }
   return result ;
 }
@@ -14357,7 +14357,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_templateInstructionSwitchBran
   GALGAS_templateInstructionListForGeneration result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
-    result = p->mObject.mAttribute_mInstructionList ;
+    result = p->mObject.mProperty_mInstructionList ;
   }
   return result ;
 }
@@ -14386,7 +14386,7 @@ GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element cEnumerator_t
 GALGAS_lstringlist cEnumerator_templateInstructionSwitchBranchListForGeneration::current_mConstantList (LOCATION_ARGS) const {
   const cCollectionElement_templateInstructionSwitchBranchListForGeneration * p = (const cCollectionElement_templateInstructionSwitchBranchListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
-  return p->mObject.mAttribute_mConstantList ;
+  return p->mObject.mProperty_mConstantList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14394,7 +14394,7 @@ GALGAS_lstringlist cEnumerator_templateInstructionSwitchBranchListForGeneration:
 GALGAS_templateInstructionListForGeneration cEnumerator_templateInstructionSwitchBranchListForGeneration::current_mInstructionList (LOCATION_ARGS) const {
   const cCollectionElement_templateInstructionSwitchBranchListForGeneration * p = (const cCollectionElement_templateInstructionSwitchBranchListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_templateInstructionSwitchBranchListForGeneration) ;
-  return p->mObject.mAttribute_mInstructionList ;
+  return p->mObject.mProperty_mInstructionList ;
 }
 
 
@@ -14450,21 +14450,21 @@ cMapElement_templateVariableMap::cMapElement_templateVariableMap (const GALGAS_l
                                                                   const GALGAS_string & in_mCppName
                                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mTypeProxy (in_mTypeProxy),
-mAttribute_mCppName (in_mCppName) {
+mProperty_mTypeProxy (in_mTypeProxy),
+mProperty_mCppName (in_mCppName) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_templateVariableMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mTypeProxy.isValid () && mAttribute_mCppName.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mTypeProxy.isValid () && mProperty_mCppName.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_templateVariableMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_templateVariableMap (mAttribute_lkey, mAttribute_mTypeProxy, mAttribute_mCppName COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_templateVariableMap (mProperty_lkey, mProperty_mTypeProxy, mProperty_mCppName COMMA_HERE)) ;
   return result ;
 }
 
@@ -14474,23 +14474,23 @@ void cMapElement_templateVariableMap::description (C_String & ioString, const in
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTypeProxy" ":" ;
-  mAttribute_mTypeProxy.description (ioString, inIndentation) ;
+  mProperty_mTypeProxy.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mCppName" ":" ;
-  mAttribute_mCppName.description (ioString, inIndentation) ;
+  mProperty_mCppName.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_templateVariableMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_templateVariableMap * operand = (cMapElement_templateVariableMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mTypeProxy.objectCompare (operand->mAttribute_mTypeProxy) ;
+    result = mProperty_mTypeProxy.objectCompare (operand->mProperty_mTypeProxy) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mCppName.objectCompare (operand->mAttribute_mCppName) ;
+    result = mProperty_mCppName.objectCompare (operand->mProperty_mCppName) ;
   }
   return result ;
 }
@@ -14594,8 +14594,8 @@ void GALGAS_templateVariableMap::method_searchKey (GALGAS_lstring inKey,
     outArgument1.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-    outArgument0 = p->mAttribute_mTypeProxy ;
-    outArgument1 = p->mAttribute_mCppName ;
+    outArgument0 = p->mProperty_mTypeProxy ;
+    outArgument1 = p->mProperty_mCppName ;
   }
 }
 
@@ -14609,7 +14609,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_templateVariableMap::getter_mTypeProxyForK
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-    result = p->mAttribute_mTypeProxy ;
+    result = p->mProperty_mTypeProxy ;
   }
   return result ;
 }
@@ -14624,7 +14624,7 @@ GALGAS_string GALGAS_templateVariableMap::getter_mCppNameForKey (const GALGAS_st
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-    result = p->mAttribute_mCppName ;
+    result = p->mProperty_mCppName ;
   }
   return result ;
 }
@@ -14639,7 +14639,7 @@ void GALGAS_templateVariableMap::setter_setMTypeProxyForKey (GALGAS_unifiedTypeM
   cMapElement_templateVariableMap * p = (cMapElement_templateVariableMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-    p->mAttribute_mTypeProxy = inAttributeValue ;
+    p->mProperty_mTypeProxy = inAttributeValue ;
   }
 }
 
@@ -14653,7 +14653,7 @@ void GALGAS_templateVariableMap::setter_setMCppNameForKey (GALGAS_string inAttri
   cMapElement_templateVariableMap * p = (cMapElement_templateVariableMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-    p->mAttribute_mCppName = inAttributeValue ;
+    p->mProperty_mCppName = inAttributeValue ;
   }
 }
 
@@ -14680,7 +14680,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_templateVariableMap_2D_element cEnumerator_templateVariableMap::current (LOCATION_ARGS) const {
   const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-  return GALGAS_templateVariableMap_2D_element (p->mAttribute_lkey, p->mAttribute_mTypeProxy, p->mAttribute_mCppName) ;
+  return GALGAS_templateVariableMap_2D_element (p->mProperty_lkey, p->mProperty_mTypeProxy, p->mProperty_mCppName) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14688,7 +14688,7 @@ GALGAS_templateVariableMap_2D_element cEnumerator_templateVariableMap::current (
 GALGAS_lstring cEnumerator_templateVariableMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14696,7 +14696,7 @@ GALGAS_lstring cEnumerator_templateVariableMap::current_lkey (LOCATION_ARGS) con
 GALGAS_unifiedTypeMap_2D_proxy cEnumerator_templateVariableMap::current_mTypeProxy (LOCATION_ARGS) const {
   const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-  return p->mAttribute_mTypeProxy ;
+  return p->mProperty_mTypeProxy ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14704,7 +14704,7 @@ GALGAS_unifiedTypeMap_2D_proxy cEnumerator_templateVariableMap::current_mTypePro
 GALGAS_string cEnumerator_templateVariableMap::current_mCppName (LOCATION_ARGS) const {
   const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_templateVariableMap) ;
-  return p->mAttribute_mCppName ;
+  return p->mProperty_mCppName ;
 }
 
 

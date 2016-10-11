@@ -96,7 +96,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclaration
 
 class cPtr_semanticDeclarationAST : public acPtr_class {
 //--- Attributes
-  public : GALGAS_bool mAttribute_mIsPredefined ;
+  public : GALGAS_bool mProperty_mIsPredefined ;
 
 //--- Constructor
   public : cPtr_semanticDeclarationAST (const GALGAS_bool & in_mIsPredefined
@@ -379,7 +379,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalInstructionL
 
 class GALGAS_lexicalInstructionListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lexicalInstructionAST mAttribute_mInstruction ;
+  public : GALGAS_lexicalInstructionAST mProperty_mInstruction ;
 
 
 //--------------------------------- Accessors
@@ -581,9 +581,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_metamodelTemplateDe
 
 class GALGAS_metamodelTemplateDelimitorListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mStartString ;
-  public : GALGAS_lstringlist mAttribute_mOptionList ;
-  public : GALGAS_lstring mAttribute_mEndString ;
+  public : GALGAS_lstring mProperty_mStartString ;
+  public : GALGAS_lstringlist mProperty_mOptionList ;
+  public : GALGAS_lstring mProperty_mEndString ;
 
 
 //--------------------------------- Accessors
@@ -796,9 +796,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateReplacement
 
 class GALGAS_templateReplacementListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mMatchString ;
-  public : GALGAS_lstring mAttribute_mReplacementString ;
-  public : GALGAS_lstring mAttribute_mReplacementFunction ;
+  public : GALGAS_lstring mProperty_mMatchString ;
+  public : GALGAS_lstring mProperty_mReplacementString ;
+  public : GALGAS_lstring mProperty_mReplacementFunction ;
 
 
 //--------------------------------- Accessors
@@ -1060,7 +1060,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRuleListAST 
 
 class GALGAS_lexicalRuleListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_abstractLexicalRuleAST mAttribute_mLexicalRule ;
+  public : GALGAS_abstractLexicalRuleAST mProperty_mLexicalRule ;
 
 
 //--------------------------------- Accessors
@@ -1178,8 +1178,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitRule
 
 class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
 //--- Attributes
-  public : GALGAS_lexicalExpressionAST mAttribute_mLexicalRuleExpression ;
-  public : GALGAS_lexicalInstructionListAST mAttribute_mInstructionList ;
+  public : GALGAS_lexicalExpressionAST mProperty_mLexicalRuleExpression ;
+  public : GALGAS_lexicalInstructionListAST mProperty_mInstructionList ;
 
 //--- Constructor
   public : cPtr_lexicalExplicitRuleAST (const GALGAS_lexicalExpressionAST & in_mLexicalRuleExpression,
@@ -1339,8 +1339,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageDecla
 
 class GALGAS_lexicalMessageDeclarationListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mMessageName ;
-  public : GALGAS_lstring mAttribute_mMessageValue ;
+  public : GALGAS_lstring mProperty_mMessageName ;
+  public : GALGAS_lstring mProperty_mMessageValue ;
 
 
 //--------------------------------- Accessors
@@ -1539,8 +1539,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeLis
 
 class GALGAS_lexicalAttributeListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_lstring mAttribute_mName ;
+  public : GALGAS_lstring mProperty_mTypeName ;
+  public : GALGAS_lstring mProperty_mName ;
 
 
 //--------------------------------- Accessors
@@ -1739,8 +1739,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStyleListAST
 
 class GALGAS_lexicalStyleListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mName ;
-  public : GALGAS_lstring mAttribute_mComment ;
+  public : GALGAS_lstring mProperty_mName ;
+  public : GALGAS_lstring mProperty_mComment ;
 
 
 //--------------------------------- Accessors
@@ -2106,11 +2106,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sentLexicalAttribut
 
 class GALGAS_terminalDeclarationListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mName ;
-  public : GALGAS_sentLexicalAttributeListAST mAttribute_mSentAttributeList ;
-  public : GALGAS_lstring mAttribute_mSyntaxErrorMessage ;
-  public : GALGAS_lstring mAttribute_mStyle ;
-  public : GALGAS_lstringlist mAttribute_mOptionList ;
+  public : GALGAS_lstring mProperty_mName ;
+  public : GALGAS_sentLexicalAttributeListAST mProperty_mSentAttributeList ;
+  public : GALGAS_lstring mProperty_mSyntaxErrorMessage ;
+  public : GALGAS_lstring mProperty_mStyle ;
+  public : GALGAS_lstringlist mProperty_mOptionList ;
 
 
 //--------------------------------- Accessors
@@ -2192,8 +2192,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalDeclaration
 
 class GALGAS_sentLexicalAttributeListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mFormalSelector ;
-  public : GALGAS_lstring mAttribute_mAttributeName ;
+  public : GALGAS_lstring mProperty_mFormalSelector ;
+  public : GALGAS_lstring mProperty_mAttributeName ;
 
 
 //--------------------------------- Accessors
@@ -2402,9 +2402,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalListEntryLis
 
 class GALGAS_lexicalListEntryListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mEntrySpelling ;
-  public : GALGAS_lstring mAttribute_mTerminalSpelling ;
-  public : GALGAS_lstringlist mAttribute_mFeatureList ;
+  public : GALGAS_lstring mProperty_mEntrySpelling ;
+  public : GALGAS_lstring mProperty_mTerminalSpelling ;
+  public : GALGAS_lstringlist mProperty_mFeatureList ;
 
 
 //--------------------------------- Accessors
@@ -2637,11 +2637,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalListDeclarat
 
 class GALGAS_lexicalListDeclarationListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mName ;
-  public : GALGAS_lstring mAttribute_mStyle ;
-  public : GALGAS_lstring mAttribute_mSyntaxErrorMessage ;
-  public : GALGAS_sentLexicalAttributeListAST mAttribute_mSentAttributeList ;
-  public : GALGAS_lexicalListEntryListAST mAttribute_mEntryList ;
+  public : GALGAS_lstring mProperty_mName ;
+  public : GALGAS_lstring mProperty_mStyle ;
+  public : GALGAS_lstring mProperty_mSyntaxErrorMessage ;
+  public : GALGAS_sentLexicalAttributeListAST mProperty_mSentAttributeList ;
+  public : GALGAS_lexicalListEntryListAST mProperty_mEntryList ;
 
 
 //--------------------------------- Accessors
@@ -2778,8 +2778,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalOrExpression
 
 class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
 //--- Attributes
-  public : GALGAS_lexicalExpressionAST mAttribute_mLeftOperand ;
-  public : GALGAS_lexicalExpressionAST mAttribute_mRightOperand ;
+  public : GALGAS_lexicalExpressionAST mProperty_mLeftOperand ;
+  public : GALGAS_lexicalExpressionAST mProperty_mRightOperand ;
 
 //--- Constructor
   public : cPtr_lexicalOrExpressionAST (const GALGAS_lexicalExpressionAST & in_mLeftOperand,
@@ -2939,8 +2939,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSendSearchLi
 
 class GALGAS_lexicalSendSearchListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mAttributeName ;
-  public : GALGAS_lstring mAttribute_mSearchListName ;
+  public : GALGAS_lstring mProperty_mAttributeName ;
+  public : GALGAS_lstring mProperty_mSearchListName ;
 
 
 //--------------------------------- Accessors
@@ -3134,8 +3134,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalStructuredSe
 
 class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Attributes
-  public : GALGAS_lexicalSendSearchListAST mAttribute_mLexicalSendSearchList ;
-  public : GALGAS_lexicalSendDefaultActionAST mAttribute_mLexicalSendDefaultAction ;
+  public : GALGAS_lexicalSendSearchListAST mProperty_mLexicalSendSearchList ;
+  public : GALGAS_lexicalSendDefaultActionAST mProperty_mLexicalSendDefaultAction ;
 
 //--- Constructor
   public : cPtr_lexicalStructuredSendInstructionAST (const GALGAS_lexicalSendSearchListAST & in_mLexicalSendSearchList,
@@ -3295,8 +3295,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalWhileBranchL
 
 class GALGAS_lexicalWhileBranchListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lexicalExpressionAST mAttribute_mWhileExpression ;
-  public : GALGAS_lexicalInstructionListAST mAttribute_mWhileInstructionList ;
+  public : GALGAS_lexicalExpressionAST mProperty_mWhileExpression ;
+  public : GALGAS_lexicalInstructionListAST mProperty_mWhileInstructionList ;
 
 
 //--------------------------------- Accessors
@@ -3421,8 +3421,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRepeatInstru
 
 class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Attributes
-  public : GALGAS_lexicalInstructionListAST mAttribute_mRepeatedInstructionList ;
-  public : GALGAS_lexicalWhileBranchListAST mAttribute_mLexicalWhileBranchList ;
+  public : GALGAS_lexicalInstructionListAST mProperty_mRepeatedInstructionList ;
+  public : GALGAS_lexicalWhileBranchListAST mProperty_mLexicalWhileBranchList ;
 
 //--- Constructor
   public : cPtr_lexicalRepeatInstructionAST (const GALGAS_lexicalInstructionListAST & in_mRepeatedInstructionList,
@@ -3582,8 +3582,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectBranch
 
 class GALGAS_lexicalSelectBranchListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lexicalExpressionAST mAttribute_mSelectExpression ;
-  public : GALGAS_lexicalInstructionListAST mAttribute_mSelectInstructionList ;
+  public : GALGAS_lexicalExpressionAST mProperty_mSelectExpression ;
+  public : GALGAS_lexicalInstructionListAST mProperty_mSelectInstructionList ;
 
 
 //--------------------------------- Accessors
@@ -3708,8 +3708,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSelectInstru
 
 class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Attributes
-  public : GALGAS_lexicalSelectBranchListAST mAttribute_mLexicalSelectBranchList ;
-  public : GALGAS_lexicalInstructionListAST mAttribute_mDefaultInstructionList ;
+  public : GALGAS_lexicalSelectBranchListAST mProperty_mLexicalSelectBranchList ;
+  public : GALGAS_lexicalInstructionListAST mProperty_mDefaultInstructionList ;
 
 //--- Constructor
   public : cPtr_lexicalSelectInstructionAST (const GALGAS_lexicalSelectBranchListAST & in_mLexicalSelectBranchList,
@@ -3788,7 +3788,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractLexicalRout
 
 class cPtr_abstractLexicalRoutineActualArgumentAST : public acPtr_class {
 //--- Attributes
-  public : GALGAS_location mAttribute_mActualPassingModeLocation ;
+  public : GALGAS_location mProperty_mActualPassingModeLocation ;
 
 //--- Constructor
   public : cPtr_abstractLexicalRoutineActualArgumentAST (const GALGAS_location & in_mActualPassingModeLocation
@@ -3933,7 +3933,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineCallA
 
 class GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_abstractLexicalRoutineActualArgumentAST mAttribute_mLexicalRoutineActualArgument ;
+  public : GALGAS_abstractLexicalRoutineActualArgumentAST mProperty_mLexicalRoutineActualArgument ;
 
 
 //--------------------------------- Accessors
@@ -4118,7 +4118,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFormalInputA
 
 class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineActualArgumentAST {
 //--- Attributes
-  public : GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST mAttribute_mRoutineOrFunctionFormalInputArgument ;
+  public : GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST mProperty_mRoutineOrFunctionFormalInputArgument ;
 
 //--- Constructor
   public : cPtr_lexicalFormalInputArgumentAST (const GALGAS_location & in_mActualPassingModeLocation,
@@ -4267,7 +4267,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionCall
 
 class GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST mAttribute_mLexicalActualInputArgument ;
+  public : GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST mProperty_mLexicalActualInputArgument ;
 
 
 //--------------------------------- Accessors
@@ -4385,7 +4385,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalCurrentChara
 
 class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST {
 //--- Attributes
-  public : GALGAS_location mAttribute_mLocation ;
+  public : GALGAS_location mProperty_mLocation ;
 
 //--- Constructor
   public : cPtr_lexicalCurrentCharacterInputArgumentAST (const GALGAS_location & in_mLocation
@@ -4738,9 +4738,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExternRoutin
 
 class GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lexicalArgumentModeAST mAttribute_mPassingMode ;
-  public : GALGAS_lstring mAttribute_mLexicalTypeName ;
-  public : GALGAS_lstring mAttribute_mFormalArgumentName ;
+  public : GALGAS_lexicalArgumentModeAST mProperty_mPassingMode ;
+  public : GALGAS_lstring mProperty_mLexicalTypeName ;
+  public : GALGAS_lstring mProperty_mFormalArgumentName ;
 
 
 //--------------------------------- Accessors
@@ -4950,9 +4950,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externRoutineListAS
 
 class GALGAS_externRoutineListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mRoutineName ;
-  public : GALGAS_lexicalExternRoutineFormalArgumentListAST mAttribute_mLexicalRoutineFormalArgumentList ;
-  public : GALGAS_stringlist mAttribute_mErrorMessageList ;
+  public : GALGAS_lstring mProperty_mRoutineName ;
+  public : GALGAS_lexicalExternRoutineFormalArgumentListAST mProperty_mLexicalRoutineFormalArgumentList ;
+  public : GALGAS_stringlist mProperty_mErrorMessageList ;
 
 
 //--------------------------------- Accessors
@@ -5155,8 +5155,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExternFuncti
 
 class GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mLexicalTypeName ;
-  public : GALGAS_lstring mAttribute_mFormalArgumentName ;
+  public : GALGAS_lstring mProperty_mLexicalTypeName ;
+  public : GALGAS_lstring mProperty_mFormalArgumentName ;
 
 
 //--------------------------------- Accessors
@@ -5365,9 +5365,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externFunctionListA
 
 class GALGAS_externFunctionListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mFunctionName ;
-  public : GALGAS_lexicalExternFunctionFormalArgumentListAST mAttribute_mLexicalFunctionFormalArgumentList ;
-  public : GALGAS_lstring mAttribute_mReturnedTypeName ;
+  public : GALGAS_lstring mProperty_mFunctionName ;
+  public : GALGAS_lexicalExternFunctionFormalArgumentListAST mProperty_mLexicalFunctionFormalArgumentList ;
+  public : GALGAS_lstring mProperty_mReturnedTypeName ;
 
 
 //--------------------------------- Accessors
@@ -5570,8 +5570,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_indexingListAST ;
 
 class GALGAS_indexingListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mIndexName ;
-  public : GALGAS_lstring mAttribute_mIndexComment ;
+  public : GALGAS_lstring mProperty_mIndexName ;
+  public : GALGAS_lstring mProperty_mIndexComment ;
 
 
 //--------------------------------- Accessors
@@ -5889,9 +5889,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalSentValueLis
 
 class GALGAS_lexicalSentValueList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mLexicalFormalSelector ;
-  public : GALGAS_string mAttribute_mLexicalAttributeName ;
-  public : GALGAS_lexicalTypeEnum mAttribute_mLexicalType ;
+  public : GALGAS_lstring mProperty_mLexicalFormalSelector ;
+  public : GALGAS_string mProperty_mLexicalAttributeName ;
+  public : GALGAS_lexicalTypeEnum mProperty_mLexicalType ;
 
 
 //--------------------------------- Accessors
@@ -6066,7 +6066,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalMap ;
 
 class cMapElement_terminalMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_lexicalSentValueList mAttribute_mSentAttributeList ;
+  public : GALGAS_lexicalSentValueList mProperty_mSentAttributeList ;
 
 //--- Constructor
   public : cMapElement_terminalMap (const GALGAS_lstring & inKey,
@@ -6094,8 +6094,8 @@ class cMapElement_terminalMap : public cMapElement {
 
 class GALGAS_terminalMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_lexicalSentValueList mAttribute_mSentAttributeList ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_lexicalSentValueList mProperty_mSentAttributeList ;
 
 
 //--------------------------------- Accessors
@@ -6269,7 +6269,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTypeMap ;
 
 class cMapElement_lexicalTypeMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_lexicalTypeEnum mAttribute_mLexicalType ;
+  public : GALGAS_lexicalTypeEnum mProperty_mLexicalType ;
 
 //--- Constructor
   public : cMapElement_lexicalTypeMap (const GALGAS_lstring & inKey,
@@ -6297,8 +6297,8 @@ class cMapElement_lexicalTypeMap : public cMapElement {
 
 class GALGAS_lexicalTypeMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_lexicalTypeEnum mAttribute_mLexicalType ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_lexicalTypeEnum mProperty_mLexicalType ;
 
 
 //--------------------------------- Accessors
@@ -6469,7 +6469,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalAttributeMap
 
 class cMapElement_lexicalAttributeMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_lexicalTypeEnum mAttribute_mLexicalType ;
+  public : GALGAS_lexicalTypeEnum mProperty_mLexicalType ;
 
 //--- Constructor
   public : cMapElement_lexicalAttributeMap (const GALGAS_lstring & inKey,
@@ -6497,8 +6497,8 @@ class cMapElement_lexicalAttributeMap : public cMapElement {
 
 class GALGAS_lexicalAttributeMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_lexicalTypeEnum mAttribute_mLexicalType ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_lexicalTypeEnum mProperty_mLexicalType ;
 
 
 //--------------------------------- Accessors
@@ -6758,12 +6758,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalList ;
 
 class GALGAS_terminalList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mTerminalName ;
-  public : GALGAS_lexicalSentValueList mAttribute_mSentAttributeList ;
-  public : GALGAS_string mAttribute_mSyntaxErrorMessage ;
-  public : GALGAS_bool mAttribute_mIsEndOfTemplateMark ;
-  public : GALGAS_bool mAttribute_mAtomicSelection ;
-  public : GALGAS_uint mAttribute_mStyleIndex ;
+  public : GALGAS_lstring mProperty_mTerminalName ;
+  public : GALGAS_lexicalSentValueList mProperty_mSentAttributeList ;
+  public : GALGAS_string mProperty_mSyntaxErrorMessage ;
+  public : GALGAS_bool mProperty_mIsEndOfTemplateMark ;
+  public : GALGAS_bool mProperty_mAtomicSelection ;
+  public : GALGAS_uint mProperty_mStyleIndex ;
 
 
 //--------------------------------- Accessors
@@ -6966,8 +6966,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitToke
 
 class cMapElement_lexicalExplicitTokenListMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_lstring mAttribute_mTerminal ;
-  public : GALGAS_lstringlist mAttribute_mFeatureList ;
+  public : GALGAS_lstring mProperty_mTerminal ;
+  public : GALGAS_lstringlist mProperty_mFeatureList ;
 
 //--- Constructor
   public : cMapElement_lexicalExplicitTokenListMap (const GALGAS_lstring & inKey,
@@ -6996,9 +6996,9 @@ class cMapElement_lexicalExplicitTokenListMap : public cMapElement {
 
 class GALGAS_lexicalExplicitTokenListMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_lstring mAttribute_mTerminal ;
-  public : GALGAS_lstringlist mAttribute_mFeatureList ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_lstring mProperty_mTerminal ;
+  public : GALGAS_lstringlist mProperty_mFeatureList ;
 
 
 //--------------------------------- Accessors
@@ -7170,9 +7170,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tokenSortedlist ;
 
 class GALGAS_tokenSortedlist_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_uint mAttribute_mLength ;
-  public : GALGAS_string mAttribute_mName ;
-  public : GALGAS_string mAttribute_mTerminalName ;
+  public : GALGAS_uint mProperty_mLength ;
+  public : GALGAS_string mProperty_mName ;
+  public : GALGAS_string mProperty_mTerminalName ;
 
 
 //--------------------------------- Accessors
@@ -7376,9 +7376,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitToke
 
 class cMapElement_lexicalExplicitTokenListMapMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_lexicalExplicitTokenListMap mAttribute_mExplicitTokenListMap ;
-  public : GALGAS_tokenSortedlist mAttribute_mTokenSortedList ;
-  public : GALGAS_bool mAttribute_mShouldBeGenerated ;
+  public : GALGAS_lexicalExplicitTokenListMap mProperty_mExplicitTokenListMap ;
+  public : GALGAS_tokenSortedlist mProperty_mTokenSortedList ;
+  public : GALGAS_bool mProperty_mShouldBeGenerated ;
 
 //--- Constructor
   public : cMapElement_lexicalExplicitTokenListMapMap (const GALGAS_lstring & inKey,
@@ -7408,10 +7408,10 @@ class cMapElement_lexicalExplicitTokenListMapMap : public cMapElement {
 
 class GALGAS_lexicalExplicitTokenListMapMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_lexicalExplicitTokenListMap mAttribute_mExplicitTokenListMap ;
-  public : GALGAS_tokenSortedlist mAttribute_mTokenSortedList ;
-  public : GALGAS_bool mAttribute_mShouldBeGenerated ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_lexicalExplicitTokenListMap mProperty_mExplicitTokenListMap ;
+  public : GALGAS_tokenSortedlist mProperty_mTokenSortedList ;
+  public : GALGAS_bool mProperty_mShouldBeGenerated ;
 
 
 //--------------------------------- Accessors
@@ -7606,8 +7606,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalMessageMap ;
 
 class cMapElement_lexicalMessageMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_lstring mAttribute_mLexicalMessage ;
-  public : GALGAS_bool mAttribute_mMessageIsUsed ;
+  public : GALGAS_lstring mProperty_mLexicalMessage ;
+  public : GALGAS_bool mProperty_mMessageIsUsed ;
 
 //--- Constructor
   public : cMapElement_lexicalMessageMap (const GALGAS_lstring & inKey,
@@ -7636,9 +7636,9 @@ class cMapElement_lexicalMessageMap : public cMapElement {
 
 class GALGAS_lexicalMessageMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_lstring mAttribute_mLexicalMessage ;
-  public : GALGAS_bool mAttribute_mMessageIsUsed ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_lstring mProperty_mLexicalMessage ;
+  public : GALGAS_bool mProperty_mMessageIsUsed ;
 
 
 //--------------------------------- Accessors
@@ -7863,9 +7863,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalRoutineForma
 
 class GALGAS_lexicalRoutineFormalArgumentList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lexicalArgumentModeAST mAttribute_mLexicalFormalArgumentMode ;
-  public : GALGAS_lexicalTypeEnum mAttribute_mLexicalFormalArgumentType ;
-  public : GALGAS_string mAttribute_mArgumentNameForComment ;
+  public : GALGAS_lexicalArgumentModeAST mProperty_mLexicalFormalArgumentMode ;
+  public : GALGAS_lexicalTypeEnum mProperty_mLexicalFormalArgumentType ;
+  public : GALGAS_string mProperty_mArgumentNameForComment ;
 
 
 //--------------------------------- Accessors

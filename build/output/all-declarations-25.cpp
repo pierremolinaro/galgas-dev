@@ -118,7 +118,7 @@ void routine_compileSemanticDeclarationsGalgas_33_ (GALGAS_lstringlist & ioArgum
   if (kBoolTrue == test_1) {
     inCompiler->printMessage (GALGAS_string ("*** Semantic analysis\n")  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 79)) ;
   }
-  cEnumerator_lstringlist enumerator_4528 (outArgument_outSemanticContext.mAttribute_mTypeMap.getter_unsolvedProxyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 82)), kENUMERATION_UP) ;
+  cEnumerator_lstringlist enumerator_4528 (outArgument_outSemanticContext.mProperty_mTypeMap.getter_unsolvedProxyList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 82)), kENUMERATION_UP) ;
   while (enumerator_4528.hasCurrentObject ()) {
     TC_Array <C_FixItDescription> fixItArray2 ;
     inCompiler->emitSemanticError (enumerator_4528.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)), GALGAS_string ("the '@").add_operation (enumerator_4528.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)).add_operation (GALGAS_string ("' type is undefined"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)), fixItArray2  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 83)) ;
@@ -169,7 +169,7 @@ void routine_buildGalgas_33_SemanticContext (const GALGAS_semanticDeclarationLis
   }
   cEnumerator_lstringlist enumerator_7226 (var_semanticTypePrecedenceGraph_6485.getter_undefinedNodeReferenceList (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 138)), kENUMERATION_UP) ;
   while (enumerator_7226.hasCurrentObject ()) {
-    const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_7226.current_mValue (HERE).mAttribute_string.getter_lastCharacter (inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139)).objectCompare (GALGAS_char (TO_UNICODE (63)))).boolEnum () ;
+    const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_7226.current_mValue (HERE).mProperty_string.getter_lastCharacter (inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 139)).objectCompare (GALGAS_char (TO_UNICODE (63)))).boolEnum () ;
     if (kBoolTrue == test_0) {
       inCompiler->printMessage (GALGAS_string ("Optional '").add_operation (enumerator_7226.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 140)), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 140)).add_operation (GALGAS_string ("'\n"), inCompiler COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 140))  COMMA_SOURCE_FILE ("galgas3SemanticDeclarationCompilation.galgas", 140)) ;
     }
@@ -11766,13 +11766,13 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
   const cMapElement_projectQualifiedFeatureMap * objectArray_19563 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("libpmAtPath")) ;
   if (NULL != objectArray_19563) {
       macroValidSharedObject (objectArray_19563, cMapElement_projectQualifiedFeatureMap) ;
-    const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, objectArray_19563->mAttribute_mFeatureValue.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, objectArray_19563->mProperty_mFeatureValue.mProperty_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_1) {
       TC_Array <C_FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (objectArray_19563->mAttribute_mFeatureValue.getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 369)), GALGAS_string ("the libpm path should not be empty"), fixItArray2  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 369)) ;
+      inCompiler->emitSemanticError (objectArray_19563->mProperty_mFeatureValue.getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 369)), GALGAS_string ("the libpm path should not be empty"), fixItArray2  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 369)) ;
       var_libpmPath_19556.drop () ; // Release error dropped variable
     }else if (kBoolFalse == test_1) {
-      var_libpmPath_19556 = objectArray_19563->mAttribute_mFeatureValue.mAttribute_string ;
+      var_libpmPath_19556 = objectArray_19563->mProperty_mFeatureValue.mProperty_string ;
     }
   }else{
     {
@@ -11808,16 +11808,16 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
   GALGAS_string var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string::makeEmptyString () ;
   cEnumerator_lstringlist enumerator_21406 (constinArgument_inTargetFeatureList, kENUMERATION_UP) ;
   while (enumerator_21406.hasCurrentObject ()) {
-    const enumGalgasBool test_3 = var_availableGenerationFeatures_20195.getter_hasKey (enumerator_21406.current_mValue (HERE).mAttribute_string COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 410)).boolEnum () ;
+    const enumGalgasBool test_3 = var_availableGenerationFeatures_20195.getter_hasKey (enumerator_21406.current_mValue (HERE).mProperty_string COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 410)).boolEnum () ;
     if (kBoolTrue == test_3) {
-      const enumGalgasBool test_4 = var_generationFeatures_21272.getter_hasKey (enumerator_21406.current_mValue (HERE).mAttribute_string COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 411)).boolEnum () ;
+      const enumGalgasBool test_4 = var_generationFeatures_21272.getter_hasKey (enumerator_21406.current_mValue (HERE).mProperty_string COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 411)).boolEnum () ;
       if (kBoolTrue == test_4) {
         TC_Array <C_FixItDescription> fixItArray5 ;
         inCompiler->emitSemanticError (enumerator_21406.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 412)), GALGAS_string ("duplicate '").add_operation (enumerator_21406.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 412)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 412)).add_operation (GALGAS_string ("' feature"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 412)), fixItArray5  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 412)) ;
       }
       GALGAS_string var_macOsDuplicateMessage_21631 = GALGAS_string ("the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\", \"Yosemite\", \"ElCapitanYosemite\", \"ElCapitan\", \"ElCapitanSierra\", \"Sierra\", \"LatestMacOS\" are ex"
         "clusive") ;
-      const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("SnowLeopard"))).boolEnum () ;
+      const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mProperty_string.objectCompare (GALGAS_string ("SnowLeopard"))).boolEnum () ;
       if (kBoolTrue == test_6) {
         const enumGalgasBool test_7 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
         if (kBoolTrue == test_7) {
@@ -11827,7 +11827,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
         var_SDK_21329 = GALGAS_string ("macosx10.6") ;
         var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.6") ;
       }else if (kBoolFalse == test_6) {
-        const enumGalgasBool test_9 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("Lion"))).boolEnum () ;
+        const enumGalgasBool test_9 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mProperty_string.objectCompare (GALGAS_string ("Lion"))).boolEnum () ;
         if (kBoolTrue == test_9) {
           const enumGalgasBool test_10 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_10) {
@@ -11837,7 +11837,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
           var_SDK_21329 = GALGAS_string ("macosx10.7") ;
           var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.7") ;
         }else if (kBoolFalse == test_9) {
-          const enumGalgasBool test_12 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("MountainLion"))).boolEnum () ;
+          const enumGalgasBool test_12 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mProperty_string.objectCompare (GALGAS_string ("MountainLion"))).boolEnum () ;
           if (kBoolTrue == test_12) {
             const enumGalgasBool test_13 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
             if (kBoolTrue == test_13) {
@@ -11847,7 +11847,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
             var_SDK_21329 = GALGAS_string ("macosx10.8") ;
             var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.8") ;
           }else if (kBoolFalse == test_12) {
-            const enumGalgasBool test_15 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("Mavericks"))).boolEnum () ;
+            const enumGalgasBool test_15 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mProperty_string.objectCompare (GALGAS_string ("Mavericks"))).boolEnum () ;
             if (kBoolTrue == test_15) {
               const enumGalgasBool test_16 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
               if (kBoolTrue == test_16) {
@@ -11857,7 +11857,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
               var_SDK_21329 = GALGAS_string ("macosx10.9") ;
               var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.9") ;
             }else if (kBoolFalse == test_15) {
-              const enumGalgasBool test_18 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("Yosemite"))).boolEnum () ;
+              const enumGalgasBool test_18 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mProperty_string.objectCompare (GALGAS_string ("Yosemite"))).boolEnum () ;
               if (kBoolTrue == test_18) {
                 const enumGalgasBool test_19 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                 if (kBoolTrue == test_19) {
@@ -11867,7 +11867,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
                 var_SDK_21329 = GALGAS_string ("macosx10.10") ;
                 var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.10") ;
               }else if (kBoolFalse == test_18) {
-                const enumGalgasBool test_21 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("ElCapitanYosemite"))).boolEnum () ;
+                const enumGalgasBool test_21 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mProperty_string.objectCompare (GALGAS_string ("ElCapitanYosemite"))).boolEnum () ;
                 if (kBoolTrue == test_21) {
                   const enumGalgasBool test_22 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                   if (kBoolTrue == test_22) {
@@ -11877,7 +11877,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
                   var_SDK_21329 = GALGAS_string ("macosx10.11") ;
                   var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.10") ;
                 }else if (kBoolFalse == test_21) {
-                  const enumGalgasBool test_24 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("ElCapitan"))).boolEnum () ;
+                  const enumGalgasBool test_24 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mProperty_string.objectCompare (GALGAS_string ("ElCapitan"))).boolEnum () ;
                   if (kBoolTrue == test_24) {
                     const enumGalgasBool test_25 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                     if (kBoolTrue == test_25) {
@@ -11887,7 +11887,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
                     var_SDK_21329 = GALGAS_string ("macosx10.11") ;
                     var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.11") ;
                   }else if (kBoolFalse == test_24) {
-                    const enumGalgasBool test_27 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("SierraElCapitan"))).boolEnum () ;
+                    const enumGalgasBool test_27 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mProperty_string.objectCompare (GALGAS_string ("SierraElCapitan"))).boolEnum () ;
                     if (kBoolTrue == test_27) {
                       const enumGalgasBool test_28 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                       if (kBoolTrue == test_28) {
@@ -11897,7 +11897,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
                       var_SDK_21329 = GALGAS_string ("macosx10.12") ;
                       var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.11") ;
                     }else if (kBoolFalse == test_27) {
-                      const enumGalgasBool test_30 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("Sierra"))).boolEnum () ;
+                      const enumGalgasBool test_30 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mProperty_string.objectCompare (GALGAS_string ("Sierra"))).boolEnum () ;
                       if (kBoolTrue == test_30) {
                         const enumGalgasBool test_31 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                         if (kBoolTrue == test_31) {
@@ -11907,7 +11907,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
                         var_SDK_21329 = GALGAS_string ("macosx10.12") ;
                         var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.12") ;
                       }else if (kBoolFalse == test_30) {
-                        const enumGalgasBool test_33 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mAttribute_string.objectCompare (GALGAS_string ("LatestMacOS"))).boolEnum () ;
+                        const enumGalgasBool test_33 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).mProperty_string.objectCompare (GALGAS_string ("LatestMacOS"))).boolEnum () ;
                         if (kBoolTrue == test_33) {
                           const enumGalgasBool test_34 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                           if (kBoolTrue == test_34) {
@@ -11916,7 +11916,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
                           }
                           var_SDK_21329 = GALGAS_string ("macosx") ;
                         }else if (kBoolFalse == test_33) {
-                          var_generationFeatures_21272.addAssign_operation (enumerator_21406.current_mValue (HERE).mAttribute_string  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 486)) ;
+                          var_generationFeatures_21272.addAssign_operation (enumerator_21406.current_mValue (HERE).mProperty_string  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 486)) ;
                         }
                       }
                     }
@@ -12041,7 +12041,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     const cMapElement_projectQualifiedFeatureMap * objectArray_28306 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("applicationBundleBase")) ;
     if (NULL != objectArray_28306) {
         macroValidSharedObject (objectArray_28306, cMapElement_projectQualifiedFeatureMap) ;
-      var_applicationBundleBase_28297 = objectArray_28306->mAttribute_mFeatureValue.mAttribute_string ;
+      var_applicationBundleBase_28297 = objectArray_28306->mProperty_mFeatureValue.mProperty_string ;
     }else{
       var_applicationBundleBase_28297 = GALGAS_string ("fr.irccyn") ;
     }
@@ -12069,7 +12069,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       GALGAS_bool joker_29899 ; // Joker input parameter
       GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 628))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir_29613.add_operation (GALGAS_string ("/PMApplicationUpdate.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 628)), joker_29899, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 628)) ;
       GALGAS_bool joker_30203 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_implementation (inCompiler, constinArgument_inTargetName, objectArray_29530->mAttribute_mFeatureValue.mAttribute_string, var_applicationBundleBase_28297 COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 629))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir_29613.add_operation (GALGAS_string ("/PMApplicationUpdate.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 634)), joker_30203, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 629)) ;
+      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_implementation (inCompiler, constinArgument_inTargetName, objectArray_29530->mProperty_mFeatureValue.mProperty_string, var_applicationBundleBase_28297 COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 629))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir_29613.add_operation (GALGAS_string ("/PMApplicationUpdate.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 634)), joker_30203, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 629)) ;
       GALGAS_bool joker_30406 ; // Joker input parameter
       GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_nib (inCompiler, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 637))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir_29613.add_operation (GALGAS_string ("/English.lproj/PMApplicationUpdate.xib"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 637)), joker_30406, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 637)) ;
       GALGAS_bool joker_30565 ; // Joker input parameter
@@ -12086,7 +12086,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       const cMapElement_projectQualifiedFeatureMap * objectArray_31299 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("codeSigning")) ;
       if (NULL != objectArray_31299) {
           macroValidSharedObject (objectArray_31299, cMapElement_projectQualifiedFeatureMap) ;
-        var_codeSignIdentity_31288 = objectArray_31299->mAttribute_mFeatureValue.mAttribute_string ;
+        var_codeSignIdentity_31288 = objectArray_31299->mProperty_mFeatureValue.mProperty_string ;
       }else{
         var_codeSignIdentity_31288 = GALGAS_string::makeEmptyString () ;
       }

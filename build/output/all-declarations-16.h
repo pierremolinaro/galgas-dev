@@ -74,8 +74,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionF
 
 class cPtr_andShortExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_andShortExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -165,8 +165,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equalExpressionForG
 
 class cPtr_equalExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_equalExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -256,8 +256,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notEqualExpressionF
 
 class cPtr_notEqualExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_notEqualExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -347,8 +347,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lowerOrEqualExpress
 
 class cPtr_lowerOrEqualExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_lowerOrEqualExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -438,8 +438,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_greaterOrEqualExpre
 
 class cPtr_greaterOrEqualExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_greaterOrEqualExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -529,8 +529,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_strictGreaterExpres
 
 class cPtr_strictGreaterExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_strictGreaterExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -620,8 +620,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_strictLowerExpressi
 
 class cPtr_strictLowerExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_strictLowerExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -711,8 +711,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rightShiftExpressio
 
 class cPtr_rightShiftExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_rightShiftExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -802,8 +802,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_leftShiftExpression
 
 class cPtr_leftShiftExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_leftShiftExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -893,8 +893,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionForGen
 
 class cPtr_addExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_addExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -984,8 +984,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionNoOver
 
 class cPtr_addExpressionNoOverflowForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_addExpressionNoOverflowForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -1075,8 +1075,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionForGen
 
 class cPtr_subExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_subExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -1166,8 +1166,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionNoOver
 
 class cPtr_subExpressionNoOverflowForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_subExpressionNoOverflowForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -1257,8 +1257,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpre
 
 class cPtr_multiplicationExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_multiplicationExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -1348,8 +1348,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpre
 
 class cPtr_multiplicationExpressionNoOverflowForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_multiplicationExpressionNoOverflowForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -1439,8 +1439,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionF
 
 class cPtr_divisionExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_divisionExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -1530,8 +1530,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionN
 
 class cPtr_divisionExpressionNoOverflowForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_divisionExpressionNoOverflowForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -1621,8 +1621,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_moduloExpressionFor
 
 class cPtr_moduloExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
 
 //--- Constructor
   public : cPtr_moduloExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -1709,7 +1709,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryMinusExpressio
 
 class cPtr_unaryMinusExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_unaryMinusExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -1794,7 +1794,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryMinusExpressio
 
 class cPtr_unaryMinusExpressionNoOverflowForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_unaryMinusExpressionNoOverflowForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -1879,7 +1879,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionForGen
 
 class cPtr_notExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_notExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -1967,8 +1967,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structFieldAccessEx
 
 class cPtr_structFieldAccessExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
-  public : GALGAS_string mAttribute_mStructFieldName ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
+  public : GALGAS_string mProperty_mStructFieldName ;
 
 //--- Constructor
   public : cPtr_structFieldAccessExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -2055,7 +2055,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tildeExpressionForG
 
 class cPtr_tildeExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_tildeExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -2146,9 +2146,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionForGene
 
 class cPtr_ifExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mIfExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mThenExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mElseExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mIfExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mThenExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mElseExpression ;
 
 //--- Constructor
   public : cPtr_ifExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -2243,8 +2243,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpress
 
 class cPtr_functionCallExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_string mAttribute_mFunctionName ;
-  public : GALGAS_semanticExpressionListForGeneration mAttribute_mExpressions ;
+  public : GALGAS_string mProperty_mFunctionName ;
+  public : GALGAS_semanticExpressionListForGeneration mProperty_mExpressions ;
 
 //--- Constructor
   public : cPtr_functionCallExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -2337,8 +2337,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpressionForG
 
 class cPtr_varInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_string mAttribute_mCppVarName ;
-  public : GALGAS_string mAttribute_mNameForCheckingFormalParameterUsing ;
+  public : GALGAS_string mProperty_mCppVarName ;
+  public : GALGAS_string mProperty_mNameForCheckingFormalParameterUsing ;
 
 //--- Constructor
   public : cPtr_varInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -2428,7 +2428,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalTypeInExpres
 
 class cPtr_literalTypeInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLiteralType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLiteralType ;
 
 //--- Constructor
   public : cPtr_literalTypeInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -2519,9 +2519,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInExpressionFor
 
 class cPtr_castInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mReceiverExpression ;
-  public : GALGAS_string mAttribute_mTypeName ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mCastType ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
+  public : GALGAS_string mProperty_mTypeName ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mCastType ;
 
 //--- Constructor
   public : cPtr_castInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -2616,9 +2616,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInE
 
 class cPtr_testDynamicClassInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mReceiverExpression ;
-  public : GALGAS_dynamicTypeComparisonKind mAttribute_mTypeComparisonKind ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mCastType ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
+  public : GALGAS_dynamicTypeComparisonKind mProperty_mTypeComparisonKind ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mCastType ;
 
 //--- Constructor
   public : cPtr_testDynamicClassInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -2710,8 +2710,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractObjectInExpr
 
 class cPtr_extractObjectInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mReceiverExpression ;
-  public : GALGAS_string mAttribute_mTypeName ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
+  public : GALGAS_string mProperty_mTypeName ;
 
 //--- Constructor
   public : cPtr_extractObjectInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -2804,8 +2804,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperInExpres
 
 class cPtr_filewrapperInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_string mAttribute_mFilewrapperName ;
-  public : GALGAS_string mAttribute_mFilewrapperPath ;
+  public : GALGAS_string mProperty_mFilewrapperName ;
+  public : GALGAS_string mProperty_mFilewrapperPath ;
 
 //--- Constructor
   public : cPtr_filewrapperInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -2901,9 +2901,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperStaticPa
 
 class cPtr_filewrapperStaticPathInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_string mAttribute_mFilewrapperName ;
-  public : GALGAS_uint mAttribute_mFilewrapperFileIndex ;
-  public : GALGAS_bool mAttribute_mIsTextFile ;
+  public : GALGAS_string mProperty_mFilewrapperName ;
+  public : GALGAS_uint mProperty_mFilewrapperFileIndex ;
+  public : GALGAS_bool mProperty_mIsTextFile ;
 
 //--- Constructor
   public : cPtr_filewrapperStaticPathInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -3001,9 +3001,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplate
 
 class cPtr_filewrapperTemplateInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_string mAttribute_mFilewrapperName ;
-  public : GALGAS_string mAttribute_mFilewrapperTemplateName ;
-  public : GALGAS_semanticExpressionListForGeneration mAttribute_mActualOutputParameterList ;
+  public : GALGAS_string mProperty_mFilewrapperName ;
+  public : GALGAS_string mProperty_mFilewrapperTemplateName ;
+  public : GALGAS_semanticExpressionListForGeneration mProperty_mActualOutputParameterList ;
 
 //--- Constructor
   public : cPtr_filewrapperTemplateInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -3098,8 +3098,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectio
 
 class cPtr_lexiqueIntrospectionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_string mAttribute_mLexiqueComponentName ;
-  public : GALGAS_string mAttribute_mLexiqueGetterName ;
+  public : GALGAS_string mProperty_mLexiqueComponentName ;
+  public : GALGAS_string mProperty_mLexiqueGetterName ;
 
 //--- Constructor
   public : cPtr_lexiqueIntrospectionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -3185,7 +3185,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputActualParamet
 
 class cPtr_outputActualParameterForGeneration : public cPtr_actualParameterForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mOutputActualParameterExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mOutputActualParameterExpression ;
 
 //--- Constructor
   public : cPtr_outputActualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mFormalArgumentType,
@@ -3268,7 +3268,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectio
 
 class cPtr_expressionCollectionValueForGeneration : public cPtr_abstractCollectionValueElementForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_expressionCollectionValueForGeneration (const GALGAS_location & in_mExpressionLocation,
@@ -3355,7 +3355,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectio
 
 class cPtr_expressionCollectionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
-  public : GALGAS_collectionValueElementListForGeneration mAttribute_mElementList ;
+  public : GALGAS_collectionValueElementListForGeneration mProperty_mElementList ;
 
 //--- Constructor
   public : cPtr_expressionCollectionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
@@ -3471,11 +3471,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstructi
 
 class cPtr_assignmentInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mTargetType ;
-  public : GALGAS_string mAttribute_mTargetCppName ;
-  public : GALGAS_string mAttribute_mNameForCheckingFormalParameterUsing ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mSourceExpression ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mTargetType ;
+  public : GALGAS_string mProperty_mTargetCppName ;
+  public : GALGAS_string mProperty_mNameForCheckingFormalParameterUsing ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mSourceExpression ;
 
 //--- Constructor
   public : cPtr_assignmentInstructionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTargetType,
@@ -3570,9 +3570,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstr
 
 class cPtr_structuredCastInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
-  public : GALGAS_castInstructionBranchListForGeneration mAttribute_mCastBranchList ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mElseInstructionList ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
+  public : GALGAS_castInstructionBranchListForGeneration mProperty_mCastBranchList ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mElseInstructionList ;
 
 //--- Constructor
   public : cPtr_structuredCastInstructionForGeneration (const GALGAS_semanticExpressionForGeneration & in_mExpression,
@@ -3675,13 +3675,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opEqualInstructionF
 
 class cPtr_opEqualInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mTargetType ;
-  public : GALGAS_string mAttribute_mTargetVariableCppName ;
-  public : GALGAS_string mAttribute_mNameForCheckingFormalParameterUsing ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mSourceExpression ;
-  public : GALGAS_string mAttribute_mGeneratedMethod ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mTargetType ;
+  public : GALGAS_string mProperty_mTargetVariableCppName ;
+  public : GALGAS_string mProperty_mNameForCheckingFormalParameterUsing ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mSourceExpression ;
+  public : GALGAS_string mProperty_mGeneratedMethod ;
 
 //--- Constructor
   public : cPtr_opEqualInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -3786,11 +3786,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_errorInstructionFor
 
 class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mReceiverExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mErrorExpression ;
-  public : GALGAS_stringlist mAttribute_mBuiltVariableCppNameList ;
-  public : GALGAS_fixitListForGeneration mAttribute_mFixitListForGeneration ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mErrorExpression ;
+  public : GALGAS_stringlist mProperty_mBuiltVariableCppNameList ;
+  public : GALGAS_fixitListForGeneration mProperty_mFixitListForGeneration ;
 
 //--- Constructor
   public : cPtr_errorInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -3900,14 +3900,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionForGe
 
 class cPtr_forInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_forInstructionEnumeratedObjectListForGeneration mAttribute_mEnumeratedObjectList ;
-  public : GALGAS_string mAttribute_mIndexVariableCppName ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mWhileExpression ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mBeforeInstructionList ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mBetweenInstructionList ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mDoInstructionList ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mAfterInstructionList ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_forInstructionEnumeratedObjectListForGeneration mProperty_mEnumeratedObjectList ;
+  public : GALGAS_string mProperty_mIndexVariableCppName ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mWhileExpression ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mBeforeInstructionList ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mBetweenInstructionList ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mDoInstructionList ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mAfterInstructionList ;
 
 //--- Constructor
   public : cPtr_forInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -4023,14 +4023,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionW
 
 class cPtr_grammarInstructionWithSourceFileForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_string mAttribute_mGrammarName ;
-  public : GALGAS_string mAttribute_mLabelName ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mSourceFileExpression ;
-  public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
-  public : GALGAS_bool mAttribute_mGrammarHasTranslateFeature ;
-  public : GALGAS_stringlist mAttribute_mAssignementList ;
-  public : GALGAS_string mAttribute_mSyntaxDirectedTranslationResultVarName ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_string mProperty_mGrammarName ;
+  public : GALGAS_string mProperty_mLabelName ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mSourceFileExpression ;
+  public : GALGAS_actualParameterListForGeneration mProperty_mActualParameterList ;
+  public : GALGAS_bool mProperty_mGrammarHasTranslateFeature ;
+  public : GALGAS_stringlist mProperty_mAssignementList ;
+  public : GALGAS_string mProperty_mSyntaxDirectedTranslationResultVarName ;
 
 //--- Constructor
   public : cPtr_grammarInstructionWithSourceFileForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -4149,15 +4149,15 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionW
 
 class cPtr_grammarInstructionWithSourceExpressionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_string mAttribute_mGrammarName ;
-  public : GALGAS_string mAttribute_mLabelName ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mSourceStringExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mNameStringExpression ;
-  public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
-  public : GALGAS_bool mAttribute_mGrammarHasTranslateFeature ;
-  public : GALGAS_stringlist mAttribute_mAssignementList ;
-  public : GALGAS_string mAttribute_mSyntaxDirectedTranslationResultVarName ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_string mProperty_mGrammarName ;
+  public : GALGAS_string mProperty_mLabelName ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mSourceStringExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mNameStringExpression ;
+  public : GALGAS_actualParameterListForGeneration mProperty_mActualParameterList ;
+  public : GALGAS_bool mProperty_mGrammarHasTranslateFeature ;
+  public : GALGAS_stringlist mProperty_mAssignementList ;
+  public : GALGAS_string mProperty_mSyntaxDirectedTranslationResultVarName ;
 
 //--- Constructor
   public : cPtr_grammarInstructionWithSourceExpressionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -4263,10 +4263,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifInstructionForGen
 
 class cPtr_ifInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mIFexpression ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_m_5F_then_5F_instructionList ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_m_5F_else_5F_instructionList ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mIFexpression ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_m_5F_then_5F_instructionList ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_m_5F_else_5F_instructionList ;
 
 //--- Constructor
   public : cPtr_ifInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -4362,10 +4362,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableOrCons
 
 class cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mTargetType ;
-  public : GALGAS_bool mAttribute_mIsConstant ;
-  public : GALGAS_string mAttribute_mCppVariableName ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mSourceExpression ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mTargetType ;
+  public : GALGAS_bool mProperty_mIsConstant ;
+  public : GALGAS_string mProperty_mCppVariableName ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mSourceExpression ;
 
 //--- Constructor
   public : cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTargetType,
@@ -4455,8 +4455,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logInstructionForGe
 
 class cPtr_logInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mLogMessage ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLogExpression ;
+  public : GALGAS_lstring mProperty_mLogMessage ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLogExpression ;
 
 //--- Constructor
   public : cPtr_logInstructionForGeneration (const GALGAS_lstring & in_mLogMessage,
@@ -4551,11 +4551,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionForG
 
 class cPtr_loopInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mVariantExpression ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mFirstInstructions ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mLoopExpression ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mSecondInstructions ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mVariantExpression ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mFirstInstructions ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mLoopExpression ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mSecondInstructions ;
 
 //--- Constructor
   public : cPtr_loopInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -4647,8 +4647,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_messageInstructionF
 
 class cPtr_messageInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
-  public : GALGAS_location mAttribute_mInstructionLocation ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
 
 //--- Constructor
   public : cPtr_messageInstructionForGeneration (const GALGAS_semanticExpressionForGeneration & in_mExpression,
@@ -4752,14 +4752,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_methodCallInstructi
 
 class cPtr_methodCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mReceiverExpression ;
-  public : GALGAS_string mAttribute_mMethodName ;
-  public : GALGAS_methodKind mAttribute_mKind ;
-  public : GALGAS_actualParameterListForGeneration mAttribute_mActualParameterList ;
-  public : GALGAS_bool mAttribute_mHasCompilerArgument ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mMethodBaseType ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReceiverType ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
+  public : GALGAS_string mProperty_mMethodName ;
+  public : GALGAS_methodKind mProperty_mKind ;
+  public : GALGAS_actualParameterListForGeneration mProperty_mActualParameterList ;
+  public : GALGAS_bool mProperty_mHasCompilerArgument ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mMethodBaseType ;
 
 //--- Constructor
   public : cPtr_methodCallInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -4860,9 +4860,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchInstructionFo
 
 class cPtr_switchInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mEnumType ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mSwitchExpression ;
-  public : GALGAS_switchBranchesForGeneration mAttribute_mBranches ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mEnumType ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mSwitchExpression ;
+  public : GALGAS_switchBranchesForGeneration mProperty_mBranches ;
 
 //--- Constructor
   public : cPtr_switchInstructionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mEnumType,
@@ -4956,10 +4956,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_warningInstructionF
 
 class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mReceiverExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mWarningExpression ;
-  public : GALGAS_fixitListForGeneration mAttribute_mFixitListForGeneration ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mWarningExpression ;
+  public : GALGAS_fixitListForGeneration mProperty_mFixitListForGeneration ;
 
 //--- Constructor
   public : cPtr_warningInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -5064,13 +5064,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readOnlyWithInstruc
 
 class cPtr_readOnlyWithInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mReceiverExpression ;
-  public : GALGAS_string mAttribute_mObjectArrayCppName ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mKeyExpression ;
-  public : GALGAS_string mAttribute_mSearchMethodNameForErrorSignaling ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mDoBranchInstructions ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mElseBranchInstructions ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
+  public : GALGAS_string mProperty_mObjectArrayCppName ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mKeyExpression ;
+  public : GALGAS_string mProperty_mSearchMethodNameForErrorSignaling ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mDoBranchInstructions ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mElseBranchInstructions ;
 
 //--- Constructor
   public : cPtr_readOnlyWithInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -5187,15 +5187,15 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readWriteWithInstru
 
 class cPtr_readWriteWithInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
-  public : GALGAS_string mAttribute_mReceiverVariableCppName ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_string mAttribute_mObjectArrayCppName ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mKeyExpression ;
-  public : GALGAS_string mAttribute_mSearchMethodNameForErrorSignaling ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mDoBranchInstructions ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mElseBranchInstructions ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_string mProperty_mReceiverVariableCppName ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReceiverType ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public : GALGAS_string mProperty_mObjectArrayCppName ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mKeyExpression ;
+  public : GALGAS_string mProperty_mSearchMethodNameForErrorSignaling ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mDoBranchInstructions ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mElseBranchInstructions ;
 
 //--- Constructor
   public : cPtr_readWriteWithInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -5299,9 +5299,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseLoopInstructio
 
 class cPtr_parseLoopInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mVariantExpression ;
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mWhileExpression ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mInstructionList ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mVariantExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mWhileExpression ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mInstructionList ;
 
 //--- Constructor
   public : cPtr_parseLoopInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -5394,9 +5394,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseWhenInstructio
 
 class cPtr_parseWhenInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mWhenExpression ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mInstructionList ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mElseInstructionList ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mWhenExpression ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mInstructionList ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mElseInstructionList ;
 
 //--- Constructor
   public : cPtr_parseWhenInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -5483,7 +5483,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxSendInstructi
 
 class cPtr_syntaxSendInstructionForGeneration : public cPtr_syntaxInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_syntaxSendInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
@@ -5565,7 +5565,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 class cPtr_templateInstructionExpressionForGeneration : public cPtr_templateInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_templateInstructionExpressionForGeneration (const GALGAS_semanticExpressionForGeneration & in_mExpression
@@ -5745,5 +5745,15 @@ GALGAS_string filewrapperTemplate_projectCreationFileWrapper_PROJECT_5F_syntax (
 void routine_performProjectCreation (const class GALGAS_string constinArgument0,
                                      class C_Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                              Routine 'projectCreation'                                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_projectCreation (const class GALGAS_string constinArgument0,
+                              class C_Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
 #endif

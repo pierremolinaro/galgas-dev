@@ -182,10 +182,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_productionRuleListF
 
 class GALGAS_productionRuleListForGrammarAnalysis_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mLeftNonterminalSymbol ;
-  public : GALGAS_uint mAttribute_mLeftNonterminalSymbolIndex ;
-  public : GALGAS_syntaxInstructionListForGrammarAnalysis mAttribute_mInstructionList ;
-  public : GALGAS_uint mAttribute_mProductionIndex ;
+  public : GALGAS_lstring mProperty_mLeftNonterminalSymbol ;
+  public : GALGAS_uint mProperty_mLeftNonterminalSymbolIndex ;
+  public : GALGAS_syntaxInstructionListForGrammarAnalysis mProperty_mInstructionList ;
+  public : GALGAS_uint mProperty_mProductionIndex ;
 
 
 //--------------------------------- Accessors
@@ -358,7 +358,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unusedNonTerminalSy
 
 class cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis : public cMapElement {
 //--- Map attributes
-  public : GALGAS_uint mAttribute_mNonTerminalIndex ;
+  public : GALGAS_uint mProperty_mNonTerminalIndex ;
 
 //--- Constructor
   public : cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis (const GALGAS_lstring & inKey,
@@ -386,8 +386,8 @@ class cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis : public cMapElem
 
 class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_uint mAttribute_mNonTerminalIndex ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_uint mProperty_mNonTerminalIndex ;
 
 
 //--------------------------------- Accessors
@@ -555,9 +555,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolSo
 
 class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mNonTerminalSymbol ;
-  public : GALGAS_uint mAttribute_mNonTerminalIndex ;
-  public : GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis mAttribute_mNonterminalSymbolParametersMap ;
+  public : GALGAS_lstring mProperty_mNonTerminalSymbol ;
+  public : GALGAS_uint mProperty_mNonTerminalIndex ;
+  public : GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis mProperty_mNonterminalSymbolParametersMap ;
 
 
 //--------------------------------- Accessors
@@ -754,7 +754,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_branchListForGramma
 
 class GALGAS_branchListForGrammarAnalysis_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_syntaxInstructionListForGrammarAnalysis mAttribute_mSyntaxInstructionList ;
+  public : GALGAS_syntaxInstructionListForGrammarAnalysis mProperty_mSyntaxInstructionList ;
 
 
 //--------------------------------- Accessors
@@ -1079,8 +1079,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxComponentList
 
 class GALGAS_syntaxComponentListForGrammarAnalysis_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_productionRuleListForGrammarAnalysis mAttribute_mProductionRulesList ;
-  public : GALGAS_lstring mAttribute_mSyntaxComponentName ;
+  public : GALGAS_productionRuleListForGrammarAnalysis mProperty_mProductionRulesList ;
+  public : GALGAS_lstring mProperty_mSyntaxComponentName ;
 
 
 //--------------------------------- Accessors
@@ -1254,7 +1254,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalSymbolsMapF
 
 class cMapElement_terminalSymbolsMapForGrammarAnalysis : public cMapElement {
 //--- Map attributes
-  public : GALGAS_uint mAttribute_mTerminalIndex ;
+  public : GALGAS_uint mProperty_mTerminalIndex ;
 
 //--- Constructor
   public : cMapElement_terminalSymbolsMapForGrammarAnalysis (const GALGAS_lstring & inKey,
@@ -1282,8 +1282,8 @@ class cMapElement_terminalSymbolsMapForGrammarAnalysis : public cMapElement {
 
 class GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_uint mAttribute_mTerminalIndex ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_uint mProperty_mTerminalIndex ;
 
 
 //--------------------------------- Accessors
@@ -1579,7 +1579,7 @@ void extensionSetter_append (class GALGAS_rowList & ioObject,
 
 class GALGAS_rowList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS__32_stringlist mAttribute_columns ;
+  public : GALGAS__32_stringlist mProperty_columns ;
 
 
 //--------------------------------- Accessors
@@ -1768,7 +1768,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programListForGener
 
 class GALGAS_programListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_semanticDeclarationForGeneration mAttribute_mDeclaration ;
+  public : GALGAS_semanticDeclarationForGeneration mProperty_mDeclaration ;
 
 
 //--------------------------------- Accessors
@@ -1896,8 +1896,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_genericExtensionMet
 
 class GALGAS_genericExtensionMethodListMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_string mAttribute_key ;
-  public : GALGAS_lstringlist mAttribute_mList ;
+  public : GALGAS_string mProperty_key ;
+  public : GALGAS_lstringlist mProperty_mList ;
 
 
 //--------------------------------- Accessors
@@ -2077,8 +2077,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_descendantClassList
 
 class GALGAS_descendantClassListMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_string mAttribute_key ;
-  public : GALGAS_unifiedTypeMapProxyList mAttribute_mList ;
+  public : GALGAS_string mProperty_key ;
+  public : GALGAS_unifiedTypeMapProxyList mProperty_mList ;
 
 
 //--------------------------------- Accessors
@@ -2257,7 +2257,7 @@ class cMapElement_extensionMethodMapForGlobalCheckings : public cMapElement {
 
 class GALGAS_extensionMethodMapForGlobalCheckings_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
+  public : GALGAS_lstring mProperty_lkey ;
 
 
 //--------------------------------- Accessors
@@ -2432,7 +2432,7 @@ class cMapElement_extensionSetterMapForGlobalCheckings : public cMapElement {
 
 class GALGAS_extensionSetterMapForGlobalCheckings_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
+  public : GALGAS_lstring mProperty_lkey ;
 
 
 //--------------------------------- Accessors
@@ -2607,7 +2607,7 @@ class cMapElement_extensionGetterMapForGlobalCheckings : public cMapElement {
 
 class GALGAS_extensionGetterMapForGlobalCheckings_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
+  public : GALGAS_lstring mProperty_lkey ;
 
 
 //--------------------------------- Accessors
@@ -3193,14 +3193,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_Qualified
 
 class GALGAS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstringlist mAttribute_mProjectSourceList ;
-  public : GALGAS_luint mAttribute_mMajorVersion ;
-  public : GALGAS_luint mAttribute_mMinorVersion ;
-  public : GALGAS_luint mAttribute_mRevisionVersion ;
-  public : GALGAS_lstringlist mAttribute_mGenerationFeatureList ;
-  public : GALGAS_galgas_33_QualifiedFeatureList mAttribute_mQualifiedFeatureList ;
-  public : GALGAS_lstring mAttribute_mTargetName ;
-  public : GALGAS_location mAttribute_mEndOfSourceFile ;
+  public : GALGAS_lstringlist mProperty_mProjectSourceList ;
+  public : GALGAS_luint mProperty_mMajorVersion ;
+  public : GALGAS_luint mProperty_mMinorVersion ;
+  public : GALGAS_luint mProperty_mRevisionVersion ;
+  public : GALGAS_lstringlist mProperty_mGenerationFeatureList ;
+  public : GALGAS_galgas_33_QualifiedFeatureList mProperty_mQualifiedFeatureList ;
+  public : GALGAS_lstring mProperty_mTargetName ;
+  public : GALGAS_location mProperty_mEndOfSourceFile ;
 
 
 //--------------------------------- Accessors
@@ -3294,8 +3294,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_ProjectCo
 
 class GALGAS_galgas_33_QualifiedFeatureList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mFeatureName ;
-  public : GALGAS_lstring mAttribute_mFeatureValue ;
+  public : GALGAS_lstring mProperty_mFeatureName ;
+  public : GALGAS_lstring mProperty_mFeatureValue ;
 
 
 //--------------------------------- Accessors
@@ -3833,9 +3833,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInExpressionAST
 
 class cPtr_castInExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_semanticExpressionAST mAttribute_mReceiverExpression ;
-  public : GALGAS_location mAttribute_mEndOfReceiverExpression ;
-  public : GALGAS_lstring mAttribute_mTypeName ;
+  public : GALGAS_semanticExpressionAST mProperty_mReceiverExpression ;
+  public : GALGAS_location mProperty_mEndOfReceiverExpression ;
+  public : GALGAS_lstring mProperty_mTypeName ;
 
 //--- Constructor
   public : cPtr_castInExpressionAST (const GALGAS_semanticExpressionAST & in_mReceiverExpression,
@@ -3929,9 +3929,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueAST 
 
 class cPtr_collectionValueAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_collectionValueElementList mAttribute_mElementList ;
-  public : GALGAS_location mAttribute_mEndOfCollectionValue ;
+  public : GALGAS_lstring mProperty_mTypeName ;
+  public : GALGAS_collectionValueElementList mProperty_mElementList ;
+  public : GALGAS_location mProperty_mEndOfCollectionValue ;
 
 //--- Constructor
   public : cPtr_collectionValueAST (const GALGAS_lstring & in_mTypeName,
@@ -4025,9 +4025,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constructorExpressi
 
 class cPtr_constructorExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_lstring mAttribute_mConstructorName ;
-  public : GALGAS_actualOutputExpressionList mAttribute_mExpressions ;
+  public : GALGAS_lstring mProperty_mTypeName ;
+  public : GALGAS_lstring mProperty_mConstructorName ;
+  public : GALGAS_actualOutputExpressionList mProperty_mExpressions ;
 
 //--- Constructor
   public : cPtr_constructorExpressionAST (const GALGAS_lstring & in_mTypeName,
@@ -4115,7 +4115,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_defaultConstructorE
 
 class cPtr_defaultConstructorExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mTypeName ;
+  public : GALGAS_lstring mProperty_mTypeName ;
 
 //--- Constructor
   public : cPtr_defaultConstructorExpressionAST (const GALGAS_lstring & in_mTypeName
@@ -4202,8 +4202,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperInExpres
 
 class cPtr_filewrapperInExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mFilewrapperName ;
-  public : GALGAS_lstring mAttribute_mFilewrapperPath ;
+  public : GALGAS_lstring mProperty_mFilewrapperName ;
+  public : GALGAS_lstring mProperty_mFilewrapperPath ;
 
 //--- Constructor
   public : cPtr_filewrapperInExpressionAST (const GALGAS_lstring & in_mFilewrapperName,
@@ -4289,7 +4289,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperObjectIn
 
 class cPtr_filewrapperObjectInstanciationInExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mFilewrapperName ;
+  public : GALGAS_lstring mProperty_mFilewrapperName ;
 
 //--- Constructor
   public : cPtr_filewrapperObjectInstanciationInExpressionAST (const GALGAS_lstring & in_mFilewrapperName
@@ -4379,9 +4379,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplate
 
 class cPtr_filewrapperTemplateInExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mFilewrapperName ;
-  public : GALGAS_lstring mAttribute_mFilewrapperTemplateName ;
-  public : GALGAS_actualOutputExpressionList mAttribute_mExpressions ;
+  public : GALGAS_lstring mProperty_mFilewrapperName ;
+  public : GALGAS_lstring mProperty_mFilewrapperTemplateName ;
+  public : GALGAS_actualOutputExpressionList mProperty_mExpressions ;
 
 //--- Constructor
   public : cPtr_filewrapperTemplateInExpressionAST (const GALGAS_lstring & in_mFilewrapperName,
@@ -4472,8 +4472,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpress
 
 class cPtr_functionCallExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mFunctionName ;
-  public : GALGAS_actualOutputExpressionList mAttribute_mExpressionList ;
+  public : GALGAS_lstring mProperty_mFunctionName ;
+  public : GALGAS_actualOutputExpressionList mProperty_mExpressionList ;
 
 //--- Constructor
   public : cPtr_functionCallExpressionAST (const GALGAS_lstring & in_mFunctionName,
@@ -4562,9 +4562,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressio
 
 class cPtr_getterCallExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_semanticExpressionAST mAttribute_mReceiver ;
-  public : GALGAS_lstring mAttribute_mGetterName ;
-  public : GALGAS_actualOutputExpressionList mAttribute_mExpressions ;
+  public : GALGAS_semanticExpressionAST mProperty_mReceiver ;
+  public : GALGAS_lstring mProperty_mGetterName ;
+  public : GALGAS_actualOutputExpressionList mProperty_mExpressions ;
 
 //--- Constructor
   public : cPtr_getterCallExpressionAST (const GALGAS_semanticExpressionAST & in_mReceiver,
@@ -4655,8 +4655,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectio
 
 class cPtr_lexiqueIntrospectionExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mLexiqueComponentName ;
-  public : GALGAS_lstring mAttribute_mLexiqueGetterName ;
+  public : GALGAS_lstring mProperty_mLexiqueComponentName ;
+  public : GALGAS_lstring mProperty_mLexiqueGetterName ;
 
 //--- Constructor
   public : cPtr_lexiqueIntrospectionExpressionAST (const GALGAS_lstring & in_mLexiqueComponentName,
@@ -4742,7 +4742,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalBigIntExpres
 
 class cPtr_literalBigIntExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_lbigint mAttribute_mValue ;
+  public : GALGAS_lbigint mProperty_mValue ;
 
 //--- Constructor
   public : cPtr_literalBigIntExpressionAST (const GALGAS_lbigint & in_mValue
@@ -4826,7 +4826,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalCharExpressi
 
 class cPtr_literalCharExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_lchar mAttribute_mCharacter ;
+  public : GALGAS_lchar mProperty_mCharacter ;
 
 //--- Constructor
   public : cPtr_literalCharExpressionAST (const GALGAS_lchar & in_mCharacter
@@ -4910,7 +4910,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalDoubleExpres
 
 class cPtr_literalDoubleExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_ldouble mAttribute_mValue ;
+  public : GALGAS_ldouble mProperty_mValue ;
 
 //--- Constructor
   public : cPtr_literalDoubleExpressionAST (const GALGAS_ldouble & in_mValue
@@ -4994,7 +4994,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSIntExpressi
 
 class cPtr_literalSIntExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_lsint mAttribute_mValue ;
+  public : GALGAS_lsint mProperty_mValue ;
 
 //--- Constructor
   public : cPtr_literalSIntExpressionAST (const GALGAS_lsint & in_mValue
@@ -5078,7 +5078,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalSInt_36__34_
 
 class cPtr_literalSInt_36__34_ExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_lsint_36__34_ mAttribute_mValue ;
+  public : GALGAS_lsint_36__34_ mProperty_mValue ;
 
 //--- Constructor
   public : cPtr_literalSInt_36__34_ExpressionAST (const GALGAS_lsint_36__34_ & in_mValue
@@ -5162,7 +5162,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalTypeInExpres
 
 class cPtr_literalTypeInExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mLiteralTypeName ;
+  public : GALGAS_lstring mProperty_mLiteralTypeName ;
 
 //--- Constructor
   public : cPtr_literalTypeInExpressionAST (const GALGAS_lstring & in_mLiteralTypeName
@@ -5246,7 +5246,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUIntExpressi
 
 class cPtr_literalUIntExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_luint mAttribute_mValue ;
+  public : GALGAS_luint mProperty_mValue ;
 
 //--- Constructor
   public : cPtr_literalUIntExpressionAST (const GALGAS_luint & in_mValue
@@ -5330,7 +5330,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalUInt_36__34_
 
 class cPtr_literalUInt_36__34_ExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_luint_36__34_ mAttribute_mValue ;
+  public : GALGAS_luint_36__34_ mProperty_mValue ;
 
 //--- Constructor
   public : cPtr_literalUInt_36__34_ExpressionAST (const GALGAS_luint_36__34_ & in_mValue
@@ -5420,9 +5420,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionExpressionAST
 
 class cPtr_optionExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mOptionComponentName ;
-  public : GALGAS_lstring mAttribute_mOptionEntryName ;
-  public : GALGAS_lstring mAttribute_mOptionGetterName ;
+  public : GALGAS_lstring mProperty_mOptionComponentName ;
+  public : GALGAS_lstring mProperty_mOptionEntryName ;
+  public : GALGAS_lstring mProperty_mOptionGetterName ;
 
 //--- Constructor
   public : cPtr_optionExpressionAST (const GALGAS_lstring & in_mOptionComponentName,
@@ -5513,9 +5513,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structFieldAccessEx
 
 class cPtr_structFieldAccessExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_location mAttribute_mOperatorLocation ;
-  public : GALGAS_semanticExpressionAST mAttribute_mExpression ;
-  public : GALGAS_lstring mAttribute_mStructFieldName ;
+  public : GALGAS_location mProperty_mOperatorLocation ;
+  public : GALGAS_semanticExpressionAST mProperty_mExpression ;
+  public : GALGAS_lstring mProperty_mStructFieldName ;
 
 //--- Constructor
   public : cPtr_structFieldAccessExpressionAST (const GALGAS_location & in_mOperatorLocation,
@@ -5609,10 +5609,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInE
 
 class cPtr_testDynamicClassInExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_semanticExpressionAST mAttribute_mReceiverExpression ;
-  public : GALGAS_location mAttribute_mEndOfReceiverExpression ;
-  public : GALGAS_dynamicTypeComparisonKind mAttribute_mTypeComparisonKind ;
-  public : GALGAS_lstring mAttribute_mTypeName ;
+  public : GALGAS_semanticExpressionAST mProperty_mReceiverExpression ;
+  public : GALGAS_location mProperty_mEndOfReceiverExpression ;
+  public : GALGAS_dynamicTypeComparisonKind mProperty_mTypeComparisonKind ;
+  public : GALGAS_lstring mProperty_mTypeName ;
 
 //--- Constructor
   public : cPtr_testDynamicClassInExpressionAST (const GALGAS_semanticExpressionAST & in_mReceiverExpression,
@@ -5702,7 +5702,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_varInExpressionAST 
 
 class cPtr_varInExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mVarName ;
+  public : GALGAS_lstring mProperty_mVarName ;
 
 //--- Constructor
   public : cPtr_varInExpressionAST (const GALGAS_lstring & in_mVarName
@@ -5881,8 +5881,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualExisting
 
 class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameterAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mActualSelector ;
-  public : GALGAS_lstring mAttribute_mInputActualParameterName ;
+  public : GALGAS_lstring mProperty_mActualSelector ;
+  public : GALGAS_lstring mProperty_mInputActualParameterName ;
 
 //--- Constructor
   public : cPtr_inputActualExistingVariableParameterAST (const GALGAS_lstring & in_mActualSelector,
@@ -5977,10 +5977,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewConst
 
 class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mActualSelector ;
-  public : GALGAS_lstring mAttribute_mInputOptionalActualTypeName ;
-  public : GALGAS_lstring mAttribute_mInputActualParameterName ;
-  public : GALGAS_bool mAttribute_mMarkedAsUnused ;
+  public : GALGAS_lstring mProperty_mActualSelector ;
+  public : GALGAS_lstring mProperty_mInputOptionalActualTypeName ;
+  public : GALGAS_lstring mProperty_mInputActualParameterName ;
+  public : GALGAS_bool mProperty_mMarkedAsUnused ;
 
 //--- Constructor
   public : cPtr_inputActualNewConstantParameterAST (const GALGAS_lstring & in_mActualSelector,
@@ -6076,9 +6076,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewVaria
 
 class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mActualSelector ;
-  public : GALGAS_lstring mAttribute_mInputOptionalActualTypeName ;
-  public : GALGAS_lstring mAttribute_mInputActualParameterName ;
+  public : GALGAS_lstring mProperty_mActualSelector ;
+  public : GALGAS_lstring mProperty_mInputOptionalActualTypeName ;
+  public : GALGAS_lstring mProperty_mInputActualParameterName ;
 
 //--- Constructor
   public : cPtr_inputActualNewVariableParameterAST (const GALGAS_lstring & in_mActualSelector,
@@ -6166,7 +6166,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputSingleJokerAct
 
 class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mActualSelector ;
+  public : GALGAS_lstring mProperty_mActualSelector ;
 
 //--- Constructor
   public : cPtr_inputSingleJokerActualParameterAST (const GALGAS_lstring & in_mActualSelector
@@ -6253,9 +6253,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputActualParamet
 
 class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mActualSelector ;
-  public : GALGAS_semanticExpressionAST mAttribute_mOutputActualParameterExpression ;
-  public : GALGAS_location mAttribute_mEndOfExpressionLocation ;
+  public : GALGAS_lstring mProperty_mActualSelector ;
+  public : GALGAS_semanticExpressionAST mProperty_mOutputActualParameterExpression ;
+  public : GALGAS_location mProperty_mEndOfExpressionLocation ;
 
 //--- Constructor
   public : cPtr_outputActualParameterAST (const GALGAS_lstring & in_mActualSelector,
@@ -6349,9 +6349,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputActualPa
 
 class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mActualSelector ;
-  public : GALGAS_lstring mAttribute_mOutputInputActualParameterName ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
+  public : GALGAS_lstring mProperty_mActualSelector ;
+  public : GALGAS_lstring mProperty_mOutputInputActualParameterName ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
 
 //--- Constructor
   public : cPtr_outputInputActualParameterAST (const GALGAS_lstring & in_mActualSelector,
@@ -6439,7 +6439,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputSingleJo
 
 class cPtr_outputInputSingleJokerParameterAST : public cPtr_actualParameterAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mActualSelector ;
+  public : GALGAS_lstring mProperty_mActualSelector ;
 
 //--- Constructor
   public : cPtr_outputInputSingleJokerParameterAST (const GALGAS_lstring & in_mActualSelector
@@ -7299,9 +7299,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstructi
 
 class cPtr_assignmentInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mTargetVariableName ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_semanticExpressionAST mAttribute_mSourceExpression ;
+  public : GALGAS_lstring mProperty_mTargetVariableName ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public : GALGAS_semanticExpressionAST mProperty_mSourceExpression ;
 
 //--- Constructor
   public : cPtr_assignmentInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -7394,9 +7394,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divEqualExpressionI
 
 class cPtr_divEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mReceiverName ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_semanticExpressionAST mAttribute_mExpression ;
+  public : GALGAS_lstring mProperty_mReceiverName ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public : GALGAS_semanticExpressionAST mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_divEqualExpressionInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -7488,9 +7488,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectio
 
 class cPtr_enumeratedCollectionImplicitVarInExpAST : public cPtr_abstractEnumeratedCollectionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mPrefix ;
-  public : GALGAS_semanticExpressionAST mAttribute_mEnumeratedExpression ;
-  public : GALGAS_location mAttribute_mEndOfEnumerationExpression ;
+  public : GALGAS_lstring mProperty_mPrefix ;
+  public : GALGAS_semanticExpressionAST mProperty_mEnumeratedExpression ;
+  public : GALGAS_location mProperty_mEndOfEnumerationExpression ;
 
 //--- Constructor
   public : cPtr_enumeratedCollectionImplicitVarInExpAST (const GALGAS_lstring & in_mPrefix,
@@ -7584,10 +7584,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectio
 
 class cPtr_enumeratedCollectionVarInExpAST : public cPtr_abstractEnumeratedCollectionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mEnumerationOptionalTypeName ;
-  public : GALGAS_lstring mAttribute_mEnumerationVariable ;
-  public : GALGAS_semanticExpressionAST mAttribute_mEnumeratedExpression ;
-  public : GALGAS_location mAttribute_mEndOfEnumerationExpression ;
+  public : GALGAS_lstring mProperty_mEnumerationOptionalTypeName ;
+  public : GALGAS_lstring mProperty_mEnumerationVariable ;
+  public : GALGAS_semanticExpressionAST mProperty_mEnumeratedExpression ;
+  public : GALGAS_location mProperty_mEndOfEnumerationExpression ;
 
 //--- Constructor
   public : cPtr_enumeratedCollectionVarInExpAST (const GALGAS_lstring & in_mEnumerationOptionalTypeName,
@@ -7687,10 +7687,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externFunctionDecla
 
 class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mFunctionName ;
-  public : GALGAS_formalInputParameterListAST mAttribute_mFormalArgumentList ;
-  public : GALGAS_lstring mAttribute_mResultTypeName ;
-  public : GALGAS_lstring mAttribute_mResultVariableName ;
+  public : GALGAS_lstring mProperty_mFunctionName ;
+  public : GALGAS_formalInputParameterListAST mProperty_mFormalArgumentList ;
+  public : GALGAS_lstring mProperty_mResultTypeName ;
+  public : GALGAS_lstring mProperty_mResultVariableName ;
 
 //--- Constructor
   public : cPtr_externFunctionDeclarationAST (const GALGAS_bool & in_mIsPredefined,
@@ -7788,9 +7788,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externRoutineDeclar
 
 class cPtr_externRoutineDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
-  public : GALGAS_bool mAttribute_mIsInternal ;
-  public : GALGAS_lstring mAttribute_mRoutineName ;
-  public : GALGAS_formalParameterListAST mAttribute_mFormalArgumentList ;
+  public : GALGAS_bool mProperty_mIsInternal ;
+  public : GALGAS_lstring mProperty_mRoutineName ;
+  public : GALGAS_formalParameterListAST mProperty_mFormalArgumentList ;
 
 //--- Constructor
   public : cPtr_externRoutineDeclarationAST (const GALGAS_bool & in_mIsPredefined,
@@ -7913,19 +7913,19 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionAST ;
 
 class cPtr_forInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_forInstructionEnumeratedObjectListAST mAttribute_mEnumeratedObjectList ;
-  public : GALGAS_lstring mAttribute_mIndexVariableName ;
-  public : GALGAS_semanticExpressionAST mAttribute_mWhileExpression ;
-  public : GALGAS_location mAttribute_mEndOf_5F_while_5F_expression ;
-  public : GALGAS_semanticInstructionListAST mAttribute_mBeforeInstructionList ;
-  public : GALGAS_location mAttribute_mEndOf_5F_before_5F_branch ;
-  public : GALGAS_semanticInstructionListAST mAttribute_mBetweenInstructionList ;
-  public : GALGAS_location mAttribute_mEndOf_5F_between_5F_branch ;
-  public : GALGAS_semanticInstructionListAST mAttribute_mDoInstructionList ;
-  public : GALGAS_location mAttribute_mEndOf_5F_do_5F_branch ;
-  public : GALGAS_semanticInstructionListAST mAttribute_mAfterInstructionList ;
-  public : GALGAS_location mAttribute_mEndOf_5F_after_5F_branch ;
-  public : GALGAS_location mAttribute_mEndOf_5F_foreach_5F_instruction ;
+  public : GALGAS_forInstructionEnumeratedObjectListAST mProperty_mEnumeratedObjectList ;
+  public : GALGAS_lstring mProperty_mIndexVariableName ;
+  public : GALGAS_semanticExpressionAST mProperty_mWhileExpression ;
+  public : GALGAS_location mProperty_mEndOf_5F_while_5F_expression ;
+  public : GALGAS_semanticInstructionListAST mProperty_mBeforeInstructionList ;
+  public : GALGAS_location mProperty_mEndOf_5F_before_5F_branch ;
+  public : GALGAS_semanticInstructionListAST mProperty_mBetweenInstructionList ;
+  public : GALGAS_location mProperty_mEndOf_5F_between_5F_branch ;
+  public : GALGAS_semanticInstructionListAST mProperty_mDoInstructionList ;
+  public : GALGAS_location mProperty_mEndOf_5F_do_5F_branch ;
+  public : GALGAS_semanticInstructionListAST mProperty_mAfterInstructionList ;
+  public : GALGAS_location mProperty_mEndOf_5F_after_5F_branch ;
+  public : GALGAS_location mProperty_mEndOf_5F_foreach_5F_instruction ;
 
 //--- Constructor
   public : cPtr_forInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -8048,10 +8048,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionDeclaration
 
 class cPtr_functionDeclarationAST : public cPtr_externFunctionDeclarationAST {
 //--- Attributes
-  public : GALGAS_semanticInstructionListAST mAttribute_mFunctionInstructionList ;
-  public : GALGAS_location mAttribute_mEndOfFunctionInstructionList ;
-  public : GALGAS_bool mAttribute_mIsInternal ;
-  public : GALGAS_bool mAttribute_mIsUsefull ;
+  public : GALGAS_semanticInstructionListAST mProperty_mFunctionInstructionList ;
+  public : GALGAS_location mProperty_mEndOfFunctionInstructionList ;
+  public : GALGAS_bool mProperty_mIsInternal ;
+  public : GALGAS_bool mProperty_mIsUsefull ;
 
 //--- Constructor
   public : cPtr_functionDeclarationAST (const GALGAS_bool & in_mIsPredefined,
@@ -8159,12 +8159,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInFileInstru
 
 class cPtr_grammarInFileInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mGrammarComponentName ;
-  public : GALGAS_lstring mAttribute_mLabelName ;
-  public : GALGAS_semanticExpressionAST mAttribute_mSourceExpression ;
-  public : GALGAS_location mAttribute_mEndOfSourceExpression ;
-  public : GALGAS_actualParameterListAST mAttribute_mActualParameterList ;
-  public : GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mAttribute_mAbstractGrammarInstructionSyntaxDirectedTranslationResult ;
+  public : GALGAS_lstring mProperty_mGrammarComponentName ;
+  public : GALGAS_lstring mProperty_mLabelName ;
+  public : GALGAS_semanticExpressionAST mProperty_mSourceExpression ;
+  public : GALGAS_location mProperty_mEndOfSourceExpression ;
+  public : GALGAS_actualParameterListAST mProperty_mActualParameterList ;
+  public : GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mProperty_mAbstractGrammarInstructionSyntaxDirectedTranslationResult ;
 
 //--- Constructor
   public : cPtr_grammarInFileInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -8278,14 +8278,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInStringInst
 
 class cPtr_grammarInStringInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mGrammarComponentName ;
-  public : GALGAS_lstring mAttribute_mLabelName ;
-  public : GALGAS_semanticExpressionAST mAttribute_mSourceExpression ;
-  public : GALGAS_location mAttribute_mEndOfSourceExpression ;
-  public : GALGAS_semanticExpressionAST mAttribute_mNameExpression ;
-  public : GALGAS_location mAttribute_mEndOfNameExpression ;
-  public : GALGAS_actualParameterListAST mAttribute_mActualParameterList ;
-  public : GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mAttribute_mAbstractGrammarInstructionSyntaxDirectedTranslationResult ;
+  public : GALGAS_lstring mProperty_mGrammarComponentName ;
+  public : GALGAS_lstring mProperty_mLabelName ;
+  public : GALGAS_semanticExpressionAST mProperty_mSourceExpression ;
+  public : GALGAS_location mProperty_mEndOfSourceExpression ;
+  public : GALGAS_semanticExpressionAST mProperty_mNameExpression ;
+  public : GALGAS_location mProperty_mEndOfNameExpression ;
+  public : GALGAS_actualParameterListAST mProperty_mActualParameterList ;
+  public : GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mProperty_mAbstractGrammarInstructionSyntaxDirectedTranslationResult ;
 
 //--- Constructor
   public : cPtr_grammarInStringInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -8387,8 +8387,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionS
 
 class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : public cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mActualParameterTypeName ;
-  public : GALGAS_lstring mAttribute_mActualParameterName ;
+  public : GALGAS_lstring mProperty_mActualParameterTypeName ;
+  public : GALGAS_lstring mProperty_mActualParameterName ;
 
 //--- Constructor
   public : cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst (const GALGAS_lstring & in_mActualParameterTypeName,
@@ -8477,8 +8477,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionS
 
 class cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : public cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mActualParameterTypeName ;
-  public : GALGAS_lstring mAttribute_mActualParameterName ;
+  public : GALGAS_lstring mProperty_mActualParameterTypeName ;
+  public : GALGAS_lstring mProperty_mActualParameterName ;
 
 //--- Constructor
   public : cPtr_grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar (const GALGAS_lstring & in_mActualParameterTypeName,
@@ -8564,7 +8564,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionS
 
 class cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar : public cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mActualParameterName ;
+  public : GALGAS_lstring mProperty_mActualParameterName ;
 
 //--- Constructor
   public : cPtr_grammarInstructionSyntaxDirectedTranslationResultInVar (const GALGAS_lstring & in_mActualParameterName
@@ -8652,9 +8652,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionAS
 
 class cPtr_incDecInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mReceiverName ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_incDecKind mAttribute_mKind ;
+  public : GALGAS_lstring mProperty_mReceiverName ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public : GALGAS_incDecKind mProperty_mKind ;
 
 //--- Constructor
   public : cPtr_incDecInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -8747,9 +8747,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecNoOVFInstruct
 
 class cPtr_incDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mReceiverName ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_incDecKind mAttribute_mKind ;
+  public : GALGAS_lstring mProperty_mReceiverName ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public : GALGAS_incDecKind mProperty_mKind ;
 
 //--- Constructor
   public : cPtr_incDecNoOVFInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -8841,8 +8841,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterDecla
 
 class cPtr_inputParameterDeclaredConstant : public cPtr_abstractInputParameter {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mActualParameterTypeName ;
-  public : GALGAS_lstring mAttribute_mActualParameterName ;
+  public : GALGAS_lstring mProperty_mActualParameterTypeName ;
+  public : GALGAS_lstring mProperty_mActualParameterName ;
 
 //--- Constructor
   public : cPtr_inputParameterDeclaredConstant (const GALGAS_lstring & in_mActualParameterTypeName,
@@ -8931,8 +8931,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterDecla
 
 class cPtr_inputParameterDeclaredVariable : public cPtr_abstractInputParameter {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mActualParameterTypeName ;
-  public : GALGAS_lstring mAttribute_mActualParameterName ;
+  public : GALGAS_lstring mProperty_mActualParameterTypeName ;
+  public : GALGAS_lstring mProperty_mActualParameterName ;
 
 //--- Constructor
   public : cPtr_inputParameterDeclaredVariable (const GALGAS_lstring & in_mActualParameterTypeName,
@@ -9018,7 +9018,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputParameterVaria
 
 class cPtr_inputParameterVariable : public cPtr_abstractInputParameter {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mActualParameterName ;
+  public : GALGAS_lstring mProperty_mActualParameterName ;
 
 //--- Constructor
   public : cPtr_inputParameterVariable (const GALGAS_lstring & in_mActualParameterName
@@ -9103,8 +9103,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localConstantDeclar
 
 class cPtr_localConstantDeclarationWithAssignmentAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mVariableName ;
-  public : GALGAS_semanticExpressionAST mAttribute_mSourceExpression ;
+  public : GALGAS_lstring mProperty_mVariableName ;
+  public : GALGAS_semanticExpressionAST mProperty_mSourceExpression ;
 
 //--- Constructor
   public : cPtr_localConstantDeclarationWithAssignmentAST (const GALGAS_location & in_mInstructionLocation,
@@ -9192,8 +9192,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableDeclar
 
 class cPtr_localVariableDeclarationWithAssignmentAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mVariableName ;
-  public : GALGAS_semanticExpressionAST mAttribute_mSourceExpression ;
+  public : GALGAS_lstring mProperty_mVariableName ;
+  public : GALGAS_semanticExpressionAST mProperty_mSourceExpression ;
 
 //--- Constructor
   public : cPtr_localVariableDeclarationWithAssignmentAST (const GALGAS_location & in_mInstructionLocation,
@@ -9287,10 +9287,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableOrCons
 
 class cPtr_localVariableOrConstantDeclarationWithAssignmentAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_bool mAttribute_mIsConstant ;
-  public : GALGAS_lstring mAttribute_mOptionalTypeName ;
-  public : GALGAS_lstring mAttribute_mVariableName ;
-  public : GALGAS_semanticExpressionAST mAttribute_mSourceExpression ;
+  public : GALGAS_bool mProperty_mIsConstant ;
+  public : GALGAS_lstring mProperty_mOptionalTypeName ;
+  public : GALGAS_lstring mProperty_mVariableName ;
+  public : GALGAS_semanticExpressionAST mProperty_mSourceExpression ;
 
 //--- Constructor
   public : cPtr_localVariableOrConstantDeclarationWithAssignmentAST (const GALGAS_location & in_mInstructionLocation,
@@ -9385,9 +9385,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_methodCallInstructi
 
 class cPtr_methodCallInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_semanticExpressionAST mAttribute_mReceiverExpression ;
-  public : GALGAS_lstring mAttribute_mMethodName ;
-  public : GALGAS_actualParameterListAST mAttribute_mActualParameterList ;
+  public : GALGAS_semanticExpressionAST mProperty_mReceiverExpression ;
+  public : GALGAS_lstring mProperty_mMethodName ;
+  public : GALGAS_actualParameterListAST mProperty_mActualParameterList ;
 
 //--- Constructor
   public : cPtr_methodCallInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -9480,9 +9480,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_minusEqualExpressio
 
 class cPtr_minusEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mReceiverName ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_semanticExpressionAST mAttribute_mExpression ;
+  public : GALGAS_lstring mProperty_mReceiverName ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public : GALGAS_semanticExpressionAST mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_minusEqualExpressionInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -9575,9 +9575,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mulEqualExpressionI
 
 class cPtr_mulEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mReceiverName ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_semanticExpressionAST mAttribute_mExpression ;
+  public : GALGAS_lstring mProperty_mReceiverName ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public : GALGAS_semanticExpressionAST mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_mulEqualExpressionInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -9685,13 +9685,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_onceFunctionDeclara
 
 class cPtr_onceFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mFunctionName ;
-  public : GALGAS_lstring mAttribute_mResultTypeName ;
-  public : GALGAS_lstring mAttribute_mResultVariableName ;
-  public : GALGAS_semanticInstructionListAST mAttribute_mFunctionInstructionList ;
-  public : GALGAS_location mAttribute_mEndOfFunctionInstructionList ;
-  public : GALGAS_bool mAttribute_mIsInternal ;
-  public : GALGAS_bool mAttribute_mIsUsefull ;
+  public : GALGAS_lstring mProperty_mFunctionName ;
+  public : GALGAS_lstring mProperty_mResultTypeName ;
+  public : GALGAS_lstring mProperty_mResultVariableName ;
+  public : GALGAS_semanticInstructionListAST mProperty_mFunctionInstructionList ;
+  public : GALGAS_location mProperty_mEndOfFunctionInstructionList ;
+  public : GALGAS_bool mProperty_mIsInternal ;
+  public : GALGAS_bool mProperty_mIsUsefull ;
 
 //--- Constructor
   public : cPtr_onceFunctionDeclarationAST (const GALGAS_bool & in_mIsPredefined,
@@ -9795,9 +9795,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualElementsIn
 
 class cPtr_plusEqualElementsInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mReceiverName ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_actualOutputExpressionList mAttribute_mExpressions ;
+  public : GALGAS_lstring mProperty_mReceiverName ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public : GALGAS_actualOutputExpressionList mProperty_mExpressions ;
 
 //--- Constructor
   public : cPtr_plusEqualElementsInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -9890,9 +9890,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualExpression
 
 class cPtr_plusEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mReceiverName ;
-  public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
-  public : GALGAS_semanticExpressionAST mAttribute_mExpression ;
+  public : GALGAS_lstring mProperty_mReceiverName ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public : GALGAS_semanticExpressionAST mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_plusEqualExpressionInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -9985,8 +9985,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procCallInstruction
 
 class cPtr_procCallInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mRoutineName ;
-  public : GALGAS_actualParameterListAST mAttribute_mActualParameterList ;
+  public : GALGAS_lstring mProperty_mRoutineName ;
+  public : GALGAS_actualParameterListAST mProperty_mActualParameterList ;
 
 //--- Constructor
   public : cPtr_procCallInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -10080,8 +10080,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procDeclarationAST 
 
 class cPtr_procDeclarationAST : public cPtr_externRoutineDeclarationAST {
 //--- Attributes
-  public : GALGAS_semanticInstructionListAST mAttribute_mRoutineInstructionList ;
-  public : GALGAS_location mAttribute_mEndOfRoutineInstructionList ;
+  public : GALGAS_semanticInstructionListAST mProperty_mRoutineInstructionList ;
+  public : GALGAS_location mProperty_mEndOfRoutineInstructionList ;
 
 //--- Constructor
   public : cPtr_procDeclarationAST (const GALGAS_bool & in_mIsPredefined,
@@ -10196,16 +10196,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readAccessWithInstr
 
 class cPtr_readAccessWithInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mPrefix ;
-  public : GALGAS_semanticExpressionAST mAttribute_mReceiverExpression ;
-  public : GALGAS_location mAttribute_mEndOfReceiverExpression ;
-  public : GALGAS_semanticExpressionAST mAttribute_mKeyExpression ;
-  public : GALGAS_location mAttribute_mEndOfKeyExpression ;
-  public : GALGAS_lstring mAttribute_mSearchMethodNameForErrorSignaling ;
-  public : GALGAS_semanticInstructionListAST mAttribute_mDoBranchInstructions ;
-  public : GALGAS_location mAttribute_mEndOf_5F_do_5F_instructions ;
-  public : GALGAS_semanticInstructionListAST mAttribute_mElseBranchInstructions ;
-  public : GALGAS_location mAttribute_mEndOf_5F_else_5F_instructions ;
+  public : GALGAS_lstring mProperty_mPrefix ;
+  public : GALGAS_semanticExpressionAST mProperty_mReceiverExpression ;
+  public : GALGAS_location mProperty_mEndOfReceiverExpression ;
+  public : GALGAS_semanticExpressionAST mProperty_mKeyExpression ;
+  public : GALGAS_location mProperty_mEndOfKeyExpression ;
+  public : GALGAS_lstring mProperty_mSearchMethodNameForErrorSignaling ;
+  public : GALGAS_semanticInstructionListAST mProperty_mDoBranchInstructions ;
+  public : GALGAS_location mProperty_mEndOf_5F_do_5F_instructions ;
+  public : GALGAS_semanticInstructionListAST mProperty_mElseBranchInstructions ;
+  public : GALGAS_location mProperty_mEndOf_5F_else_5F_instructions ;
 
 //--- Constructor
   public : cPtr_readAccessWithInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -10336,17 +10336,17 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readWriteAccessWith
 
 class cPtr_readWriteAccessWithInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mPrefix ;
-  public : GALGAS_lstring mAttribute_mReceiverName ;
-  public : GALGAS_lstringlist mAttribute_mFieldList ;
-  public : GALGAS_location mAttribute_mEndOfReceiverExpression ;
-  public : GALGAS_semanticExpressionAST mAttribute_mKeyExpression ;
-  public : GALGAS_location mAttribute_mEndOfKeyExpression ;
-  public : GALGAS_lstring mAttribute_mSearchMethodNameForErrorSignaling ;
-  public : GALGAS_semanticInstructionListAST mAttribute_m_5F_do_5F_Instructions ;
-  public : GALGAS_location mAttribute_mEndOf_5F_do_5F_instructions ;
-  public : GALGAS_semanticInstructionListAST mAttribute_m_5F_else_5F_Instructions ;
-  public : GALGAS_location mAttribute_mEndOf_5F_else_5F_instructions ;
+  public : GALGAS_lstring mProperty_mPrefix ;
+  public : GALGAS_lstring mProperty_mReceiverName ;
+  public : GALGAS_lstringlist mProperty_mFieldList ;
+  public : GALGAS_location mProperty_mEndOfReceiverExpression ;
+  public : GALGAS_semanticExpressionAST mProperty_mKeyExpression ;
+  public : GALGAS_location mProperty_mEndOfKeyExpression ;
+  public : GALGAS_lstring mProperty_mSearchMethodNameForErrorSignaling ;
+  public : GALGAS_semanticInstructionListAST mProperty_m_5F_do_5F_Instructions ;
+  public : GALGAS_location mProperty_mEndOf_5F_do_5F_instructions ;
+  public : GALGAS_semanticInstructionListAST mProperty_m_5F_else_5F_Instructions ;
+  public : GALGAS_location mProperty_mEndOf_5F_else_5F_instructions ;
 
 //--- Constructor
   public : cPtr_readWriteAccessWithInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -10455,8 +10455,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfSetterCallInstr
 
 class cPtr_selfSetterCallInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mSetterName ;
-  public : GALGAS_actualParameterListAST mAttribute_mActualParameterList ;
+  public : GALGAS_lstring mProperty_mSetterName ;
+  public : GALGAS_actualParameterListAST mProperty_mActualParameterList ;
 
 //--- Constructor
   public : cPtr_selfSetterCallInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -10556,11 +10556,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterCallInstructi
 
 class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mReceiverName ;
-  public : GALGAS_lstringlist mAttribute_mReceiverStructAttributes ;
-  public : GALGAS_lstring mAttribute_mTypeNameForCasting ;
-  public : GALGAS_lstring mAttribute_mSetterName ;
-  public : GALGAS_actualParameterListAST mAttribute_mActualParameterList ;
+  public : GALGAS_lstring mProperty_mReceiverName ;
+  public : GALGAS_lstringlist mProperty_mReceiverStructAttributes ;
+  public : GALGAS_lstring mProperty_mTypeNameForCasting ;
+  public : GALGAS_lstring mProperty_mSetterName ;
+  public : GALGAS_actualParameterListAST mProperty_mActualParameterList ;
 
 //--- Constructor
   public : cPtr_setterCallInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -10660,9 +10660,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeMethodCallInstr
 
 class cPtr_typeMethodCallInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_lstring mAttribute_mMethodName ;
-  public : GALGAS_actualParameterListAST mAttribute_mActualParameterList ;
+  public : GALGAS_lstring mProperty_mTypeName ;
+  public : GALGAS_lstring mProperty_mMethodName ;
+  public : GALGAS_actualParameterListAST mProperty_mActualParameterList ;
 
 //--- Constructor
   public : cPtr_typeMethodCallInstructionAST (const GALGAS_location & in_mInstructionLocation,
@@ -10755,8 +10755,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_undefinedLocalConst
 
 class cPtr_undefinedLocalConstantDeclarationAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mConstantTypeName ;
-  public : GALGAS_lstring mAttribute_mConstantName ;
+  public : GALGAS_lstring mProperty_mConstantTypeName ;
+  public : GALGAS_lstring mProperty_mConstantName ;
 
 //--- Constructor
   public : cPtr_undefinedLocalConstantDeclarationAST (const GALGAS_location & in_mInstructionLocation,

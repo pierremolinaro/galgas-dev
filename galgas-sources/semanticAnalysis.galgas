@@ -184,7 +184,7 @@ proc analyzeRoutineBody
     [!?variableMap insertNonMutableAttribute
       !mAttributeName
       !mAttributeTypeProxy
-      !inAttributeVariableNamePrefix + "mAttribute_"+ [[mAttributeName string] identifierRepresentation]
+      !inAttributeVariableNamePrefix + "mProperty_"+ [[mAttributeName string] identifierRepresentation]
       !inAnalysisContext.mSelfObjectCppName
     ]
   end
@@ -193,7 +193,7 @@ proc analyzeRoutineBody
     [!?variableMap insertMutableAttribute
       !mAttributeName
       !mAttributeTypeProxy
-      !inAttributeVariableNamePrefix + "mAttribute_"+ [[mAttributeName string] identifierRepresentation]
+      !inAttributeVariableNamePrefix + "mProperty_"+ [[mAttributeName string] identifierRepresentation]
       !inAnalysisContext.mSelfObjectCppName
     ]
   end
@@ -356,7 +356,7 @@ proc analyzeFunctionBody
     [!?variableMap insertNonMutableAttribute
       !mAttributeName
       !mAttributeTypeProxy
-      !inAttributeVariableNamePrefix + "mAttribute_"+ [[mAttributeName string] identifierRepresentation]
+      !inAttributeVariableNamePrefix + "mProperty_"+ [[mAttributeName string] identifierRepresentation]
       !inAnalysisContext.mSelfObjectCppName
     ]
   end

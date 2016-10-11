@@ -251,14 +251,14 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
       !mAttributeTypeProxy
       !@lstring.new {!mPrefix.string + mAttributeName !mEndOfReceiverExpression}
       !true # Do not warn if unused
-      !objectArrayCppName + "->mAttribute_" + [mAttributeName identifierRepresentation]
+      !objectArrayCppName + "->mProperty_" + [mAttributeName identifierRepresentation]
   end
 #--- Add lkey as @lstring constant
   localConstantList +=
     !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
     !@lstring.new {!mPrefix.string + "lkey" !mEndOfReceiverExpression}
     !true # Do not warn if unused
-    !objectArrayCppName + "->mAttribute_lkey"
+    !objectArrayCppName + "->mPropertylkey"
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
@@ -361,13 +361,13 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     localInitializedVariableList +=
       !mAttributeTypeProxy
       !@lstring.new {!mPrefix.string + mAttributeName !mEndOfReceiverExpression}
-      !objectArrayCppName + "->mAttribute_" + [mAttributeName identifierRepresentation]
+      !objectArrayCppName + "->mProperty_" + [mAttributeName identifierRepresentation]
   end
   let localConstantList = @localConstantList {
     !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
     !@lstring.new {!mPrefix.string + "lkey" !mEndOfReceiverExpression}
     !true # Do not warn if unused
-    !objectArrayCppName + "->mAttribute_lkey"
+    !objectArrayCppName + "->mProperty_lkey"
   }
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
@@ -497,7 +497,7 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode {
   @string receiverCppName = mReceiverVariableCppName
   for () in mStructAttributeList do
-    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+    receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
 #--- key expression
   [mKeyExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string keyVarCppName]

@@ -8,7 +8,7 @@ cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS
 !^%COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE)%
 for () in ATTRIBUTE_LIST
-  do %,\n%  %mAttribute_%![mAttributeName identifierRepresentation]% (in_%![mAttributeName identifierRepresentation]%)%
+  do %,\n%  %mProperty_%![mAttributeName identifierRepresentation]% (in_%![mAttributeName identifierRepresentation]%)%
 end
 % {
 }
@@ -16,9 +16,9 @@ end
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
-  return mAttribute_lkey.isValid ()%
+  return mProperty_lkey.isValid ()%
     for () in ATTRIBUTE_LIST
-      do % && mAttribute_%![mAttributeName identifierRepresentation]%.isValid ()%
+      do % && mProperty_%![mAttributeName identifierRepresentation]%.isValid ()%
     end
   % ;
 }
@@ -27,9 +27,9 @@ bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
 
 cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_%!TYPE_IDENTIFIER% (mAttribute_lkey%
+  macroMyNew (result, cMapElement_%!TYPE_IDENTIFIER% (mProperty_lkey%
     for () in ATTRIBUTE_LIST
-      do %, mAttribute_%![mAttributeName identifierRepresentation]
+      do %, mProperty_%![mAttributeName identifierRepresentation]
     end
   % COMMA_HERE)) ;
   return result ;
@@ -45,7 +45,7 @@ else
     %  ioString << "\\n" ;\n%
     %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
     %  ioString << %![mAttributeName utf8Representation]% ":" ;\n%
-    %  mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
+    %  mProperty_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end
 end
 %}
@@ -54,10 +54,10 @@ end
 
 typeComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
   cMapElement_%!TYPE_IDENTIFIER% * operand = (cMapElement_%!TYPE_IDENTIFIER% *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
 %  for () in ATTRIBUTE_LIST do
      %  if (kOperandEqual == result) {\n%
-     %    result = mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+     %    result = mProperty_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mProperty_%![mAttributeName identifierRepresentation]%) ;\n%
      %  }\n%
    end
 %  return result ;
@@ -359,7 +359,7 @@ for () in SEARCH_METHOD_LIST do
     %}else{\n%
     %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
     for () in ATTRIBUTE_LIST do index IDX
-      %  outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+      %  outArgument%![IDX string]% = p->mProperty_%![mAttributeName identifierRepresentation]% ;\n%
     end
     %}\n%
   end
@@ -376,7 +376,7 @@ for () in ATTRIBUTE_LIST do index IDX
   %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
   %  if (NULL != p) {\n%
   %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-  %    result = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  %    result = p->mProperty_%![mAttributeName identifierRepresentation]% ;\n%
   %  }\n%
   %  return result ;\n%
   %}\n\n%
@@ -392,7 +392,7 @@ for () in ATTRIBUTE_LIST do index IDX
   %  cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
   %  if (NULL != p) {\n%
   %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-  %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inAttributeValue ;\n%
+  %    p->mProperty_%![mAttributeName identifierRepresentation]% = inAttributeValue ;\n%
   %  }\n%
   %}\n\n%
 end 
@@ -420,7 +420,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 %for () in ATTRIBUTE_LIST do index IDX
@@ -428,7 +428,7 @@ GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) cons
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-  %  return p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  %  return p->mProperty_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 end 
 %

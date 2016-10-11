@@ -17,11 +17,11 @@
 
 class cMapElement_setterMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_methodKind mAttribute_mKind ;
-  public : GALGAS_formalParameterSignature mAttribute_mParameterList ;
-  public : GALGAS_bool mAttribute_mHasCompilerArgument ;
-  public : GALGAS_methodQualifier mAttribute_mQualifier ;
-  public : GALGAS_string mAttribute_mErrorMessage ;
+  public : GALGAS_methodKind mProperty_mKind ;
+  public : GALGAS_formalParameterSignature mProperty_mParameterList ;
+  public : GALGAS_bool mProperty_mHasCompilerArgument ;
+  public : GALGAS_methodQualifier mProperty_mQualifier ;
+  public : GALGAS_string mProperty_mErrorMessage ;
 
 //--- Constructor
   public : cMapElement_setterMap (const GALGAS_lstring & inKey,
@@ -53,12 +53,12 @@ class cMapElement_setterMap : public cMapElement {
 
 class GALGAS_setterMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_methodKind mAttribute_mKind ;
-  public : GALGAS_formalParameterSignature mAttribute_mParameterList ;
-  public : GALGAS_bool mAttribute_mHasCompilerArgument ;
-  public : GALGAS_methodQualifier mAttribute_mQualifier ;
-  public : GALGAS_string mAttribute_mErrorMessage ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_methodKind mProperty_mKind ;
+  public : GALGAS_formalParameterSignature mProperty_mParameterList ;
+  public : GALGAS_bool mProperty_mHasCompilerArgument ;
+  public : GALGAS_methodQualifier mProperty_mQualifier ;
+  public : GALGAS_string mProperty_mErrorMessage ;
 
 
 //--------------------------------- Accessors
@@ -141,12 +141,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterMap_2D_elemen
 
 class cMapElement_instanceMethodMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_methodKind mAttribute_mKind ;
-  public : GALGAS_formalParameterSignature mAttribute_mParameterList ;
-  public : GALGAS_location mAttribute_mDeclarationLocation ;
-  public : GALGAS_bool mAttribute_mHasCompilerArgument ;
-  public : GALGAS_methodQualifier mAttribute_mQualifier ;
-  public : GALGAS_string mAttribute_mErrorMessage ;
+  public : GALGAS_methodKind mProperty_mKind ;
+  public : GALGAS_formalParameterSignature mProperty_mParameterList ;
+  public : GALGAS_location mProperty_mDeclarationLocation ;
+  public : GALGAS_bool mProperty_mHasCompilerArgument ;
+  public : GALGAS_methodQualifier mProperty_mQualifier ;
+  public : GALGAS_string mProperty_mErrorMessage ;
 
 //--- Constructor
   public : cMapElement_instanceMethodMap (const GALGAS_lstring & inKey,
@@ -179,13 +179,13 @@ class cMapElement_instanceMethodMap : public cMapElement {
 
 class GALGAS_instanceMethodMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_methodKind mAttribute_mKind ;
-  public : GALGAS_formalParameterSignature mAttribute_mParameterList ;
-  public : GALGAS_location mAttribute_mDeclarationLocation ;
-  public : GALGAS_bool mAttribute_mHasCompilerArgument ;
-  public : GALGAS_methodQualifier mAttribute_mQualifier ;
-  public : GALGAS_string mAttribute_mErrorMessage ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_methodKind mProperty_mKind ;
+  public : GALGAS_formalParameterSignature mProperty_mParameterList ;
+  public : GALGAS_location mProperty_mDeclarationLocation ;
+  public : GALGAS_bool mProperty_mHasCompilerArgument ;
+  public : GALGAS_methodQualifier mProperty_mQualifier ;
+  public : GALGAS_string mProperty_mErrorMessage ;
 
 
 //--------------------------------- Accessors
@@ -272,8 +272,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_instanceMethodMap_2
 
 class cMapElement_classMethodMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_formalParameterSignature mAttribute_mParameterList ;
-  public : GALGAS_bool mAttribute_mHasCompilerArgument ;
+  public : GALGAS_formalParameterSignature mProperty_mParameterList ;
+  public : GALGAS_bool mProperty_mHasCompilerArgument ;
 
 //--- Constructor
   public : cMapElement_classMethodMap (const GALGAS_lstring & inKey,
@@ -302,9 +302,9 @@ class cMapElement_classMethodMap : public cMapElement {
 
 class GALGAS_classMethodMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_formalParameterSignature mAttribute_mParameterList ;
-  public : GALGAS_bool mAttribute_mHasCompilerArgument ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_formalParameterSignature mProperty_mParameterList ;
+  public : GALGAS_bool mProperty_mHasCompilerArgument ;
 
 
 //--------------------------------- Accessors
@@ -378,8 +378,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classMethodMap_2D_e
 
 class GALGAS_enumerationDescriptorList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mEnumeratedType ;
-  public : GALGAS_string mAttribute_mEnumerationName ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mEnumeratedType ;
+  public : GALGAS_string mProperty_mEnumerationName ;
 
 
 //--------------------------------- Accessors
@@ -611,7 +611,7 @@ class GALGAS_string extensionGetter_kind (const class GALGAS_typeKindEnum & inOb
 
 class cMapElement_attributeMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mAttributeType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mAttributeType ;
 
 //--- Constructor
   public : cMapElement_attributeMap (const GALGAS_lstring & inKey,
@@ -639,8 +639,8 @@ class cMapElement_attributeMap : public cMapElement {
 
 class GALGAS_attributeMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mAttributeType ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mAttributeType ;
 
 
 //--------------------------------- Accessors
@@ -710,8 +710,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_attributeMap_2D_ele
 
 class cMapElement_constantIndexMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_uint mAttribute_mIndex ;
-  public : GALGAS_unifiedTypeMapProxyList mAttribute_mAssociatedTypeList ;
+  public : GALGAS_uint mProperty_mIndex ;
+  public : GALGAS_unifiedTypeMapProxyList mProperty_mAssociatedTypeList ;
 
 //--- Constructor
   public : cMapElement_constantIndexMap (const GALGAS_lstring & inKey,
@@ -740,9 +740,9 @@ class cMapElement_constantIndexMap : public cMapElement {
 
 class GALGAS_constantIndexMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_uint mAttribute_mIndex ;
-  public : GALGAS_unifiedTypeMapProxyList mAttribute_mAssociatedTypeList ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_uint mProperty_mIndex ;
+  public : GALGAS_unifiedTypeMapProxyList mProperty_mAssociatedTypeList ;
 
 
 //--------------------------------- Accessors
@@ -816,31 +816,31 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constantIndexMap_2D
 
 class cMapElement_unifiedTypeMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_bool mAttribute_mIsPredefined ;
-  public : GALGAS_bool mAttribute_mIsConcrete ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mSuperType ;
-  public : GALGAS_typeKindEnum mAttribute_mTypeKindEnum ;
-  public : GALGAS_bool mAttribute_mSupportCollectionValue ;
-  public : GALGAS_typedPropertyList mAttribute_mAllTypedAttributeList ;
-  public : GALGAS_attributeMap mAttribute_mAttributeMap ;
-  public : GALGAS_typedPropertyList mAttribute_mCurrentTypedAttributeList ;
-  public : GALGAS_constructorMap mAttribute_mConstructorMap ;
-  public : GALGAS_getterMap mAttribute_mGetterMap ;
-  public : GALGAS_setterMap mAttribute_mSetterMap ;
-  public : GALGAS_instanceMethodMap mAttribute_mInstanceMethodMap ;
-  public : GALGAS_classMethodMap mAttribute_mClassMethodMap ;
-  public : GALGAS_enumerationDescriptorList mAttribute_mEnumerationDescriptor ;
-  public : GALGAS_uint mAttribute_mHandledOperatorFlags ;
-  public : GALGAS_functionSignature mAttribute_mAddAssignOperatorArguments ;
-  public : GALGAS_constantIndexMap mAttribute_mEnumConstantMap ;
-  public : GALGAS_enumConstantList mAttribute_mEnumConstantList ;
-  public : GALGAS_mapSearchMethodListAST mAttribute_mMapSearchMethodList ;
-  public : GALGAS_mapSearchMethodListAST mAttribute_mMapProxySearchConstructorList ;
-  public : GALGAS_bool mAttribute_mGenerateHeaderInSeparateFile ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mTypeForEnumeratedElement ;
-  public : GALGAS_string mAttribute_mDefaultConstructorName ;
-  public : GALGAS_string mAttribute_mHeaderFileName ;
-  public : GALGAS_headerKind mAttribute_mHeaderKind ;
+  public : GALGAS_bool mProperty_mIsPredefined ;
+  public : GALGAS_bool mProperty_mIsConcrete ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mSuperType ;
+  public : GALGAS_typeKindEnum mProperty_mTypeKindEnum ;
+  public : GALGAS_bool mProperty_mSupportCollectionValue ;
+  public : GALGAS_typedPropertyList mProperty_mAllTypedAttributeList ;
+  public : GALGAS_attributeMap mProperty_mAttributeMap ;
+  public : GALGAS_typedPropertyList mProperty_mCurrentTypedAttributeList ;
+  public : GALGAS_constructorMap mProperty_mConstructorMap ;
+  public : GALGAS_getterMap mProperty_mGetterMap ;
+  public : GALGAS_setterMap mProperty_mSetterMap ;
+  public : GALGAS_instanceMethodMap mProperty_mInstanceMethodMap ;
+  public : GALGAS_classMethodMap mProperty_mClassMethodMap ;
+  public : GALGAS_enumerationDescriptorList mProperty_mEnumerationDescriptor ;
+  public : GALGAS_uint mProperty_mHandledOperatorFlags ;
+  public : GALGAS_functionSignature mProperty_mAddAssignOperatorArguments ;
+  public : GALGAS_constantIndexMap mProperty_mEnumConstantMap ;
+  public : GALGAS_enumConstantList mProperty_mEnumConstantList ;
+  public : GALGAS_mapSearchMethodListAST mProperty_mMapSearchMethodList ;
+  public : GALGAS_mapSearchMethodListAST mProperty_mMapProxySearchConstructorList ;
+  public : GALGAS_bool mProperty_mGenerateHeaderInSeparateFile ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mTypeForEnumeratedElement ;
+  public : GALGAS_string mProperty_mDefaultConstructorName ;
+  public : GALGAS_string mProperty_mHeaderFileName ;
+  public : GALGAS_headerKind mProperty_mHeaderKind ;
 
 //--- Constructor
   public : cMapElement_unifiedTypeMap (const GALGAS_lstring & inKey,
@@ -942,8 +942,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeAST ;
 
 class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
-  public : GALGAS_string mAttribute_mPredefinedTypeName ;
-  public : GALGAS_predefinedTypeKindEnum mAttribute_mKind ;
+  public : GALGAS_string mProperty_mPredefinedTypeName ;
+  public : GALGAS_predefinedTypeKindEnum mProperty_mKind ;
 
 //--- Constructor
   public : cPtr_predefinedTypeAST (const GALGAS_bool & in_mIsPredefined,
@@ -2901,7 +2901,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarLabelMap ;
 
 class cMapElement_grammarLabelMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_formalParameterSignature mAttribute_mLabelSignature ;
+  public : GALGAS_formalParameterSignature mProperty_mLabelSignature ;
 
 //--- Constructor
   public : cMapElement_grammarLabelMap (const GALGAS_lstring & inKey,
@@ -2929,8 +2929,8 @@ class cMapElement_grammarLabelMap : public cMapElement {
 
 class GALGAS_grammarLabelMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_formalParameterSignature mAttribute_mLabelSignature ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_formalParameterSignature mProperty_mLabelSignature ;
 
 
 //--------------------------------- Accessors
@@ -3000,9 +3000,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarLabelMap_2D_
 
 class cMapElement_grammarMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_grammarLabelMap mAttribute_mLabelMap ;
-  public : GALGAS_bool mAttribute_mHasIndexing ;
-  public : GALGAS_bool mAttribute_mHasTranslateFeature ;
+  public : GALGAS_grammarLabelMap mProperty_mLabelMap ;
+  public : GALGAS_bool mProperty_mHasIndexing ;
+  public : GALGAS_bool mProperty_mHasTranslateFeature ;
 
 //--- Constructor
   public : cMapElement_grammarMap (const GALGAS_lstring & inKey,
@@ -3032,10 +3032,10 @@ class cMapElement_grammarMap : public cMapElement {
 
 class GALGAS_grammarMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_grammarLabelMap mAttribute_mLabelMap ;
-  public : GALGAS_bool mAttribute_mHasIndexing ;
-  public : GALGAS_bool mAttribute_mHasTranslateFeature ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_grammarLabelMap mProperty_mLabelMap ;
+  public : GALGAS_bool mProperty_mHasIndexing ;
+  public : GALGAS_bool mProperty_mHasTranslateFeature ;
 
 
 //--------------------------------- Accessors
@@ -3113,8 +3113,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarMap_2D_eleme
 
 class cMapElement_routineMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_formalParameterSignature mAttribute_mRoutineSignature ;
-  public : GALGAS_bool mAttribute_mIsInternal ;
+  public : GALGAS_formalParameterSignature mProperty_mRoutineSignature ;
+  public : GALGAS_bool mProperty_mIsInternal ;
 
 //--- Constructor
   public : cMapElement_routineMap (const GALGAS_lstring & inKey,
@@ -3143,9 +3143,9 @@ class cMapElement_routineMap : public cMapElement {
 
 class GALGAS_routineMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_formalParameterSignature mAttribute_mRoutineSignature ;
-  public : GALGAS_bool mAttribute_mIsInternal ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_formalParameterSignature mProperty_mRoutineSignature ;
+  public : GALGAS_bool mProperty_mIsInternal ;
 
 
 //--------------------------------- Accessors
@@ -3219,9 +3219,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineMap_2D_eleme
 
 class cMapElement_functionMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_functionSignature mAttribute_mFunctionSignature ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mResultType ;
-  public : GALGAS_bool mAttribute_mIsInternal ;
+  public : GALGAS_functionSignature mProperty_mFunctionSignature ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mResultType ;
+  public : GALGAS_bool mProperty_mIsInternal ;
 
 //--- Constructor
   public : cMapElement_functionMap (const GALGAS_lstring & inKey,
@@ -3251,10 +3251,10 @@ class cMapElement_functionMap : public cMapElement {
 
 class GALGAS_functionMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_functionSignature mAttribute_mFunctionSignature ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mResultType ;
-  public : GALGAS_bool mAttribute_mIsInternal ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_functionSignature mProperty_mFunctionSignature ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mResultType ;
+  public : GALGAS_bool mProperty_mIsInternal ;
 
 
 //--------------------------------- Accessors
@@ -3475,10 +3475,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperFileMap ;
 
 class cMapElement_wrapperFileMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_string mAttribute_mAbsoluteFilePath ;
-  public : GALGAS_bool mAttribute_mIsTextFile ;
-  public : GALGAS_uint mAttribute_mWrapperDirectoryIndex ;
-  public : GALGAS_uint mAttribute_mWrapperFileIndex ;
+  public : GALGAS_string mProperty_mAbsoluteFilePath ;
+  public : GALGAS_bool mProperty_mIsTextFile ;
+  public : GALGAS_uint mProperty_mWrapperDirectoryIndex ;
+  public : GALGAS_uint mProperty_mWrapperFileIndex ;
 
 //--- Constructor
   public : cMapElement_wrapperFileMap (const GALGAS_lstring & inKey,
@@ -3509,11 +3509,11 @@ class cMapElement_wrapperFileMap : public cMapElement {
 
 class GALGAS_wrapperFileMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_string mAttribute_mAbsoluteFilePath ;
-  public : GALGAS_bool mAttribute_mIsTextFile ;
-  public : GALGAS_uint mAttribute_mWrapperDirectoryIndex ;
-  public : GALGAS_uint mAttribute_mWrapperFileIndex ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_string mProperty_mAbsoluteFilePath ;
+  public : GALGAS_bool mProperty_mIsTextFile ;
+  public : GALGAS_uint mProperty_mWrapperDirectoryIndex ;
+  public : GALGAS_uint mProperty_mWrapperFileIndex ;
 
 
 //--------------------------------- Accessors
@@ -3725,9 +3725,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperDirectoryMap
 
 class cMapElement_wrapperDirectoryMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_wrapperFileMap mAttribute_mRegularFileMap ;
-  public : GALGAS_wrapperDirectoryMap mAttribute_mDirectoryMap ;
-  public : GALGAS_uint mAttribute_mWrapperDirectoryIndex ;
+  public : GALGAS_wrapperFileMap mProperty_mRegularFileMap ;
+  public : GALGAS_wrapperDirectoryMap mProperty_mDirectoryMap ;
+  public : GALGAS_uint mProperty_mWrapperDirectoryIndex ;
 
 //--- Constructor
   public : cMapElement_wrapperDirectoryMap (const GALGAS_lstring & inKey,
@@ -3757,10 +3757,10 @@ class cMapElement_wrapperDirectoryMap : public cMapElement {
 
 class GALGAS_wrapperDirectoryMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_wrapperFileMap mAttribute_mRegularFileMap ;
-  public : GALGAS_wrapperDirectoryMap mAttribute_mDirectoryMap ;
-  public : GALGAS_uint mAttribute_mWrapperDirectoryIndex ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_wrapperFileMap mProperty_mRegularFileMap ;
+  public : GALGAS_wrapperDirectoryMap mProperty_mDirectoryMap ;
+  public : GALGAS_uint mProperty_mWrapperDirectoryIndex ;
 
 
 //--------------------------------- Accessors
@@ -3955,8 +3955,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplate
 
 class cMapElement_filewrapperTemplateMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_functionSignature mAttribute_mTemplateSignature ;
-  public : GALGAS_lstring mAttribute_mFilewrapperTemplatePath ;
+  public : GALGAS_functionSignature mProperty_mTemplateSignature ;
+  public : GALGAS_lstring mProperty_mFilewrapperTemplatePath ;
 
 //--- Constructor
   public : cMapElement_filewrapperTemplateMap (const GALGAS_lstring & inKey,
@@ -3985,9 +3985,9 @@ class cMapElement_filewrapperTemplateMap : public cMapElement {
 
 class GALGAS_filewrapperTemplateMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_functionSignature mAttribute_mTemplateSignature ;
-  public : GALGAS_lstring mAttribute_mFilewrapperTemplatePath ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_functionSignature mProperty_mTemplateSignature ;
+  public : GALGAS_lstring mProperty_mFilewrapperTemplatePath ;
 
 
 //--------------------------------- Accessors
@@ -4061,12 +4061,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplate
 
 class cMapElement_filewrapperMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_lstring mAttribute_mFilewrapperPath ;
-  public : GALGAS_lstringlist mAttribute_mFilewrapperExtensionList ;
-  public : GALGAS_wrapperFileMap mAttribute_mFilewrapperFileMap ;
-  public : GALGAS_wrapperDirectoryMap mAttribute_mFilewrapperDirectoryMap ;
-  public : GALGAS_filewrapperTemplateMap mAttribute_mFilewrapperTemplateMap ;
-  public : GALGAS_bool mAttribute_mIsInternal ;
+  public : GALGAS_lstring mProperty_mFilewrapperPath ;
+  public : GALGAS_lstringlist mProperty_mFilewrapperExtensionList ;
+  public : GALGAS_wrapperFileMap mProperty_mFilewrapperFileMap ;
+  public : GALGAS_wrapperDirectoryMap mProperty_mFilewrapperDirectoryMap ;
+  public : GALGAS_filewrapperTemplateMap mProperty_mFilewrapperTemplateMap ;
+  public : GALGAS_bool mProperty_mIsInternal ;
 
 //--- Constructor
   public : cMapElement_filewrapperMap (const GALGAS_lstring & inKey,
@@ -4099,13 +4099,13 @@ class cMapElement_filewrapperMap : public cMapElement {
 
 class GALGAS_filewrapperMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_lstring mAttribute_mFilewrapperPath ;
-  public : GALGAS_lstringlist mAttribute_mFilewrapperExtensionList ;
-  public : GALGAS_wrapperFileMap mAttribute_mFilewrapperFileMap ;
-  public : GALGAS_wrapperDirectoryMap mAttribute_mFilewrapperDirectoryMap ;
-  public : GALGAS_filewrapperTemplateMap mAttribute_mFilewrapperTemplateMap ;
-  public : GALGAS_bool mAttribute_mIsInternal ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_lstring mProperty_mFilewrapperPath ;
+  public : GALGAS_lstringlist mProperty_mFilewrapperExtensionList ;
+  public : GALGAS_wrapperFileMap mProperty_mFilewrapperFileMap ;
+  public : GALGAS_wrapperDirectoryMap mProperty_mFilewrapperDirectoryMap ;
+  public : GALGAS_filewrapperTemplateMap mProperty_mFilewrapperTemplateMap ;
+  public : GALGAS_bool mProperty_mIsInternal ;
 
 
 //--------------------------------- Accessors
@@ -4195,11 +4195,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperMap_2D_e
 
 class cMapElement_optionComponentMapForSemanticAnalysis : public cMapElement {
 //--- Map attributes
-  public : GALGAS_bool mAttribute_mIsPredefined ;
-  public : GALGAS_commandLineOptionMap mAttribute_mBoolOptionMap ;
-  public : GALGAS_commandLineOptionMap mAttribute_mUIntOptionMap ;
-  public : GALGAS_commandLineOptionMap mAttribute_mStringOptionMap ;
-  public : GALGAS_commandLineOptionMap mAttribute_mStringListOptionMap ;
+  public : GALGAS_bool mProperty_mIsPredefined ;
+  public : GALGAS_commandLineOptionMap mProperty_mBoolOptionMap ;
+  public : GALGAS_commandLineOptionMap mProperty_mUIntOptionMap ;
+  public : GALGAS_commandLineOptionMap mProperty_mStringOptionMap ;
+  public : GALGAS_commandLineOptionMap mProperty_mStringListOptionMap ;
 
 //--- Constructor
   public : cMapElement_optionComponentMapForSemanticAnalysis (const GALGAS_lstring & inKey,
@@ -4231,12 +4231,12 @@ class cMapElement_optionComponentMapForSemanticAnalysis : public cMapElement {
 
 class GALGAS_optionComponentMapForSemanticAnalysis_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_bool mAttribute_mIsPredefined ;
-  public : GALGAS_commandLineOptionMap mAttribute_mBoolOptionMap ;
-  public : GALGAS_commandLineOptionMap mAttribute_mUIntOptionMap ;
-  public : GALGAS_commandLineOptionMap mAttribute_mStringOptionMap ;
-  public : GALGAS_commandLineOptionMap mAttribute_mStringListOptionMap ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_bool mProperty_mIsPredefined ;
+  public : GALGAS_commandLineOptionMap mProperty_mBoolOptionMap ;
+  public : GALGAS_commandLineOptionMap mProperty_mUIntOptionMap ;
+  public : GALGAS_commandLineOptionMap mProperty_mStringOptionMap ;
+  public : GALGAS_commandLineOptionMap mProperty_mStringListOptionMap ;
 
 
 //--------------------------------- Accessors
@@ -4322,9 +4322,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapF
 
 class cMapElement_lexiqueComponentMapForSemanticAnalysis : public cMapElement {
 //--- Map attributes
-  public : GALGAS_terminalMap mAttribute_mTerminalMap ;
-  public : GALGAS_indexingListAST mAttribute_mIndexingListAST ;
-  public : GALGAS_lstring mAttribute_mIndexingDirectory ;
+  public : GALGAS_terminalMap mProperty_mTerminalMap ;
+  public : GALGAS_indexingListAST mProperty_mIndexingListAST ;
+  public : GALGAS_lstring mProperty_mIndexingDirectory ;
 
 //--- Constructor
   public : cMapElement_lexiqueComponentMapForSemanticAnalysis (const GALGAS_lstring & inKey,
@@ -4354,10 +4354,10 @@ class cMapElement_lexiqueComponentMapForSemanticAnalysis : public cMapElement {
 
 class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_terminalMap mAttribute_mTerminalMap ;
-  public : GALGAS_indexingListAST mAttribute_mIndexingListAST ;
-  public : GALGAS_lstring mAttribute_mIndexingDirectory ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_terminalMap mProperty_mTerminalMap ;
+  public : GALGAS_indexingListAST mProperty_mIndexingListAST ;
+  public : GALGAS_lstring mProperty_mIndexingDirectory ;
 
 
 //--------------------------------- Accessors
@@ -4435,10 +4435,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentMap
 
 class cMapElement_syntaxComponentMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_lstring mAttribute_mLexiqueName ;
-  public : GALGAS_nonterminalDeclarationListAST mAttribute_mNonterminalDeclarationList ;
-  public : GALGAS_syntaxRuleListAST mAttribute_mRuleList ;
-  public : GALGAS_bool mAttribute_mHasTranslateFeature ;
+  public : GALGAS_lstring mProperty_mLexiqueName ;
+  public : GALGAS_nonterminalDeclarationListAST mProperty_mNonterminalDeclarationList ;
+  public : GALGAS_syntaxRuleListAST mProperty_mRuleList ;
+  public : GALGAS_bool mProperty_mHasTranslateFeature ;
 
 //--- Constructor
   public : cMapElement_syntaxComponentMap (const GALGAS_lstring & inKey,
@@ -4469,11 +4469,11 @@ class cMapElement_syntaxComponentMap : public cMapElement {
 
 class GALGAS_syntaxComponentMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_lstring mAttribute_mLexiqueName ;
-  public : GALGAS_nonterminalDeclarationListAST mAttribute_mNonterminalDeclarationList ;
-  public : GALGAS_syntaxRuleListAST mAttribute_mRuleList ;
-  public : GALGAS_bool mAttribute_mHasTranslateFeature ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_lstring mProperty_mLexiqueName ;
+  public : GALGAS_nonterminalDeclarationListAST mProperty_mNonterminalDeclarationList ;
+  public : GALGAS_syntaxRuleListAST mProperty_mRuleList ;
+  public : GALGAS_bool mProperty_mHasTranslateFeature ;
 
 
 //--------------------------------- Accessors
@@ -4650,7 +4650,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapF
 
 class cMapElement_extensionMethodMapForType : public cMapElement {
 //--- Map attributes
-  public : GALGAS_formalParameterListAST mAttribute_mFormalParameterList ;
+  public : GALGAS_formalParameterListAST mProperty_mFormalParameterList ;
 
 //--- Constructor
   public : cMapElement_extensionMethodMapForType (const GALGAS_lstring & inKey,
@@ -4678,8 +4678,8 @@ class cMapElement_extensionMethodMapForType : public cMapElement {
 
 class GALGAS_extensionMethodMapForType_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_formalParameterListAST mAttribute_mFormalParameterList ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_formalParameterListAST mProperty_mFormalParameterList ;
 
 
 //--------------------------------- Accessors
@@ -4853,7 +4853,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapF
 
 class cMapElement_extensionMethodMapForBuildingContext : public cMapElement {
 //--- Map attributes
-  public : GALGAS_extensionMethodMapForType mAttribute_mExtensionMethodMapForType ;
+  public : GALGAS_extensionMethodMapForType mProperty_mExtensionMethodMapForType ;
 
 //--- Constructor
   public : cMapElement_extensionMethodMapForBuildingContext (const GALGAS_lstring & inKey,
@@ -4881,8 +4881,8 @@ class cMapElement_extensionMethodMapForBuildingContext : public cMapElement {
 
 class GALGAS_extensionMethodMapForBuildingContext_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_extensionMethodMapForType mAttribute_mExtensionMethodMapForType ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_extensionMethodMapForType mProperty_mExtensionMethodMapForType ;
 
 
 //--------------------------------- Accessors
@@ -5047,7 +5047,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapF
 
 class cMapElement_extensionSetterMapForType : public cMapElement {
 //--- Map attributes
-  public : GALGAS_formalParameterListAST mAttribute_mFormalParameterList ;
+  public : GALGAS_formalParameterListAST mProperty_mFormalParameterList ;
 
 //--- Constructor
   public : cMapElement_extensionSetterMapForType (const GALGAS_lstring & inKey,
@@ -5075,8 +5075,8 @@ class cMapElement_extensionSetterMapForType : public cMapElement {
 
 class GALGAS_extensionSetterMapForType_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_formalParameterListAST mAttribute_mFormalParameterList ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_formalParameterListAST mProperty_mFormalParameterList ;
 
 
 //--------------------------------- Accessors
@@ -5250,7 +5250,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapF
 
 class cMapElement_extensionSetterMapForBuildingContext : public cMapElement {
 //--- Map attributes
-  public : GALGAS_extensionSetterMapForType mAttribute_mExtensionSetterMapForType ;
+  public : GALGAS_extensionSetterMapForType mProperty_mExtensionSetterMapForType ;
 
 //--- Constructor
   public : cMapElement_extensionSetterMapForBuildingContext (const GALGAS_lstring & inKey,
@@ -5278,8 +5278,8 @@ class cMapElement_extensionSetterMapForBuildingContext : public cMapElement {
 
 class GALGAS_extensionSetterMapForBuildingContext_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_extensionSetterMapForType mAttribute_mExtensionSetterMapForType ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_extensionSetterMapForType mProperty_mExtensionSetterMapForType ;
 
 
 //--------------------------------- Accessors
@@ -5456,8 +5456,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapF
 
 class cMapElement_extensionGetterMapForType : public cMapElement {
 //--- Map attributes
-  public : GALGAS_lstring mAttribute_mResultTypeName ;
-  public : GALGAS_formalInputParameterListAST mAttribute_mInputFormalParameterList ;
+  public : GALGAS_lstring mProperty_mResultTypeName ;
+  public : GALGAS_formalInputParameterListAST mProperty_mInputFormalParameterList ;
 
 //--- Constructor
   public : cMapElement_extensionGetterMapForType (const GALGAS_lstring & inKey,
@@ -5486,9 +5486,9 @@ class cMapElement_extensionGetterMapForType : public cMapElement {
 
 class GALGAS_extensionGetterMapForType_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_lstring mAttribute_mResultTypeName ;
-  public : GALGAS_formalInputParameterListAST mAttribute_mInputFormalParameterList ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_lstring mProperty_mResultTypeName ;
+  public : GALGAS_formalInputParameterListAST mProperty_mInputFormalParameterList ;
 
 
 //--------------------------------- Accessors
@@ -5666,7 +5666,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapF
 
 class cMapElement_extensionGetterMapForBuildingContext : public cMapElement {
 //--- Map attributes
-  public : GALGAS_extensionGetterMapForType mAttribute_mExtensionGetterMapForType ;
+  public : GALGAS_extensionGetterMapForType mProperty_mExtensionGetterMapForType ;
 
 //--- Constructor
   public : cMapElement_extensionGetterMapForBuildingContext (const GALGAS_lstring & inKey,
@@ -5694,8 +5694,8 @@ class cMapElement_extensionGetterMapForBuildingContext : public cMapElement {
 
 class GALGAS_extensionGetterMapForBuildingContext_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_extensionGetterMapForType mAttribute_mExtensionGetterMapForType ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_extensionGetterMapForType mProperty_mExtensionGetterMapForType ;
 
 
 //--------------------------------- Accessors
@@ -5934,7 +5934,7 @@ class cMapElement_wrapperExtensionMap : public cMapElement {
 
 class GALGAS_wrapperExtensionMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
+  public : GALGAS_lstring mProperty_lkey ;
 
 
 //--------------------------------- Accessors
