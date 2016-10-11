@@ -189,8 +189,8 @@ void AC_GALGAS_list::subListWithRange (AC_GALGAS_list & outList,
   if (isValid () && inRange.isValid ()) {
     bool ok = false ;
     mSharedArray.subListWithRange (outList.mSharedArray,
-                                   inRange.mAttribute_start.uintValue (),
-                                   inRange.mAttribute_length.uintValue (),
+                                   inRange.mProperty_start.uintValue (),
+                                   inRange.mProperty_length.uintValue (),
                                    ok,
                                    inCompiler COMMA_THERE) ;
     outList.mIsValid = ok ;

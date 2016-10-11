@@ -286,7 +286,7 @@ override method @setterCallInstructionForGeneration generateInstruction
   ioGeneratedCode += "{\n"
   var receiverCppName = mReceiverCppName
   for () in mReceiverStructAttributes do
-    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+    receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverBaseName]
 #--- Parameters

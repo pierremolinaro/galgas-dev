@@ -859,6 +859,13 @@
 		CF079F9B192E418B008FEFF6 /* C_RelationSingleType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = C_RelationSingleType.cpp; path = bdd/C_RelationSingleType.cpp; sourceTree = "<group>"; };
 		CF079F9C192E418B008FEFF6 /* C_RelationSingleType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = C_RelationSingleType.h; path = bdd/C_RelationSingleType.h; sourceTree = "<group>"; };
 		CF085E4E11176CDA00A23487 /* GALGAS_location.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_location.cpp; sourceTree = "<group>"; };
+		CF0EBF7E1DACE65F007B4D58 /* galgas_cli_options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = galgas_cli_options.h; path = "../user-headers/galgas_cli_options.h"; sourceTree = "<group>"; };
+		CF0EBF7F1DACE65F007B4D58 /* grammarCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = grammarCompilation.h; path = "../user-headers/grammarCompilation.h"; sourceTree = "<group>"; };
+		CF0EBF801DACE65F007B4D58 /* separateHeaderFor_abstractSyntaxInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = separateHeaderFor_abstractSyntaxInstructionForGrammarAnalysis.h; path = "../user-headers/separateHeaderFor_abstractSyntaxInstructionForGrammarAnalysis.h"; sourceTree = "<group>"; };
+		CF0EBF811DACE65F007B4D58 /* separateHeaderFor_nonTerminalInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = separateHeaderFor_nonTerminalInstructionForGrammarAnalysis.h; path = "../user-headers/separateHeaderFor_nonTerminalInstructionForGrammarAnalysis.h"; sourceTree = "<group>"; };
+		CF0EBF821DACE65F007B4D58 /* separateHeaderFor_repeatInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = separateHeaderFor_repeatInstructionForGrammarAnalysis.h; path = "../user-headers/separateHeaderFor_repeatInstructionForGrammarAnalysis.h"; sourceTree = "<group>"; };
+		CF0EBF831DACE65F007B4D58 /* separateHeaderFor_selectInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = separateHeaderFor_selectInstructionForGrammarAnalysis.h; path = "../user-headers/separateHeaderFor_selectInstructionForGrammarAnalysis.h"; sourceTree = "<group>"; };
+		CF0EBF841DACE65F007B4D58 /* separateHeaderFor_terminalInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = separateHeaderFor_terminalInstructionForGrammarAnalysis.h; path = "../user-headers/separateHeaderFor_terminalInstructionForGrammarAnalysis.h"; sourceTree = "<group>"; };
 		CF1150611CAA986E00E08852 /* generation_templates */ = {isa = PBXFileReference; lastKnownFileType = folder; name = generation_templates; path = ../generation_templates; sourceTree = "<group>"; };
 		CF12C0BD1D043E610060778F /* all-predefined-types.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-predefined-types.cpp"; sourceTree = "<group>"; };
 		CF12C0BF1D043E6C0060778F /* all-predefined-types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-predefined-types.h"; sourceTree = "<group>"; };
@@ -1509,7 +1516,14 @@
 				CFC222411AFBE6AD0049A4CB /* all-declarations-26.h */,
 				CF2374E319967D5D0061D2D8 /* all-declarations.h */,
 				CF12C0BF1D043E6C0060778F /* all-predefined-types.h */,
+				CF0EBF7E1DACE65F007B4D58 /* galgas_cli_options.h */,
+				CF0EBF7F1DACE65F007B4D58 /* grammarCompilation.h */,
 				CF237AE819967E4E0061D2D8 /* project_header.h */,
+				CF0EBF801DACE65F007B4D58 /* separateHeaderFor_abstractSyntaxInstructionForGrammarAnalysis.h */,
+				CF0EBF811DACE65F007B4D58 /* separateHeaderFor_nonTerminalInstructionForGrammarAnalysis.h */,
+				CF0EBF821DACE65F007B4D58 /* separateHeaderFor_repeatInstructionForGrammarAnalysis.h */,
+				CF0EBF831DACE65F007B4D58 /* separateHeaderFor_selectInstructionForGrammarAnalysis.h */,
+				CF0EBF841DACE65F007B4D58 /* separateHeaderFor_terminalInstructionForGrammarAnalysis.h */,
 			);
 			name = Headers;
 			sourceTree = "<group>";

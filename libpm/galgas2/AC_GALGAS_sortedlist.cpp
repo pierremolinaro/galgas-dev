@@ -39,7 +39,7 @@ class cSortedListNode {
   public : int32_t mBalance ;
   public : cSortedListNode * mNextPtr ;
   public : cSortedListNode * mPreviousPtr ;
-  public : capSortedListElement mAttributes ;
+  public : capSortedListElement mProperties ;
 
 //---  
   public : cSortedListNode (const capSortedListElement & inAttributes) ;
@@ -59,7 +59,7 @@ mSupPtr (NULL),
 mBalance (0),
 mNextPtr (NULL),
 mPreviousPtr (NULL),
-mAttributes (inAttributes) {
+mProperties (inAttributes) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -70,9 +70,9 @@ mSupPtr (NULL),
 mBalance (0),
 mNextPtr (NULL),
 mPreviousPtr (NULL),
-mAttributes () {
+mProperties () {
   macroValidPointer (inNode) ;
-  mAttributes = inNode->mAttributes ;
+  mProperties = inNode->mProperties ;
   mBalance = inNode->mBalance ;
   if (inNode->mInfPtr != NULL) {
     macroMyNew (mInfPtr, cSortedListNode (inNode->mInfPtr)) ;
@@ -328,7 +328,7 @@ typeComparisonResult cSharedSortedListRoot::objectCompare (const cSharedSortedLi
       cSortedListNode * p1 = mFirst ;
       cSortedListNode * p2 = inOperand->mFirst ;
       while ((NULL != p1) && (NULL != p2) && (result == kOperandEqual)) {
-        result = p1->mAttributes.compare (p2->mAttributes) ;
+        result = p1->mProperties.compare (p2->mProperties) ;
         p1 = p1->mNextPtr ;
         p2 = p1->mNextPtr ;
       }
@@ -425,7 +425,7 @@ void cSharedSortedListRoot::addEntry (cSortedListNode * & ioRootPtr,
     mCount ++ ;
   }else{
     macroValidPointer (ioRootPtr) ;
-    const typeComparisonResult comparaison = ioRootPtr->mAttributes.compareForSorting (inAttributes) ;
+    const typeComparisonResult comparaison = ioRootPtr->mProperties.compareForSorting (inAttributes) ;
     if (comparaison > kOperandEqual) {
       addEntry (ioRootPtr->mInfPtr, inBeforeNode, inAttributes, ioExtension) ;
       if (ioExtension) {
@@ -466,7 +466,7 @@ void cSharedSortedListRoot::addEntry (cSortedListNode * & ioRootPtr,
     imprimerArbre (inRoot->mInfPtr, inElementSize) ;
     C_String s ;
     for (uint32_t i=0 ; i<inElementSize ; i++) {
-      inRoot->mAttributes [i]->description (s, 0) ;
+      inRoot->mProperties [i]->description (s, 0) ;
     }
     printf ("%s\n", s.cString (HERE)) ;
     imprimerArbre (inRoot->mSupPtr, inElementSize) ;
@@ -512,7 +512,7 @@ void cSharedSortedListRoot::appendSortedList (const cSharedSortedListRoot * inLi
   const cSortedListNode * p = inList->mFirst ;
   while (p != NULL) {
     bool extension = false ; // Unused here
-    addEntry (mRoot, NULL, p->mAttributes, extension) ;
+    addEntry (mRoot, NULL, p->mProperties, extension) ;
     p = p->mNextPtr ;
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -623,8 +623,8 @@ void cSharedSortedListRoot::removeSmallestObject (capSortedListElement & outAttr
   if (mFirst == NULL) {
     inCompiler->onTheFlyRunTimeError ("'popSmallest' method invoked on an empty list" COMMA_THERE) ;
   }else{
-    outAttributes = mFirst->mAttributes ;
-    mFirst->mAttributes.drop () ;
+    outAttributes = mFirst->mProperties ;
+    mFirst->mProperties.drop () ;
   //--- Remove from sequential List
     mFirst = mFirst->mNextPtr ;
     if (mFirst == NULL) {
@@ -688,8 +688,8 @@ void cSharedSortedListRoot::removeGreatestObject (capSortedListElement & outAttr
   if (mLast == NULL) {
     inCompiler->onTheFlyRunTimeError ("'popGreatest' method invoked on an empty list" COMMA_THERE) ;
   }else{
-    outAttributes = mLast->mAttributes ;
-    mLast->mAttributes.drop () ;
+    outAttributes = mLast->mProperties ;
+    mLast->mProperties.drop () ;
   //--- Remove from sequential List
     mLast = mLast->mPreviousPtr ;
     if (mLast == NULL) {
@@ -783,7 +783,7 @@ void cSharedSortedListRoot::description (C_String & ioString,
     ioString << "\n" ;
     ioString.writeStringMultiple ("| ", inIndentation) ;
     ioString << "|-at " << cStringWithUnsigned (idx) ;
-    p->mAttributes.description (ioString, inIndentation + 1) ;
+    p->mProperties.description (ioString, inIndentation + 1) ;
     p = p->mNextPtr ;
     idx ++ ;
   }
@@ -843,7 +843,7 @@ void cSharedSortedListRoot::smallestObjectAttributeList (capSortedListElement & 
   if (mFirst == NULL) {
     inCompiler->onTheFlyRunTimeError ("'smallest' method invoked on an empty list" COMMA_THERE) ;
   }else{
-    outAttributes = mFirst->mAttributes ;
+    outAttributes = mFirst->mProperties ;
   }
 }
 
@@ -865,7 +865,7 @@ void cSharedSortedListRoot::greatestObjectAttributeList (capSortedListElement & 
   if (mLast == NULL) {
     inCompiler->onTheFlyRunTimeError ("'greatest' method invoked on an empty list" COMMA_THERE) ;
   }else{
-    outAttributes = mLast->mAttributes ;
+    outAttributes = mLast->mProperties ;
   }
 }
 
@@ -896,7 +896,7 @@ void cSharedSortedListRoot::populateEnumerationArray (capCollectionElementArray 
   cSortedListNode * p = mFirst ;
   while (p != NULL) {
     capCollectionElement object ;
-    object.setPointer (p->mAttributes.ptr ()) ;
+    object.setPointer (p->mProperties.ptr ()) ;
     inEnumerationArray.appendObject (object) ;
     p = p->mNextPtr ;
   }

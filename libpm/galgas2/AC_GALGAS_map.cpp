@@ -476,7 +476,7 @@ cCollectionElement * AC_GALGAS_map::readWriteAccessForWithInstructionWithErrorMe
   cCollectionElement * result = NULL ;
   if (isValid () && inKey.isValid ()) {
     insulate (HERE) ;
-    const C_String key = inKey.mAttribute_string.stringValue () ;
+    const C_String key = inKey.mProperty_string.stringValue () ;
     cMapNode * node = mSharedMap->findEntryInMap (key, mSharedMap) ;
     if (NULL == node) {
       TC_UniqueArray <C_String> nearestKeyArray ;
@@ -594,7 +594,7 @@ void cSharedMapRoot::performInsertOrReplace (const capCollectionElement & inAttr
   if (inAttributes.isValid ()) {
     const cMapElement * p = (cMapElement *) inAttributes.ptr () ;
     macroValidSharedObject (p, cMapElement) ;
-    const GALGAS_string string_key = p->mAttribute_lkey.mAttribute_string ;
+    const GALGAS_string string_key = p->mProperty_lkey.mProperty_string ;
     const C_String key = string_key.stringValue () ;
   //--- Insert or replace
     bool extension ; // Unused here
@@ -745,7 +745,7 @@ cMapNode * cSharedMapRoot::performInsert (const capCollectionElement & inAttribu
   if (inAttributes.isValid ()) {
     cMapElement * p = (cMapElement *) inAttributes.ptr () ;
     macroValidSharedObject (p, cMapElement) ;
-    const C_String key = p->mAttribute_lkey.mAttribute_string.stringValue () ;
+    const C_String key = p->mProperty_lkey.mProperty_string.stringValue () ;
   //--- Insert or replace
     bool extension = false ; // Unused here
     bool entryAlreadyExists = false ;
@@ -761,18 +761,18 @@ cMapNode * cSharedMapRoot::performInsert (const capCollectionElement & inAttribu
         //--- Existing key
           cMapElement * me = (cMapElement *) matchingEntry->mAttributes.ptr () ;
           macroValidSharedObject (me, cMapElement) ;
-          const GALGAS_location lstring_existingKey_location = me->mAttribute_lkey.mAttribute_location ;
+          const GALGAS_location lstring_existingKey_location = me->mProperty_lkey.mProperty_location ;
         //--- Emit error message
-          inCompiler->semanticErrorWith_K_L_message (p->mAttribute_lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+          inCompiler->semanticErrorWith_K_L_message (p->mProperty_lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
         }
       }
     }else{ // Error, entry already exists
     //--- Existing key
       cMapElement * me = (cMapElement *) matchingEntry->mAttributes.ptr () ;
       macroValidSharedObject (me, cMapElement) ;
-      const GALGAS_location lstring_existingKey_location = me->mAttribute_lkey.mAttribute_location ;
+      const GALGAS_location lstring_existingKey_location = me->mProperty_lkey.mProperty_location ;
     //--- Emit error message
-      inCompiler->semanticErrorWith_K_L_message (p->mAttribute_lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
+      inCompiler->semanticErrorWith_K_L_message (p->mProperty_lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
     }
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -875,7 +875,7 @@ static void enterKeyInLStringList (cMapNode * inNode,
     cMapElement * p = (cMapElement *) inNode->mAttributes.ptr () ;
     if (NULL != p) {
       macroValidSharedObject (p, cMapElement) ;
-      ioResult.addAssign_operation (p->mAttribute_lkey COMMA_HERE) ;
+      ioResult.addAssign_operation (p->mProperty_lkey COMMA_HERE) ;
     }
     enterKeyInLStringList (inNode->mSupPtr, ioResult) ;
   }
@@ -921,7 +921,7 @@ GALGAS_location cSharedMapRoot::locationForKey (const GALGAS_string & inKey,
     }else{
       cMapElement * p = (cMapElement *) node->mAttributes.ptr () ;
       macroValidSharedObject (p, cMapElement) ;
-      result = p->mAttribute_lkey.mAttribute_location ;
+      result = p->mProperty_lkey.mProperty_location ;
     }
   }
   return result ;
@@ -1078,7 +1078,7 @@ cMapNode * cSharedMapRoot::performSearch (const GALGAS_lstring & inKey,
                                           COMMA_LOCATION_ARGS) const {
   cMapNode * result = NULL ;
   if (inKey.isValid ()) {
-    const C_String key = inKey.mAttribute_string.stringValue () ;
+    const C_String key = inKey.mProperty_string.stringValue () ;
     result = findEntryInMap (key, this) ;
     if (NULL == result) {
       TC_UniqueArray <C_String> nearestKeyArray ;
@@ -1202,7 +1202,7 @@ cMapElement * cSharedMapRoot::searchForReadWriteAttribute (const GALGAS_lstring 
   macroUniqueSharedObject (this) ;
   cMapElement * result = NULL ;
   if (inKey.isValid ()) {
-    const C_String key = inKey.mAttribute_string.stringValue () ;
+    const C_String key = inKey.mProperty_string.stringValue () ;
     cMapNode * node = findEntryInMap (key, this) ;
     if (NULL != node) {
       node->mAttributes.insulate () ;
@@ -1370,7 +1370,7 @@ void cSharedMapRoot::performRemove (GALGAS_lstring & inKey,
                                     COMMA_LOCATION_ARGS) {
   macroUniqueSharedObject (this) ;
   if (inKey.isValid ()) {
-    const C_String key = inKey.mAttribute_string.stringValue () ;
+    const C_String key = inKey.mProperty_string.stringValue () ;
     bool branchHasBeenRemoved = false ;
     cMapNode * node = internalRemoveEntry (key, mRoot, branchHasBeenRemoved) ;
     if (NULL == node) {
@@ -1393,7 +1393,7 @@ void cSharedMapRoot::performRemove (GALGAS_lstring & inKey,
         }
       }
     //--- Emit error message
-      const GALGAS_location key_location = inKey.mAttribute_location ;
+      const GALGAS_location key_location = inKey.mProperty_location ;
       inCompiler->semanticErrorAtLocation (key_location, message, TC_Array <C_FixItDescription> () COMMA_THERE) ;
     }else{ // Ok, found
       outResult = node->mAttributes ;

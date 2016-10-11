@@ -188,7 +188,7 @@ bool cCollectionElement_semanticExpressionListForGeneration::isValid (void) cons
 
 cCollectionElement * cCollectionElement_semanticExpressionListForGeneration::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_semanticExpressionListForGeneration (mObject.mAttribute_mExpression COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_semanticExpressionListForGeneration (mObject.mProperty_mExpression COMMA_HERE)) ;
   return result ;
 }
 
@@ -198,7 +198,7 @@ void cCollectionElement_semanticExpressionListForGeneration::description (C_Stri
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mExpression" ":" ;
-  mObject.mAttribute_mExpression.description (ioString, inIndentation) ;
+  mObject.mProperty_mExpression.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -296,7 +296,7 @@ void GALGAS_semanticExpressionListForGeneration::setter_removeAtIndex (GALGAS_se
       outOperand0.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_semanticExpressionListForGeneration) ;
-      outOperand0 = p->mObject.mAttribute_mExpression ;
+      outOperand0 = p->mObject.mProperty_mExpression ;
     }
   }
 }
@@ -313,7 +313,7 @@ void GALGAS_semanticExpressionListForGeneration::setter_popFirst (GALGAS_semanti
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_semanticExpressionListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mExpression ;
+    outOperand0 = p->mObject.mProperty_mExpression ;
   }
 }
 
@@ -329,7 +329,7 @@ void GALGAS_semanticExpressionListForGeneration::setter_popLast (GALGAS_semantic
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_semanticExpressionListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mExpression ;
+    outOperand0 = p->mObject.mProperty_mExpression ;
   }
 }
 
@@ -345,7 +345,7 @@ void GALGAS_semanticExpressionListForGeneration::method_first (GALGAS_semanticEx
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_semanticExpressionListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mExpression ;
+    outOperand0 = p->mObject.mProperty_mExpression ;
   }
 }
 
@@ -361,7 +361,7 @@ void GALGAS_semanticExpressionListForGeneration::method_last (GALGAS_semanticExp
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_semanticExpressionListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mExpression ;
+    outOperand0 = p->mObject.mProperty_mExpression ;
   }
 }
 
@@ -426,7 +426,7 @@ GALGAS_semanticExpressionForGeneration GALGAS_semanticExpressionListForGeneratio
   GALGAS_semanticExpressionForGeneration result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_semanticExpressionListForGeneration) ;
-    result = p->mObject.mAttribute_mExpression ;
+    result = p->mObject.mProperty_mExpression ;
   }
   return result ;
 }
@@ -455,7 +455,7 @@ GALGAS_semanticExpressionListForGeneration_2D_element cEnumerator_semanticExpres
 GALGAS_semanticExpressionForGeneration cEnumerator_semanticExpressionListForGeneration::current_mExpression (LOCATION_ARGS) const {
   const cCollectionElement_semanticExpressionListForGeneration * p = (const cCollectionElement_semanticExpressionListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_semanticExpressionListForGeneration) ;
-  return p->mObject.mAttribute_mExpression ;
+  return p->mObject.mProperty_mExpression ;
 }
 
 
@@ -548,7 +548,7 @@ bool cCollectionElement_actualParameterListForGeneration::isValid (void) const {
 
 cCollectionElement * cCollectionElement_actualParameterListForGeneration::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_actualParameterListForGeneration (mObject.mAttribute_mActualParameter COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_actualParameterListForGeneration (mObject.mProperty_mActualParameter COMMA_HERE)) ;
   return result ;
 }
 
@@ -558,7 +558,7 @@ void cCollectionElement_actualParameterListForGeneration::description (C_String 
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mActualParameter" ":" ;
-  mObject.mAttribute_mActualParameter.description (ioString, inIndentation) ;
+  mObject.mProperty_mActualParameter.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -656,7 +656,7 @@ void GALGAS_actualParameterListForGeneration::setter_removeAtIndex (GALGAS_actua
       outOperand0.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_actualParameterListForGeneration) ;
-      outOperand0 = p->mObject.mAttribute_mActualParameter ;
+      outOperand0 = p->mObject.mProperty_mActualParameter ;
     }
   }
 }
@@ -673,7 +673,7 @@ void GALGAS_actualParameterListForGeneration::setter_popFirst (GALGAS_actualPara
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_actualParameterListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mActualParameter ;
+    outOperand0 = p->mObject.mProperty_mActualParameter ;
   }
 }
 
@@ -689,7 +689,7 @@ void GALGAS_actualParameterListForGeneration::setter_popLast (GALGAS_actualParam
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_actualParameterListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mActualParameter ;
+    outOperand0 = p->mObject.mProperty_mActualParameter ;
   }
 }
 
@@ -705,7 +705,7 @@ void GALGAS_actualParameterListForGeneration::method_first (GALGAS_actualParamet
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_actualParameterListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mActualParameter ;
+    outOperand0 = p->mObject.mProperty_mActualParameter ;
   }
 }
 
@@ -721,7 +721,7 @@ void GALGAS_actualParameterListForGeneration::method_last (GALGAS_actualParamete
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_actualParameterListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mActualParameter ;
+    outOperand0 = p->mObject.mProperty_mActualParameter ;
   }
 }
 
@@ -786,7 +786,7 @@ GALGAS_actualParameterForGeneration GALGAS_actualParameterListForGeneration::get
   GALGAS_actualParameterForGeneration result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_actualParameterListForGeneration) ;
-    result = p->mObject.mAttribute_mActualParameter ;
+    result = p->mObject.mProperty_mActualParameter ;
   }
   return result ;
 }
@@ -815,7 +815,7 @@ GALGAS_actualParameterListForGeneration_2D_element cEnumerator_actualParameterLi
 GALGAS_actualParameterForGeneration cEnumerator_actualParameterListForGeneration::current_mActualParameter (LOCATION_ARGS) const {
   const cCollectionElement_actualParameterListForGeneration * p = (const cCollectionElement_actualParameterListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_actualParameterListForGeneration) ;
-  return p->mObject.mAttribute_mActualParameter ;
+  return p->mObject.mProperty_mActualParameter ;
 }
 
 
@@ -1024,7 +1024,7 @@ typeComparisonResult cPtr_semanticBlockInstructionForGeneration::dynamicObjectCo
   const cPtr_semanticBlockInstructionForGeneration * p = (const cPtr_semanticBlockInstructionForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_semanticBlockInstructionForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mInstructionList.objectCompare (p->mAttribute_mInstructionList) ;
+    result = mProperty_mInstructionList.objectCompare (p->mProperty_mInstructionList) ;
   }
   return result ;
 }
@@ -1086,7 +1086,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_semanticBlockInstructionForGe
   if (NULL != mObjectPtr) {
     const cPtr_semanticBlockInstructionForGeneration * p = (const cPtr_semanticBlockInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_semanticBlockInstructionForGeneration) ;
-    result = p->mAttribute_mInstructionList ;
+    result = p->mProperty_mInstructionList ;
   }
   return result ;
 }
@@ -1094,7 +1094,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_semanticBlockInstructionForGe
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListForGeneration cPtr_semanticBlockInstructionForGeneration::getter_mInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mInstructionList ;
+  return mProperty_mInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1104,7 +1104,7 @@ GALGAS_semanticInstructionListForGeneration cPtr_semanticBlockInstructionForGene
 cPtr_semanticBlockInstructionForGeneration::cPtr_semanticBlockInstructionForGeneration (const GALGAS_semanticInstructionListForGeneration & in_mInstructionList
                                                                                         COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
-mAttribute_mInstructionList (in_mInstructionList) {
+mProperty_mInstructionList (in_mInstructionList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1116,7 +1116,7 @@ const C_galgas_type_descriptor * cPtr_semanticBlockInstructionForGeneration::cla
 void cPtr_semanticBlockInstructionForGeneration::description (C_String & ioString,
                                                               const int32_t inIndentation) const {
   ioString << "[@semanticBlockInstructionForGeneration:" ;
-  mAttribute_mInstructionList.description (ioString, inIndentation+1) ;
+  mProperty_mInstructionList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -1124,7 +1124,7 @@ void cPtr_semanticBlockInstructionForGeneration::description (C_String & ioStrin
 
 acPtr_class * cPtr_semanticBlockInstructionForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_semanticBlockInstructionForGeneration (mAttribute_mInstructionList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_semanticBlockInstructionForGeneration (mProperty_mInstructionList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -1218,7 +1218,7 @@ bool cCollectionElement_listOfSemanticInstructionListForGeneration::isValid (voi
 
 cCollectionElement * cCollectionElement_listOfSemanticInstructionListForGeneration::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_listOfSemanticInstructionListForGeneration (mObject.mAttribute_mInstructionList, mObject.mAttribute_mEndOfInstructionList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_listOfSemanticInstructionListForGeneration (mObject.mProperty_mInstructionList, mObject.mProperty_mEndOfInstructionList COMMA_HERE)) ;
   return result ;
 }
 
@@ -1228,11 +1228,11 @@ void cCollectionElement_listOfSemanticInstructionListForGeneration::description 
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstructionList" ":" ;
-  mObject.mAttribute_mInstructionList.description (ioString, inIndentation) ;
+  mObject.mProperty_mInstructionList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mEndOfInstructionList" ":" ;
-  mObject.mAttribute_mEndOfInstructionList.description (ioString, inIndentation) ;
+  mObject.mProperty_mEndOfInstructionList.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1337,8 +1337,8 @@ void GALGAS_listOfSemanticInstructionListForGeneration::setter_removeAtIndex (GA
       outOperand1.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_listOfSemanticInstructionListForGeneration) ;
-      outOperand0 = p->mObject.mAttribute_mInstructionList ;
-      outOperand1 = p->mObject.mAttribute_mEndOfInstructionList ;
+      outOperand0 = p->mObject.mProperty_mInstructionList ;
+      outOperand1 = p->mObject.mProperty_mEndOfInstructionList ;
     }
   }
 }
@@ -1357,8 +1357,8 @@ void GALGAS_listOfSemanticInstructionListForGeneration::setter_popFirst (GALGAS_
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_listOfSemanticInstructionListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mInstructionList ;
-    outOperand1 = p->mObject.mAttribute_mEndOfInstructionList ;
+    outOperand0 = p->mObject.mProperty_mInstructionList ;
+    outOperand1 = p->mObject.mProperty_mEndOfInstructionList ;
   }
 }
 
@@ -1376,8 +1376,8 @@ void GALGAS_listOfSemanticInstructionListForGeneration::setter_popLast (GALGAS_s
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_listOfSemanticInstructionListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mInstructionList ;
-    outOperand1 = p->mObject.mAttribute_mEndOfInstructionList ;
+    outOperand0 = p->mObject.mProperty_mInstructionList ;
+    outOperand1 = p->mObject.mProperty_mEndOfInstructionList ;
   }
 }
 
@@ -1395,8 +1395,8 @@ void GALGAS_listOfSemanticInstructionListForGeneration::method_first (GALGAS_sem
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_listOfSemanticInstructionListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mInstructionList ;
-    outOperand1 = p->mObject.mAttribute_mEndOfInstructionList ;
+    outOperand0 = p->mObject.mProperty_mInstructionList ;
+    outOperand1 = p->mObject.mProperty_mEndOfInstructionList ;
   }
 }
 
@@ -1414,8 +1414,8 @@ void GALGAS_listOfSemanticInstructionListForGeneration::method_last (GALGAS_sema
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_listOfSemanticInstructionListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mInstructionList ;
-    outOperand1 = p->mObject.mAttribute_mEndOfInstructionList ;
+    outOperand0 = p->mObject.mProperty_mInstructionList ;
+    outOperand1 = p->mObject.mProperty_mEndOfInstructionList ;
   }
 }
 
@@ -1480,7 +1480,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_listOfSemanticInstructionList
   GALGAS_semanticInstructionListForGeneration result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_listOfSemanticInstructionListForGeneration) ;
-    result = p->mObject.mAttribute_mInstructionList ;
+    result = p->mObject.mProperty_mInstructionList ;
   }
   return result ;
 }
@@ -1495,7 +1495,7 @@ GALGAS_location GALGAS_listOfSemanticInstructionListForGeneration::getter_mEndOf
   GALGAS_location result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_listOfSemanticInstructionListForGeneration) ;
-    result = p->mObject.mAttribute_mEndOfInstructionList ;
+    result = p->mObject.mProperty_mEndOfInstructionList ;
   }
   return result ;
 }
@@ -1524,7 +1524,7 @@ GALGAS_listOfSemanticInstructionListForGeneration_2D_element cEnumerator_listOfS
 GALGAS_semanticInstructionListForGeneration cEnumerator_listOfSemanticInstructionListForGeneration::current_mInstructionList (LOCATION_ARGS) const {
   const cCollectionElement_listOfSemanticInstructionListForGeneration * p = (const cCollectionElement_listOfSemanticInstructionListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_listOfSemanticInstructionListForGeneration) ;
-  return p->mObject.mAttribute_mInstructionList ;
+  return p->mObject.mProperty_mInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1532,7 +1532,7 @@ GALGAS_semanticInstructionListForGeneration cEnumerator_listOfSemanticInstructio
 GALGAS_location cEnumerator_listOfSemanticInstructionListForGeneration::current_mEndOfInstructionList (LOCATION_ARGS) const {
   const cCollectionElement_listOfSemanticInstructionListForGeneration * p = (const cCollectionElement_listOfSemanticInstructionListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_listOfSemanticInstructionListForGeneration) ;
-  return p->mObject.mAttribute_mEndOfInstructionList ;
+  return p->mObject.mProperty_mEndOfInstructionList ;
 }
 
 
@@ -2105,7 +2105,7 @@ bool cCollectionElement_semanticDeclarationListForGeneration::isValid (void) con
 
 cCollectionElement * cCollectionElement_semanticDeclarationListForGeneration::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_semanticDeclarationListForGeneration (mObject.mAttribute_mMessage, mObject.mAttribute_mDeclaration COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_semanticDeclarationListForGeneration (mObject.mProperty_mMessage, mObject.mProperty_mDeclaration COMMA_HERE)) ;
   return result ;
 }
 
@@ -2115,11 +2115,11 @@ void cCollectionElement_semanticDeclarationListForGeneration::description (C_Str
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mMessage" ":" ;
-  mObject.mAttribute_mMessage.description (ioString, inIndentation) ;
+  mObject.mProperty_mMessage.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mDeclaration" ":" ;
-  mObject.mAttribute_mDeclaration.description (ioString, inIndentation) ;
+  mObject.mProperty_mDeclaration.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2224,8 +2224,8 @@ void GALGAS_semanticDeclarationListForGeneration::setter_removeAtIndex (GALGAS_s
       outOperand1.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_semanticDeclarationListForGeneration) ;
-      outOperand0 = p->mObject.mAttribute_mMessage ;
-      outOperand1 = p->mObject.mAttribute_mDeclaration ;
+      outOperand0 = p->mObject.mProperty_mMessage ;
+      outOperand1 = p->mObject.mProperty_mDeclaration ;
     }
   }
 }
@@ -2244,8 +2244,8 @@ void GALGAS_semanticDeclarationListForGeneration::setter_popFirst (GALGAS_string
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_semanticDeclarationListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mMessage ;
-    outOperand1 = p->mObject.mAttribute_mDeclaration ;
+    outOperand0 = p->mObject.mProperty_mMessage ;
+    outOperand1 = p->mObject.mProperty_mDeclaration ;
   }
 }
 
@@ -2263,8 +2263,8 @@ void GALGAS_semanticDeclarationListForGeneration::setter_popLast (GALGAS_string 
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_semanticDeclarationListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mMessage ;
-    outOperand1 = p->mObject.mAttribute_mDeclaration ;
+    outOperand0 = p->mObject.mProperty_mMessage ;
+    outOperand1 = p->mObject.mProperty_mDeclaration ;
   }
 }
 
@@ -2282,8 +2282,8 @@ void GALGAS_semanticDeclarationListForGeneration::method_first (GALGAS_string & 
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_semanticDeclarationListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mMessage ;
-    outOperand1 = p->mObject.mAttribute_mDeclaration ;
+    outOperand0 = p->mObject.mProperty_mMessage ;
+    outOperand1 = p->mObject.mProperty_mDeclaration ;
   }
 }
 
@@ -2301,8 +2301,8 @@ void GALGAS_semanticDeclarationListForGeneration::method_last (GALGAS_string & o
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_semanticDeclarationListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mMessage ;
-    outOperand1 = p->mObject.mAttribute_mDeclaration ;
+    outOperand0 = p->mObject.mProperty_mMessage ;
+    outOperand1 = p->mObject.mProperty_mDeclaration ;
   }
 }
 
@@ -2367,7 +2367,7 @@ GALGAS_string GALGAS_semanticDeclarationListForGeneration::getter_mMessageAtInde
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_semanticDeclarationListForGeneration) ;
-    result = p->mObject.mAttribute_mMessage ;
+    result = p->mObject.mProperty_mMessage ;
   }
   return result ;
 }
@@ -2382,7 +2382,7 @@ GALGAS_semanticDeclarationForGeneration GALGAS_semanticDeclarationListForGenerat
   GALGAS_semanticDeclarationForGeneration result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_semanticDeclarationListForGeneration) ;
-    result = p->mObject.mAttribute_mDeclaration ;
+    result = p->mObject.mProperty_mDeclaration ;
   }
   return result ;
 }
@@ -2411,7 +2411,7 @@ GALGAS_semanticDeclarationListForGeneration_2D_element cEnumerator_semanticDecla
 GALGAS_string cEnumerator_semanticDeclarationListForGeneration::current_mMessage (LOCATION_ARGS) const {
   const cCollectionElement_semanticDeclarationListForGeneration * p = (const cCollectionElement_semanticDeclarationListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_semanticDeclarationListForGeneration) ;
-  return p->mObject.mAttribute_mMessage ;
+  return p->mObject.mProperty_mMessage ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2419,7 +2419,7 @@ GALGAS_string cEnumerator_semanticDeclarationListForGeneration::current_mMessage
 GALGAS_semanticDeclarationForGeneration cEnumerator_semanticDeclarationListForGeneration::current_mDeclaration (LOCATION_ARGS) const {
   const cCollectionElement_semanticDeclarationListForGeneration * p = (const cCollectionElement_semanticDeclarationListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_semanticDeclarationListForGeneration) ;
-  return p->mObject.mAttribute_mDeclaration ;
+  return p->mObject.mProperty_mDeclaration ;
 }
 
 
@@ -2514,7 +2514,7 @@ bool cCollectionElement_signatureForGrammarAnalysis::isValid (void) const {
 
 cCollectionElement * cCollectionElement_signatureForGrammarAnalysis::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_signatureForGrammarAnalysis (mObject.mAttribute_mFormalArgumentPassingModeForGrammarAnalysis, mObject.mAttribute_mGalgasTypeNameForGrammarAnalysis COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_signatureForGrammarAnalysis (mObject.mProperty_mFormalArgumentPassingModeForGrammarAnalysis, mObject.mProperty_mGalgasTypeNameForGrammarAnalysis COMMA_HERE)) ;
   return result ;
 }
 
@@ -2524,11 +2524,11 @@ void cCollectionElement_signatureForGrammarAnalysis::description (C_String & ioS
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFormalArgumentPassingModeForGrammarAnalysis" ":" ;
-  mObject.mAttribute_mFormalArgumentPassingModeForGrammarAnalysis.description (ioString, inIndentation) ;
+  mObject.mProperty_mFormalArgumentPassingModeForGrammarAnalysis.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mGalgasTypeNameForGrammarAnalysis" ":" ;
-  mObject.mAttribute_mGalgasTypeNameForGrammarAnalysis.description (ioString, inIndentation) ;
+  mObject.mProperty_mGalgasTypeNameForGrammarAnalysis.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2633,8 +2633,8 @@ void GALGAS_signatureForGrammarAnalysis::setter_removeAtIndex (GALGAS_formalArgu
       outOperand1.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_signatureForGrammarAnalysis) ;
-      outOperand0 = p->mObject.mAttribute_mFormalArgumentPassingModeForGrammarAnalysis ;
-      outOperand1 = p->mObject.mAttribute_mGalgasTypeNameForGrammarAnalysis ;
+      outOperand0 = p->mObject.mProperty_mFormalArgumentPassingModeForGrammarAnalysis ;
+      outOperand1 = p->mObject.mProperty_mGalgasTypeNameForGrammarAnalysis ;
     }
   }
 }
@@ -2653,8 +2653,8 @@ void GALGAS_signatureForGrammarAnalysis::setter_popFirst (GALGAS_formalArgumentP
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_signatureForGrammarAnalysis) ;
-    outOperand0 = p->mObject.mAttribute_mFormalArgumentPassingModeForGrammarAnalysis ;
-    outOperand1 = p->mObject.mAttribute_mGalgasTypeNameForGrammarAnalysis ;
+    outOperand0 = p->mObject.mProperty_mFormalArgumentPassingModeForGrammarAnalysis ;
+    outOperand1 = p->mObject.mProperty_mGalgasTypeNameForGrammarAnalysis ;
   }
 }
 
@@ -2672,8 +2672,8 @@ void GALGAS_signatureForGrammarAnalysis::setter_popLast (GALGAS_formalArgumentPa
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_signatureForGrammarAnalysis) ;
-    outOperand0 = p->mObject.mAttribute_mFormalArgumentPassingModeForGrammarAnalysis ;
-    outOperand1 = p->mObject.mAttribute_mGalgasTypeNameForGrammarAnalysis ;
+    outOperand0 = p->mObject.mProperty_mFormalArgumentPassingModeForGrammarAnalysis ;
+    outOperand1 = p->mObject.mProperty_mGalgasTypeNameForGrammarAnalysis ;
   }
 }
 
@@ -2691,8 +2691,8 @@ void GALGAS_signatureForGrammarAnalysis::method_first (GALGAS_formalArgumentPass
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_signatureForGrammarAnalysis) ;
-    outOperand0 = p->mObject.mAttribute_mFormalArgumentPassingModeForGrammarAnalysis ;
-    outOperand1 = p->mObject.mAttribute_mGalgasTypeNameForGrammarAnalysis ;
+    outOperand0 = p->mObject.mProperty_mFormalArgumentPassingModeForGrammarAnalysis ;
+    outOperand1 = p->mObject.mProperty_mGalgasTypeNameForGrammarAnalysis ;
   }
 }
 
@@ -2710,8 +2710,8 @@ void GALGAS_signatureForGrammarAnalysis::method_last (GALGAS_formalArgumentPassi
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_signatureForGrammarAnalysis) ;
-    outOperand0 = p->mObject.mAttribute_mFormalArgumentPassingModeForGrammarAnalysis ;
-    outOperand1 = p->mObject.mAttribute_mGalgasTypeNameForGrammarAnalysis ;
+    outOperand0 = p->mObject.mProperty_mFormalArgumentPassingModeForGrammarAnalysis ;
+    outOperand1 = p->mObject.mProperty_mGalgasTypeNameForGrammarAnalysis ;
   }
 }
 
@@ -2776,7 +2776,7 @@ GALGAS_formalArgumentPassingModeAST GALGAS_signatureForGrammarAnalysis::getter_m
   GALGAS_formalArgumentPassingModeAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_signatureForGrammarAnalysis) ;
-    result = p->mObject.mAttribute_mFormalArgumentPassingModeForGrammarAnalysis ;
+    result = p->mObject.mProperty_mFormalArgumentPassingModeForGrammarAnalysis ;
   }
   return result ;
 }
@@ -2791,7 +2791,7 @@ GALGAS_lstring GALGAS_signatureForGrammarAnalysis::getter_mGalgasTypeNameForGram
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_signatureForGrammarAnalysis) ;
-    result = p->mObject.mAttribute_mGalgasTypeNameForGrammarAnalysis ;
+    result = p->mObject.mProperty_mGalgasTypeNameForGrammarAnalysis ;
   }
   return result ;
 }
@@ -2820,7 +2820,7 @@ GALGAS_signatureForGrammarAnalysis_2D_element cEnumerator_signatureForGrammarAna
 GALGAS_formalArgumentPassingModeAST cEnumerator_signatureForGrammarAnalysis::current_mFormalArgumentPassingModeForGrammarAnalysis (LOCATION_ARGS) const {
   const cCollectionElement_signatureForGrammarAnalysis * p = (const cCollectionElement_signatureForGrammarAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_signatureForGrammarAnalysis) ;
-  return p->mObject.mAttribute_mFormalArgumentPassingModeForGrammarAnalysis ;
+  return p->mObject.mProperty_mFormalArgumentPassingModeForGrammarAnalysis ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2828,7 +2828,7 @@ GALGAS_formalArgumentPassingModeAST cEnumerator_signatureForGrammarAnalysis::cur
 GALGAS_lstring cEnumerator_signatureForGrammarAnalysis::current_mGalgasTypeNameForGrammarAnalysis (LOCATION_ARGS) const {
   const cCollectionElement_signatureForGrammarAnalysis * p = (const cCollectionElement_signatureForGrammarAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_signatureForGrammarAnalysis) ;
-  return p->mObject.mAttribute_mGalgasTypeNameForGrammarAnalysis ;
+  return p->mObject.mProperty_mGalgasTypeNameForGrammarAnalysis ;
 }
 
 
@@ -2883,20 +2883,20 @@ cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::cMapElement_nonterminal
                                                                                                                   const GALGAS_signatureForGrammarAnalysis & in_mFormalParametersList
                                                                                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mFormalParametersList (in_mFormalParametersList) {
+mProperty_mFormalParametersList (in_mFormalParametersList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mFormalParametersList.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mFormalParametersList.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis (mAttribute_lkey, mAttribute_mFormalParametersList COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis (mProperty_lkey, mProperty_mFormalParametersList COMMA_HERE)) ;
   return result ;
 }
 
@@ -2906,16 +2906,16 @@ void cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::description (C_Str
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFormalParametersList" ":" ;
-  mAttribute_mFormalParametersList.description (ioString, inIndentation) ;
+  mProperty_mFormalParametersList.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
   cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis * operand = (cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mFormalParametersList.objectCompare (operand->mAttribute_mFormalParametersList) ;
+    result = mProperty_mFormalParametersList.objectCompare (operand->mProperty_mFormalParametersList) ;
   }
   return result ;
 }
@@ -3015,7 +3015,7 @@ void GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis::method_searchKey (GALGA
     outArgument0.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis) ;
-    outArgument0 = p->mAttribute_mFormalParametersList ;
+    outArgument0 = p->mProperty_mFormalParametersList ;
   }
 }
 
@@ -3029,7 +3029,7 @@ GALGAS_signatureForGrammarAnalysis GALGAS_nonterminalSymbolLabelMapForGrammarAna
   GALGAS_signatureForGrammarAnalysis result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis) ;
-    result = p->mAttribute_mFormalParametersList ;
+    result = p->mProperty_mFormalParametersList ;
   }
   return result ;
 }
@@ -3044,7 +3044,7 @@ void GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis::setter_setMFormalParame
   cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis * p = (cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis) ;
-    p->mAttribute_mFormalParametersList = inAttributeValue ;
+    p->mProperty_mFormalParametersList = inAttributeValue ;
   }
 }
 
@@ -3071,7 +3071,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis::current (LOCATION_ARGS) const {
   const cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis * p = (const cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis) ;
-  return GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element (p->mAttribute_lkey, p->mAttribute_mFormalParametersList) ;
+  return GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element (p->mProperty_lkey, p->mProperty_mFormalParametersList) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3079,7 +3079,7 @@ GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element cEnumerator_nonter
 GALGAS_lstring cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3087,7 +3087,7 @@ GALGAS_lstring cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis::current_
 GALGAS_signatureForGrammarAnalysis cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis::current_mFormalParametersList (LOCATION_ARGS) const {
   const cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis * p = (const cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis) ;
-  return p->mAttribute_mFormalParametersList ;
+  return p->mProperty_mFormalParametersList ;
 }
 
 
@@ -3142,21 +3142,21 @@ cMapElement_nonTerminalSymbolMapForGrammarAnalysis::cMapElement_nonTerminalSymbo
                                                                                                         const GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis & in_mNonterminalSymbolParametersMap
                                                                                                         COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mNonTerminalIndex (in_mNonTerminalIndex),
-mAttribute_mNonterminalSymbolParametersMap (in_mNonterminalSymbolParametersMap) {
+mProperty_mNonTerminalIndex (in_mNonTerminalIndex),
+mProperty_mNonterminalSymbolParametersMap (in_mNonterminalSymbolParametersMap) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_nonTerminalSymbolMapForGrammarAnalysis::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mNonTerminalIndex.isValid () && mAttribute_mNonterminalSymbolParametersMap.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mNonTerminalIndex.isValid () && mProperty_mNonterminalSymbolParametersMap.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_nonTerminalSymbolMapForGrammarAnalysis::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_nonTerminalSymbolMapForGrammarAnalysis (mAttribute_lkey, mAttribute_mNonTerminalIndex, mAttribute_mNonterminalSymbolParametersMap COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_nonTerminalSymbolMapForGrammarAnalysis (mProperty_lkey, mProperty_mNonTerminalIndex, mProperty_mNonterminalSymbolParametersMap COMMA_HERE)) ;
   return result ;
 }
 
@@ -3166,23 +3166,23 @@ void cMapElement_nonTerminalSymbolMapForGrammarAnalysis::description (C_String &
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mNonTerminalIndex" ":" ;
-  mAttribute_mNonTerminalIndex.description (ioString, inIndentation) ;
+  mProperty_mNonTerminalIndex.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mNonterminalSymbolParametersMap" ":" ;
-  mAttribute_mNonterminalSymbolParametersMap.description (ioString, inIndentation) ;
+  mProperty_mNonterminalSymbolParametersMap.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_nonTerminalSymbolMapForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
   cMapElement_nonTerminalSymbolMapForGrammarAnalysis * operand = (cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mNonTerminalIndex.objectCompare (operand->mAttribute_mNonTerminalIndex) ;
+    result = mProperty_mNonTerminalIndex.objectCompare (operand->mProperty_mNonTerminalIndex) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mNonterminalSymbolParametersMap.objectCompare (operand->mAttribute_mNonterminalSymbolParametersMap) ;
+    result = mProperty_mNonterminalSymbolParametersMap.objectCompare (operand->mProperty_mNonterminalSymbolParametersMap) ;
   }
   return result ;
 }
@@ -3286,8 +3286,8 @@ void GALGAS_nonTerminalSymbolMapForGrammarAnalysis::method_searchKey (GALGAS_lst
     outArgument1.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_nonTerminalSymbolMapForGrammarAnalysis) ;
-    outArgument0 = p->mAttribute_mNonTerminalIndex ;
-    outArgument1 = p->mAttribute_mNonterminalSymbolParametersMap ;
+    outArgument0 = p->mProperty_mNonTerminalIndex ;
+    outArgument1 = p->mProperty_mNonterminalSymbolParametersMap ;
   }
 }
 
@@ -3301,7 +3301,7 @@ GALGAS_uint GALGAS_nonTerminalSymbolMapForGrammarAnalysis::getter_mNonTerminalIn
   GALGAS_uint result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_nonTerminalSymbolMapForGrammarAnalysis) ;
-    result = p->mAttribute_mNonTerminalIndex ;
+    result = p->mProperty_mNonTerminalIndex ;
   }
   return result ;
 }
@@ -3316,7 +3316,7 @@ GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis GALGAS_nonTerminalSymbolMapFo
   GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_nonTerminalSymbolMapForGrammarAnalysis) ;
-    result = p->mAttribute_mNonterminalSymbolParametersMap ;
+    result = p->mProperty_mNonterminalSymbolParametersMap ;
   }
   return result ;
 }
@@ -3331,7 +3331,7 @@ void GALGAS_nonTerminalSymbolMapForGrammarAnalysis::setter_setMNonTerminalIndexF
   cMapElement_nonTerminalSymbolMapForGrammarAnalysis * p = (cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_nonTerminalSymbolMapForGrammarAnalysis) ;
-    p->mAttribute_mNonTerminalIndex = inAttributeValue ;
+    p->mProperty_mNonTerminalIndex = inAttributeValue ;
   }
 }
 
@@ -3345,7 +3345,7 @@ void GALGAS_nonTerminalSymbolMapForGrammarAnalysis::setter_setMNonterminalSymbol
   cMapElement_nonTerminalSymbolMapForGrammarAnalysis * p = (cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_nonTerminalSymbolMapForGrammarAnalysis) ;
-    p->mAttribute_mNonterminalSymbolParametersMap = inAttributeValue ;
+    p->mProperty_mNonterminalSymbolParametersMap = inAttributeValue ;
   }
 }
 
@@ -3372,7 +3372,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element cEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current (LOCATION_ARGS) const {
   const cMapElement_nonTerminalSymbolMapForGrammarAnalysis * p = (const cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_nonTerminalSymbolMapForGrammarAnalysis) ;
-  return GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element (p->mAttribute_lkey, p->mAttribute_mNonTerminalIndex, p->mAttribute_mNonterminalSymbolParametersMap) ;
+  return GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element (p->mProperty_lkey, p->mProperty_mNonTerminalIndex, p->mProperty_mNonterminalSymbolParametersMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3380,7 +3380,7 @@ GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element cEnumerator_nonTerminal
 GALGAS_lstring cEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3388,7 +3388,7 @@ GALGAS_lstring cEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_lkey 
 GALGAS_uint cEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_mNonTerminalIndex (LOCATION_ARGS) const {
   const cMapElement_nonTerminalSymbolMapForGrammarAnalysis * p = (const cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_nonTerminalSymbolMapForGrammarAnalysis) ;
-  return p->mAttribute_mNonTerminalIndex ;
+  return p->mProperty_mNonTerminalIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3396,7 +3396,7 @@ GALGAS_uint cEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_mNonTerm
 GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis cEnumerator_nonTerminalSymbolMapForGrammarAnalysis::current_mNonterminalSymbolParametersMap (LOCATION_ARGS) const {
   const cMapElement_nonTerminalSymbolMapForGrammarAnalysis * p = (const cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_nonTerminalSymbolMapForGrammarAnalysis) ;
-  return p->mAttribute_mNonterminalSymbolParametersMap ;
+  return p->mProperty_mNonterminalSymbolParametersMap ;
 }
 
 
@@ -3490,7 +3490,7 @@ bool cCollectionElement_nonTerminalToAddList::isValid (void) const {
 
 cCollectionElement * cCollectionElement_nonTerminalToAddList::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_nonTerminalToAddList (mObject.mAttribute_mSyntaxComponentName, mObject.mAttribute_mNonTerminalToAddCount COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_nonTerminalToAddList (mObject.mProperty_mSyntaxComponentName, mObject.mProperty_mNonTerminalToAddCount COMMA_HERE)) ;
   return result ;
 }
 
@@ -3500,11 +3500,11 @@ void cCollectionElement_nonTerminalToAddList::description (C_String & ioString, 
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSyntaxComponentName" ":" ;
-  mObject.mAttribute_mSyntaxComponentName.description (ioString, inIndentation) ;
+  mObject.mProperty_mSyntaxComponentName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mNonTerminalToAddCount" ":" ;
-  mObject.mAttribute_mNonTerminalToAddCount.description (ioString, inIndentation) ;
+  mObject.mProperty_mNonTerminalToAddCount.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3609,8 +3609,8 @@ void GALGAS_nonTerminalToAddList::setter_removeAtIndex (GALGAS_string & outOpera
       outOperand1.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_nonTerminalToAddList) ;
-      outOperand0 = p->mObject.mAttribute_mSyntaxComponentName ;
-      outOperand1 = p->mObject.mAttribute_mNonTerminalToAddCount ;
+      outOperand0 = p->mObject.mProperty_mSyntaxComponentName ;
+      outOperand1 = p->mObject.mProperty_mNonTerminalToAddCount ;
     }
   }
 }
@@ -3629,8 +3629,8 @@ void GALGAS_nonTerminalToAddList::setter_popFirst (GALGAS_string & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_nonTerminalToAddList) ;
-    outOperand0 = p->mObject.mAttribute_mSyntaxComponentName ;
-    outOperand1 = p->mObject.mAttribute_mNonTerminalToAddCount ;
+    outOperand0 = p->mObject.mProperty_mSyntaxComponentName ;
+    outOperand1 = p->mObject.mProperty_mNonTerminalToAddCount ;
   }
 }
 
@@ -3648,8 +3648,8 @@ void GALGAS_nonTerminalToAddList::setter_popLast (GALGAS_string & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_nonTerminalToAddList) ;
-    outOperand0 = p->mObject.mAttribute_mSyntaxComponentName ;
-    outOperand1 = p->mObject.mAttribute_mNonTerminalToAddCount ;
+    outOperand0 = p->mObject.mProperty_mSyntaxComponentName ;
+    outOperand1 = p->mObject.mProperty_mNonTerminalToAddCount ;
   }
 }
 
@@ -3667,8 +3667,8 @@ void GALGAS_nonTerminalToAddList::method_first (GALGAS_string & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_nonTerminalToAddList) ;
-    outOperand0 = p->mObject.mAttribute_mSyntaxComponentName ;
-    outOperand1 = p->mObject.mAttribute_mNonTerminalToAddCount ;
+    outOperand0 = p->mObject.mProperty_mSyntaxComponentName ;
+    outOperand1 = p->mObject.mProperty_mNonTerminalToAddCount ;
   }
 }
 
@@ -3686,8 +3686,8 @@ void GALGAS_nonTerminalToAddList::method_last (GALGAS_string & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_nonTerminalToAddList) ;
-    outOperand0 = p->mObject.mAttribute_mSyntaxComponentName ;
-    outOperand1 = p->mObject.mAttribute_mNonTerminalToAddCount ;
+    outOperand0 = p->mObject.mProperty_mSyntaxComponentName ;
+    outOperand1 = p->mObject.mProperty_mNonTerminalToAddCount ;
   }
 }
 
@@ -3752,7 +3752,7 @@ GALGAS_string GALGAS_nonTerminalToAddList::getter_mSyntaxComponentNameAtIndex (c
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_nonTerminalToAddList) ;
-    result = p->mObject.mAttribute_mSyntaxComponentName ;
+    result = p->mObject.mProperty_mSyntaxComponentName ;
   }
   return result ;
 }
@@ -3767,7 +3767,7 @@ GALGAS_uint GALGAS_nonTerminalToAddList::getter_mNonTerminalToAddCountAtIndex (c
   GALGAS_uint result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_nonTerminalToAddList) ;
-    result = p->mObject.mAttribute_mNonTerminalToAddCount ;
+    result = p->mObject.mProperty_mNonTerminalToAddCount ;
   }
   return result ;
 }
@@ -3796,7 +3796,7 @@ GALGAS_nonTerminalToAddList_2D_element cEnumerator_nonTerminalToAddList::current
 GALGAS_string cEnumerator_nonTerminalToAddList::current_mSyntaxComponentName (LOCATION_ARGS) const {
   const cCollectionElement_nonTerminalToAddList * p = (const cCollectionElement_nonTerminalToAddList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_nonTerminalToAddList) ;
-  return p->mObject.mAttribute_mSyntaxComponentName ;
+  return p->mObject.mProperty_mSyntaxComponentName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3804,7 +3804,7 @@ GALGAS_string cEnumerator_nonTerminalToAddList::current_mSyntaxComponentName (LO
 GALGAS_uint cEnumerator_nonTerminalToAddList::current_mNonTerminalToAddCount (LOCATION_ARGS) const {
   const cCollectionElement_nonTerminalToAddList * p = (const cCollectionElement_nonTerminalToAddList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_nonTerminalToAddList) ;
-  return p->mObject.mAttribute_mNonTerminalToAddCount ;
+  return p->mObject.mProperty_mNonTerminalToAddCount ;
 }
 
 
@@ -3901,7 +3901,7 @@ bool cCollectionElement_terminalCheckAssignementList::isValid (void) const {
 
 cCollectionElement * cCollectionElement_terminalCheckAssignementList::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_terminalCheckAssignementList (mObject.mAttribute_mTypeName, mObject.mAttribute_mTargetVarCppName, mObject.mAttribute_mSourceLexicalAttributeName COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_terminalCheckAssignementList (mObject.mProperty_mTypeName, mObject.mProperty_mTargetVarCppName, mObject.mProperty_mSourceLexicalAttributeName COMMA_HERE)) ;
   return result ;
 }
 
@@ -3911,15 +3911,15 @@ void cCollectionElement_terminalCheckAssignementList::description (C_String & io
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTypeName" ":" ;
-  mObject.mAttribute_mTypeName.description (ioString, inIndentation) ;
+  mObject.mProperty_mTypeName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTargetVarCppName" ":" ;
-  mObject.mAttribute_mTargetVarCppName.description (ioString, inIndentation) ;
+  mObject.mProperty_mTargetVarCppName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSourceLexicalAttributeName" ":" ;
-  mObject.mAttribute_mSourceLexicalAttributeName.description (ioString, inIndentation) ;
+  mObject.mProperty_mSourceLexicalAttributeName.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4031,9 +4031,9 @@ void GALGAS_terminalCheckAssignementList::setter_removeAtIndex (GALGAS_string & 
       outOperand2.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_terminalCheckAssignementList) ;
-      outOperand0 = p->mObject.mAttribute_mTypeName ;
-      outOperand1 = p->mObject.mAttribute_mTargetVarCppName ;
-      outOperand2 = p->mObject.mAttribute_mSourceLexicalAttributeName ;
+      outOperand0 = p->mObject.mProperty_mTypeName ;
+      outOperand1 = p->mObject.mProperty_mTargetVarCppName ;
+      outOperand2 = p->mObject.mProperty_mSourceLexicalAttributeName ;
     }
   }
 }
@@ -4054,9 +4054,9 @@ void GALGAS_terminalCheckAssignementList::setter_popFirst (GALGAS_string & outOp
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_terminalCheckAssignementList) ;
-    outOperand0 = p->mObject.mAttribute_mTypeName ;
-    outOperand1 = p->mObject.mAttribute_mTargetVarCppName ;
-    outOperand2 = p->mObject.mAttribute_mSourceLexicalAttributeName ;
+    outOperand0 = p->mObject.mProperty_mTypeName ;
+    outOperand1 = p->mObject.mProperty_mTargetVarCppName ;
+    outOperand2 = p->mObject.mProperty_mSourceLexicalAttributeName ;
   }
 }
 
@@ -4076,9 +4076,9 @@ void GALGAS_terminalCheckAssignementList::setter_popLast (GALGAS_string & outOpe
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_terminalCheckAssignementList) ;
-    outOperand0 = p->mObject.mAttribute_mTypeName ;
-    outOperand1 = p->mObject.mAttribute_mTargetVarCppName ;
-    outOperand2 = p->mObject.mAttribute_mSourceLexicalAttributeName ;
+    outOperand0 = p->mObject.mProperty_mTypeName ;
+    outOperand1 = p->mObject.mProperty_mTargetVarCppName ;
+    outOperand2 = p->mObject.mProperty_mSourceLexicalAttributeName ;
   }
 }
 
@@ -4098,9 +4098,9 @@ void GALGAS_terminalCheckAssignementList::method_first (GALGAS_string & outOpera
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_terminalCheckAssignementList) ;
-    outOperand0 = p->mObject.mAttribute_mTypeName ;
-    outOperand1 = p->mObject.mAttribute_mTargetVarCppName ;
-    outOperand2 = p->mObject.mAttribute_mSourceLexicalAttributeName ;
+    outOperand0 = p->mObject.mProperty_mTypeName ;
+    outOperand1 = p->mObject.mProperty_mTargetVarCppName ;
+    outOperand2 = p->mObject.mProperty_mSourceLexicalAttributeName ;
   }
 }
 
@@ -4120,9 +4120,9 @@ void GALGAS_terminalCheckAssignementList::method_last (GALGAS_string & outOperan
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_terminalCheckAssignementList) ;
-    outOperand0 = p->mObject.mAttribute_mTypeName ;
-    outOperand1 = p->mObject.mAttribute_mTargetVarCppName ;
-    outOperand2 = p->mObject.mAttribute_mSourceLexicalAttributeName ;
+    outOperand0 = p->mObject.mProperty_mTypeName ;
+    outOperand1 = p->mObject.mProperty_mTargetVarCppName ;
+    outOperand2 = p->mObject.mProperty_mSourceLexicalAttributeName ;
   }
 }
 
@@ -4187,7 +4187,7 @@ GALGAS_string GALGAS_terminalCheckAssignementList::getter_mTypeNameAtIndex (cons
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_terminalCheckAssignementList) ;
-    result = p->mObject.mAttribute_mTypeName ;
+    result = p->mObject.mProperty_mTypeName ;
   }
   return result ;
 }
@@ -4202,7 +4202,7 @@ GALGAS_string GALGAS_terminalCheckAssignementList::getter_mTargetVarCppNameAtInd
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_terminalCheckAssignementList) ;
-    result = p->mObject.mAttribute_mTargetVarCppName ;
+    result = p->mObject.mProperty_mTargetVarCppName ;
   }
   return result ;
 }
@@ -4217,7 +4217,7 @@ GALGAS_string GALGAS_terminalCheckAssignementList::getter_mSourceLexicalAttribut
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_terminalCheckAssignementList) ;
-    result = p->mObject.mAttribute_mSourceLexicalAttributeName ;
+    result = p->mObject.mProperty_mSourceLexicalAttributeName ;
   }
   return result ;
 }
@@ -4246,7 +4246,7 @@ GALGAS_terminalCheckAssignementList_2D_element cEnumerator_terminalCheckAssignem
 GALGAS_string cEnumerator_terminalCheckAssignementList::current_mTypeName (LOCATION_ARGS) const {
   const cCollectionElement_terminalCheckAssignementList * p = (const cCollectionElement_terminalCheckAssignementList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_terminalCheckAssignementList) ;
-  return p->mObject.mAttribute_mTypeName ;
+  return p->mObject.mProperty_mTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4254,7 +4254,7 @@ GALGAS_string cEnumerator_terminalCheckAssignementList::current_mTypeName (LOCAT
 GALGAS_string cEnumerator_terminalCheckAssignementList::current_mTargetVarCppName (LOCATION_ARGS) const {
   const cCollectionElement_terminalCheckAssignementList * p = (const cCollectionElement_terminalCheckAssignementList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_terminalCheckAssignementList) ;
-  return p->mObject.mAttribute_mTargetVarCppName ;
+  return p->mObject.mProperty_mTargetVarCppName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4262,7 +4262,7 @@ GALGAS_string cEnumerator_terminalCheckAssignementList::current_mTargetVarCppNam
 GALGAS_string cEnumerator_terminalCheckAssignementList::current_mSourceLexicalAttributeName (LOCATION_ARGS) const {
   const cCollectionElement_terminalCheckAssignementList * p = (const cCollectionElement_terminalCheckAssignementList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_terminalCheckAssignementList) ;
-  return p->mObject.mAttribute_mSourceLexicalAttributeName ;
+  return p->mObject.mProperty_mSourceLexicalAttributeName ;
 }
 
 
@@ -4353,7 +4353,7 @@ GALGAS_location GALGAS_syntaxInstructionForGeneration::getter_mInstructionLocati
   if (NULL != mObjectPtr) {
     const cPtr_syntaxInstructionForGeneration * p = (const cPtr_syntaxInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_syntaxInstructionForGeneration) ;
-    result = p->mAttribute_mInstructionLocation ;
+    result = p->mProperty_mInstructionLocation ;
   }
   return result ;
 }
@@ -4361,7 +4361,7 @@ GALGAS_location GALGAS_syntaxInstructionForGeneration::getter_mInstructionLocati
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_syntaxInstructionForGeneration::getter_mInstructionLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mInstructionLocation ;
+  return mProperty_mInstructionLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4371,7 +4371,7 @@ GALGAS_location cPtr_syntaxInstructionForGeneration::getter_mInstructionLocation
 cPtr_syntaxInstructionForGeneration::cPtr_syntaxInstructionForGeneration (const GALGAS_location & in_mInstructionLocation
                                                                           COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
-mAttribute_mInstructionLocation (in_mInstructionLocation) {
+mProperty_mInstructionLocation (in_mInstructionLocation) {
 }
 
 
@@ -4466,7 +4466,7 @@ bool cCollectionElement_filewrapperTemplateListForGeneration::isValid (void) con
 
 cCollectionElement * cCollectionElement_filewrapperTemplateListForGeneration::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_filewrapperTemplateListForGeneration (mObject.mAttribute_mFilewrapperTemplateName, mObject.mAttribute_mFilewrapperTemplateFormalInputParameters, mObject.mAttribute_mTemplateInstructionListForGeneration COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_filewrapperTemplateListForGeneration (mObject.mProperty_mFilewrapperTemplateName, mObject.mProperty_mFilewrapperTemplateFormalInputParameters, mObject.mProperty_mTemplateInstructionListForGeneration COMMA_HERE)) ;
   return result ;
 }
 
@@ -4476,15 +4476,15 @@ void cCollectionElement_filewrapperTemplateListForGeneration::description (C_Str
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFilewrapperTemplateName" ":" ;
-  mObject.mAttribute_mFilewrapperTemplateName.description (ioString, inIndentation) ;
+  mObject.mProperty_mFilewrapperTemplateName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFilewrapperTemplateFormalInputParameters" ":" ;
-  mObject.mAttribute_mFilewrapperTemplateFormalInputParameters.description (ioString, inIndentation) ;
+  mObject.mProperty_mFilewrapperTemplateFormalInputParameters.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTemplateInstructionListForGeneration" ":" ;
-  mObject.mAttribute_mTemplateInstructionListForGeneration.description (ioString, inIndentation) ;
+  mObject.mProperty_mTemplateInstructionListForGeneration.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4596,9 +4596,9 @@ void GALGAS_filewrapperTemplateListForGeneration::setter_removeAtIndex (GALGAS_s
       outOperand2.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListForGeneration) ;
-      outOperand0 = p->mObject.mAttribute_mFilewrapperTemplateName ;
-      outOperand1 = p->mObject.mAttribute_mFilewrapperTemplateFormalInputParameters ;
-      outOperand2 = p->mObject.mAttribute_mTemplateInstructionListForGeneration ;
+      outOperand0 = p->mObject.mProperty_mFilewrapperTemplateName ;
+      outOperand1 = p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters ;
+      outOperand2 = p->mObject.mProperty_mTemplateInstructionListForGeneration ;
     }
   }
 }
@@ -4619,9 +4619,9 @@ void GALGAS_filewrapperTemplateListForGeneration::setter_popFirst (GALGAS_string
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mFilewrapperTemplateName ;
-    outOperand1 = p->mObject.mAttribute_mFilewrapperTemplateFormalInputParameters ;
-    outOperand2 = p->mObject.mAttribute_mTemplateInstructionListForGeneration ;
+    outOperand0 = p->mObject.mProperty_mFilewrapperTemplateName ;
+    outOperand1 = p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters ;
+    outOperand2 = p->mObject.mProperty_mTemplateInstructionListForGeneration ;
   }
 }
 
@@ -4641,9 +4641,9 @@ void GALGAS_filewrapperTemplateListForGeneration::setter_popLast (GALGAS_string 
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mFilewrapperTemplateName ;
-    outOperand1 = p->mObject.mAttribute_mFilewrapperTemplateFormalInputParameters ;
-    outOperand2 = p->mObject.mAttribute_mTemplateInstructionListForGeneration ;
+    outOperand0 = p->mObject.mProperty_mFilewrapperTemplateName ;
+    outOperand1 = p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters ;
+    outOperand2 = p->mObject.mProperty_mTemplateInstructionListForGeneration ;
   }
 }
 
@@ -4663,9 +4663,9 @@ void GALGAS_filewrapperTemplateListForGeneration::method_first (GALGAS_string & 
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mFilewrapperTemplateName ;
-    outOperand1 = p->mObject.mAttribute_mFilewrapperTemplateFormalInputParameters ;
-    outOperand2 = p->mObject.mAttribute_mTemplateInstructionListForGeneration ;
+    outOperand0 = p->mObject.mProperty_mFilewrapperTemplateName ;
+    outOperand1 = p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters ;
+    outOperand2 = p->mObject.mProperty_mTemplateInstructionListForGeneration ;
   }
 }
 
@@ -4685,9 +4685,9 @@ void GALGAS_filewrapperTemplateListForGeneration::method_last (GALGAS_string & o
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mFilewrapperTemplateName ;
-    outOperand1 = p->mObject.mAttribute_mFilewrapperTemplateFormalInputParameters ;
-    outOperand2 = p->mObject.mAttribute_mTemplateInstructionListForGeneration ;
+    outOperand0 = p->mObject.mProperty_mFilewrapperTemplateName ;
+    outOperand1 = p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters ;
+    outOperand2 = p->mObject.mProperty_mTemplateInstructionListForGeneration ;
   }
 }
 
@@ -4752,7 +4752,7 @@ GALGAS_string GALGAS_filewrapperTemplateListForGeneration::getter_mFilewrapperTe
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListForGeneration) ;
-    result = p->mObject.mAttribute_mFilewrapperTemplateName ;
+    result = p->mObject.mProperty_mFilewrapperTemplateName ;
   }
   return result ;
 }
@@ -4767,7 +4767,7 @@ GALGAS_formalInputParameterListForGeneration GALGAS_filewrapperTemplateListForGe
   GALGAS_formalInputParameterListForGeneration result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListForGeneration) ;
-    result = p->mObject.mAttribute_mFilewrapperTemplateFormalInputParameters ;
+    result = p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters ;
   }
   return result ;
 }
@@ -4782,7 +4782,7 @@ GALGAS_templateInstructionListForGeneration GALGAS_filewrapperTemplateListForGen
   GALGAS_templateInstructionListForGeneration result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListForGeneration) ;
-    result = p->mObject.mAttribute_mTemplateInstructionListForGeneration ;
+    result = p->mObject.mProperty_mTemplateInstructionListForGeneration ;
   }
   return result ;
 }
@@ -4811,7 +4811,7 @@ GALGAS_filewrapperTemplateListForGeneration_2D_element cEnumerator_filewrapperTe
 GALGAS_string cEnumerator_filewrapperTemplateListForGeneration::current_mFilewrapperTemplateName (LOCATION_ARGS) const {
   const cCollectionElement_filewrapperTemplateListForGeneration * p = (const cCollectionElement_filewrapperTemplateListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListForGeneration) ;
-  return p->mObject.mAttribute_mFilewrapperTemplateName ;
+  return p->mObject.mProperty_mFilewrapperTemplateName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4819,7 +4819,7 @@ GALGAS_string cEnumerator_filewrapperTemplateListForGeneration::current_mFilewra
 GALGAS_formalInputParameterListForGeneration cEnumerator_filewrapperTemplateListForGeneration::current_mFilewrapperTemplateFormalInputParameters (LOCATION_ARGS) const {
   const cCollectionElement_filewrapperTemplateListForGeneration * p = (const cCollectionElement_filewrapperTemplateListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListForGeneration) ;
-  return p->mObject.mAttribute_mFilewrapperTemplateFormalInputParameters ;
+  return p->mObject.mProperty_mFilewrapperTemplateFormalInputParameters ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4827,7 +4827,7 @@ GALGAS_formalInputParameterListForGeneration cEnumerator_filewrapperTemplateList
 GALGAS_templateInstructionListForGeneration cEnumerator_filewrapperTemplateListForGeneration::current_mTemplateInstructionListForGeneration (LOCATION_ARGS) const {
   const cCollectionElement_filewrapperTemplateListForGeneration * p = (const cCollectionElement_filewrapperTemplateListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_filewrapperTemplateListForGeneration) ;
-  return p->mObject.mAttribute_mTemplateInstructionListForGeneration ;
+  return p->mObject.mProperty_mTemplateInstructionListForGeneration ;
 }
 
 
@@ -5269,22 +5269,22 @@ cMapElement_variableMap::cMapElement_variableMap (const GALGAS_lstring & inKey,
                                                   const GALGAS_string & in_mNameForCheckingFormalParameterUsing
                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mTypeProxy (in_mTypeProxy),
-mAttribute_mCppName (in_mCppName),
-mAttribute_mNameForCheckingFormalParameterUsing (in_mNameForCheckingFormalParameterUsing) {
+mProperty_mTypeProxy (in_mTypeProxy),
+mProperty_mCppName (in_mCppName),
+mProperty_mNameForCheckingFormalParameterUsing (in_mNameForCheckingFormalParameterUsing) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_variableMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mTypeProxy.isValid () && mAttribute_mCppName.isValid () && mAttribute_mNameForCheckingFormalParameterUsing.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mTypeProxy.isValid () && mProperty_mCppName.isValid () && mProperty_mNameForCheckingFormalParameterUsing.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_variableMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_variableMap (mAttribute_lkey, mAttribute_mTypeProxy, mAttribute_mCppName, mAttribute_mNameForCheckingFormalParameterUsing COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_variableMap (mProperty_lkey, mProperty_mTypeProxy, mProperty_mCppName, mProperty_mNameForCheckingFormalParameterUsing COMMA_HERE)) ;
   return result ;
 }
 
@@ -5294,30 +5294,30 @@ void cMapElement_variableMap::description (C_String & ioString, const int32_t in
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTypeProxy" ":" ;
-  mAttribute_mTypeProxy.description (ioString, inIndentation) ;
+  mProperty_mTypeProxy.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mCppName" ":" ;
-  mAttribute_mCppName.description (ioString, inIndentation) ;
+  mProperty_mCppName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mNameForCheckingFormalParameterUsing" ":" ;
-  mAttribute_mNameForCheckingFormalParameterUsing.description (ioString, inIndentation) ;
+  mProperty_mNameForCheckingFormalParameterUsing.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_variableMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_variableMap * operand = (cMapElement_variableMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mTypeProxy.objectCompare (operand->mAttribute_mTypeProxy) ;
+    result = mProperty_mTypeProxy.objectCompare (operand->mProperty_mTypeProxy) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mCppName.objectCompare (operand->mAttribute_mCppName) ;
+    result = mProperty_mCppName.objectCompare (operand->mProperty_mCppName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mNameForCheckingFormalParameterUsing.objectCompare (operand->mAttribute_mNameForCheckingFormalParameterUsing) ;
+    result = mProperty_mNameForCheckingFormalParameterUsing.objectCompare (operand->mProperty_mNameForCheckingFormalParameterUsing) ;
   }
   return result ;
 }
@@ -6162,9 +6162,9 @@ void GALGAS_variableMap::setter_searchForReadAccess (GALGAS_lstring inKey,
     outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    outArgument0 = p->mAttribute_mTypeProxy ;
-    outArgument1 = p->mAttribute_mCppName ;
-    outArgument2 = p->mAttribute_mNameForCheckingFormalParameterUsing ;
+    outArgument0 = p->mProperty_mTypeProxy ;
+    outArgument1 = p->mProperty_mCppName ;
+    outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
   }
 }
 
@@ -6196,9 +6196,9 @@ void GALGAS_variableMap::setter_searchForWriteAccess (GALGAS_lstring inKey,
     outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    outArgument0 = p->mAttribute_mTypeProxy ;
-    outArgument1 = p->mAttribute_mCppName ;
-    outArgument2 = p->mAttribute_mNameForCheckingFormalParameterUsing ;
+    outArgument0 = p->mProperty_mTypeProxy ;
+    outArgument1 = p->mProperty_mCppName ;
+    outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
   }
 }
 
@@ -6230,9 +6230,9 @@ void GALGAS_variableMap::setter_searchForReadWriteAccess (GALGAS_lstring inKey,
     outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    outArgument0 = p->mAttribute_mTypeProxy ;
-    outArgument1 = p->mAttribute_mCppName ;
-    outArgument2 = p->mAttribute_mNameForCheckingFormalParameterUsing ;
+    outArgument0 = p->mProperty_mTypeProxy ;
+    outArgument1 = p->mProperty_mCppName ;
+    outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
   }
 }
 
@@ -6264,9 +6264,9 @@ void GALGAS_variableMap::setter_searchForDropAccess (GALGAS_lstring inKey,
     outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    outArgument0 = p->mAttribute_mTypeProxy ;
-    outArgument1 = p->mAttribute_mCppName ;
-    outArgument2 = p->mAttribute_mNameForCheckingFormalParameterUsing ;
+    outArgument0 = p->mProperty_mTypeProxy ;
+    outArgument1 = p->mProperty_mCppName ;
+    outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
   }
 }
 
@@ -6298,9 +6298,9 @@ void GALGAS_variableMap::setter_neutralAccess (GALGAS_lstring inKey,
     outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    outArgument0 = p->mAttribute_mTypeProxy ;
-    outArgument1 = p->mAttribute_mCppName ;
-    outArgument2 = p->mAttribute_mNameForCheckingFormalParameterUsing ;
+    outArgument0 = p->mProperty_mTypeProxy ;
+    outArgument1 = p->mProperty_mCppName ;
+    outArgument2 = p->mProperty_mNameForCheckingFormalParameterUsing ;
   }
 }
 
@@ -6314,7 +6314,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_variableMap::getter_mTypeProxyForKey (cons
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    result = p->mAttribute_mTypeProxy ;
+    result = p->mProperty_mTypeProxy ;
   }
   return result ;
 }
@@ -6329,7 +6329,7 @@ GALGAS_string GALGAS_variableMap::getter_mCppNameForKey (const GALGAS_string & i
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    result = p->mAttribute_mCppName ;
+    result = p->mProperty_mCppName ;
   }
   return result ;
 }
@@ -6344,7 +6344,7 @@ GALGAS_string GALGAS_variableMap::getter_mNameForCheckingFormalParameterUsingFor
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    result = p->mAttribute_mNameForCheckingFormalParameterUsing ;
+    result = p->mProperty_mNameForCheckingFormalParameterUsing ;
   }
   return result ;
 }
@@ -6359,7 +6359,7 @@ void GALGAS_variableMap::setter_setMTypeProxyForKey (GALGAS_unifiedTypeMap_2D_pr
   cMapElement_variableMap * p = (cMapElement_variableMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    p->mAttribute_mTypeProxy = inAttributeValue ;
+    p->mProperty_mTypeProxy = inAttributeValue ;
   }
 }
 
@@ -6373,7 +6373,7 @@ void GALGAS_variableMap::setter_setMCppNameForKey (GALGAS_string inAttributeValu
   cMapElement_variableMap * p = (cMapElement_variableMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    p->mAttribute_mCppName = inAttributeValue ;
+    p->mProperty_mCppName = inAttributeValue ;
   }
 }
 
@@ -6387,7 +6387,7 @@ void GALGAS_variableMap::setter_setMNameForCheckingFormalParameterUsingForKey (G
   cMapElement_variableMap * p = (cMapElement_variableMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    p->mAttribute_mNameForCheckingFormalParameterUsing = inAttributeValue ;
+    p->mProperty_mNameForCheckingFormalParameterUsing = inAttributeValue ;
   }
 }
 
@@ -6414,7 +6414,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_lstring cEnumerator_variableMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6422,7 +6422,7 @@ GALGAS_lstring cEnumerator_variableMap::current_lkey (LOCATION_ARGS) const {
 GALGAS_unifiedTypeMap_2D_proxy cEnumerator_variableMap::current_mTypeProxy (LOCATION_ARGS) const {
   const cMapElement_variableMap * p = (const cMapElement_variableMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_variableMap) ;
-  return p->mAttribute_mTypeProxy ;
+  return p->mProperty_mTypeProxy ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6430,7 +6430,7 @@ GALGAS_unifiedTypeMap_2D_proxy cEnumerator_variableMap::current_mTypeProxy (LOCA
 GALGAS_string cEnumerator_variableMap::current_mCppName (LOCATION_ARGS) const {
   const cMapElement_variableMap * p = (const cMapElement_variableMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_variableMap) ;
-  return p->mAttribute_mCppName ;
+  return p->mProperty_mCppName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6438,7 +6438,7 @@ GALGAS_string cEnumerator_variableMap::current_mCppName (LOCATION_ARGS) const {
 GALGAS_string cEnumerator_variableMap::current_mNameForCheckingFormalParameterUsing (LOCATION_ARGS) const {
   const cMapElement_variableMap * p = (const cMapElement_variableMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_variableMap) ;
-  return p->mAttribute_mNameForCheckingFormalParameterUsing ;
+  return p->mProperty_mNameForCheckingFormalParameterUsing ;
 }
 
 
@@ -6526,7 +6526,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_variableMap_2D_proxy::getter_mTypeProxy (C
   const cMapElement_variableMap * p = (const cMapElement_variableMap *) getAttributeListPointer (inCompiler, "mTypeProxy" COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    result = p->mAttribute_mTypeProxy;
+    result = p->mProperty_mTypeProxy;
   }
   return result ;
 }
@@ -6539,7 +6539,7 @@ GALGAS_string GALGAS_variableMap_2D_proxy::getter_mCppName (C_Compiler * inCompi
   const cMapElement_variableMap * p = (const cMapElement_variableMap *) getAttributeListPointer (inCompiler, "mCppName" COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    result = p->mAttribute_mCppName;
+    result = p->mProperty_mCppName;
   }
   return result ;
 }
@@ -6552,7 +6552,7 @@ GALGAS_string GALGAS_variableMap_2D_proxy::getter_mNameForCheckingFormalParamete
   const cMapElement_variableMap * p = (const cMapElement_variableMap *) getAttributeListPointer (inCompiler, "mNameForCheckingFormalParameterUsing" COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_variableMap) ;
-    result = p->mAttribute_mNameForCheckingFormalParameterUsing;
+    result = p->mProperty_mNameForCheckingFormalParameterUsing;
   }
   return result ;
 }
@@ -6891,7 +6891,7 @@ bool cCollectionElement_collectionValueElementListForGeneration::isValid (void) 
 
 cCollectionElement * cCollectionElement_collectionValueElementListForGeneration::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_collectionValueElementListForGeneration (mObject.mAttribute_mElement COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_collectionValueElementListForGeneration (mObject.mProperty_mElement COMMA_HERE)) ;
   return result ;
 }
 
@@ -6901,7 +6901,7 @@ void cCollectionElement_collectionValueElementListForGeneration::description (C_
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mElement" ":" ;
-  mObject.mAttribute_mElement.description (ioString, inIndentation) ;
+  mObject.mProperty_mElement.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6999,7 +6999,7 @@ void GALGAS_collectionValueElementListForGeneration::setter_removeAtIndex (GALGA
       outOperand0.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_collectionValueElementListForGeneration) ;
-      outOperand0 = p->mObject.mAttribute_mElement ;
+      outOperand0 = p->mObject.mProperty_mElement ;
     }
   }
 }
@@ -7016,7 +7016,7 @@ void GALGAS_collectionValueElementListForGeneration::setter_popFirst (GALGAS_abs
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_collectionValueElementListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mElement ;
+    outOperand0 = p->mObject.mProperty_mElement ;
   }
 }
 
@@ -7032,7 +7032,7 @@ void GALGAS_collectionValueElementListForGeneration::setter_popLast (GALGAS_abst
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_collectionValueElementListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mElement ;
+    outOperand0 = p->mObject.mProperty_mElement ;
   }
 }
 
@@ -7048,7 +7048,7 @@ void GALGAS_collectionValueElementListForGeneration::method_first (GALGAS_abstra
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_collectionValueElementListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mElement ;
+    outOperand0 = p->mObject.mProperty_mElement ;
   }
 }
 
@@ -7064,7 +7064,7 @@ void GALGAS_collectionValueElementListForGeneration::method_last (GALGAS_abstrac
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_collectionValueElementListForGeneration) ;
-    outOperand0 = p->mObject.mAttribute_mElement ;
+    outOperand0 = p->mObject.mProperty_mElement ;
   }
 }
 
@@ -7129,7 +7129,7 @@ GALGAS_abstractCollectionValueElementForGeneration GALGAS_collectionValueElement
   GALGAS_abstractCollectionValueElementForGeneration result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_collectionValueElementListForGeneration) ;
-    result = p->mObject.mAttribute_mElement ;
+    result = p->mObject.mProperty_mElement ;
   }
   return result ;
 }
@@ -7158,7 +7158,7 @@ GALGAS_collectionValueElementListForGeneration_2D_element cEnumerator_collection
 GALGAS_abstractCollectionValueElementForGeneration cEnumerator_collectionValueElementListForGeneration::current_mElement (LOCATION_ARGS) const {
   const cCollectionElement_collectionValueElementListForGeneration * p = (const cCollectionElement_collectionValueElementListForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_collectionValueElementListForGeneration) ;
-  return p->mObject.mAttribute_mElement ;
+  return p->mObject.mProperty_mElement ;
 }
 
 
@@ -7249,7 +7249,7 @@ GALGAS_location GALGAS_abstractCollectionValueElementForGeneration::getter_mExpr
   if (NULL != mObjectPtr) {
     const cPtr_abstractCollectionValueElementForGeneration * p = (const cPtr_abstractCollectionValueElementForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_abstractCollectionValueElementForGeneration) ;
-    result = p->mAttribute_mExpressionLocation ;
+    result = p->mProperty_mExpressionLocation ;
   }
   return result ;
 }
@@ -7257,7 +7257,7 @@ GALGAS_location GALGAS_abstractCollectionValueElementForGeneration::getter_mExpr
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_abstractCollectionValueElementForGeneration::getter_mExpressionLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mExpressionLocation ;
+  return mProperty_mExpressionLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7267,7 +7267,7 @@ GALGAS_location cPtr_abstractCollectionValueElementForGeneration::getter_mExpres
 cPtr_abstractCollectionValueElementForGeneration::cPtr_abstractCollectionValueElementForGeneration (const GALGAS_location & in_mExpressionLocation
                                                                                                     COMMA_LOCATION_ARGS) :
 acPtr_class (THERE),
-mAttribute_mExpressionLocation (in_mExpressionLocation) {
+mProperty_mExpressionLocation (in_mExpressionLocation) {
 }
 
 
@@ -7323,10 +7323,10 @@ typeComparisonResult cPtr_expressionListCollectionForGeneration::dynamicObjectCo
   const cPtr_expressionListCollectionForGeneration * p = (const cPtr_expressionListCollectionForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_expressionListCollectionForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mExpressionLocation.objectCompare (p->mAttribute_mExpressionLocation) ;
+    result = mProperty_mExpressionLocation.objectCompare (p->mProperty_mExpressionLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mExpressionList.objectCompare (p->mAttribute_mExpressionList) ;
+    result = mProperty_mExpressionList.objectCompare (p->mProperty_mExpressionList) ;
   }
   return result ;
 }
@@ -7390,7 +7390,7 @@ GALGAS_semanticExpressionListForGeneration GALGAS_expressionListCollectionForGen
   if (NULL != mObjectPtr) {
     const cPtr_expressionListCollectionForGeneration * p = (const cPtr_expressionListCollectionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_expressionListCollectionForGeneration) ;
-    result = p->mAttribute_mExpressionList ;
+    result = p->mProperty_mExpressionList ;
   }
   return result ;
 }
@@ -7398,7 +7398,7 @@ GALGAS_semanticExpressionListForGeneration GALGAS_expressionListCollectionForGen
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticExpressionListForGeneration cPtr_expressionListCollectionForGeneration::getter_mExpressionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mExpressionList ;
+  return mProperty_mExpressionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7409,7 +7409,7 @@ cPtr_expressionListCollectionForGeneration::cPtr_expressionListCollectionForGene
                                                                                         const GALGAS_semanticExpressionListForGeneration & in_mExpressionList
                                                                                         COMMA_LOCATION_ARGS) :
 cPtr_abstractCollectionValueElementForGeneration (in_mExpressionLocation COMMA_THERE),
-mAttribute_mExpressionList (in_mExpressionList) {
+mProperty_mExpressionList (in_mExpressionList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7421,9 +7421,9 @@ const C_galgas_type_descriptor * cPtr_expressionListCollectionForGeneration::cla
 void cPtr_expressionListCollectionForGeneration::description (C_String & ioString,
                                                               const int32_t inIndentation) const {
   ioString << "[@expressionListCollectionForGeneration:" ;
-  mAttribute_mExpressionLocation.description (ioString, inIndentation+1) ;
+  mProperty_mExpressionLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mExpressionList.description (ioString, inIndentation+1) ;
+  mProperty_mExpressionList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -7431,7 +7431,7 @@ void cPtr_expressionListCollectionForGeneration::description (C_String & ioStrin
 
 acPtr_class * cPtr_expressionListCollectionForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_expressionListCollectionForGeneration (mAttribute_mExpressionLocation, mAttribute_mExpressionList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_expressionListCollectionForGeneration (mProperty_mExpressionLocation, mProperty_mExpressionList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -7593,7 +7593,7 @@ bool cCollectionElement_localConstantList::isValid (void) const {
 
 cCollectionElement * cCollectionElement_localConstantList::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_localConstantList (mObject.mAttribute_mType, mObject.mAttribute_mName, mObject.mAttribute_mNoWarningIfUnused, mObject.mAttribute_mCppName COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_localConstantList (mObject.mProperty_mType, mObject.mProperty_mName, mObject.mProperty_mNoWarningIfUnused, mObject.mProperty_mCppName COMMA_HERE)) ;
   return result ;
 }
 
@@ -7603,19 +7603,19 @@ void cCollectionElement_localConstantList::description (C_String & ioString, con
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mType" ":" ;
-  mObject.mAttribute_mType.description (ioString, inIndentation) ;
+  mObject.mProperty_mType.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mName" ":" ;
-  mObject.mAttribute_mName.description (ioString, inIndentation) ;
+  mObject.mProperty_mName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mNoWarningIfUnused" ":" ;
-  mObject.mAttribute_mNoWarningIfUnused.description (ioString, inIndentation) ;
+  mObject.mProperty_mNoWarningIfUnused.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mCppName" ":" ;
-  mObject.mAttribute_mCppName.description (ioString, inIndentation) ;
+  mObject.mProperty_mCppName.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7734,10 +7734,10 @@ void GALGAS_localConstantList::setter_removeAtIndex (GALGAS_unifiedTypeMap_2D_pr
       outOperand3.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_localConstantList) ;
-      outOperand0 = p->mObject.mAttribute_mType ;
-      outOperand1 = p->mObject.mAttribute_mName ;
-      outOperand2 = p->mObject.mAttribute_mNoWarningIfUnused ;
-      outOperand3 = p->mObject.mAttribute_mCppName ;
+      outOperand0 = p->mObject.mProperty_mType ;
+      outOperand1 = p->mObject.mProperty_mName ;
+      outOperand2 = p->mObject.mProperty_mNoWarningIfUnused ;
+      outOperand3 = p->mObject.mProperty_mCppName ;
     }
   }
 }
@@ -7760,10 +7760,10 @@ void GALGAS_localConstantList::setter_popFirst (GALGAS_unifiedTypeMap_2D_proxy &
     outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_localConstantList) ;
-    outOperand0 = p->mObject.mAttribute_mType ;
-    outOperand1 = p->mObject.mAttribute_mName ;
-    outOperand2 = p->mObject.mAttribute_mNoWarningIfUnused ;
-    outOperand3 = p->mObject.mAttribute_mCppName ;
+    outOperand0 = p->mObject.mProperty_mType ;
+    outOperand1 = p->mObject.mProperty_mName ;
+    outOperand2 = p->mObject.mProperty_mNoWarningIfUnused ;
+    outOperand3 = p->mObject.mProperty_mCppName ;
   }
 }
 
@@ -7785,10 +7785,10 @@ void GALGAS_localConstantList::setter_popLast (GALGAS_unifiedTypeMap_2D_proxy & 
     outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_localConstantList) ;
-    outOperand0 = p->mObject.mAttribute_mType ;
-    outOperand1 = p->mObject.mAttribute_mName ;
-    outOperand2 = p->mObject.mAttribute_mNoWarningIfUnused ;
-    outOperand3 = p->mObject.mAttribute_mCppName ;
+    outOperand0 = p->mObject.mProperty_mType ;
+    outOperand1 = p->mObject.mProperty_mName ;
+    outOperand2 = p->mObject.mProperty_mNoWarningIfUnused ;
+    outOperand3 = p->mObject.mProperty_mCppName ;
   }
 }
 
@@ -7810,10 +7810,10 @@ void GALGAS_localConstantList::method_first (GALGAS_unifiedTypeMap_2D_proxy & ou
     outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_localConstantList) ;
-    outOperand0 = p->mObject.mAttribute_mType ;
-    outOperand1 = p->mObject.mAttribute_mName ;
-    outOperand2 = p->mObject.mAttribute_mNoWarningIfUnused ;
-    outOperand3 = p->mObject.mAttribute_mCppName ;
+    outOperand0 = p->mObject.mProperty_mType ;
+    outOperand1 = p->mObject.mProperty_mName ;
+    outOperand2 = p->mObject.mProperty_mNoWarningIfUnused ;
+    outOperand3 = p->mObject.mProperty_mCppName ;
   }
 }
 
@@ -7835,10 +7835,10 @@ void GALGAS_localConstantList::method_last (GALGAS_unifiedTypeMap_2D_proxy & out
     outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_localConstantList) ;
-    outOperand0 = p->mObject.mAttribute_mType ;
-    outOperand1 = p->mObject.mAttribute_mName ;
-    outOperand2 = p->mObject.mAttribute_mNoWarningIfUnused ;
-    outOperand3 = p->mObject.mAttribute_mCppName ;
+    outOperand0 = p->mObject.mProperty_mType ;
+    outOperand1 = p->mObject.mProperty_mName ;
+    outOperand2 = p->mObject.mProperty_mNoWarningIfUnused ;
+    outOperand3 = p->mObject.mProperty_mCppName ;
   }
 }
 
@@ -7903,7 +7903,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_localConstantList::getter_mTypeAtIndex (co
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_localConstantList) ;
-    result = p->mObject.mAttribute_mType ;
+    result = p->mObject.mProperty_mType ;
   }
   return result ;
 }
@@ -7918,7 +7918,7 @@ GALGAS_lstring GALGAS_localConstantList::getter_mNameAtIndex (const GALGAS_uint 
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_localConstantList) ;
-    result = p->mObject.mAttribute_mName ;
+    result = p->mObject.mProperty_mName ;
   }
   return result ;
 }
@@ -7933,7 +7933,7 @@ GALGAS_bool GALGAS_localConstantList::getter_mNoWarningIfUnusedAtIndex (const GA
   GALGAS_bool result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_localConstantList) ;
-    result = p->mObject.mAttribute_mNoWarningIfUnused ;
+    result = p->mObject.mProperty_mNoWarningIfUnused ;
   }
   return result ;
 }
@@ -7948,7 +7948,7 @@ GALGAS_string GALGAS_localConstantList::getter_mCppNameAtIndex (const GALGAS_uin
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_localConstantList) ;
-    result = p->mObject.mAttribute_mCppName ;
+    result = p->mObject.mProperty_mCppName ;
   }
   return result ;
 }
@@ -7977,7 +7977,7 @@ GALGAS_localConstantList_2D_element cEnumerator_localConstantList::current (LOCA
 GALGAS_unifiedTypeMap_2D_proxy cEnumerator_localConstantList::current_mType (LOCATION_ARGS) const {
   const cCollectionElement_localConstantList * p = (const cCollectionElement_localConstantList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_localConstantList) ;
-  return p->mObject.mAttribute_mType ;
+  return p->mObject.mProperty_mType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7985,7 +7985,7 @@ GALGAS_unifiedTypeMap_2D_proxy cEnumerator_localConstantList::current_mType (LOC
 GALGAS_lstring cEnumerator_localConstantList::current_mName (LOCATION_ARGS) const {
   const cCollectionElement_localConstantList * p = (const cCollectionElement_localConstantList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_localConstantList) ;
-  return p->mObject.mAttribute_mName ;
+  return p->mObject.mProperty_mName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7993,7 +7993,7 @@ GALGAS_lstring cEnumerator_localConstantList::current_mName (LOCATION_ARGS) cons
 GALGAS_bool cEnumerator_localConstantList::current_mNoWarningIfUnused (LOCATION_ARGS) const {
   const cCollectionElement_localConstantList * p = (const cCollectionElement_localConstantList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_localConstantList) ;
-  return p->mObject.mAttribute_mNoWarningIfUnused ;
+  return p->mObject.mProperty_mNoWarningIfUnused ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8001,7 +8001,7 @@ GALGAS_bool cEnumerator_localConstantList::current_mNoWarningIfUnused (LOCATION_
 GALGAS_string cEnumerator_localConstantList::current_mCppName (LOCATION_ARGS) const {
   const cCollectionElement_localConstantList * p = (const cCollectionElement_localConstantList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_localConstantList) ;
-  return p->mObject.mAttribute_mCppName ;
+  return p->mObject.mProperty_mCppName ;
 }
 
 
@@ -8098,7 +8098,7 @@ bool cCollectionElement_localInitializedVariableList::isValid (void) const {
 
 cCollectionElement * cCollectionElement_localInitializedVariableList::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_localInitializedVariableList (mObject.mAttribute_mType, mObject.mAttribute_mName, mObject.mAttribute_mCppName COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_localInitializedVariableList (mObject.mProperty_mType, mObject.mProperty_mName, mObject.mProperty_mCppName COMMA_HERE)) ;
   return result ;
 }
 
@@ -8108,15 +8108,15 @@ void cCollectionElement_localInitializedVariableList::description (C_String & io
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mType" ":" ;
-  mObject.mAttribute_mType.description (ioString, inIndentation) ;
+  mObject.mProperty_mType.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mName" ":" ;
-  mObject.mAttribute_mName.description (ioString, inIndentation) ;
+  mObject.mProperty_mName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mCppName" ":" ;
-  mObject.mAttribute_mCppName.description (ioString, inIndentation) ;
+  mObject.mProperty_mCppName.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8228,9 +8228,9 @@ void GALGAS_localInitializedVariableList::setter_removeAtIndex (GALGAS_unifiedTy
       outOperand2.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_localInitializedVariableList) ;
-      outOperand0 = p->mObject.mAttribute_mType ;
-      outOperand1 = p->mObject.mAttribute_mName ;
-      outOperand2 = p->mObject.mAttribute_mCppName ;
+      outOperand0 = p->mObject.mProperty_mType ;
+      outOperand1 = p->mObject.mProperty_mName ;
+      outOperand2 = p->mObject.mProperty_mCppName ;
     }
   }
 }
@@ -8251,9 +8251,9 @@ void GALGAS_localInitializedVariableList::setter_popFirst (GALGAS_unifiedTypeMap
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_localInitializedVariableList) ;
-    outOperand0 = p->mObject.mAttribute_mType ;
-    outOperand1 = p->mObject.mAttribute_mName ;
-    outOperand2 = p->mObject.mAttribute_mCppName ;
+    outOperand0 = p->mObject.mProperty_mType ;
+    outOperand1 = p->mObject.mProperty_mName ;
+    outOperand2 = p->mObject.mProperty_mCppName ;
   }
 }
 
@@ -8273,9 +8273,9 @@ void GALGAS_localInitializedVariableList::setter_popLast (GALGAS_unifiedTypeMap_
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_localInitializedVariableList) ;
-    outOperand0 = p->mObject.mAttribute_mType ;
-    outOperand1 = p->mObject.mAttribute_mName ;
-    outOperand2 = p->mObject.mAttribute_mCppName ;
+    outOperand0 = p->mObject.mProperty_mType ;
+    outOperand1 = p->mObject.mProperty_mName ;
+    outOperand2 = p->mObject.mProperty_mCppName ;
   }
 }
 
@@ -8295,9 +8295,9 @@ void GALGAS_localInitializedVariableList::method_first (GALGAS_unifiedTypeMap_2D
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_localInitializedVariableList) ;
-    outOperand0 = p->mObject.mAttribute_mType ;
-    outOperand1 = p->mObject.mAttribute_mName ;
-    outOperand2 = p->mObject.mAttribute_mCppName ;
+    outOperand0 = p->mObject.mProperty_mType ;
+    outOperand1 = p->mObject.mProperty_mName ;
+    outOperand2 = p->mObject.mProperty_mCppName ;
   }
 }
 
@@ -8317,9 +8317,9 @@ void GALGAS_localInitializedVariableList::method_last (GALGAS_unifiedTypeMap_2D_
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_localInitializedVariableList) ;
-    outOperand0 = p->mObject.mAttribute_mType ;
-    outOperand1 = p->mObject.mAttribute_mName ;
-    outOperand2 = p->mObject.mAttribute_mCppName ;
+    outOperand0 = p->mObject.mProperty_mType ;
+    outOperand1 = p->mObject.mProperty_mName ;
+    outOperand2 = p->mObject.mProperty_mCppName ;
   }
 }
 
@@ -8384,7 +8384,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_localInitializedVariableList::getter_mType
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_localInitializedVariableList) ;
-    result = p->mObject.mAttribute_mType ;
+    result = p->mObject.mProperty_mType ;
   }
   return result ;
 }
@@ -8399,7 +8399,7 @@ GALGAS_lstring GALGAS_localInitializedVariableList::getter_mNameAtIndex (const G
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_localInitializedVariableList) ;
-    result = p->mObject.mAttribute_mName ;
+    result = p->mObject.mProperty_mName ;
   }
   return result ;
 }
@@ -8414,7 +8414,7 @@ GALGAS_string GALGAS_localInitializedVariableList::getter_mCppNameAtIndex (const
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_localInitializedVariableList) ;
-    result = p->mObject.mAttribute_mCppName ;
+    result = p->mObject.mProperty_mCppName ;
   }
   return result ;
 }
@@ -8443,7 +8443,7 @@ GALGAS_localInitializedVariableList_2D_element cEnumerator_localInitializedVaria
 GALGAS_unifiedTypeMap_2D_proxy cEnumerator_localInitializedVariableList::current_mType (LOCATION_ARGS) const {
   const cCollectionElement_localInitializedVariableList * p = (const cCollectionElement_localInitializedVariableList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_localInitializedVariableList) ;
-  return p->mObject.mAttribute_mType ;
+  return p->mObject.mProperty_mType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8451,7 +8451,7 @@ GALGAS_unifiedTypeMap_2D_proxy cEnumerator_localInitializedVariableList::current
 GALGAS_lstring cEnumerator_localInitializedVariableList::current_mName (LOCATION_ARGS) const {
   const cCollectionElement_localInitializedVariableList * p = (const cCollectionElement_localInitializedVariableList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_localInitializedVariableList) ;
-  return p->mObject.mAttribute_mName ;
+  return p->mObject.mProperty_mName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8459,7 +8459,7 @@ GALGAS_lstring cEnumerator_localInitializedVariableList::current_mName (LOCATION
 GALGAS_string cEnumerator_localInitializedVariableList::current_mCppName (LOCATION_ARGS) const {
   const cCollectionElement_localInitializedVariableList * p = (const cCollectionElement_localInitializedVariableList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_localInitializedVariableList) ;
-  return p->mObject.mAttribute_mCppName ;
+  return p->mObject.mProperty_mCppName ;
 }
 
 
@@ -8837,20 +8837,20 @@ cMapElement_attributeIndexMap::cMapElement_attributeIndexMap (const GALGAS_lstri
                                                               const GALGAS_unifiedTypeMap_2D_proxy & in_mAttributeTypeIndex
                                                               COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mAttributeTypeIndex (in_mAttributeTypeIndex) {
+mProperty_mAttributeTypeIndex (in_mAttributeTypeIndex) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_attributeIndexMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mAttributeTypeIndex.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mAttributeTypeIndex.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_attributeIndexMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_attributeIndexMap (mAttribute_lkey, mAttribute_mAttributeTypeIndex COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_attributeIndexMap (mProperty_lkey, mProperty_mAttributeTypeIndex COMMA_HERE)) ;
   return result ;
 }
 
@@ -8860,16 +8860,16 @@ void cMapElement_attributeIndexMap::description (C_String & ioString, const int3
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mAttributeTypeIndex" ":" ;
-  mAttribute_mAttributeTypeIndex.description (ioString, inIndentation) ;
+  mProperty_mAttributeTypeIndex.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_attributeIndexMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_attributeIndexMap * operand = (cMapElement_attributeIndexMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mAttributeTypeIndex.objectCompare (operand->mAttribute_mAttributeTypeIndex) ;
+    result = mProperty_mAttributeTypeIndex.objectCompare (operand->mProperty_mAttributeTypeIndex) ;
   }
   return result ;
 }
@@ -8969,7 +8969,7 @@ void GALGAS_attributeIndexMap::method_searchKey (GALGAS_lstring inKey,
     outArgument0.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_attributeIndexMap) ;
-    outArgument0 = p->mAttribute_mAttributeTypeIndex ;
+    outArgument0 = p->mProperty_mAttributeTypeIndex ;
   }
 }
 
@@ -8983,7 +8983,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_attributeIndexMap::getter_mAttributeTypeIn
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_attributeIndexMap) ;
-    result = p->mAttribute_mAttributeTypeIndex ;
+    result = p->mProperty_mAttributeTypeIndex ;
   }
   return result ;
 }
@@ -8998,7 +8998,7 @@ void GALGAS_attributeIndexMap::setter_setMAttributeTypeIndexForKey (GALGAS_unifi
   cMapElement_attributeIndexMap * p = (cMapElement_attributeIndexMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_attributeIndexMap) ;
-    p->mAttribute_mAttributeTypeIndex = inAttributeValue ;
+    p->mProperty_mAttributeTypeIndex = inAttributeValue ;
   }
 }
 
@@ -9025,7 +9025,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_attributeIndexMap_2D_element cEnumerator_attributeIndexMap::current (LOCATION_ARGS) const {
   const cMapElement_attributeIndexMap * p = (const cMapElement_attributeIndexMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_attributeIndexMap) ;
-  return GALGAS_attributeIndexMap_2D_element (p->mAttribute_lkey, p->mAttribute_mAttributeTypeIndex) ;
+  return GALGAS_attributeIndexMap_2D_element (p->mProperty_lkey, p->mProperty_mAttributeTypeIndex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9033,7 +9033,7 @@ GALGAS_attributeIndexMap_2D_element cEnumerator_attributeIndexMap::current (LOCA
 GALGAS_lstring cEnumerator_attributeIndexMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9041,7 +9041,7 @@ GALGAS_lstring cEnumerator_attributeIndexMap::current_lkey (LOCATION_ARGS) const
 GALGAS_unifiedTypeMap_2D_proxy cEnumerator_attributeIndexMap::current_mAttributeTypeIndex (LOCATION_ARGS) const {
   const cMapElement_attributeIndexMap * p = (const cMapElement_attributeIndexMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_attributeIndexMap) ;
-  return p->mAttribute_mAttributeTypeIndex ;
+  return p->mProperty_mAttributeTypeIndex ;
 }
 
 
@@ -9097,22 +9097,22 @@ cMapElement_nonterminalLabelMap::cMapElement_nonterminalLabelMap (const GALGAS_l
                                                                   const GALGAS_location & in_mEndOfArgumentLocation
                                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mSignatureForGeneration (in_mSignatureForGeneration),
-mAttribute_mSignature (in_mSignature),
-mAttribute_mEndOfArgumentLocation (in_mEndOfArgumentLocation) {
+mProperty_mSignatureForGeneration (in_mSignatureForGeneration),
+mProperty_mSignature (in_mSignature),
+mProperty_mEndOfArgumentLocation (in_mEndOfArgumentLocation) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_nonterminalLabelMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mSignatureForGeneration.isValid () && mAttribute_mSignature.isValid () && mAttribute_mEndOfArgumentLocation.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mSignatureForGeneration.isValid () && mProperty_mSignature.isValid () && mProperty_mEndOfArgumentLocation.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_nonterminalLabelMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_nonterminalLabelMap (mAttribute_lkey, mAttribute_mSignatureForGeneration, mAttribute_mSignature, mAttribute_mEndOfArgumentLocation COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_nonterminalLabelMap (mProperty_lkey, mProperty_mSignatureForGeneration, mProperty_mSignature, mProperty_mEndOfArgumentLocation COMMA_HERE)) ;
   return result ;
 }
 
@@ -9122,30 +9122,30 @@ void cMapElement_nonterminalLabelMap::description (C_String & ioString, const in
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSignatureForGeneration" ":" ;
-  mAttribute_mSignatureForGeneration.description (ioString, inIndentation) ;
+  mProperty_mSignatureForGeneration.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSignature" ":" ;
-  mAttribute_mSignature.description (ioString, inIndentation) ;
+  mProperty_mSignature.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mEndOfArgumentLocation" ":" ;
-  mAttribute_mEndOfArgumentLocation.description (ioString, inIndentation) ;
+  mProperty_mEndOfArgumentLocation.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_nonterminalLabelMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_nonterminalLabelMap * operand = (cMapElement_nonterminalLabelMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mSignatureForGeneration.objectCompare (operand->mAttribute_mSignatureForGeneration) ;
+    result = mProperty_mSignatureForGeneration.objectCompare (operand->mProperty_mSignatureForGeneration) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mSignature.objectCompare (operand->mAttribute_mSignature) ;
+    result = mProperty_mSignature.objectCompare (operand->mProperty_mSignature) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mEndOfArgumentLocation.objectCompare (operand->mAttribute_mEndOfArgumentLocation) ;
+    result = mProperty_mEndOfArgumentLocation.objectCompare (operand->mProperty_mEndOfArgumentLocation) ;
   }
   return result ;
 }
@@ -9253,9 +9253,9 @@ void GALGAS_nonterminalLabelMap::method_searchKey (GALGAS_lstring inKey,
     outArgument2.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_nonterminalLabelMap) ;
-    outArgument0 = p->mAttribute_mSignatureForGeneration ;
-    outArgument1 = p->mAttribute_mSignature ;
-    outArgument2 = p->mAttribute_mEndOfArgumentLocation ;
+    outArgument0 = p->mProperty_mSignatureForGeneration ;
+    outArgument1 = p->mProperty_mSignature ;
+    outArgument2 = p->mProperty_mEndOfArgumentLocation ;
   }
 }
 
@@ -9269,7 +9269,7 @@ GALGAS_formalParameterListForGeneration GALGAS_nonterminalLabelMap::getter_mSign
   GALGAS_formalParameterListForGeneration result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_nonterminalLabelMap) ;
-    result = p->mAttribute_mSignatureForGeneration ;
+    result = p->mProperty_mSignatureForGeneration ;
   }
   return result ;
 }
@@ -9284,7 +9284,7 @@ GALGAS_formalParameterSignature GALGAS_nonterminalLabelMap::getter_mSignatureFor
   GALGAS_formalParameterSignature result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_nonterminalLabelMap) ;
-    result = p->mAttribute_mSignature ;
+    result = p->mProperty_mSignature ;
   }
   return result ;
 }
@@ -9299,7 +9299,7 @@ GALGAS_location GALGAS_nonterminalLabelMap::getter_mEndOfArgumentLocationForKey 
   GALGAS_location result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_nonterminalLabelMap) ;
-    result = p->mAttribute_mEndOfArgumentLocation ;
+    result = p->mProperty_mEndOfArgumentLocation ;
   }
   return result ;
 }
@@ -9314,7 +9314,7 @@ void GALGAS_nonterminalLabelMap::setter_setMSignatureForGenerationForKey (GALGAS
   cMapElement_nonterminalLabelMap * p = (cMapElement_nonterminalLabelMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_nonterminalLabelMap) ;
-    p->mAttribute_mSignatureForGeneration = inAttributeValue ;
+    p->mProperty_mSignatureForGeneration = inAttributeValue ;
   }
 }
 
@@ -9328,7 +9328,7 @@ void GALGAS_nonterminalLabelMap::setter_setMSignatureForKey (GALGAS_formalParame
   cMapElement_nonterminalLabelMap * p = (cMapElement_nonterminalLabelMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_nonterminalLabelMap) ;
-    p->mAttribute_mSignature = inAttributeValue ;
+    p->mProperty_mSignature = inAttributeValue ;
   }
 }
 
@@ -9342,7 +9342,7 @@ void GALGAS_nonterminalLabelMap::setter_setMEndOfArgumentLocationForKey (GALGAS_
   cMapElement_nonterminalLabelMap * p = (cMapElement_nonterminalLabelMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_nonterminalLabelMap) ;
-    p->mAttribute_mEndOfArgumentLocation = inAttributeValue ;
+    p->mProperty_mEndOfArgumentLocation = inAttributeValue ;
   }
 }
 
@@ -9369,7 +9369,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_nonterminalLabelMap_2D_element cEnumerator_nonterminalLabelMap::current (LOCATION_ARGS) const {
   const cMapElement_nonterminalLabelMap * p = (const cMapElement_nonterminalLabelMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_nonterminalLabelMap) ;
-  return GALGAS_nonterminalLabelMap_2D_element (p->mAttribute_lkey, p->mAttribute_mSignatureForGeneration, p->mAttribute_mSignature, p->mAttribute_mEndOfArgumentLocation) ;
+  return GALGAS_nonterminalLabelMap_2D_element (p->mProperty_lkey, p->mProperty_mSignatureForGeneration, p->mProperty_mSignature, p->mProperty_mEndOfArgumentLocation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9377,7 +9377,7 @@ GALGAS_nonterminalLabelMap_2D_element cEnumerator_nonterminalLabelMap::current (
 GALGAS_lstring cEnumerator_nonterminalLabelMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9385,7 +9385,7 @@ GALGAS_lstring cEnumerator_nonterminalLabelMap::current_lkey (LOCATION_ARGS) con
 GALGAS_formalParameterListForGeneration cEnumerator_nonterminalLabelMap::current_mSignatureForGeneration (LOCATION_ARGS) const {
   const cMapElement_nonterminalLabelMap * p = (const cMapElement_nonterminalLabelMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_nonterminalLabelMap) ;
-  return p->mAttribute_mSignatureForGeneration ;
+  return p->mProperty_mSignatureForGeneration ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9393,7 +9393,7 @@ GALGAS_formalParameterListForGeneration cEnumerator_nonterminalLabelMap::current
 GALGAS_formalParameterSignature cEnumerator_nonterminalLabelMap::current_mSignature (LOCATION_ARGS) const {
   const cMapElement_nonterminalLabelMap * p = (const cMapElement_nonterminalLabelMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_nonterminalLabelMap) ;
-  return p->mAttribute_mSignature ;
+  return p->mProperty_mSignature ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9401,7 +9401,7 @@ GALGAS_formalParameterSignature cEnumerator_nonterminalLabelMap::current_mSignat
 GALGAS_location cEnumerator_nonterminalLabelMap::current_mEndOfArgumentLocation (LOCATION_ARGS) const {
   const cMapElement_nonterminalLabelMap * p = (const cMapElement_nonterminalLabelMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_nonterminalLabelMap) ;
-  return p->mAttribute_mEndOfArgumentLocation ;
+  return p->mProperty_mEndOfArgumentLocation ;
 }
 
 
@@ -9455,20 +9455,20 @@ cMapElement_nonterminalMap::cMapElement_nonterminalMap (const GALGAS_lstring & i
                                                         const GALGAS_nonterminalLabelMap & in_mLabelMap
                                                         COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mLabelMap (in_mLabelMap) {
+mProperty_mLabelMap (in_mLabelMap) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_nonterminalMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mLabelMap.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mLabelMap.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_nonterminalMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_nonterminalMap (mAttribute_lkey, mAttribute_mLabelMap COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_nonterminalMap (mProperty_lkey, mProperty_mLabelMap COMMA_HERE)) ;
   return result ;
 }
 
@@ -9478,16 +9478,16 @@ void cMapElement_nonterminalMap::description (C_String & ioString, const int32_t
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLabelMap" ":" ;
-  mAttribute_mLabelMap.description (ioString, inIndentation) ;
+  mProperty_mLabelMap.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_nonterminalMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_nonterminalMap * operand = (cMapElement_nonterminalMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mLabelMap.objectCompare (operand->mAttribute_mLabelMap) ;
+    result = mProperty_mLabelMap.objectCompare (operand->mProperty_mLabelMap) ;
   }
   return result ;
 }
@@ -9587,7 +9587,7 @@ void GALGAS_nonterminalMap::method_searchKey (GALGAS_lstring inKey,
     outArgument0.drop () ;
   }else{
     macroValidSharedObject (p, cMapElement_nonterminalMap) ;
-    outArgument0 = p->mAttribute_mLabelMap ;
+    outArgument0 = p->mProperty_mLabelMap ;
   }
 }
 
@@ -9601,7 +9601,7 @@ GALGAS_nonterminalLabelMap GALGAS_nonterminalMap::getter_mLabelMapForKey (const 
   GALGAS_nonterminalLabelMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_nonterminalMap) ;
-    result = p->mAttribute_mLabelMap ;
+    result = p->mProperty_mLabelMap ;
   }
   return result ;
 }
@@ -9616,7 +9616,7 @@ void GALGAS_nonterminalMap::setter_setMLabelMapForKey (GALGAS_nonterminalLabelMa
   cMapElement_nonterminalMap * p = (cMapElement_nonterminalMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_nonterminalMap) ;
-    p->mAttribute_mLabelMap = inAttributeValue ;
+    p->mProperty_mLabelMap = inAttributeValue ;
   }
 }
 
@@ -9643,7 +9643,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_nonterminalMap_2D_element cEnumerator_nonterminalMap::current (LOCATION_ARGS) const {
   const cMapElement_nonterminalMap * p = (const cMapElement_nonterminalMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_nonterminalMap) ;
-  return GALGAS_nonterminalMap_2D_element (p->mAttribute_lkey, p->mAttribute_mLabelMap) ;
+  return GALGAS_nonterminalMap_2D_element (p->mProperty_lkey, p->mProperty_mLabelMap) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9651,7 +9651,7 @@ GALGAS_nonterminalMap_2D_element cEnumerator_nonterminalMap::current (LOCATION_A
 GALGAS_lstring cEnumerator_nonterminalMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9659,7 +9659,7 @@ GALGAS_lstring cEnumerator_nonterminalMap::current_lkey (LOCATION_ARGS) const {
 GALGAS_nonterminalLabelMap cEnumerator_nonterminalMap::current_mLabelMap (LOCATION_ARGS) const {
   const cMapElement_nonterminalMap * p = (const cMapElement_nonterminalMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_nonterminalMap) ;
-  return p->mAttribute_mLabelMap ;
+  return p->mProperty_mLabelMap ;
 }
 
 
@@ -9759,7 +9759,7 @@ bool cCollectionElement_ruleLabelImplementationList::isValid (void) const {
 
 cCollectionElement * cCollectionElement_ruleLabelImplementationList::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_ruleLabelImplementationList (mObject.mAttribute_mLabelName, mObject.mAttribute_mSignatureForGeneration, mObject.mAttribute_mSignature, mObject.mAttribute_mEndOfArgumentLocation, mObject.mAttribute_mInstructionListForGeneration COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_ruleLabelImplementationList (mObject.mProperty_mLabelName, mObject.mProperty_mSignatureForGeneration, mObject.mProperty_mSignature, mObject.mProperty_mEndOfArgumentLocation, mObject.mProperty_mInstructionListForGeneration COMMA_HERE)) ;
   return result ;
 }
 
@@ -9769,23 +9769,23 @@ void cCollectionElement_ruleLabelImplementationList::description (C_String & ioS
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLabelName" ":" ;
-  mObject.mAttribute_mLabelName.description (ioString, inIndentation) ;
+  mObject.mProperty_mLabelName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSignatureForGeneration" ":" ;
-  mObject.mAttribute_mSignatureForGeneration.description (ioString, inIndentation) ;
+  mObject.mProperty_mSignatureForGeneration.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSignature" ":" ;
-  mObject.mAttribute_mSignature.description (ioString, inIndentation) ;
+  mObject.mProperty_mSignature.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mEndOfArgumentLocation" ":" ;
-  mObject.mAttribute_mEndOfArgumentLocation.description (ioString, inIndentation) ;
+  mObject.mProperty_mEndOfArgumentLocation.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstructionListForGeneration" ":" ;
-  mObject.mAttribute_mInstructionListForGeneration.description (ioString, inIndentation) ;
+  mObject.mProperty_mInstructionListForGeneration.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9911,11 +9911,11 @@ void GALGAS_ruleLabelImplementationList::setter_removeAtIndex (GALGAS_lstring & 
       outOperand4.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-      outOperand0 = p->mObject.mAttribute_mLabelName ;
-      outOperand1 = p->mObject.mAttribute_mSignatureForGeneration ;
-      outOperand2 = p->mObject.mAttribute_mSignature ;
-      outOperand3 = p->mObject.mAttribute_mEndOfArgumentLocation ;
-      outOperand4 = p->mObject.mAttribute_mInstructionListForGeneration ;
+      outOperand0 = p->mObject.mProperty_mLabelName ;
+      outOperand1 = p->mObject.mProperty_mSignatureForGeneration ;
+      outOperand2 = p->mObject.mProperty_mSignature ;
+      outOperand3 = p->mObject.mProperty_mEndOfArgumentLocation ;
+      outOperand4 = p->mObject.mProperty_mInstructionListForGeneration ;
     }
   }
 }
@@ -9940,11 +9940,11 @@ void GALGAS_ruleLabelImplementationList::setter_popFirst (GALGAS_lstring & outOp
     outOperand4.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-    outOperand0 = p->mObject.mAttribute_mLabelName ;
-    outOperand1 = p->mObject.mAttribute_mSignatureForGeneration ;
-    outOperand2 = p->mObject.mAttribute_mSignature ;
-    outOperand3 = p->mObject.mAttribute_mEndOfArgumentLocation ;
-    outOperand4 = p->mObject.mAttribute_mInstructionListForGeneration ;
+    outOperand0 = p->mObject.mProperty_mLabelName ;
+    outOperand1 = p->mObject.mProperty_mSignatureForGeneration ;
+    outOperand2 = p->mObject.mProperty_mSignature ;
+    outOperand3 = p->mObject.mProperty_mEndOfArgumentLocation ;
+    outOperand4 = p->mObject.mProperty_mInstructionListForGeneration ;
   }
 }
 
@@ -9968,11 +9968,11 @@ void GALGAS_ruleLabelImplementationList::setter_popLast (GALGAS_lstring & outOpe
     outOperand4.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-    outOperand0 = p->mObject.mAttribute_mLabelName ;
-    outOperand1 = p->mObject.mAttribute_mSignatureForGeneration ;
-    outOperand2 = p->mObject.mAttribute_mSignature ;
-    outOperand3 = p->mObject.mAttribute_mEndOfArgumentLocation ;
-    outOperand4 = p->mObject.mAttribute_mInstructionListForGeneration ;
+    outOperand0 = p->mObject.mProperty_mLabelName ;
+    outOperand1 = p->mObject.mProperty_mSignatureForGeneration ;
+    outOperand2 = p->mObject.mProperty_mSignature ;
+    outOperand3 = p->mObject.mProperty_mEndOfArgumentLocation ;
+    outOperand4 = p->mObject.mProperty_mInstructionListForGeneration ;
   }
 }
 
@@ -9996,11 +9996,11 @@ void GALGAS_ruleLabelImplementationList::method_first (GALGAS_lstring & outOpera
     outOperand4.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-    outOperand0 = p->mObject.mAttribute_mLabelName ;
-    outOperand1 = p->mObject.mAttribute_mSignatureForGeneration ;
-    outOperand2 = p->mObject.mAttribute_mSignature ;
-    outOperand3 = p->mObject.mAttribute_mEndOfArgumentLocation ;
-    outOperand4 = p->mObject.mAttribute_mInstructionListForGeneration ;
+    outOperand0 = p->mObject.mProperty_mLabelName ;
+    outOperand1 = p->mObject.mProperty_mSignatureForGeneration ;
+    outOperand2 = p->mObject.mProperty_mSignature ;
+    outOperand3 = p->mObject.mProperty_mEndOfArgumentLocation ;
+    outOperand4 = p->mObject.mProperty_mInstructionListForGeneration ;
   }
 }
 
@@ -10024,11 +10024,11 @@ void GALGAS_ruleLabelImplementationList::method_last (GALGAS_lstring & outOperan
     outOperand4.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-    outOperand0 = p->mObject.mAttribute_mLabelName ;
-    outOperand1 = p->mObject.mAttribute_mSignatureForGeneration ;
-    outOperand2 = p->mObject.mAttribute_mSignature ;
-    outOperand3 = p->mObject.mAttribute_mEndOfArgumentLocation ;
-    outOperand4 = p->mObject.mAttribute_mInstructionListForGeneration ;
+    outOperand0 = p->mObject.mProperty_mLabelName ;
+    outOperand1 = p->mObject.mProperty_mSignatureForGeneration ;
+    outOperand2 = p->mObject.mProperty_mSignature ;
+    outOperand3 = p->mObject.mProperty_mEndOfArgumentLocation ;
+    outOperand4 = p->mObject.mProperty_mInstructionListForGeneration ;
   }
 }
 
@@ -10093,7 +10093,7 @@ GALGAS_lstring GALGAS_ruleLabelImplementationList::getter_mLabelNameAtIndex (con
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-    result = p->mObject.mAttribute_mLabelName ;
+    result = p->mObject.mProperty_mLabelName ;
   }
   return result ;
 }
@@ -10108,7 +10108,7 @@ GALGAS_formalParameterListForGeneration GALGAS_ruleLabelImplementationList::gett
   GALGAS_formalParameterListForGeneration result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-    result = p->mObject.mAttribute_mSignatureForGeneration ;
+    result = p->mObject.mProperty_mSignatureForGeneration ;
   }
   return result ;
 }
@@ -10123,7 +10123,7 @@ GALGAS_formalParameterSignature GALGAS_ruleLabelImplementationList::getter_mSign
   GALGAS_formalParameterSignature result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-    result = p->mObject.mAttribute_mSignature ;
+    result = p->mObject.mProperty_mSignature ;
   }
   return result ;
 }
@@ -10138,7 +10138,7 @@ GALGAS_location GALGAS_ruleLabelImplementationList::getter_mEndOfArgumentLocatio
   GALGAS_location result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-    result = p->mObject.mAttribute_mEndOfArgumentLocation ;
+    result = p->mObject.mProperty_mEndOfArgumentLocation ;
   }
   return result ;
 }
@@ -10153,7 +10153,7 @@ GALGAS_semanticInstructionListForGeneration GALGAS_ruleLabelImplementationList::
   GALGAS_semanticInstructionListForGeneration result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-    result = p->mObject.mAttribute_mInstructionListForGeneration ;
+    result = p->mObject.mProperty_mInstructionListForGeneration ;
   }
   return result ;
 }
@@ -10182,7 +10182,7 @@ GALGAS_ruleLabelImplementationList_2D_element cEnumerator_ruleLabelImplementatio
 GALGAS_lstring cEnumerator_ruleLabelImplementationList::current_mLabelName (LOCATION_ARGS) const {
   const cCollectionElement_ruleLabelImplementationList * p = (const cCollectionElement_ruleLabelImplementationList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-  return p->mObject.mAttribute_mLabelName ;
+  return p->mObject.mProperty_mLabelName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10190,7 +10190,7 @@ GALGAS_lstring cEnumerator_ruleLabelImplementationList::current_mLabelName (LOCA
 GALGAS_formalParameterListForGeneration cEnumerator_ruleLabelImplementationList::current_mSignatureForGeneration (LOCATION_ARGS) const {
   const cCollectionElement_ruleLabelImplementationList * p = (const cCollectionElement_ruleLabelImplementationList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-  return p->mObject.mAttribute_mSignatureForGeneration ;
+  return p->mObject.mProperty_mSignatureForGeneration ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10198,7 +10198,7 @@ GALGAS_formalParameterListForGeneration cEnumerator_ruleLabelImplementationList:
 GALGAS_formalParameterSignature cEnumerator_ruleLabelImplementationList::current_mSignature (LOCATION_ARGS) const {
   const cCollectionElement_ruleLabelImplementationList * p = (const cCollectionElement_ruleLabelImplementationList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-  return p->mObject.mAttribute_mSignature ;
+  return p->mObject.mProperty_mSignature ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10206,7 +10206,7 @@ GALGAS_formalParameterSignature cEnumerator_ruleLabelImplementationList::current
 GALGAS_location cEnumerator_ruleLabelImplementationList::current_mEndOfArgumentLocation (LOCATION_ARGS) const {
   const cCollectionElement_ruleLabelImplementationList * p = (const cCollectionElement_ruleLabelImplementationList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-  return p->mObject.mAttribute_mEndOfArgumentLocation ;
+  return p->mObject.mProperty_mEndOfArgumentLocation ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10214,7 +10214,7 @@ GALGAS_location cEnumerator_ruleLabelImplementationList::current_mEndOfArgumentL
 GALGAS_semanticInstructionListForGeneration cEnumerator_ruleLabelImplementationList::current_mInstructionListForGeneration (LOCATION_ARGS) const {
   const cCollectionElement_ruleLabelImplementationList * p = (const cCollectionElement_ruleLabelImplementationList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_ruleLabelImplementationList) ;
-  return p->mObject.mAttribute_mInstructionListForGeneration ;
+  return p->mObject.mProperty_mInstructionListForGeneration ;
 }
 
 
@@ -10311,7 +10311,7 @@ bool cCollectionElement_ruleDeclarationList::isValid (void) const {
 
 cCollectionElement * cCollectionElement_ruleDeclarationList::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_ruleDeclarationList (mObject.mAttribute_mNonterminalName, mObject.mAttribute_mRuleIndex, mObject.mAttribute_mLabelImplementationList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_ruleDeclarationList (mObject.mProperty_mNonterminalName, mObject.mProperty_mRuleIndex, mObject.mProperty_mLabelImplementationList COMMA_HERE)) ;
   return result ;
 }
 
@@ -10321,15 +10321,15 @@ void cCollectionElement_ruleDeclarationList::description (C_String & ioString, c
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mNonterminalName" ":" ;
-  mObject.mAttribute_mNonterminalName.description (ioString, inIndentation) ;
+  mObject.mProperty_mNonterminalName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mRuleIndex" ":" ;
-  mObject.mAttribute_mRuleIndex.description (ioString, inIndentation) ;
+  mObject.mProperty_mRuleIndex.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLabelImplementationList" ":" ;
-  mObject.mAttribute_mLabelImplementationList.description (ioString, inIndentation) ;
+  mObject.mProperty_mLabelImplementationList.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10441,9 +10441,9 @@ void GALGAS_ruleDeclarationList::setter_removeAtIndex (GALGAS_string & outOperan
       outOperand2.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_ruleDeclarationList) ;
-      outOperand0 = p->mObject.mAttribute_mNonterminalName ;
-      outOperand1 = p->mObject.mAttribute_mRuleIndex ;
-      outOperand2 = p->mObject.mAttribute_mLabelImplementationList ;
+      outOperand0 = p->mObject.mProperty_mNonterminalName ;
+      outOperand1 = p->mObject.mProperty_mRuleIndex ;
+      outOperand2 = p->mObject.mProperty_mLabelImplementationList ;
     }
   }
 }
@@ -10464,9 +10464,9 @@ void GALGAS_ruleDeclarationList::setter_popFirst (GALGAS_string & outOperand0,
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_ruleDeclarationList) ;
-    outOperand0 = p->mObject.mAttribute_mNonterminalName ;
-    outOperand1 = p->mObject.mAttribute_mRuleIndex ;
-    outOperand2 = p->mObject.mAttribute_mLabelImplementationList ;
+    outOperand0 = p->mObject.mProperty_mNonterminalName ;
+    outOperand1 = p->mObject.mProperty_mRuleIndex ;
+    outOperand2 = p->mObject.mProperty_mLabelImplementationList ;
   }
 }
 
@@ -10486,9 +10486,9 @@ void GALGAS_ruleDeclarationList::setter_popLast (GALGAS_string & outOperand0,
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_ruleDeclarationList) ;
-    outOperand0 = p->mObject.mAttribute_mNonterminalName ;
-    outOperand1 = p->mObject.mAttribute_mRuleIndex ;
-    outOperand2 = p->mObject.mAttribute_mLabelImplementationList ;
+    outOperand0 = p->mObject.mProperty_mNonterminalName ;
+    outOperand1 = p->mObject.mProperty_mRuleIndex ;
+    outOperand2 = p->mObject.mProperty_mLabelImplementationList ;
   }
 }
 
@@ -10508,9 +10508,9 @@ void GALGAS_ruleDeclarationList::method_first (GALGAS_string & outOperand0,
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_ruleDeclarationList) ;
-    outOperand0 = p->mObject.mAttribute_mNonterminalName ;
-    outOperand1 = p->mObject.mAttribute_mRuleIndex ;
-    outOperand2 = p->mObject.mAttribute_mLabelImplementationList ;
+    outOperand0 = p->mObject.mProperty_mNonterminalName ;
+    outOperand1 = p->mObject.mProperty_mRuleIndex ;
+    outOperand2 = p->mObject.mProperty_mLabelImplementationList ;
   }
 }
 
@@ -10530,9 +10530,9 @@ void GALGAS_ruleDeclarationList::method_last (GALGAS_string & outOperand0,
     outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_ruleDeclarationList) ;
-    outOperand0 = p->mObject.mAttribute_mNonterminalName ;
-    outOperand1 = p->mObject.mAttribute_mRuleIndex ;
-    outOperand2 = p->mObject.mAttribute_mLabelImplementationList ;
+    outOperand0 = p->mObject.mProperty_mNonterminalName ;
+    outOperand1 = p->mObject.mProperty_mRuleIndex ;
+    outOperand2 = p->mObject.mProperty_mLabelImplementationList ;
   }
 }
 
@@ -10597,7 +10597,7 @@ GALGAS_string GALGAS_ruleDeclarationList::getter_mNonterminalNameAtIndex (const 
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_ruleDeclarationList) ;
-    result = p->mObject.mAttribute_mNonterminalName ;
+    result = p->mObject.mProperty_mNonterminalName ;
   }
   return result ;
 }
@@ -10612,7 +10612,7 @@ GALGAS_uint GALGAS_ruleDeclarationList::getter_mRuleIndexAtIndex (const GALGAS_u
   GALGAS_uint result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_ruleDeclarationList) ;
-    result = p->mObject.mAttribute_mRuleIndex ;
+    result = p->mObject.mProperty_mRuleIndex ;
   }
   return result ;
 }
@@ -10627,7 +10627,7 @@ GALGAS_ruleLabelImplementationList GALGAS_ruleDeclarationList::getter_mLabelImpl
   GALGAS_ruleLabelImplementationList result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_ruleDeclarationList) ;
-    result = p->mObject.mAttribute_mLabelImplementationList ;
+    result = p->mObject.mProperty_mLabelImplementationList ;
   }
   return result ;
 }
@@ -10656,7 +10656,7 @@ GALGAS_ruleDeclarationList_2D_element cEnumerator_ruleDeclarationList::current (
 GALGAS_string cEnumerator_ruleDeclarationList::current_mNonterminalName (LOCATION_ARGS) const {
   const cCollectionElement_ruleDeclarationList * p = (const cCollectionElement_ruleDeclarationList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_ruleDeclarationList) ;
-  return p->mObject.mAttribute_mNonterminalName ;
+  return p->mObject.mProperty_mNonterminalName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10664,7 +10664,7 @@ GALGAS_string cEnumerator_ruleDeclarationList::current_mNonterminalName (LOCATIO
 GALGAS_uint cEnumerator_ruleDeclarationList::current_mRuleIndex (LOCATION_ARGS) const {
   const cCollectionElement_ruleDeclarationList * p = (const cCollectionElement_ruleDeclarationList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_ruleDeclarationList) ;
-  return p->mObject.mAttribute_mRuleIndex ;
+  return p->mObject.mProperty_mRuleIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10672,7 +10672,7 @@ GALGAS_uint cEnumerator_ruleDeclarationList::current_mRuleIndex (LOCATION_ARGS) 
 GALGAS_ruleLabelImplementationList cEnumerator_ruleDeclarationList::current_mLabelImplementationList (LOCATION_ARGS) const {
   const cCollectionElement_ruleDeclarationList * p = (const cCollectionElement_ruleDeclarationList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_ruleDeclarationList) ;
-  return p->mObject.mAttribute_mLabelImplementationList ;
+  return p->mObject.mProperty_mLabelImplementationList ;
 }
 
 
@@ -10730,25 +10730,25 @@ typeComparisonResult cPtr_syntaxDeclarationForGeneration::dynamicObjectCompare (
   const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_syntaxDeclarationForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mSyntaxComponentName.objectCompare (p->mAttribute_mSyntaxComponentName) ;
+    result = mProperty_mSyntaxComponentName.objectCompare (p->mProperty_mSyntaxComponentName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mLexiqueName.objectCompare (p->mAttribute_mLexiqueName) ;
+    result = mProperty_mLexiqueName.objectCompare (p->mProperty_mLexiqueName) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mNonterminalDeclarationMap.objectCompare (p->mAttribute_mNonterminalDeclarationMap) ;
+    result = mProperty_mNonterminalDeclarationMap.objectCompare (p->mProperty_mNonterminalDeclarationMap) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mRuleDeclarationList.objectCompare (p->mAttribute_mRuleDeclarationList) ;
+    result = mProperty_mRuleDeclarationList.objectCompare (p->mProperty_mRuleDeclarationList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mSelectMethodCount.objectCompare (p->mAttribute_mSelectMethodCount) ;
+    result = mProperty_mSelectMethodCount.objectCompare (p->mProperty_mSelectMethodCount) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mHasIndexing.objectCompare (p->mAttribute_mHasIndexing) ;
+    result = mProperty_mHasIndexing.objectCompare (p->mProperty_mHasIndexing) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mHasTranslateFeature.objectCompare (p->mAttribute_mHasTranslateFeature) ;
+    result = mProperty_mHasTranslateFeature.objectCompare (p->mProperty_mHasTranslateFeature) ;
   }
   return result ;
 }
@@ -10822,7 +10822,7 @@ GALGAS_string GALGAS_syntaxDeclarationForGeneration::getter_mSyntaxComponentName
   if (NULL != mObjectPtr) {
     const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_syntaxDeclarationForGeneration) ;
-    result = p->mAttribute_mSyntaxComponentName ;
+    result = p->mProperty_mSyntaxComponentName ;
   }
   return result ;
 }
@@ -10830,7 +10830,7 @@ GALGAS_string GALGAS_syntaxDeclarationForGeneration::getter_mSyntaxComponentName
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cPtr_syntaxDeclarationForGeneration::getter_mSyntaxComponentName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSyntaxComponentName ;
+  return mProperty_mSyntaxComponentName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10840,7 +10840,7 @@ GALGAS_string GALGAS_syntaxDeclarationForGeneration::getter_mLexiqueName (UNUSED
   if (NULL != mObjectPtr) {
     const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_syntaxDeclarationForGeneration) ;
-    result = p->mAttribute_mLexiqueName ;
+    result = p->mProperty_mLexiqueName ;
   }
   return result ;
 }
@@ -10848,7 +10848,7 @@ GALGAS_string GALGAS_syntaxDeclarationForGeneration::getter_mLexiqueName (UNUSED
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cPtr_syntaxDeclarationForGeneration::getter_mLexiqueName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLexiqueName ;
+  return mProperty_mLexiqueName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10858,7 +10858,7 @@ GALGAS_nonterminalMap GALGAS_syntaxDeclarationForGeneration::getter_mNonterminal
   if (NULL != mObjectPtr) {
     const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_syntaxDeclarationForGeneration) ;
-    result = p->mAttribute_mNonterminalDeclarationMap ;
+    result = p->mProperty_mNonterminalDeclarationMap ;
   }
   return result ;
 }
@@ -10866,7 +10866,7 @@ GALGAS_nonterminalMap GALGAS_syntaxDeclarationForGeneration::getter_mNonterminal
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_nonterminalMap cPtr_syntaxDeclarationForGeneration::getter_mNonterminalDeclarationMap (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mNonterminalDeclarationMap ;
+  return mProperty_mNonterminalDeclarationMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10876,7 +10876,7 @@ GALGAS_ruleDeclarationList GALGAS_syntaxDeclarationForGeneration::getter_mRuleDe
   if (NULL != mObjectPtr) {
     const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_syntaxDeclarationForGeneration) ;
-    result = p->mAttribute_mRuleDeclarationList ;
+    result = p->mProperty_mRuleDeclarationList ;
   }
   return result ;
 }
@@ -10884,7 +10884,7 @@ GALGAS_ruleDeclarationList GALGAS_syntaxDeclarationForGeneration::getter_mRuleDe
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_ruleDeclarationList cPtr_syntaxDeclarationForGeneration::getter_mRuleDeclarationList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRuleDeclarationList ;
+  return mProperty_mRuleDeclarationList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10894,7 +10894,7 @@ GALGAS_uint GALGAS_syntaxDeclarationForGeneration::getter_mSelectMethodCount (UN
   if (NULL != mObjectPtr) {
     const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_syntaxDeclarationForGeneration) ;
-    result = p->mAttribute_mSelectMethodCount ;
+    result = p->mProperty_mSelectMethodCount ;
   }
   return result ;
 }
@@ -10902,7 +10902,7 @@ GALGAS_uint GALGAS_syntaxDeclarationForGeneration::getter_mSelectMethodCount (UN
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint cPtr_syntaxDeclarationForGeneration::getter_mSelectMethodCount (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSelectMethodCount ;
+  return mProperty_mSelectMethodCount ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10912,7 +10912,7 @@ GALGAS_bool GALGAS_syntaxDeclarationForGeneration::getter_mHasIndexing (UNUSED_L
   if (NULL != mObjectPtr) {
     const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_syntaxDeclarationForGeneration) ;
-    result = p->mAttribute_mHasIndexing ;
+    result = p->mProperty_mHasIndexing ;
   }
   return result ;
 }
@@ -10920,7 +10920,7 @@ GALGAS_bool GALGAS_syntaxDeclarationForGeneration::getter_mHasIndexing (UNUSED_L
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bool cPtr_syntaxDeclarationForGeneration::getter_mHasIndexing (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mHasIndexing ;
+  return mProperty_mHasIndexing ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10930,7 +10930,7 @@ GALGAS_bool GALGAS_syntaxDeclarationForGeneration::getter_mHasTranslateFeature (
   if (NULL != mObjectPtr) {
     const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_syntaxDeclarationForGeneration) ;
-    result = p->mAttribute_mHasTranslateFeature ;
+    result = p->mProperty_mHasTranslateFeature ;
   }
   return result ;
 }
@@ -10938,7 +10938,7 @@ GALGAS_bool GALGAS_syntaxDeclarationForGeneration::getter_mHasTranslateFeature (
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bool cPtr_syntaxDeclarationForGeneration::getter_mHasTranslateFeature (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mHasTranslateFeature ;
+  return mProperty_mHasTranslateFeature ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10954,13 +10954,13 @@ cPtr_syntaxDeclarationForGeneration::cPtr_syntaxDeclarationForGeneration (const 
                                                                           const GALGAS_bool & in_mHasTranslateFeature
                                                                           COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationForGeneration (THERE),
-mAttribute_mSyntaxComponentName (in_mSyntaxComponentName),
-mAttribute_mLexiqueName (in_mLexiqueName),
-mAttribute_mNonterminalDeclarationMap (in_mNonterminalDeclarationMap),
-mAttribute_mRuleDeclarationList (in_mRuleDeclarationList),
-mAttribute_mSelectMethodCount (in_mSelectMethodCount),
-mAttribute_mHasIndexing (in_mHasIndexing),
-mAttribute_mHasTranslateFeature (in_mHasTranslateFeature) {
+mProperty_mSyntaxComponentName (in_mSyntaxComponentName),
+mProperty_mLexiqueName (in_mLexiqueName),
+mProperty_mNonterminalDeclarationMap (in_mNonterminalDeclarationMap),
+mProperty_mRuleDeclarationList (in_mRuleDeclarationList),
+mProperty_mSelectMethodCount (in_mSelectMethodCount),
+mProperty_mHasIndexing (in_mHasIndexing),
+mProperty_mHasTranslateFeature (in_mHasTranslateFeature) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10972,19 +10972,19 @@ const C_galgas_type_descriptor * cPtr_syntaxDeclarationForGeneration::classDescr
 void cPtr_syntaxDeclarationForGeneration::description (C_String & ioString,
                                                        const int32_t inIndentation) const {
   ioString << "[@syntaxDeclarationForGeneration:" ;
-  mAttribute_mSyntaxComponentName.description (ioString, inIndentation+1) ;
+  mProperty_mSyntaxComponentName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mLexiqueName.description (ioString, inIndentation+1) ;
+  mProperty_mLexiqueName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mNonterminalDeclarationMap.description (ioString, inIndentation+1) ;
+  mProperty_mNonterminalDeclarationMap.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mRuleDeclarationList.description (ioString, inIndentation+1) ;
+  mProperty_mRuleDeclarationList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mSelectMethodCount.description (ioString, inIndentation+1) ;
+  mProperty_mSelectMethodCount.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mHasIndexing.description (ioString, inIndentation+1) ;
+  mProperty_mHasIndexing.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mHasTranslateFeature.description (ioString, inIndentation+1) ;
+  mProperty_mHasTranslateFeature.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -10992,7 +10992,7 @@ void cPtr_syntaxDeclarationForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_syntaxDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_syntaxDeclarationForGeneration (mAttribute_mSyntaxComponentName, mAttribute_mLexiqueName, mAttribute_mNonterminalDeclarationMap, mAttribute_mRuleDeclarationList, mAttribute_mSelectMethodCount, mAttribute_mHasIndexing, mAttribute_mHasTranslateFeature COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_syntaxDeclarationForGeneration (mProperty_mSyntaxComponentName, mProperty_mLexiqueName, mProperty_mNonterminalDeclarationMap, mProperty_mRuleDeclarationList, mProperty_mSelectMethodCount, mProperty_mHasIndexing, mProperty_mHasTranslateFeature COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -11414,7 +11414,7 @@ bool cSortedListElement_keySortedList::isValid (void) const {
 
 cSortedListElement * cSortedListElement_keySortedList::copy (void) {
   cSortedListElement * result = NULL ;
-  macroMyNew (result, cSortedListElement_keySortedList (mObject.mAttribute_mKey, mObject.mAttribute_mOrder COMMA_HERE)) ;
+  macroMyNew (result, cSortedListElement_keySortedList (mObject.mProperty_mKey, mObject.mProperty_mOrder COMMA_HERE)) ;
   return result ;
 }
 
@@ -11424,11 +11424,11 @@ void cSortedListElement_keySortedList::description (C_String & ioString, const i
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mKey" ":" ;
-  mObject.mAttribute_mKey.description (ioString, inIndentation) ;
+  mObject.mProperty_mKey.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mOrder" ":" ;
-  mObject.mAttribute_mOrder.description (ioString, inIndentation) ;
+  mObject.mProperty_mOrder.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11452,7 +11452,7 @@ typeComparisonResult cSortedListElement_keySortedList::compareForSorting (const 
   const cSortedListElement_keySortedList * operand = (const cSortedListElement_keySortedList *) inOperand ;
   macroValidSharedObject (operand, cSortedListElement_keySortedList) ;
   if (result == kOperandEqual) {
-    result = mObject.mAttribute_mOrder.objectCompare (operand->mObject.mAttribute_mOrder) ;
+    result = mObject.mProperty_mOrder.objectCompare (operand->mObject.mProperty_mOrder) ;
   }
   return result ;
 }
@@ -11519,8 +11519,8 @@ void GALGAS_keySortedList::setter_popSmallest (GALGAS_string & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cSortedListElement_keySortedList) ;
-    outOperand0 = p->mObject.mAttribute_mKey ;
-    outOperand1 = p->mObject.mAttribute_mOrder ;
+    outOperand0 = p->mObject.mProperty_mKey ;
+    outOperand1 = p->mObject.mProperty_mOrder ;
   }
 }
 
@@ -11538,8 +11538,8 @@ void GALGAS_keySortedList::setter_popGreatest (GALGAS_string & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cSortedListElement_keySortedList) ;
-    outOperand0 = p->mObject.mAttribute_mKey ;
-    outOperand1 = p->mObject.mAttribute_mOrder ;
+    outOperand0 = p->mObject.mProperty_mKey ;
+    outOperand1 = p->mObject.mProperty_mOrder ;
   }
 }
 
@@ -11557,8 +11557,8 @@ void GALGAS_keySortedList::method_smallest (GALGAS_string & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cSortedListElement_keySortedList) ;
-    outOperand0 = p->mObject.mAttribute_mKey ;
-    outOperand1 = p->mObject.mAttribute_mOrder ;
+    outOperand0 = p->mObject.mProperty_mKey ;
+    outOperand1 = p->mObject.mProperty_mOrder ;
   }
 }
 
@@ -11576,8 +11576,8 @@ void GALGAS_keySortedList::method_greatest (GALGAS_string & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cSortedListElement_keySortedList) ;
-    outOperand0 = p->mObject.mAttribute_mKey ;
-    outOperand1 = p->mObject.mAttribute_mOrder ;
+    outOperand0 = p->mObject.mProperty_mKey ;
+    outOperand1 = p->mObject.mProperty_mOrder ;
   }
 }
 
@@ -11602,7 +11602,7 @@ GALGAS_keySortedList_2D_element cEnumerator_keySortedList::current (LOCATION_ARG
 GALGAS_string cEnumerator_keySortedList::current_mKey (LOCATION_ARGS) const {
   const cSortedListElement_keySortedList * p = (const cSortedListElement_keySortedList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cSortedListElement_keySortedList) ;
-  return p->mObject.mAttribute_mKey ;
+  return p->mObject.mProperty_mKey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11610,7 +11610,7 @@ GALGAS_string cEnumerator_keySortedList::current_mKey (LOCATION_ARGS) const {
 GALGAS_uint cEnumerator_keySortedList::current_mOrder (LOCATION_ARGS) const {
   const cSortedListElement_keySortedList * p = (const cSortedListElement_keySortedList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cSortedListElement_keySortedList) ;
-  return p->mObject.mAttribute_mOrder ;
+  return p->mObject.mProperty_mOrder ;
 }
 
 
@@ -11837,20 +11837,20 @@ cMapElement_uselessEntityLocationMap::cMapElement_uselessEntityLocationMap (cons
                                                                             const GALGAS_location & in_mLocation
                                                                             COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mAttribute_mLocation (in_mLocation) {
+mProperty_mLocation (in_mLocation) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool cMapElement_uselessEntityLocationMap::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mLocation.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mLocation.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cMapElement_uselessEntityLocationMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_uselessEntityLocationMap (mAttribute_lkey, mAttribute_mLocation COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_uselessEntityLocationMap (mProperty_lkey, mProperty_mLocation COMMA_HERE)) ;
   return result ;
 }
 
@@ -11860,16 +11860,16 @@ void cMapElement_uselessEntityLocationMap::description (C_String & ioString, con
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLocation" ":" ;
-  mAttribute_mLocation.description (ioString, inIndentation) ;
+  mProperty_mLocation.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_uselessEntityLocationMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_uselessEntityLocationMap * operand = (cMapElement_uselessEntityLocationMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mLocation.objectCompare (operand->mAttribute_mLocation) ;
+    result = mProperty_mLocation.objectCompare (operand->mProperty_mLocation) ;
   }
   return result ;
 }
@@ -11961,7 +11961,7 @@ GALGAS_location GALGAS_uselessEntityLocationMap::getter_mLocationForKey (const G
   GALGAS_location result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_uselessEntityLocationMap) ;
-    result = p->mAttribute_mLocation ;
+    result = p->mProperty_mLocation ;
   }
   return result ;
 }
@@ -11976,7 +11976,7 @@ void GALGAS_uselessEntityLocationMap::setter_setMLocationForKey (GALGAS_location
   cMapElement_uselessEntityLocationMap * p = (cMapElement_uselessEntityLocationMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_uselessEntityLocationMap) ;
-    p->mAttribute_mLocation = inAttributeValue ;
+    p->mProperty_mLocation = inAttributeValue ;
   }
 }
 
@@ -12003,7 +12003,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_uselessEntityLocationMap_2D_element cEnumerator_uselessEntityLocationMap::current (LOCATION_ARGS) const {
   const cMapElement_uselessEntityLocationMap * p = (const cMapElement_uselessEntityLocationMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_uselessEntityLocationMap) ;
-  return GALGAS_uselessEntityLocationMap_2D_element (p->mAttribute_lkey, p->mAttribute_mLocation) ;
+  return GALGAS_uselessEntityLocationMap_2D_element (p->mProperty_lkey, p->mProperty_mLocation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12011,7 +12011,7 @@ GALGAS_uselessEntityLocationMap_2D_element cEnumerator_uselessEntityLocationMap:
 GALGAS_lstring cEnumerator_uselessEntityLocationMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
+  return p->mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12019,7 +12019,7 @@ GALGAS_lstring cEnumerator_uselessEntityLocationMap::current_lkey (LOCATION_ARGS
 GALGAS_location cEnumerator_uselessEntityLocationMap::current_mLocation (LOCATION_ARGS) const {
   const cMapElement_uselessEntityLocationMap * p = (const cMapElement_uselessEntityLocationMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_uselessEntityLocationMap) ;
-  return p->mAttribute_mLocation ;
+  return p->mProperty_mLocation ;
 }
 
 
@@ -12119,7 +12119,7 @@ bool cCollectionElement_castInstructionBranchListAST::isValid (void) const {
 
 cCollectionElement * cCollectionElement_castInstructionBranchListAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_castInstructionBranchListAST (mObject.mAttribute_mTypeName, mObject.mAttribute_mConstantVarName, mObject.mAttribute_mInstructionList, mObject.mAttribute_mTypeComparisonKind, mObject.mAttribute_mEndOfInstructions COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_castInstructionBranchListAST (mObject.mProperty_mTypeName, mObject.mProperty_mConstantVarName, mObject.mProperty_mInstructionList, mObject.mProperty_mTypeComparisonKind, mObject.mProperty_mEndOfInstructions COMMA_HERE)) ;
   return result ;
 }
 
@@ -12129,23 +12129,23 @@ void cCollectionElement_castInstructionBranchListAST::description (C_String & io
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTypeName" ":" ;
-  mObject.mAttribute_mTypeName.description (ioString, inIndentation) ;
+  mObject.mProperty_mTypeName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mConstantVarName" ":" ;
-  mObject.mAttribute_mConstantVarName.description (ioString, inIndentation) ;
+  mObject.mProperty_mConstantVarName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstructionList" ":" ;
-  mObject.mAttribute_mInstructionList.description (ioString, inIndentation) ;
+  mObject.mProperty_mInstructionList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTypeComparisonKind" ":" ;
-  mObject.mAttribute_mTypeComparisonKind.description (ioString, inIndentation) ;
+  mObject.mProperty_mTypeComparisonKind.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mEndOfInstructions" ":" ;
-  mObject.mAttribute_mEndOfInstructions.description (ioString, inIndentation) ;
+  mObject.mProperty_mEndOfInstructions.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12271,11 +12271,11 @@ void GALGAS_castInstructionBranchListAST::setter_removeAtIndex (GALGAS_lstring &
       outOperand4.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_castInstructionBranchListAST) ;
-      outOperand0 = p->mObject.mAttribute_mTypeName ;
-      outOperand1 = p->mObject.mAttribute_mConstantVarName ;
-      outOperand2 = p->mObject.mAttribute_mInstructionList ;
-      outOperand3 = p->mObject.mAttribute_mTypeComparisonKind ;
-      outOperand4 = p->mObject.mAttribute_mEndOfInstructions ;
+      outOperand0 = p->mObject.mProperty_mTypeName ;
+      outOperand1 = p->mObject.mProperty_mConstantVarName ;
+      outOperand2 = p->mObject.mProperty_mInstructionList ;
+      outOperand3 = p->mObject.mProperty_mTypeComparisonKind ;
+      outOperand4 = p->mObject.mProperty_mEndOfInstructions ;
     }
   }
 }
@@ -12300,11 +12300,11 @@ void GALGAS_castInstructionBranchListAST::setter_popFirst (GALGAS_lstring & outO
     outOperand4.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_castInstructionBranchListAST) ;
-    outOperand0 = p->mObject.mAttribute_mTypeName ;
-    outOperand1 = p->mObject.mAttribute_mConstantVarName ;
-    outOperand2 = p->mObject.mAttribute_mInstructionList ;
-    outOperand3 = p->mObject.mAttribute_mTypeComparisonKind ;
-    outOperand4 = p->mObject.mAttribute_mEndOfInstructions ;
+    outOperand0 = p->mObject.mProperty_mTypeName ;
+    outOperand1 = p->mObject.mProperty_mConstantVarName ;
+    outOperand2 = p->mObject.mProperty_mInstructionList ;
+    outOperand3 = p->mObject.mProperty_mTypeComparisonKind ;
+    outOperand4 = p->mObject.mProperty_mEndOfInstructions ;
   }
 }
 
@@ -12328,11 +12328,11 @@ void GALGAS_castInstructionBranchListAST::setter_popLast (GALGAS_lstring & outOp
     outOperand4.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_castInstructionBranchListAST) ;
-    outOperand0 = p->mObject.mAttribute_mTypeName ;
-    outOperand1 = p->mObject.mAttribute_mConstantVarName ;
-    outOperand2 = p->mObject.mAttribute_mInstructionList ;
-    outOperand3 = p->mObject.mAttribute_mTypeComparisonKind ;
-    outOperand4 = p->mObject.mAttribute_mEndOfInstructions ;
+    outOperand0 = p->mObject.mProperty_mTypeName ;
+    outOperand1 = p->mObject.mProperty_mConstantVarName ;
+    outOperand2 = p->mObject.mProperty_mInstructionList ;
+    outOperand3 = p->mObject.mProperty_mTypeComparisonKind ;
+    outOperand4 = p->mObject.mProperty_mEndOfInstructions ;
   }
 }
 
@@ -12356,11 +12356,11 @@ void GALGAS_castInstructionBranchListAST::method_first (GALGAS_lstring & outOper
     outOperand4.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_castInstructionBranchListAST) ;
-    outOperand0 = p->mObject.mAttribute_mTypeName ;
-    outOperand1 = p->mObject.mAttribute_mConstantVarName ;
-    outOperand2 = p->mObject.mAttribute_mInstructionList ;
-    outOperand3 = p->mObject.mAttribute_mTypeComparisonKind ;
-    outOperand4 = p->mObject.mAttribute_mEndOfInstructions ;
+    outOperand0 = p->mObject.mProperty_mTypeName ;
+    outOperand1 = p->mObject.mProperty_mConstantVarName ;
+    outOperand2 = p->mObject.mProperty_mInstructionList ;
+    outOperand3 = p->mObject.mProperty_mTypeComparisonKind ;
+    outOperand4 = p->mObject.mProperty_mEndOfInstructions ;
   }
 }
 
@@ -12384,11 +12384,11 @@ void GALGAS_castInstructionBranchListAST::method_last (GALGAS_lstring & outOpera
     outOperand4.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_castInstructionBranchListAST) ;
-    outOperand0 = p->mObject.mAttribute_mTypeName ;
-    outOperand1 = p->mObject.mAttribute_mConstantVarName ;
-    outOperand2 = p->mObject.mAttribute_mInstructionList ;
-    outOperand3 = p->mObject.mAttribute_mTypeComparisonKind ;
-    outOperand4 = p->mObject.mAttribute_mEndOfInstructions ;
+    outOperand0 = p->mObject.mProperty_mTypeName ;
+    outOperand1 = p->mObject.mProperty_mConstantVarName ;
+    outOperand2 = p->mObject.mProperty_mInstructionList ;
+    outOperand3 = p->mObject.mProperty_mTypeComparisonKind ;
+    outOperand4 = p->mObject.mProperty_mEndOfInstructions ;
   }
 }
 
@@ -12453,7 +12453,7 @@ GALGAS_lstring GALGAS_castInstructionBranchListAST::getter_mTypeNameAtIndex (con
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_castInstructionBranchListAST) ;
-    result = p->mObject.mAttribute_mTypeName ;
+    result = p->mObject.mProperty_mTypeName ;
   }
   return result ;
 }
@@ -12468,7 +12468,7 @@ GALGAS_lstring GALGAS_castInstructionBranchListAST::getter_mConstantVarNameAtInd
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_castInstructionBranchListAST) ;
-    result = p->mObject.mAttribute_mConstantVarName ;
+    result = p->mObject.mProperty_mConstantVarName ;
   }
   return result ;
 }
@@ -12483,7 +12483,7 @@ GALGAS_semanticInstructionListAST GALGAS_castInstructionBranchListAST::getter_mI
   GALGAS_semanticInstructionListAST result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_castInstructionBranchListAST) ;
-    result = p->mObject.mAttribute_mInstructionList ;
+    result = p->mObject.mProperty_mInstructionList ;
   }
   return result ;
 }
@@ -12498,7 +12498,7 @@ GALGAS_dynamicTypeComparisonKind GALGAS_castInstructionBranchListAST::getter_mTy
   GALGAS_dynamicTypeComparisonKind result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_castInstructionBranchListAST) ;
-    result = p->mObject.mAttribute_mTypeComparisonKind ;
+    result = p->mObject.mProperty_mTypeComparisonKind ;
   }
   return result ;
 }
@@ -12513,7 +12513,7 @@ GALGAS_location GALGAS_castInstructionBranchListAST::getter_mEndOfInstructionsAt
   GALGAS_location result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_castInstructionBranchListAST) ;
-    result = p->mObject.mAttribute_mEndOfInstructions ;
+    result = p->mObject.mProperty_mEndOfInstructions ;
   }
   return result ;
 }
@@ -12542,7 +12542,7 @@ GALGAS_castInstructionBranchListAST_2D_element cEnumerator_castInstructionBranch
 GALGAS_lstring cEnumerator_castInstructionBranchListAST::current_mTypeName (LOCATION_ARGS) const {
   const cCollectionElement_castInstructionBranchListAST * p = (const cCollectionElement_castInstructionBranchListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_castInstructionBranchListAST) ;
-  return p->mObject.mAttribute_mTypeName ;
+  return p->mObject.mProperty_mTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12550,7 +12550,7 @@ GALGAS_lstring cEnumerator_castInstructionBranchListAST::current_mTypeName (LOCA
 GALGAS_lstring cEnumerator_castInstructionBranchListAST::current_mConstantVarName (LOCATION_ARGS) const {
   const cCollectionElement_castInstructionBranchListAST * p = (const cCollectionElement_castInstructionBranchListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_castInstructionBranchListAST) ;
-  return p->mObject.mAttribute_mConstantVarName ;
+  return p->mObject.mProperty_mConstantVarName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12558,7 +12558,7 @@ GALGAS_lstring cEnumerator_castInstructionBranchListAST::current_mConstantVarNam
 GALGAS_semanticInstructionListAST cEnumerator_castInstructionBranchListAST::current_mInstructionList (LOCATION_ARGS) const {
   const cCollectionElement_castInstructionBranchListAST * p = (const cCollectionElement_castInstructionBranchListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_castInstructionBranchListAST) ;
-  return p->mObject.mAttribute_mInstructionList ;
+  return p->mObject.mProperty_mInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12566,7 +12566,7 @@ GALGAS_semanticInstructionListAST cEnumerator_castInstructionBranchListAST::curr
 GALGAS_dynamicTypeComparisonKind cEnumerator_castInstructionBranchListAST::current_mTypeComparisonKind (LOCATION_ARGS) const {
   const cCollectionElement_castInstructionBranchListAST * p = (const cCollectionElement_castInstructionBranchListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_castInstructionBranchListAST) ;
-  return p->mObject.mAttribute_mTypeComparisonKind ;
+  return p->mObject.mProperty_mTypeComparisonKind ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12574,7 +12574,7 @@ GALGAS_dynamicTypeComparisonKind cEnumerator_castInstructionBranchListAST::curre
 GALGAS_location cEnumerator_castInstructionBranchListAST::current_mEndOfInstructions (LOCATION_ARGS) const {
   const cCollectionElement_castInstructionBranchListAST * p = (const cCollectionElement_castInstructionBranchListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_castInstructionBranchListAST) ;
-  return p->mObject.mAttribute_mEndOfInstructions ;
+  return p->mObject.mProperty_mEndOfInstructions ;
 }
 
 
@@ -12632,19 +12632,19 @@ typeComparisonResult cPtr_structuredCastInstructionAST::dynamicObjectCompare (co
   const cPtr_structuredCastInstructionAST * p = (const cPtr_structuredCastInstructionAST *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_structuredCastInstructionAST) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mInstructionLocation.objectCompare (p->mAttribute_mInstructionLocation) ;
+    result = mProperty_mInstructionLocation.objectCompare (p->mProperty_mInstructionLocation) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mCastExpression.objectCompare (p->mAttribute_mCastExpression) ;
+    result = mProperty_mCastExpression.objectCompare (p->mProperty_mCastExpression) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mCastInstructionBranchList.objectCompare (p->mAttribute_mCastInstructionBranchList) ;
+    result = mProperty_mCastInstructionBranchList.objectCompare (p->mProperty_mCastInstructionBranchList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mElseInstructionList.objectCompare (p->mAttribute_mElseInstructionList) ;
+    result = mProperty_mElseInstructionList.objectCompare (p->mProperty_mElseInstructionList) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mEndOfCastInstruction.objectCompare (p->mAttribute_mEndOfCastInstruction) ;
+    result = mProperty_mEndOfCastInstruction.objectCompare (p->mProperty_mEndOfCastInstruction) ;
   }
   return result ;
 }
@@ -12703,7 +12703,7 @@ GALGAS_semanticExpressionAST GALGAS_structuredCastInstructionAST::getter_mCastEx
   if (NULL != mObjectPtr) {
     const cPtr_structuredCastInstructionAST * p = (const cPtr_structuredCastInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_structuredCastInstructionAST) ;
-    result = p->mAttribute_mCastExpression ;
+    result = p->mProperty_mCastExpression ;
   }
   return result ;
 }
@@ -12711,7 +12711,7 @@ GALGAS_semanticExpressionAST GALGAS_structuredCastInstructionAST::getter_mCastEx
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticExpressionAST cPtr_structuredCastInstructionAST::getter_mCastExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCastExpression ;
+  return mProperty_mCastExpression ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12721,7 +12721,7 @@ GALGAS_castInstructionBranchListAST GALGAS_structuredCastInstructionAST::getter_
   if (NULL != mObjectPtr) {
     const cPtr_structuredCastInstructionAST * p = (const cPtr_structuredCastInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_structuredCastInstructionAST) ;
-    result = p->mAttribute_mCastInstructionBranchList ;
+    result = p->mProperty_mCastInstructionBranchList ;
   }
   return result ;
 }
@@ -12729,7 +12729,7 @@ GALGAS_castInstructionBranchListAST GALGAS_structuredCastInstructionAST::getter_
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_castInstructionBranchListAST cPtr_structuredCastInstructionAST::getter_mCastInstructionBranchList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mCastInstructionBranchList ;
+  return mProperty_mCastInstructionBranchList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12739,7 +12739,7 @@ GALGAS_semanticInstructionListAST GALGAS_structuredCastInstructionAST::getter_mE
   if (NULL != mObjectPtr) {
     const cPtr_structuredCastInstructionAST * p = (const cPtr_structuredCastInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_structuredCastInstructionAST) ;
-    result = p->mAttribute_mElseInstructionList ;
+    result = p->mProperty_mElseInstructionList ;
   }
   return result ;
 }
@@ -12747,7 +12747,7 @@ GALGAS_semanticInstructionListAST GALGAS_structuredCastInstructionAST::getter_mE
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticInstructionListAST cPtr_structuredCastInstructionAST::getter_mElseInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mElseInstructionList ;
+  return mProperty_mElseInstructionList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12757,7 +12757,7 @@ GALGAS_location GALGAS_structuredCastInstructionAST::getter_mEndOfCastInstructio
   if (NULL != mObjectPtr) {
     const cPtr_structuredCastInstructionAST * p = (const cPtr_structuredCastInstructionAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_structuredCastInstructionAST) ;
-    result = p->mAttribute_mEndOfCastInstruction ;
+    result = p->mProperty_mEndOfCastInstruction ;
   }
   return result ;
 }
@@ -12765,7 +12765,7 @@ GALGAS_location GALGAS_structuredCastInstructionAST::getter_mEndOfCastInstructio
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location cPtr_structuredCastInstructionAST::getter_mEndOfCastInstruction (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEndOfCastInstruction ;
+  return mProperty_mEndOfCastInstruction ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12779,10 +12779,10 @@ cPtr_structuredCastInstructionAST::cPtr_structuredCastInstructionAST (const GALG
                                                                       const GALGAS_location & in_mEndOfCastInstruction
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
-mAttribute_mCastExpression (in_mCastExpression),
-mAttribute_mCastInstructionBranchList (in_mCastInstructionBranchList),
-mAttribute_mElseInstructionList (in_mElseInstructionList),
-mAttribute_mEndOfCastInstruction (in_mEndOfCastInstruction) {
+mProperty_mCastExpression (in_mCastExpression),
+mProperty_mCastInstructionBranchList (in_mCastInstructionBranchList),
+mProperty_mElseInstructionList (in_mElseInstructionList),
+mProperty_mEndOfCastInstruction (in_mEndOfCastInstruction) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12794,15 +12794,15 @@ const C_galgas_type_descriptor * cPtr_structuredCastInstructionAST::classDescrip
 void cPtr_structuredCastInstructionAST::description (C_String & ioString,
                                                      const int32_t inIndentation) const {
   ioString << "[@structuredCastInstructionAST:" ;
-  mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
+  mProperty_mInstructionLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mCastExpression.description (ioString, inIndentation+1) ;
+  mProperty_mCastExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mCastInstructionBranchList.description (ioString, inIndentation+1) ;
+  mProperty_mCastInstructionBranchList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mElseInstructionList.description (ioString, inIndentation+1) ;
+  mProperty_mElseInstructionList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mEndOfCastInstruction.description (ioString, inIndentation+1) ;
+  mProperty_mEndOfCastInstruction.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -12810,7 +12810,7 @@ void cPtr_structuredCastInstructionAST::description (C_String & ioString,
 
 acPtr_class * cPtr_structuredCastInstructionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_structuredCastInstructionAST (mAttribute_mInstructionLocation, mAttribute_mCastExpression, mAttribute_mCastInstructionBranchList, mAttribute_mElseInstructionList, mAttribute_mEndOfCastInstruction COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_structuredCastInstructionAST (mProperty_mInstructionLocation, mProperty_mCastExpression, mProperty_mCastInstructionBranchList, mProperty_mElseInstructionList, mProperty_mEndOfCastInstruction COMMA_THERE)) ;
   return ptr ;
 }
 

@@ -15,7 +15,7 @@
 cMapElement::cMapElement (const GALGAS_lstring & inLKey
                           COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mAttribute_lkey (inLKey) {
+mProperty_lkey (inLKey) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -148,7 +148,7 @@ bool cCollectionElement_stringlist::isValid (void) const {
 
 cCollectionElement * cCollectionElement_stringlist::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_stringlist (mObject.mAttribute_mValue COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_stringlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
 }
 
@@ -158,7 +158,7 @@ void cCollectionElement_stringlist::description (C_String & ioString, const int3
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
-  mObject.mAttribute_mValue.description (ioString, inIndentation) ;
+  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -256,7 +256,7 @@ void GALGAS_stringlist::setter_removeAtIndex (GALGAS_string & outOperand0,
       outOperand0.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_stringlist) ;
-      outOperand0 = p->mObject.mAttribute_mValue ;
+      outOperand0 = p->mObject.mProperty_mValue ;
     }
   }
 }
@@ -273,7 +273,7 @@ void GALGAS_stringlist::setter_popFirst (GALGAS_string & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_stringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -289,7 +289,7 @@ void GALGAS_stringlist::setter_popLast (GALGAS_string & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_stringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -305,7 +305,7 @@ void GALGAS_stringlist::method_first (GALGAS_string & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_stringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -321,7 +321,7 @@ void GALGAS_stringlist::method_last (GALGAS_string & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_stringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -386,7 +386,7 @@ void GALGAS_stringlist::setter_setMValueAtIndex (GALGAS_string inOperand,
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_stringlist) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mAttribute_mValue = inOperand ;
+    p->mObject.mProperty_mValue = inOperand ;
   }
 }
 
@@ -400,7 +400,7 @@ GALGAS_string GALGAS_stringlist::getter_mValueAtIndex (const GALGAS_uint & inInd
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_stringlist) ;
-    result = p->mObject.mAttribute_mValue ;
+    result = p->mObject.mProperty_mValue ;
   }
   return result ;
 }
@@ -429,7 +429,7 @@ GALGAS_stringlist_2D_element cEnumerator_stringlist::current (LOCATION_ARGS) con
 GALGAS_string cEnumerator_stringlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_stringlist * p = (const cCollectionElement_stringlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_stringlist) ;
-  return p->mObject.mAttribute_mValue ;
+  return p->mObject.mProperty_mValue ;
 }
 
 
@@ -608,7 +608,7 @@ bool cCollectionElement_lstringlist::isValid (void) const {
 
 cCollectionElement * cCollectionElement_lstringlist::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_lstringlist (mObject.mAttribute_mValue COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_lstringlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
 }
 
@@ -618,7 +618,7 @@ void cCollectionElement_lstringlist::description (C_String & ioString, const int
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
-  mObject.mAttribute_mValue.description (ioString, inIndentation) ;
+  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -716,7 +716,7 @@ void GALGAS_lstringlist::setter_removeAtIndex (GALGAS_lstring & outOperand0,
       outOperand0.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-      outOperand0 = p->mObject.mAttribute_mValue ;
+      outOperand0 = p->mObject.mProperty_mValue ;
     }
   }
 }
@@ -733,7 +733,7 @@ void GALGAS_lstringlist::setter_popFirst (GALGAS_lstring & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -749,7 +749,7 @@ void GALGAS_lstringlist::setter_popLast (GALGAS_lstring & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -765,7 +765,7 @@ void GALGAS_lstringlist::method_first (GALGAS_lstring & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -781,7 +781,7 @@ void GALGAS_lstringlist::method_last (GALGAS_lstring & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -846,7 +846,7 @@ void GALGAS_lstringlist::setter_setMValueAtIndex (GALGAS_lstring inOperand,
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_lstringlist) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mAttribute_mValue = inOperand ;
+    p->mObject.mProperty_mValue = inOperand ;
   }
 }
 
@@ -860,7 +860,7 @@ GALGAS_lstring GALGAS_lstringlist::getter_mValueAtIndex (const GALGAS_uint & inI
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-    result = p->mObject.mAttribute_mValue ;
+    result = p->mObject.mProperty_mValue ;
   }
   return result ;
 }
@@ -889,7 +889,7 @@ GALGAS_lstringlist_2D_element cEnumerator_lstringlist::current (LOCATION_ARGS) c
 GALGAS_lstring cEnumerator_lstringlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_lstringlist * p = (const cCollectionElement_lstringlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_lstringlist) ;
-  return p->mObject.mAttribute_mValue ;
+  return p->mObject.mProperty_mValue ;
 }
 
 
@@ -1113,7 +1113,7 @@ bool cCollectionElement__32_lstringlist::isValid (void) const {
 
 cCollectionElement * cCollectionElement__32_lstringlist::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement__32_lstringlist (mObject.mAttribute_mValue_30_, mObject.mAttribute_mValue_31_ COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement__32_lstringlist (mObject.mProperty_mValue_30_, mObject.mProperty_mValue_31_ COMMA_HERE)) ;
   return result ;
 }
 
@@ -1123,11 +1123,11 @@ void cCollectionElement__32_lstringlist::description (C_String & ioString, const
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue0" ":" ;
-  mObject.mAttribute_mValue_30_.description (ioString, inIndentation) ;
+  mObject.mProperty_mValue_30_.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue1" ":" ;
-  mObject.mAttribute_mValue_31_.description (ioString, inIndentation) ;
+  mObject.mProperty_mValue_31_.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1232,8 +1232,8 @@ void GALGAS__32_lstringlist::setter_removeAtIndex (GALGAS_lstring & outOperand0,
       outOperand1.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
-      outOperand0 = p->mObject.mAttribute_mValue_30_ ;
-      outOperand1 = p->mObject.mAttribute_mValue_31_ ;
+      outOperand0 = p->mObject.mProperty_mValue_30_ ;
+      outOperand1 = p->mObject.mProperty_mValue_31_ ;
     }
   }
 }
@@ -1252,8 +1252,8 @@ void GALGAS__32_lstringlist::setter_popFirst (GALGAS_lstring & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue_30_ ;
-    outOperand1 = p->mObject.mAttribute_mValue_31_ ;
+    outOperand0 = p->mObject.mProperty_mValue_30_ ;
+    outOperand1 = p->mObject.mProperty_mValue_31_ ;
   }
 }
 
@@ -1271,8 +1271,8 @@ void GALGAS__32_lstringlist::setter_popLast (GALGAS_lstring & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue_30_ ;
-    outOperand1 = p->mObject.mAttribute_mValue_31_ ;
+    outOperand0 = p->mObject.mProperty_mValue_30_ ;
+    outOperand1 = p->mObject.mProperty_mValue_31_ ;
   }
 }
 
@@ -1290,8 +1290,8 @@ void GALGAS__32_lstringlist::method_first (GALGAS_lstring & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue_30_ ;
-    outOperand1 = p->mObject.mAttribute_mValue_31_ ;
+    outOperand0 = p->mObject.mProperty_mValue_30_ ;
+    outOperand1 = p->mObject.mProperty_mValue_31_ ;
   }
 }
 
@@ -1309,8 +1309,8 @@ void GALGAS__32_lstringlist::method_last (GALGAS_lstring & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue_30_ ;
-    outOperand1 = p->mObject.mAttribute_mValue_31_ ;
+    outOperand0 = p->mObject.mProperty_mValue_30_ ;
+    outOperand1 = p->mObject.mProperty_mValue_31_ ;
   }
 }
 
@@ -1375,7 +1375,7 @@ void GALGAS__32_lstringlist::setter_setMValue_30_AtIndex (GALGAS_lstring inOpera
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mAttribute_mValue_30_ = inOperand ;
+    p->mObject.mProperty_mValue_30_ = inOperand ;
   }
 }
 
@@ -1389,7 +1389,7 @@ GALGAS_lstring GALGAS__32_lstringlist::getter_mValue_30_AtIndex (const GALGAS_ui
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
-    result = p->mObject.mAttribute_mValue_30_ ;
+    result = p->mObject.mProperty_mValue_30_ ;
   }
   return result ;
 }
@@ -1404,7 +1404,7 @@ void GALGAS__32_lstringlist::setter_setMValue_31_AtIndex (GALGAS_lstring inOpera
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mAttribute_mValue_31_ = inOperand ;
+    p->mObject.mProperty_mValue_31_ = inOperand ;
   }
 }
 
@@ -1418,7 +1418,7 @@ GALGAS_lstring GALGAS__32_lstringlist::getter_mValue_31_AtIndex (const GALGAS_ui
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
-    result = p->mObject.mAttribute_mValue_31_ ;
+    result = p->mObject.mProperty_mValue_31_ ;
   }
   return result ;
 }
@@ -1447,7 +1447,7 @@ GALGAS__32_lstringlist_2D_element cEnumerator__32_lstringlist::current (LOCATION
 GALGAS_lstring cEnumerator__32_lstringlist::current_mValue_30_ (LOCATION_ARGS) const {
   const cCollectionElement__32_lstringlist * p = (const cCollectionElement__32_lstringlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
-  return p->mObject.mAttribute_mValue_30_ ;
+  return p->mObject.mProperty_mValue_30_ ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1455,7 +1455,7 @@ GALGAS_lstring cEnumerator__32_lstringlist::current_mValue_30_ (LOCATION_ARGS) c
 GALGAS_lstring cEnumerator__32_lstringlist::current_mValue_31_ (LOCATION_ARGS) const {
   const cCollectionElement__32_lstringlist * p = (const cCollectionElement__32_lstringlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement__32_lstringlist) ;
-  return p->mObject.mAttribute_mValue_31_ ;
+  return p->mObject.mProperty_mValue_31_ ;
 }
 
 
@@ -1507,8 +1507,8 @@ GALGAS_lbool GALGAS_lbool::extractObject (const GALGAS_object & inObject,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lbool::GALGAS_lbool (void) :
-mAttribute_bool (),
-mAttribute_location () {
+mProperty_bool (),
+mProperty_location () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1520,8 +1520,8 @@ GALGAS_lbool::~ GALGAS_lbool (void) {
 
 GALGAS_lbool::GALGAS_lbool (const GALGAS_bool & inOperand0,
                             const GALGAS_location & inOperand1) :
-mAttribute_bool (inOperand0),
-mAttribute_location (inOperand1) {
+mProperty_bool (inOperand0),
+mProperty_location (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1548,10 +1548,10 @@ GALGAS_lbool GALGAS_lbool::constructor_new (const GALGAS_bool & inOperand0,
 typeComparisonResult GALGAS_lbool::objectCompare (const GALGAS_lbool & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_bool.objectCompare (inOperand.mAttribute_bool) ;
+    result = mProperty_bool.objectCompare (inOperand.mProperty_bool) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_location.objectCompare (inOperand.mAttribute_location) ;
+    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
 }
@@ -1559,14 +1559,14 @@ typeComparisonResult GALGAS_lbool::objectCompare (const GALGAS_lbool & inOperand
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_lbool::isValid (void) const {
-  return mAttribute_bool.isValid () && mAttribute_location.isValid () ;
+  return mProperty_bool.isValid () && mProperty_location.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_lbool::drop (void) {
-  mAttribute_bool.drop () ;
-  mAttribute_location.drop () ;
+  mProperty_bool.drop () ;
+  mProperty_location.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1577,9 +1577,9 @@ void GALGAS_lbool::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_bool.description (ioString, inIndentation+1) ;
+    mProperty_bool.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_location.description (ioString, inIndentation+1) ;
+    mProperty_location.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -1587,13 +1587,13 @@ void GALGAS_lbool::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bool GALGAS_lbool::getter_bool (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_bool ;
+  return mProperty_bool ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location GALGAS_lbool::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_location ;
+  return mProperty_location ;
 }
 
 
@@ -1902,7 +1902,7 @@ bool cCollectionElement__32_stringlist::isValid (void) const {
 
 cCollectionElement * cCollectionElement__32_stringlist::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement__32_stringlist (mObject.mAttribute_mValue_30_, mObject.mAttribute_mValue_31_ COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement__32_stringlist (mObject.mProperty_mValue_30_, mObject.mProperty_mValue_31_ COMMA_HERE)) ;
   return result ;
 }
 
@@ -1912,11 +1912,11 @@ void cCollectionElement__32_stringlist::description (C_String & ioString, const 
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue0" ":" ;
-  mObject.mAttribute_mValue_30_.description (ioString, inIndentation) ;
+  mObject.mProperty_mValue_30_.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue1" ":" ;
-  mObject.mAttribute_mValue_31_.description (ioString, inIndentation) ;
+  mObject.mProperty_mValue_31_.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2021,8 +2021,8 @@ void GALGAS__32_stringlist::setter_removeAtIndex (GALGAS_string & outOperand0,
       outOperand1.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-      outOperand0 = p->mObject.mAttribute_mValue_30_ ;
-      outOperand1 = p->mObject.mAttribute_mValue_31_ ;
+      outOperand0 = p->mObject.mProperty_mValue_30_ ;
+      outOperand1 = p->mObject.mProperty_mValue_31_ ;
     }
   }
 }
@@ -2041,8 +2041,8 @@ void GALGAS__32_stringlist::setter_popFirst (GALGAS_string & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue_30_ ;
-    outOperand1 = p->mObject.mAttribute_mValue_31_ ;
+    outOperand0 = p->mObject.mProperty_mValue_30_ ;
+    outOperand1 = p->mObject.mProperty_mValue_31_ ;
   }
 }
 
@@ -2060,8 +2060,8 @@ void GALGAS__32_stringlist::setter_popLast (GALGAS_string & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue_30_ ;
-    outOperand1 = p->mObject.mAttribute_mValue_31_ ;
+    outOperand0 = p->mObject.mProperty_mValue_30_ ;
+    outOperand1 = p->mObject.mProperty_mValue_31_ ;
   }
 }
 
@@ -2079,8 +2079,8 @@ void GALGAS__32_stringlist::method_first (GALGAS_string & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue_30_ ;
-    outOperand1 = p->mObject.mAttribute_mValue_31_ ;
+    outOperand0 = p->mObject.mProperty_mValue_30_ ;
+    outOperand1 = p->mObject.mProperty_mValue_31_ ;
   }
 }
 
@@ -2098,8 +2098,8 @@ void GALGAS__32_stringlist::method_last (GALGAS_string & outOperand0,
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue_30_ ;
-    outOperand1 = p->mObject.mAttribute_mValue_31_ ;
+    outOperand0 = p->mObject.mProperty_mValue_30_ ;
+    outOperand1 = p->mObject.mProperty_mValue_31_ ;
   }
 }
 
@@ -2164,7 +2164,7 @@ void GALGAS__32_stringlist::setter_setMValue_30_AtIndex (GALGAS_string inOperand
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mAttribute_mValue_30_ = inOperand ;
+    p->mObject.mProperty_mValue_30_ = inOperand ;
   }
 }
 
@@ -2178,7 +2178,7 @@ GALGAS_string GALGAS__32_stringlist::getter_mValue_30_AtIndex (const GALGAS_uint
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-    result = p->mObject.mAttribute_mValue_30_ ;
+    result = p->mObject.mProperty_mValue_30_ ;
   }
   return result ;
 }
@@ -2193,7 +2193,7 @@ void GALGAS__32_stringlist::setter_setMValue_31_AtIndex (GALGAS_string inOperand
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mAttribute_mValue_31_ = inOperand ;
+    p->mObject.mProperty_mValue_31_ = inOperand ;
   }
 }
 
@@ -2207,7 +2207,7 @@ GALGAS_string GALGAS__32_stringlist::getter_mValue_31_AtIndex (const GALGAS_uint
   GALGAS_string result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-    result = p->mObject.mAttribute_mValue_31_ ;
+    result = p->mObject.mProperty_mValue_31_ ;
   }
   return result ;
 }
@@ -2236,7 +2236,7 @@ GALGAS__32_stringlist_2D_element cEnumerator__32_stringlist::current (LOCATION_A
 GALGAS_string cEnumerator__32_stringlist::current_mValue_30_ (LOCATION_ARGS) const {
   const cCollectionElement__32_stringlist * p = (const cCollectionElement__32_stringlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-  return p->mObject.mAttribute_mValue_30_ ;
+  return p->mObject.mProperty_mValue_30_ ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2244,7 +2244,7 @@ GALGAS_string cEnumerator__32_stringlist::current_mValue_30_ (LOCATION_ARGS) con
 GALGAS_string cEnumerator__32_stringlist::current_mValue_31_ (LOCATION_ARGS) const {
   const cCollectionElement__32_stringlist * p = (const cCollectionElement__32_stringlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement__32_stringlist) ;
-  return p->mObject.mAttribute_mValue_31_ ;
+  return p->mObject.mProperty_mValue_31_ ;
 }
 
 
@@ -2681,7 +2681,7 @@ bool cCollectionElement_functionlist::isValid (void) const {
 
 cCollectionElement * cCollectionElement_functionlist::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_functionlist (mObject.mAttribute_mValue COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_functionlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
 }
 
@@ -2691,7 +2691,7 @@ void cCollectionElement_functionlist::description (C_String & ioString, const in
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
-  mObject.mAttribute_mValue.description (ioString, inIndentation) ;
+  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2789,7 +2789,7 @@ void GALGAS_functionlist::setter_removeAtIndex (GALGAS_function & outOperand0,
       outOperand0.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_functionlist) ;
-      outOperand0 = p->mObject.mAttribute_mValue ;
+      outOperand0 = p->mObject.mProperty_mValue ;
     }
   }
 }
@@ -2806,7 +2806,7 @@ void GALGAS_functionlist::setter_popFirst (GALGAS_function & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_functionlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2822,7 +2822,7 @@ void GALGAS_functionlist::setter_popLast (GALGAS_function & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_functionlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2838,7 +2838,7 @@ void GALGAS_functionlist::method_first (GALGAS_function & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_functionlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2854,7 +2854,7 @@ void GALGAS_functionlist::method_last (GALGAS_function & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_functionlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -2919,7 +2919,7 @@ void GALGAS_functionlist::setter_setMValueAtIndex (GALGAS_function inOperand,
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_functionlist) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mAttribute_mValue = inOperand ;
+    p->mObject.mProperty_mValue = inOperand ;
   }
 }
 
@@ -2933,7 +2933,7 @@ GALGAS_function GALGAS_functionlist::getter_mValueAtIndex (const GALGAS_uint & i
   GALGAS_function result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_functionlist) ;
-    result = p->mObject.mAttribute_mValue ;
+    result = p->mObject.mProperty_mValue ;
   }
   return result ;
 }
@@ -2962,7 +2962,7 @@ GALGAS_functionlist_2D_element cEnumerator_functionlist::current (LOCATION_ARGS)
 GALGAS_function cEnumerator_functionlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_functionlist * p = (const cCollectionElement_functionlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_functionlist) ;
-  return p->mObject.mAttribute_mValue ;
+  return p->mObject.mProperty_mValue ;
 }
 
 
@@ -3055,7 +3055,7 @@ bool cCollectionElement_luintlist::isValid (void) const {
 
 cCollectionElement * cCollectionElement_luintlist::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_luintlist (mObject.mAttribute_mValue COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_luintlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
 }
 
@@ -3065,7 +3065,7 @@ void cCollectionElement_luintlist::description (C_String & ioString, const int32
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
-  mObject.mAttribute_mValue.description (ioString, inIndentation) ;
+  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3163,7 +3163,7 @@ void GALGAS_luintlist::setter_removeAtIndex (GALGAS_luint & outOperand0,
       outOperand0.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_luintlist) ;
-      outOperand0 = p->mObject.mAttribute_mValue ;
+      outOperand0 = p->mObject.mProperty_mValue ;
     }
   }
 }
@@ -3180,7 +3180,7 @@ void GALGAS_luintlist::setter_popFirst (GALGAS_luint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_luintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3196,7 +3196,7 @@ void GALGAS_luintlist::setter_popLast (GALGAS_luint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_luintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3212,7 +3212,7 @@ void GALGAS_luintlist::method_first (GALGAS_luint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_luintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3228,7 +3228,7 @@ void GALGAS_luintlist::method_last (GALGAS_luint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_luintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3293,7 +3293,7 @@ void GALGAS_luintlist::setter_setMValueAtIndex (GALGAS_luint inOperand,
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_luintlist) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mAttribute_mValue = inOperand ;
+    p->mObject.mProperty_mValue = inOperand ;
   }
 }
 
@@ -3307,7 +3307,7 @@ GALGAS_luint GALGAS_luintlist::getter_mValueAtIndex (const GALGAS_uint & inIndex
   GALGAS_luint result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_luintlist) ;
-    result = p->mObject.mAttribute_mValue ;
+    result = p->mObject.mProperty_mValue ;
   }
   return result ;
 }
@@ -3336,7 +3336,7 @@ GALGAS_luintlist_2D_element cEnumerator_luintlist::current (LOCATION_ARGS) const
 GALGAS_luint cEnumerator_luintlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_luintlist * p = (const cCollectionElement_luintlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_luintlist) ;
-  return p->mObject.mAttribute_mValue ;
+  return p->mObject.mProperty_mValue ;
 }
 
 
@@ -3429,7 +3429,7 @@ bool cCollectionElement_objectlist::isValid (void) const {
 
 cCollectionElement * cCollectionElement_objectlist::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_objectlist (mObject.mAttribute_mValue COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_objectlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
 }
 
@@ -3439,7 +3439,7 @@ void cCollectionElement_objectlist::description (C_String & ioString, const int3
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
-  mObject.mAttribute_mValue.description (ioString, inIndentation) ;
+  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3537,7 +3537,7 @@ void GALGAS_objectlist::setter_removeAtIndex (GALGAS_object & outOperand0,
       outOperand0.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_objectlist) ;
-      outOperand0 = p->mObject.mAttribute_mValue ;
+      outOperand0 = p->mObject.mProperty_mValue ;
     }
   }
 }
@@ -3554,7 +3554,7 @@ void GALGAS_objectlist::setter_popFirst (GALGAS_object & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_objectlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3570,7 +3570,7 @@ void GALGAS_objectlist::setter_popLast (GALGAS_object & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_objectlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3586,7 +3586,7 @@ void GALGAS_objectlist::method_first (GALGAS_object & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_objectlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3602,7 +3602,7 @@ void GALGAS_objectlist::method_last (GALGAS_object & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_objectlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3667,7 +3667,7 @@ void GALGAS_objectlist::setter_setMValueAtIndex (GALGAS_object inOperand,
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_objectlist) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mAttribute_mValue = inOperand ;
+    p->mObject.mProperty_mValue = inOperand ;
   }
 }
 
@@ -3681,7 +3681,7 @@ GALGAS_object GALGAS_objectlist::getter_mValueAtIndex (const GALGAS_uint & inInd
   GALGAS_object result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_objectlist) ;
-    result = p->mObject.mAttribute_mValue ;
+    result = p->mObject.mProperty_mValue ;
   }
   return result ;
 }
@@ -3710,7 +3710,7 @@ GALGAS_objectlist_2D_element cEnumerator_objectlist::current (LOCATION_ARGS) con
 GALGAS_object cEnumerator_objectlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_objectlist * p = (const cCollectionElement_objectlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_objectlist) ;
-  return p->mObject.mAttribute_mValue ;
+  return p->mObject.mProperty_mValue ;
 }
 
 
@@ -3803,7 +3803,7 @@ bool cCollectionElement_typelist::isValid (void) const {
 
 cCollectionElement * cCollectionElement_typelist::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_typelist (mObject.mAttribute_mValue COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_typelist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
 }
 
@@ -3813,7 +3813,7 @@ void cCollectionElement_typelist::description (C_String & ioString, const int32_
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
-  mObject.mAttribute_mValue.description (ioString, inIndentation) ;
+  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3911,7 +3911,7 @@ void GALGAS_typelist::setter_removeAtIndex (GALGAS_type & outOperand0,
       outOperand0.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_typelist) ;
-      outOperand0 = p->mObject.mAttribute_mValue ;
+      outOperand0 = p->mObject.mProperty_mValue ;
     }
   }
 }
@@ -3928,7 +3928,7 @@ void GALGAS_typelist::setter_popFirst (GALGAS_type & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_typelist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3944,7 +3944,7 @@ void GALGAS_typelist::setter_popLast (GALGAS_type & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_typelist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3960,7 +3960,7 @@ void GALGAS_typelist::method_first (GALGAS_type & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_typelist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -3976,7 +3976,7 @@ void GALGAS_typelist::method_last (GALGAS_type & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_typelist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4041,7 +4041,7 @@ void GALGAS_typelist::setter_setMValueAtIndex (GALGAS_type inOperand,
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_typelist) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mAttribute_mValue = inOperand ;
+    p->mObject.mProperty_mValue = inOperand ;
   }
 }
 
@@ -4055,7 +4055,7 @@ GALGAS_type GALGAS_typelist::getter_mValueAtIndex (const GALGAS_uint & inIndex,
   GALGAS_type result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_typelist) ;
-    result = p->mObject.mAttribute_mValue ;
+    result = p->mObject.mProperty_mValue ;
   }
   return result ;
 }
@@ -4084,7 +4084,7 @@ GALGAS_typelist_2D_element cEnumerator_typelist::current (LOCATION_ARGS) const {
 GALGAS_type cEnumerator_typelist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_typelist * p = (const cCollectionElement_typelist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_typelist) ;
-  return p->mObject.mAttribute_mValue ;
+  return p->mObject.mProperty_mValue ;
 }
 
 
@@ -4177,7 +4177,7 @@ bool cCollectionElement_uintlist::isValid (void) const {
 
 cCollectionElement * cCollectionElement_uintlist::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_uintlist (mObject.mAttribute_mValue COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_uintlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
 }
 
@@ -4187,7 +4187,7 @@ void cCollectionElement_uintlist::description (C_String & ioString, const int32_
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
-  mObject.mAttribute_mValue.description (ioString, inIndentation) ;
+  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4285,7 +4285,7 @@ void GALGAS_uintlist::setter_removeAtIndex (GALGAS_uint & outOperand0,
       outOperand0.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_uintlist) ;
-      outOperand0 = p->mObject.mAttribute_mValue ;
+      outOperand0 = p->mObject.mProperty_mValue ;
     }
   }
 }
@@ -4302,7 +4302,7 @@ void GALGAS_uintlist::setter_popFirst (GALGAS_uint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_uintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4318,7 +4318,7 @@ void GALGAS_uintlist::setter_popLast (GALGAS_uint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_uintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4334,7 +4334,7 @@ void GALGAS_uintlist::method_first (GALGAS_uint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_uintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4350,7 +4350,7 @@ void GALGAS_uintlist::method_last (GALGAS_uint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_uintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4415,7 +4415,7 @@ void GALGAS_uintlist::setter_setMValueAtIndex (GALGAS_uint inOperand,
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_uintlist) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mAttribute_mValue = inOperand ;
+    p->mObject.mProperty_mValue = inOperand ;
   }
 }
 
@@ -4429,7 +4429,7 @@ GALGAS_uint GALGAS_uintlist::getter_mValueAtIndex (const GALGAS_uint & inIndex,
   GALGAS_uint result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_uintlist) ;
-    result = p->mObject.mAttribute_mValue ;
+    result = p->mObject.mProperty_mValue ;
   }
   return result ;
 }
@@ -4458,7 +4458,7 @@ GALGAS_uintlist_2D_element cEnumerator_uintlist::current (LOCATION_ARGS) const {
 GALGAS_uint cEnumerator_uintlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_uintlist * p = (const cCollectionElement_uintlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_uintlist) ;
-  return p->mObject.mAttribute_mValue ;
+  return p->mObject.mProperty_mValue ;
 }
 
 
@@ -4551,7 +4551,7 @@ bool cCollectionElement_uint_36__34_list::isValid (void) const {
 
 cCollectionElement * cCollectionElement_uint_36__34_list::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_uint_36__34_list (mObject.mAttribute_mValue COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_uint_36__34_list (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
 }
 
@@ -4561,7 +4561,7 @@ void cCollectionElement_uint_36__34_list::description (C_String & ioString, cons
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
-  mObject.mAttribute_mValue.description (ioString, inIndentation) ;
+  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4659,7 +4659,7 @@ void GALGAS_uint_36__34_list::setter_removeAtIndex (GALGAS_uint_36__34_ & outOpe
       outOperand0.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-      outOperand0 = p->mObject.mAttribute_mValue ;
+      outOperand0 = p->mObject.mProperty_mValue ;
     }
   }
 }
@@ -4676,7 +4676,7 @@ void GALGAS_uint_36__34_list::setter_popFirst (GALGAS_uint_36__34_ & outOperand0
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4692,7 +4692,7 @@ void GALGAS_uint_36__34_list::setter_popLast (GALGAS_uint_36__34_ & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4708,7 +4708,7 @@ void GALGAS_uint_36__34_list::method_first (GALGAS_uint_36__34_ & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4724,7 +4724,7 @@ void GALGAS_uint_36__34_list::method_last (GALGAS_uint_36__34_ & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -4789,7 +4789,7 @@ void GALGAS_uint_36__34_list::setter_setMValueAtIndex (GALGAS_uint_36__34_ inOpe
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mAttribute_mValue = inOperand ;
+    p->mObject.mProperty_mValue = inOperand ;
   }
 }
 
@@ -4803,7 +4803,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_list::getter_mValueAtIndex (const GALGAS_
   GALGAS_uint_36__34_ result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-    result = p->mObject.mAttribute_mValue ;
+    result = p->mObject.mProperty_mValue ;
   }
   return result ;
 }
@@ -4832,7 +4832,7 @@ GALGAS_uint_36__34_list_2D_element cEnumerator_uint_36__34_list::current (LOCATI
 GALGAS_uint_36__34_ cEnumerator_uint_36__34_list::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_uint_36__34_list * p = (const cCollectionElement_uint_36__34_list *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_uint_36__34_list) ;
-  return p->mObject.mAttribute_mValue ;
+  return p->mObject.mProperty_mValue ;
 }
 
 
@@ -4925,7 +4925,7 @@ bool cCollectionElement_bigintlist::isValid (void) const {
 
 cCollectionElement * cCollectionElement_bigintlist::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_bigintlist (mObject.mAttribute_mValue COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_bigintlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
 }
 
@@ -4935,7 +4935,7 @@ void cCollectionElement_bigintlist::description (C_String & ioString, const int3
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
-  mObject.mAttribute_mValue.description (ioString, inIndentation) ;
+  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5033,7 +5033,7 @@ void GALGAS_bigintlist::setter_removeAtIndex (GALGAS_bigint & outOperand0,
       outOperand0.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-      outOperand0 = p->mObject.mAttribute_mValue ;
+      outOperand0 = p->mObject.mProperty_mValue ;
     }
   }
 }
@@ -5050,7 +5050,7 @@ void GALGAS_bigintlist::setter_popFirst (GALGAS_bigint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -5066,7 +5066,7 @@ void GALGAS_bigintlist::setter_popLast (GALGAS_bigint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -5082,7 +5082,7 @@ void GALGAS_bigintlist::method_first (GALGAS_bigint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -5098,7 +5098,7 @@ void GALGAS_bigintlist::method_last (GALGAS_bigint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -5163,7 +5163,7 @@ void GALGAS_bigintlist::setter_setMValueAtIndex (GALGAS_bigint inOperand,
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_bigintlist) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mAttribute_mValue = inOperand ;
+    p->mObject.mProperty_mValue = inOperand ;
   }
 }
 
@@ -5177,7 +5177,7 @@ GALGAS_bigint GALGAS_bigintlist::getter_mValueAtIndex (const GALGAS_uint & inInd
   GALGAS_bigint result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-    result = p->mObject.mAttribute_mValue ;
+    result = p->mObject.mProperty_mValue ;
   }
   return result ;
 }
@@ -5206,7 +5206,7 @@ GALGAS_bigintlist_2D_element cEnumerator_bigintlist::current (LOCATION_ARGS) con
 GALGAS_bigint cEnumerator_bigintlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_bigintlist * p = (const cCollectionElement_bigintlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_bigintlist) ;
-  return p->mObject.mAttribute_mValue ;
+  return p->mObject.mProperty_mValue ;
 }
 
 
@@ -5299,7 +5299,7 @@ bool cCollectionElement_lbigintlist::isValid (void) const {
 
 cCollectionElement * cCollectionElement_lbigintlist::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_lbigintlist (mObject.mAttribute_mValue COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_lbigintlist (mObject.mProperty_mValue COMMA_HERE)) ;
   return result ;
 }
 
@@ -5309,7 +5309,7 @@ void cCollectionElement_lbigintlist::description (C_String & ioString, const int
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
-  mObject.mAttribute_mValue.description (ioString, inIndentation) ;
+  mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5407,7 +5407,7 @@ void GALGAS_lbigintlist::setter_removeAtIndex (GALGAS_lbigint & outOperand0,
       outOperand0.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-      outOperand0 = p->mObject.mAttribute_mValue ;
+      outOperand0 = p->mObject.mProperty_mValue ;
     }
   }
 }
@@ -5424,7 +5424,7 @@ void GALGAS_lbigintlist::setter_popFirst (GALGAS_lbigint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -5440,7 +5440,7 @@ void GALGAS_lbigintlist::setter_popLast (GALGAS_lbigint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -5456,7 +5456,7 @@ void GALGAS_lbigintlist::method_first (GALGAS_lbigint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -5472,7 +5472,7 @@ void GALGAS_lbigintlist::method_last (GALGAS_lbigint & outOperand0,
     outOperand0.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-    outOperand0 = p->mObject.mAttribute_mValue ;
+    outOperand0 = p->mObject.mProperty_mValue ;
   }
 }
 
@@ -5537,7 +5537,7 @@ void GALGAS_lbigintlist::setter_setMValueAtIndex (GALGAS_lbigint inOperand,
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
     macroUniqueSharedObject (p) ;
-    p->mObject.mAttribute_mValue = inOperand ;
+    p->mObject.mProperty_mValue = inOperand ;
   }
 }
 
@@ -5551,7 +5551,7 @@ GALGAS_lbigint GALGAS_lbigintlist::getter_mValueAtIndex (const GALGAS_uint & inI
   GALGAS_lbigint result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-    result = p->mObject.mAttribute_mValue ;
+    result = p->mObject.mProperty_mValue ;
   }
   return result ;
 }
@@ -5580,7 +5580,7 @@ GALGAS_lbigintlist_2D_element cEnumerator_lbigintlist::current (LOCATION_ARGS) c
 GALGAS_lbigint cEnumerator_lbigintlist::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_lbigintlist * p = (const cCollectionElement_lbigintlist *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_lbigintlist) ;
-  return p->mObject.mAttribute_mValue ;
+  return p->mObject.mProperty_mValue ;
 }
 
 
@@ -5632,8 +5632,8 @@ GALGAS_range GALGAS_range::extractObject (const GALGAS_object & inObject,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_range::GALGAS_range (void) :
-mAttribute_start (),
-mAttribute_length () {
+mProperty_start (),
+mProperty_length () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5645,8 +5645,8 @@ GALGAS_range::~ GALGAS_range (void) {
 
 GALGAS_range::GALGAS_range (const GALGAS_uint & inOperand0,
                             const GALGAS_uint & inOperand1) :
-mAttribute_start (inOperand0),
-mAttribute_length (inOperand1) {
+mProperty_start (inOperand0),
+mProperty_length (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5673,10 +5673,10 @@ GALGAS_range GALGAS_range::constructor_new (const GALGAS_uint & inOperand0,
 typeComparisonResult GALGAS_range::objectCompare (const GALGAS_range & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_start.objectCompare (inOperand.mAttribute_start) ;
+    result = mProperty_start.objectCompare (inOperand.mProperty_start) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_length.objectCompare (inOperand.mAttribute_length) ;
+    result = mProperty_length.objectCompare (inOperand.mProperty_length) ;
   }
   return result ;
 }
@@ -5684,14 +5684,14 @@ typeComparisonResult GALGAS_range::objectCompare (const GALGAS_range & inOperand
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_range::isValid (void) const {
-  return mAttribute_start.isValid () && mAttribute_length.isValid () ;
+  return mProperty_start.isValid () && mProperty_length.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_range::drop (void) {
-  mAttribute_start.drop () ;
-  mAttribute_length.drop () ;
+  mProperty_start.drop () ;
+  mProperty_length.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5702,9 +5702,9 @@ void GALGAS_range::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_start.description (ioString, inIndentation+1) ;
+    mProperty_start.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_length.description (ioString, inIndentation+1) ;
+    mProperty_length.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -5712,13 +5712,13 @@ void GALGAS_range::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint GALGAS_range::getter_start (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_start ;
+  return mProperty_start ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint GALGAS_range::getter_length (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_length ;
+  return mProperty_length ;
 }
 
 
@@ -5769,7 +5769,7 @@ GALGAS_functionlist_2D_element GALGAS_functionlist_2D_element::extractObject (co
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_functionlist_2D_element::GALGAS_functionlist_2D_element (void) :
-mAttribute_mValue () {
+mProperty_mValue () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5780,7 +5780,7 @@ GALGAS_functionlist_2D_element::~ GALGAS_functionlist_2D_element (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_functionlist_2D_element::GALGAS_functionlist_2D_element (const GALGAS_function & inOperand0) :
-mAttribute_mValue (inOperand0) {
+mProperty_mValue (inOperand0) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5799,7 +5799,7 @@ GALGAS_functionlist_2D_element GALGAS_functionlist_2D_element::constructor_new (
 typeComparisonResult GALGAS_functionlist_2D_element::objectCompare (const GALGAS_functionlist_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_mValue.objectCompare (inOperand.mAttribute_mValue) ;
+    result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
 }
@@ -5807,13 +5807,13 @@ typeComparisonResult GALGAS_functionlist_2D_element::objectCompare (const GALGAS
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_functionlist_2D_element::isValid (void) const {
-  return mAttribute_mValue.isValid () ;
+  return mProperty_mValue.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_functionlist_2D_element::drop (void) {
-  mAttribute_mValue.drop () ;
+  mProperty_mValue.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5824,7 +5824,7 @@ void GALGAS_functionlist_2D_element::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_mValue.description (ioString, inIndentation+1) ;
+    mProperty_mValue.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -5832,7 +5832,7 @@ void GALGAS_functionlist_2D_element::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_function GALGAS_functionlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue ;
+  return mProperty_mValue ;
 }
 
 
@@ -5883,7 +5883,7 @@ GALGAS_objectlist_2D_element GALGAS_objectlist_2D_element::extractObject (const 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_objectlist_2D_element::GALGAS_objectlist_2D_element (void) :
-mAttribute_mValue () {
+mProperty_mValue () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5894,7 +5894,7 @@ GALGAS_objectlist_2D_element::~ GALGAS_objectlist_2D_element (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_objectlist_2D_element::GALGAS_objectlist_2D_element (const GALGAS_object & inOperand0) :
-mAttribute_mValue (inOperand0) {
+mProperty_mValue (inOperand0) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5913,7 +5913,7 @@ GALGAS_objectlist_2D_element GALGAS_objectlist_2D_element::constructor_new (cons
 typeComparisonResult GALGAS_objectlist_2D_element::objectCompare (const GALGAS_objectlist_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_mValue.objectCompare (inOperand.mAttribute_mValue) ;
+    result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
 }
@@ -5921,13 +5921,13 @@ typeComparisonResult GALGAS_objectlist_2D_element::objectCompare (const GALGAS_o
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_objectlist_2D_element::isValid (void) const {
-  return mAttribute_mValue.isValid () ;
+  return mProperty_mValue.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_objectlist_2D_element::drop (void) {
-  mAttribute_mValue.drop () ;
+  mProperty_mValue.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5938,7 +5938,7 @@ void GALGAS_objectlist_2D_element::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_mValue.description (ioString, inIndentation+1) ;
+    mProperty_mValue.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -5946,7 +5946,7 @@ void GALGAS_objectlist_2D_element::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_object GALGAS_objectlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue ;
+  return mProperty_mValue ;
 }
 
 
@@ -5997,7 +5997,7 @@ GALGAS_stringlist_2D_element GALGAS_stringlist_2D_element::extractObject (const 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist_2D_element::GALGAS_stringlist_2D_element (void) :
-mAttribute_mValue () {
+mProperty_mValue () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6008,7 +6008,7 @@ GALGAS_stringlist_2D_element::~ GALGAS_stringlist_2D_element (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist_2D_element::GALGAS_stringlist_2D_element (const GALGAS_string & inOperand0) :
-mAttribute_mValue (inOperand0) {
+mProperty_mValue (inOperand0) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6033,7 +6033,7 @@ GALGAS_stringlist_2D_element GALGAS_stringlist_2D_element::constructor_new (cons
 typeComparisonResult GALGAS_stringlist_2D_element::objectCompare (const GALGAS_stringlist_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_mValue.objectCompare (inOperand.mAttribute_mValue) ;
+    result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
 }
@@ -6041,13 +6041,13 @@ typeComparisonResult GALGAS_stringlist_2D_element::objectCompare (const GALGAS_s
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_stringlist_2D_element::isValid (void) const {
-  return mAttribute_mValue.isValid () ;
+  return mProperty_mValue.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_stringlist_2D_element::drop (void) {
-  mAttribute_mValue.drop () ;
+  mProperty_mValue.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6058,7 +6058,7 @@ void GALGAS_stringlist_2D_element::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_mValue.description (ioString, inIndentation+1) ;
+    mProperty_mValue.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -6066,7 +6066,7 @@ void GALGAS_stringlist_2D_element::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_stringlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue ;
+  return mProperty_mValue ;
 }
 
 
@@ -6117,7 +6117,7 @@ GALGAS_typelist_2D_element GALGAS_typelist_2D_element::extractObject (const GALG
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_typelist_2D_element::GALGAS_typelist_2D_element (void) :
-mAttribute_mValue () {
+mProperty_mValue () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6128,7 +6128,7 @@ GALGAS_typelist_2D_element::~ GALGAS_typelist_2D_element (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_typelist_2D_element::GALGAS_typelist_2D_element (const GALGAS_type & inOperand0) :
-mAttribute_mValue (inOperand0) {
+mProperty_mValue (inOperand0) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6147,7 +6147,7 @@ GALGAS_typelist_2D_element GALGAS_typelist_2D_element::constructor_new (const GA
 typeComparisonResult GALGAS_typelist_2D_element::objectCompare (const GALGAS_typelist_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_mValue.objectCompare (inOperand.mAttribute_mValue) ;
+    result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
 }
@@ -6155,13 +6155,13 @@ typeComparisonResult GALGAS_typelist_2D_element::objectCompare (const GALGAS_typ
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_typelist_2D_element::isValid (void) const {
-  return mAttribute_mValue.isValid () ;
+  return mProperty_mValue.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_typelist_2D_element::drop (void) {
-  mAttribute_mValue.drop () ;
+  mProperty_mValue.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6172,7 +6172,7 @@ void GALGAS_typelist_2D_element::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_mValue.description (ioString, inIndentation+1) ;
+    mProperty_mValue.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -6180,7 +6180,7 @@ void GALGAS_typelist_2D_element::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_type GALGAS_typelist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue ;
+  return mProperty_mValue ;
 }
 
 
@@ -6231,7 +6231,7 @@ GALGAS_uintlist_2D_element GALGAS_uintlist_2D_element::extractObject (const GALG
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uintlist_2D_element::GALGAS_uintlist_2D_element (void) :
-mAttribute_mValue () {
+mProperty_mValue () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6242,7 +6242,7 @@ GALGAS_uintlist_2D_element::~ GALGAS_uintlist_2D_element (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uintlist_2D_element::GALGAS_uintlist_2D_element (const GALGAS_uint & inOperand0) :
-mAttribute_mValue (inOperand0) {
+mProperty_mValue (inOperand0) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6267,7 +6267,7 @@ GALGAS_uintlist_2D_element GALGAS_uintlist_2D_element::constructor_new (const GA
 typeComparisonResult GALGAS_uintlist_2D_element::objectCompare (const GALGAS_uintlist_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_mValue.objectCompare (inOperand.mAttribute_mValue) ;
+    result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
 }
@@ -6275,13 +6275,13 @@ typeComparisonResult GALGAS_uintlist_2D_element::objectCompare (const GALGAS_uin
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_uintlist_2D_element::isValid (void) const {
-  return mAttribute_mValue.isValid () ;
+  return mProperty_mValue.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_uintlist_2D_element::drop (void) {
-  mAttribute_mValue.drop () ;
+  mProperty_mValue.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6292,7 +6292,7 @@ void GALGAS_uintlist_2D_element::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_mValue.description (ioString, inIndentation+1) ;
+    mProperty_mValue.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -6300,7 +6300,7 @@ void GALGAS_uintlist_2D_element::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint GALGAS_uintlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue ;
+  return mProperty_mValue ;
 }
 
 
@@ -6351,7 +6351,7 @@ GALGAS_uint_36__34_list_2D_element GALGAS_uint_36__34_list_2D_element::extractOb
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_list_2D_element::GALGAS_uint_36__34_list_2D_element (void) :
-mAttribute_mValue () {
+mProperty_mValue () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6362,7 +6362,7 @@ GALGAS_uint_36__34_list_2D_element::~ GALGAS_uint_36__34_list_2D_element (void) 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_list_2D_element::GALGAS_uint_36__34_list_2D_element (const GALGAS_uint_36__34_ & inOperand0) :
-mAttribute_mValue (inOperand0) {
+mProperty_mValue (inOperand0) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6387,7 +6387,7 @@ GALGAS_uint_36__34_list_2D_element GALGAS_uint_36__34_list_2D_element::construct
 typeComparisonResult GALGAS_uint_36__34_list_2D_element::objectCompare (const GALGAS_uint_36__34_list_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_mValue.objectCompare (inOperand.mAttribute_mValue) ;
+    result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
 }
@@ -6395,13 +6395,13 @@ typeComparisonResult GALGAS_uint_36__34_list_2D_element::objectCompare (const GA
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_uint_36__34_list_2D_element::isValid (void) const {
-  return mAttribute_mValue.isValid () ;
+  return mProperty_mValue.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_uint_36__34_list_2D_element::drop (void) {
-  mAttribute_mValue.drop () ;
+  mProperty_mValue.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6412,7 +6412,7 @@ void GALGAS_uint_36__34_list_2D_element::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_mValue.description (ioString, inIndentation+1) ;
+    mProperty_mValue.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -6420,7 +6420,7 @@ void GALGAS_uint_36__34_list_2D_element::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_ GALGAS_uint_36__34_list_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue ;
+  return mProperty_mValue ;
 }
 
 
@@ -6471,7 +6471,7 @@ GALGAS_bigintlist_2D_element GALGAS_bigintlist_2D_element::extractObject (const 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bigintlist_2D_element::GALGAS_bigintlist_2D_element (void) :
-mAttribute_mValue () {
+mProperty_mValue () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6482,7 +6482,7 @@ GALGAS_bigintlist_2D_element::~ GALGAS_bigintlist_2D_element (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bigintlist_2D_element::GALGAS_bigintlist_2D_element (const GALGAS_bigint & inOperand0) :
-mAttribute_mValue (inOperand0) {
+mProperty_mValue (inOperand0) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6507,7 +6507,7 @@ GALGAS_bigintlist_2D_element GALGAS_bigintlist_2D_element::constructor_new (cons
 typeComparisonResult GALGAS_bigintlist_2D_element::objectCompare (const GALGAS_bigintlist_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_mValue.objectCompare (inOperand.mAttribute_mValue) ;
+    result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
 }
@@ -6515,13 +6515,13 @@ typeComparisonResult GALGAS_bigintlist_2D_element::objectCompare (const GALGAS_b
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_bigintlist_2D_element::isValid (void) const {
-  return mAttribute_mValue.isValid () ;
+  return mProperty_mValue.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_bigintlist_2D_element::drop (void) {
-  mAttribute_mValue.drop () ;
+  mProperty_mValue.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6532,7 +6532,7 @@ void GALGAS_bigintlist_2D_element::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_mValue.description (ioString, inIndentation+1) ;
+    mProperty_mValue.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -6540,7 +6540,7 @@ void GALGAS_bigintlist_2D_element::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bigint GALGAS_bigintlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue ;
+  return mProperty_mValue ;
 }
 
 
@@ -6591,8 +6591,8 @@ GALGAS__32_stringlist_2D_element GALGAS__32_stringlist_2D_element::extractObject
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS__32_stringlist_2D_element::GALGAS__32_stringlist_2D_element (void) :
-mAttribute_mValue_30_ (),
-mAttribute_mValue_31_ () {
+mProperty_mValue_30_ (),
+mProperty_mValue_31_ () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6604,8 +6604,8 @@ GALGAS__32_stringlist_2D_element::~ GALGAS__32_stringlist_2D_element (void) {
 
 GALGAS__32_stringlist_2D_element::GALGAS__32_stringlist_2D_element (const GALGAS_string & inOperand0,
                                                                     const GALGAS_string & inOperand1) :
-mAttribute_mValue_30_ (inOperand0),
-mAttribute_mValue_31_ (inOperand1) {
+mProperty_mValue_30_ (inOperand0),
+mProperty_mValue_31_ (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6632,10 +6632,10 @@ GALGAS__32_stringlist_2D_element GALGAS__32_stringlist_2D_element::constructor_n
 typeComparisonResult GALGAS__32_stringlist_2D_element::objectCompare (const GALGAS__32_stringlist_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_mValue_30_.objectCompare (inOperand.mAttribute_mValue_30_) ;
+    result = mProperty_mValue_30_.objectCompare (inOperand.mProperty_mValue_30_) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_mValue_31_.objectCompare (inOperand.mAttribute_mValue_31_) ;
+    result = mProperty_mValue_31_.objectCompare (inOperand.mProperty_mValue_31_) ;
   }
   return result ;
 }
@@ -6643,14 +6643,14 @@ typeComparisonResult GALGAS__32_stringlist_2D_element::objectCompare (const GALG
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS__32_stringlist_2D_element::isValid (void) const {
-  return mAttribute_mValue_30_.isValid () && mAttribute_mValue_31_.isValid () ;
+  return mProperty_mValue_30_.isValid () && mProperty_mValue_31_.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS__32_stringlist_2D_element::drop (void) {
-  mAttribute_mValue_30_.drop () ;
-  mAttribute_mValue_31_.drop () ;
+  mProperty_mValue_30_.drop () ;
+  mProperty_mValue_31_.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6661,9 +6661,9 @@ void GALGAS__32_stringlist_2D_element::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_mValue_30_.description (ioString, inIndentation+1) ;
+    mProperty_mValue_30_.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_mValue_31_.description (ioString, inIndentation+1) ;
+    mProperty_mValue_31_.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -6671,13 +6671,13 @@ void GALGAS__32_stringlist_2D_element::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS__32_stringlist_2D_element::getter_mValue_30_ (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue_30_ ;
+  return mProperty_mValue_30_ ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS__32_stringlist_2D_element::getter_mValue_31_ (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue_31_ ;
+  return mProperty_mValue_31_ ;
 }
 
 
@@ -6728,8 +6728,8 @@ GALGAS_lstring GALGAS_lstring::extractObject (const GALGAS_object & inObject,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring::GALGAS_lstring (void) :
-mAttribute_string (),
-mAttribute_location () {
+mProperty_string (),
+mProperty_location () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6741,8 +6741,8 @@ GALGAS_lstring::~ GALGAS_lstring (void) {
 
 GALGAS_lstring::GALGAS_lstring (const GALGAS_string & inOperand0,
                                 const GALGAS_location & inOperand1) :
-mAttribute_string (inOperand0),
-mAttribute_location (inOperand1) {
+mProperty_string (inOperand0),
+mProperty_location (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6769,10 +6769,10 @@ GALGAS_lstring GALGAS_lstring::constructor_new (const GALGAS_string & inOperand0
 typeComparisonResult GALGAS_lstring::objectCompare (const GALGAS_lstring & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_string.objectCompare (inOperand.mAttribute_string) ;
+    result = mProperty_string.objectCompare (inOperand.mProperty_string) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_location.objectCompare (inOperand.mAttribute_location) ;
+    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
 }
@@ -6780,14 +6780,14 @@ typeComparisonResult GALGAS_lstring::objectCompare (const GALGAS_lstring & inOpe
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_lstring::isValid (void) const {
-  return mAttribute_string.isValid () && mAttribute_location.isValid () ;
+  return mProperty_string.isValid () && mProperty_location.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_lstring::drop (void) {
-  mAttribute_string.drop () ;
-  mAttribute_location.drop () ;
+  mProperty_string.drop () ;
+  mProperty_location.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6798,9 +6798,9 @@ void GALGAS_lstring::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_string.description (ioString, inIndentation+1) ;
+    mProperty_string.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_location.description (ioString, inIndentation+1) ;
+    mProperty_location.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -6808,13 +6808,13 @@ void GALGAS_lstring::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_lstring::getter_string (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_string ;
+  return mProperty_string ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location GALGAS_lstring::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_location ;
+  return mProperty_location ;
 }
 
 
@@ -6865,8 +6865,8 @@ GALGAS_luint GALGAS_luint::extractObject (const GALGAS_object & inObject,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luint::GALGAS_luint (void) :
-mAttribute_uint (),
-mAttribute_location () {
+mProperty_uint (),
+mProperty_location () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6878,8 +6878,8 @@ GALGAS_luint::~ GALGAS_luint (void) {
 
 GALGAS_luint::GALGAS_luint (const GALGAS_uint & inOperand0,
                             const GALGAS_location & inOperand1) :
-mAttribute_uint (inOperand0),
-mAttribute_location (inOperand1) {
+mProperty_uint (inOperand0),
+mProperty_location (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6906,10 +6906,10 @@ GALGAS_luint GALGAS_luint::constructor_new (const GALGAS_uint & inOperand0,
 typeComparisonResult GALGAS_luint::objectCompare (const GALGAS_luint & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_uint.objectCompare (inOperand.mAttribute_uint) ;
+    result = mProperty_uint.objectCompare (inOperand.mProperty_uint) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_location.objectCompare (inOperand.mAttribute_location) ;
+    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
 }
@@ -6917,14 +6917,14 @@ typeComparisonResult GALGAS_luint::objectCompare (const GALGAS_luint & inOperand
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_luint::isValid (void) const {
-  return mAttribute_uint.isValid () && mAttribute_location.isValid () ;
+  return mProperty_uint.isValid () && mProperty_location.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_luint::drop (void) {
-  mAttribute_uint.drop () ;
-  mAttribute_location.drop () ;
+  mProperty_uint.drop () ;
+  mProperty_location.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6935,9 +6935,9 @@ void GALGAS_luint::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_uint.description (ioString, inIndentation+1) ;
+    mProperty_uint.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_location.description (ioString, inIndentation+1) ;
+    mProperty_location.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -6945,13 +6945,13 @@ void GALGAS_luint::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint GALGAS_luint::getter_uint (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_uint ;
+  return mProperty_uint ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location GALGAS_luint::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_location ;
+  return mProperty_location ;
 }
 
 
@@ -7002,8 +7002,8 @@ GALGAS_lsint GALGAS_lsint::extractObject (const GALGAS_object & inObject,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lsint::GALGAS_lsint (void) :
-mAttribute_sint (),
-mAttribute_location () {
+mProperty_sint (),
+mProperty_location () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7015,8 +7015,8 @@ GALGAS_lsint::~ GALGAS_lsint (void) {
 
 GALGAS_lsint::GALGAS_lsint (const GALGAS_sint & inOperand0,
                             const GALGAS_location & inOperand1) :
-mAttribute_sint (inOperand0),
-mAttribute_location (inOperand1) {
+mProperty_sint (inOperand0),
+mProperty_location (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7043,10 +7043,10 @@ GALGAS_lsint GALGAS_lsint::constructor_new (const GALGAS_sint & inOperand0,
 typeComparisonResult GALGAS_lsint::objectCompare (const GALGAS_lsint & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_sint.objectCompare (inOperand.mAttribute_sint) ;
+    result = mProperty_sint.objectCompare (inOperand.mProperty_sint) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_location.objectCompare (inOperand.mAttribute_location) ;
+    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
 }
@@ -7054,14 +7054,14 @@ typeComparisonResult GALGAS_lsint::objectCompare (const GALGAS_lsint & inOperand
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_lsint::isValid (void) const {
-  return mAttribute_sint.isValid () && mAttribute_location.isValid () ;
+  return mProperty_sint.isValid () && mProperty_location.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_lsint::drop (void) {
-  mAttribute_sint.drop () ;
-  mAttribute_location.drop () ;
+  mProperty_sint.drop () ;
+  mProperty_location.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7072,9 +7072,9 @@ void GALGAS_lsint::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_sint.description (ioString, inIndentation+1) ;
+    mProperty_sint.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_location.description (ioString, inIndentation+1) ;
+    mProperty_location.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -7082,13 +7082,13 @@ void GALGAS_lsint::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint GALGAS_lsint::getter_sint (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_sint ;
+  return mProperty_sint ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location GALGAS_lsint::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_location ;
+  return mProperty_location ;
 }
 
 
@@ -7139,8 +7139,8 @@ GALGAS_luint_36__34_ GALGAS_luint_36__34_::extractObject (const GALGAS_object & 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luint_36__34_::GALGAS_luint_36__34_ (void) :
-mAttribute_uint_36__34_ (),
-mAttribute_location () {
+mProperty_uint_36__34_ (),
+mProperty_location () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7152,8 +7152,8 @@ GALGAS_luint_36__34_::~ GALGAS_luint_36__34_ (void) {
 
 GALGAS_luint_36__34_::GALGAS_luint_36__34_ (const GALGAS_uint_36__34_ & inOperand0,
                                             const GALGAS_location & inOperand1) :
-mAttribute_uint_36__34_ (inOperand0),
-mAttribute_location (inOperand1) {
+mProperty_uint_36__34_ (inOperand0),
+mProperty_location (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7180,10 +7180,10 @@ GALGAS_luint_36__34_ GALGAS_luint_36__34_::constructor_new (const GALGAS_uint_36
 typeComparisonResult GALGAS_luint_36__34_::objectCompare (const GALGAS_luint_36__34_ & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_uint_36__34_.objectCompare (inOperand.mAttribute_uint_36__34_) ;
+    result = mProperty_uint_36__34_.objectCompare (inOperand.mProperty_uint_36__34_) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_location.objectCompare (inOperand.mAttribute_location) ;
+    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
 }
@@ -7191,14 +7191,14 @@ typeComparisonResult GALGAS_luint_36__34_::objectCompare (const GALGAS_luint_36_
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_luint_36__34_::isValid (void) const {
-  return mAttribute_uint_36__34_.isValid () && mAttribute_location.isValid () ;
+  return mProperty_uint_36__34_.isValid () && mProperty_location.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_luint_36__34_::drop (void) {
-  mAttribute_uint_36__34_.drop () ;
-  mAttribute_location.drop () ;
+  mProperty_uint_36__34_.drop () ;
+  mProperty_location.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7209,9 +7209,9 @@ void GALGAS_luint_36__34_::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_uint_36__34_.description (ioString, inIndentation+1) ;
+    mProperty_uint_36__34_.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_location.description (ioString, inIndentation+1) ;
+    mProperty_location.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -7219,13 +7219,13 @@ void GALGAS_luint_36__34_::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_ GALGAS_luint_36__34_::getter_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_uint_36__34_ ;
+  return mProperty_uint_36__34_ ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location GALGAS_luint_36__34_::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_location ;
+  return mProperty_location ;
 }
 
 
@@ -7276,8 +7276,8 @@ GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::extractObject (const GALGAS_object & 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lsint_36__34_::GALGAS_lsint_36__34_ (void) :
-mAttribute_sint_36__34_ (),
-mAttribute_location () {
+mProperty_sint_36__34_ (),
+mProperty_location () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7289,8 +7289,8 @@ GALGAS_lsint_36__34_::~ GALGAS_lsint_36__34_ (void) {
 
 GALGAS_lsint_36__34_::GALGAS_lsint_36__34_ (const GALGAS_sint_36__34_ & inOperand0,
                                             const GALGAS_location & inOperand1) :
-mAttribute_sint_36__34_ (inOperand0),
-mAttribute_location (inOperand1) {
+mProperty_sint_36__34_ (inOperand0),
+mProperty_location (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7317,10 +7317,10 @@ GALGAS_lsint_36__34_ GALGAS_lsint_36__34_::constructor_new (const GALGAS_sint_36
 typeComparisonResult GALGAS_lsint_36__34_::objectCompare (const GALGAS_lsint_36__34_ & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_sint_36__34_.objectCompare (inOperand.mAttribute_sint_36__34_) ;
+    result = mProperty_sint_36__34_.objectCompare (inOperand.mProperty_sint_36__34_) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_location.objectCompare (inOperand.mAttribute_location) ;
+    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
 }
@@ -7328,14 +7328,14 @@ typeComparisonResult GALGAS_lsint_36__34_::objectCompare (const GALGAS_lsint_36_
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_lsint_36__34_::isValid (void) const {
-  return mAttribute_sint_36__34_.isValid () && mAttribute_location.isValid () ;
+  return mProperty_sint_36__34_.isValid () && mProperty_location.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_lsint_36__34_::drop (void) {
-  mAttribute_sint_36__34_.drop () ;
-  mAttribute_location.drop () ;
+  mProperty_sint_36__34_.drop () ;
+  mProperty_location.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7346,9 +7346,9 @@ void GALGAS_lsint_36__34_::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_sint_36__34_.description (ioString, inIndentation+1) ;
+    mProperty_sint_36__34_.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_location.description (ioString, inIndentation+1) ;
+    mProperty_location.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -7356,13 +7356,13 @@ void GALGAS_lsint_36__34_::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint_36__34_ GALGAS_lsint_36__34_::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_sint_36__34_ ;
+  return mProperty_sint_36__34_ ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location GALGAS_lsint_36__34_::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_location ;
+  return mProperty_location ;
 }
 
 
@@ -7413,8 +7413,8 @@ GALGAS_lchar GALGAS_lchar::extractObject (const GALGAS_object & inObject,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lchar::GALGAS_lchar (void) :
-mAttribute_char (),
-mAttribute_location () {
+mProperty_char (),
+mProperty_location () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7426,8 +7426,8 @@ GALGAS_lchar::~ GALGAS_lchar (void) {
 
 GALGAS_lchar::GALGAS_lchar (const GALGAS_char & inOperand0,
                             const GALGAS_location & inOperand1) :
-mAttribute_char (inOperand0),
-mAttribute_location (inOperand1) {
+mProperty_char (inOperand0),
+mProperty_location (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7454,10 +7454,10 @@ GALGAS_lchar GALGAS_lchar::constructor_new (const GALGAS_char & inOperand0,
 typeComparisonResult GALGAS_lchar::objectCompare (const GALGAS_lchar & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_char.objectCompare (inOperand.mAttribute_char) ;
+    result = mProperty_char.objectCompare (inOperand.mProperty_char) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_location.objectCompare (inOperand.mAttribute_location) ;
+    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
 }
@@ -7465,14 +7465,14 @@ typeComparisonResult GALGAS_lchar::objectCompare (const GALGAS_lchar & inOperand
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_lchar::isValid (void) const {
-  return mAttribute_char.isValid () && mAttribute_location.isValid () ;
+  return mProperty_char.isValid () && mProperty_location.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_lchar::drop (void) {
-  mAttribute_char.drop () ;
-  mAttribute_location.drop () ;
+  mProperty_char.drop () ;
+  mProperty_location.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7483,9 +7483,9 @@ void GALGAS_lchar::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_char.description (ioString, inIndentation+1) ;
+    mProperty_char.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_location.description (ioString, inIndentation+1) ;
+    mProperty_location.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -7493,13 +7493,13 @@ void GALGAS_lchar::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_char GALGAS_lchar::getter_char (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_char ;
+  return mProperty_char ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location GALGAS_lchar::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_location ;
+  return mProperty_location ;
 }
 
 
@@ -7550,8 +7550,8 @@ GALGAS_ldouble GALGAS_ldouble::extractObject (const GALGAS_object & inObject,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_ldouble::GALGAS_ldouble (void) :
-mAttribute_double (),
-mAttribute_location () {
+mProperty_double (),
+mProperty_location () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7563,8 +7563,8 @@ GALGAS_ldouble::~ GALGAS_ldouble (void) {
 
 GALGAS_ldouble::GALGAS_ldouble (const GALGAS_double & inOperand0,
                                 const GALGAS_location & inOperand1) :
-mAttribute_double (inOperand0),
-mAttribute_location (inOperand1) {
+mProperty_double (inOperand0),
+mProperty_location (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7591,10 +7591,10 @@ GALGAS_ldouble GALGAS_ldouble::constructor_new (const GALGAS_double & inOperand0
 typeComparisonResult GALGAS_ldouble::objectCompare (const GALGAS_ldouble & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_double.objectCompare (inOperand.mAttribute_double) ;
+    result = mProperty_double.objectCompare (inOperand.mProperty_double) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_location.objectCompare (inOperand.mAttribute_location) ;
+    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
 }
@@ -7602,14 +7602,14 @@ typeComparisonResult GALGAS_ldouble::objectCompare (const GALGAS_ldouble & inOpe
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_ldouble::isValid (void) const {
-  return mAttribute_double.isValid () && mAttribute_location.isValid () ;
+  return mProperty_double.isValid () && mProperty_location.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_ldouble::drop (void) {
-  mAttribute_double.drop () ;
-  mAttribute_location.drop () ;
+  mProperty_double.drop () ;
+  mProperty_location.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7620,9 +7620,9 @@ void GALGAS_ldouble::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_double.description (ioString, inIndentation+1) ;
+    mProperty_double.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_location.description (ioString, inIndentation+1) ;
+    mProperty_location.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -7630,13 +7630,13 @@ void GALGAS_ldouble::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_double GALGAS_ldouble::getter_double (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_double ;
+  return mProperty_double ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location GALGAS_ldouble::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_location ;
+  return mProperty_location ;
 }
 
 
@@ -7687,8 +7687,8 @@ GALGAS_lbigint GALGAS_lbigint::extractObject (const GALGAS_object & inObject,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lbigint::GALGAS_lbigint (void) :
-mAttribute_bigint (),
-mAttribute_location () {
+mProperty_bigint (),
+mProperty_location () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7700,8 +7700,8 @@ GALGAS_lbigint::~ GALGAS_lbigint (void) {
 
 GALGAS_lbigint::GALGAS_lbigint (const GALGAS_bigint & inOperand0,
                                 const GALGAS_location & inOperand1) :
-mAttribute_bigint (inOperand0),
-mAttribute_location (inOperand1) {
+mProperty_bigint (inOperand0),
+mProperty_location (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7728,10 +7728,10 @@ GALGAS_lbigint GALGAS_lbigint::constructor_new (const GALGAS_bigint & inOperand0
 typeComparisonResult GALGAS_lbigint::objectCompare (const GALGAS_lbigint & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_bigint.objectCompare (inOperand.mAttribute_bigint) ;
+    result = mProperty_bigint.objectCompare (inOperand.mProperty_bigint) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_location.objectCompare (inOperand.mAttribute_location) ;
+    result = mProperty_location.objectCompare (inOperand.mProperty_location) ;
   }
   return result ;
 }
@@ -7739,14 +7739,14 @@ typeComparisonResult GALGAS_lbigint::objectCompare (const GALGAS_lbigint & inOpe
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_lbigint::isValid (void) const {
-  return mAttribute_bigint.isValid () && mAttribute_location.isValid () ;
+  return mProperty_bigint.isValid () && mProperty_location.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_lbigint::drop (void) {
-  mAttribute_bigint.drop () ;
-  mAttribute_location.drop () ;
+  mProperty_bigint.drop () ;
+  mProperty_location.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7757,9 +7757,9 @@ void GALGAS_lbigint::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_bigint.description (ioString, inIndentation+1) ;
+    mProperty_bigint.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_location.description (ioString, inIndentation+1) ;
+    mProperty_location.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -7767,13 +7767,13 @@ void GALGAS_lbigint::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bigint GALGAS_lbigint::getter_bigint (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_bigint ;
+  return mProperty_bigint ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_location GALGAS_lbigint::getter_location (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_location ;
+  return mProperty_location ;
 }
 
 
@@ -7824,7 +7824,7 @@ GALGAS_luintlist_2D_element GALGAS_luintlist_2D_element::extractObject (const GA
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luintlist_2D_element::GALGAS_luintlist_2D_element (void) :
-mAttribute_mValue () {
+mProperty_mValue () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7835,7 +7835,7 @@ GALGAS_luintlist_2D_element::~ GALGAS_luintlist_2D_element (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luintlist_2D_element::GALGAS_luintlist_2D_element (const GALGAS_luint & inOperand0) :
-mAttribute_mValue (inOperand0) {
+mProperty_mValue (inOperand0) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7860,7 +7860,7 @@ GALGAS_luintlist_2D_element GALGAS_luintlist_2D_element::constructor_new (const 
 typeComparisonResult GALGAS_luintlist_2D_element::objectCompare (const GALGAS_luintlist_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_mValue.objectCompare (inOperand.mAttribute_mValue) ;
+    result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
 }
@@ -7868,13 +7868,13 @@ typeComparisonResult GALGAS_luintlist_2D_element::objectCompare (const GALGAS_lu
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_luintlist_2D_element::isValid (void) const {
-  return mAttribute_mValue.isValid () ;
+  return mProperty_mValue.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_luintlist_2D_element::drop (void) {
-  mAttribute_mValue.drop () ;
+  mProperty_mValue.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7885,7 +7885,7 @@ void GALGAS_luintlist_2D_element::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_mValue.description (ioString, inIndentation+1) ;
+    mProperty_mValue.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -7893,7 +7893,7 @@ void GALGAS_luintlist_2D_element::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_luint GALGAS_luintlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue ;
+  return mProperty_mValue ;
 }
 
 
@@ -7944,7 +7944,7 @@ GALGAS_lstringlist_2D_element GALGAS_lstringlist_2D_element::extractObject (cons
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstringlist_2D_element::GALGAS_lstringlist_2D_element (void) :
-mAttribute_mValue () {
+mProperty_mValue () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7955,7 +7955,7 @@ GALGAS_lstringlist_2D_element::~ GALGAS_lstringlist_2D_element (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstringlist_2D_element::GALGAS_lstringlist_2D_element (const GALGAS_lstring & inOperand0) :
-mAttribute_mValue (inOperand0) {
+mProperty_mValue (inOperand0) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7980,7 +7980,7 @@ GALGAS_lstringlist_2D_element GALGAS_lstringlist_2D_element::constructor_new (co
 typeComparisonResult GALGAS_lstringlist_2D_element::objectCompare (const GALGAS_lstringlist_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_mValue.objectCompare (inOperand.mAttribute_mValue) ;
+    result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
 }
@@ -7988,13 +7988,13 @@ typeComparisonResult GALGAS_lstringlist_2D_element::objectCompare (const GALGAS_
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_lstringlist_2D_element::isValid (void) const {
-  return mAttribute_mValue.isValid () ;
+  return mProperty_mValue.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_lstringlist_2D_element::drop (void) {
-  mAttribute_mValue.drop () ;
+  mProperty_mValue.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8005,7 +8005,7 @@ void GALGAS_lstringlist_2D_element::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_mValue.description (ioString, inIndentation+1) ;
+    mProperty_mValue.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -8013,7 +8013,7 @@ void GALGAS_lstringlist_2D_element::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring GALGAS_lstringlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue ;
+  return mProperty_mValue ;
 }
 
 
@@ -8064,7 +8064,7 @@ GALGAS_lbigintlist_2D_element GALGAS_lbigintlist_2D_element::extractObject (cons
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lbigintlist_2D_element::GALGAS_lbigintlist_2D_element (void) :
-mAttribute_mValue () {
+mProperty_mValue () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8075,7 +8075,7 @@ GALGAS_lbigintlist_2D_element::~ GALGAS_lbigintlist_2D_element (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lbigintlist_2D_element::GALGAS_lbigintlist_2D_element (const GALGAS_lbigint & inOperand0) :
-mAttribute_mValue (inOperand0) {
+mProperty_mValue (inOperand0) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8100,7 +8100,7 @@ GALGAS_lbigintlist_2D_element GALGAS_lbigintlist_2D_element::constructor_new (co
 typeComparisonResult GALGAS_lbigintlist_2D_element::objectCompare (const GALGAS_lbigintlist_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_mValue.objectCompare (inOperand.mAttribute_mValue) ;
+    result = mProperty_mValue.objectCompare (inOperand.mProperty_mValue) ;
   }
   return result ;
 }
@@ -8108,13 +8108,13 @@ typeComparisonResult GALGAS_lbigintlist_2D_element::objectCompare (const GALGAS_
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_lbigintlist_2D_element::isValid (void) const {
-  return mAttribute_mValue.isValid () ;
+  return mProperty_mValue.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_lbigintlist_2D_element::drop (void) {
-  mAttribute_mValue.drop () ;
+  mProperty_mValue.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8125,7 +8125,7 @@ void GALGAS_lbigintlist_2D_element::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_mValue.description (ioString, inIndentation+1) ;
+    mProperty_mValue.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -8133,7 +8133,7 @@ void GALGAS_lbigintlist_2D_element::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lbigint GALGAS_lbigintlist_2D_element::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue ;
+  return mProperty_mValue ;
 }
 
 
@@ -8184,8 +8184,8 @@ GALGAS__32_lstringlist_2D_element GALGAS__32_lstringlist_2D_element::extractObje
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS__32_lstringlist_2D_element::GALGAS__32_lstringlist_2D_element (void) :
-mAttribute_mValue_30_ (),
-mAttribute_mValue_31_ () {
+mProperty_mValue_30_ (),
+mProperty_mValue_31_ () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8197,8 +8197,8 @@ GALGAS__32_lstringlist_2D_element::~ GALGAS__32_lstringlist_2D_element (void) {
 
 GALGAS__32_lstringlist_2D_element::GALGAS__32_lstringlist_2D_element (const GALGAS_lstring & inOperand0,
                                                                       const GALGAS_lstring & inOperand1) :
-mAttribute_mValue_30_ (inOperand0),
-mAttribute_mValue_31_ (inOperand1) {
+mProperty_mValue_30_ (inOperand0),
+mProperty_mValue_31_ (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8225,10 +8225,10 @@ GALGAS__32_lstringlist_2D_element GALGAS__32_lstringlist_2D_element::constructor
 typeComparisonResult GALGAS__32_lstringlist_2D_element::objectCompare (const GALGAS__32_lstringlist_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_mValue_30_.objectCompare (inOperand.mAttribute_mValue_30_) ;
+    result = mProperty_mValue_30_.objectCompare (inOperand.mProperty_mValue_30_) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_mValue_31_.objectCompare (inOperand.mAttribute_mValue_31_) ;
+    result = mProperty_mValue_31_.objectCompare (inOperand.mProperty_mValue_31_) ;
   }
   return result ;
 }
@@ -8236,14 +8236,14 @@ typeComparisonResult GALGAS__32_lstringlist_2D_element::objectCompare (const GAL
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS__32_lstringlist_2D_element::isValid (void) const {
-  return mAttribute_mValue_30_.isValid () && mAttribute_mValue_31_.isValid () ;
+  return mProperty_mValue_30_.isValid () && mProperty_mValue_31_.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS__32_lstringlist_2D_element::drop (void) {
-  mAttribute_mValue_30_.drop () ;
-  mAttribute_mValue_31_.drop () ;
+  mProperty_mValue_30_.drop () ;
+  mProperty_mValue_31_.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8254,9 +8254,9 @@ void GALGAS__32_lstringlist_2D_element::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_mValue_30_.description (ioString, inIndentation+1) ;
+    mProperty_mValue_30_.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_mValue_31_.description (ioString, inIndentation+1) ;
+    mProperty_mValue_31_.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -8264,13 +8264,13 @@ void GALGAS__32_lstringlist_2D_element::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring GALGAS__32_lstringlist_2D_element::getter_mValue_30_ (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue_30_ ;
+  return mProperty_mValue_30_ ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lstring GALGAS__32_lstringlist_2D_element::getter_mValue_31_ (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mValue_31_ ;
+  return mProperty_mValue_31_ ;
 }
 
 

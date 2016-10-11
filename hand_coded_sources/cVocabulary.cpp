@@ -57,9 +57,9 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
   }
   t.rewind () ;
   while (t.hasCurrentObject ()) {
-   // printf ("ENTER TERMINAL: %u '%s'\n", t.current_mTerminalIndex ().uintValue (), t.current_lkey (HERE).mAttribute_string.stringValue ().cString (HERE)) ;
+   // printf ("ENTER TERMINAL: %u '%s'\n", t.current_mTerminalIndex ().uintValue (), t.current_lkey (HERE).mProperty_string.stringValue ().cString (HERE)) ;
     const int32_t idx = (int32_t) t.current_mTerminalIndex (HERE).uintValue () ;
-    mStringsArray (idx COMMA_HERE) = t.current_lkey (HERE).mAttribute_string.stringValue () ;  
+    mStringsArray (idx COMMA_HERE) = t.current_lkey (HERE).mProperty_string.stringValue () ;  
     t.gotoNextObject () ;
   }
 //--- One more entry for the empty string symbol (displayed '$$')
@@ -68,7 +68,7 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
 //--- Append non terminal symbols from original grammar
   cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, kENUMERATION_UP) ;
   while (nonTerminal.hasCurrentObject ()) {
-    mStringsArray.appendObject (nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ()) ;  
+    mStringsArray.appendObject (nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ()) ;  
     nonTerminal.gotoNextObject () ;
   }
 /* for (int32_t i=0 ; i<mStringsArray.count () ; i++) {

@@ -31,7 +31,7 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acPtr_class {
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_location mAttribute_mStartLocation ;
+  public : GALGAS_location mProperty_mStartLocation ;
 
 //--- Constructor
   public : cPtr_abstractSyntaxInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation

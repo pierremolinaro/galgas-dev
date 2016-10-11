@@ -461,7 +461,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
   ioGeneratedCode += mReceiverCppName
   for () in mStructAttributeList do
-    ioGeneratedCode += ".mAttribute_" + [[mValue string] identifierRepresentation]
+    ioGeneratedCode += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
 #--- Call add assign (+=) operator
   ioGeneratedCode += ".addAssign_operation ("
@@ -508,7 +508,7 @@ override method @opEqualInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
   ioGeneratedCode += mTargetVariableCppName
   for () in mStructAttributeList do
-    ioGeneratedCode += ".mAttribute_" + mValue
+    ioGeneratedCode += ".mProperty_" + mValue
   end
   ioGeneratedCode += "." + mGeneratedMethod + "(" + sourceVar
   ioGeneratedCode += ", " + compilerCppName ()

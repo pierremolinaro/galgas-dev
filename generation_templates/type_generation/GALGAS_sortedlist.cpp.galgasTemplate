@@ -62,7 +62,7 @@ cSortedListElement * cSortedListElement_%!TYPE_IDENTIFIER%::copy (void) {
   cSortedListElement * result = NULL ;
   macroMyNew (result, cSortedListElement_%!TYPE_IDENTIFIER% (%
     for () in ATTRIBUTE_LIST
-      do %mObject.mAttribute_%![mAttributeName identifierRepresentation]
+      do %mObject.mProperty_%![mAttributeName identifierRepresentation]
       between %, %
     end
   % COMMA_HERE)) ;
@@ -77,7 +77,7 @@ void cSortedListElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, co
     %  ioString << "\\n" ;\n%
     %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
     %  ioString << %![mAttributeName utf8Representation]% ":" ;\n%
-    %  mObject.mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
+    %  mObject.mProperty_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end
 %}
 
@@ -105,9 +105,9 @@ typeComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compareForSorting (c
     %  if (result == kOperandEqual) {\n%
     %    result = %
     if mAscendingOrder then
-      %mObject.mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mObject.mAttribute_%![mAttributeName identifierRepresentation]%)%
+      %mObject.mProperty_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mObject.mProperty_%![mAttributeName identifierRepresentation]%)%
     else
-      %operand->mObject.mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (mObject.mAttribute_%![mAttributeName identifierRepresentation]%)%
+      %operand->mObject.mProperty_%![mAttributeName identifierRepresentation]%.objectCompare (mObject.mProperty_%![mAttributeName identifierRepresentation]%)%
     end
     % ;\n%
     %  }\n%
@@ -200,7 +200,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popSmallest (%?^
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -225,7 +225,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popGreatest (%?^
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -250,7 +250,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -275,7 +275,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -301,7 +301,7 @@ GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LO
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;\n%
-  %  return p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  %  return p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 end
 %

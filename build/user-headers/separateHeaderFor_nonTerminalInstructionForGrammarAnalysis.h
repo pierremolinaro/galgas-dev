@@ -29,8 +29,8 @@ class cPtr_nonTerminalInstructionForGrammarAnalysis : public cPtr_abstractSyntax
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mNonterminalSymbolName ;
-  public : GALGAS_uint mAttribute_mNonterminalSymbolIndex ;
+  public : GALGAS_lstring mProperty_mNonterminalSymbolName ;
+  public : GALGAS_uint mProperty_mNonterminalSymbolIndex ;
 
 //--- Constructor
   public : cPtr_nonTerminalInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation,

@@ -194,7 +194,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionL
 
 class GALGAS_semanticExpressionListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
 
 
 //--------------------------------- Accessors
@@ -428,7 +428,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterForG
 
 class cPtr_actualParameterForGeneration : public acPtr_class {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mFormalArgumentType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mFormalArgumentType ;
 
 //--- Constructor
   public : cPtr_actualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mFormalArgumentType
@@ -454,7 +454,7 @@ class cPtr_actualParameterForGeneration : public acPtr_class {
 
 class GALGAS_actualParameterListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_actualParameterForGeneration mAttribute_mActualParameter ;
+  public : GALGAS_actualParameterForGeneration mProperty_mActualParameter ;
 
 
 //--------------------------------- Accessors
@@ -603,7 +603,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticBlockInstru
 
 class cPtr_semanticBlockInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mInstructionList ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mInstructionList ;
 
 //--- Constructor
   public : cPtr_semanticBlockInstructionForGeneration (const GALGAS_semanticInstructionListForGeneration & in_mInstructionList
@@ -769,8 +769,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listOfSemanticInstr
 
 class GALGAS_listOfSemanticInstructionListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mInstructionList ;
-  public : GALGAS_location mAttribute_mEndOfInstructionList ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mInstructionList ;
+  public : GALGAS_location mProperty_mEndOfInstructionList ;
 
 
 //--------------------------------- Accessors
@@ -1174,8 +1174,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclaration
 
 class GALGAS_semanticDeclarationListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_string mAttribute_mMessage ;
-  public : GALGAS_semanticDeclarationForGeneration mAttribute_mDeclaration ;
+  public : GALGAS_string mProperty_mMessage ;
+  public : GALGAS_semanticDeclarationForGeneration mProperty_mDeclaration ;
 
 
 //--------------------------------- Accessors
@@ -1379,8 +1379,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_signatureForGrammar
 
 class GALGAS_signatureForGrammarAnalysis_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_formalArgumentPassingModeAST mAttribute_mFormalArgumentPassingModeForGrammarAnalysis ;
-  public : GALGAS_lstring mAttribute_mGalgasTypeNameForGrammarAnalysis ;
+  public : GALGAS_formalArgumentPassingModeAST mProperty_mFormalArgumentPassingModeForGrammarAnalysis ;
+  public : GALGAS_lstring mProperty_mGalgasTypeNameForGrammarAnalysis ;
 
 
 //--------------------------------- Accessors
@@ -1551,7 +1551,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalSymbolLa
 
 class cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis : public cMapElement {
 //--- Map attributes
-  public : GALGAS_signatureForGrammarAnalysis mAttribute_mFormalParametersList ;
+  public : GALGAS_signatureForGrammarAnalysis mProperty_mFormalParametersList ;
 
 //--- Constructor
   public : cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis (const GALGAS_lstring & inKey,
@@ -1579,8 +1579,8 @@ class cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis : public cMapEleme
 
 class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_signatureForGrammarAnalysis mAttribute_mFormalParametersList ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_signatureForGrammarAnalysis mProperty_mFormalParametersList ;
 
 
 //--------------------------------- Accessors
@@ -1767,8 +1767,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolMa
 
 class cMapElement_nonTerminalSymbolMapForGrammarAnalysis : public cMapElement {
 //--- Map attributes
-  public : GALGAS_uint mAttribute_mNonTerminalIndex ;
-  public : GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis mAttribute_mNonterminalSymbolParametersMap ;
+  public : GALGAS_uint mProperty_mNonTerminalIndex ;
+  public : GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis mProperty_mNonterminalSymbolParametersMap ;
 
 //--- Constructor
   public : cMapElement_nonTerminalSymbolMapForGrammarAnalysis (const GALGAS_lstring & inKey,
@@ -1797,9 +1797,9 @@ class cMapElement_nonTerminalSymbolMapForGrammarAnalysis : public cMapElement {
 
 class GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_uint mAttribute_mNonTerminalIndex ;
-  public : GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis mAttribute_mNonterminalSymbolParametersMap ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_uint mProperty_mNonTerminalIndex ;
+  public : GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis mProperty_mNonterminalSymbolParametersMap ;
 
 
 //--------------------------------- Accessors
@@ -2010,8 +2010,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalToAddLis
 
 class GALGAS_nonTerminalToAddList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_string mAttribute_mSyntaxComponentName ;
-  public : GALGAS_uint mAttribute_mNonTerminalToAddCount ;
+  public : GALGAS_string mProperty_mSyntaxComponentName ;
+  public : GALGAS_uint mProperty_mNonTerminalToAddCount ;
 
 
 //--------------------------------- Accessors
@@ -2232,9 +2232,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckAssign
 
 class GALGAS_terminalCheckAssignementList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_string mAttribute_mTypeName ;
-  public : GALGAS_string mAttribute_mTargetVarCppName ;
-  public : GALGAS_string mAttribute_mSourceLexicalAttributeName ;
+  public : GALGAS_string mProperty_mTypeName ;
+  public : GALGAS_string mProperty_mTargetVarCppName ;
+  public : GALGAS_string mProperty_mSourceLexicalAttributeName ;
 
 
 //--------------------------------- Accessors
@@ -2356,7 +2356,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionFo
 
 class cPtr_syntaxInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_location mAttribute_mInstructionLocation ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
 
 //--- Constructor
   public : cPtr_syntaxInstructionForGeneration (const GALGAS_location & in_mInstructionLocation
@@ -2533,9 +2533,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplate
 
 class GALGAS_filewrapperTemplateListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_string mAttribute_mFilewrapperTemplateName ;
-  public : GALGAS_formalInputParameterListForGeneration mAttribute_mFilewrapperTemplateFormalInputParameters ;
-  public : GALGAS_templateInstructionListForGeneration mAttribute_mTemplateInstructionListForGeneration ;
+  public : GALGAS_string mProperty_mFilewrapperTemplateName ;
+  public : GALGAS_formalInputParameterListForGeneration mProperty_mFilewrapperTemplateFormalInputParameters ;
+  public : GALGAS_templateInstructionListForGeneration mProperty_mTemplateInstructionListForGeneration ;
 
 
 //--------------------------------- Accessors
@@ -2998,9 +2998,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_variableMap ;
 
 class cMapElement_variableMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mTypeProxy ;
-  public : GALGAS_string mAttribute_mCppName ;
-  public : GALGAS_string mAttribute_mNameForCheckingFormalParameterUsing ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mTypeProxy ;
+  public : GALGAS_string mProperty_mCppName ;
+  public : GALGAS_string mProperty_mNameForCheckingFormalParameterUsing ;
 
 //--- Constructor
   public : cMapElement_variableMap (const GALGAS_lstring & inKey,
@@ -3148,11 +3148,11 @@ void callExtensionMethod_analyzeSemanticExpression (const class cPtr_semanticExp
 
 class GALGAS_analysisContext : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_semanticContext mAttribute_mSemanticContext ;
-  public : GALGAS_predefinedTypes mAttribute_mPredefinedTypes ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mSelfCopyTypeProxy ;
-  public : GALGAS_string mAttribute_mSelfObjectCppName ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mSelfTypeProxy ;
+  public : GALGAS_semanticContext mProperty_mSemanticContext ;
+  public : GALGAS_predefinedTypes mProperty_mPredefinedTypes ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mSelfCopyTypeProxy ;
+  public : GALGAS_string mProperty_mSelfObjectCppName ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mSelfTypeProxy ;
 
 
 //--------------------------------- Accessors
@@ -3461,7 +3461,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractCollectionV
 
 class cPtr_abstractCollectionValueElementForGeneration : public acPtr_class {
 //--- Attributes
-  public : GALGAS_location mAttribute_mExpressionLocation ;
+  public : GALGAS_location mProperty_mExpressionLocation ;
 
 //--- Constructor
   public : cPtr_abstractCollectionValueElementForGeneration (const GALGAS_location & in_mExpressionLocation
@@ -3487,7 +3487,7 @@ class cPtr_abstractCollectionValueElementForGeneration : public acPtr_class {
 
 class GALGAS_collectionValueElementListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_abstractCollectionValueElementForGeneration mAttribute_mElement ;
+  public : GALGAS_abstractCollectionValueElementForGeneration mProperty_mElement ;
 
 
 //--------------------------------- Accessors
@@ -3606,7 +3606,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionListColle
 
 class cPtr_expressionListCollectionForGeneration : public cPtr_abstractCollectionValueElementForGeneration {
 //--- Attributes
-  public : GALGAS_semanticExpressionListForGeneration mAttribute_mExpressionList ;
+  public : GALGAS_semanticExpressionListForGeneration mProperty_mExpressionList ;
 
 //--- Constructor
   public : cPtr_expressionListCollectionForGeneration (const GALGAS_location & in_mExpressionLocation,
@@ -3832,10 +3832,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localConstantList ;
 
 class GALGAS_localConstantList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mType ;
-  public : GALGAS_lstring mAttribute_mName ;
-  public : GALGAS_bool mAttribute_mNoWarningIfUnused ;
-  public : GALGAS_string mAttribute_mCppName ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mType ;
+  public : GALGAS_lstring mProperty_mName ;
+  public : GALGAS_bool mProperty_mNoWarningIfUnused ;
+  public : GALGAS_string mProperty_mCppName ;
 
 
 //--------------------------------- Accessors
@@ -4064,9 +4064,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localInitializedVar
 
 class GALGAS_localInitializedVariableList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mType ;
-  public : GALGAS_lstring mAttribute_mName ;
-  public : GALGAS_string mAttribute_mCppName ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mType ;
+  public : GALGAS_lstring mProperty_mName ;
+  public : GALGAS_string mProperty_mCppName ;
 
 
 //--------------------------------- Accessors
@@ -4420,7 +4420,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_attributeIndexMap ;
 
 class cMapElement_attributeIndexMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mAttributeTypeIndex ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mAttributeTypeIndex ;
 
 //--- Constructor
   public : cMapElement_attributeIndexMap (const GALGAS_lstring & inKey,
@@ -4448,8 +4448,8 @@ class cMapElement_attributeIndexMap : public cMapElement {
 
 class GALGAS_attributeIndexMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mAttributeTypeIndex ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mAttributeTypeIndex ;
 
 
 //--------------------------------- Accessors
@@ -4649,9 +4649,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalLabelMap
 
 class cMapElement_nonterminalLabelMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_formalParameterListForGeneration mAttribute_mSignatureForGeneration ;
-  public : GALGAS_formalParameterSignature mAttribute_mSignature ;
-  public : GALGAS_location mAttribute_mEndOfArgumentLocation ;
+  public : GALGAS_formalParameterListForGeneration mProperty_mSignatureForGeneration ;
+  public : GALGAS_formalParameterSignature mProperty_mSignature ;
+  public : GALGAS_location mProperty_mEndOfArgumentLocation ;
 
 //--- Constructor
   public : cMapElement_nonterminalLabelMap (const GALGAS_lstring & inKey,
@@ -4681,10 +4681,10 @@ class cMapElement_nonterminalLabelMap : public cMapElement {
 
 class GALGAS_nonterminalLabelMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_formalParameterListForGeneration mAttribute_mSignatureForGeneration ;
-  public : GALGAS_formalParameterSignature mAttribute_mSignature ;
-  public : GALGAS_location mAttribute_mEndOfArgumentLocation ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_formalParameterListForGeneration mProperty_mSignatureForGeneration ;
+  public : GALGAS_formalParameterSignature mProperty_mSignature ;
+  public : GALGAS_location mProperty_mEndOfArgumentLocation ;
 
 
 //--------------------------------- Accessors
@@ -4866,7 +4866,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalMap ;
 
 class cMapElement_nonterminalMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_nonterminalLabelMap mAttribute_mLabelMap ;
+  public : GALGAS_nonterminalLabelMap mProperty_mLabelMap ;
 
 //--- Constructor
   public : cMapElement_nonterminalMap (const GALGAS_lstring & inKey,
@@ -4894,8 +4894,8 @@ class cMapElement_nonterminalMap : public cMapElement {
 
 class GALGAS_nonterminalMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_nonterminalLabelMap mAttribute_mLabelMap ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_nonterminalLabelMap mProperty_mLabelMap ;
 
 
 //--------------------------------- Accessors
@@ -5144,11 +5144,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ruleLabelImplementa
 
 class GALGAS_ruleLabelImplementationList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mLabelName ;
-  public : GALGAS_formalParameterListForGeneration mAttribute_mSignatureForGeneration ;
-  public : GALGAS_formalParameterSignature mAttribute_mSignature ;
-  public : GALGAS_location mAttribute_mEndOfArgumentLocation ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mInstructionListForGeneration ;
+  public : GALGAS_lstring mProperty_mLabelName ;
+  public : GALGAS_formalParameterListForGeneration mProperty_mSignatureForGeneration ;
+  public : GALGAS_formalParameterSignature mProperty_mSignature ;
+  public : GALGAS_location mProperty_mEndOfArgumentLocation ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mInstructionListForGeneration ;
 
 
 //--------------------------------- Accessors
@@ -5381,9 +5381,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ruleDeclarationList
 
 class GALGAS_ruleDeclarationList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_string mAttribute_mNonterminalName ;
-  public : GALGAS_uint mAttribute_mRuleIndex ;
-  public : GALGAS_ruleLabelImplementationList mAttribute_mLabelImplementationList ;
+  public : GALGAS_string mProperty_mNonterminalName ;
+  public : GALGAS_uint mProperty_mRuleIndex ;
+  public : GALGAS_ruleLabelImplementationList mProperty_mLabelImplementationList ;
 
 
 //--------------------------------- Accessors
@@ -5530,13 +5530,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxDeclarationFo
 
 class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGeneration {
 //--- Attributes
-  public : GALGAS_string mAttribute_mSyntaxComponentName ;
-  public : GALGAS_string mAttribute_mLexiqueName ;
-  public : GALGAS_nonterminalMap mAttribute_mNonterminalDeclarationMap ;
-  public : GALGAS_ruleDeclarationList mAttribute_mRuleDeclarationList ;
-  public : GALGAS_uint mAttribute_mSelectMethodCount ;
-  public : GALGAS_bool mAttribute_mHasIndexing ;
-  public : GALGAS_bool mAttribute_mHasTranslateFeature ;
+  public : GALGAS_string mProperty_mSyntaxComponentName ;
+  public : GALGAS_string mProperty_mLexiqueName ;
+  public : GALGAS_nonterminalMap mProperty_mNonterminalDeclarationMap ;
+  public : GALGAS_ruleDeclarationList mProperty_mRuleDeclarationList ;
+  public : GALGAS_uint mProperty_mSelectMethodCount ;
+  public : GALGAS_bool mProperty_mHasIndexing ;
+  public : GALGAS_bool mProperty_mHasTranslateFeature ;
 
 //--- Constructor
   public : cPtr_syntaxDeclarationForGeneration (const GALGAS_string & in_mSyntaxComponentName,
@@ -5833,8 +5833,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_keySortedList ;
 
 class GALGAS_keySortedList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_string mAttribute_mKey ;
-  public : GALGAS_uint mAttribute_mOrder ;
+  public : GALGAS_string mProperty_mKey ;
+  public : GALGAS_uint mProperty_mOrder ;
 
 
 //--------------------------------- Accessors
@@ -5999,7 +5999,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uselessEntityLocati
 
 class cMapElement_uselessEntityLocationMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_location mAttribute_mLocation ;
+  public : GALGAS_location mProperty_mLocation ;
 
 //--- Constructor
   public : cMapElement_uselessEntityLocationMap (const GALGAS_lstring & inKey,
@@ -6027,8 +6027,8 @@ class cMapElement_uselessEntityLocationMap : public cMapElement {
 
 class GALGAS_uselessEntityLocationMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_location mAttribute_mLocation ;
+  public : GALGAS_lstring mProperty_lkey ;
+  public : GALGAS_location mProperty_mLocation ;
 
 
 //--------------------------------- Accessors
@@ -6277,11 +6277,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBran
 
 class GALGAS_castInstructionBranchListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_lstring mAttribute_mConstantVarName ;
-  public : GALGAS_semanticInstructionListAST mAttribute_mInstructionList ;
-  public : GALGAS_dynamicTypeComparisonKind mAttribute_mTypeComparisonKind ;
-  public : GALGAS_location mAttribute_mEndOfInstructions ;
+  public : GALGAS_lstring mProperty_mTypeName ;
+  public : GALGAS_lstring mProperty_mConstantVarName ;
+  public : GALGAS_semanticInstructionListAST mProperty_mInstructionList ;
+  public : GALGAS_dynamicTypeComparisonKind mProperty_mTypeComparisonKind ;
+  public : GALGAS_location mProperty_mEndOfInstructions ;
 
 
 //--------------------------------- Accessors
@@ -6422,10 +6422,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstr
 
 class cPtr_structuredCastInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
-  public : GALGAS_semanticExpressionAST mAttribute_mCastExpression ;
-  public : GALGAS_castInstructionBranchListAST mAttribute_mCastInstructionBranchList ;
-  public : GALGAS_semanticInstructionListAST mAttribute_mElseInstructionList ;
-  public : GALGAS_location mAttribute_mEndOfCastInstruction ;
+  public : GALGAS_semanticExpressionAST mProperty_mCastExpression ;
+  public : GALGAS_castInstructionBranchListAST mProperty_mCastInstructionBranchList ;
+  public : GALGAS_semanticInstructionListAST mProperty_mElseInstructionList ;
+  public : GALGAS_location mProperty_mEndOfCastInstruction ;
 
 //--- Constructor
   public : cPtr_structuredCastInstructionAST (const GALGAS_location & in_mInstructionLocation,

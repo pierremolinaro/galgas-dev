@@ -42,7 +42,7 @@ override method @outputInputActualParameterForGeneration generateActualParameter
   end
   outCppName = mOutputInputVariableCppName
   for () in mStructAttributeList do
-    outCppName += ".mAttribute_" + [mValue identifierRepresentation]
+    outCppName += ".mProperty_" + [mValue identifierRepresentation]
   end
   [!?ioUnusedVariableCppNameSet removeKey !mOutputInputVariableCppName]
 }

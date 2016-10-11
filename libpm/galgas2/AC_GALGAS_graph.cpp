@@ -515,12 +515,12 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
   C_UIntSet startNodeSet ;
   cEnumerator_lstringlist enumerator1 (inStartNodes, kENUMERATION_UP) ;
   while (enumerator1.hasCurrentObject ()) {
-    const cGraphNode * nodePtr = findNode (enumerator1.current_mValue (THERE).mAttribute_string.stringValue(), root()) ;
+    const cGraphNode * nodePtr = findNode (enumerator1.current_mValue (THERE).mProperty_string.stringValue(), root()) ;
     if (NULL == nodePtr) {
       C_String message = "subgraphFromNodes: '" ;
-      message << enumerator1.current_mValue (THERE).mAttribute_string.stringValue() ;
+      message << enumerator1.current_mValue (THERE).mProperty_string.stringValue() ;
       message << "' is not a declared node, cannot start from it" ;
-      inCompiler->emitSemanticError (enumerator1.current_mValue (THERE).mAttribute_location,
+      inCompiler->emitSemanticError (enumerator1.current_mValue (THERE).mProperty_location,
                                      message,
                                      TC_Array <C_FixItDescription> ()
                                      COMMA_THERE) ;
@@ -566,9 +566,9 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
     const uint32_t nodeIndex = nodeArray (i COMMA_HERE) ;
     const cGraphNode * nodePtr = mNodeArray ((int32_t) nodeIndex COMMA_THERE) ;
     GALGAS_lstring lkey ;
-    lkey.mAttribute_string = nodePtr->mKey ;
+    lkey.mProperty_string = nodePtr->mKey ;
     // printf ("ADDING %s\n", nodePtr->mKey.cString (HERE)) ;
-    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
     outResultingGraph.internalAddNode (lkey,
                                        "subgraphFromNodes Internal error",
                                        nodePtr->mAttributes,
@@ -581,13 +581,13 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
     const uint32_t sourceNodeIndex = edgeArray (i COMMA_HERE).mSource ;
     const cGraphNode * sourceNodePtr = mNodeArray ((int32_t) sourceNodeIndex COMMA_THERE) ;
     GALGAS_lstring source ;
-    source.mAttribute_string = sourceNodePtr->mKey ;
-    source.mAttribute_location = sourceNodePtr->mDefinitionLocation ;
+    source.mProperty_string = sourceNodePtr->mKey ;
+    source.mProperty_location = sourceNodePtr->mDefinitionLocation ;
     const uint32_t targetNodeIndex = edgeArray (i COMMA_HERE).mTarget ;
     const cGraphNode * targetNodePtr = mNodeArray ((int32_t) targetNodeIndex COMMA_THERE) ;
     GALGAS_lstring target ;
-    target.mAttribute_string = targetNodePtr->mKey ;
-    target.mAttribute_location = targetNodePtr->mDefinitionLocation ;
+    target.mProperty_string = targetNodePtr->mKey ;
+    target.mProperty_location = targetNodePtr->mDefinitionLocation ;
     outResultingGraph.setter_addEdge (source, target COMMA_THERE) ;
   }
 }
@@ -807,16 +807,16 @@ void cSharedGraph::internalAddNode (const GALGAS_lstring & inKey,
                                     const capCollectionElement & inAttributes,
                                     C_Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) {
-  cGraphNode * node = findOrAddNodeForKey (inKey.mAttribute_string.stringValue ()) ;
+  cGraphNode * node = findOrAddNodeForKey (inKey.mProperty_string.stringValue ()) ;
   if (node->mAttributes.ptr () == NULL) { // Node exists, but is undefined
     node->mAttributes = inAttributes ;
-    node->mDefinitionLocation = inKey.mAttribute_location ;
+    node->mDefinitionLocation = inKey.mProperty_location ;
     node->mIsDefined = true ;
   }else{ // Error : node redefinition
     GALGAS_lstring existingKey ;
-    existingKey.mAttribute_location = node->mDefinitionLocation ;
-    existingKey.mAttribute_string = GALGAS_string (node->mKey) ;
-    inCompiler->semanticErrorWith_K_L_message (existingKey, inErrorMessage, inKey.mAttribute_location COMMA_THERE) ;
+    existingKey.mProperty_location = node->mDefinitionLocation ;
+    existingKey.mProperty_string = GALGAS_string (node->mKey) ;
+    inCompiler->semanticErrorWith_K_L_message (existingKey, inErrorMessage, inKey.mProperty_location COMMA_THERE) ;
   }
 }
 
@@ -855,10 +855,10 @@ void AC_GALGAS_graph::setter_noteNode (const GALGAS_lstring & inKey
     MF_Assert (NULL != mSharedGraph, "mSharedGraph == NULL", 0, 0) ;
     cGraphNode * node = (NULL == mSharedGraph)
       ? NULL
-      : mSharedGraph->findOrAddNodeForKey (inKey.mAttribute_string.stringValue ())
+      : mSharedGraph->findOrAddNodeForKey (inKey.mProperty_string.stringValue ())
     ;
     if (NULL != node) {
-      node->mReferenceLocationArray.appendObject (inKey.mAttribute_location) ;
+      node->mReferenceLocationArray.appendObject (inKey.mProperty_location) ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
       mSharedGraph->checkGraph (HERE) ;
@@ -896,10 +896,10 @@ void AC_GALGAS_graph::setter_addEdge (const GALGAS_lstring & inSourceNodeKey,
     insulateGraph (HERE) ;
     MF_Assert (NULL != mSharedGraph, "mSharedGraph == NULL", 0, 0) ;
     if (NULL != mSharedGraph) {
-      mSharedGraph->addEdge (inSourceNodeKey.mAttribute_string.stringValue (),
-                             inSourceNodeKey.mAttribute_location,
-                             inTargetNodeKey.mAttribute_string.stringValue (),
-                             inTargetNodeKey.mAttribute_location) ;
+      mSharedGraph->addEdge (inSourceNodeKey.mProperty_string.stringValue (),
+                             inSourceNodeKey.mProperty_location,
+                             inTargetNodeKey.mProperty_string.stringValue (),
+                             inTargetNodeKey.mProperty_location) ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
       mSharedGraph->checkGraph (HERE) ;
@@ -1043,8 +1043,8 @@ void cSharedGraph::internalFindCircularities (capCollectionElementArray & outInf
     outInfoList.appendObject (nodePtr->mAttributes) ;
     // AC_GALGAS_list::insertInSharedList (outInfoList, nodePtr->mAttributes) ;
     GALGAS_lstring lkey ;
-    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
-    lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GALGAS_string (nodePtr->mKey) ;
     outNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
   }
 }
@@ -1081,8 +1081,8 @@ void cSharedGraph::internalNodesWithNoPredecessor (capCollectionElementArray & o
     outInfoList.appendObject (nodePtr->mAttributes) ;
     // AC_GALGAS_list::insertInSharedList (outInfoList, nodePtr->mAttributes) ;
     GALGAS_lstring lkey ;
-    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
-    lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GALGAS_string (nodePtr->mKey) ;
     outNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
   }
 }
@@ -1119,8 +1119,8 @@ void cSharedGraph::internalNodesWithNoSuccessor (capCollectionElementArray & out
     outInfoList.appendObject (nodePtr->mAttributes) ;
   //  AC_GALGAS_list::insertInSharedList (outInfoList, nodePtr->mAttributes) ;
     GALGAS_lstring lkey ;
-    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
-    lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GALGAS_string (nodePtr->mKey) ;
     outNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
   }
 }
@@ -1161,8 +1161,8 @@ void cSharedGraph::internalTopologicalSort (capCollectionElementArray & outSorte
     outSortedList.appendObject (nodePtr->mAttributes) ;
 //    AC_GALGAS_list::insertInSharedList (outSortedList, nodePtr->mAttributes) ;
     GALGAS_lstring lkey ;
-    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
-    lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GALGAS_string (nodePtr->mKey) ;
     outSortedNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
   }
 //--- Add unsorted nodes
@@ -1175,8 +1175,8 @@ void cSharedGraph::internalTopologicalSort (capCollectionElementArray & outSorte
     outUnsortedList.appendObject (nodePtr->mAttributes) ;
 //    AC_GALGAS_list::insertInSharedList (outUnsortedList, nodePtr->mAttributes) ;
     GALGAS_lstring lkey ;
-    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
-    lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GALGAS_string (nodePtr->mKey) ;
     outUnsortedNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
   }
 }
@@ -1234,8 +1234,8 @@ void cSharedGraph::internalDepthFirstTopologicalSort (capCollectionElementArray 
     outSortedList.appendObject (nodePtr->mAttributes) ;
  //   AC_GALGAS_list::insertInSharedList (outSortedList, nodePtr->mAttributes) ;
     GALGAS_lstring lkey ;
-    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
-    lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GALGAS_string (nodePtr->mKey) ;
     outSortedNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
   }
 //--- Add unsorted nodes
@@ -1248,8 +1248,8 @@ void cSharedGraph::internalDepthFirstTopologicalSort (capCollectionElementArray 
     outUnsortedList.appendObject (nodePtr->mAttributes) ;
 //    AC_GALGAS_list::insertInSharedList (outUnsortedList, nodePtr->mAttributes) ;
     GALGAS_lstring lkey ;
-    lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
-    lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
+    lkey.mProperty_location = nodePtr->mDefinitionLocation ;
+    lkey.mProperty_string = GALGAS_string (nodePtr->mKey) ;
     outUnsortedNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
   }
 }
@@ -1296,9 +1296,9 @@ static void buildUndefinedNodeReferenceList (const cGraphNode * inNode,
     buildUndefinedNodeReferenceList (inNode->mInfPtr, ioResult) ;
     if (NULL == inNode->mAttributes.ptr ()) {
       GALGAS_lstring lkey ;
-      lkey.mAttribute_string = GALGAS_string (inNode->mKey) ;
+      lkey.mProperty_string = GALGAS_string (inNode->mKey) ;
       for (int32_t i=0 ; i<inNode->mReferenceLocationArray.count () ; i++) {
-        lkey.mAttribute_location = inNode->mReferenceLocationArray (i COMMA_HERE) ;
+        lkey.mProperty_location = inNode->mReferenceLocationArray (i COMMA_HERE) ;
         ioResult.addAssign_operation (lkey COMMA_HERE) ;
       }
     }

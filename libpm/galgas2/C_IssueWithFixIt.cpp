@@ -76,7 +76,7 @@ void appendFixItActions (TC_Array <C_FixItDescription> & ioArray,
                          const GALGAS_lstringlist & inList) {
   cEnumerator_lstringlist enumerator (inList, kENUMERATION_UP) ;
   while (enumerator.hasCurrentObject ()) {
-    const C_String s = enumerator.current_mValue (HERE).mAttribute_string.stringValue () ;
+    const C_String s = enumerator.current_mValue (HERE).mProperty_string.stringValue () ;
     ioArray.appendObject (C_FixItDescription (inKind, s)) ;
     enumerator.gotoNextObject () ;
   }

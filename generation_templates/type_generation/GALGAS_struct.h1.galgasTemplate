@@ -8,7 +8,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Public data members
 %
 for () in ATTRIBUTE_LIST
-  do %  public : GALGAS_%![mAttributeTypeProxy identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  do %  public : GALGAS_%![mAttributeTypeProxy identifierRepresentation]% mProperty_%![mAttributeName identifierRepresentation]% ;\n%
 end%
 
 //--------------------------------- Accessors

@@ -28,8 +28,8 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mTerminalSymbolName ;
-  public : GALGAS_uint mAttribute_mTerminalSymbolIndex ;
+  public : GALGAS_lstring mProperty_mTerminalSymbolName ;
+  public : GALGAS_uint mProperty_mTerminalSymbolIndex ;
 
 //--- Constructor
   public : cPtr_terminalInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation,

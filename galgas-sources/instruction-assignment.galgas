@@ -157,7 +157,7 @@ override method @assignmentInstructionForGeneration generateInstruction
 #---
   @string receiverCppName = mTargetCppName
   for () in mStructAttributeList do
-    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+    receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
   ioGeneratedCode += receiverCppName + " = " + sourceVar + " ;\n"
   [!?ioUnusedVariableCppNameSet removeKey !mTargetCppName]

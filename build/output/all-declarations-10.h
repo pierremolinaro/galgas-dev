@@ -168,9 +168,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_BuildFileList ;
 
 class GALGAS_BuildFileList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_string mAttribute_mFileReference ;
-  public : GALGAS_string mAttribute_mFileName ;
-  public : GALGAS_string mAttribute_mBuildReference ;
+  public : GALGAS_string mProperty_mFileReference ;
+  public : GALGAS_string mProperty_mFileName ;
+  public : GALGAS_string mProperty_mBuildReference ;
 
 
 //--------------------------------- Accessors
@@ -299,7 +299,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 class cPtr_templateInstructionStringAST : public cPtr_templateInstructionAST {
 //--- Attributes
-  public : GALGAS_string mAttribute_mTemplateString ;
+  public : GALGAS_string mProperty_mTemplateString ;
 
 //--- Constructor
   public : cPtr_templateInstructionStringAST (const GALGAS_string & in_mTemplateString

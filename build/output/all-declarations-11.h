@@ -72,7 +72,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 class cPtr_templateInstructionStringForGeneration : public cPtr_templateInstructionForGeneration {
 //--- Attributes
-  public : GALGAS_string mAttribute_mTemplateString ;
+  public : GALGAS_string mProperty_mTemplateString ;
 
 //--- Constructor
   public : cPtr_templateInstructionStringForGeneration (const GALGAS_string & in_mTemplateString
@@ -151,8 +151,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclaration
 
 class cPtr_semanticDeclarationWithHeaderForGeneration : public cPtr_semanticDeclarationForGeneration {
 //--- Attributes
-  public : GALGAS_bool mAttribute_mHasHeader ;
-  public : GALGAS_string mAttribute_mImplementationCppFileName ;
+  public : GALGAS_bool mProperty_mHasHeader ;
+  public : GALGAS_string mProperty_mImplementationCppFileName ;
 
 //--- Constructor
   public : cPtr_semanticDeclarationWithHeaderForGeneration (const GALGAS_bool & in_mHasHeader,
@@ -228,7 +228,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticTypeForGene
 
 class cPtr_semanticTypeForGeneration : public cPtr_semanticDeclarationForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mTypeProxy ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mTypeProxy ;
 
 //--- Constructor
   public : cPtr_semanticTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy
@@ -322,11 +322,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classTypeForGenerat
 
 class cPtr_classTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attributes
-  public : GALGAS_bool mAttribute_mIsAbstract ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mSuperClass ;
-  public : GALGAS_typedPropertyList mAttribute_mAllTypedAttributeList ;
-  public : GALGAS_typedPropertyList mAttribute_mTypedAttributeList ;
-  public : GALGAS_bool mAttribute_mGenerateHeaderInSeparateFile ;
+  public : GALGAS_bool mProperty_mIsAbstract ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mSuperClass ;
+  public : GALGAS_typedPropertyList mProperty_mAllTypedAttributeList ;
+  public : GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
+  public : GALGAS_bool mProperty_mGenerateHeaderInSeparateFile ;
 
 //--- Constructor
   public : cPtr_classTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
@@ -420,7 +420,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumTypeForGenerati
 
 class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attributes
-  public : GALGAS_enumConstantListForGeneration mAttribute_mConstantList ;
+  public : GALGAS_enumConstantListForGeneration mProperty_mConstantList ;
 
 //--- Constructor
   public : cPtr_enumTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
@@ -512,9 +512,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeDeclarati
 
 class cPtr_externTypeDeclarationForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attributes
-  public : GALGAS_string mAttribute_mExternTypeName ;
-  public : GALGAS_string mAttribute_mCppPreDeclarationCode ;
-  public : GALGAS_string mAttribute_mCppClassCode ;
+  public : GALGAS_string mProperty_mExternTypeName ;
+  public : GALGAS_string mProperty_mCppPreDeclarationCode ;
+  public : GALGAS_string mProperty_mCppClassCode ;
 
 //--- Constructor
   public : cPtr_externTypeDeclarationForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
@@ -610,9 +610,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphDeclarationFor
 
 class cPtr_graphDeclarationForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mAssociatedListTypeProxy ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mAssociatedListElementTypeProxy ;
-  public : GALGAS_graphInsertModifierList mAttribute_mInsertModifierList ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mAssociatedListTypeProxy ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mAssociatedListElementTypeProxy ;
+  public : GALGAS_graphInsertModifierList mProperty_mInsertModifierList ;
 
 //--- Constructor
   public : cPtr_graphDeclarationForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
@@ -705,8 +705,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listTypeForGenerati
 
 class cPtr_listTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mListElementTypeIndex ;
-  public : GALGAS_typedPropertyList mAttribute_mTypedAttributeList ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mListElementTypeIndex ;
+  public : GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
 
 //--- Constructor
   public : cPtr_listTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
@@ -800,9 +800,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listmapTypeForGener
 
 class cPtr_listmapTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mAssociatedListTypeIndex ;
-  public : GALGAS_typedPropertyList mAttribute_mAssociatedListTypedAttributeList ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mAssociatedListMapElementTypeIndex ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mAssociatedListTypeIndex ;
+  public : GALGAS_typedPropertyList mProperty_mAssociatedListTypedAttributeList ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mAssociatedListMapElementTypeIndex ;
 
 //--- Constructor
   public : cPtr_listmapTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
@@ -910,13 +910,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapTypeForGeneratio
 
 class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mElementTypeProxy ;
-  public : GALGAS_lstring mAttribute_mMapTypeName ;
-  public : GALGAS_typedPropertyList mAttribute_mTypedAttributeList ;
-  public : GALGAS_insertMethodListAST mAttribute_mInsertMethodList ;
-  public : GALGAS_mapSearchMethodListAST mAttribute_mSearchMethodList ;
-  public : GALGAS_mapRemoveMethodListAST mAttribute_mRemoveMethodList ;
-  public : GALGAS_bool mAttribute_mHasInsertOrReplaceModifier ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mElementTypeProxy ;
+  public : GALGAS_lstring mProperty_mMapTypeName ;
+  public : GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
+  public : GALGAS_insertMethodListAST mProperty_mInsertMethodList ;
+  public : GALGAS_mapSearchMethodListAST mProperty_mSearchMethodList ;
+  public : GALGAS_mapRemoveMethodListAST mProperty_mRemoveMethodList ;
+  public : GALGAS_bool mProperty_mHasInsertOrReplaceModifier ;
 
 //--- Constructor
   public : cPtr_mapTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
@@ -1020,9 +1020,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapProxyTypeForGene
 
 class cPtr_mapProxyTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mAssociatedMapTypeProxy ;
-  public : GALGAS_typedPropertyList mAttribute_mAssociatedMapTypedAttributeList ;
-  public : GALGAS_mapSearchMethodListAST mAttribute_mSearchMethodList ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mAssociatedMapTypeProxy ;
+  public : GALGAS_typedPropertyList mProperty_mAssociatedMapTypedAttributeList ;
+  public : GALGAS_mapSearchMethodListAST mProperty_mSearchMethodList ;
 
 //--- Constructor
   public : cPtr_mapProxyTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
@@ -1136,16 +1136,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sharedMapTypeForGen
 
 class cPtr_sharedMapTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mMapTypeName ;
-  public : GALGAS_typedPropertyList mAttribute_mTypedAttributeList ;
-  public : GALGAS_insertMethodListAST mAttribute_mInsertMethodList ;
-  public : GALGAS_mapSearchMethodListAST mAttribute_mSearchMethodList ;
-  public : GALGAS_mapAutomatonStateMap mAttribute_mMapAutomatonStateMap ;
-  public : GALGAS_mapAutomatonActionMap mAttribute_mMapAutomatonActionMap ;
-  public : GALGAS_mapStateSortedList mAttribute_mMapStateSortedList ;
-  public : GALGAS_mapOverrideList mAttribute_mMapOverrideList ;
-  public : GALGAS_mapAutomatonMessageKind mAttribute_mShadowBehaviour ;
-  public : GALGAS_string mAttribute_mShadowMessage ;
+  public : GALGAS_lstring mProperty_mMapTypeName ;
+  public : GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
+  public : GALGAS_insertMethodListAST mProperty_mInsertMethodList ;
+  public : GALGAS_mapSearchMethodListAST mProperty_mSearchMethodList ;
+  public : GALGAS_mapAutomatonStateMap mProperty_mMapAutomatonStateMap ;
+  public : GALGAS_mapAutomatonActionMap mProperty_mMapAutomatonActionMap ;
+  public : GALGAS_mapStateSortedList mProperty_mMapStateSortedList ;
+  public : GALGAS_mapOverrideList mProperty_mMapOverrideList ;
+  public : GALGAS_mapAutomatonMessageKind mProperty_mShadowBehaviour ;
+  public : GALGAS_string mProperty_mShadowMessage ;
 
 //--- Constructor
   public : cPtr_sharedMapTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
@@ -1255,9 +1255,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListTypeForGe
 
 class cPtr_sortedListTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mListElementTypeIndex ;
-  public : GALGAS_typedPropertyList mAttribute_mTypedAttributeList ;
-  public : GALGAS_sortDescriptorListForGeneration mAttribute_mSortDescriptorList ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mListElementTypeIndex ;
+  public : GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
+  public : GALGAS_sortDescriptorListForGeneration mProperty_mSortDescriptorList ;
 
 //--- Constructor
   public : cPtr_sortedListTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
@@ -1347,7 +1347,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structTypeForGenera
 
 class cPtr_structTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attributes
-  public : GALGAS_typedPropertyList mAttribute_mTypedAttributeList ;
+  public : GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
 
 //--- Constructor
   public : cPtr_structTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
@@ -1443,10 +1443,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionGe
 
 class cPtr_abstractExtensionGetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_string mAttribute_mAbstractExtensionGetterName ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mResultType ;
-  public : GALGAS_formalInputParameterListForGeneration mAttribute_mAbstractExtensionGetterFormalParameterList ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReceiverType ;
+  public : GALGAS_string mProperty_mAbstractExtensionGetterName ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mResultType ;
+  public : GALGAS_formalInputParameterListForGeneration mProperty_mAbstractExtensionGetterFormalParameterList ;
 
 //--- Constructor
   public : cPtr_abstractExtensionGetterForGeneration (const GALGAS_bool & in_mHasHeader,
@@ -1546,9 +1546,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionMe
 
 class cPtr_abstractExtensionMethodForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_string mAttribute_mAbstractExtensionMethodName ;
-  public : GALGAS_formalParameterListForGeneration mAttribute_mAbstractExtensionMethodFormalParameterList ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReceiverType ;
+  public : GALGAS_string mProperty_mAbstractExtensionMethodName ;
+  public : GALGAS_formalParameterListForGeneration mProperty_mAbstractExtensionMethodFormalParameterList ;
 
 //--- Constructor
   public : cPtr_abstractExtensionMethodForGeneration (const GALGAS_bool & in_mHasHeader,
@@ -1646,9 +1646,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractExtensionSe
 
 class cPtr_abstractExtensionSetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_string mAttribute_mAbstractExtensionSetterName ;
-  public : GALGAS_formalParameterListForGeneration mAttribute_mAbstractExtensionSetterFormalParameterList ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReceiverType ;
+  public : GALGAS_string mProperty_mAbstractExtensionSetterName ;
+  public : GALGAS_formalParameterListForGeneration mProperty_mAbstractExtensionSetterFormalParameterList ;
 
 //--- Constructor
   public : cPtr_abstractExtensionSetterForGeneration (const GALGAS_bool & in_mHasHeader,
@@ -1761,14 +1761,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterForG
 
 class cPtr_extensionGetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_string mAttribute_mExtensionGetterName ;
-  public : GALGAS_bool mAttribute_mImplementedAsFunction ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mResultType ;
-  public : GALGAS_string mAttribute_mResultVarCppName ;
-  public : GALGAS_formalInputParameterListForGeneration mAttribute_mExtensionGetterFormalParameterList ;
-  public : GALGAS_typedPropertyList mAttribute_mTypedAttributeList ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mSemanticInstructionListForGeneration ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReceiverType ;
+  public : GALGAS_string mProperty_mExtensionGetterName ;
+  public : GALGAS_bool mProperty_mImplementedAsFunction ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mResultType ;
+  public : GALGAS_string mProperty_mResultVarCppName ;
+  public : GALGAS_formalInputParameterListForGeneration mProperty_mExtensionGetterFormalParameterList ;
+  public : GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGeneration ;
 
 //--- Constructor
   public : cPtr_extensionGetterForGeneration (const GALGAS_bool & in_mHasHeader,
@@ -1885,12 +1885,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodForG
 
 class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_string mAttribute_mExtensionMethodName ;
-  public : GALGAS_bool mAttribute_mImplementedAsFunction ;
-  public : GALGAS_formalParameterListForGeneration mAttribute_mExtensionMethodFormalParameterList ;
-  public : GALGAS_typedPropertyList mAttribute_mTypedAttributeList ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mSemanticInstructionListForGeneration ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReceiverType ;
+  public : GALGAS_string mProperty_mExtensionMethodName ;
+  public : GALGAS_bool mProperty_mImplementedAsFunction ;
+  public : GALGAS_formalParameterListForGeneration mProperty_mExtensionMethodFormalParameterList ;
+  public : GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGeneration ;
 
 //--- Constructor
   public : cPtr_extensionMethodForGeneration (const GALGAS_bool & in_mHasHeader,
@@ -2003,12 +2003,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterForG
 
 class cPtr_extensionSetterForGeneration : public cPtr_semanticDeclarationWithHeaderForGeneration {
 //--- Attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mReceiverType ;
-  public : GALGAS_string mAttribute_mExtensionSetterName ;
-  public : GALGAS_bool mAttribute_mImplementedAsFunction ;
-  public : GALGAS_formalParameterListForGeneration mAttribute_mExtensionSetterFormalParameterList ;
-  public : GALGAS_typedPropertyList mAttribute_mTypedAttributeList ;
-  public : GALGAS_semanticInstructionListForGeneration mAttribute_mSemanticInstructionListForGeneration ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReceiverType ;
+  public : GALGAS_string mProperty_mExtensionSetterName ;
+  public : GALGAS_bool mProperty_mImplementedAsFunction ;
+  public : GALGAS_formalParameterListForGeneration mProperty_mExtensionSetterFormalParameterList ;
+  public : GALGAS_typedPropertyList mProperty_mTypedAttributeList ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mSemanticInstructionListForGeneration ;
 
 //--- Constructor
   public : cPtr_extensionSetterForGeneration (const GALGAS_bool & in_mHasHeader,

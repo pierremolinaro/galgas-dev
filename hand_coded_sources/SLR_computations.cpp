@@ -818,12 +818,12 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
 //--- Generate methods, one by non terminal ----------------------------------
   cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, kENUMERATION_UP) ;
   while (nonTerminal.hasCurrentObject ()) {
-    ioCppFileContents.appendCppTitleComment (C_String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue () + "' non terminal implementation") ;
+    ioCppFileContents.appendCppTitleComment (C_String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue () + "' non terminal implementation") ;
     const int32_t pureBNFleftNonterminalIndex = (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;
     const int32_t first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
   //--- Parse label
     ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                 << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                 << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
                  << "_parse (" ;
       if (inSyntaxDirectedTranslationVarName.length() > 0) {
         ioCppFileContents << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
@@ -854,7 +854,7 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
   //--- Indexing
     if (inHasIndexing) {
       ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                   << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                   << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
                    << "_indexing (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
                    << ") {\n"
                       "  switch (inLexique->nextProductionIndex ()) {\n" ;
@@ -882,8 +882,8 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
     cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kENUMERATION_UP) ;
     while (currentAltForNonTerminal2.hasCurrentObject ()) {
       ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                     << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
-                     << "_" << currentAltForNonTerminal2.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                     << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
+                     << "_" << currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()
                      << " (" ;
       cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal2.current_mFormalParametersList (HERE), kENUMERATION_UP) ;
       int16_t numeroParametre = 1 ;
@@ -894,7 +894,7 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
           break ;
         default : break ;
         }
-        ioCppFileContents << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mAttribute_string.stringValue ().identifierRepresentation () ;
+        ioCppFileContents << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation () ;
         switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
           ioCppFileContents << " " ;
@@ -929,7 +929,7 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
           ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
-                                                                      currentAltForNonTerminal2.current_lkey (HERE).mAttribute_string.stringValue (),
+                                                                      currentAltForNonTerminal2.current_lkey (HERE).mProperty_string.stringValue (),
                                                                       ioCppFileContents,
                                                                       inSyntaxDirectedTranslationVarName) ;
           ioCppFileContents << "    break ;\n" ;
@@ -956,7 +956,7 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
                              "                                                     gProductionsTable_" << inTargetFileName << ") ;\n"
                              "    if (ok) {\n"
                              "      cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
-                             "      grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation () << "_indexing (scanner) ;\n"
+                             "      grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation () << "_indexing (scanner) ;\n"
                              "    }\n"
                              "    scanner->generateIndexFile () ;\n"
                              "  }\n"
@@ -995,7 +995,7 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
         ioCppFileContents.appendCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
         ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                       << "::_performSourceFileParsing_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                       << "::_performSourceFileParsing_" << currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
                           ",\n                                " ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
@@ -1012,7 +1012,7 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
             break ;
           default : break ;
           }
-          ioCppFileContents << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mAttribute_string.stringValue ().identifierRepresentation () ;
+          ioCppFileContents << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation () ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
             ioCppFileContents << " " ;
@@ -1048,8 +1048,8 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
                           "        if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
                           "          cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
                           "          " ;
-        ioCppFileContents << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
-                       << "_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+        ioCppFileContents << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
+                       << "_" << currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()
                        << " (" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
@@ -1081,7 +1081,7 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
       //--- Define string parsing static method
         ioCppFileContents.appendCppHyphenLineComment () ;
         ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                       << "::_performSourceStringParsing_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                       << "::_performSourceStringParsing_" << currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
                           ",\n                                " ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
@@ -1100,7 +1100,7 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
             break ;
           default : break ;
           }
-          ioCppFileContents << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mAttribute_string.stringValue ().identifierRepresentation () ;
+          ioCppFileContents << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mProperty_string.stringValue ().identifierRepresentation () ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
             ioCppFileContents << " " ;
@@ -1133,8 +1133,8 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
                              "      if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
                              "        cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
                              "        "
-                          << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
-                          << "_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                          << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mProperty_string.stringValue ().identifierRepresentation ()
+                          << "_" << currentAltForNonTerminal.current_lkey (HERE).mProperty_string.stringValue ().identifierRepresentation ()
                           << " (" ;
         parametre.rewind () ;
         numeroParametre = 1 ;

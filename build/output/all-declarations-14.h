@@ -17,27 +17,27 @@
 
 class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_uint mAttribute_mSequenceNumber ;
-  public : GALGAS_string mAttribute_mMainGroupReference ;
-  public : GALGAS_stringlist mAttribute_mMainGroupChildrenRefs ;
-  public : GALGAS_string mAttribute_mProjectObjectReference ;
-  public : GALGAS_XCodeGroupList mAttribute_mGroupList ;
-  public : GALGAS_XCodeToolTargetList mAttribute_mToolTargetList ;
-  public : GALGAS_XCodeAppTargetList mAttribute_mAppTargetList ;
-  public : GALGAS__32_stringlist mAttribute_mCFileList ;
-  public : GALGAS__32_stringlist mAttribute_mCppFileList ;
-  public : GALGAS__32_stringlist mAttribute_m_5F_M_5F_FileList ;
-  public : GALGAS__32_stringlist mAttribute_m_5F_MM_5F_FileList ;
-  public : GALGAS__32_stringlist mAttribute_mFrameworkFileList ;
-  public : GALGAS__32_stringlist mAttribute_mHeaderFileList ;
-  public : GALGAS_BuildFileList mAttribute_mBuildFileList ;
-  public : GALGAS_string mAttribute_mDefaultConfigurationRef ;
-  public : GALGAS_stringlist mAttribute_mDefaultConfigurationSettingList ;
-  public : GALGAS_string mAttribute_mProjectBuildConfigurationRef ;
-  public : GALGAS__32_stringlist mAttribute_mInfoPlistFileList ;
-  public : GALGAS__32_stringlist mAttribute_mXIB_5F_fileList ;
-  public : GALGAS__32_stringlist mAttribute_mTIFF_5F_fileList ;
-  public : GALGAS__32_stringlist mAttribute_mICNS_5F_fileList ;
+  public : GALGAS_uint mProperty_mSequenceNumber ;
+  public : GALGAS_string mProperty_mMainGroupReference ;
+  public : GALGAS_stringlist mProperty_mMainGroupChildrenRefs ;
+  public : GALGAS_string mProperty_mProjectObjectReference ;
+  public : GALGAS_XCodeGroupList mProperty_mGroupList ;
+  public : GALGAS_XCodeToolTargetList mProperty_mToolTargetList ;
+  public : GALGAS_XCodeAppTargetList mProperty_mAppTargetList ;
+  public : GALGAS__32_stringlist mProperty_mCFileList ;
+  public : GALGAS__32_stringlist mProperty_mCppFileList ;
+  public : GALGAS__32_stringlist mProperty_m_5F_M_5F_FileList ;
+  public : GALGAS__32_stringlist mProperty_m_5F_MM_5F_FileList ;
+  public : GALGAS__32_stringlist mProperty_mFrameworkFileList ;
+  public : GALGAS__32_stringlist mProperty_mHeaderFileList ;
+  public : GALGAS_BuildFileList mProperty_mBuildFileList ;
+  public : GALGAS_string mProperty_mDefaultConfigurationRef ;
+  public : GALGAS_stringlist mProperty_mDefaultConfigurationSettingList ;
+  public : GALGAS_string mProperty_mProjectBuildConfigurationRef ;
+  public : GALGAS__32_stringlist mProperty_mInfoPlistFileList ;
+  public : GALGAS__32_stringlist mProperty_mXIB_5F_fileList ;
+  public : GALGAS__32_stringlist mProperty_mTIFF_5F_fileList ;
+  public : GALGAS__32_stringlist mProperty_mICNS_5F_fileList ;
 
 
 //--------------------------------- Accessors

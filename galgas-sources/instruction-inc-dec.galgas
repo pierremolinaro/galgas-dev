@@ -319,7 +319,7 @@ override method @incDecInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
   @string receiverCppName = mReceiverCppName
   for () in mStructAttributeList do
-    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+    receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
 #--- Invoke incrementation
   switch mKind
@@ -347,7 +347,7 @@ override method @incDecNoOVFInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
   @string receiverCppName = mReceiverCppName
   for () in mStructAttributeList do
-    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+    receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
 #--- Invoke incrementation
   switch mKind
