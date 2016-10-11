@@ -132,17 +132,17 @@ cStringsetNode::cStringsetNode (const cStringsetNode * inNode,
                                 uint32_t & ioCount) :
 mInfPtr (NULL),
 mSupPtr (NULL),
-mBalance (0),
-mKey () {
-  macroValidPointer (inNode) ;
+mBalance (inNode->mBalance),
+mKey (inNode->mKey) {
+//  macroValidPointer (inNode) ;
   if (inNode->mInfPtr != NULL) {
     macroMyNew (mInfPtr, cStringsetNode (inNode->mInfPtr, ioCount)) ;
   }
   if (inNode->mSupPtr != NULL) {
     macroMyNew (mSupPtr, cStringsetNode (inNode->mSupPtr, ioCount)) ;
   }
-  mKey = inNode->mKey ;
-  mBalance = inNode->mBalance ;
+//  mKey = inNode->mKey ;
+//  mBalance = inNode->mBalance ;
   ioCount ++ ;
 }
 
@@ -167,7 +167,7 @@ static void rotateLeft (cStringsetNode * & ioRootPtr) {
   ptr->mInfPtr = ioRootPtr;
 
   if (ptr->mBalance >= 0) {
-    ioRootPtr->mBalance++ ;
+    ioRootPtr->mBalance ++ ;
   }else{
     ioRootPtr->mBalance += 1 - ptr->mBalance ;
   }
@@ -175,7 +175,7 @@ static void rotateLeft (cStringsetNode * & ioRootPtr) {
   if (ioRootPtr->mBalance > 0) {
     ptr->mBalance += ioRootPtr->mBalance + 1 ;
   }else{
-    ptr->mBalance++ ;
+    ptr->mBalance ++ ;
   }
   ioRootPtr = ptr ;
 }
@@ -190,10 +190,10 @@ static void rotateRight (cStringsetNode * & ioRootPtr) {
   if (ptr->mBalance > 0) {
     ioRootPtr->mBalance += -ptr->mBalance - 1 ;
   }else{
-    ioRootPtr->mBalance-- ;
+    ioRootPtr->mBalance -- ;
   }
   if (ioRootPtr->mBalance >= 0) {
-    ptr->mBalance-- ;
+    ptr->mBalance -- ;
   }else{
     ptr->mBalance += ioRootPtr->mBalance - 1 ;
   }
