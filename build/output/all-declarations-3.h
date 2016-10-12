@@ -610,6 +610,7 @@ class GALGAS_mapSearchMethodListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_lstring mProperty_mSearchMethodName ;
   public : GALGAS_lstring mProperty_mErrorMessage ;
   public : GALGAS_lstring mProperty_mActionName ;
+  public : GALGAS_bool mProperty_mLocationAttribute ;
 
 
 //--------------------------------- Accessors
@@ -628,7 +629,8 @@ class GALGAS_mapSearchMethodListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public : GALGAS_mapSearchMethodListAST_2D_element (const GALGAS_lstring & in_mSearchMethodName,
                                                      const GALGAS_lstring & in_mErrorMessage,
-                                                     const GALGAS_lstring & in_mActionName) ;
+                                                     const GALGAS_lstring & in_mActionName,
+                                                     const GALGAS_bool & in_mLocationAttribute) ;
 
 //-- Start of generic part --*
 
@@ -643,7 +645,8 @@ class GALGAS_mapSearchMethodListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_mapSearchMethodListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                   const class GALGAS_lstring & inOperand1,
-                                                                                  const class GALGAS_lstring & inOperand2
+                                                                                  const class GALGAS_lstring & inOperand2,
+                                                                                  const class GALGAS_bool & inOperand3
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -661,6 +664,8 @@ class GALGAS_mapSearchMethodListAST_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mActionName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mErrorMessage (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mLocationAttribute (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mSearchMethodName (LOCATION_ARGS) const ;
 

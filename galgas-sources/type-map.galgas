@@ -15,6 +15,7 @@ list @mapSearchMethodListAST {
   @lstring mSearchMethodName %nogetter
   @lstring mErrorMessage %nogetter
   @lstring mActionName %nogetter
+  @bool mLocationAttribute %nogetter
 }
 
 #·······················································································································
@@ -98,23 +99,34 @@ syntax extension galgas3DeclarationsSyntax {
   #·····················································································································
 
   rule <search_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
-      $search$
-      $identifier$ ?var  @lstring mMethodName
-      $error$
-      $message$
-      $"string"$ ?var  @lstring mErrorMessage
-      ioMapSearchMethodListAST += !mMethodName !mErrorMessage !.new {!"" !.here}
+    $search$
+    $identifier$ ?var  @lstring methodName
+    @bool locationAttribute
+    select
+      locationAttribute = false
+    or
+      $%attribute$ ?let attribute
+      if attribute.string == "location" then
+        locationAttribute = true
+      else
+        error attribute : "only the %location is allowed here" : locationAttribute fixit { replace "%location" }
+      end
+    end
+    $error$
+    $message$
+    $"string"$ ?var  @lstring errorMessage
+    ioMapSearchMethodListAST += !methodName !errorMessage !.new {!"" !.here} !locationAttribute
   }
 
   #·····················································································································
 
   rule <remove_declaration> ?!@mapRemoveMethodListAST ioMapRemoveMethodListAST {
-      $remove$
-      $identifier$ ?var  @lstring mMethodName
-      $error$
-      $message$
-      $"string"$ ?var  @lstring mErrorMessage
-      ioMapRemoveMethodListAST += !mMethodName !mErrorMessage
+    $remove$
+    $identifier$ ?var  @lstring mMethodName
+    $error$
+    $message$
+    $"string"$ ?var  @lstring mErrorMessage
+    ioMapRemoveMethodListAST += !mMethodName !mErrorMessage
   }
 
   #·····················································································································
@@ -167,13 +179,11 @@ override method @mapDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var structAttributeList =@propertyInCollectionListAST {}
   structAttributeList +=
-#    !false # Is not private
     !["lstring" nowhere]
     !["lkey" nowhere]
     !@lstringlist.emptyList
   for () in mPropertyList do
     structAttributeList +=
-#      !mIsPrivate
       !mPropertyTypeName
       !mPropertyName
       !@lstringlist.emptyList
@@ -182,7 +192,8 @@ override method @mapDeclarationAST addAssociatedElement
     !mIsPredefined
     !@lstring.new {!mMapTypeName.string + elementTypeNameSuffix () !mMapTypeName.location}
     !structAttributeList
-    !""}
+    !""
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -212,20 +223,15 @@ override method @mapDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- bool type index
-  @unifiedTypeMap-proxy boolTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"bool" ? boolTypeIndex]
+#  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"bool" ?let boolTypeIndex]
 #--- string type index
-  @unifiedTypeMap-proxy stringTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?stringTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
 #--- location type index
-  @unifiedTypeMap-proxy locationTypeProxy
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"location" ?locationTypeProxy]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"location" ?let locationTypeProxy]
 #--- lstring type index
-  @unifiedTypeMap-proxy lstringTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstring" ?lstringTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
 #--- current map type index
-  @unifiedTypeMap-proxy currentMapTypeIndex
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mMapTypeName ?currentMapTypeIndex]
+#  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mMapTypeName ?let currentMapTypeIndex]
 #--- Enumeration description
   var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!lstringTypeIndex !"lkey"}
 #--- Attributes
@@ -313,7 +319,13 @@ override method @mapDeclarationAST enterInSemanticContext
     !returnedTypeName:"location"
     !true
   )
-  enterBaseGetterWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"overriddenMap" !returnedTypeName:[mMapTypeName string] !true )
+  enterBaseGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !"overriddenMap"
+    !returnedTypeName:[mMapTypeName string]
+    !true
+  )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
@@ -331,7 +343,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !lstringTypeIndex
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inLKey"
-  var removeMethodFormalArgumentList =@formalParameterSignature {}
+  @formalParameterSignature removeMethodFormalArgumentList = {}
   removeMethodFormalArgumentList +=
     ![if usesSelectorsInInsertAndSearch then "lkey" else "" end nowhere]
     !lstringTypeIndex
@@ -339,7 +351,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !"inLKey"
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapProxyList.emptyList
   for () in mPropertyList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     @bool hasGetter = true
     @bool hasSetter = true
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
@@ -389,11 +401,19 @@ override method @mapDeclarationAST enterInSemanticContext
   end
 #--- Handle search methods (methods if no state, setters if states)
   for () in mSearchMethodList do
+    var searchMethodFormalArgumentList = removeMethodFormalArgumentList
+    if mLocationAttribute then
+      searchMethodFormalArgumentList +=
+        !if usesSelectorsInInsertAndSearch then ["keyLocation" nowhere] else ["" nowhere] end
+        !locationTypeProxy
+        !.argumentOut
+        !"outKeyLocation"
+    end
     [!?instanceMethodMap insertKey
       !mSearchMethodName
       !@methodKind.definedAsMember
-      !removeMethodFormalArgumentList
-      ![mSearchMethodName location]
+      !searchMethodFormalArgumentList
+      !mSearchMethodName.location
       !true
       !@methodQualifier.isBasic
       !"" # No error message
@@ -577,7 +597,7 @@ override method @mapDeclarationAST semanticAnalysis
   for () in mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
-    var t =@unifiedTypeMap-proxy.searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
+    @unifiedTypeMap-proxy t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
     @bool hasSetter = true
     @bool hasGetter = true
     typedAttributeList +=

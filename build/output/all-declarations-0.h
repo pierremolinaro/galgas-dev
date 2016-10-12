@@ -8664,7 +8664,8 @@ class GALGAS_mapSearchMethodListAST : public AC_GALGAS_list {
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_lstring & in_mSearchMethodName,
                                                   const class GALGAS_lstring & in_mErrorMessage,
-                                                  const class GALGAS_lstring & in_mActionName
+                                                  const class GALGAS_lstring & in_mActionName,
+                                                  const class GALGAS_bool & in_mLocationAttribute
                                                   COMMA_LOCATION_ARGS) ;
 
 //-- Start of generic part --*
@@ -8682,7 +8683,8 @@ class GALGAS_mapSearchMethodListAST : public AC_GALGAS_list {
 
   public : static class GALGAS_mapSearchMethodListAST constructor_listWithValue (const class GALGAS_lstring & inOperand0,
                                                                                  const class GALGAS_lstring & inOperand1,
-                                                                                 const class GALGAS_lstring & inOperand2
+                                                                                 const class GALGAS_lstring & inOperand2,
+                                                                                 const class GALGAS_bool & inOperand3
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
@@ -8693,7 +8695,8 @@ class GALGAS_mapSearchMethodListAST : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
                                                       const class GALGAS_lstring & inOperand1,
-                                                      const class GALGAS_lstring & inOperand2
+                                                      const class GALGAS_lstring & inOperand2,
+                                                      const class GALGAS_bool & inOperand3
                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_mapSearchMethodListAST add_operation (const GALGAS_mapSearchMethodListAST & inOperand,
@@ -8705,26 +8708,30 @@ class GALGAS_mapSearchMethodListAST : public AC_GALGAS_list {
   public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
                                                        class GALGAS_lstring constinArgument1,
                                                        class GALGAS_lstring constinArgument2,
-                                                       class GALGAS_uint constinArgument3,
+                                                       class GALGAS_bool constinArgument3,
+                                                       class GALGAS_uint constinArgument4,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
                                                   class GALGAS_lstring & outArgument1,
                                                   class GALGAS_lstring & outArgument2,
+                                                  class GALGAS_bool & outArgument3,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
                                                  class GALGAS_lstring & outArgument1,
                                                  class GALGAS_lstring & outArgument2,
+                                                 class GALGAS_bool & outArgument3,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
                                                        class GALGAS_lstring & outArgument1,
                                                        class GALGAS_lstring & outArgument2,
-                                                       class GALGAS_uint constinArgument3,
+                                                       class GALGAS_bool & outArgument3,
+                                                       class GALGAS_uint constinArgument4,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
@@ -8733,12 +8740,14 @@ class GALGAS_mapSearchMethodListAST : public AC_GALGAS_list {
   public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
                                                class GALGAS_lstring & outArgument1,
                                                class GALGAS_lstring & outArgument2,
+                                               class GALGAS_bool & outArgument3,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
                                               class GALGAS_lstring & outArgument1,
                                               class GALGAS_lstring & outArgument2,
+                                              class GALGAS_bool & outArgument3,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
@@ -8778,6 +8787,7 @@ class cEnumerator_mapSearchMethodListAST : public cGenericAbstractEnumerator {
   public : class GALGAS_lstring current_mSearchMethodName (LOCATION_ARGS) const ;
   public : class GALGAS_lstring current_mErrorMessage (LOCATION_ARGS) const ;
   public : class GALGAS_lstring current_mActionName (LOCATION_ARGS) const ;
+  public : class GALGAS_bool current_mLocationAttribute (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_mapSearchMethodListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
