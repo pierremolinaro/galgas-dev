@@ -240,6 +240,7 @@ syntax extension galgas3DeclarationsSyntax {
       !mMethodName
       !mErrorMessage
       !actionName
+      !false
   }
   
   #·····················································································································

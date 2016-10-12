@@ -165,6 +165,9 @@ for () in SEARCH_METHOD_LIST do
   for () in ATTRIBUTE_LIST
     do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outArgument%![IDX string]
   end
+  if mLocationAttribute then
+    %,\n%!^%GALGAS_location & outKeyLocation%
+  end
   %,\n %!^%C_Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) const {\n%
   %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) performSearch (%?^%inKey,\n%
@@ -175,10 +178,16 @@ for () in SEARCH_METHOD_LIST do
   for () in ATTRIBUTE_LIST do index IDX
     %    outArgument%![IDX string]%.drop () ;\n%
   end
+  if mLocationAttribute then
+    %    outKeyLocation.drop () ;\n%
+  end
   %  }else{\n%
   %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
   for () in ATTRIBUTE_LIST do index IDX
     %    outArgument%![IDX string]% = p->mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+  end
+  if mLocationAttribute then
+    %    outKeyLocation = p->mProperty_lkey.mProperty_location ;\n%
   end
   %  }\n%
   %}\n\n%

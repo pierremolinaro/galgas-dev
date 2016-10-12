@@ -1342,7 +1342,8 @@ class cCollectionElement_mapSearchMethodListAST : public cCollectionElement {
 //--- Constructor
   public : cCollectionElement_mapSearchMethodListAST (const GALGAS_lstring & in_mSearchMethodName,
                                                       const GALGAS_lstring & in_mErrorMessage,
-                                                      const GALGAS_lstring & in_mActionName
+                                                      const GALGAS_lstring & in_mActionName,
+                                                      const GALGAS_bool & in_mLocationAttribute
                                                       COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
@@ -1362,10 +1363,11 @@ class cCollectionElement_mapSearchMethodListAST : public cCollectionElement {
 
 cCollectionElement_mapSearchMethodListAST::cCollectionElement_mapSearchMethodListAST (const GALGAS_lstring & in_mSearchMethodName,
                                                                                       const GALGAS_lstring & in_mErrorMessage,
-                                                                                      const GALGAS_lstring & in_mActionName
+                                                                                      const GALGAS_lstring & in_mActionName,
+                                                                                      const GALGAS_bool & in_mLocationAttribute
                                                                                       COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mSearchMethodName, in_mErrorMessage, in_mActionName) {
+mObject (in_mSearchMethodName, in_mErrorMessage, in_mActionName, in_mLocationAttribute) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1378,7 +1380,7 @@ bool cCollectionElement_mapSearchMethodListAST::isValid (void) const {
 
 cCollectionElement * cCollectionElement_mapSearchMethodListAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_mapSearchMethodListAST (mObject.mProperty_mSearchMethodName, mObject.mProperty_mErrorMessage, mObject.mProperty_mActionName COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_mapSearchMethodListAST (mObject.mProperty_mSearchMethodName, mObject.mProperty_mErrorMessage, mObject.mProperty_mActionName, mObject.mProperty_mLocationAttribute COMMA_HERE)) ;
   return result ;
 }
 
@@ -1397,6 +1399,10 @@ void cCollectionElement_mapSearchMethodListAST::description (C_String & ioString
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mActionName" ":" ;
   mObject.mProperty_mActionName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mLocationAttribute" ":" ;
+  mObject.mProperty_mLocationAttribute.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1429,13 +1435,14 @@ GALGAS_mapSearchMethodListAST GALGAS_mapSearchMethodListAST::constructor_emptyLi
 
 GALGAS_mapSearchMethodListAST GALGAS_mapSearchMethodListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                         const GALGAS_lstring & inOperand1,
-                                                                                        const GALGAS_lstring & inOperand2
+                                                                                        const GALGAS_lstring & inOperand2,
+                                                                                        const GALGAS_bool & inOperand3
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_mapSearchMethodListAST result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
     result = GALGAS_mapSearchMethodListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
-    GALGAS_mapSearchMethodListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    GALGAS_mapSearchMethodListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
     result.appendObject (attributes) ;
   }
   return result ;
@@ -1446,12 +1453,14 @@ GALGAS_mapSearchMethodListAST GALGAS_mapSearchMethodListAST::constructor_listWit
 void GALGAS_mapSearchMethodListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                const GALGAS_lstring & in_mSearchMethodName,
                                                                const GALGAS_lstring & in_mErrorMessage,
-                                                               const GALGAS_lstring & in_mActionName
+                                                               const GALGAS_lstring & in_mActionName,
+                                                               const GALGAS_bool & in_mLocationAttribute
                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement_mapSearchMethodListAST * p = NULL ;
   macroMyNew (p, cCollectionElement_mapSearchMethodListAST (in_mSearchMethodName,
                                                             in_mErrorMessage,
-                                                            in_mActionName COMMA_THERE)) ;
+                                                            in_mActionName,
+                                                            in_mLocationAttribute COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -1460,11 +1469,12 @@ void GALGAS_mapSearchMethodListAST::makeAttributesFromObjects (capCollectionElem
 
 void GALGAS_mapSearchMethodListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                          const GALGAS_lstring & inOperand1,
-                                                         const GALGAS_lstring & inOperand2
+                                                         const GALGAS_lstring & inOperand2,
+                                                         const GALGAS_bool & inOperand3
                                                          COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
     cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_mapSearchMethodListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_mapSearchMethodListAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -1477,12 +1487,13 @@ void GALGAS_mapSearchMethodListAST::addAssign_operation (const GALGAS_lstring & 
 void GALGAS_mapSearchMethodListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                           const GALGAS_lstring inOperand1,
                                                           const GALGAS_lstring inOperand2,
+                                                          const GALGAS_bool inOperand3,
                                                           const GALGAS_uint inInsertionIndex,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
     cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_mapSearchMethodListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_mapSearchMethodListAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -1495,6 +1506,7 @@ void GALGAS_mapSearchMethodListAST::setter_insertAtIndex (const GALGAS_lstring i
 void GALGAS_mapSearchMethodListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                           GALGAS_lstring & outOperand1,
                                                           GALGAS_lstring & outOperand2,
+                                                          GALGAS_bool & outOperand3,
                                                           const GALGAS_uint inRemoveIndex,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) {
@@ -1506,11 +1518,13 @@ void GALGAS_mapSearchMethodListAST::setter_removeAtIndex (GALGAS_lstring & outOp
       outOperand0.drop () ;
       outOperand1.drop () ;
       outOperand2.drop () ;
+      outOperand3.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_mapSearchMethodListAST) ;
       outOperand0 = p->mObject.mProperty_mSearchMethodName ;
       outOperand1 = p->mObject.mProperty_mErrorMessage ;
       outOperand2 = p->mObject.mProperty_mActionName ;
+      outOperand3 = p->mObject.mProperty_mLocationAttribute ;
     }
   }
 }
@@ -1520,6 +1534,7 @@ void GALGAS_mapSearchMethodListAST::setter_removeAtIndex (GALGAS_lstring & outOp
 void GALGAS_mapSearchMethodListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                      GALGAS_lstring & outOperand1,
                                                      GALGAS_lstring & outOperand2,
+                                                     GALGAS_bool & outOperand3,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -1529,11 +1544,13 @@ void GALGAS_mapSearchMethodListAST::setter_popFirst (GALGAS_lstring & outOperand
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
+    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_mapSearchMethodListAST) ;
     outOperand0 = p->mObject.mProperty_mSearchMethodName ;
     outOperand1 = p->mObject.mProperty_mErrorMessage ;
     outOperand2 = p->mObject.mProperty_mActionName ;
+    outOperand3 = p->mObject.mProperty_mLocationAttribute ;
   }
 }
 
@@ -1542,6 +1559,7 @@ void GALGAS_mapSearchMethodListAST::setter_popFirst (GALGAS_lstring & outOperand
 void GALGAS_mapSearchMethodListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                     GALGAS_lstring & outOperand1,
                                                     GALGAS_lstring & outOperand2,
+                                                    GALGAS_bool & outOperand3,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -1551,11 +1569,13 @@ void GALGAS_mapSearchMethodListAST::setter_popLast (GALGAS_lstring & outOperand0
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
+    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_mapSearchMethodListAST) ;
     outOperand0 = p->mObject.mProperty_mSearchMethodName ;
     outOperand1 = p->mObject.mProperty_mErrorMessage ;
     outOperand2 = p->mObject.mProperty_mActionName ;
+    outOperand3 = p->mObject.mProperty_mLocationAttribute ;
   }
 }
 
@@ -1564,6 +1584,7 @@ void GALGAS_mapSearchMethodListAST::setter_popLast (GALGAS_lstring & outOperand0
 void GALGAS_mapSearchMethodListAST::method_first (GALGAS_lstring & outOperand0,
                                                   GALGAS_lstring & outOperand1,
                                                   GALGAS_lstring & outOperand2,
+                                                  GALGAS_bool & outOperand3,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -1573,11 +1594,13 @@ void GALGAS_mapSearchMethodListAST::method_first (GALGAS_lstring & outOperand0,
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
+    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_mapSearchMethodListAST) ;
     outOperand0 = p->mObject.mProperty_mSearchMethodName ;
     outOperand1 = p->mObject.mProperty_mErrorMessage ;
     outOperand2 = p->mObject.mProperty_mActionName ;
+    outOperand3 = p->mObject.mProperty_mLocationAttribute ;
   }
 }
 
@@ -1586,6 +1609,7 @@ void GALGAS_mapSearchMethodListAST::method_first (GALGAS_lstring & outOperand0,
 void GALGAS_mapSearchMethodListAST::method_last (GALGAS_lstring & outOperand0,
                                                  GALGAS_lstring & outOperand1,
                                                  GALGAS_lstring & outOperand2,
+                                                 GALGAS_bool & outOperand3,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -1595,11 +1619,13 @@ void GALGAS_mapSearchMethodListAST::method_last (GALGAS_lstring & outOperand0,
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
+    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_mapSearchMethodListAST) ;
     outOperand0 = p->mObject.mProperty_mSearchMethodName ;
     outOperand1 = p->mObject.mProperty_mErrorMessage ;
     outOperand2 = p->mObject.mProperty_mActionName ;
+    outOperand3 = p->mObject.mProperty_mLocationAttribute ;
   }
 }
 
@@ -1695,6 +1721,14 @@ GALGAS_lstring cEnumerator_mapSearchMethodListAST::current_mActionName (LOCATION
   const cCollectionElement_mapSearchMethodListAST * p = (const cCollectionElement_mapSearchMethodListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_mapSearchMethodListAST) ;
   return p->mObject.mProperty_mActionName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool cEnumerator_mapSearchMethodListAST::current_mLocationAttribute (LOCATION_ARGS) const {
+  const cCollectionElement_mapSearchMethodListAST * p = (const cCollectionElement_mapSearchMethodListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_mapSearchMethodListAST) ;
+  return p->mObject.mProperty_mLocationAttribute ;
 }
 
 

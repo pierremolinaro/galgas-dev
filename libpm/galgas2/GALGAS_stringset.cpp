@@ -106,8 +106,7 @@ class cStringsetNode {
 
 //---  
   public : cStringsetNode (const C_String & inString) ;
-  public : cStringsetNode (const cStringsetNode * inNode,
-                           uint32_t & ioCount) ;
+  public : cStringsetNode (const cStringsetNode * inNode) ;
 
 //--- No copy
   private : cStringsetNode (const cStringsetNode &) ;
@@ -128,22 +127,17 @@ mKey (inString) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cStringsetNode::cStringsetNode (const cStringsetNode * inNode,
-                                uint32_t & ioCount) :
+cStringsetNode::cStringsetNode (const cStringsetNode * inNode) :
 mInfPtr (NULL),
 mSupPtr (NULL),
 mBalance (inNode->mBalance),
 mKey (inNode->mKey) {
-//  macroValidPointer (inNode) ;
   if (inNode->mInfPtr != NULL) {
-    macroMyNew (mInfPtr, cStringsetNode (inNode->mInfPtr, ioCount)) ;
+    macroMyNew (mInfPtr, cStringsetNode (inNode->mInfPtr)) ;
   }
   if (inNode->mSupPtr != NULL) {
-    macroMyNew (mSupPtr, cStringsetNode (inNode->mSupPtr, ioCount)) ;
+    macroMyNew (mSupPtr, cStringsetNode (inNode->mSupPtr)) ;
   }
-//  mKey = inNode->mKey ;
-//  mBalance = inNode->mBalance ;
-  ioCount ++ ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -524,7 +518,8 @@ C_String cSharedStringsetRoot::rootKey (void) const {
 void cSharedStringsetRoot::copyFrom (const cSharedStringsetRoot * inSharedRootToCopy) {
   macroValidSharedObject (inSharedRootToCopy, cSharedStringsetRoot) ;
   if (NULL != inSharedRootToCopy->mRoot) {
-    macroMyNew (mRoot, cStringsetNode (inSharedRootToCopy->mRoot, mEntryCount)) ;
+    macroMyNew (mRoot, cStringsetNode (inSharedRootToCopy->mRoot)) ;
+    mEntryCount = inSharedRootToCopy->mEntryCount ;
   }
 }
 
@@ -698,7 +693,6 @@ void GALGAS_stringset::addAssign_operation (const GALGAS_string & inKey
 
 void GALGAS_stringset::setter_removeKey (GALGAS_string inKey
                                            COMMA_LOCATION_ARGS) {
-  // printf ("OPERATION -=\n") ; fflush (stdout) ;
   if (isValid () && inKey.isValid ()) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkStringset (THERE) ;
@@ -730,7 +724,6 @@ void GALGAS_stringset::setter_removeKey (GALGAS_string inKey
 
 GALGAS_stringset GALGAS_stringset::operator_and (const GALGAS_stringset & inOperand2
                                                  COMMA_LOCATION_ARGS) const {
-// printf ("OPERATION AND\n") ; fflush (stdout) ;
   GALGAS_stringset result ;
   if (isValid () && inOperand2.isValid ()) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
