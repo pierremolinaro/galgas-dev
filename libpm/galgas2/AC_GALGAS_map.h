@@ -87,6 +87,8 @@ class AC_GALGAS_map : public AC_GALGAS_root {
 //--------------------------------- Insert
   private : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
   
+  private : VIRTUAL_IN_DEBUG void insulateCurrentAndOverridenMaps (LOCATION_ARGS) ;
+  
   protected : VIRTUAL_IN_DEBUG void performInsert (const capCollectionElement & inAttributes,
                                                    C_Compiler * inCompiler,
                                                    const char * inInsertErrorMessage,

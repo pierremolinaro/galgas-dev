@@ -137,42 +137,42 @@ LOGGING s: <@string:"a">
 LOGGING s: <@string:"b">
 LOGGING s: <@string:"c">
 LOGGING s: <@string:"d">
-LOGGING strList: <list @myList (4 objects): 
+LOGGING strList: <list @myList (4 objects):
 |-at 0
-| | mValue:<@string:"a">
+| mValue:<@string:"a">
 |-at 1
-| | mValue:<@string:"b">
+| mValue:<@string:"b">
 |-at 2
-| | mValue:<@string:"c">
+| mValue:<@string:"c">
 |-at 3
-| | mValue:<@string:"z">>
+| mValue:<@string:"z">>
 --- test .= operator on list
 LOGGING s: <@string:"d">
 *************************************** begin of list compare
 LOGGING comp: <@bool:true>
 *************************************** begin of collection value
-LOGGING str: <list @stringlist (5 objects): 
+LOGGING str: <list @stringlist (5 objects):
 |-at 0
-| | mValue:<@string:"a">
+| mValue:<@string:"a">
 |-at 1
-| | mValue:<@string:"b">
+| mValue:<@string:"b">
 |-at 2
-| | mValue:<@string:"c">
+| mValue:<@string:"c">
 |-at 3
-| | mValue:<@string:"d">
+| mValue:<@string:"d">
 |-at 4
-| | mValue:<@string:"e">>
-LOGGING str2: <list @stringlist (5 objects): 
+| mValue:<@string:"e">>
+LOGGING str2: <list @stringlist (5 objects):
 |-at 0
-| | mValue:<@string:"a">
+| mValue:<@string:"a">
 |-at 1
-| | mValue:<@string:"b">
+| mValue:<@string:"b">
 |-at 2
-| | mValue:<@string:"c">
+| mValue:<@string:"c">
 |-at 3
-| | mValue:<@string:"d">
+| mValue:<@string:"d">
 |-at 4
-| | mValue:<@string:"e">>
+| mValue:<@string:"e">>
 *************************************** begin of sorted list test
   index 0 : d
   index 1 : c
@@ -181,58 +181,58 @@ LOGGING str2: <list @stringlist (5 objects):
 *************************************** begin of struct logging
 LOGGING s: <struct @structTest:<@string:"az">, <@uint:34>>
 *************************************** begin of listmap
-LOGGING m: <@myListMap:  (3 objects): 
-|-at 0: key 'a'  (2 objects): 
+LOGGING m: <@myListMap: 3 objects (3 objects): 
+|-at 0: key 'a' 
 | |-at 0
-| | | mString:<@string:"b">
-| | | mInt:<@uint:23>
-| |-at 1
-| | | mString:<@string:"c">
-| | | mInt:<@uint:98>
-|-at 1: key 'c'  (1 object): 
-| |-at 0
-| | | mString:<@string:"f">
-| | | mInt:<@uint:11>
-|-at 2: key 'd'  (1 object): 
-| |-at 0
-| | | mString:<@string:"g">
-| | | mInt:<@uint:37>>>
-LOGGING c: <@uint:3>
-LOGGING s: <@stringset:3 entries 'a' 'c' 'd'>
-LOGGING sl: <list @stringlist (3 objects): 
-|-at 0
-| | mValue:<@string:"a">
-|-at 1
-| | mValue:<@string:"c">
-|-at 2
-| | mValue:<@string:"d">>
-LOGGING aList: <list @aList (2 objects): 
-|-at 0
 | | mString:<@string:"b">
 | | mInt:<@uint:23>
-|-at 1
+| |-at 1
 | | mString:<@string:"c">
-| | mInt:<@uint:98>>
+| | mInt:<@uint:98>
+|-at 1: key 'c' 
+| |-at 0
+| | mString:<@string:"f">
+| | mInt:<@uint:11>
+|-at 2: key 'd' 
+| |-at 0
+| | mString:<@string:"g">
+| | mInt:<@uint:37>>>
+LOGGING c: <@uint:3>
+LOGGING s: <@stringset:3 entries 'a' 'c' 'd'>
+LOGGING sl: <list @stringlist (3 objects):
+|-at 0
+| mValue:<@string:"a">
+|-at 1
+| mValue:<@string:"c">
+|-at 2
+| mValue:<@string:"d">>
+LOGGING aList: <list @aList (2 objects):
+|-at 0
+| mString:<@string:"b">
+| mInt:<@uint:23>
+|-at 1
+| mString:<@string:"c">
+| mInt:<@uint:98>>
 --- test += operator listmap
 --- test foreach for listmap
 LOGGING key: : <@string:"a">
-LOGGING list: : <list @aList (2 objects): 
+LOGGING list: : <list @aList (2 objects):
 |-at 0
-| | mString:<@string:"b">
-| | mInt:<@uint:23>
+| mString:<@string:"b">
+| mInt:<@uint:23>
 |-at 1
-| | mString:<@string:"c">
-| | mInt:<@uint:98>>
+| mString:<@string:"c">
+| mInt:<@uint:98>>
 LOGGING key: : <@string:"c">
-LOGGING list: : <list @aList (1 object): 
+LOGGING list: : <list @aList (1 object):
 |-at 0
-| | mString:<@string:"f">
-| | mInt:<@uint:11>>
+| mString:<@string:"f">
+| mInt:<@uint:11>>
 LOGGING key: : <@string:"d">
-LOGGING list: : <list @aList (1 object): 
+LOGGING list: : <list @aList (1 object):
 |-at 0
-| | mString:<@string:"g">
-| | mInt:<@uint:37>>
+| mString:<@string:"g">
+| mInt:<@uint:37>>
 *************************************** begin of map
 LOGGING m: <map @aMap (1 object): 
 |-at 0: key 'g' 
@@ -310,7 +310,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (86 types)
+--- Type list (88 types)
   @2lstringlist
   @2lstringlist-element
   @2stringlist
@@ -368,6 +368,8 @@ LOGGING r: <@uint:5>
   @myList-element
   @myListMap
   @myListMap-element
+  @myMap
+  @myMap-element
   @mySortedList
   @mySortedList-element
   @object
@@ -423,17 +425,17 @@ LOGGING v: <@uint64:49>
 LOGGING u: <@uint:10>
 LOGGING s: <@string:"Hello !">
 LOGGING ls: <struct @lstring:<@string:"Hello3">, <@location:nowhere:1:1>>
-LOGGING aList: <list @uintlist (5 objects): 
+LOGGING aList: <list @uintlist (5 objects):
 |-at 0
-| | mValue:<@uint:1>
+| mValue:<@uint:1>
 |-at 1
-| | mValue:<@uint:2>
+| mValue:<@uint:2>
 |-at 2
-| | mValue:<@uint:3>
+| mValue:<@uint:3>
 |-at 3
-| | mValue:<@uint:4>
+| mValue:<@uint:4>
 |-at 4
-| | mValue:<@uint:81>>
+| mValue:<@uint:81>>
 *************************************** begin of string test
 LOGGING command: <@string:"echo accentué">
 LOGGING result: <@string:"accentué
@@ -624,4 +626,7 @@ YES
 --- complementBitAtIndex
 0x5234
 -0x10000001234
+LOGGING a: <map @myMap (1 object): 
+|-at 0: key 'var' 
+| | value:<@string:"Hello">>
 No warning, no error.
