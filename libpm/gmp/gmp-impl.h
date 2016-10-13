@@ -45,13 +45,13 @@ see https://www.gnu.org/licenses/.  */
 #define __GMP_IMPL_H__
 
 #if __clang_major__ > 3
-  #pragma GCC diagnostic ignored "-Wconversion"
+  #pragma GCC diagnostic ignored "-Wsign-conversion"
 #endif
 #ifdef __GNUC__
-  #pragma GCC diagnostic ignored "-Wconversion"
+  #pragma GCC diagnostic ignored "-Wsign-conversion"
 #endif
 
-#pragma GCC diagnostic ignored "-Wsign-conversion"
+#pragma GCC diagnostic ignored "-Wconversion"
 #pragma GCC diagnostic ignored "-Wsign-compare"
 #pragma GCC diagnostic ignored "-Wunused-value"
 #pragma GCC diagnostic ignored "-Wunused-parameter"
