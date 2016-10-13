@@ -94,8 +94,9 @@ AC_GALGAS_list::~ AC_GALGAS_list (void) {
 
 void AC_GALGAS_list::description (C_String & ioString,
                                       const int32_t inIndentation) const {
-  ioString << "<list @"
-           << staticTypeDescriptor ()->mGalgasTypeName ;
+  ioString << "<list @" << staticTypeDescriptor ()->mGalgasTypeName
+           << " (" << cStringWithUnsigned (count()) << " object"
+           << ((count() > 1) ? "s" : "") << "):" ;
   if (isValid ()) {
     mSharedArray.description (ioString, inIndentation) ;
   }else{
@@ -567,7 +568,7 @@ void cSharedListMapRoot::internalDescription (cListMapNode * inNode,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cSharedListMapRoot::description (C_String & ioString,
-                                          const int32_t inIndentation) const {
+                                      const int32_t inIndentation) const {
   ioString << " ("
            << cStringWithUnsigned (count ())
            << " object" << ((count () > 1) ? "s" : "")
@@ -580,12 +581,14 @@ void cSharedListMapRoot::description (C_String & ioString,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_listmap::description (C_String & ioString,
-                                         const int32_t inIndentation) const {
-  ioString << "<@" << staticTypeDescriptor ()->mGalgasTypeName << ": " ;
+                                     const int32_t inIndentation) const {
+  ioString << "<@" << staticTypeDescriptor ()->mGalgasTypeName ;
   if (isValid ()) {
+    ioString << ": " << cStringWithUnsigned (count()) << " object"
+             << ((count() > 1) ? "s" : "") ;
     mSharedListMap->description (ioString, inIndentation) ;
   }else{
-    ioString << "not built" ;
+    ioString << ": not built" ;
   }
   ioString << ">" ;
 }

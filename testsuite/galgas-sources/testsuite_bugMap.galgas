@@ -1,0 +1,16 @@
+map @myMap {
+  @string value;
+  insert put error message ""
+}
+
+# Version avant 3.2.13 : bug, « log a » affiche "World"
+# Version après 3.2.13 : pas de bug, « log a » affiche "Hello"
+proc bugMap {
+  @myMap a = {}
+  [!?a put !.new{!"var" !.here} !"Hello"]
+  @myMap b = a
+  @myMap c = @myMap.mapWithMapToOverride{!b}
+  [!?c setValueForKey !"World" !@lstring.new{!"var" !.here}]
+  log a 
+}
+

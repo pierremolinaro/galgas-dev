@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2008, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2008, ..., 2016 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -60,6 +60,7 @@ class cSharedMapRoot : public C_SharedObject {
 
 //--------------------------------- Copy a map
   protected : VIRTUAL_IN_DEBUG void copyFrom (const cSharedMapRoot * inSource) ;
+  protected : VIRTUAL_IN_DEBUG void copyCurrentAndOverridenMapsFrom (const cSharedMapRoot * inSource) ;
 
 //--------------------------------- Attribute read access
   private : VIRTUAL_IN_DEBUG const cMapNode * findNodeForKeyInMapOrInOverridenMaps (const GALGAS_string & inKey,
@@ -673,6 +674,48 @@ void AC_GALGAS_map::insulate (LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void cSharedMapRoot::copyCurrentAndOverridenMapsFrom (const cSharedMapRoot * inSource) {
+  macroUniqueSharedObject (this) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    inSource->checkMap (HERE) ;
+  #endif
+  macroValidSharedObject (inSource, cSharedMapRoot) ;
+  mCount = inSource->mCount ;
+  if (NULL != inSource->mRoot) {
+    macroMyNew (mRoot, cMapNode (inSource->mRoot)) ;
+  }
+  if (NULL != inSource->mOverridenMap) {
+    macroMyNew (mOverridenMap, cSharedMapRoot (HERE)) ;
+    mOverridenMap->copyCurrentAndOverridenMapsFrom (inSource->mOverridenMap) ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkMap (HERE) ;
+  #endif
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void AC_GALGAS_map::insulateCurrentAndOverridenMaps (LOCATION_ARGS) {
+  if (NULL != mSharedMap) {
+  //--- Perform a deep copy if any of the overriden maps is shared
+    bool performDeepCopy = !mSharedMap->isUniquelyReferenced () ;
+    cSharedMapRoot * overridenMap = mSharedMap->mOverridenMap ;
+    while ((NULL != overridenMap) && !performDeepCopy) {
+      performDeepCopy = !overridenMap->isUniquelyReferenced () ;
+      overridenMap = overridenMap->mOverridenMap ;
+    }
+    if (performDeepCopy) {
+      cSharedMapRoot * p = NULL ;
+      macroMyNew (p, cSharedMapRoot (THERE)) ;
+      p->copyCurrentAndOverridenMapsFrom (mSharedMap) ;
+      macroAssignSharedObject (mSharedMap, p) ;
+      macroDetachSharedObject (p) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Insert
 #endif
@@ -1179,7 +1222,7 @@ cMapElement * AC_GALGAS_map::searchForReadWriteAttribute (const GALGAS_string & 
                                                           COMMA_LOCATION_ARGS) {
   cMapElement * result = NULL ;
   if (isValid ()) {
-    insulate (THERE) ;
+    insulateCurrentAndOverridenMaps (THERE) ;
     if (NULL != mSharedMap) {
       result = (cMapElement *) mSharedMap->searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
     }
