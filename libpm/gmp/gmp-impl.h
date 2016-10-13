@@ -47,7 +47,7 @@ see https://www.gnu.org/licenses/.  */
 #if __clang_major__ > 3
   #pragma GCC diagnostic ignored "-Wsign-conversion"
 #endif
-#ifdef __GNUC__
+#if defined (__GNUC__) && ! defined (__clang_major__)
   #pragma GCC diagnostic ignored "-Wsign-conversion"
 #endif
 
