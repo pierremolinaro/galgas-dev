@@ -39,11 +39,18 @@ see https://www.gnu.org/licenses/.  */
    from outside libgmp more efficient, but they'll still work fine without
    it.  */
 
+// http://nadeausoftware.com/articles/2011/12/c_c_tip_how_list_compiler_predefined_macros
 
 #ifndef __GMP_IMPL_H__
 #define __GMP_IMPL_H__
 
-#pragma GCC diagnostic ignored "-Wconversion"
+#if __clang_major__ > 3
+  #pragma GCC diagnostic ignored "-Wconversion"
+#endif
+#ifdef __GNUC__
+  #pragma GCC diagnostic ignored "-Wconversion"
+#endif
+
 #pragma GCC diagnostic ignored "-Wsign-conversion"
 #pragma GCC diagnostic ignored "-Wsign-compare"
 #pragma GCC diagnostic ignored "-Wunused-value"
@@ -55,7 +62,7 @@ see https://www.gnu.org/licenses/.  */
 #pragma GCC diagnostic ignored "-Wundef"
 #if __GNUC__ < 6
   #pragma GCC diagnostic ignored "-Werror"
-  #pragma GCC diagnostic error "-w"
+  #pragma GCC diagnostic ignored "-w"
 #endif
 
 #ifdef __cplusplus
