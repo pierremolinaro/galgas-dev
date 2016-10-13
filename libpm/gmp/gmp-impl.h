@@ -47,7 +47,7 @@ see https://www.gnu.org/licenses/.  */
 #if __clang_major__ > 3
   #pragma GCC diagnostic ignored "-Wsign-conversion"
 #endif
-#if defined (__GNUC__) && ! defined (__clang_major__)
+#if defined (__GNUC__) && ! defined (__APPLE__)
   #pragma GCC diagnostic ignored "-Wsign-conversion"
 #endif
 
@@ -62,7 +62,7 @@ see https://www.gnu.org/licenses/.  */
 #pragma GCC diagnostic ignored "-Wundef"
 #if __GNUC__ < 6
   #pragma GCC diagnostic ignored "-Werror"
-  #pragma GCC diagnostic ignored "-w"
+  #pragma GCC diagnostic error "-w"
 #endif
 
 #ifdef __cplusplus
