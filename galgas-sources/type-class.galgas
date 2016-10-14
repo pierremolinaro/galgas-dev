@@ -103,9 +103,6 @@ override method @classDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 {
-  @unifiedTypeMap-proxy uintType
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?uintType]
-#---
   @getterMap getterMap
   @setterMap setterMap
   @instanceMethodMap instanceMethodMap
@@ -198,8 +195,7 @@ override method @classDeclarationAST enterInSemanticContext
     constructorAttributeTypeList += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
   end
   for () in mAttributeList do
-    @unifiedTypeMap-proxy attributeTypeIndex
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
     [!?attributeMap insertKey
       !mPropertyName
@@ -229,8 +225,7 @@ override method @classDeclarationAST enterInSemanticContext
   @typedPropertyList currentClassTypedAttributeList = {}
   @typedPropertyList allTypedAttributeList = inheritedTypedAttributeList
   for () in mAttributeList do
-    @unifiedTypeMap-proxy attributeTypeIndex
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     @bool hasSetter = false
     @bool hasGetter = true
     for () in mFeatureList do

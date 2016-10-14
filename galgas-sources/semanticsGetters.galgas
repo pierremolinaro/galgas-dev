@@ -22,8 +22,7 @@ proc enterBaseFinalGetterWithoutArgument
   ?returnedTypeName:let @string inReturnedTypeName
   ?let @bool inHasLexiqueAndLocationArguments
 {
-  @unifiedTypeMap-proxy returnedTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
     !@methodKind. definedAsMember
@@ -45,8 +44,7 @@ proc enterInheritedGetterWithoutArgument
   ?returnedTypeName:let @string inReturnedTypeName
   ?let @bool inHasLexiqueAndLocationArguments
 {
-  @unifiedTypeMap-proxy returnedTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
     !@methodKind. definedAsMember
@@ -69,11 +67,9 @@ proc enterInheritedGetterWithArgument
   ?argumentName:let @string inArgument1Name
   ?returnedTypeName:let @string inReturnedTypeName
   ?let @bool inHasLexiqueAndLocationArguments {
-  @unifiedTypeMap-proxy returnedTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
-  var argList =@functionSignature {}
-  @unifiedTypeMap-proxy t
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
+  @functionSignature argList = {}
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?let t]
   argList += !["" nowhere] !t !inArgument1Name
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
@@ -99,11 +95,9 @@ proc enterInheritedGetterWith2Arguments
   ?let @string inArgument2Name
   ?returnedTypeName:let @string inReturnedTypeName
   ?let @bool inHasLexiqueAndLocationArguments {
-  @unifiedTypeMap-proxy returnedTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
-  var argList =@functionSignature {}
-  @unifiedTypeMap-proxy t
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
+  @functionSignature argList = {}
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?@unifiedTypeMap-proxy t]
   argList += !["" nowhere] !t !inArgument1Name
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
   argList += !["" nowhere] !t !inArgument2Name
@@ -126,9 +120,9 @@ proc enterBaseGetterWithoutArgument
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?let @string inGetterName
   ?returnedTypeName:let @string inReturnedTypeName
-  ?let @bool inHasLexiqueAndLocationArguments {
-  @unifiedTypeMap-proxy returnedTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
+  ?let @bool inHasLexiqueAndLocationArguments
+{
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
     !@methodKind. definedAsMember
@@ -151,11 +145,9 @@ proc enterBaseGetterWithArgument
   ?let @string inArgument1Name
   ?returnedTypeName:let @string inReturnedTypeName
   ?let @bool inHasLexiqueAndLocationArguments {
-  @unifiedTypeMap-proxy returnedTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
   @functionSignature argList = {}
-  @unifiedTypeMap-proxy t
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?let t]
   argList += !["" nowhere] !t !inArgument1Name
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
@@ -179,11 +171,9 @@ proc enterBaseFinalGetterWithArgument
   ?let @string inArgument1Name
   ?returnedTypeName:let @string inReturnedTypeName
   ?let @bool inHasLexiqueAndLocationArguments {
-  @unifiedTypeMap-proxy returnedTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
   @functionSignature argList = {}
-  @unifiedTypeMap-proxy t
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?let t]
   argList += !["" nowhere] !t !inArgument1Name
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
@@ -209,11 +199,9 @@ proc enterBaseGetterWith2Arguments
   ?let @string inArgument2Name
   ?returnedTypeName:let @string inReturnedTypeName
   ?let @bool inHasLexiqueAndLocationArguments {
-  @unifiedTypeMap-proxy returnedTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
   @functionSignature argList = {}
-  @unifiedTypeMap-proxy t
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?@unifiedTypeMap-proxy t]
   argList += !["" nowhere] !t !inArgument1Name
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
   argList += !["" nowhere] !t !inArgument2Name
@@ -241,11 +229,9 @@ proc enterBaseFinalGetterWith2Arguments
   ?let @string inArgument2Name
   ?returnedTypeName:let @string inReturnedTypeName
   ?let @bool inHasLexiqueAndLocationArguments {
-  @unifiedTypeMap-proxy returnedTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
   @functionSignature argList = {}
-  @unifiedTypeMap-proxy t
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?@unifiedTypeMap-proxy t]
   argList += !["" nowhere] !t !inArgument1Name
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
   argList += !["" nowhere] !t !inArgument2Name
@@ -310,12 +296,11 @@ proc enterBaseFinalGetterWith3Arguments
   ?let @string inArgument3TypeName
   ?let @string inArgument3Name
   ?returnedTypeName:let @string inReturnedTypeName
-  ?let @bool inHasLexiqueAndLocationArguments {
-  @unifiedTypeMap-proxy returnedTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
+  ?let @bool inHasLexiqueAndLocationArguments
+{
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
   @functionSignature argList = {}
-  @unifiedTypeMap-proxy t
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?@unifiedTypeMap-proxy t]
   argList += !["" nowhere] !t !inArgument1Name
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
   argList += !["" nowhere] !t !inArgument2Name

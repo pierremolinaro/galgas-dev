@@ -41,9 +41,8 @@ private proc enterInstanceMethodWithInputArgument
   ?methodName:let @string inInstanceMethodName
   ?let @bool inHasCompilerArgument
 {
-  @unifiedTypeMap-proxy argumentTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex]
-  var argList = @formalParameterSignature {}
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?let argumentTypeIndex]
+  @formalParameterSignature argList = {}
   argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgumentName
   [!?ioInstanceMethodMap insertKey
     ![inInstanceMethodName nowhere]
@@ -103,9 +102,8 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
     !methodName:"writeToExecutableFile"
     !true
   )
-  var argList =@formalParameterSignature {}
-  @unifiedTypeMap-proxy t
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?t]
+  @formalParameterSignature argList = {}
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?@unifiedTypeMap-proxy t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"

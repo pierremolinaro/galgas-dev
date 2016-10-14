@@ -117,7 +117,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Type index
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mSortedListTypeName ?let @unifiedTypeMap-proxy listTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mSortedListTypeName ?let listTypeIndex]
 #--- Element type index
   [@unifiedTypeMap-proxy makeProxy
     !?ioSemanticContext.mTypeMap
@@ -125,12 +125,12 @@ override method @sortedListDeclarationAST enterInSemanticContext
     ?let @unifiedTypeMap-proxy listElementTypeIndex
   ]
 #--- Enumeration description
-  var enumerationDescriptor =@enumerationDescriptorList {}
-  var constructorAttributeTypeList =@functionSignature {}
-  var setterFormalArgumentList =@formalParameterSignature {}
-  var typedAttributeList =@typedPropertyList {}
+  @enumerationDescriptorList enumerationDescriptor = {}
+  @functionSignature constructorAttributeTypeList = {}
+  @formalParameterSignature setterFormalArgumentList = {}
+  @typedPropertyList typedAttributeList = {}
   for () in mAttributeList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     @bool hasGetter = true
     @bool hasSetter = true
     typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
