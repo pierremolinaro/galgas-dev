@@ -45,10 +45,8 @@ proc enterConstructorWithArgument
   ?resultTypeName:let @string inReturnedTypeName
   ?hasLexiqueAndLocationArgs:let @bool inHasLexiqueAndLocationArguments
 {
-  @unifiedTypeMap-proxy returnedTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
-  @unifiedTypeMap-proxy t
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?let t]
   [!?ioConstructorMap insertOrReplace
     !@lstring.new {!inConstructorName !@location.here}
     !@functionSignature {!["" nowhere] !t !inArgument1Name}
@@ -101,7 +99,7 @@ proc enterConstructorWith3Arguments
   ?resultTypeName:let @string inReturnedTypeName
   ?hasLexiqueAndLocationArgs:let @bool inHasLexiqueAndLocationArguments
 {
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?@unifiedTypeMap-proxy returnedTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let @unifiedTypeMap-proxy returnedTypeIndex]
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?@unifiedTypeMap-proxy t]
   @functionSignature argumentTypeList = {}
   argumentTypeList += !["" nowhere] !t !inArgument1Name

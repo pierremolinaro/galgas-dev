@@ -24,8 +24,7 @@ override method @stringsetPredefinedTypeAST getEnumerationList
   !@enumerationDescriptorList outEnumerationList
   !@string outEnumeratedType
 {
-  @unifiedTypeMap-proxy stringTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?let stringTypeIndex]
   outEnumerationList = {}
   outEnumerationList += !stringTypeIndex !"key"
   outEnumeratedType = "string"
@@ -38,8 +37,7 @@ override method @dataPredefinedTypeAST getEnumerationList
   !@enumerationDescriptorList outEnumerationList
   !@string outEnumeratedType
 {
-  @unifiedTypeMap-proxy uintTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"uint" ?uintTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"uint" ?let uintTypeIndex]
   outEnumerationList = {}
   outEnumerationList += !uintTypeIndex !"data"
   outEnumeratedType = "uint"
@@ -55,13 +53,12 @@ override method @stringsetPredefinedTypeAST getSetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@setterMap outSetterMap
 {
-  @unifiedTypeMap-proxy stringType
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType]
-  outSetterMap = @setterMap. emptyMap
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?let stringType]
+  outSetterMap = {}
   [!?outSetterMap insertKey
     !@lstring.new {!"removeKey" !@location.here}
     !@methodKind. definedAsMember
-    !@formalParameterSignature. listWithValue {!["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentIn !"inKey"}
+    !@formalParameterSignature. listWithValue {!["" nowhere] !stringType !.argumentIn !"inKey"}
     !false # No Compiler argument
     !@methodQualifier. isBasic
     !""

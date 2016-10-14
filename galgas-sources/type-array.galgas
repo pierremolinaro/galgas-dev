@@ -62,22 +62,18 @@ override method @arrayDeclarationAST enterInSemanticContext
     error mDimension: "the dimension of an array should be > 0"
   end
 #--- array type
-  @unifiedTypeMap-proxy arrayTypeIndex
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mArrayTypeName ?arrayTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mArrayTypeName ?let arrayTypeIndex]
 #--- element type
-  @unifiedTypeMap-proxy elementTypeIndex
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mElementTypeName ?elementTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mElementTypeName ?let elementTypeIndex]
 #---
-  var constructorMap =@constructorMap.emptyMap{}
+  @constructorMap constructorMap = {}
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  var setterMap =@setterMap.emptyMap{}
-  var instanceMethodMap =@instanceMethodMap.emptyMap{}
+  @setterMap setterMap ={}
+  @instanceMethodMap instanceMethodMap = {}
 #--- 
-  @unifiedTypeMap-proxy boolType
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"bool" ?boolType]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"bool" ?let boolType]
 #--- 
-  @unifiedTypeMap-proxy uintType
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?uintType]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?let uintType]
 #---
   @functionSignature uintArgs = {}
   @uint idx = 0

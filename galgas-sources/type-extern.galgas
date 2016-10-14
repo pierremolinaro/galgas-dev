@@ -208,13 +208,11 @@ override method @externTypeDeclarationAST enterInSemanticContext
   var classMethodMap =@classMethodMap.emptyMap{}
 #--- Constructors
   for () in mExternTypeConstructorList do
-    @unifiedTypeMap-proxy returnedTypeProxy
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?returnedTypeProxy]
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedTypeProxy]
   #---
-    var arguments =@functionSignature {}
+    @functionSignature arguments = {}
     for () in mParameterList do
-      @unifiedTypeMap-proxy argumentTypeProxy
-      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?argumentTypeProxy]
+      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?let argumentTypeProxy]
       arguments += !mFormalSelector !argumentTypeProxy !mFormalParameterName.string
     end
   #---
@@ -227,13 +225,11 @@ override method @externTypeDeclarationAST enterInSemanticContext
   end
 #--- Getters
   for () in mExternTypeGetterList do
-    @unifiedTypeMap-proxy returnedTypeProxy
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?returnedTypeProxy]
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedTypeProxy]
   #---
     @functionSignature arguments = {}
     for () in mParameterList do
-      @unifiedTypeMap-proxy argumentTypeProxy
-      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?argumentTypeProxy]
+      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalParameterTypeName ?let argumentTypeProxy]
       arguments += !mFormalSelector !argumentTypeProxy !mFormalParameterName.string
     end
   #---

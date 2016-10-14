@@ -66,7 +66,7 @@ override method @listDeclarationAST enterInSemanticContext
 #--- Handle attributes
   @typedPropertyList typedAttributeList = {}
   for () in mAttributeList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     @bool hasGetter = true
     @bool hasSetter = false
     for () in mFeatureList do
@@ -79,9 +79,9 @@ override method @listDeclarationAST enterInSemanticContext
     typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
   end
 #--- uint type index
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?let @unifiedTypeMap-proxy uintType]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?let uintType]
 #--- List type index
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mListTypeName ?let @unifiedTypeMap-proxy listTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mListTypeName ?let listTypeIndex]
 #--- Element type index
   [@unifiedTypeMap-proxy makeProxy
     !?ioSemanticContext.mTypeMap
@@ -89,10 +89,10 @@ override method @listDeclarationAST enterInSemanticContext
     ?let @unifiedTypeMap-proxy listElementTypeIndex
   ]
 #--- Property description
-  var enumerationDescriptor =@enumerationDescriptorList {}
-  var constructorAttributeTypeList =@functionSignature {}
-  var setterOutputFormalArgumentList =@formalParameterSignature {}
-  var setterInputFormalArgumentList =@formalParameterSignature {}
+  @enumerationDescriptorList enumerationDescriptor = {}
+  @functionSignature constructorAttributeTypeList = {}
+  @formalParameterSignature setterOutputFormalArgumentList = {}
+  @formalParameterSignature setterInputFormalArgumentList = {}
   for () in typedAttributeList do
     enumerationDescriptor += !mAttributeTypeProxy ![mAttributeName string]
     constructorAttributeTypeList += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string

@@ -450,8 +450,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !.argumentConstantIn
     !"inLKey"
   for () in mPropertyList do
-    @unifiedTypeMap-proxy attributeTypeIndex
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     @bool hasGetter = true
     @bool hasSetter = true
     typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
@@ -534,8 +533,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   end
 #--- Enter "enterBranch" and "exitBranch" setters (only if there are states)
   if [mMapStateList length] > 0 then
-    @unifiedTypeMap-proxy locationTypeIndex
-    [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"location" ?locationTypeIndex]
+    [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"location" ?let locationTypeIndex]
     [!?setterMap insertKey
       !@lstring.new {!"openBranch" !@location.here}
       !@methodKind.definedAsMember
@@ -583,8 +581,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
 #--- Enter "attributeForKey" getters
   for () in mPropertyList do
     let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
-    @unifiedTypeMap-proxy attributeTypeIndex
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?attributeTypeIndex]
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
       !accessorName
       !@methodKind.definedAsMember
@@ -599,8 +596,8 @@ override method @sharedMapDeclarationAST enterInSemanticContext
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor parameter
   for () in mPropertyList do
     let accessorName = @lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mPropertyName location]}
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
-    var accessorFormalArgumentList =@formalParameterSignature {}
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    @formalParameterSignature accessorFormalArgumentList = {}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
     accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !mPropertyName.string
     [!?setterMap insertOrReplace

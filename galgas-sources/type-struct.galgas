@@ -65,8 +65,7 @@ override method @structDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Struct type index
-  @unifiedTypeMap-proxy structTypeIndex
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mStructTypeName ?structTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mStructTypeName ?let structTypeIndex]
 #--- Constructors and attribute map
   var attributeMap =@attributeMap.emptyMap{}
   var constructorMap =@constructorMap.emptyMap{}
@@ -74,7 +73,7 @@ override method @structDeclarationAST enterInSemanticContext
   var typedAttributeList =@typedPropertyList {}
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapProxyList.emptyList
   for () in mAttributeList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     var hasSetter = false

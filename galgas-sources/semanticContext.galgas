@@ -479,14 +479,12 @@ proc addExtensions
     @extensionGetterMapForType extensionGetterMapForType
     [inExtensionGetterMapForBuildingContext searchKey !inTypeName ?extensionGetterMapForType]
     for () in extensionGetterMapForType do
-      var formalArgumentList =@functionSignature {}
+      @functionSignature formalArgumentList = {}
       for () in mInputFormalParameterList do
-        @unifiedTypeMap-proxy typeIndex
-        [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?typeIndex]
+        [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentName.string
       end
-      @unifiedTypeMap-proxy returnedType
-      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?returnedType]
+      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedType]
       [!?ioGetterMap insertKey
         !lkey
         !@methodKind.definedAsExtension
@@ -504,10 +502,9 @@ proc addExtensions
     @extensionSetterMapForType extensionSetterMapForType
     [inExtensionSetterMapForBuildingContext searchKey !inTypeName ?extensionSetterMapForType]
     for () in extensionSetterMapForType do
-      var formalArgumentList =@formalParameterSignature {}
+      @formalParameterSignature formalArgumentList = {}
       for () in mFormalParameterList do
-        @unifiedTypeMap-proxy typeIndex
-        [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?typeIndex]
+        [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let typeIndex]
         formalArgumentList += !mFormalSelector !typeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
       end
       [!?ioSetterMap insertKey
@@ -645,10 +642,9 @@ override method @filewrapperDeclarationAST enterInSemanticContext
 #--- Templates
   var filewrapperTemplateMap =@filewrapperTemplateMap.emptyMap{}
   for () in mFilewrapperTemplateList do
-    var templateSignature =@functionSignature {}
+    @functionSignature templateSignature = {}
     for () in mFilewrapperTemplateFormalInputParameters do
-      @unifiedTypeMap-proxy parameterTypeIndex
-      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?parameterTypeIndex]
+      [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
       templateSignature += !mFormalTemplateSelector !parameterTypeIndex !mFormalArgumentName.string
     end
     [!?filewrapperTemplateMap insertKey
@@ -764,13 +760,11 @@ override method @externFunctionDeclarationAST enterInSemanticContext # Handles a
 #--- Build signature
   var functionSignature =@functionSignature {}
   for () in mFormalArgumentList do
-    @unifiedTypeMap-proxy parameterTypeIndex
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?parameterTypeIndex]
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     functionSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentTypeName.string
   end
 #--- Result type
-  @unifiedTypeMap-proxy resultTypeIndex
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?resultTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?let resultTypeIndex]
 #--- Enter function in routine map
   [!?ioSemanticContext.mFunctionMap insertKey
     !mFunctionName

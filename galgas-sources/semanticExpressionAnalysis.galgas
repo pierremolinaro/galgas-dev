@@ -994,9 +994,7 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
 override method @constructorExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  if mTypeName.string != "" then
-    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
-  end
+  [@unifiedTypeMap-proxy makeOptionalProxy !?ioTypeMap !mTypeName ?*]
   [mExpressions enterInSemanticContext !?ioTypeMap]
 }
 

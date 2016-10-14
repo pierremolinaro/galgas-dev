@@ -92,10 +92,10 @@ override method @listmapDeclarationAST enterInSemanticContext
     listTypedAttributeList = @typedPropertyList.emptyList
   end
 #---
-  var constructorMap =@constructorMap.emptyMap{}
+  @constructorMap constructorMap ={}
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  var setterMap =@setterMap.emptyMap{}
-  var instanceMethodMap =@instanceMethodMap.emptyMap{}
+  @setterMap setterMap = {}
+  @instanceMethodMap instanceMethodMap = {}
 #--- Associated map type index
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAssociatedListTypeName ?let associatedListTypeIndex]
 #--- currentType type index
