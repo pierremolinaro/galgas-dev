@@ -181,6 +181,15 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMap_2D_proxy::constructor_null 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void GALGAS_unifiedTypeMap_2D_proxy::class_method_makeOptionalProxy (GALGAS_unifiedTypeMap & ioMap,
+                                                                     GALGAS_lstring inKey,
+                                                                     GALGAS_unifiedTypeMap_2D_proxy & outProxy
+                                                                     COMMA_LOCATION_ARGS) {
+  outProxy.internalMakeOptionalProxy (ioMap, inKey COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxy (GALGAS_unifiedTypeMap & ioMap,
                                                              GALGAS_lstring inKey,
                                                              GALGAS_unifiedTypeMap_2D_proxy & outProxy

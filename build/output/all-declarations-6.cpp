@@ -6502,6 +6502,15 @@ GALGAS_variableMap_2D_proxy GALGAS_variableMap_2D_proxy::constructor_null (LOCAT
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+void GALGAS_variableMap_2D_proxy::class_method_makeOptionalProxy (GALGAS_variableMap & ioMap,
+                                                                  GALGAS_lstring inKey,
+                                                                  GALGAS_variableMap_2D_proxy & outProxy
+                                                                  COMMA_LOCATION_ARGS) {
+  outProxy.internalMakeOptionalProxy (ioMap, inKey COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_variableMap_2D_proxy::class_method_makeProxy (GALGAS_variableMap & ioMap,
                                                           GALGAS_lstring inKey,
                                                           GALGAS_variableMap_2D_proxy & outProxy

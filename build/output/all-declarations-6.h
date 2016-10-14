@@ -3075,6 +3075,11 @@ class GALGAS_variableMap_2D_proxy : public AC_GALGAS_uniqueMapProxy {
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
+  public : static void class_method_makeOptionalProxy (class GALGAS_variableMap & ioArgument0,
+                                                       class GALGAS_lstring constinArgument1,
+                                                       class GALGAS_variableMap_2D_proxy & outArgument2
+                                                       COMMA_LOCATION_ARGS) ;
+
   public : static void class_method_makeProxy (class GALGAS_variableMap & ioArgument0,
                                                class GALGAS_lstring constinArgument1,
                                                class GALGAS_variableMap_2D_proxy & outArgument2
