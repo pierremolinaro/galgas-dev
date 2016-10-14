@@ -53,33 +53,35 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
   var classMethodMap =@classMethodMap.emptyMap{}
 #--- Associated map type index
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAssociatedMapTypeName ?let @unifiedTypeMap-proxy associatedMapTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAssociatedMapTypeName ?let associatedMapTypeIndex]
 #--- string type index
-  @unifiedTypeMap-proxy stringTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?stringTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
 #--- lstring type index
-  @unifiedTypeMap-proxy lstringTypeIndex
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstring" ?lstringTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
 #--- Handle map type name
-  @unifiedTypeMap-proxy mapProxyTypeProxy
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mMapProxyTypeName ?mapProxyTypeProxy]
-#--- class method : makeProxy
-  var argList =@formalParameterSignature {}
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mMapProxyTypeName ?let mapProxyTypeProxy]
+#--- class methods : makeProxy, makeOptionalProxy
+  @formalParameterSignature argList = {}
   argList += !["" nowhere] !associatedMapTypeIndex !@formalArgumentPassingModeAST.argumentInOut !"ioMap"
   argList += !["" nowhere] !lstringTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"inLKey"
   argList += !["" nowhere] !mapProxyTypeProxy !@formalArgumentPassingModeAST.argumentOut !"outProxy"
   [!?classMethodMap insertKey
-    !@lstring.new {!"makeProxy" !@location.here}
+    !@lstring.new {!"makeProxy" !.here}
+    !argList
+    !false
+  ]
+  [!?classMethodMap insertKey
+    !@lstring.new {!"makeOptionalProxy" !.here}
     !argList
     !false
   ]
 #--- class method : makeProxyFromString
-  argList = @formalParameterSignature.emptyList
+  argList = {}
   argList += !["" nowhere] !associatedMapTypeIndex !@formalArgumentPassingModeAST.argumentInOut !"ioMap"
   argList += !["" nowhere] !stringTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"inLKey"
   argList += !["" nowhere] !mapProxyTypeProxy !@formalArgumentPassingModeAST.argumentOut !"outProxy"
   [!?classMethodMap insertKey
-    !@lstring.new {!"makeProxyFromString" !@location.here}
+    !@lstring.new {!"makeProxyFromString" !.here}
     !argList
     !false
   ]
