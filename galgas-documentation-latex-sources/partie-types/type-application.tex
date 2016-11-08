@@ -363,6 +363,32 @@ end
 
 Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.
 
+
+
+
+
+
+
+\sectionConstructor{system}{application}
+
+\begin{galgasbox}
+constructor @application system -> @string
+\end{galgasbox}
+
+Ce constructeur permet de savoir sur quel type de système l'application tourne en renvoyant la chaîne :
+\begin{itemize}
+  \item \ggs!"unix"! sur Unix, par exemple OSX ou Linux ;
+  \item \ggs!"windows"! sur Windows.
+\end{itemize}
+
+
+
+
+
+
+
+
+
 \sectionConstructor{verboseOutput}{application}
 
 \begin{galgasbox}
