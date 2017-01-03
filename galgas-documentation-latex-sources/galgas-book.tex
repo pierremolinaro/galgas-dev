@@ -69,6 +69,17 @@
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
+%   P A Q U E T A G E    « E M P T Y P A G E »                                                                          *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+% Supprime en-têtes et pieds de pages sur les pages vides
+% Merci à Éric Le Carpentier !
+
+\usepackage{emptypage}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
 %   M I S E    E N    P A G E                                                                                           *
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -153,7 +164,12 @@
 % Voir http://fr.wikibooks.org/wiki/LaTeX/Éléments_flottants_et_figures
 \addto\captionsfrench{\def\tablename{Tableau}}
 
-%------------------------------------------------------------------------------------------ RÉFÉRENCES À UN TABLEAU
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   R É F É R E N C E S    À   U N    T A B L E A U                                                                     *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
 % La référence au tableau "nom-du-tableau" est définie par \labelTableau{nom-du-tableau}
 \newcommand\labelTableau[1]{\label{tab:#1}}
 % Latex autorise deux types d'appel à une référence \ref{tab:nom-du-tableau} et \pageref{tab:nom-du-tableau}
@@ -186,23 +202,22 @@
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
-%   P A Q U E T A G E S                                                                                                 *
+%   D P R O G R E S S                                                                                                   *
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-\usepackage{filecontents}
+%   Ce paquetage permet d'afficher dans le "log" les titres de section et de sous-section, facilitant ainsi la
+%   localisation des warnings
+\usepackage{dprogress}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   I F T H E N                                                                                                         *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
 
 %--- Ce paquetage permet d'effectuer des tests : \ifthenelse{test}{bloc then}{bloc else}
 \usepackage{ifthen}
-
-%--- Affiche les sections dans le log
-\usepackage{dprogress}
-
-\usepackage{listings} % À placer après \usepackage[table]{xcolor}
-
-\usepackage{lineno}
-
-\usepackage{mdframed}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -222,18 +237,6 @@
 \usetikzlibrary{automata}
 \usetikzlibrary{positioning}
 \usepgflibrary{shapes.geometric}
-
-%-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
-%   I N C L U S I O N    D E S   M A C R O S   D E S T I N É E S   À   L ' É C R I T U R E   
-%                                                                                                                       *
-%                                        D E   C O D E   G A L G A S                                                    *
-%                                                                                                                       *
-%-----------------------------------------------------------------------------------------------------------------------*
-
-%\usepackage{relsize}
-
-\input{galgas-book-latex-inclusions/galgas-language-definitions.tex}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -427,7 +430,6 @@
 
 \newcommand\optionGGS[1]{\colorbox{gray!10}{\small\bf\textbf{#1}}}
 
-
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
 %   Titre des tableaux et des figures                                                                                   *
@@ -445,10 +447,35 @@
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
-%   D É B U T    D U    D O C U M E N T                                                                                 *
+%   P A Q U E T A G E S                                                                                                 *
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
+\usepackage{filecontents}
+
+\usepackage{listings} % À placer après \usepackage[table]{xcolor}
+
+\usepackage{lineno}
+
+\usepackage{mdframed}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   I N C L U S I O N    D E S   M A C R O S   D E S T I N É E S   À   L ' É C R I T U R E                              *
+%                                                                                                                       *
+%                                        D E   C O D E   G A L G A S                                                    *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%\usepackage{relsize}
+
+\input{galgas-book-latex-inclusions/galgas-language-definitions.tex}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   D É B U T    D U    D O C U M E N T                                                                                 *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
 
 \begin{document} 
 
