@@ -87,16 +87,6 @@ GALGAS_string filewrapperTemplate_grammarRulesInTexDocumentTemplate_document (cl
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                               Function 'escapeForTex'                                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_string function_escapeForTex (const class GALGAS_string & constinArgument0,
-                                           class C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                     Filewrapper 'programFileGenerationTemplate'                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
