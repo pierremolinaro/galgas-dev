@@ -1639,6 +1639,37 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rowList_2D_element 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//             Extension getter '@syntaxInstructionListForGrammarAnalysis displayVertically' (as function)             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_bool extensionGetter_displayVertically (const class GALGAS_syntaxInstructionListForGrammarAnalysis & inObject,
+                                                     class C_Compiler * inCompiler
+                                                     COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Abstract extension getter '@abstractSyntaxInstructionForGrammarAnalysis isLinear'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typedef class GALGAS_bool (*enterExtensionGetter_abstractSyntaxInstructionForGrammarAnalysis_isLinear) (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
+                                                                                                        class C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterExtensionGetter_isLinear (const int32_t inClassIndex,
+                                    enterExtensionGetter_abstractSyntaxInstructionForGrammarAnalysis_isLinear inMethod) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_bool callExtensionGetter_isLinear (const class cPtr_abstractSyntaxInstructionForGrammarAnalysis * inObject,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                           @programListForGeneration list                                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

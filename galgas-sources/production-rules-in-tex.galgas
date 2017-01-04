@@ -27,7 +27,7 @@ filewrapper grammarRulesInTexDocumentTemplate in "../generation_templates/gramma
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-func escapeForTex ?let @string inString -> @string result {
+private func escapeForTex ?let @string inString -> @string result {
   result = ""
   for idx in 0 ..< [inString length] do
     let c = [inString characterAtIndex !idx]
@@ -87,52 +87,11 @@ proc emitProductionRulesInTexFile
     for syntaxComponent in inSyntaxComponentListForGrammarAnalysis do
       for productionRule in syntaxComponent.mProductionRulesList do
         if productionRule.mLeftNonterminalSymbol.string == nonterminal.lkey then
-          @string currentNode = "P0start"
-          @rowList rowArray = {!{!currentNode !"[firstPoint] {}"}}
-          @string arrows = ""
-          @string arrowStyle = "--"
-          var column = 1
-          var maxUsedRowIndex = 0 # Unused
-          for (instruction) in productionRule.mInstructionList do
-            [instruction tikzNodeForSyntaxInstruction
-              !?rowArray
-              !fromRow:0
-              !?column:column
-              !?node:currentNode
-              !?arrowShape:arrowStyle
-              !?arrows:arrows
-              !?maxUsedRowIndex
-              !debug:false
-            ]
+          if [productionRule.mInstructionList displayVertically] then
+            [productionRule displayRuleVertically !syntaxComponent.mSyntaxComponentName.string !?s]
+          else
+            [productionRule displayRule !syntaxComponent.mSyntaxComponentName.string !?s]
           end
-        #--- Add a final arrow
-          [!?rowArray append !nodeDefinition:"[lastPoint] {}" !row:0 !column:column ?nodeName:let lastNodeName]
-          arrows += "  \\draw[->] (" + currentNode + ") -- (" + lastNodeName + ") ;\n"
-        #--- Write tex file
-          let loc = productionRule.mLeftNonterminalSymbol.location
-          s += "\\ruleSubsection{"
-            + escapeForTex (!syntaxComponent.mSyntaxComponentName.string)
-            + "}{"
-            + escapeForTex (![[[loc file] lastPathComponent] stringByDeletingPathExtension])
-            + "}{" + escapeForTex (![loc line])
-            + "}\n\n"
-            + "\\begin{tikzpicture}\n"
-            + "  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"
-          for > (columns) in rowArray do
-            s += "    "
-            for column in columns do
-              if column.mValue0 == "" then
-                s += "& "
-              else
-                s += "\\node (" + column.mValue0 + ") " + column.mValue1 + "; & "
-              end
-            end
-            s += "\\\\\n"
-          end
-          s += "  };\n"
-        #--- Arrows
-          s += arrows
-          s += "\\end{tikzpicture}\n\n"
         end
       end
     end
@@ -140,6 +99,122 @@ proc emitProductionRulesInTexFile
   [s writeToFileWhenDifferentContents !texFilePath ?*]
 }
 
+#----------------------------------------------------------------------------------------------------------------------*
+
+method @productionRuleListForGrammarAnalysis-element displayRule
+  ?let @string inSyntaxCompnentName
+  ?!@string ioGeneratedCode
+{
+  @string currentNode = "P0start"
+  @rowList rowArray = {!{!currentNode !"[firstPoint] {}"}}
+  @string arrows = ""
+  @string arrowStyle = "--"
+  var column = 1
+  var unusedMaxUsedRowIndex = 0 # Unused
+  for (instruction) in self.mInstructionList do
+    [instruction tikzNodeForSyntaxInstruction
+      !?rowArray
+      !fromRow:0
+      !?column:column
+      !?node:currentNode
+      !?arrowShape:arrowStyle
+      !?arrows:arrows
+      !?unusedMaxUsedRowIndex
+      !debug:false
+    ]
+  end
+#--- Add a final arrow
+  [!?rowArray append !nodeDefinition:"[lastPoint] {}" !row:0 !column:column ?nodeName:let lastNodeName]
+  arrows += "  \\draw[->] (" + currentNode + ") -- (" + lastNodeName + ") ;\n"
+#--- Write tex file
+  let loc = self.mLeftNonterminalSymbol.location
+  ioGeneratedCode += "\\ruleSubsection{"
+    + escapeForTex (!inSyntaxCompnentName)
+    + "}{"
+    + escapeForTex (![[[loc file] lastPathComponent] stringByDeletingPathExtension])
+    + "}{" + escapeForTex (![loc line])
+    + "}\n\n"
+    + "\\begin{tikzpicture}\n"
+    + "  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"
+  for > (columns) in rowArray do
+    ioGeneratedCode += "    "
+    for column in columns do
+      if column.mValue0 == "" then
+        ioGeneratedCode += "& "
+      else
+        ioGeneratedCode += "\\node (" + column.mValue0 + ") " + column.mValue1 + "; & "
+      end
+    end
+    ioGeneratedCode += "\\\\\n"
+  end
+  ioGeneratedCode += "  };\n"
+#--- Arrows
+  ioGeneratedCode += arrows
+  ioGeneratedCode += "\\end{tikzpicture}\n\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+method @productionRuleListForGrammarAnalysis-element displayRuleVertically
+  ?let @string inSyntaxCompnentName
+  ?!@string ioGeneratedCode
+{
+  @string currentNode = "P0start"
+  @rowList rowArray = {}
+  for i in 1 ..< [self.mInstructionList length] do
+    rowArray += !{!"" !""}
+  end
+  rowArray += !{!currentNode !"[firstPoint] {}"}
+  @string arrows = ""
+  @string arrowStyle = "--"
+  var unusedMaxUsedRowIndex = 0 # Unused
+  var row = [self.mInstructionList length]
+  for (instruction) in self.mInstructionList do
+    row --
+    var column = 1
+    [instruction tikzNodeForSyntaxInstruction
+      !?rowArray
+      !fromRow:row
+      !?column:column
+      !?node:currentNode
+      !?arrowShape:arrowStyle
+      !?arrows:arrows
+      !?unusedMaxUsedRowIndex
+      !debug:false
+    ]
+  end
+#--- Add a final arrow
+  [!?rowArray append !nodeDefinition:"[lastPoint] {}" !row:row !column:2 ?nodeName:let lastNodeName]
+  arrows += "  \\draw[->] (" + currentNode + ") -- (" + lastNodeName + ") ;\n"
+#--- Write tex file
+  let loc = self.mLeftNonterminalSymbol.location
+  ioGeneratedCode += "\\ruleSubsection{"
+    + escapeForTex (!inSyntaxCompnentName)
+    + "}{"
+    + escapeForTex (![[[loc file] lastPathComponent] stringByDeletingPathExtension])
+    + "}{" + escapeForTex (![loc line])
+    + "}\n\n"
+    + "\\begin{tikzpicture}\n"
+    + "  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"
+  for > (columns) in rowArray do
+    ioGeneratedCode += "    "
+    for column in columns do
+      if column.mValue0 == "" then
+        ioGeneratedCode += "& "
+      else
+        ioGeneratedCode += "\\node (" + column.mValue0 + ") " + column.mValue1 + "; & "
+      end
+    end
+    ioGeneratedCode += "\\\\\n"
+  end
+  ioGeneratedCode += "  };\n"
+#--- Arrows
+  ioGeneratedCode += arrows
+  ioGeneratedCode += "\\end{tikzpicture}\n\n"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! tikzNodeForSyntaxInstruction
 #----------------------------------------------------------------------------------------------------------------------*
 
 method @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
@@ -477,6 +552,46 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
     ioArrows += "  \\draw[->] (" + ioCurrentNode + ") " + ioArrowShape + " (" + markerEndNodeName + ") ;\n"
     ioCurrentNode = markerEndNodeName
   end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#! isLinear
+#----------------------------------------------------------------------------------------------------------------------*
+
+getter @syntaxInstructionListForGrammarAnalysis displayVertically -> @bool {
+  result = [self length] > 4
+  for (instruction) in self while result do
+    result = [instruction isLinear]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+abstract getter @abstractSyntaxInstructionForGrammarAnalysis isLinear -> @bool
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @terminalInstructionForGrammarAnalysis isLinear -> @bool {
+  result = true
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @nonTerminalInstructionForGrammarAnalysis isLinear -> @bool {
+  result = true
+}
+
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @selectInstructionForGrammarAnalysis isLinear -> @bool {
+  result = false
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @repeatInstructionForGrammarAnalysis isLinear -> @bool {
+  result = false
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
