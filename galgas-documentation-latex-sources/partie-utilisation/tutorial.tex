@@ -253,13 +253,13 @@ Donc, vous devez obtenir à la suite de la décompression le répertoire \tpp{co
 Nous allons maintenant compiler GALGAS. Avec le terminal, sur Linux :
 \begin{description}
   \item[ ] \tpp{cd constructionGALGAS/galgas/makefile-unix}
-  \item[ ] \tpp{make}
+  \item[ ] \tpp{./build.py}
 \end{description}
 
 Sur Mac :
 \begin{description}
   \item[ ] \tpp{cd constructionGALGAS/galgas/makefile-macosx}
-  \item[ ] \tpp{make}
+  \item[ ] \tpp{./build.py}
 \end{description}
 
 La compilation de GALGAS peut prendre une dizaine de minutes. Deux exécutables sont produits :
@@ -336,7 +336,7 @@ L’affichage de \tpp{DONE} indique que la création s’est effectuée avec suc
 
 Dans le répertoire \tpp{chezmoi/logo} :
 \begin{itemize}
-  \item le fichier \tpp{+logo.galgasProject} est le fichier projet, c’est lui que vous compilerez ;
+  \item le fichier \tpp{+logo.galgasProject} est le fichier projet, c’est lui que vous compilerez~;
   \item le répertoire \tpp{galgas-sources} contient les fichiers sources que vous allez compléter tout au long de ce tutorial ; son contenu est indiqué dans le \refTableau{tableauRepertoireSourcesLOGO}.
 \end{itemize}
 
@@ -375,10 +375,10 @@ Une compilation s'effectue en deux temps :
 
 Vous devez d'abord compiler les sources GALGAS :
 \begin{description}
-  \item[ ] \tpp{galgas -v chezmoi/logo/+logo.galgasProject}
+  \item[ ] \tpp{galgas chezmoi/logo/+logo.galgasProject}
 \end{description}
 
-L'option \tpp{-v} (verbose) provoque l'affichage de messages : observez ceux qui indiquent la création des fichiers C++. Ceux-ci sont rangés dans le répertoire \tpp{chezmoi/logo/build/output} et \tpp{chezmoi/logo/build/libpm}.
+L'exécution provoque l'affichage de messages : observez ceux qui indiquent la création des fichiers C++. Ceux-ci sont rangés dans le répertoire \tpp{chezmoi/logo/build/output} et \tpp{chezmoi/logo/build/libpm}.
 
 Le répertoire \tpp{logo} est complété par de nouveaux répertoires (\refFigure{}{figureRepertoireLOGOapresCompGALGAS} et \refTableau{tableauRepertoireLOGOapresCompGALGAS}).
 \begin{figure}[t]
@@ -395,7 +395,7 @@ Le répertoire \tpp{logo} est complété par de nouveaux répertoires (\refFigur
   \begin{tabular}{ll}
     \textbf{Répertoire} & \textbf{Contenu} \\
     \tpp{makefile-macosx} & Makefile pour compiler sur Mac OS X \\
-    \tpp{makefile-msys32-on-windows} & Makefile pour compiler sur Win 32 \\
+%    \tpp{makefile-msys32-on-windows} & Makefile pour compiler sur Win 32 \\
     \tpp{makefile-unix} & Makefile pour compiler sur Unix \\
     \tpp{makefile-win32-on-macosx} & Makefile pour compiler sur Mac OS X pour Win 32 \\
     \tpp{makefile-x86linux32-on-macosx} & Makefile pour compiler sur Mac OS X pour x86 Linux 32 bits \\
@@ -592,8 +592,7 @@ rule '#' {
 
 Remarquez que pour un fichier Windows, le caractère \tpp{CR} marque la fin du commentaire, et que le caractère \tpp{LF} qui suit est silencieusement absorbé comme délimiteur.
 
-Travail à faire
-écrivez l'analyseur lexical du langage LOGO. Après compilations GALGAS et C++, les exécutables \tpp{logo} et \tpp{logo-debug} obtenus sont partiellement opérationnels (pas encore d’analyseur syntaxique) : avec l'option \tpp{-{}-mode=lexical-only}, vous pouvez faire afficher la liste des symboles terminaux produite par l'analyse lexicale du fichier source passé en argument.
+Travail à faire : effectuer la compilation GALGAS, puis la compilation C++ ; les exécutables \tpp{logo} et \tpp{logo-debug} obtenus sont alors partiellement opérationnels (pas encore d’analyseur syntaxique) : avec l'option \tpp{-{}-mode=lexical-only}, vous pouvez faire afficher la liste des symboles terminaux produite par l'analyse lexicale du fichier source passé en argument.
 
 Note : l'option \tpp{-{}-help} permet d'afficher la liste des options de l'exécutable. 
 
