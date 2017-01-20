@@ -4665,6 +4665,9 @@ typeComparisonResult cPtr_lexiqueComponentAST::dynamicObjectCompare (const acPtr
   if (kOperandEqual == result) {
     result = mProperty_mIndexingDirectory.objectCompare (p->mProperty_mIndexingDirectory) ;
   }
+  if (kOperandEqual == result) {
+    result = mProperty_mLexicalFunctionListAST.objectCompare (p->mProperty_mLexicalFunctionListAST) ;
+  }
   return result ;
 }
 
@@ -4710,7 +4713,8 @@ GALGAS_lexiqueComponentAST GALGAS_lexiqueComponentAST::constructor_default (LOCA
                                                       GALGAS_externRoutineListAST::constructor_emptyList (HERE),
                                                       GALGAS_externFunctionListAST::constructor_emptyList (HERE),
                                                       GALGAS_indexingListAST::constructor_emptyList (HERE),
-                                                      GALGAS_lstring::constructor_default (HERE)
+                                                      GALGAS_lstring::constructor_default (HERE),
+                                                      GALGAS_lexicalFunctionListAST::constructor_emptyList (HERE)
                                                       COMMA_THERE) ;
 }
 
@@ -4737,11 +4741,12 @@ GALGAS_lexiqueComponentAST GALGAS_lexiqueComponentAST::constructor_new (const GA
                                                                         const GALGAS_externRoutineListAST & inAttribute_mExternRoutineList,
                                                                         const GALGAS_externFunctionListAST & inAttribute_mExternFunctionList,
                                                                         const GALGAS_indexingListAST & inAttribute_mIndexingListAST,
-                                                                        const GALGAS_lstring & inAttribute_mIndexingDirectory
+                                                                        const GALGAS_lstring & inAttribute_mIndexingDirectory,
+                                                                        const GALGAS_lexicalFunctionListAST & inAttribute_mLexicalFunctionListAST
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_lexiqueComponentAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mLexiqueComponentName.isValid () && inAttribute_mIsTemplate.isValid () && inAttribute_mTemplateDelimitorList.isValid () && inAttribute_mTemplateReplacementList.isValid () && inAttribute_mLexicalAttributeList.isValid () && inAttribute_mLexicalStyleList.isValid () && inAttribute_mTerminalDeclarationList.isValid () && inAttribute_mLexicalMessageDeclarationList.isValid () && inAttribute_mLexicalListDeclarationList.isValid () && inAttribute_mLexicalRuleList.isValid () && inAttribute_mExternRoutineList.isValid () && inAttribute_mExternFunctionList.isValid () && inAttribute_mIndexingListAST.isValid () && inAttribute_mIndexingDirectory.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_lexiqueComponentAST (inAttribute_mIsPredefined, inAttribute_mLexiqueComponentName, inAttribute_mIsTemplate, inAttribute_mTemplateDelimitorList, inAttribute_mTemplateReplacementList, inAttribute_mLexicalAttributeList, inAttribute_mLexicalStyleList, inAttribute_mTerminalDeclarationList, inAttribute_mLexicalMessageDeclarationList, inAttribute_mLexicalListDeclarationList, inAttribute_mLexicalRuleList, inAttribute_mExternRoutineList, inAttribute_mExternFunctionList, inAttribute_mIndexingListAST, inAttribute_mIndexingDirectory COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mLexiqueComponentName.isValid () && inAttribute_mIsTemplate.isValid () && inAttribute_mTemplateDelimitorList.isValid () && inAttribute_mTemplateReplacementList.isValid () && inAttribute_mLexicalAttributeList.isValid () && inAttribute_mLexicalStyleList.isValid () && inAttribute_mTerminalDeclarationList.isValid () && inAttribute_mLexicalMessageDeclarationList.isValid () && inAttribute_mLexicalListDeclarationList.isValid () && inAttribute_mLexicalRuleList.isValid () && inAttribute_mExternRoutineList.isValid () && inAttribute_mExternFunctionList.isValid () && inAttribute_mIndexingListAST.isValid () && inAttribute_mIndexingDirectory.isValid () && inAttribute_mLexicalFunctionListAST.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_lexiqueComponentAST (inAttribute_mIsPredefined, inAttribute_mLexiqueComponentName, inAttribute_mIsTemplate, inAttribute_mTemplateDelimitorList, inAttribute_mTemplateReplacementList, inAttribute_mLexicalAttributeList, inAttribute_mLexicalStyleList, inAttribute_mTerminalDeclarationList, inAttribute_mLexicalMessageDeclarationList, inAttribute_mLexicalListDeclarationList, inAttribute_mLexicalRuleList, inAttribute_mExternRoutineList, inAttribute_mExternFunctionList, inAttribute_mIndexingListAST, inAttribute_mIndexingDirectory, inAttribute_mLexicalFunctionListAST COMMA_THERE)) ;
   }
   return result ;
 }
@@ -4999,6 +5004,24 @@ GALGAS_lstring cPtr_lexiqueComponentAST::getter_mIndexingDirectory (UNUSED_LOCAT
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalFunctionListAST GALGAS_lexiqueComponentAST::getter_mLexicalFunctionListAST (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalFunctionListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
+    result = p->mProperty_mLexicalFunctionListAST ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalFunctionListAST cPtr_lexiqueComponentAST::getter_mLexicalFunctionListAST (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mLexicalFunctionListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                                    Pointer class for @lexiqueComponentAST class                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5016,7 +5039,8 @@ cPtr_lexiqueComponentAST::cPtr_lexiqueComponentAST (const GALGAS_bool & in_mIsPr
                                                     const GALGAS_externRoutineListAST & in_mExternRoutineList,
                                                     const GALGAS_externFunctionListAST & in_mExternFunctionList,
                                                     const GALGAS_indexingListAST & in_mIndexingListAST,
-                                                    const GALGAS_lstring & in_mIndexingDirectory
+                                                    const GALGAS_lstring & in_mIndexingDirectory,
+                                                    const GALGAS_lexicalFunctionListAST & in_mLexicalFunctionListAST
                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mProperty_mLexiqueComponentName (in_mLexiqueComponentName),
@@ -5032,7 +5056,8 @@ mProperty_mLexicalRuleList (in_mLexicalRuleList),
 mProperty_mExternRoutineList (in_mExternRoutineList),
 mProperty_mExternFunctionList (in_mExternFunctionList),
 mProperty_mIndexingListAST (in_mIndexingListAST),
-mProperty_mIndexingDirectory (in_mIndexingDirectory) {
+mProperty_mIndexingDirectory (in_mIndexingDirectory),
+mProperty_mLexicalFunctionListAST (in_mLexicalFunctionListAST) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5073,6 +5098,8 @@ void cPtr_lexiqueComponentAST::description (C_String & ioString,
   mProperty_mIndexingListAST.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mIndexingDirectory.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLexicalFunctionListAST.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5080,7 +5107,7 @@ void cPtr_lexiqueComponentAST::description (C_String & ioString,
 
 acPtr_class * cPtr_lexiqueComponentAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_lexiqueComponentAST (mProperty_mIsPredefined, mProperty_mLexiqueComponentName, mProperty_mIsTemplate, mProperty_mTemplateDelimitorList, mProperty_mTemplateReplacementList, mProperty_mLexicalAttributeList, mProperty_mLexicalStyleList, mProperty_mTerminalDeclarationList, mProperty_mLexicalMessageDeclarationList, mProperty_mLexicalListDeclarationList, mProperty_mLexicalRuleList, mProperty_mExternRoutineList, mProperty_mExternFunctionList, mProperty_mIndexingListAST, mProperty_mIndexingDirectory COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_lexiqueComponentAST (mProperty_mIsPredefined, mProperty_mLexiqueComponentName, mProperty_mIsTemplate, mProperty_mTemplateDelimitorList, mProperty_mTemplateReplacementList, mProperty_mLexicalAttributeList, mProperty_mLexicalStyleList, mProperty_mTerminalDeclarationList, mProperty_mLexicalMessageDeclarationList, mProperty_mLexicalListDeclarationList, mProperty_mLexicalRuleList, mProperty_mExternRoutineList, mProperty_mExternFunctionList, mProperty_mIndexingListAST, mProperty_mIndexingDirectory, mProperty_mLexicalFunctionListAST COMMA_THERE)) ;
   return ptr ;
 }
 

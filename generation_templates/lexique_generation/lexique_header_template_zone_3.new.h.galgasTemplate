@@ -35,6 +35,12 @@
   after %\n  } ;\n%
   end
 %
+//--- Unicode test functions
+%
+  for () in UNICODE_TEST_FUNCTIONS
+  do %  public : bool %![mFunctionName identifierRepresentation]% (void) ;\n%
+  end
+%
 //--- Indexing directory
   protected : virtual C_String indexingDirectory (void) const ;
 

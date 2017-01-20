@@ -59,12 +59,31 @@ C_String commandLineArgumentAtIndex (const uint32_t inIndex) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-// #include "utilities/PMUInt128.h"
-// #include "galgas2/C_DirectedGraph.h"
+//#include "unicode_character_base.h"
+//
+//static void displayUnicodeCharacterRange (void) {
+//  uint32_t characterCount = 0 ;
+//  uint32_t intervalStart = 0 ;
+//  bool intervalIsOpened = false ;
+//  for (uint32_t codePoint = 0 ; codePoint < (17 * 0x10000) ; codePoint++) {
+//    if (isUnicodeCharacterAssigned (TO_UNICODE (codePoint)) && isUnicodeLetter (TO_UNICODE (codePoint))) {
+//      characterCount ++ ;
+//      if (! intervalIsOpened) {
+//        intervalStart = codePoint ;
+//        intervalIsOpened = true ;
+//      }
+//    }else if (intervalIsOpened) {
+//      printf ("[\\U%08X, \\U%08X], %u characters\n", intervalStart, codePoint - 1, codePoint - intervalStart) ;
+//      intervalIsOpened = false ;
+//    }
+//  }
+//  printf ("%u characters\n", characterCount) ;
+//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 int main (int argc, const char * argv []) {
+//  displayUnicodeCharacterRange () ;
   gArgc = (uint32_t) argc ;
   gArgv = argv ;
   // PMUInt128::example () ;

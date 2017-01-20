@@ -51,6 +51,7 @@ rule <declaration>
   @externRoutineListAST externRoutineList = {}
   @externFunctionListAST externFunctionList = {}
   @indexingListAST indexingListAST = {}
+  @lexicalFunctionListAST lexicalFunctionListAST = {}
   repeat
   while 
     <extern_routine_declaration> !?externRoutineList
@@ -73,9 +74,11 @@ rule <declaration>
   while
     <lexical_implicit_rule> !? lexicalRuleList
   while
-    <lexical_message_declaration> !? lexicalMessageDeclarationList
+    <lexical_message_declaration> !?lexicalMessageDeclarationList
   while
     <lexical_indexing_declaration> !?indexingListAST
+  while
+    <lexical_function_declaration> !?lexicalFunctionListAST
   end
   $}$
   ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
@@ -94,6 +97,7 @@ rule <declaration>
     !externFunctionList
     !indexingListAST
     !indexingDirectory
+    !lexicalFunctionListAST
   }
 }
 
@@ -481,9 +485,19 @@ rule <lexical_factor> !@lexicalExpressionAST outExpression {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+rule <lexical_function_declaration> ?!@lexicalFunctionListAST ioLexicalFunctionListAST {
+  $func$
+  $identifier$ ?let functionName
+  $:$
+  <lexical_expression> ?let @lexicalExpressionAST expression
+  ioLexicalFunctionListAST += !functionName !expression
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList {
   $list$
-  $identifier$ ?let @lstring name
+  $identifier$ ?let name
   @sentLexicalAttributeListAST sentAttributeList = {}
   repeat
   while

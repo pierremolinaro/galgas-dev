@@ -46,6 +46,7 @@ project (3:2:15) -> "galgas" {
   "galgas-sources/templateCodeGeneration.galgas"
  
 #--- Lexique Component
+  "galgas-sources/galgas3LexiqueComponentSyntax.galgas"
   "galgas-sources/lexiqueTypesForAST.galgas"
   "galgas-sources/lexiqueSemantics.galgas"
   "galgas-sources/predefinedLexicalActions.galgas"
@@ -176,7 +177,6 @@ project (3:2:15) -> "galgas" {
   "galgas-sources/galgas3ParameterArgumentSyntax.galgas"
   "galgas-sources/galgas3InstructionsSyntax.galgas"
   "galgas-sources/galgas3DeclarationsSyntax.galgas"
-  "galgas-sources/galgas3LexiqueComponentSyntax.galgas"
   "galgas-sources/galgas3SyntaxComponentSyntax.galgas"
   "galgas-sources/galgas3GrammarComponentSyntax.galgas"
   "galgas-sources/galgas3ProgramDeclarations.galgas"

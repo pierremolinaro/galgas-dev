@@ -252,6 +252,8 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
 
 //--- Indexing keys
 
+//--- Unicode test functions
+
 //--- Indexing directory
   protected : virtual C_String indexingDirectory (void) const ;
 

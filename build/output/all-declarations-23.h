@@ -11,6 +11,29 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                        Routine 'appendPredefinedListTypeAST'                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_appendPredefinedListTypeAST (class GALGAS_semanticDeclarationListAST & ioArgument0,
+                                          const class GALGAS_string constinArgument1,
+                                          class GALGAS_lstringlist & ioArgument2,
+                                          class C_Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                        Routine 'insertInUsefulnessEntities'                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_insertInUsefulnessEntities (class GALGAS_lstringlist & ioArgument0,
+                                         const class GALGAS_string constinArgument1,
+                                         class C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                    Routine 'appendPredefined2StringListTypeAST'                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

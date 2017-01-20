@@ -15,10 +15,6 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 abstract class @semanticDeclarationAST {
   @bool mIsPredefined
 }
@@ -91,6 +87,13 @@ list @lexicalMessageDeclarationListAST {
 list @lexicalAttributeListAST {
   @lstring mTypeName %nogetter
   @lstring mName %nogetter
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @lexicalFunctionListAST {
+  @lstring mFunctionName
+  @lexicalExpressionAST mLexicalExpression
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -438,6 +441,7 @@ class @lexiqueComponentAST : @semanticDeclarationAST {
   @externFunctionListAST mExternFunctionList
   @indexingListAST mIndexingListAST
   @lstring mIndexingDirectory
+  @lexicalFunctionListAST mLexicalFunctionListAST
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -535,3 +539,55 @@ proc buildLexicalAttributeMap
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+abstract getter @lexicalExpressionAST callsDefinedUnicodeTestFunctions ?let @stringset inDefinedUnicodeFunctionSet -> @bool
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalStringMatchAST callsDefinedUnicodeTestFunctions
+  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
+{
+  result = true
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalStringNotMatchAST callsDefinedUnicodeTestFunctions
+  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
+{
+  result = true
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalOrExpressionAST callsDefinedUnicodeTestFunctions
+  ?let @stringset inDefinedUnicodeFunctionSet -> @bool
+{
+  result = [mLeftOperand callsDefinedUnicodeTestFunctions !inDefinedUnicodeFunctionSet] &
+           [mRightOperand callsDefinedUnicodeTestFunctions !inDefinedUnicodeFunctionSet]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalCharacterSetMatchAST callsDefinedUnicodeTestFunctions
+  ?let @stringset inDefinedUnicodeFunctionSet -> @bool
+{
+  result = [inDefinedUnicodeFunctionSet hasKey !mCharacterSetName]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalCharacterMatchAST callsDefinedUnicodeTestFunctions
+  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
+{
+  result = true
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalCharacterIntervalMatchAST callsDefinedUnicodeTestFunctions
+  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
+{
+  result = true
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

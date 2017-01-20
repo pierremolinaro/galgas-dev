@@ -2999,6 +2999,9 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
     kIndexing_indexingNameReference
   } ;
 
+//--- Unicode test functions
+  public : bool galgasUnicodeLetter (void) ;
+
 //--- Indexing directory
   protected : virtual C_String indexingDirectory (void) const ;
 

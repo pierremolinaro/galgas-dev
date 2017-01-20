@@ -24,8 +24,6 @@
 #  message "Durée insertion: " + [t string] + "\n"
 #}
 
-#----------------------------------------------------------------------------------------------------------------------*
-
 #before {
 #  @stringset s1 = {}
 #  @stringset s2 = {}
@@ -35,6 +33,18 @@
 #    s1 += ![i string]
 #  end
 #  message "Durée insertion et copie: " + [t string] + "\n"
+#}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+#before {
+#  let un = 1.0
+#  var increment = 1.0
+#  for i in 0 ... 20 do
+#    increment = increment / 10
+#    let v = (un + increment) - un
+#    message "" + i + ": " + v + "\n"
+#  end
 #}
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -57,7 +67,7 @@ before { #--- Print predefined lexical action
 before { #--- Extract LIBPM
   if [option galgas_cli_options.extractLIBPMOption value] != "" then
     updateLIBPMatPath (![option galgas_cli_options.extractLIBPMOption value] )
-  end  
+  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -67,7 +77,7 @@ extern proc checkGMP
 before { #--- Extract LIBPM
   if [option galgas_cli_options.check_gmp value] then
     checkGMP ()
-  end  
+  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -168,7 +178,7 @@ private proc compileProject
   ?let @string inSourceToAnalyze
   ?let @galgas3ProjectComponentAST inProjectComponentAST
 {
-  @galgas3DeclarationAST declarationAST = .default 
+  @galgas3DeclarationAST declarationAST = .default
   for () in inProjectComponentAST.mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
       let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]

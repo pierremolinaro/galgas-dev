@@ -271,7 +271,7 @@ override method @lexicalUnsignedInputArgumentAST checkLexicalFunctionCallArgumen
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Type check
-  if @lexicalTypeEnum. lexicalType_uint != inLexicalRoutineFormalArgumentType then
+  if @lexicalTypeEnum.lexicalType_uint != inLexicalRoutineFormalArgumentType then
     error mUnsigned:"type error, a literal character has @uint"
     + " type, but lexical routine prototype requires an @"
     + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
@@ -702,6 +702,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@lexicalListDeclarationListAST DELIMITOR_LIST_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@indexingListAST INDEXING_LIST
+    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
 
   template newImplementationZone2Galgas3 "lexique_implementation-galgas3.cpp.galgasTemplate"
     ?@string LEXIQUE_IDENTIFIER
@@ -717,6 +718,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@string LEXIQUE_COMPONENT_NAME
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
     ?@lexicalStyleListAST LEXICAL_STYLE_LIST
+    ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
 
   template cocoaHeaderZone2 "lexique_cocoa_header_template_zone_2.h.galgasTemplate"
     ?@string LEXIQUE_CLASS_NAME
