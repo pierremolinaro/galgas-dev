@@ -1352,6 +1352,50 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalTagMap_2D_el
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                 Abstract extension getter '@lexicalExpressionAST callsDefinedUnicodeTestFunctions'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typedef class GALGAS_bool (*enterExtensionGetter_lexicalExpressionAST_callsDefinedUnicodeTestFunctions) (const class cPtr_lexicalExpressionAST * inObject,
+                                                                                                         const class GALGAS_stringset constinArgument0,
+                                                                                                         class C_Compiler * inCompiler
+                                                                                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterExtensionGetter_callsDefinedUnicodeTestFunctions (const int32_t inClassIndex,
+                                                            enterExtensionGetter_lexicalExpressionAST_callsDefinedUnicodeTestFunctions inMethod) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_bool callExtensionGetter_callsDefinedUnicodeTestFunctions (const class cPtr_lexicalExpressionAST * inObject,
+                                                                        const GALGAS_stringset constin_inDefinedUnicodeFunctionSet,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Abstract extension getter '@lexicalExpressionAST generateForUnicodeTestFunctions'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typedef class GALGAS_string (*enterExtensionGetter_lexicalExpressionAST_generateForUnicodeTestFunctions) (const class cPtr_lexicalExpressionAST * inObject,
+                                                                                                          class C_Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterExtensionGetter_generateForUnicodeTestFunctions (const int32_t inClassIndex,
+                                                           enterExtensionGetter_lexicalExpressionAST_generateForUnicodeTestFunctions inMethod) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_string callExtensionGetter_generateForUnicodeTestFunctions (const class cPtr_lexicalExpressionAST * inObject,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                        Extension getter '@lexicalTypeEnum lexicalTypeBaseName' (as function)                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

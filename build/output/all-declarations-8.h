@@ -3000,7 +3000,7 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
   } ;
 
 //--- Unicode test functions
-  public : bool galgasUnicodeLetter (void) ;
+  public : static bool galgasUnicodeLetter (const utf32 inUnicodeCharacter) ;
 
 //--- Indexing directory
   protected : virtual C_String indexingDirectory (void) const ;

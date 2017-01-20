@@ -91,13 +91,6 @@ list @lexicalAttributeListAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-list @lexicalFunctionListAST {
-  @lstring mFunctionName
-  @lexicalExpressionAST mLexicalExpression
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 list @lexicalStyleListAST {
   @lstring mName %nogetter
   @lstring mComment %nogetter
@@ -535,59 +528,6 @@ proc buildLexicalAttributeMap
       error mTypeName: m
     end
   end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-abstract getter @lexicalExpressionAST callsDefinedUnicodeTestFunctions ?let @stringset inDefinedUnicodeFunctionSet -> @bool
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @lexicalStringMatchAST callsDefinedUnicodeTestFunctions
-  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
-{
-  result = true
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @lexicalStringNotMatchAST callsDefinedUnicodeTestFunctions
-  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
-{
-  result = true
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @lexicalOrExpressionAST callsDefinedUnicodeTestFunctions
-  ?let @stringset inDefinedUnicodeFunctionSet -> @bool
-{
-  result = [mLeftOperand callsDefinedUnicodeTestFunctions !inDefinedUnicodeFunctionSet] &
-           [mRightOperand callsDefinedUnicodeTestFunctions !inDefinedUnicodeFunctionSet]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @lexicalCharacterSetMatchAST callsDefinedUnicodeTestFunctions
-  ?let @stringset inDefinedUnicodeFunctionSet -> @bool
-{
-  result = [inDefinedUnicodeFunctionSet hasKey !mCharacterSetName]
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @lexicalCharacterMatchAST callsDefinedUnicodeTestFunctions
-  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
-{
-  result = true
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @lexicalCharacterIntervalMatchAST callsDefinedUnicodeTestFunctions
-  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
-{
-  result = true
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

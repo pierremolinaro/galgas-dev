@@ -2441,30 +2441,30 @@ C_PrologueEpilogue gMethod_templateInstructionSwitchForGeneration_templateCodeGe
 static GALGAS_lexicalTypeMap onceFunction_buildLexicalTypeMap (C_Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeMap result_outLexicalTypeMap ; // Returned variable
-  result_outLexicalTypeMap = GALGAS_lexicalTypeMap::constructor_emptyMap (SOURCE_FILE ("lexiqueTypesForAST.galgas", 495)) ;
+  result_outLexicalTypeMap = GALGAS_lexicalTypeMap::constructor_emptyMap (SOURCE_FILE ("lexiqueTypesForAST.galgas", 488)) ;
   {
-  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("string"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 496))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 496)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_string (SOURCE_FILE ("lexiqueTypesForAST.galgas", 496)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 496)) ;
+  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("string"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 489))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 489)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_string (SOURCE_FILE ("lexiqueTypesForAST.galgas", 489)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 489)) ;
   }
   {
-  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("char"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 497))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 497)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_char (SOURCE_FILE ("lexiqueTypesForAST.galgas", 497)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 497)) ;
+  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("char"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 490))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 490)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_char (SOURCE_FILE ("lexiqueTypesForAST.galgas", 490)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 490)) ;
   }
   {
-  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("uint"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 498))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 498)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_uint (SOURCE_FILE ("lexiqueTypesForAST.galgas", 498)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 498)) ;
+  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("uint"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 491))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 491)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_uint (SOURCE_FILE ("lexiqueTypesForAST.galgas", 491)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 491)) ;
   }
   {
-  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("uint64"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 499))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 499)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("lexiqueTypesForAST.galgas", 499)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 499)) ;
+  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("uint64"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 492))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 492)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_uint_36__34_ (SOURCE_FILE ("lexiqueTypesForAST.galgas", 492)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 492)) ;
   }
   {
-  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("sint"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 500))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 500)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_sint (SOURCE_FILE ("lexiqueTypesForAST.galgas", 500)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 500)) ;
+  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("sint"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 493))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 493)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_sint (SOURCE_FILE ("lexiqueTypesForAST.galgas", 493)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 493)) ;
   }
   {
-  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("sint64"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 501))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 501)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_sint_36__34_ (SOURCE_FILE ("lexiqueTypesForAST.galgas", 501)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 501)) ;
+  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("sint64"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 494))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 494)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_sint_36__34_ (SOURCE_FILE ("lexiqueTypesForAST.galgas", 494)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 494)) ;
   }
   {
-  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("double"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 502))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 502)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_double (SOURCE_FILE ("lexiqueTypesForAST.galgas", 502)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 502)) ;
+  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("double"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 495))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 495)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_double (SOURCE_FILE ("lexiqueTypesForAST.galgas", 495)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 495)) ;
   }
   {
-  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("bigint"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 503))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 503)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_bigint (SOURCE_FILE ("lexiqueTypesForAST.galgas", 503)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 503)) ;
+  result_outLexicalTypeMap.setter_insertKey (GALGAS_lstring::constructor_new (GALGAS_string ("bigint"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 496))  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 496)), GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_bigint (SOURCE_FILE ("lexiqueTypesForAST.galgas", 496)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 496)) ;
   }
 //---
   return result_outLexicalTypeMap ;
@@ -2537,31 +2537,31 @@ void routine_buildLexicalAttributeMap (const GALGAS_lexicalTypeMap constinArgume
                                        GALGAS_lexicalAttributeMap & ioArgument_ioLexicalAttributeMap,
                                        C_Compiler * inCompiler
                                        COMMA_UNUSED_LOCATION_ARGS) {
-  cEnumerator_lexicalAttributeListAST enumerator_21453 (constinArgument_inLexicalAttributeList, kENUMERATION_UP) ;
-  while (enumerator_21453.hasCurrentObject ()) {
-    const enumGalgasBool test_0 = constinArgument_inLexicalTypeMap.getter_hasKey (enumerator_21453.current_mTypeName (HERE).getter_string (SOURCE_FILE ("lexiqueTypesForAST.galgas", 523)) COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 523)).boolEnum () ;
+  cEnumerator_lexicalAttributeListAST enumerator_21229 (constinArgument_inLexicalAttributeList, kENUMERATION_UP) ;
+  while (enumerator_21229.hasCurrentObject ()) {
+    const enumGalgasBool test_0 = constinArgument_inLexicalTypeMap.getter_hasKey (enumerator_21229.current_mTypeName (HERE).getter_string (SOURCE_FILE ("lexiqueTypesForAST.galgas", 516)) COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 516)).boolEnum () ;
     if (kBoolTrue == test_0) {
-      GALGAS_lexicalTypeEnum var_lexicalType_21593 ;
-      constinArgument_inLexicalTypeMap.method_searchKey (enumerator_21453.current_mTypeName (HERE), var_lexicalType_21593, inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 524)) ;
+      GALGAS_lexicalTypeEnum var_lexicalType_21369 ;
+      constinArgument_inLexicalTypeMap.method_searchKey (enumerator_21229.current_mTypeName (HERE), var_lexicalType_21369, inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 517)) ;
       {
-      ioArgument_ioLexicalAttributeMap.setter_insertKey (enumerator_21453.current_mName (HERE), var_lexicalType_21593, inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 525)) ;
+      ioArgument_ioLexicalAttributeMap.setter_insertKey (enumerator_21229.current_mName (HERE), var_lexicalType_21369, inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 518)) ;
       }
     }else if (kBoolFalse == test_0) {
-      GALGAS_string var_m_21681 = GALGAS_string::makeEmptyString () ;
-      var_m_21681.plusAssign_operation(GALGAS_string ("the @").add_operation (enumerator_21453.current_mTypeName (HERE).getter_string (SOURCE_FILE ("lexiqueTypesForAST.galgas", 528)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 528)).add_operation (GALGAS_string (" type is not a valid lexical attribute type; are allowed:"), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 528)), inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 528)) ;
-      GALGAS_bool var_firstLoop_21801 = GALGAS_bool (true) ;
-      cEnumerator_lexicalTypeMap enumerator_21841 (constinArgument_inLexicalTypeMap, kENUMERATION_UP) ;
-      while (enumerator_21841.hasCurrentObject ()) {
-        var_m_21681.plusAssign_operation(GALGAS_string (" @").add_operation (enumerator_21841.current_lkey (HERE).getter_string (SOURCE_FILE ("lexiqueTypesForAST.galgas", 531)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 531)), inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 531)) ;
-        if (enumerator_21841.hasNextObject ()) {
-          var_m_21681.plusAssign_operation(GALGAS_string (","), inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 533)) ;
+      GALGAS_string var_m_21457 = GALGAS_string::makeEmptyString () ;
+      var_m_21457.plusAssign_operation(GALGAS_string ("the @").add_operation (enumerator_21229.current_mTypeName (HERE).getter_string (SOURCE_FILE ("lexiqueTypesForAST.galgas", 521)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 521)).add_operation (GALGAS_string (" type is not a valid lexical attribute type; are allowed:"), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 521)), inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 521)) ;
+      GALGAS_bool var_firstLoop_21577 = GALGAS_bool (true) ;
+      cEnumerator_lexicalTypeMap enumerator_21617 (constinArgument_inLexicalTypeMap, kENUMERATION_UP) ;
+      while (enumerator_21617.hasCurrentObject ()) {
+        var_m_21457.plusAssign_operation(GALGAS_string (" @").add_operation (enumerator_21617.current_lkey (HERE).getter_string (SOURCE_FILE ("lexiqueTypesForAST.galgas", 524)), inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 524)), inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 524)) ;
+        if (enumerator_21617.hasNextObject ()) {
+          var_m_21457.plusAssign_operation(GALGAS_string (","), inCompiler  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 526)) ;
         }
-        enumerator_21841.gotoNextObject () ;
+        enumerator_21617.gotoNextObject () ;
       }
       TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (enumerator_21453.current_mTypeName (HERE).getter_location (SOURCE_FILE ("lexiqueTypesForAST.galgas", 535)), var_m_21681, fixItArray1  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 535)) ;
+      inCompiler->emitSemanticError (enumerator_21229.current_mTypeName (HERE).getter_location (SOURCE_FILE ("lexiqueTypesForAST.galgas", 528)), var_m_21457, fixItArray1  COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 528)) ;
     }
-    enumerator_21453.gotoNextObject () ;
+    enumerator_21229.gotoNextObject () ;
   }
 }
 
@@ -2635,7 +2635,7 @@ static GALGAS_bool extensionGetter_lexicalOrExpressionAST_callsDefinedUnicodeTes
   GALGAS_bool result_result ; // Returned variable
   const cPtr_lexicalOrExpressionAST * object = (const cPtr_lexicalOrExpressionAST *) inObject ;
   macroValidSharedObject (object, cPtr_lexicalOrExpressionAST) ;
-  result_result = callExtensionGetter_callsDefinedUnicodeTestFunctions ((const cPtr_lexicalExpressionAST *) object->mProperty_mLeftOperand.ptr (), constinArgument_inDefinedUnicodeFunctionSet, inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 565)).operator_and (callExtensionGetter_callsDefinedUnicodeTestFunctions ((const cPtr_lexicalExpressionAST *) object->mProperty_mRightOperand.ptr (), constinArgument_inDefinedUnicodeFunctionSet, inCompiler COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 566)) COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 565)) ;
+  result_result = callExtensionGetter_callsDefinedUnicodeTestFunctions ((const cPtr_lexicalExpressionAST *) object->mProperty_mLeftOperand.ptr (), constinArgument_inDefinedUnicodeFunctionSet, inCompiler COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 50)).operator_and (callExtensionGetter_callsDefinedUnicodeTestFunctions ((const cPtr_lexicalExpressionAST *) object->mProperty_mRightOperand.ptr (), constinArgument_inDefinedUnicodeFunctionSet, inCompiler COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 51)) COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 50)) ;
 //---
   return result_result ;
 }
@@ -2665,7 +2665,7 @@ static GALGAS_bool extensionGetter_lexicalCharacterSetMatchAST_callsDefinedUnico
   GALGAS_bool result_result ; // Returned variable
   const cPtr_lexicalCharacterSetMatchAST * object = (const cPtr_lexicalCharacterSetMatchAST *) inObject ;
   macroValidSharedObject (object, cPtr_lexicalCharacterSetMatchAST) ;
-  result_result = constinArgument_inDefinedUnicodeFunctionSet.getter_hasKey (object->mProperty_mCharacterSetName.getter_string (SOURCE_FILE ("lexiqueTypesForAST.galgas", 574)) COMMA_SOURCE_FILE ("lexiqueTypesForAST.galgas", 574)) ;
+  result_result = constinArgument_inDefinedUnicodeFunctionSet.getter_hasKey (object->mProperty_mCharacterSetName.getter_string (SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 59)) COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 59)) ;
 //---
   return result_result ;
 }
@@ -2737,6 +2737,179 @@ static void defineExtensionGetter_lexicalCharacterIntervalMatchAST_callsDefinedU
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gGetter_lexicalCharacterIntervalMatchAST_callsDefinedUnicodeTestFunctions (defineExtensionGetter_lexicalCharacterIntervalMatchAST_callsDefinedUnicodeTestFunctions, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                Overriding extension getter '@lexicalStringMatchAST generateForUnicodeTestFunctions'                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_string extensionGetter_lexicalStringMatchAST_generateForUnicodeTestFunctions (const cPtr_lexicalExpressionAST * /* inObject */,
+                                                                                            C_Compiler * /* inCompiler */
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_result ; // Returned variable
+  result_result = GALGAS_string::makeEmptyString () ;
+//---
+  return result_result ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineExtensionGetter_lexicalStringMatchAST_generateForUnicodeTestFunctions (void) {
+  enterExtensionGetter_generateForUnicodeTestFunctions (kTypeDescriptor_GALGAS_lexicalStringMatchAST.mSlotID,
+                                                        extensionGetter_lexicalStringMatchAST_generateForUnicodeTestFunctions) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gGetter_lexicalStringMatchAST_generateForUnicodeTestFunctions (defineExtensionGetter_lexicalStringMatchAST_generateForUnicodeTestFunctions, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Overriding extension getter '@lexicalStringNotMatchAST generateForUnicodeTestFunctions'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_string extensionGetter_lexicalStringNotMatchAST_generateForUnicodeTestFunctions (const cPtr_lexicalExpressionAST * /* inObject */,
+                                                                                               C_Compiler * /* inCompiler */
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_result ; // Returned variable
+  result_result = GALGAS_string::makeEmptyString () ;
+//---
+  return result_result ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineExtensionGetter_lexicalStringNotMatchAST_generateForUnicodeTestFunctions (void) {
+  enterExtensionGetter_generateForUnicodeTestFunctions (kTypeDescriptor_GALGAS_lexicalStringNotMatchAST.mSlotID,
+                                                        extensionGetter_lexicalStringNotMatchAST_generateForUnicodeTestFunctions) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gGetter_lexicalStringNotMatchAST_generateForUnicodeTestFunctions (defineExtensionGetter_lexicalStringNotMatchAST_generateForUnicodeTestFunctions, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                Overriding extension getter '@lexicalOrExpressionAST generateForUnicodeTestFunctions'                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_string extensionGetter_lexicalOrExpressionAST_generateForUnicodeTestFunctions (const cPtr_lexicalExpressionAST * inObject,
+                                                                                             C_Compiler * inCompiler
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_result ; // Returned variable
+  const cPtr_lexicalOrExpressionAST * object = (const cPtr_lexicalOrExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_lexicalOrExpressionAST) ;
+  result_result = callExtensionGetter_generateForUnicodeTestFunctions ((const cPtr_lexicalExpressionAST *) object->mProperty_mLeftOperand.ptr (), inCompiler COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 97)) ;
+  result_result.plusAssign_operation(GALGAS_string (" ||\n"
+    "         "), inCompiler  COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 98)) ;
+  result_result.plusAssign_operation(callExtensionGetter_generateForUnicodeTestFunctions ((const cPtr_lexicalExpressionAST *) object->mProperty_mRightOperand.ptr (), inCompiler COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 99)), inCompiler  COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 99)) ;
+//---
+  return result_result ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineExtensionGetter_lexicalOrExpressionAST_generateForUnicodeTestFunctions (void) {
+  enterExtensionGetter_generateForUnicodeTestFunctions (kTypeDescriptor_GALGAS_lexicalOrExpressionAST.mSlotID,
+                                                        extensionGetter_lexicalOrExpressionAST_generateForUnicodeTestFunctions) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gGetter_lexicalOrExpressionAST_generateForUnicodeTestFunctions (defineExtensionGetter_lexicalOrExpressionAST_generateForUnicodeTestFunctions, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//             Overriding extension getter '@lexicalCharacterSetMatchAST generateForUnicodeTestFunctions'              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_string extensionGetter_lexicalCharacterSetMatchAST_generateForUnicodeTestFunctions (const cPtr_lexicalExpressionAST * inObject,
+                                                                                                  C_Compiler * inCompiler
+                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_result ; // Returned variable
+  const cPtr_lexicalCharacterSetMatchAST * object = (const cPtr_lexicalCharacterSetMatchAST *) inObject ;
+  macroValidSharedObject (object, cPtr_lexicalCharacterSetMatchAST) ;
+  result_result = object->mProperty_mCharacterSetName.mProperty_string.add_operation (GALGAS_string (" (inUnicodeCharacter)"), inCompiler COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 105)) ;
+//---
+  return result_result ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineExtensionGetter_lexicalCharacterSetMatchAST_generateForUnicodeTestFunctions (void) {
+  enterExtensionGetter_generateForUnicodeTestFunctions (kTypeDescriptor_GALGAS_lexicalCharacterSetMatchAST.mSlotID,
+                                                        extensionGetter_lexicalCharacterSetMatchAST_generateForUnicodeTestFunctions) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gGetter_lexicalCharacterSetMatchAST_generateForUnicodeTestFunctions (defineExtensionGetter_lexicalCharacterSetMatchAST_generateForUnicodeTestFunctions, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Overriding extension getter '@lexicalCharacterMatchAST generateForUnicodeTestFunctions'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_string extensionGetter_lexicalCharacterMatchAST_generateForUnicodeTestFunctions (const cPtr_lexicalExpressionAST * inObject,
+                                                                                               C_Compiler * inCompiler
+                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_result ; // Returned variable
+  const cPtr_lexicalCharacterMatchAST * object = (const cPtr_lexicalCharacterMatchAST *) inObject ;
+  macroValidSharedObject (object, cPtr_lexicalCharacterMatchAST) ;
+  result_result = GALGAS_string ("(").add_operation (object->mProperty_mCharacter.mProperty_char.getter_uint (SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 111)).getter_hexString (SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 111)), inCompiler COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 111)).add_operation (GALGAS_string (" == UNICODE_VALUE (inUnicodeCharacter))"), inCompiler COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 111)) ;
+//---
+  return result_result ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineExtensionGetter_lexicalCharacterMatchAST_generateForUnicodeTestFunctions (void) {
+  enterExtensionGetter_generateForUnicodeTestFunctions (kTypeDescriptor_GALGAS_lexicalCharacterMatchAST.mSlotID,
+                                                        extensionGetter_lexicalCharacterMatchAST_generateForUnicodeTestFunctions) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gGetter_lexicalCharacterMatchAST_generateForUnicodeTestFunctions (defineExtensionGetter_lexicalCharacterMatchAST_generateForUnicodeTestFunctions, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//           Overriding extension getter '@lexicalCharacterIntervalMatchAST generateForUnicodeTestFunctions'           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_string extensionGetter_lexicalCharacterIntervalMatchAST_generateForUnicodeTestFunctions (const cPtr_lexicalExpressionAST * inObject,
+                                                                                                       C_Compiler * inCompiler
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_result ; // Returned variable
+  const cPtr_lexicalCharacterIntervalMatchAST * object = (const cPtr_lexicalCharacterIntervalMatchAST *) inObject ;
+  macroValidSharedObject (object, cPtr_lexicalCharacterIntervalMatchAST) ;
+  result_result = GALGAS_string ("((").add_operation (object->mProperty_mLowerBound.mProperty_char.getter_uint (SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 117)).getter_hexString (SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 117)), inCompiler COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 117)).add_operation (GALGAS_string (" <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= "), inCompiler COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 117)).add_operation (object->mProperty_mUpperBound.mProperty_char.getter_uint (SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 119)).getter_hexString (SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 119)), inCompiler COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 118)).add_operation (GALGAS_string ("))"), inCompiler COMMA_SOURCE_FILE ("lexicalUnicodeTestFunctions.galgas", 119)) ;
+//---
+  return result_result ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineExtensionGetter_lexicalCharacterIntervalMatchAST_generateForUnicodeTestFunctions (void) {
+  enterExtensionGetter_generateForUnicodeTestFunctions (kTypeDescriptor_GALGAS_lexicalCharacterIntervalMatchAST.mSlotID,
+                                                        extensionGetter_lexicalCharacterIntervalMatchAST_generateForUnicodeTestFunctions) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gGetter_lexicalCharacterIntervalMatchAST_generateForUnicodeTestFunctions (defineExtensionGetter_lexicalCharacterIntervalMatchAST_generateForUnicodeTestFunctions, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -6515,9 +6688,9 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newHeaderZone_33_ (
   if (in_UNICODE_5F_TEST_5F_FUNCTIONS.isValid ()) {
     cEnumerator_lexicalFunctionListAST enumerator_1136 (in_UNICODE_5F_TEST_5F_FUNCTIONS, kENUMERATION_UP) ;
     while (enumerator_1136.hasCurrentObject ()) {
-      result << "  public : bool " ;
+      result << "  public : static bool " ;
       result << enumerator_1136.current_mFunctionName (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_header_template_zone_3.new.h.galgasTemplate", 41)).stringValue () ;
-      result << " (void) ;\n" ;
+      result << " (const utf32 inUnicodeCharacter) ;\n" ;
       index_1136_.increment () ;
       enumerator_1136.gotoNextObject () ;
     }
@@ -7057,9 +7230,9 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
       result << in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
       result << "::" ;
       result << enumerator_11271.current_mFunctionName (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 202)).stringValue () ;
-      result << " (void) {\n"
+      result << " (const utf32 inUnicodeCharacter) {\n"
         "  return " ;
-      result << callExtensionGetter_generateConditionCode ((const cPtr_lexicalExpressionAST *) enumerator_11271.current_mLexicalExpression (HERE).ptr (), in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT, inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 203)).stringValue () ;
+      result << callExtensionGetter_generateForUnicodeTestFunctions ((const cPtr_lexicalExpressionAST *) enumerator_11271.current_mLexicalExpression (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 203)).stringValue () ;
       result << " ;\n"
         "}\n"
         "\n" ;
@@ -7142,16 +7315,16 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
       "      }\n"
       "    }\n"
       "    if ((mMatchedTemplateDelimiterIndex >= 0) && (UNICODE_VALUE (mCurrentChar) != '\\0')) {\n" ;
-    GALGAS_uint index_14580_ (0) ;
+    GALGAS_uint index_14582_ (0) ;
     if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
-      cEnumerator_lexicalAttributeMap enumerator_14580 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
-      while (enumerator_14580.hasCurrentObject ()) {
+      cEnumerator_lexicalAttributeMap enumerator_14582 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
+      while (enumerator_14582.hasCurrentObject ()) {
         result << "    token.mLexicalAttribute_" ;
-        result << enumerator_14580.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 254)).stringValue () ;
-        result << extensionGetter_initialization (enumerator_14580.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 254)).stringValue () ;
+        result << enumerator_14582.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 254)).stringValue () ;
+        result << extensionGetter_initialization (enumerator_14582.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 254)).stringValue () ;
         result << " ;\n" ;
-        index_14580_.increment () ;
-        enumerator_14580.gotoNextObject () ;
+        index_14582_.increment () ;
+        enumerator_14582.gotoNextObject () ;
       }
     }
     result << "    mTokenStartLocation = mCurrentLocation ;\n"
@@ -7159,13 +7332,13 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
     if (GALGAS_uint ((uint32_t) 6U).isValid ()) {
       result.incIndentation ((int32_t) GALGAS_uint ((uint32_t) 6U).uintValue ()) ;
     }
-    GALGAS_uint index_14795_ (0) ;
+    GALGAS_uint index_14797_ (0) ;
     if (in_LEXICAL_5F_RULE_5F_LIST.isValid ()) {
-      cEnumerator_lexicalRuleListAST enumerator_14795 (in_LEXICAL_5F_RULE_5F_LIST, kENUMERATION_UP) ;
-      while (enumerator_14795.hasCurrentObject ()) {
-        result << callExtensionGetter_generateCode ((const cPtr_abstractLexicalRuleAST *) enumerator_14795.current_mLexicalRule (HERE).ptr (), in_LEXIQUE_5F_IDENTIFIER, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT, inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 261)).stringValue () ;
-        index_14795_.increment () ;
-        enumerator_14795.gotoNextObject () ;
+      cEnumerator_lexicalRuleListAST enumerator_14797 (in_LEXICAL_5F_RULE_5F_LIST, kENUMERATION_UP) ;
+      while (enumerator_14797.hasCurrentObject ()) {
+        result << callExtensionGetter_generateCode ((const cPtr_abstractLexicalRuleAST *) enumerator_14797.current_mLexicalRule (HERE).ptr (), in_LEXIQUE_5F_IDENTIFIER, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT, inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 261)).stringValue () ;
+        index_14797_.increment () ;
+        enumerator_14797.gotoNextObject () ;
       }
     }
     if (GALGAS_uint ((uint32_t) 6U).isValid ()) {
@@ -7190,16 +7363,16 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
       "    }\n"
       "  " ;
   }else if (kBoolFalse == test_6) {
-    GALGAS_uint index_15585_ (0) ;
+    GALGAS_uint index_15587_ (0) ;
     if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
-      cEnumerator_lexicalAttributeMap enumerator_15585 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
-      while (enumerator_15585.hasCurrentObject ()) {
+      cEnumerator_lexicalAttributeMap enumerator_15587 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
+      while (enumerator_15587.hasCurrentObject ()) {
         result << "    token.mLexicalAttribute_" ;
-        result << enumerator_15585.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 281)).stringValue () ;
-        result << extensionGetter_initialization (enumerator_15585.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 281)).stringValue () ;
+        result << enumerator_15587.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 281)).stringValue () ;
+        result << extensionGetter_initialization (enumerator_15587.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 281)).stringValue () ;
         result << " ;\n" ;
-        index_15585_.increment () ;
-        enumerator_15585.gotoNextObject () ;
+        index_15587_.increment () ;
+        enumerator_15587.gotoNextObject () ;
       }
     }
     result << "    mTokenStartLocation = mCurrentLocation ;\n"
@@ -7207,13 +7380,13 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
     if (GALGAS_uint ((uint32_t) 6U).isValid ()) {
       result.incIndentation ((int32_t) GALGAS_uint ((uint32_t) 6U).uintValue ()) ;
     }
-    GALGAS_uint index_15800_ (0) ;
+    GALGAS_uint index_15802_ (0) ;
     if (in_LEXICAL_5F_RULE_5F_LIST.isValid ()) {
-      cEnumerator_lexicalRuleListAST enumerator_15800 (in_LEXICAL_5F_RULE_5F_LIST, kENUMERATION_UP) ;
-      while (enumerator_15800.hasCurrentObject ()) {
-        result << callExtensionGetter_generateCode ((const cPtr_abstractLexicalRuleAST *) enumerator_15800.current_mLexicalRule (HERE).ptr (), in_LEXIQUE_5F_IDENTIFIER, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT, inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 288)).stringValue () ;
-        index_15800_.increment () ;
-        enumerator_15800.gotoNextObject () ;
+      cEnumerator_lexicalRuleListAST enumerator_15802 (in_LEXICAL_5F_RULE_5F_LIST, kENUMERATION_UP) ;
+      while (enumerator_15802.hasCurrentObject ()) {
+        result << callExtensionGetter_generateCode ((const cPtr_abstractLexicalRuleAST *) enumerator_15802.current_mLexicalRule (HERE).ptr (), in_LEXIQUE_5F_IDENTIFIER, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT, inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 288)).stringValue () ;
+        index_15802_.increment () ;
+        enumerator_15802.gotoNextObject () ;
       }
     }
     if (GALGAS_uint ((uint32_t) 6U).isValid ()) {
@@ -7260,17 +7433,17 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
     "  ptr->mEndLocation = mTokenEndLocation ;\n"
     "  ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;\n"
     "  ioToken.mTemplateStringBeforeToken = \"\" ;\n" ;
-  GALGAS_uint index_17387_ (0) ;
+  GALGAS_uint index_17389_ (0) ;
   if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
-    cEnumerator_lexicalAttributeMap enumerator_17387 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_17387.hasCurrentObject ()) {
+    cEnumerator_lexicalAttributeMap enumerator_17389 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
+    while (enumerator_17389.hasCurrentObject ()) {
       result << "  ptr->mLexicalAttribute_" ;
-      result << enumerator_17387.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 324)).stringValue () ;
+      result << enumerator_17389.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 324)).stringValue () ;
       result << " = ioToken.mLexicalAttribute_" ;
-      result << enumerator_17387.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 324)).stringValue () ;
+      result << enumerator_17389.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 324)).stringValue () ;
       result << " ;\n" ;
-      index_17387_.increment () ;
-      enumerator_17387.gotoNextObject () ;
+      index_17389_.increment () ;
+      enumerator_17389.gotoNextObject () ;
     }
   }
   result << "  enterTokenFromPointer (ptr) ;\n"
@@ -7278,17 +7451,17 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//               A T T R I B U T E   A C C E S S                                                                       *\n" ;
-  GALGAS_uint index_17843_ (0) ;
+  GALGAS_uint index_17845_ (0) ;
   if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
-    cEnumerator_lexicalAttributeMap enumerator_17843 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_17843.hasCurrentObject ()) {
+    cEnumerator_lexicalAttributeMap enumerator_17845 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
+    while (enumerator_17845.hasCurrentObject ()) {
       result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n" ;
-      result << extensionGetter_cppTypeName (enumerator_17843.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 334)).stringValue () ;
+      result << extensionGetter_cppTypeName (enumerator_17845.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 334)).stringValue () ;
       result << " C_Lexique_" ;
       result << in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
       result << "::attributeValue_" ;
-      result << enumerator_17843.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 334)).stringValue () ;
+      result << enumerator_17845.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 334)).stringValue () ;
       result << " (void) const {\n"
         "  cTokenFor_" ;
       result << in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
@@ -7296,28 +7469,28 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
       result << in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
       result << " *) mCurrentTokenPtr ;\n"
         "  return ptr->mLexicalAttribute_" ;
-      result << enumerator_17843.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 336)).stringValue () ;
+      result << enumerator_17845.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 336)).stringValue () ;
       result << " ;\n"
         "}\n"
         "\n" ;
-      index_17843_.increment () ;
-      enumerator_17843.gotoNextObject () ;
+      index_17845_.increment () ;
+      enumerator_17845.gotoNextObject () ;
     }
   }
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//         A S S I G N    F R O M    A T T R I B U T E                                                                 *\n" ;
-  GALGAS_uint index_18590_ (0) ;
+  GALGAS_uint index_18592_ (0) ;
   if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
-    cEnumerator_lexicalAttributeMap enumerator_18590 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_18590.hasCurrentObject ()) {
+    cEnumerator_lexicalAttributeMap enumerator_18592 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
+    while (enumerator_18592.hasCurrentObject ()) {
       result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "GALGAS_l" ;
-      result << extensionGetter_lexicalTypeBaseName (enumerator_18590.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 344)).getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 344)).stringValue () ;
+      result << extensionGetter_lexicalTypeBaseName (enumerator_18592.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 344)).getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 344)).stringValue () ;
       result << " C_Lexique_" ;
       result << in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
       result << "::synthetizedAttribute_" ;
-      result << enumerator_18590.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 344)).stringValue () ;
+      result << enumerator_18592.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 344)).stringValue () ;
       result << " (void) const {\n"
         "  cTokenFor_" ;
       result << in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
@@ -7329,18 +7502,18 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
       result << ") ;\n"
         "  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;\n"
         "  GALGAS_" ;
-      result << extensionGetter_lexicalTypeBaseName (enumerator_18590.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 348)).getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 348)).stringValue () ;
+      result << extensionGetter_lexicalTypeBaseName (enumerator_18592.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 348)).getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 348)).stringValue () ;
       result << " value (ptr->mLexicalAttribute_" ;
-      result << enumerator_18590.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 348)).stringValue () ;
+      result << enumerator_18592.current_lkey (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 348)).stringValue () ;
       result << ") ;\n"
         "  GALGAS_l" ;
-      result << extensionGetter_lexicalTypeBaseName (enumerator_18590.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 349)).getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 349)).stringValue () ;
+      result << extensionGetter_lexicalTypeBaseName (enumerator_18592.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 349)).getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 349)).stringValue () ;
       result << " result (value, currentLocation) ;\n"
         "  return result ;\n"
         "}\n"
         "\n" ;
-      index_18590_.increment () ;
-      enumerator_18590.gotoNextObject () ;
+      index_18592_.increment () ;
+      enumerator_18592.gotoNextObject () ;
     }
   }
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -7351,15 +7524,15 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
   result << in_LEXIQUE_5F_IDENTIFIER.stringValue () ;
   result << "::symbols (LOCATION_ARGS) {\n"
     "  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;\n" ;
-  GALGAS_uint index_20075_ (0) ;
+  GALGAS_uint index_20077_ (0) ;
   if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 359)).isValid ()) {
-    cEnumerator_terminalList enumerator_20075 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 359)), kENUMERATION_UP) ;
-    while (enumerator_20075.hasCurrentObject ()) {
+    cEnumerator_terminalList enumerator_20077 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 359)), kENUMERATION_UP) ;
+    while (enumerator_20077.hasCurrentObject ()) {
       result << "  result.addAssign_operation (GALGAS_string (" ;
-      result << enumerator_20075.current_mTerminalName (HERE).mProperty_string.getter_utf_38_Representation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 360)).stringValue () ;
+      result << enumerator_20077.current_mTerminalName (HERE).mProperty_string.getter_utf_38_Representation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 360)).stringValue () ;
       result << ") COMMA_THERE) ;\n" ;
-      index_20075_.increment () ;
-      enumerator_20075.gotoNextObject () ;
+      index_20077_.increment () ;
+      enumerator_20077.gotoNextObject () ;
     }
   }
   result << "  return result ;\n"
@@ -7377,15 +7550,15 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
     result << "ioList" ;
   }
   result << ") {\n" ;
-  GALGAS_uint index_20529_ (0) ;
+  GALGAS_uint index_20531_ (0) ;
   if (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.isValid ()) {
-    cEnumerator_lexicalExplicitTokenListMapMap enumerator_20529 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_20529.hasCurrentObject ()) {
+    cEnumerator_lexicalExplicitTokenListMapMap enumerator_20531 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP, kENUMERATION_UP) ;
+    while (enumerator_20531.hasCurrentObject ()) {
       result << "  ioList.appendObject (" ;
-      result << in_LEXIQUE_5F_COMPONENT_5F_NAME.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 372)).add_operation (enumerator_20529.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 372)), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 372)).getter_utf_38_Representation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 372)).stringValue () ;
+      result << in_LEXIQUE_5F_COMPONENT_5F_NAME.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 372)).add_operation (enumerator_20531.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 372)), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 372)).getter_utf_38_Representation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 372)).stringValue () ;
       result << ") ;\n" ;
-      index_20529_.increment () ;
-      enumerator_20529.gotoNextObject () ;
+      index_20531_.increment () ;
+      enumerator_20531.gotoNextObject () ;
     }
   }
   result << "}\n"
@@ -7424,29 +7597,29 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
     result << "ioList" ;
   }
   result << ") {\n" ;
-  GALGAS_uint index_21180_ (0) ;
+  GALGAS_uint index_21182_ (0) ;
   if (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP.isValid ()) {
-    cEnumerator_lexicalExplicitTokenListMapMap enumerator_21180 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_21180.hasCurrentObject ()) {
+    cEnumerator_lexicalExplicitTokenListMapMap enumerator_21182 (in_LEXICAL_5F_TOKEN_5F_LIST_5F_MAP, kENUMERATION_UP) ;
+    while (enumerator_21182.hasCurrentObject ()) {
       result << "  if (inIdentifier == " ;
-      result << in_LEXIQUE_5F_COMPONENT_5F_NAME.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 384)).add_operation (enumerator_21180.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 384)), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 384)).getter_utf_38_Representation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 384)).stringValue () ;
+      result << in_LEXIQUE_5F_COMPONENT_5F_NAME.add_operation (GALGAS_string (":"), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 384)).add_operation (enumerator_21182.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 384)), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 384)).getter_utf_38_Representation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 384)).stringValue () ;
       result << ") {\n"
         "    ioFound = true ;\n" ;
-      GALGAS_uint index_21330_ (0) ;
-      if (enumerator_21180.current_mTokenSortedList (HERE).isValid ()) {
-        cEnumerator_tokenSortedlist enumerator_21330 (enumerator_21180.current_mTokenSortedList (HERE), kENUMERATION_UP) ;
-        while (enumerator_21330.hasCurrentObject ()) {
+      GALGAS_uint index_21332_ (0) ;
+      if (enumerator_21182.current_mTokenSortedList (HERE).isValid ()) {
+        cEnumerator_tokenSortedlist enumerator_21332 (enumerator_21182.current_mTokenSortedList (HERE), kENUMERATION_UP) ;
+        while (enumerator_21332.hasCurrentObject ()) {
           result << "    ioList.appendObject (" ;
-          result << enumerator_21330.current_mName (HERE).getter_utf_38_Representation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 387)).stringValue () ;
+          result << enumerator_21332.current_mName (HERE).getter_utf_38_Representation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 387)).stringValue () ;
           result << ") ;\n" ;
-          index_21330_.increment () ;
-          enumerator_21330.gotoNextObject () ;
+          index_21332_.increment () ;
+          enumerator_21332.gotoNextObject () ;
         }
       }
       result << "    ioList.sortArrayUsingCompareMethod() ;\n"
         "  }\n" ;
-      index_21180_.increment () ;
-      enumerator_21180.gotoNextObject () ;
+      index_21182_.increment () ;
+      enumerator_21182.gotoNextObject () ;
     }
   }
   result << "}\n"
@@ -7473,20 +7646,20 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
     "  static const uint32_t kTerminalSymbolStyles [" ;
   result << in_TERMINAL_5F_LIST.getter_length (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 405)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 405)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 405)).stringValue () ;
   result << "] = {0" ;
-  GALGAS_uint index_22390_ (0) ;
+  GALGAS_uint index_22392_ (0) ;
   if (in_TERMINAL_5F_LIST.isValid ()) {
-    cEnumerator_terminalList enumerator_22390 (in_TERMINAL_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_22390.hasCurrentObject ()) {
+    cEnumerator_terminalList enumerator_22392 (in_TERMINAL_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_22392.hasCurrentObject ()) {
       result << ",\n"
         "    " ;
-      result << enumerator_22390.current_mStyleIndex (HERE).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 407)).stringValue () ;
+      result << enumerator_22392.current_mStyleIndex (HERE).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 407)).stringValue () ;
       result << " /* " ;
       result << in_LEXIQUE_5F_COMPONENT_5F_NAME.stringValue () ;
       result << "_1_" ;
-      result << enumerator_22390.current_mTerminalName (HERE).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 407)).getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 407)).stringValue () ;
+      result << enumerator_22392.current_mTerminalName (HERE).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 407)).getter_identifierRepresentation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 407)).stringValue () ;
       result << " */" ;
-      index_22390_.increment () ;
-      enumerator_22390.gotoNextObject () ;
+      index_22392_.increment () ;
+      enumerator_22392.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -7509,15 +7682,15 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
   result << in_LEXICAL_5F_STYLE_5F_LIST.getter_length (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 419)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 419)).getter_string (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 419)).stringValue () ;
   result << "] = {\n"
     "      \"\"" ;
-  GALGAS_uint index_23285_ (0) ;
+  GALGAS_uint index_23287_ (0) ;
   if (in_LEXICAL_5F_STYLE_5F_LIST.isValid ()) {
-    cEnumerator_lexicalStyleListAST enumerator_23285 (in_LEXICAL_5F_STYLE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_23285.hasCurrentObject ()) {
+    cEnumerator_lexicalStyleListAST enumerator_23287 (in_LEXICAL_5F_STYLE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_23287.hasCurrentObject ()) {
       result << ",\n"
         "      " ;
-      result << enumerator_23285.current_mName (HERE).mProperty_string.getter_utf_38_Representation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 422)).stringValue () ;
-      index_23285_.increment () ;
-      enumerator_23285.gotoNextObject () ;
+      result << enumerator_23287.current_mName (HERE).mProperty_string.getter_utf_38_Representation (SOURCE_FILE ("lexique_implementation-galgas3.cpp.galgasTemplate", 422)).stringValue () ;
+      index_23287_.increment () ;
+      enumerator_23287.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -7538,7 +7711,8 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZo
 
 GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_32_ (C_Compiler * inCompiler,
                                                                                   const GALGAS_string & in_LEXIQUE_5F_CLASS_5F_NAME,
-                                                                                  const GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT
+                                                                                  const GALGAS_lexiqueAnalysisContext & in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT,
+                                                                                  const GALGAS_lexicalFunctionListAST & in_UNICODE_5F_TEST_5F_FUNCTIONS
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
@@ -7655,6 +7829,25 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_32_
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
+    "//        U N I C O D E    T E S T    F U N C T I O N S                                                                *\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n" ;
+  GALGAS_uint index_3623_ (0) ;
+  if (in_UNICODE_5F_TEST_5F_FUNCTIONS.isValid ()) {
+    cEnumerator_lexicalFunctionListAST enumerator_3623 (in_UNICODE_5F_TEST_5F_FUNCTIONS, kENUMERATION_UP) ;
+    while (enumerator_3623.hasCurrentObject ()) {
+      result << "bool " ;
+      result << enumerator_3623.current_mFunctionName (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_header_template_zone_2.h.galgasTemplate", 60)).stringValue () ;
+      result << " (const utf32 inUnicodeCharacter) ;\n"
+        "\n" ;
+      index_3623_.increment () ;
+      enumerator_3623.gotoNextObject () ;
+    }
+  }
+  result << "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
     "//                     S C A N N E R    C L A S S                                                                      *\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -7663,17 +7856,17 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_32_
   result << in_LEXIQUE_5F_CLASS_5F_NAME.stringValue () ;
   result << " : OC_Lexique {\n"
     "//--- Attributes\n" ;
-  GALGAS_uint index_3722_ (0) ;
-  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mLexicalAttributeMap (SOURCE_FILE ("lexique_cocoa_header_template_zone_2.h.galgasTemplate", 61)).isValid ()) {
-    cEnumerator_lexicalAttributeMap enumerator_3722 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mLexicalAttributeMap (SOURCE_FILE ("lexique_cocoa_header_template_zone_2.h.galgasTemplate", 61)), kENUMERATION_UP) ;
-    while (enumerator_3722.hasCurrentObject ()) {
+  GALGAS_uint index_4468_ (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mLexicalAttributeMap (SOURCE_FILE ("lexique_cocoa_header_template_zone_2.h.galgasTemplate", 72)).isValid ()) {
+    cEnumerator_lexicalAttributeMap enumerator_4468 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mLexicalAttributeMap (SOURCE_FILE ("lexique_cocoa_header_template_zone_2.h.galgasTemplate", 72)), kENUMERATION_UP) ;
+    while (enumerator_4468.hasCurrentObject ()) {
       result << "  @private " ;
-      result << extensionGetter_cocoaTypeName (enumerator_3722.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_header_template_zone_2.h.galgasTemplate", 62)).stringValue () ;
+      result << extensionGetter_cocoaTypeName (enumerator_4468.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_header_template_zone_2.h.galgasTemplate", 73)).stringValue () ;
       result << " mLexicalAttribute_" ;
-      result << enumerator_3722.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_header_template_zone_2.h.galgasTemplate", 62)).stringValue () ;
+      result << enumerator_4468.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_header_template_zone_2.h.galgasTemplate", 73)).stringValue () ;
       result << " ;\n" ;
-      index_3722_.increment () ;
-      enumerator_3722.gotoNextObject () ;
+      index_4468_.increment () ;
+      enumerator_4468.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -7738,7 +7931,8 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
                                                                                           const GALGAS_string & in_INDEXING_5F_DIRECTORY,
                                                                                           const GALGAS_indexingListAST & in_INDEXING_5F_LIST,
                                                                                           const GALGAS_lexicalStyleListAST & in_LEXICAL_5F_STYLE_5F_LIST,
-                                                                                          const GALGAS_metamodelTemplateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST
+                                                                                          const GALGAS_metamodelTemplateDelimitorListAST & in_TEMPLATE_5F_DELIMITOR_5F_LIST,
+                                                                                          const GALGAS_lexicalFunctionListAST & in_UNICODE_5F_TEST_5F_FUNCTIONS
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   result << "\n"
@@ -7748,6 +7942,26 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
     "#import \"PMDebug.h\"\n"
     "\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//            Unicode test functions                                                                                   *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    " \n" ;
+  GALGAS_uint index_463_ (0) ;
+  if (in_UNICODE_5F_TEST_5F_FUNCTIONS.isValid ()) {
+    cEnumerator_lexicalFunctionListAST enumerator_463 (in_UNICODE_5F_TEST_5F_FUNCTIONS, kENUMERATION_UP) ;
+    while (enumerator_463.hasCurrentObject ()) {
+      result << "bool " ;
+      result << enumerator_463.current_mFunctionName (HERE).mProperty_string.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 10)).stringValue () ;
+      result << " (const utf32 inUnicodeCharacter) {\n"
+        "  return " ;
+      result << callExtensionGetter_generateForUnicodeTestFunctions ((const cPtr_lexicalExpressionAST *) enumerator_463.current_mLexicalExpression (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 11)).stringValue () ;
+      result << " ;\n"
+        "}\n"
+        "\n" ;
+      index_463_.increment () ;
+      enumerator_463.gotoNextObject () ;
+    }
+  }
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "@implementation OC_Lexique_" ;
   result << in_LEXIQUE_5F_CLASS_5F_NAME.stringValue () ;
@@ -7759,10 +7973,10 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 15)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsStrictSup, in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 24)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
     result << "static NSArray * kTemplateReplacementArray_" ;
-    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 16)).stringValue () ;
+    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 25)).stringValue () ;
     result << " ; // Of NSString \n" ;
   }else if (kBoolFalse == test_0) {
   }
@@ -7774,10 +7988,10 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
-  const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTemplateDelimitorList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 25)).getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 25)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_1 = GALGAS_bool (kIsStrictSup, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTemplateDelimitorList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 34)).getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 34)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_1) {
     result << "static NSArray * kTemplateDefinitionArray_" ;
-    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 26)).stringValue () ;
+    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 35)).stringValue () ;
     result << " ;\n" ;
   }else if (kBoolFalse == test_1) {
   }
@@ -7788,47 +8002,47 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
     "  self = [super init] ;\n"
     "  if (self) {\n"
     "    noteObjectAllocation (self) ;\n" ;
-  GALGAS_uint index_2043_ (0) ;
+  GALGAS_uint index_2632_ (0) ;
   if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
-    cEnumerator_lexicalAttributeMap enumerator_2043 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_2043.hasCurrentObject ()) {
+    cEnumerator_lexicalAttributeMap enumerator_2632 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
+    while (enumerator_2632.hasCurrentObject ()) {
       result << "    mLexicalAttribute_" ;
-      result << enumerator_2043.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 36)).stringValue () ;
+      result << enumerator_2632.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 45)).stringValue () ;
       result << " = " ;
-      result << extensionGetter_cocoaInitializationCode (enumerator_2043.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 36)).stringValue () ;
+      result << extensionGetter_cocoaInitializationCode (enumerator_2632.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 45)).stringValue () ;
       result << " ;\n" ;
-      index_2043_.increment () ;
-      enumerator_2043.gotoNextObject () ;
+      index_2632_.increment () ;
+      enumerator_2632.gotoNextObject () ;
     }
   }
   result << "  }\n" ;
-  const enumGalgasBool test_2 = GALGAS_bool (kIsStrictSup, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTemplateDelimitorList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 39)).getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 39)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_2 = GALGAS_bool (kIsStrictSup, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTemplateDelimitorList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 48)).getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 48)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_2) {
     result << "  if (nil == kTemplateDefinitionArray_" ;
-    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 40)).stringValue () ;
+    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 49)).stringValue () ;
     result << ") {\n"
       "    kTemplateDefinitionArray_" ;
-    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 41)).stringValue () ;
+    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 50)).stringValue () ;
     result << " = [NSArray arrayWithObjects:\n" ;
-    GALGAS_uint index_2492_ (0) ;
-    if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTemplateDelimitorList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 42)).isValid ()) {
-      cEnumerator_templateDelimitorList enumerator_2492 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTemplateDelimitorList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 42)), kENUMERATION_UP) ;
-      while (enumerator_2492.hasCurrentObject ()) {
+    GALGAS_uint index_3081_ (0) ;
+    if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTemplateDelimitorList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 51)).isValid ()) {
+      cEnumerator_templateDelimitorList enumerator_3081 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTemplateDelimitorList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 51)), kENUMERATION_UP) ;
+      while (enumerator_3081.hasCurrentObject ()) {
         result << "      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@" ;
-        result << enumerator_2492.current_mStartString (HERE).mProperty_string.getter_utf_38_Representation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 43)).stringValue () ;
+        result << enumerator_3081.current_mStartString (HERE).mProperty_string.getter_utf_38_Representation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 52)).stringValue () ;
         result << " endString:" ;
-        const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_2492.current_mEndString (HERE).mProperty_string.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 44)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+        const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_3081.current_mEndString (HERE).mProperty_string.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 53)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
         if (kBoolTrue == test_3) {
           result << "nil" ;
         }else if (kBoolFalse == test_3) {
           result << "@" ;
-          result << enumerator_2492.current_mEndString (HERE).mProperty_string.getter_utf_38_Representation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 47)).stringValue () ;
+          result << enumerator_3081.current_mEndString (HERE).mProperty_string.getter_utf_38_Representation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 56)).stringValue () ;
         }
         result << " discardStartString:" ;
-        result << enumerator_2492.current_mPreservesStartDelimiter (HERE).operator_not (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 50)).getter_ocString (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 50)).stringValue () ;
+        result << enumerator_3081.current_mPreservesStartDelimiter (HERE).operator_not (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 59)).getter_ocString (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 59)).stringValue () ;
         result << "],\n" ;
-        index_2492_.increment () ;
-        enumerator_2492.gotoNextObject () ;
+        index_3081_.increment () ;
+        enumerator_3081.gotoNextObject () ;
       }
     }
     result << "      nil\n"
@@ -7836,24 +8050,24 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
       "  }\n" ;
   }else if (kBoolFalse == test_2) {
   }
-  const enumGalgasBool test_4 = GALGAS_bool (kIsStrictSup, in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 57)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_4 = GALGAS_bool (kIsStrictSup, in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 66)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_4) {
     result << "  if (nil == kTemplateReplacementArray_" ;
-    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 58)).stringValue () ;
+    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 67)).stringValue () ;
     result << ") {\n"
       "\n"
       "    kTemplateReplacementArray_" ;
-    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 59)).stringValue () ;
+    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 68)).stringValue () ;
     result << " = [NSArray arrayWithObjects:\n" ;
-    GALGAS_uint index_3167_ (0) ;
+    GALGAS_uint index_3756_ (0) ;
     if (in_TEMPLATE_5F_REPLACEMENT_5F_LIST.isValid ()) {
-      cEnumerator_templateReplacementListAST enumerator_3167 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST, kENUMERATION_UP) ;
-      while (enumerator_3167.hasCurrentObject ()) {
+      cEnumerator_templateReplacementListAST enumerator_3756 (in_TEMPLATE_5F_REPLACEMENT_5F_LIST, kENUMERATION_UP) ;
+      while (enumerator_3756.hasCurrentObject ()) {
         result << "      @" ;
-        result << enumerator_3167.current_mMatchString (HERE).mProperty_string.getter_utf_38_Representation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 61)).stringValue () ;
+        result << enumerator_3756.current_mMatchString (HERE).mProperty_string.getter_utf_38_Representation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 70)).stringValue () ;
         result << ", " ;
-        index_3167_.increment () ;
-        enumerator_3167.gotoNextObject () ;
+        index_3756_.increment () ;
+        enumerator_3756.gotoNextObject () ;
       }
     }
     result << "      nil\n"
@@ -7879,7 +8093,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
     "\n"
     "- (NSString *) indexingDirectory {\n"
     "  return @" ;
-  result << in_INDEXING_5F_DIRECTORY.getter_utf_38_Representation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 84)).stringValue () ;
+  result << in_INDEXING_5F_DIRECTORY.getter_utf_38_Representation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 93)).stringValue () ;
   result << " ;\n"
     "}\n"
     "\n"
@@ -7890,18 +8104,18 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "- (NSArray *) indexingTitles { // Array of NSString\n" ;
-  const enumGalgasBool test_5 = GALGAS_bool (kIsStrictSup, in_INDEXING_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 95)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_5 = GALGAS_bool (kIsStrictSup, in_INDEXING_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 104)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_5) {
     result << "  return [NSArray arrayWithObjects:\n" ;
-    GALGAS_uint index_4966_ (0) ;
+    GALGAS_uint index_5555_ (0) ;
     if (in_INDEXING_5F_LIST.isValid ()) {
-      cEnumerator_indexingListAST enumerator_4966 (in_INDEXING_5F_LIST, kENUMERATION_UP) ;
-      while (enumerator_4966.hasCurrentObject ()) {
+      cEnumerator_indexingListAST enumerator_5555 (in_INDEXING_5F_LIST, kENUMERATION_UP) ;
+      while (enumerator_5555.hasCurrentObject ()) {
         result << "    @" ;
-        result << enumerator_4966.current_mIndexComment (HERE).mProperty_string.getter_utf_38_Representation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 99)).stringValue () ;
+        result << enumerator_5555.current_mIndexComment (HERE).mProperty_string.getter_utf_38_Representation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 108)).stringValue () ;
         result << ",\n" ;
-        index_4966_.increment () ;
-        enumerator_4966.gotoNextObject () ;
+        index_5555_.increment () ;
+        enumerator_5555.gotoNextObject () ;
       }
     }
     result << "    NULL\n"
@@ -7918,32 +8132,32 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
-  const enumGalgasBool test_6 = GALGAS_bool (kIsStrictSup, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 116)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_6 = GALGAS_bool (kIsStrictSup, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 125)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_6) {
-    GALGAS_uint index_5981_ (0) ;
-    if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 117)).isValid ()) {
-      cEnumerator_terminalList enumerator_5981 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 117)), kENUMERATION_UP) ;
-      const bool nonEmpty_enumerator_5981 = enumerator_5981.hasCurrentObject () ;
-      if (nonEmpty_enumerator_5981) {
+    GALGAS_uint index_6570_ (0) ;
+    if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 126)).isValid ()) {
+      cEnumerator_terminalList enumerator_6570 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 126)), kENUMERATION_UP) ;
+      const bool nonEmpty_enumerator_6570 = enumerator_6570.hasCurrentObject () ;
+      if (nonEmpty_enumerator_6570) {
         result << "static const BOOL kEndOfScriptInTemplateArray_" ;
-        result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 118)).stringValue () ;
+        result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 127)).stringValue () ;
         result << " [" ;
-        result << in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 118)).getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 118)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 118)).stringValue () ;
+        result << in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 127)).getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 127)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 127)).stringValue () ;
         result << "] = {\n" ;
       }
-      while (enumerator_5981.hasCurrentObject ()) {
+      while (enumerator_6570.hasCurrentObject ()) {
         result << "  " ;
-        result << enumerator_5981.current_mIsEndOfTemplateMark (HERE).getter_ocString (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 119)).stringValue () ;
+        result << enumerator_6570.current_mIsEndOfTemplateMark (HERE).getter_ocString (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 128)).stringValue () ;
         result << " /* " ;
-        result << enumerator_5981.current_mTerminalName (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 119)).stringValue () ;
+        result << enumerator_6570.current_mTerminalName (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 128)).stringValue () ;
         result << " */" ;
-        if (enumerator_5981.hasNextObject ()) {
+        if (enumerator_6570.hasNextObject ()) {
           result << ",\n" ;
         }
-        index_5981_.increment () ;
-        enumerator_5981.gotoNextObject () ;
+        index_6570_.increment () ;
+        enumerator_6570.gotoNextObject () ;
       }
-      if (nonEmpty_enumerator_5981) {
+      if (nonEmpty_enumerator_6570) {
         result << "\n"
           "} ;\n" ;
       }
@@ -7952,66 +8166,66 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
   }
   result << "\n"
     "\n" ;
-  GALGAS_uint index_6189_ (0) ;
-  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mLexicalTokenListMap (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 127)).isValid ()) {
-    cEnumerator_lexicalExplicitTokenListMapMap enumerator_6189 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mLexicalTokenListMap (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 127)), kENUMERATION_UP) ;
-    while (enumerator_6189.hasCurrentObject ()) {
-      const enumGalgasBool test_7 = enumerator_6189.current_mShouldBeGenerated (HERE).boolEnum () ;
+  GALGAS_uint index_6778_ (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mLexicalTokenListMap (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 136)).isValid ()) {
+    cEnumerator_lexicalExplicitTokenListMapMap enumerator_6778 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mLexicalTokenListMap (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 136)), kENUMERATION_UP) ;
+    while (enumerator_6778.hasCurrentObject ()) {
+      const enumGalgasBool test_7 = enumerator_6778.current_mShouldBeGenerated (HERE).boolEnum () ;
       if (kBoolTrue == test_7) {
         result << "//---------------------------------------------------------------------------------------------------------------------*\n"
           "//                                                                                                                     *\n"
           "//             Key words table '" ;
-        result << enumerator_6189.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 131)).stringValue () ;
+        result << enumerator_6778.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 140)).stringValue () ;
         result << "'                            *\n"
           "//                                                                                                                     *\n"
           "//---------------------------------------------------------------------------------------------------------------------*\n"
           "\n"
           "static const C_cocoa_lexique_table_entry ktable_for_" ;
-        result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 134)).stringValue () ;
+        result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 143)).stringValue () ;
         result << "_" ;
-        result << enumerator_6189.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 134)).stringValue () ;
+        result << enumerator_6778.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 143)).stringValue () ;
         result << " [" ;
-        result << enumerator_6189.current_mExplicitTokenListMap (HERE).getter_count (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 134)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 134)).stringValue () ;
+        result << enumerator_6778.current_mExplicitTokenListMap (HERE).getter_count (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 143)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 143)).stringValue () ;
         result << "] = {\n" ;
-        GALGAS_uint index_7107_ (0) ;
-        if (enumerator_6189.current_mTokenSortedList (HERE).isValid ()) {
-          cEnumerator_tokenSortedlist enumerator_7107 (enumerator_6189.current_mTokenSortedList (HERE), kENUMERATION_UP) ;
-          while (enumerator_7107.hasCurrentObject ()) {
+        GALGAS_uint index_7696_ (0) ;
+        if (enumerator_6778.current_mTokenSortedList (HERE).isValid ()) {
+          cEnumerator_tokenSortedlist enumerator_7696 (enumerator_6778.current_mTokenSortedList (HERE), kENUMERATION_UP) ;
+          while (enumerator_7696.hasCurrentObject ()) {
             result << "  {" ;
-            result << enumerator_7107.current_mName (HERE).getter_utf_38_Representation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 136)).stringValue () ;
+            result << enumerator_7696.current_mName (HERE).getter_utf_38_Representation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 145)).stringValue () ;
             result << ", " ;
             result << in_LEXIQUE_5F_CLASS_5F_NAME.stringValue () ;
             result << "_1_" ;
-            result << enumerator_7107.current_mTerminalName (HERE).getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 136)).stringValue () ;
+            result << enumerator_7696.current_mTerminalName (HERE).getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 145)).stringValue () ;
             result << "}" ;
-            if (enumerator_7107.hasNextObject ()) {
+            if (enumerator_7696.hasNextObject ()) {
               result << ",\n" ;
             }
-            index_7107_.increment () ;
-            enumerator_7107.gotoNextObject () ;
+            index_7696_.increment () ;
+            enumerator_7696.gotoNextObject () ;
           }
         }
         result << "\n"
           "} ;\n"
           "\n"
           "static NSInteger search_into_" ;
-        result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 140)).stringValue () ;
+        result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 149)).stringValue () ;
         result << "_" ;
-        result << enumerator_6189.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 140)).stringValue () ;
+        result << enumerator_6778.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 149)).stringValue () ;
         result << " (NSString * inSearchedString) {\n"
           "  return searchStringInTable (inSearchedString, ktable_for_" ;
-        result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 141)).stringValue () ;
+        result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 150)).stringValue () ;
         result << "_" ;
-        result << enumerator_6189.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 141)).stringValue () ;
+        result << enumerator_6778.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 150)).stringValue () ;
         result << ", " ;
-        result << enumerator_6189.current_mExplicitTokenListMap (HERE).getter_count (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 141)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 141)).stringValue () ;
+        result << enumerator_6778.current_mExplicitTokenListMap (HERE).getter_count (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 150)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 150)).stringValue () ;
         result << ") ;\n"
           "}\n"
           "\n" ;
       }else if (kBoolFalse == test_7) {
       }
-      index_6189_.increment () ;
-      enumerator_6189.gotoNextObject () ;
+      index_6778_.increment () ;
+      enumerator_6778.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -8027,13 +8241,13 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
     "  mTokenCode = 0 ;\n"
     "  while ((mTokenCode == 0) && (mCurrentChar != '\\0')) {\n"
     "    mTokenStartLocation = mCurrentLocation ;\n" ;
-  const enumGalgasBool test_8 = GALGAS_bool (kIsStrictSup, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 159)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_8 = GALGAS_bool (kIsStrictSup, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 168)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_8) {
     result << "    if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_" ;
-    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 160)).stringValue () ;
+    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 169)).stringValue () ;
     result << " objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] startString].length > 0)) {\n"
       "      const BOOL foundEndDelimitor = [self testForInputString:[[kTemplateDefinitionArray_" ;
-    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 161)).stringValue () ;
+    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 170)).stringValue () ;
     result << " objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] endString] advance:YES] ;\n"
       "      if (foundEndDelimitor) {\n"
       "        mMatchedTemplateDelimiterIndex = -1 ;\n"
@@ -8041,18 +8255,18 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
       "    }\n"
       "    while ((mMatchedTemplateDelimiterIndex < 0) && (mCurrentChar != '\\0')) {\n"
       "      " ;
-    const enumGalgasBool test_9 = GALGAS_bool (kIsStrictSup, in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 167)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    const enumGalgasBool test_9 = GALGAS_bool (kIsStrictSup, in_TEMPLATE_5F_REPLACEMENT_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 176)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
     if (kBoolTrue == test_9) {
       result << "\n"
         "      [self searchForReplacementPattern:kTemplateReplacementArray_" ;
-      result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 168)).stringValue () ;
+      result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 177)).stringValue () ;
       result << "] ;\n"
         "      " ;
     }else if (kBoolFalse == test_9) {
     }
     result << "\n"
       "      mMatchedTemplateDelimiterIndex = [self findTemplateDelimiterIndex:kTemplateDefinitionArray_" ;
-    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 170)).stringValue () ;
+    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 179)).stringValue () ;
     result << "] ;\n"
       "      if (mMatchedTemplateDelimiterIndex < 0) {\n"
       "        [self advance] ;\n"
@@ -8060,31 +8274,31 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
       "      }\n"
       "    }\n"
       "    if ((mMatchedTemplateDelimiterIndex >= 0) && (mTokenCode == 0) && (mCurrentChar != '\\0') && scanningOk) {\n" ;
-    GALGAS_uint index_9706_ (0) ;
+    GALGAS_uint index_10295_ (0) ;
     if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
-      cEnumerator_lexicalAttributeMap enumerator_9706 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
-      while (enumerator_9706.hasCurrentObject ()) {
+      cEnumerator_lexicalAttributeMap enumerator_10295 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
+      while (enumerator_10295.hasCurrentObject ()) {
         result << "      " ;
-        result << extensionGetter_cocoaResetPrefix (enumerator_9706.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 178)).stringValue () ;
+        result << extensionGetter_cocoaResetPrefix (enumerator_10295.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 187)).stringValue () ;
         result << "mLexicalAttribute_" ;
-        result << enumerator_9706.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 178)).stringValue () ;
-        result << extensionGetter_cocoaReset (enumerator_9706.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 178)).stringValue () ;
+        result << enumerator_10295.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 187)).stringValue () ;
+        result << extensionGetter_cocoaReset (enumerator_10295.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 187)).stringValue () ;
         result << " ;\n" ;
-        index_9706_.increment () ;
-        enumerator_9706.gotoNextObject () ;
+        index_10295_.increment () ;
+        enumerator_10295.gotoNextObject () ;
       }
     }
     result << "      mTokenStartLocation = mCurrentLocation ;\n" ;
     if (GALGAS_uint ((uint32_t) 6U).isValid ()) {
       result.incIndentation ((int32_t) GALGAS_uint ((uint32_t) 6U).uintValue ()) ;
     }
-    GALGAS_uint index_9922_ (0) ;
+    GALGAS_uint index_10511_ (0) ;
     if (in_LEXICAL_5F_RULE_5F_LIST.isValid ()) {
-      cEnumerator_lexicalRuleListAST enumerator_9922 (in_LEXICAL_5F_RULE_5F_LIST, kENUMERATION_UP) ;
-      while (enumerator_9922.hasCurrentObject ()) {
-        result << callExtensionGetter_generateCocoaCode ((const cPtr_abstractLexicalRuleAST *) enumerator_9922.current_mLexicalRule (HERE).ptr (), in_LEXIQUE_5F_CLASS_5F_NAME, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT, inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 184)).stringValue () ;
-        index_9922_.increment () ;
-        enumerator_9922.gotoNextObject () ;
+      cEnumerator_lexicalRuleListAST enumerator_10511 (in_LEXICAL_5F_RULE_5F_LIST, kENUMERATION_UP) ;
+      while (enumerator_10511.hasCurrentObject ()) {
+        result << callExtensionGetter_generateCocoaCode ((const cPtr_abstractLexicalRuleAST *) enumerator_10511.current_mLexicalRule (HERE).ptr (), in_LEXIQUE_5F_CLASS_5F_NAME, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT, inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 193)).stringValue () ;
+        index_10511_.increment () ;
+        enumerator_10511.gotoNextObject () ;
       }
     }
     if (GALGAS_uint ((uint32_t) 6U).isValid ()) {
@@ -8099,7 +8313,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
       "      }\n"
       "    }\n"
       "    if ((mTokenCode > 0) && kEndOfScriptInTemplateArray_" ;
-    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 193)).stringValue () ;
+    result << in_LEXIQUE_5F_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 202)).stringValue () ;
     result << " [mTokenCode - 1]) {\n"
       "      mMatchedTemplateDelimiterIndex = -1 ;\n"
       "    }\n"
@@ -8109,31 +8323,31 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
       "      [self advance] ;\n"
       "    }" ;
   }else if (kBoolFalse == test_8) {
-    GALGAS_uint index_10543_ (0) ;
+    GALGAS_uint index_11132_ (0) ;
     if (in_LEXICAL_5F_ATTRIBUTE_5F_MAP.isValid ()) {
-      cEnumerator_lexicalAttributeMap enumerator_10543 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
-      while (enumerator_10543.hasCurrentObject ()) {
+      cEnumerator_lexicalAttributeMap enumerator_11132 (in_LEXICAL_5F_ATTRIBUTE_5F_MAP, kENUMERATION_UP) ;
+      while (enumerator_11132.hasCurrentObject ()) {
         result << "    " ;
-        result << extensionGetter_cocoaResetPrefix (enumerator_10543.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 202)).stringValue () ;
+        result << extensionGetter_cocoaResetPrefix (enumerator_11132.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 211)).stringValue () ;
         result << "mLexicalAttribute_" ;
-        result << enumerator_10543.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 202)).stringValue () ;
-        result << extensionGetter_cocoaReset (enumerator_10543.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 202)).stringValue () ;
+        result << enumerator_11132.current_lkey (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 211)).stringValue () ;
+        result << extensionGetter_cocoaReset (enumerator_11132.current_mLexicalType (HERE), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 211)).stringValue () ;
         result << " ;\n" ;
-        index_10543_.increment () ;
-        enumerator_10543.gotoNextObject () ;
+        index_11132_.increment () ;
+        enumerator_11132.gotoNextObject () ;
       }
     }
     result << "    mTokenStartLocation = mCurrentLocation ;\n" ;
     if (GALGAS_uint ((uint32_t) 4U).isValid ()) {
       result.incIndentation ((int32_t) GALGAS_uint ((uint32_t) 4U).uintValue ()) ;
     }
-    GALGAS_uint index_10755_ (0) ;
+    GALGAS_uint index_11344_ (0) ;
     if (in_LEXICAL_5F_RULE_5F_LIST.isValid ()) {
-      cEnumerator_lexicalRuleListAST enumerator_10755 (in_LEXICAL_5F_RULE_5F_LIST, kENUMERATION_UP) ;
-      while (enumerator_10755.hasCurrentObject ()) {
-        result << callExtensionGetter_generateCocoaCode ((const cPtr_abstractLexicalRuleAST *) enumerator_10755.current_mLexicalRule (HERE).ptr (), in_LEXIQUE_5F_CLASS_5F_NAME, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT, inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 208)).stringValue () ;
-        index_10755_.increment () ;
-        enumerator_10755.gotoNextObject () ;
+      cEnumerator_lexicalRuleListAST enumerator_11344 (in_LEXICAL_5F_RULE_5F_LIST, kENUMERATION_UP) ;
+      while (enumerator_11344.hasCurrentObject ()) {
+        result << callExtensionGetter_generateCocoaCode ((const cPtr_abstractLexicalRuleAST *) enumerator_11344.current_mLexicalRule (HERE).ptr (), in_LEXIQUE_5F_CLASS_5F_NAME, in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT, inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 217)).stringValue () ;
+        index_11344_.increment () ;
+        enumerator_11344.gotoNextObject () ;
       }
     }
     if (GALGAS_uint ((uint32_t) 4U).isValid ()) {
@@ -8164,7 +8378,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
     "\n"
     "- (NSUInteger) terminalVocabularyCount {\n"
     "  return " ;
-  result << in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 231)).getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 231)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 231)).stringValue () ;
+  result << in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 240)).getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 240)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 240)).stringValue () ;
   result << " ;\n"
     "}\n"
     "\n"
@@ -8176,7 +8390,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
     "\n"
     "- (NSUInteger) styleCount {\n"
     "  return " ;
-  result << in_LEXICAL_5F_STYLE_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 241)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 241)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 241)).stringValue () ;
+  result << in_LEXICAL_5F_STYLE_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 250)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 250)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 250)).stringValue () ;
   result << " ;\n"
     "}\n"
     "\n"
@@ -8188,7 +8402,7 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
     "\n"
     "- (BOOL) isTemplateLexique {\n"
     "  return " ;
-  result << GALGAS_bool (kIsStrictSup, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 251)).objectCompare (GALGAS_uint ((uint32_t) 0U))).getter_ocString (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 251)).stringValue () ;
+  result << GALGAS_bool (kIsStrictSup, in_TEMPLATE_5F_DELIMITOR_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 260)).objectCompare (GALGAS_uint ((uint32_t) 0U))).getter_ocString (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 260)).stringValue () ;
   result << " ;\n"
     "}\n"
     "\n"
@@ -8200,22 +8414,22 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
     "\n"
     "- (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {\n"
     "  static const NSUInteger kTerminalSymbolStyles [" ;
-  result << in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 261)).getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 261)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 261)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 261)).stringValue () ;
+  result << in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 270)).getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 270)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 270)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 270)).stringValue () ;
   result << "] = {0" ;
-  GALGAS_uint index_14117_ (0) ;
-  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 262)).isValid ()) {
-    cEnumerator_terminalList enumerator_14117 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 262)), kENUMERATION_UP) ;
-    while (enumerator_14117.hasCurrentObject ()) {
+  GALGAS_uint index_14706_ (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 271)).isValid ()) {
+    cEnumerator_terminalList enumerator_14706 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 271)), kENUMERATION_UP) ;
+    while (enumerator_14706.hasCurrentObject ()) {
       result << ",\n"
         "    " ;
-      result << enumerator_14117.current_mStyleIndex (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 263)).stringValue () ;
+      result << enumerator_14706.current_mStyleIndex (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 272)).stringValue () ;
       result << " /* " ;
       result << in_LEXIQUE_5F_CLASS_5F_NAME.stringValue () ;
       result << "_1_" ;
-      result << enumerator_14117.current_mTerminalName (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 263)).getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 263)).stringValue () ;
+      result << enumerator_14706.current_mTerminalName (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 272)).getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 272)).stringValue () ;
       result << " */" ;
-      index_14117_.increment () ;
-      enumerator_14117.gotoNextObject () ;
+      index_14706_.increment () ;
+      enumerator_14706.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -8231,22 +8445,22 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
     "\n"
     "- (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {\n"
     "  static const BOOL kTerminalAtomicSelection [" ;
-  result << in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 275)).getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 275)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 275)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 275)).stringValue () ;
+  result << in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 284)).getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 284)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 284)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 284)).stringValue () ;
   result << "] = {NO" ;
-  GALGAS_uint index_15138_ (0) ;
-  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 276)).isValid ()) {
-    cEnumerator_terminalList enumerator_15138 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 276)), kENUMERATION_UP) ;
-    while (enumerator_15138.hasCurrentObject ()) {
+  GALGAS_uint index_15727_ (0) ;
+  if (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 285)).isValid ()) {
+    cEnumerator_terminalList enumerator_15727 (in_LEXIQUE_5F_ANALYSIS_5F_CONTEXT.getter_mTerminalList (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 285)), kENUMERATION_UP) ;
+    while (enumerator_15727.hasCurrentObject ()) {
       result << ",\n"
         "    " ;
-      result << enumerator_15138.current_mAtomicSelection (HERE).getter_ocString (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 277)).stringValue () ;
+      result << enumerator_15727.current_mAtomicSelection (HERE).getter_ocString (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 286)).stringValue () ;
       result << " /* " ;
       result << in_LEXIQUE_5F_CLASS_5F_NAME.stringValue () ;
       result << "_1_" ;
-      result << enumerator_15138.current_mTerminalName (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 277)).getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 277)).stringValue () ;
+      result << enumerator_15727.current_mTerminalName (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 286)).getter_identifierRepresentation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 286)).stringValue () ;
       result << " */" ;
-      index_15138_.increment () ;
-      enumerator_15138.gotoNextObject () ;
+      index_15727_.increment () ;
+      enumerator_15727.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -8263,21 +8477,21 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
     "- (NSString *) styleNameForStyleIndex: (NSInteger) inIndex {\n"
     "  NSString * result = nil ;\n"
     "  if ((inIndex >= 0) && (inIndex < " ;
-  result << in_LEXICAL_5F_STYLE_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 290)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 290)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 290)).stringValue () ;
+  result << in_LEXICAL_5F_STYLE_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 299)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 299)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 299)).stringValue () ;
   result << ")) {\n"
     "    NSString * kStyleArray [" ;
-  result << in_LEXICAL_5F_STYLE_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 291)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 291)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 291)).stringValue () ;
+  result << in_LEXICAL_5F_STYLE_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 300)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 300)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 300)).stringValue () ;
   result << "] = {\n"
     "      @\"Default Style\"" ;
-  GALGAS_uint index_16240_ (0) ;
+  GALGAS_uint index_16829_ (0) ;
   if (in_LEXICAL_5F_STYLE_5F_LIST.isValid ()) {
-    cEnumerator_lexicalStyleListAST enumerator_16240 (in_LEXICAL_5F_STYLE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_16240.hasCurrentObject ()) {
+    cEnumerator_lexicalStyleListAST enumerator_16829 (in_LEXICAL_5F_STYLE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_16829.hasCurrentObject ()) {
       result << ",\n"
         "      @" ;
-      result << enumerator_16240.current_mComment (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 294)).getter_utf_38_Representation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 294)).stringValue () ;
-      index_16240_.increment () ;
-      enumerator_16240.gotoNextObject () ;
+      result << enumerator_16829.current_mComment (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 303)).getter_utf_38_Representation (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 303)).stringValue () ;
+      index_16829_.increment () ;
+      enumerator_16829.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -8296,26 +8510,26 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
     "- (NSString *) styleIdentifierForStyleIndex: (NSInteger) inIndex {\n"
     "  NSString * result = nil ;\n"
     "  if ((inIndex >= 0) && (inIndex < " ;
-  result << in_LEXICAL_5F_STYLE_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 309)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 309)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 309)).stringValue () ;
+  result << in_LEXICAL_5F_STYLE_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 318)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 318)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 318)).stringValue () ;
   result << ")) {\n"
     "    NSString * kStyleArray [" ;
-  result << in_LEXICAL_5F_STYLE_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 310)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 310)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 310)).stringValue () ;
+  result << in_LEXICAL_5F_STYLE_5F_LIST.getter_length (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 319)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 319)).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 319)).stringValue () ;
   result << "] = {\n"
     "      @\"" ;
   result << in_LEXIQUE_5F_CLASS_5F_NAME.stringValue () ;
   result << "\"" ;
-  GALGAS_uint index_17295_ (0) ;
+  GALGAS_uint index_17884_ (0) ;
   if (in_LEXICAL_5F_STYLE_5F_LIST.isValid ()) {
-    cEnumerator_lexicalStyleListAST enumerator_17295 (in_LEXICAL_5F_STYLE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_17295.hasCurrentObject ()) {
+    cEnumerator_lexicalStyleListAST enumerator_17884 (in_LEXICAL_5F_STYLE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_17884.hasCurrentObject ()) {
       result << ",\n"
         "      @\"" ;
       result << in_LEXIQUE_5F_CLASS_5F_NAME.stringValue () ;
       result << "-" ;
-      result << enumerator_17295.current_mName (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 313)).stringValue () ;
+      result << enumerator_17884.current_mName (HERE).getter_string (SOURCE_FILE ("lexique_cocoa_implementation.m.galgasTemplate", 322)).stringValue () ;
       result << "\"" ;
-      index_17295_.increment () ;
-      enumerator_17295.gotoNextObject () ;
+      index_17884_.increment () ;
+      enumerator_17884.gotoNextObject () ;
     }
   }
   result << "\n"

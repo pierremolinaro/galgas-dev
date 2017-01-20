@@ -1,0 +1,122 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#  Lexical Unicode Test Functions                                                                                      *
+#                                                                                                                      *
+#  Copyright (C) 2017, ..., 2017 Pierre Molinaro.                                                                      *
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
+
+list @lexicalFunctionListAST {
+  @lstring mFunctionName
+  @lexicalExpressionAST mLexicalExpression
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   Unicode Test functions                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+abstract getter @lexicalExpressionAST callsDefinedUnicodeTestFunctions ?let @stringset inDefinedUnicodeFunctionSet -> @bool
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalStringMatchAST callsDefinedUnicodeTestFunctions
+  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
+{
+  result = true
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalStringNotMatchAST callsDefinedUnicodeTestFunctions
+  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
+{
+  result = true
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalOrExpressionAST callsDefinedUnicodeTestFunctions
+  ?let @stringset inDefinedUnicodeFunctionSet -> @bool
+{
+  result = [mLeftOperand callsDefinedUnicodeTestFunctions !inDefinedUnicodeFunctionSet] &
+           [mRightOperand callsDefinedUnicodeTestFunctions !inDefinedUnicodeFunctionSet]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalCharacterSetMatchAST callsDefinedUnicodeTestFunctions
+  ?let @stringset inDefinedUnicodeFunctionSet -> @bool
+{
+  result = [inDefinedUnicodeFunctionSet hasKey !mCharacterSetName]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalCharacterMatchAST callsDefinedUnicodeTestFunctions
+  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
+{
+  result = true
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalCharacterIntervalMatchAST callsDefinedUnicodeTestFunctions
+  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
+{
+  result = true
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+abstract getter @lexicalExpressionAST generateForUnicodeTestFunctions -> @string
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalStringMatchAST generateForUnicodeTestFunctions -> @string {
+  result = ""
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalStringNotMatchAST generateForUnicodeTestFunctions -> @string {
+  result = ""
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalOrExpressionAST generateForUnicodeTestFunctions -> @string {
+  result = [mLeftOperand generateForUnicodeTestFunctions]
+  result += " ||\n         "
+  result += [mRightOperand generateForUnicodeTestFunctions]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalCharacterSetMatchAST generateForUnicodeTestFunctions -> @string {
+  result = mCharacterSetName.string + " (inUnicodeCharacter)"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalCharacterMatchAST generateForUnicodeTestFunctions -> @string {
+  result = "(" + [[mCharacter.char uint] hexString] + " == UNICODE_VALUE (inUnicodeCharacter))"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalCharacterIntervalMatchAST generateForUnicodeTestFunctions -> @string {
+  result = "((" + [[mLowerBound.char uint] hexString]
+    + " <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= "
+    + [[mUpperBound.char uint] hexString] + "))"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

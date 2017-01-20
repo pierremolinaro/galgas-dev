@@ -49,6 +49,7 @@ project (3:2:15) -> "galgas" {
   "galgas-sources/galgas3LexiqueComponentSyntax.galgas"
   "galgas-sources/lexiqueTypesForAST.galgas"
   "galgas-sources/lexiqueSemantics.galgas"
+  "galgas-sources/lexicalUnicodeTestFunctions.galgas"
   "galgas-sources/predefinedLexicalActions.galgas"
   "galgas-sources/lexiqueGeneration.galgas"
   "galgas-sources/lexiqueCocoaGeneration.galgas"
