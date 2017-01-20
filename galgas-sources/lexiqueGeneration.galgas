@@ -178,7 +178,8 @@ override getter @lexicalSendTerminalByDefaultAST generateDefaultSendCode
 override getter @lexicalErrorByDefaultAST generateDefaultSendCode
   ?let @string inScannerClassName
   -> @string outGeneratedCode {
-  outGeneratedCode = "lexicalError (gLexicalMessage_" + [inScannerClassName identifierRepresentation] + "_" + mDefaultErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
+  outGeneratedCode = "lexicalError (gLexicalMessage_" + [inScannerClassName identifierRepresentation]
+     + "_" + mDefaultErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

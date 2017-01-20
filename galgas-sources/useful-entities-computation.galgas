@@ -57,7 +57,7 @@ proc checkUsefulEntities
       for (unusedEntity) in unusedEntities do
         let l = [inUsefulEntitiesGraph locationForKey !unusedEntity]
         if l == .nowhere then
-          warning .nowhere : "unused entity, '" + unusedEntity 
+          warning .nowhere : "unused entity, '" + unusedEntity
             + "' (due to option --" + [option galgas_cli_options.checkEntityUsefulness string] + ")"
         elsif not [uselessEntityLocationMap hasKey ![l locationString]] then
           [!?uselessEntityLocationMap insertKey ![[l locationString] nowhere] !l]

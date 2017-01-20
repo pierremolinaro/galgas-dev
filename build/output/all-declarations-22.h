@@ -317,27 +317,4 @@ GALGAS_string filewrapperTemplate_semanticFileGenerationTemplate_semanticFileImp
                                                                                              const class GALGAS_stringlist & in_IMPORTED_5F_COMPONENT_5F_LIST
                                                                                              COMMA_LOCATION_ARGS) ;
 
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        Routine 'appendPredefinedListTypeAST'                                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_appendPredefinedListTypeAST (class GALGAS_semanticDeclarationListAST & ioArgument0,
-                                          const class GALGAS_string constinArgument1,
-                                          class GALGAS_lstringlist & ioArgument2,
-                                          class C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        Routine 'insertInUsefulnessEntities'                                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_insertInUsefulnessEntities (class GALGAS_lstringlist & ioArgument0,
-                                         const class GALGAS_string constinArgument1,
-                                         class C_Compiler * inCompiler
-                                         COMMA_LOCATION_ARGS) ;
-
 #endif

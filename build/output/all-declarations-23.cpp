@@ -10,6 +10,28 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                        Routine 'appendPredefinedListTypeAST'                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_appendPredefinedListTypeAST (GALGAS_semanticDeclarationListAST & ioArgument_ioDeclarationListASTs,
+                                          const GALGAS_string constinArgument_inElementTypeName,
+                                          GALGAS_lstringlist & ioArgument_ioUsefulnessRootEntities,
+                                          C_Compiler * inCompiler
+                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_propertyInCollectionListAST var_attributeList_2154 = GALGAS_propertyInCollectionListAST::constructor_emptyList (SOURCE_FILE ("predefinedTypes.galgas", 23)) ;
+  GALGAS_lstringlist var_attributeFeatureList_2195 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("predefinedTypes.galgas", 24)) ;
+  var_attributeFeatureList_2195.addAssign_operation (GALGAS_lstring::constructor_new (GALGAS_string ("setter"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 25))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 25))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 25)) ;
+  var_attributeList_2154.addAssign_operation (GALGAS_lstring::constructor_new (constinArgument_inElementTypeName, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 27))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 27)), GALGAS_lstring::constructor_new (GALGAS_string ("mValue"), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 28))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 28)), var_attributeFeatureList_2195  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 26)) ;
+  ioArgument_ioDeclarationListASTs.addAssign_operation (GALGAS_listDeclarationAST::constructor_new (GALGAS_bool (true), GALGAS_lstring::constructor_new (constinArgument_inElementTypeName.add_operation (GALGAS_string ("list"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 32)), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 32))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 32)), var_attributeList_2154  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 30))  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 30)) ;
+  {
+  routine_insertInUsefulnessEntities (ioArgument_ioUsefulnessRootEntities, constinArgument_inElementTypeName.add_operation (GALGAS_string ("list"), inCompiler COMMA_SOURCE_FILE ("predefinedTypes.galgas", 35)), inCompiler  COMMA_SOURCE_FILE ("predefinedTypes.galgas", 35)) ;
+  }
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                    Routine 'appendPredefined2StringListTypeAST'                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -455,11 +477,11 @@ void routine_checkUsefulEntities (const GALGAS_usefulEntitiesGraph constinArgume
         }
         enumerator_3727.gotoNextObject () ;
       }
-      cEnumerator_uselessEntityLocationMap enumerator_4477 (var_uselessEntityLocationMap_3679, kENUMERATION_UP) ;
-      while (enumerator_4477.hasCurrentObject ()) {
+      cEnumerator_uselessEntityLocationMap enumerator_4476 (var_uselessEntityLocationMap_3679, kENUMERATION_UP) ;
+      while (enumerator_4476.hasCurrentObject ()) {
         TC_Array <C_FixItDescription> fixItArray7 ;
-        inCompiler->emitSemanticWarning (enumerator_4477.current_mLocation (HERE), GALGAS_string ("unused entity, due to option --").add_operation (GALGAS_string (gOption_galgas_5F_cli_5F_options_checkEntityUsefulness.getter_string ()), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 72)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 72)), fixItArray7  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 72)) ;
-        enumerator_4477.gotoNextObject () ;
+        inCompiler->emitSemanticWarning (enumerator_4476.current_mLocation (HERE), GALGAS_string ("unused entity, due to option --").add_operation (GALGAS_string (gOption_galgas_5F_cli_5F_options_checkEntityUsefulness.getter_string ()), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 72)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 72)), fixItArray7  COMMA_SOURCE_FILE ("useful-entities-computation.galgas", 72)) ;
+        enumerator_4476.gotoNextObject () ;
       }
     }
   }
@@ -7050,57 +7072,4 @@ static void defineExtensionMethod_nonterminalCallInstruction_transformInstructio
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_nonterminalCallInstruction_transformInstruction (defineExtensionMethod_nonterminalCallInstruction_transformInstruction, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                 Overriding extension method '@nonterminalCallInstruction analyzeSyntaxInstruction'                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void extensionMethod_nonterminalCallInstruction_analyzeSyntaxInstruction (const cPtr_syntaxInstructionAST * inObject,
-                                                                                 const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                                 GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                                 const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                                 const GALGAS_bool constinArgument_inHasTranslateFeature,
-                                                                                 const GALGAS_terminalMap /* constinArgument_inTerminalMap */,
-                                                                                 const GALGAS_string /* constinArgument_inLexiqueName */,
-                                                                                 const GALGAS_nonterminalMap constinArgument_inNonterminalMap,
-                                                                                 const GALGAS_string /* constinArgument_inComponentName */,
-                                                                                 const GALGAS_stringset /* constinArgument_inIndexNameSet */,
-                                                                                 GALGAS_semanticInstructionListForGeneration & ioArgument_ioInstructionListForGeneration,
-                                                                                 GALGAS_variableMap & ioArgument_ioVariableMap,
-                                                                                 GALGAS_uint & /* ioArgument_ioSelectMethodCount */,
-                                                                                 C_Compiler * inCompiler
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_nonterminalCallInstruction * object = (const cPtr_nonterminalCallInstruction *) inObject ;
-  macroValidSharedObject (object, cPtr_nonterminalCallInstruction) ;
-  GALGAS_nonterminalLabelMap var_labelMap_4045 ;
-  constinArgument_inNonterminalMap.method_searchKey (object->mProperty_mNonterminalName, var_labelMap_4045, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 90)) ;
-  GALGAS_formalParameterSignature var_signature_4084 ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, object->mProperty_mLabelName.getter_string (SOURCE_FILE ("instruction-non-terminal.galgas", 92)).objectCompare (GALGAS_string ("parse"))).boolEnum () ;
-  if (kBoolTrue == test_0) {
-    var_signature_4084 = GALGAS_formalParameterSignature::constructor_emptyList (SOURCE_FILE ("instruction-non-terminal.galgas", 93)) ;
-  }else if (kBoolFalse == test_0) {
-    GALGAS_formalParameterListForGeneration joker_4189 ; // Joker input parameter
-    GALGAS_location joker_4203 ; // Joker input parameter
-    var_labelMap_4045.method_searchKey (object->mProperty_mLabelName, joker_4189, var_signature_4084, joker_4203, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 95)) ;
-  }
-  GALGAS_actualParameterListForGeneration var_actualParameterListForGeneration_4600 ;
-  {
-  routine_analyzeRoutineArguments (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, object->mProperty_mNonterminalName, GALGAS_string ("'<").add_operation (object->mProperty_mNonterminalName.getter_string (SOURCE_FILE ("instruction-non-terminal.galgas", 103)), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 103)).add_operation (GALGAS_string (">' nonterminal declaration"), inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 103)), var_signature_4084, object->mProperty_mActualParameterList, ioArgument_ioVariableMap, ioArgument_ioInstructionListForGeneration, var_actualParameterListForGeneration_4600, inCompiler  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 98)) ;
-  }
-  callExtensionMethod_analyzeSDT ((const cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult *) object->mProperty_mGrammarInstructionSyntaxDirectedTranslationResult.ptr (), constinArgument_inAnalysisContext, constinArgument_inHasTranslateFeature, ioArgument_ioVariableMap, inCompiler COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 111)) ;
-  ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_nonterminalInstructionForGeneration::constructor_new (object->mProperty_mInstructionLocation, object->mProperty_mNonterminalName.getter_string (SOURCE_FILE ("instruction-non-terminal.galgas", 119)), object->mProperty_mLabelName.getter_string (SOURCE_FILE ("instruction-non-terminal.galgas", 120)), var_actualParameterListForGeneration_4600, object->mProperty_mGrammarInstructionSyntaxDirectedTranslationResult  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 117))  COMMA_SOURCE_FILE ("instruction-non-terminal.galgas", 117)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineExtensionMethod_nonterminalCallInstruction_analyzeSyntaxInstruction (void) {
-  enterExtensionMethod_analyzeSyntaxInstruction (kTypeDescriptor_GALGAS_nonterminalCallInstruction.mSlotID,
-                                                 extensionMethod_nonterminalCallInstruction_analyzeSyntaxInstruction) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_nonterminalCallInstruction_analyzeSyntaxInstruction (defineExtensionMethod_nonterminalCallInstruction_analyzeSyntaxInstruction, NULL) ;
 

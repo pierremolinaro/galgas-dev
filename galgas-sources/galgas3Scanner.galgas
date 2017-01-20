@@ -107,7 +107,7 @@ style commentStyle -> "Comments"
 
 $identifier$ ! tokenString error message "an identifier"
 
-list galgasKeyWordList style keywordsStyle error message "the '%K' keyword"{
+list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "abstract",
   "after",
   "array",
@@ -162,7 +162,6 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword"{
   "or",
   "override",
   "parse",
-#  "poison",
   "private",
   "proc",
   "project",
@@ -202,6 +201,10 @@ rule isUnicodeLetter {
   end
   send search identifierString in galgasKeyWordList default $identifier$
 }
+
+#------------------------------- GALGAS Unicode letter ------------------
+
+func galgasUnicodeLetter : 'a'->'z' | 'A'->'Z'
 
 #------------------------------- Integer, floating Point Constant ------------------
 @double floatValue
@@ -557,7 +560,7 @@ rule '$' {
 }
 
 # ----------------------------- Delimitors ---------------------------------------
-list galgasDelimitorsList style delimitersStyle error message "the '%K' delimitor"{
+list galgasDelimitorsList style delimitersStyle error message "the '%K' delimitor" {
   "*",    ",",   "+",  "&+", "&-", "&*", "&/",
   ">",    ";",   ":",  ":>",
   "-",    "(",   ")",  "->",

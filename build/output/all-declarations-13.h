@@ -1723,6 +1723,17 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public : virtual void nt_lexical_5F_factor_ (GALGAS_lexicalExpressionAST & outArgument0,
                                                C_Lexique_galgas_33_Scanner * inCompiler) ;
 
+//------------------------------------- 'lexical_function_declaration' non terminal
+//--- 'parse' label
+  public : virtual void nt_lexical_5F_function_5F_declaration_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_lexical_5F_function_5F_declaration_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_lexical_5F_function_5F_declaration_ (GALGAS_lexicalFunctionListAST & ioArgument0,
+                                                                C_Lexique_galgas_33_Scanner * inCompiler) ;
+
 //------------------------------------- 'lexical_implicit_rule' non terminal
 //--- 'parse' label
   public : virtual void nt_lexical_5F_implicit_5F_rule_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;

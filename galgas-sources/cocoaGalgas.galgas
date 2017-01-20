@@ -1,4 +1,4 @@
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #                                                                                                                      *
 #  Cocoa component for GALGAS                                                                                          *
 #                                                                                                                      *
@@ -12,105 +12,109 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 gui cocoa {
-with option galgas_cli_options
+  with option galgas_cli_options
 
-nibAndMainClass : "GGSUpdateCocoaGalgas"
+  #····················································································································*
 
-#----------------------------------------------------------------------------------------------------------------------*
+  nibAndMainClass : "GGSUpdateCocoaGalgas"
 
-with lexique galgas3Scanner {
-  fileExtension : "galgasProject"
-  fileExtension : "galgas"
-  blockComment : "#"
-  title: "Source GALGAS"
-  label $before$, ${$
-  label $after$, ${$
-  label $map$, $@type$
-  label $sharedmap$, $@type$
-  label $list$, $@type$
-  label $sortedlist$, $@type$
-  label $enum$, $@type$
-  label $class$, $@type$
-  label $extern$, $@type$
-  label $struct$, $@type$
-  label $rule$, $<non_terminal>$
-  label $proc$, $identifier$
-  label $func$, $identifier$
-  label $func$, $%attribute$, $identifier$
-  label $filewrapper$, $identifier$, $in$
+  #····················································································································*
 
-  label $abstract$, $method$, $@type$, $identifier$
-  label $override$, $method$, $@type$, $identifier$
-  label $method$, $@type$, $identifier$
-
-  label $abstract$, $getter$, $@type$, $identifier$
-  label $override$,  $getter$, $@type$, $identifier$
-  label $getter$, $@type$, $identifier$
-
-  label $abstract$, $setter$, $@type$, $identifier$
-  label $override$,  $setter$, $@type$, $identifier$
-  label $setter$, $@type$, $identifier$
-
-  label $syntax$, $extension$, $identifier$
-
-  label $case$, $.$, $"string"$
-  label * $commentMark$ (2, 0)
-  label $\$terminal\$$, $!$ -
-  label $\$terminal\$$, $error$ -
-
+  with lexique galgas3Scanner {
+    fileExtension : "galgasProject"
+    fileExtension : "galgas"
+    blockComment : "#"
+    title: "Source GALGAS"
+    label $before$, ${$
+    label $after$, ${$
+    label $map$, $@type$
+    label $sharedmap$, $@type$
+    label $list$, $@type$
+    label $sortedlist$, $@type$
+    label $enum$, $@type$
+    label $class$, $@type$
+    label $extern$, $@type$
+    label $struct$, $@type$
+    label $rule$, $<non_terminal>$
+    label $proc$, $identifier$
+    label $func$, $identifier$
+    label $func$, $%attribute$, $identifier$
+    label $filewrapper$, $identifier$, $in$
   
-  textMacro "Class" :
-    "class @aClassName : @superClassName {\n"
-    "  @aType mAnAttribute\n"
-    "}\n"
+    label $abstract$, $method$, $@type$, $identifier$
+    label $override$, $method$, $@type$, $identifier$
+    label $method$, $@type$, $identifier$
   
-  textMacro "Enum" :
-    "enum @aType {\n"
-    "  constant1, constant2\n"
-    "}\n"
+    label $abstract$, $getter$, $@type$, $identifier$
+    label $override$,  $getter$, $@type$, $identifier$
+    label $getter$, $@type$, $identifier$
   
-  textMacro "List" :
-    "list @type {\n"
-    "  @aType mAnAttribute\n"
-    "}\n"
+    label $abstract$, $setter$, $@type$, $identifier$
+    label $override$,  $setter$, $@type$, $identifier$
+    label $setter$, $@type$, $identifier$
   
-  textMacro "List Map" :
-    "list @type {\n"
-    "  @aType mAnAttribute\n"
-    "}\n"
-    "listmap @myListMap (@aList)\n"
+    label $syntax$, $extension$, $identifier$
   
-  textMacro "Map" :
-    "map @type {\n"
-    "  @aType mAnAttribute\n"
-    "  insert insertKey error message \"the '%K' key is already declared in %L\"\n"
-    "  search searchKey error message \"there is no '%K' key\"\n"
-    "}\n"
+    label $case$, $.$, $"string"$
+    label * $commentMark$ (2, 0)
+    label $\$terminal\$$, $!$ -
+    label $\$terminal\$$, $error$ -
   
-  textMacro "Sorted List" :
-    "sortedlist @type {\n"
-    "  @string mFirstAttribute\n"
-    "  @bool mSecondAttribute\n"
-    "}{\n"
-    "  mFirstAttribute >, mSecondAttribute <\n"
-    "}\n"
-  
-  textMacro "Struct" :
-    "struct @type {\n"
-    "  @aType mAnAttribute\n"
-    "}\n"
+    
+    textMacro "Class" :
+      "class @aClassName : @superClassName {\n"
+      "  @aType mAnAttribute\n"
+      "}\n"
+    
+    textMacro "Enum" :
+      "enum @aType {\n"
+      "  constant1, constant2\n"
+      "}\n"
+    
+    textMacro "List" :
+      "list @type {\n"
+      "  @aType mAnAttribute\n"
+      "}\n"
+    
+    textMacro "List Map" :
+      "list @type {\n"
+      "  @aType mAnAttribute\n"
+      "}\n"
+      "listmap @myListMap (@aList)\n"
+    
+    textMacro "Map" :
+      "map @type {\n"
+      "  @aType mAnAttribute\n"
+      "  insert insertKey error message \"the '%K' key is already declared in %L\"\n"
+      "  search searchKey error message \"there is no '%K' key\"\n"
+      "}\n"
+    
+    textMacro "Sorted List" :
+      "sortedlist @type {\n"
+      "  @string mFirstAttribute\n"
+      "  @bool mSecondAttribute\n"
+      "}{\n"
+      "  mFirstAttribute >, mSecondAttribute <\n"
+      "}\n"
+    
+    textMacro "Struct" :
+      "struct @type {\n"
+      "  @aType mAnAttribute\n"
+      "}\n"
+  }
+
+  #····················································································································*
+
+  with lexique galgasTemplateScanner {
+    fileExtension : "galgasTemplate"
+    title: "Template"
+  }
+
+  #····················································································································*
+
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
-
-with lexique galgasTemplateScanner {
-  fileExtension : "galgasTemplate"
-  title: "Template"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-}
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
