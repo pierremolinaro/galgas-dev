@@ -1130,6 +1130,7 @@ override method @lexiqueComponentAST semanticAnalysis
     var cocoaHeader = [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
          !lexiqueClassName
          !lexiqueAnalysisContext
+         !mLexicalFunctionListAST
     ]
     cocoaHeader += [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone3
       !lexiqueClassName
@@ -1150,6 +1151,7 @@ override method @lexiqueComponentAST semanticAnalysis
       !mIndexingListAST
       !mLexicalStyleList
       !mTemplateDelimitorList
+      !mLexicalFunctionListAST
     ]
   #---
     ioSemanticDeclarationListForGeneration +=

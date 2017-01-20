@@ -7209,8 +7209,16 @@ C_String C_Lexique_galgas_33_Scanner::getCurrentTokenString (const cToken * inTo
 //            Unicode test functions                                                                                   *
 //---------------------------------------------------------------------------------------------------------------------*
  
-bool C_Lexique_galgas_33_Scanner::galgasUnicodeLetter (void) {
-  return testForInputUTF32CharRange (TO_UNICODE ('a'), TO_UNICODE ('z')) || testForInputUTF32CharRange (TO_UNICODE ('A'), TO_UNICODE ('Z')) ;
+bool C_Lexique_galgas_33_Scanner::galgasUnicodeLetter (const utf32 inUnicodeCharacter) {
+  return ((0x61 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x7A)) ||
+         ((0x41 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x5A)) ||
+         ((0xC0 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0xD6)) ||
+         ((0xD8 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0xF6)) ||
+         ((0xF8 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x2B4)) ||
+         ((0x38E <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x3A1)) ||
+         ((0x3A3 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x3F5)) ||
+         ((0x3F7 <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x481)) ||
+         ((0x48A <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= 0x523)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7233,11 +7241,11 @@ bool C_Lexique_galgas_33_Scanner::parseLexicalToken (void) {
     token.mLexicalAttribute_uint_36__34_value = 0 ;
     mTokenStartLocation = mCurrentLocation ;
     try{
-      if (testForCharWithFunction (isUnicodeLetter)) {
+      if (testForCharWithFunction (galgasUnicodeLetter)) {
         do {
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_identifierString, ::scanner_function_toLower (*this, previousChar ())) ;
           ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-          if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+          if (testForCharWithFunction (galgasUnicodeLetter) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
           }else{
             mLoop = false ;
           }
@@ -7397,10 +7405,10 @@ bool C_Lexique_galgas_33_Scanner::parseLexicalToken (void) {
         token.mTokenCode = kToken__40_type ;
         enterToken (token) ;
       }else if (testForInputUTF32Char (TO_UNICODE ('%'))) {
-        if (testForCharWithFunction (isUnicodeLetter)) {
+        if (testForCharWithFunction (galgasUnicodeLetter)) {
           do {
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32Char (TO_UNICODE ('-')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
+            if (testForCharWithFunction (galgasUnicodeLetter) || testForInputUTF32Char (TO_UNICODE ('-')) || testForInputUTF32Char (TO_UNICODE ('_')) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9'))) {
             }else{
               mLoop = false ;
             }
@@ -7811,10 +7819,10 @@ bool C_Lexique_galgas_33_Scanner::parseLexicalToken (void) {
         }else if (testForInputUTF32Char (TO_UNICODE ('<'))) {
           token.mTokenCode = kToken__3C__3C_ ;
           enterToken (token) ;
-        }else if (testForCharWithFunction (isUnicodeLetter)) {
+        }else if (testForCharWithFunction (galgasUnicodeLetter)) {
           do {
             ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
-            if (testForCharWithFunction (isUnicodeLetter) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
+            if (testForCharWithFunction (galgasUnicodeLetter) || testForInputUTF32CharRange (TO_UNICODE ('0'), TO_UNICODE ('9')) || testForInputUTF32Char (TO_UNICODE ('_'))) {
             }else{
               mLoop = false ;
             }

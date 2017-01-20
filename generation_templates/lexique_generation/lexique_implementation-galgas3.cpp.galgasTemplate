@@ -199,8 +199,8 @@ end
  
 %
   for () in UNICODE_TEST_FUNCTIONS do
-    %bool C_Lexique_%!LEXIQUE_IDENTIFIER%::%![mFunctionName identifierRepresentation]% (void) {\n%
-    %  return %![mLexicalExpression generateConditionCode !context:LEXIQUE_ANALYSIS_CONTEXT]% ;\n%
+    %bool C_Lexique_%!LEXIQUE_IDENTIFIER%::%![mFunctionName identifierRepresentation]% (const utf32 inUnicodeCharacter) {\n%
+    %  return %![mLexicalExpression generateForUnicodeTestFunctions]% ;\n%
     %}\n\n%
   end
 %//---------------------------------------------------------------------------------------------------------------------*

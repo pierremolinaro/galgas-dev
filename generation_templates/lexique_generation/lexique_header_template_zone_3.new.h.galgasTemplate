@@ -38,7 +38,7 @@
 //--- Unicode test functions
 %
   for () in UNICODE_TEST_FUNCTIONS
-  do %  public : bool %![mFunctionName identifierRepresentation]% (void) ;\n%
+  do %  public : static bool %![mFunctionName identifierRepresentation]% (const utf32 inUnicodeCharacter) ;\n%
   end
 %
 //--- Indexing directory
