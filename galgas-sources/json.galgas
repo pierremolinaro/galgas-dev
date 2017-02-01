@@ -1,0 +1,252 @@
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+#                                                                                                                      *
+#  GALGAS JSON parser                                                                                                  *
+#                                                                                                                      *
+#  Copyright (C) 2017, ..., 2017 Pierre Molinaro.                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+template lexique jsonScanner {
+
+  #··· Styles ··········································································································
+
+  style keywordsStyle -> "Keywords"
+  style delimitersStyle -> "Delimiters"
+  style stringStyle -> "String"
+  style integerStyle -> "Integer"
+
+  #··· Delimiters ······································································································
+
+  list delimiterList style delimitersStyle error message "the '%K' delimiter" {
+    "[", "]", "{", "}", ":", ","
+  }
+  
+  rule list delimiterList
+  
+  #··· Reserved Words ··································································································
+
+  list reservedWordList style keywordsStyle error message "the '%K' reserved word" {
+    "false",     "null",    "true"
+  }
+  
+  rule list reservedWordList
+  
+  #··· String ··········································································································
+
+  @string tokenString
+  @uint uint32value
+  @char charValue
+  $"string"$ ! tokenString  style stringStyle %nonAtomicSelection error message "a character string \"...\""
+
+  message incorrectStringEnd : "string does not end with '\"'"
+  message invalideUnicodeDefinition4 : "\\u should be followed by exactly four hexadecimal digits"
+  message internalError : "internal error"
+  message unassignedUnicodeValue : "this value does not correspond to an assigned Unicode point"
+  
+  rule '"' {
+    repeat
+    while '\\' :
+      select
+      case 'b' :
+        enterCharacterIntoString (!?tokenString !'\u0008' )
+      case 'f' :
+        enterCharacterIntoString (!?tokenString !'\u000C' )
+      case 'n' :
+        enterCharacterIntoString (!?tokenString !'\u000A' )
+      case 'r' :
+        enterCharacterIntoString (!?tokenString !'\u000D' )
+      case 't' :
+        enterCharacterIntoString (!?tokenString !'\u0009' )
+      case '\\' :
+        enterCharacterIntoString (!?tokenString !'\\' )
+      case '/' :
+        enterCharacterIntoString (!?tokenString !'/' )
+      case '"' :
+        enterCharacterIntoString (!?tokenString !'"' )
+      case 'u' :
+        select
+        case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+          enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError)
+          select
+          case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+            enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError)
+            select
+            case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+             enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError)
+              select
+              case '0' -> '9' | 'a' -> 'f' | 'A' -> 'F' :
+                enterHexDigitIntoUInt (!* !?uint32value error internalError, internalError)
+                convertUnsignedNumberToUnicodeChar (!?uint32value !?charValue error unassignedUnicodeValue)
+                enterCharacterIntoString (!?tokenString !charValue)
+              default
+                error invalideUnicodeDefinition4
+              end
+            default
+              error invalideUnicodeDefinition4
+            end
+          default
+            error invalideUnicodeDefinition4
+          end
+        default
+          error invalideUnicodeDefinition4
+        end
+      default
+        error invalideUnicodeDefinition4
+      end
+    while ' ' | '!' | '#'-> '[' | ']' -> '\U0010FFFF' :
+      enterCharacterIntoString (!?tokenString !*)
+    end
+    select
+    case '"' :
+      send $"string"$
+    default
+      error incorrectStringEnd
+    end
+  }
+  
+  #··· Number ··········································································································
+
+  @bigint bigintValue
+  $integer$ ! bigintValue  style integerStyle error message "a decimal number"
+
+  rule '0'->'9' {
+    enterCharacterIntoString (!?tokenString !*)
+    repeat
+    while '0'->'9' :
+      enterCharacterIntoString (!?tokenString !*)
+    end
+    convertDecimalStringIntoBigInt (!tokenString !?bigintValue error internalError)
+    send $integer$
+  }
+
+  rule '-' {
+    repeat
+     enterCharacterIntoString (!?tokenString !*)
+    while '0'->'9' :
+    end
+    convertDecimalStringIntoBigInt (!tokenString !?bigintValue error internalError)
+    negateBigInt (!?bigintValue)
+    send $integer$
+  }
+
+  #··· Separators ······································································································
+  
+  rule '\u0009' | '\u000A' | '\u000D' | ' ' {
+  }
+
+  #·····················································································································
+
+}
+
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+enum @jsonValue {
+  case jsonNull
+  case jsonTrue
+  case jsonFalse
+  case jsonObject (@jsonObjectValue objectValue)
+  case jsonArray (@jsonArrayValue arrayValue)
+  case jsonInteger (@bigint integerValue)
+  case jsonString (@string stringValue)
+}
+
+#·······················································································································
+
+list @jsonObjectValue {
+  @string mKey
+  @jsonValue mValue
+}
+
+#·······················································································································
+
+list @jsonArrayValue {
+  @jsonValue mValue
+}
+
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+syntax jsonSyntax (jsonScanner) {
+
+  #·····················································································································
+
+  rule <JSON_text> !@jsonValue outValue {
+    <value> ?outValue
+  }
+
+  #·····················································································································
+
+  rule <value> !@jsonValue outValue {
+    select
+      $false$
+      outValue = .jsonFalse
+    or
+      $null$
+      outValue = .jsonNull
+    or
+      $true$
+      outValue = .jsonTrue
+    or
+      <object> ?let @jsonObjectValue objectValue
+      outValue = .jsonObject {!objectValue:objectValue}
+    or
+      <array> ?let @jsonArrayValue arrayValue
+      outValue = .jsonArray {!arrayValue:arrayValue}
+    or
+      $integer$ ?let integerValue
+      outValue = .jsonInteger {!integerValue:integerValue.bigint}
+    or
+      $"string"$ ?let stringValue
+      outValue = .jsonString {!stringValue:stringValue.string}
+    end
+  }
+
+  #·····················································································································
+
+  rule <object> !@jsonObjectValue outObjectValue {
+    ${$
+    outObjectValue = {}
+    repeat
+      $"string"$ ?let keyValue  
+      $:$
+      <value> ?let value
+      outObjectValue += !keyValue !value
+    while
+      $,$
+    end
+    $}$
+  }
+
+  #·····················································································································
+
+  rule <array> !@jsonArrayValue outArrayValue {
+    $[$
+    outArrayValue = {}
+    repeat
+      <value> ?let value
+      outArrayValue += !value
+    while
+      $,$
+    end
+    $]$
+  }
+
+  #·····················································································································
+
+}
+
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+grammar jsonGrammar "LL1" {
+  syntax jsonSyntax
+  <JSON_text> !@jsonValue outValue
+}
+
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
