@@ -1198,8 +1198,8 @@ const cMapElement * AC_GALGAS_map::searchForReadingAttribute (const GALGAS_strin
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement * cSharedMapRoot::searchForReadWriteAttribute (const GALGAS_string & inKey,
-                                                           C_Compiler * /* inCompiler */
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   macroUniqueSharedObject (this) ;
   cMapElement * result = NULL ;
   if (inKey.isValid ()) {
@@ -1210,6 +1210,12 @@ cMapElement * cSharedMapRoot::searchForReadWriteAttribute (const GALGAS_string &
       result = (cMapElement *) node->mAttributes.ptr () ;
       macroValidSharedObject (result, cMapElement) ;
       macroUniqueSharedObject (result) ;
+    }else{
+    //--- Build error message
+      C_String message ;
+      message << "cannot read attribute in map: the '" << key << "' key does not exist" ;
+    //--- Emit error message
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }
   }
   return result ;

@@ -14,37 +14,192 @@
 #  details.                                                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalFunctionListAST {
   @lstring mFunctionName
-  @lexicalExpressionAST mLexicalExpression
+  @lexicalFunctionExpressionAST mLexicalExpression
+}
+
+#······················································································································*
+
+abstract class @lexicalFunctionExpressionAST {
+}
+
+#······················································································································*
+
+class @lexicalFunctionOrExpressionAST : @lexicalFunctionExpressionAST {
+  @lexicalFunctionExpressionAST mLeftOperand
+  @lexicalFunctionExpressionAST mRightOperand
+}
+
+#······················································································································*
+
+class @lexicalFunctionCallAST : @lexicalFunctionExpressionAST {
+  @lstring mCalledFunctionName
+}
+
+#······················································································································*
+
+class @lexicalFunctionCharacterMatchAST : @lexicalFunctionExpressionAST {
+  @lchar mCharacter
+}
+
+#······················································································································*
+
+class @lexicalFunctionCharacterIntervalMatchAST : @lexicalFunctionExpressionAST {
+  @lchar mLowerBound
+  @lchar mUpperBound
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   Unicode Test functions                                                                                             *
+#   Production rules                                                                                                   *
 #----------------------------------------------------------------------------------------------------------------------*
 
-abstract getter @lexicalExpressionAST callsDefinedUnicodeTestFunctions ?let @stringset inDefinedUnicodeFunctionSet -> @bool
+syntax extension galgas3LexiqueComponentSyntax {
+
+  #····················································································································*
+
+  rule <lexical_function_declaration> ?!@lexicalFunctionListAST ioLexicalFunctionListAST {
+    $func$
+    $identifier$ ?let functionName
+    $:$
+    <lexical_function_expression> ?let @lexicalFunctionExpressionAST expression
+    ioLexicalFunctionListAST += !functionName !expression
+  }
+
+  #····················································································································*
+
+  rule <lexical_function_expression> !@lexicalFunctionExpressionAST outExpression {
+    <lexical_function_term> ?outExpression
+  }
+
+  #····················································································································*
+
+  rule <lexical_function_term> !@lexicalFunctionExpressionAST outExpression {
+    <lexical_function_factor> ?outExpression
+    repeat
+    while
+      $|$
+      <lexical_function_factor> ?let rightExpression
+      outExpression = @lexicalFunctionOrExpressionAST.new {!outExpression !rightExpression}
+    end
+  }
+
+  #····················································································································*
+
+  rule <lexical_function_factor> !@lexicalFunctionExpressionAST outExpression {
+    $'char'$ ?let character
+    select
+      outExpression = @lexicalFunctionCharacterMatchAST.new {!character}
+    or
+      $->$
+      $'char'$ ?let upperBound
+      outExpression = @lexicalFunctionCharacterIntervalMatchAST.new {!character !upperBound}
+    end
+  }
+
+  #····················································································································*
+
+  rule <lexical_function_factor> !@lexicalFunctionExpressionAST outExpression {
+    $identifier$ ?let functionName
+    outExpression = @lexicalFunctionCallAST.new {!functionName}
+  }
+
+  #····················································································································*
+
+}
 
 #----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
 
-override getter @lexicalStringMatchAST callsDefinedUnicodeTestFunctions
-  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
+proc lexicalUnicodeTestFunctionAnalysis
+  ?let @lexicalFunctionListAST inLexicalFunctionListAST
+  !@stringset outUnicodeTestFunctions
 {
-  result = true
+#--- check character constants
+  for lexicalFunction in inLexicalFunctionListAST do
+    [lexicalFunction.mLexicalExpression checkUnicodeConstants]
+  end
+#--- Check for no recursive call
+  outUnicodeTestFunctions = {
+#   !"unicodeToLower",
+#   !"unicodeToUpper",
+#   !"unicodeToUpper",
+   !"isUnicodeLetter",
+   !"isUnicodeMark",
+   !"isUnicodeNumber",
+   !"isUnicodeDecimalDigit",
+   !"isUnicodeASCIIHexDigit",
+   !"isUnicodeSeparator",
+   !"isUnicodeCommand",
+   !"isUnicodePunctuation",
+   !"isUnicodeSymbol"
+  }
+  var progress = true
+  var lexicalFunctionListAST = inLexicalFunctionListAST
+  loop ([inLexicalFunctionListAST length] + 1) while progress do
+    progress = false
+    var temporaryLexicalFunctionListAST = lexicalFunctionListAST
+    lexicalFunctionListAST = {}
+    for lexicalFunction in temporaryLexicalFunctionListAST do
+      if [outUnicodeTestFunctions hasKey !lexicalFunction.mFunctionName] then
+        error lexicalFunction.mFunctionName : "Unicode test function already defined"
+      elsif [lexicalFunction.mLexicalExpression callsDefinedUnicodeTestFunctions !outUnicodeTestFunctions] then
+        outUnicodeTestFunctions += !lexicalFunction.mFunctionName
+        progress = true
+      else
+        temporaryLexicalFunctionListAST += !lexicalFunction.mFunctionName !lexicalFunction.mLexicalExpression
+      end
+    end
+  end
+  for lexicalFunction in lexicalFunctionListAST do
+    error lexicalFunction.mFunctionName : "Circular definition of this lexical Unicode test function"
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   checkUnicodeConstants                                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+
+abstract method @lexicalFunctionExpressionAST checkUnicodeConstants
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @lexicalFunctionOrExpressionAST checkUnicodeConstants {
+  [mLeftOperand checkUnicodeConstants]
+  [mRightOperand checkUnicodeConstants]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @lexicalStringNotMatchAST callsDefinedUnicodeTestFunctions
-  ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
-{
-  result = true
+override method @lexicalFunctionCallAST checkUnicodeConstants {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @lexicalOrExpressionAST callsDefinedUnicodeTestFunctions
+override method @lexicalFunctionCharacterMatchAST checkUnicodeConstants {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @lexicalFunctionCharacterIntervalMatchAST checkUnicodeConstants {
+  if [mUpperBound.char uint] < [mLowerBound.char uint] then
+    error mUpperBound : "Upper bound code point should be greater or equal to lower bound code point"
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   callsDefinedUnicodeTestFunctions                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
+abstract getter @lexicalFunctionExpressionAST callsDefinedUnicodeTestFunctions ?let @stringset inDefinedUnicodeFunctionSet -> @bool
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @lexicalFunctionOrExpressionAST callsDefinedUnicodeTestFunctions
   ?let @stringset inDefinedUnicodeFunctionSet -> @bool
 {
   result = [mLeftOperand callsDefinedUnicodeTestFunctions !inDefinedUnicodeFunctionSet] &
@@ -53,15 +208,15 @@ override getter @lexicalOrExpressionAST callsDefinedUnicodeTestFunctions
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @lexicalCharacterSetMatchAST callsDefinedUnicodeTestFunctions
+override getter @lexicalFunctionCallAST callsDefinedUnicodeTestFunctions
   ?let @stringset inDefinedUnicodeFunctionSet -> @bool
 {
-  result = [inDefinedUnicodeFunctionSet hasKey !mCharacterSetName]
+  result = [inDefinedUnicodeFunctionSet hasKey !mCalledFunctionName]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @lexicalCharacterMatchAST callsDefinedUnicodeTestFunctions
+override getter @lexicalFunctionCharacterMatchAST callsDefinedUnicodeTestFunctions
   ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
 {
   result = true
@@ -69,31 +224,21 @@ override getter @lexicalCharacterMatchAST callsDefinedUnicodeTestFunctions
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @lexicalCharacterIntervalMatchAST callsDefinedUnicodeTestFunctions
+override getter @lexicalFunctionCharacterIntervalMatchAST callsDefinedUnicodeTestFunctions
   ?let @stringset unused inDefinedUnicodeFunctionSet -> @bool
 {
   result = true
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
+#   generateForUnicodeTestFunctions                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
 
-abstract getter @lexicalExpressionAST generateForUnicodeTestFunctions -> @string
+abstract getter @lexicalFunctionExpressionAST generateForUnicodeTestFunctions -> @string
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @lexicalStringMatchAST generateForUnicodeTestFunctions -> @string {
-  result = ""
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @lexicalStringNotMatchAST generateForUnicodeTestFunctions -> @string {
-  result = ""
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-override getter @lexicalOrExpressionAST generateForUnicodeTestFunctions -> @string {
+override getter @lexicalFunctionOrExpressionAST generateForUnicodeTestFunctions -> @string {
   result = [mLeftOperand generateForUnicodeTestFunctions]
   result += " ||\n         "
   result += [mRightOperand generateForUnicodeTestFunctions]
@@ -101,19 +246,19 @@ override getter @lexicalOrExpressionAST generateForUnicodeTestFunctions -> @stri
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @lexicalCharacterSetMatchAST generateForUnicodeTestFunctions -> @string {
-  result = mCharacterSetName.string + " (inUnicodeCharacter)"
+override getter @lexicalFunctionCallAST generateForUnicodeTestFunctions -> @string {
+  result = mCalledFunctionName.string + " (inUnicodeCharacter)"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @lexicalCharacterMatchAST generateForUnicodeTestFunctions -> @string {
+override getter @lexicalFunctionCharacterMatchAST generateForUnicodeTestFunctions -> @string {
   result = "(" + [[mCharacter.char uint] hexString] + " == UNICODE_VALUE (inUnicodeCharacter))"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @lexicalCharacterIntervalMatchAST generateForUnicodeTestFunctions -> @string {
+override getter @lexicalFunctionCharacterIntervalMatchAST generateForUnicodeTestFunctions -> @string {
   result = "((" + [[mLowerBound.char uint] hexString]
     + " <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= "
     + [[mUpperBound.char uint] hexString] + "))"

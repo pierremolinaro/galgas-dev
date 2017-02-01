@@ -81,6 +81,16 @@ before { #--- Extract LIBPM
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
+
+extern proc displayUnicodeLexicalTestFunctions
+
+before { 
+  if [option galgas_cli_options.displayUnicodeLexicalTestFunctions value] then
+    displayUnicodeLexicalTestFunctions ()
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
 #          galgas                                                                                                      *
 #                                                                                                                      *

@@ -873,3 +873,12 @@ void scanner_routine_convertBinaryStringIntoBigInt (C_Lexique & inLexique,
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+void scanner_routine_negateBigInt (C_Lexique & /* inLexique */,
+                                   C_BigInt & ioValue) {
+  ioValue.negateInPlace () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+

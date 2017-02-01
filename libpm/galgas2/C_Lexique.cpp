@@ -1664,7 +1664,8 @@ void C_Lexique::appendCharacterToLatexFile (const utf32 inUnicodeCharacter) {
   case '_' : mLatexOutputString << "\\_" ; break ;
   case '\\' : mLatexOutputString << "\\textbackslash{}"  ; break ;
   case '\'' : mLatexOutputString << "\\textquotesingle{}" ; break ;
-  case '"' : mLatexOutputString << "\\textquotedbl{}" ; break ;
+//  case '"' : mLatexOutputString << "\\textquotedbl{}" ; break ;
+  case '"' : mLatexOutputString << "\"" ; break ;
   default:
     mLatexOutputString.appendUnicodeCharacter (inUnicodeCharacter COMMA_HERE) ;
     mLatexOutputString << "{}" ;

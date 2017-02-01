@@ -212,6 +212,15 @@ proc buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap {
     !{!"inCharacterIsNotDecimalDigitError"}
     !false # Is not extern
   ]
+#--- negateBigInt
+  lexicalRoutineFormalArgumentList = {}
+  lexicalRoutineFormalArgumentList += !.lexicalInputOutputMode !.lexicalType_bigint !"ioBigInt"
+  [!?outLexicalRoutineMap insertKey
+    !.new {!"negateBigInt" !.here}
+    !lexicalRoutineFormalArgumentList
+    !{}
+    !false # Is not extern
+  ]
 #--- convertBinaryStringIntoBigInt
   lexicalRoutineFormalArgumentList = {}
   lexicalRoutineFormalArgumentList += !.lexicalInputMode !.lexicalType_string !"inString"

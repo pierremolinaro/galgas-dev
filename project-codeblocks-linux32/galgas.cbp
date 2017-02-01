@@ -67,6 +67,7 @@
   <Unit filename="../libpm/all-libpm.cpp" />
   <Unit filename="../libpm/galgas2/all-galgas.cpp" />
   <Unit filename="../libpm/galgas2/C_galgas_quiet_option.cpp" />
+  <Unit filename="../build/output/all-declarations-27.cpp" />
   <Unit filename="../build/output/all-declarations-26.cpp" />
   <Unit filename="../build/output/all-declarations-25.cpp" />
   <Unit filename="../build/output/all-declarations-24.cpp" />
@@ -109,6 +110,7 @@
   <Unit filename="../hand_coded_sources/LR1_computations.cpp" />
   <Unit filename="../hand_coded_sources/SLR_computations.cpp" />
   <Unit filename="../hand_coded_sources/check-gmp.cpp" />
+  <Unit filename="../hand_coded_sources/displayUnicodeLexicalTestFunctions.cpp" />
 
   <Unit filename="../libpm/gmp/32-mp_bases.c" />
   <Unit filename="../libpm/gmp/64-mp_bases.c" />

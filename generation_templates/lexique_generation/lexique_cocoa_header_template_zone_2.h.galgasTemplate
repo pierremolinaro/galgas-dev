@@ -59,8 +59,7 @@ enum {%!LEXIQUE_CLASS_NAME%_1_%
   for () in UNICODE_TEST_FUNCTIONS
   do %bool %![mFunctionName identifierRepresentation]% (const utf32 inUnicodeCharacter) ;\n\n%
   end
-%
-//---------------------------------------------------------------------------------------------------------------------*
+%//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                     S C A N N E R    C L A S S                                                                      *
 //                                                                                                                     *

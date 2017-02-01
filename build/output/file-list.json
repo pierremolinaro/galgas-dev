@@ -4,6 +4,7 @@
     "SOURCES"  :  [
         "all-galgas.cpp",
         "all-libpm.cpp",
+        "all-declarations-27.cpp",
         "all-declarations-26.cpp",
         "all-declarations-25.cpp",
         "all-declarations-24.cpp",
@@ -47,6 +48,7 @@
         "LR1_computations.cpp",
         "SLR_computations.cpp",
         "check-gmp.cpp",
+        "displayUnicodeLexicalTestFunctions.cpp",
 
         "32-mp_bases.c",
         "mpn-invertappr.c",

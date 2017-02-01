@@ -520,7 +520,6 @@ override method @onceFunctionDeclarationAST semanticAnalysis
       !returnType
       !resultVariableCppName
       !semanticInstructionListForGeneration}
-#    !""
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -899,40 +898,7 @@ override method @lexiqueComponentAST semanticAnalysis
     [!?lexicalFunctionMap insertKey !mFunctionName !lexicalFunctionFormalArgumentList !returnedArgumentType !"" !true]
   end
 #--------------------------------------- Unicode test functions
-  @stringset unicodeTestFunctions = {
-   !"unicodeToLower",
-   !"unicodeToUpper",
-   !"unicodeToUpper",
-   !"isUnicodeLetter",
-   !"isUnicodeMark",
-   !"isUnicodeNumber",
-   !"isUnicodeDecimalDigit",
-   !"isUnicodeASCIIHexDigit",
-   !"isUnicodeSeparator",
-   !"isUnicodeCommand",
-   !"isUnicodePunctuation",
-   !"isUnicodeSymbol"
-  }
-  var progress = true
-  var lexicalFunctionListAST = mLexicalFunctionListAST
-  loop ([mLexicalFunctionListAST length] + 1) while progress do
-    progress = false
-    var temporaryLexicalFunctionListAST = lexicalFunctionListAST
-    lexicalFunctionListAST = {}
-    for lexicalFunction in temporaryLexicalFunctionListAST do
-      if [unicodeTestFunctions hasKey !lexicalFunction.mFunctionName] then
-        error lexicalFunction.mFunctionName : "Unicode test function already defined"
-      elsif [lexicalFunction.mLexicalExpression callsDefinedUnicodeTestFunctions !unicodeTestFunctions] then
-        unicodeTestFunctions += !lexicalFunction.mFunctionName
-        progress = true
-      else
-        temporaryLexicalFunctionListAST += !lexicalFunction.mFunctionName !lexicalFunction.mLexicalExpression
-      end
-    end
-  end
-  for lexicalFunction in lexicalFunctionListAST do
-    error lexicalFunction.mFunctionName : "Circular definition of this lexical Unicode test function"
-  end
+  lexicalUnicodeTestFunctionAnalysis (!mLexicalFunctionListAST ?let unicodeTestFunctions)
 #---------------------------------------
   @lexiqueAnalysisContext lexiqueAnalysisContext = .new {
     !mLexiqueComponentName.string

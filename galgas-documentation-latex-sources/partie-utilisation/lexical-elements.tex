@@ -234,7 +234,7 @@ Plusieurs séquences d'échappements sont définies et listées dans le \refTabl
 
 \sectionLabel{Les constantes chaînes de caractères}{constantesLitteralesChainesGALGAS}
 
-Un \emph{chaîne de caractères littérale} est une séquence de caractères Unicode placé entre deux guillemets « \texttt{\textquotedbl} ». Exemple :
+Un \emph{chaîne de caractères littérale} est une séquence de caractères Unicode placé entre deux guillemets « \texttt{"} ». Exemple :
 
 \begin{galgas}
  "une chaîne", "Œnologie"
@@ -254,7 +254,8 @@ Plusieurs séquences d'échappements sont définies et listées dans le \refTabl
     \ggs="\\"=  & Barre oblique inversée & \texttt{U+5C} \\
     \ggs="\""=  & Guillemet & \texttt{U+22} \\
     \ggs="\uabcd"=  & Caractère du plan de base (4 chiffres hexadécimaux) & \texttt{U+ABCD} \\
-    \texttt{\textquotedbl\textbackslash Uabcdefgh\textquotedbl}  & Caractère Unicode (8 chiffres hexadécimaux) & \texttt{U+abcdefgh} \\
+%    \texttt{\textquotedbl\textbackslash Uabcdefgh\textquotedbl}  & Caractère Unicode (8 chiffres hexadécimaux) & \texttt{U+abcdefgh} \\
+    \texttt{"\textbackslash Uabcdefgh"}  & Caractère Unicode (8 chiffres hexadécimaux) & \texttt{U+abcdefgh} \\
    \end{tabular}
   \caption{Séquence d'échappement des constantes littérales chaîne de caractères}
   \labelTableau{echappementConstantesLiteralesChaine}
