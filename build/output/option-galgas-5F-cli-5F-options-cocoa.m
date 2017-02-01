@@ -34,6 +34,15 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
+    identifier:@"displayUnicodeLexicalTestFunctions"
+    commandChar:0
+    commandString:@"display-lexical-test-functions"
+    comment:@"Display Unicode Lexical Test Functions"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
     identifier:@"emitSyntaxDiagrams"
     commandChar:0
     commandString:@"emit-syntax-diagrams"

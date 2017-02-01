@@ -27,6 +27,9 @@ project (3:2:15) -> "galgas" {
   %codeblocks-linux32
   %codeblocks-linux64
 
+#--- JSON Parser
+  "galgas-sources/json.galgas"
+
 #--- Command Line Options
   "galgas-sources/galgas_cli_options.galgas"
 
@@ -203,6 +206,7 @@ project (3:2:15) -> "galgas" {
   %tool-source : "hand_coded_sources/LR1_computations.cpp"
   %tool-source : "hand_coded_sources/SLR_computations.cpp"
   %tool-source : "hand_coded_sources/check-gmp.cpp"
+  %tool-source : "hand_coded_sources/displayUnicodeLexicalTestFunctions.cpp"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

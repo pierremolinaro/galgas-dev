@@ -485,16 +485,6 @@ rule <lexical_factor> !@lexicalExpressionAST outExpression {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <lexical_function_declaration> ?!@lexicalFunctionListAST ioLexicalFunctionListAST {
-  $func$
-  $identifier$ ?let functionName
-  $:$
-  <lexical_expression> ?let @lexicalExpressionAST expression
-  ioLexicalFunctionListAST += !functionName !expression
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList {
   $list$
   $identifier$ ?let name

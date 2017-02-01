@@ -605,10 +605,9 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
   end
 #--- Check error messages are actually defined
   for () in mErrorMessageList do
-#    with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mValue : xyz_ do
-#      xyz_mMessageIsUsed := true ;
-#    end with ;
-    [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mValue.string]
+    with mValue in !?ioLexiqueAnalysisContext.mLexicalMessageMap error message searchKey  do
+      mMessageIsUsed = true
+    end
   end
 }
 
@@ -648,7 +647,8 @@ override method @lexicalTagInstructionAST checkLexicalInstruction
 
 override method @lexicalErrorInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
-  ?!@lexicalTagMap unused ioTagMap {
+  ?!@lexicalTagMap unused ioTagMap
+{
   [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mErrorMessageName.string]
 }
 

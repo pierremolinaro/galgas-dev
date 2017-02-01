@@ -31,6 +31,7 @@
 #include "utilities/basic-allocation.h"
 #include "utilities/C_PrologueEpilogue.h"
 #include "command_line_interface/F_Analyze_CLI_Options.h"
+#include "unicode_character_base.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -56,29 +57,6 @@ C_String commandLineArgumentAtIndex (const uint32_t inIndex) {
   }
   return result ;
 }
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-//#include "unicode_character_base.h"
-//
-//static void displayUnicodeCharacterRange (void) {
-//  uint32_t characterCount = 0 ;
-//  uint32_t intervalStart = 0 ;
-//  bool intervalIsOpened = false ;
-//  for (uint32_t codePoint = 0 ; codePoint < (17 * 0x10000) ; codePoint++) {
-//    if (isUnicodeCharacterAssigned (TO_UNICODE (codePoint)) && isUnicodeLetter (TO_UNICODE (codePoint))) {
-//      characterCount ++ ;
-//      if (! intervalIsOpened) {
-//        intervalStart = codePoint ;
-//        intervalIsOpened = true ;
-//      }
-//    }else if (intervalIsOpened) {
-//      printf ("[\\U%08X, \\U%08X], %u characters\n", intervalStart, codePoint - 1, codePoint - intervalStart) ;
-//      intervalIsOpened = false ;
-//    }
-//  }
-//  printf ("%u characters\n", characterCount) ;
-//}
 
 //---------------------------------------------------------------------------------------------------------------------*
 

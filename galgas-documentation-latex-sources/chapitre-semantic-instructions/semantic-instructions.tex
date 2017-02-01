@@ -825,8 +825,9 @@ rule <règle> ... {
   ...
 }
 \end{galgas}
+%\textquotedbl
 
-On pourrait que le fait que le terminal soit une chaîne plutôt qu'un identificateur ne change rien. Mais lorsque le terminal est une chaîne,  la valeur \ggs=valeurÀVérifier= ne contient pas les « \textquotedbl~» qui délimitent la constante chaîne de caractères. Si l'on fait le remplacement tel quel, les valeurs suggérées n'ont pas ces délimiteurs : lors du remplacement, ils sont perdus. Aussi, il faut explicitement les rajouter avant de soumettre les suggestions :
+On pourrait que le fait que le terminal soit une chaîne plutôt qu'un identificateur ne change rien. Mais lorsque le terminal est une chaîne,  la valeur \ggs=valeurÀVérifier= ne contient pas les «~"~» qui délimitent la constante chaîne de caractères. Si l'on fait le remplacement tel quel, les valeurs suggérées n'ont pas ces délimiteurs : lors du remplacement, ils sont perdus. Aussi, il faut explicitement les rajouter avant de soumettre les suggestions :
 \begin{galgas}
   let @stringset valeursPossibles = ...
   if [valeursPossibles hasKey !valeurÀVérifier] then
