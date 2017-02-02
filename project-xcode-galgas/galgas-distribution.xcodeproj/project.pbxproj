@@ -803,6 +803,9 @@
 		CFE167830E8E7A2B00AFDAFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE167820E8E7A2B00AFDAFC /* main.m */; };
 		CFE71ED615011E0C00EAD989 /* cEnumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE71ED415011E0C00EAD989 /* cEnumerator_range.cpp */; };
 		CFE71ED715011E0C00EAD989 /* cEnumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE71ED415011E0C00EAD989 /* cEnumerator_range.cpp */; };
+		CFEA1A0C1E43DA1C00556A1C /* displayUnicodeLexicalTestFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEA1A0B1E43DA1C00556A1C /* displayUnicodeLexicalTestFunctions.cpp */; };
+		CFEA1A0D1E43DA1C00556A1C /* displayUnicodeLexicalTestFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEA1A0B1E43DA1C00556A1C /* displayUnicodeLexicalTestFunctions.cpp */; };
+		CFEA1A0E1E43DA1C00556A1C /* displayUnicodeLexicalTestFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEA1A0B1E43DA1C00556A1C /* displayUnicodeLexicalTestFunctions.cpp */; };
 		CFECE4670FEFA5270031D087 /* OC_Lexique.m in Sources */ = {isa = PBXBuildFile; fileRef = CFECE4650FEFA5270031D087 /* OC_Lexique.m */; };
 		CFEF3A7B12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
 		CFEF3A7C12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
@@ -1418,6 +1421,7 @@
 		CFE167820E8E7A2B00AFDAFC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CFE71ED415011E0C00EAD989 /* cEnumerator_range.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cEnumerator_range.cpp; sourceTree = "<group>"; };
 		CFE71ED515011E0C00EAD989 /* cEnumerator_range.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cEnumerator_range.h; sourceTree = "<group>"; };
+		CFEA1A0B1E43DA1C00556A1C /* displayUnicodeLexicalTestFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = displayUnicodeLexicalTestFunctions.cpp; sourceTree = "<group>"; };
 		CFECE4640FEFA5270031D087 /* OC_Lexique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_Lexique.h; sourceTree = "<group>"; };
 		CFECE4650FEFA5270031D087 /* OC_Lexique.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_Lexique.m; sourceTree = "<group>"; };
 		CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cIndexingDictionary.cpp; sourceTree = "<group>"; };
@@ -2173,6 +2177,7 @@
 			isa = PBXGroup;
 			children = (
 				CFB6BEF71BB325A700664E85 /* check-gmp.cpp */,
+				CFEA1A0B1E43DA1C00556A1C /* displayUnicodeLexicalTestFunctions.cpp */,
 				CFF537C7057A524B00854C83 /* Grammar Component */,
 			);
 			fileEncoding = 5;
@@ -2773,6 +2778,7 @@
 				CFDB1A8A1CB6E8DD00D6FBB4 /* cLexiqueIntrospection.cpp in Sources */,
 				CF7DF1781D04619A0003A5C2 /* all-predefined-types.cpp in Sources */,
 				CF747DF31D55EE7F0011717F /* C_IssueWithFixIt.cpp in Sources */,
+				CFEA1A0C1E43DA1C00556A1C /* displayUnicodeLexicalTestFunctions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3034,6 +3040,7 @@
 				CFDB1A8B1CB6E8DD00D6FBB4 /* cLexiqueIntrospection.cpp in Sources */,
 				CF7DF1791D04619A0003A5C2 /* all-predefined-types.cpp in Sources */,
 				CF747DF41D55EE7F0011717F /* C_IssueWithFixIt.cpp in Sources */,
+				CFEA1A0D1E43DA1C00556A1C /* displayUnicodeLexicalTestFunctions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3295,6 +3302,7 @@
 				CF826D8E1CC3BED50062B347 /* cLexiqueIntrospection.cpp in Sources */,
 				CF7DF17A1D04619A0003A5C2 /* all-predefined-types.cpp in Sources */,
 				CF747DF51D55EE7F0011717F /* C_IssueWithFixIt.cpp in Sources */,
+				CFEA1A0E1E43DA1C00556A1C /* displayUnicodeLexicalTestFunctions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
