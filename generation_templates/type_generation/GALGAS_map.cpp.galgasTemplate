@@ -262,7 +262,7 @@ for () in ATTRIBUTE_LIST do index IDX
   %                           %!^%GALGAS_string inKey,\n%
   %                           %!^%C_Compiler * inCompiler\n%
   %                           %!^%COMMA_LOCATION_ARGS) {\n%
-  %  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;\n%
+  %  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;\n%
   %  cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
   %  if (NULL != p) {\n%
   %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
@@ -276,7 +276,7 @@ end
 cMapElement_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::readWriteAccessForWithInstruction (%?^%C_Compiler * inCompiler,\n%
              !^%const GALGAS_string & inKey\n%
              !^%COMMA_LOCATION_ARGS) {
-  cMapElement_%!TYPE_IDENTIFIER% * result = (cMapElement_%!TYPE_IDENTIFIER% *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+  cMapElement_%!TYPE_IDENTIFIER% * result = (cMapElement_%!TYPE_IDENTIFIER% *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
   macroNullOrValidSharedObject (result, cMapElement_%!TYPE_IDENTIFIER%) ;
   return result ;
 }

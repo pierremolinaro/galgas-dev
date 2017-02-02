@@ -15,7 +15,7 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-project (3:2:15) -> "galgas" {
+project (3:2:16) -> "galgas" {
   %libpmAtPath : "../libpm"
 #--- Targets
   %makefile-macosx
@@ -28,7 +28,7 @@ project (3:2:15) -> "galgas" {
   %codeblocks-linux64
 
 #--- JSON Parser
-  "galgas-sources/json.galgas"
+#  "galgas-sources/json.galgas"
 
 #--- Command Line Options
   "galgas-sources/galgas_cli_options.galgas"
