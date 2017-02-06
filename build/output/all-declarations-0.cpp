@@ -403,8 +403,8 @@ static const char * gSyntaxErrorMessage_galgasTemplateScanner_then = "the 'then'
 //--- Syntax error message for terminal '$true$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_true = "the 'true' keyword" ;
 
-//--- Syntax error message for terminal '$sharedmap$' :
-static const char * gSyntaxErrorMessage_galgasTemplateScanner_sharedmap = "the 'sharedmap' keyword" ;
+//--- Syntax error message for terminal '$shared$' :
+static const char * gSyntaxErrorMessage_galgasTemplateScanner_shared = "the 'shared' keyword" ;
 
 //--- Syntax error message for terminal '$unused$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_unused = "the 'unused' keyword" ;
@@ -637,7 +637,7 @@ C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t i
     gSyntaxErrorMessage_galgasTemplateScanner_template,
     gSyntaxErrorMessage_galgasTemplateScanner_then,
     gSyntaxErrorMessage_galgasTemplateScanner_true,
-    gSyntaxErrorMessage_galgasTemplateScanner_sharedmap,
+    gSyntaxErrorMessage_galgasTemplateScanner_shared,
     gSyntaxErrorMessage_galgasTemplateScanner_unused,
     gSyntaxErrorMessage_galgasTemplateScanner_var,
     gSyntaxErrorMessage_galgasTemplateScanner_warning,
@@ -1675,17 +1675,14 @@ static const utf32 kUnicodeString_galgasTemplateScanner_setter [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$sharedmap$'
-static const utf32 kUnicodeString_galgasTemplateScanner_sharedmap [] = {
+//--- Unicode string for '$shared$'
+static const utf32 kUnicodeString_galgasTemplateScanner_shared [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('h'),
   TO_UNICODE ('a'),
   TO_UNICODE ('r'),
   TO_UNICODE ('e'),
   TO_UNICODE ('d'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
   TO_UNICODE (0)
 } ;
 
@@ -1996,6 +1993,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galg
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_search, 6, C_Lexique_galgasTemplateScanner::kToken_search),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_select, 6, C_Lexique_galgasTemplateScanner::kToken_select),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_setter, 6, C_Lexique_galgasTemplateScanner::kToken_setter),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_shared, 6, C_Lexique_galgasTemplateScanner::kToken_shared),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_struct, 6, C_Lexique_galgasTemplateScanner::kToken_struct),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_switch, 6, C_Lexique_galgasTemplateScanner::kToken_switch),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_syntax, 6, C_Lexique_galgasTemplateScanner::kToken_syntax),
@@ -2017,7 +2015,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galg
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_override, 8, C_Lexique_galgasTemplateScanner::kToken_override),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_template, 8, C_Lexique_galgasTemplateScanner::kToken_template),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_extension, 9, C_Lexique_galgasTemplateScanner::kToken_extension),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_sharedmap, 9, C_Lexique_galgasTemplateScanner::kToken_sharedmap),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_sortedlist, 10, C_Lexique_galgasTemplateScanner::kToken_sortedlist),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_constructor, 11, C_Lexique_galgasTemplateScanner::kToken_constructor),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_filewrapper, 11, C_Lexique_galgasTemplateScanner::kToken_filewrapper)
@@ -2582,9 +2579,9 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
       s.appendCString ("true") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
-    case kToken_sharedmap:
+    case kToken_shared:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("sharedmap") ;
+      s.appendCString ("shared") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_unused:
@@ -2924,7 +2921,7 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [144] = {
   false /* template */,
   false /* then */,
   false /* true */,
-  false /* sharedmap */,
+  false /* shared */,
   false /* unused */,
   false /* var */,
   false /* warning */,
@@ -4000,7 +3997,7 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("template") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("then") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("true") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("sharedmap") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("shared") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("unused") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("var") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("warning") COMMA_THERE) ;
@@ -4160,6 +4157,7 @@ static void getKeywordsForIdentifier_galgasTemplateScanner (const C_String & inI
     ioList.appendObject ("search") ;
     ioList.appendObject ("select") ;
     ioList.appendObject ("setter") ;
+    ioList.appendObject ("shared") ;
     ioList.appendObject ("struct") ;
     ioList.appendObject ("switch") ;
     ioList.appendObject ("syntax") ;
@@ -4181,7 +4179,6 @@ static void getKeywordsForIdentifier_galgasTemplateScanner (const C_String & inI
     ioList.appendObject ("override") ;
     ioList.appendObject ("template") ;
     ioList.appendObject ("extension") ;
-    ioList.appendObject ("sharedmap") ;
     ioList.appendObject ("sortedlist") ;
     ioList.appendObject ("constructor") ;
     ioList.appendObject ("filewrapper") ;
@@ -4303,7 +4300,7 @@ uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t i
     1 /* galgasTemplateScanner_1_template */,
     1 /* galgasTemplateScanner_1_then */,
     1 /* galgasTemplateScanner_1_true */,
-    1 /* galgasTemplateScanner_1_sharedmap */,
+    1 /* galgasTemplateScanner_1_shared */,
     1 /* galgasTemplateScanner_1_unused */,
     1 /* galgasTemplateScanner_1_var */,
     1 /* galgasTemplateScanner_1_warning */,
@@ -4400,13 +4397,13 @@ typeComparisonResult GALGAS_templateInstructionAST::objectCompare (const GALGAS_
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionAST::GALGAS_templateInstructionAST (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionAST::GALGAS_templateInstructionAST (const cPtr_templateInstructionAST * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionAST) ;
 }
 
@@ -4847,13 +4844,13 @@ typeComparisonResult GALGAS_templateExpressionAST::objectCompare (const GALGAS_t
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST::GALGAS_templateExpressionAST (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateExpressionAST::GALGAS_templateExpressionAST (const cPtr_templateExpressionAST * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateExpressionAST) ;
 }
 
@@ -12772,13 +12769,13 @@ typeComparisonResult GALGAS_templateInstructionForGeneration::objectCompare (con
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionForGeneration::GALGAS_templateInstructionForGeneration (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateInstructionForGeneration::GALGAS_templateInstructionForGeneration (const cPtr_templateInstructionForGeneration * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_templateInstructionForGeneration) ;
 }
 

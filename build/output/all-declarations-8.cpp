@@ -33,13 +33,13 @@ typeComparisonResult GALGAS_abstractSyntaxInstructionForGrammarAnalysis::objectC
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_abstractSyntaxInstructionForGrammarAnalysis::GALGAS_abstractSyntaxInstructionForGrammarAnalysis (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_abstractSyntaxInstructionForGrammarAnalysis::GALGAS_abstractSyntaxInstructionForGrammarAnalysis (const cPtr_abstractSyntaxInstructionForGrammarAnalysis * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
 }
 
@@ -5257,8 +5257,8 @@ static const char * gSyntaxErrorMessage_galgas_33_Scanner_then = "the 'then' key
 //--- Syntax error message for terminal '$true$' :
 static const char * gSyntaxErrorMessage_galgas_33_Scanner_true = "the 'true' keyword" ;
 
-//--- Syntax error message for terminal '$sharedmap$' :
-static const char * gSyntaxErrorMessage_galgas_33_Scanner_sharedmap = "the 'sharedmap' keyword" ;
+//--- Syntax error message for terminal '$shared$' :
+static const char * gSyntaxErrorMessage_galgas_33_Scanner_shared = "the 'shared' keyword" ;
 
 //--- Syntax error message for terminal '$unused$' :
 static const char * gSyntaxErrorMessage_galgas_33_Scanner_unused = "the 'unused' keyword" ;
@@ -5503,7 +5503,7 @@ C_String C_Lexique_galgas_33_Scanner::getMessageForTerminal (const int16_t inTer
     gSyntaxErrorMessage_galgas_33_Scanner_template,
     gSyntaxErrorMessage_galgas_33_Scanner_then,
     gSyntaxErrorMessage_galgas_33_Scanner_true,
-    gSyntaxErrorMessage_galgas_33_Scanner_sharedmap,
+    gSyntaxErrorMessage_galgas_33_Scanner_shared,
     gSyntaxErrorMessage_galgas_33_Scanner_unused,
     gSyntaxErrorMessage_galgas_33_Scanner_var,
     gSyntaxErrorMessage_galgas_33_Scanner_warning,
@@ -6508,17 +6508,14 @@ static const utf32 kUnicodeString_galgas_33_Scanner_setter [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Unicode string for '$sharedmap$'
-static const utf32 kUnicodeString_galgas_33_Scanner_sharedmap [] = {
+//--- Unicode string for '$shared$'
+static const utf32 kUnicodeString_galgas_33_Scanner_shared [] = {
   TO_UNICODE ('s'),
   TO_UNICODE ('h'),
   TO_UNICODE ('a'),
   TO_UNICODE ('r'),
   TO_UNICODE ('e'),
   TO_UNICODE ('d'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
   TO_UNICODE (0)
 } ;
 
@@ -6829,6 +6826,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_search, 6, C_Lexique_galgas_33_Scanner::kToken_search),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_select, 6, C_Lexique_galgas_33_Scanner::kToken_select),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_setter, 6, C_Lexique_galgas_33_Scanner::kToken_setter),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_shared, 6, C_Lexique_galgas_33_Scanner::kToken_shared),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_struct, 6, C_Lexique_galgas_33_Scanner::kToken_struct),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_switch, 6, C_Lexique_galgas_33_Scanner::kToken_switch),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_syntax, 6, C_Lexique_galgas_33_Scanner::kToken_syntax),
@@ -6849,7 +6847,6 @@ static const C_unicode_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_override, 8, C_Lexique_galgas_33_Scanner::kToken_override),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_template, 8, C_Lexique_galgas_33_Scanner::kToken_template),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_extension, 9, C_Lexique_galgas_33_Scanner::kToken_extension),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_sharedmap, 9, C_Lexique_galgas_33_Scanner::kToken_sharedmap),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_sortedlist, 10, C_Lexique_galgas_33_Scanner::kToken_sortedlist),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_constructor, 11, C_Lexique_galgas_33_Scanner::kToken_constructor),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_filewrapper, 11, C_Lexique_galgas_33_Scanner::kToken_filewrapper)
@@ -7420,9 +7417,9 @@ C_String C_Lexique_galgas_33_Scanner::getCurrentTokenString (const cToken * inTo
       s.appendCString ("true") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
-    case kToken_sharedmap:
+    case kToken_shared:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("sharedmap") ;
+      s.appendCString ("shared") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_unused:
@@ -8772,7 +8769,7 @@ GALGAS_stringlist C_Lexique_galgas_33_Scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("template") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("then") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("true") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("sharedmap") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("shared") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("unused") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("var") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("warning") COMMA_THERE) ;
@@ -8938,6 +8935,7 @@ static void getKeywordsForIdentifier_galgas_33_Scanner (const C_String & inIdent
     ioList.appendObject ("search") ;
     ioList.appendObject ("select") ;
     ioList.appendObject ("setter") ;
+    ioList.appendObject ("shared") ;
     ioList.appendObject ("struct") ;
     ioList.appendObject ("switch") ;
     ioList.appendObject ("syntax") ;
@@ -8958,7 +8956,6 @@ static void getKeywordsForIdentifier_galgas_33_Scanner (const C_String & inIdent
     ioList.appendObject ("override") ;
     ioList.appendObject ("template") ;
     ioList.appendObject ("extension") ;
-    ioList.appendObject ("sharedmap") ;
     ioList.appendObject ("sortedlist") ;
     ioList.appendObject ("constructor") ;
     ioList.appendObject ("filewrapper") ;
@@ -9080,7 +9077,7 @@ uint32_t C_Lexique_galgas_33_Scanner::styleIndexForTerminal (const int32_t inTer
     1 /* galgas3Scanner_1_template */,
     1 /* galgas3Scanner_1_then */,
     1 /* galgas3Scanner_1_true */,
-    1 /* galgas3Scanner_1_sharedmap */,
+    1 /* galgas3Scanner_1_shared */,
     1 /* galgas3Scanner_1_unused */,
     1 /* galgas3Scanner_1_var */,
     1 /* galgas3Scanner_1_warning */,

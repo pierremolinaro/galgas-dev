@@ -339,7 +339,7 @@ proc generateProcedure
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# F U N C T I O N    I M P L E M E N A T I O N                              *
+# F U N C T I O N    I M P L E M E N A T I O N                                                                         *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -889,6 +889,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedPropertyList ALL_ATTRIBUTE_LIST
     ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
+    ?@bool IS_SHARED
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 }
 

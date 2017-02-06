@@ -645,6 +645,8 @@ class cParser_galgas_33_DeclarationsSyntax {
 
   protected : virtual int32_t select_galgas_33_DeclarationsSyntax_49 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
+  protected : virtual int32_t select_galgas_33_DeclarationsSyntax_50 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
 
 } ;
 
@@ -1078,10 +1080,11 @@ class GALGAS_classDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_classDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
                                                                     const class GALGAS_bool & inOperand1,
-                                                                    const class GALGAS_lstring & inOperand2,
+                                                                    const class GALGAS_bool & inOperand2,
                                                                     const class GALGAS_lstring & inOperand3,
-                                                                    const class GALGAS_lstringlist & inOperand4,
-                                                                    const class GALGAS_propertyInCollectionListAST & inOperand5
+                                                                    const class GALGAS_lstring & inOperand4,
+                                                                    const class GALGAS_lstringlist & inOperand5,
+                                                                    const class GALGAS_propertyInCollectionListAST & inOperand6
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1113,6 +1116,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classDeclarationAST
 class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_bool mProperty_mIsAbstract ;
+  public : GALGAS_bool mProperty_mIsShared ;
   public : GALGAS_lstring mProperty_mClassTypeName ;
   public : GALGAS_lstring mProperty_mSuperClassName ;
   public : GALGAS_lstringlist mProperty_mClassFeatureList ;
@@ -1121,6 +1125,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Constructor
   public : cPtr_classDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                      const GALGAS_bool & in_mIsAbstract,
+                                     const GALGAS_bool & in_mIsShared,
                                      const GALGAS_lstring & in_mClassTypeName,
                                      const GALGAS_lstring & in_mSuperClassName,
                                      const GALGAS_lstringlist & in_mClassFeatureList,

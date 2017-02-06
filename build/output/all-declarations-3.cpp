@@ -11136,13 +11136,13 @@ typeComparisonResult GALGAS_semanticExpressionAST::objectCompare (const GALGAS_s
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticExpressionAST::GALGAS_semanticExpressionAST (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticExpressionAST::GALGAS_semanticExpressionAST (const cPtr_semanticExpressionAST * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_semanticExpressionAST) ;
 }
 

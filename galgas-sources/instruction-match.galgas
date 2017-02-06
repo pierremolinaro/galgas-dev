@@ -163,7 +163,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
     expressionList += !matchedExpression
   #--- Check expression is an enum or a class instance
     let type = [matchedExpression mResultType]
-    if ([type mTypeKindEnum] != @typeKindEnum. classType) & ([type mTypeKindEnum] != @typeKindEnum. enumType) then
+    if (not [[type mTypeKindEnum] isClassType]) & ([type mTypeKindEnum] != @typeKindEnum. enumType) then
       error mEndOfExpressionLocation
       :"this expression is an instance of '@" + [type key] + "' type, but this type is neither an enumeration, neither a class"
     end
@@ -178,7 +178,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
     if [expressionList length] == [mMatchEntryList length] then
       for () in expressionList, () in mMatchEntryList do
         let type = [mExpression mResultType]
-        if [type mTypeKindEnum] == @typeKindEnum. classType then
+        if [[type mTypeKindEnum] isClassType] then
           if mIsType then
             let namedType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeNameOrEnumerationConstantName}
             @unifiedTypeMap-proxy t = type

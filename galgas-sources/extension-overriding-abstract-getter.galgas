@@ -120,7 +120,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
 #--- Return type
   let returnType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
 #--- Check type is an abstract class
-  if [selfType mTypeKindEnum] != .classType then
+  if not [[selfType mTypeKindEnum] isClassType] then
     error mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
     error mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType key] + "' is not an abstract class"

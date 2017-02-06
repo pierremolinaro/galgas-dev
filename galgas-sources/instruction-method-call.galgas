@@ -158,7 +158,7 @@ override method @methodCallInstructionForGeneration generateInstruction
   switch mKind
   case definedAsExtension :
     ioInclusionSet += !"method-" + [[mMethodBaseType key] fileNameRepresentation] + "-" + [mMethodName fileNameRepresentation]
-    if [mReceiverType mTypeKindEnum] == @typeKindEnum. classType then
+    if [[mReceiverType mTypeKindEnum] isClassType] then
       ioGeneratedCode += "callExtensionMethod_" + [mMethodName identifierRepresentation]
                       + " ((const cPtr_" + [[mReceiverExpression mResultType] identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
     else

@@ -31,7 +31,7 @@ gui cocoa {
     label $before$, ${$
     label $after$, ${$
     label $map$, $@type$
-    label $sharedmap$, $@type$
+    label $shared$, $map$, $@type$
     label $list$, $@type$
     label $sortedlist$, $@type$
     label $enum$, $@type$

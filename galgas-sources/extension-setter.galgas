@@ -113,7 +113,7 @@ override method @extensionSetterAST semanticAnalysis
   @string selfObjectAccessor
   @bool implementedAsFunction
 #--- Check self type is a class
-  if [selfType mTypeKindEnum] == @typeKindEnum. classType then
+  if [[selfType mTypeKindEnum] isClassType] then
     selfObjectName = "object"
     selfObjectAccessor = "object->"
     implementedAsFunction = false

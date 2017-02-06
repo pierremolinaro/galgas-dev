@@ -46,7 +46,7 @@ typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TY
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
-%if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end% () {
+%if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class (%![IS_SHARED cString]%)% else %GALGAS_%!SUPER_TYPE_IDENTIFIER% ()%end% {
 }
 
 %if HAS_DEFAULT_CONSTRUCTOR & not IS_ABSTRACT then
@@ -69,7 +69,7 @@ end
 %//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) :
-%if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end% (inSourcePtr) {
+%if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class (inSourcePtr, %![IS_SHARED cString]%)% else %GALGAS_%!SUPER_TYPE_IDENTIFIER% (inSourcePtr)%end% {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_%!TYPE_IDENTIFIER%) ;
 }
 

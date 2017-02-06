@@ -204,7 +204,7 @@ enum @predefinedTypeKindEnum {
 #----------------------------------------------------------------------------------------------------------------------*
 
 enum @typeKindEnum {
-  case classType 
+  case classType (@bool isShared)
   case enumType 
   case listType 
   case sortedListType 
@@ -223,7 +223,7 @@ enum @typeKindEnum {
 
 getter @typeKindEnum kind -> @string outResult {
   switch self
-    case classType : outResult = "class"
+    case classType (*) : outResult = "class"
     case enumType : outResult = "enumeration"
     case listType : outResult = "list"
     case sortedListType : outResult = "sorted list"
@@ -313,7 +313,7 @@ map @constantIndexMap {
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-sharedmap @unifiedTypeMap {
+shared map @unifiedTypeMap {
   @bool mIsPredefined
   @bool mIsConcrete # false if abstract class
   @unifiedTypeMap-proxy mSuperType

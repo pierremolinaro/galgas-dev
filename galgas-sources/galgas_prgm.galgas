@@ -15,6 +15,18 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
+#shared class @classeSemantiqueDeReference {
+#  @uint propriété %setter ;
+#}
+
+#before {
+#@classeSemantiqueDeReference a = .new {!10}
+#@classeSemantiqueDeReference b = a
+#[!?a setPropriété !5]
+#message "Propriété de a " + [a propriété] + "\n"
+#message "Propriété de b " + [b propriété] + "\n"
+#}
+
 #before {
 #  @stringset s1 = {}
 #  let @timer t = .start
