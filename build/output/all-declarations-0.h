@@ -176,7 +176,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
    kToken_template,
    kToken_then,
    kToken_true,
-   kToken_sharedmap,
+   kToken_shared,
    kToken_unused,
    kToken_var,
    kToken_warning,
@@ -8136,6 +8136,11 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
   } enumeration ;
   
 //--------------------------------- Private data member
+  private : AC_GALGAS_enumAssociatedValues mAssociatedValues ;
+  public : VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
+    return mAssociatedValues.unsafePointer () ;
+  }
+
   private : enumeration mEnum ;
 
 //--------------------------------- Accessors
@@ -8156,7 +8161,8 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_typeKindEnum constructor_arrayType (LOCATION_ARGS) ;
 
-  public : static class GALGAS_typeKindEnum constructor_classType (LOCATION_ARGS) ;
+  public : static class GALGAS_typeKindEnum constructor_classType (const class GALGAS_bool & inOperand0
+                                                                   COMMA_LOCATION_ARGS) ;
 
   public : static class GALGAS_typeKindEnum constructor_enumType (LOCATION_ARGS) ;
 
@@ -8189,6 +8195,10 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
 //--------------------------------- Setters
 
 //--------------------------------- Instance Methods
+  public : VIRTUAL_IN_DEBUG void method_classType (class GALGAS_bool & outArgument0,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const ;
+
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters

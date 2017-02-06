@@ -312,13 +312,13 @@ The element retrieved with \ggs+last+ method is at index equal to element count 
 
 By default and for every attribute, a getter is provided to retrieve the value of this attribute for an element at a given index. For example, for an attribute named \emph{name}, the \emph{nameAtIndex} getter is provided. It accepts one \ggs+@uint+ argument, the value of the index.
 
-You can disable the default getter generation, by using \ggs+feature %nogetter+.
+You can disable the default getter generation, by using \ggs+%nogetter+.
 
 For example:
 \begin{galgas}
 list @MyList {
   @string mFirstAttribute ;
-  @bool mSecondAttribute feature nogetter ;
+  @bool mSecondAttribute %nogetter ;
 }
 ...
 @MyList aList = ... ;
@@ -330,7 +330,7 @@ One getter is available: \ggs+mFirstAttributeAtIndex+; the \ggs+mSecondAttribute
 
 \subsection{Write Access}
 
-By default, no setter is provided for performing a direct write access to an attribute at a given index. You should use \ggs+feature %setter+ for enabling setter generation for a given attribute.
+By default, no setter is provided for performing a direct write access to an attribute at a given index. You should use \ggs+%setter+ for enabling setter generation for a given attribute.
 
 The setter name is the name of the attribute with the first letter capitalized, prefixed by \emph{set} and suffixed by \emph{AtIndex}: for an attribute named \emph{name}, the setter is named \emph{setNameAtIndex}. It accepts two arguments, the first one is the new attribute's value, the second one an \ggs+@uint+ argument, the value of the index.
 
@@ -338,7 +338,7 @@ For example:
 
 \begin{galgas}
 list @MyList {
-  @string mFirstAttribute feature setter ;
+  @string mFirstAttribute %setter ;
   @bool mSecondAttribute ;
 }
 ...

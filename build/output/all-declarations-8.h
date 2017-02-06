@@ -3097,7 +3097,7 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
    kToken_template,
    kToken_then,
    kToken_true,
-   kToken_sharedmap,
+   kToken_shared,
    kToken_unused,
    kToken_var,
    kToken_warning,

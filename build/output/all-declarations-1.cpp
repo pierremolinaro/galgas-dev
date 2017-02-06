@@ -97,13 +97,13 @@ typeComparisonResult GALGAS_semanticDeclarationAST::objectCompare (const GALGAS_
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticDeclarationAST::GALGAS_semanticDeclarationAST (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_semanticDeclarationAST::GALGAS_semanticDeclarationAST (const cPtr_semanticDeclarationAST * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_semanticDeclarationAST) ;
 }
 
@@ -204,13 +204,13 @@ typeComparisonResult GALGAS_lexicalExpressionAST::objectCompare (const GALGAS_le
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalExpressionAST::GALGAS_lexicalExpressionAST (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalExpressionAST::GALGAS_lexicalExpressionAST (const cPtr_lexicalExpressionAST * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalExpressionAST) ;
 }
 
@@ -291,13 +291,13 @@ typeComparisonResult GALGAS_lexicalInstructionAST::objectCompare (const GALGAS_l
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalInstructionAST::GALGAS_lexicalInstructionAST (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalInstructionAST::GALGAS_lexicalInstructionAST (const cPtr_lexicalInstructionAST * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalInstructionAST) ;
 }
 
@@ -1549,13 +1549,13 @@ typeComparisonResult GALGAS_abstractLexicalRuleAST::objectCompare (const GALGAS_
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_abstractLexicalRuleAST::GALGAS_abstractLexicalRuleAST (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_abstractLexicalRuleAST::GALGAS_abstractLexicalRuleAST (const cPtr_abstractLexicalRuleAST * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractLexicalRuleAST) ;
 }
 
@@ -5633,13 +5633,13 @@ typeComparisonResult GALGAS_lexicalSendDefaultActionAST::objectCompare (const GA
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalSendDefaultActionAST::GALGAS_lexicalSendDefaultActionAST (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalSendDefaultActionAST::GALGAS_lexicalSendDefaultActionAST (const cPtr_lexicalSendDefaultActionAST * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalSendDefaultActionAST) ;
 }
 
@@ -7022,13 +7022,13 @@ typeComparisonResult GALGAS_abstractLexicalRoutineActualArgumentAST::objectCompa
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_abstractLexicalRoutineActualArgumentAST::GALGAS_abstractLexicalRoutineActualArgumentAST (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_abstractLexicalRoutineActualArgumentAST::GALGAS_abstractLexicalRoutineActualArgumentAST (const cPtr_abstractLexicalRoutineActualArgumentAST * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_abstractLexicalRoutineActualArgumentAST) ;
 }
 
@@ -7474,13 +7474,13 @@ typeComparisonResult GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::obje
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST) ;
 }
 

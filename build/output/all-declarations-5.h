@@ -838,6 +838,26 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeKindE
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                                        @typeKindEnum enum, associated values                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cEnumAssociatedValues_typeKindEnum_classType : public cEnumAssociatedValues {
+  public : const GALGAS_bool mAssociatedValue0 ;
+
+//--- Constructor
+  public : cEnumAssociatedValues_typeKindEnum_classType (const GALGAS_bool & inAssociatedValue0
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+  public : virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;
+
+  public : virtual ~ cEnumAssociatedValues_typeKindEnum_classType (void) {}
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                 Extension getter '@typeKindEnum kind' (as function)                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

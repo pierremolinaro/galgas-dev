@@ -63,7 +63,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
 #--- Analyze "self", as receiver expression
   if [inAnalysisContext.mSelfTypeProxy isNull] then
     error mInstructionLocation: "'self' can be used only in extension setters"
-  elsif [inAnalysisContext.mSelfTypeProxy mTypeKindEnum] == @typeKindEnum. classType then
+  elsif [[inAnalysisContext.mSelfTypeProxy mTypeKindEnum] isClassType] then
     error mInstructionLocation: "'self' assignment is not allowed for class instances"
   end
 #--- Check assignment type compatibility

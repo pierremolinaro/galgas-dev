@@ -4,6 +4,7 @@
 
 class @classDeclarationAST : @semanticDeclarationAST {
   @bool mIsAbstract %nogetter
+  @bool mIsShared %nogetter
   @lstring mClassTypeName %nogetter
   @lstring mSuperClassName %nogetter # Empty if no super class
   @lstringlist mClassFeatureList %nogetter
@@ -19,12 +20,24 @@ syntax extension galgas3DeclarationsSyntax {
 
   rule <declaration>
    ?!@galgas3DeclarationAST ioDeclarations {
-    @bool mIsAbstract
+    @bool isAbstract
+    @bool isShared
     select
-      mIsAbstract = false
+      isShared = false
+      isAbstract = false
+    or
+      $shared$
+      isShared = true
+      isAbstract = false
     or
       $abstract$
-      mIsAbstract = true
+      isAbstract = true
+      select
+        isShared = false
+      or
+        $shared$
+        isShared = true
+      end
     end
     $class$
     var classNameList =@lstringlist {}
@@ -61,7 +74,8 @@ syntax extension galgas3DeclarationsSyntax {
     for () in classNameList do
       ioDeclarations.mDeclarationList += !@classDeclarationAST.new {
         !false # Is not predefined
-        !mIsAbstract
+        !isAbstract
+        !isShared
         !mValue
         !mSuperClassName # Empty if no super class
         !classFeatureList
@@ -146,11 +160,11 @@ override method @classDeclarationAST enterInSemanticContext
       ?4*
     ]
   #---
-    if typeKindEnum != @typeKindEnum. classType then
+    if not [typeKindEnum isClassType] then
       error mSuperClassName : "the @" + mSuperClassName + " should be a class type"
     end
   #--- Mark all setters as inherited
-    setterMap = @setterMap. emptyMap
+    setterMap = @setterMap.emptyMap
     for () in inheritedSetterMap do
       [!?setterMap insertKey
         !lkey
@@ -292,7 +306,7 @@ override method @classDeclarationAST enterInSemanticContext
     !mIsPredefined
     !not mIsAbstract # Concrete Type
     !superClassIndex
-    !@typeKindEnum. classType
+    !@typeKindEnum.classType {!isShared:mIsShared}
     !false # Does not support collection value
     !allTypedAttributeList
     !attributeMap
@@ -301,7 +315,7 @@ override method @classDeclarationAST enterInSemanticContext
     !getterMap
     !setterMap
     !instanceMethodMap
-    !@classMethodMap. emptyMap
+    !@classMethodMap.emptyMap
     !@enumerationDescriptorList.emptyList
     !0
     !@functionSignature.emptyList
@@ -338,13 +352,27 @@ override method @classDeclarationAST semanticAnalysis
   end
 #------ Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mClassTypeName}
+#--- Super class type
+  let superClassProxy = if mSuperClassName.string == ""
+    then @unifiedTypeMap-proxy.null
+    else @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mSuperClassName}
+  end
+#------ check "shared" status:
+# a base class can be freely declared as shared or not
+# a class should the same 'shared' shared status as its super class
+  if superClassProxy != .null then
+    [[superClassProxy mTypeKindEnum] classType ?isShared:let superClassIsShared]
+    if superClassIsShared & not mIsShared then
+      error mClassTypeName : "this class should be declared with 'shared' qualifier, as its super class"
+    elsif not superClassIsShared & mIsShared then
+      error mClassTypeName : "this class should be declared with no 'shared' qualifier, as its super class"
+    end
+  end
 #------ Super type, and class features
 # A class that has a super may not have any feature
 # A class without a super class admits the 'generatedInSeparateFile' feature
-  @unifiedTypeMap-proxy superClassProxy
   @typedPropertyList allAttributeList
-  if [mSuperClassName string] == "" then
-    superClassProxy = @unifiedTypeMap-proxy.null
+  if superClassProxy == .null then
     allAttributeList = @typedPropertyList.emptyList
     @bool generatedInSeparateFileFeature = false
     if [mClassFeatureList length] > 0 then
@@ -360,7 +388,6 @@ override method @classDeclarationAST semanticAnalysis
       end
     end
   else
-    superClassProxy = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mSuperClassName}
     allAttributeList = [superClassProxy mAllTypedAttributeList]
     if [mClassFeatureList length] > 0 then
       for () in mClassFeatureList do
@@ -410,7 +437,7 @@ override method @classDeclarationAST semanticAnalysis
     !@classTypeForGeneration.new {
       !selfType
       !mIsAbstract
-#      !mClassTypeName
+      !mIsShared
       !superClassProxy
       !allAttributeList
       !typedAttributeList
@@ -424,7 +451,7 @@ override method @classDeclarationAST semanticAnalysis
 
 class @classTypeForGeneration : @semanticTypeForGeneration {
   @bool mIsAbstract
-#  @lstring mClassTypeName
+  @bool mIsShared
   @unifiedTypeMap-proxy mSuperClass # Null if no super class
   @typedPropertyList mAllTypedAttributeList # Inherited followed by current attributes
   @typedPropertyList mTypedAttributeList
@@ -542,6 +569,7 @@ override method @classTypeForGeneration appendSpecificImplementation
     !mAllTypedAttributeList
     ![mAllTypedAttributeList subListWithRange !@range.new {!0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]}]
     !mIsAbstract
+    !mIsShared
     ![mTypeProxy mDefaultConstructorName] != ""
   ]
 }

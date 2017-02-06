@@ -10789,19 +10789,19 @@ GALGAS_unifiedTypeMap_2D_proxy extensionGetter_baseType (const GALGAS_unifiedTyp
   const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
   result_outBaseType = temp_0 ;
   if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 351)).isValid ()) {
-    uint32_t variant_19014 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 351)).uintValue () ;
-    bool loop_19014 = true ;
-    while (loop_19014) {
-      loop_19014 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 351)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 351)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 351)).isValid () ;
-      if (loop_19014) {
-        loop_19014 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 351)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 351)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 351)).boolValue () ;
+    uint32_t variant_19035 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 351)).uintValue () ;
+    bool loop_19035 = true ;
+    while (loop_19035) {
+      loop_19035 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 351)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 351)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 351)).isValid () ;
+      if (loop_19035) {
+        loop_19035 = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 351)).getter_isNull (SOURCE_FILE ("semanticsTypes.galgas", 351)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 351)).boolValue () ;
       }
-      if (loop_19014 && (0 == variant_19014)) {
-        loop_19014 = false ;
+      if (loop_19035 && (0 == variant_19035)) {
+        loop_19035 = false ;
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticsTypes.galgas", 351)) ;
       }
-      if (loop_19014) {
-        variant_19014 -- ;
+      if (loop_19035) {
+        variant_19035 -- ;
         result_outBaseType = result_outBaseType.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 352)) ;
       }
     }
@@ -10896,13 +10896,13 @@ typeComparisonResult GALGAS_actualParameterForGeneration::objectCompare (const G
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_actualParameterForGeneration::GALGAS_actualParameterForGeneration (void) :
-AC_GALGAS_class () {
+AC_GALGAS_class (false) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_actualParameterForGeneration::GALGAS_actualParameterForGeneration (const cPtr_actualParameterForGeneration * inSourcePtr) :
-AC_GALGAS_class (inSourcePtr) {
+AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_actualParameterForGeneration) ;
 }
 

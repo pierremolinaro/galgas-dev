@@ -151,7 +151,7 @@ override method @extensionGetterAST semanticAnalysis
   @string selfObjectAccessor
   @bool implementedAsFunction
 #--- Check self type is a class
-  if [selfType mTypeKindEnum] == @typeKindEnum. classType then
+  if [[selfType mTypeKindEnum] isClassType] then
     selfObjectName = "object"
     selfObjectAccessor = "object->"
     implementedAsFunction = false
@@ -176,7 +176,7 @@ override method @extensionGetterAST semanticAnalysis
     !?ioUsefulEntitiesGraph
     !analysisContext
     !mExtensionGetterFormalInputParameterList
-    !if ([selfType mTypeKindEnum] == @typeKindEnum. classType) | ([selfType mTypeKindEnum] == @typeKindEnum. structType) | ([selfType mTypeKindEnum] == @typeKindEnum. mapProxyType)
+    !if [[selfType mTypeKindEnum] isClassType] | ([selfType mTypeKindEnum] == .structType) | ([selfType mTypeKindEnum] == .mapProxyType)
        then [selfType mAllTypedAttributeList]
        else @typedPropertyList.emptyList
      end

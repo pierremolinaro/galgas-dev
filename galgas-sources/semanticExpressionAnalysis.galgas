@@ -19,7 +19,7 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-sharedmap @variableMap {
+shared map @variableMap {
   @unifiedTypeMap-proxy mTypeProxy
   @string mCppName
   @string mNameForCheckingFormalParameterUsing
@@ -3103,7 +3103,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
 #--- Get type information
    let castType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
 #--- This type is either a class
-  if [[expression mResultType] mTypeKindEnum] == @typeKindEnum.classType then
+  if [[[expression mResultType] mTypeKindEnum] isClassType] then
   #--- Check expression type is a descendant of named type
     @unifiedTypeMap-proxy t = castType
     @bool found = t == [expression mResultType]
@@ -3162,7 +3162,7 @@ override method @castInExpressionAST analyzeSemanticExpression
      !mTypeName
    }
 #--- This type is an @object type
-  if [[expression mResultType] mTypeKindEnum] == @typeKindEnum. classType then
+  if [[[expression mResultType] mTypeKindEnum] isClassType]then
   #--- Check expression type is a descendant of named type
     @unifiedTypeMap-proxy t = type
     @bool found = t == [expression mResultType]

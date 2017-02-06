@@ -4,7 +4,21 @@
 %--------------------------------------------------------------
 \chapterLabel{Le type \texttt{class}}{typeClass}
 
-\section{Déclaration d'une classe}
+Le type \ggs=class= GALGAS est classique : il inclut l'\emph{héritage simple} et les \emph{classes abstraites}.
+
+Il n'est pas possible de définir des méthodes dans une classe : on peut le faire uniquement via des \emph{extensions}~: \refChapterPage{extensions}.
+
+Les classes ont par défaut une \emph{sémantique de valeur}, c'est-à-dire qu'une affectation entre instances provoque une copie. À partir de la version 3.3.0 de GALGAS, le qualificatif \ggs=shared= donne à la classe qui le porte une \emph{sémantique de référence}, c'est-à-dire qu'une affectation entre instances provoque un partage de données. Ceci est expliqué en détail à la \refSectionPage{semantiqueValeurReference}.
+
+
+
+
+
+
+
+
+\sectionLabel{Déclaration d'une classe}{declarationClasse}
+
 
 Voici différents exemples de déclaration de classes :
 
@@ -12,10 +26,10 @@ Voici différents exemples de déclaration de classes :
 abstract class @A {
   @uint mA ;
 }
-class @B extends @A {
+class @B : @A {
   @string mB ;
 }
-class @C extends @B {
+class @C : @B {
   @data mC ;
 }
 \end{galgas}
@@ -24,7 +38,7 @@ La classe \ggs+@A+ est abstraite (c'est-à-dire qu'elle ne peut pas être instan
 
 Une classe qui hérite d'une autre peut être abstraite :
 \begin{galgas}
-abstract class @D extends @C {
+abstract class @D : @C {
   ...
  }
 \end{galgas}
@@ -41,22 +55,95 @@ Une classe non abstraite définit implicitement le constructeur \ggs+new+, et de
 
 
 
+\sectionLabel{Sémantique de valeur et sémantique de référence}{semantiqueValeurReference}
+
+Par défaut, une classe GALGAS a une \emph{sémantique de valeur}, c'est-à-dire qu'une affectation entre instances provoque une copie. Prenons un exemple, en considérant la classe~:
+
+\begin{galgas}
+class @classeSemantiqueDeValeur {
+  @uint propriété %setter
+}
+\end{galgas}
+
+Et le fragment de code suivant :
+
+\begin{galgas}
+@classeSemantiqueDeValeur a = .new {!10}
+@classeSemantiqueDeValeur b = a # Copie
+[!?a setPropriété !5]
+message "Propriété de a " + [a propriété] + "\n" # Propriété de a 5
+message "Propriété de b " + [b propriété] + "\n" # Propriété de b 10
+\end{galgas}
+
+Lors de l'affectation \ggs+b=a+, \ggs=b= reçoit une copie de la valeur de \ggs=a=, si bien que l'affectation ultérieure de la \ggs=propriété= de \ggs=a= n'affecte pas \ggs=b=.
+
+ À partir de la version 3.3.0 de GALGAS, le qualificatif \ggs=shared= donne à la classe qui le porte une \emph{sémantique de référence}, c'est-à-dire qu'une affectation entre instances provoque un partage de données~:
+
+\begin{galgas}
+shared class @classeSemantiqueDeReference {
+  @uint propriété %setter
+}
+\end{galgas}
+
+Et l'exécution devient :
+
+\begin{galgas}
+@classeSemantiqueDeReference a = .new {!10}
+@classeSemantiqueDeReference b = a # Partage
+[!?a setPropriété !5]
+message "Propriété de a " + [a propriété] + "\n" # Propriété de a 5
+message "Propriété de b " + [b propriété] + "\n" # Propriété de b 5
+\end{galgas}
+
+L'affectation \ggs+b=a+ provoque maintenant un partage de données, \ggs=a= et \ggs=b= désigne le même objet~: l'affectation de sa \ggs=propriété= via \ggs=a= est visible via \ggs=b=.
+
+Les règles d'utilisation du qualificatif \ggs=shared= sont données à la \refSectionPage{sharedClassQualifier}.
+
+
+
+
+
+
+
 
 \section{Le constructeur \texttt{new}}
 
-Le constructeur \ggs+new+ est implicitement pour toute classe non abstraite (c'est à dire les classes \ggs+@B+ et \ggs+@C+). Ce constructeur présente un argument par attribut déclaré dans la classe instanciée et dans toutes les classes mère. L'ordre des arguments est celui obtenu en parcourant la hiérarchie de classes, en commençant par la classe racine. Par exemple on écrira :
+Le constructeur \ggs+new+ est implicitement pour toute classe non abstraite (c'est à dire les classes \ggs+@B+ et \ggs+@C+ de la \refSectionPage{declarationClasse}). Ce constructeur présente un argument par attribut déclaré dans la classe instanciée et dans toutes ses super classes. L'ordre des arguments est celui obtenu en parcourant la hiérarchie de classes, en commençant par la classe de base. Par exemple on écrira~:
 
 \begin{galgas}
-@B b [new
-  !0 # Attribut mA de @A
-  !"Hello" # Attribut mB de @B
-] ;
-@C c [new
-  !0 # Attribut mA de @A
-  !"Hello" # Attribut mB de @B
-  ![@data emptyData] # Attribut mC de @C
-] ;
+@B b = .new {
+  !0 # Propriété mA de @A
+  !"Hello" # Propriété mB de @B
+}
+@C c = .new {
+  !0 # Propriété mA de @A
+  !"Hello" # Propriété mB de @B
+  !@data.emptyData # Propriété mC de @C
+}
 \end{galgas}
+
+
+
+
+
+
+
+
+\sectionLabel{Qualificatif \texttt{shared} appliqué à une classe}{sharedClassQualifier}
+
+Une classe de base, c'est-à-dire une classe sans super classe, accepte librement le qualificatif \ggs=shared=.
+
+Pour une classe ayant une super classe :
+\begin{itemize}
+  \item si la super classe est déclarée avec le qualificatif \ggs=shared=, alors la classe doit avoir le qualificatif \ggs=shared=~;
+  \item si la super classe n'est pas déclarée avec le qualificatif \ggs=shared=, alors la classe ne doit pas avoir le qualificatif \ggs=shared=.
+\end{itemize}
+
+Les notions de classe abstraite et de sémantique de valeur / de référence sont indépendantes : une classe abstraite peut avoir une sémantique de référence. Détail syntaxique, le mot réservé \ggs=abstract= doit précéder le mot réservé \ggs=shared=~:
+
+abstract shared class @A {
+  ...
+}
 
 
 
@@ -67,18 +154,18 @@ Le constructeur \ggs+new+ est implicitement pour toute classe non abstraite (c'e
 
 \section{Lecture d'un attribut}
 
-Par défaut, la lecture d'un attribut est activée par la définition implicite d'un \emph{getter}, dont le nom est le nom de l'attribut. Ainsi, pour une variable \ggs+b+ de type \ggs+@B+, on pourra écrire :
+Par défaut, la lecture d'un attribut est activée par la définition implicite d'un \emph{getter}, dont le nom est le nom de l'attribut. Ainsi, pour une variable \ggs+b+ de type \ggs+@B+, on pourra écrire~:
 
 \begin{galgas}
 @uint v = [b mA] ;
 @string s = [b mB] ;
 \end{galgas}
 
-Il est possible d'inhiber la génération implicite d'un \emph{getter} de lecture d'un attribut en complétant sa déclaration par \ggs+feature %nogetter+, comme par exemple :
+Il est possible d'inhiber la génération implicite d'un \emph{getter} de lecture d'un attribut en complétant sa déclaration par \ggs+%nogetter+, comme par exemple~:
 
 \begin{galgas}
 abstract class @A {
-  @uint mA feature nogetter ;
+  @uint mA %nogetter
 }
 \end{galgas}
 
@@ -96,11 +183,11 @@ L'écriture \ggs+[b mA]+ sera alors rejetée par le compilateur.
 
 Par défaut, l'écriture d'un attribut n'est pas activée.
 
-Pour activer la génération d'un \emph{setter} permettant décrire un attribut, compléter la déclaration de cet attribut par \ggs+feature %setter+. Un \emph{setter} est alors engendré, et porte le nom \texttt{set<Attribut>}, c'est à dire le nom de l'attribut avec sa première lettre en majuscule, précédé par \texttt{set}. Par exemple :
+Pour activer la génération d'un \emph{setter} permettant décrire un attribut, compléter la déclaration de cet attribut par \ggs+%setter+. Un \emph{setter} est alors engendré, et porte le nom \texttt{set<Attribut>}, c'est à dire le nom de l'attribut avec sa première lettre en majuscule, précédé par \texttt{set}. Par exemple :
 
 \begin{galgas}
 abstract class @A {
-  @uint mA feature setter ;
+  @uint mA f%setter
 }
 \end{galgas}
 
@@ -108,19 +195,19 @@ abstract class @A {
 Pour modifier l'attribut \ggs+mA+, on écrira :
 
 \begin{galgas}
-[!?b setMA !12] ;
+[!?b setMA !12]
 \end{galgas}
 
 Si on veut à la fois inhiber la génération implicite d'un \emph{getter} de lecture d'un attribut et engendrer le \emph{setter} d'écriture, il suffit de déclarer l'attribut par :
 
 \begin{galgas}
-  @uint mA feature nogetter, setter ;
+  @uint mA feature %nogetter %setter
 \end{galgas}
 
 Ou encore :
 
 \begin{galgas}
-  @uint mA feature setter, nogetter ;
+  @uint mA f%setter %nogetter
 \end{galgas}
 
 

@@ -309,7 +309,7 @@ override method @setterCallInstructionForGeneration generateInstruction
   switch mKind
   case definedAsExtension :
     ioInclusionSet += !"setter-" + [[mMethodBaseType key] fileNameRepresentation] + "-" + [mSetterName fileNameRepresentation]
-    if [mReceiverType mTypeKindEnum] == @typeKindEnum.classType then
+    if [[mReceiverType mTypeKindEnum] isClassType] then
       if ([[mReceiverType mAllTypedAttributeList] length] > 0) then #  & [mReceiverType mIsConcrete] then
         ioGeneratedCode += receiverCppName + ".insulate (HERE) ;\n"
       end
@@ -383,13 +383,13 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
   switch mKind
   case definedAsExtension :
     ioInclusionSet += !"setter-" + [[mReceiverType key] fileNameRepresentation] + "-" + [mSetterName fileNameRepresentation]
-    if [mReceiverType mTypeKindEnum] == @typeKindEnum. classType then
+    if [[mReceiverType mTypeKindEnum] isClassType] then
       ioGeneratedCode += "callExtensionSetter_" + [mSetterName identifierRepresentation] + " (" + mSelfCppName + ", "
     else
       ioGeneratedCode += "extensionSetter_" + [mSetterName identifierRepresentation] + " (" + mSelfCppName + ", "
     end
   case definedAsMember :
-    if [mReceiverType mTypeKindEnum] == @typeKindEnum. classType then
+    if [[mReceiverType mTypeKindEnum]isClassType] then
       ioGeneratedCode += mSelfCppName + "->setter_" + [mSetterName identifierRepresentation] + " ("
     else
       ioGeneratedCode += mSelfCppName + ".setter_" + [mSetterName identifierRepresentation] + " ("

@@ -130,7 +130,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
 #--- Self type
   let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
 #--- Check self type is a class
-  if [selfType mTypeKindEnum] != @typeKindEnum. classType then
+  if not [[selfType mTypeKindEnum] isClassType] then
     error mOverridingExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
   end
 #--- Find base type name
@@ -174,7 +174,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !?ioUsefulEntitiesGraph
     !analysisContext
     !mOverridingExtensionGetterFormalInputParameterList
-    !if ([selfType mTypeKindEnum] == @typeKindEnum. classType) | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
+    !if [[selfType mTypeKindEnum] isClassType] | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
        then [selfType mAllTypedAttributeList]
        else @typedPropertyList.emptyList
      end
