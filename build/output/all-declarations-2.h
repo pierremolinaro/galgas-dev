@@ -178,12 +178,14 @@ class cMapElement_lexicalRoutineMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_lexicalRoutineMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_lexicalRoutineFormalArgumentList mProperty_mLexicalRoutineFormalArgumentList ;
-  public : GALGAS_stringlist mProperty_mErrorMessageList ;
-  public : GALGAS_bool mProperty_mIsExtern ;
 
+  public : GALGAS_lexicalRoutineFormalArgumentList mProperty_mLexicalRoutineFormalArgumentList ;
+
+  public : GALGAS_stringlist mProperty_mErrorMessageList ;
+
+  public : GALGAS_bool mProperty_mIsExtern ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -396,10 +398,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalFunctionForm
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_lexicalFunctionFormalArgumentList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lexicalTypeEnum mProperty_mLexicalType ;
-  public : GALGAS_string mProperty_mArgumentNameForComment ;
 
+  public : GALGAS_string mProperty_mArgumentNameForComment ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -641,13 +643,16 @@ class cMapElement_lexicalFunctionMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_lexicalFunctionMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_lexicalFunctionFormalArgumentList mProperty_mLexicalTypeList ;
-  public : GALGAS_lexicalTypeEnum mProperty_mReturnedLexicalType ;
-  public : GALGAS_string mProperty_mReplacementFunctionName ;
-  public : GALGAS_bool mProperty_mIsExtern ;
 
+  public : GALGAS_lexicalFunctionFormalArgumentList mProperty_mLexicalTypeList ;
+
+  public : GALGAS_lexicalTypeEnum mProperty_mReturnedLexicalType ;
+
+  public : GALGAS_string mProperty_mReplacementFunctionName ;
+
+  public : GALGAS_bool mProperty_mIsExtern ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -875,11 +880,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateDelimitorLi
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateDelimitorList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mStartString ;
-  public : GALGAS_lstring mProperty_mEndString ;
-  public : GALGAS_bool mProperty_mPreservesStartDelimiter ;
 
+  public : GALGAS_lstring mProperty_mEndString ;
+
+  public : GALGAS_bool mProperty_mPreservesStartDelimiter ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1098,11 +1104,12 @@ class cMapElement_styleMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_styleMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_lstring mProperty_mComment ;
-  public : GALGAS_uint mProperty_mStyleIndex ;
 
+  public : GALGAS_lstring mProperty_mComment ;
+
+  public : GALGAS_uint mProperty_mStyleIndex ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1291,9 +1298,8 @@ class cMapElement_lexicalTagMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_lexicalTagMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1542,20 +1548,30 @@ class GALGAS_string callExtensionGetter_generateConditionCode (const class cPtr_
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_lexiqueAnalysisContext : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_string mProperty_mLexiqueName ;
-  public : GALGAS_lexicalRoutineMap mProperty_mLexicalRoutineMessageMap ;
-  public : GALGAS_lexicalFunctionMap mProperty_mLexicalFunctionMap ;
-  public : GALGAS_lexicalMessageMap mProperty_mLexicalMessageMap ;
-  public : GALGAS_terminalMap mProperty_mTerminalMap ;
-  public : GALGAS_terminalList mProperty_mTerminalList ;
-  public : GALGAS_lexicalAttributeMap mProperty_mLexicalAttributeMap ;
-  public : GALGAS_lexicalExplicitTokenListMapMap mProperty_mLexicalTokenListMap ;
-  public : GALGAS_stringset mProperty_mUnicodeStringToGenerate ;
-  public : GALGAS_templateDelimitorList mProperty_mTemplateDelimitorList ;
-  public : GALGAS_styleMap mProperty_mStyleMap ;
-  public : GALGAS_stringset mProperty_mExternUnicodeTestFunctions ;
 
+  public : GALGAS_lexicalRoutineMap mProperty_mLexicalRoutineMessageMap ;
+
+  public : GALGAS_lexicalFunctionMap mProperty_mLexicalFunctionMap ;
+
+  public : GALGAS_lexicalMessageMap mProperty_mLexicalMessageMap ;
+
+  public : GALGAS_terminalMap mProperty_mTerminalMap ;
+
+  public : GALGAS_terminalList mProperty_mTerminalList ;
+
+  public : GALGAS_lexicalAttributeMap mProperty_mLexicalAttributeMap ;
+
+  public : GALGAS_lexicalExplicitTokenListMapMap mProperty_mLexicalTokenListMap ;
+
+  public : GALGAS_stringset mProperty_mUnicodeStringToGenerate ;
+
+  public : GALGAS_templateDelimitorList mProperty_mTemplateDelimitorList ;
+
+  public : GALGAS_styleMap mProperty_mStyleMap ;
+
+  public : GALGAS_stringset mProperty_mExternUnicodeTestFunctions ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2458,15 +2474,20 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_commandLineOptionLi
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_commandLineOptionListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mOptionTypeName ;
-  public : GALGAS_lstring mProperty_mOptionInternalName ;
-  public : GALGAS_lchar mProperty_mOptionInvocationLetter ;
-  public : GALGAS_lstring mProperty_mOptionInvocationString ;
-  public : GALGAS_lstring mProperty_mOptionComment ;
-  public : GALGAS_lstring mProperty_mOptionDefaultValue ;
-  public : GALGAS_optionDefaultValueEnumAST mProperty_mOptionDefaultValueKind ;
 
+  public : GALGAS_lstring mProperty_mOptionInternalName ;
+
+  public : GALGAS_lchar mProperty_mOptionInvocationLetter ;
+
+  public : GALGAS_lstring mProperty_mOptionInvocationString ;
+
+  public : GALGAS_lstring mProperty_mOptionComment ;
+
+  public : GALGAS_lstring mProperty_mOptionDefaultValue ;
+
+  public : GALGAS_optionDefaultValueEnumAST mProperty_mOptionDefaultValueKind ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2728,13 +2749,16 @@ class cMapElement_commandLineOptionMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_commandLineOptionMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_char mProperty_mOptionChar ;
-  public : GALGAS_string mProperty_mOptionString ;
-  public : GALGAS_string mProperty_mComment ;
-  public : GALGAS_string mProperty_mDefaultValue ;
 
+  public : GALGAS_char mProperty_mOptionChar ;
+
+  public : GALGAS_string mProperty_mOptionString ;
+
+  public : GALGAS_string mProperty_mComment ;
+
+  public : GALGAS_string mProperty_mDefaultValue ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2951,10 +2975,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiSimpleAttributeL
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_guiSimpleAttributeListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mKey ;
-  public : GALGAS_lstring mProperty_mValue ;
 
+  public : GALGAS_lstring mProperty_mValue ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3173,11 +3197,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiCompoundAttribut
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_guiCompoundAttributeListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mKey ;
-  public : GALGAS_lstring mProperty_mAttributeName ;
-  public : GALGAS_lstring mProperty_mValue ;
 
+  public : GALGAS_lstring mProperty_mAttributeName ;
+
+  public : GALGAS_lstring mProperty_mValue ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3386,10 +3411,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalLabelListAS
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_terminalLabelListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mTerminal ;
-  public : GALGAS_uint mProperty_mDisplayFlags ;
 
+  public : GALGAS_uint mProperty_mDisplayFlags ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3608,11 +3633,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiLabelListAST ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_guiLabelListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_uint mProperty_mLeadingCharacterStrippedCount ;
-  public : GALGAS_terminalLabelListAST mProperty_mTerminalList ;
-  public : GALGAS_location mProperty_mLocation ;
 
+  public : GALGAS_terminalLabelListAST mProperty_mTerminalList ;
+
+  public : GALGAS_location mProperty_mLocation ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3849,12 +3875,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_withLexiqueListAST 
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_withLexiqueListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mLexiqueFileName ;
-  public : GALGAS_guiLabelListAST mProperty_mLabels ;
-  public : GALGAS_guiSimpleAttributeListAST mProperty_mSimpleAttributes ;
-  public : GALGAS_guiCompoundAttributeListAST mProperty_mCompoundAttributes ;
 
+  public : GALGAS_guiLabelListAST mProperty_mLabels ;
+
+  public : GALGAS_guiSimpleAttributeListAST mProperty_mSimpleAttributes ;
+
+  public : GALGAS_guiCompoundAttributeListAST mProperty_mCompoundAttributes ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4109,13 +4137,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiCommandLineOptio
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_guiCommandLineOptionList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_string mProperty_mOptionComponent ;
-  public : GALGAS_string mProperty_mOptionIdentifier ;
-  public : GALGAS_char mProperty_mOptionChar ;
-  public : GALGAS_string mProperty_mOptionString ;
-  public : GALGAS_string mProperty_mComment ;
 
+  public : GALGAS_string mProperty_mOptionIdentifier ;
+
+  public : GALGAS_char mProperty_mOptionChar ;
+
+  public : GALGAS_string mProperty_mOptionString ;
+
+  public : GALGAS_string mProperty_mComment ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4318,10 +4349,10 @@ class cMapElement_extensionMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_extensionMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_string mProperty_mLexiqueName ;
 
+  public : GALGAS_string mProperty_mLexiqueName ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4526,10 +4557,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_textMacroList ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_textMacroList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_string mProperty_mKey ;
-  public : GALGAS_string mProperty_mContents ;
 
+  public : GALGAS_string mProperty_mContents ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4776,13 +4807,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_importedLexiqueList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_importedLexiqueList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_string mProperty_mLexiqueClassName ;
-  public : GALGAS_string mProperty_mBlockComment ;
-  public : GALGAS_string mProperty_mTitle ;
-  public : GALGAS_textMacroList mProperty_mTextMacroList ;
-  public : GALGAS_guiLabelListAST mProperty_mLabels ;
 
+  public : GALGAS_string mProperty_mBlockComment ;
+
+  public : GALGAS_string mProperty_mTitle ;
+
+  public : GALGAS_textMacroList mProperty_mTextMacroList ;
+
+  public : GALGAS_guiLabelListAST mProperty_mLabels ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5027,12 +5061,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_GUICompon
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_galgas_33_GUIComponentListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mGUIComponentName ;
-  public : GALGAS_lstringlist mProperty_mImportedOptionList ;
-  public : GALGAS_guiSimpleAttributeListAST mProperty_mGlobalSimpleAttributeList ;
-  public : GALGAS_withLexiqueListAST mProperty_mWithLexiqueList ;
 
+  public : GALGAS_lstringlist mProperty_mImportedOptionList ;
+
+  public : GALGAS_guiSimpleAttributeListAST mProperty_mGlobalSimpleAttributeList ;
+
+  public : GALGAS_withLexiqueListAST mProperty_mWithLexiqueList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5108,15 +5144,20 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_GUICompon
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_guiAnalysisContext : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_stringlist mProperty_mImportedOptionComponentList ;
-  public : GALGAS_guiCommandLineOptionList mProperty_mBoolOptionList ;
-  public : GALGAS_guiCommandLineOptionList mProperty_mUIntOptionList ;
-  public : GALGAS_guiCommandLineOptionList mProperty_mStringOptionList ;
-  public : GALGAS_stringlist mProperty_mNibAndClassList ;
-  public : GALGAS_extensionMap mProperty_mExtensionMap ;
-  public : GALGAS_importedLexiqueList mProperty_mWithLexiqueList ;
 
+  public : GALGAS_guiCommandLineOptionList mProperty_mBoolOptionList ;
+
+  public : GALGAS_guiCommandLineOptionList mProperty_mUIntOptionList ;
+
+  public : GALGAS_guiCommandLineOptionList mProperty_mStringOptionList ;
+
+  public : GALGAS_stringlist mProperty_mNibAndClassList ;
+
+  public : GALGAS_extensionMap mProperty_mExtensionMap ;
+
+  public : GALGAS_importedLexiqueList mProperty_mWithLexiqueList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5327,10 +5368,10 @@ class cMapElement_optionComponentMapForGeneration : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_optionComponentMapForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_guiAnalysisContext mProperty_mGuiComponentContext ;
 
+  public : GALGAS_guiAnalysisContext mProperty_mGuiComponentContext ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5549,11 +5590,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectio
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_propertyInCollectionListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mPropertyTypeName ;
-  public : GALGAS_lstring mProperty_mPropertyName ;
-  public : GALGAS_lstringlist mProperty_mFeatureList ;
 
+  public : GALGAS_lstring mProperty_mPropertyName ;
+
+  public : GALGAS_lstringlist mProperty_mFeatureList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5625,12 +5667,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectio
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mAttributeTypeProxy ;
-  public : GALGAS_lstring mProperty_mAttributeName ;
-  public : GALGAS_bool mProperty_mHasSetter ;
-  public : GALGAS_bool mProperty_mHasGetter ;
 
+  public : GALGAS_lstring mProperty_mAttributeName ;
+
+  public : GALGAS_bool mProperty_mHasSetter ;
+
+  public : GALGAS_bool mProperty_mHasGetter ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5706,10 +5750,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typedPropertyList_2
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_enumConstantList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mConstantName ;
-  public : GALGAS__32_lstringlist mProperty_mAssociatedValueDefinitionList ;
 
+  public : GALGAS__32_lstringlist mProperty_mAssociatedValueDefinitionList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6037,10 +6081,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapProxy
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_enumConstantListForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_string mProperty_mConstantName ;
-  public : GALGAS_unifiedTypeMapProxyList mProperty_mAssociatedValueTypeList ;
 
+  public : GALGAS_unifiedTypeMapProxyList mProperty_mAssociatedValueTypeList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6108,9 +6152,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantListFor
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_unifiedTypeMapProxyList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mType ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6476,11 +6519,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeNameFormalParam
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_externTypeConstructorList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mConstructorName ;
-  public : GALGAS_lstring mProperty_mResultTypeName ;
-  public : GALGAS_typeNameFormalParameterNameList mProperty_mParameterList ;
 
+  public : GALGAS_lstring mProperty_mResultTypeName ;
+
+  public : GALGAS_typeNameFormalParameterNameList mProperty_mParameterList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6703,11 +6747,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeGetterLis
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_externTypeGetterList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mGetterName ;
-  public : GALGAS_lstring mProperty_mResultTypeName ;
-  public : GALGAS_typeNameFormalParameterNameList mProperty_mParameterList ;
 
+  public : GALGAS_lstring mProperty_mResultTypeName ;
+
+  public : GALGAS_typeNameFormalParameterNameList mProperty_mParameterList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -7079,10 +7124,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_externTypeSetterList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mSetterName ;
-  public : GALGAS_formalParameterListAST mProperty_mFormalParameterList ;
 
+  public : GALGAS_formalParameterListAST mProperty_mFormalParameterList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -7301,11 +7346,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeMethodLis
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_externTypeMethodList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mMethodName ;
-  public : GALGAS_formalParameterListAST mProperty_mFormalParameterList ;
-  public : GALGAS_location mProperty_mDeclarationLocation ;
 
+  public : GALGAS_formalParameterListAST mProperty_mFormalParameterList ;
+
+  public : GALGAS_location mProperty_mDeclarationLocation ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;

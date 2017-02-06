@@ -1091,7 +1091,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_ext
     case 2: {
       GALGAS_lstring var_cppPredeclarationCodeElement_3888 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("type-extern.galgas", 103)) ;
-      outArgument_outCppPredeclarationCode.plusAssign_operation(var_cppPredeclarationCodeElement_3888.mProperty_string, inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 104)) ;
+      outArgument_outCppPredeclarationCode.plusAssign_operation(var_cppPredeclarationCodeElement_3888.getter_string (HERE), inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 104)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -1151,7 +1151,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_ext
     case 2: {
       GALGAS_lstring var_cppPredeclarationCodeElement_4285 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__22_string_22_) COMMA_SOURCE_FILE ("type-extern.galgas", 116)) ;
-      outArgument_outCppClassCode.plusAssign_operation(var_cppPredeclarationCodeElement_4285.mProperty_string, inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 117)) ;
+      outArgument_outCppClassCode.plusAssign_operation(var_cppPredeclarationCodeElement_4285.getter_string (HERE), inCompiler  COMMA_SOURCE_FILE ("type-extern.galgas", 117)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -1808,7 +1808,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_sea
   case 2: {
     GALGAS_lstring var_attribute_4001 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__25_attribute) COMMA_SOURCE_FILE ("type-map.galgas", 108)) ;
-    const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_attribute_4001.mProperty_string.objectCompare (GALGAS_string ("location"))).boolEnum () ;
+    const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, var_attribute_4001.getter_string (HERE).objectCompare (GALGAS_string ("location"))).boolEnum () ;
     if (kBoolTrue == test_0) {
       var_locationAttribute_3917 = GALGAS_bool (true) ;
     }else if (kBoolFalse == test_0) {
@@ -2040,7 +2040,7 @@ void cParser_galgas_33_DeclarationsSyntax::rule_galgas_33_DeclarationsSyntax_dec
   inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_uniquemapDefinition, "") ;
   inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_mapProxyDefinition, "-proxy") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__40_type) COMMA_SOURCE_FILE ("type-shared-map.galgas", 95)) ;
-  GALGAS_lstring var_mapProxyTypeName_5127 = GALGAS_lstring::constructor_new (var_mMapTypeName_5044.mProperty_string.add_operation (GALGAS_string ("-proxy"), inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 96)), var_mMapTypeName_5044.mProperty_location  COMMA_SOURCE_FILE ("type-shared-map.galgas", 96)) ;
+  GALGAS_lstring var_mapProxyTypeName_5127 = GALGAS_lstring::constructor_new (var_mMapTypeName_5044.getter_string (HERE).add_operation (GALGAS_string ("-proxy"), inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 96)), var_mMapTypeName_5044.getter_location (HERE)  COMMA_SOURCE_FILE ("type-shared-map.galgas", 96)) ;
   GALGAS_lstringlist var_mapAttributeList_5255 = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("type-shared-map.galgas", 98)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
@@ -4806,7 +4806,7 @@ void cParser_galgas_33_LexiqueComponentSyntax::rule_galgas_33_LexiqueComponentSy
     case 2: {
       GALGAS_lstring var_selector_10933 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__21_) COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 302)) ;
-      const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_selector_10933.mProperty_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+      const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_selector_10933.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
       if (kBoolTrue == test_1) {
         TC_Array <C_FixItDescription> fixItArray2 ;
         inCompiler->emitSemanticError (var_selector_10933.getter_location (SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 304)), GALGAS_string ("the selector should be '!'"), fixItArray2  COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 304)) ;
@@ -4819,7 +4819,7 @@ void cParser_galgas_33_LexiqueComponentSyntax::rule_galgas_33_LexiqueComponentSy
     case 3: {
       GALGAS_lstring var_selector_11290 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__21__3F_) COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 310)) ;
-      const enumGalgasBool test_3 = GALGAS_bool (kIsNotEqual, var_selector_11290.mProperty_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+      const enumGalgasBool test_3 = GALGAS_bool (kIsNotEqual, var_selector_11290.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
       if (kBoolTrue == test_3) {
         TC_Array <C_FixItDescription> fixItArray4 ;
         inCompiler->emitSemanticError (var_selector_11290.getter_location (SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 312)), GALGAS_string ("the selector should be '!\?'"), fixItArray4  COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 312)) ;
@@ -5043,7 +5043,7 @@ void cParser_galgas_33_LexiqueComponentSyntax::rule_galgas_33_LexiqueComponentSy
       case 2: {
         GALGAS_lstring var_selector_13490 = inCompiler->synthetizedAttribute_tokenString () ;
         inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__21_) COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 370)) ;
-        const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_selector_13490.mProperty_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_selector_13490.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
           inCompiler->emitSemanticError (var_selector_13490.getter_location (SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 372)), GALGAS_string ("the selector should be '!'"), fixItArray2  COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 372)) ;
@@ -5781,7 +5781,7 @@ void cParser_galgas_33_LexiqueComponentSyntax::rule_galgas_33_LexiqueComponentSy
     switch (select_galgas_33_LexiqueComponentSyntax_27 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_style) COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 562)) ;
-      const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, var_theStyle_19931.mProperty_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+      const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, var_theStyle_19931.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
       if (kBoolTrue == test_2) {
         TC_Array <C_FixItDescription> fixItArray3 ;
         inCompiler->emitSemanticError (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 564)), GALGAS_string ("duplicated style reference"), fixItArray3  COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 564)) ;
@@ -5888,12 +5888,12 @@ void cParser_galgas_33_LexiqueComponentSyntax::rule_galgas_33_LexiqueComponentSy
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_style) COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 580)) ;
   GALGAS_lstring var_styleIdentifier_20649 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 581)) ;
-  const enumGalgasBool test_0 = var_styleIdentifier_20649.mProperty_string.getter_containsCharacter (GALGAS_char (TO_UNICODE (95)) COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 582)).boolEnum () ;
+  const enumGalgasBool test_0 = var_styleIdentifier_20649.getter_string (HERE).getter_containsCharacter (GALGAS_char (TO_UNICODE (95)) COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 582)).boolEnum () ;
   if (kBoolTrue == test_0) {
     TC_Array <C_FixItDescription> fixItArray1 ;
     inCompiler->emitSemanticError (var_styleIdentifier_20649.getter_location (SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 583)), GALGAS_string ("for compatibility with latex formatting, a style name should not contain '_' character"), fixItArray1  COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 583)) ;
   }
-  const enumGalgasBool test_2 = var_styleIdentifier_20649.mProperty_string.getter_containsCharacterInRange (GALGAS_char (TO_UNICODE (48)), GALGAS_char (TO_UNICODE (57)) COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 585)).boolEnum () ;
+  const enumGalgasBool test_2 = var_styleIdentifier_20649.getter_string (HERE).getter_containsCharacterInRange (GALGAS_char (TO_UNICODE (48)), GALGAS_char (TO_UNICODE (57)) COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 585)).boolEnum () ;
   if (kBoolTrue == test_2) {
     TC_Array <C_FixItDescription> fixItArray3 ;
     inCompiler->emitSemanticError (var_styleIdentifier_20649.getter_location (SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 586)), GALGAS_string ("for compatibility with latex formatting, a style name should not contain any digit"), fixItArray3  COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 586)) ;
@@ -5941,7 +5941,7 @@ void cParser_galgas_33_LexiqueComponentSyntax::rule_galgas_33_LexiqueComponentSy
       case 1: {
         GALGAS_lstring var_selector_21566 = inCompiler->synthetizedAttribute_tokenString () ;
         inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3F__21_) COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 604)) ;
-        const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_selector_21566.mProperty_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+        const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_selector_21566.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
         if (kBoolTrue == test_1) {
           TC_Array <C_FixItDescription> fixItArray2 ;
           inCompiler->emitSemanticError (var_selector_21566.getter_location (SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 606)), GALGAS_string ("the selector should be '\?!'"), fixItArray2  COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 606)) ;
@@ -5951,7 +5951,7 @@ void cParser_galgas_33_LexiqueComponentSyntax::rule_galgas_33_LexiqueComponentSy
       case 2: {
         GALGAS_lstring var_selector_21774 = inCompiler->synthetizedAttribute_tokenString () ;
         inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3F_) COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 610)) ;
-        const enumGalgasBool test_3 = GALGAS_bool (kIsNotEqual, var_selector_21774.mProperty_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+        const enumGalgasBool test_3 = GALGAS_bool (kIsNotEqual, var_selector_21774.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
         if (kBoolTrue == test_3) {
           TC_Array <C_FixItDescription> fixItArray4 ;
           inCompiler->emitSemanticError (var_selector_21774.getter_location (SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 612)), GALGAS_string ("the selector should be '\?'"), fixItArray4  COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 612)) ;
@@ -6117,7 +6117,7 @@ void cParser_galgas_33_LexiqueComponentSyntax::rule_galgas_33_LexiqueComponentSy
     case 2: {
       GALGAS_lstring var_selector_22845 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3F_) COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 643)) ;
-      const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_selector_22845.mProperty_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+      const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_selector_22845.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
       if (kBoolTrue == test_1) {
         TC_Array <C_FixItDescription> fixItArray2 ;
         inCompiler->emitSemanticError (var_selector_22845.getter_location (SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 645)), GALGAS_string ("the selector should be '\?'"), fixItArray2  COMMA_SOURCE_FILE ("galgas3LexiqueComponentSyntax.galgas", 645)) ;
@@ -6689,7 +6689,7 @@ void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_gui
           inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__28_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 146)) ;
           GALGAS_luint var_leadingStrip_4564 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
           inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 147)) ;
-          const enumGalgasBool test_2 = GALGAS_bool (kIsSupOrEqual, var_leadingStrip_4564.mProperty_uint.objectCompare (GALGAS_uint ((uint32_t) 15U))).boolEnum () ;
+          const enumGalgasBool test_2 = GALGAS_bool (kIsSupOrEqual, var_leadingStrip_4564.getter_uint (HERE).objectCompare (GALGAS_uint ((uint32_t) 15U))).boolEnum () ;
           if (kBoolTrue == test_2) {
             TC_Array <C_FixItDescription> fixItArray3 ;
             inCompiler->emitSemanticError (var_leadingStrip_4564.getter_location (SOURCE_FILE ("guiCompilation.galgas", 149)), GALGAS_string ("leading strip should be < 15"), fixItArray3  COMMA_SOURCE_FILE ("guiCompilation.galgas", 149)) ;
@@ -6697,12 +6697,12 @@ void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_gui
           inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2C_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 151)) ;
           GALGAS_luint var_endingStrip_4739 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
           inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 152)) ;
-          const enumGalgasBool test_4 = GALGAS_bool (kIsSupOrEqual, var_endingStrip_4739.mProperty_uint.objectCompare (GALGAS_uint ((uint32_t) 15U))).boolEnum () ;
+          const enumGalgasBool test_4 = GALGAS_bool (kIsSupOrEqual, var_endingStrip_4739.getter_uint (HERE).objectCompare (GALGAS_uint ((uint32_t) 15U))).boolEnum () ;
           if (kBoolTrue == test_4) {
             TC_Array <C_FixItDescription> fixItArray5 ;
             inCompiler->emitSemanticError (var_endingStrip_4739.getter_location (SOURCE_FILE ("guiCompilation.galgas", 154)), GALGAS_string ("tail strip should be < 15"), fixItArray5  COMMA_SOURCE_FILE ("guiCompilation.galgas", 154)) ;
           }
-          var_displayFlags_4370 = var_leadingStrip_4564.mProperty_uint.left_shift_operation (GALGAS_uint ((uint32_t) 4U) COMMA_SOURCE_FILE ("guiCompilation.galgas", 156)).operator_or (var_endingStrip_4739.getter_uint (SOURCE_FILE ("guiCompilation.galgas", 156)) COMMA_SOURCE_FILE ("guiCompilation.galgas", 156)) ;
+          var_displayFlags_4370 = var_leadingStrip_4564.getter_uint (HERE).left_shift_operation (GALGAS_uint ((uint32_t) 4U) COMMA_SOURCE_FILE ("guiCompilation.galgas", 156)).operator_or (var_endingStrip_4739.getter_uint (SOURCE_FILE ("guiCompilation.galgas", 156)) COMMA_SOURCE_FILE ("guiCompilation.galgas", 156)) ;
           inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__29_) COMMA_SOURCE_FILE ("guiCompilation.galgas", 157)) ;
         } break ;
         default:
@@ -7038,7 +7038,7 @@ void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSynt
   case 2: {
     GALGAS_lstring var_featureName_3692 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__25_attribute) COMMA_SOURCE_FILE ("galgas3SyntaxComponentSyntax.galgas", 58)) ;
-    const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_featureName_3692.mProperty_string.objectCompare (GALGAS_string ("translate"))).boolEnum () ;
+    const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_featureName_3692.getter_string (HERE).objectCompare (GALGAS_string ("translate"))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (var_featureName_3692.getter_location (SOURCE_FILE ("galgas3SyntaxComponentSyntax.galgas", 60)), GALGAS_string ("only 'feature translate' can be declared here"), fixItArray1  COMMA_SOURCE_FILE ("galgas3SyntaxComponentSyntax.galgas", 60)) ;
@@ -7184,7 +7184,7 @@ void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSynt
     }
   }
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3SyntaxComponentSyntax.galgas", 110)) ;
-  ioArgument_ioDeclarations.mProperty_mSyntaxExtensions.addAssign_operation (var_syntaxComponentName_5224.mProperty_string, var_syntaxComponentName_5224, var_nonterminalDeclarationList_5289, var_ruleList_5339  COMMA_SOURCE_FILE ("galgas3SyntaxComponentSyntax.galgas", 111)) ;
+  ioArgument_ioDeclarations.mProperty_mSyntaxExtensions.addAssign_operation (var_syntaxComponentName_5224.getter_string (HERE), var_syntaxComponentName_5224, var_nonterminalDeclarationList_5289, var_ruleList_5339  COMMA_SOURCE_FILE ("galgas3SyntaxComponentSyntax.galgas", 111)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7628,7 +7628,7 @@ void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSynt
   case 2: {
     GALGAS_lstring var_terminator_1547 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__25_attribute) COMMA_SOURCE_FILE ("instruction-repeat.galgas", 37)) ;
-    const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_terminator_1547.mProperty_string.objectCompare (GALGAS_string ("repeat"))).boolEnum () ;
+    const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_terminator_1547.getter_string (HERE).objectCompare (GALGAS_string ("repeat"))).boolEnum () ;
     if (kBoolTrue == test_1) {
       TC_Array <C_FixItDescription> fixItArray2 ;
       appendFixItActions (fixItArray2, kFixItReplace, GALGAS_string ("%repeat")) ;
@@ -7733,7 +7733,7 @@ void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSynt
   case 2: {
     GALGAS_lstring var_terminator_1413 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__25_attribute) COMMA_SOURCE_FILE ("instruction-select.galgas", 35)) ;
-    const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_terminator_1413.mProperty_string.objectCompare (GALGAS_string ("select"))).boolEnum () ;
+    const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_terminator_1413.getter_string (HERE).objectCompare (GALGAS_string ("select"))).boolEnum () ;
     if (kBoolTrue == test_1) {
       TC_Array <C_FixItDescription> fixItArray2 ;
       appendFixItActions (fixItArray2, kFixItReplace, GALGAS_string ("%select")) ;
@@ -8019,7 +8019,7 @@ void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSynt
   case 2: {
     GALGAS_lstring var_terminator_1534 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__25_attribute) COMMA_SOURCE_FILE ("instruction-parse-loop.galgas", 38)) ;
-    const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_terminator_1534.mProperty_string.objectCompare (GALGAS_string ("parse"))).boolEnum () ;
+    const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_terminator_1534.getter_string (HERE).objectCompare (GALGAS_string ("parse"))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
       appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("%parse")) ;
@@ -8111,7 +8111,7 @@ void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSynt
   case 2: {
     GALGAS_lstring var_terminator_1418 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__25_attribute) COMMA_SOURCE_FILE ("instruction-parse-rewind.galgas", 35)) ;
-    const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_terminator_1418.mProperty_string.objectCompare (GALGAS_string ("parse"))).boolEnum () ;
+    const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, var_terminator_1418.getter_string (HERE).objectCompare (GALGAS_string ("parse"))).boolEnum () ;
     if (kBoolTrue == test_1) {
       TC_Array <C_FixItDescription> fixItArray2 ;
       appendFixItActions (fixItArray2, kFixItReplace, GALGAS_string ("%parse")) ;
@@ -8276,7 +8276,7 @@ void cParser_galgas_33_SyntaxComponentSyntax::rule_galgas_33_SyntaxComponentSynt
   case 2: {
     GALGAS_lstring var_terminator_2729 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__25_attribute) COMMA_SOURCE_FILE ("instruction-parse-when.galgas", 69)) ;
-    const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_terminator_2729.mProperty_string.objectCompare (GALGAS_string ("parse"))).boolEnum () ;
+    const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_terminator_2729.getter_string (HERE).objectCompare (GALGAS_string ("parse"))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
       appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("%parse")) ;
@@ -8391,7 +8391,7 @@ void cParser_galgas_33_GrammarComponentSyntax::rule_galgas_33_GrammarComponentSy
   case 2: {
     GALGAS_lstring var_featureName_2854 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__25_attribute) COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 41)) ;
-    const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_featureName_2854.mProperty_string.objectCompare (GALGAS_string ("translate"))).boolEnum () ;
+    const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_featureName_2854.getter_string (HERE).objectCompare (GALGAS_string ("translate"))).boolEnum () ;
     if (kBoolTrue == test_0) {
       TC_Array <C_FixItDescription> fixItArray1 ;
       inCompiler->emitSemanticError (var_featureName_2854.getter_location (SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 43)), GALGAS_string ("only 'feature translate' can be declared here"), fixItArray1  COMMA_SOURCE_FILE ("galgas3GrammarComponentSyntax.galgas", 43)) ;
@@ -8959,7 +8959,7 @@ void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_d
   }
   GALGAS_lstring var_selector_4994 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3F_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 82)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_selector_4994.mProperty_string.objectCompare (GALGAS_string ("sourceFilePath"))).boolEnum () ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_selector_4994.getter_string (HERE).objectCompare (GALGAS_string ("sourceFilePath"))).boolEnum () ;
   if (kBoolTrue == test_0) {
     TC_Array <C_FixItDescription> fixItArray1 ;
     inCompiler->emitSemanticError (var_selector_4994.getter_location (SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 84)), GALGAS_string ("the selector should be '\?sourceFilePath:'"), fixItArray1  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 84)) ;
@@ -8970,7 +8970,7 @@ void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_d
   case 2: {
     GALGAS_lstring var_typeName_5151 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__40_type) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 88)) ;
-    const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, var_typeName_5151.mProperty_string.objectCompare (GALGAS_string ("lstring"))).boolEnum () ;
+    const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, var_typeName_5151.getter_string (HERE).objectCompare (GALGAS_string ("lstring"))).boolEnum () ;
     if (kBoolTrue == test_2) {
       TC_Array <C_FixItDescription> fixItArray3 ;
       inCompiler->emitSemanticError (var_typeName_5151.getter_location (SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 90)), GALGAS_string ("the only type allowed here is '@lstring'"), fixItArray3  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 90)) ;

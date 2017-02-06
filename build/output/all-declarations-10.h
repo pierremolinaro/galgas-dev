@@ -167,11 +167,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_BuildFileList ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_BuildFileList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_string mProperty_mFileReference ;
-  public : GALGAS_string mProperty_mFileName ;
-  public : GALGAS_string mProperty_mBuildReference ;
 
+  public : GALGAS_string mProperty_mFileName ;
+
+  public : GALGAS_string mProperty_mBuildReference ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;

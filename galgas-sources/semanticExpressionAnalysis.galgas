@@ -2804,15 +2804,11 @@ override method @structFieldAccessExpressionAST analyzeSemanticExpression
   ]
 #--- Check field access availability
   @unifiedTypeMap-proxy type = [expression mResultType]
-  if [type mTypeKindEnum] != @typeKindEnum. structType then
-    error mStructFieldName:"the '.' operator requires the receiver to be a struct"
+  if (not [[type mTypeKindEnum] isStructType]) & (not [[type mTypeKindEnum] isClassType]) then
+    error mStructFieldName:"the '.' operator requires the receiver to be a struct or a class"
   end
   let @attributeMap attributeMap = [type mAttributeMap]
-  [attributeMap searchKey
-    !mStructFieldName
-#    ?@bool isPrivate
-    ?type
-  ]
+  [attributeMap searchKey !mStructFieldName ?type]
 #--- Generate expression
   outExpression = @structFieldAccessExpressionForGeneration.new {
     !type

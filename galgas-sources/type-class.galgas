@@ -472,7 +472,6 @@ override method @classTypeForGeneration appendDeclaration1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
-    !mAllTypedAttributeList
     !mIsAbstract
     ![mTypeProxy mDefaultConstructorName] != ""
   ]

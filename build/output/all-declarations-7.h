@@ -282,12 +282,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBran
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_castInstructionBranchListForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_dynamicTypeComparisonKind mProperty_mTypeComparisonKind ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mType ;
-  public : GALGAS_string mProperty_mCastedVarCppName ;
-  public : GALGAS_semanticInstructionListForGeneration mProperty_mInstructionList ;
 
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mType ;
+
+  public : GALGAS_string mProperty_mCastedVarCppName ;
+
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mInstructionList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -730,9 +732,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitListAST ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_fixitListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_fixitElementAST mProperty_mElement ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1177,9 +1178,8 @@ class cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter : public 
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_fixitListForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_fixitElementForGeneration mProperty_mElement ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1416,10 +1416,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnume
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mOptionalTypeName ;
-  public : GALGAS_lstring mProperty_mOptionalConstantName ;
 
+  public : GALGAS_lstring mProperty_mOptionalConstantName ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1792,10 +1792,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnume
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_forInstructionEnumeratedObjectListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_bool mProperty_mAscending ;
-  public : GALGAS_abstractEnumeratedCollectionAST mProperty_mEnumeratedCollection ;
 
+  public : GALGAS_abstractEnumeratedCollectionAST mProperty_mEnumeratedCollection ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2069,11 +2069,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnume
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_string mProperty_mEnumerationOrder ;
-  public : GALGAS_semanticExpressionForGeneration mProperty_mEnumeratedExpression ;
-  public : GALGAS_string mProperty_mEnumeratorCppName ;
 
+  public : GALGAS_semanticExpressionForGeneration mProperty_mEnumeratedExpression ;
+
+  public : GALGAS_string mProperty_mEnumeratorCppName ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2781,10 +2782,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logListAST ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_logListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mLogMessage ;
-  public : GALGAS_semanticExpressionAST mProperty_mLogExpression ;
 
+  public : GALGAS_semanticExpressionAST mProperty_mLogExpression ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3205,11 +3206,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchEntryListAST ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_matchEntryListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_bool mProperty_mIsType ;
-  public : GALGAS_lstring mProperty_mTypeNameOrEnumerationConstantName ;
-  public : GALGAS_lstring mProperty_mLocalConstantName ;
 
+  public : GALGAS_lstring mProperty_mTypeNameOrEnumerationConstantName ;
+
+  public : GALGAS_lstring mProperty_mLocalConstantName ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3430,12 +3432,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchInstructionBra
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_matchInstructionBranchListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_matchEntryListAST mProperty_mMatchEntryList ;
-  public : GALGAS_location mProperty_mEndOfMatchEntryList ;
-  public : GALGAS_semanticInstructionListAST mProperty_mMatchBranchInstructionList ;
-  public : GALGAS_location mProperty_mEndOf_5F_instructionList ;
 
+  public : GALGAS_location mProperty_mEndOfMatchEntryList ;
+
+  public : GALGAS_semanticInstructionListAST mProperty_mMatchBranchInstructionList ;
+
+  public : GALGAS_location mProperty_mEndOf_5F_instructionList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3766,11 +3770,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchListForGenerat
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_matchListForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_bool mProperty_mIsType ;
-  public : GALGAS_string mProperty_mTypeNameOrEnumerationConstantName ;
-  public : GALGAS_string mProperty_mLocalConstantName ;
 
+  public : GALGAS_string mProperty_mTypeNameOrEnumerationConstantName ;
+
+  public : GALGAS_string mProperty_mLocalConstantName ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3979,10 +3984,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchInstructionBra
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_matchInstructionBranchListForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_matchListForGeneration mProperty_mMatchListForGeneration ;
-  public : GALGAS_semanticInstructionListForGeneration mProperty_mMatchBranchInstructionList ;
 
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mMatchBranchInstructionList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4881,11 +4886,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchExtractedValu
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_switchExtractedValuesListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mExtractedValueTypeName ;
-  public : GALGAS_lstring mProperty_mExtractedValueName ;
-  public : GALGAS_bool mProperty_mMarkedAsUnused ;
 
+  public : GALGAS_lstring mProperty_mExtractedValueName ;
+
+  public : GALGAS_bool mProperty_mMarkedAsUnused ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5122,12 +5128,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchBranchesAST ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_switchBranchesAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstringlist mProperty_mSwitchConstantList ;
-  public : GALGAS_switchExtractedValuesListAST mProperty_mAssociatedValuesExtraction ;
-  public : GALGAS_semanticInstructionListAST mProperty_mInstructions ;
-  public : GALGAS_location mProperty_mEndOfBranch ;
 
+  public : GALGAS_switchExtractedValuesListAST mProperty_mAssociatedValuesExtraction ;
+
+  public : GALGAS_semanticInstructionListAST mProperty_mInstructions ;
+
+  public : GALGAS_location mProperty_mEndOfBranch ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5455,11 +5463,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractedAssociated
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_extractedAssociatedValuesForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mType ;
-  public : GALGAS_string mProperty_mCppName ;
-  public : GALGAS_uint mProperty_mIndex ;
 
+  public : GALGAS_string mProperty_mCppName ;
+
+  public : GALGAS_uint mProperty_mIndex ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5696,12 +5705,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchBranchesForGe
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_switchBranchesForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstringlist mProperty_mSwitchConstantList ;
-  public : GALGAS_extractedAssociatedValuesForGeneration mProperty_mExtractedAssociatedValuesForGeneration ;
-  public : GALGAS_uint mProperty_mLocationIndex ;
-  public : GALGAS_semanticInstructionListForGeneration mProperty_mInstructions ;
 
+  public : GALGAS_extractedAssociatedValuesForGeneration mProperty_mExtractedAssociatedValuesForGeneration ;
+
+  public : GALGAS_uint mProperty_mLocationIndex ;
+
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mInstructions ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;

@@ -7253,11 +7253,12 @@ class cMapElement_headerCompositionMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_headerCompositionMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_stringset mProperty_mInclusion ;
-  public : GALGAS_string mProperty_mHeaderString ;
 
+  public : GALGAS_stringset mProperty_mInclusion ;
+
+  public : GALGAS_string mProperty_mHeaderString ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -7461,10 +7462,10 @@ class cMapElement_headerRepartitionMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_headerRepartitionMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_string mProperty_mHeaderFileName ;
 
+  public : GALGAS_string mProperty_mHeaderFileName ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -7664,10 +7665,10 @@ class cMapElement_projectQualifiedFeatureMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_projectQualifiedFeatureMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_lstring mProperty_mFeatureValue ;
 
+  public : GALGAS_lstring mProperty_mFeatureValue ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -7900,12 +7901,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeGroupList ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_XCodeGroupList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_string mProperty_mGroupReference ;
-  public : GALGAS_string mProperty_mGroupName ;
-  public : GALGAS_string mProperty_mGroupPath ;
-  public : GALGAS_stringlist mProperty_mChildrenRefs ;
 
+  public : GALGAS_string mProperty_mGroupName ;
+
+  public : GALGAS_string mProperty_mGroupPath ;
+
+  public : GALGAS_stringlist mProperty_mChildrenRefs ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -8244,19 +8247,28 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeToolTargetList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_XCodeToolTargetList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_string mProperty_mTargetRef ;
-  public : GALGAS_string mProperty_mTargetName ;
-  public : GALGAS_string mProperty_mProductFileReference ;
-  public : GALGAS_string mProperty_mProductFileName ;
-  public : GALGAS_stringlist mProperty_mBuildPhaseRefList ;
-  public : GALGAS_string mProperty_mBuildPhaseRef ;
-  public : GALGAS_string mProperty_mBuildConfigurationListRef ;
-  public : GALGAS_stringlist mProperty_mBuildConfigurationSettingList ;
-  public : GALGAS_string mProperty_mBuildConfigurationRef ;
-  public : GALGAS_stringlist mProperty_mFrameworksFileRefList ;
-  public : GALGAS_string mProperty_mFrameworkBuildPhaseRef ;
 
+  public : GALGAS_string mProperty_mTargetName ;
+
+  public : GALGAS_string mProperty_mProductFileReference ;
+
+  public : GALGAS_string mProperty_mProductFileName ;
+
+  public : GALGAS_stringlist mProperty_mBuildPhaseRefList ;
+
+  public : GALGAS_string mProperty_mBuildPhaseRef ;
+
+  public : GALGAS_string mProperty_mBuildConfigurationListRef ;
+
+  public : GALGAS_stringlist mProperty_mBuildConfigurationSettingList ;
+
+  public : GALGAS_string mProperty_mBuildConfigurationRef ;
+
+  public : GALGAS_stringlist mProperty_mFrameworksFileRefList ;
+
+  public : GALGAS_string mProperty_mFrameworkBuildPhaseRef ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -8665,22 +8677,34 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeAppTargetList 
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_XCodeAppTargetList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_string mProperty_mTargetRef ;
-  public : GALGAS_string mProperty_mTargetName ;
-  public : GALGAS_string mProperty_mProductFileReference ;
-  public : GALGAS_string mProperty_mProductFileName ;
-  public : GALGAS_stringlist mProperty_mBuildPhaseRefList ;
-  public : GALGAS_string mProperty_mBuildPhaseRef ;
-  public : GALGAS_string mProperty_mBuildConfigurationListRef ;
-  public : GALGAS_stringlist mProperty_mBuildConfigurationSettingList ;
-  public : GALGAS_string mProperty_mBuildConfigurationRef ;
-  public : GALGAS_stringlist mProperty_mFrameworksFileRefList ;
-  public : GALGAS_string mProperty_mFrameworkBuildPhaseRef ;
-  public : GALGAS__32_stringlist mProperty_mDependentTargets ;
-  public : GALGAS_string mProperty_mResourceBuildRef ;
-  public : GALGAS_stringlist mProperty_mResourceFileBuildRefs ;
 
+  public : GALGAS_string mProperty_mTargetName ;
+
+  public : GALGAS_string mProperty_mProductFileReference ;
+
+  public : GALGAS_string mProperty_mProductFileName ;
+
+  public : GALGAS_stringlist mProperty_mBuildPhaseRefList ;
+
+  public : GALGAS_string mProperty_mBuildPhaseRef ;
+
+  public : GALGAS_string mProperty_mBuildConfigurationListRef ;
+
+  public : GALGAS_stringlist mProperty_mBuildConfigurationSettingList ;
+
+  public : GALGAS_string mProperty_mBuildConfigurationRef ;
+
+  public : GALGAS_stringlist mProperty_mFrameworksFileRefList ;
+
+  public : GALGAS_string mProperty_mFrameworkBuildPhaseRef ;
+
+  public : GALGAS__32_stringlist mProperty_mDependentTargets ;
+
+  public : GALGAS_string mProperty_mResourceBuildRef ;
+
+  public : GALGAS_stringlist mProperty_mResourceFileBuildRefs ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;

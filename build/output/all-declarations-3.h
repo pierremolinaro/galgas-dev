@@ -16,11 +16,12 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_typeNameFormalParameterNameList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mFormalSelector ;
-  public : GALGAS_lstring mProperty_mFormalParameterTypeName ;
-  public : GALGAS_lstring mProperty_mFormalParameterName ;
 
+  public : GALGAS_lstring mProperty_mFormalParameterTypeName ;
+
+  public : GALGAS_lstring mProperty_mFormalParameterName ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -169,13 +170,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalArgumentPassi
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_formalParameterListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mFormalSelector ;
-  public : GALGAS_formalArgumentPassingModeAST mProperty_mFormalArgumentPassingMode ;
-  public : GALGAS_lstring mProperty_mFormalArgumentTypeName ;
-  public : GALGAS_lstring mProperty_mFormalArgumentName ;
-  public : GALGAS_bool mProperty_mIsUnused ;
 
+  public : GALGAS_formalArgumentPassingModeAST mProperty_mFormalArgumentPassingMode ;
+
+  public : GALGAS_lstring mProperty_mFormalArgumentTypeName ;
+
+  public : GALGAS_lstring mProperty_mFormalArgumentName ;
+
+  public : GALGAS_bool mProperty_mIsUnused ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -381,10 +385,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifier
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_graphInsertModifierList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mInsertModifierName ;
-  public : GALGAS_lstring mProperty_mInsertErrorMessage ;
 
+  public : GALGAS_lstring mProperty_mInsertErrorMessage ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -601,12 +605,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodListAST
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_insertMethodListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mInsertMethodName ;
-  public : GALGAS_lstring mProperty_mErrorMessage ;
-  public : GALGAS_lstring mProperty_mShadowErrorMessage ;
-  public : GALGAS_lstring mProperty_mInitialStateName ;
 
+  public : GALGAS_lstring mProperty_mErrorMessage ;
+
+  public : GALGAS_lstring mProperty_mShadowErrorMessage ;
+
+  public : GALGAS_lstring mProperty_mInitialStateName ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -682,12 +688,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodListAST
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapSearchMethodListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mSearchMethodName ;
-  public : GALGAS_lstring mProperty_mErrorMessage ;
-  public : GALGAS_lstring mProperty_mActionName ;
-  public : GALGAS_bool mProperty_mLocationAttribute ;
 
+  public : GALGAS_lstring mProperty_mErrorMessage ;
+
+  public : GALGAS_lstring mProperty_mActionName ;
+
+  public : GALGAS_bool mProperty_mLocationAttribute ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -892,10 +900,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapRemoveMethodList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapRemoveMethodListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mMethodName ;
-  public : GALGAS_lstring mProperty_mErrorMessage ;
 
+  public : GALGAS_lstring mProperty_mErrorMessage ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1082,9 +1090,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertOrReplaceDecl
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_insertOrReplaceDeclarationListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_location mProperty_mInsertOrReplaceDeclarationLocation ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1257,9 +1264,8 @@ class cMapElement_insertMethodMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_insertMethodMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1432,9 +1438,8 @@ class cMapElement_searchMethodMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_searchMethodMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1719,12 +1724,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateTransitionL
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapStateTransitionList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mActionName ;
-  public : GALGAS_lstring mProperty_mTargetStateName ;
-  public : GALGAS_mapAutomatonMessageKind mProperty_mTransitionMessageKind ;
-  public : GALGAS_lstring mProperty_mTransitionMessage ;
 
+  public : GALGAS_lstring mProperty_mTargetStateName ;
+
+  public : GALGAS_mapAutomatonMessageKind mProperty_mTransitionMessageKind ;
+
+  public : GALGAS_lstring mProperty_mTransitionMessage ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -1946,12 +1953,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateList ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapStateList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mStateName ;
-  public : GALGAS_mapAutomatonMessageKind mProperty_mStateMessageKind ;
-  public : GALGAS_lstring mProperty_mStateMessage ;
-  public : GALGAS_mapStateTransitionList mProperty_mTransitionList ;
 
+  public : GALGAS_mapAutomatonMessageKind mProperty_mStateMessageKind ;
+
+  public : GALGAS_lstring mProperty_mStateMessage ;
+
+  public : GALGAS_mapStateTransitionList mProperty_mTransitionList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2183,13 +2192,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideBlockDes
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapOverrideBlockDescriptorAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mLeftState ;
-  public : GALGAS_lstring mProperty_mRightState ;
-  public : GALGAS_lstring mProperty_mResultingState ;
-  public : GALGAS_mapAutomatonMessageKind mProperty_mMessageKind ;
-  public : GALGAS_lstring mProperty_mTransitionMessage ;
 
+  public : GALGAS_lstring mProperty_mRightState ;
+
+  public : GALGAS_lstring mProperty_mResultingState ;
+
+  public : GALGAS_mapAutomatonMessageKind mProperty_mMessageKind ;
+
+  public : GALGAS_lstring mProperty_mTransitionMessage ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2405,11 +2417,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideBlockLis
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapOverrideBlockListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mOverrideBlockName ;
-  public : GALGAS_mapOverrideBlockDescriptorAST mProperty_mMapOverrideBlockDescriptor_31_AST ;
-  public : GALGAS_mapOverrideBlockDescriptorAST mProperty_mMapOverrideBlockDescriptor_32_AST ;
 
+  public : GALGAS_mapOverrideBlockDescriptorAST mProperty_mMapOverrideBlockDescriptor_31_AST ;
+
+  public : GALGAS_mapOverrideBlockDescriptorAST mProperty_mMapOverrideBlockDescriptor_32_AST ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2632,11 +2645,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sharedMapAttributeL
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_sharedMapAttributeListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mAttributeName ;
-  public : GALGAS_bool mProperty_mIsError ;
-  public : GALGAS_lstring mProperty_mMessage ;
 
+  public : GALGAS_bool mProperty_mIsError ;
+
+  public : GALGAS_lstring mProperty_mMessage ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2827,14 +2841,18 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateTransitionS
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapStateTransitionSortedList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_uint mProperty_mActionIndex ;
-  public : GALGAS_string mProperty_mActionName ;
-  public : GALGAS_uint mProperty_mTargetStateIndex ;
-  public : GALGAS_string mProperty_mTargetStateName ;
-  public : GALGAS_mapAutomatonMessageKind mProperty_mTransitionMessageKind ;
-  public : GALGAS_string mProperty_mTransitionMessage ;
 
+  public : GALGAS_string mProperty_mActionName ;
+
+  public : GALGAS_uint mProperty_mTargetStateIndex ;
+
+  public : GALGAS_string mProperty_mTargetStateName ;
+
+  public : GALGAS_mapAutomatonMessageKind mProperty_mTransitionMessageKind ;
+
+  public : GALGAS_string mProperty_mTransitionMessage ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3027,13 +3045,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateSortedList 
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapStateSortedList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_uint mProperty_mStateIndex ;
-  public : GALGAS_string mProperty_mStateName ;
-  public : GALGAS_mapAutomatonMessageKind mProperty_mStateMessageKind ;
-  public : GALGAS_string mProperty_mStateMessage ;
-  public : GALGAS_mapStateTransitionSortedList mProperty_mTransitionList ;
 
+  public : GALGAS_string mProperty_mStateName ;
+
+  public : GALGAS_mapAutomatonMessageKind mProperty_mStateMessageKind ;
+
+  public : GALGAS_string mProperty_mStateMessage ;
+
+  public : GALGAS_mapStateTransitionSortedList mProperty_mTransitionList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3257,11 +3278,12 @@ class cMapElement_mapAutomatonStateMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapAutomatonStateMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_uint mProperty_mStateIndex ;
-  public : GALGAS_mapAutomatonMessageKind mProperty_mStateMessageKind ;
 
+  public : GALGAS_uint mProperty_mStateIndex ;
+
+  public : GALGAS_mapAutomatonMessageKind mProperty_mStateMessageKind ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3462,10 +3484,10 @@ class cMapElement_mapAutomatonActionMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapAutomatonActionMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_uint mProperty_mActionIndex ;
 
+  public : GALGAS_uint mProperty_mActionIndex ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3666,16 +3688,22 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_branchBehaviourSort
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_branchBehaviourSortedListForMapOverride_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_uint mProperty_mStartStateIndex ;
-  public : GALGAS_string mProperty_mStartStateName ;
-  public : GALGAS_uint mProperty_mCurrentStateIndex ;
-  public : GALGAS_string mProperty_mCurrentStateName ;
-  public : GALGAS_uint mProperty_mFinalStateIndex ;
-  public : GALGAS_string mProperty_mFinalStateName ;
-  public : GALGAS_mapAutomatonMessageKind mProperty_mBehaviourMessageKind ;
-  public : GALGAS_string mProperty_mBehaviourMessage ;
 
+  public : GALGAS_string mProperty_mStartStateName ;
+
+  public : GALGAS_uint mProperty_mCurrentStateIndex ;
+
+  public : GALGAS_string mProperty_mCurrentStateName ;
+
+  public : GALGAS_uint mProperty_mFinalStateIndex ;
+
+  public : GALGAS_string mProperty_mFinalStateName ;
+
+  public : GALGAS_mapAutomatonMessageKind mProperty_mBehaviourMessageKind ;
+
+  public : GALGAS_string mProperty_mBehaviourMessage ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3915,11 +3943,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideList ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_mapOverrideList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_string mProperty_mOverrideName ;
-  public : GALGAS_branchBehaviourSortedListForMapOverride mProperty_mBranchBehaviourSortedListForMapOverride ;
-  public : GALGAS_branchBehaviourSortedListForMapOverride mProperty_mBranchCombinationSortedListForMapOverride ;
 
+  public : GALGAS_branchBehaviourSortedListForMapOverride mProperty_mBranchBehaviourSortedListForMapOverride ;
+
+  public : GALGAS_branchBehaviourSortedListForMapOverride mProperty_mBranchCombinationSortedListForMapOverride ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4120,10 +4149,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListSortDescr
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_sortedListSortDescriptorListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mSortedAttributeName ;
-  public : GALGAS_bool mProperty_mAscending ;
 
+  public : GALGAS_bool mProperty_mAscending ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4342,11 +4371,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortDescriptorListF
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_sortDescriptorListForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mAttributeTypeIndex ;
-  public : GALGAS_string mProperty_mAttributeName ;
-  public : GALGAS_bool mProperty_mAscendingOrder ;
 
+  public : GALGAS_string mProperty_mAttributeName ;
+
+  public : GALGAS_bool mProperty_mAscendingOrder ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4577,13 +4607,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParamete
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_formalInputParameterListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mFormalSelector ;
-  public : GALGAS_lstring mProperty_mFormalArgumentTypeName ;
-  public : GALGAS_lstring mProperty_mFormalArgumentName ;
-  public : GALGAS_bool mProperty_mIsUnused ;
-  public : GALGAS_bool mProperty_mIsConstant ;
 
+  public : GALGAS_lstring mProperty_mFormalArgumentTypeName ;
+
+  public : GALGAS_lstring mProperty_mFormalArgumentName ;
+
+  public : GALGAS_bool mProperty_mIsUnused ;
+
+  public : GALGAS_bool mProperty_mIsConstant ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4842,13 +4875,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalInputParamete
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_formalInputParameterListForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mFormalSelector ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mFormalArgumentType ;
-  public : GALGAS_string mProperty_mFormalArgumentCppName ;
-  public : GALGAS_lstring mProperty_mFormalArgumentName ;
-  public : GALGAS_bool mProperty_mIsConstant ;
 
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mFormalArgumentType ;
+
+  public : GALGAS_string mProperty_mFormalArgumentCppName ;
+
+  public : GALGAS_lstring mProperty_mFormalArgumentName ;
+
+  public : GALGAS_bool mProperty_mIsConstant ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5107,13 +5143,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_formalParameterListForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mFormalSelector ;
-  public : GALGAS_formalArgumentPassingModeAST mProperty_mFormalArgumentPassingMode ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mFormalArgumentType ;
-  public : GALGAS_lstring mProperty_mFormalArgumentName ;
-  public : GALGAS_string mProperty_mFormalArgumentCppName ;
 
+  public : GALGAS_formalArgumentPassingModeAST mProperty_mFormalArgumentPassingMode ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mFormalArgumentType ;
+
+  public : GALGAS_lstring mProperty_mFormalArgumentName ;
+
+  public : GALGAS_string mProperty_mFormalArgumentCppName ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5453,9 +5492,8 @@ class cPtr_semanticInstructionAST : public cPtr_syntaxInstructionAST {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_semanticInstructionListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_semanticInstructionAST mProperty_mInstruction ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5708,9 +5746,8 @@ class cPtr_semanticInstructionForGeneration : public acPtr_class {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_semanticInstructionListForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_semanticInstructionForGeneration mProperty_mInstruction ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5979,11 +6016,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualOutputExpress
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_actualOutputExpressionList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mActualSelector ;
-  public : GALGAS_semanticExpressionAST mProperty_mExpression ;
-  public : GALGAS_location mProperty_mEndOfExpressionLocation ;
 
+  public : GALGAS_semanticExpressionAST mProperty_mExpression ;
+
+  public : GALGAS_location mProperty_mEndOfExpressionLocation ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6181,10 +6219,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionL
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_semanticExpressionListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_semanticExpressionAST mProperty_mExpression ;
-  public : GALGAS_location mProperty_mEndOfExpressionLocation ;
 
+  public : GALGAS_location mProperty_mEndOfExpressionLocation ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
