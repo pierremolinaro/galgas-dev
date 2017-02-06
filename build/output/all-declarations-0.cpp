@@ -11628,7 +11628,7 @@ void cParser_templateSyntax::rule_templateSyntax_factor_i5_ (GALGAS_templateExpr
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgasTemplateScanner::kToken__2E_) COMMA_SOURCE_FILE ("templateSyntax.galgas", 207)) ;
       GALGAS_lstring var_structFieldName_11138 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgasTemplateScanner::kToken_identifier) COMMA_SOURCE_FILE ("templateSyntax.galgas", 208)) ;
-      outArgument_outExpression = GALGAS_structFieldAccessTemplateExpressionAST::constructor_new (var_structFieldName_11138.mProperty_location, outArgument_outExpression, var_structFieldName_11138  COMMA_SOURCE_FILE ("templateSyntax.galgas", 209)) ;
+      outArgument_outExpression = GALGAS_structFieldAccessTemplateExpressionAST::constructor_new (var_structFieldName_11138.getter_location (HERE), outArgument_outExpression, var_structFieldName_11138  COMMA_SOURCE_FILE ("templateSyntax.galgas", 209)) ;
     } break ;
     default:
       repeatFlag_0 = false ;
@@ -12132,7 +12132,7 @@ void cParser_templateSyntax::rule_templateSyntax_template_5F_instruction_i23_ (G
                                                                                C_Lexique_galgasTemplateScanner * inCompiler) {
   GALGAS_lstring var_selector_28463 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgasTemplateScanner::kToken__21_) COMMA_SOURCE_FILE ("templateSyntax.galgas", 500)) ;
-  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_selector_28463.mProperty_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_selector_28463.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_0) {
     TC_Array <C_FixItDescription> fixItArray1 ;
     inCompiler->emitSemanticError (var_selector_28463.getter_location (SOURCE_FILE ("templateSyntax.galgas", 502)), GALGAS_string ("the selector should be '!'"), fixItArray1  COMMA_SOURCE_FILE ("templateSyntax.galgas", 502)) ;

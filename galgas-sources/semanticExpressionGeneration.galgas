@@ -931,7 +931,7 @@ override method @structFieldAccessExpressionForGeneration generateExpression
 #--- Operand
   [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string operand]
 #--- Generate
-  outCppExpression = operand + ".mProperty_" + [mStructFieldName identifierRepresentation]
+  outCppExpression = operand + ".getter_" + [mStructFieldName identifierRepresentation] + " (HERE)"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1169,7 +1169,7 @@ override method @getterCallExpressionForGeneration generateExpression
   case definedAsMember :
     outCppExpression = receiverCppName
     for () in mFieldList do
-      outCppExpression += ".mProperty_" + [mValue identifierRepresentation]
+      outCppExpression += ".getter_" + [mValue identifierRepresentation] + " (HERE)"
     end
     [mResultType addHeaderFileName !?ioInclusionSet]
     outCppExpression +=  ".getter_" + [mGetterName identifierRepresentation] + " ("

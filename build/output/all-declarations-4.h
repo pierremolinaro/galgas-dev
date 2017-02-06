@@ -2512,9 +2512,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_actualParameterListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_actualParameterAST mProperty_mActualParameter ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2859,10 +2858,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualInputParamete
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_actualInputParameterListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mActualSelector ;
-  public : GALGAS_abstractInputParameter mProperty_mInputParameter ;
 
+  public : GALGAS_abstractInputParameter mProperty_mInputParameter ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3046,9 +3045,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclaration
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_semanticDeclarationListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_semanticDeclarationAST mProperty_mSemanticDeclaration ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3262,12 +3260,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalTemplateInput
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_formalTemplateInputParameterListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mFormalTemplateSelector ;
-  public : GALGAS_lstring mProperty_mFormalArgumentTypeName ;
-  public : GALGAS_lstring mProperty_mFormalArgumentName ;
-  public : GALGAS_bool mProperty_mIsUnused ;
 
+  public : GALGAS_lstring mProperty_mFormalArgumentTypeName ;
+
+  public : GALGAS_lstring mProperty_mFormalArgumentName ;
+
+  public : GALGAS_bool mProperty_mIsUnused ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3482,11 +3482,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplate
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_filewrapperTemplateListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mFilewrapperTemplateName ;
-  public : GALGAS_lstring mProperty_mFilewrapperTemplatePath ;
-  public : GALGAS_formalTemplateInputParameterListAST mProperty_mFilewrapperTemplateFormalInputParameters ;
 
+  public : GALGAS_lstring mProperty_mFilewrapperTemplatePath ;
+
+  public : GALGAS_formalTemplateInputParameterListAST mProperty_mFilewrapperTemplateFormalInputParameters ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3677,9 +3678,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionLi
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_syntaxInstructionList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_syntaxInstructionAST mProperty_mInstruction ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3879,11 +3879,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalLabelLis
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_nonTerminalLabelListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mLabelName ;
-  public : GALGAS_formalParameterListAST mProperty_mFormalArgumentList ;
-  public : GALGAS_location mProperty_mEndOfArgumentLocation ;
 
+  public : GALGAS_formalParameterListAST mProperty_mFormalArgumentList ;
+
+  public : GALGAS_location mProperty_mEndOfArgumentLocation ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4084,10 +4085,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalDeclarat
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_nonterminalDeclarationListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mNonterminalName ;
-  public : GALGAS_nonTerminalLabelListAST mProperty_mLabels ;
 
+  public : GALGAS_nonTerminalLabelListAST mProperty_mLabels ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4314,13 +4315,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxRuleLabelList
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_syntaxRuleLabelListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mLabelName ;
-  public : GALGAS_formalParameterListAST mProperty_mFormalArguments ;
-  public : GALGAS_location mProperty_mEndOfArgumentLocation ;
-  public : GALGAS_syntaxInstructionList mProperty_mSyntaxInstructionList ;
-  public : GALGAS_location mProperty_mEndOfInstructionList ;
 
+  public : GALGAS_formalParameterListAST mProperty_mFormalArguments ;
+
+  public : GALGAS_location mProperty_mEndOfArgumentLocation ;
+
+  public : GALGAS_syntaxInstructionList mProperty_mSyntaxInstructionList ;
+
+  public : GALGAS_location mProperty_mEndOfInstructionList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4529,10 +4533,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxRuleListAST ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_syntaxRuleListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mNonterminalName ;
-  public : GALGAS_syntaxRuleLabelListAST mProperty_mLabelList ;
 
+  public : GALGAS_syntaxRuleLabelListAST mProperty_mLabelList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4729,10 +4733,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listOfSyntaxInstruc
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_listOfSyntaxInstructionList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_syntaxInstructionList mProperty_mSyntaxInstructionList ;
-  public : GALGAS_location mProperty_mEndOf_5F_instructions ;
 
+  public : GALGAS_location mProperty_mEndOf_5F_instructions ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -4992,9 +4996,8 @@ class cPtr_abstractCollectionValueElement : public acPtr_class {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_collectionValueElementList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_abstractCollectionValueElement mProperty_mElement ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5439,15 +5442,20 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxCom
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_galgas_33_SyntaxComponentListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mSyntaxComponentName ;
-  public : GALGAS_lstring mProperty_mImportedLexiqueFilePath ;
-  public : GALGAS_lstringlist mProperty_mImportedComponentFileNameList ;
-  public : GALGAS_nonterminalDeclarationListAST mProperty_mNonterminalDeclarationList ;
-  public : GALGAS_syntaxRuleListAST mProperty_mRuleList ;
-  public : GALGAS_semanticDeclarationListAST mProperty_mSemanticDeclarationList ;
-  public : GALGAS_bool mProperty_mHasTranslateFeature ;
 
+  public : GALGAS_lstring mProperty_mImportedLexiqueFilePath ;
+
+  public : GALGAS_lstringlist mProperty_mImportedComponentFileNameList ;
+
+  public : GALGAS_nonterminalDeclarationListAST mProperty_mNonterminalDeclarationList ;
+
+  public : GALGAS_syntaxRuleListAST mProperty_mRuleList ;
+
+  public : GALGAS_semanticDeclarationListAST mProperty_mSemanticDeclarationList ;
+
+  public : GALGAS_bool mProperty_mHasTranslateFeature ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5686,11 +5694,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxExt
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_galgas_33_SyntaxExtensionListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mSyntaxComponentName ;
-  public : GALGAS_nonterminalDeclarationListAST mProperty_mNonterminalDeclarationList ;
-  public : GALGAS_syntaxRuleListAST mProperty_mRuleList ;
 
+  public : GALGAS_nonterminalDeclarationListAST mProperty_mNonterminalDeclarationList ;
+
+  public : GALGAS_syntaxRuleListAST mProperty_mRuleList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5829,10 +5838,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensions ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_syntaxExtensions_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_string mProperty_key ;
-  public : GALGAS_galgas_33_SyntaxExtensionListAST mProperty_mList ;
 
+  public : GALGAS_galgas_33_SyntaxExtensionListAST mProperty_mList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6037,10 +6046,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_prologueEpilogueLis
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_prologueEpilogueList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_semanticInstructionListAST mProperty_mInstructionList ;
-  public : GALGAS_location mProperty_mEndOfInstructionList ;
 
+  public : GALGAS_location mProperty_mEndOfInstructionList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6315,15 +6324,20 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programRuleList ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_programRuleList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mSourceFileExtension ;
-  public : GALGAS_lstring mProperty_mSourceFileHelp ;
-  public : GALGAS_lstring mProperty_mSourceFileVariableName ;
-  public : GALGAS_bool mProperty_mSourceFileVariableNameIsUnused ;
-  public : GALGAS_lstring mProperty_mReferenceGrammar ;
-  public : GALGAS_semanticInstructionListAST mProperty_mInstructionList ;
-  public : GALGAS_location mProperty_mEndOfInstructionList ;
 
+  public : GALGAS_lstring mProperty_mSourceFileHelp ;
+
+  public : GALGAS_lstring mProperty_mSourceFileVariableName ;
+
+  public : GALGAS_bool mProperty_mSourceFileVariableNameIsUnused ;
+
+  public : GALGAS_lstring mProperty_mReferenceGrammar ;
+
+  public : GALGAS_semanticInstructionListAST mProperty_mInstructionList ;
+
+  public : GALGAS_location mProperty_mEndOfInstructionList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6411,15 +6425,20 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programRuleList_2D_
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_galgas_33_DeclarationAST : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_semanticDeclarationListAST mProperty_mDeclarationList ;
-  public : GALGAS_galgas_33_SyntaxComponentListAST mProperty_mSyntaxComponentList ;
-  public : GALGAS_syntaxExtensions mProperty_mSyntaxExtensions ;
-  public : GALGAS_galgas_33_GUIComponentListAST mProperty_mGUIComponentList ;
-  public : GALGAS_prologueEpilogueList mProperty_mPrologueDeclarationList ;
-  public : GALGAS_programRuleList mProperty_mSourceRuleList ;
-  public : GALGAS_prologueEpilogueList mProperty_mEpilogueDeclarationList ;
 
+  public : GALGAS_galgas_33_SyntaxComponentListAST mProperty_mSyntaxComponentList ;
+
+  public : GALGAS_syntaxExtensions mProperty_mSyntaxExtensions ;
+
+  public : GALGAS_galgas_33_GUIComponentListAST mProperty_mGUIComponentList ;
+
+  public : GALGAS_prologueEpilogueList mProperty_mPrologueDeclarationList ;
+
+  public : GALGAS_programRuleList mProperty_mSourceRuleList ;
+
+  public : GALGAS_prologueEpilogueList mProperty_mEpilogueDeclarationList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6507,11 +6526,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_Declarati
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_functionSignature_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mFormalSelector ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mFormalArgumentType ;
-  public : GALGAS_string mProperty_mFormalArgumentName ;
 
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mFormalArgumentType ;
+
+  public : GALGAS_string mProperty_mFormalArgumentName ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6615,12 +6635,14 @@ class cMapElement_constructorMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_constructorMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_functionSignature mProperty_mArgumentTypeList ;
-  public : GALGAS_bool mProperty_mHasCompilerArgument ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReturnedType ;
 
+  public : GALGAS_functionSignature mProperty_mArgumentTypeList ;
+
+  public : GALGAS_bool mProperty_mHasCompilerArgument ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReturnedType ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6890,16 +6912,22 @@ class cMapElement_getterMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_getterMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_methodKind mProperty_mKind ;
-  public : GALGAS_functionSignature mProperty_mArgumentTypeList ;
-  public : GALGAS_location mProperty_mDeclarationLocation ;
-  public : GALGAS_bool mProperty_mHasCompilerArgument ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReturnedType ;
-  public : GALGAS_methodQualifier mProperty_mQualifier ;
-  public : GALGAS_string mProperty_mErrorMessage ;
 
+  public : GALGAS_methodKind mProperty_mKind ;
+
+  public : GALGAS_functionSignature mProperty_mArgumentTypeList ;
+
+  public : GALGAS_location mProperty_mDeclarationLocation ;
+
+  public : GALGAS_bool mProperty_mHasCompilerArgument ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReturnedType ;
+
+  public : GALGAS_methodQualifier mProperty_mQualifier ;
+
+  public : GALGAS_string mProperty_mErrorMessage ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;

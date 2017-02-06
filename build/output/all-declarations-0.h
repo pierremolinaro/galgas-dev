@@ -476,9 +476,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_templateInstructionAST mProperty_mInstruction ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -759,11 +758,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExpressionL
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateExpressionListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_mActualSelector ;
-  public : GALGAS_templateExpressionAST mProperty_mExpression ;
-  public : GALGAS_location mProperty_mEndOfExpressionLocation ;
 
+  public : GALGAS_templateExpressionAST mProperty_mExpression ;
+
+  public : GALGAS_location mProperty_mEndOfExpressionLocation ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3222,10 +3222,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionIfBranchListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_templateExpressionAST mProperty_mExpression ;
-  public : GALGAS_templateInstructionListAST mProperty_mInstructionList ;
 
+  public : GALGAS_templateInstructionListAST mProperty_mInstructionList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -3517,10 +3517,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionSwitchBranchListAST_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstringlist mProperty_mConstantList ;
-  public : GALGAS_templateInstructionListAST mProperty_mInstructionList ;
 
+  public : GALGAS_templateInstructionListAST mProperty_mInstructionList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -5623,9 +5623,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionListForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_templateInstructionForGeneration mProperty_mInstruction ;
-
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6194,10 +6193,10 @@ class cPtr_semanticExpressionForGeneration : public acPtr_class {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionIfBranchListForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
-  public : GALGAS_templateInstructionListForGeneration mProperty_mInstructionList ;
 
+  public : GALGAS_templateInstructionListForGeneration mProperty_mInstructionList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6489,10 +6488,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstringlist mProperty_mConstantList ;
-  public : GALGAS_templateInstructionListForGeneration mProperty_mInstructionList ;
 
+  public : GALGAS_templateInstructionListForGeneration mProperty_mInstructionList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6707,11 +6706,12 @@ class cMapElement_templateVariableMap : public cMapElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateVariableMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mTypeProxy ;
-  public : GALGAS_string mProperty_mCppName ;
 
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mTypeProxy ;
+
+  public : GALGAS_string mProperty_mCppName ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6896,30 +6896,50 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_usefulEntitiesGraph
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_predefinedTypes : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLocationType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mBoolType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mCharType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mStringType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mUIntType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mSIntType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mUInt_36__34_Type ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mSInt_36__34_Type ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mDoubleType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLBoolType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLCharType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLStringType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLUIntType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLSIntType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLUInt_36__34_Type ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLSInt_36__34_Type ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLDoubleType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mStringListType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLBigIntType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mBigIntType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mStringSetType ;
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLStringListType ;
 
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mBoolType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mCharType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mStringType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mUIntType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mSIntType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mUInt_36__34_Type ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mSInt_36__34_Type ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mDoubleType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLBoolType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLCharType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLStringType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLUIntType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLSIntType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLUInt_36__34_Type ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLSInt_36__34_Type ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLDoubleType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mStringListType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLBigIntType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mBigIntType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mStringSetType ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mLStringListType ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -10382,16 +10402,22 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_semanticContext : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_unifiedTypeMap mProperty_mTypeMap ;
-  public : GALGAS_routineMap mProperty_mRoutineMap ;
-  public : GALGAS_functionMap mProperty_mFunctionMap ;
-  public : GALGAS_filewrapperMap mProperty_mFilewrapperMap ;
-  public : GALGAS_grammarMap mProperty_mGrammarMap ;
-  public : GALGAS_optionComponentMapForSemanticAnalysis mProperty_mOptionComponentMapForSemanticAnalysis ;
-  public : GALGAS_lexiqueComponentMapForSemanticAnalysis mProperty_mLexiqueComponentMapForSemanticAnalysis ;
-  public : GALGAS_syntaxComponentMap mProperty_mSyntaxComponentMapForSemanticAnalysis ;
 
+  public : GALGAS_routineMap mProperty_mRoutineMap ;
+
+  public : GALGAS_functionMap mProperty_mFunctionMap ;
+
+  public : GALGAS_filewrapperMap mProperty_mFilewrapperMap ;
+
+  public : GALGAS_grammarMap mProperty_mGrammarMap ;
+
+  public : GALGAS_optionComponentMapForSemanticAnalysis mProperty_mOptionComponentMapForSemanticAnalysis ;
+
+  public : GALGAS_lexiqueComponentMapForSemanticAnalysis mProperty_mLexiqueComponentMapForSemanticAnalysis ;
+
+  public : GALGAS_syntaxComponentMap mProperty_mSyntaxComponentMapForSemanticAnalysis ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -10483,11 +10509,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticContext ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_templateAnalysisContext : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
   public : GALGAS_semanticContext mProperty_mSemanticContext ;
-  public : GALGAS_predefinedTypes mProperty_mPredefinedTypes ;
-  public : GALGAS_templateVariableMap mProperty_mTemplateVariableMap ;
 
+  public : GALGAS_predefinedTypes mProperty_mPredefinedTypes ;
+
+  public : GALGAS_templateVariableMap mProperty_mTemplateVariableMap ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;

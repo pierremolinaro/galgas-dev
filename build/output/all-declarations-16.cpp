@@ -12335,7 +12335,7 @@ void extensionMethod_displayRule (const GALGAS_productionRuleListForGrammarAnaly
   GALGAS_uint var_column_5871 = GALGAS_uint ((uint32_t) 1U) ;
   GALGAS_uint var_unusedMaxUsedRowIndex_5903 = GALGAS_uint ((uint32_t) 0U) ;
   const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_2 = inObject ;
-  cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_5961 (temp_2.mProperty_mInstructionList, kENUMERATION_UP) ;
+  cEnumerator_syntaxInstructionListForGrammarAnalysis enumerator_5961 (temp_2.getter_mInstructionList (HERE), kENUMERATION_UP) ;
   while (enumerator_5961.hasCurrentObject ()) {
     callExtensionMethod_tikzNodeForSyntaxInstruction ((const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) enumerator_5961.current_mInstruction (HERE).ptr (), var_rowArray_5769, GALGAS_uint ((uint32_t) 0U), var_column_5871, var_currentNode_5737, var_arrowStyle_5851, var_arrows_5825, var_unusedMaxUsedRowIndex_5903, GALGAS_bool (false), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 115)) ;
     enumerator_5961.gotoNextObject () ;
@@ -12346,7 +12346,7 @@ void extensionMethod_displayRule (const GALGAS_productionRuleListForGrammarAnaly
   }
   var_arrows_5825.plusAssign_operation(GALGAS_string ("  \\draw[->] (").add_operation (var_currentNode_5737, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 128)).add_operation (GALGAS_string (") -- ("), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 128)).add_operation (var_lastNodeName_6330, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 128)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 128)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 128)) ;
   const GALGAS_productionRuleListForGrammarAnalysis_2D_element temp_3 = inObject ;
-  GALGAS_location var_loc_6440 = temp_3.mProperty_mLeftNonterminalSymbol.mProperty_location ;
+  GALGAS_location var_loc_6440 = temp_3.getter_mLeftNonterminalSymbol (HERE).getter_location (HERE) ;
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("\\ruleSubsection{").add_operation (function_escapeForTex (constinArgument_inSyntaxCompnentName, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 132)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 131)).add_operation (GALGAS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 132)).add_operation (function_escapeForTex (var_loc_6440.getter_file (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 134)).getter_lastPathComponent (SOURCE_FILE ("production-rules-in-tex.galgas", 134)).getter_stringByDeletingPathExtension (SOURCE_FILE ("production-rules-in-tex.galgas", 134)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 134)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 133)).add_operation (GALGAS_string ("}{"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 134)).add_operation (function_escapeForTex (var_loc_6440.getter_line (inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 135)).getter_string (SOURCE_FILE ("production-rules-in-tex.galgas", 135)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 135)), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 135)).add_operation (GALGAS_string ("}\n"
     "\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 135)).add_operation (GALGAS_string ("\\begin{tikzpicture}\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 136)).add_operation (GALGAS_string ("  \\matrix[column sep=\\ruleMatrixColumnSeparation, row sep=\\ruleMatrixRowSeparation] {\n"), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 137)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 131)) ;
   cEnumerator_rowList enumerator_6873 (var_rowArray_5769, kENUMERATION_DOWN) ;
@@ -12354,11 +12354,11 @@ void extensionMethod_displayRule (const GALGAS_productionRuleListForGrammarAnaly
     ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("    "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 140)) ;
     cEnumerator__32_stringlist enumerator_6932 (enumerator_6873.current_columns (HERE), kENUMERATION_UP) ;
     while (enumerator_6932.hasCurrentObject ()) {
-      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_6932.current (HERE).mProperty_mValue_30_.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_6932.current (HERE).getter_mValue_30_ (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
       if (kBoolTrue == test_4) {
         ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("& "), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 143)) ;
       }else if (kBoolFalse == test_4) {
-        ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("\\node (").add_operation (enumerator_6932.current (HERE).mProperty_mValue_30_, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 145)).add_operation (GALGAS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 145)).add_operation (enumerator_6932.current (HERE).mProperty_mValue_31_, inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 145)).add_operation (GALGAS_string ("; & "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 145)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 145)) ;
+        ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("\\node (").add_operation (enumerator_6932.current (HERE).getter_mValue_30_ (HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 145)).add_operation (GALGAS_string (") "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 145)).add_operation (enumerator_6932.current (HERE).getter_mValue_31_ (HERE), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 145)).add_operation (GALGAS_string ("; & "), inCompiler COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 145)), inCompiler  COMMA_SOURCE_FILE ("production-rules-in-tex.galgas", 145)) ;
       }
       enumerator_6932.gotoNextObject () ;
     }

@@ -5,13 +5,11 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
-//--------------------------------- Public data members
+//--------------------------------- Properties
 %
-for () in ATTRIBUTE_LIST
-  do %  public : GALGAS_%![mAttributeTypeProxy identifierRepresentation]% mProperty_%![mAttributeName identifierRepresentation]% ;\n%
-end%
-
-//--------------------------------- Accessors
+for () in ATTRIBUTE_LIST do
+  %  public : GALGAS_%![mAttributeTypeProxy identifierRepresentation]% mProperty_%![mAttributeName identifierRepresentation]% ;\n\n%
+end%//--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 

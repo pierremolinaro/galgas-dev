@@ -6,7 +6,7 @@
 %-------------------------------------------------------------
 
 
-Le mot-clé \ggs!struct! permet de définir des types de structure. La syntaxe de définition d'un type structure est de la forme :
+Le mot-clé \ggs!struct! permet de définir des types de structure. La syntaxe de définition d'un type structure est de la forme~:
 
 \begin{galgas}
 struct @nom_de_type
@@ -154,7 +154,7 @@ struct @range {
 
 La plupart des propriétés du type \ggs!@range! découle de cette définition (\refChapterPage{typeStructure}).
 
-\ggs+@range.new {!a !b}+, où \ggs!a! et \ggs!b! sont des expressions de type \ggs!@uint!, représente :
+\ggs+@range.new {!a !b}+, où \ggs!a! et \ggs!b! sont des expressions de type \ggs!@uint!, représente~:
 \begin{itemize}
   \item un intervalle vide si \ggs!b! est égal à zéro ;
   \item l'intervalle $[a, a+b-1]$ si \ggs!b! est strictement positif.
@@ -166,13 +166,13 @@ La plupart des propriétés du type \ggs!@range! découle de cette définition (
 
 Deux opérateurs permettent de construire plus facilement des objets de type \ggs!@range!.
 
-L'opérateur \ggs!...! permet de définir un intervalle fermé à partir de sa borne inférieure et de sa borne supérieure : si \ggs!a! et \ggs!b! sont des expressions de type \ggs!@uint!, l'expression \ggs!a ... b! est équivalente à la construction \ggs*@range.new {!a !b - a + 1}*. Une exception est levée si $b < a$. 
+L'opérateur \ggs!...! permet de définir un intervalle fermé à partir de sa borne inférieure et de sa borne supérieure~: si \ggs!a! et \ggs!b! sont des expressions de type \ggs!@uint!, l'expression \ggs!a ... b! est équivalente à la construction \ggs*@range.new {!a !b - a + 1}*. Une exception est levée si $b < a$. 
 
-L'opérateur \ggs!..<! permet de définir un intervalle ouvert à gauche à partir de sa borne inférieure et de sa borne supérieure : si \ggs!a! et \ggs!b! sont des expressions de type \ggs!@uint!, l'expression \ggs!a ..< b! est équivalente à \ggs*@range.new {!a !b - a}*. Une exception est levée si $b < a$.
+L'opérateur \ggs!..<! permet de définir un intervalle ouvert à gauche à partir de sa borne inférieure et de sa borne supérieure~: si \ggs!a! et \ggs!b! sont des expressions de type \ggs!@uint!, l'expression \ggs!a ..< b! est équivalente à \ggs*@range.new {!a !b - a}*. Une exception est levée si $b < a$.
 
 \subsubsection{Type \texttt{@range} et instruction \texttt{for}}
 
-On peut utiliser une expression de type \ggs!@range! avec l'instruction \ggs!for! :
+On peut utiliser une expression de type \ggs!@range! avec l'instruction \ggs!for!~:
 
 \begin{galgas}
 for i in @range.new {!12 !5} do
@@ -180,21 +180,21 @@ for i in @range.new {!12 !5} do
 end
 \end{galgas}
 
-Et, avec l'opérateur \ggs!...! :
+Et, avec l'opérateur \ggs!...!~:
 \begin{galgas}
 for i in 12 ... 16 do
   # i prend successivement les valeurs 12, 13, 14, 15, 16
 end
 \end{galgas}
 
-Et l'opérateur \ggs!..<! :
+Et l'opérateur \ggs!..<!~:
 \begin{galgas}
 for i in 12 ..< 17 do
   # i prend successivement les valeurs 12, 13, 14, 15, 16
 end
 \end{galgas}
 
-Si l'on veut parcourir l'énumération à partir de la dernière valeur, on utilise le modificateur \ggs!>! après le mot-clé \ggs!for! :
+Si l'on veut parcourir l'énumération à partir de la dernière valeur, on utilise le modificateur \ggs!>! après le mot-clé \ggs!for!~:
 \begin{galgas}
 for > i in @range.new {!12 !5} do
   # i prend successivement les valeurs 16, 15, 14, 13, 12
@@ -221,19 +221,19 @@ end
 
 Tout type structure définit implicitement le constructeur \ggs!new!. Son appel comprend une valeur par attribut déclaré par le type structure.
 
-Par exemple, pour la déclaration :
+Par exemple, pour la déclaration~:
 \begin{galgas}
 struct @maStructure
   @uint mChamp1
   @bool mChamp2
 \end{galgas}
 
-L'appel du constructeur \ggs!new! est :
+L'appel du constructeur \ggs!new! est~:
 \begin{galgas}
 var aVariable = @maStructure.new {!123 !true}
 \end{galgas}
 
-Si le contexte le permet, l'annotation de type peut être omis lors de l'appel du constructeur :
+Si le contexte le permet, l'annotation de type peut être omis lors de l'appel du constructeur~:
 \begin{galgas}
 @maStructure aVariable = .new {!123 !true}
 \end{galgas}
@@ -241,11 +241,11 @@ Si le contexte le permet, l'annotation de type peut être omis lors de l'appel d
 
 \subsection{Constructeur \texttt{default}}
 
-Si chacun des champs accepte le constructeur par défaut, alors le type structure accepte le constructeur pas défaut. C'est le cas de la structure \ggs!@maStructure! définie au dessus : \ggs!@uint! accepte le constructeur par défaut (initialisation à \ggs!0!), ainsi que \ggs!@bool! (initialisation à \ggs!false!). Donc :
+Si chacun des champs accepte le constructeur par défaut, alors le type structure accepte le constructeur pas défaut. C'est le cas de la structure \ggs!@maStructure! définie au dessus~: \ggs!@uint! accepte le constructeur par défaut (initialisation à \ggs!0!), ainsi que \ggs!@bool! (initialisation à \ggs!false!). Donc~:
 \begin{galgas}
 var aVariable = @maStructure.default
 \end{galgas}
-Initialise les champs de \ggs!aVariable! respectivement à \ggs!0! et \ggs!false!. On peut aussi écrire :
+Initialise les champs de \ggs!aVariable! respectivement à \ggs!0! et \ggs!false!. On peut aussi écrire~:
 \begin{galgas}
 @maStructure aVariable = .default
 \end{galgas}
@@ -255,18 +255,18 @@ Initialise les champs de \ggs!aVariable! respectivement à \ggs!0! et \ggs!false
 
 La notation pointée \ggs!variable.champ! permet d'accéder à un champ d'une structure, aussi bien en lecture, en écriture et en lecture/écriture.
 
-Exemple d'accès en lecture :
+Exemple d'accès en lecture~:
 \begin{galgas}
 @uint v = aVariable.mChamp1
 \end{galgas}
 
-Exemple d'accès en écriture :
+Exemple d'accès en écriture~:
 \begin{galgas}
 aVariable.mChamp1 = 10
 \end{galgas}
 
 
-Exemple d'accès en lecture/écriture :
+Exemple d'accès en lecture/écriture~:
 \begin{galgas}
 aVariable.mChamp1 ++
 \end{galgas}
@@ -277,12 +277,12 @@ aVariable.mChamp1 ++
 
 \section{Getters}
 
-Un type structure définit un \emph{getter} sans argument par champ, qui permet d'accéder en lecture à ce champ. Son nom est celui du champ. Par exemple, à la place de :
+Un type structure définit un \emph{getter} sans argument par champ, qui permet d'accéder en lecture à ce champ. Son nom est celui du champ. Par exemple, à la place de~:
 \begin{galgas}
 @uint v = aVariable.mChamp1
 \end{galgas}
 
-On peut écrire :
+On peut écrire~:
 \begin{galgas}
 @uint v = [aVariable mChamp1]
 \end{galgas}

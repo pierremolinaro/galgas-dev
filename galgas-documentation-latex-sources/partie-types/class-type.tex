@@ -195,6 +195,11 @@ Et pour une variable \ggs+c+ de type \ggs+@C+, on peut écrire~:
 @uint v = [c prop]
 \end{galgas}
 
+À partir de la version 3.3.0, il est possible d'utiliser la notation pointée~:
+\begin{galgas}
+@uint v = c.prop
+\end{galgas}
+
 Il est possible d'inhiber la génération implicite d'un \emph{getter} de lecture d'une propriété en complétant sa déclaration par \ggs+%nogetter+, comme par exemple~:
 
 \begin{galgas}
@@ -203,7 +208,7 @@ class @C {
 }
 \end{galgas}
 
-L'écriture \ggs+[c prop]+ est alors rejetée par le compilateur.
+Les écritures \ggs+c.prop+ et \ggs+[c prop]+ sont alors rejetées par le compilateur.
 
 
 
