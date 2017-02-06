@@ -2,7 +2,7 @@
 
 #-----------------------------------------------------------------------------
 
-sharedmap @maTable {
+shared map @maTable {
   @uint mAttribut
   insert insertKey error message "internal error"
 }

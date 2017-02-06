@@ -44,7 +44,7 @@ class @printVariableForGeneration : @instructionForGeneration {
 
 #---------------------------------------------------------------------------*
 
-sharedmap @variableMap {
+shared map @variableMap {
   @string mCppName
 
 #--- Variable states
