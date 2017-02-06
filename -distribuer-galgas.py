@@ -142,6 +142,10 @@ runCommand (["tar", "-cf", "galgas-sources-crlf.tar", "galgas"])
 runCommand (["bzip2", "-9", "galgas-sources-crlf.tar"])
 #-------------------- Copier changeLog
 runCommand (["mv", DIR + "/galgas/changeLog.html", DIR + "/changeLog.html"])
+#-------------------- Recompiler le projet Xcode
+os.chdir (DIR + "/galgas/project-xcode-galgas")
+runCommand (["xcodebuild", "-project", "galgas-distribution.xcodeproj", "-alltargets", "-configuration", "Default"])
+os.chdir (DIR)
 #-------------------- Vérifier les programmes d'exemple
 runCommand ([DIR + "/galgas/sample_code/-build-all-macosx.command"])
 runCommand (["rm", "-fr", DIR + "/galgas/sample_code"])
@@ -150,10 +154,6 @@ runCommand ([DIR + "/galgas/testsuite/_run_testsuite.command"])
 runCommand (["rm", "-fr", DIR + "/galgas/testsuite"])
 #-------------------- Vérifier la création de projet
 runCommand ([DIR + "/galgas/-verifier-create-galgas.command"])
-#-------------------- Recompiler le projet Xcode
-os.chdir (DIR + "/galgas/project-xcode-galgas")
-runCommand (["xcodebuild", "-project", "galgas-distribution.xcodeproj", "-alltargets", "-configuration", "Default"])
-os.chdir (DIR)
 #-------------------- Vérifier GMP
 runCommand ([DIR + "/galgas/project-xcode-galgas/build/Default/galgas", "--check-gmp"])
 runCommand ([DIR + "/galgas/project-xcode-galgas/build/Default/galgas-debug-32", "--check-gmp"])
