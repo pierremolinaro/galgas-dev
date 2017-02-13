@@ -1116,6 +1116,8 @@ proc updateGalgas3Targets
         !"cGenericAbstractEnumerator.h",
         !"cIndexingDictionary.cpp",
         !"cIndexingDictionary.h",
+        !"cIssueDescriptor.cpp",
+        !"cIssueDescriptor.h",
         !"cLexiqueIntrospection.cpp",
         !"cLexiqueIntrospection.h",
         !"cObjectArray.cpp",

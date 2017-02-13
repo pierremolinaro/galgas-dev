@@ -22,6 +22,8 @@
 #include "strings/C_HTMLString.h"
 #include "galgas2/C_SourceTextInString.h"
 
+//---------------------------------------------------------------------------------------------------------------------*
+
 #include "printOriginalGrammar.h"
 #include "grammarCompilation.h"
 

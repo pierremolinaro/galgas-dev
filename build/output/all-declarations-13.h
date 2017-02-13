@@ -2084,60 +2084,60 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public : virtual void nt_semantic_5F_instruction_5F_list_ (GALGAS_semanticInstructionListAST & outArgument0,
                                                              C_Lexique_galgas_33_Scanner * inCompiler) ;
 
-//------------------------------------- 'sharedmap_attribute' non terminal
+//------------------------------------- 'shared_map_attribute' non terminal
 //--- 'parse' label
-  public : virtual void nt_sharedmap_5F_attribute_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+  public : virtual void nt_shared_5F_map_5F_attribute_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //--- indexing
-  public : virtual void nt_sharedmap_5F_attribute_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+  public : virtual void nt_shared_5F_map_5F_attribute_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //----------- '' label
-  public : virtual void nt_sharedmap_5F_attribute_ (GALGAS_sharedMapAttributeListAST & ioArgument0,
-                                                    C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//------------------------------------- 'sharedmap_override' non terminal
-//--- 'parse' label
-  public : virtual void nt_sharedmap_5F_override_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_sharedmap_5F_override_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_sharedmap_5F_override_ (GALGAS_mapOverrideBlockListAST & ioArgument0,
-                                                   C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//------------------------------------- 'sharedmap_search_method_declaration' non terminal
-//--- 'parse' label
-  public : virtual void nt_sharedmap_5F_search_5F_method_5F_declaration_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_sharedmap_5F_search_5F_method_5F_declaration_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_sharedmap_5F_search_5F_method_5F_declaration_ (GALGAS_mapSearchMethodListAST & ioArgument0,
-                                                                          C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//------------------------------------- 'sharedmap_state_list' non terminal
-//--- 'parse' label
-  public : virtual void nt_sharedmap_5F_state_5F_list_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_sharedmap_5F_state_5F_list_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_sharedmap_5F_state_5F_list_ (GALGAS_mapStateList & ioArgument0,
+  public : virtual void nt_shared_5F_map_5F_attribute_ (GALGAS_sharedMapAttributeListAST & ioArgument0,
                                                         C_Lexique_galgas_33_Scanner * inCompiler) ;
 
-//------------------------------------- 'sharedmap_state_transition' non terminal
+//------------------------------------- 'shared_map_override' non terminal
 //--- 'parse' label
-  public : virtual void nt_sharedmap_5F_state_5F_transition_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+  public : virtual void nt_shared_5F_map_5F_override_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //--- indexing
-  public : virtual void nt_sharedmap_5F_state_5F_transition_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+  public : virtual void nt_shared_5F_map_5F_override_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //----------- '' label
-  public : virtual void nt_sharedmap_5F_state_5F_transition_ (GALGAS_mapStateTransitionList & ioArgument0,
-                                                              C_Lexique_galgas_33_Scanner * inCompiler) ;
+  public : virtual void nt_shared_5F_map_5F_override_ (GALGAS_mapOverrideBlockListAST & ioArgument0,
+                                                       C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//------------------------------------- 'shared_map_search_method_declaration' non terminal
+//--- 'parse' label
+  public : virtual void nt_shared_5F_map_5F_search_5F_method_5F_declaration_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_shared_5F_map_5F_search_5F_method_5F_declaration_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_shared_5F_map_5F_search_5F_method_5F_declaration_ (GALGAS_mapSearchMethodListAST & ioArgument0,
+                                                                              C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//------------------------------------- 'shared_map_state_list' non terminal
+//--- 'parse' label
+  public : virtual void nt_shared_5F_map_5F_state_5F_list_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_shared_5F_map_5F_state_5F_list_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_shared_5F_map_5F_state_5F_list_ (GALGAS_mapStateList & ioArgument0,
+                                                            C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//------------------------------------- 'shared_map_state_transition' non terminal
+//--- 'parse' label
+  public : virtual void nt_shared_5F_map_5F_state_5F_transition_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_shared_5F_map_5F_state_5F_transition_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_shared_5F_map_5F_state_5F_transition_ (GALGAS_mapStateTransitionList & ioArgument0,
+                                                                  C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //------------------------------------- 'simple_expression' non terminal
 //--- 'parse' label

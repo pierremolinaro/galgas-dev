@@ -20,13 +20,12 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include <string.h>
-#include <stdio.h>
+#include "command_line_interface/C_UIntCommandLineOption.h"
+#include "strings/C_String.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include "command_line_interface/C_UIntCommandLineOption.h"
-#include "strings/C_String.h"
+#include <string.h>
 
 //---------------------------------------------------------------------------------------------------------------------*
 

@@ -20,13 +20,12 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include <string.h>
-#include <stdio.h>
+#include "command_line_interface/C_StringListCommandLineOption.h"
+#include "utilities/C_PrologueEpilogue.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include "command_line_interface/C_StringListCommandLineOption.h"
-#include "utilities/C_PrologueEpilogue.h"
+#include <string.h>
 
 //---------------------------------------------------------------------------------------------------------------------*
 

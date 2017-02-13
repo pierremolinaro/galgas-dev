@@ -355,6 +355,9 @@
 		CF33370E126B13A6008DA1DE /* acPtr_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF333709126B13A6008DA1DE /* acPtr_class.cpp */; };
 		CF333815126B38B7008DA1DE /* GALGAS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF33377D126B2F15008DA1DE /* GALGAS_filewrapper.cpp */; };
 		CF333818126B3919008DA1DE /* GALGAS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF33377D126B2F15008DA1DE /* GALGAS_filewrapper.cpp */; };
+		CF34D95B1E521CB900CD0245 /* cIssueDescriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D9591E521CB900CD0245 /* cIssueDescriptor.cpp */; };
+		CF34D95C1E52203100CD0245 /* cIssueDescriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D9591E521CB900CD0245 /* cIssueDescriptor.cpp */; };
+		CF34D95D1E52203200CD0245 /* cIssueDescriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D9591E521CB900CD0245 /* cIssueDescriptor.cpp */; };
 		CF3C17A814E97CCC0016A381 /* OC_GGS_BuildTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3C17A714E97CCC0016A381 /* OC_GGS_BuildTask.m */; };
 		CF3CFB2D0FEBEA6C00CE4488 /* PMFontButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */; };
 		CF3D9FD61257733E0037D473 /* capCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC11257733E0037D473 /* capCollectionElement.cpp */; };
@@ -950,6 +953,8 @@
 		CF337C9711C3F8C7007E7736 /* capCollectionElementArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = capCollectionElementArray.h; sourceTree = "<group>"; };
 		CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = cCollectionElement.cpp; sourceTree = "<group>"; };
 		CF337CB211C3FAAF007E7736 /* cCollectionElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = cCollectionElement.h; sourceTree = "<group>"; };
+		CF34D9591E521CB900CD0245 /* cIssueDescriptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cIssueDescriptor.cpp; sourceTree = "<group>"; };
+		CF34D95A1E521CB900CD0245 /* cIssueDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cIssueDescriptor.h; sourceTree = "<group>"; };
 		CF393C641A0681A000153A38 /* all-declarations-25.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-25.h"; sourceTree = "<group>"; };
 		CF3C17A614E97CCC0016A381 /* OC_GGS_BuildTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OC_GGS_BuildTask.h; sourceTree = "<group>"; };
 		CF3C17A714E97CCC0016A381 /* OC_GGS_BuildTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OC_GGS_BuildTask.m; sourceTree = "<group>"; };
@@ -1771,6 +1776,8 @@
 				CFB339321DAA4D5C00C0563C /* cGenericAbstractEnumerator.h */,
 				CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */,
 				CFEF3A7A12A04C0F007CA2D8 /* cIndexingDictionary.h */,
+				CF34D9591E521CB900CD0245 /* cIssueDescriptor.cpp */,
+				CF34D95A1E521CB900CD0245 /* cIssueDescriptor.h */,
 				CFA175691C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp */,
 				CFA1756A1C89BF8E00BB0B17 /* cLexiqueIntrospection.h */,
 				CF01558B1267796800917801 /* cObjectArray.cpp */,
@@ -2277,6 +2284,7 @@
 				CF2C85231CC3B0890008D960 /* all-declarations-24.cpp in Sources */,
 				CF2C85241CC3B0890008D960 /* C_Timer.cpp in Sources */,
 				CF2C85251CC3B0890008D960 /* C_StringListCommandLineOption.cpp in Sources */,
+				CF34D95D1E52203200CD0245 /* cIssueDescriptor.cpp in Sources */,
 				CF2C85261CC3B0890008D960 /* F_DisplayException.cpp in Sources */,
 				CF2C85271CC3B0890008D960 /* F_GetPrime.cpp in Sources */,
 				CF2C85281CC3B0890008D960 /* mpn-mulmod_bnm1.c in Sources */,
@@ -2539,6 +2547,7 @@
 				CF6DF17409E3F23700506859 /* F_DisplayException.cpp in Sources */,
 				CF9E755B1BADDA0E00DBEFEE /* mpn-toom_interpolate_8pts.c in Sources */,
 				CF6DF17509E3F23700506859 /* F_GetPrime.cpp in Sources */,
+				CF34D95B1E521CB900CD0245 /* cIssueDescriptor.cpp in Sources */,
 				CF6DF17609E3F23700506859 /* MF_Assert.cpp in Sources */,
 				CF6DF17709E3F23700506859 /* MF_MemoryControl.cpp in Sources */,
 				CF9E74F21BADD36200DBEFEE /* mpn-divrem_1.c in Sources */,
@@ -2801,6 +2810,7 @@
 				CFB02C8519F3FC2F0011D03D /* all-declarations-24.cpp in Sources */,
 				CF6DF1EB09E3F30400506859 /* C_Timer.cpp in Sources */,
 				CF873F6B1A32333C0014C45A /* C_StringListCommandLineOption.cpp in Sources */,
+				CF34D95C1E52203100CD0245 /* cIssueDescriptor.cpp in Sources */,
 				CF6DF1EE09E3F30400506859 /* F_DisplayException.cpp in Sources */,
 				CF6DF1EF09E3F30400506859 /* F_GetPrime.cpp in Sources */,
 				CF9E75651BADDAA900DBEFEE /* mpn-mulmod_bnm1.c in Sources */,

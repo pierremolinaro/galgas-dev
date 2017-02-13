@@ -1,13 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  Generic Command Line Interface Options                                                                             *
-//   --help : Display help information                                                                                 *
-//   --version : Display software current version                                                                      *
-//   --no-color: Do not issue colored messages                                                                         *
+//  'cIssueDescriptor'                                                                                                 *
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2003, ..., 2012 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2017, ..., 2017 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -23,44 +20,71 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef GENERIC_CLI_OPTIONS_DEFINED
-#define GENERIC_CLI_OPTIONS_DEFINED
+#include "galgas2/cIssueDescriptor.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include "command_line_interface/C_BoolCommandLineOption.h"
-#include "command_line_interface/C_StringCommandLineOption.h"
+cIssueDescriptor::cIssueDescriptor (void) :
+mIsError (false),
+mFile (""),
+mLine (0),
+mStartColumn (0),
+mEndColumn (0),
+mMessage ("") {
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef COMPILE_FOR_WINDOWS
-  #error COMPILE_FOR_WINDOWS is undefined
-#endif
+cIssueDescriptor::cIssueDescriptor (const bool inIsError,
+                                    const C_String & inFile,
+                                    const int32_t inLine,
+                                    const int32_t inStartColumn,
+                                    const int32_t inEndColumn,
+                                    const C_String & inMessage) :
+mIsError (inIsError),
+mFile (inFile),
+mLine (inLine),
+mStartColumn (inStartColumn),
+mEndColumn (inEndColumn),
+mMessage (inMessage) {
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_display_5F_help ;
+cIssueDescriptor::cIssueDescriptor (const cIssueDescriptor & inSource) :
+mIsError (inSource.mIsError),
+mFile (inSource.mFile),
+mLine (inSource.mLine),
+mStartColumn (inSource.mStartColumn),
+mEndColumn (inSource.mEndColumn),
+mMessage (inSource.mMessage) {
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_display_5F_version ;
+cIssueDescriptor & cIssueDescriptor::operator = (const cIssueDescriptor & inSource) {
+  if (this != & inSource) {
+    mIsError = inSource.mIsError ;
+    mFile = inSource.mFile ;
+    mLine = inSource.mLine ;
+    mStartColumn = inSource.mStartColumn ;
+    mEndColumn = inSource.mEndColumn ;
+    mMessage = inSource.mMessage ;
+  }
+  return *this ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern C_StringCommandLineOption gOption_generic_5F_cli_5F_options_emit_5F_issue_5F_json_5F_file ;
+void cIssueDescriptor::appendToJSONstring (C_String & ioJSONstring, const bool inIsFirstIssue) const {
+  ioJSONstring << (inIsFirstIssue ? "" : ",\n")
+               << "  { \"ERROR\" = false,\n"
+               << "    \"SOURCE\" = \"" << mFile << "\",\n"
+               << "    \"LINE\"  = " << cStringWithSigned (mLine) << ",\n"
+               << "    \"START_COLUMN\"  = " << cStringWithSigned (mStartColumn) << ",\n"
+               << "    \"END_COLUMN\"  = " << cStringWithSigned (mEndColumn) << ",\n"
+               << "    \"MESSAGE\" = \"" << mMessage << "\"\n"
+               << "  }\n" ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-#if COMPILE_FOR_WINDOWS == 0
-  extern C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_no_5F_color ;
-#endif
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-#if COMPILE_FOR_WINDOWS == 1
-  extern C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_nodialog ;
-#endif
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-#endif

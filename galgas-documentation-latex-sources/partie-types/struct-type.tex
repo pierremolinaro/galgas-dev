@@ -6,7 +6,9 @@
 %-------------------------------------------------------------
 
 
-Le mot-clé \ggs!struct! permet de définir des types de structure. La syntaxe de définition d'un type structure est de la forme~:
+Le mot-clé \ggs!struct! permet de définir des types de structure. Un objet de type structure a une sémantique de valeur.
+
+La syntaxe de définition d'un type structure est de la forme~:
 
 \begin{galgas}
 struct @MaStructure {
@@ -16,35 +18,7 @@ struct @MaStructure {
 }
 \end{galgas}
 
-
-%\section{Le constructeur \texttt{new}}
-%
-%Le constructeur \ggs+new+ est implicitement défini pour toute structure. Ce constructeur présente un argument par propriété déclaré dans la structure instanciée, dans l'ordre de la déclaration des propriétés. Par exemple~:
-%
-%\begin{galgas}
-%@MaStructure s = @MaStructure.new {
-%  !0    # Propriété mProp1
-%  !true # Propriété mProp2
-%}
-%\end{galgas}
-%
-%Dans l'exemple ci-dessus, les annotations de type apparaissent deux fois, à la déclaration de la variable et devant le constructeur \ggs=new=. L'une d'entre elles peut être omise~:
-%
-%\begin{galgas}
-%var s = @MaStructure.new {
-%  !0    # Propriété mProp1
-%  !true # Propriété mProp2
-%}
-%\end{galgas}
-%
-%Ou bien :
-%\begin{galgas}
-%@MaStructure s = .new {
-%  !0    # Propriété mProp1
-%  !true # Propriété mProp2
-%}
-%\end{galgas}
-
+Il n'est pas possible de définir du code dans une déclaration de structure~: la seule possibilité est de le définir dans des \ggs=extension= (\refChapterPage{chapitreExtensions}).
 
 
 

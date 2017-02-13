@@ -7,15 +7,15 @@
 
 Si vous utilisez \LaTeX pour écrire la documentation de votre compilateur, vous êtes confronté sans doute au problème de la présentation des programmes sources. En effet, les paquetages classiques pour ce type de problème, comme par exemple \tpp{listings}, peuvent être trop rigides pour des règles lexicales particulières d'un langage.
 
-Par exemple, en GALGAS, les constantes entières acceptent le caractère \tpp{\_}, comme dans \ggs+123_456+. Elles peuvent être préfixées par \tpp{0x}, et postfixées par \tpp{S}, \tpp{LS} pour indiquer leur type : \ggs+0x123_456S+, ou encore \ggs+0x_123_456_LS+. Le paquetage \tpp{listings} ne peut pas être paramétré pour afficher correctement les constantes entières de GALGAS.
+Par exemple, en GALGAS, les constantes entières acceptent le caractère \tpp{\_}, comme dans \ggs+123_456+. Elles peuvent être préfixées par \tpp{0x}, et postfixées par \tpp{S}, \tpp{LS} pour indiquer leur type~: \ggs+0x123_456S+, ou encore \ggs+0x_123_456_LS+. Le paquetage \tpp{listings} ne peut pas être paramétré pour afficher correctement les constantes entières de GALGAS.
 
 Comment faire ? Développer des commandes \LaTeX particulières pour faire ce travail. Elles s'appuient sur un mode particulier des compilateurs engendrés par GALGAS, qui permet de traduire un fichier source en un code compatible \LaTeX. C'est de cette façon que le code GALGAS est présenté dans ce document. Si les fichiers \tpp{.tex} sont codés en UTF-8, alors les caractères accentués peuvent être utilisés sans restriction, comme des caractères comme \tpp{æ} ou \tpp{Œ} (voir par exemple le \refGetterPage{char}{unicodeToLower}).
 
-Dans la suite, nous allons progressivement présenter la démarche pour formatter un code source :
+Dans la suite, nous allons progressivement présenter la démarche pour formatter un code source~:
 \begin{itemize}
-  \item d'abord comment configurer votre compilateur pour qu'il engendre du code \LaTeX ;
-  \item comment afficher ce code en utilisant le paquetage \tpp{f{}ilecontents} ;
-  \item une amélioration de la solution précédente en définissant un environnement particulier (utilise le paquetage \tpp{verbatim}) ;
+  \item d'abord comment configurer votre compilateur pour qu'il engendre du code \LaTeX~;
+  \item comment afficher ce code en utilisant le paquetage \tpp{f{}ilecontents}~;
+  \item une amélioration de la solution précédente en définissant un environnement particulier (utilise le paquetage \tpp{verbatim})~;
   \item définition d'une commande permettant d'afficher du code en ligne, appelable comme la commande \tpp{\textbackslash verb} (utilise le paquetage \tpp{verbatim}).
 \end{itemize}
 
@@ -35,7 +35,7 @@ Dans ce mode, seule l'analyse lexicale est effectuée, aussi le fichier source d
 
 Le fichier de sortie a pour nom le fichier d'entrée postfixé par l'extension \tpp{.tex}. Il contient le texte source formatté pour \LaTeX.
 
-Par exemple, si le fichier d'entrée est \tpp{test.logo} et contient :
+Par exemple, si le fichier d'entrée est \tpp{test.logo} et contient~:
 
 \begin{lstlisting}
 ROUTINE trace
@@ -45,7 +45,7 @@ BEGIN
 END
 \end{lstlisting}
 
-En appelant le compilateur LOGO par la commande \tpp{logo -{}-mode=latex test.logo}, le fichier \tpp{test.logo.tex} est engendré et contient :
+En appelant le compilateur LOGO par la commande \tpp{logo -{}-mode=latex test.logo}, le fichier \tpp{test.logo.tex} est engendré et contient~:
 
 {\small
 \begin{verbatim}
@@ -59,7 +59,7 @@ En appelant le compilateur LOGO par la commande \tpp{logo -{}-mode=latex test.lo
 \end{verbatim}
 }
 
-Pour l'afficher, il suffit de définir les commandes \tpp{\textbackslash keywordsStyle}, \tpp{\textbackslash integerStyle} et \tpp{\textbackslash delimitersStyle}\footnote{Aucune commande n'est définie pour les identificateurs, car l'analyseur lexical ne définit pas de style pour ceux-ci (voir \refSubsectionPage{fonctionnement-mode-latex}).}, et de placer ce texte dans un environnement où une police à échappement fixe est activée :
+Pour l'afficher, il suffit de définir les commandes \tpp{\textbackslash keywordsStyle}, \tpp{\textbackslash integerStyle} et \tpp{\textbackslash delimitersStyle}\footnote{Aucune commande n'est définie pour les identificateurs, car l'analyseur lexical ne définit pas de style pour ceux-ci (voir \refSubsectionPage{fonctionnement-mode-latex}).}, et de placer ce texte dans un environnement où une police à échappement fixe est activée~:
 
 
 
@@ -80,7 +80,7 @@ Pour l'afficher, il suffit de définir les commandes \tpp{\textbackslash keyword
 \end{verbatim}
 }
 
-On obtient ainsi (noter l'identation de la première ligne) :
+On obtient ainsi (noter l'identation de la première ligne)~:
 
 \texttt{
 \textcolor{blue}{\bf ROUTINE}\hspace*{.6em}t{}r{}a{}c{}e{} \\
@@ -93,7 +93,7 @@ On obtient ainsi (noter l'identation de la première ligne) :
 
 \subsection{option \texttt{-{}-mode:suffixe=latex}}
 
-Si vous documentez plusieurs compilateurs, vous pouvez avoir une collision de nom de style. Une variante de l'option \tpp{-{}-mode=latex} est de préciser un suffixe : \tpp{-{}-mode:suffixe=latex}. Le \tpp{suffixe} doit être un nom uniquement constitué de lettres (minuscules ou majuscules). Ce suffixe est ajouté aux noms de style. En appelant le compilateur LOGO par la commande \tpp{logo -{}-mode=latex:Logo test.logo}, le fichier \tpp{test.logo.tex} est engendré et contient :
+Si vous documentez plusieurs compilateurs, vous pouvez avoir une collision de nom de style. Une variante de l'option \tpp{-{}-mode=latex} est de préciser un suffixe~: \tpp{-{}-mode:suffixe=latex}. Le \tpp{suffixe} doit être un nom uniquement constitué de lettres (minuscules ou majuscules). Ce suffixe est ajouté aux noms de style. En appelant le compilateur LOGO par la commande \tpp{logo -{}-mode=latex:Logo test.logo}, le fichier \tpp{test.logo.tex} est engendré et contient~:
 
 {\small
 \begin{verbatim}
@@ -115,7 +115,7 @@ Il est possible de formatter l'affichage du code en utilisant des paquetages sta
 
 \subsubsection{Formatage avec le paquetage \texttt{lineno}}
 
-Le paquetage \tpp{lineno} permet de numéroter les lignes sources :
+Le paquetage \tpp{lineno} permet de numéroter les lignes sources~:
 \begin{verbatim}
 \resetlinenumber
 \begin{linenumbers}
@@ -124,7 +124,7 @@ Le paquetage \tpp{lineno} permet de numéroter les lignes sources :
 \end{linenumbers}
 \end{verbatim}
 
-Et on obtient :
+Et on obtient~:
 
 \resetlinenumber
 \begin{linenumbers}\singlespacing\ttfamily
@@ -137,7 +137,7 @@ Et on obtient :
 
 \subsubsection{Formatage avec le paquetage \texttt{mdframed}}
 
-Le paquetage \tpp{mdframed} permet (entre autres) d'afficher un trait vertical dans la marge gauche. Pour cela, il faut d'abord le configurer en créant un evironnement, ici \tpp{siderules} :
+Le paquetage \tpp{mdframed} permet (entre autres) d'afficher un trait vertical dans la marge gauche. Pour cela, il faut d'abord le configurer en créant un evironnement, ici \tpp{siderules}~:
 
 \begin{verbatim}
 \newmdenv[
@@ -149,7 +149,7 @@ Le paquetage \tpp{mdframed} permet (entre autres) d'afficher un trait vertical d
 ]{siderules}
 \end{verbatim}
 
-En utilisant l'environnement \tpp{siderules} :
+En utilisant l'environnement \tpp{siderules}~:
 
 \begin{verbatim}
 \begin{siderules}
@@ -158,7 +158,7 @@ En utilisant l'environnement \tpp{siderules} :
 \end{siderules}
 \end{verbatim}
 
-On obtient :
+On obtient~:
 
 {
 \newmdenv[
@@ -181,21 +181,21 @@ On obtient :
 
 \subsection{Comment s'effectue la traduction en \LaTeX}
 
-La traduction s'effectue comme suit :
+La traduction s'effectue comme suit~:
 \begin{itemize}
-  \item à chaque \ggs+style+ défini dans l'analyseur lexical correspond une commande \LaTeX parti-culière~: par exemple à \tpp{keywordsStyle} correspond \tpp{\textbackslash keywordsStyle}\footnote{Si un suffixe est précisé (\texttt{-{}-mode:suffixe=latex}), alors ce suffixe est ajouté à la commande \tpp{\textbackslash keywordsStyle}.} (\refSubsectionPage{fonctionnement-mode-latex}) ;
-  \item si une erreur lexicale est détectée, une commande \tpp{\textbackslash lexicalError}\footnote{Si un suffixe est précisé (\texttt{-{}-mode:suffixe=latex}), alors ce suffixe est ajouté à la commande \tpp{\textbackslash lexicalError}.} est insérée ;
-  \item les caractères possédant une signification particulière en \LaTeX sont échappés ou substitués selon le \refTableau{substitution-latex} ;
+  \item à chaque \ggs+style+ défini dans l'analyseur lexical correspond une commande \LaTeX parti-culière~: par exemple à \tpp{keywordsStyle} correspond \tpp{\textbackslash keywordsStyle}\footnote{Si un suffixe est précisé (\texttt{-{}-mode:suffixe=latex}), alors ce suffixe est ajouté à la commande \tpp{\textbackslash keywordsStyle}.} (\refSubsectionPage{fonctionnement-mode-latex})~;
+  \item si une erreur lexicale est détectée, une commande \tpp{\textbackslash lexicalError}\footnote{Si un suffixe est précisé (\texttt{-{}-mode:suffixe=latex}), alors ce suffixe est ajouté à la commande \tpp{\textbackslash lexicalError}.} est insérée~;
+  \item les caractères possédant une signification particulière en \LaTeX sont échappés ou substitués selon le \refTableau{substitution-latex}~;
   \item après tout caractère non échappé ni substitué est ajoutée la séquence \tpp{\{\}}.
 \end{itemize}
 
-Vous devez donc créer une commande particulière pour chaque style, plus éventuellement la commande \tpp{\textbackslash lexicalError} pour afficher l'occurrence des erreurs lexicales. Vous pouvez choisir de ne pas définir la commande \tpp{\textbackslash lexicalError}, auquel cas la compilation \LaTeX échouera en présence d'erreur lexicale ; mais si elle réussit, vous êtes sûr qu'il y a aucune erreur lexicale.
+Vous devez donc créer une commande particulière pour chaque style, plus éventuellement la commande \tpp{\textbackslash lexicalError} pour afficher l'occurrence des erreurs lexicales. Vous pouvez choisir de ne pas définir la commande \tpp{\textbackslash lexicalError}, auquel cas la compilation \LaTeX échouera en présence d'erreur lexicale~; mais si elle réussit, vous êtes sûr qu'il y a aucune erreur lexicale.
 
-%L'ajout de la séquence \tpp{\{\}} peut paraître superflue, mais elle permet de résoudre de manière systématique bien des difficultés d'affichage :
+%L'ajout de la séquence \tpp{\{\}} peut paraître superflue, mais elle permet de résoudre de manière systématique bien des difficultés d'affichage~:
 %\begin{itemize}
-%  \item la séquence \tpp{-{}-} est affichée \tpp{--} : le compilateur produit \tpp{-\{\}-\{\}}, on a ainsi l'affichage souhaité \tpp{-{}-} ;
-%  \item de même \LaTeX affiche \tpp{\textgreater{}\textgreater} en \tpp{>>} et \tpp{\textless{}\textless} est affiché \tpp{<<} ; le compilateur produit \tpp{\textgreater\{\}\textgreater\{\}} et \tpp{\textless\{\}\textless\{\}}, ce qui produit les affichages \tpp{\textgreater{}\textgreater} et \tpp{\textless{}\textless} ;
-%  \item \LaTeX effectue par défaut des ligatures : \tpp{f{}i} est affiché \tpp{fi}, le compilateur produit \tpp{f\{\}i} pour obtenir  \tpp{f{}i}.
+%  \item la séquence \tpp{-{}-} est affichée \tpp{--}~: le compilateur produit \tpp{-\{\}-\{\}}, on a ainsi l'affichage souhaité \tpp{-{}-}~;
+%  \item de même \LaTeX affiche \tpp{\textgreater{}\textgreater} en \tpp{>>} et \tpp{\textless{}\textless} est affiché \tpp{<<}~; le compilateur produit \tpp{\textgreater\{\}\textgreater\{\}} et \tpp{\textless\{\}\textless\{\}}, ce qui produit les affichages \tpp{\textgreater{}\textgreater} et \tpp{\textless{}\textless}~;
+%  \item \LaTeX effectue par défaut des ligatures~: \tpp{f{}i} est affiché \tpp{fi}, le compilateur produit \tpp{f\{\}i} pour obtenir  \tpp{f{}i}.
 %\end{itemize}
 
 
@@ -223,7 +223,7 @@ Vous devez donc créer une commande particulière pour chaque style, plus évent
     \texttt{\textquotesingle\textquotesingle\textquotesingle} & \texttt{\textbackslash textquotesingle\{\}} \\
 %    \texttt{\textquotesingle\textquotedbl\textquotesingle} & \texttt{\textbackslash textquotedbl\{\}} \\
     \texttt{\textquotesingle"\textquotesingle} & \texttt{\textbackslash textquotedbl\{\}} \\
-    Autre caractère : \texttt{\textquotesingle}$c$\texttt{\textquotesingle} & $c$\texttt{\{\}} \\
+    Autre caractère~: \texttt{\textquotesingle}$c$\texttt{\textquotesingle} & $c$\texttt{\{\}} \\
   \end{tabular}
   \caption{Échappement et substitution des caractères pour formattage \LaTeX}
   \labelTableau{substitution-latex}
@@ -234,23 +234,23 @@ Vous devez donc créer une commande particulière pour chaque style, plus évent
 
 \subsectionLabel{Fonctionnement de l'option \texttt{-{}-mode=latex}}{fonctionnement-mode-latex}
 
-L'option \tpp{-{}-mode=latex} utilise les noms de style définis dans l'analyseur lexical LOGO. Par exemple, l'extrait suivant indique que le style \tpp{integerStyle} est attaché au terminal \ggs+$integer$+ :
+L'option \tpp{-{}-mode=latex} utilise les noms de style définis dans l'analyseur lexical LOGO. Par exemple, l'extrait suivant indique que le style \tpp{integerStyle} est attaché au terminal \ggs+$integer$+~:
 
 \begin{galgas}
 style integerStyle -> "Integer Constants"
 $integer$ !uint32value style integerStyle ...
 \end{galgas}
 
-À chaque style, correspond une commande \LaTeX obtenue en préfixant le nom du style par un anti-slash \tpp{\textbackslash}\footnote{Les chiffres et le caractère de soulignement \tpp{\_} sont interdits dans les noms de style.}. Si aucun style n'est défini par un terminal particulier, il est affiché avec le style par défaut : c'est le cas des identificateurs LOGO dans les listings précédents.
+À chaque style, correspond une commande \LaTeX obtenue en préfixant le nom du style par un anti-slash \tpp{\textbackslash}\footnote{Les chiffres et le caractère de soulignement \tpp{\_} sont interdits dans les noms de style.}. Si aucun style n'est défini par un terminal particulier, il est affiché avec le style par défaut~: c'est le cas des identificateurs LOGO dans les listings précédents.
 
-Noter que l'affichage des commentaires nécessite l'utilisation conjointe d'un style particulier et de l'instruction lexicale \ggs+drop+ (\refSubsectionPage{instructionLexicaleDrop}) ; pour le langage LOGO~:
+Noter que l'affichage des commentaires nécessite l'utilisation conjointe d'un style particulier et de l'instruction lexicale \ggs+drop+ (\refSubsectionPage{instructionLexicaleDrop})~; pour le langage LOGO~:
 
 \begin{galgas}
 style commentStyle -> "Comments"
 $comment$ style commentStyle ...
 rule '#' {
   repeat
-  while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :
+  while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD'~:
   end
   drop $comment$
 }
@@ -264,7 +264,7 @@ rule '#' {
 
 \section{Affichage via le paquetage \texttt{f{}ilecontents}}
 
-Insérer un texte en effectuant un copié/collé comme suggéré à la section précédente est très laborieux ! Le paquetage \tpp{f{}ilecontents} va permettre de simplifier l'écriture en utilisant l'environnement \tpp{f{}ilecontents*} :
+Insérer un texte en effectuant un copié/collé comme suggéré à la section précédente est très laborieux ! Le paquetage \tpp{f{}ilecontents} va permettre de simplifier l'écriture en utilisant l'environnement \tpp{f{}ilecontents*}~:
 
 \begin{verbatim}
 \begin{filecontents*}{temp.logo}
@@ -294,7 +294,7 @@ Cette deuxième approche est plus satisfaisante car on peut faire figurer le tex
 
 \section{Environnement d'affichage formatté}
 
-Dans cette section, on va voir comment nous allons définir un environnement \tpp{logocode} qui permettra d'entrer et de formatter implicitement un texte LOGO :
+Dans cette section, on va voir comment nous allons définir un environnement \tpp{logocode} qui permettra d'entrer et de formatter implicitement un texte LOGO~:
 
 \begin{verbatim}
 \begin{logocode}
@@ -306,7 +306,7 @@ END
 \end{logocode}
 \end{verbatim}
 
-Ce qui permettra d'obtenir :
+Ce qui permettra d'obtenir~:
 
 {\noindent\ttfamily
 \textcolor{blue}{\bf ROUTINE}\hspace*{.6em}t{}r{}a{}c{}e{} \\
@@ -318,7 +318,7 @@ Ce qui permettra d'obtenir :
 
 
 \subsection{Package \texttt{verbatim}}
-Pour cela, nous avons besoin du paquetage \tpp{verbatim}. Il est conseillé d'inclure ce paquetage juste après la déclaration \tpp{\textbackslash documentclass} :
+Pour cela, nous avons besoin du paquetage \tpp{verbatim}. Il est conseillé d'inclure ce paquetage juste après la déclaration \tpp{\textbackslash documentclass}~:
 
 {\singlespacing
 \begin{verbatim}
@@ -329,7 +329,7 @@ Pour cela, nous avons besoin du paquetage \tpp{verbatim}. Il est conseillé d'in
 }
 
 \subsection{Définition de l'environnement}
-La définition de l'environnement \tpp{logocode} est la suivante :
+La définition de l'environnement \tpp{logocode} est la suivante~:
 
 
 %\begin{verbatim}
@@ -381,15 +381,15 @@ La définition de l'environnement \tpp{logocode} est la suivante :
 \textbackslash makeatother
 \end{linenumbers}
 
-Quelques commentaires :
+Quelques commentaires~:
 \begin{itemize}
-  \item ligne 1, la commande \tpp{\textbackslash newwrite\textbackslash tempf{}ile} est nécessaire pour l'écriture de fichier ; elle doit figurer une seule fois dans le texte source, si vous définissez plusieurs environnements d'affichage, veillez à ne pas la dupliquer ; 
-  \item ligne 3, le nom d'environnement (en bleu) est défini : bien entendu, vous pouvez changer ce nom pour l'adapter au nom de votre compilateur ;
-  \item ligne 8, attention, après la commande \tpp{\textbackslash catcode}, c'est un accent ~\tpp{`}~» ;
-  \item ligne 19, l'affichage de la ligne traduite est effectuée ; à cet endroit, nous pouvez utiliser toutes les commandes de formattage, comme par exemple les paquetages \tpp{lineno} et \tpp{mdframed} cités plus haut.
+  \item ligne 1, la commande \tpp{\textbackslash newwrite\textbackslash tempf{}ile} est nécessaire pour l'écriture de fichier~; elle doit figurer une seule fois dans le texte source, si vous définissez plusieurs environnements d'affichage, veillez à ne pas la dupliquer~; 
+  \item ligne 3, le nom d'environnement (en bleu) est défini~: bien entendu, vous pouvez changer ce nom pour l'adapter au nom de votre compilateur~;
+  \item ligne 8, attention, après la commande \tpp{\textbackslash catcode}, c'est un accent ~\tpp{`}~»~;
+  \item ligne 19, l'affichage de la ligne traduite est effectuée~; à cet endroit, nous pouvez utiliser toutes les commandes de formattage, comme par exemple les paquetages \tpp{lineno} et \tpp{mdframed} cités plus haut.
 \end{itemize}
 
-Par exemple, à la place de la ligne 19, on peut utiliser l'environnement \tpp{siderules} (paquetage \tpp{mdframed}) et écrire :
+Par exemple, à la place de la ligne 19, on peut utiliser l'environnement \tpp{siderules} (paquetage \tpp{mdframed}) et écrire~:
 
 \texttt{
 \textbackslash noindent\textbackslash begin\{siderules\}\textbackslash ttfamily\textbackslash input\{temp.logo.tex\}\textbackslash end\{siderules\}
@@ -408,18 +408,18 @@ Par exemple, à la place de la ligne 19, on peut utiliser l'environnement \tpp{s
 
 \section{Affichage du code en ligne}
 
-Pour afficher du code en ligne, on va définir une commande \tpp{\textbackslash logo} qui s'utilise comme la commande verbatim en ligne \tpp{\textbackslash verb} ; si on écrit :
+Pour afficher du code en ligne, on va définir une commande \tpp{\textbackslash logo} qui s'utilise comme la commande verbatim en ligne \tpp{\textbackslash verb}~; si on écrit~:
 
 \begin{verbatim}
 Les mots réservés de LOGO sont \logo+BEGIN+, \logo+END+, ..., les délimiteurs
 sont \logo+;+ et \logo+.+.
 \end{verbatim}
 
-Le délimiteur utilisé ici est \tpp{+}, mais, comme pour \tpp{\textbackslash verb}, tout caractère peut être utilisé, à condition qu'il n'apparaisse pas dans la chaîne à formatter. On obtient donc :
+Le délimiteur utilisé ici est \tpp{+}, mais, comme pour \tpp{\textbackslash verb}, tout caractère peut être utilisé, à condition qu'il n'apparaisse pas dans la chaîne à formatter. On obtient donc~:
 
 Les mots réservés de LOGO sont \colorbox{gray!6}{\ttfamily\textcolor{blue}{\bf BEGIN}}, \colorbox{gray!6}{\ttfamily\textcolor{blue}{\bf END}}, ..., les délimiteurs sont \colorbox{gray!6}{\ttfamily\textcolor{brown}{\bf ;}} et \colorbox{gray!6}{\ttfamily\textcolor{brown}{\bf .}}.
 
-Comme pour l'affichage d'un listing, nous avons besoin du paquetage \tpp{verbatim}. Rappelons qu'il est conseillé d'inclure ce paquetage juste après la déclaration \tpp{\textbackslash documentclass} :
+Comme pour l'affichage d'un listing, nous avons besoin du paquetage \tpp{verbatim}. Rappelons qu'il est conseillé d'inclure ce paquetage juste après la déclaration \tpp{\textbackslash documentclass}~:
 
 {\singlespacing
 \begin{verbatim}
@@ -429,7 +429,7 @@ Comme pour l'affichage d'un listing, nous avons besoin du paquetage \tpp{verbati
 \end{verbatim}
 }
 
-La définition de commande \tpp{\textbackslash logo} est la suivante :
+La définition de commande \tpp{\textbackslash logo} est la suivante~:
 
 
 %\begin{verbatim}
@@ -548,20 +548,20 @@ La définition de commande \tpp{\textbackslash logo} est la suivante :
 \textbackslash makeatother
 \end{linenumbers}
 
-Commentaires :
+Commentaires~:
 \begin{itemize}
-  \item ligne 1, la commande \tpp{\textbackslash newwrite\textbackslash tempf{}ile} est nécessaire pour l'écriture de fichier ; elle doit figurer une seule fois dans le texte source, si vous définissez plusieurs environnements d'affichage, veillez à ne pas la dupliquer ; 
-  \item ligne 8, 13 à 21 et 38 : attention, c'est un accent aigu \tpp{`} ;
-  \item ligne 3, 10 et 12 : le nom \tpp{logo} apparaît trois fois (en bleu pour être repéré plus facilement) : si vous changez le nom de la commande, veillez à en remplacer toutes les occurrences ;
-  \item une difficulté est d'assurer que la commande n'insère aucune espace supplémentaire : c'est pour cela que toutes les lignes se terminent par \tpp{\%}\footnote{En fait, uniquement certaines lignes doivent être obligatoirement terminées par \tpp{\%} ; pour simplifier, on applique cette terminaison à toutes.} ;
-    \item enfin le plus intéressant : ligne 31, le fichier \tpp{temp.logo} est ouvert en écriture ;
-    \item ligne 32, le contenu de la commande est écrit dans ce fichier ;
-    \item ligne 33, le fichier est fermé ;
-    \item ligne 34, le compilateur est appelé pour effectuer la traduction en \LaTeX ; {\bf attention}, cette commande est un argument de \tpp{\textbackslash lowercase}\footnote{Aucune idée de son rôle, mais si on supprime \tpp{\textbackslash lowercase}, la compilation \LaTeX échoue.} (ligne 22), si bien que tous les caractères sont passés en minuscules : ainsi, si on écrit \tpp{logo -{}-mode=latex:LOGO temp.logo}, c'est la commande \tpp{logo} \tpp{-{}-mode=latex:logo temp.logo} qui est exécutée ;
-    \item ligne 35, le code traduit est affiché ; comme la commande \tpp{\textbackslash input} (ligne 35) insère toujours une espace après elle, on la supprime par \tpp{\textbackslash unskip}.
+  \item ligne 1, la commande \tpp{\textbackslash newwrite\textbackslash tempf{}ile} est nécessaire pour l'écriture de fichier~; elle doit figurer une seule fois dans le texte source, si vous définissez plusieurs environnements d'affichage, veillez à ne pas la dupliquer~; 
+  \item ligne 8, 13 à 21 et 38~: attention, c'est un accent aigu \tpp{`}~;
+  \item ligne 3, 10 et 12~: le nom \tpp{logo} apparaît trois fois (en bleu pour être repéré plus facilement)~: si vous changez le nom de la commande, veillez à en remplacer toutes les occurrences~;
+  \item une difficulté est d'assurer que la commande n'insère aucune espace supplémentaire~: c'est pour cela que toutes les lignes se terminent par \tpp{\%}\footnote{En fait, uniquement certaines lignes doivent être obligatoirement terminées par \tpp{\%}~; pour simplifier, on applique cette terminaison à toutes.}~;
+    \item enfin le plus intéressant~: ligne 31, le fichier \tpp{temp.logo} est ouvert en écriture~;
+    \item ligne 32, le contenu de la commande est écrit dans ce fichier~;
+    \item ligne 33, le fichier est fermé~;
+    \item ligne 34, le compilateur est appelé pour effectuer la traduction en \LaTeX~; {\bf attention}, cette commande est un argument de \tpp{\textbackslash lowercase}\footnote{Aucune idée de son rôle, mais si on supprime \tpp{\textbackslash lowercase}, la compilation \LaTeX échoue.} (ligne 22), si bien que tous les caractères sont passés en minuscules~: ainsi, si on écrit \tpp{logo -{}-mode=latex:LOGO temp.logo}, c'est la commande \tpp{logo} \tpp{-{}-mode=latex:logo temp.logo} qui est exécutée~;
+    \item ligne 35, le code traduit est affiché~; comme la commande \tpp{\textbackslash input} (ligne 35) insère toujours une espace après elle, on la supprime par \tpp{\textbackslash unskip}.
 \end{itemize}
 
-Noter bien que la ligne 35 est une commande générale d'affichage : ici on a choisi un fond gris, et une police à échappement fixe.
+Noter bien que la ligne 35 est une commande générale d'affichage~: ici on a choisi un fond gris, et une police à échappement fixe.
 
 Enfin, la commande \tpp{\textbackslash logo} ne peut pas être utilisée dans les notes en bas de page (commande \tpp{\textbackslash footnote}), ni en argument d'une macro.
 
