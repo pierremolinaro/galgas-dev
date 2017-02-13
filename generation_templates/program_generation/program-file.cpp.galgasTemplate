@@ -5,6 +5,7 @@
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/F_verbose_output.h"
 #include "galgas2/cLexiqueIntrospection.h"
+#include "command_line_interface/C_builtin_CLI_Options.h"
 % for () in IMPORTED_COMPONENT_LIST do
     %#include "%!mValue%.h"\n%
   end%
@@ -69,16 +70,16 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
     returnCode = 1 ;
   }else{
   //--- Common lexique object
-    C_Compiler * commonLexique = NULL ;
-    macroMyNew (commonLexique, C_Compiler (NULL COMMA_HERE)) ;
+    C_Compiler * commonCompiler = NULL ;
+    macroMyNew (commonCompiler, C_Compiler (NULL COMMA_HERE)) ;
     try{
-      routine_before (commonLexique COMMA_HERE) ;
-      cLexiqueIntrospection::handleGetKeywordListOption (commonLexique) ;
+      routine_before (commonCompiler COMMA_HERE) ;
+      cLexiqueIntrospection::handleGetKeywordListOption (commonCompiler) ;
       const bool verboseOptionOn = verboseOutput () ;
       for (int32_t i=0 ; i<sourceFilesArray.count () ; i++) {
         const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
         const GALGAS_string sfp = GALGAS_string (sourceFilesArray (i COMMA_HERE)) ;
-        const GALGAS_location location = commonLexique->here () ;
+        const GALGAS_location location = commonCompiler->here () ;
         const GALGAS_lstring sourceFilePath (sfp, location) ;
         int r = 0 ;
         %
@@ -88,37 +89,37 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
             if [mReferenceGrammar string] == "" then
             %          switch (executionMode ()) {\n%
             %          case kExecutionModeNormal :\n%
-            %            routine_%!["programRule_" + [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
+            %            routine_%!["programRule_" + [IDX string] identifierRepresentation]% (sourceFilePath, commonCompiler COMMA_HERE) ;\n%
             %            break ;\n%
             %          case kExecutionModeLexicalAnalysisOnly :\n%
-            %            commonLexique->onTheFlyRunTimeError ("Cannot handle \"--mode=lexical-only\" option: no grammar in program RULE" COMMA_HERE) ;\n%
+            %            commonCompiler->onTheFlyRunTimeError ("Cannot handle \"--mode=lexical-only\" option: no grammar in program RULE" COMMA_HERE) ;\n%
             %            break ;\n%
             %          case kExecutionModeSyntaxAnalysisOnly :\n%
-            %            commonLexique->onTheFlyRunTimeError ("Cannot handle \"--mode=syntax-only\" option: no grammar in program RULE" COMMA_HERE) ;\n%
+            %            commonCompiler->onTheFlyRunTimeError ("Cannot handle \"--mode=syntax-only\" option: no grammar in program RULE" COMMA_HERE) ;\n%
             %            break ;\n%
             %          case kExecutionModeIndexing :\n%
-            %            commonLexique->onTheFlyRunTimeError ("Cannot handle \"--mode=indexing\" option: no grammar in program RULE" COMMA_HERE) ;\n%
+            %            commonCompiler->onTheFlyRunTimeError ("Cannot handle \"--mode=indexing\" option: no grammar in program RULE" COMMA_HERE) ;\n%
             %            break ;\n%
             %          case kExecutionModeLatex :\n%
-            %            commonLexique->onTheFlyRunTimeError ("Cannot handle \"--mode=latex\" option: no grammar in program RULE" COMMA_HERE) ;\n%
+            %            commonCompiler->onTheFlyRunTimeError ("Cannot handle \"--mode=latex\" option: no grammar in program RULE" COMMA_HERE) ;\n%
             %            break ;\n%
             %          }\n%
             else
             %          switch (executionMode ()) {\n%
             %          case kExecutionModeNormal :\n%
-            %            routine_%!["programRule_" + [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
+            %            routine_%!["programRule_" + [IDX string] identifierRepresentation]% (sourceFilePath, commonCompiler COMMA_HERE) ;\n%
             %            break ;\n%
             %          case kExecutionModeLexicalAnalysisOnly :\n%
-            %            cGrammar_%![mReferenceGrammar identifierRepresentation]%::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n%
+            %            cGrammar_%![mReferenceGrammar identifierRepresentation]%::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;\n%
             %            break ;\n%
             %          case kExecutionModeSyntaxAnalysisOnly :\n%
-            %            cGrammar_%![mReferenceGrammar identifierRepresentation]%::performOnlySyntaxAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n%
+            %            cGrammar_%![mReferenceGrammar identifierRepresentation]%::performOnlySyntaxAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;\n%
             %            break ;\n%
             %          case kExecutionModeIndexing :\n%
-            %            cGrammar_%![mReferenceGrammar identifierRepresentation]%::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n%
+            %            cGrammar_%![mReferenceGrammar identifierRepresentation]%::performIndexing (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;\n%
             %            break ;\n%
             %          case kExecutionModeLatex :\n%
-            %            cGrammar_%![mReferenceGrammar identifierRepresentation]%::performOnlyLexicalAnalysis (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n%
+            %            cGrammar_%![mReferenceGrammar identifierRepresentation]%::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;\n%
             %            break ;\n%
             %          }\n%
             end
@@ -144,7 +145,11 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         }
       }
     //--- Epilogue
-      routine_after (commonLexique COMMA_HERE) ;
+      routine_after (commonCompiler COMMA_HERE) ;
+    //--- Emit JSON issue file ?
+      if (gOption_generic_5F_cli_5F_options_emit_5F_issue_5F_json_5F_file.mValue != "") {
+        commonCompiler->writeIssueJSONFile (gOption_generic_5F_cli_5F_options_emit_5F_issue_5F_json_5F_file.mValue) ;
+      }
     //--- Display error and warnings count
       if (verboseOptionOn || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {
         C_String message ;
@@ -173,7 +178,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
       printf ("**** Unknow exception ****\\n") ;
       throw ;
     }
-    macroDetachSharedObject (commonLexique) ;
+    macroDetachSharedObject (commonCompiler) ;
   }
   return returnCode ;
 }

@@ -58,7 +58,6 @@ mLineDefinition (0),
 mColumnDefinition (0),
 mLeftNonTerminalIndex (0),
 mDerivation (),
-//mDerivationFirstEX (),
 mDerivationFirst (),
 mProductionIndex (0) {
 }

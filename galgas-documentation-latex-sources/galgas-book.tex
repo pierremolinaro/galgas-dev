@@ -376,7 +376,7 @@
 % \refChapter{label-chapter} ---> "chapitre n"
 \newcommand\refChapter[1]{\hyperref[chapter:#1]{chapitre \ref*{chapter:#1}}}
 
-\newcommand\refChapterPage[1]{\hyperref[chapter:#1]{chapitre \ref*{chapter:#1} page \pageref{chapter:#1}}}
+\newcommand\refChapterPage[1]{\hyperref[chapter:#1]{chapitre \ref*{chapter:#1} à partir de la page \pageref{chapter:#1}}}
 
 % Au lieu d'écrire \section{titre-section}, on écrit \sectionLabel{titre-section}{label-section}
 \newcommand\sectionLabel[2]{\section{#1}\label{sec:#2}}

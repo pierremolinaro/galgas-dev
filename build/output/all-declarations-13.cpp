@@ -11201,11 +11201,11 @@ static const char * gNonTerminalNames_galgas3Grammar [322] = {
   "<remove_declaration>",// Index 44
   "<insert_or_replace_declaration>",// Index 45
   "<map_insert_setter_declaration>",// Index 46
-  "<sharedmap_override>",// Index 47
-  "<sharedmap_attribute>",// Index 48
-  "<sharedmap_search_method_declaration>",// Index 49
-  "<sharedmap_state_list>",// Index 50
-  "<sharedmap_state_transition>",// Index 51
+  "<shared_map_override>",// Index 47
+  "<shared_map_attribute>",// Index 48
+  "<shared_map_search_method_declaration>",// Index 49
+  "<shared_map_state_list>",// Index 50
+  "<shared_map_state_transition>",// Index 51
   "<sortedlist_sort_descriptor>",// Index 52
   "<lexical_indexing_declaration>",// Index 53
   "<template_delimitor>",// Index 54
@@ -45744,14 +45744,14 @@ void cGrammar_galgas_33_Grammar::nt_map_5F_insert_5F_setter_5F_declaration_ (GAL
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                      
-//                                  'sharedmap_override' non terminal implementation                                    
+//                                 'shared_map_override' non terminal implementation                                    
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_override_parse (C_Lexique_galgas_33_Scanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_shared_5F_map_5F_override_parse (C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 129 :
-      rule_galgas_33_DeclarationsSyntax_sharedmap_5F_override_i25_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_shared_5F_map_5F_override_i25_parse(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45759,10 +45759,10 @@ void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_override_parse (C_Lexique_galga
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_override_indexing (C_Lexique_galgas_33_Scanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_shared_5F_map_5F_override_indexing (C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 129 :
-      rule_galgas_33_DeclarationsSyntax_sharedmap_5F_override_i25_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_shared_5F_map_5F_override_i25_indexing(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45770,11 +45770,11 @@ void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_override_indexing (C_Lexique_ga
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_override_ (GALGAS_mapOverrideBlockListAST &  parameter_1,
+void cGrammar_galgas_33_Grammar::nt_shared_5F_map_5F_override_ (GALGAS_mapOverrideBlockListAST &  parameter_1,
                                 C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 129 :
-      rule_galgas_33_DeclarationsSyntax_sharedmap_5F_override_i25_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_shared_5F_map_5F_override_i25_(parameter_1, inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45783,14 +45783,14 @@ void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_override_ (GALGAS_mapOverrideBl
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                      
-//                                 'sharedmap_attribute' non terminal implementation                                    
+//                                 'shared_map_attribute' non terminal implementation                                   
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_attribute_parse (C_Lexique_galgas_33_Scanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_shared_5F_map_5F_attribute_parse (C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 130 :
-      rule_galgas_33_DeclarationsSyntax_sharedmap_5F_attribute_i26_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_shared_5F_map_5F_attribute_i26_parse(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45798,10 +45798,10 @@ void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_attribute_parse (C_Lexique_galg
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_attribute_indexing (C_Lexique_galgas_33_Scanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_shared_5F_map_5F_attribute_indexing (C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 130 :
-      rule_galgas_33_DeclarationsSyntax_sharedmap_5F_attribute_i26_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_shared_5F_map_5F_attribute_i26_indexing(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45809,11 +45809,11 @@ void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_attribute_indexing (C_Lexique_g
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_attribute_ (GALGAS_sharedMapAttributeListAST &  parameter_1,
+void cGrammar_galgas_33_Grammar::nt_shared_5F_map_5F_attribute_ (GALGAS_sharedMapAttributeListAST &  parameter_1,
                                 C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 130 :
-      rule_galgas_33_DeclarationsSyntax_sharedmap_5F_attribute_i26_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_shared_5F_map_5F_attribute_i26_(parameter_1, inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45822,14 +45822,14 @@ void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_attribute_ (GALGAS_sharedMapAtt
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                      
-//                         'sharedmap_search_method_declaration' non terminal implementation                            
+//                         'shared_map_search_method_declaration' non terminal implementation                           
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_search_5F_method_5F_declaration_parse (C_Lexique_galgas_33_Scanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_shared_5F_map_5F_search_5F_method_5F_declaration_parse (C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 131 :
-      rule_galgas_33_DeclarationsSyntax_sharedmap_5F_search_5F_method_5F_declaration_i27_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_shared_5F_map_5F_search_5F_method_5F_declaration_i27_parse(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45837,10 +45837,10 @@ void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_search_5F_method_5F_declaration
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_search_5F_method_5F_declaration_indexing (C_Lexique_galgas_33_Scanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_shared_5F_map_5F_search_5F_method_5F_declaration_indexing (C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 131 :
-      rule_galgas_33_DeclarationsSyntax_sharedmap_5F_search_5F_method_5F_declaration_i27_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_shared_5F_map_5F_search_5F_method_5F_declaration_i27_indexing(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45848,11 +45848,11 @@ void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_search_5F_method_5F_declaration
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_search_5F_method_5F_declaration_ (GALGAS_mapSearchMethodListAST &  parameter_1,
+void cGrammar_galgas_33_Grammar::nt_shared_5F_map_5F_search_5F_method_5F_declaration_ (GALGAS_mapSearchMethodListAST &  parameter_1,
                                 C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 131 :
-      rule_galgas_33_DeclarationsSyntax_sharedmap_5F_search_5F_method_5F_declaration_i27_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_shared_5F_map_5F_search_5F_method_5F_declaration_i27_(parameter_1, inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45861,14 +45861,14 @@ void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_search_5F_method_5F_declaration
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                      
-//                                 'sharedmap_state_list' non terminal implementation                                   
+//                                'shared_map_state_list' non terminal implementation                                   
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_state_5F_list_parse (C_Lexique_galgas_33_Scanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_shared_5F_map_5F_state_5F_list_parse (C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 132 :
-      rule_galgas_33_DeclarationsSyntax_sharedmap_5F_state_5F_list_i28_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_shared_5F_map_5F_state_5F_list_i28_parse(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45876,10 +45876,10 @@ void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_state_5F_list_parse (C_Lexique_
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_state_5F_list_indexing (C_Lexique_galgas_33_Scanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_shared_5F_map_5F_state_5F_list_indexing (C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 132 :
-      rule_galgas_33_DeclarationsSyntax_sharedmap_5F_state_5F_list_i28_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_shared_5F_map_5F_state_5F_list_i28_indexing(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45887,11 +45887,11 @@ void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_state_5F_list_indexing (C_Lexiq
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_state_5F_list_ (GALGAS_mapStateList &  parameter_1,
+void cGrammar_galgas_33_Grammar::nt_shared_5F_map_5F_state_5F_list_ (GALGAS_mapStateList &  parameter_1,
                                 C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 132 :
-      rule_galgas_33_DeclarationsSyntax_sharedmap_5F_state_5F_list_i28_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_shared_5F_map_5F_state_5F_list_i28_(parameter_1, inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45900,14 +45900,14 @@ void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_state_5F_list_ (GALGAS_mapState
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                      
-//                              'sharedmap_state_transition' non terminal implementation                                
+//                             'shared_map_state_transition' non terminal implementation                                
 //                                                                                                                      
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_state_5F_transition_parse (C_Lexique_galgas_33_Scanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_shared_5F_map_5F_state_5F_transition_parse (C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 133 :
-      rule_galgas_33_DeclarationsSyntax_sharedmap_5F_state_5F_transition_i29_parse(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_shared_5F_map_5F_state_5F_transition_i29_parse(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45915,10 +45915,10 @@ void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_state_5F_transition_parse (C_Le
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_state_5F_transition_indexing (C_Lexique_galgas_33_Scanner * inLexique) {
+void cGrammar_galgas_33_Grammar::nt_shared_5F_map_5F_state_5F_transition_indexing (C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 133 :
-      rule_galgas_33_DeclarationsSyntax_sharedmap_5F_state_5F_transition_i29_indexing(inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_shared_5F_map_5F_state_5F_transition_i29_indexing(inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;
@@ -45926,11 +45926,11 @@ void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_state_5F_transition_indexing (C
   }
 }
 
-void cGrammar_galgas_33_Grammar::nt_sharedmap_5F_state_5F_transition_ (GALGAS_mapStateTransitionList &  parameter_1,
+void cGrammar_galgas_33_Grammar::nt_shared_5F_map_5F_state_5F_transition_ (GALGAS_mapStateTransitionList &  parameter_1,
                                 C_Lexique_galgas_33_Scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {
   case 133 :
-      rule_galgas_33_DeclarationsSyntax_sharedmap_5F_state_5F_transition_i29_(parameter_1, inLexique) ;
+      rule_galgas_33_DeclarationsSyntax_shared_5F_map_5F_state_5F_transition_i29_(parameter_1, inLexique) ;
     break ;
   default :
     inLexique->internalBottomUpParserError (HERE) ;

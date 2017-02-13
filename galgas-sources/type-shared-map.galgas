@@ -1,6 +1,6 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  sharedmap type                                                                                                      *
+#  shared map type                                                                                                     *
 #                                                                                                                      *
 #  Copyright (C) 2015, ..., 2015 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
@@ -111,17 +111,17 @@ syntax extension galgas3DeclarationsSyntax {
     @sharedMapAttributeListAST sharedMapAttributeListAST = {} 
     repeat
     while
-      <sharedmap_state_list> !?mapStateList
+      <shared_map_state_list> !?mapStateList
     while
-      <sharedmap_attribute> !?sharedMapAttributeListAST
+      <shared_map_attribute> !?sharedMapAttributeListAST
     while
       <property_declaration> !?propertyList
     while
       <map_insert_setter_declaration> !?mInsertMethodList
     while
-      <sharedmap_search_method_declaration> !?mSearchMethodList
+      <shared_map_search_method_declaration> !?mSearchMethodList
     while
-      <sharedmap_override> !?mapOverrideBlockListAST
+      <shared_map_override> !?mapOverrideBlockListAST
     while
       $;$
     end
@@ -148,7 +148,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <sharedmap_override> ?!@mapOverrideBlockListAST ioMapOverrideBlockListAST {
+  rule <shared_map_override> ?!@mapOverrideBlockListAST ioMapOverrideBlockListAST {
     $override$
     $identifier$ ?var  @lstring overrideBlockName
     @mapOverrideBlockDescriptorAST mapOverrideBlockDescriptor1AST = {}
@@ -208,7 +208,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <sharedmap_attribute> ?!@sharedMapAttributeListAST ioSharedMapAttributeListAST {
+  rule <shared_map_attribute> ?!@sharedMapAttributeListAST ioSharedMapAttributeListAST {
     @bool isError
     select
       $error$
@@ -224,7 +224,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <sharedmap_search_method_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
+  rule <shared_map_search_method_declaration> ?!@mapSearchMethodListAST ioMapSearchMethodListAST {
     $search$
     $identifier$ ?let @lstring mMethodName
     @lstring actionName
@@ -246,7 +246,7 @@ syntax extension galgas3DeclarationsSyntax {
   
   #·····················································································································
 
-  rule <sharedmap_state_list> ?!@mapStateList ioMapStateList {
+  rule <shared_map_state_list> ?!@mapStateList ioMapStateList {
     $state$
     $identifier$ ?let @lstring stateName
     @mapAutomatonMessageKind stateMessageKind
@@ -267,7 +267,7 @@ syntax extension galgas3DeclarationsSyntax {
     @mapStateTransitionList transitionList = {}
     repeat
     while
-      <sharedmap_state_transition> !?transitionList
+      <shared_map_state_transition> !?transitionList
     end
     ioMapStateList +=
       !stateName
@@ -279,7 +279,7 @@ syntax extension galgas3DeclarationsSyntax {
 
   #·····················································································································
 
-  rule <sharedmap_state_transition> ?!@mapStateTransitionList ioTransitionList {
+  rule <shared_map_state_transition> ?!@mapStateTransitionList ioTransitionList {
     $identifier$ ?let @lstring actionName
     $->$
     $identifier$ ?let @lstring targetStateName
