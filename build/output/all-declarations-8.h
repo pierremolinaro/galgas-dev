@@ -7499,8 +7499,6 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : virtual int32_t select_galgas_33_InstructionsSyntax_71 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
-  protected : virtual int32_t select_galgas_33_InstructionsSyntax_72 (C_Lexique_galgas_33_Scanner *) = 0 ;
-
 
 } ;
 
@@ -7919,8 +7917,7 @@ class GALGAS_externFunctionDeclarationAST : public GALGAS_semanticDeclarationAST
   public : static class GALGAS_externFunctionDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
                                                                              const class GALGAS_lstring & inOperand1,
                                                                              const class GALGAS_formalInputParameterListAST & inOperand2,
-                                                                             const class GALGAS_lstring & inOperand3,
-                                                                             const class GALGAS_lstring & inOperand4
+                                                                             const class GALGAS_lstring & inOperand3
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7937,8 +7934,6 @@ class GALGAS_externFunctionDeclarationAST : public GALGAS_semanticDeclarationAST
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mFunctionName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mResultTypeName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mResultVariableName (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -7962,14 +7957,12 @@ class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
   public : GALGAS_lstring mProperty_mFunctionName ;
   public : GALGAS_formalInputParameterListAST mProperty_mFormalArgumentList ;
   public : GALGAS_lstring mProperty_mResultTypeName ;
-  public : GALGAS_lstring mProperty_mResultVariableName ;
 
 //--- Constructor
   public : cPtr_externFunctionDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                               const GALGAS_lstring & in_mFunctionName,
                                               const GALGAS_formalInputParameterListAST & in_mFormalArgumentList,
-                                              const GALGAS_lstring & in_mResultTypeName,
-                                              const GALGAS_lstring & in_mResultVariableName
+                                              const GALGAS_lstring & in_mResultTypeName
                                               COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -7979,7 +7972,6 @@ class cPtr_externFunctionDeclarationAST : public cPtr_semanticDeclarationAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mFunctionName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_formalInputParameterListAST getter_mFormalArgumentList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mResultTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mResultVariableName (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -8301,6 +8293,8 @@ class GALGAS_functionDeclarationAST : public GALGAS_externFunctionDeclarationAST
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mIsUsefull (LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mResultVariableName (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
@@ -8320,6 +8314,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionDeclaration
 
 class cPtr_functionDeclarationAST : public cPtr_externFunctionDeclarationAST {
 //--- Attributes
+  public : GALGAS_lstring mProperty_mResultVariableName ;
   public : GALGAS_semanticInstructionListAST mProperty_mFunctionInstructionList ;
   public : GALGAS_location mProperty_mEndOfFunctionInstructionList ;
   public : GALGAS_bool mProperty_mIsInternal ;
@@ -8341,6 +8336,7 @@ class cPtr_functionDeclarationAST : public cPtr_externFunctionDeclarationAST {
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mResultVariableName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListAST getter_mFunctionInstructionList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_location getter_mEndOfFunctionInstructionList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mIsInternal (LOCATION_ARGS) const ;

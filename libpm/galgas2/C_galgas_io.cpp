@@ -503,13 +503,6 @@ void ggs_printError (C_Compiler * inCompiler,
                      const C_IssueWithFixIt & inIssue,
                      const C_String & inMessage
                      COMMA_LOCATION_ARGS) {
-  C_String errorMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceText) ;
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    if (verboseOutput ()) {
-      errorMessage << "[Error raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
-                   << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
-    }
-  #endif
 //--- Append to issue array
   const cIssueDescriptor issue (
     true,
@@ -517,9 +510,17 @@ void ggs_printError (C_Compiler * inCompiler,
     inIssue.mStartLocation.lineNumber (),
     inIssue.mStartLocation.columnNumber (),
     inIssue.mEndLocation.columnNumber (),
-    errorMessage
+    inMessage
   ) ;
   inCompiler->appendIssue (issue) ;
+//---
+  C_String errorMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceText) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    if (verboseOutput ()) {
+      errorMessage << "[Error raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
+                   << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
+    }
+  #endif
 //--- Append source string
   if (! executionModeIsIndexing ()) {
     if (cocoaOutput ()) {
@@ -551,7 +552,7 @@ void fatalError (const C_String & inErrorMessage,
 //--- Error message
   C_String errorMessage ;
   errorMessage << inErrorMessage << " in file '" << inSourceFile << "', line " << cStringWithSigned (inSourceLine) << "\n" ;
-//  ggs_printError (inCompiler, C_SourceTextInString (), C_IssueWithFixIt (), errorMessage COMMA_HERE) ;
+//----
   C_String message = constructErrorOrWarningLocationMessage (errorMessage, C_IssueWithFixIt (), C_SourceTextInString ()) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (verboseOutput ()) {
@@ -592,6 +593,16 @@ void ggs_printWarning (C_Compiler * inCompiler,
                        const C_IssueWithFixIt & inIssue,
                        const C_String & inMessage
                        COMMA_LOCATION_ARGS) {
+//--- Append to issue array
+  const cIssueDescriptor issue (
+    false,
+    inSourceText.sourceFilePath (),
+    inIssue.mStartLocation.lineNumber (),
+    inIssue.mStartLocation.columnNumber (),
+    inIssue.mEndLocation.columnNumber (),
+    inMessage
+  ) ;
+  inCompiler->appendIssue (issue) ;
 //---
   C_String warningMessage = constructErrorOrWarningLocationMessage (inMessage, inIssue, inSourceText) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -600,16 +611,6 @@ void ggs_printWarning (C_Compiler * inCompiler,
                      << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
     }
   #endif
-//--- Append to issue array
-  const cIssueDescriptor issue (
-    false,
-    inSourceText.sourceFilePath (),
-    inIssue.mStartLocation.lineNumber (),
-    inIssue.mStartLocation.columnNumber (),
-    inIssue.mEndLocation.columnNumber (),
-    warningMessage
-  ) ;
-  inCompiler->appendIssue (issue) ;
 //--- Append source string
   if (inSourceText.isValid ()) {
     inSourceText.appendSourceContents (warningMessage) ;

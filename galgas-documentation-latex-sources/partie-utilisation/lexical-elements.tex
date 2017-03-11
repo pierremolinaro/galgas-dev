@@ -5,32 +5,32 @@
 \chapter{Élements lexicaux}
 %-------------------------------------------------------------
 
-Les éléments lexicaux du langage GALGAS sont :
+Les éléments lexicaux du langage GALGAS sont~:
 \begin{itemize}
-  \item les identificateurs (\refSectionPage{identificateursGALGAS}) ;
-  \item les mots réservés (\refSectionPage{motReservesGALGAS}) ;
-  \item les délimiteurs (\refSectionPage{delimiteursGALGAS}) ;
-  \item les sélecteurs  (\refSectionPage{selecteursGALGAS}) ;
-  \item les séparateurs  (\refSectionPage{separateursGALGAS}) ;
-  \item les commentaires  (\refSectionPage{commentairesGALGAS}) ;
-  \item les non terminaux  (\refSectionPage{nonTerminauxGALGAS}) ;
-  \item les terminaux (\refSectionPage{terminauxGALGAS}) ;
-  \item les constantes littérales entières (\refSectionPage{constantesLitteralesEntiersGALGAS}) ;
-  \item les constantes littérales flottantes (\refSectionPage{constantesLitteralesFlottantesGALGAS}) ;
-  \item les caractères littéraux (\refSectionPage{constantesLitteralesCaracteresGALGAS}) ;
-  \item les constantes chaînes de caractères (\refSectionPage{constantesLitteralesChainesGALGAS}) ;
-  \item les noms de types (\refSectionPage{nomTypeGALGAS}) ;
+  \item les identificateurs (\refSectionPage{identificateursGALGAS})~;
+  \item les mots réservés (\refSectionPage{motReservesGALGAS})~;
+  \item les délimiteurs (\refSectionPage{delimiteursGALGAS})~;
+  \item les sélecteurs  (\refSectionPage{selecteursGALGAS})~;
+  \item les séparateurs  (\refSectionPage{separateursGALGAS})~;
+  \item les commentaires  (\refSectionPage{commentairesGALGAS})~;
+  \item les non terminaux  (\refSectionPage{nonTerminauxGALGAS})~;
+  \item les terminaux (\refSectionPage{terminauxGALGAS})~;
+  \item les constantes littérales entières (\refSectionPage{constantesLitteralesEntiersGALGAS})~;
+  \item les constantes littérales flottantes (\refSectionPage{constantesLitteralesFlottantesGALGAS})~;
+  \item les caractères littéraux (\refSectionPage{constantesLitteralesCaracteresGALGAS})~;
+  \item les constantes chaînes de caractères (\refSectionPage{constantesLitteralesChainesGALGAS})~;
+  \item les noms de types (\refSectionPage{nomTypeGALGAS})~;
   \item les attributs (\refSectionPage{attributsGALGAS}).
 \end{itemize}
 
 
 \sectionLabel{Les identificateurs}{identificateursGALGAS}
 
-Un identificateur commence par une lettre minuscule ou majuscule, suivie de zéro, un ou plusieurs chiffres décimaux, lettres minuscules ou majuscules ou caractères \ggs='_'=. Par exemple :
+Un identificateur commence par une lettre minuscule ou majuscule, suivie de zéro, un ou plusieurs chiffres décimaux, lettres minuscules ou majuscules ou caractères \ggs='_'=. Par exemple~:
 
 \ggs=element=, \ggs=element0=, \ggs=element_0=, \ggs=instructionList=, \ggs=instruction_list=.
 
-Toutes les lettres Unicode sont acceptées : il est possible d'utiliser des lettres accentuées, des lettres grecques, ... Par exemple :
+Toutes les lettres Unicode sont acceptées~: il est possible d'utiliser des lettres accentuées, des lettres grecques, ... Par exemple~:
 
 \begin{galgas}
 let constanteAccentuée = 12
@@ -89,9 +89,9 @@ Les sélecteurs du langage GALGAS sont listés dans le \refTableauPage{selecteur
 
 \sectionLabel{Les séparateurs}{separateursGALGAS}
 
-Les séparateurs du langage GALGAS sont :
+Les séparateurs du langage GALGAS sont~:
 \begin{itemize}
-  \item le caractère \emph{espace} ;
+  \item le caractère \emph{espace}~;
   \item tout caractère dont le point de code est compris entre \texttt{U+0000} et \texttt{U+001F}. 
 \end{itemize}
 
@@ -110,7 +110,7 @@ Un commentaire commence par le caractère « \texttt{\#} » s'étend jusqu'à la
 
 \sectionLabel{Les non terminaux}{nonTerminauxGALGAS}
 
-Un \emph{non terminal} d'une grammaire est un identificateur placé entre les caractères \texttt{<} et \texttt{>}. Exemple :
+Un \emph{non terminal} d'une grammaire est un identificateur placé entre les caractères \texttt{<} et \texttt{>}. Exemple~:
 
 \begin{galgas}
  <expression>, <instruction>
@@ -124,24 +124,24 @@ Les lettres Unicode y sont acceptées.
 
 \sectionLabel{Les terminaux}{terminauxGALGAS}
 
-Un \emph{terminal} d'une grammaire est une chaîne de caractères placée entre deux caractères «~\texttt{\$}~». Exemple :
+Un \emph{terminal} d'une grammaire est une chaîne de caractères placée entre deux caractères «~\texttt{\$}~». Exemple~:
 
 \begin{galgas}
  $identifier$, $constant$
 \end{galgas}
 
-Tout caractère Unicode dont le point de code est compris entre \texttt{0x21} (« \texttt{!} ») et \texttt{0xFFFD} peut apparaître dans un terminal :
+Tout caractère Unicode dont le point de code est compris entre \texttt{0x21} (« \texttt{!} ») et \texttt{0xFFFD} peut apparaître dans un terminal~:
 \begin{galgas}
  $=$, $($, $--$, $≠$
 \end{galgas}
 
-Deux échappements sont définis :
+Deux échappements sont définis~:
 \begin{itemize}
-\item «~\texttt{\textbackslash\textbackslash}~» qui permet de définir un unique «~\texttt{\textbackslash}~» ;
+\item «~\texttt{\textbackslash\textbackslash}~» qui permet de définir un unique «~\texttt{\textbackslash}~»~;
 \item «~\texttt{\textbackslash\$}~» qui permet de définir un «~\texttt{\$}~».
 \end{itemize}
 
-Ceci permet par exemple de définir les terminaux suivants :
+Ceci permet par exemple de définir les terminaux suivants~:
 \begin{galgas}
  $\\$, $\$terminal\$$
 \end{galgas}
@@ -150,15 +150,15 @@ Ceci permet par exemple de définir les terminaux suivants :
 
 \sectionLabel{Les constantes littérales entières}{constantesLitteralesEntiersGALGAS}
 
-Une constante littérale entière peut être écrite :
+Une constante littérale entière peut être écrite~:
 \begin{itemize}
-  \item en \emph{décimal} : elle est constituée de un ou plusieurs chiffres décimaux ; exemple : \ggs=123=, \ggs=9=, \ggs=05= ;
-  \item en \emph{hexadécimal} : elle commence par \texttt{0x}, suivi d'un ou plusieurs chiffres hexadécimaux ; exemple : \ggs=0x12A=, \ggs=0xabcd=.
+  \item en \emph{décimal}~: elle est constituée de un ou plusieurs chiffres décimaux~; exemple~: \ggs=123=, \ggs=9=, \ggs=05=~;
+  \item en \emph{hexadécimal}~: elle commence par \texttt{0x}, suivi d'un ou plusieurs chiffres hexadécimaux~; exemple~: \ggs=0x12A=, \ggs=0xabcd=.
 \end{itemize}
 
-Le caractère « \texttt{\_} » peut être utilisé pour séparer les chiffres décimaux ou hexadécimaux : \ggs=1_234=, \ggs=0x123_4567=.
+Le caractère « \texttt{\_} » peut être utilisé pour séparer les chiffres décimaux ou hexadécimaux~: \ggs=1_234=, \ggs=0x123_4567=.
 
-Une constante littérale entière est typée ; son type est fixé par son suffixe (\refTableau{suffixeConstantesLiteralesEntieres}).
+Une constante littérale entière est typée~; son type est fixé par son suffixe (\refTableau{suffixeConstantesLiteralesEntieres}).
 
 \begin{table}[t]
   \centering
@@ -183,16 +183,16 @@ Une constante littérale entière est typée ; son type est fixé par son suffix
 
 \sectionLabel{Les constantes littérales flottantes}{constantesLitteralesFlottantesGALGAS}
 
-Une constante littérale flottante comprend toujours un point. Elle est constituée :
+Une constante littérale flottante comprend toujours un point. Elle est constituée~:
 \begin{itemize}
-  \item d'un ou plusieurs chiffres décimaux ;
-  \item suivis d'un point ;
+  \item d'un ou plusieurs chiffres décimaux~;
+  \item suivis d'un point~;
   \item suivi de zéro, un ou plusieurs chiffres décimaux.
 \end{itemize}
 
-Par exemple : \ggs=0.=, \ggs=12.34=.
+Par exemple~: \ggs=0.=, \ggs=12.34=.
 
-Le caractère « \texttt{\_} » peut être utilisé pour séparer les chiffres : \ggs=1_234.567_890=.
+Le caractère « \texttt{\_} » peut être utilisé pour séparer les chiffres~: \ggs=1_234.567_890=.
 
 Une constante littérale flottante est du type \ggs=@double=.
 
@@ -201,7 +201,7 @@ Une constante littérale flottante est du type \ggs=@double=.
 
 \sectionLabel{Les caractères littéraux}{constantesLitteralesCaracteresGALGAS}
 
-Un \emph{caractère littéral} est un caractère Unicode placé entre deux apostrophes « \texttt{\textquotesingle} ». Exemple :
+Un \emph{caractère littéral} est un caractère Unicode placé entre deux apostrophes « \texttt{\textquotesingle} ». Exemple~:
 
 \begin{galgas}
  'a', 'æ', 'Œ'
@@ -234,7 +234,7 @@ Plusieurs séquences d'échappements sont définies et listées dans le \refTabl
 
 \sectionLabel{Les constantes chaînes de caractères}{constantesLitteralesChainesGALGAS}
 
-Un \emph{chaîne de caractères littérale} est une séquence de caractères Unicode placé entre deux guillemets « \texttt{"} ». Exemple :
+Un \emph{chaîne de caractères littérale} est une séquence de caractères Unicode placé entre deux guillemets « \texttt{"} ». Exemple~:
 
 \begin{galgas}
  "une chaîne", "Œnologie"
@@ -271,14 +271,14 @@ Plusieurs séquences d'échappements sont définies et listées dans le \refTabl
 
 \sectionLabel{Les noms de types}{nomTypeGALGAS}
 
-Un nom de type :
+Un nom de type~:
 \begin{itemize}
-  \item commence par un caractère « \texttt{@}~» ;
-  \item est suivi par un ou plusieurs chiffres ou lettres ;
+  \item commence par un caractère « \texttt{@}~»~;
+  \item est suivi par un ou plusieurs chiffres ou lettres~;
   \item est suivi éventuellement par un tiret « \texttt{-} », lui-même suivi par un ou plusieurs chiffres ou lettres.
 \end{itemize}
 
-Par exemple :
+Par exemple~:
 \begin{galgas}
  @string, @stringlist-element, @2stringlist
 \end{galgas}
@@ -288,14 +288,14 @@ Par exemple :
 
 \sectionLabel{Les attributs}{attributsGALGAS}
 
-Un attribut :
+Un attribut~:
 \begin{itemize}
-  \item commence par un caractère «~\texttt{\%}~» ;
-  \item est suivi par une lettre Unicode ;
+  \item commence par un caractère «~\texttt{\%}~»~;
+  \item est suivi par une lettre Unicode~;
   \item est suivi par une ou plusieurs lettres Unicode, chiffres décimaux, «~\texttt{-}~» ou «~\texttt{\_}~».
 \end{itemize}
 
-Par exemple :
+Par exemple~:
 \begin{galgas}
  %once, %translate, %héhé-π
 \end{galgas}

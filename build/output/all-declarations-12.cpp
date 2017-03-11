@@ -8780,9 +8780,6 @@ typeComparisonResult cPtr_externFunctionDeclarationAST::dynamicObjectCompare (co
   if (kOperandEqual == result) {
     result = mProperty_mResultTypeName.objectCompare (p->mProperty_mResultTypeName) ;
   }
-  if (kOperandEqual == result) {
-    result = mProperty_mResultVariableName.objectCompare (p->mProperty_mResultVariableName) ;
-  }
   return result ;
 }
 
@@ -8817,7 +8814,6 @@ GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST::constru
   return GALGAS_externFunctionDeclarationAST::constructor_new (GALGAS_bool::constructor_default (HERE),
                                                                GALGAS_lstring::constructor_default (HERE),
                                                                GALGAS_formalInputParameterListAST::constructor_emptyList (HERE),
-                                                               GALGAS_lstring::constructor_default (HERE),
                                                                GALGAS_lstring::constructor_default (HERE)
                                                                COMMA_THERE) ;
 }
@@ -8834,12 +8830,11 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                           const GALGAS_lstring & inAttribute_mFunctionName,
                                                                                           const GALGAS_formalInputParameterListAST & inAttribute_mFormalArgumentList,
-                                                                                          const GALGAS_lstring & inAttribute_mResultTypeName,
-                                                                                          const GALGAS_lstring & inAttribute_mResultVariableName
+                                                                                          const GALGAS_lstring & inAttribute_mResultTypeName
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_externFunctionDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mFunctionName.isValid () && inAttribute_mFormalArgumentList.isValid () && inAttribute_mResultTypeName.isValid () && inAttribute_mResultVariableName.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_externFunctionDeclarationAST (inAttribute_mIsPredefined, inAttribute_mFunctionName, inAttribute_mFormalArgumentList, inAttribute_mResultTypeName, inAttribute_mResultVariableName COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mFunctionName.isValid () && inAttribute_mFormalArgumentList.isValid () && inAttribute_mResultTypeName.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_externFunctionDeclarationAST (inAttribute_mIsPredefined, inAttribute_mFunctionName, inAttribute_mFormalArgumentList, inAttribute_mResultTypeName COMMA_THERE)) ;
   }
   return result ;
 }
@@ -8899,38 +8894,18 @@ GALGAS_lstring cPtr_externFunctionDeclarationAST::getter_mResultTypeName (UNUSED
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_externFunctionDeclarationAST::getter_mResultVariableName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_externFunctionDeclarationAST * p = (const cPtr_externFunctionDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_externFunctionDeclarationAST) ;
-    result = p->mProperty_mResultVariableName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_externFunctionDeclarationAST::getter_mResultVariableName (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mResultVariableName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                Pointer class for @externFunctionDeclarationAST class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_externFunctionDeclarationAST::cPtr_externFunctionDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                                       const GALGAS_lstring & in_mFunctionName,
                                                                       const GALGAS_formalInputParameterListAST & in_mFormalArgumentList,
-                                                                      const GALGAS_lstring & in_mResultTypeName,
-                                                                      const GALGAS_lstring & in_mResultVariableName
+                                                                      const GALGAS_lstring & in_mResultTypeName
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mProperty_mFunctionName (in_mFunctionName),
 mProperty_mFormalArgumentList (in_mFormalArgumentList),
-mProperty_mResultTypeName (in_mResultTypeName),
-mProperty_mResultVariableName (in_mResultVariableName) {
+mProperty_mResultTypeName (in_mResultTypeName) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8949,8 +8924,6 @@ void cPtr_externFunctionDeclarationAST::description (C_String & ioString,
   mProperty_mFormalArgumentList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mResultTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mResultVariableName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -8958,7 +8931,7 @@ void cPtr_externFunctionDeclarationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_externFunctionDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_externFunctionDeclarationAST (mProperty_mIsPredefined, mProperty_mFunctionName, mProperty_mFormalArgumentList, mProperty_mResultTypeName, mProperty_mResultVariableName COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_externFunctionDeclarationAST (mProperty_mIsPredefined, mProperty_mFunctionName, mProperty_mFormalArgumentList, mProperty_mResultTypeName COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -9112,6 +9085,24 @@ GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST::constructor_new (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_lstring GALGAS_functionDeclarationAST::getter_mResultVariableName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_functionDeclarationAST * p = (const cPtr_functionDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_functionDeclarationAST) ;
+    result = p->mProperty_mResultVariableName ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cPtr_functionDeclarationAST::getter_mResultVariableName (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mResultVariableName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_semanticInstructionListAST GALGAS_functionDeclarationAST::getter_mFunctionInstructionList (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListAST result ;
   if (NULL != mObjectPtr) {
@@ -9196,7 +9187,8 @@ cPtr_functionDeclarationAST::cPtr_functionDeclarationAST (const GALGAS_bool & in
                                                           const GALGAS_bool & in_mIsInternal,
                                                           const GALGAS_bool & in_mIsUsefull
                                                           COMMA_LOCATION_ARGS) :
-cPtr_externFunctionDeclarationAST (in_mIsPredefined, in_mFunctionName, in_mFormalArgumentList, in_mResultTypeName, in_mResultVariableName COMMA_THERE),
+cPtr_externFunctionDeclarationAST (in_mIsPredefined, in_mFunctionName, in_mFormalArgumentList, in_mResultTypeName COMMA_THERE),
+mProperty_mResultVariableName (in_mResultVariableName),
 mProperty_mFunctionInstructionList (in_mFunctionInstructionList),
 mProperty_mEndOfFunctionInstructionList (in_mEndOfFunctionInstructionList),
 mProperty_mIsInternal (in_mIsInternal),

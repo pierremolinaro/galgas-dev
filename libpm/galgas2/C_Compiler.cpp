@@ -113,13 +113,13 @@ void C_Compiler::appendIssue (const cIssueDescriptor & inIssue) {
 
 void C_Compiler::writeIssueJSONFile (const C_String & inFile) {
   if (performGeneration ()) {
-    C_String s ("[") ;
+    C_String s ("[\n") ;
     bool isFirst = true ;
     for (int32_t i=0 ; i<mIssueArray.count () ; i++) {
       mIssueArray (i COMMA_HERE).appendToJSONstring (s, isFirst) ;
       isFirst = false ;
     }
-    s << "]\n" ;
+    s << "\n]\n" ;
     const bool ok = C_FileManager::writeStringToFile (s, inFile) ;
     if (!ok) {
       const C_String message (C_String ("Cannot write to '") + inFile + "'") ;

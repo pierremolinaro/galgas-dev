@@ -511,7 +511,6 @@ class @externFunctionDeclarationAST : @semanticDeclarationAST {
   @lstring mFunctionName
   @formalInputParameterListAST mFormalArgumentList
   @lstring mResultTypeName
-  @lstring mResultVariableName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -521,6 +520,7 @@ class @externFunctionDeclarationAST : @semanticDeclarationAST {
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @functionDeclarationAST : @externFunctionDeclarationAST {
+  @lstring mResultVariableName
   @semanticInstructionListAST mFunctionInstructionList
   @location mEndOfFunctionInstructionList
   @bool mIsInternal
