@@ -203,18 +203,11 @@ rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
   <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
   $->$
   $@type$ ?let resultTypeName
-  @lstring resultVariableName
-  select
-    $identifier$ ?resultVariableName
-  or
-    resultVariableName = .new {!"result" !.here}
-  end
   ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST.new {
     !false # Is not predefined
     !mActionName
     !formalInputParameterList
     !resultTypeName
-    !resultVariableName
   }
 }
 

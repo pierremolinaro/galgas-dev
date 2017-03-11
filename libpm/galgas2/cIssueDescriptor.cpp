@@ -77,14 +77,16 @@ cIssueDescriptor & cIssueDescriptor::operator = (const cIssueDescriptor & inSour
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cIssueDescriptor::appendToJSONstring (C_String & ioJSONstring, const bool inIsFirstIssue) const {
+  C_String s = mMessage.stringByReplacingStringByString("\n", "\\n") ;
+  s = s.stringByReplacingStringByString("\"", "\\\"") ;
   ioJSONstring << (inIsFirstIssue ? "" : ",\n")
-               << "  { \"ERROR\" = false,\n"
-               << "    \"SOURCE\" = \"" << mFile << "\",\n"
-               << "    \"LINE\"  = " << cStringWithSigned (mLine) << ",\n"
-               << "    \"START_COLUMN\"  = " << cStringWithSigned (mStartColumn) << ",\n"
-               << "    \"END_COLUMN\"  = " << cStringWithSigned (mEndColumn) << ",\n"
-               << "    \"MESSAGE\" = \"" << mMessage << "\"\n"
-               << "  }\n" ;
+               << "  { \"ERROR\" : " << (mIsError ? "true" : "false") << ",\n"
+               << "    \"SOURCE\" : \"" << mFile << "\",\n"
+               << "    \"LINE\"  : " << cStringWithSigned (mLine) << ",\n"
+               << "    \"START_COLUMN\"  : " << cStringWithSigned (mStartColumn) << ",\n"
+               << "    \"END_COLUMN\"  : " << cStringWithSigned (mEndColumn) << ",\n"
+               << "    \"MESSAGE\" : \"" << s << "\"\n"
+               << "  }" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

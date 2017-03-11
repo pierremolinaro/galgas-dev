@@ -135,3 +135,178 @@ En préfixant la déclaration d'une procédure par \ggs+private+, on limite son 
 
 
 
+
+
+
+
+\section{Fonction et routine externe}
+
+Il est possible de définir des fonctions ou des procédures \emph{externes} à GALGAS, c'est-à-dire déclarées et appelables dans le code GALGAS, et définies en C++. Ceci permet d'écrire du code qui serait difficile ou impossible à écrire directement en GALGAS. Une autre possibilité est d'écrire un \emph{type externe} (\refChapterPage{typeExtern}).
+
+La définition d'une telle fonction ou procédure s'effectue en trois étapes :
+\begin{itemize}
+  \item déclaration comme fonction ou procédure externe ;
+  \item préparation du fichier C++ qui contiendra l'implémentation de la fonction ;
+  \item implémentater la fonction C++.
+\end{itemize}
+
+\subsection{Déclaration d'une fonction ou d'une procédure externe}
+
+Il suffit d'écrire l'en-tête de la fonction, précédée du mot réservé \ggs=extern=. Par exemple~:
+\begin{galgas}
+extern func maFonctionExterne ?@uint a ?@uint b -> @uint 
+\end{galgas}
+
+Comme pour les fonctions GALGAS (\refSectionPage{declarationFonction}), une fonction externe n'accepte que des arguments en entrée.
+
+Il en est de même pour une procédure~:
+\begin{galgas}
+extern proc maProcédureExterne !@uint a ?!@uint b ?@uint64 c
+\end{galgas}
+
+Cette déclaration peut apparaître dans n'importe quel fichier d'extension \texttt{.galgas} : la portée de la déclaration est globale à tout le projet, donc une fonction ou une procédure externe peut être appelée à partir de n'importe quel fichier d'extension \texttt{.galgas} du projet.
+
+Donc : 
+\begin{itemize}
+  \item si vous déclarez une fonction ou une procédure externe, sans jamais l'appeler en GALGAS, la compilation GALGAS puis la compilation C++ des codes engendrés s'effectuent sans erreur ;
+  \item si vous déclarez  une fonction ou une procédure externe et qu'elle est appelée à partir du code GALGAS, la compilation GALGAS s'effectue correctement, par contre l'édition de liens C++ indique une erreur de type \emph{symbole indéfini}, ce qui est logique, la fonction étant en effet indéfinie.
+\end{itemize}
+
+
+
+
+
+
+
+
+\subsection{Ajout d'un fichier source C++ au projet GALGAS}
+
+
+Créez un fichier C++ vide, et placez le dans un répertoire situé à la racine de votre pprojet GALGAS, c'est-à-dire dans le même répertoire dans le fichier projet GALGAS : par exemple \texttt{monRepertoire/monCode.cpp}.
+
+Il faut ajouter dans le fichier projet GALGAS la prise en compte de ce fichier C++. Pour cela, éditez votre fichier d'extension \texttt{.galgasProject} et insérez la ligne commençant par \ggs=%tool-source=\index{\%tool-source}~:
+
+\begin{galgas}
+project (...) -> "..." {
+  ...
+  %tool-source : "monRepertoire/monCode.cpp"
+  ...
+}
+\end{galgas}
+
+La déclaration \ggs=%tool-source= indique le fichier C++ fait partie de la liste des fichiers C++ à compiler. Le chemin du fichier source C++ peut être soit un chemin absolu, soit, comme c'est le cas ici, un chemin relatif par rapport au répertoire qui contient le fichier projet GALGAS (d'extension \texttt{.galgasProject}).
+
+Dans un fichier projet GALGAS, zéro, une ou plusieurs déclarations \ggs=%tool-source= peuvent apparaître.
+
+À ce point d'avancement, le fichier C++ est vide, il peut être compilé. Si vous lancez une compilation GALGAS suivie d'une compilation C++, vous verrez apparaître \texttt{monCode.cpp} dans la liste des fichiers C++ compilés. Évidement, si il y a des fonctions ou procédures GALGAS externes non définies, vous aurez des erreurs d'édition des liens.
+
+
+
+
+
+\subsection{Écriture du fichier C++}
+
+
+\subsubsection{Directive \texttt{\#include}}
+
+Placée en tête du fichier, elle permet d'importer toutes les déclarations GALGAS d'un projet, y compris les prototypes des fonctions et procédures externes à GALGAS. Son libellé exact est :
+
+\begin{lstlisting}[language=C++]
+#include "all-declarations.h"
+\end{lstlisting}
+
+Le fichier \texttt{all-declarations.h} est engendré par la compilation GALGAS et est situé dans le répertoire \texttt{build/output}.
+
+
+
+\subsubsection{Squelette de l'implémentation d'une fonction externe}
+
+Par exemple, on considère la fonction GALGAS externe~:
+\begin{galgas}
+extern func maFonctionExterne ?@uint a ?@uint b -> @uint 
+\end{galgas}
+
+Le nom C++ de la fonction GALGAS \ggs=maFonctionExterne= est \texttt{function\_maFonctionExterne}, c'est-à-dire que le nom GALGAS est préfixé par \texttt{function\_}. Il y a d'autres transformations, si le nom de la fonction est contient des lettres non-ASCII, des chiffres, ou des caractères « \texttt{\_} ». En effet, le C++ n'accepte pas les lettres non ASCII dans les identificateurs, le compilateur GALGAS les remplacent par la séquence « \texttt{\_xx\_ }», où \texttt{xx} est le point de code du caractère, exprimé en hexadécimal. Pour ne pas introduire d'ambiguïté, le caractère « \texttt{\_} » est transformé de la même façon, il devient donc « \texttt{\_5F\_} ». Pour des raisons historiques, il en est de même pour les chiffres décimaux.
+
+Ainsi, une fonction nommée \ggs=hé_hé= en GALGAS est traduite en \texttt{function\_h\_E9\_\_5F\_h\_E9\_} en C++.
+
+Pour écrire l'en-tête de la fonction, le plus simple est de rechercher son prototype dans les fichiers d'en-tête du répertoire \texttt{build/output}. Pour la fonction \ggs=maFonctionExterne=, celui-ci est :
+
+\begin{lstlisting}[language=C++]
+class GALGAS_uint function_maFonctionExterne (class GALGAS_uint inArgument0,
+                                              class GALGAS_uint inArgument1,
+                                              class C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+\end{lstlisting}
+
+
+Deux remarques~:
+\begin{itemize}
+  \item Les noms de types GALGAS (par exemple \ggs=@xyz=) sont préfixés par \texttt{GALGAS\_} en C++, et les lettres non-ASCII, les chiffres, et les caractères « \texttt{\_} »  sont remplacés par la séquence « \texttt{\_xx\_ }», où \texttt{xx} est le point de code du caractère, exprimé en hexadécimal (comme pour les noms de fonction, voir ci-dessus) ; ainsi, \ggs=@uint64= devient \texttt{GALGAS\_uint\_36\_\_34\_} ;
+  \item il n'y a pas de virgule après «~\texttt{inCompiler}~», \texttt{COMMA\_LOCATION\_ARGS} est une macro (voir sa définition dans le fichier \texttt{build/libpm/utilities/M\_SourceLocation.h}).
+\end{itemize}
+
+
+On peut donc écrire le squelette de la fonction C++~:
+\begin{lstlisting}[language=C++]
+GALGAS_uint function_maFonctionExterne (GALGAS_uint inArgument0,
+                                        GALGAS_uint inArgument1,
+                                        C_Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) {
+}
+\end{lstlisting}
+
+Pour écrire le code de la fonction, il faut prendre en compte les \emph{valeurs poison}\index{Valeur poison}. En GALGAS, il n'y a pas d'exception, et l'exécution continue en séquence, même si une erreur est détectée. Par exemple, une erreur se déclenche si on recherche une clé inexistante dans une table ; dans ce cas, il y a impossibilité de fournir des valeurs valides aux variables devant recevoir les informations associées à la clé. Autre exemple, si on essaie de diviser un entier par $0$, il y a impossiblité de retourner un résultat valide. Dans tous ces cas, la valeur retournée est une \emph{valeur poison}. Toute entité valuée GALGAS peut ainsi prendre deux états :
+\begin{itemize}
+  \item \emph{valide}, l'entité possède une valeur valide ;
+  \item \emph{poison}, l'entité ne possède pas de valeur valide.
+\end{itemize}
+
+Aussi toute routine -- aussi bien les routines implémentées en dur dans GALGAS que les routines externes écrites directement en C++ -- doit vérifier si les valeurs qu'elle reçoit sont valides. Si il n'est pas possible d'effectuer le calcul souhaité, il faut retourner une valeur poison. On pourra regarder avec profit comment sont implémentées les opérations sur les \ggs=@uint=, dans le fichier \texttt{build/libpm/galgas2/GALGAS\_uint.cpp}.
+
+
+Tout type GALGAS définit une méthode \texttt{isValid} qui permet de savoir si l'objet possède une valeur valide ou non. Le constructeur par défaut d'un objet crée une valeur poison, les constructeurs dédiés une valeur valide.
+
+Par exemple, si l'on veut que \ggs=maFonctionExterne= retourne la somme des deux arguments, on écrira :
+
+\begin{lstlisting}[language=C++]
+GALGAS_uint function_maFonctionExterne (GALGAS_uint inArgument0,
+                                        GALGAS_uint inArgument1,
+                                        C_Compiler * /* inCompiler */
+                                        COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_uint result ; // Valeur poison
+  if (inArgument0.isValid () && inArgument1.isValid ()) {
+    result = GALGAS_uint (inArgument0.uintValue () + inArgument1.uintValue ()) ;
+  }
+  return result ;
+}
+\end{lstlisting}
+
+Dès que l'un des deux arguments est une valeur poison, le résultat renvoyé est une valeur poison.
+
+
+\subsubsection{Squelette de l'implémentation d'une procédure externe}
+
+Par exemple, on considère la procédure GALGAS externe~:
+\begin{galgas}
+extern proc maProcédureExterne !@uint a ?!@uint b ?@uint64 c
+\end{galgas}
+
+Cette déclaration engendre le prototype suivant dans un des fichiers d'en-tête C++ (situé dans le répertoire \texttt{build/output})~:
+\begin{lstlisting}[language=C++]
+void routine_maProc_E9_dureExterne (class GALGAS_uint & outArgument0,
+                                    class GALGAS_uint & ioArgument1,
+                                    class GALGAS_uint_36__34_ inArgument2,
+                                    class C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+\end{lstlisting}
+
+Remarques~:
+\begin{itemize}
+  \item le nom de la procédure GALGAS est préfixée par \texttt{routine\_}, et, comme pour les noms de fonction, les lettres non-ASCII, les chiffres, et les caractères « \texttt{\_} »  sont remplacés par la séquence « \texttt{\_xx\_ }», où \texttt{xx} est le point de code du caractère, exprimé en hexadécimal : ainsi, «~\ggs=é=~» devient «~\texttt{\_E9\_}~» ;
+  \item un argument en sortie (comme \texttt{outArgument0}) est passé par référence ;
+  \item un argument en entrée / sortie (comme \texttt{ioArgument1}) est passé par référence ;
+  \item un argument en entrée (comme \texttt{inArgument2}) est passé par valeur (le constructeur de recopie est appelé).
+\end{itemize}
+
+

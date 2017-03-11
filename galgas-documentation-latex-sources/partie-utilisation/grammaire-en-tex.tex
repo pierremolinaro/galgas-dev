@@ -7,20 +7,20 @@
 
 Le compilateur GALGAS implémente l'option \tpp{-{}-emit-syntax-diagrams} qui permet d'obtenir les diagrammes syntaxiques de chaque grammaire de votre langage. Ceux-ci sont décrits en \LaTeX en utilisant le paquetage \texttt{tikz}\label{tikz}.C'est ainsi que les diagrammes des langages GALGAS présentés au \refChapterPage{grammaireProjet}, \refChapterPage{grammaireSource} et \refChapterPage{grammaireTemplate} ont été obtenus.
 
-Il n'y a pas de miracle, les diagrammes syntaxiques peuvent être tronqués parce qu'ils débordent dans la marge droite ou dans le bas de la page : d'ailleurs vouloir exploiter ces diagrammes peut être l'occasion de revisiter la forme des règles de production.
+Il n'y a pas de miracle, les diagrammes syntaxiques peuvent être tronqués parce qu'ils débordent dans la marge droite ou dans le bas de la page~: d'ailleurs vouloir exploiter ces diagrammes peut être l'occasion de revisiter la forme des règles de production.
 
-{\bf Note.} La compilation \LaTeX des diagrammes syntaxiques est très lente !
+{\bf Note.} La compilation \LaTeX~des diagrammes syntaxiques est très lente !
 
 Dans tout ce chapitre, nous appliquons cette démarche au langage LOGO, défini à la \refSectionPage{presentation-logo}.
 
 \section{Mise en œuvre}
 
-La mise en œuvre est très simple : il suffit d'ajouter l'option indiquée ci-dessus lors de la compilation de votre projet :
+La mise en œuvre est très simple~: il suffit d'ajouter l'option indiquée ci-dessus lors de la compilation de votre projet~:
 \begin{description}
   \item[ ] \tpp{galgas --emit-syntax-diagrams chezmoi/logo/+logo.galgasProject}
 \end{description}
 
-Les fichiers \LaTeX produits sont rangés dans le répertoire \tpp{chezmoi/build/tex}. Deux fichiers sont produits pour chaque grammaire implémentée par votre projet ; pour le projet LOGO, la grammaire définie s'appelle \ggs=logo_grammar= (\refSectionPage{analyseurSyntaxiqueLOGO}), ces fichiers sont :
+Les fichiers \LaTeX produits sont rangés dans le répertoire \tpp{chezmoi/build/tex}. Deux fichiers sont produits pour chaque grammaire implémentée par votre projet ; pour le projet LOGO, la grammaire définie s'appelle \ggs=logo_grammar= (\refSectionPage{analyseurSyntaxiqueLOGO}), ces fichiers sont~:
 \begin{itemize}
 \item \tpp{chezmoi/build/logo\_grammar.document.tex} (\refSectionPage{documentDiagrammesSyntaxiquesTex}) ;
 \item \tpp{chezmoi/build/logo\_grammar.tex} (\refSectionPage{fichierDiagrammesSyntaxiquesTex}).
@@ -48,9 +48,9 @@ Cette commande est émise avant chaque non terminal. La définition ci-dessus d�
 
 
 
-Cette commande est émise avant chaque diagramme syntaxique d'un non terminal. La définition ci-dessus définit une \emph{sous-section}, et une étiquette qui permet d'établir des hyper-liens sur les non terminaux. Les trois arguments sont : le nom du composant syntaxique qui contient la règle, le fichier dans lequel  la règle apparaît, et le numéro de ligne dans ce fichier.
+Cette commande est émise avant chaque diagramme syntaxique d'un non terminal. La définition ci-dessus définit une \emph{sous-section}, et une étiquette qui permet d'établir des hyper-liens sur les non terminaux. Les trois arguments sont~: le nom du composant syntaxique qui contient la règle, le fichier dans lequel  la règle apparaît, et le numéro de ligne dans ce fichier.
 
-Définir une sous-section par règle n'est pas forcément souhaitable, on peut vouloir obtenir la liste des règles, sans aucun texte intermédiaire. Pour cela, il suffit d'écrire :
+Définir une sous-section par règle n'est pas forcément souhaitable, on peut vouloir obtenir la liste des règles, sans aucun texte intermédiaire. Pour cela, il suffit d'écrire~:
 
 \mbox{\ttfamily\footnotesize
 \textbackslash newcommand\textbackslash ruleSubsection[3]\{\}
@@ -127,14 +127,14 @@ Commande émise une fois, pour terminer la table des non terminaux.
 
 \sectionLabel{Le fichier \texttt{logo\_grammar.tex}}{fichierDiagrammesSyntaxiquesTex}
 
-La présentation adoptée dans ce fichier est :
+La présentation adoptée dans ce fichier est~:
 \begin{itemize}
   \item l'axiome de la grammaire (émission de la commande \texttt{\small\textbackslash startSymbol}) ;
   \item la table des non terminaux (émission des commandes \texttt{\small\textbackslash nonTerminalSummaryStart}, \texttt{\small\textbackslash nonTerminalSummary}, \texttt{\small\textbackslash nonTerminalSummarySeparator}, \texttt{\small\textbackslash nonTerminalSummaryEnd})~;
-  \item pour chaque non terminal :
+  \item pour chaque non terminal~:
   \begin{itemize}
     \item son annonce par la commande \texttt{\small\textbackslash nonTerminalSection} ;
-    \item pour chaque règle de production de ce non terminal :
+    \item pour chaque règle de production de ce non terminal~:
     \begin{itemize}
       \item son annonce par la commande \texttt{\small\textbackslash ruleSubsection} ;
       \item son diagramme syntaxique par un environnement \texttt{tikzpicture}.
