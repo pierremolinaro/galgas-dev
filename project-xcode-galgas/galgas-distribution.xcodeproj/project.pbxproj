@@ -100,6 +100,9 @@
 		CF4397F90ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */; };
 		CF4397FB0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */; };
 		CF4398040ADFE1900085F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
+		CF4C35B51E7727D9001FA184 /* cIssueDescriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4C35B31E7727D9001FA184 /* cIssueDescriptor.cpp */; };
+		CF4C35B61E7727D9001FA184 /* cIssueDescriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4C35B31E7727D9001FA184 /* cIssueDescriptor.cpp */; };
+		CF4C35B71E7727D9001FA184 /* cIssueDescriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4C35B31E7727D9001FA184 /* cIssueDescriptor.cpp */; };
 		CF51F03215C92B8400387A48 /* OC_GGS_RulerViewForBuildOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = CF51F02F15C92B8400387A48 /* OC_GGS_RulerViewForBuildOutput.m */; };
 		CF51F03315C92B8400387A48 /* PMDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = CF51F03115C92B8400387A48 /* PMDebug.m */; };
 		CF51F03715C92B8C00387A48 /* PMDebug.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF51F03515C92B8C00387A48 /* PMDebug.xib */; };
@@ -940,6 +943,8 @@
 		CF443912144E144600E38AA4 /* TC_prime_cache2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_prime_cache2.h; sourceTree = "<group>"; };
 		CF443913144E144600E38AA4 /* TC_prime_cache3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_prime_cache3.h; sourceTree = "<group>"; };
 		CF443914144E144600E38AA4 /* TC_prime_cache4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_prime_cache4.h; sourceTree = "<group>"; };
+		CF4C35B31E7727D9001FA184 /* cIssueDescriptor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cIssueDescriptor.cpp; sourceTree = "<group>"; };
+		CF4C35B41E7727D9001FA184 /* cIssueDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cIssueDescriptor.h; sourceTree = "<group>"; };
 		CF51F02E15C92B8400387A48 /* OC_GGS_RulerViewForBuildOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_RulerViewForBuildOutput.h; sourceTree = "<group>"; };
 		CF51F02F15C92B8400387A48 /* OC_GGS_RulerViewForBuildOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_RulerViewForBuildOutput.m; sourceTree = "<group>"; };
 		CF51F03015C92B8400387A48 /* PMDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMDebug.h; sourceTree = "<group>"; };
@@ -1840,6 +1845,8 @@
 				CF3D9FC61257733E0037D473 /* cGenericAbstractEnumerator.h */,
 				CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */,
 				CFEF3A7A12A04C0F007CA2D8 /* cIndexingDictionary.h */,
+				CF4C35B31E7727D9001FA184 /* cIssueDescriptor.cpp */,
+				CF4C35B41E7727D9001FA184 /* cIssueDescriptor.h */,
 				CFDB1A881CB6E8DD00D6FBB4 /* cLexiqueIntrospection.cpp */,
 				CFDB1A891CB6E8DD00D6FBB4 /* cLexiqueIntrospection.h */,
 				CF01558B1267796800917801 /* cObjectArray.cpp */,
@@ -2779,6 +2786,7 @@
 				CF7DF1781D04619A0003A5C2 /* all-predefined-types.cpp in Sources */,
 				CF747DF31D55EE7F0011717F /* C_IssueWithFixIt.cpp in Sources */,
 				CFEA1A0C1E43DA1C00556A1C /* displayUnicodeLexicalTestFunctions.cpp in Sources */,
+				CF4C35B51E7727D9001FA184 /* cIssueDescriptor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3041,6 +3049,7 @@
 				CF7DF1791D04619A0003A5C2 /* all-predefined-types.cpp in Sources */,
 				CF747DF41D55EE7F0011717F /* C_IssueWithFixIt.cpp in Sources */,
 				CFEA1A0D1E43DA1C00556A1C /* displayUnicodeLexicalTestFunctions.cpp in Sources */,
+				CF4C35B61E7727D9001FA184 /* cIssueDescriptor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3303,6 +3312,7 @@
 				CF7DF17A1D04619A0003A5C2 /* all-predefined-types.cpp in Sources */,
 				CF747DF51D55EE7F0011717F /* C_IssueWithFixIt.cpp in Sources */,
 				CFEA1A0E1E43DA1C00556A1C /* displayUnicodeLexicalTestFunctions.cpp in Sources */,
+				CF4C35B71E7727D9001FA184 /* cIssueDescriptor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
