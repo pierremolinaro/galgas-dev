@@ -675,7 +675,7 @@ void C_String::suppress (const int32_t inLocation,
 void C_String::insertCharacterAtIndex (const utf32 inChar,
                                        const int32_t inIndex
                                        COMMA_LOCATION_ARGS) {
-  const uint32_t kNewLength = mEmbeddedString->mLength + 1 ;
+  const uint32_t kNewLength = ((uint32_t) length ()) + 1 ;
   insulateEmbeddedString (kNewLength) ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;
