@@ -33,7 +33,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 //--- Only for debugging !!!
-//#define FORCED_GALGAS_VERSION @"3.0.4"
+#define FORCED_GALGAS_VERSION @"3.0.4"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -295,9 +295,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-/*- (void) newVersionIsAvailableAlertDidEnd:(NSWindow *) inUnusedWindow
-         returnCode:(int) inReturnCode
-         contextInfo:(void  *) inContextInfo {*/
 - (void) newVersionIsAvailableAlertDidEndWithReturnCode:(NSInteger) inReturnCode {
   // NSLog (@"inReturnCode %d", inReturnCode) ;
   if (inReturnCode == YES) {
@@ -319,7 +316,7 @@
     mDownloadFile = [[PMDownloadFile alloc] initWithURLString:[self galgasHTTPPathForVersion:mLastAvailableVersion]
        destinationFileName:[self temporaryPathForGALGASArchive]
        downloadDelegate:self
-       downloadDidEndSelector:@selector (downloadNewVersionOfGALGASDidEnd:)
+       info:0
        cancelButton:mCancelButton
        subtitle:mDownloadSubTitle
        progressIndicator:mDownloadProgressIndicator
@@ -362,8 +359,10 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (void) downloadNewVersionOfGALGASDidEnd: (PMDownloadFile *) inDownloader {
-  if ([inDownloader downloadHasBeenCancelled]) {
+- (void) downloadDidEnd: (PMDownloadFile *) inDownloader info: (NSUInteger) inDelegateInfo {
+  if (inDelegateInfo == 1) {
+    [self downloadGalgasUpdaterDidEnd:inDownloader] ;
+  }else if ([inDownloader downloadHasBeenCancelled]) {
     [self downloadHasBeenCancelled] ;
   }else{
     NSError * downloadError = [inDownloader downloadError] ;
@@ -376,7 +375,7 @@
       mDownloadFile = [[PMDownloadFile alloc] initWithURLString:[self galgasUpdaterHTTPPath]
          destinationFileName:[self temporaryPathForGalgasUpdaterArchive]
          downloadDelegate:self
-         downloadDidEndSelector:@selector (downloadGalgasUpdaterDidEnd:)
+         info:1
          cancelButton:mCancelButton
          subtitle:mDownloadSubTitle
          progressIndicator:mDownloadProgressIndicator
