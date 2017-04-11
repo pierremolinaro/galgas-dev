@@ -121,35 +121,35 @@ override method @listDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !getterName:"length"
     !returnedTypeName:"uint"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"range"
     !returnedTypeName:"range"
-    !false
+    !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !"subListFromIndex" !"uint" !"inIndex"
     !returnedTypeName:[mListTypeName string]
-    !true
+    !hasCompilerArgument:true
   )
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !"subListToIndex" !"uint" !"inIndex"
     !returnedTypeName:[mListTypeName string]
-    !true
+    !hasCompilerArgument:true
   )
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !"subListWithRange" !"range" !"inRange"
     !returnedTypeName:[mListTypeName string]
-    !true
+    !hasCompilerArgument:true
   )
   for () in typedAttributeList do
     if mHasGetter then

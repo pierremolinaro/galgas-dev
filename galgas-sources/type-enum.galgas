@@ -165,7 +165,7 @@ override method @enumDeclarationAST enterInSemanticContext
       !?ioSemanticContext.mTypeMap
       !"is" + [mConstantName stringByCapitalizingFirstCharacter]
       !returnedTypeName:"bool"
-      !false
+      !hasCompilerArgument:false
     )
   end
 #--- Add Categories

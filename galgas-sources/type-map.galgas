@@ -270,7 +270,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !getterName:"levels"
     !returnedTypeName:"uint"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWith2Arguments (
     !?getterMap
@@ -281,21 +281,21 @@ override method @mapDeclarationAST enterInSemanticContext
     !"uint"
     !"inLevel"
     !returnedTypeName:"bool"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"keySet"
     !returnedTypeName:"stringset"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"keyList"
     !returnedTypeName:"lstringlist"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithArgument (
     !?getterMap
@@ -304,7 +304,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !argumentTypeName:"string"
     !argumentName:"inKey"
     !returnedTypeName:"bool"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithArgument (
     !?getterMap
@@ -313,21 +313,21 @@ override method @mapDeclarationAST enterInSemanticContext
     !argumentTypeName:"string"
     !argumentName:"inKey" 
     !returnedTypeName:"location"
-    !true
+    !hasCompilerArgument:true
   )
   enterBaseGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !"overriddenMap"
     !returnedTypeName:[mMapTypeName string]
-    !true
+    !hasCompilerArgument:true
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"count"
     !returnedTypeName:"uint"
-    !false
+    !hasCompilerArgument:false
   )
 #--- Handle properties
   var insertMethodFormalArgumentList = @formalParameterSignature {}

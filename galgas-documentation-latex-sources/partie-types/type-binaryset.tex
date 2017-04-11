@@ -880,6 +880,44 @@ This getter considers that the receiver encodes an \emph{(x, y)} relation, where
 
 
 
+\subsectionGetter{transposedBy}{binaryset}
+
+\begin{galgasbox}
+getter transposedBy ?@uintlist inVector -> @binaryset
+\end{galgasbox}
+
+Retourne la valeur transposée du récepteur. L'argument \ggs+inVector+ spécifie comment la transposition s'opère : la valeur à l'indice $i$ est l'indice de destination du bit $i$ dans le \emph{binaryset} renvoyé.
+
+{\bf 1\textsuperscript{er} exemple.} Si on veut échanger les bits $0$ et $1$, on écrit :
+\begin{galgas}
+let vector = @uintlist {!1, !0}
+let result = [myBinarySet transposedBy !vector]
+\end{galgas}
+
+{\bf 2\textsuperscript{e} exemple.}
+\begin{galgas}
+  let b = @binaryset.binarySetWithStrictGreaterComparison {!0 !2 !4}
+    & @binaryset.binarySetWithEqualToConstant {!2 !2 !0}
+  log b # <@binaryset: 000001, 00001X, 01001X, 100011>
+  let vr = @uintlist {!0, !1, !4, !5, !2, !3}
+  let r = [b transposedBy !vr]
+  log r # <@binaryset: 000001, 00001X, 00011X, 001011>
+  let vs = @uintlist {!4, !5, !0, !1, !2, !3}
+  let s = [b transposedBy !vs]
+  log s # <@binaryset: 010000, 100X00, 110X00, 111000>
+\end{galgas}
+
+La constante \ggs=b= encode la relation $A > B$, où $A$ est encodé par les bits 0 et 1, et $B$ par les bits 4 et 5. Les bits 2 et 3 sont fixés à 0. Dans le résultat \ggs=r=, $A$ est encodé par les bits 0 et 1 (inchangés), $B$ par les bits 2 et 3, et maintenant les bits 4 et 5 sont fixés à 0. Dans le résultat \ggs=s=, $A$ est encodé par les bits 4 et 5, $B$ par les bits 2 et 3, et les bits 0 et 1 sont fixés à 0.
+
+
+
+
+
+
+
+
+
+
 
 
 \subsectionGetter{uint64ValueList}{binaryset}

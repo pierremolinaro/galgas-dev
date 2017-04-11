@@ -89,9 +89,29 @@ override method @arrayDeclarationAST enterInSemanticContext
     !arrayTypeIndex
   ]
 #--- Getters
-  enterBaseGetterWithoutArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"axisCount" !returnedTypeName:"uint" !false )
-  enterBaseGetterWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"sizeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"uint" !true )
-  enterBaseGetterWithArgument ( !?getterMap !?ioSemanticContext.mTypeMap !"rangeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"range" !true )
+  enterBaseGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !"axisCount"
+    !returnedTypeName:"uint"
+    !hasCompilerArgument:false
+  )
+  enterBaseGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !"sizeForAxis" !"uint" !"inAxisIndex"
+    !returnedTypeName:"uint"
+    !hasCompilerArgument:true
+  )
+  enterBaseGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !"rangeForAxis"
+    !"uint"
+    !"inAxisIndex"
+    !returnedTypeName:"range"
+    !hasCompilerArgument:true
+  )
   [!?getterMap insertOrReplace
     !@lstring.new {!"isValueValidAtIndex" !@location.here}
     !@methodKind.definedAsMember

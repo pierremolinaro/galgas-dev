@@ -160,7 +160,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !getterName:"length"
     !returnedTypeName:"uint"
-    !false
+    !hasCompilerArgument:false
   )
 #--- Modifiers
   var setterMap =@setterMap.emptyMap{}

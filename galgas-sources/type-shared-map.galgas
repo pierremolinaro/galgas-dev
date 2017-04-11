@@ -381,14 +381,14 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !getterName:"allKeys"
     !returnedTypeName:"stringset"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"allKeyList"
     !returnedTypeName:"lstringlist"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithArgument (
     !?getterMap
@@ -397,7 +397,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !argumentTypeName:"string"
     !argumentName:"inKey"
     !returnedTypeName:"bool"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithArgument (
     !?getterMap
@@ -406,35 +406,35 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !argumentTypeName:"string"
     !argumentName:"inKey"
     !returnedTypeName:"location"
-    !true
+    !hasCompilerArgument:true
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"count"
     !returnedTypeName:"uint"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"unsolvedProxyCount"
     !returnedTypeName:"uint"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"unsolvedProxyList"
     !returnedTypeName:"lstringlist"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"edgeGraphvizRepresentation"
     !returnedTypeName:"string"
-    !false
+    !hasCompilerArgument:false
   )
 #--- Handle attributes
   @typedPropertyList typedAttributeList = {}

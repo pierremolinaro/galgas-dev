@@ -2442,6 +2442,10 @@ class GALGAS_binaryset : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_binaryset getter_transitiveClosure (const class GALGAS_uint & constinOperand0
                                                                              COMMA_LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_binaryset getter_transposedBy (const class GALGAS_uintlist & constinOperand0,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_uint_36__34_list getter_uint_36__34_ValueList (const class GALGAS_uint & constinOperand0
                                                                                         COMMA_LOCATION_ARGS) const ;
 

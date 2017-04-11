@@ -15,6 +15,14 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
+#before {
+#  let b = @binaryset.binarySetWithEqualComparison {!0 !2 !2}
+#  log b
+#  let vr = @uintlist {!0, !1, !0, !1}
+#  let r = [b transposedBy !vr]
+#  log r
+#}
+
 #shared class @classeSemantiqueDeReference {
 #  @uint propriété %setter ;
 #}

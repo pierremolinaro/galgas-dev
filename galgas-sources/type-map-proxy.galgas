@@ -111,42 +111,42 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !getterName:"isSolved"
     !returnedTypeName:"bool"
-    !true
+    !hasCompilerArgument:true
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"isNull"
     !returnedTypeName:"bool"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"isRegular"
     !returnedTypeName:"bool"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"lkey"
     !returnedTypeName:"lstring"
-    !true
+    !hasCompilerArgument:true
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"key"
     !returnedTypeName:"string"
-    !true
+    !hasCompilerArgument:true
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"identifierRepresentation"
     !returnedTypeName:"string"
-    !true
+    !hasCompilerArgument:true
   )
 #--- Enter associated map attribute names as getters
   let @getterMap inheritedGetterMap = getterMap
