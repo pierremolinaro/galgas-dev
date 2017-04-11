@@ -100,7 +100,7 @@ override method @structDeclarationAST enterInSemanticContext
       !?ioSemanticContext.mTypeMap 
       !getterName:[mAttributeName string]
       !returnedTypeName:[mAttributeTypeProxy key]
-      !false
+      !hasCompilerArgument:false
     )
   end
 #--- Modifiers

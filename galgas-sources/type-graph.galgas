@@ -198,7 +198,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !getterName:"reversedGraph"
     !returnedTypeName:mGraphTypeName.string
-    !false # No compiler argument
+    !hasCompilerArgument:false # No compiler argument
   )
 #--- Getter 'undefinedNodeCount'
   enterInheritedGetterWithoutArgument (
@@ -206,7 +206,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !getterName:"undefinedNodeCount"
     !returnedTypeName:"uint"
-    !false # No compiler argument
+    !hasCompilerArgument:false # No compiler argument
   )
 #--- Getter 'undefinedNodeKeyList'
   enterInheritedGetterWithoutArgument (
@@ -214,7 +214,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !getterName:"undefinedNodeKeyList"
     !returnedTypeName:"stringlist"
-    !false # No compiler argument
+    !hasCompilerArgument:false # No compiler argument
   )
 #--- Getter 'undefinedNodeReferenceList'
   enterInheritedGetterWithoutArgument (
@@ -222,7 +222,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !getterName:"undefinedNodeReferenceList"
     !returnedTypeName:"lstringlist"
-    !false # No compiler argument
+    !hasCompilerArgument:false # No compiler argument
   )
 #--- Getter 'graphviz'
   enterInheritedGetterWithoutArgument (
@@ -230,7 +230,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !getterName:"graphviz"
     !returnedTypeName:"string"
-    !false # No compiler argument
+    !hasCompilerArgument:false # No compiler argument
   )
 #--- Getter 'isNodeDefined'
   enterInheritedGetterWithArgument (
@@ -240,7 +240,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !argumentTypeName:"string"
     !argumentName:"inKey"
     !returnedTypeName:"bool"
-    !false # No compiler argument
+    !hasCompilerArgument:false # No compiler argument
   )
 #--- Getter 'locationForKey'
   enterInheritedGetterWithArgument (
@@ -250,7 +250,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !argumentTypeName:"string"
     !argumentName:"inKey"
     !returnedTypeName:"location"
-    !true # Compiler argument
+    !hasCompilerArgument:true # Compiler argument
   )
 #--- Getter 'keyList'
   enterInheritedGetterWithoutArgument (
@@ -258,7 +258,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !getterName:"keyList"
     !returnedTypeName:"stringlist"
-    !false # No compiler argument
+    !hasCompilerArgument:false # No compiler argument
   )
 #--- Getter 'lkeyList'
   enterInheritedGetterWithoutArgument (
@@ -266,7 +266,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !getterName:"lkeyList"
     !returnedTypeName:"lstringlist"
-    !false # No compiler argument
+    !hasCompilerArgument:false # No compiler argument
   )
 #--- Getter 'egdes'
   enterInheritedGetterWithoutArgument (
@@ -274,7 +274,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !getterName:"edges"
     !returnedTypeName:"2stringlist"
-    !false # No compiler argument
+    !hasCompilerArgument:false # No compiler argument
   )
 #--- Getter 'subgraphFromNodes'
   enterBaseGetterWith2Arguments (
@@ -286,7 +286,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !"stringset"
     !"inNodesToExclude"
     !returnedTypeName:mGraphTypeName.string
-    !true # has compiler argument
+    !hasCompilerArgument:true # has compiler argument
   )
 #--- Getter 'accessibleNodesFrom'
   enterBaseGetterWith2Arguments (
@@ -296,7 +296,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !"lstringlist" !"inStartNodeStringList"
     !"stringset" !"inNodesToExclude"
     !returnedTypeName:"lstringlist"
-    !true # has compiler argument
+    !hasCompilerArgument:true # has compiler argument
   )
 #--- Constructor 'emptyGraph'
   [!?constructorMap insertKey

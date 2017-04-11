@@ -106,21 +106,21 @@ override method @listmapDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap 
     !getterName:"count"
     !returnedTypeName:"uint"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"allKeys"
     !returnedTypeName:"stringset"
-    !false
+    !hasCompilerArgument:false
   )
   enterInheritedGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
     !getterName:"keyList"
     !returnedTypeName:"stringlist"
-    !false
+    !hasCompilerArgument:false
   )
   enterBaseGetterWithArgument (
     !?getterMap
@@ -129,7 +129,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !"string"
     !"inKey"
     !returnedTypeName:[mAssociatedListTypeName string]
-    !false
+    !hasCompilerArgument:false
   )
 #--- Constructors
   enterConstructorWithoutArgument (
