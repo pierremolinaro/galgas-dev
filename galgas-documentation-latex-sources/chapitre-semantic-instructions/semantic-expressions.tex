@@ -43,7 +43,7 @@ La syntaxe de l'\emph{expression de conversion polymorphique inverse} est :
 expression as @T
 \end{galgasbox}
 
-Elle permet de renvoyer la valeur de \ggs+expression+ sous la forme d'un objet de type statique \ggs+@T+. À l'exécution, la conversion échoue si le type dynamique de l'\ggs+expression+ n'est pas \ggs+@T+ ou une de ses classes héritières ; une erreur sémantique est alors déclenchée, et l'expression renvoie un objet \emph{non construit}.
+Elle permet de renvoyer la valeur de \ggs+expression+ sous la forme d'un objet de type statique \ggs+@T+. À l'exécution, la conversion échoue si le type dynamique de l'\ggs+expression+ n'est pas \ggs+@T+ ou une de ses classes héritières~; une erreur sémantique est alors déclenchée, et l'expression renvoie un objet \emph{non construit}.
 
 Pour tester le type dynamique de l'expression avant d'effectuer la conversion, utiliser la construction décrite à la \refSubsectionPage{testTypeDynamiqueExpression}. On peut aussi utiliser l'instruction \ggs+cast+ (\refSectionPage{instructionCast}).
 
@@ -57,8 +57,8 @@ Pour tester le type dynamique de l'expression avant d'effectuer la conversion, u
 
 L'opérande \ggs+expression is conversion @T+ teste le type dynamique de \ggs+expression+ vis à vis du type \ggs+@T+ :
 \begin{itemize}
-\item si \ggs+conversion+ est \ggs+==+, la valeur renvoyée est \ggs+true+ si le type dynamique de l'\ggs+expression+ est exactement \ggs+@T+, et \ggs+false+ dans le cas contraire ;
-\item si \ggs+conversion+ est  \ggs+>=+, la valeur renvoyée est \ggs+true+ si le type dynamique de l'\ggs+expression+ est \ggs+@T+ ou une de ses classes héritières, et \ggs+false+ dans le cas contraire ;
+\item si \ggs+conversion+ est \ggs+==+, la valeur renvoyée est \ggs+true+ si le type dynamique de l'\ggs+expression+ est exactement \ggs+@T+, et \ggs+false+ dans le cas contraire~;
+\item si \ggs+conversion+ est  \ggs+>=+, la valeur renvoyée est \ggs+true+ si le type dynamique de l'\ggs+expression+ est \ggs+@T+ ou une de ses classes héritières, et \ggs+false+ dans le cas contraire~;
 \item si \ggs+conversion+ est  \ggs+>+, la valeur renvoyée est \ggs+true+ si le type dynamique de l'\ggs+expression+ n'est pas \ggs+@T+ mais une de ses classes héritières, et \ggs+false+ dans le cas contraire.
 \end{itemize}
 
@@ -103,10 +103,10 @@ Les parenthèses \ggs+(+ et \ggs+)+ permettent de forcer le groupement d'opéran
 
 Une constante entière est une séquence de chiffres décimaux, éventuellement séparés par le caractère de soulignement \texttt{\_}, et terminé par un suffixe. Ce suffixe détermine le type de la constante :
 \begin{itemize}
-  \item pas de suffixe : \ggs+@uint+ ;
-  \item suffixe \texttt{S} : \ggs+@sint+ ;
-  \item suffixe \texttt{L} : \ggs+@uint64+ ;
-  \item suffixe \texttt{LS} : \ggs+@sint64+ ;
+  \item pas de suffixe : \ggs+@uint+~;
+  \item suffixe \texttt{S} : \ggs+@sint+~;
+  \item suffixe \texttt{L} : \ggs+@uint64+~;
+  \item suffixe \texttt{LS} : \ggs+@sint64+~;
   \item suffixe \texttt{G} : \ggs+@bigint+.
 \end{itemize}
 
@@ -141,7 +141,7 @@ Par exemple :
 
 Deux simplifications syntaxiques sont proposées :
 \begin{itemize}
-  \item si la liste des arguments est vide, les accolades peuvent être omises ;
+  \item si la liste des arguments est vide, les accolades peuvent être omises~;
   \item si le type peut être inféré, il peut être omis.
 \end{itemize}
 
@@ -215,7 +215,7 @@ Avec le constructeur par défaut, cette instruction s'écrit simplement :
 @T variable = .default
 \end{galgas}
 
-Pour une structure, comme on va le voir plus bas, le constructeur par défaut appelle le constructeur par défaut pour chaque champ ; le constructeur par défaut d'une \ggs+map+ est équivalent à \ggs+emptyMap+, celui d'une \ggs+list+ équivalent à \ggs+emptyList+, et celui d'un \ggs+@stringset+ équivalent à \ggs+emptySet+.
+Pour une structure, comme on va le voir plus bas, le constructeur par défaut appelle le constructeur par défaut pour chaque champ~; le constructeur par défaut d'une \ggs+map+ est équivalent à \ggs+emptyMap+, celui d'une \ggs+list+ équivalent à \ggs+emptyList+, et celui d'un \ggs+@stringset+ équivalent à \ggs+emptySet+.
 
 
 \subsubsection{Les constructeurs par défaut pour chaque type}
@@ -236,6 +236,7 @@ Le \refTableau{constructeurParDefaut} précise par chaque type l'existence du co
   \ggs+class @T+ & Oui, si tous les attributs possèdent un constructeur par défaut \\
   \ggs+@data+ & Équivalent au constructeur \ggs+emptyData+ \\
   \ggs+@double+ & Initialisation à \ggs!0.0! \\
+  \ggs+enum @T+ & Voir \refSectionPage{valeurDefautTypeEnumere} \\
   \ggs+@filewrapper+ & \emph{Pas de constructeur par défaut} \\
   \ggs+@function+ & \emph{Pas de constructeur par défaut} \\
   \ggs+graph @T+ & Équivalent au constructeur \ggs+emptyGraph+ \\
@@ -261,9 +262,9 @@ Le \refTableau{constructeurParDefaut} précise par chaque type l'existence du co
 
 Remarques :
 \begin{itemize}
-  \item une classe abstraite ne possède pas de constructeur par défaut ;
-  \item une classe concrète possède un constructeur par défaut si tous les attributs (ceux déclarés dans la classe et les super classes) en possèdent un ; la valeur par défaut est celle définie par l'appel du constructeur par défaut sur tous ces attributs ;
-  \item une structure possède un constructeur par défaut si tous ces champs en possèdent un ; la valeur par défaut est celle définie par l'appel du constructeur par défaut sur tous les champs.
+  \item une classe abstraite ne possède pas de constructeur par défaut~;
+  \item une classe concrète possède un constructeur par défaut si tous les attributs (ceux déclarés dans la classe et les super classes) en possèdent un~; la valeur par défaut est celle définie par l'appel du constructeur par défaut sur tous ces attributs~;
+  \item une structure possède un constructeur par défaut si tous ces champs en possèdent un~; la valeur par défaut est celle définie par l'appel du constructeur par défaut sur tous les champs.
 \end{itemize}
 
 
@@ -284,8 +285,8 @@ Les options de la ligne de commande sont définies dans un composant \ggs+option
 
 Sa syntaxe est \ggs+[option nom_composant_option.nom_option nom_info]+, où :
 \begin{itemize}
-  \item \ggs+nom_composant_option+ est le nom du composant \ggs+option+ qui déclare l'option ;
-  \item \ggs+nom_option+ est le nom donné à l'option lors de sa déclaration ;
+  \item \ggs+nom_composant_option+ est le nom du composant \ggs+option+ qui déclare l'option~;
+  \item \ggs+nom_option+ est le nom donné à l'option lors de sa déclaration~;
   \item \ggs+nom_info+ est le nom de l'information dont la valeur sera retournée par l'opérande.
 \end{itemize}
 
@@ -314,9 +315,9 @@ option mesOptions {
 
 Alors :
 \begin{itemize}
-  \item \ggs+[option mesOptions.extractOption value]+ renvoie un \ggs+@bool+ qui vaut \ggs+true+ si l'option a été activée, \ggs+false+ dans le cas contraire ;
-  \item \ggs+[option mesOptions.extractOption char]+ renvoie un \ggs+@char+ qui vaut \ggs+'S'+ ;
-  \item \ggs+[option mesOptions.extractOption string]+ renvoie un \ggs+@string+ qui vaut \ggs+"asm"+ ;
+  \item \ggs+[option mesOptions.extractOption value]+ renvoie un \ggs+@bool+ qui vaut \ggs+true+ si l'option a été activée, \ggs+false+ dans le cas contraire~;
+  \item \ggs+[option mesOptions.extractOption char]+ renvoie un \ggs+@char+ qui vaut \ggs+'S'+~;
+  \item \ggs+[option mesOptions.extractOption string]+ renvoie un \ggs+@string+ qui vaut \ggs+"asm"+~;
   \item \ggs+[option mesOptions.extractOption comment]+ renvoie un \ggs+@string+ qui vaut \ggs+"Extract assembly code"+.
 \end{itemize}
 

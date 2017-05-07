@@ -11310,8 +11310,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_
       enumerator_410.gotoNextObject () ;
     }
   }
-  result << "\n"
-    "        \"32-mp_bases.c\",\n"
+  result << "        \"32-mp_bases.c\",\n"
     "        \"mpn-invertappr.c\",\n"
     "        \"mpn-sub_1.c\",\n"
     "        \"mpn-toom_eval_dgr3_pm1.c\",\n"
@@ -11426,19 +11425,19 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_
     "        \"mpz-cdiv_q_ui.c\"\n"
     "    ],\n"
     "    \"USER_LINK_OPTIONS\"  :  [" ;
-  GALGAS_uint index_3531_ (0) ;
+  GALGAS_uint index_3530_ (0) ;
   if (in_TOOL_5F_LINK_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_3531 (in_TOOL_5F_LINK_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_3531.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_3530 (in_TOOL_5F_LINK_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_3530.hasCurrentObject ()) {
       result << "\n"
         "        \"" ;
-      result << enumerator_3531.current_mValue (HERE).stringValue () ;
+      result << enumerator_3530.current_mValue (HERE).stringValue () ;
       result << "\"" ;
-      if (enumerator_3531.hasNextObject ()) {
+      if (enumerator_3530.hasNextObject ()) {
         result << "," ;
       }
-      index_3531_.increment () ;
-      enumerator_3531.gotoNextObject () ;
+      index_3530_.increment () ;
+      enumerator_3530.gotoNextObject () ;
     }
   }
   result << "\n"
