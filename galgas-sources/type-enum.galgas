@@ -5,6 +5,7 @@
 class @enumDeclarationAST : @semanticDeclarationAST {
   @lstring mEnumTypeName
   @enumConstantList mConstantList
+  @lstring mDefaultConstantName
 }
 
 #••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
@@ -19,11 +20,6 @@ list @enumConstantList {
 #----------------------------------------------------------------------------------------------------------------------*
 
 syntax extension galgas3DeclarationsSyntax {
-
-#                                                                                                                      *
-#    E N U M    D E C L A R A T I O N                                                                                  *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
 
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $enum$
@@ -53,11 +49,20 @@ syntax extension galgas3DeclarationsSyntax {
       mConstantList += !constantName !associatedValueTypeList
     while
     end
+    @lstring defaultConstantName
+    select
+      defaultConstantName = ["" nowhere]
+    or
+      $default$
+      $identifier$ ?defaultConstantName
+    end
     $}$
     ioDeclarations.mDeclarationList += !@enumDeclarationAST.new {
       !false # Is not predefined
       !mEnumTypeName
-      !mConstantList}
+      !mConstantList
+      !defaultConstantName
+    }
   }
 
 }
@@ -179,13 +184,23 @@ override method @enumDeclarationAST enterInSemanticContext
     !?setterMap
     !?instanceMethodMap
   )
+#--- Default value ?
+  var defaultConstructorName = "" # No default contructor
+  if mDefaultConstantName.string != "" then
+    [constantMap searchKey !mDefaultConstantName ?* ?let associatedTypeList]
+    if [associatedTypeList length] == 0 then
+      defaultConstructorName = mDefaultConstantName.string
+    else
+      error mDefaultConstantName : "the default constant should have no associated values"
+    end
+  end
 #--- Enter type in type map
   [!?ioSemanticContext.mTypeMap insertKey
     !mEnumTypeName
     !mIsPredefined
     !true # Concrete Type
     !@unifiedTypeMap-proxy.null
-    !@typeKindEnum. enumType
+    !@typeKindEnum.enumType
     !false # Does not support collection value
     !@typedPropertyList.emptyList
     !@attributeMap. emptyMap
@@ -204,7 +219,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !@mapSearchMethodListAST.emptyList
     !false # Do not generate header in separate file
     !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
-    !"" # No default constructor [mConstantList mConstantNameAtIndex !0]->string # Default constructor
+    !defaultConstructorName
     !"enum-" + [mEnumTypeName fileNameRepresentation]
     !if hasAssociatedValues then @headerKind.twoHeaders else @headerKind.oneHeader end
   ]

@@ -379,15 +379,15 @@
   \draw[->] (p0-29) -- (p0-30) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas3DeclarationsSyntax}{type-enum}{28}
+\ruleSubsection{galgas3DeclarationsSyntax}{type-enum}{24}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
     & & & & & & & & & & & & & & & & & & & & \node (p4-20) [point] {}; & \\
     & & & & & & & & & & & & & & & & \node (p3-16) [point] {}; & \\
     & & & & & & & & & & & & & \node (p2-13) [terminal] {identifier}; & \\
-    & & & & & & & & & \node (p1-9) [terminal] {(}; & \node (p1-10) [point] {}; & \node (p1-11) [terminal] {@type}; & \node (p1-12) [point] {}; & \node (p1-13) [point] {}; & \node (p1-14) [point] {}; & \node (p1-15) [point] {}; & & \node (p1-17) [terminal] {)}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {enum}; & \node (p0-3) [terminal] {@type}; & \node (p0-4) [terminal] {\{}; & \node (p0-5) [point] {}; & \node (p0-6) [terminal] {case}; & \node (p0-7) [terminal] {identifier}; & \node (p0-8) [point] {}; & \node (p0-9) [point] {}; & & & & & & & & & \node (p0-18) [point] {}; & \node (p0-19) [point] {}; & & \node (p0-21) [terminal] {\}}; & \node (p0-22) [lastPoint] {}; & \\
+    & & & & & & & & & \node (p1-9) [terminal] {(}; & \node (p1-10) [point] {}; & \node (p1-11) [terminal] {@type}; & \node (p1-12) [point] {}; & \node (p1-13) [point] {}; & \node (p1-14) [point] {}; & \node (p1-15) [point] {}; & & \node (p1-17) [terminal] {)}; & & & & & \node (p1-22) [terminal] {default}; & \node (p1-23) [terminal] {identifier}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {enum}; & \node (p0-3) [terminal] {@type}; & \node (p0-4) [terminal] {\{}; & \node (p0-5) [point] {}; & \node (p0-6) [terminal] {case}; & \node (p0-7) [terminal] {identifier}; & \node (p0-8) [point] {}; & \node (p0-9) [point] {}; & & & & & & & & & \node (p0-18) [point] {}; & \node (p0-19) [point] {}; & & \node (p0-21) [point] {}; & \node (p0-22) [point] {}; & & \node (p0-24) [point] {}; & \node (p0-25) [terminal] {\}}; & \node (p0-26) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
@@ -408,8 +408,13 @@
   \draw[->] (p1-17) -| (p0-18) ;
   \draw[->] (p4-20) -| (p0-5) ;
   \draw[->] (p0-19) -| (p4-20) ;
-  \draw[->] (p0-18) -- (p0-21) ;
-  \draw[->] (p0-21) -- (p0-22) ;
+  \draw (p0-18) -- (p0-22) ;
+  \draw[->] (p0-21) |- (p1-22) ;
+  \draw[->] (p1-22) -- (p1-23) ;
+  \draw (p0-22) -- (p0-24) ;
+  \draw[->] (p1-23) -| (p0-24) ;
+  \draw[->] (p0-24) -- (p0-25) ;
+  \draw[->] (p0-25) -- (p0-26) ;
 \end{tikzpicture}
 
 \ruleSubsection{galgas3DeclarationsSyntax}{type-extern}{63}

@@ -647,6 +647,8 @@ class cParser_galgas_33_DeclarationsSyntax {
 
   protected : virtual int32_t select_galgas_33_DeclarationsSyntax_50 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
+  protected : virtual int32_t select_galgas_33_DeclarationsSyntax_51 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
 
 } ;
 
@@ -1178,7 +1180,8 @@ class GALGAS_enumDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_enumDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
                                                                    const class GALGAS_lstring & inOperand1,
-                                                                   const class GALGAS_enumConstantList & inOperand2
+                                                                   const class GALGAS_enumConstantList & inOperand2,
+                                                                   const class GALGAS_lstring & inOperand3
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1191,6 +1194,8 @@ class GALGAS_enumDeclarationAST : public GALGAS_semanticDeclarationAST {
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_enumConstantList getter_mConstantList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mDefaultConstantName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mEnumTypeName (LOCATION_ARGS) const ;
 
@@ -1215,11 +1220,13 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mProperty_mEnumTypeName ;
   public : GALGAS_enumConstantList mProperty_mConstantList ;
+  public : GALGAS_lstring mProperty_mDefaultConstantName ;
 
 //--- Constructor
   public : cPtr_enumDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                     const GALGAS_lstring & in_mEnumTypeName,
-                                    const GALGAS_enumConstantList & in_mConstantList
+                                    const GALGAS_enumConstantList & in_mConstantList,
+                                    const GALGAS_lstring & in_mDefaultConstantName
                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -1228,6 +1235,7 @@ class cPtr_enumDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mEnumTypeName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_enumConstantList getter_mConstantList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mDefaultConstantName (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

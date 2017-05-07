@@ -75,6 +75,15 @@ end
 \end{galgas}
 
 
+
+
+
+
+
+
+
+
+
 \section{Valeurs associées}
 
 Il est possible d'associer des valeurs à chaque constante, ce qui permet d'alléger dans certains cas le code à écrire. Supposons par exemple que l'on ait dans un langage une construction optionnelle :
@@ -170,4 +179,41 @@ end
 \end{galgas}
 
 \ggs+nomOption+ est une constante dont la portée s'étend jusqu'à la fin de la branche \ggs+case+ courante.
- 
+
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{Valeur par défaut}{valeurDefautTypeEnumere}
+
+Un type énuméré n'a pas de valeur par défaut, c'est-à-dire qu'appeler le constructeur \ggs=default= engendre une erreur de compilation. 
+
+\begin{galgas}
+@feuTricolore feu = .default # Erreur de compilation
+\end{galgas}
+
+À partir de la version 3.3.3 de GALGAS, il est possible de définir une valeur par défaut, en la nommant dans une clause \ggs=default= à la fin de la déclaration du type énuméré :
+\begin{galgas}
+enum @feuTricolore {
+  case vert
+  case orange
+  case rouge
+  default vert
+}
+\end{galgas}
+
+La constante nommée dans la clause \ggs=default= ne doit pas avoir de valeur associée.
+
+On peut donc maintenant écrire :
+\begin{galgas}
+@feuTricolore feu = .default # Équivalent à .vert
+\end{galgas}
+
+Définir une valeur par défaut pour un type enuméré permet une structure qui l'utilise de posséder à son tour une valeur par défaut (\refSubsectionPage{constructeurParDefaut}).
