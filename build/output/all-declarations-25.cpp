@@ -9331,7 +9331,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "sys.path.append (os.path.abspath (LIBPM_DIRECTORY_PATH + \"/python-makefiles\"))\n"
     "from macosx_gcc_tools import buildForMacOSX\n"
     "#----------------------------------------------------------------- Build\n"
-    "buildForMacOSX (dictionary, \"" ;
+    "buildForMacOSX (dictionary, jsonFilePath, \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
   result << "\", goal, maxParallelJobs, maxParallelJobs == 1)\n"
     "\n"
@@ -9660,7 +9660,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "sys.path.append (os.path.abspath (LIBPM_DIRECTORY_PATH + \"/python-makefiles\"))\n"
     "from unix_gcc_tools import buildForUnix\n"
     "#----------------------------------------------------------------- Build\n"
-    "buildForUnix (dictionary, \"" ;
+    "buildForUnix (dictionary, jsonFilePath, \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
   result << "\", goal, maxParallelJobs, maxParallelJobs == 1)\n"
     "\n"
@@ -9948,7 +9948,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "sys.path.append (os.path.abspath (LIBPM_DIRECTORY_PATH + \"/python-makefiles\"))\n"
     "from x86linux_on_macosx_gcc_tools_32 import buildForLinux32OnMacOSX\n"
     "#----------------------------------------------------------------- Build\n"
-    "buildForLinux32OnMacOSX (dictionary, \"" ;
+    "buildForLinux32OnMacOSX (dictionary, jsonFilePath, \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
   result << "\", goal, maxParallelJobs, maxParallelJobs == 1)\n"
     "\n"
@@ -10196,7 +10196,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "sys.path.append (os.path.abspath (LIBPM_DIRECTORY_PATH + \"/python-makefiles\"))\n"
     "from x86linux_on_macosx_gcc_tools_64 import buildForLinux64OnMacOSX\n"
     "#----------------------------------------------------------------- Build\n"
-    "buildForLinux64OnMacOSX (dictionary, \"" ;
+    "buildForLinux64OnMacOSX (dictionary, jsonFilePath, \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
   result << "\", goal, maxParallelJobs, maxParallelJobs == 1)\n"
     "\n"
@@ -10444,7 +10444,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F
     "sys.path.append (os.path.abspath (LIBPM_DIRECTORY_PATH + \"/python-makefiles\"))\n"
     "from mingw32_on_macosx_gcc_tools import buildForWin32OnMacOSX\n"
     "#----------------------------------------------------------------- Build\n"
-    "buildForWin32OnMacOSX (dictionary, \"" ;
+    "buildForWin32OnMacOSX (dictionary, jsonFilePath, \"" ;
   result << in_PROJECT_5F_NAME.stringValue () ;
   result << "\", goal, maxParallelJobs, maxParallelJobs == 1)\n"
     "\n"
