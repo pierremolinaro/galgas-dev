@@ -31,7 +31,7 @@
 #include "utilities/basic-allocation.h"
 #include "utilities/C_PrologueEpilogue.h"
 #include "command_line_interface/F_Analyze_CLI_Options.h"
-#include "unicode_character_base.h"
+#include "strings/unicode_character_base.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
