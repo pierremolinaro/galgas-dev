@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2001, ..., 2015 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2001, ..., 2017 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -63,10 +63,6 @@ bool cocoaOutput (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const uint32_t kDisplayLength = 20 ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 const char * galgasVersionString (void) {
   return "GALGASBETAVERSION" ;
 }
@@ -100,10 +96,10 @@ static void print_usage (int argv, const char * argc []) {
 
 static void print_option_list (void) {
   printf ("*** Available command line options:\n") ;
-  C_BoolCommandLineOption::printBoolOptions (kDisplayLength) ;
-  C_UIntCommandLineOption::printUIntOptions (kDisplayLength) ;
-  C_StringCommandLineOption::printStringOptions (kDisplayLength) ;
-  C_StringListCommandLineOption::printStringOptions (kDisplayLength) ;
+  C_BoolCommandLineOption::printBoolOptions () ;
+  C_UIntCommandLineOption::printUIntOptions () ;
+  C_StringCommandLineOption::printStringOptions () ;
+  C_StringListCommandLineOption::printStringOptions () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -141,10 +137,10 @@ static void print_help (int argv,
   co << "Options:\n" ;
   co.setTextAttribute (kAllAttributesOff) ;
   co << "You can place options anywhere in the command line: they will be executed before the files are processed.\n" ;
-  C_BoolCommandLineOption::printBoolOptions (kDisplayLength) ;
-  C_UIntCommandLineOption::printUIntOptions (kDisplayLength) ;
-  C_StringCommandLineOption::printStringOptions (kDisplayLength) ;
-  C_StringListCommandLineOption::printStringOptions (kDisplayLength) ;
+  C_BoolCommandLineOption::printBoolOptions () ;
+  C_UIntCommandLineOption::printUIntOptions () ;
+  C_StringCommandLineOption::printStringOptions () ;
+  C_StringListCommandLineOption::printStringOptions () ;
 
   int32_t extensionIndex = 0 ;
   while (inExtensions [extensionIndex] != NULL) {
@@ -161,6 +157,7 @@ static void print_help (int argv,
     co << "." << inExtensions [extensionIndex] ;
     co.setTextAttribute (kAllAttributesOff) ;
     const uint32_t extensionLength = (uint32_t) (strlen (inExtensions [extensionIndex]) & UINT32_MAX) ;
+    const uint32_t kDisplayLength = 20 ;
     if (extensionLength < kDisplayLength) {
       for (uint32_t i=extensionLength ; i<kDisplayLength ; i++) {
         co << " " ;
