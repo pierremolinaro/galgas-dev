@@ -13,8 +13,8 @@ import cross_compiler_download
 
 def buildForWin32OnMacOSX (dictionary, jsonFilePath, EXECUTABLE, GOAL, maxParallelJobs, displayCommands) :
 #--- Too chain installation
-  GCC_VERSION = "6.2.0"
-  BINUTILS_VERSION = "2.27"
+  GCC_VERSION = "7.1.0"
+  BINUTILS_VERSION = "2.28"
   TOOL_CHAIN_NAME = "binutils-" + BINUTILS_VERSION + "-gcc-" + GCC_VERSION + "-for-mingw32"
   installDir = tool_chain_installation_path.toolChainInstallationPath ()
   TOOL_CHAIN_INSTALL_PATH = installDir + "/" + TOOL_CHAIN_NAME
