@@ -1426,6 +1426,7 @@
 		CFE167820E8E7A2B00AFDAFC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CFE71ED415011E0C00EAD989 /* cEnumerator_range.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cEnumerator_range.cpp; sourceTree = "<group>"; };
 		CFE71ED515011E0C00EAD989 /* cEnumerator_range.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cEnumerator_range.h; sourceTree = "<group>"; };
+		CFE81C1A1EC22BEC0022E894 /* switch-fallthrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "switch-fallthrough.h"; sourceTree = "<group>"; };
 		CFEA1A0B1E43DA1C00556A1C /* displayUnicodeLexicalTestFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = displayUnicodeLexicalTestFunctions.cpp; sourceTree = "<group>"; };
 		CFECE4640FEFA5270031D087 /* OC_Lexique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_Lexique.h; sourceTree = "<group>"; };
 		CFECE4650FEFA5270031D087 /* OC_Lexique.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_Lexique.m; sourceTree = "<group>"; };
@@ -2284,6 +2285,7 @@
 				CF825A7608536B780077AEAF /* MF_MemoryControl.h */,
 				CF376F831BA4AC84003FC3A3 /* PMUInt128.cpp */,
 				CF376F841BA4AC84003FC3A3 /* PMUInt128.h */,
+				CFE81C1A1EC22BEC0022E894 /* switch-fallthrough.h */,
 				CF825A7708536B780077AEAF /* TF_inf.h */,
 				CF825A7808536B780077AEAF /* TF_sup.h */,
 				CF825A7908536B780077AEAF /* TF_Swap.h */,
