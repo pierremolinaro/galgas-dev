@@ -1411,6 +1411,7 @@ proc updateGalgas3Targets
         !"MF_MemoryControl.h",
         !"PMUInt128.cpp",
         !"PMUInt128.h",
+        !"switch-fallthrough.h",
         !"TF_Swap.h"
       }
       !?cFileRefs:buildCFileRefListForTool
