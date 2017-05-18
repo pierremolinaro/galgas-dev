@@ -295,16 +295,17 @@
 %--- Gérer de l'indentation dans la table des matières
 %\cftsetindents{part}{0.0em}{2.0em}
 \cftsetindents{chapter}{0.0em}{2.0em}
-\cftsetindents{section}{2.0em}{3.5em}
-\cftsetindents{subsection}{5.5em}{4.5em}
+\cftsetindents{section}{1.0em}{3.5em}
+\cftsetindents{subsection}{2.0em}{4.5em}
+\cftsetindents{subsubsection}{3.0em}{5.5em}
 \cftsetindents{table}{0.0em}{3.0em}
 \cftsetindents{figure}{0.0em}{3.0em}
 
-%    Pour faire figurer la liste des tableaux (et la table des matières) dans la table des matières
-\usepackage{tocbibind}
+%--- Profondeur de la table des matières jusqu'au niveau 3 (subsubsection)
+\setcounter{tocdepth}{3}
 
-%--- Pour afficher dans la tables des matières jusqu'au niveau 2 (subsection)
-\setcounter{tocdepth}{2}
+%--- Numéroter les entrées jusqu'au niveau 3 (subsubsection)
+\setcounter{secnumdepth}{3}
 
 %--- Par défaut, les parties ne sont pas numérotées dans la table des matières ; la commande suivante
 %    ajoute une numération en chiffres romains
@@ -325,6 +326,24 @@
     \Huge \bf
     #2\par}\@endpart}
 \makeatother
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   C O M M A N D E S    S H E L L                                                                                      *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+% http://forum.mathematex.net/latex-f6/supprimer-les-espaces-devant-la-ponctuation-t15951.html
+% \nofrench@punctuation supprime l'insertion d'espace avant '!', ':'.
+% \addfontfeatures{Ligatures={NoRequired, NoCommon, NoContextual}}
+% \addfontfeatures{Mapping=}
+
+\makeatletter
+\newenvironment{SHELL}
+{\begin{mdframed}[backgroundcolor=lightgray!50,linewidth=0]\tt\nofrench@punctuation}
+{\end{mdframed}}
+\makeatother
+
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -399,7 +418,7 @@
 % \refSubsectionPage{label-section} ---> "section x.y page n"   où x.y est le n° de la sub-section
 %\newcommand\refSubsubsectionPage[1]{\hyperref[subsubsec:#1]{section \ref*{subsubsec:#1} page \pageref{subsubsec:#1}}}
 %--- Les sub sub sections ne sont pas numérotées, on indique que le numéro de page
-\newcommand\refSubsubsectionPage[1]{\hyperref[subsubsec:#1]{page \pageref{subsubsec:#1}}}
+\newcommand\refSubsubsectionPage[1]{\hyperref[subsubsec:#1]{section \ref*{subsubsec:#1} page \pageref{subsubsec:#1}}}
 
 %------------------------------------------------------------------------------------------ RÉFÉRENCES À UNE FIGURE
 % La référence au tableau "nom-de-la-figure" est définie par \labelFigure{nom-de-la-figure}
@@ -464,6 +483,20 @@
 \usepackage{lineno}
 
 \usepackage{mdframed}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   F I G U R E S                                                                                                       *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+% Grâce à ce paquetage, il est possible de placer plusieurs figures, tables, côte à côte.
+% Voir http://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
+\usepackage{subfig}
+
+%--- Ce paquetage permet d'utiliser les environnements wrapfigure et wraptable pour insérer les figures et
+% les tableaux dans le texte.
+\usepackage{wrapfig}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *

@@ -1827,7215 +1827,6 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                 Filewrapper 'updaterGalgas3ApplicationFileWrapper'                                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-//--- All files of '' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_updaterGalgas_33_ApplicationFileWrapper_0 [1] = {
-  NULL
-} ;
-
-//--- All sub-directories of '' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_updaterGalgas_33_ApplicationFileWrapper_0 [1] = {
-  NULL
-} ;
-
-//--- Directory ''
-
-const cDirectoryWrapper gWrapperDirectory_0_updaterGalgas_33_ApplicationFileWrapper (
-  "",
-  0,
-  gWrapperAllFiles_updaterGalgas_33_ApplicationFileWrapper_0,
-  0,
-  gWrapperAllDirectories_updaterGalgas_33_ApplicationFileWrapper_0
-) ;
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                         Filewrapper template 'updaterGalgas3ApplicationFileWrapper credits'                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_credits (C_Compiler * /* inCompiler */
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "{\\rtf0\\ansi{\\fonttbl\\f0\\fswiss Helvetica;}\n"
-    "{\\colortbl;\\red255\\green255\\blue255;}\n"
-    "\\paperw9840\\paperh8400\n"
-    "\\pard\\tx560\\tx1120\\tx1680\\tx2240\\tx2800\\tx3360\\tx3920\\tx4480\\tx5040\\tx5600\\tx6160\\tx6720\\ql\\qnatural\n"
-    "\n"
-    "\\f0\\b\\fs24 \\cf0 Engineering:\n"
-    "\\b0 \\\n"
-    "\tSome people\\\n"
-    "\\\n"
-    "\n"
-    "\\b Human Interface Design:\n"
-    "\\b0 \\\n"
-    "\tSome other people\\\n"
-    "\\\n"
-    "\n"
-    "\\b Testing:\n"
-    "\\b0 \\\n"
-    "\tHopefully not nobody\\\n"
-    "\\\n"
-    "\n"
-    "\\b Documentation:\n"
-    "\\b0 \\\n"
-    "\tWhoever\\\n"
-    "\\\n"
-    "\n"
-    "\\b With special thanks to:\n"
-    "\\b0 \\\n"
-    "\tMom\\\n"
-    "}\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                   Filewrapper template 'updaterGalgas3ApplicationFileWrapper info_plist_strings'                    *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5F_plist_5F_strings (C_Compiler * /* inCompiler */
-                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "/* Localized versions of Info.plist keys */\n"
-    "\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                      Filewrapper template 'updaterGalgas3ApplicationFileWrapper main_menu_xib'                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main_5F_menu_5F_xib (C_Compiler * /* inCompiler */,
-                                                                                               const GALGAS_string & in_TARGET_5F_NAME
-                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "<\?xml version=\"1.0\" encoding=\"UTF-8\"\?>\n"
-    "<archive type=\"com.apple.InterfaceBuilder3.Cocoa.XIB\" version=\"8.00\">\n"
-    "\t<data>\n"
-    "\t\t<int key=\"IBDocument.SystemTarget\">1070</int>\n"
-    "\t\t<string key=\"IBDocument.SystemVersion\">11G56</string>\n"
-    "\t\t<string key=\"IBDocument.InterfaceBuilderVersion\">2182</string>\n"
-    "\t\t<string key=\"IBDocument.AppKitVersion\">1138.51</string>\n"
-    "\t\t<string key=\"IBDocument.HIToolboxVersion\">569.00</string>\n"
-    "\t\t<object class=\"NSMutableDictionary\" key=\"IBDocument.PluginVersions\">\n"
-    "\t\t\t<string key=\"NS.key.0\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t<string key=\"NS.object.0\">2182</string>\n"
-    "\t\t</object>\n"
-    "\t\t<array key=\"IBDocument.IntegratedClassDependencies\">\n"
-    "\t\t\t<string>NSMenu</string>\n"
-    "\t\t\t<string>NSMenuItem</string>\n"
-    "\t\t\t<string>NSCustomObject</string>\n"
-    "\t\t</array>\n"
-    "\t\t<array key=\"IBDocument.PluginDependencies\">\n"
-    "\t\t\t<string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t</array>\n"
-    "\t\t<object class=\"NSMutableDictionary\" key=\"IBDocument.Metadata\">\n"
-    "\t\t\t<string key=\"NS.key.0\">PluginDependencyRecalculationVersion</string>\n"
-    "\t\t\t<integer value=\"1\" key=\"NS.object.0\"/>\n"
-    "\t\t</object>\n"
-    "\t\t<array class=\"NSMutableArray\" key=\"IBDocument.RootObjects\" id=\"1048\">\n"
-    "\t\t\t<object class=\"NSCustomObject\" id=\"1021\">\n"
-    "\t\t\t\t<string key=\"NSClassName\">NSApplication</string>\n"
-    "\t\t\t</object>\n"
-    "\t\t\t<object class=\"NSCustomObject\" id=\"1014\">\n"
-    "\t\t\t\t<string key=\"NSClassName\">FirstResponder</string>\n"
-    "\t\t\t</object>\n"
-    "\t\t\t<object class=\"NSCustomObject\" id=\"1050\">\n"
-    "\t\t\t\t<string key=\"NSClassName\">NSApplication</string>\n"
-    "\t\t\t</object>\n"
-    "\t\t\t<object class=\"NSMenu\" id=\"649796088\">\n"
-    "\t\t\t\t<string key=\"NSTitle\">AMainMenu</string>\n"
-    "\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t<object class=\"NSMenuItem\" id=\"694149608\">\n"
-    "\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"649796088\"/>\n"
-    "\t\t\t\t\t\t<string key=\"NSTitle\">" ;
-  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 40)).stringValue () ;
-  result << "UpdaterApp</string>\n"
-    "\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t<object class=\"NSCustomResource\" key=\"NSOnImage\" id=\"35465992\">\n"
-    "\t\t\t\t\t\t\t<string key=\"NSClassName\">NSImage</string>\n"
-    "\t\t\t\t\t\t\t<string key=\"NSResourceName\">NSMenuCheckmark</string>\n"
-    "\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t<object class=\"NSCustomResource\" key=\"NSMixedImage\" id=\"502551668\">\n"
-    "\t\t\t\t\t\t\t<string key=\"NSClassName\">NSImage</string>\n"
-    "\t\t\t\t\t\t\t<string key=\"NSResourceName\">NSMenuMixedState</string>\n"
-    "\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"110575045\">\n"
-    "\t\t\t\t\t\t\t<string key=\"NSTitle\">" ;
-  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 54)).stringValue () ;
-  result << "UpdaterApp</string>\n"
-    "\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"238522557\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">About " ;
-  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 58)).stringValue () ;
-  result << "UpdaterApp</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"304266470\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"609285721\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Preferences\xE2""\x80""\xA6""</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">,</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"481834944\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"1046388886\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Services</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"752062318\">\n"
-    "\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Services</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t<string key=\"NSName\">_NSServicesMenu</string>\n"
-    "\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"646227648\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"755159360\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Hide " ;
-  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 123)).stringValue () ;
-  result << "UpdaterApp</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">h</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"342932134\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Hide Others</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">h</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1572864</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"908899353\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Show All</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"1056857174\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"632727374\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Quit " ;
-  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 161)).stringValue () ;
-  result << "UpdaterApp</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">q</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t\t<string key=\"NSName\">_NSAppleMenu</string>\n"
-    "\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"NSMenuItem\" id=\"379814623\">\n"
-    "\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"649796088\"/>\n"
-    "\t\t\t\t\t\t<string key=\"NSTitle\">File</string>\n"
-    "\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"720053764\">\n"
-    "\t\t\t\t\t\t\t<string key=\"NSTitle\">File</string>\n"
-    "\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"705341025\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">New</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">n</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"722745758\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Open\xE2""\x80""\xA6""</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">o</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"1025936716\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Open Recent</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"1065607017\">\n"
-    "\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Open Recent</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"759406840\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"1065607017\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Clear Menu</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t\t\t\t\t<string key=\"NSName\">_NSRecentDocumentsMenu</string>\n"
-    "\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"425164168\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"776162233\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Close</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">w</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"1023925487\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Save\xE2""\x80""\xA6""</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">s</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"579971712\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Revert to Saved</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"1010469920\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"294629803\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Page Setup...</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">P</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1179648</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSToolTip\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"49223823\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Print\xE2""\x80""\xA6""</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">p</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"NSMenuItem\" id=\"952259628\">\n"
-    "\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"649796088\"/>\n"
-    "\t\t\t\t\t\t<string key=\"NSTitle\">Edit</string>\n"
-    "\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"789758025\">\n"
-    "\t\t\t\t\t\t\t<string key=\"NSTitle\">Edit</string>\n"
-    "\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"1058277027\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Undo</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">z</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"790794224\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Redo</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">Z</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1179648</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"1040322652\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"296257095\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Cut</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">x</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"860595796\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Copy</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">c</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"29853731\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Paste</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">v</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"82994268\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Paste and Match Style</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">V</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1572864</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"437104165\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Delete</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"583158037\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Select All</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">a</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"212016141\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"892235320\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Find</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"963351320\">\n"
-    "\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Find</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"447796847\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"963351320\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Find\xE2""\x80""\xA6""</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">f</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSTag\">1</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"738670835\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"963351320\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Find and Replace\xE2""\x80""\xA6""</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">f</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1572864</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSTag\">12</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"326711663\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"963351320\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Find Next</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">g</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSTag\">2</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"270902937\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"963351320\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Find Previous</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">G</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1179648</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSTag\">3</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"159080638\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"963351320\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Use Selection for Find</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">e</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSTag\">7</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"88285865\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"963351320\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Jump to Selection</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">j</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"972420730\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Spelling and Grammar</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"769623530\">\n"
-    "\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Spelling and Grammar</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"679648819\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"769623530\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Show Spelling and Grammar</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">:</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"96193923\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"769623530\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Check Document Now</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">;</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"859480356\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"769623530\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"948374510\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"769623530\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Check Spelling While Typing</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"967646866\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"769623530\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Check Grammar With Spelling</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"795346622\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"769623530\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Correct Spelling Automatically</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"507821607\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Substitutions</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"698887838\">\n"
-    "\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Substitutions</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"65139061\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"698887838\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Show Substitutions</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"19036812\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"698887838\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"605118523\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"698887838\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Smart Copy/Paste</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">f</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSTag\">1</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"197661976\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"698887838\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Smart Quotes</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">g</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSTag\">2</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"672708820\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"698887838\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Smart Dashes</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"708854459\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"698887838\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Smart Links</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">G</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1179648</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSTag\">3</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"537092702\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"698887838\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Text Replacement</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"288088188\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Transformations</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"579392910\">\n"
-    "\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Transformations</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"1060694897\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"579392910\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Make Upper Case</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"879586729\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"579392910\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Make Lower Case</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"56570060\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"579392910\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Capitalize</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"676164635\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Speech</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"785027613\">\n"
-    "\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Speech</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"731782645\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"785027613\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Start Speaking</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"680220178\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"785027613\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Stop Speaking</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"NSMenuItem\" id=\"302598603\">\n"
-    "\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"649796088\"/>\n"
-    "\t\t\t\t\t\t<string key=\"NSTitle\">Format</string>\n"
-    "\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"941447902\">\n"
-    "\t\t\t\t\t\t\t<string key=\"NSTitle\">Format</string>\n"
-    "\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"792887677\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"941447902\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Font</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"786677654\">\n"
-    "\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Font</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"159677712\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Show Fonts</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">t</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"305399458\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Bold</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">b</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSTag\">2</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"814362025\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Italic</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">i</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSTag\">1</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"330926929\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Underline</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">u</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"533507878\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"158063935\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Bigger</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">+</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSTag\">3</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"885547335\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Smaller</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">-</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSTag\">4</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"901062459\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"767671776\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Kern</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"175441468\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Kern</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"252969304\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"175441468\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Use Default</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"766922938\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"175441468\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Use None</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"677519740\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"175441468\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Tighten</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"238351151\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"175441468\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Loosen</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"691570813\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Ligatures</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"1058217995\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Ligatures</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"706297211\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"1058217995\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Use Default</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"568384683\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"1058217995\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Use None</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"663508465\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"1058217995\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Use All</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"769124883\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Baseline</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"18263474\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Baseline</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"257962622\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"18263474\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Use Default</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"644725453\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"18263474\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Superscript</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"1037576581\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"18263474\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Subscript</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"941806246\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"18263474\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Raise</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"1045724900\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"18263474\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Lower</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"739652853\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"1012600125\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Show Colors</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">C</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"214559597\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"596732606\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Copy Style</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">c</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1572864</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"393423671\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Paste Style</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">v</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1572864</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t\t\t\t\t<string key=\"NSName\">_NSFontMenu</string>\n"
-    "\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"215659978\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"941447902\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Text</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"446991534\">\n"
-    "\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Text</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"875092757\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Align Left</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">{</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"630155264\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Center</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">|</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"945678886\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Justify</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"512868991\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Align Right</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">}</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"163117631\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"31516759\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Writing Direction</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"956096989\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Writing Direction</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"257099033\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Paragraph</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"551969625\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string type=\"base64-UTF8\" key=\"NSTitle\">CURlZmF1bHQ</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"249532473\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string type=\"base64-UTF8\" key=\"NSTitle\">CUxlZnQgdG8gUmlnaHQ</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"607364498\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string type=\"base64-UTF8\" key=\"NSTitle\">CVJpZ2h0IHRvIExlZnQ</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"508151438\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"981751889\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Selection</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"380031999\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string type=\"base64-UTF8\" key=\"NSTitle\">CURlZmF1bHQ</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"825984362\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string type=\"base64-UTF8\" key=\"NSTitle\">CUxlZnQgdG8gUmlnaHQ</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"560145579\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string type=\"base64-UTF8\" key=\"NSTitle\">CVJpZ2h0IHRvIExlZnQ</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"908105787\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"644046920\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Show Ruler</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"231811626\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Copy Ruler</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">c</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1310720</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"883618387\">\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Paste Ruler</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">v</string>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1310720</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"NSMenuItem\" id=\"586577488\">\n"
-    "\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"649796088\"/>\n"
-    "\t\t\t\t\t\t<string key=\"NSTitle\">View</string>\n"
-    "\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"466310130\">\n"
-    "\t\t\t\t\t\t\t<string key=\"NSTitle\">View</string>\n"
-    "\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"102151532\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"466310130\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Show Toolbar</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">t</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1572864</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"237841660\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"466310130\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Customize Toolbar\xE2""\x80""\xA6""</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"NSMenuItem\" id=\"713487014\">\n"
-    "\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"649796088\"/>\n"
-    "\t\t\t\t\t\t<string key=\"NSTitle\">Window</string>\n"
-    "\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"835318025\">\n"
-    "\t\t\t\t\t\t\t<string key=\"NSTitle\">Window</string>\n"
-    "\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"1011231497\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"835318025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Minimize</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">m</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"575023229\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"835318025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Zoom</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"299356726\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"835318025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsDisabled\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<bool key=\"NSIsSeparator\">YES</bool>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"625202149\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"835318025\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">Bring All to Front</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t\t<string key=\"NSName\">_NSWindowsMenu</string>\n"
-    "\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"NSMenuItem\" id=\"448692316\">\n"
-    "\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"649796088\"/>\n"
-    "\t\t\t\t\t\t<string key=\"NSTitle\">Help</string>\n"
-    "\t\t\t\t\t\t<string key=\"NSKeyEquiv\"/>\n"
-    "\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t<string key=\"NSAction\">submenuAction:</string>\n"
-    "\t\t\t\t\t\t<object class=\"NSMenu\" key=\"NSSubmenu\" id=\"992780483\">\n"
-    "\t\t\t\t\t\t\t<string key=\"NSTitle\">Help</string>\n"
-    "\t\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"NSMenuItems\">\n"
-    "\t\t\t\t\t\t\t\t<object class=\"NSMenuItem\" id=\"105068016\">\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMenu\" ref=\"992780483\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSTitle\">" ;
-  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("UpdaterAppMainMenu.xib", 1276)).stringValue () ;
-  result << "UpdaterApp Help</string>\n"
-    "\t\t\t\t\t\t\t\t\t<string key=\"NSKeyEquiv\">\?</string>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSKeyEquivModMask\">1048576</int>\n"
-    "\t\t\t\t\t\t\t\t\t<int key=\"NSMnemonicLoc\">2147483647</int>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSOnImage\" ref=\"35465992\"/>\n"
-    "\t\t\t\t\t\t\t\t\t<reference key=\"NSMixedImage\" ref=\"502551668\"/>\n"
-    "\t\t\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t\t<string key=\"NSName\">_NSHelpMenu</string>\n"
-    "\t\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t</array>\n"
-    "\t\t\t\t<string key=\"NSName\">_NSMainMenu</string>\n"
-    "\t\t\t</object>\n"
-    "\t\t\t<object class=\"NSCustomObject\" id=\"976324537\">\n"
-    "\t\t\t\t<string key=\"NSClassName\">PMUpdaterAppDelegate</string>\n"
-    "\t\t\t</object>\n"
-    "\t\t\t<object class=\"NSCustomObject\" id=\"755631768\">\n"
-    "\t\t\t\t<string key=\"NSClassName\">NSFontManager</string>\n"
-    "\t\t\t</object>\n"
-    "\t\t</array>\n"
-    "\t\t<object class=\"IBObjectContainer\" key=\"IBDocument.Objects\">\n"
-    "\t\t\t<array class=\"NSMutableArray\" key=\"connectionRecords\">\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">terminate:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1050\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"632727374\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">449</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">orderFrontStandardAboutPanel:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1021\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"238522557\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">142</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">delegate</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1021\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"976324537\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">495</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">performMiniaturize:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"1011231497\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">37</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">arrangeInFront:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"625202149\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">39</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">print:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"49223823\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">86</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">runPageLayout:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"294629803\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">87</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">clearRecentDocuments:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"759406840\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">127</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">performClose:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"776162233\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">193</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">toggleContinuousSpellChecking:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"948374510\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">222</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">undo:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"1058277027\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">223</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">copy:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"860595796\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">224</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">checkSpelling:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"96193923\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">225</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">paste:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"29853731\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">226</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">stopSpeaking:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"680220178\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">227</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">cut:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"296257095\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">228</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">showGuessPanel:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"679648819\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">230</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">redo:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"790794224\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">231</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">selectAll:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"583158037\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">232</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">startSpeaking:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"731782645\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">233</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">delete:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"437104165\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">235</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">performZoom:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"575023229\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">240</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">performFindPanelAction:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"447796847\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">241</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">centerSelectionInVisibleArea:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"88285865\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">245</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">toggleGrammarChecking:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"967646866\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">347</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">toggleSmartInsertDelete:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"605118523\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">355</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">toggleAutomaticQuoteSubstitution:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"197661976\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">356</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">toggleAutomaticLinkDetection:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"708854459\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">357</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">saveDocument:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"1023925487\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">362</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">revertDocumentToSaved:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"579971712\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">364</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">runToolbarCustomizationPalette:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"237841660\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">365</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">toggleToolbarShown:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"102151532\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">366</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">hide:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"755159360\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">367</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">hideOtherApplications:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"342932134\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">368</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">unhideAllApplications:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"908899353\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">370</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">newDocument:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"705341025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">373</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">openDocument:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"722745758\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">374</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">raiseBaseline:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"941806246\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">426</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">lowerBaseline:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"1045724900\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">427</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">copyFont:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"596732606\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">428</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">subscript:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"1037576581\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">429</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">superscript:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"644725453\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">430</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">tightenKerning:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"677519740\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">431</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">underline:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"330926929\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">432</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">orderFrontColorPanel:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"1012600125\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">433</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">useAllLigatures:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"663508465\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">434</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">loosenKerning:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"238351151\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">435</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">pasteFont:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"393423671\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">436</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">unscript:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"257962622\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">437</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">useStandardKerning:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"252969304\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">438</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">useStandardLigatures:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"706297211\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">439</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">turnOffLigatures:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"568384683\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">440</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">turnOffKerning:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"766922938\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">441</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">toggleAutomaticSpellingCorrection:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"795346622\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">456</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">orderFrontSubstitutionsPanel:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"65139061\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">458</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">toggleAutomaticDashSubstitution:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"672708820\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">461</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">toggleAutomaticTextReplacement:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"537092702\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">463</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">uppercaseWord:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"1060694897\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">464</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">capitalizeWord:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"56570060\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">467</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">lowercaseWord:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"879586729\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">468</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">pasteAsPlainText:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"82994268\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">486</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">performFindPanelAction:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"326711663\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">487</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">performFindPanelAction:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"270902937\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">488</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">performFindPanelAction:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"159080638\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">489</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">showHelp:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"105068016\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">493</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">alignCenter:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"630155264\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">518</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">pasteRuler:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"883618387\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">519</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">toggleRuler:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"644046920\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">520</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">alignRight:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"512868991\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">521</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">copyRuler:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"231811626\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">522</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">alignJustified:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"945678886\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">523</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">alignLeft:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"875092757\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">524</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">makeBaseWritingDirectionNatural:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"551969625\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">525</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">makeBaseWritingDirectionLeftToRight:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"249532473\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">526</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">makeBaseWritingDirectionRightToLeft:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"607364498\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">527</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">makeTextWritingDirectionNatural:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"380031999\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">528</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">makeTextWritingDirectionLeftToRight:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"825984362\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">529</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">makeTextWritingDirectionRightToLeft:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"560145579\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">530</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">performFindPanelAction:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"738670835\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">535</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">addFontTrait:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"755631768\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"305399458\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">421</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">addFontTrait:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"755631768\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"814362025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">422</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">modifyFont:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"755631768\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"885547335\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">423</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">orderFrontFontPanel:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"755631768\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"159677712\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">424</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t\t<object class=\"IBConnectionRecord\">\n"
-    "\t\t\t\t\t<object class=\"IBActionConnection\" key=\"connection\">\n"
-    "\t\t\t\t\t\t<string key=\"label\">modifyFont:</string>\n"
-    "\t\t\t\t\t\t<reference key=\"source\" ref=\"755631768\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"destination\" ref=\"158063935\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<int key=\"connectionID\">425</int>\n"
-    "\t\t\t\t</object>\n"
-    "\t\t\t</array>\n"
-    "\t\t\t<object class=\"IBMutableOrderedSet\" key=\"objectRecords\">\n"
-    "\t\t\t\t<array key=\"orderedObjects\">\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">0</int>\n"
-    "\t\t\t\t\t\t<array key=\"object\" id=\"0\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"children\" ref=\"1048\"/>\n"
-    "\t\t\t\t\t\t<nil key=\"parent\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">-2</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1021\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"0\"/>\n"
-    "\t\t\t\t\t\t<string key=\"objectName\">File's Owner</string>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">-1</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1014\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"0\"/>\n"
-    "\t\t\t\t\t\t<string key=\"objectName\">First Responder</string>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">-3</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1050\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"0\"/>\n"
-    "\t\t\t\t\t\t<string key=\"objectName\">Application</string>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">29</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"649796088\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"713487014\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"694149608\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"952259628\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"379814623\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"586577488\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"302598603\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"448692316\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"0\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">19</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"713487014\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"835318025\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"649796088\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">56</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"694149608\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"110575045\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"649796088\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">217</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"952259628\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"649796088\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">83</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"379814623\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"720053764\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"649796088\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">81</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"1023925487\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"49223823\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"722745758\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"705341025\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"1025936716\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"294629803\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"776162233\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"425164168\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"579971712\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"1010469920\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"379814623\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">75</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1023925487\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">78</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"49223823\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">72</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"722745758\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">82</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"705341025\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">124</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1025936716\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"1065607017\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">77</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"294629803\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">73</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"776162233\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">79</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"425164168\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">112</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"579971712\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">74</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1010469920\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"720053764\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">125</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1065607017\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"759406840\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"1025936716\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">126</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"759406840\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"1065607017\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">205</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"437104165\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"583158037\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"1058277027\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"212016141\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"296257095\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"29853731\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"860595796\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"1040322652\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"790794224\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"892235320\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"972420730\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"676164635\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"507821607\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"288088188\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"82994268\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"952259628\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">202</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"437104165\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">198</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"583158037\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">207</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1058277027\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">214</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"212016141\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">199</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"296257095\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">203</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"29853731\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">197</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"860595796\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">206</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1040322652\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">215</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"790794224\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">218</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"892235320\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"963351320\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">216</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"972420730\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"769623530\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">200</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"769623530\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"948374510\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"96193923\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"679648819\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"967646866\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"859480356\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"795346622\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"972420730\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">219</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"948374510\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"769623530\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">201</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"96193923\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"769623530\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">204</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"679648819\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"769623530\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">220</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"963351320\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"270902937\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"88285865\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"159080638\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"326711663\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"447796847\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"738670835\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"892235320\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">213</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"270902937\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"963351320\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">210</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"88285865\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"963351320\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">221</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"159080638\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"963351320\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">208</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"326711663\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"963351320\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">209</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"447796847\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"963351320\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">57</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"238522557\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"755159360\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"908899353\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"632727374\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"646227648\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"609285721\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"481834944\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"304266470\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"1046388886\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"1056857174\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"342932134\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"694149608\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">58</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"238522557\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">134</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"755159360\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">150</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"908899353\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">136</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"632727374\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">144</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"646227648\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">129</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"609285721\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">143</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"481834944\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">236</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"304266470\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">131</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1046388886\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"752062318\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">149</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1056857174\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">145</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"342932134\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"110575045\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">130</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"752062318\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"1046388886\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">24</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"835318025\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"299356726\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"625202149\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"575023229\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"1011231497\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"713487014\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">92</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"299356726\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"835318025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">5</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"625202149\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"835318025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">239</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"575023229\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"835318025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">23</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1011231497\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"835318025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">295</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"586577488\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"466310130\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"649796088\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">296</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"466310130\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"102151532\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"237841660\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"586577488\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">297</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"102151532\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"466310130\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">298</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"237841660\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"466310130\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">211</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"676164635\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"785027613\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">212</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"785027613\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"680220178\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"731782645\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"676164635\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">195</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"680220178\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"785027613\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">196</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"731782645\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"785027613\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">346</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"967646866\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"769623530\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">348</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"507821607\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"698887838\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">349</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"698887838\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"605118523\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"197661976\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"708854459\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"65139061\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"19036812\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"672708820\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"537092702\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"507821607\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">350</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"605118523\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"698887838\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">351</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"197661976\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"698887838\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">354</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"708854459\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"698887838\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">375</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"302598603\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"941447902\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"649796088\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">376</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"941447902\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"792887677\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"215659978\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"302598603\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">377</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"792887677\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"941447902\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">388</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"159677712\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"305399458\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"814362025\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"330926929\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"533507878\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"158063935\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"885547335\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"901062459\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"767671776\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"691570813\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"769124883\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"739652853\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"1012600125\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"214559597\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"596732606\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"393423671\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"792887677\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">389</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"159677712\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">390</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"305399458\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">391</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"814362025\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">392</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"330926929\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">393</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"533507878\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">394</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"158063935\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">395</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"885547335\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">396</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"901062459\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">397</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"767671776\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"175441468\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">398</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"691570813\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"1058217995\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">399</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"769124883\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"18263474\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">400</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"739652853\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">401</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1012600125\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">402</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"214559597\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">403</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"596732606\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">404</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"393423671\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"786677654\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">405</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"18263474\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"257962622\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"644725453\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"1037576581\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"941806246\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"1045724900\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"769124883\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">406</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"257962622\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"18263474\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">407</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"644725453\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"18263474\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">408</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1037576581\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"18263474\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">409</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"941806246\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"18263474\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">410</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1045724900\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"18263474\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">411</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1058217995\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"706297211\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"568384683\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"663508465\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"691570813\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">412</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"706297211\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"1058217995\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">413</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"568384683\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"1058217995\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">414</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"663508465\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"1058217995\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">415</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"175441468\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"252969304\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"766922938\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"677519740\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"238351151\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"767671776\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">416</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"252969304\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"175441468\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">417</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"766922938\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"175441468\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">418</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"677519740\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"175441468\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">419</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"238351151\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"175441468\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">420</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"755631768\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"0\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">450</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"288088188\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"579392910\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">451</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"579392910\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"1060694897\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"879586729\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"56570060\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"288088188\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">452</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"1060694897\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"579392910\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">453</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"859480356\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"769623530\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">454</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"795346622\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"769623530\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">457</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"65139061\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"698887838\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">459</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"19036812\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"698887838\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">460</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"672708820\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"698887838\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">462</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"537092702\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"698887838\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">465</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"879586729\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"579392910\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">466</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"56570060\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"579392910\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">485</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"82994268\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"789758025\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">490</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"448692316\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"992780483\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"649796088\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">491</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"992780483\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"105068016\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"448692316\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">492</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"105068016\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"992780483\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">494</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"976324537\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"0\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">496</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"215659978\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"446991534\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"941447902\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">497</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"875092757\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"630155264\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"945678886\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"512868991\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"163117631\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"31516759\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"908105787\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"644046920\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"231811626\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"883618387\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"215659978\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">498</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"875092757\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">499</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"630155264\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">500</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"945678886\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">501</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"512868991\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">502</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"163117631\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">503</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"31516759\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"956096989\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">504</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"908105787\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">505</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"644046920\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">506</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"231811626\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">507</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"883618387\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"446991534\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">508</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t\t<array class=\"NSMutableArray\" key=\"children\">\n"
-    "\t\t\t\t\t\t\t<reference ref=\"257099033\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"551969625\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"249532473\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"607364498\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"508151438\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"981751889\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"380031999\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"825984362\"/>\n"
-    "\t\t\t\t\t\t\t<reference ref=\"560145579\"/>\n"
-    "\t\t\t\t\t\t</array>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"31516759\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">509</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"257099033\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">510</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"551969625\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">511</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"249532473\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">512</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"607364498\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">513</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"508151438\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">514</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"981751889\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">515</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"380031999\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">516</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"825984362\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">517</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"560145579\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"956096989\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t\t<object class=\"IBObjectRecord\">\n"
-    "\t\t\t\t\t\t<int key=\"objectID\">534</int>\n"
-    "\t\t\t\t\t\t<reference key=\"object\" ref=\"738670835\"/>\n"
-    "\t\t\t\t\t\t<reference key=\"parent\" ref=\"963351320\"/>\n"
-    "\t\t\t\t\t</object>\n"
-    "\t\t\t\t</array>\n"
-    "\t\t\t</object>\n"
-    "\t\t\t<dictionary class=\"NSMutableDictionary\" key=\"flattenedProperties\">\n"
-    "\t\t\t\t<string key=\"-1.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"-2.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"-3.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"112.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"124.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"125.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"126.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"129.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"130.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"131.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"134.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"136.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"143.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"144.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"145.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"149.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"150.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"19.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"195.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"196.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"197.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"198.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"199.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"200.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"201.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"202.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"203.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"204.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"205.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"206.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"207.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"208.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"209.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"210.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"211.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"212.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"213.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"214.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"215.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"216.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"217.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"218.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"219.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"220.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"221.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"23.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"236.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"239.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"24.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"29.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"295.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"296.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"297.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"298.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"346.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"348.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"349.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"350.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"351.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"354.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"375.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"376.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"377.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"388.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"389.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"390.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"391.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"392.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"393.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"394.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"395.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"396.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"397.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"398.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"399.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"400.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"401.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"402.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"403.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"404.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"405.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"406.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"407.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"408.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"409.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"410.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"411.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"412.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"413.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"414.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"415.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"416.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"417.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"418.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"419.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"420.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"450.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"451.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"452.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"453.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"454.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"457.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"459.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"460.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"462.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"465.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"466.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"485.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"490.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"491.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"492.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"494.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"496.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"497.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"498.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"499.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"5.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"500.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"501.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"502.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"503.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"504.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"505.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"506.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"507.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"508.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"509.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"510.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"511.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"512.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"513.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"514.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"515.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"516.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"517.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"534.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"56.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"57.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"58.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"72.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"73.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"74.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"75.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"77.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"78.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"79.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"81.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"82.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"83.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t\t<string key=\"92.IBPluginDependency\">com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "\t\t\t</dictionary>\n"
-    "\t\t\t<dictionary class=\"NSMutableDictionary\" key=\"unlocalizedProperties\"/>\n"
-    "\t\t\t<nil key=\"activeLocalization\"/>\n"
-    "\t\t\t<dictionary class=\"NSMutableDictionary\" key=\"localizations\"/>\n"
-    "\t\t\t<nil key=\"sourceID\"/>\n"
-    "\t\t\t<int key=\"maxID\">535</int>\n"
-    "\t\t</object>\n"
-    "\t\t<object class=\"IBClassDescriber\" key=\"IBDocument.Classes\"/>\n"
-    "\t\t<int key=\"IBDocument.localizationMode\">0</int>\n"
-    "\t\t<string key=\"IBDocument.TargetRuntimeIdentifier\">IBCocoaFramework</string>\n"
-    "\t\t<object class=\"NSMutableDictionary\" key=\"IBDocument.PluginDeclaredDependencies\">\n"
-    "\t\t\t<string key=\"NS.key.0\">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>\n"
-    "\t\t\t<real value=\"1070\" key=\"NS.object.0\"/>\n"
-    "\t\t</object>\n"
-    "\t\t<object class=\"NSMutableDictionary\" key=\"IBDocument.PluginDeclaredDevelopmentDependencies\">\n"
-    "\t\t\t<string key=\"NS.key.0\">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>\n"
-    "\t\t\t<real value=\"4300\" key=\"NS.object.0\"/>\n"
-    "\t\t</object>\n"
-    "\t\t<bool key=\"IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion\">YES</bool>\n"
-    "\t\t<int key=\"IBDocument.defaultPropertyAccessControl\">3</int>\n"
-    "\t\t<dictionary class=\"NSMutableDictionary\" key=\"IBDocument.LastKnownImageSizes\">\n"
-    "\t\t\t<string key=\"NSMenuCheckmark\">{11, 11}</string>\n"
-    "\t\t\t<string key=\"NSMenuMixedState\">{10, 3}</string>\n"
-    "\t\t</dictionary>\n"
-    "\t\t<bool key=\"IBDocument.UseAutolayout\">YES</bool>\n"
-    "\t</data>\n"
-    "</archive>\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//               Filewrapper template 'updaterGalgas3ApplicationFileWrapper application_delegate_header'               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_application_5F_delegate_5F_header (C_Compiler * /* inCompiler */
-                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMAppDelegate.h\n"
-    "//  CanariUpdaterApp\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 30/07/12.\n"
-    "//  Copyright (c) 2012 IRCCyN. All rights reserved.\n"
-    "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import <Cocoa/Cocoa.h>\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@interface PMUpdaterAppDelegate : NSObject <NSApplicationDelegate> {\n"
-    "  @private NSString * mCocoaApplicationPath ;\n"
-    "  @private NSAlert * mCocoaApplicationIsStillRunningAlert ;\n"
-    "  @private NSUInteger mWaitingTimeInSeconds ;\n"
-    "}\n"
-    "\n"
-    "@end\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//           Filewrapper template 'updaterGalgas3ApplicationFileWrapper application_delegate_implementation'           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_application_5F_delegate_5F_implementation (C_Compiler * /* inCompiler */,
-                                                                                                                     const GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
-                                                                                                                     const GALGAS_string & in_TARGET_5F_NAME
-                                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMUpdaterAppDelegate.m\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 30/07/12.\n"
-    "//  Copyright (c) 2012 IRCCyN. All rights reserved.\n"
-    "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import \"PMUpdaterAppDelegate.h\"\n"
-    "#import \"PMUpdaterServerProtocol.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import <SystemConfiguration/SystemConfiguration.h>\n"
-    "#import <ServiceManagement/ServiceManagement.h>\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "//#define DEBUG_UPDATER\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#if __has_feature(objc_arc)\n"
-    "  #define macroBridgeInARC __bridge\n"
-    "#else\n"
-    "  #define macroBridgeInARC\n"
-    "#endif\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "static NSConnection * installAndLaunchHelperToolWithIdentifier (NSString * inToolIdentifier) {\n"
-    "  #ifdef EASY_BINDINGS_DEBUG\n"
-    "    NSLog (@\"%s\", __PRETTY_FUNCTION__) ;\n"
-    "  #endif\n"
-    "//-1--- Check if tool already installed\n"
-    "  BOOL helperIsAlreadyInstalled = NO;\n"
-    "  CFDictionaryRef existingJob = SMJobCopyDictionary (kSMDomainSystemLaunchd, (macroBridgeInARC CFStringRef) inToolIdentifier);\n"
-    "  #ifdef LOGGING_SMJOBBLESS\n"
-    "    NSLog (@\"Helper Tool already installed: %@\", NULL != existingJob \? @\"yes\" : @\"no\") ;\n"
-    "  #endif\n"
-    "  if (NULL != existingJob) {\n"
-    "    helperIsAlreadyInstalled = YES;\n"
-    "    CFRelease (existingJob) ; existingJob = NULL ;\n"
-    "  }\n"
-    "//-2--- Create Authorization Item and Right\n"
-    " AuthorizationItem authItems [2] = {\n"
-    "    {kSMRightBlessPrivilegedHelper, 0, NULL, 0},\n"
-    "    {kSMRightModifySystemDaemons, 0, NULL, 0} // Needed by SMJobRemove\n"
-    "  } ;\n"
-    "  AuthorizationRights authRights = {(helperIsAlreadyInstalled \? 2 : 1), authItems} ;\n"
-    "  const AuthorizationFlags flags =\n"
-    "   kAuthorizationFlagDefaults\n"
-    " | kAuthorizationFlagInteractionAllowed\n"
-    "// | kAuthorizationFlagPreAuthorize\n"
-    " | kAuthorizationFlagExtendRights\n"
-    "  ;\n"
-    "//-3--- Obtain the right to install privileged helper tools.\n"
-    " AuthorizationRef authRef = NULL ;\n"
-    " const OSStatus status = AuthorizationCreate (& authRights, kAuthorizationEmptyEnvironment, flags, & authRef) ;\n"
-    "  Boolean ok = errAuthorizationSuccess == status ;\n"
-    "  #ifdef LOGGING_SMJOBBLESS\n"
-    "    NSLog (@\"AuthorizationRef creation: %@\", ok \? @\"ok\" : @\"failed\") ;\n"
-    "  #endif\n"
-    "//-4--- Remove Helper Tool\n"
-    "  if (ok && helperIsAlreadyInstalled) {\n"
-    "    CFErrorRef cfError = nil ;\n"
-    "    const Boolean removed = SMJobRemove (kSMDomainSystemLaunchd, (macroBridgeInARC CFStringRef) inToolIdentifier, authRef, YES, & cfError) ;\n"
-    "    #ifdef LOGGING_SMJOBBLESS\n"
-    "      NSLog (@\"SMJobRemove: %@\", removed \? @\"removed\" : @\"error\") ;\n"
-    "    #endif\n"
-    "    if (!removed) {\n"
-    "      NSError * error = (macroBridgeInARC NSError *)(cfError) ;\n"
-    "      [NSApp presentError:error] ;\n"
-    "    }\n"
-    "    CFRelease (cfError) ;\n"
-    "  }\n"
-    "//-5--- Install Helper Tool\n"
-    "  if (ok) {\n"
-    "    CFErrorRef cfError = nil ;\n"
-    "    ok = SMJobBless (kSMDomainSystemLaunchd, (macroBridgeInARC CFStringRef) inToolIdentifier, authRef, & cfError) ;\n"
-    "    #ifdef LOGGING_SMJOBBLESS\n"
-    "      NSLog (@\"SMJobBless: %@\", ok \? @\"ok\" : @\"failed\") ;\n"
-    "    #endif\n"
-    "    if (!ok) {\n"
-    "      NSError * error = (macroBridgeInARC NSError *)(cfError) ;\n"
-    "      [NSApp presentError:error] ;\n"
-    "    }\n"
-    "    CFRelease (cfError) ;\n"
-    " }\n"
-    "//-6--- Free Authorization\n"
-    "  if (NULL != authRef) {\n"
-    "    AuthorizationFree (authRef, kAuthorizationFlagDefaults) ;\n"
-    "    authRef = NULL ;\n"
-    "  }\n"
-    "//-7--- Run and connect\n"
-    "  NSConnection * connection = nil ;\n"
-    "  if (ok) {\n"
-    "    connection = [NSConnection\n"
-    "      connectionWithRegisteredName:[inToolIdentifier stringByAppendingString:@\".mach\"]\n"
-    "      host:nil\n"
-    "    ] ;\n"
-    "    #ifdef LOGGING_SMJOBBLESS\n"
-    "      ok = nil != connection ;\n"
-    "      if (ok) {\n"
-    "        NSLog (@\"Helper Tool is launched\") ;\n"
-    "        NSDistantObject * rootProxy = [connection rootProxy] ;\n"
-    "        NSLog (@\"rootProxy %@\", rootProxy) ;\n"
-    "      }else{\n"
-    "        NSLog (@\"No Connection\") ;\n"
-    "      }\n"
-    "    #endif\n"
-    "  }\n"
-    "//-8---\n"
-    "  return connection ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@implementation PMUpdaterAppDelegate\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) installAndTerminates {\n"
-    "//--- Dismiss waiting alert\n"
-    "  if (nil != mCocoaApplicationIsStillRunningAlert) {\n"
-    "    [mCocoaApplicationIsStillRunningAlert.window orderOut:nil] ;\n"
-    "    [NSApp endSheet:mCocoaApplicationIsStillRunningAlert.window] ;\n"
-    "    mCocoaApplicationIsStillRunningAlert = nil ;\n"
-    "  }\n"
-    "//--- Get application current path : the temporary directory\n"
-    "  NSString * myDirectory = [[NSBundle mainBundle].bundlePath stringByDeletingLastPathComponent] ;\n"
-    "  #ifdef DEBUG_UPDATER\n"
-    "    NSLog (@\"myDirectory %@\", myDirectory) ;\n"
-    "  #endif\n"
-    "//---\n"
-    "  [NSApp activateIgnoringOtherApps:YES] ;\n"
-    "  NSConnection * updaterToolConnection = installAndLaunchHelperToolWithIdentifier (@\"" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_TARGET_5F_NAME.stringValue () ;
-  result << ".updaterTool\") ;\n"
-    "  BOOL ok = nil != updaterToolConnection ;\n"
-    "  id <PMUpdaterServerProtocol> updaterToolObjectProxy = nil ;\n"
-    "  if (ok) {\n"
-    "    updaterToolObjectProxy = (id <PMUpdaterServerProtocol>) updaterToolConnection.rootProxy ;\n"
-    "    #ifdef DEBUG_UPDATER\n"
-    "      NSLog (@\"Installer Object Proxy: %@\", updaterToolObjectProxy) ;\n"
-    "    #endif\n"
-    "    NSError * error = [updaterToolObjectProxy\n"
-    "      performInstallationWithApplicationPath:mCocoaApplicationPath\n"
-    "      temporaryFilePath:[NSString stringWithFormat:@\"%@/Cocoa" ;
-  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 147)).stringValue () ;
-  result << ".app\", myDirectory]\n"
-    "    ] ;\n"
-    "    ok = nil == error ;\n"
-    "    if (! ok) {\n"
-    "      [NSApp presentError:error] ;\n"
-    "    }\n"
-    "  //---\n"
-    "    if (ok) {\n"
-    "      NSAlert * alert = [NSAlert\n"
-    "        alertWithMessageText:@\"Done\"\n"
-    "        defaultButton:@\"Launch " ;
-  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 157)).stringValue () ;
-  result << "\"\n"
-    "        alternateButton:@\"Ok\"\n"
-    "        otherButton:nil\n"
-    "        informativeTextWithFormat:@\"%@\", @\"The new version of " ;
-  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 160)).stringValue () ;
-  result << " has been successfully installed\"\n"
-    "      ] ;\n"
-    "      [alert setIcon:[NSImage imageNamed:@\"updater_application_icns\"]] ;\n"
-    "      [NSApp activateIgnoringOtherApps:YES] ;\n"
-    "      const NSInteger response = [alert runModal] ;\n"
-    "      if (NSAlertDefaultReturn == response) {\n"
-    "      //--- Launch Application\n"
-    "        NSTask * task = [NSTask new] ;\n"
-    "        [task setLaunchPath:@\"/usr/bin/open\"] ;\n"
-    "        [task setArguments:[NSArray arrayWithObject:mCocoaApplicationPath]] ;\n"
-    "        [task launch] ;\n"
-    "        #if ! __has_feature(objc_arc)\n"
-    "          [task release] ;\n"
-    "        #endif\n"
-    "      }\n"
-    "    }\n"
-    "    #ifdef DEBUG_UPDATER\n"
-    "      NSLog (@\"is quitting\") ;\n"
-    "    #endif\n"
-    "  //--- Self terminate\n"
-    "    [NSApp terminate:nil] ;\n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (BOOL) applicationIsStillRunning {\n"
-    "  NSWorkspace * ws = [NSWorkspace sharedWorkspace] ;\n"
-    "  NSArray * runningApplications = ws.runningApplications.copy ;\n"
-    "//NSLog (@\"runningApplications %@\", runningApplications) ;\n"
-    "  BOOL stillRunning = NO ;\n"
-    "  for (NSUInteger i=0 ; (i<runningApplications.count) && ! stillRunning ; i++) {\n"
-    "    NSRunningApplication * ra = [runningApplications objectAtIndex:i] ;\n"
-    "    if (ra.executableURL.isFileURL) {\n"
-    "      NSString * applicationPath = ra.executableURL.path ;\n"
-    "      // NSLog (@\"applicationPath '%@'\", applicationPath) ;\n"
-    "      stillRunning = [applicationPath isEqualToString:mCocoaApplicationPath] ;\n"
-    "    }\n"
-    "  }\n"
-    "  #if ! __has_feature(objc_arc)\n"
-    "    [runningApplications release] ;\n"
-    "  #endif\n"
-    "  runningApplications = nil ;\n"
-    "  return stillRunning ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) waitForApplicationTermination: (NSTimer *) inTimer {\n"
-    "  mWaitingTimeInSeconds ++ ;\n"
-    "  if (self.applicationIsStillRunning) {\n"
-    "  [NSTimer\n"
-    "      scheduledTimerWithTimeInterval:1.0\n"
-    "      target:self selector:@selector(waitForApplicationTermination:)\n"
-    "      userInfo:nil\n"
-    "      repeats:NO]\n"
-    "    ;\n"
-    "    if ((nil != inTimer) && (nil == mCocoaApplicationIsStillRunningAlert)) {\n"
-    "      mCocoaApplicationIsStillRunningAlert = [NSAlert\n"
-    "        alertWithMessageText:@\"Waiting for " ;
-  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 219)).stringValue () ;
-  result << " termination\"\n"
-    "        defaultButton:@\"Cancel Installation\"\n"
-    "        alternateButton:nil\n"
-    "        otherButton:nil\n"
-    "        informativeTextWithFormat:@\"%@\", @\"" ;
-  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 223)).stringValue () ;
-  result << " is still runnning.\"\n"
-    "      ] ;\n"
-    "      [mCocoaApplicationIsStillRunningAlert setIcon:[NSImage imageNamed:@\"updater_application_icns\"]] ;\n"
-    "      NSButton * defaultButton = [mCocoaApplicationIsStillRunningAlert.buttons objectAtIndex:0] ;\n"
-    "      defaultButton.target = self ;\n"
-    "      defaultButton.action = @selector (terminateApplicationWitoutInstalling:) ;\n"
-    "      [mCocoaApplicationIsStillRunningAlert\n"
-    "        beginSheetModalForWindow:nil\n"
-    "        modalDelegate:nil\n"
-    "        didEndSelector:NULL\n"
-    "        contextInfo:NULL\n"
-    "      ] ;\n"
-    "    }else if (nil != mCocoaApplicationIsStillRunningAlert) {\n"
-    "      [mCocoaApplicationIsStillRunningAlert\n"
-    "        setInformativeText:[NSString stringWithFormat:@\"" ;
-  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMUpdaterAppDelegate.m.galgasTemplate", 237)).stringValue () ;
-  result << " is still runnning (%lu s).\", mWaitingTimeInSeconds]\n"
-    "      ] ;\n"
-    "    }\n"
-    "  }else{\n"
-    "    [self installAndTerminates] ;\n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) terminateApplicationWitoutInstalling: (id) inUnusedSender {\n"
-    "//--- Dismiss waiting alert\n"
-    "  [mCocoaApplicationIsStillRunningAlert.window orderOut:nil] ;\n"
-    "  [NSApp endSheet:mCocoaApplicationIsStillRunningAlert.window] ;\n"
-    "//---\n"
-    "  [NSApp terminate:nil] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) applicationDidFinishLaunching: (NSNotification *) aNotification {\n"
-    "//--- Get application current path : the temporary directory\n"
-    "  NSString * myDirectory = [[NSBundle mainBundle].bundlePath stringByDeletingLastPathComponent] ;\n"
-    "  #ifdef DEBUG_UPDATER\n"
-    "    NSLog (@\"myDirectory %@\", myDirectory) ;\n"
-    "  #endif\n"
-    "//--- Read file that contains the Application path\n"
-    "  NSError * error = nil ;\n"
-    "  mCocoaApplicationPath = [NSString\n"
-    "    stringWithContentsOfFile:[NSString stringWithFormat:@\"%@/application_path.txt\", myDirectory]\n"
-    "    encoding:NSUTF8StringEncoding\n"
-    "    error:&error\n"
-    "  ] ;\n"
-    "  #ifdef DEBUG_UPDATER\n"
-    "    NSLog (@\"Application Path %@\", mCocoaApplicationPath) ;\n"
-    "  #endif\n"
-    "  BOOL ok = nil == error ;\n"
-    "  if (! ok) {\n"
-    "    [NSApp presentError:error] ;\n"
-    "  }else{\n"
-    "    [self waitForApplicationTermination:nil] ;\n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@end\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                       Filewrapper template 'updaterGalgas3ApplicationFileWrapper info_plist'                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5F_plist (C_Compiler * /* inCompiler */,
-                                                                                         const GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
-                                                                                         const GALGAS_string & in_TARGET_5F_NAME,
-                                                                                         const GALGAS_string & in_CODE_5F_SIGNING_5F_IDENTITY
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "<\?xml version=\"1.0\" encoding=\"UTF-8\"\?>\n"
-    "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n"
-    "<plist version=\"1.0\">\n"
-    "<dict>\n"
-    "\t<key>CFBundleDevelopmentRegion</key>\n"
-    "\t<string>en</string>\n"
-    "\t<key>CFBundleExecutable</key>\n"
-    "\t<string>${EXECUTABLE_NAME}</string>\n"
-    "\t<key>CFBundleIconFile</key>\n"
-    "\t<string>updater_application_icns</string>\n"
-    "\t<key>CFBundleIdentifier</key>\n"
-    "\t<string>" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_TARGET_5F_NAME.stringValue () ;
-  result << ".updaterApp</string>\n"
-    "\t<key>CFBundleInfoDictionaryVersion</key>\n"
-    "\t<string>6.0</string>\n"
-    "\t<key>CFBundleName</key>\n"
-    "\t<string>${PRODUCT_NAME}</string>\n"
-    "\t<key>CFBundlePackageType</key>\n"
-    "\t<string>APPL</string>\n"
-    "\t<key>CFBundleShortVersionString</key>\n"
-    "\t<string>1.0</string>\n"
-    "\t<key>CFBundleSignature</key>\n"
-    "\t<string>\?\?\?\?</string>\n"
-    "\t<key>CFBundleVersion</key>\n"
-    "\t<string>1</string>\n"
-    "\t<key>LSMinimumSystemVersion</key>\n"
-    "\t<string>${MACOSX_DEPLOYMENT_TARGET}</string>\n"
-    "\t<key>NSHumanReadableCopyright</key>\n"
-    "\t<string>Copyright \xC2""\xA9"" 2012 IRCCyN. All rights reserved.</string>\n"
-    "\t<key>NSMainNibFile</key>\n"
-    "\t<string>UpdaterAppMainMenu</string>\n"
-    "\t<key>NSPrincipalClass</key>\n"
-    "\t<string>NSApplication</string>\n"
-    "\t<key>SMPrivilegedExecutables</key>\n"
-    "\t<dict>\n"
-    "\t\t<key>" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_TARGET_5F_NAME.stringValue () ;
-  result << ".updaterTool</key>\n"
-    "\t\t<string>identifier &quot;" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_TARGET_5F_NAME.stringValue () ;
-  result << ".updaterTool&quot; and certificate leaf[subject.CN]=&quot;" ;
-  result << in_CODE_5F_SIGNING_5F_IDENTITY.stringValue () ;
-  result << "&quot;</string>\n"
-    "\t</dict>\n"
-    "</dict>\n"
-    "</plist>\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                          Filewrapper template 'updaterGalgas3ApplicationFileWrapper main'                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main (C_Compiler * /* inCompiler */
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  main.m\n"
-    "//  CanariUpdaterApp\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 30/07/12.\n"
-    "//  Copyright (c) 2012 IRCCyN. All rights reserved.\n"
-    "//\n"
-    "\n"
-    "#import <Cocoa/Cocoa.h>\n"
-    "\n"
-    "int main(int argc, char *argv[])\n"
-    "{\n"
-    "  return NSApplicationMain(argc, (const char **)argv);\n"
-    "}\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                         Filewrapper template 'updaterGalgas3ApplicationFileWrapper prefix'                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_prefix (C_Compiler * /* inCompiler */
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "// Prefix header for all source files of the 'CanariUpdaterApp' target in the 'CanariUpdaterApp' project\n"
-    "//\n"
-    "\n"
-    "#ifdef __OBJC__\n"
-    "  #import <Cocoa/Cocoa.h>\n"
-    "#endif\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                     Filewrapper 'updaterGalgas3ToolFileWrapper'                                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-//--- All files of '' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_updaterGalgas_33_ToolFileWrapper_0 [1] = {
-  NULL
-} ;
-
-//--- All sub-directories of '' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_updaterGalgas_33_ToolFileWrapper_0 [1] = {
-  NULL
-} ;
-
-//--- Directory ''
-
-const cDirectoryWrapper gWrapperDirectory_0_updaterGalgas_33_ToolFileWrapper (
-  "",
-  0,
-  gWrapperAllFiles_updaterGalgas_33_ToolFileWrapper_0,
-  0,
-  gWrapperAllDirectories_updaterGalgas_33_ToolFileWrapper_0
-) ;
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                    Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_protocol'                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_protocol (C_Compiler * /* inCompiler */
-                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMUpdaterServerProtocol.h\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 29/07/12.\n"
-    "//  Copyright (c) 2012 IRCCyN. All rights reserved.\n"
-    "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import <Foundation/Foundation.h>\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@protocol PMUpdaterServerProtocol <NSObject>\n"
-    "\n"
-    "- (NSError *) performInstallationWithApplicationPath: (NSString *) inApplicationPath\n"
-    "              temporaryFilePath: (NSString *) inTemporaryFilePath ;\n"
-    "@end\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                     Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_header'                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_header (C_Compiler * /* inCompiler */
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMUpdaterServerObject.h\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 29/07/12.\n"
-    "//  Copyright (c) 2012 IRCCyN. All rights reserved.\n"
-    "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import \"PMUpdaterServerProtocol.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "//#define DEBUG_WITH_SYSLOG\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@interface PMUpdaterServerObject : NSObject <PMUpdaterServerProtocol> {\n"
-    "  @protected BOOL mTerminateHelperTool ;\n"
-    "  @protected pid_t mUpdaterToolPID ;\n"
-    "  @protected NSString * mTemporaryFilePath ; // Temporary location of uncompressed new application\n"
-    "  @protected NSString * mCocoaApplicationPath ;\n"
-    "}\n"
-    "\n"
-    "- (BOOL) shouldExit ;\n"
-    "\n"
-    "@end\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                 Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_implementation'                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_implementation (C_Compiler * /* inCompiler */
-                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMUpdaterServerObject.m\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 29/07/12.\n"
-    "//  Copyright (c) 2012 IRCCyN. All rights reserved.\n"
-    "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import \"PMUpdaterServerObject.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#ifdef DEBUG_WITH_SYSLOG\n"
-    "  #import <syslog.h>\n"
-    "#endif\n"
-    "\n"
-    "#import <CommonCrypto/CommonDigest.h>\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@implementation PMUpdaterServerObject\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSError *) performInstallationWithApplicationPath: (NSString *) inApplicationPath\n"
-    "              temporaryFilePath: (NSString *) inTemporaryFilePath {\n"
-    "  mTemporaryFilePath = inTemporaryFilePath ;\n"
-    "  mCocoaApplicationPath = inApplicationPath ;\n"
-    "  #ifdef DEBUG_WITH_SYSLOG\n"
-    "    syslog (LOG_NOTICE, \"Application Temporary path %s\", mTemporaryFilePath.UTF8String) ;\n"
-    "    syslog (LOG_NOTICE, \"Original Application path %s\", mCocoaApplicationPath.UTF8String) ;\n"
-    "  #endif\n"
-    "//--- Remove Canari Application\n"
-    "  NSFileManager * fm = [NSFileManager new] ;\n"
-    "  NSError * error = nil ;\n"
-    "  BOOL ok = [fm removeItemAtPath:mCocoaApplicationPath error:& error] ;\n"
-    "//--- Install new version\n"
-    "  if (ok) {\n"
-    "    ok = [fm\n"
-    "      copyItemAtPath:mTemporaryFilePath\n"
-    "      toPath:mCocoaApplicationPath\n"
-    "      error:& error\n"
-    "    ] ;\n"
-    "  }\n"
-    "//---\n"
-    "  #if ! __has_feature(objc_arc)\n"
-    "    [fm release] ;\n"
-    "  #endif\n"
-    "  fm = nil ;\n"
-    "  mTerminateHelperTool = YES ;\n"
-    "//---\n"
-    "  return ok \? nil : error ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (BOOL) shouldExit {\n"
-    "  return mTerminateHelperTool ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@end\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                      Filewrapper template 'updaterGalgas3ToolFileWrapper updater_object_main'                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_main (C_Compiler * /* inCompiler */,
-                                                                                              const GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
-                                                                                              const GALGAS_string & in_TARGET_5F_NAME
-                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  main.c\n"
-    "//  CanariInstallerHelperTool\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 27/06/12.\n"
-    "//  Copyright (c) 2012 ECN / IRCCyN. All rights reserved.\n"
-    "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import \"PMUpdaterServerObject.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import <launch.h>\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#ifdef DEBUG_WITH_SYSLOG\n"
-    "  #import <syslog.h>\n"
-    "#endif\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "int main (int argc, const char * argv[]) {\n"
-    "  @autoreleasepool {\n"
-    "    #ifdef DEBUG_WITH_SYSLOG\n"
-    "      syslog (LOG_NOTICE, \"Updater Helper Tool launched (pid: %d)\", getpid ());\n"
-    "    #endif\n"
-    "  //-1---\n"
-    "    launch_data_t req = launch_data_new_string (LAUNCH_KEY_CHECKIN) ;\n"
-    "    Boolean ok = NULL != req ;\n"
-    "    #ifdef DEBUG_WITH_SYSLOG\n"
-    "      syslog (LOG_NOTICE, \"HelperTool req: %s\", ok \? \"ok\" : \"failed\") ;\n"
-    "    #endif\n"
-    "  //-2---\n"
-    "    launch_data_t resp = NULL ;\n"
-    "    if (ok) {\n"
-    "      resp = launch_msg (req) ;\n"
-    "      ok = NULL != resp ;\n"
-    "      #ifdef DEBUG_WITH_SYSLOG\n"
-    "        syslog (LOG_NOTICE, \"HelperTool resp: %s\", ok \? \"ok\" : \"failed\");\n"
-    "      #endif\n"
-    "    }\n"
-    "  //-3---\n"
-    "    launch_data_t machData = NULL ;\n"
-    "    if (ok) {\n"
-    "      machData = launch_data_dict_lookup (resp, LAUNCH_JOBKEY_MACHSERVICES);\n"
-    "      ok = NULL != machData ;\n"
-    "      #ifdef DEBUG_WITH_SYSLOG\n"
-    "        syslog (LOG_NOTICE, \"HelperTool machData: %s\", ok \? \"ok\" : \"failed\") ;\n"
-    "      #endif\n"
-    "    }\n"
-    "  //-4---\n"
-    "    launch_data_t machPortData = NULL ;\n"
-    "    if (ok) {\n"
-    "      machPortData = launch_data_dict_lookup (machData, \"" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_TARGET_5F_NAME.stringValue () ;
-  result << ".updaterTool.mach\") ;\n"
-    "      ok = NULL != machPortData ;\n"
-    "      #ifdef DEBUG_WITH_SYSLOG\n"
-    "        syslog (LOG_NOTICE, \"HelperTool machPortData: %s\", ok \? \"ok\" : \"failed\") ;\n"
-    "      #endif\n"
-    "    }\n"
-    "  //-5---\n"
-    "    NSConnection * connection = nil ;\n"
-    "    if (ok) {\n"
-    "      mach_port_t mp = launch_data_get_machport (machPortData) ;\n"
-    "      NSMachPort * rp = [[NSMachPort alloc] initWithMachPort:mp] ;\n"
-    "      connection = [NSConnection connectionWithReceivePort:rp sendPort:nil] ;\n"
-    "      #if ! __has_feature(objc_arc)\n"
-    "        [connection retain] ;\n"
-    "        [rp release] ;\n"
-    "      #endif\n"
-    "      rp = nil ;\n"
-    "      ok = nil != connection ;\n"
-    "      #ifdef DEBUG_WITH_SYSLOG\n"
-    "        syslog (LOG_NOTICE, \"HelperTool connection: %s\", ok \? \"ok\" : \"failed\") ;\n"
-    "      #endif\n"
-    "    }\n"
-    "  //-6---\n"
-    "    if (NULL != req) {\n"
-    "      launch_data_free (req) ; req = NULL ;\n"
-    "    }\n"
-    "    if (NULL != resp) {\n"
-    "      launch_data_free (resp) ; resp = NULL ;\n"
-    "    }\n"
-    "  //-7---\n"
-    "    if (ok) {\n"
-    "      PMUpdaterServerObject * serverObject = [PMUpdaterServerObject new] ;\n"
-    "      [connection setRootObject:serverObject] ;\n"
-    "      while (! serverObject.shouldExit) {\n"
-    "        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]] ;\n"
-    "      }\n"
-    "      #if ! __has_feature(objc_arc)\n"
-    "        [serverObject release] ;\n"
-    "      #endif\n"
-    "    }\n"
-    "  //-8---\n"
-    "    [connection invalidate] ;\n"
-    "    #if ! __has_feature(objc_arc)\n"
-    "      [connection release] ;\n"
-    "    #endif\n"
-    "    connection = nil ;\n"
-    "  }\n"
-    "//---\n"
-    "  #ifdef DEBUG_WITH_SYSLOG\n"
-    "    syslog (LOG_NOTICE, \"Helper Tool terminates\") ;\n"
-    "  #endif\n"
-    "  return 0 ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                    Filewrapper template 'updaterGalgas3ToolFileWrapper updater_tool_info_plist'                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_tool_5F_info_5F_plist (C_Compiler * /* inCompiler */,
-                                                                                                     const GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
-                                                                                                     const GALGAS_string & in_TARGET_5F_NAME,
-                                                                                                     const GALGAS_string & in_CODE_5F_SIGNING_5F_IDENTITY
-                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "<\?xml version=\"1.0\" encoding=\"UTF-8\"\?>\n"
-    "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n"
-    "<plist version=\"1.0\">\n"
-    "<dict>\n"
-    "\t<key>CFBundleIdentifier</key>\n"
-    "\t<string>" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_TARGET_5F_NAME.stringValue () ;
-  result << ".updaterTool</string>\n"
-    "\t<key>CFBundleInfoDictionaryVersion</key>\n"
-    "\t<string>6.0</string>\n"
-    "\t<key>CFBundleName</key>\n"
-    "\t<string>" ;
-  result << in_TARGET_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("updater-tool-Info.plist.txt", 10)).stringValue () ;
-  result << "Updater</string>\n"
-    "\t<key>CFBundleVersion</key>\n"
-    "\t<string>1.0</string>\n"
-    "\t<key>SMAuthorizedClients</key>\n"
-    "\t<array>\n"
-    "\t\t<string>identifier &quot;" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_TARGET_5F_NAME.stringValue () ;
-  result << ".updaterApp&quot; and certificate leaf[subject.CN]=&quot;" ;
-  result << in_CODE_5F_SIGNING_5F_IDENTITY.stringValue () ;
-  result << "&quot;</string>\n"
-    "\t</array>\n"
-    "</dict>\n"
-    "</plist>\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                   Filewrapper template 'updaterGalgas3ToolFileWrapper updater_tool_launchd_plist'                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_tool_5F_launchd_5F_plist (C_Compiler * /* inCompiler */,
-                                                                                                        const GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME,
-                                                                                                        const GALGAS_string & in_TARGET_5F_NAME
-                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "<\?xml version=\"1.0\" encoding=\"UTF-8\"\?>\n"
-    "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n"
-    "<plist version=\"1.0\">\n"
-    "<dict>\n"
-    "\t<key>Label</key>\n"
-    "\t<string>" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_TARGET_5F_NAME.stringValue () ;
-  result << ".updaterTool</string>\n"
-    "\t<key>OnDemand</key>\n"
-    "\t<false/>\n"
-    "\t<key>LaunchOnlyOnce</key>\n"
-    "\t<true/>\n"
-    "\t<key>MachServices</key>\n"
-    "\t<dict>\n"
-    "\t\t<key>" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_TARGET_5F_NAME.stringValue () ;
-  result << ".updaterTool.mach</key>\n"
-    "\t\t<true/>\n"
-    "\t</dict>\n"
-    "</dict>\n"
-    "</plist>\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  Filewrapper 'applicationGalgas3UpdateFileWrapper'                                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-//--- All files of '' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_applicationGalgas_33_UpdateFileWrapper_0 [1] = {
-  NULL
-} ;
-
-//--- All sub-directories of '' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_applicationGalgas_33_UpdateFileWrapper_0 [1] = {
-  NULL
-} ;
-
-//--- Directory ''
-
-const cDirectoryWrapper gWrapperDirectory_0_applicationGalgas_33_UpdateFileWrapper (
-  "",
-  0,
-  gWrapperAllFiles_applicationGalgas_33_UpdateFileWrapper_0,
-  0,
-  gWrapperAllDirectories_applicationGalgas_33_UpdateFileWrapper_0
-) ;
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                Filewrapper template 'applicationGalgas3UpdateFileWrapper application_update_header'                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_header (C_Compiler * /* inCompiler */
-                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMApplicationUpdate.h\n"
-    "//  galgas\n"
-    "//\n"
-    "//  Created by Pierre MOLINARO on 02/10/06.\n"
-    "//  Copyright 2006 __MyCompanyName__. All rights reserved.\n"
-    "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import \"PMDownloadFile.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@class WebView ;\n"
-    "@class PMDownloadData ;\n"
-    "@class PMDownloadFile ;\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@interface PMApplicationUpdate : NSObject <PMDownloadDidEndProtocol> {\n"
-    "//--- In New Available Panel\n"
-    "  @private IBOutlet NSPanel * mNewAvailableVersionPanel ;\n"
-    "  @private IBOutlet NSButton * mCheckUpdateAtStartUpCheckBox2 ;\n"
-    "  @private IBOutlet NSButton * mPerformUpdateButton ;\n"
-    "  @private IBOutlet NSTextField * mNewVersionTextField ;\n"
-    "  @private IBOutlet WebView * mChangeLogWebView ;\n"
-    "  @private IBOutlet NSView * mViewForChangeLogInPreferencePane ;\n"
-    "  @private IBOutlet WebView * mChangeLogInPreferencePaneWebView ;\n"
-    "\n"
-    "  @private IBOutlet NSButton * mCheckUpdateAtStartUpCheckBox ;\n"
-    "  \n"
-    "  @private IBOutlet NSButton * mCheckNowButton ;\n"
-    "  \n"
-    "  @private IBOutlet NSTextField * mDownloadTitle ;\n"
-    "  @private IBOutlet NSProgressIndicator * mDownloadProgressIndicator ;\n"
-    "  @private IBOutlet NSTextField * mDownloadSubTitle ;\n"
-    "  @private IBOutlet NSButton * mCancelButton ;\n"
-    "\n"
-    "  @private NSString * mLastAvailableVersion ;\n"
-    "  @private BOOL mSearchForUpdatesInBackground ;\n"
-    "  \n"
-    "  @private PMDownloadData * mDownloadData ;\n"
-    "  @private PMDownloadFile * mDownloadFile ;\n"
-    "}\n"
-    "\n"
-    "- (IBAction) checkForNewVersion: (id) inSender ;\n"
-    "\n"
-    "+ (void) instanciateSingleton ;\n"
-    "\n"
-    "@end\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//            Filewrapper template 'applicationGalgas3UpdateFileWrapper application_update_implementation'             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_implementation (C_Compiler * /* inCompiler */,
-                                                                                                                  const GALGAS_string & in_PROJECT_5F_NAME,
-                                                                                                                  const GALGAS_string & in_REPOSITORY_5F_URL,
-                                                                                                                  const GALGAS_string & in_BUNDLE_5F_BASE_5F_NAME
-                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMApplicationUpdate.m\n"
-    "//\n"
-    "//  Created by Pierre MOLINARO on 02/10/06.\n"
-    "//\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "#import \"PMApplicationUpdate.h\"\n"
-    "#import \"OC_GGS_ApplicationDelegate.h\"\n"
-    "#import \"PMDownloadData.h\"\n"
-    "#import \"PMDownloadFile.h\"\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "#import <WebKit/WebKit.h>\n"
-    "#import <Security/Security.h>\n"
-    "#import <SystemConfiguration/SystemConfiguration.h>\n"
-    "#import <ServiceManagement/ServiceManagement.h>\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "//--- Only for debugging !!!\n"
-    "//#define FORCED_APPLICATION_VERSION @\"0.0.0\"\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "static PMApplicationUpdate * gApplicationUpdate ;\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "@implementation PMApplicationUpdate\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "+ (void) instanciateSingleton {\n"
-    "  gApplicationUpdate = [PMApplicationUpdate new] ;\n"
-    "  const BOOL ok = [NSBundle loadNibNamed:@\"PMApplicationUpdate\" owner:gApplicationUpdate] ;\n"
-    "  if (! ok) {\n"
-    "    NSAlert * alert = [NSAlert\n"
-    "      alertWithMessageText:@\"Cannot load PMApplicationUpdate.xib.\"\n"
-    "      defaultButton:@\"Ok\"\n"
-    "      alternateButton:nil\n"
-    "      otherButton:nil\n"
-    "      informativeTextWithFormat:@\"\"\n"
-    "    ] ;\n"
-    "    [alert\n"
-    "      beginSheetModalForWindow:nil\n"
-    "      modalDelegate:nil\n"
-    "      didEndSelector:NULL\n"
-    "      contextInfo:NULL\n"
-    "    ] ;\n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "#pragma mark Pathes & URLs\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) applicationArchiveName {\n"
-    "  return @\"Cocoa" ;
-  result << in_PROJECT_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 62)).stringValue () ;
-  result << ".app.tar.bz2\" ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) serverHTTPPath {\n"
-    "  return @\"" ;
-  result << in_REPOSITORY_5F_URL.stringValue () ;
-  result << "\" ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) lastReleaseHTTPPath {\n"
-    "  return [self.serverHTTPPath stringByAppendingString:@\"/lastRelease.php\"] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) HTTPPathForVersion: (NSString *) inVersionString {\n"
-    "  return [NSString stringWithFormat:@\"%@/%@/%@\", self.serverHTTPPath, inVersionString, self.applicationArchiveName] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) temporaryDir {\n"
-    "  return @\"/tmp/TEMPORARY_DIR_FOR_" ;
-  result << in_PROJECT_5F_NAME.getter_uppercaseString (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 86)).stringValue () ;
-  result << "\" ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) temporaryPathForApplicationArchive {\n"
-    "  return [NSString stringWithFormat:@\"%@/%@\", self.temporaryDir, self.applicationArchiveName] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSComparisonResult) compareVersionString: (NSString *) inVersionString\n"
-    "                       withVersionString: (NSString *) inOtherVersionString {\n"
-    "  NSComparisonResult result = [inVersionString compare:inOtherVersionString] ;\n"
-    "  if (result != NSOrderedSame) {\n"
-    "    NSMutableArray * components = [NSMutableArray new] ;\n"
-    "    [components addObjectsFromArray:[inVersionString componentsSeparatedByString:@\".\"]] ;\n"
-    "    NSMutableArray * otherComponents = [NSMutableArray new] ;\n"
-    "    [otherComponents addObjectsFromArray:[inOtherVersionString componentsSeparatedByString:@\".\"]] ;\n"
-    "    while ([components count] < [otherComponents count]) {\n"
-    "      [components addObject:@\"0\"] ;\n"
-    "    }\n"
-    "    while ([components count] > [otherComponents count]) {\n"
-    "      [otherComponents addObject:@\"0\"] ;\n"
-    "    }\n"
-    "    result = NSOrderedSame ;\n"
-    "    for (NSUInteger i=0 ; (i<[components count]) && (result == NSOrderedSame) ; i++) {\n"
-    "      const int version = [[components objectAtIndex:i] intValue] ;\n"
-    "      const int otherVersion = [[otherComponents objectAtIndex:i] intValue] ;\n"
-    "      if (version < otherVersion) {\n"
-    "        result = NSOrderedAscending ;\n"
-    "      }else if (version > otherVersion) {\n"
-    "        result = NSOrderedDescending ;\n"
-    "      }\n"
-    "    }\n"
-    "  }\n"
-    "  return result ;\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "#pragma mark awakeFromNib\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) awakeFromNib {\n"
-    "  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;\n"
-    "//--- Remove temporary dir, if it exists\n"
-    "  NSFileManager * fm = [NSFileManager defaultManager] ;\n"
-    "  if ([fm fileExistsAtPath:self.temporaryDir]) {\n"
-    "    [fm removeItemAtPath:self.temporaryDir error:nil] ;\n"
-    "  }\n"
-    "//--- Add bindings\n"
-    "  [mCheckUpdateAtStartUpCheckBox\n"
-    "    bind:@\"value\"\n"
-    "    toObject:ud\n"
-    "    withKeyPath:@\"GGS_check_update_at_start_up\"\n"
-    "    options:nil\n"
-    "  ] ;\n"
-    "  [mCheckUpdateAtStartUpCheckBox2\n"
-    "    bind:@\"value\"\n"
-    "    toObject:ud\n"
-    "    withKeyPath:@\"GGS_check_update_at_start_up\"\n"
-    "    options:nil\n"
-    "  ] ;\n"
-    "//----------------------------------------- Change Log Tab Item\n"
-    "//--- Add 'Update' tab item\n"
-    "  NSTabView * prefsTabView = [gCocoaApplicationDelegate preferencesTabView] ;\n"
-    "  NSTabViewItem * tabViewItem = [NSTabViewItem new] ;\n"
-    "  [tabViewItem setView:mViewForChangeLogInPreferencePane] ;\n"
-    "  [tabViewItem setLabel:@\"Update\"] ;\n"
-    "  [prefsTabView addTabViewItem:tabViewItem] ;\n"
-    "//--- Get Last Version\n"
-    "  [self checkForNewVersion:nil] ;\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "//                                                                          *\n"
-    "//            Check for new version                                         *\n"
-    "//                                                                          *\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (IBAction) checkForNewVersion: (id) inSender {\n"
-    "  mSearchForUpdatesInBackground = nil == inSender ;\n"
-    "  [mCheckNowButton setEnabled:NO] ;\n"
-    "  mDownloadData = [[PMDownloadData alloc]\n"
-    "    initDownloadWithURLString:self.lastReleaseHTTPPath\n"
-    "    delegate:self\n"
-    "    downloadDidEndSelector:@selector (lastVersionStringIsAvailable:)\n"
-    "    userInfo:nil\n"
-    "  ] ;\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) lastVersionStringIsAvailable: (PMDownloadData *) inDownloader {\n"
-    "  [mCheckNowButton setEnabled:YES] ;\n"
-    "  NSError * error = [inDownloader downloadError] ;\n"
-    "  if (error != nil) {\n"
-    "    if (! mSearchForUpdatesInBackground) {\n"
-    "      NSAlert * alert = [NSAlert\n"
-    "        alertWithMessageText:@\"Cannot connect to the server.\"\n"
-    "        defaultButton:@\"Ok\"\n"
-    "        alternateButton:nil\n"
-    "        otherButton:nil\n"
-    "        informativeTextWithFormat:@\"Reason: '%@'.\", [error localizedDescription]\n"
-    "      ] ;\n"
-    "      [alert\n"
-    "        beginSheetModalForWindow:nil\n"
-    "        modalDelegate:nil\n"
-    "        didEndSelector:NULL\n"
-    "        contextInfo:NULL\n"
-    "      ] ;\n"
-    "    }\n"
-    "  }else{\n"
-    "  //--- Update changeLog Web View\n"
-    "    mLastAvailableVersion = [[NSString alloc] initWithData:inDownloader.downloadedData encoding:NSASCIIStringEncoding] ;\n"
-    "    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@\"%@/%@/changeLog.html\", self.serverHTTPPath, mLastAvailableVersion]] ;\n"
-    "    [mChangeLogInPreferencePaneWebView.mainFrame loadRequest:[NSURLRequest requestWithURL:url]];\n"
-    "    NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;\n"
-    "    if ([ud boolForKey:@\"GGS_check_update_at_start_up\"]) {\n"
-    "      [self checkForUpdating] ;\n"
-    "    }\n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "#pragma mark Check for new version\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) checkForUpdating {\n"
-    "//--- Check Response\n"
-    "  NSScanner * scanner = [NSScanner scannerWithString:mLastAvailableVersion] ;\n"
-    "  const BOOL versionOk = [scanner scanInt:NULL]\n"
-    "               && [scanner scanString:@\".\" intoString:NULL]\n"
-    "               && [scanner scanInt:NULL]\n"
-    "               && [scanner scanString:@\".\" intoString:NULL]\n"
-    "               && [scanner scanInt:NULL]\n"
-    "               && [scanner isAtEnd] ;\n"
-    "  if (versionOk) {\n"
-    "  //--- Get Application Current version\n"
-    "    #ifdef FORCED_APPLICATION_VERSION\n"
-    "      NSString * applicationVersion = FORCED_APPLICATION_VERSION ;\n"
-    "      NSLog (@\"Forced Application version: %@\", applicationVersion) ;\n"
-    "      NSLog (@\"Last Available version: %@\", mLastAvailableVersion) ;\n"
-    "    #else\n"
-    "      NSBundle * mainBundle = [NSBundle mainBundle] ;\n"
-    "      NSDictionary * infoDictionary = [mainBundle infoDictionary] ;\n"
-    "      NSString * applicationVersion = [infoDictionary objectForKey:@\"CFBundleShortVersionString\"] ;\n"
-    "    // NSLog (@\"applicationVersion '%@'\", applicationVersion) ;\n"
-    "    #endif\n"
-    "    const NSComparisonResult r = [self compareVersionString:applicationVersion withVersionString:mLastAvailableVersion] ;\n"
-    "    if (r == NSOrderedAscending) {\n"
-    "    //--- Display change log in Web View\n"
-    "      NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@\"%@/%@/changeLog.html\", self.serverHTTPPath, mLastAvailableVersion]] ;\n"
-    "      [[mChangeLogWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];\n"
-    "      NSString * s = [NSString stringWithFormat:\n"
-    "        @\"Current version is %@; the %@ version can be downloaded.\",\n"
-    "        applicationVersion,\n"
-    "        mLastAvailableVersion\n"
-    "      ] ;\n"
-    "      [mNewVersionTextField setStringValue:s] ;\n"
-    "      s = [NSString stringWithFormat:\n"
-    "        @\"Install and Launch Version %@\",\n"
-    "        mLastAvailableVersion\n"
-    "      ] ;\n"
-    "      [mPerformUpdateButton setTitle:s] ;\n"
-    "      [NSApp\n"
-    "        beginSheet:mNewAvailableVersionPanel\n"
-    "        modalForWindow:nil\n"
-    "        modalDelegate:self\n"
-    "        didEndSelector:@selector (newVersionIsAvailableAlertDidEnd:returnCode:contextInfo:)\n"
-    "        contextInfo:nil\n"
-    "      ] ;\n"
-    "      [mCheckNowButton setEnabled:NO] ;\n"
-    "    }else if (! mSearchForUpdatesInBackground) {\n"
-    "      NSAlert * alert = [NSAlert\n"
-    "        alertWithMessageText:@\"" ;
-  result << in_PROJECT_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 265)).stringValue () ;
-  result << " is up to date.\"\n"
-    "        defaultButton:@\"Ok\"\n"
-    "        alternateButton:nil\n"
-    "        otherButton:nil\n"
-    "        informativeTextWithFormat:@\"There is no new version at this time.\"\n"
-    "      ] ;\n"
-    "      [alert\n"
-    "        beginSheetModalForWindow:[mCheckNowButton window]\n"
-    "        modalDelegate:nil\n"
-    "        didEndSelector:NULL\n"
-    "        contextInfo:NULL\n"
-    "      ] ;\n"
-    "    }\n"
-    "  }else if (! mSearchForUpdatesInBackground) {\n"
-    "    NSAlert * alert = [NSAlert\n"
-    "      alertWithMessageText:@\"Cannot get last release number.\"\n"
-    "      defaultButton:@\"Ok\"\n"
-    "      alternateButton:nil\n"
-    "      otherButton:nil\n"
-    "      informativeTextWithFormat:@\"The server answered in an incomprehensible way: '%@'.\", mLastAvailableVersion\n"
-    "    ] ;\n"
-    "    [alert\n"
-    "      beginSheetModalForWindow:nil\n"
-    "      modalDelegate:nil\n"
-    "      didEndSelector:NULL\n"
-    "      contextInfo:NULL\n"
-    "    ] ;\n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) newVersionIsAvailableAlertDidEnd:(NSWindow *) inUnusedWindow\n"
-    "         returnCode:(int) inReturnCode\n"
-    "         contextInfo:(void  *) inContextInfo {\n"
-    "  // NSLog (@\"inReturnCode %d\", inReturnCode) ;\n"
-    "  if (inReturnCode == YES) {\n"
-    "  //--- Remove temporary dir if it exists\n"
-    "    NSFileManager * fm = [NSFileManager defaultManager] ;\n"
-    "    if ([fm fileExistsAtPath:self.temporaryDir]) {\n"
-    "      [fm removeItemAtPath:self.temporaryDir error:nil] ;\n"
-    "    }\n"
-    "  //--- Create temporary dir\n"
-    "    [fm\n"
-    "      createDirectoryAtPath:self.temporaryDir\n"
-    "      withIntermediateDirectories:NO\n"
-    "      attributes:nil\n"
-    "      error:nil\n"
-    "    ] ;\n"
-    "  //--- Start download Application\n"
-    "    [mDownloadTitle setStringValue:[NSString stringWithFormat:@\"Downloading " ;
-  result << in_PROJECT_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.m.galgasTemplate", 315)).stringValue () ;
-  result << " %@...\", mLastAvailableVersion]] ;\n"
-    "    [[mCancelButton window] makeKeyAndOrderFront:nil] ;\n"
-    "    mDownloadFile = [[PMDownloadFile alloc] initWithURLString:[self HTTPPathForVersion:mLastAvailableVersion]\n"
-    "       destinationFileName:[self temporaryPathForApplicationArchive]\n"
-    "       downloadDelegate:self\n"
-    "       cancelButton:mCancelButton\n"
-    "       subtitle:mDownloadSubTitle\n"
-    "       progressIndicator:mDownloadProgressIndicator\n"
-    "       userInfo:mLastAvailableVersion\n"
-    "    ] ;\n"
-    "  }else{\n"
-    "    [mCheckNowButton setEnabled:YES] ;\n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) downloadHasBeenCancelled {\n"
-    "  [mCancelButton.window orderOut:nil] ;\n"
-    "  [mCheckNowButton setEnabled:YES] ;\n"
-    "//--- Remove temporary dir if it exists\n"
-    "  NSFileManager * fm = [NSFileManager defaultManager] ;\n"
-    "  if ([fm fileExistsAtPath:self.temporaryDir]) {\n"
-    "    [fm removeItemAtPath:self.temporaryDir error:nil] ;\n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) downloadDidFinishOnError: (NSError *) inError {\n"
-    "//--- Note : presentError is not available on 10.3.9 and earlier\n"
-    " // NSString * domain = [inError domain] ;\n"
-    "  NSDictionary * userInfo = [inError userInfo] ;\n"
-    "  //NSLog (@\"userInfo %@\", userInfo) ;\n"
-    "  NSAlert * alert = [NSAlert\n"
-    "    alertWithMessageText:@\"Download error.\"\n"
-    "    defaultButton:@\"Ok\"\n"
-    "    alternateButton:nil\n"
-    "    otherButton:nil\n"
-    "    informativeTextWithFormat:@\"The following error occurs: %@.\", [userInfo objectForKey:@\"NSLocalizedDescription\"]\n"
-    "  ] ;\n"
-    "  [alert\n"
-    "     beginSheetModalForWindow:nil\n"
-    "     modalDelegate:nil\n"
-    "     didEndSelector:NULL\n"
-    "     contextInfo:NULL\n"
-    "  ] ;\n"
-    "  [self downloadHasBeenCancelled] ;\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (int) uncompressArchive: (NSString *) inArchivePath {\n"
-    "  NSArray * arguments = [NSArray arrayWithObjects:\n"
-    "    @\"-d\",\n"
-    "    inArchivePath,\n"
-    "    nil\n"
-    "  ] ;\n"
-    "  NSTask * task = [NSTask new] ;\n"
-    "  [task setLaunchPath:@\"/usr/bin/bzip2\"] ;\n"
-    "  [task setArguments:arguments] ;\n"
-    "  [task launch] ;\n"
-    "  [task waitUntilExit] ;\n"
-    "  int status = [task terminationStatus] ;\n"
-    "  task = nil ;\n"
-    "  if (status == 0) {\n"
-    "    task = [[NSTask alloc] init] ;\n"
-    "    [task setLaunchPath:@\"/usr/bin/tar\"] ;\n"
-    "    arguments = [NSArray arrayWithObjects:\n"
-    "      @\"-x\",\n"
-    "      @\"-C\",\n"
-    "      self.temporaryDir,\n"
-    "      @\"-f\",\n"
-    "      [inArchivePath stringByDeletingPathExtension],\n"
-    "      nil\n"
-    "    ] ;\n"
-    "    [task setArguments:arguments] ;\n"
-    "    [task launch] ;\n"
-    "    [task waitUntilExit] ;\n"
-    "    status = [task terminationStatus] ;\n"
-    "    task = nil ;\n"
-    "  }\n"
-    "  return status ;\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) downloadDidEnd: (PMDownloadFile *) inDownloader {\n"
-    "  [mCancelButton.window orderOut:nil] ;\n"
-    "  if ([inDownloader downloadHasBeenCancelled]) {\n"
-    "    [self downloadHasBeenCancelled] ;\n"
-    "  }else{\n"
-    "    NSError * downloadError = [inDownloader downloadError] ;\n"
-    "    if (downloadError != NULL) {\n"
-    "      [self downloadDidFinishOnError:downloadError] ;\n"
-    "    }else{\n"
-    "      [mDownloadTitle setStringValue:[NSString stringWithFormat:@\"Uncompressing archive...\"]] ;\n"
-    "      [mDownloadProgressIndicator setIndeterminate:YES] ;\n"
-    "      [mDownloadProgressIndicator startAnimation:nil] ;\n"
-    "    //--- Uncompressing Archives\n"
-    "      [mDownloadSubTitle setStringValue:@\"\"] ;\n"
-    "      [mCancelButton.window displayIfNeeded] ;\n"
-    "      int status = [self uncompressArchive:self.temporaryPathForApplicationArchive] ;\n"
-    "      if (status == 0) {\n"
-    "        NSString * filePath = [NSString stringWithFormat:@\"%@/application_path.txt\", self.temporaryDir] ;\n"
-    "        NSString * applicationPath = [NSBundle mainBundle].bundlePath ;\n"
-    "        status = ! [applicationPath writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:NULL] ;\n"
-    "      }\n"
-    "      [mCancelButton.window orderOut:nil] ;\n"
-    "      if (status == 0) {\n"
-    "        NSAlert * alert = [NSAlert\n"
-    "          alertWithMessageText:@\"Ready to Install the new version.\"\n"
-    "          defaultButton:@\"Install and Launch\"\n"
-    "          alternateButton:@\"Cancel\"\n"
-    "          otherButton:nil\n"
-    "          informativeTextWithFormat:@\"\"\n"
-    "        ] ;\n"
-    "        [alert\n"
-    "          beginSheetModalForWindow:nil\n"
-    "          modalDelegate:self\n"
-    "          didEndSelector:@selector (performInstallAlertDidEnd:returnCode:contextInfo:)\n"
-    "          contextInfo:NULL\n"
-    "        ] ;\n"
-    "      }else{\n"
-    "        NSAlert * alert = [NSAlert\n"
-    "          alertWithMessageText:@\"Cannot uncompress archive.\"\n"
-    "          defaultButton:@\"Ok\"\n"
-    "          alternateButton:nil\n"
-    "          otherButton:nil\n"
-    "          informativeTextWithFormat:@\"An error occurs during uncompressing (code %d).\", status\n"
-    "        ] ;\n"
-    "        [alert\n"
-    "          beginSheetModalForWindow:nil\n"
-    "          modalDelegate:nil\n"
-    "          didEndSelector:NULL\n"
-    "          contextInfo:NULL\n"
-    "        ] ;\n"
-    "      }\n"
-    "    }  \n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) performInstallAlertDidEnd:(NSAlert *) inUnusedAlert\n"
-    "         returnCode:(int) inReturnCode\n"
-    "         contextInfo:(void  *) inContextInfo {\n"
-    "  if (inReturnCode == YES) {\n"
-    "    [mCheckNowButton setEnabled:YES] ;\n"
-    "  //-------------- Copy\n"
-    "    NSString * updaterAppPath = [NSString stringWithFormat:@\"%@/" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_PROJECT_5F_NAME.stringValue () ;
-  result << ".updaterApp.app\", [NSBundle mainBundle].resourcePath] ;\n"
-    "    // NSLog (@\"updaterAppPath %@\", updaterAppPath) ;\n"
-    "    NSString * updaterAppCopyPath = [NSString stringWithFormat:@\"%@/" ;
-  result << in_BUNDLE_5F_BASE_5F_NAME.stringValue () ;
-  result << "." ;
-  result << in_PROJECT_5F_NAME.stringValue () ;
-  result << ".updaterApp.app\", self.temporaryDir] ;\n"
-    "    // NSLog (@\"updaterAppCopyPath %@\", updaterAppCopyPath) ;\n"
-    "    NSFileManager * fm = [NSFileManager new] ;\n"
-    "    NSError * error = nil ;\n"
-    "    BOOL ok = [fm\n"
-    "      copyItemAtPath:updaterAppPath\n"
-    "      toPath:updaterAppCopyPath\n"
-    "      error:& error\n"
-    "    ] ;\n"
-    "    if (! ok) {\n"
-    "      [NSApp presentError:error] ;\n"
-    "    }\n"
-    "  //-------------- Launch UpdaterApp copy\n"
-    "    if (ok) {\n"
-    "      error = nil ;\n"
-    "      NSRunningApplication * runningApp = [[NSWorkspace sharedWorkspace]\n"
-    "        launchApplicationAtURL:[NSURL fileURLWithPath:updaterAppCopyPath]\n"
-    "        options:NSWorkspaceLaunchAsync\n"
-    "        configuration:nil\n"
-    "        error:& error\n"
-    "      ] ;\n"
-    "      if (nil == runningApp) {\n"
-    "        ok = false ;\n"
-    "        [NSApp presentError:error] ;\n"
-    "      }\n"
-    "    }\n"
-    "  //-------------- Application self terminates\n"
-    "    if (ok) {\n"
-    "      [[NSRunLoop currentRunLoop]\n"
-    "        performSelector: @selector (terminate:)\n"
-    "        target:NSApp\n"
-    "        argument:nil\n"
-    "        order:NSUIntegerMax\n"
-    "        modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]\n"
-    "      ] ;\n"
-    "    }\n"
-    "  }else{\n"
-    "    [self downloadHasBeenCancelled] ;\n"
-    "  }\n"
-    "}\n"
-    "\n"
-    "//--------------------------------------------------------------------------*\n"
-    "\n"
-    "@end\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                  Filewrapper template 'applicationGalgas3UpdateFileWrapper application_update_nib'                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_nib (C_Compiler * /* inCompiler */,
-                                                                                                       const GALGAS_string & in_PROJECT_5F_NAME
-                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "<\?xml version=\"1.0\" encoding=\"UTF-8\"\?>\n"
-    "<archive type=\"com.apple.InterfaceBuilder3.Cocoa.XIB\" version=\"7.10\">\n"
-    " <data>\n"
-    "  <int key=\"IBDocument.SystemTarget\">1050</int>\n"
-    "  <string key=\"IBDocument.SystemVersion\">11E53</string>\n"
-    "  <string key=\"IBDocument.InterfaceBuilderVersion\">2182</string>\n"
-    "  <string key=\"IBDocument.AppKitVersion\">1138.47</string>\n"
-    "  <string key=\"IBDocument.HIToolboxVersion\">569.00</string>\n"
-    "  <object class=\"NSMutableDictionary\" key=\"IBDocument.PluginVersions\">\n"
-    "   <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "   <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "    <string>com.apple.WebKitIBPlugin</string>\n"
-    "   </object>\n"
-    "   <object class=\"NSArray\" key=\"dict.values\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <string>2182</string>\n"
-    "    <string>1117</string>\n"
-    "   </object>\n"
-    "  </object>\n"
-    "  <object class=\"NSArray\" key=\"IBDocument.IntegratedClassDependencies\">\n"
-    "   <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "   <string>NSObjectController</string>\n"
-    "   <string>NSButton</string>\n"
-    "   <string>NSTextFieldCell</string>\n"
-    "   <string>NSButtonCell</string>\n"
-    "   <string>NSImageView</string>\n"
-    "   <string>NSBox</string>\n"
-    "   <string>NSProgressIndicator</string>\n"
-    "   <string>NSImageCell</string>\n"
-    "   <string>WebView</string>\n"
-    "   <string>NSCustomObject</string>\n"
-    "   <string>NSCustomView</string>\n"
-    "   <string>NSView</string>\n"
-    "   <string>NSWindowTemplate</string>\n"
-    "   <string>NSTextField</string>\n"
-    "  </object>\n"
-    "  <object class=\"NSArray\" key=\"IBDocument.PluginDependencies\">\n"
-    "   <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "   <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "   <string>com.apple.WebKitIBPlugin</string>\n"
-    "  </object>\n"
-    "  <object class=\"NSMutableDictionary\" key=\"IBDocument.Metadata\">\n"
-    "   <string key=\"NS.key.0\">PluginDependencyRecalculationVersion</string>\n"
-    "   <integer value=\"1\" key=\"NS.object.0\"/>\n"
-    "  </object>\n"
-    "  <object class=\"NSMutableArray\" key=\"IBDocument.RootObjects\" id=\"685716556\">\n"
-    "   <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "   <object class=\"NSCustomObject\" id=\"42341283\">\n"
-    "    <string key=\"NSClassName\">PMApplicationUpdate</string>\n"
-    "   </object>\n"
-    "   <object class=\"NSCustomObject\" id=\"1055328378\">\n"
-    "    <string key=\"NSClassName\">FirstResponder</string>\n"
-    "   </object>\n"
-    "   <object class=\"NSCustomObject\" id=\"382307856\">\n"
-    "    <string key=\"NSClassName\">NSApplication</string>\n"
-    "   </object>\n"
-    "   <object class=\"NSWindowTemplate\" id=\"333224431\">\n"
-    "    <int key=\"NSWindowStyleMask\">1</int>\n"
-    "    <int key=\"NSWindowBacking\">2</int>\n"
-    "    <string key=\"NSWindowRect\">{{409, 459}, {467, 151}}</string>\n"
-    "    <int key=\"NSWTFlags\">1886912512</int>\n"
-    "    <string key=\"NSWindowTitle\">" ;
-  result << in_PROJECT_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.xib.galgasTemplate", 64)).stringValue () ;
-  result << " Update</string>\n"
-    "    <object class=\"NSMutableString\" key=\"NSWindowClass\">\n"
-    "     <characters key=\"NS.bytes\">NSPanel</characters>\n"
-    "    </object>\n"
-    "    <object class=\"NSMutableString\" key=\"NSViewClass\">\n"
-    "     <characters key=\"NS.bytes\">View</characters>\n"
-    "    </object>\n"
-    "    <nil key=\"NSUserInterfaceItemIdentifier\"/>\n"
-    "    <string key=\"NSWindowContentMinSize\">{213, 107}</string>\n"
-    "    <object class=\"NSView\" key=\"NSWindowView\" id=\"749559358\">\n"
-    "     <nil key=\"NSNextResponder\"/>\n"
-    "     <int key=\"NSvFlags\">256</int>\n"
-    "     <object class=\"NSMutableArray\" key=\"NSSubviews\">\n"
-    "      <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "      <object class=\"NSTextField\" id=\"1034800840\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"749559358\"/>\n"
-    "       <int key=\"NSvFlags\">256</int>\n"
-    "       <string key=\"NSFrame\">{{105, 113}, {345, 18}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"749559358\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSTextFieldCell\" key=\"NSCell\" id=\"509148504\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">4194304</int>\n"
-    "        <string key=\"NSContents\">Title\xE2""\x80""\xA6""</string>\n"
-    "        <object class=\"NSFont\" key=\"NSSupport\" id=\"254211308\">\n"
-    "         <string key=\"NSName\">LucidaGrande-Bold</string>\n"
-    "         <double key=\"NSSize\">13</double>\n"
-    "         <int key=\"NSfFlags\">2072</int>\n"
-    "        </object>\n"
-    "        <reference key=\"NSControlView\" ref=\"1034800840\"/>\n"
-    "        <object class=\"NSColor\" key=\"NSBackgroundColor\" id=\"481433827\">\n"
-    "         <int key=\"NSColorSpace\">6</int>\n"
-    "         <string key=\"NSCatalogName\">System</string>\n"
-    "         <string key=\"NSColorName\">controlColor</string>\n"
-    "         <object class=\"NSColor\" key=\"NSColor\">\n"
-    "          <int key=\"NSColorSpace\">3</int>\n"
-    "          <bytes key=\"NSWhite\">MC42NjY2NjY2NjY3AA</bytes>\n"
-    "         </object>\n"
-    "        </object>\n"
-    "        <object class=\"NSColor\" key=\"NSTextColor\" id=\"123369485\">\n"
-    "         <int key=\"NSColorSpace\">6</int>\n"
-    "         <string key=\"NSCatalogName\">System</string>\n"
-    "         <string key=\"NSColorName\">controlTextColor</string>\n"
-    "         <object class=\"NSColor\" key=\"NSColor\">\n"
-    "          <int key=\"NSColorSpace\">3</int>\n"
-    "          <bytes key=\"NSWhite\">MAA</bytes>\n"
-    "         </object>\n"
-    "        </object>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <object class=\"NSTextField\" id=\"490232887\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"749559358\"/>\n"
-    "       <int key=\"NSvFlags\">256</int>\n"
-    "       <string key=\"NSFrame\">{{105, 63}, {345, 18}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"749559358\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSTextFieldCell\" key=\"NSCell\" id=\"454506579\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">4194304</int>\n"
-    "        <string key=\"NSContents\">Subtitle\xE2""\x80""\xA6""</string>\n"
-    "        <reference key=\"NSSupport\" ref=\"254211308\"/>\n"
-    "        <reference key=\"NSControlView\" ref=\"490232887\"/>\n"
-    "        <bool key=\"NSDrawsBackground\">YES</bool>\n"
-    "        <reference key=\"NSBackgroundColor\" ref=\"481433827\"/>\n"
-    "        <reference key=\"NSTextColor\" ref=\"123369485\"/>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <object class=\"NSProgressIndicator\" id=\"204285727\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"749559358\"/>\n"
-    "       <int key=\"NSvFlags\">1280</int>\n"
-    "       <object class=\"NSPSMatrix\" key=\"NSDrawMatrix\"/>\n"
-    "       <string key=\"NSFrame\">{{106, 85}, {343, 20}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"749559358\"/>\n"
-    "       <int key=\"NSpiFlags\">16394</int>\n"
-    "       <double key=\"NSMaxValue\">100</double>\n"
-    "      </object>\n"
-    "      <object class=\"NSImageView\" id=\"294367161\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"749559358\"/>\n"
-    "       <int key=\"NSvFlags\">256</int>\n"
-    "       <object class=\"NSMutableSet\" key=\"NSDragTypes\">\n"
-    "        <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "        <object class=\"NSArray\" key=\"set.sortedObjects\">\n"
-    "         <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "         <string>Apple PDF pasteboard type</string>\n"
-    "         <string>Apple PICT pasteboard type</string>\n"
-    "         <string>Apple PNG pasteboard type</string>\n"
-    "         <string>NSFilenamesPboardType</string>\n"
-    "         <string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>\n"
-    "         <string>NeXT TIFF v4.0 pasteboard type</string>\n"
-    "        </object>\n"
-    "       </object>\n"
-    "       <string key=\"NSFrame\">{{20, 66}, {62, 62}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"749559358\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSImageCell\" key=\"NSCell\" id=\"450216261\">\n"
-    "        <int key=\"NSCellFlags\">130560</int>\n"
-    "        <int key=\"NSCellFlags2\">33554432</int>\n"
-    "        <object class=\"NSCustomResource\" key=\"NSContents\" id=\"467314799\">\n"
-    "         <string key=\"NSClassName\">NSImage</string>\n"
-    "         <string key=\"NSResourceName\">NSApplicationIcon</string>\n"
-    "        </object>\n"
-    "        <int key=\"NSAlign\">0</int>\n"
-    "        <int key=\"NSScale\">0</int>\n"
-    "        <int key=\"NSStyle\">0</int>\n"
-    "        <bool key=\"NSAnimates\">NO</bool>\n"
-    "       </object>\n"
-    "       <bool key=\"NSEditable\">YES</bool>\n"
-    "      </object>\n"
-    "      <object class=\"NSButton\" id=\"828513968\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"749559358\"/>\n"
-    "       <int key=\"NSvFlags\">256</int>\n"
-    "       <string key=\"NSFrame\">{{371, 15}, {82, 32}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"749559358\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSButtonCell\" key=\"NSCell\" id=\"679983593\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">134217728</int>\n"
-    "        <string key=\"NSContents\">Cancel</string>\n"
-    "        <object class=\"NSFont\" key=\"NSSupport\" id=\"661924512\">\n"
-    "         <string key=\"NSName\">LucidaGrande</string>\n"
-    "         <double key=\"NSSize\">13</double>\n"
-    "         <int key=\"NSfFlags\">1044</int>\n"
-    "        </object>\n"
-    "        <reference key=\"NSControlView\" ref=\"828513968\"/>\n"
-    "        <int key=\"NSButtonFlags\">-2038284033</int>\n"
-    "        <int key=\"NSButtonFlags2\">1</int>\n"
-    "        <reference key=\"NSAlternateImage\" ref=\"661924512\"/>\n"
-    "        <string key=\"NSAlternateContents\"/>\n"
-    "        <object class=\"NSMutableString\" key=\"NSKeyEquivalent\">\n"
-    "         <characters key=\"NS.bytes\"/>\n"
-    "        </object>\n"
-    "        <int key=\"NSPeriodicDelay\">200</int>\n"
-    "        <int key=\"NSPeriodicInterval\">25</int>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string key=\"NSFrameSize\">{467, 151}</string>\n"
-    "    </object>\n"
-    "    <string key=\"NSScreenRect\">{{0, 0}, {2560, 1418}}</string>\n"
-    "    <string key=\"NSMinSize\">{213, 129}</string>\n"
-    "    <string key=\"NSMaxSize\">{10000000000000, 10000000000000}</string>\n"
-    "    <bool key=\"NSWindowIsRestorable\">YES</bool>\n"
-    "   </object>\n"
-    "   <object class=\"NSWindowTemplate\" id=\"216006591\">\n"
-    "    <int key=\"NSWindowStyleMask\">9</int>\n"
-    "    <int key=\"NSWindowBacking\">2</int>\n"
-    "    <string key=\"NSWindowRect\">{{214, 371}, {780, 439}}</string>\n"
-    "    <int key=\"NSWTFlags\">1886912512</int>\n"
-    "    <string key=\"NSWindowTitle\"/>\n"
-    "    <object class=\"NSMutableString\" key=\"NSWindowClass\">\n"
-    "     <characters key=\"NS.bytes\">NSPanel</characters>\n"
-    "    </object>\n"
-    "    <object class=\"NSMutableString\" key=\"NSViewClass\">\n"
-    "     <characters key=\"NS.bytes\">View</characters>\n"
-    "    </object>\n"
-    "    <nil key=\"NSUserInterfaceItemIdentifier\"/>\n"
-    "    <string key=\"NSWindowContentMinSize\">{213, 107}</string>\n"
-    "    <object class=\"NSView\" key=\"NSWindowView\" id=\"5705630\">\n"
-    "     <reference key=\"NSNextResponder\"/>\n"
-    "     <int key=\"NSvFlags\">256</int>\n"
-    "     <object class=\"NSMutableArray\" key=\"NSSubviews\">\n"
-    "      <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "      <object class=\"NSBox\" id=\"681154887\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">274</int>\n"
-    "       <object class=\"NSMutableArray\" key=\"NSSubviews\">\n"
-    "        <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "        <object class=\"NSView\" id=\"614647701\">\n"
-    "         <reference key=\"NSNextResponder\" ref=\"681154887\"/>\n"
-    "         <int key=\"NSvFlags\">274</int>\n"
-    "         <object class=\"NSMutableArray\" key=\"NSSubviews\">\n"
-    "          <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "          <object class=\"WebView\" id=\"1035469751\">\n"
-    "           <reference key=\"NSNextResponder\" ref=\"614647701\"/>\n"
-    "           <int key=\"NSvFlags\">274</int>\n"
-    "           <object class=\"NSMutableSet\" key=\"NSDragTypes\">\n"
-    "            <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "            <object class=\"NSArray\" key=\"set.sortedObjects\">\n"
-    "             <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "             <string>Apple HTML pasteboard type</string>\n"
-    "             <string>Apple PDF pasteboard type</string>\n"
-    "             <string>Apple PICT pasteboard type</string>\n"
-    "             <string>Apple URL pasteboard type</string>\n"
-    "             <string>Apple Web Archive pasteboard type</string>\n"
-    "             <string>NSColor pasteboard type</string>\n"
-    "             <string>NSFilenamesPboardType</string>\n"
-    "             <string>NSStringPboardType</string>\n"
-    "             <string>NeXT RTFD pasteboard type</string>\n"
-    "             <string>NeXT Rich Text Format v1.0 pasteboard type</string>\n"
-    "             <string>NeXT TIFF v4.0 pasteboard type</string>\n"
-    "             <string>WebURLsWithTitlesPboardType</string>\n"
-    "             <string>public.png</string>\n"
-    "             <string>public.url</string>\n"
-    "             <string>public.url-name</string>\n"
-    "            </object>\n"
-    "           </object>\n"
-    "           <string key=\"NSFrame\">{{1, 1}, {738, 248}}</string>\n"
-    "           <reference key=\"NSSuperview\" ref=\"614647701\"/>\n"
-    "           <reference key=\"NSNextKeyView\"/>\n"
-    "           <string key=\"FrameName\"/>\n"
-    "           <string key=\"GroupName\"/>\n"
-    "           <object class=\"WebPreferences\" key=\"Preferences\" id=\"794004680\">\n"
-    "            <string key=\"Identifier\"/>\n"
-    "            <object class=\"NSMutableDictionary\" key=\"Values\">\n"
-    "             <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "             <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "              <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "              <string>WebKitDefaultFixedFontSize</string>\n"
-    "              <string>WebKitDefaultFontSize</string>\n"
-    "              <string>WebKitMinimumFontSize</string>\n"
-    "             </object>\n"
-    "             <object class=\"NSArray\" key=\"dict.values\">\n"
-    "              <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "              <integer value=\"12\"/>\n"
-    "              <integer value=\"12\"/>\n"
-    "              <integer value=\"1\"/>\n"
-    "             </object>\n"
-    "            </object>\n"
-    "           </object>\n"
-    "           <bool key=\"UseBackForwardList\">NO</bool>\n"
-    "           <bool key=\"AllowsUndo\">YES</bool>\n"
-    "          </object>\n"
-    "         </object>\n"
-    "         <string key=\"NSFrame\">{{1, 1}, {740, 250}}</string>\n"
-    "         <reference key=\"NSSuperview\" ref=\"681154887\"/>\n"
-    "        </object>\n"
-    "       </object>\n"
-    "       <string key=\"NSFrame\">{{19, 59}, {742, 252}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <string key=\"NSOffsets\">{0, 0}</string>\n"
-    "       <object class=\"NSTextFieldCell\" key=\"NSTitleCell\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">0</int>\n"
-    "        <string key=\"NSContents\">Box</string>\n"
-    "        <object class=\"NSFont\" key=\"NSSupport\" id=\"26\">\n"
-    "         <string key=\"NSName\">LucidaGrande</string>\n"
-    "         <double key=\"NSSize\">11</double>\n"
-    "         <int key=\"NSfFlags\">3100</int>\n"
-    "        </object>\n"
-    "        <object class=\"NSColor\" key=\"NSBackgroundColor\">\n"
-    "         <int key=\"NSColorSpace\">6</int>\n"
-    "         <string key=\"NSCatalogName\">System</string>\n"
-    "         <string key=\"NSColorName\">textBackgroundColor</string>\n"
-    "         <object class=\"NSColor\" key=\"NSColor\">\n"
-    "          <int key=\"NSColorSpace\">3</int>\n"
-    "          <bytes key=\"NSWhite\">MQA</bytes>\n"
-    "         </object>\n"
-    "        </object>\n"
-    "        <object class=\"NSColor\" key=\"NSTextColor\">\n"
-    "         <int key=\"NSColorSpace\">3</int>\n"
-    "         <bytes key=\"NSWhite\">MCAwLjgwMDAwMDAxAA</bytes>\n"
-    "        </object>\n"
-    "       </object>\n"
-    "       <reference key=\"NSContentView\" ref=\"614647701\"/>\n"
-    "       <int key=\"NSBorderType\">1</int>\n"
-    "       <int key=\"NSBoxType\">3</int>\n"
-    "       <int key=\"NSTitlePosition\">0</int>\n"
-    "       <bool key=\"NSTransparent\">NO</bool>\n"
-    "      </object>\n"
-    "      <object class=\"NSImageView\" id=\"699157213\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">268</int>\n"
-    "       <object class=\"NSMutableSet\" key=\"NSDragTypes\">\n"
-    "        <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "        <object class=\"NSArray\" key=\"set.sortedObjects\">\n"
-    "         <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "         <string>Apple PDF pasteboard type</string>\n"
-    "         <string>Apple PICT pasteboard type</string>\n"
-    "         <string>Apple PNG pasteboard type</string>\n"
-    "         <string>NSFilenamesPboardType</string>\n"
-    "         <string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>\n"
-    "         <string>NeXT TIFF v4.0 pasteboard type</string>\n"
-    "        </object>\n"
-    "       </object>\n"
-    "       <string key=\"NSFrame\">{{20, 329}, {89, 90}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSImageCell\" key=\"NSCell\" id=\"438997373\">\n"
-    "        <int key=\"NSCellFlags\">537001472</int>\n"
-    "        <int key=\"NSCellFlags2\">33554432</int>\n"
-    "        <reference key=\"NSContents\" ref=\"467314799\"/>\n"
-    "        <int key=\"NSAlign\">0</int>\n"
-    "        <int key=\"NSScale\">1</int>\n"
-    "        <int key=\"NSStyle\">0</int>\n"
-    "        <bool key=\"NSAnimates\">NO</bool>\n"
-    "       </object>\n"
-    "       <bool key=\"NSEditable\">YES</bool>\n"
-    "      </object>\n"
-    "      <object class=\"NSTextField\" id=\"475068467\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">268</int>\n"
-    "       <string key=\"NSFrame\">{{141, 402}, {276, 17}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSTextFieldCell\" key=\"NSCell\" id=\"741497496\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">272629760</int>\n"
-    "        <string key=\"NSContents\">A New " ;
-  result << in_PROJECT_5F_NAME.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("PMApplicationUpdate.xib.galgasTemplate", 361)).stringValue () ;
-  result << " Version is available.</string>\n"
-    "        <reference key=\"NSSupport\" ref=\"254211308\"/>\n"
-    "        <reference key=\"NSControlView\" ref=\"475068467\"/>\n"
-    "        <reference key=\"NSBackgroundColor\" ref=\"481433827\"/>\n"
-    "        <reference key=\"NSTextColor\" ref=\"123369485\"/>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <object class=\"NSTextField\" id=\"413993104\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">266</int>\n"
-    "       <string key=\"NSFrame\">{{141, 334}, {622, 48}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSTextFieldCell\" key=\"NSCell\" id=\"1010471558\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">272629760</int>\n"
-    "        <string key=\"NSContents\">New version text\xE2""\x80""\xA6""</string>\n"
-    "        <reference key=\"NSSupport\" ref=\"26\"/>\n"
-    "        <reference key=\"NSControlView\" ref=\"413993104\"/>\n"
-    "        <reference key=\"NSBackgroundColor\" ref=\"481433827\"/>\n"
-    "        <reference key=\"NSTextColor\" ref=\"123369485\"/>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <object class=\"NSButton\" id=\"155850099\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">292</int>\n"
-    "       <string key=\"NSFrame\">{{18, 21}, {244, 18}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSButtonCell\" key=\"NSCell\" id=\"400723301\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">0</int>\n"
-    "        <string key=\"NSContents\">Check For New Version At Start-Up</string>\n"
-    "        <reference key=\"NSSupport\" ref=\"661924512\"/>\n"
-    "        <reference key=\"NSControlView\" ref=\"155850099\"/>\n"
-    "        <int key=\"NSButtonFlags\">1211912703</int>\n"
-    "        <int key=\"NSButtonFlags2\">2</int>\n"
-    "        <object class=\"NSCustomResource\" key=\"NSNormalImage\">\n"
-    "         <string key=\"NSClassName\">NSImage</string>\n"
-    "         <string key=\"NSResourceName\">NSSwitch</string>\n"
-    "        </object>\n"
-    "        <object class=\"NSButtonImageSource\" key=\"NSAlternateImage\" id=\"170836088\">\n"
-    "         <string key=\"NSImageName\">NSSwitch</string>\n"
-    "        </object>\n"
-    "        <string key=\"NSAlternateContents\"/>\n"
-    "        <string key=\"NSKeyEquivalent\"/>\n"
-    "        <int key=\"NSPeriodicDelay\">200</int>\n"
-    "        <int key=\"NSPeriodicInterval\">25</int>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <object class=\"NSButton\" id=\"244651633\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">292</int>\n"
-    "       <string key=\"NSFrame\">{{522, 12}, {244, 32}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSButtonCell\" key=\"NSCell\" id=\"957503088\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">134217728</int>\n"
-    "        <string key=\"NSContents\">Install and Launch Version 7.8.9</string>\n"
-    "        <reference key=\"NSSupport\" ref=\"661924512\"/>\n"
-    "        <reference key=\"NSControlView\" ref=\"244651633\"/>\n"
-    "        <int key=\"NSButtonFlags\">-2038284033</int>\n"
-    "        <int key=\"NSButtonFlags2\">1</int>\n"
-    "        <reference key=\"NSAlternateImage\" ref=\"661924512\"/>\n"
-    "        <string key=\"NSAlternateContents\"/>\n"
-    "        <object class=\"NSMutableString\" key=\"NSKeyEquivalent\">\n"
-    "         <characters key=\"NS.bytes\"/>\n"
-    "        </object>\n"
-    "        <int key=\"NSPeriodicDelay\">200</int>\n"
-    "        <int key=\"NSPeriodicInterval\">25</int>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <object class=\"NSButton\" id=\"355971570\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">256</int>\n"
-    "       <string key=\"NSFrame\">{{400, 12}, {82, 32}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSButtonCell\" key=\"NSCell\" id=\"806186831\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">134217728</int>\n"
-    "        <string key=\"NSContents\">Cancel</string>\n"
-    "        <reference key=\"NSSupport\" ref=\"661924512\"/>\n"
-    "        <reference key=\"NSControlView\" ref=\"355971570\"/>\n"
-    "        <int key=\"NSButtonFlags\">-2038284033</int>\n"
-    "        <int key=\"NSButtonFlags2\">1</int>\n"
-    "        <reference key=\"NSAlternateImage\" ref=\"661924512\"/>\n"
-    "        <string key=\"NSAlternateContents\"/>\n"
-    "        <object class=\"NSMutableString\" key=\"NSKeyEquivalent\">\n"
-    "         <characters key=\"NS.bytes\"/>\n"
-    "        </object>\n"
-    "        <int key=\"NSPeriodicDelay\">200</int>\n"
-    "        <int key=\"NSPeriodicInterval\">25</int>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <object class=\"NSTextField\" id=\"832757603\">\n"
-    "       <reference key=\"NSNextResponder\" ref=\"5705630\"/>\n"
-    "       <int key=\"NSvFlags\">268</int>\n"
-    "       <string key=\"NSFrame\">{{141, 318}, {112, 14}}</string>\n"
-    "       <reference key=\"NSSuperview\" ref=\"5705630\"/>\n"
-    "       <bool key=\"NSEnabled\">YES</bool>\n"
-    "       <object class=\"NSTextFieldCell\" key=\"NSCell\" id=\"622444291\">\n"
-    "        <int key=\"NSCellFlags\">67239424</int>\n"
-    "        <int key=\"NSCellFlags2\">272760832</int>\n"
-    "        <string key=\"NSContents\">Change Log:</string>\n"
-    "        <object class=\"NSFont\" key=\"NSSupport\">\n"
-    "         <string key=\"NSName\">LucidaGrande-Bold</string>\n"
-    "         <double key=\"NSSize\">11</double>\n"
-    "         <int key=\"NSfFlags\">3357</int>\n"
-    "        </object>\n"
-    "        <reference key=\"NSControlView\" ref=\"832757603\"/>\n"
-    "        <reference key=\"NSBackgroundColor\" ref=\"481433827\"/>\n"
-    "        <reference key=\"NSTextColor\" ref=\"123369485\"/>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string key=\"NSFrameSize\">{780, 439}</string>\n"
-    "     <reference key=\"NSSuperview\"/>\n"
-    "    </object>\n"
-    "    <string key=\"NSScreenRect\">{{0, 0}, {2560, 1418}}</string>\n"
-    "    <string key=\"NSMinSize\">{213, 129}</string>\n"
-    "    <string key=\"NSMaxSize\">{10000000000000, 10000000000000}</string>\n"
-    "    <bool key=\"NSWindowIsRestorable\">YES</bool>\n"
-    "   </object>\n"
-    "   <object class=\"NSCustomView\" id=\"706456476\">\n"
-    "    <reference key=\"NSNextResponder\"/>\n"
-    "    <int key=\"NSvFlags\">268</int>\n"
-    "    <object class=\"NSMutableArray\" key=\"NSSubviews\">\n"
-    "     <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "     <object class=\"NSButton\" id=\"119113237\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{17, 572}, {233, 18}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"282877588\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"603200122\">\n"
-    "       <int key=\"NSCellFlags\">67239424</int>\n"
-    "       <int key=\"NSCellFlags2\">0</int>\n"
-    "       <string key=\"NSContents\">Check for New Version at Launch</string>\n"
-    "       <reference key=\"NSSupport\" ref=\"661924512\"/>\n"
-    "       <reference key=\"NSControlView\" ref=\"119113237\"/>\n"
-    "       <int key=\"NSButtonFlags\">1211912703</int>\n"
-    "       <int key=\"NSButtonFlags2\">2</int>\n"
-    "       <reference key=\"NSAlternateImage\" ref=\"170836088\"/>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <string key=\"NSKeyEquivalent\"/>\n"
-    "       <int key=\"NSPeriodicDelay\">200</int>\n"
-    "       <int key=\"NSPeriodicInterval\">25</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSButton\" id=\"282877588\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{253, 562}, {121, 32}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"108384011\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"175526135\">\n"
-    "       <int key=\"NSCellFlags\">67239424</int>\n"
-    "       <int key=\"NSCellFlags2\">134217728</int>\n"
-    "       <string key=\"NSContents\">Check Now\xE2""\x80""\xA6""</string>\n"
-    "       <reference key=\"NSSupport\" ref=\"661924512\"/>\n"
-    "       <reference key=\"NSControlView\" ref=\"282877588\"/>\n"
-    "       <int key=\"NSButtonFlags\">-2038284033</int>\n"
-    "       <int key=\"NSButtonFlags2\">1</int>\n"
-    "       <object class=\"NSFont\" key=\"NSAlternateImage\" id=\"828379122\">\n"
-    "        <string key=\"NSName\">LucidaGrande</string>\n"
-    "        <double key=\"NSSize\">13</double>\n"
-    "        <int key=\"NSfFlags\">16</int>\n"
-    "       </object>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <object class=\"NSMutableString\" key=\"NSKeyEquivalent\">\n"
-    "        <characters key=\"NS.bytes\"/>\n"
-    "       </object>\n"
-    "       <int key=\"NSPeriodicDelay\">200</int>\n"
-    "       <int key=\"NSPeriodicInterval\">25</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSTextField\" id=\"910425216\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">266</int>\n"
-    "      <string key=\"NSFrame\">{{291, 506}, {303, 17}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"1066463798\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSTextFieldCell\" key=\"NSCell\" id=\"820983391\">\n"
-    "       <int key=\"NSCellFlags\">68288064</int>\n"
-    "       <int key=\"NSCellFlags2\">272630784</int>\n"
-    "       <string key=\"NSContents\">Label</string>\n"
-    "       <reference key=\"NSSupport\" ref=\"661924512\"/>\n"
-    "       <reference key=\"NSControlView\" ref=\"910425216\"/>\n"
-    "       <reference key=\"NSBackgroundColor\" ref=\"481433827\"/>\n"
-    "       <reference key=\"NSTextColor\" ref=\"123369485\"/>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSProgressIndicator\" id=\"155281057\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">1292</int>\n"
-    "      <object class=\"NSPSMatrix\" key=\"NSDrawMatrix\"/>\n"
-    "      <string key=\"NSFrame\">{{270, 506}, {16, 16}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"910425216\"/>\n"
-    "      <int key=\"NSpiFlags\">20746</int>\n"
-    "      <double key=\"NSMaxValue\">100</double>\n"
-    "     </object>\n"
-    "     <object class=\"NSButton\" id=\"1018478293\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{232, 499}, {30, 30}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"155281057\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"333272556\">\n"
-    "       <int key=\"NSCellFlags\">-2080244224</int>\n"
-    "       <int key=\"NSCellFlags2\">134217728</int>\n"
-    "       <string key=\"NSContents\"/>\n"
-    "       <object class=\"NSFont\" key=\"NSSupport\" id=\"162662537\">\n"
-    "        <string key=\"NSName\">LucidaGrande</string>\n"
-    "        <double key=\"NSSize\">18</double>\n"
-    "        <int key=\"NSfFlags\">16</int>\n"
-    "       </object>\n"
-    "       <reference key=\"NSControlView\" ref=\"1018478293\"/>\n"
-    "       <int key=\"NSButtonFlags\">-2033958657</int>\n"
-    "       <int key=\"NSButtonFlags2\">6</int>\n"
-    "       <object class=\"NSCustomResource\" key=\"NSNormalImage\">\n"
-    "        <string key=\"NSClassName\">NSImage</string>\n"
-    "        <string key=\"NSResourceName\">NSRefreshTemplate</string>\n"
-    "       </object>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <string key=\"NSKeyEquivalent\"/>\n"
-    "       <int key=\"NSPeriodicDelay\">400</int>\n"
-    "       <int key=\"NSPeriodicInterval\">75</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSButton\" id=\"516363802\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{171, 499}, {30, 30}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"1018478293\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"255146468\">\n"
-    "       <int key=\"NSCellFlags\">-2080244224</int>\n"
-    "       <int key=\"NSCellFlags2\">134217728</int>\n"
-    "       <string key=\"NSContents\"/>\n"
-    "       <reference key=\"NSSupport\" ref=\"162662537\"/>\n"
-    "       <reference key=\"NSControlView\" ref=\"516363802\"/>\n"
-    "       <int key=\"NSButtonFlags\">-2033958657</int>\n"
-    "       <int key=\"NSButtonFlags2\">6</int>\n"
-    "       <object class=\"NSCustomResource\" key=\"NSNormalImage\">\n"
-    "        <string key=\"NSClassName\">NSImage</string>\n"
-    "        <string key=\"NSResourceName\">NSGoRightTemplate</string>\n"
-    "       </object>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <string key=\"NSKeyEquivalent\"/>\n"
-    "       <int key=\"NSPeriodicDelay\">400</int>\n"
-    "       <int key=\"NSPeriodicInterval\">75</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSButton\" id=\"643835222\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{142, 499}, {30, 30}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"516363802\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"903670050\">\n"
-    "       <int key=\"NSCellFlags\">-2080244224</int>\n"
-    "       <int key=\"NSCellFlags2\">134217728</int>\n"
-    "       <string key=\"NSContents\"/>\n"
-    "       <reference key=\"NSSupport\" ref=\"162662537\"/>\n"
-    "       <reference key=\"NSControlView\" ref=\"643835222\"/>\n"
-    "       <int key=\"NSButtonFlags\">-2033958657</int>\n"
-    "       <int key=\"NSButtonFlags2\">6</int>\n"
-    "       <object class=\"NSCustomResource\" key=\"NSNormalImage\">\n"
-    "        <string key=\"NSClassName\">NSImage</string>\n"
-    "        <string key=\"NSResourceName\">NSGoLeftTemplate</string>\n"
-    "       </object>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <string key=\"NSKeyEquivalent\"/>\n"
-    "       <int key=\"NSPeriodicDelay\">400</int>\n"
-    "       <int key=\"NSPeriodicInterval\">75</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSButton\" id=\"162979538\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{49, 499}, {30, 30}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"940738293\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"756937780\">\n"
-    "       <int key=\"NSCellFlags\">67239424</int>\n"
-    "       <int key=\"NSCellFlags2\">134217728</int>\n"
-    "       <string key=\"NSContents\">A</string>\n"
-    "       <reference key=\"NSSupport\" ref=\"828379122\"/>\n"
-    "       <reference key=\"NSControlView\" ref=\"162979538\"/>\n"
-    "       <int key=\"NSButtonFlags\">-2038152961</int>\n"
-    "       <int key=\"NSButtonFlags2\">6</int>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <string key=\"NSKeyEquivalent\"/>\n"
-    "       <int key=\"NSPeriodicDelay\">400</int>\n"
-    "       <int key=\"NSPeriodicInterval\">75</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSButton\" id=\"940738293\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{78, 499}, {30, 30}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"643835222\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"570845283\">\n"
-    "       <int key=\"NSCellFlags\">67239424</int>\n"
-    "       <int key=\"NSCellFlags2\">134217728</int>\n"
-    "       <string key=\"NSContents\">A</string>\n"
-    "       <object class=\"NSFont\" key=\"NSSupport\">\n"
-    "        <string key=\"NSName\">LucidaGrande</string>\n"
-    "        <double key=\"NSSize\">9</double>\n"
-    "        <int key=\"NSfFlags\">16</int>\n"
-    "       </object>\n"
-    "       <reference key=\"NSControlView\" ref=\"940738293\"/>\n"
-    "       <int key=\"NSButtonFlags\">-2038152961</int>\n"
-    "       <int key=\"NSButtonFlags2\">6</int>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <string key=\"NSKeyEquivalent\"/>\n"
-    "       <int key=\"NSPeriodicDelay\">400</int>\n"
-    "       <int key=\"NSPeriodicInterval\">75</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSButton\" id=\"108384011\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">268</int>\n"
-    "      <string key=\"NSFrame\">{{20, 499}, {30, 30}}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\" ref=\"162979538\"/>\n"
-    "      <bool key=\"NSEnabled\">YES</bool>\n"
-    "      <object class=\"NSButtonCell\" key=\"NSCell\" id=\"523984443\">\n"
-    "       <int key=\"NSCellFlags\">67239424</int>\n"
-    "       <int key=\"NSCellFlags2\">134217728</int>\n"
-    "       <string key=\"NSContents\">A</string>\n"
-    "       <reference key=\"NSSupport\" ref=\"162662537\"/>\n"
-    "       <reference key=\"NSControlView\" ref=\"108384011\"/>\n"
-    "       <int key=\"NSButtonFlags\">-2038152961</int>\n"
-    "       <int key=\"NSButtonFlags2\">6</int>\n"
-    "       <string key=\"NSAlternateContents\"/>\n"
-    "       <string key=\"NSKeyEquivalent\"/>\n"
-    "       <int key=\"NSPeriodicDelay\">400</int>\n"
-    "       <int key=\"NSPeriodicInterval\">75</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"WebView\" id=\"1066463798\">\n"
-    "      <reference key=\"NSNextResponder\" ref=\"706456476\"/>\n"
-    "      <int key=\"NSvFlags\">274</int>\n"
-    "      <object class=\"NSMutableSet\" key=\"NSDragTypes\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <object class=\"NSArray\" key=\"set.sortedObjects\">\n"
-    "        <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "        <string>Apple HTML pasteboard type</string>\n"
-    "        <string>Apple PDF pasteboard type</string>\n"
-    "        <string>Apple PICT pasteboard type</string>\n"
-    "        <string>Apple URL pasteboard type</string>\n"
-    "        <string>Apple Web Archive pasteboard type</string>\n"
-    "        <string>NSColor pasteboard type</string>\n"
-    "        <string>NSFilenamesPboardType</string>\n"
-    "        <string>NSStringPboardType</string>\n"
-    "        <string>NeXT RTFD pasteboard type</string>\n"
-    "        <string>NeXT Rich Text Format v1.0 pasteboard type</string>\n"
-    "        <string>NeXT TIFF v4.0 pasteboard type</string>\n"
-    "        <string>WebURLsWithTitlesPboardType</string>\n"
-    "        <string>public.png</string>\n"
-    "        <string>public.url</string>\n"
-    "        <string>public.url-name</string>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "      <string key=\"NSFrameSize\">{611, 491}</string>\n"
-    "      <reference key=\"NSSuperview\" ref=\"706456476\"/>\n"
-    "      <reference key=\"NSWindow\"/>\n"
-    "      <reference key=\"NSNextKeyView\"/>\n"
-    "      <string key=\"FrameName\"/>\n"
-    "      <string key=\"GroupName\"/>\n"
-    "      <reference key=\"Preferences\" ref=\"794004680\"/>\n"
-    "      <bool key=\"UseBackForwardList\">YES</bool>\n"
-    "      <bool key=\"AllowsUndo\">YES</bool>\n"
-    "     </object>\n"
-    "    </object>\n"
-    "    <string key=\"NSFrameSize\">{611, 608}</string>\n"
-    "    <reference key=\"NSSuperview\"/>\n"
-    "    <reference key=\"NSWindow\"/>\n"
-    "    <reference key=\"NSNextKeyView\" ref=\"119113237\"/>\n"
-    "    <string key=\"NSClassName\">NSView</string>\n"
-    "   </object>\n"
-    "   <object class=\"NSObjectController\" id=\"886630308\">\n"
-    "    <object class=\"NSMutableArray\" key=\"NSDeclaredKeys\">\n"
-    "     <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "     <string>canGoBack</string>\n"
-    "     <string>canGoForward</string>\n"
-    "     <string>canMakeTextLarger</string>\n"
-    "     <string>canMakeTextSmaller</string>\n"
-    "     <string>canMakeTextStandardSize</string>\n"
-    "     <string>isLoading</string>\n"
-    "     <string>mainFrameURL</string>\n"
-    "    </object>\n"
-    "    <bool key=\"NSEditable\">YES</bool>\n"
-    "    <object class=\"_NSManagedProxy\" key=\"_NSManagedProxy\"/>\n"
-    "   </object>\n"
-    "  </object>\n"
-    "  <object class=\"IBObjectContainer\" key=\"IBDocument.Objects\">\n"
-    "   <object class=\"NSMutableArray\" key=\"connectionRecords\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mCancelButton</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"828513968\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">37</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mDownloadProgressIndicator</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"204285727\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">38</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mDownloadSubTitle</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"490232887\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">39</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mDownloadTitle</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"1034800840\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">40</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mChangeLogWebView</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"1035469751\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">56</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mCheckUpdateAtStartUpCheckBox2</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"155850099\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">57</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mNewVersionTextField</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"413993104\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">58</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mNewAvailableVersionPanel</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"216006591\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">59</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mPerformUpdateButton</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"244651633\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">60</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mViewForChangeLogInPreferencePane</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">111</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mChangeLogInPreferencePaneWebView</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"1066463798\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">113</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBActionConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">checkForNewVersion:</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"282877588\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">182</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mCheckUpdateAtStartUpCheckBox</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"119113237\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">186</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBOutletConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">mCheckNowButton</string>\n"
-    "      <reference key=\"source\" ref=\"42341283\"/>\n"
-    "      <reference key=\"destination\" ref=\"282877588\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">187</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBActionConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">makeTextLarger:</string>\n"
-    "      <reference key=\"source\" ref=\"1066463798\"/>\n"
-    "      <reference key=\"destination\" ref=\"108384011\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">120</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBActionConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">makeTextSmaller:</string>\n"
-    "      <reference key=\"source\" ref=\"1066463798\"/>\n"
-    "      <reference key=\"destination\" ref=\"940738293\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">121</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBActionConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">makeTextStandardSize:</string>\n"
-    "      <reference key=\"source\" ref=\"1066463798\"/>\n"
-    "      <reference key=\"destination\" ref=\"162979538\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">125</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBActionConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">goBack:</string>\n"
-    "      <reference key=\"source\" ref=\"1066463798\"/>\n"
-    "      <reference key=\"destination\" ref=\"643835222\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">135</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBActionConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">goForward:</string>\n"
-    "      <reference key=\"source\" ref=\"1066463798\"/>\n"
-    "      <reference key=\"destination\" ref=\"516363802\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">136</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBActionConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">reload:</string>\n"
-    "      <reference key=\"source\" ref=\"1066463798\"/>\n"
-    "      <reference key=\"destination\" ref=\"333272556\"/>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">140</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">enabled: selection.canMakeTextLarger</string>\n"
-    "      <reference key=\"source\" ref=\"108384011\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"108384011\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">enabled: selection.canMakeTextLarger</string>\n"
-    "       <string key=\"NSBinding\">enabled</string>\n"
-    "       <string key=\"NSKeyPath\">selection.canMakeTextLarger</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">152</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">enabled: selection.canMakeTextSmaller</string>\n"
-    "      <reference key=\"source\" ref=\"940738293\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"940738293\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">enabled: selection.canMakeTextSmaller</string>\n"
-    "       <string key=\"NSBinding\">enabled</string>\n"
-    "       <string key=\"NSKeyPath\">selection.canMakeTextSmaller</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">154</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">enabled: selection.canMakeTextStandardSize</string>\n"
-    "      <reference key=\"source\" ref=\"162979538\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"162979538\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">enabled: selection.canMakeTextStandardSize</string>\n"
-    "       <string key=\"NSBinding\">enabled</string>\n"
-    "       <string key=\"NSKeyPath\">selection.canMakeTextStandardSize</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">157</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">enabled: selection.canGoBack</string>\n"
-    "      <reference key=\"source\" ref=\"903670050\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"903670050\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">enabled: selection.canGoBack</string>\n"
-    "       <string key=\"NSBinding\">enabled</string>\n"
-    "       <string key=\"NSKeyPath\">selection.canGoBack</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">149</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">enabled: selection.canGoForward</string>\n"
-    "      <reference key=\"source\" ref=\"516363802\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"516363802\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">enabled: selection.canGoForward</string>\n"
-    "       <string key=\"NSBinding\">enabled</string>\n"
-    "       <string key=\"NSKeyPath\">selection.canGoForward</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">150</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">contentObject: mChangeLogInPreferencePaneWebView</string>\n"
-    "      <reference key=\"source\" ref=\"886630308\"/>\n"
-    "      <reference key=\"destination\" ref=\"42341283\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"886630308\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"42341283\"/>\n"
-    "       <string key=\"NSLabel\">contentObject: mChangeLogInPreferencePaneWebView</string>\n"
-    "       <string key=\"NSBinding\">contentObject</string>\n"
-    "       <string key=\"NSKeyPath\">mChangeLogInPreferencePaneWebView</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">147</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">animate: selection.isLoading</string>\n"
-    "      <reference key=\"source\" ref=\"155281057\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"155281057\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">animate: selection.isLoading</string>\n"
-    "       <string key=\"NSBinding\">animate</string>\n"
-    "       <string key=\"NSKeyPath\">selection.isLoading</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">160</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">hidden: selection.isLoading</string>\n"
-    "      <reference key=\"source\" ref=\"155281057\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"155281057\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">hidden: selection.isLoading</string>\n"
-    "       <string key=\"NSBinding\">hidden</string>\n"
-    "       <string key=\"NSKeyPath\">selection.isLoading</string>\n"
-    "       <object class=\"NSDictionary\" key=\"NSOptions\">\n"
-    "        <string key=\"NS.key.0\">NSValueTransformerName</string>\n"
-    "        <string key=\"NS.object.0\">NSNegateBoolean</string>\n"
-    "       </object>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">163</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">value: selection.mainFrameURL</string>\n"
-    "      <reference key=\"source\" ref=\"910425216\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"910425216\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">value: selection.mainFrameURL</string>\n"
-    "       <string key=\"NSBinding\">value</string>\n"
-    "       <string key=\"NSKeyPath\">selection.mainFrameURL</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">171</int>\n"
-    "    </object>\n"
-    "    <object class=\"IBConnectionRecord\">\n"
-    "     <object class=\"IBBindingConnection\" key=\"connection\">\n"
-    "      <string key=\"label\">enabled: selection.mainFrameURL</string>\n"
-    "      <reference key=\"source\" ref=\"820983391\"/>\n"
-    "      <reference key=\"destination\" ref=\"886630308\"/>\n"
-    "      <object class=\"NSNibBindingConnector\" key=\"connector\">\n"
-    "       <reference key=\"NSSource\" ref=\"820983391\"/>\n"
-    "       <reference key=\"NSDestination\" ref=\"886630308\"/>\n"
-    "       <string key=\"NSLabel\">enabled: selection.mainFrameURL</string>\n"
-    "       <string key=\"NSBinding\">enabled</string>\n"
-    "       <string key=\"NSKeyPath\">selection.mainFrameURL</string>\n"
-    "       <int key=\"NSNibBindingConnectorVersion\">2</int>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <int key=\"connectionID\">167</int>\n"
-    "    </object>\n"
-    "   </object>\n"
-    "   <object class=\"IBMutableOrderedSet\" key=\"objectRecords\">\n"
-    "    <object class=\"NSArray\" key=\"orderedObjects\">\n"
-    "     <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">0</int>\n"
-    "      <object class=\"NSArray\" key=\"object\" id=\"0\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "      </object>\n"
-    "      <reference key=\"children\" ref=\"685716556\"/>\n"
-    "      <nil key=\"parent\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">-2</int>\n"
-    "      <reference key=\"object\" ref=\"42341283\"/>\n"
-    "      <reference key=\"parent\" ref=\"0\"/>\n"
-    "      <string key=\"objectName\">File's Owner</string>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">-1</int>\n"
-    "      <reference key=\"object\" ref=\"1055328378\"/>\n"
-    "      <reference key=\"parent\" ref=\"0\"/>\n"
-    "      <string key=\"objectName\">First Responder</string>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">30</int>\n"
-    "      <reference key=\"object\" ref=\"333224431\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"749559358\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"0\"/>\n"
-    "      <string key=\"objectName\">Panel</string>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">31</int>\n"
-    "      <reference key=\"object\" ref=\"749559358\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"204285727\"/>\n"
-    "       <reference ref=\"294367161\"/>\n"
-    "       <reference ref=\"828513968\"/>\n"
-    "       <reference ref=\"1034800840\"/>\n"
-    "       <reference ref=\"490232887\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"333224431\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">32</int>\n"
-    "      <reference key=\"object\" ref=\"1034800840\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"509148504\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"749559358\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">33</int>\n"
-    "      <reference key=\"object\" ref=\"490232887\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"454506579\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"749559358\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">34</int>\n"
-    "      <reference key=\"object\" ref=\"204285727\"/>\n"
-    "      <reference key=\"parent\" ref=\"749559358\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">35</int>\n"
-    "      <reference key=\"object\" ref=\"294367161\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"450216261\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"749559358\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">36</int>\n"
-    "      <reference key=\"object\" ref=\"828513968\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"679983593\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"749559358\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">44</int>\n"
-    "      <reference key=\"object\" ref=\"216006591\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"5705630\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"0\"/>\n"
-    "      <string key=\"objectName\">AppliUpdateDialog</string>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">45</int>\n"
-    "      <reference key=\"object\" ref=\"5705630\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"355971570\"/>\n"
-    "       <reference ref=\"699157213\"/>\n"
-    "       <reference ref=\"475068467\"/>\n"
-    "       <reference ref=\"413993104\"/>\n"
-    "       <reference ref=\"155850099\"/>\n"
-    "       <reference ref=\"244651633\"/>\n"
-    "       <reference ref=\"832757603\"/>\n"
-    "       <reference ref=\"681154887\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"216006591\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">46</int>\n"
-    "      <reference key=\"object\" ref=\"355971570\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"806186831\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">47</int>\n"
-    "      <reference key=\"object\" ref=\"699157213\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"438997373\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">48</int>\n"
-    "      <reference key=\"object\" ref=\"475068467\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"741497496\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">49</int>\n"
-    "      <reference key=\"object\" ref=\"413993104\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"1010471558\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">51</int>\n"
-    "      <reference key=\"object\" ref=\"155850099\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"400723301\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">53</int>\n"
-    "      <reference key=\"object\" ref=\"244651633\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"957503088\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">61</int>\n"
-    "      <reference key=\"object\" ref=\"832757603\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"622444291\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">62</int>\n"
-    "      <reference key=\"object\" ref=\"681154887\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"1035469751\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"5705630\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">95</int>\n"
-    "      <reference key=\"object\" ref=\"509148504\"/>\n"
-    "      <reference key=\"parent\" ref=\"1034800840\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">96</int>\n"
-    "      <reference key=\"object\" ref=\"454506579\"/>\n"
-    "      <reference key=\"parent\" ref=\"490232887\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">97</int>\n"
-    "      <reference key=\"object\" ref=\"450216261\"/>\n"
-    "      <reference key=\"parent\" ref=\"294367161\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">98</int>\n"
-    "      <reference key=\"object\" ref=\"679983593\"/>\n"
-    "      <reference key=\"parent\" ref=\"828513968\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">99</int>\n"
-    "      <reference key=\"object\" ref=\"806186831\"/>\n"
-    "      <reference key=\"parent\" ref=\"355971570\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">100</int>\n"
-    "      <reference key=\"object\" ref=\"438997373\"/>\n"
-    "      <reference key=\"parent\" ref=\"699157213\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">101</int>\n"
-    "      <reference key=\"object\" ref=\"741497496\"/>\n"
-    "      <reference key=\"parent\" ref=\"475068467\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">102</int>\n"
-    "      <reference key=\"object\" ref=\"1010471558\"/>\n"
-    "      <reference key=\"parent\" ref=\"413993104\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">103</int>\n"
-    "      <reference key=\"object\" ref=\"400723301\"/>\n"
-    "      <reference key=\"parent\" ref=\"155850099\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">104</int>\n"
-    "      <reference key=\"object\" ref=\"957503088\"/>\n"
-    "      <reference key=\"parent\" ref=\"244651633\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">105</int>\n"
-    "      <reference key=\"object\" ref=\"622444291\"/>\n"
-    "      <reference key=\"parent\" ref=\"832757603\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">-3</int>\n"
-    "      <reference key=\"object\" ref=\"382307856\"/>\n"
-    "      <reference key=\"parent\" ref=\"0\"/>\n"
-    "      <string key=\"objectName\">Application</string>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">50</int>\n"
-    "      <reference key=\"object\" ref=\"1035469751\"/>\n"
-    "      <reference key=\"parent\" ref=\"681154887\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">109</int>\n"
-    "      <reference key=\"object\" ref=\"706456476\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"1066463798\"/>\n"
-    "       <reference ref=\"282877588\"/>\n"
-    "       <reference ref=\"119113237\"/>\n"
-    "       <reference ref=\"108384011\"/>\n"
-    "       <reference ref=\"940738293\"/>\n"
-    "       <reference ref=\"162979538\"/>\n"
-    "       <reference ref=\"643835222\"/>\n"
-    "       <reference ref=\"516363802\"/>\n"
-    "       <reference ref=\"1018478293\"/>\n"
-    "       <reference ref=\"155281057\"/>\n"
-    "       <reference ref=\"910425216\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"0\"/>\n"
-    "      <string key=\"objectName\">View for ChangeLog in Preferences</string>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">110</int>\n"
-    "      <reference key=\"object\" ref=\"1066463798\"/>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">116</int>\n"
-    "      <reference key=\"object\" ref=\"108384011\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"523984443\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">117</int>\n"
-    "      <reference key=\"object\" ref=\"523984443\"/>\n"
-    "      <reference key=\"parent\" ref=\"108384011\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">118</int>\n"
-    "      <reference key=\"object\" ref=\"940738293\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"570845283\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">119</int>\n"
-    "      <reference key=\"object\" ref=\"570845283\"/>\n"
-    "      <reference key=\"parent\" ref=\"940738293\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">122</int>\n"
-    "      <reference key=\"object\" ref=\"162979538\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"756937780\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">123</int>\n"
-    "      <reference key=\"object\" ref=\"756937780\"/>\n"
-    "      <reference key=\"parent\" ref=\"162979538\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">129</int>\n"
-    "      <reference key=\"object\" ref=\"643835222\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"903670050\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">130</int>\n"
-    "      <reference key=\"object\" ref=\"903670050\"/>\n"
-    "      <reference key=\"parent\" ref=\"643835222\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">132</int>\n"
-    "      <reference key=\"object\" ref=\"516363802\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"255146468\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">133</int>\n"
-    "      <reference key=\"object\" ref=\"255146468\"/>\n"
-    "      <reference key=\"parent\" ref=\"516363802\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">137</int>\n"
-    "      <reference key=\"object\" ref=\"1018478293\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"333272556\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">138</int>\n"
-    "      <reference key=\"object\" ref=\"333272556\"/>\n"
-    "      <reference key=\"parent\" ref=\"1018478293\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">146</int>\n"
-    "      <reference key=\"object\" ref=\"886630308\"/>\n"
-    "      <reference key=\"parent\" ref=\"0\"/>\n"
-    "      <string key=\"objectName\">Web View Object Controller</string>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">158</int>\n"
-    "      <reference key=\"object\" ref=\"155281057\"/>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">164</int>\n"
-    "      <reference key=\"object\" ref=\"910425216\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"820983391\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">165</int>\n"
-    "      <reference key=\"object\" ref=\"820983391\"/>\n"
-    "      <reference key=\"parent\" ref=\"910425216\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">178</int>\n"
-    "      <reference key=\"object\" ref=\"282877588\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"175526135\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">179</int>\n"
-    "      <reference key=\"object\" ref=\"119113237\"/>\n"
-    "      <object class=\"NSMutableArray\" key=\"children\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <reference ref=\"603200122\"/>\n"
-    "      </object>\n"
-    "      <reference key=\"parent\" ref=\"706456476\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">180</int>\n"
-    "      <reference key=\"object\" ref=\"603200122\"/>\n"
-    "      <reference key=\"parent\" ref=\"119113237\"/>\n"
-    "     </object>\n"
-    "     <object class=\"IBObjectRecord\">\n"
-    "      <int key=\"objectID\">181</int>\n"
-    "      <reference key=\"object\" ref=\"175526135\"/>\n"
-    "      <reference key=\"parent\" ref=\"282877588\"/>\n"
-    "     </object>\n"
-    "    </object>\n"
-    "   </object>\n"
-    "   <object class=\"NSMutableDictionary\" key=\"flattenedProperties\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "     <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "     <string>-1.IBPluginDependency</string>\n"
-    "     <string>-2.IBPluginDependency</string>\n"
-    "     <string>-3.IBPluginDependency</string>\n"
-    "     <string>100.IBPluginDependency</string>\n"
-    "     <string>101.IBPluginDependency</string>\n"
-    "     <string>102.IBPluginDependency</string>\n"
-    "     <string>103.IBPluginDependency</string>\n"
-    "     <string>104.IBPluginDependency</string>\n"
-    "     <string>105.IBPluginDependency</string>\n"
-    "     <string>109.IBPluginDependency</string>\n"
-    "     <string>110.IBPluginDependency</string>\n"
-    "     <string>116.IBAttributePlaceholdersKey</string>\n"
-    "     <string>116.IBPluginDependency</string>\n"
-    "     <string>117.IBPluginDependency</string>\n"
-    "     <string>118.IBAttributePlaceholdersKey</string>\n"
-    "     <string>118.IBPluginDependency</string>\n"
-    "     <string>119.IBPluginDependency</string>\n"
-    "     <string>122.IBAttributePlaceholdersKey</string>\n"
-    "     <string>122.IBPluginDependency</string>\n"
-    "     <string>123.IBPluginDependency</string>\n"
-    "     <string>129.IBAttributePlaceholdersKey</string>\n"
-    "     <string>129.IBPluginDependency</string>\n"
-    "     <string>130.IBPluginDependency</string>\n"
-    "     <string>132.IBAttributePlaceholdersKey</string>\n"
-    "     <string>132.IBPluginDependency</string>\n"
-    "     <string>133.IBPluginDependency</string>\n"
-    "     <string>137.IBAttributePlaceholdersKey</string>\n"
-    "     <string>137.IBPluginDependency</string>\n"
-    "     <string>138.IBPluginDependency</string>\n"
-    "     <string>146.IBPluginDependency</string>\n"
-    "     <string>158.IBPluginDependency</string>\n"
-    "     <string>164.IBPluginDependency</string>\n"
-    "     <string>165.IBPluginDependency</string>\n"
-    "     <string>178.IBPluginDependency</string>\n"
-    "     <string>179.IBPluginDependency</string>\n"
-    "     <string>180.IBPluginDependency</string>\n"
-    "     <string>181.IBPluginDependency</string>\n"
-    "     <string>30.IBPluginDependency</string>\n"
-    "     <string>30.IBWindowTemplateEditedContentRect</string>\n"
-    "     <string>31.IBPluginDependency</string>\n"
-    "     <string>32.IBPluginDependency</string>\n"
-    "     <string>33.IBPluginDependency</string>\n"
-    "     <string>34.IBPluginDependency</string>\n"
-    "     <string>35.IBPluginDependency</string>\n"
-    "     <string>36.IBPluginDependency</string>\n"
-    "     <string>44.IBPluginDependency</string>\n"
-    "     <string>44.IBWindowTemplateEditedContentRect</string>\n"
-    "     <string>45.IBPluginDependency</string>\n"
-    "     <string>46.CustomClassName</string>\n"
-    "     <string>46.IBPluginDependency</string>\n"
-    "     <string>47.IBPluginDependency</string>\n"
-    "     <string>48.IBPluginDependency</string>\n"
-    "     <string>49.IBPluginDependency</string>\n"
-    "     <string>50.IBPluginDependency</string>\n"
-    "     <string>51.IBPluginDependency</string>\n"
-    "     <string>53.CustomClassName</string>\n"
-    "     <string>53.IBAttributePlaceholdersKey</string>\n"
-    "     <string>53.IBPluginDependency</string>\n"
-    "     <string>61.IBPluginDependency</string>\n"
-    "     <string>62.IBPluginDependency</string>\n"
-    "     <string>95.IBPluginDependency</string>\n"
-    "     <string>96.IBPluginDependency</string>\n"
-    "     <string>97.IBPluginDependency</string>\n"
-    "     <string>98.IBPluginDependency</string>\n"
-    "     <string>99.IBPluginDependency</string>\n"
-    "    </object>\n"
-    "    <object class=\"NSArray\" key=\"dict.values\">\n"
-    "     <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.WebKitIBPlugin</string>\n"
-    "     <object class=\"NSMutableDictionary\">\n"
-    "      <string key=\"NS.key.0\">ToolTip</string>\n"
-    "      <object class=\"IBToolTipAttribute\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">ToolTip</string>\n"
-    "       <reference key=\"object\" ref=\"108384011\"/>\n"
-    "       <string key=\"toolTip\">Make text Larger</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <object class=\"NSMutableDictionary\">\n"
-    "      <string key=\"NS.key.0\">ToolTip</string>\n"
-    "      <object class=\"IBToolTipAttribute\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">ToolTip</string>\n"
-    "       <reference key=\"object\" ref=\"940738293\"/>\n"
-    "       <string key=\"toolTip\">Make text Smaller</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <object class=\"NSMutableDictionary\">\n"
-    "      <string key=\"NS.key.0\">ToolTip</string>\n"
-    "      <object class=\"IBToolTipAttribute\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">ToolTip</string>\n"
-    "       <reference key=\"object\" ref=\"162979538\"/>\n"
-    "       <string key=\"toolTip\">Make text Standard Size</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <object class=\"NSMutableDictionary\">\n"
-    "      <string key=\"NS.key.0\">ToolTip</string>\n"
-    "      <object class=\"IBToolTipAttribute\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">ToolTip</string>\n"
-    "       <reference key=\"object\" ref=\"643835222\"/>\n"
-    "       <string key=\"toolTip\">Make text Larger</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <object class=\"NSMutableDictionary\">\n"
-    "      <string key=\"NS.key.0\">ToolTip</string>\n"
-    "      <object class=\"IBToolTipAttribute\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">ToolTip</string>\n"
-    "       <reference key=\"object\" ref=\"516363802\"/>\n"
-    "       <string key=\"toolTip\">Make text Larger</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <object class=\"NSMutableDictionary\">\n"
-    "      <string key=\"NS.key.0\">ToolTip</string>\n"
-    "      <object class=\"IBToolTipAttribute\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">ToolTip</string>\n"
-    "       <reference key=\"object\" ref=\"1018478293\"/>\n"
-    "       <string key=\"toolTip\">Make text Larger</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>{{21, 960}, {467, 151}}</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>{{42, 649}, {780, 439}}</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>PMCancelButtonForPanel</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.WebKitIBPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>PMOkButtonForPanel</string>\n"
-    "     <object class=\"NSMutableDictionary\">\n"
-    "      <string key=\"NS.key.0\">ToolTip</string>\n"
-    "      <object class=\"IBToolTipAttribute\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">ToolTip</string>\n"
-    "       <reference key=\"object\" ref=\"244651633\"/>\n"
-    "       <string key=\"toolTip\">Download new version, quit canari, install new version, and launch new version.</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "     <string>com.apple.InterfaceBuilder.CocoaPlugin</string>\n"
-    "    </object>\n"
-    "   </object>\n"
-    "   <object class=\"NSMutableDictionary\" key=\"unlocalizedProperties\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <reference key=\"dict.sortedKeys\" ref=\"0\"/>\n"
-    "    <reference key=\"dict.values\" ref=\"0\"/>\n"
-    "   </object>\n"
-    "   <nil key=\"activeLocalization\"/>\n"
-    "   <object class=\"NSMutableDictionary\" key=\"localizations\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <reference key=\"dict.sortedKeys\" ref=\"0\"/>\n"
-    "    <reference key=\"dict.values\" ref=\"0\"/>\n"
-    "   </object>\n"
-    "   <nil key=\"sourceID\"/>\n"
-    "   <int key=\"maxID\">187</int>\n"
-    "  </object>\n"
-    "  <object class=\"IBClassDescriber\" key=\"IBDocument.Classes\">\n"
-    "   <object class=\"NSMutableArray\" key=\"referencedPartialClassDescriptions\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <object class=\"IBPartialClassDescription\">\n"
-    "     <string key=\"className\">FirstResponder</string>\n"
-    "     <object class=\"NSMutableDictionary\" key=\"actions\">\n"
-    "      <string key=\"NS.key.0\">:</string>\n"
-    "      <string key=\"NS.object.0\">id</string>\n"
-    "     </object>\n"
-    "     <object class=\"NSMutableDictionary\" key=\"actionInfosByName\">\n"
-    "      <string key=\"NS.key.0\">:</string>\n"
-    "      <object class=\"IBActionInfo\" key=\"NS.object.0\">\n"
-    "       <string key=\"name\">:</string>\n"
-    "       <string key=\"candidateClassName\">id</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"IBClassDescriptionSource\" key=\"sourceIdentifier\">\n"
-    "      <string key=\"majorKey\">IBUserSource</string>\n"
-    "      <string key=\"minorKey\"/>\n"
-    "     </object>\n"
-    "    </object>\n"
-    "    <object class=\"IBPartialClassDescription\">\n"
-    "     <string key=\"className\">PMApplicationUpdate</string>\n"
-    "     <string key=\"superclassName\">NSObject</string>\n"
-    "     <object class=\"NSMutableDictionary\" key=\"actions\">\n"
-    "      <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "      <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <string>checkForNewVersion:</string>\n"
-    "       <string>performCLIToolInstallation:</string>\n"
-    "       <string>performCLIToolRemove:</string>\n"
-    "      </object>\n"
-    "      <object class=\"NSArray\" key=\"dict.values\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <string>id</string>\n"
-    "       <string>id</string>\n"
-    "       <string>id</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSMutableDictionary\" key=\"actionInfosByName\">\n"
-    "      <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "      <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <string>checkForNewVersion:</string>\n"
-    "       <string>performCLIToolInstallation:</string>\n"
-    "       <string>performCLIToolRemove:</string>\n"
-    "      </object>\n"
-    "      <object class=\"NSArray\" key=\"dict.values\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <object class=\"IBActionInfo\">\n"
-    "        <string key=\"name\">checkForNewVersion:</string>\n"
-    "        <string key=\"candidateClassName\">id</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBActionInfo\">\n"
-    "        <string key=\"name\">performCLIToolInstallation:</string>\n"
-    "        <string key=\"candidateClassName\">id</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBActionInfo\">\n"
-    "        <string key=\"name\">performCLIToolRemove:</string>\n"
-    "        <string key=\"candidateClassName\">id</string>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSMutableDictionary\" key=\"outlets\">\n"
-    "      <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "      <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <string>mCLIToolInstallationPath</string>\n"
-    "       <string>mCancelButton</string>\n"
-    "       <string>mChangeLogInPreferencePaneWebView</string>\n"
-    "       <string>mChangeLogWebView</string>\n"
-    "       <string>mCheckNowButton</string>\n"
-    "       <string>mCheckUpdateAtStartUpCheckBox</string>\n"
-    "       <string>mCheckUpdateAtStartUpCheckBox2</string>\n"
-    "       <string>mDownloadProgressIndicator</string>\n"
-    "       <string>mDownloadSubTitle</string>\n"
-    "       <string>mDownloadTitle</string>\n"
-    "       <string>mNewAvailableVersionPanel</string>\n"
-    "       <string>mNewVersionTextField</string>\n"
-    "       <string>mPerformUpdateButton</string>\n"
-    "       <string>mViewForChangeLogInPreferencePane</string>\n"
-    "      </object>\n"
-    "      <object class=\"NSArray\" key=\"dict.values\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <string>NSTextField</string>\n"
-    "       <string>NSButton</string>\n"
-    "       <string>WebView</string>\n"
-    "       <string>WebView</string>\n"
-    "       <string>NSButton</string>\n"
-    "       <string>NSButton</string>\n"
-    "       <string>NSButton</string>\n"
-    "       <string>NSProgressIndicator</string>\n"
-    "       <string>NSTextField</string>\n"
-    "       <string>NSTextField</string>\n"
-    "       <string>NSPanel</string>\n"
-    "       <string>NSTextField</string>\n"
-    "       <string>NSButton</string>\n"
-    "       <string>NSView</string>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"NSMutableDictionary\" key=\"toOneOutletInfosByName\">\n"
-    "      <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "      <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <string>mCLIToolInstallationPath</string>\n"
-    "       <string>mCancelButton</string>\n"
-    "       <string>mChangeLogInPreferencePaneWebView</string>\n"
-    "       <string>mChangeLogWebView</string>\n"
-    "       <string>mCheckNowButton</string>\n"
-    "       <string>mCheckUpdateAtStartUpCheckBox</string>\n"
-    "       <string>mCheckUpdateAtStartUpCheckBox2</string>\n"
-    "       <string>mDownloadProgressIndicator</string>\n"
-    "       <string>mDownloadSubTitle</string>\n"
-    "       <string>mDownloadTitle</string>\n"
-    "       <string>mNewAvailableVersionPanel</string>\n"
-    "       <string>mNewVersionTextField</string>\n"
-    "       <string>mPerformUpdateButton</string>\n"
-    "       <string>mViewForChangeLogInPreferencePane</string>\n"
-    "      </object>\n"
-    "      <object class=\"NSArray\" key=\"dict.values\">\n"
-    "       <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mCLIToolInstallationPath</string>\n"
-    "        <string key=\"candidateClassName\">NSTextField</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mCancelButton</string>\n"
-    "        <string key=\"candidateClassName\">NSButton</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mChangeLogInPreferencePaneWebView</string>\n"
-    "        <string key=\"candidateClassName\">WebView</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mChangeLogWebView</string>\n"
-    "        <string key=\"candidateClassName\">WebView</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mCheckNowButton</string>\n"
-    "        <string key=\"candidateClassName\">NSButton</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mCheckUpdateAtStartUpCheckBox</string>\n"
-    "        <string key=\"candidateClassName\">NSButton</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mCheckUpdateAtStartUpCheckBox2</string>\n"
-    "        <string key=\"candidateClassName\">NSButton</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mDownloadProgressIndicator</string>\n"
-    "        <string key=\"candidateClassName\">NSProgressIndicator</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mDownloadSubTitle</string>\n"
-    "        <string key=\"candidateClassName\">NSTextField</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mDownloadTitle</string>\n"
-    "        <string key=\"candidateClassName\">NSTextField</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mNewAvailableVersionPanel</string>\n"
-    "        <string key=\"candidateClassName\">NSPanel</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mNewVersionTextField</string>\n"
-    "        <string key=\"candidateClassName\">NSTextField</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mPerformUpdateButton</string>\n"
-    "        <string key=\"candidateClassName\">NSButton</string>\n"
-    "       </object>\n"
-    "       <object class=\"IBToOneOutletInfo\">\n"
-    "        <string key=\"name\">mViewForChangeLogInPreferencePane</string>\n"
-    "        <string key=\"candidateClassName\">NSView</string>\n"
-    "       </object>\n"
-    "      </object>\n"
-    "     </object>\n"
-    "     <object class=\"IBClassDescriptionSource\" key=\"sourceIdentifier\">\n"
-    "      <string key=\"majorKey\">IBProjectSource</string>\n"
-    "      <string key=\"minorKey\">./Classes/PMApplicationUpdate.h</string>\n"
-    "     </object>\n"
-    "    </object>\n"
-    "    <object class=\"IBPartialClassDescription\">\n"
-    "     <string key=\"className\">PMCancelButtonForPanel</string>\n"
-    "     <string key=\"superclassName\">NSButton</string>\n"
-    "     <object class=\"IBClassDescriptionSource\" key=\"sourceIdentifier\">\n"
-    "      <string key=\"majorKey\">IBProjectSource</string>\n"
-    "      <string key=\"minorKey\">./Classes/PMCancelButtonForPanel.h</string>\n"
-    "     </object>\n"
-    "    </object>\n"
-    "    <object class=\"IBPartialClassDescription\">\n"
-    "     <string key=\"className\">PMOkButtonForPanel</string>\n"
-    "     <string key=\"superclassName\">NSButton</string>\n"
-    "     <object class=\"IBClassDescriptionSource\" key=\"sourceIdentifier\">\n"
-    "      <string key=\"majorKey\">IBProjectSource</string>\n"
-    "      <string key=\"minorKey\">./Classes/PMOkButtonForPanel.h</string>\n"
-    "     </object>\n"
-    "    </object>\n"
-    "   </object>\n"
-    "  </object>\n"
-    "  <int key=\"IBDocument.localizationMode\">0</int>\n"
-    "  <string key=\"IBDocument.TargetRuntimeIdentifier\">IBCocoaFramework</string>\n"
-    "  <object class=\"NSMutableDictionary\" key=\"IBDocument.PluginDeclaredDependencies\">\n"
-    "   <string key=\"NS.key.0\">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>\n"
-    "   <integer value=\"1050\" key=\"NS.object.0\"/>\n"
-    "  </object>\n"
-    "  <object class=\"NSMutableDictionary\" key=\"IBDocument.PluginDeclaredDependencyDefaults\">\n"
-    "   <string key=\"NS.key.0\">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>\n"
-    "   <real value=\"1060\" key=\"NS.object.0\"/>\n"
-    "  </object>\n"
-    "  <object class=\"NSMutableDictionary\" key=\"IBDocument.PluginDeclaredDevelopmentDependencies\">\n"
-    "   <string key=\"NS.key.0\">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>\n"
-    "   <integer value=\"3000\" key=\"NS.object.0\"/>\n"
-    "  </object>\n"
-    "  <bool key=\"IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion\">YES</bool>\n"
-    "  <int key=\"IBDocument.defaultPropertyAccessControl\">3</int>\n"
-    "  <object class=\"NSMutableDictionary\" key=\"IBDocument.LastKnownImageSizes\">\n"
-    "   <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "   <object class=\"NSArray\" key=\"dict.sortedKeys\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <string>NSApplicationIcon</string>\n"
-    "    <string>NSGoLeftTemplate</string>\n"
-    "    <string>NSGoRightTemplate</string>\n"
-    "    <string>NSRefreshTemplate</string>\n"
-    "    <string>NSSwitch</string>\n"
-    "   </object>\n"
-    "   <object class=\"NSArray\" key=\"dict.values\">\n"
-    "    <bool key=\"EncodedWithXMLCoder\">YES</bool>\n"
-    "    <string>{128, 128}</string>\n"
-    "    <string>{9, 9}</string>\n"
-    "    <string>{9, 9}</string>\n"
-    "    <string>{10, 12}</string>\n"
-    "    <string>{15, 15}</string>\n"
-    "   </object>\n"
-    "  </object>\n"
-    " </data>\n"
-    "</archive>\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                   Filewrapper template 'applicationGalgas3UpdateFileWrapper download_data_header'                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_data_5F_header (C_Compiler * /* inCompiler */
-                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMDownloadData.h\n"
-    "//  canari\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 20/08/06.\n"
-    "//  Copyright 2006 __MyCompanyName__. All rights reserved.\n"
-    "//\n"
-    "\n"
-    "#import <Cocoa/Cocoa.h>\n"
-    "\n"
-    "\n"
-    "@interface PMDownloadData : NSObject {\n"
-    "  @protected NSURL * mURL ;\n"
-    "  @protected __weak id mDelegate ;\n"
-    "  @protected SEL mDownloadDidEndSelector ; // - (void) downloadDidEnd: (PMDownloadData *) inDownloader\n"
-    "  @protected NSError * mDownloadError ; // nil if no error\n"
-    "  @protected NSMutableData * mDownloadedData ;\n"
-    "  @protected id mUserInfo ;\n"
-    "  @protected NSURLConnection * mDownloadConnection ;\n"
-    "}\n"
-    "\n"
-    "- (id) initDownloadWithURLString: (NSString *) inURLString\n"
-    "       delegate: (id) inDelegate\n"
-    "       downloadDidEndSelector: (SEL) inDownloadDidEndSelector\n"
-    "       userInfo: (id) inUserInfo ;\n"
-    "\n"
-    "- (NSError *) downloadError ;\n"
-    "- (NSData *) downloadedData ;\n"
-    "- (id) userInfo ;\n"
-    "- (NSString *) urlString ;\n"
-    "\n"
-    "- (void) cancelDownloader ;\n"
-    "@end\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//               Filewrapper template 'applicationGalgas3UpdateFileWrapper download_data_implementation'               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_data_5F_implementation (C_Compiler * /* inCompiler */
-                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMDownloadData.m\n"
-    "//  canari\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 20/08/06.\n"
-    "//  Copyright 2006 __MyCompanyName__. All rights reserved.\n"
-    "//\n"
-    "\n"
-    "#import \"PMDownloadData.h\"\n"
-    "\n"
-    "\n"
-    "@implementation PMDownloadData\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) notifyDelegate {\n"
-    "  [[NSRunLoop currentRunLoop]\n"
-    "    performSelector:mDownloadDidEndSelector\n"
-    "    target:mDelegate\n"
-    "    argument:self\n"
-    "    order:0\n"
-    "    modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]\n"
-    "  ] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (id) initDownloadWithURLString: (NSString *) inURLString\n"
-    "       delegate: (id) inDelegate\n"
-    "       downloadDidEndSelector: (SEL) inDownloadDidEndSelector\n"
-    "       userInfo: (id) inUserInfo {\n"
-    "  self = [super init] ;\n"
-    "  if (self) {\n"
-    "    mDownloadDidEndSelector = inDownloadDidEndSelector ;\n"
-    "    mURL = [NSURL URLWithString:inURLString] ; // mURL is nil is URL string is malformed\n"
-    "    mDelegate = inDelegate ;\n"
-    "    mDownloadedData = [NSMutableData new] ;\n"
-    "    mUserInfo = inUserInfo ;\n"
-    "  //--- Start Download\n"
-    "    if (mURL == nil) {\n"
-    "      mDownloadError = [NSError \n"
-    "        errorWithDomain:@\"PMError\"\n"
-    "        code:0\n"
-    "        userInfo:[NSDictionary dictionaryWithObject:@\"malformed URL\" forKey:NSLocalizedFailureReasonErrorKey]\n"
-    "      ] ;\n"
-    "      [self notifyDelegate] ;\n"
-    "    }else{\n"
-    "      NSURLRequest * request = [NSURLRequest requestWithURL:mURL] ;\n"
-    "      mDownloadConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self] ;\n"
-    "    }\n"
-    "  }\n"
-    "  return self ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "//- (void)URL:(NSURL *)sender resourceDataDidBecomeAvailable:(NSData *) inNewBytes {\n"
-    "- (void)connection: (NSURLConnection *) connection didReceiveData:(NSData *) inNewBytes {\n"
-    "  // NSLog (@\"resourceDataDidBecomeAvailable %u bytes\", [inNewBytes length]) ;\n"
-    "  [mDownloadedData appendData:inNewBytes] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *) inError {\n"
-    "//- (void)URL:(NSURL *)sender resourceDidFailLoadingWithReason:(NSString *) inReason {\n"
-    "  // NSLog (@\"resourceDidFailLoadingWithReason '%@'\", inReason) ;\n"
-    "  mDownloadError = inError ;\n"
-    "  [self notifyDelegate] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) cancelDownloader {\n"
-    "  [mDownloadConnection cancel] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void)connectionDidFinishLoading:(NSURLConnection *)connection {\n"
-    "//- (void) URLResourceDidFinishLoading:(NSURL *)sender {\n"
-    "  // NSLog (@\"URLResourceDidFinishLoading\") ;\n"
-    "  [self notifyDelegate] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSError *) downloadError {\n"
-    "  return mDownloadError ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSData *) downloadedData {\n"
-    "  return mDownloadedData ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (id) userInfo {\n"
-    "  return mUserInfo ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) urlString {\n"
-    "  return [mURL absoluteString] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@end\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                   Filewrapper template 'applicationGalgas3UpdateFileWrapper download_file_header'                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_file_5F_header (C_Compiler * /* inCompiler */
-                                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMDownloadFile.h\n"
-    "//  canari\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 19/08/06.\n"
-    "//  Copyright 2006 __MyCompanyName__. All rights reserved.\n"
-    "//\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#import <Cocoa/Cocoa.h>\n"
-    "#import \"PMSnowLeopardLionCompatibility.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@class PMDownloadFile ;\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@protocol PMDownloadDidEndProtocol\n"
-    "  - (void) downloadDidEnd: (PMDownloadFile *) inDownloader ;\n"
-    "@end\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@interface PMDownloadFile : NSObject <NSURLDownloadDelegate> {\n"
-    "  @protected NSURL * mURL ;\n"
-    "  @protected __weak id <PMDownloadDidEndProtocol> mDelegate ;\n"
-    "  @protected NSURLDownload  * mDownload ;\n"
-    "  @protected NSButton * mCancelButton ;\n"
-    "  @protected NSTextField * mSubTitle ;\n"
-    "  @protected NSProgressIndicator * mProgressIndicator ;\n"
-    "  @protected NSError * mDownloadError ; // nil if no error\n"
-    "  @protected long long mExpectedContentLength ;\n"
-    "  @protected long long mReceivedLength ;\n"
-    "  @protected NSString * mDestinationFileName ;\n"
-    "  @protected id mUserInfo ;\n"
-    "  @protected BOOL mDownloadHasBeenCancelled ;\n"
-    "}\n"
-    "\n"
-    "- (id) initWithURLString: (NSString *) inURLString\n"
-    "       destinationFileName: (NSString *) inDestinationFileName\n"
-    "       downloadDelegate: (id <PMDownloadDidEndProtocol>) inDelegate\n"
-    "       cancelButton: (NSButton *) inCancelButton\n"
-    "       subtitle: (NSTextField *) inSubtitle\n"
-    "       progressIndicator: (NSProgressIndicator *) inProgressIndicator\n"
-    "       userInfo: (id) inUserInfo ;\n"
-    "\n"
-    "- (id) initWithURLString: (NSString *) inURLString\n"
-    "       postDictionary: (NSDictionary *) inPOSTDictionary\n"
-    "       destinationFileName: (NSString *) inDestinationFileName\n"
-    "       downloadDelegate: (id <PMDownloadDidEndProtocol>) inDelegate\n"
-    "       cancelButton: (NSButton *) inCancelButton\n"
-    "       subtitle: (NSTextField *) inSubtitle\n"
-    "       progressIndicator: (NSProgressIndicator *) inProgressIndicator\n"
-    "       userInfo: (id) inUserInfo ;\n"
-    "\n"
-    "- (NSError *) downloadError ;\n"
-    "\n"
-    "- (NSString *) destinationFileName ;\n"
-    "\n"
-    "- (id) userInfo ;\n"
-    "\n"
-    "- (BOOL) downloadHasBeenCancelled ;\n"
-    "\n"
-    "@end\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//               Filewrapper template 'applicationGalgas3UpdateFileWrapper download_file_implementation'               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_file_5F_implementation (C_Compiler * /* inCompiler */
-                                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "//\n"
-    "//  PMDownloadFile.m\n"
-    "//  canari\n"
-    "//\n"
-    "//  Created by Pierre Molinaro on 19/08/06.\n"
-    "//  Copyright 2006 __MyCompanyName__. All rights reserved.\n"
-    "//\n"
-    "\n"
-    "#import \"PMDownloadFile.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@implementation PMDownloadFile\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (id) initWithURLString: (NSString *) inURLString\n"
-    "       postDictionary: (NSDictionary *) inPOSTDictionary\n"
-    "       destinationFileName: (NSString *) inDestinationFileName\n"
-    "       downloadDelegate: (id <PMDownloadDidEndProtocol>) inDelegate\n"
-    "       cancelButton: (NSButton *) inCancelButton\n"
-    "       subtitle: (NSTextField *) inSubtitle\n"
-    "       progressIndicator: (NSProgressIndicator *) inProgressIndicator\n"
-    "       userInfo: (id) inUserInfo {\n"
-    "  self = [super init] ;\n"
-    "  if (self) {\n"
-    "    mURL = [NSURL URLWithString:inURLString] ;\n"
-    "    mDelegate = inDelegate ;\n"
-    "    mDestinationFileName = inDestinationFileName ;\n"
-    "    mUserInfo = inUserInfo ;\n"
-    "  //--- Subtitle\n"
-    "    mSubTitle = inSubtitle ;\n"
-    "    [mSubTitle setStringValue:@\"\"] ;\n"
-    "  //--- Progress Indicator\n"
-    "    mProgressIndicator = inProgressIndicator ;\n"
-    "    [mProgressIndicator setIndeterminate:YES] ;\n"
-    "  //--- Cancel button\n"
-    "    mCancelButton = inCancelButton ;\n"
-    "    [mCancelButton setTarget:self] ;\n"
-    "    [mCancelButton setAction:@selector (cancelAction:)] ;\n"
-    "    [mCancelButton setEnabled:YES] ;\n"
-    "  //--- Create the request\n"
-    "    NSMutableURLRequest * theRequest = [NSMutableURLRequest\n"
-    "      requestWithURL:mURL\n"
-    "      cachePolicy:NSURLRequestReloadIgnoringCacheData\n"
-    "      timeoutInterval:60.0\n"
-    "    ] ;\n"
-    "  //--- set method POST\n"
-    "    [theRequest setHTTPMethod:@\"POST\"] ;\n"
-    "  //--- set HTTP body\n"
-    "    NSMutableString * body = [NSMutableString new] ;\n"
-    "    NSEnumerator * enumerator = [inPOSTDictionary keyEnumerator] ;\n"
-    "    NSString * key ;\n"
-    "    while ((key = enumerator.nextObject)) {\n"
-    "      NSString * parameter = [[inPOSTDictionary objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ;\n"
-    "      if ([body length] > 0) {\n"
-    "        [body appendString:@\"&\"] ;\n"
-    "      }\n"
-    "      [body appendFormat:@\"%@=%@\", key, parameter] ;\n"
-    "    }\n"
-    "    //NSLog (@\"HTTP body: '%@'\", body) ;\n"
-    "    [theRequest setHTTPBody:[body dataUsingEncoding:NSASCIIStringEncoding]] ;\n"
-    "  //--- Create the connection with the request, and start loading the data\n"
-    "    mDownload = [[NSURLDownload alloc] initWithRequest:theRequest delegate:self] ;\n"
-    "  //--- Set destination file name\n"
-    "    [mDownload setDestination:inDestinationFileName allowOverwrite:YES];\n"
-    "  }\n"
-    "  return self ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (id) initWithURLString: (NSString *) inURLString\n"
-    "       destinationFileName: (NSString *) inDestinationFileName\n"
-    "       downloadDelegate: (id <PMDownloadDidEndProtocol>) inDelegate\n"
-    "       cancelButton: (NSButton *) inCancelButton\n"
-    "       subtitle: (NSTextField *) inSubtitle\n"
-    "       progressIndicator: (NSProgressIndicator *) inProgressIndicator\n"
-    "       userInfo: (id) inUserInfo {\n"
-    "  self = [super init] ;\n"
-    "  if (self) {\n"
-    "    mURL = [NSURL URLWithString:inURLString] ;\n"
-    "    mDelegate = inDelegate ;\n"
-    "    mDestinationFileName = inDestinationFileName ;\n"
-    "    mUserInfo = inUserInfo ;\n"
-    "  //--- Subtitle\n"
-    "    mSubTitle = inSubtitle ;\n"
-    "    [mSubTitle setStringValue:@\"\"] ;\n"
-    "  //--- Progress Indicator\n"
-    "    mProgressIndicator = inProgressIndicator ;\n"
-    "    [mProgressIndicator setIndeterminate:YES] ;\n"
-    "  //--- Cancel button\n"
-    "    mCancelButton = inCancelButton ;\n"
-    "    [mCancelButton setTarget:self] ;\n"
-    "    [mCancelButton setAction:@selector (cancelAction:)] ;\n"
-    "    [mCancelButton setEnabled:YES] ;\n"
-    "  //--- Create the request\n"
-    "    NSURLRequest * theRequest = [NSURLRequest\n"
-    "      requestWithURL:mURL\n"
-    "      cachePolicy:NSURLRequestReloadIgnoringCacheData\n"
-    "      timeoutInterval:60.0\n"
-    "    ] ;\n"
-    "  //--- Create the connection with the request, and start loading the data\n"
-    "    mDownload = [[NSURLDownload alloc] initWithRequest:theRequest delegate:self] ;\n"
-    "  //--- Set destination file name\n"
-    "    [mDownload setDestination:inDestinationFileName allowOverwrite:YES];\n"
-    "  }\n"
-    "  return self ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) download:(NSURLDownload *)download didReceiveResponse:(NSURLResponse *)response {\n"
-    "  // NSLog (@\"%s\", __PRETTY_FUNCTION__) ;\n"
-    "  mReceivedLength = 0 ;\n"
-    "  mExpectedContentLength = [response expectedContentLength] ;\n"
-    "//--- Update progress Indicator\n"
-    "  [mProgressIndicator setMinValue:0.0] ;\n"
-    "  [mProgressIndicator setMaxValue: (double) mExpectedContentLength] ;\n"
-    "  [mProgressIndicator setDoubleValue:0.0] ;\n"
-    "  [mProgressIndicator setIndeterminate:NO] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void)download: (NSURLDownload *) inDownload didReceiveDataOfLength:(NSUInteger) inLength {\n"
-    "  // NSLog (@\"%s: received %lu bytes\", __PRETTY_FUNCTION__, inLength) ;\n"
-    "  mReceivedLength += inLength ;\n"
-    "//--- Update Progress Indicator\n"
-    "  [mProgressIndicator setDoubleValue: (double) mReceivedLength] ;\n"
-    "//--- Update subtitle\n"
-    "  NSString * subtitle = [NSString\n"
-    "    stringWithFormat:@\"%lld KB of %lld KB\",\n"
-    "    (mReceivedLength >> 10),\n"
-    "    (mExpectedContentLength >> 10)\n"
-    "  ] ;\n"
-    "  [mSubTitle setStringValue:subtitle] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) downloadingProcessDidEnd {\n"
-    "  // NSLog (@\"%s\", __PRETTY_FUNCTION__) ;\n"
-    "  [mCancelButton setTarget:nil] ;\n"
-    "  [mCancelButton setAction:NULL] ;\n"
-    "  [mCancelButton setEnabled:NO] ;\n"
-    "  [mDelegate downloadDidEnd:self] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) cancelAction: (id) inSender {\n"
-    "  [mDownload cancel] ;\n"
-    "  mDownloadHasBeenCancelled = YES ;\n"
-    "  [self downloadingProcessDidEnd] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) download:(NSURLDownload *)download didFailWithError:(NSError *) inError {\n"
-    "  // NSLog (@\"Download failed\") ;\n"
-    "  mDownloadError = inError ;\n"
-    "  [self downloadingProcessDidEnd] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (void) downloadDidFinish:(NSURLDownload *)download {\n"
-    "  // NSLog (@\"Download completed\") ;\n"
-    "  [self downloadingProcessDidEnd] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSError *) downloadError {\n"
-    "  return mDownloadError ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (NSString *) destinationFileName {\n"
-    "  return mDestinationFileName ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (id) userInfo {\n"
-    "  return mUserInfo ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "- (BOOL) downloadHasBeenCancelled {\n"
-    "  return mDownloadHasBeenCancelled ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "@end\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                   Filewrapper template 'applicationGalgas3UpdateFileWrapper compatibility_header'                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_compatibility_5F_header (C_Compiler * /* inCompiler */
-                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "// #import \"PMSnowLeopardLionCompatibility.h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#ifndef  MAC_OS_X_VERSION_10_7\n"
-    "  @protocol NSURLDownloadDelegate <NSObject>\n"
-    "  @optional\n"
-    "    - (void)downloadDidBegin:(NSURLDownload *)download;\n"
-    "    - (NSURLRequest *)download:(NSURLDownload *)download willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse;\n"
-    "    - (BOOL)download:(NSURLDownload *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace;\n"
-    "    - (void)download:(NSURLDownload *)download didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;\n"
-    "    - (void)download:(NSURLDownload *)download didCancelAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge;\n"
-    "    - (BOOL)downloadShouldUseCredentialStorage:(NSURLDownload *)download;\n"
-    "    - (void)download:(NSURLDownload *)download didReceiveResponse:(NSURLResponse *)response;\n"
-    "    - (void)download:(NSURLDownload *)download willResumeWithResponse:(NSURLResponse *)response fromByte:(long long)startingByte;\n"
-    "    - (void)download:(NSURLDownload *)download didReceiveDataOfLength:(NSUInteger)length;\n"
-    "    - (BOOL)download:(NSURLDownload *)download shouldDecodeSourceDataOfMIMEType:(NSString *)encodingType;\n"
-    "    - (void)download:(NSURLDownload *)download decideDestinationWithSuggestedFilename:(NSString *)filename;\n"
-    "    - (void)download:(NSURLDownload *)download didCreateDestination:(NSString *)path;\n"
-    "    - (void)downloadDidFinish:(NSURLDownload *)download;\n"
-    "    - (void)download:(NSURLDownload *)download didFailWithError:(NSError *)error;\n"
-    "  @end\n"
-    "#endif\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n" ;
-  return GALGAS_string (result) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                  Filewrapper 'targetGalgas3GenerationFileWrapper'                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11494,11 +4285,11 @@ void routine_generateGalgasCodeBlocksWindowsTarget (const GALGAS_string constinA
                                                     const GALGAS_bool constinArgument_inVerboseOption,
                                                     C_Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_dir_8190 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/project-codeblocks-windows"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 152)) ;
-  var_dir_8190.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 153)) ;
-  GALGAS_string var_s_8273 = GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (inCompiler, constinArgument_inProjectName, constinArgument_inToolCppFileList, constinArgument_inLIBPMpath, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, GALGAS_bool (true), GALGAS_string ("Windows"), constinArgument_inVerboseOption COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 154))) ;
-  GALGAS_bool joker_8628 ; // Joker input parameter
-  var_s_8273.method_writeToFileWhenDifferentContents (var_dir_8190.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 164)).add_operation (constinArgument_inProjectName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 164)).add_operation (GALGAS_string (".cbp"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 164)), joker_8628, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 164)) ;
+  GALGAS_string var_dir_5465 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/project-codeblocks-windows"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 92)) ;
+  var_dir_5465.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 93)) ;
+  GALGAS_string var_s_5548 = GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (inCompiler, constinArgument_inProjectName, constinArgument_inToolCppFileList, constinArgument_inLIBPMpath, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, GALGAS_bool (true), GALGAS_string ("Windows"), constinArgument_inVerboseOption COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 94))) ;
+  GALGAS_bool joker_5903 ; // Joker input parameter
+  var_s_5548.method_writeToFileWhenDifferentContents (var_dir_5465.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 104)).add_operation (constinArgument_inProjectName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 104)).add_operation (GALGAS_string (".cbp"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 104)), joker_5903, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 104)) ;
 }
 
 
@@ -11517,11 +4308,11 @@ void routine_generateGalgasCodeBlocksMacTarget (const GALGAS_string constinArgum
                                                 const GALGAS_bool constinArgument_inVerboseOption,
                                                 C_Compiler * inCompiler
                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_dir_9075 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/project-codeblocks-mac"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 178)) ;
-  var_dir_9075.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 179)) ;
-  GALGAS_string var_s_9154 = GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (inCompiler, constinArgument_inProjectName, constinArgument_inToolCppFileList, constinArgument_inLIBPMpath, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, GALGAS_bool (false), GALGAS_string ("Mac"), constinArgument_inVerboseOption COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 180))) ;
-  GALGAS_bool joker_9506 ; // Joker input parameter
-  var_s_9154.method_writeToFileWhenDifferentContents (var_dir_9075.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 190)).add_operation (constinArgument_inProjectName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 190)).add_operation (GALGAS_string (".cbp"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 190)), joker_9506, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 190)) ;
+  GALGAS_string var_dir_6350 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/project-codeblocks-mac"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 118)) ;
+  var_dir_6350.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 119)) ;
+  GALGAS_string var_s_6429 = GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (inCompiler, constinArgument_inProjectName, constinArgument_inToolCppFileList, constinArgument_inLIBPMpath, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, GALGAS_bool (false), GALGAS_string ("Mac"), constinArgument_inVerboseOption COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 120))) ;
+  GALGAS_bool joker_6781 ; // Joker input parameter
+  var_s_6429.method_writeToFileWhenDifferentContents (var_dir_6350.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 130)).add_operation (constinArgument_inProjectName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 130)).add_operation (GALGAS_string (".cbp"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 130)), joker_6781, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 130)) ;
 }
 
 
@@ -11540,11 +4331,11 @@ void routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target (const GALGAS_stri
                                                                const GALGAS_bool constinArgument_inVerboseOption,
                                                                C_Compiler * inCompiler
                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_dir_9960 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/project-codeblocks-linux32"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 204)) ;
-  var_dir_9960.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 205)) ;
-  GALGAS_string var_s_10043 = GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (inCompiler, constinArgument_inProjectName, constinArgument_inToolCppFileList, constinArgument_inLIBPMpath, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, GALGAS_bool (false), GALGAS_string ("Unix"), constinArgument_inVerboseOption COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 206))) ;
-  GALGAS_bool joker_10396 ; // Joker input parameter
-  var_s_10043.method_writeToFileWhenDifferentContents (var_dir_9960.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 216)).add_operation (constinArgument_inProjectName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 216)).add_operation (GALGAS_string (".cbp"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 216)), joker_10396, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 216)) ;
+  GALGAS_string var_dir_7235 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/project-codeblocks-linux32"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 144)) ;
+  var_dir_7235.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 145)) ;
+  GALGAS_string var_s_7318 = GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (inCompiler, constinArgument_inProjectName, constinArgument_inToolCppFileList, constinArgument_inLIBPMpath, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, GALGAS_bool (false), GALGAS_string ("Unix"), constinArgument_inVerboseOption COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 146))) ;
+  GALGAS_bool joker_7671 ; // Joker input parameter
+  var_s_7318.method_writeToFileWhenDifferentContents (var_dir_7235.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 156)).add_operation (constinArgument_inProjectName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 156)).add_operation (GALGAS_string (".cbp"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 156)), joker_7671, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 156)) ;
 }
 
 
@@ -11563,11 +4354,11 @@ void routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target (const GAL
                                                                        const GALGAS_bool constinArgument_inVerboseOption,
                                                                        C_Compiler * inCompiler
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_dir_10851 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/project-codeblocks-linux64"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 230)) ;
-  var_dir_10851.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 231)) ;
-  GALGAS_string var_s_10934 = GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (inCompiler, constinArgument_inProjectName, constinArgument_inToolCppFileList, constinArgument_inLIBPMpath, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, GALGAS_bool (false), GALGAS_string ("Unix"), constinArgument_inVerboseOption COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 232))) ;
-  GALGAS_bool joker_11287 ; // Joker input parameter
-  var_s_10934.method_writeToFileWhenDifferentContents (var_dir_10851.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 242)).add_operation (constinArgument_inProjectName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 242)).add_operation (GALGAS_string (".cbp"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 242)), joker_11287, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 242)) ;
+  GALGAS_string var_dir_8126 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/project-codeblocks-linux64"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 170)) ;
+  var_dir_8126.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 171)) ;
+  GALGAS_string var_s_8209 = GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_codeblocks_5F_project (inCompiler, constinArgument_inProjectName, constinArgument_inToolCppFileList, constinArgument_inLIBPMpath, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, GALGAS_bool (false), GALGAS_string ("Unix"), constinArgument_inVerboseOption COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 172))) ;
+  GALGAS_bool joker_8562 ; // Joker input parameter
+  var_s_8209.method_writeToFileWhenDifferentContents (var_dir_8126.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 182)).add_operation (constinArgument_inProjectName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 182)).add_operation (GALGAS_string (".cbp"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 182)), joker_8562, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 182)) ;
 }
 
 
@@ -11581,22 +4372,22 @@ void routine_generateGalgas_33_MinGWOnMacOSXTarget (const GALGAS_string constinA
                                                     const GALGAS_string constinArgument_inProjectName,
                                                     C_Compiler * inCompiler
                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_dir_11545 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/makefile-win32-on-macosx"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 250)) ;
-  var_dir_11545.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 251)) ;
-  GALGAS_bool joker_11767 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_win_33__32__5F_on_5F_mac (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 252))).method_writeToExecutableFileWhenDifferentContents (var_dir_11545.add_operation (GALGAS_string ("/build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 252)), joker_11767, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 252)) ;
-  GALGAS_bool joker_11919 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_win_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 253))).method_writeToExecutableFileWhenDifferentContents (var_dir_11545.add_operation (GALGAS_string ("/build+release.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 253)), joker_11919, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 253)) ;
-  GALGAS_bool joker_12063 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_win_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 254))).method_writeToExecutableFileWhenDifferentContents (var_dir_11545.add_operation (GALGAS_string ("/build+lto.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 254)), joker_12063, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 254)) ;
-  GALGAS_bool joker_12211 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_win_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 255))).method_writeToExecutableFileWhenDifferentContents (var_dir_11545.add_operation (GALGAS_string ("/build+debug.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 255)), joker_12211, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 255)) ;
-  GALGAS_bool joker_12363 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_win_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 256))).method_writeToExecutableFileWhenDifferentContents (var_dir_11545.add_operation (GALGAS_string ("/verbose-build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 256)), joker_12363, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 256)) ;
-  GALGAS_bool joker_12522 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_win_33__32__5F_on_5F_mac (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 257))).method_writeToExecutableFileWhenDifferentContents (var_dir_11545.add_operation (GALGAS_string ("/clean.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 258)), joker_12522, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 257)) ;
+  GALGAS_string var_dir_8820 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/makefile-win32-on-macosx"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 190)) ;
+  var_dir_8820.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 191)) ;
+  GALGAS_bool joker_9042 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_win_33__32__5F_on_5F_mac (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 192))).method_writeToExecutableFileWhenDifferentContents (var_dir_8820.add_operation (GALGAS_string ("/build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 192)), joker_9042, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 192)) ;
+  GALGAS_bool joker_9194 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_win_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 193))).method_writeToExecutableFileWhenDifferentContents (var_dir_8820.add_operation (GALGAS_string ("/build+release.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 193)), joker_9194, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 193)) ;
+  GALGAS_bool joker_9338 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_win_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 194))).method_writeToExecutableFileWhenDifferentContents (var_dir_8820.add_operation (GALGAS_string ("/build+lto.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 194)), joker_9338, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 194)) ;
+  GALGAS_bool joker_9486 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_win_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 195))).method_writeToExecutableFileWhenDifferentContents (var_dir_8820.add_operation (GALGAS_string ("/build+debug.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 195)), joker_9486, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 195)) ;
+  GALGAS_bool joker_9638 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_win_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 196))).method_writeToExecutableFileWhenDifferentContents (var_dir_8820.add_operation (GALGAS_string ("/verbose-build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 196)), joker_9638, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 196)) ;
+  GALGAS_bool joker_9797 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_win_33__32__5F_on_5F_mac (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 197))).method_writeToExecutableFileWhenDifferentContents (var_dir_8820.add_operation (GALGAS_string ("/clean.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 198)), joker_9797, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 197)) ;
   {
-  GALGAS_string::class_method_deleteFileIfExists (var_dir_11545.add_operation (GALGAS_string ("/makefile"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 261)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 261)) ;
+  GALGAS_string::class_method_deleteFileIfExists (var_dir_8820.add_operation (GALGAS_string ("/makefile"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 201)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 201)) ;
   }
 }
 
@@ -11611,24 +4402,24 @@ void routine_generateGalgas_33_MakefileMacOSXTarget (const GALGAS_string constin
                                                      const GALGAS_string constinArgument_inProjectName,
                                                      C_Compiler * inCompiler
                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_dir_12834 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/makefile-macosx"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 269)) ;
-  var_dir_12834.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 270)) ;
-  GALGAS_bool joker_13041 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_macosx (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 271))).method_writeToExecutableFileWhenDifferentContents (var_dir_12834.add_operation (GALGAS_string ("/build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 271)), joker_13041, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 271)) ;
-  GALGAS_bool joker_13187 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_macosx (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 272))).method_writeToExecutableFileWhenDifferentContents (var_dir_12834.add_operation (GALGAS_string ("/verbose-build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 272)), joker_13187, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 272)) ;
-  GALGAS_bool joker_13329 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_macosx (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 273))).method_writeToExecutableFileWhenDifferentContents (var_dir_12834.add_operation (GALGAS_string ("/build+debug.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 273)), joker_13329, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 273)) ;
-  GALGAS_bool joker_13475 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_macosx (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 274))).method_writeToExecutableFileWhenDifferentContents (var_dir_12834.add_operation (GALGAS_string ("/build+release.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 274)), joker_13475, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 274)) ;
-  GALGAS_bool joker_13613 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_macosx (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 275))).method_writeToExecutableFileWhenDifferentContents (var_dir_12834.add_operation (GALGAS_string ("/build+lto.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 275)), joker_13613, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 275)) ;
-  GALGAS_bool joker_13747 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_macosx (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 276))).method_writeToExecutableFileWhenDifferentContents (var_dir_12834.add_operation (GALGAS_string ("/install.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 276)), joker_13747, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 276)) ;
-  GALGAS_bool joker_13892 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_macosx (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 277))).method_writeToExecutableFileWhenDifferentContents (var_dir_12834.add_operation (GALGAS_string ("/clean.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 277)), joker_13892, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 277)) ;
+  GALGAS_string var_dir_10109 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/makefile-macosx"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 209)) ;
+  var_dir_10109.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 210)) ;
+  GALGAS_bool joker_10316 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_macosx (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 211))).method_writeToExecutableFileWhenDifferentContents (var_dir_10109.add_operation (GALGAS_string ("/build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 211)), joker_10316, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 211)) ;
+  GALGAS_bool joker_10462 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_macosx (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 212))).method_writeToExecutableFileWhenDifferentContents (var_dir_10109.add_operation (GALGAS_string ("/verbose-build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 212)), joker_10462, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 212)) ;
+  GALGAS_bool joker_10604 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_macosx (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 213))).method_writeToExecutableFileWhenDifferentContents (var_dir_10109.add_operation (GALGAS_string ("/build+debug.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 213)), joker_10604, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 213)) ;
+  GALGAS_bool joker_10750 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_macosx (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 214))).method_writeToExecutableFileWhenDifferentContents (var_dir_10109.add_operation (GALGAS_string ("/build+release.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 214)), joker_10750, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 214)) ;
+  GALGAS_bool joker_10888 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_macosx (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 215))).method_writeToExecutableFileWhenDifferentContents (var_dir_10109.add_operation (GALGAS_string ("/build+lto.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 215)), joker_10888, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 215)) ;
+  GALGAS_bool joker_11022 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_macosx (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 216))).method_writeToExecutableFileWhenDifferentContents (var_dir_10109.add_operation (GALGAS_string ("/install.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 216)), joker_11022, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 216)) ;
+  GALGAS_bool joker_11167 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_macosx (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 217))).method_writeToExecutableFileWhenDifferentContents (var_dir_10109.add_operation (GALGAS_string ("/clean.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 217)), joker_11167, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 217)) ;
   {
-  GALGAS_string::class_method_deleteFileIfExists (var_dir_12834.add_operation (GALGAS_string ("/makefile"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 278)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 278)) ;
+  GALGAS_string::class_method_deleteFileIfExists (var_dir_10109.add_operation (GALGAS_string ("/makefile"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 218)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 218)) ;
   }
 }
 
@@ -11643,24 +4434,24 @@ void routine_generateGalgas_33_MakefileUnixTarget (const GALGAS_string constinAr
                                                    const GALGAS_string constinArgument_inProjectName,
                                                    C_Compiler * inCompiler
                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_dir_14199 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/makefile-unix"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 286)) ;
-  var_dir_14199.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 287)) ;
-  GALGAS_bool joker_14402 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_unix (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 288))).method_writeToExecutableFileWhenDifferentContents (var_dir_14199.add_operation (GALGAS_string ("/build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 288)), joker_14402, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 288)) ;
-  GALGAS_bool joker_14546 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_unix (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 289))).method_writeToExecutableFileWhenDifferentContents (var_dir_14199.add_operation (GALGAS_string ("/build+release.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 289)), joker_14546, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 289)) ;
-  GALGAS_bool joker_14682 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_unix (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 290))).method_writeToExecutableFileWhenDifferentContents (var_dir_14199.add_operation (GALGAS_string ("/build+lto.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 290)), joker_14682, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 290)) ;
-  GALGAS_bool joker_14822 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_unix (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 291))).method_writeToExecutableFileWhenDifferentContents (var_dir_14199.add_operation (GALGAS_string ("/build+debug.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 291)), joker_14822, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 291)) ;
-  GALGAS_bool joker_14966 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_unix (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 292))).method_writeToExecutableFileWhenDifferentContents (var_dir_14199.add_operation (GALGAS_string ("/verbose-build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 292)), joker_14966, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 292)) ;
-  GALGAS_bool joker_15098 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_unix (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 293))).method_writeToExecutableFileWhenDifferentContents (var_dir_14199.add_operation (GALGAS_string ("/install.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 293)), joker_15098, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 293)) ;
-  GALGAS_bool joker_15241 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_unix (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 294))).method_writeToExecutableFileWhenDifferentContents (var_dir_14199.add_operation (GALGAS_string ("/clean.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 294)), joker_15241, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 294)) ;
+  GALGAS_string var_dir_11474 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/makefile-unix"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 226)) ;
+  var_dir_11474.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 227)) ;
+  GALGAS_bool joker_11677 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_unix (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 228))).method_writeToExecutableFileWhenDifferentContents (var_dir_11474.add_operation (GALGAS_string ("/build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 228)), joker_11677, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 228)) ;
+  GALGAS_bool joker_11821 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_unix (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 229))).method_writeToExecutableFileWhenDifferentContents (var_dir_11474.add_operation (GALGAS_string ("/build+release.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 229)), joker_11821, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 229)) ;
+  GALGAS_bool joker_11957 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_unix (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 230))).method_writeToExecutableFileWhenDifferentContents (var_dir_11474.add_operation (GALGAS_string ("/build+lto.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 230)), joker_11957, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 230)) ;
+  GALGAS_bool joker_12097 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_unix (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 231))).method_writeToExecutableFileWhenDifferentContents (var_dir_11474.add_operation (GALGAS_string ("/build+debug.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 231)), joker_12097, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 231)) ;
+  GALGAS_bool joker_12241 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_unix (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 232))).method_writeToExecutableFileWhenDifferentContents (var_dir_11474.add_operation (GALGAS_string ("/verbose-build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 232)), joker_12241, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 232)) ;
+  GALGAS_bool joker_12373 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_install_5F_unix (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 233))).method_writeToExecutableFileWhenDifferentContents (var_dir_11474.add_operation (GALGAS_string ("/install.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 233)), joker_12373, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 233)) ;
+  GALGAS_bool joker_12516 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_unix (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 234))).method_writeToExecutableFileWhenDifferentContents (var_dir_11474.add_operation (GALGAS_string ("/clean.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 234)), joker_12516, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 234)) ;
   {
-  GALGAS_string::class_method_deleteFileIfExists (var_dir_14199.add_operation (GALGAS_string ("/makefile"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 295)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 295)) ;
+  GALGAS_string::class_method_deleteFileIfExists (var_dir_11474.add_operation (GALGAS_string ("/makefile"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 235)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 235)) ;
   }
 }
 
@@ -11675,22 +4466,22 @@ void routine_generateGalgas_33_Linux_33__32_OnMacOSXTarget (const GALGAS_string 
                                                             const GALGAS_string constinArgument_inProjectName,
                                                             C_Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_dir_15551 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/makefile-x86linux32-on-macosx"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 303)) ;
-  var_dir_15551.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 304)) ;
-  GALGAS_bool joker_15783 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_33__32__5F_on_5F_mac (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 305))).method_writeToExecutableFileWhenDifferentContents (var_dir_15551.add_operation (GALGAS_string ("/build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 305)), joker_15783, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 305)) ;
-  GALGAS_bool joker_15940 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 306))).method_writeToExecutableFileWhenDifferentContents (var_dir_15551.add_operation (GALGAS_string ("/build+release.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 306)), joker_15940, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 306)) ;
-  GALGAS_bool joker_16089 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 307))).method_writeToExecutableFileWhenDifferentContents (var_dir_15551.add_operation (GALGAS_string ("/build+lto.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 307)), joker_16089, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 307)) ;
-  GALGAS_bool joker_16242 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 308))).method_writeToExecutableFileWhenDifferentContents (var_dir_15551.add_operation (GALGAS_string ("/build+debug.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 308)), joker_16242, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 308)) ;
-  GALGAS_bool joker_16399 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 309))).method_writeToExecutableFileWhenDifferentContents (var_dir_15551.add_operation (GALGAS_string ("/verbose-build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 309)), joker_16399, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 309)) ;
-  GALGAS_bool joker_16555 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_33__32__5F_on_5F_mac (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 310))).method_writeToExecutableFileWhenDifferentContents (var_dir_15551.add_operation (GALGAS_string ("/clean.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 310)), joker_16555, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 310)) ;
+  GALGAS_string var_dir_12826 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/makefile-x86linux32-on-macosx"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 243)) ;
+  var_dir_12826.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 244)) ;
+  GALGAS_bool joker_13058 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_33__32__5F_on_5F_mac (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 245))).method_writeToExecutableFileWhenDifferentContents (var_dir_12826.add_operation (GALGAS_string ("/build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 245)), joker_13058, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 245)) ;
+  GALGAS_bool joker_13215 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 246))).method_writeToExecutableFileWhenDifferentContents (var_dir_12826.add_operation (GALGAS_string ("/build+release.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 246)), joker_13215, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 246)) ;
+  GALGAS_bool joker_13364 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 247))).method_writeToExecutableFileWhenDifferentContents (var_dir_12826.add_operation (GALGAS_string ("/build+lto.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 247)), joker_13364, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 247)) ;
+  GALGAS_bool joker_13517 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 248))).method_writeToExecutableFileWhenDifferentContents (var_dir_12826.add_operation (GALGAS_string ("/build+debug.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 248)), joker_13517, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 248)) ;
+  GALGAS_bool joker_13674 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_33__32__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 249))).method_writeToExecutableFileWhenDifferentContents (var_dir_12826.add_operation (GALGAS_string ("/verbose-build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 249)), joker_13674, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 249)) ;
+  GALGAS_bool joker_13830 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_33__32__5F_on_5F_mac (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 250))).method_writeToExecutableFileWhenDifferentContents (var_dir_12826.add_operation (GALGAS_string ("/clean.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 250)), joker_13830, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 250)) ;
   {
-  GALGAS_string::class_method_deleteFileIfExists (var_dir_15551.add_operation (GALGAS_string ("/makefile"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 311)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 311)) ;
+  GALGAS_string::class_method_deleteFileIfExists (var_dir_12826.add_operation (GALGAS_string ("/makefile"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 251)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 251)) ;
   }
 }
 
@@ -11705,22 +4496,22 @@ void routine_generateGalgas_33_Linux_36__34_OnMacOSXTarget (const GALGAS_string 
                                                             const GALGAS_string constinArgument_inProjectName,
                                                             C_Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_dir_16865 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/makefile-x86linux64-on-macosx"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 319)) ;
-  var_dir_16865.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 320)) ;
-  GALGAS_bool joker_17097 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_36__34__5F_on_5F_mac (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 321))).method_writeToExecutableFileWhenDifferentContents (var_dir_16865.add_operation (GALGAS_string ("/build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 321)), joker_17097, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 321)) ;
-  GALGAS_bool joker_17254 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_36__34__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 322))).method_writeToExecutableFileWhenDifferentContents (var_dir_16865.add_operation (GALGAS_string ("/build+release.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 322)), joker_17254, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 322)) ;
-  GALGAS_bool joker_17403 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_36__34__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 323))).method_writeToExecutableFileWhenDifferentContents (var_dir_16865.add_operation (GALGAS_string ("/build+lto.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 323)), joker_17403, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 323)) ;
-  GALGAS_bool joker_17556 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_36__34__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 324))).method_writeToExecutableFileWhenDifferentContents (var_dir_16865.add_operation (GALGAS_string ("/build+debug.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 324)), joker_17556, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 324)) ;
-  GALGAS_bool joker_17713 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_36__34__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 325))).method_writeToExecutableFileWhenDifferentContents (var_dir_16865.add_operation (GALGAS_string ("/verbose-build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 325)), joker_17713, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 325)) ;
-  GALGAS_bool joker_17869 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_36__34__5F_on_5F_mac (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 326))).method_writeToExecutableFileWhenDifferentContents (var_dir_16865.add_operation (GALGAS_string ("/clean.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 326)), joker_17869, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 326)) ;
+  GALGAS_string var_dir_14140 = constinArgument_inProjectDirectory.add_operation (GALGAS_string ("/makefile-x86linux64-on-macosx"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 259)) ;
+  var_dir_14140.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 260)) ;
+  GALGAS_bool joker_14372 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_x_38__36_linux_36__34__5F_on_5F_mac (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 261))).method_writeToExecutableFileWhenDifferentContents (var_dir_14140.add_operation (GALGAS_string ("/build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 261)), joker_14372, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 261)) ;
+  GALGAS_bool joker_14529 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_release_5F_x_38__36_linux_36__34__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 262))).method_writeToExecutableFileWhenDifferentContents (var_dir_14140.add_operation (GALGAS_string ("/build+release.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 262)), joker_14529, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 262)) ;
+  GALGAS_bool joker_14678 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_lto_5F_x_38__36_linux_36__34__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 263))).method_writeToExecutableFileWhenDifferentContents (var_dir_14140.add_operation (GALGAS_string ("/build+lto.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 263)), joker_14678, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 263)) ;
+  GALGAS_bool joker_14831 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_debug_5F_x_38__36_linux_36__34__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 264))).method_writeToExecutableFileWhenDifferentContents (var_dir_14140.add_operation (GALGAS_string ("/build+debug.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 264)), joker_14831, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 264)) ;
+  GALGAS_bool joker_14988 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_build_5F_verbose_5F_x_38__36_linux_36__34__5F_on_5F_mac (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 265))).method_writeToExecutableFileWhenDifferentContents (var_dir_14140.add_operation (GALGAS_string ("/verbose-build.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 265)), joker_14988, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 265)) ;
+  GALGAS_bool joker_15144 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_clean_5F_x_38__36_linux_36__34__5F_on_5F_mac (inCompiler, constinArgument_inProjectName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 266))).method_writeToExecutableFileWhenDifferentContents (var_dir_14140.add_operation (GALGAS_string ("/clean.py"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 266)), joker_15144, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 266)) ;
   {
-  GALGAS_string::class_method_deleteFileIfExists (var_dir_16865.add_operation (GALGAS_string ("/makefile"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 327)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 327)) ;
+  GALGAS_string::class_method_deleteFileIfExists (var_dir_14140.add_operation (GALGAS_string ("/makefile"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 267)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 267)) ;
   }
 }
 
@@ -11750,172 +4541,187 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
                                       const GALGAS_stringlist constinArgument_inHandCodedLinkAppFileList,
                                       C_Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_projectDirectory_18817 = constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 351)) ;
-  GALGAS_bool joker_19136 ; // Joker input parameter
-  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_header (inCompiler, constinArgument_inProjectVersionString COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 353))).method_writeToFileWhenDifferentContents (constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 354)).add_operation (GALGAS_string ("/build/output/project_header.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 354)), joker_19136, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 353)) ;
-  ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("project_header.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 357)) ;
-  GALGAS_stringlist var_toolCppFileList_19291 = constinArgument_inToolCppFileList ;
+  GALGAS_string var_projectDirectory_16092 = constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 291)) ;
+  GALGAS_bool joker_16411 ; // Joker input parameter
+  GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_header (inCompiler, constinArgument_inProjectVersionString COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 293))).method_writeToFileWhenDifferentContents (constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 294)).add_operation (GALGAS_string ("/build/output/project_header.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 294)), joker_16411, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 293)) ;
+  ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("project_header.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 297)) ;
+  GALGAS_stringlist var_toolCppFileList_16566 = constinArgument_inToolCppFileList ;
   const enumGalgasBool test_0 = constinArgument_inQuietOutputByDefault.boolEnum () ;
   if (kBoolTrue == test_0) {
-    var_toolCppFileList_19291.addAssign_operation (GALGAS_string ("C_galgas_verbose_option.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 361)) ;
+    var_toolCppFileList_16566.addAssign_operation (GALGAS_string ("C_galgas_verbose_option.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 301)) ;
   }else if (kBoolFalse == test_0) {
-    var_toolCppFileList_19291.addAssign_operation (GALGAS_string ("C_galgas_quiet_option.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 363)) ;
+    var_toolCppFileList_16566.addAssign_operation (GALGAS_string ("C_galgas_quiet_option.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 303)) ;
   }
-  GALGAS_string var_libpmPath_19556 ;
-  const cMapElement_projectQualifiedFeatureMap * objectArray_19563 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("libpmAtPath")) ;
-  if (NULL != objectArray_19563) {
-      macroValidSharedObject (objectArray_19563, cMapElement_projectQualifiedFeatureMap) ;
-    const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, objectArray_19563->mProperty_mFeatureValue.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+  GALGAS_lstring var_macCodeSign_16835 ;
+  const cMapElement_projectQualifiedFeatureMap * objectArray_16842 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("macCodeSign")) ;
+  if (NULL != objectArray_16842) {
+      macroValidSharedObject (objectArray_16842, cMapElement_projectQualifiedFeatureMap) ;
+    const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, objectArray_16842->mProperty_mFeatureValue.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_1) {
       TC_Array <C_FixItDescription> fixItArray2 ;
-      inCompiler->emitSemanticError (objectArray_19563->mProperty_mFeatureValue.getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 369)), GALGAS_string ("the libpm path should not be empty"), fixItArray2  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 369)) ;
-      var_libpmPath_19556.drop () ; // Release error dropped variable
+      inCompiler->emitSemanticError (objectArray_16842->mProperty_mFeatureValue.getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 309)), GALGAS_string ("the %macCodeSign attribute should not be empty"), fixItArray2  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 309)) ;
+      var_macCodeSign_16835.drop () ; // Release error dropped variable
     }else if (kBoolFalse == test_1) {
-      var_libpmPath_19556 = objectArray_19563->mProperty_mFeatureValue.getter_string (HERE) ;
+      var_macCodeSign_16835 = objectArray_16842->mProperty_mFeatureValue ;
+    }
+  }else{
+    var_macCodeSign_16835 = GALGAS_string::makeEmptyString ().getter_nowhere (SOURCE_FILE ("galgas3TargetGeneration.galgas", 314)) ;
+  }
+  GALGAS_string var_libpmPath_17207 ;
+  const cMapElement_projectQualifiedFeatureMap * objectArray_17214 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("libpmAtPath")) ;
+  if (NULL != objectArray_17214) {
+      macroValidSharedObject (objectArray_17214, cMapElement_projectQualifiedFeatureMap) ;
+    const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, objectArray_17214->mProperty_mFeatureValue.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    if (kBoolTrue == test_3) {
+      TC_Array <C_FixItDescription> fixItArray4 ;
+      inCompiler->emitSemanticError (objectArray_17214->mProperty_mFeatureValue.getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 320)), GALGAS_string ("the libpm path should not be empty"), fixItArray4  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 320)) ;
+      var_libpmPath_17207.drop () ; // Release error dropped variable
+    }else if (kBoolFalse == test_3) {
+      var_libpmPath_17207 = objectArray_17214->mProperty_mFeatureValue.getter_string (HERE) ;
     }
   }else{
     {
-    routine_updateLIBPMatPath (constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 374)).add_operation (GALGAS_string ("/build/libpm"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 374)), inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 374)) ;
+    routine_updateLIBPMatPath (constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 325)).add_operation (GALGAS_string ("/build/libpm"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 325)), inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 325)) ;
     }
-    var_libpmPath_19556 = GALGAS_string ("../build/libpm") ;
+    var_libpmPath_17207 = GALGAS_string ("../build/libpm") ;
   }
-  GALGAS_stringset var_guiSourceSet_5F_app_20052 = GALGAS_stringset::constructor_setWithStringList (constinArgument_inAppProductFileList  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 380)) ;
-  GALGAS_stringset var_sourceFileSet_20129 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 382)) ;
-  GALGAS_stringset var_availableGenerationFeatures_20195 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 384)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("quietOutputByDefault")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 385)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("codeblocks-windows")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 386)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("codeblocks-linux32")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 387)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("codeblocks-linux64")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 388)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("codeblocks-mac")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 389)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("makefile-macosx")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 390)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("makefile-unix")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 391)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("makefile-x86linux32-on-macosx")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 392)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("makefile-x86linux64-on-macosx")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 393)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("makefile-win32-on-macosx")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 394)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("SnowLeopard")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 395)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("Lion")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 396)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("MountainLion")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 397)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("Mavericks")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 398)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("Yosemite")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 399)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("ElCapitanYosemite")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 400)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("SierraElCapitan")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 401)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("ElCapitan")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 402)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("Sierra")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 403)) ;
-  var_availableGenerationFeatures_20195.addAssign_operation (GALGAS_string ("LatestMacOS")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 404)) ;
-  GALGAS_stringset var_generationFeatures_21272 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 405)) ;
-  GALGAS_string var_SDK_21329 = GALGAS_string::makeEmptyString () ;
-  GALGAS_string var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string::makeEmptyString () ;
-  cEnumerator_lstringlist enumerator_21406 (constinArgument_inTargetFeatureList, kENUMERATION_UP) ;
-  while (enumerator_21406.hasCurrentObject ()) {
-    const enumGalgasBool test_3 = var_availableGenerationFeatures_20195.getter_hasKey (enumerator_21406.current_mValue (HERE).getter_string (HERE) COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 410)).boolEnum () ;
-    if (kBoolTrue == test_3) {
-      const enumGalgasBool test_4 = var_generationFeatures_21272.getter_hasKey (enumerator_21406.current_mValue (HERE).getter_string (HERE) COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 411)).boolEnum () ;
-      if (kBoolTrue == test_4) {
-        TC_Array <C_FixItDescription> fixItArray5 ;
-        inCompiler->emitSemanticError (enumerator_21406.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 412)), GALGAS_string ("duplicate '").add_operation (enumerator_21406.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 412)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 412)).add_operation (GALGAS_string ("' feature"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 412)), fixItArray5  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 412)) ;
-      }
-      GALGAS_string var_macOsDuplicateMessage_21631 = GALGAS_string ("the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\", \"Yosemite\", \"ElCapitanYosemite\", \"ElCapitan\", \"ElCapitanSierra\", \"Sierra\", \"LatestMacOS\" are ex"
-        "clusive") ;
-      const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("SnowLeopard"))).boolEnum () ;
+  GALGAS_stringset var_guiSourceSet_5F_app_17729 = GALGAS_stringset::constructor_setWithStringList (constinArgument_inAppProductFileList  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 329)) ;
+  GALGAS_stringset var_sourceFileSet_17806 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 331)) ;
+  GALGAS_stringset var_availableGenerationFeatures_17872 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 333)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("quietOutputByDefault")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 334)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("codeblocks-windows")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 335)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("codeblocks-linux32")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 336)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("codeblocks-linux64")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 337)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("codeblocks-mac")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 338)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("makefile-macosx")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 339)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("makefile-unix")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 340)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("makefile-x86linux32-on-macosx")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 341)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("makefile-x86linux64-on-macosx")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 342)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("makefile-win32-on-macosx")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 343)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("SnowLeopard")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 344)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("Lion")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 345)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("MountainLion")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 346)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("Mavericks")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 347)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("Yosemite")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 348)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("ElCapitanYosemite")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 349)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("SierraElCapitan")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 350)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("ElCapitan")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 351)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("Sierra")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 352)) ;
+  var_availableGenerationFeatures_17872.addAssign_operation (GALGAS_string ("LatestMacOS")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 353)) ;
+  GALGAS_stringset var_generationFeatures_18949 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 354)) ;
+  GALGAS_string var_SDK_19006 = GALGAS_string::makeEmptyString () ;
+  GALGAS_string var_MACOSX_5F_DEPLOYMENT_5F_TARGET_19046 = GALGAS_string::makeEmptyString () ;
+  cEnumerator_lstringlist enumerator_19083 (constinArgument_inTargetFeatureList, kENUMERATION_UP) ;
+  while (enumerator_19083.hasCurrentObject ()) {
+    const enumGalgasBool test_5 = var_availableGenerationFeatures_17872.getter_hasKey (enumerator_19083.current_mValue (HERE).getter_string (HERE) COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 359)).boolEnum () ;
+    if (kBoolTrue == test_5) {
+      const enumGalgasBool test_6 = var_generationFeatures_18949.getter_hasKey (enumerator_19083.current_mValue (HERE).getter_string (HERE) COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 360)).boolEnum () ;
       if (kBoolTrue == test_6) {
-        const enumGalgasBool test_7 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-        if (kBoolTrue == test_7) {
-          TC_Array <C_FixItDescription> fixItArray8 ;
-          inCompiler->emitSemanticError (enumerator_21406.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 419)), var_macOsDuplicateMessage_21631, fixItArray8  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 419)) ;
-        }
-        var_SDK_21329 = GALGAS_string ("macosx10.6") ;
-        var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.6") ;
-      }else if (kBoolFalse == test_6) {
-        const enumGalgasBool test_9 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("Lion"))).boolEnum () ;
+        TC_Array <C_FixItDescription> fixItArray7 ;
+        inCompiler->emitSemanticError (enumerator_19083.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 361)), GALGAS_string ("duplicate '").add_operation (enumerator_19083.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 361)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 361)).add_operation (GALGAS_string ("' feature"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 361)), fixItArray7  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 361)) ;
+      }
+      GALGAS_string var_macOsDuplicateMessage_19308 = GALGAS_string ("the \"%SnowLeopard\", \"%Lion\", \"%MountainLion\", \"%Mavericks\", \"%Yosemite\", \"%ElCapitanYosemite\", \"%ElCapitan\", \"%ElCapitanSierra\", \"%Sierra\", \"%LatestMac"
+        "OS\" are exclusive") ;
+      const enumGalgasBool test_8 = GALGAS_bool (kIsEqual, enumerator_19083.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("SnowLeopard"))).boolEnum () ;
+      if (kBoolTrue == test_8) {
+        const enumGalgasBool test_9 = GALGAS_bool (kIsNotEqual, var_SDK_19006.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
         if (kBoolTrue == test_9) {
-          const enumGalgasBool test_10 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-          if (kBoolTrue == test_10) {
-            TC_Array <C_FixItDescription> fixItArray11 ;
-            inCompiler->emitSemanticError (enumerator_21406.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 426)), var_macOsDuplicateMessage_21631, fixItArray11  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 426)) ;
-          }
-          var_SDK_21329 = GALGAS_string ("macosx10.7") ;
-          var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.7") ;
-        }else if (kBoolFalse == test_9) {
-          const enumGalgasBool test_12 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("MountainLion"))).boolEnum () ;
+          TC_Array <C_FixItDescription> fixItArray10 ;
+          inCompiler->emitSemanticError (enumerator_19083.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 368)), var_macOsDuplicateMessage_19308, fixItArray10  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 368)) ;
+        }
+        var_SDK_19006 = GALGAS_string ("macosx10.6") ;
+        var_MACOSX_5F_DEPLOYMENT_5F_TARGET_19046 = GALGAS_string ("10.6") ;
+      }else if (kBoolFalse == test_8) {
+        const enumGalgasBool test_11 = GALGAS_bool (kIsEqual, enumerator_19083.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("Lion"))).boolEnum () ;
+        if (kBoolTrue == test_11) {
+          const enumGalgasBool test_12 = GALGAS_bool (kIsNotEqual, var_SDK_19006.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_12) {
-            const enumGalgasBool test_13 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-            if (kBoolTrue == test_13) {
-              TC_Array <C_FixItDescription> fixItArray14 ;
-              inCompiler->emitSemanticError (enumerator_21406.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 433)), var_macOsDuplicateMessage_21631, fixItArray14  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 433)) ;
-            }
-            var_SDK_21329 = GALGAS_string ("macosx10.8") ;
-            var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.8") ;
-          }else if (kBoolFalse == test_12) {
-            const enumGalgasBool test_15 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("Mavericks"))).boolEnum () ;
+            TC_Array <C_FixItDescription> fixItArray13 ;
+            inCompiler->emitSemanticError (enumerator_19083.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 375)), var_macOsDuplicateMessage_19308, fixItArray13  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 375)) ;
+          }
+          var_SDK_19006 = GALGAS_string ("macosx10.7") ;
+          var_MACOSX_5F_DEPLOYMENT_5F_TARGET_19046 = GALGAS_string ("10.7") ;
+        }else if (kBoolFalse == test_11) {
+          const enumGalgasBool test_14 = GALGAS_bool (kIsEqual, enumerator_19083.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("MountainLion"))).boolEnum () ;
+          if (kBoolTrue == test_14) {
+            const enumGalgasBool test_15 = GALGAS_bool (kIsNotEqual, var_SDK_19006.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
             if (kBoolTrue == test_15) {
-              const enumGalgasBool test_16 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-              if (kBoolTrue == test_16) {
-                TC_Array <C_FixItDescription> fixItArray17 ;
-                inCompiler->emitSemanticError (enumerator_21406.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 440)), var_macOsDuplicateMessage_21631, fixItArray17  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 440)) ;
-              }
-              var_SDK_21329 = GALGAS_string ("macosx10.9") ;
-              var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.9") ;
-            }else if (kBoolFalse == test_15) {
-              const enumGalgasBool test_18 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("Yosemite"))).boolEnum () ;
+              TC_Array <C_FixItDescription> fixItArray16 ;
+              inCompiler->emitSemanticError (enumerator_19083.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 382)), var_macOsDuplicateMessage_19308, fixItArray16  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 382)) ;
+            }
+            var_SDK_19006 = GALGAS_string ("macosx10.8") ;
+            var_MACOSX_5F_DEPLOYMENT_5F_TARGET_19046 = GALGAS_string ("10.8") ;
+          }else if (kBoolFalse == test_14) {
+            const enumGalgasBool test_17 = GALGAS_bool (kIsEqual, enumerator_19083.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("Mavericks"))).boolEnum () ;
+            if (kBoolTrue == test_17) {
+              const enumGalgasBool test_18 = GALGAS_bool (kIsNotEqual, var_SDK_19006.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
               if (kBoolTrue == test_18) {
-                const enumGalgasBool test_19 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-                if (kBoolTrue == test_19) {
-                  TC_Array <C_FixItDescription> fixItArray20 ;
-                  inCompiler->emitSemanticError (enumerator_21406.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 447)), var_macOsDuplicateMessage_21631, fixItArray20  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 447)) ;
-                }
-                var_SDK_21329 = GALGAS_string ("macosx10.10") ;
-                var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.10") ;
-              }else if (kBoolFalse == test_18) {
-                const enumGalgasBool test_21 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("ElCapitanYosemite"))).boolEnum () ;
+                TC_Array <C_FixItDescription> fixItArray19 ;
+                inCompiler->emitSemanticError (enumerator_19083.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 389)), var_macOsDuplicateMessage_19308, fixItArray19  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 389)) ;
+              }
+              var_SDK_19006 = GALGAS_string ("macosx10.9") ;
+              var_MACOSX_5F_DEPLOYMENT_5F_TARGET_19046 = GALGAS_string ("10.9") ;
+            }else if (kBoolFalse == test_17) {
+              const enumGalgasBool test_20 = GALGAS_bool (kIsEqual, enumerator_19083.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("Yosemite"))).boolEnum () ;
+              if (kBoolTrue == test_20) {
+                const enumGalgasBool test_21 = GALGAS_bool (kIsNotEqual, var_SDK_19006.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                 if (kBoolTrue == test_21) {
-                  const enumGalgasBool test_22 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-                  if (kBoolTrue == test_22) {
-                    TC_Array <C_FixItDescription> fixItArray23 ;
-                    inCompiler->emitSemanticError (enumerator_21406.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 454)), var_macOsDuplicateMessage_21631, fixItArray23  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 454)) ;
-                  }
-                  var_SDK_21329 = GALGAS_string ("macosx10.11") ;
-                  var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.10") ;
-                }else if (kBoolFalse == test_21) {
-                  const enumGalgasBool test_24 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("ElCapitan"))).boolEnum () ;
+                  TC_Array <C_FixItDescription> fixItArray22 ;
+                  inCompiler->emitSemanticError (enumerator_19083.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 396)), var_macOsDuplicateMessage_19308, fixItArray22  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 396)) ;
+                }
+                var_SDK_19006 = GALGAS_string ("macosx10.10") ;
+                var_MACOSX_5F_DEPLOYMENT_5F_TARGET_19046 = GALGAS_string ("10.10") ;
+              }else if (kBoolFalse == test_20) {
+                const enumGalgasBool test_23 = GALGAS_bool (kIsEqual, enumerator_19083.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("ElCapitanYosemite"))).boolEnum () ;
+                if (kBoolTrue == test_23) {
+                  const enumGalgasBool test_24 = GALGAS_bool (kIsNotEqual, var_SDK_19006.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                   if (kBoolTrue == test_24) {
-                    const enumGalgasBool test_25 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-                    if (kBoolTrue == test_25) {
-                      TC_Array <C_FixItDescription> fixItArray26 ;
-                      inCompiler->emitSemanticError (enumerator_21406.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 461)), var_macOsDuplicateMessage_21631, fixItArray26  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 461)) ;
-                    }
-                    var_SDK_21329 = GALGAS_string ("macosx10.11") ;
-                    var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.11") ;
-                  }else if (kBoolFalse == test_24) {
-                    const enumGalgasBool test_27 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("SierraElCapitan"))).boolEnum () ;
+                    TC_Array <C_FixItDescription> fixItArray25 ;
+                    inCompiler->emitSemanticError (enumerator_19083.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 403)), var_macOsDuplicateMessage_19308, fixItArray25  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 403)) ;
+                  }
+                  var_SDK_19006 = GALGAS_string ("macosx10.11") ;
+                  var_MACOSX_5F_DEPLOYMENT_5F_TARGET_19046 = GALGAS_string ("10.10") ;
+                }else if (kBoolFalse == test_23) {
+                  const enumGalgasBool test_26 = GALGAS_bool (kIsEqual, enumerator_19083.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("ElCapitan"))).boolEnum () ;
+                  if (kBoolTrue == test_26) {
+                    const enumGalgasBool test_27 = GALGAS_bool (kIsNotEqual, var_SDK_19006.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                     if (kBoolTrue == test_27) {
-                      const enumGalgasBool test_28 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-                      if (kBoolTrue == test_28) {
-                        TC_Array <C_FixItDescription> fixItArray29 ;
-                        inCompiler->emitSemanticError (enumerator_21406.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 468)), var_macOsDuplicateMessage_21631, fixItArray29  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 468)) ;
-                      }
-                      var_SDK_21329 = GALGAS_string ("macosx10.12") ;
-                      var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.11") ;
-                    }else if (kBoolFalse == test_27) {
-                      const enumGalgasBool test_30 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("Sierra"))).boolEnum () ;
+                      TC_Array <C_FixItDescription> fixItArray28 ;
+                      inCompiler->emitSemanticError (enumerator_19083.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 410)), var_macOsDuplicateMessage_19308, fixItArray28  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 410)) ;
+                    }
+                    var_SDK_19006 = GALGAS_string ("macosx10.11") ;
+                    var_MACOSX_5F_DEPLOYMENT_5F_TARGET_19046 = GALGAS_string ("10.11") ;
+                  }else if (kBoolFalse == test_26) {
+                    const enumGalgasBool test_29 = GALGAS_bool (kIsEqual, enumerator_19083.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("SierraElCapitan"))).boolEnum () ;
+                    if (kBoolTrue == test_29) {
+                      const enumGalgasBool test_30 = GALGAS_bool (kIsNotEqual, var_SDK_19006.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                       if (kBoolTrue == test_30) {
-                        const enumGalgasBool test_31 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-                        if (kBoolTrue == test_31) {
-                          TC_Array <C_FixItDescription> fixItArray32 ;
-                          inCompiler->emitSemanticError (enumerator_21406.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 475)), var_macOsDuplicateMessage_21631, fixItArray32  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 475)) ;
-                        }
-                        var_SDK_21329 = GALGAS_string ("macosx10.12") ;
-                        var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.12") ;
-                      }else if (kBoolFalse == test_30) {
-                        const enumGalgasBool test_33 = GALGAS_bool (kIsEqual, enumerator_21406.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("LatestMacOS"))).boolEnum () ;
+                        TC_Array <C_FixItDescription> fixItArray31 ;
+                        inCompiler->emitSemanticError (enumerator_19083.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 417)), var_macOsDuplicateMessage_19308, fixItArray31  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 417)) ;
+                      }
+                      var_SDK_19006 = GALGAS_string ("macosx10.12") ;
+                      var_MACOSX_5F_DEPLOYMENT_5F_TARGET_19046 = GALGAS_string ("10.11") ;
+                    }else if (kBoolFalse == test_29) {
+                      const enumGalgasBool test_32 = GALGAS_bool (kIsEqual, enumerator_19083.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("Sierra"))).boolEnum () ;
+                      if (kBoolTrue == test_32) {
+                        const enumGalgasBool test_33 = GALGAS_bool (kIsNotEqual, var_SDK_19006.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
                         if (kBoolTrue == test_33) {
-                          const enumGalgasBool test_34 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-                          if (kBoolTrue == test_34) {
-                            TC_Array <C_FixItDescription> fixItArray35 ;
-                            inCompiler->emitSemanticError (enumerator_21406.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 482)), var_macOsDuplicateMessage_21631, fixItArray35  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 482)) ;
+                          TC_Array <C_FixItDescription> fixItArray34 ;
+                          inCompiler->emitSemanticError (enumerator_19083.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 424)), var_macOsDuplicateMessage_19308, fixItArray34  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 424)) ;
+                        }
+                        var_SDK_19006 = GALGAS_string ("macosx10.12") ;
+                        var_MACOSX_5F_DEPLOYMENT_5F_TARGET_19046 = GALGAS_string ("10.12") ;
+                      }else if (kBoolFalse == test_32) {
+                        const enumGalgasBool test_35 = GALGAS_bool (kIsEqual, enumerator_19083.current_mValue (HERE).getter_string (HERE).objectCompare (GALGAS_string ("LatestMacOS"))).boolEnum () ;
+                        if (kBoolTrue == test_35) {
+                          const enumGalgasBool test_36 = GALGAS_bool (kIsNotEqual, var_SDK_19006.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+                          if (kBoolTrue == test_36) {
+                            TC_Array <C_FixItDescription> fixItArray37 ;
+                            inCompiler->emitSemanticError (enumerator_19083.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 431)), var_macOsDuplicateMessage_19308, fixItArray37  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 431)) ;
                           }
-                          var_SDK_21329 = GALGAS_string ("macosx") ;
-                        }else if (kBoolFalse == test_33) {
-                          var_generationFeatures_21272.addAssign_operation (enumerator_21406.current_mValue (HERE).getter_string (HERE)  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 486)) ;
+                          var_SDK_19006 = GALGAS_string ("macosx") ;
+                        }else if (kBoolFalse == test_35) {
+                          var_generationFeatures_18949.addAssign_operation (enumerator_19083.current_mValue (HERE).getter_string (HERE)  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 435)) ;
                         }
                       }
                     }
@@ -11926,865 +4732,1138 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
           }
         }
       }
-    }else if (kBoolFalse == test_3) {
-      GALGAS_stringlist var_s_24111 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 489)) ;
-      cEnumerator_stringset enumerator_24160 (var_availableGenerationFeatures_20195, kENUMERATION_UP) ;
-      while (enumerator_24160.hasCurrentObject ()) {
-        var_s_24111.addAssign_operation (GALGAS_string ("%").add_operation (enumerator_24160.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 491))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 491)) ;
-        enumerator_24160.gotoNextObject () ;
+    }else if (kBoolFalse == test_5) {
+      GALGAS_stringlist var_s_21798 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 438)) ;
+      cEnumerator_stringset enumerator_21847 (var_availableGenerationFeatures_17872, kENUMERATION_UP) ;
+      while (enumerator_21847.hasCurrentObject ()) {
+        var_s_21798.addAssign_operation (GALGAS_string ("%").add_operation (enumerator_21847.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 440))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 440)) ;
+        enumerator_21847.gotoNextObject () ;
       }
-      TC_Array <C_FixItDescription> fixItArray36 ;
-      appendFixItActions (fixItArray36, kFixItReplace, var_s_24111) ;
-      inCompiler->emitSemanticError (enumerator_21406.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 493)), GALGAS_string ("unknown '").add_operation (enumerator_21406.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 493)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 493)).add_operation (GALGAS_string ("' feature"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 493)), fixItArray36  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 493)) ;
+      TC_Array <C_FixItDescription> fixItArray38 ;
+      appendFixItActions (fixItArray38, kFixItReplace, var_s_21798) ;
+      inCompiler->emitSemanticError (enumerator_19083.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 442)), GALGAS_string ("unknown '").add_operation (enumerator_19083.current_mValue (HERE).getter_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 442)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 442)).add_operation (GALGAS_string ("' feature"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 442)), fixItArray38  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 442)) ;
     }
-    enumerator_21406.gotoNextObject () ;
+    enumerator_19083.gotoNextObject () ;
   }
-  const enumGalgasBool test_37 = GALGAS_bool (kIsNotEqual, GALGAS_uint (gOption_galgas_5F_cli_5F_options_macosxSDK.getter_value ()).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_37) {
-    var_SDK_21329 = GALGAS_string ("macosx10.").add_operation (GALGAS_uint (gOption_galgas_5F_cli_5F_options_macosxSDK.getter_value ()).getter_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 498)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 498)) ;
-    var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369 = GALGAS_string ("10.").add_operation (GALGAS_uint (gOption_galgas_5F_cli_5F_options_macosxSDK.getter_value ()).getter_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 499)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 499)) ;
+  GALGAS_bool test_39 = GALGAS_bool (kIsNotEqual, var_macCodeSign_16835.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())) ;
+  if (kBoolTrue == test_39.boolEnum ()) {
+    test_39 = GALGAS_bool (kIsEqual, var_SDK_19006.objectCompare (GALGAS_string::makeEmptyString ())) ;
   }
-  const enumGalgasBool test_38 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).operator_and (constinArgument_inProjectQualifiedFeatureMap.getter_hasKey (GALGAS_string ("applicationBundleBase") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 502)).operator_not (SOURCE_FILE ("galgas3TargetGeneration.galgas", 502)) COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 502)).boolEnum () ;
-  if (kBoolTrue == test_38) {
-    TC_Array <C_FixItDescription> fixItArray39 ;
-    inCompiler->emitSemanticWarning (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 503)), GALGAS_string ("For a Cocoa project, the \"applicationBundleBase\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"), fixItArray39  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 503)) ;
-  }
-  const enumGalgasBool test_40 = var_generationFeatures_21272.getter_hasKey (GALGAS_string ("makefile-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 506)).boolEnum () ;
+  const enumGalgasBool test_40 = test_39.boolEnum () ;
   if (kBoolTrue == test_40) {
-    {
-    routine_generateGalgas_33_MakefileMacOSXTarget (var_projectDirectory_18817, constinArgument_inTargetName, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 507)) ;
-    }
+    TC_Array <C_FixItDescription> fixItArray41 ;
+    inCompiler->emitSemanticError (var_macCodeSign_16835.getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 447)), GALGAS_string ("the %macCodeSign attribute implies the definition of an OS X target system: \"%SnowLeopard\", \"%Lion\", \"%MountainLion\", \"%Mavericks\", \"%Yosemite\", \"%ElCa"
+      "pitanYosemite\", \"%ElCapitan\", \"%ElCapitanSierra\", \"%Sierra\", \"%LatestMacOS\""), fixItArray41  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 447)) ;
   }
-  const enumGalgasBool test_41 = var_generationFeatures_21272.getter_hasKey (GALGAS_string ("makefile-unix") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 509)).boolEnum () ;
-  if (kBoolTrue == test_41) {
-    {
-    routine_generateGalgas_33_MakefileUnixTarget (var_projectDirectory_18817, constinArgument_inTargetName, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 510)) ;
-    }
-  }
-  const enumGalgasBool test_42 = var_generationFeatures_21272.getter_hasKey (GALGAS_string ("makefile-x86linux32-on-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 512)).boolEnum () ;
+  const enumGalgasBool test_42 = GALGAS_bool (kIsNotEqual, GALGAS_uint (gOption_galgas_5F_cli_5F_options_macosxSDK.getter_value ()).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_42) {
-    {
-    routine_generateGalgas_33_Linux_33__32_OnMacOSXTarget (var_projectDirectory_18817, constinArgument_inTargetName, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 513)) ;
-    }
+    var_SDK_19006 = GALGAS_string ("macosx10.").add_operation (GALGAS_uint (gOption_galgas_5F_cli_5F_options_macosxSDK.getter_value ()).getter_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 453)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 453)) ;
+    var_MACOSX_5F_DEPLOYMENT_5F_TARGET_19046 = GALGAS_string ("10.").add_operation (GALGAS_uint (gOption_galgas_5F_cli_5F_options_macosxSDK.getter_value ()).getter_string (SOURCE_FILE ("galgas3TargetGeneration.galgas", 454)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 454)) ;
   }
-  const enumGalgasBool test_43 = var_generationFeatures_21272.getter_hasKey (GALGAS_string ("makefile-x86linux64-on-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 515)).boolEnum () ;
+  const enumGalgasBool test_43 = GALGAS_bool (kIsNotEqual, var_SDK_19006.objectCompare (GALGAS_string::makeEmptyString ())).operator_and (constinArgument_inProjectQualifiedFeatureMap.getter_hasKey (GALGAS_string ("applicationBundleBase") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 457)).operator_not (SOURCE_FILE ("galgas3TargetGeneration.galgas", 457)) COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 457)).boolEnum () ;
   if (kBoolTrue == test_43) {
-    {
-    routine_generateGalgas_33_Linux_36__34_OnMacOSXTarget (var_projectDirectory_18817, constinArgument_inTargetName, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 516)) ;
-    }
+    TC_Array <C_FixItDescription> fixItArray44 ;
+    inCompiler->emitSemanticWarning (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 458)), GALGAS_string ("For a Cocoa project, the \"applicationBundleBase\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"), fixItArray44  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 458)) ;
   }
-  const enumGalgasBool test_44 = var_generationFeatures_21272.getter_hasKey (GALGAS_string ("makefile-win32-on-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 518)).boolEnum () ;
-  if (kBoolTrue == test_44) {
-    {
-    routine_generateGalgas_33_MinGWOnMacOSXTarget (var_projectDirectory_18817, constinArgument_inTargetName, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 519)) ;
-    }
-  }
-  const enumGalgasBool test_45 = var_generationFeatures_21272.getter_hasKey (GALGAS_string ("codeblocks-windows") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 521)).boolEnum () ;
+  const enumGalgasBool test_45 = var_generationFeatures_18949.getter_hasKey (GALGAS_string ("makefile-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 461)).boolEnum () ;
   if (kBoolTrue == test_45) {
     {
-    routine_generateGalgasCodeBlocksWindowsTarget (var_projectDirectory_18817, constinArgument_inTargetName, constinArgument_inToolCppFileList, var_libpmPath_19556, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, constinArgument_inQuietOutputByDefault, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 522)) ;
+    routine_generateGalgas_33_MakefileMacOSXTarget (var_projectDirectory_16092, constinArgument_inTargetName, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 462)) ;
     }
   }
-  const enumGalgasBool test_46 = var_generationFeatures_21272.getter_hasKey (GALGAS_string ("codeblocks-mac") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 532)).boolEnum () ;
+  const enumGalgasBool test_46 = var_generationFeatures_18949.getter_hasKey (GALGAS_string ("makefile-unix") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 464)).boolEnum () ;
   if (kBoolTrue == test_46) {
     {
-    routine_generateGalgasCodeBlocksMacTarget (var_projectDirectory_18817, constinArgument_inTargetName, constinArgument_inToolCppFileList, var_libpmPath_19556, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, constinArgument_inQuietOutputByDefault, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 533)) ;
+    routine_generateGalgas_33_MakefileUnixTarget (var_projectDirectory_16092, constinArgument_inTargetName, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 465)) ;
     }
   }
-  const enumGalgasBool test_47 = var_generationFeatures_21272.getter_hasKey (GALGAS_string ("codeblocks-linux32") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 543)).boolEnum () ;
+  const enumGalgasBool test_47 = var_generationFeatures_18949.getter_hasKey (GALGAS_string ("makefile-x86linux32-on-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 467)).boolEnum () ;
   if (kBoolTrue == test_47) {
     {
-    routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target (var_projectDirectory_18817, constinArgument_inTargetName, constinArgument_inToolCppFileList, var_libpmPath_19556, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, constinArgument_inQuietOutputByDefault, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 544)) ;
+    routine_generateGalgas_33_Linux_33__32_OnMacOSXTarget (var_projectDirectory_16092, constinArgument_inTargetName, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 468)) ;
     }
   }
-  const enumGalgasBool test_48 = var_generationFeatures_21272.getter_hasKey (GALGAS_string ("codeblocks-linux64") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 554)).boolEnum () ;
+  const enumGalgasBool test_48 = var_generationFeatures_18949.getter_hasKey (GALGAS_string ("makefile-x86linux64-on-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 470)).boolEnum () ;
   if (kBoolTrue == test_48) {
     {
-    routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target (var_projectDirectory_18817, constinArgument_inTargetName, constinArgument_inToolCppFileList, var_libpmPath_19556, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, constinArgument_inQuietOutputByDefault, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 555)) ;
+    routine_generateGalgas_33_Linux_36__34_OnMacOSXTarget (var_projectDirectory_16092, constinArgument_inTargetName, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 471)) ;
     }
   }
-  GALGAS_stringlist var_linkOptionForLinkingFrameworkWithTool_26895 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 566)) ;
-  const enumGalgasBool test_49 = GALGAS_bool (kIsStrictSup, constinArgument_inFrameworkToolFileList.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 567)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_49 = var_generationFeatures_18949.getter_hasKey (GALGAS_string ("makefile-win32-on-macosx") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 473)).boolEnum () ;
   if (kBoolTrue == test_49) {
-    const enumGalgasBool test_50 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string ("macosx"))).boolEnum () ;
-    if (kBoolTrue == test_50) {
-      var_linkOptionForLinkingFrameworkWithTool_26895.addAssign_operation (GALGAS_string ("-isysroot")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 569)) ;
-      var_linkOptionForLinkingFrameworkWithTool_26895.addAssign_operation (GALGAS_string ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/").add_operation (var_SDK_21329, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 570)).add_operation (GALGAS_string (".sdk"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 570))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 570)) ;
-    }
-    cEnumerator_stringlist enumerator_27232 (constinArgument_inFrameworkToolFileList, kENUMERATION_UP) ;
-    while (enumerator_27232.hasCurrentObject ()) {
-      var_linkOptionForLinkingFrameworkWithTool_26895.addAssign_operation (GALGAS_string ("-framework")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 573)) ;
-      var_linkOptionForLinkingFrameworkWithTool_26895.addAssign_operation (enumerator_27232.current_mValue (HERE).getter_stringByDeletingPathExtension (SOURCE_FILE ("galgas3TargetGeneration.galgas", 574))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 574)) ;
-      enumerator_27232.gotoNextObject () ;
+    {
+    routine_generateGalgas_33_MinGWOnMacOSXTarget (var_projectDirectory_16092, constinArgument_inTargetName, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 474)) ;
     }
   }
-  GALGAS_stringlist var_handCodedSourceToolFileList_27461 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 578)) ;
-  cEnumerator_stringlist enumerator_27509 (constinArgument_inHandCodedSourceToolFileList, kENUMERATION_UP) ;
-  while (enumerator_27509.hasCurrentObject ()) {
-    const enumGalgasBool test_51 = GALGAS_bool (kIsNotEqual, enumerator_27509.current_mValue (HERE).getter_pathExtension (SOURCE_FILE ("galgas3TargetGeneration.galgas", 580)).objectCompare (GALGAS_string ("h"))).boolEnum () ;
-    if (kBoolTrue == test_51) {
-      var_handCodedSourceToolFileList_27461.addAssign_operation (enumerator_27509.current_mValue (HERE).getter_lastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 581))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 581)) ;
+  const enumGalgasBool test_50 = var_generationFeatures_18949.getter_hasKey (GALGAS_string ("codeblocks-windows") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 476)).boolEnum () ;
+  if (kBoolTrue == test_50) {
+    {
+    routine_generateGalgasCodeBlocksWindowsTarget (var_projectDirectory_16092, constinArgument_inTargetName, constinArgument_inToolCppFileList, var_libpmPath_17207, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, constinArgument_inQuietOutputByDefault, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 477)) ;
     }
-    enumerator_27509.gotoNextObject () ;
   }
-  GALGAS_string var_jsonFileListContents_27650 = GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_file_5F_list (inCompiler, constinArgument_inHandCodedSourceDirectorySet, var_handCodedSourceToolFileList_27461, var_toolCppFileList_19291, var_linkOptionForLinkingFrameworkWithTool_26895, var_libpmPath_19556 COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 584))) ;
-  GALGAS_string var_jsonFileListPath_27889 = constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 591)).add_operation (GALGAS_string ("/build/output/file-list.json"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 591)) ;
-  GALGAS_bool joker_28061 ; // Joker input parameter
-  var_jsonFileListContents_27650.method_writeToFileWhenDifferentContents (var_jsonFileListPath_27889, joker_28061, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 592)) ;
-  ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("file-list.json")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 593)) ;
-  const enumGalgasBool test_52 = GALGAS_bool (kIsNotEqual, var_SDK_21329.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+  const enumGalgasBool test_51 = var_generationFeatures_18949.getter_hasKey (GALGAS_string ("codeblocks-mac") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 487)).boolEnum () ;
+  if (kBoolTrue == test_51) {
+    {
+    routine_generateGalgasCodeBlocksMacTarget (var_projectDirectory_16092, constinArgument_inTargetName, constinArgument_inToolCppFileList, var_libpmPath_17207, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, constinArgument_inQuietOutputByDefault, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 488)) ;
+    }
+  }
+  const enumGalgasBool test_52 = var_generationFeatures_18949.getter_hasKey (GALGAS_string ("codeblocks-linux32") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 498)).boolEnum () ;
   if (kBoolTrue == test_52) {
-    GALGAS_string var_dir_28183 = var_projectDirectory_18817.add_operation (GALGAS_string ("/xcode-project"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 596)) ;
-    var_dir_28183.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 597)) ;
-    GALGAS_string var_applicationBundleBase_28297 ;
-    const cMapElement_projectQualifiedFeatureMap * objectArray_28306 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("applicationBundleBase")) ;
-    if (NULL != objectArray_28306) {
-        macroValidSharedObject (objectArray_28306, cMapElement_projectQualifiedFeatureMap) ;
-      var_applicationBundleBase_28297 = objectArray_28306->mProperty_mFeatureValue.getter_string (HERE) ;
+    {
+    routine_generateGalgasCodeBlocksLinuxI_36__38__36_Target (var_projectDirectory_16092, constinArgument_inTargetName, constinArgument_inToolCppFileList, var_libpmPath_17207, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, constinArgument_inQuietOutputByDefault, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 499)) ;
+    }
+  }
+  const enumGalgasBool test_53 = var_generationFeatures_18949.getter_hasKey (GALGAS_string ("codeblocks-linux64") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 509)).boolEnum () ;
+  if (kBoolTrue == test_53) {
+    {
+    routine_generateGalgasCodeBlocksLinuxX_38__36__5F__36__34_Target (var_projectDirectory_16092, constinArgument_inTargetName, constinArgument_inToolCppFileList, var_libpmPath_17207, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, constinArgument_inQuietOutputByDefault, inCompiler  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 510)) ;
+    }
+  }
+  GALGAS_stringlist var_linkOptionForLinkingFrameworkWithTool_24966 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 521)) ;
+  const enumGalgasBool test_54 = GALGAS_bool (kIsStrictSup, constinArgument_inFrameworkToolFileList.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 522)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_54) {
+    const enumGalgasBool test_55 = GALGAS_bool (kIsNotEqual, var_SDK_19006.objectCompare (GALGAS_string ("macosx"))).boolEnum () ;
+    if (kBoolTrue == test_55) {
+      var_linkOptionForLinkingFrameworkWithTool_24966.addAssign_operation (GALGAS_string ("-isysroot")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 524)) ;
+      var_linkOptionForLinkingFrameworkWithTool_24966.addAssign_operation (GALGAS_string ("/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/").add_operation (var_SDK_19006, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 525)).add_operation (GALGAS_string (".sdk"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 525))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 525)) ;
+    }
+    cEnumerator_stringlist enumerator_25303 (constinArgument_inFrameworkToolFileList, kENUMERATION_UP) ;
+    while (enumerator_25303.hasCurrentObject ()) {
+      var_linkOptionForLinkingFrameworkWithTool_24966.addAssign_operation (GALGAS_string ("-framework")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 528)) ;
+      var_linkOptionForLinkingFrameworkWithTool_24966.addAssign_operation (enumerator_25303.current_mValue (HERE).getter_stringByDeletingPathExtension (SOURCE_FILE ("galgas3TargetGeneration.galgas", 529))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 529)) ;
+      enumerator_25303.gotoNextObject () ;
+    }
+  }
+  GALGAS_stringlist var_handCodedSourceToolFileList_25532 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 533)) ;
+  cEnumerator_stringlist enumerator_25580 (constinArgument_inHandCodedSourceToolFileList, kENUMERATION_UP) ;
+  while (enumerator_25580.hasCurrentObject ()) {
+    const enumGalgasBool test_56 = GALGAS_bool (kIsNotEqual, enumerator_25580.current_mValue (HERE).getter_pathExtension (SOURCE_FILE ("galgas3TargetGeneration.galgas", 535)).objectCompare (GALGAS_string ("h"))).boolEnum () ;
+    if (kBoolTrue == test_56) {
+      var_handCodedSourceToolFileList_25532.addAssign_operation (enumerator_25580.current_mValue (HERE).getter_lastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 536))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 536)) ;
+    }
+    enumerator_25580.gotoNextObject () ;
+  }
+  GALGAS_string var_jsonFileListContents_25721 = GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_json_5F_file_5F_list (inCompiler, constinArgument_inHandCodedSourceDirectorySet, var_handCodedSourceToolFileList_25532, var_toolCppFileList_16566, var_linkOptionForLinkingFrameworkWithTool_24966, var_libpmPath_17207 COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 539))) ;
+  GALGAS_string var_jsonFileListPath_25960 = constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 546)).add_operation (GALGAS_string ("/build/output/file-list.json"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 546)) ;
+  GALGAS_bool joker_26132 ; // Joker input parameter
+  var_jsonFileListContents_25721.method_writeToFileWhenDifferentContents (var_jsonFileListPath_25960, joker_26132, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 547)) ;
+  ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("file-list.json")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 548)) ;
+  const enumGalgasBool test_57 = GALGAS_bool (kIsNotEqual, var_SDK_19006.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+  if (kBoolTrue == test_57) {
+    GALGAS_string var_dir_26254 = var_projectDirectory_16092.add_operation (GALGAS_string ("/xcode-project"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 551)) ;
+    var_dir_26254.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 552)) ;
+    GALGAS_string var_applicationBundleBase_26368 ;
+    const cMapElement_projectQualifiedFeatureMap * objectArray_26377 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("applicationBundleBase")) ;
+    if (NULL != objectArray_26377) {
+        macroValidSharedObject (objectArray_26377, cMapElement_projectQualifiedFeatureMap) ;
+      var_applicationBundleBase_26368 = objectArray_26377->mProperty_mFeatureValue.getter_string (HERE) ;
     }else{
-      var_applicationBundleBase_28297 = GALGAS_string ("fr.irccyn") ;
+      var_applicationBundleBase_26368 = GALGAS_string ("fr.irccyn") ;
     }
-    GALGAS_string var_InfoPlistContents_28502 = GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist (inCompiler, constinArgument_inTargetName, var_applicationBundleBase_28297, constinArgument_inProjectVersionString, constinArgument_inHandledExtensionSet COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 605))) ;
-    GALGAS_bool joker_28764 ; // Joker input parameter
-    var_InfoPlistContents_28502.method_writeToFileWhenDifferentContents (var_dir_28183.add_operation (GALGAS_string ("/Info.plist"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 611)), joker_28764, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 611)) ;
-    const enumGalgasBool test_53 = var_dir_28183.add_operation (GALGAS_string ("/build.command"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 613)).getter_fileExists (SOURCE_FILE ("galgas3TargetGeneration.galgas", 613)).operator_not (SOURCE_FILE ("galgas3TargetGeneration.galgas", 613)).boolEnum () ;
-    if (kBoolTrue == test_53) {
-      GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_build_5F_xcode (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 614))).method_writeToExecutableFile (var_dir_28183.add_operation (GALGAS_string ("/build.command"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 614)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 614)) ;
-    }
-    var_dir_28183.add_operation (GALGAS_string ("/English.lproj"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 617)).method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 617)) ;
-    GALGAS_string var_InfoPlist_5F_strings_5F_path_29044 = var_dir_28183.add_operation (GALGAS_string ("/English.lproj/InfoPlist.strings"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 618)) ;
-    GALGAS_bool joker_29242 ; // Joker input parameter
-    GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist_5F_strings (inCompiler, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 619))).method_writeToFileWhenDifferentContents (var_InfoPlist_5F_strings_5F_path_29044, joker_29242, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 619)) ;
-    GALGAS_string var_Credits_5F_rtf_5F_path_29269 = var_dir_28183.add_operation (GALGAS_string ("/English.lproj/Credits.rtf"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 620)) ;
-    const enumGalgasBool test_54 = var_Credits_5F_rtf_5F_path_29269.getter_fileExists (SOURCE_FILE ("galgas3TargetGeneration.galgas", 621)).operator_not (SOURCE_FILE ("galgas3TargetGeneration.galgas", 621)).boolEnum () ;
-    if (kBoolTrue == test_54) {
-      GALGAS_string (gWrapperFileContent_1_targetGalgas_33_GenerationFileWrapper).method_writeToFile (var_Credits_5F_rtf_5F_path_29269, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 622)) ;
-    }
-    const cMapElement_projectQualifiedFeatureMap * objectArray_29530 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("repositoryURL")) ;
-    if (NULL != objectArray_29530) {
-        macroValidSharedObject (objectArray_29530, cMapElement_projectQualifiedFeatureMap) ;
-      GALGAS_string var_applicationUpdateDir_29613 = var_projectDirectory_18817.add_operation (GALGAS_string ("/xcode-project/cocoa-application-update/application"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 626)) ;
-      var_applicationUpdateDir_29613.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 627)) ;
-      GALGAS_bool joker_29899 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 628))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir_29613.add_operation (GALGAS_string ("/PMApplicationUpdate.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 628)), joker_29899, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 628)) ;
-      GALGAS_bool joker_30203 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_implementation (inCompiler, constinArgument_inTargetName, objectArray_29530->mProperty_mFeatureValue.getter_string (HERE), var_applicationBundleBase_28297 COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 629))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir_29613.add_operation (GALGAS_string ("/PMApplicationUpdate.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 634)), joker_30203, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 629)) ;
-      GALGAS_bool joker_30406 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_nib (inCompiler, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 637))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir_29613.add_operation (GALGAS_string ("/English.lproj/PMApplicationUpdate.xib"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 637)), joker_30406, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 637)) ;
-      GALGAS_bool joker_30565 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_data_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 638))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir_29613.add_operation (GALGAS_string ("/PMDownloadData.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 638)), joker_30565, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 638)) ;
-      GALGAS_bool joker_30732 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_data_5F_implementation (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 639))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir_29613.add_operation (GALGAS_string ("/PMDownloadData.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 639)), joker_30732, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 639)) ;
-      GALGAS_bool joker_30891 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_file_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 640))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir_29613.add_operation (GALGAS_string ("/PMDownloadFile.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 640)), joker_30891, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 640)) ;
-      GALGAS_bool joker_31058 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_file_5F_implementation (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 641))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir_29613.add_operation (GALGAS_string ("/PMDownloadFile.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 641)), joker_31058, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 641)) ;
-      GALGAS_bool joker_31233 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_compatibility_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 642))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir_29613.add_operation (GALGAS_string ("/PMSnowLeopardLionCompatibility.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 642)), joker_31233, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 642)) ;
-      GALGAS_string var_codeSignIdentity_31288 ;
-      const cMapElement_projectQualifiedFeatureMap * objectArray_31299 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("codeSigning")) ;
-      if (NULL != objectArray_31299) {
-          macroValidSharedObject (objectArray_31299, cMapElement_projectQualifiedFeatureMap) ;
-        var_codeSignIdentity_31288 = objectArray_31299->mProperty_mFeatureValue.getter_string (HERE) ;
-      }else{
-        var_codeSignIdentity_31288 = GALGAS_string::makeEmptyString () ;
-      }
-      GALGAS_string var_updaterToolDir_31481 = var_projectDirectory_18817.add_operation (GALGAS_string ("/xcode-project/cocoa-application-update/updater-tool"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 650)) ;
-      var_updaterToolDir_31481.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 651)) ;
-      GALGAS_bool joker_31751 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_protocol (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 652))).method_writeToFileWhenDifferentContents (var_updaterToolDir_31481.add_operation (GALGAS_string ("/PMUpdaterServerProtocol.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 652)), joker_31751, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 652)) ;
-      GALGAS_bool joker_31906 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 653))).method_writeToFileWhenDifferentContents (var_updaterToolDir_31481.add_operation (GALGAS_string ("/PMUpdaterServerObject.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 653)), joker_31906, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 653)) ;
-      GALGAS_bool joker_32069 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_implementation (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 654))).method_writeToFileWhenDifferentContents (var_updaterToolDir_31481.add_operation (GALGAS_string ("/PMUpdaterServerObject.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 654)), joker_32069, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 654)) ;
-      GALGAS_bool joker_32332 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_tool_5F_info_5F_plist (inCompiler, var_applicationBundleBase_28297, constinArgument_inTargetName, var_codeSignIdentity_31288 COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 655))).method_writeToFileWhenDifferentContents (var_updaterToolDir_31481.add_operation (GALGAS_string ("/updater-tool-Info.plist"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 660)), joker_32332, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 655)) ;
-      GALGAS_bool joker_32581 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_tool_5F_launchd_5F_plist (inCompiler, var_applicationBundleBase_28297, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 663))).method_writeToFileWhenDifferentContents (var_updaterToolDir_31481.add_operation (GALGAS_string ("/updater-tool-Launchd.plist"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 667)), joker_32581, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 663)) ;
-      GALGAS_bool joker_32816 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_main (inCompiler, var_applicationBundleBase_28297, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 670))).method_writeToFileWhenDifferentContents (var_updaterToolDir_31481.add_operation (GALGAS_string ("/updater-tool-main.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 674)), joker_32816, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 670)) ;
-      GALGAS_string var_updaterApplicationDir_32886 = var_projectDirectory_18817.add_operation (GALGAS_string ("/xcode-project/cocoa-application-update/updater-application"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 678)) ;
-      var_updaterApplicationDir_32886.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 679)) ;
-      GALGAS_bool joker_33178 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_credits (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 680))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir_32886.add_operation (GALGAS_string ("/English.lproj/UpdaterAppCredits.rtf"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 680)), joker_33178, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 680)) ;
-      GALGAS_bool joker_33362 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5F_plist_5F_strings (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 681))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir_32886.add_operation (GALGAS_string ("/English.lproj/UpdaterAppInfoPlist.strings"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 681)), joker_33362, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 681)) ;
-      GALGAS_bool joker_33550 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main_5F_menu_5F_xib (inCompiler, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 682))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir_32886.add_operation (GALGAS_string ("/English.lproj/UpdaterAppMainMenu.xib"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 682)), joker_33550, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 682)) ;
-      GALGAS_bool joker_33724 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_application_5F_delegate_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 683))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir_32886.add_operation (GALGAS_string ("/PMUpdaterAppDelegate.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 683)), joker_33724, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 683)) ;
-      GALGAS_bool joker_33976 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_application_5F_delegate_5F_implementation (inCompiler, var_applicationBundleBase_28297, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 684))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir_32886.add_operation (GALGAS_string ("/PMUpdaterAppDelegate.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 688)), joker_33976, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 684)) ;
-      GALGAS_bool joker_34237 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5F_plist (inCompiler, var_applicationBundleBase_28297, constinArgument_inTargetName, var_codeSignIdentity_31288 COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 690))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir_32886.add_operation (GALGAS_string ("/updater-app-Info.plist"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 695)), joker_34237, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 690)) ;
-      GALGAS_bool joker_34391 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 697))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir_32886.add_operation (GALGAS_string ("/updater-app-main.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 697)), joker_34391, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 697)) ;
-      GALGAS_bool joker_34544 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_prefix (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 698))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir_32886.add_operation (GALGAS_string ("/updater-app-Prefix.pch"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 698)), joker_34544, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 698)) ;
-    }
-    GALGAS_string var_userResourceDir_34636 = var_projectDirectory_18817.add_operation (GALGAS_string ("/xcode-project/userResources"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 701)) ;
-    var_userResourceDir_34636.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 702)) ;
-    GALGAS_stringlist temp_55 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 703)) ;
-    temp_55.addAssign_operation (GALGAS_string ("icns")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 703)) ;
-    GALGAS_stringlist var_extensionList_34754 = temp_55 ;
-    GALGAS_stringlist var_resourceFiles_34788 = var_userResourceDir_34636.getter_regularFilesWithExtensions (GALGAS_bool (false), var_extensionList_34754 COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 704)) ;
-    GALGAS_string var_newIntermediateFilePath_34909 = constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 706)).add_operation (GALGAS_string ("/build/output/file-list-for-xcode-project.txt"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 706)) ;
-    ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("file-list-for-xcode-project.txt")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 707)) ;
-    GALGAS_XcodeProjectDescriptor var_xcodeProject_35193 = GALGAS_XcodeProjectDescriptor::constructor_default (SOURCE_FILE ("galgas3TargetGeneration.galgas", 709)) ;
-    GALGAS_stringlist temp_56 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 745)) ;
-    temp_56.addAssign_operation (GALGAS_string ("ALWAYS_SEARCH_USER_PATHS = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 712)) ;
-    temp_56.addAssign_operation (GALGAS_string ("ARCHS = \"$(ARCHS_STANDARD_64_BIT)\"")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 713)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_GENERATE_DEBUGGING_SYMBOLS = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 714)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_PRECOMPILE_PREFIX_HEADER = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 715)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_THREADSAFE_STATICS = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 716)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 717)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_TREAT_WARNINGS_AS_ERRORS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 718)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_64_TO_32_BIT_CONVERSION = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 719)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 720)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 721)) ;
-    temp_56.addAssign_operation (GALGAS_string ("CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 722)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_ABOUT_MISSING_NEWLINE = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 723)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 724)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_ABOUT_RETURN_TYPE = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 725)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_CHECK_SWITCH_STATEMENTS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 726)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 727)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 728)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_INHIBIT_ALL_WARNINGS = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 729)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 730)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_MISSING_PARENTHESES = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 731)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 732)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_PEDANTIC = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 733)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_SHADOW = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 734)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_SIGN_COMPARE = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 735)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 736)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_UNINITIALIZED_AUTOS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 737)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_UNKNOWN_PRAGMAS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 738)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_FUNCTION = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 739)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_LABEL = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 740)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_VALUE = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 741)) ;
-    temp_56.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_VARIABLE = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 742)) ;
-    temp_56.addAssign_operation (GALGAS_string ("HEADER_SEARCH_PATHS = (\"../build/output\", \"../build/libpm\", \"../build/user-headers\", \"../hand_coded_sources/**\")")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 743)) ;
-    temp_56.addAssign_operation (GALGAS_string ("SDKROOT = ").add_operation (var_SDK_21329, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 744))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 744)) ;
-    temp_56.addAssign_operation (GALGAS_string ("COPY_PHASE_STRIP = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 745)) ;
-    GALGAS_stringlist var_xcodeSettingList_35295 = temp_56 ;
-    const enumGalgasBool test_57 = GALGAS_bool (kIsEqual, var_SDK_21329.objectCompare (GALGAS_string ("macosx10.6"))).boolEnum () ;
-    if (kBoolTrue == test_57) {
-      var_xcodeSettingList_35295.addAssign_operation (GALGAS_string ("CLANG_ENABLE_OBJC_ARC = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 748)) ;
-      var_xcodeSettingList_35295.addAssign_operation (GALGAS_string ("GCC_ENABLE_OBJC_GC = required")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 749)) ;
-    }else if (kBoolFalse == test_57) {
-      var_xcodeSettingList_35295.addAssign_operation (GALGAS_string ("CLANG_ENABLE_OBJC_ARC = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 751)) ;
-    }
-    const enumGalgasBool test_58 = GALGAS_bool (kIsNotEqual, var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    GALGAS_string var_InfoPlistContents_26573 = GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist (inCompiler, constinArgument_inTargetName, var_applicationBundleBase_26368, constinArgument_inProjectVersionString, constinArgument_inHandledExtensionSet COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 560))) ;
+    GALGAS_bool joker_26835 ; // Joker input parameter
+    var_InfoPlistContents_26573.method_writeToFileWhenDifferentContents (var_dir_26254.add_operation (GALGAS_string ("/Info.plist"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 566)), joker_26835, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 566)) ;
+    const enumGalgasBool test_58 = var_dir_26254.add_operation (GALGAS_string ("/build.command"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 568)).getter_fileExists (SOURCE_FILE ("galgas3TargetGeneration.galgas", 568)).operator_not (SOURCE_FILE ("galgas3TargetGeneration.galgas", 568)).boolEnum () ;
     if (kBoolTrue == test_58) {
-      var_xcodeSettingList_35295.addAssign_operation (GALGAS_string ("MACOSX_DEPLOYMENT_TARGET = \"").add_operation (var_MACOSX_5F_DEPLOYMENT_5F_TARGET_21369, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 754)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 754))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 754)) ;
+      GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_build_5F_xcode (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 569))).method_writeToExecutableFile (var_dir_26254.add_operation (GALGAS_string ("/build.command"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 569)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 569)) ;
     }
-    {
-    extensionSetter_addSettingsToDefaultConfiguration (var_xcodeProject_35193, var_xcodeSettingList_35295, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 756)) ;
-    }
-    GALGAS_stringlist var_m_5F_HandCodedSourceFileRefForAppList_37462 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 758)) ;
-    GALGAS_stringlist var_m_5F_HandCodedResourceFileRefForAppList_37520 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 759)) ;
-    const enumGalgasBool test_59 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedSourceAppFileList.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 760)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    var_dir_26254.add_operation (GALGAS_string ("/English.lproj"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 572)).method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 572)) ;
+    GALGAS_string var_InfoPlist_5F_strings_5F_path_27115 = var_dir_26254.add_operation (GALGAS_string ("/English.lproj/InfoPlist.strings"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 573)) ;
+    GALGAS_bool joker_27313 ; // Joker input parameter
+    GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist_5F_strings (inCompiler, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 574))).method_writeToFileWhenDifferentContents (var_InfoPlist_5F_strings_5F_path_27115, joker_27313, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 574)) ;
+    GALGAS_string var_Credits_5F_rtf_5F_path_27340 = var_dir_26254.add_operation (GALGAS_string ("/English.lproj/Credits.rtf"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 575)) ;
+    const enumGalgasBool test_59 = var_Credits_5F_rtf_5F_path_27340.getter_fileExists (SOURCE_FILE ("galgas3TargetGeneration.galgas", 576)).operator_not (SOURCE_FILE ("galgas3TargetGeneration.galgas", 576)).boolEnum () ;
     if (kBoolTrue == test_59) {
-      GALGAS_stringlist joker_37791 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 765)) ;
-      GALGAS_stringlist joker_37815 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 766)) ;
-      GALGAS_stringlist joker_37893 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 768)) ;
-      GALGAS_stringlist joker_37923 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 769)) ;
-      GALGAS_string var_groupRef_38027 ;
-      {
-      extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Hand Coded Sources (App)"), GALGAS_string ("../"), GALGAS_stringset::constructor_setWithStringList (constinArgument_inHandCodedSourceAppFileList  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 764)), joker_37791, joker_37815, var_m_5F_HandCodedSourceFileRefForAppList_37462, joker_37893, joker_37923, var_m_5F_HandCodedResourceFileRefForAppList_37520, var_groupRef_38027, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 761)) ;
-      }
-      {
-      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_35193, var_groupRef_38027, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 773)) ;
-      }
+      GALGAS_string (gWrapperFileContent_1_targetGalgas_33_GenerationFileWrapper).method_writeToFile (var_Credits_5F_rtf_5F_path_27340, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 577)) ;
     }
-    GALGAS_stringlist var_appFrameworksFileRefList_38186 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 776)) ;
-    const enumGalgasBool test_60 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedLinkAppFileList.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 777)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-    if (kBoolTrue == test_60) {
-      GALGAS_stringlist joker_38469 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 782)) ;
-      GALGAS_stringlist joker_38493 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 783)) ;
-      GALGAS_stringlist joker_38515 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 784)) ;
-      GALGAS_stringlist joker_38538 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 785)) ;
-      GALGAS_stringlist joker_38620 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 787)) ;
-      GALGAS_string var_frameworkGroupRef_38669 ;
-      {
-      extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Frameworks (App)"), GALGAS_string ("/System/Library/Frameworks"), GALGAS_stringset::constructor_setWithStringList (constinArgument_inHandCodedLinkAppFileList  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 781)), joker_38469, joker_38493, joker_38515, joker_38538, var_appFrameworksFileRefList_38186, joker_38620, var_frameworkGroupRef_38669, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 778)) ;
-      }
-      {
-      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_35193, var_frameworkGroupRef_38669, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 790)) ;
-      }
-    }
-    GALGAS_stringlist var_buildCFileRefListForTool_38820 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 793)) ;
-    GALGAS_stringlist var_buildCppFileRefListForTool_38868 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 794)) ;
-    GALGAS_stringlist var_m_5F_FileRefList_38903 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 795)) ;
-    GALGAS_stringlist var_mm_5F_FileRefList_38939 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 796)) ;
-    GALGAS_stringlist var_frameworksFileRefList_38982 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 797)) ;
-    GALGAS_stringlist var_resourceFileBuildRefs_39025 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 798)) ;
-    const enumGalgasBool test_61 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedSourceToolFileList.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 800)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-    if (kBoolTrue == test_61) {
-      GALGAS_string var_groupRef_39625 ;
-      {
-      extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Hand Coded Sources (Tool)"), GALGAS_string ("../"), GALGAS_stringset::constructor_setWithStringList (constinArgument_inHandCodedSourceToolFileList  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 804)), var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_groupRef_39625, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 801)) ;
-      }
-      {
-      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_35193, var_groupRef_39625, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 813)) ;
-      }
-    }
-    GALGAS_stringlist var_toolFrameworksFileRefList_39786 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 816)) ;
-    const enumGalgasBool test_62 = GALGAS_bool (kIsStrictSup, constinArgument_inFrameworkToolFileList.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 817)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    GALGAS_string var_userResourceDir_27642 = var_projectDirectory_16092.add_operation (GALGAS_string ("/xcode-project/userResources"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 580)) ;
+    var_userResourceDir_27642.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 581)) ;
+    GALGAS_stringlist temp_60 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 582)) ;
+    temp_60.addAssign_operation (GALGAS_string ("icns")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 582)) ;
+    GALGAS_stringlist var_extensionList_27760 = temp_60 ;
+    GALGAS_stringlist var_resourceFiles_27794 = var_userResourceDir_27642.getter_regularFilesWithExtensions (GALGAS_bool (false), var_extensionList_27760 COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 583)) ;
+    GALGAS_string var_newIntermediateFilePath_27915 = constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 585)).add_operation (GALGAS_string ("/build/output/file-list-for-xcode-project.txt"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 585)) ;
+    ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("file-list-for-xcode-project.txt")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 586)) ;
+    GALGAS_XcodeProjectDescriptor var_xcodeProject_28199 = GALGAS_XcodeProjectDescriptor::constructor_default (SOURCE_FILE ("galgas3TargetGeneration.galgas", 588)) ;
+    GALGAS_stringlist temp_61 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 624)) ;
+    temp_61.addAssign_operation (GALGAS_string ("ALWAYS_SEARCH_USER_PATHS = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 591)) ;
+    temp_61.addAssign_operation (GALGAS_string ("ARCHS = \"$(ARCHS_STANDARD_64_BIT)\"")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 592)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_GENERATE_DEBUGGING_SYMBOLS = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 593)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_PRECOMPILE_PREFIX_HEADER = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 594)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_THREADSAFE_STATICS = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 595)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 596)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_TREAT_WARNINGS_AS_ERRORS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 597)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_64_TO_32_BIT_CONVERSION = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 598)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 599)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 600)) ;
+    temp_61.addAssign_operation (GALGAS_string ("CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 601)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_ABOUT_MISSING_NEWLINE = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 602)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 603)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_ABOUT_RETURN_TYPE = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 604)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_CHECK_SWITCH_STATEMENTS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 605)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 606)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 607)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_INHIBIT_ALL_WARNINGS = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 608)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 609)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_MISSING_PARENTHESES = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 610)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 611)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_PEDANTIC = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 612)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_SHADOW = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 613)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_SIGN_COMPARE = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 614)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 615)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_UNINITIALIZED_AUTOS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 616)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_UNKNOWN_PRAGMAS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 617)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_FUNCTION = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 618)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_LABEL = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 619)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_VALUE = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 620)) ;
+    temp_61.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_VARIABLE = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 621)) ;
+    temp_61.addAssign_operation (GALGAS_string ("HEADER_SEARCH_PATHS = (\"../build/output\", \"../build/libpm\", \"../build/user-headers\", \"../hand_coded_sources/**\")")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 622)) ;
+    temp_61.addAssign_operation (GALGAS_string ("SDKROOT = ").add_operation (var_SDK_19006, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 623))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 623)) ;
+    temp_61.addAssign_operation (GALGAS_string ("COPY_PHASE_STRIP = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 624)) ;
+    GALGAS_stringlist var_xcodeSettingList_28301 = temp_61 ;
+    const enumGalgasBool test_62 = GALGAS_bool (kIsEqual, var_SDK_19006.objectCompare (GALGAS_string ("macosx10.6"))).boolEnum () ;
     if (kBoolTrue == test_62) {
-      GALGAS_stringlist joker_40063 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 822)) ;
-      GALGAS_stringlist joker_40087 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 823)) ;
-      GALGAS_stringlist joker_40109 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 824)) ;
-      GALGAS_stringlist joker_40132 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 825)) ;
-      GALGAS_stringlist joker_40215 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 827)) ;
-      GALGAS_string var_frameworkGroupRef_40264 ;
+      var_xcodeSettingList_28301.addAssign_operation (GALGAS_string ("CLANG_ENABLE_OBJC_ARC = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 627)) ;
+      var_xcodeSettingList_28301.addAssign_operation (GALGAS_string ("GCC_ENABLE_OBJC_GC = required")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 628)) ;
+    }else if (kBoolFalse == test_62) {
+      var_xcodeSettingList_28301.addAssign_operation (GALGAS_string ("CLANG_ENABLE_OBJC_ARC = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 630)) ;
+    }
+    const enumGalgasBool test_63 = GALGAS_bool (kIsNotEqual, var_MACOSX_5F_DEPLOYMENT_5F_TARGET_19046.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    if (kBoolTrue == test_63) {
+      var_xcodeSettingList_28301.addAssign_operation (GALGAS_string ("MACOSX_DEPLOYMENT_TARGET = \"").add_operation (var_MACOSX_5F_DEPLOYMENT_5F_TARGET_19046, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 633)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 633))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 633)) ;
+    }
+    {
+    extensionSetter_addSettingsToDefaultConfiguration (var_xcodeProject_28199, var_xcodeSettingList_28301, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 635)) ;
+    }
+    GALGAS_stringlist var_m_5F_HandCodedSourceFileRefForAppList_30468 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 637)) ;
+    GALGAS_stringlist var_m_5F_HandCodedResourceFileRefForAppList_30526 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 638)) ;
+    const enumGalgasBool test_64 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedSourceAppFileList.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 639)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    if (kBoolTrue == test_64) {
+      GALGAS_stringlist joker_30797 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 644)) ;
+      GALGAS_stringlist joker_30821 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 645)) ;
+      GALGAS_stringlist joker_30899 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 647)) ;
+      GALGAS_stringlist joker_30929 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 648)) ;
+      GALGAS_string var_groupRef_31033 ;
       {
-      extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Frameworks (Tool)"), GALGAS_string ("/System/Library/Frameworks"), GALGAS_stringset::constructor_setWithStringList (constinArgument_inFrameworkToolFileList  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 821)), joker_40063, joker_40087, joker_40109, joker_40132, var_toolFrameworksFileRefList_39786, joker_40215, var_frameworkGroupRef_40264, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 818)) ;
+      extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Hand Coded Sources (App)"), GALGAS_string ("../"), GALGAS_stringset::constructor_setWithStringList (constinArgument_inHandCodedSourceAppFileList  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 643)), joker_30797, joker_30821, var_m_5F_HandCodedSourceFileRefForAppList_30468, joker_30899, joker_30929, var_m_5F_HandCodedResourceFileRefForAppList_30526, var_groupRef_31033, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 640)) ;
       }
       {
-      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_35193, var_frameworkGroupRef_40264, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 830)) ;
+      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28199, var_groupRef_31033, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 652)) ;
       }
     }
-    GALGAS_string var_groupRef_40905 ;
+    GALGAS_stringlist var_appFrameworksFileRefList_31192 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 655)) ;
+    const enumGalgasBool test_65 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedLinkAppFileList.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 656)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    if (kBoolTrue == test_65) {
+      GALGAS_stringlist joker_31475 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 661)) ;
+      GALGAS_stringlist joker_31499 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 662)) ;
+      GALGAS_stringlist joker_31521 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 663)) ;
+      GALGAS_stringlist joker_31544 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 664)) ;
+      GALGAS_stringlist joker_31626 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 666)) ;
+      GALGAS_string var_frameworkGroupRef_31675 ;
+      {
+      extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Frameworks (App)"), GALGAS_string ("/System/Library/Frameworks"), GALGAS_stringset::constructor_setWithStringList (constinArgument_inHandCodedLinkAppFileList  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 660)), joker_31475, joker_31499, joker_31521, joker_31544, var_appFrameworksFileRefList_31192, joker_31626, var_frameworkGroupRef_31675, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 657)) ;
+      }
+      {
+      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28199, var_frameworkGroupRef_31675, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 669)) ;
+      }
+    }
+    GALGAS_stringlist var_buildCFileRefListForTool_31826 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 672)) ;
+    GALGAS_stringlist var_buildCppFileRefListForTool_31874 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 673)) ;
+    GALGAS_stringlist var_m_5F_FileRefList_31909 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 674)) ;
+    GALGAS_stringlist var_mm_5F_FileRefList_31945 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 675)) ;
+    GALGAS_stringlist var_frameworksFileRefList_31988 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 676)) ;
+    GALGAS_stringlist var_resourceFileBuildRefs_32031 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 677)) ;
+    const enumGalgasBool test_66 = GALGAS_bool (kIsStrictSup, constinArgument_inHandCodedSourceToolFileList.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 679)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    if (kBoolTrue == test_66) {
+      GALGAS_string var_groupRef_32631 ;
+      {
+      extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Hand Coded Sources (Tool)"), GALGAS_string ("../"), GALGAS_stringset::constructor_setWithStringList (constinArgument_inHandCodedSourceToolFileList  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 683)), var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_groupRef_32631, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 680)) ;
+      }
+      {
+      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28199, var_groupRef_32631, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 692)) ;
+      }
+    }
+    GALGAS_stringlist var_toolFrameworksFileRefList_32792 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 695)) ;
+    const enumGalgasBool test_67 = GALGAS_bool (kIsStrictSup, constinArgument_inFrameworkToolFileList.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 696)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+    if (kBoolTrue == test_67) {
+      GALGAS_stringlist joker_33069 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 701)) ;
+      GALGAS_stringlist joker_33093 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 702)) ;
+      GALGAS_stringlist joker_33115 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 703)) ;
+      GALGAS_stringlist joker_33138 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 704)) ;
+      GALGAS_stringlist joker_33221 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 706)) ;
+      GALGAS_string var_frameworkGroupRef_33270 ;
+      {
+      extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Frameworks (Tool)"), GALGAS_string ("/System/Library/Frameworks"), GALGAS_stringset::constructor_setWithStringList (constinArgument_inFrameworkToolFileList  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 700)), joker_33069, joker_33093, joker_33115, joker_33138, var_toolFrameworksFileRefList_32792, joker_33221, var_frameworkGroupRef_33270, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 697)) ;
+      }
+      {
+      extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28199, var_frameworkGroupRef_33270, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 709)) ;
+      }
+    }
+    GALGAS_string var_groupRef_33911 ;
     {
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Generated by GALGAS"), GALGAS_string ("../build/output"), GALGAS_stringset::constructor_setWithStringList (constinArgument_inToolCppFileList.add_operation (constinArgument_inToolHeaderFileList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 836)).add_operation (constinArgument_inAppProductFileList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 836))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 836)), var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_groupRef_40905, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 833)) ;
-    }
-    {
-    extensionSetter_placeGroupAsMainGroup (var_xcodeProject_35193, var_groupRef_40905, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 845)) ;
-    }
-    GALGAS_stringlist var_libpmReferenceGroupList_41013 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 846)) ;
-    {
-    GALGAS_stringset temp_63 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 863)) ;
-    temp_63.addAssign_operation (GALGAS_string ("C_RelationConfiguration.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 852)) ;
-    temp_63.addAssign_operation (GALGAS_string ("C_RelationConfiguration.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 853)) ;
-    temp_63.addAssign_operation (GALGAS_string ("C_Relation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 854)) ;
-    temp_63.addAssign_operation (GALGAS_string ("C_Relation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 855)) ;
-    temp_63.addAssign_operation (GALGAS_string ("C_RelationSingleType.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 856)) ;
-    temp_63.addAssign_operation (GALGAS_string ("C_RelationSingleType.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 857)) ;
-    temp_63.addAssign_operation (GALGAS_string ("C_BDD-and-operation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 858)) ;
-    temp_63.addAssign_operation (GALGAS_string ("C_BDD-find-or-add.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 859)) ;
-    temp_63.addAssign_operation (GALGAS_string ("C_BDD-node.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 860)) ;
-    temp_63.addAssign_operation (GALGAS_string ("C_BDD-single-operand-ops.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 861)) ;
-    temp_63.addAssign_operation (GALGAS_string ("C_BDD.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 862)) ;
-    temp_63.addAssign_operation (GALGAS_string ("C_BDD.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 863)) ;
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Binary Decision Diagrams"), GALGAS_string ("bdd"), temp_63, var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_groupRef_40905, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 848)) ;
-    }
-    var_libpmReferenceGroupList_41013.addAssign_operation (var_groupRef_40905  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 873)) ;
-    {
-    GALGAS_stringset temp_64 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 878)) ;
-    temp_64.addAssign_operation (GALGAS_string ("TC_prime_cache2.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 878)) ;
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Cache"), GALGAS_string ("cache"), temp_64, var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_groupRef_40905, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 875)) ;
-    }
-    var_libpmReferenceGroupList_41013.addAssign_operation (var_groupRef_40905  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 887)) ;
-    {
-    GALGAS_stringset temp_65 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 901)) ;
-    temp_65.addAssign_operation (GALGAS_string ("main.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 893)) ;
-    temp_65.addAssign_operation (GALGAS_string ("PMCancelButtonForPanel.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 894)) ;
-    temp_65.addAssign_operation (GALGAS_string ("PMCancelButtonForPanel.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 895)) ;
-    temp_65.addAssign_operation (GALGAS_string ("PMDownloadData.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 896)) ;
-    temp_65.addAssign_operation (GALGAS_string ("PMDownloadData.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 897)) ;
-    temp_65.addAssign_operation (GALGAS_string ("PMDownloadFile.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 898)) ;
-    temp_65.addAssign_operation (GALGAS_string ("PMDownloadFile.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 899)) ;
-    temp_65.addAssign_operation (GALGAS_string ("PMOkButtonForPanel.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 900)) ;
-    temp_65.addAssign_operation (GALGAS_string ("PMOkButtonForPanel.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 901)) ;
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Cocoa Utilities"), GALGAS_string ("cocoa_utilities"), temp_65, var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_groupRef_40905, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 889)) ;
-    }
-    var_libpmReferenceGroupList_41013.addAssign_operation (var_groupRef_40905  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 911)) ;
-    {
-    GALGAS_stringset temp_66 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 968)) ;
-    temp_66.addAssign_operation (GALGAS_string ("English.lproj/OC_GGS_Document.xib")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 917)) ;
-    temp_66.addAssign_operation (GALGAS_string ("English.lproj/PMDebug.xib")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 918)) ;
-    temp_66.addAssign_operation (GALGAS_string ("English.lproj/MainMenu.xib")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 919)) ;
-    temp_66.addAssign_operation (GALGAS_string ("closeSourceFile.tiff")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 920)) ;
-    temp_66.addAssign_operation (GALGAS_string ("enterDefaultCommandLineOptions.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 921)) ;
-    temp_66.addAssign_operation (GALGAS_string ("enterDefaultCommandLineOptions.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 922)) ;
-    temp_66.addAssign_operation (GALGAS_string ("F_CocoaWrapperForGalgas.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 923)) ;
-    temp_66.addAssign_operation (GALGAS_string ("I_Stop.tiff")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 924)) ;
-    temp_66.addAssign_operation (GALGAS_string ("NSString+identifierRepresentation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 925)) ;
-    temp_66.addAssign_operation (GALGAS_string ("NSString+identifierRepresentation.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 926)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_ApplicationDelegate.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 927)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_ApplicationDelegate.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 928)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_BuildTask.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 929)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_BuildTask.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 930)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_CommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 931)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_CommandLineOption.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 932)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_Document.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 933)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_Document.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 934)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_DocumentData.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 935)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_DocumentData.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 936)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_FileEventStream.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 937)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_FileEventStream.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 938)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_RulerViewForBuildOutput.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 939)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_RulerViewForBuildOutput.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 940)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_RulerViewForTextView.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 941)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_RulerViewForTextView.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 942)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_Scroller.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 943)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_Scroller.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 944)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_TextDisplayDescriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 945)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_TextDisplayDescriptor.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 946)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_TextSyntaxColoring.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 947)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_TextSyntaxColoring.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 948)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_TextView.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 949)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_GGS_TextView.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 950)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_Lexique.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 951)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_Lexique.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 952)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_Token.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 953)) ;
-    temp_66.addAssign_operation (GALGAS_string ("OC_Token.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 954)) ;
-    temp_66.addAssign_operation (GALGAS_string ("PMDebug.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 955)) ;
-    temp_66.addAssign_operation (GALGAS_string ("PMDebug.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 956)) ;
-    temp_66.addAssign_operation (GALGAS_string ("PMFontButton.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 957)) ;
-    temp_66.addAssign_operation (GALGAS_string ("PMFontButton.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 958)) ;
-    temp_66.addAssign_operation (GALGAS_string ("PMIssueDescriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 959)) ;
-    temp_66.addAssign_operation (GALGAS_string ("PMIssueDescriptor.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 960)) ;
-    temp_66.addAssign_operation (GALGAS_string ("PMIssueInRuler.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 961)) ;
-    temp_66.addAssign_operation (GALGAS_string ("PMIssueInRuler.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 962)) ;
-    temp_66.addAssign_operation (GALGAS_string ("PMSearchResultDescriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 963)) ;
-    temp_66.addAssign_operation (GALGAS_string ("PMSearchResultDescriptor.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 964)) ;
-    temp_66.addAssign_operation (GALGAS_string ("PMTableViewRefusesFirstResponder.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 965)) ;
-    temp_66.addAssign_operation (GALGAS_string ("PMTableViewRefusesFirstResponder.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 966)) ;
-    temp_66.addAssign_operation (GALGAS_string ("PMUndoManager.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 967)) ;
-    temp_66.addAssign_operation (GALGAS_string ("PMUndoManager.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 968)) ;
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Cocoa GALGAS"), GALGAS_string ("cocoa_galgas"), temp_66, var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_groupRef_40905, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 913)) ;
-    }
-    var_libpmReferenceGroupList_41013.addAssign_operation (var_groupRef_40905  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 978)) ;
-    {
-    GALGAS_stringset temp_67 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 990)) ;
-    temp_67.addAssign_operation (GALGAS_string ("TC_LinkedList.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 984)) ;
-    temp_67.addAssign_operation (GALGAS_string ("TC_FIFO.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 985)) ;
-    temp_67.addAssign_operation (GALGAS_string ("TC_UniqueSparseArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 986)) ;
-    temp_67.addAssign_operation (GALGAS_string ("TC_Array.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 987)) ;
-    temp_67.addAssign_operation (GALGAS_string ("TC_Array2.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 988)) ;
-    temp_67.addAssign_operation (GALGAS_string ("TC_UniqueArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 989)) ;
-    temp_67.addAssign_operation (GALGAS_string ("TC_UniqueArray2.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 990)) ;
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Collections"), GALGAS_string ("collections"), temp_67, var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_groupRef_40905, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 980)) ;
-    }
-    var_libpmReferenceGroupList_41013.addAssign_operation (var_groupRef_40905  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1000)) ;
-    {
-    GALGAS_stringset temp_68 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1021)) ;
-    temp_68.addAssign_operation (GALGAS_string ("F_mainForLIBPM.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1006)) ;
-    temp_68.addAssign_operation (GALGAS_string ("F_mainForLIBPM.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1007)) ;
-    temp_68.addAssign_operation (GALGAS_string ("C_builtin_CLI_Options.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1008)) ;
-    temp_68.addAssign_operation (GALGAS_string ("C_builtin_CLI_Options.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1009)) ;
-    temp_68.addAssign_operation (GALGAS_string ("F_Analyze_CLI_Options.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1010)) ;
-    temp_68.addAssign_operation (GALGAS_string ("F_Analyze_CLI_Options.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1011)) ;
-    temp_68.addAssign_operation (GALGAS_string ("C_CommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1012)) ;
-    temp_68.addAssign_operation (GALGAS_string ("C_CommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1013)) ;
-    temp_68.addAssign_operation (GALGAS_string ("C_BoolCommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1014)) ;
-    temp_68.addAssign_operation (GALGAS_string ("C_BoolCommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1015)) ;
-    temp_68.addAssign_operation (GALGAS_string ("C_UIntCommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1016)) ;
-    temp_68.addAssign_operation (GALGAS_string ("C_UIntCommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1017)) ;
-    temp_68.addAssign_operation (GALGAS_string ("C_StringCommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1018)) ;
-    temp_68.addAssign_operation (GALGAS_string ("C_StringCommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1019)) ;
-    temp_68.addAssign_operation (GALGAS_string ("C_StringListCommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1020)) ;
-    temp_68.addAssign_operation (GALGAS_string ("C_StringListCommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1021)) ;
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Command line Interface"), GALGAS_string ("command_line_interface"), temp_68, var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_groupRef_40905, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1002)) ;
-    }
-    var_libpmReferenceGroupList_41013.addAssign_operation (var_groupRef_40905  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1031)) ;
-    {
-    GALGAS_stringset temp_69 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1048)) ;
-    temp_69.addAssign_operation (GALGAS_string ("C_FileManager.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1037)) ;
-    temp_69.addAssign_operation (GALGAS_string ("C_FileManager.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1038)) ;
-    temp_69.addAssign_operation (GALGAS_string ("AC_FileHandle.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1039)) ;
-    temp_69.addAssign_operation (GALGAS_string ("AC_FileHandle.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1040)) ;
-    temp_69.addAssign_operation (GALGAS_string ("AC_FileHandleForWriting.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1041)) ;
-    temp_69.addAssign_operation (GALGAS_string ("AC_FileHandleForWriting.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1042)) ;
-    temp_69.addAssign_operation (GALGAS_string ("C_BinaryFileWrite.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1043)) ;
-    temp_69.addAssign_operation (GALGAS_string ("C_BinaryFileWrite.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1044)) ;
-    temp_69.addAssign_operation (GALGAS_string ("C_TextFileWrite.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1045)) ;
-    temp_69.addAssign_operation (GALGAS_string ("C_TextFileWrite.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1046)) ;
-    temp_69.addAssign_operation (GALGAS_string ("C_HTML_FileWrite.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1047)) ;
-    temp_69.addAssign_operation (GALGAS_string ("C_HTML_FileWrite.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1048)) ;
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("File"), GALGAS_string ("files"), temp_69, var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_groupRef_40905, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1033)) ;
-    }
-    var_libpmReferenceGroupList_41013.addAssign_operation (var_groupRef_40905  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1058)) ;
-    {
-    GALGAS_stringset temp_70 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1153)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_class.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1064)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_class.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1065)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_enumAssociatedValues.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1066)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_enumAssociatedValues.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1067)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_graph.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1068)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_graph.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1069)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_list.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1070)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_list.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1071)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_map.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1072)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_map.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1073)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_root.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1074)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_root.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1075)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_sortedlist.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1076)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_sortedlist.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1077)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_uniqueMap.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1078)) ;
-    temp_70.addAssign_operation (GALGAS_string ("AC_GALGAS_uniqueMap.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1079)) ;
-    temp_70.addAssign_operation (GALGAS_string ("acPtr_class.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1080)) ;
-    temp_70.addAssign_operation (GALGAS_string ("acPtr_class.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1081)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_Compiler.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1082)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_Compiler.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1083)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_galgas_class_inspector.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1084)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_galgas_class_inspector.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1085)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_galgas_CLI_Options.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1086)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_galgas_CLI_Options.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1087)) ;
-    GALGAS_string temp_71 ;
-    const enumGalgasBool test_72 = constinArgument_inQuietOutputByDefault.boolEnum () ;
-    if (kBoolTrue == test_72) {
-      temp_71 = GALGAS_string ("C_galgas_verbose_option.cpp") ;
-    }else if (kBoolFalse == test_72) {
-      temp_71 = GALGAS_string ("C_galgas_quiet_option.cpp") ;
-    }
-    temp_70.addAssign_operation (temp_71  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1088)) ;
-    GALGAS_string temp_73 ;
-    const enumGalgasBool test_74 = constinArgument_inQuietOutputByDefault.boolEnum () ;
-    if (kBoolTrue == test_74) {
-      temp_73 = GALGAS_string ("C_galgas_verbose_option.h") ;
-    }else if (kBoolFalse == test_74) {
-      temp_73 = GALGAS_string ("C_galgas_quiet_option.h") ;
-    }
-    temp_70.addAssign_operation (temp_73  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1089)) ;
-    temp_70.addAssign_operation (GALGAS_string ("F_verbose_output.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1090)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_galgas_function_descriptor.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1091)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_galgas_function_descriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1092)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_galgas_io.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1093)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_galgas_io.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1094)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_galgas_type_descriptor.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1095)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_galgas_type_descriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1096)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_IssueWithFixIt.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1097)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_IssueWithFixIt.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1098)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_Lexique.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1099)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_Lexique.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1100)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_LocationInSource.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1101)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_LocationInSource.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1102)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_SourceTextInString.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1103)) ;
-    temp_70.addAssign_operation (GALGAS_string ("C_SourceTextInString.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1104)) ;
-    temp_70.addAssign_operation (GALGAS_string ("capCollectionElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1105)) ;
-    temp_70.addAssign_operation (GALGAS_string ("capCollectionElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1106)) ;
-    temp_70.addAssign_operation (GALGAS_string ("capCollectionElementArray.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1107)) ;
-    temp_70.addAssign_operation (GALGAS_string ("capCollectionElementArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1108)) ;
-    temp_70.addAssign_operation (GALGAS_string ("capSortedListElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1109)) ;
-    temp_70.addAssign_operation (GALGAS_string ("capSortedListElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1110)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cCollectionElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1111)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cCollectionElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1112)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cEnumerator_range.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1113)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cEnumerator_range.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1114)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cGenericAbstractEnumerator.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1115)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cGenericAbstractEnumerator.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1116)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cIndexingDictionary.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1117)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cIndexingDictionary.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1118)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cIssueDescriptor.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1119)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cIssueDescriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1120)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cLexiqueIntrospection.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1121)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cLexiqueIntrospection.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1122)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cObjectArray.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1123)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cObjectArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1124)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cProductionNameDescriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1125)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cPtr_object.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1126)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cPtr_object.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1127)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cSortedListElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1128)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cSortedListElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1129)) ;
-    temp_70.addAssign_operation (GALGAS_string ("cTemplateDelimiter.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1130)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_application.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1131)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_binaryset.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1132)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_bigint.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1133)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_bool.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1134)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_char.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1135)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_data.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1136)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_double.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1137)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_filewrapper.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1138)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_function.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1139)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_location.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1140)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_object.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1141)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_sint_36__34_.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1142)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_sint.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1143)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_string.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1144)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_stringset.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1145)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_timer.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1146)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_type.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1147)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_uint_36__34_.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1148)) ;
-    temp_70.addAssign_operation (GALGAS_string ("GALGAS_uint.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1149)) ;
-    temp_70.addAssign_operation (GALGAS_string ("scanner_actions.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1150)) ;
-    temp_70.addAssign_operation (GALGAS_string ("scanner_actions.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1151)) ;
-    temp_70.addAssign_operation (GALGAS_string ("typeComparisonResult.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1152)) ;
-    temp_70.addAssign_operation (GALGAS_string ("typeComparisonResult.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1153)) ;
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Galgas 2"), GALGAS_string ("galgas2"), temp_70, var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_groupRef_40905, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1060)) ;
-    }
-    var_libpmReferenceGroupList_41013.addAssign_operation (var_groupRef_40905  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1163)) ;
-    {
-    GALGAS_stringset temp_75 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1293)) ;
-    temp_75.addAssign_operation (GALGAS_string ("32-mp_bases.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1169)) ;
-    temp_75.addAssign_operation (GALGAS_string ("32-mp_bases.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1170)) ;
-    temp_75.addAssign_operation (GALGAS_string ("64-mp_bases.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1171)) ;
-    temp_75.addAssign_operation (GALGAS_string ("64-mp_bases.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1172)) ;
-    temp_75.addAssign_operation (GALGAS_string ("gmp-impl.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1173)) ;
-    temp_75.addAssign_operation (GALGAS_string ("gmp.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1174)) ;
-    temp_75.addAssign_operation (GALGAS_string ("longlong.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1175)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mini-gmp.c.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1176)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mini-gmp.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1177)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-add.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1178)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-add_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1179)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-add_n.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1180)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-addmul_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1181)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-bdiv_dbm1c.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1182)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-cmp.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1183)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-dcpi1_div_qr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1184)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-dive_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1185)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-divrem_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1186)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-divrem_2.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1187)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-get_str.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1188)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-invertappr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1189)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-lshift.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1190)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-lshiftc.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1191)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-mu_div_qr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1192)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1193)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-mul_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1194)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-mul_basecase.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1195)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-mul_fft.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1196)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-mul_n.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1197)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-mulmod_bnm1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1198)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-nussbaumer_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1199)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-pre_divrem_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1200)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-rshift.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1201)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-sbpi1_div_qr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1202)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-sbpi1_divappr_q.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1203)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-set_str.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1204)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-sqr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1205)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-sqr_basecase.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1206)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-sqrmod_bnm1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1207)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-sub.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1208)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-sub_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1209)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-sub_n.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1210)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-submul_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1211)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-tdiv_qr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1212)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom22_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1213)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom2_sqr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1214)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom32_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1215)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom33_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1216)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom3_sqr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1217)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom42_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1218)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom43_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1219)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom44_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1220)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom4_sqr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1221)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom53_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1222)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom63_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1223)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom6_sqr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1224)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom6h_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1225)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom8_sqr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1226)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom8h_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1227)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom_couple_handling.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1228)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom_eval_dgr3_pm1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1229)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom_eval_dgr3_pm2.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1230)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom_eval_pm1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1231)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom_eval_pm2.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1232)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom_eval_pm2exp.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1233)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom_eval_pm2rexp.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1234)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom_interpolate_12pts.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1235)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom_interpolate_16pts.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1236)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom_interpolate_5pts.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1237)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom_interpolate_6pts.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1238)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom_interpolate_7pts.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1239)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpn-toom_interpolate_8pts.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1240)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-abs.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1241)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-add.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1242)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-add_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1243)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-and.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1244)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-aors.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1245)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-aors_ui.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1246)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-cdiv_q_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1247)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-cdiv_qr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1248)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-cfdiv_q_2exp.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1249)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-clear.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1250)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-clrbit.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1251)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-cmp.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1252)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-cmp_si.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1253)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-cmp_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1254)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-com.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1255)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-combit.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1256)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-export.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1257)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-fdiv_q_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1258)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-fdiv_qr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1259)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-fits_s.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1260)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-fits_sint.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1261)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-fits_uint.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1262)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-get_si.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1263)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-get_str.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1264)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-get_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1265)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-init.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1266)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-ior.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1267)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1268)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-mul_2exp.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1269)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-mul_i.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1270)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-mul_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1271)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-neg.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1272)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-realloc.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1273)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-set.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1274)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-set_str.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1275)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-set_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1276)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-setbit.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1277)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-sizeinbase.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1278)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-sub.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1279)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-sub_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1280)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-swap.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1281)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-tdiv_qr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1282)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-tstbit.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1283)) ;
-    temp_75.addAssign_operation (GALGAS_string ("mpz-xor.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1284)) ;
-    temp_75.addAssign_operation (GALGAS_string ("root-assert.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1285)) ;
-    temp_75.addAssign_operation (GALGAS_string ("root-bootstrap.c.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1286)) ;
-    temp_75.addAssign_operation (GALGAS_string ("root-errno.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1287)) ;
-    temp_75.addAssign_operation (GALGAS_string ("root-memory.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1288)) ;
-    temp_75.addAssign_operation (GALGAS_string ("root-mp_bpl.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1289)) ;
-    temp_75.addAssign_operation (GALGAS_string ("root-mp_clz_tab.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1290)) ;
-    temp_75.addAssign_operation (GALGAS_string ("root-mp_dv_tab.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1291)) ;
-    temp_75.addAssign_operation (GALGAS_string ("root-mp_minv_tab.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1292)) ;
-    temp_75.addAssign_operation (GALGAS_string ("root-tal-notreent.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1293)) ;
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("GMP"), GALGAS_string ("gmp"), temp_75, var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_groupRef_40905, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1165)) ;
-    }
-    var_libpmReferenceGroupList_41013.addAssign_operation (var_groupRef_40905  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1303)) ;
-    {
-    GALGAS_stringset temp_76 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1318)) ;
-    temp_76.addAssign_operation (GALGAS_string ("C_ErrorOut.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1309)) ;
-    temp_76.addAssign_operation (GALGAS_string ("C_ErrorOut.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1310)) ;
-    temp_76.addAssign_operation (GALGAS_string ("AC_OutputStream.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1311)) ;
-    temp_76.addAssign_operation (GALGAS_string ("AC_OutputStream.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1312)) ;
-    temp_76.addAssign_operation (GALGAS_string ("C_ConsoleOut.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1313)) ;
-    temp_76.addAssign_operation (GALGAS_string ("C_ConsoleOut.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1314)) ;
-    temp_76.addAssign_operation (GALGAS_string ("C_ColoredConsole.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1315)) ;
-    temp_76.addAssign_operation (GALGAS_string ("C_ColoredConsole.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1316)) ;
-    temp_76.addAssign_operation (GALGAS_string ("C_TCPSocketOut.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1317)) ;
-    temp_76.addAssign_operation (GALGAS_string ("C_TCPSocketOut.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1318)) ;
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Streams"), GALGAS_string ("streams"), temp_76, var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_groupRef_40905, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1305)) ;
-    }
-    var_libpmReferenceGroupList_41013.addAssign_operation (var_groupRef_40905  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1328)) ;
-    {
-    GALGAS_stringset temp_77 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1347)) ;
-    temp_77.addAssign_operation (GALGAS_string ("C_HTMLString.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1334)) ;
-    temp_77.addAssign_operation (GALGAS_string ("C_HTMLString.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1335)) ;
-    temp_77.addAssign_operation (GALGAS_string ("C_String.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1336)) ;
-    temp_77.addAssign_operation (GALGAS_string ("C_String.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1337)) ;
-    temp_77.addAssign_operation (GALGAS_string ("cUnicodeData.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1338)) ;
-    temp_77.addAssign_operation (GALGAS_string ("string_encodings.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1339)) ;
-    temp_77.addAssign_operation (GALGAS_string ("unicode_character_base.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1340)) ;
-    temp_77.addAssign_operation (GALGAS_string ("unicode_character_cpp.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1341)) ;
-    temp_77.addAssign_operation (GALGAS_string ("unicode_character_cpp.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1342)) ;
-    temp_77.addAssign_operation (GALGAS_string ("unicode_character_implementation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1343)) ;
-    temp_77.addAssign_operation (GALGAS_string ("unicode_character_m.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1344)) ;
-    temp_77.addAssign_operation (GALGAS_string ("unicode_character_m.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1345)) ;
-    temp_77.addAssign_operation (GALGAS_string ("unicode_string_routines.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1346)) ;
-    temp_77.addAssign_operation (GALGAS_string ("unicode_string_routines.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1347)) ;
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Strings"), GALGAS_string ("strings"), temp_77, var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_groupRef_40905, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1330)) ;
-    }
-    var_libpmReferenceGroupList_41013.addAssign_operation (var_groupRef_40905  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1357)) ;
-    {
-    GALGAS_stringset temp_78 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1366)) ;
-    temp_78.addAssign_operation (GALGAS_string ("C_DateTime.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1363)) ;
-    temp_78.addAssign_operation (GALGAS_string ("C_DateTime.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1364)) ;
-    temp_78.addAssign_operation (GALGAS_string ("C_Timer.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1365)) ;
-    temp_78.addAssign_operation (GALGAS_string ("C_Timer.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1366)) ;
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Time"), GALGAS_string ("time"), temp_78, var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_groupRef_40905, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1359)) ;
-    }
-    var_libpmReferenceGroupList_41013.addAssign_operation (var_groupRef_40905  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1376)) ;
-    {
-    GALGAS_stringset temp_79 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1415)) ;
-    temp_79.addAssign_operation (GALGAS_string ("basic-allocation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1382)) ;
-    temp_79.addAssign_operation (GALGAS_string ("basic-allocation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1383)) ;
-    temp_79.addAssign_operation (GALGAS_string ("C_BigInt.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1384)) ;
-    temp_79.addAssign_operation (GALGAS_string ("C_BigInt.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1385)) ;
-    temp_79.addAssign_operation (GALGAS_string ("C_CRC32.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1386)) ;
-    temp_79.addAssign_operation (GALGAS_string ("C_CRC32.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1387)) ;
-    temp_79.addAssign_operation (GALGAS_string ("C_Data.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1388)) ;
-    temp_79.addAssign_operation (GALGAS_string ("C_Data.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1389)) ;
-    temp_79.addAssign_operation (GALGAS_string ("C_DirectedGraph.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1390)) ;
-    temp_79.addAssign_operation (GALGAS_string ("C_DirectedGraph.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1391)) ;
-    temp_79.addAssign_operation (GALGAS_string ("C_PrologueEpilogue.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1392)) ;
-    temp_79.addAssign_operation (GALGAS_string ("C_PrologueEpilogue.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1393)) ;
-    temp_79.addAssign_operation (GALGAS_string ("C_SharedObject.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1394)) ;
-    temp_79.addAssign_operation (GALGAS_string ("C_SharedObject.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1395)) ;
-    temp_79.addAssign_operation (GALGAS_string ("C_UIntSet.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1396)) ;
-    temp_79.addAssign_operation (GALGAS_string ("C_UIntSet.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1397)) ;
-    temp_79.addAssign_operation (GALGAS_string ("cpp-allocation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1398)) ;
-    temp_79.addAssign_operation (GALGAS_string ("cpp-allocation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1399)) ;
-    temp_79.addAssign_operation (GALGAS_string ("F_DisplayException.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1400)) ;
-    temp_79.addAssign_operation (GALGAS_string ("F_DisplayException.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1401)) ;
-    temp_79.addAssign_operation (GALGAS_string ("F_GetPrime.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1402)) ;
-    temp_79.addAssign_operation (GALGAS_string ("F_GetPrime.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1403)) ;
-    temp_79.addAssign_operation (GALGAS_string ("M_machine.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1404)) ;
-    temp_79.addAssign_operation (GALGAS_string ("M_SourceLocation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1405)) ;
-    temp_79.addAssign_operation (GALGAS_string ("md5.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1406)) ;
-    temp_79.addAssign_operation (GALGAS_string ("md5.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1407)) ;
-    temp_79.addAssign_operation (GALGAS_string ("MF_Assert.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1408)) ;
-    temp_79.addAssign_operation (GALGAS_string ("MF_Assert.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1409)) ;
-    temp_79.addAssign_operation (GALGAS_string ("MF_MemoryControl.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1410)) ;
-    temp_79.addAssign_operation (GALGAS_string ("MF_MemoryControl.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1411)) ;
-    temp_79.addAssign_operation (GALGAS_string ("PMUInt128.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1412)) ;
-    temp_79.addAssign_operation (GALGAS_string ("PMUInt128.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1413)) ;
-    temp_79.addAssign_operation (GALGAS_string ("switch-fallthrough.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1414)) ;
-    temp_79.addAssign_operation (GALGAS_string ("TF_Swap.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1415)) ;
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Utilities"), GALGAS_string ("utilities"), temp_79, var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_groupRef_40905, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1378)) ;
-    }
-    var_libpmReferenceGroupList_41013.addAssign_operation (var_groupRef_40905  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1425)) ;
-    GALGAS_string var_libpmGroupRef_59385 ;
-    {
-    extensionSetter_addGroup (var_xcodeProject_35193, GALGAS_string ("libpm"), GALGAS_string ("../build/libpm"), var_libpmReferenceGroupList_41013, var_libpmGroupRef_59385, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1427)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Generated by GALGAS"), GALGAS_string ("../build/output"), GALGAS_stringset::constructor_setWithStringList (constinArgument_inToolCppFileList.add_operation (constinArgument_inToolHeaderFileList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 715)).add_operation (constinArgument_inAppProductFileList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 715))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 715)), var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_groupRef_33911, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 712)) ;
     }
     {
-    extensionSetter_placeGroupAsMainGroup (var_xcodeProject_35193, var_libpmGroupRef_59385, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1428)) ;
+    extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28199, var_groupRef_33911, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 724)) ;
     }
-    GALGAS_string var_resourcesGroupRef_59916 ;
+    GALGAS_stringlist var_libpmReferenceGroupList_34019 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 725)) ;
     {
-    GALGAS_stringset temp_80 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1434)) ;
-    temp_80.addAssign_operation (GALGAS_string ("Info.plist")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1434)) ;
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Resources"), GALGAS_string ("."), temp_80, var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_resourcesGroupRef_59916, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1430)) ;
+    GALGAS_stringset temp_68 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 742)) ;
+    temp_68.addAssign_operation (GALGAS_string ("C_RelationConfiguration.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 731)) ;
+    temp_68.addAssign_operation (GALGAS_string ("C_RelationConfiguration.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 732)) ;
+    temp_68.addAssign_operation (GALGAS_string ("C_Relation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 733)) ;
+    temp_68.addAssign_operation (GALGAS_string ("C_Relation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 734)) ;
+    temp_68.addAssign_operation (GALGAS_string ("C_RelationSingleType.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 735)) ;
+    temp_68.addAssign_operation (GALGAS_string ("C_RelationSingleType.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 736)) ;
+    temp_68.addAssign_operation (GALGAS_string ("C_BDD-and-operation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 737)) ;
+    temp_68.addAssign_operation (GALGAS_string ("C_BDD-find-or-add.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 738)) ;
+    temp_68.addAssign_operation (GALGAS_string ("C_BDD-node.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 739)) ;
+    temp_68.addAssign_operation (GALGAS_string ("C_BDD-single-operand-ops.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 740)) ;
+    temp_68.addAssign_operation (GALGAS_string ("C_BDD.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 741)) ;
+    temp_68.addAssign_operation (GALGAS_string ("C_BDD.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 742)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Binary Decision Diagrams"), GALGAS_string ("bdd"), temp_68, var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_groupRef_33911, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 727)) ;
+    }
+    var_libpmReferenceGroupList_34019.addAssign_operation (var_groupRef_33911  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 752)) ;
+    {
+    GALGAS_stringset temp_69 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 757)) ;
+    temp_69.addAssign_operation (GALGAS_string ("TC_prime_cache2.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 757)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Cache"), GALGAS_string ("cache"), temp_69, var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_groupRef_33911, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 754)) ;
+    }
+    var_libpmReferenceGroupList_34019.addAssign_operation (var_groupRef_33911  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 766)) ;
+    {
+    GALGAS_stringset temp_70 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 780)) ;
+    temp_70.addAssign_operation (GALGAS_string ("main.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 772)) ;
+    temp_70.addAssign_operation (GALGAS_string ("PMCancelButtonForPanel.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 773)) ;
+    temp_70.addAssign_operation (GALGAS_string ("PMCancelButtonForPanel.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 774)) ;
+    temp_70.addAssign_operation (GALGAS_string ("PMDownloadData.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 775)) ;
+    temp_70.addAssign_operation (GALGAS_string ("PMDownloadData.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 776)) ;
+    temp_70.addAssign_operation (GALGAS_string ("PMDownloadFile.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 777)) ;
+    temp_70.addAssign_operation (GALGAS_string ("PMDownloadFile.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 778)) ;
+    temp_70.addAssign_operation (GALGAS_string ("PMOkButtonForPanel.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 779)) ;
+    temp_70.addAssign_operation (GALGAS_string ("PMOkButtonForPanel.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 780)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Cocoa Utilities"), GALGAS_string ("cocoa_utilities"), temp_70, var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_groupRef_33911, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 768)) ;
+    }
+    var_libpmReferenceGroupList_34019.addAssign_operation (var_groupRef_33911  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 790)) ;
+    {
+    GALGAS_stringset temp_71 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 847)) ;
+    temp_71.addAssign_operation (GALGAS_string ("English.lproj/OC_GGS_Document.xib")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 796)) ;
+    temp_71.addAssign_operation (GALGAS_string ("English.lproj/PMDebug.xib")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 797)) ;
+    temp_71.addAssign_operation (GALGAS_string ("English.lproj/MainMenu.xib")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 798)) ;
+    temp_71.addAssign_operation (GALGAS_string ("closeSourceFile.tiff")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 799)) ;
+    temp_71.addAssign_operation (GALGAS_string ("enterDefaultCommandLineOptions.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 800)) ;
+    temp_71.addAssign_operation (GALGAS_string ("enterDefaultCommandLineOptions.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 801)) ;
+    temp_71.addAssign_operation (GALGAS_string ("F_CocoaWrapperForGalgas.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 802)) ;
+    temp_71.addAssign_operation (GALGAS_string ("I_Stop.tiff")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 803)) ;
+    temp_71.addAssign_operation (GALGAS_string ("NSString+identifierRepresentation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 804)) ;
+    temp_71.addAssign_operation (GALGAS_string ("NSString+identifierRepresentation.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 805)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_ApplicationDelegate.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 806)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_ApplicationDelegate.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 807)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_BuildTask.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 808)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_BuildTask.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 809)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_CommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 810)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_CommandLineOption.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 811)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_Document.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 812)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_Document.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 813)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_DocumentData.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 814)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_DocumentData.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 815)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_FileEventStream.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 816)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_FileEventStream.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 817)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_RulerViewForBuildOutput.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 818)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_RulerViewForBuildOutput.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 819)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_RulerViewForTextView.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 820)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_RulerViewForTextView.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 821)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_Scroller.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 822)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_Scroller.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 823)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_TextDisplayDescriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 824)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_TextDisplayDescriptor.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 825)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_TextSyntaxColoring.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 826)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_TextSyntaxColoring.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 827)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_TextView.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 828)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_GGS_TextView.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 829)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_Lexique.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 830)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_Lexique.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 831)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_Token.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 832)) ;
+    temp_71.addAssign_operation (GALGAS_string ("OC_Token.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 833)) ;
+    temp_71.addAssign_operation (GALGAS_string ("PMDebug.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 834)) ;
+    temp_71.addAssign_operation (GALGAS_string ("PMDebug.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 835)) ;
+    temp_71.addAssign_operation (GALGAS_string ("PMFontButton.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 836)) ;
+    temp_71.addAssign_operation (GALGAS_string ("PMFontButton.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 837)) ;
+    temp_71.addAssign_operation (GALGAS_string ("PMIssueDescriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 838)) ;
+    temp_71.addAssign_operation (GALGAS_string ("PMIssueDescriptor.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 839)) ;
+    temp_71.addAssign_operation (GALGAS_string ("PMIssueInRuler.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 840)) ;
+    temp_71.addAssign_operation (GALGAS_string ("PMIssueInRuler.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 841)) ;
+    temp_71.addAssign_operation (GALGAS_string ("PMSearchResultDescriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 842)) ;
+    temp_71.addAssign_operation (GALGAS_string ("PMSearchResultDescriptor.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 843)) ;
+    temp_71.addAssign_operation (GALGAS_string ("PMTableViewRefusesFirstResponder.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 844)) ;
+    temp_71.addAssign_operation (GALGAS_string ("PMTableViewRefusesFirstResponder.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 845)) ;
+    temp_71.addAssign_operation (GALGAS_string ("PMUndoManager.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 846)) ;
+    temp_71.addAssign_operation (GALGAS_string ("PMUndoManager.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 847)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Cocoa GALGAS"), GALGAS_string ("cocoa_galgas"), temp_71, var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_groupRef_33911, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 792)) ;
+    }
+    var_libpmReferenceGroupList_34019.addAssign_operation (var_groupRef_33911  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 857)) ;
+    {
+    GALGAS_stringset temp_72 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 869)) ;
+    temp_72.addAssign_operation (GALGAS_string ("TC_LinkedList.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 863)) ;
+    temp_72.addAssign_operation (GALGAS_string ("TC_FIFO.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 864)) ;
+    temp_72.addAssign_operation (GALGAS_string ("TC_UniqueSparseArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 865)) ;
+    temp_72.addAssign_operation (GALGAS_string ("TC_Array.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 866)) ;
+    temp_72.addAssign_operation (GALGAS_string ("TC_Array2.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 867)) ;
+    temp_72.addAssign_operation (GALGAS_string ("TC_UniqueArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 868)) ;
+    temp_72.addAssign_operation (GALGAS_string ("TC_UniqueArray2.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 869)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Collections"), GALGAS_string ("collections"), temp_72, var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_groupRef_33911, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 859)) ;
+    }
+    var_libpmReferenceGroupList_34019.addAssign_operation (var_groupRef_33911  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 879)) ;
+    {
+    GALGAS_stringset temp_73 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 900)) ;
+    temp_73.addAssign_operation (GALGAS_string ("F_mainForLIBPM.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 885)) ;
+    temp_73.addAssign_operation (GALGAS_string ("F_mainForLIBPM.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 886)) ;
+    temp_73.addAssign_operation (GALGAS_string ("C_builtin_CLI_Options.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 887)) ;
+    temp_73.addAssign_operation (GALGAS_string ("C_builtin_CLI_Options.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 888)) ;
+    temp_73.addAssign_operation (GALGAS_string ("F_Analyze_CLI_Options.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 889)) ;
+    temp_73.addAssign_operation (GALGAS_string ("F_Analyze_CLI_Options.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 890)) ;
+    temp_73.addAssign_operation (GALGAS_string ("C_CommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 891)) ;
+    temp_73.addAssign_operation (GALGAS_string ("C_CommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 892)) ;
+    temp_73.addAssign_operation (GALGAS_string ("C_BoolCommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 893)) ;
+    temp_73.addAssign_operation (GALGAS_string ("C_BoolCommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 894)) ;
+    temp_73.addAssign_operation (GALGAS_string ("C_UIntCommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 895)) ;
+    temp_73.addAssign_operation (GALGAS_string ("C_UIntCommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 896)) ;
+    temp_73.addAssign_operation (GALGAS_string ("C_StringCommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 897)) ;
+    temp_73.addAssign_operation (GALGAS_string ("C_StringCommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 898)) ;
+    temp_73.addAssign_operation (GALGAS_string ("C_StringListCommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 899)) ;
+    temp_73.addAssign_operation (GALGAS_string ("C_StringListCommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 900)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Command line Interface"), GALGAS_string ("command_line_interface"), temp_73, var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_groupRef_33911, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 881)) ;
+    }
+    var_libpmReferenceGroupList_34019.addAssign_operation (var_groupRef_33911  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 910)) ;
+    {
+    GALGAS_stringset temp_74 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 927)) ;
+    temp_74.addAssign_operation (GALGAS_string ("C_FileManager.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 916)) ;
+    temp_74.addAssign_operation (GALGAS_string ("C_FileManager.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 917)) ;
+    temp_74.addAssign_operation (GALGAS_string ("AC_FileHandle.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 918)) ;
+    temp_74.addAssign_operation (GALGAS_string ("AC_FileHandle.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 919)) ;
+    temp_74.addAssign_operation (GALGAS_string ("AC_FileHandleForWriting.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 920)) ;
+    temp_74.addAssign_operation (GALGAS_string ("AC_FileHandleForWriting.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 921)) ;
+    temp_74.addAssign_operation (GALGAS_string ("C_BinaryFileWrite.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 922)) ;
+    temp_74.addAssign_operation (GALGAS_string ("C_BinaryFileWrite.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 923)) ;
+    temp_74.addAssign_operation (GALGAS_string ("C_TextFileWrite.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 924)) ;
+    temp_74.addAssign_operation (GALGAS_string ("C_TextFileWrite.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 925)) ;
+    temp_74.addAssign_operation (GALGAS_string ("C_HTML_FileWrite.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 926)) ;
+    temp_74.addAssign_operation (GALGAS_string ("C_HTML_FileWrite.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 927)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("File"), GALGAS_string ("files"), temp_74, var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_groupRef_33911, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 912)) ;
+    }
+    var_libpmReferenceGroupList_34019.addAssign_operation (var_groupRef_33911  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 937)) ;
+    {
+    GALGAS_stringset temp_75 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1032)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_class.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 943)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_class.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 944)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_enumAssociatedValues.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 945)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_enumAssociatedValues.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 946)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_graph.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 947)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_graph.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 948)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_list.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 949)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_list.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 950)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_map.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 951)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_map.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 952)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_root.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 953)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_root.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 954)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_sortedlist.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 955)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_sortedlist.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 956)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_uniqueMap.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 957)) ;
+    temp_75.addAssign_operation (GALGAS_string ("AC_GALGAS_uniqueMap.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 958)) ;
+    temp_75.addAssign_operation (GALGAS_string ("acPtr_class.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 959)) ;
+    temp_75.addAssign_operation (GALGAS_string ("acPtr_class.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 960)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_Compiler.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 961)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_Compiler.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 962)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_galgas_class_inspector.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 963)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_galgas_class_inspector.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 964)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_galgas_CLI_Options.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 965)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_galgas_CLI_Options.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 966)) ;
+    GALGAS_string temp_76 ;
+    const enumGalgasBool test_77 = constinArgument_inQuietOutputByDefault.boolEnum () ;
+    if (kBoolTrue == test_77) {
+      temp_76 = GALGAS_string ("C_galgas_verbose_option.cpp") ;
+    }else if (kBoolFalse == test_77) {
+      temp_76 = GALGAS_string ("C_galgas_quiet_option.cpp") ;
+    }
+    temp_75.addAssign_operation (temp_76  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 967)) ;
+    GALGAS_string temp_78 ;
+    const enumGalgasBool test_79 = constinArgument_inQuietOutputByDefault.boolEnum () ;
+    if (kBoolTrue == test_79) {
+      temp_78 = GALGAS_string ("C_galgas_verbose_option.h") ;
+    }else if (kBoolFalse == test_79) {
+      temp_78 = GALGAS_string ("C_galgas_quiet_option.h") ;
+    }
+    temp_75.addAssign_operation (temp_78  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 968)) ;
+    temp_75.addAssign_operation (GALGAS_string ("F_verbose_output.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 969)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_galgas_function_descriptor.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 970)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_galgas_function_descriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 971)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_galgas_io.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 972)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_galgas_io.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 973)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_galgas_type_descriptor.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 974)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_galgas_type_descriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 975)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_IssueWithFixIt.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 976)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_IssueWithFixIt.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 977)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_Lexique.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 978)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_Lexique.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 979)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_LocationInSource.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 980)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_LocationInSource.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 981)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_SourceTextInString.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 982)) ;
+    temp_75.addAssign_operation (GALGAS_string ("C_SourceTextInString.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 983)) ;
+    temp_75.addAssign_operation (GALGAS_string ("capCollectionElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 984)) ;
+    temp_75.addAssign_operation (GALGAS_string ("capCollectionElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 985)) ;
+    temp_75.addAssign_operation (GALGAS_string ("capCollectionElementArray.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 986)) ;
+    temp_75.addAssign_operation (GALGAS_string ("capCollectionElementArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 987)) ;
+    temp_75.addAssign_operation (GALGAS_string ("capSortedListElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 988)) ;
+    temp_75.addAssign_operation (GALGAS_string ("capSortedListElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 989)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cCollectionElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 990)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cCollectionElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 991)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cEnumerator_range.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 992)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cEnumerator_range.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 993)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cGenericAbstractEnumerator.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 994)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cGenericAbstractEnumerator.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 995)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cIndexingDictionary.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 996)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cIndexingDictionary.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 997)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cIssueDescriptor.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 998)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cIssueDescriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 999)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cLexiqueIntrospection.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1000)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cLexiqueIntrospection.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1001)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cObjectArray.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1002)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cObjectArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1003)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cProductionNameDescriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1004)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cPtr_object.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1005)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cPtr_object.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1006)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cSortedListElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1007)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cSortedListElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1008)) ;
+    temp_75.addAssign_operation (GALGAS_string ("cTemplateDelimiter.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1009)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_application.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1010)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_binaryset.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1011)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_bigint.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1012)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_bool.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1013)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_char.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1014)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_data.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1015)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_double.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1016)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_filewrapper.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1017)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_function.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1018)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_location.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1019)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_object.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1020)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_sint_36__34_.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1021)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_sint.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1022)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_string.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1023)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_stringset.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1024)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_timer.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1025)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_type.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1026)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_uint_36__34_.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1027)) ;
+    temp_75.addAssign_operation (GALGAS_string ("GALGAS_uint.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1028)) ;
+    temp_75.addAssign_operation (GALGAS_string ("scanner_actions.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1029)) ;
+    temp_75.addAssign_operation (GALGAS_string ("scanner_actions.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1030)) ;
+    temp_75.addAssign_operation (GALGAS_string ("typeComparisonResult.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1031)) ;
+    temp_75.addAssign_operation (GALGAS_string ("typeComparisonResult.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1032)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Galgas 2"), GALGAS_string ("galgas2"), temp_75, var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_groupRef_33911, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 939)) ;
+    }
+    var_libpmReferenceGroupList_34019.addAssign_operation (var_groupRef_33911  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1042)) ;
+    {
+    GALGAS_stringset temp_80 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1172)) ;
+    temp_80.addAssign_operation (GALGAS_string ("32-mp_bases.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1048)) ;
+    temp_80.addAssign_operation (GALGAS_string ("32-mp_bases.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1049)) ;
+    temp_80.addAssign_operation (GALGAS_string ("64-mp_bases.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1050)) ;
+    temp_80.addAssign_operation (GALGAS_string ("64-mp_bases.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1051)) ;
+    temp_80.addAssign_operation (GALGAS_string ("gmp-impl.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1052)) ;
+    temp_80.addAssign_operation (GALGAS_string ("gmp.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1053)) ;
+    temp_80.addAssign_operation (GALGAS_string ("longlong.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1054)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mini-gmp.c.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1055)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mini-gmp.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1056)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-add.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1057)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-add_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1058)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-add_n.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1059)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-addmul_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1060)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-bdiv_dbm1c.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1061)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-cmp.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1062)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-dcpi1_div_qr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1063)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-dive_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1064)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-divrem_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1065)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-divrem_2.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1066)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-get_str.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1067)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-invertappr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1068)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-lshift.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1069)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-lshiftc.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1070)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-mu_div_qr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1071)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1072)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-mul_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1073)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-mul_basecase.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1074)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-mul_fft.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1075)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-mul_n.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1076)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-mulmod_bnm1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1077)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-nussbaumer_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1078)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-pre_divrem_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1079)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-rshift.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1080)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-sbpi1_div_qr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1081)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-sbpi1_divappr_q.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1082)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-set_str.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1083)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-sqr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1084)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-sqr_basecase.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1085)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-sqrmod_bnm1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1086)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-sub.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1087)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-sub_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1088)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-sub_n.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1089)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-submul_1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1090)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-tdiv_qr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1091)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom22_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1092)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom2_sqr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1093)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom32_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1094)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom33_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1095)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom3_sqr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1096)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom42_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1097)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom43_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1098)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom44_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1099)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom4_sqr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1100)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom53_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1101)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom63_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1102)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom6_sqr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1103)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom6h_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1104)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom8_sqr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1105)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom8h_mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1106)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom_couple_handling.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1107)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom_eval_dgr3_pm1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1108)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom_eval_dgr3_pm2.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1109)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom_eval_pm1.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1110)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom_eval_pm2.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1111)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom_eval_pm2exp.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1112)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom_eval_pm2rexp.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1113)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom_interpolate_12pts.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1114)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom_interpolate_16pts.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1115)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom_interpolate_5pts.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1116)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom_interpolate_6pts.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1117)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom_interpolate_7pts.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1118)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpn-toom_interpolate_8pts.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1119)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-abs.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1120)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-add.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1121)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-add_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1122)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-and.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1123)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-aors.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1124)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-aors_ui.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1125)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-cdiv_q_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1126)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-cdiv_qr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1127)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-cfdiv_q_2exp.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1128)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-clear.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1129)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-clrbit.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1130)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-cmp.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1131)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-cmp_si.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1132)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-cmp_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1133)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-com.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1134)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-combit.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1135)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-export.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1136)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-fdiv_q_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1137)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-fdiv_qr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1138)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-fits_s.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1139)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-fits_sint.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1140)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-fits_uint.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1141)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-get_si.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1142)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-get_str.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1143)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-get_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1144)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-init.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1145)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-ior.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1146)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-mul.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1147)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-mul_2exp.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1148)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-mul_i.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1149)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-mul_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1150)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-neg.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1151)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-realloc.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1152)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-set.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1153)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-set_str.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1154)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-set_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1155)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-setbit.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1156)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-sizeinbase.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1157)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-sub.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1158)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-sub_ui.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1159)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-swap.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1160)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-tdiv_qr.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1161)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-tstbit.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1162)) ;
+    temp_80.addAssign_operation (GALGAS_string ("mpz-xor.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1163)) ;
+    temp_80.addAssign_operation (GALGAS_string ("root-assert.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1164)) ;
+    temp_80.addAssign_operation (GALGAS_string ("root-bootstrap.c.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1165)) ;
+    temp_80.addAssign_operation (GALGAS_string ("root-errno.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1166)) ;
+    temp_80.addAssign_operation (GALGAS_string ("root-memory.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1167)) ;
+    temp_80.addAssign_operation (GALGAS_string ("root-mp_bpl.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1168)) ;
+    temp_80.addAssign_operation (GALGAS_string ("root-mp_clz_tab.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1169)) ;
+    temp_80.addAssign_operation (GALGAS_string ("root-mp_dv_tab.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1170)) ;
+    temp_80.addAssign_operation (GALGAS_string ("root-mp_minv_tab.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1171)) ;
+    temp_80.addAssign_operation (GALGAS_string ("root-tal-notreent.c")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1172)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("GMP"), GALGAS_string ("gmp"), temp_80, var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_groupRef_33911, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1044)) ;
+    }
+    var_libpmReferenceGroupList_34019.addAssign_operation (var_groupRef_33911  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1182)) ;
+    {
+    GALGAS_stringset temp_81 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1197)) ;
+    temp_81.addAssign_operation (GALGAS_string ("C_ErrorOut.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1188)) ;
+    temp_81.addAssign_operation (GALGAS_string ("C_ErrorOut.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1189)) ;
+    temp_81.addAssign_operation (GALGAS_string ("AC_OutputStream.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1190)) ;
+    temp_81.addAssign_operation (GALGAS_string ("AC_OutputStream.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1191)) ;
+    temp_81.addAssign_operation (GALGAS_string ("C_ConsoleOut.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1192)) ;
+    temp_81.addAssign_operation (GALGAS_string ("C_ConsoleOut.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1193)) ;
+    temp_81.addAssign_operation (GALGAS_string ("C_ColoredConsole.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1194)) ;
+    temp_81.addAssign_operation (GALGAS_string ("C_ColoredConsole.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1195)) ;
+    temp_81.addAssign_operation (GALGAS_string ("C_TCPSocketOut.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1196)) ;
+    temp_81.addAssign_operation (GALGAS_string ("C_TCPSocketOut.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1197)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Streams"), GALGAS_string ("streams"), temp_81, var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_groupRef_33911, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1184)) ;
+    }
+    var_libpmReferenceGroupList_34019.addAssign_operation (var_groupRef_33911  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1207)) ;
+    {
+    GALGAS_stringset temp_82 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1226)) ;
+    temp_82.addAssign_operation (GALGAS_string ("C_HTMLString.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1213)) ;
+    temp_82.addAssign_operation (GALGAS_string ("C_HTMLString.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1214)) ;
+    temp_82.addAssign_operation (GALGAS_string ("C_String.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1215)) ;
+    temp_82.addAssign_operation (GALGAS_string ("C_String.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1216)) ;
+    temp_82.addAssign_operation (GALGAS_string ("cUnicodeData.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1217)) ;
+    temp_82.addAssign_operation (GALGAS_string ("string_encodings.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1218)) ;
+    temp_82.addAssign_operation (GALGAS_string ("unicode_character_base.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1219)) ;
+    temp_82.addAssign_operation (GALGAS_string ("unicode_character_cpp.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1220)) ;
+    temp_82.addAssign_operation (GALGAS_string ("unicode_character_cpp.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1221)) ;
+    temp_82.addAssign_operation (GALGAS_string ("unicode_character_implementation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1222)) ;
+    temp_82.addAssign_operation (GALGAS_string ("unicode_character_m.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1223)) ;
+    temp_82.addAssign_operation (GALGAS_string ("unicode_character_m.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1224)) ;
+    temp_82.addAssign_operation (GALGAS_string ("unicode_string_routines.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1225)) ;
+    temp_82.addAssign_operation (GALGAS_string ("unicode_string_routines.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1226)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Strings"), GALGAS_string ("strings"), temp_82, var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_groupRef_33911, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1209)) ;
+    }
+    var_libpmReferenceGroupList_34019.addAssign_operation (var_groupRef_33911  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1236)) ;
+    {
+    GALGAS_stringset temp_83 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1245)) ;
+    temp_83.addAssign_operation (GALGAS_string ("C_DateTime.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1242)) ;
+    temp_83.addAssign_operation (GALGAS_string ("C_DateTime.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1243)) ;
+    temp_83.addAssign_operation (GALGAS_string ("C_Timer.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1244)) ;
+    temp_83.addAssign_operation (GALGAS_string ("C_Timer.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1245)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Time"), GALGAS_string ("time"), temp_83, var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_groupRef_33911, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1238)) ;
+    }
+    var_libpmReferenceGroupList_34019.addAssign_operation (var_groupRef_33911  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1255)) ;
+    {
+    GALGAS_stringset temp_84 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1294)) ;
+    temp_84.addAssign_operation (GALGAS_string ("basic-allocation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1261)) ;
+    temp_84.addAssign_operation (GALGAS_string ("basic-allocation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1262)) ;
+    temp_84.addAssign_operation (GALGAS_string ("C_BigInt.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1263)) ;
+    temp_84.addAssign_operation (GALGAS_string ("C_BigInt.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1264)) ;
+    temp_84.addAssign_operation (GALGAS_string ("C_CRC32.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1265)) ;
+    temp_84.addAssign_operation (GALGAS_string ("C_CRC32.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1266)) ;
+    temp_84.addAssign_operation (GALGAS_string ("C_Data.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1267)) ;
+    temp_84.addAssign_operation (GALGAS_string ("C_Data.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1268)) ;
+    temp_84.addAssign_operation (GALGAS_string ("C_DirectedGraph.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1269)) ;
+    temp_84.addAssign_operation (GALGAS_string ("C_DirectedGraph.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1270)) ;
+    temp_84.addAssign_operation (GALGAS_string ("C_PrologueEpilogue.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1271)) ;
+    temp_84.addAssign_operation (GALGAS_string ("C_PrologueEpilogue.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1272)) ;
+    temp_84.addAssign_operation (GALGAS_string ("C_SharedObject.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1273)) ;
+    temp_84.addAssign_operation (GALGAS_string ("C_SharedObject.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1274)) ;
+    temp_84.addAssign_operation (GALGAS_string ("C_UIntSet.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1275)) ;
+    temp_84.addAssign_operation (GALGAS_string ("C_UIntSet.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1276)) ;
+    temp_84.addAssign_operation (GALGAS_string ("cpp-allocation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1277)) ;
+    temp_84.addAssign_operation (GALGAS_string ("cpp-allocation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1278)) ;
+    temp_84.addAssign_operation (GALGAS_string ("F_DisplayException.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1279)) ;
+    temp_84.addAssign_operation (GALGAS_string ("F_DisplayException.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1280)) ;
+    temp_84.addAssign_operation (GALGAS_string ("F_GetPrime.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1281)) ;
+    temp_84.addAssign_operation (GALGAS_string ("F_GetPrime.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1282)) ;
+    temp_84.addAssign_operation (GALGAS_string ("M_machine.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1283)) ;
+    temp_84.addAssign_operation (GALGAS_string ("M_SourceLocation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1284)) ;
+    temp_84.addAssign_operation (GALGAS_string ("md5.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1285)) ;
+    temp_84.addAssign_operation (GALGAS_string ("md5.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1286)) ;
+    temp_84.addAssign_operation (GALGAS_string ("MF_Assert.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1287)) ;
+    temp_84.addAssign_operation (GALGAS_string ("MF_Assert.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1288)) ;
+    temp_84.addAssign_operation (GALGAS_string ("MF_MemoryControl.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1289)) ;
+    temp_84.addAssign_operation (GALGAS_string ("MF_MemoryControl.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1290)) ;
+    temp_84.addAssign_operation (GALGAS_string ("PMUInt128.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1291)) ;
+    temp_84.addAssign_operation (GALGAS_string ("PMUInt128.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1292)) ;
+    temp_84.addAssign_operation (GALGAS_string ("switch-fallthrough.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1293)) ;
+    temp_84.addAssign_operation (GALGAS_string ("TF_Swap.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1294)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Utilities"), GALGAS_string ("utilities"), temp_84, var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_groupRef_33911, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1257)) ;
+    }
+    var_libpmReferenceGroupList_34019.addAssign_operation (var_groupRef_33911  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1304)) ;
+    GALGAS_string var_libpmGroupRef_52391 ;
+    {
+    extensionSetter_addGroup (var_xcodeProject_28199, GALGAS_string ("libpm"), GALGAS_string ("../build/libpm"), var_libpmReferenceGroupList_34019, var_libpmGroupRef_52391, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1306)) ;
     }
     {
-    extensionSetter_placeGroupAsMainGroup (var_xcodeProject_35193, var_resourcesGroupRef_59916, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1444)) ;
+    extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28199, var_libpmGroupRef_52391, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1307)) ;
     }
-    GALGAS_string var_userResourcesGroupRef_60497 ;
+    GALGAS_string var_resourcesGroupRef_52922 ;
     {
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("User Resources"), GALGAS_string ("userResources"), GALGAS_stringset::constructor_setWithStringList (var_resourceFiles_34788  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1449)), var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_userResourcesGroupRef_60497, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1446)) ;
-    }
-    {
-    extensionSetter_placeGroupAsMainGroup (var_xcodeProject_35193, var_userResourcesGroupRef_60497, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1458)) ;
-    }
-    GALGAS_string var_frameworkGroupRef_61118 ;
-    {
-    GALGAS_stringset temp_81 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1465)) ;
-    temp_81.addAssign_operation (GALGAS_string ("AppKit.framework")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1464)) ;
-    temp_81.addAssign_operation (GALGAS_string ("Cocoa.framework")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1465)) ;
-    extensionSetter_addGroupWithFiles (var_xcodeProject_35193, GALGAS_string ("Frameworks for App"), GALGAS_string ("/System/Library/Frameworks"), temp_81, var_buildCFileRefListForTool_38820, var_buildCppFileRefListForTool_38868, var_m_5F_FileRefList_38903, var_mm_5F_FileRefList_38939, var_frameworksFileRefList_38982, var_resourceFileBuildRefs_39025, var_frameworkGroupRef_61118, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1460)) ;
+    GALGAS_stringset temp_85 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1313)) ;
+    temp_85.addAssign_operation (GALGAS_string ("Info.plist")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1313)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Resources"), GALGAS_string ("."), temp_85, var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_resourcesGroupRef_52922, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1309)) ;
     }
     {
-    extensionSetter_placeGroupAsMainGroup (var_xcodeProject_35193, var_frameworkGroupRef_61118, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1475)) ;
+    extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28199, var_resourcesGroupRef_52922, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1323)) ;
     }
-    GALGAS_string var_releaseTargetRef_61710 ;
-    GALGAS_string var_releaseProductFileRef_61758 ;
+    GALGAS_string var_userResourcesGroupRef_53503 ;
     {
-    GALGAS_stringlist temp_82 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1485)) ;
-    temp_82.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 2")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1483)) ;
-    temp_82.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1484)) ;
-    temp_82.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_PARAMETER = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1485)) ;
-    extensionSetter_addToolTarget (var_xcodeProject_35193, constinArgument_inTargetName.add_operation (GALGAS_string (" tool"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1478)), constinArgument_inTargetName, var_buildCFileRefListForTool_38820.add_operation (var_buildCppFileRefListForTool_38868, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1480)).add_operation (var_mm_5F_FileRefList_38939, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1480)), var_toolFrameworksFileRefList_39786, temp_82, var_releaseTargetRef_61710, var_releaseProductFileRef_61758, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1477)) ;
-    }
-    GALGAS_string var_debugTargetRef_62314 ;
-    GALGAS_string var_debugProductFileRef_62360 ;
-    {
-    GALGAS_stringlist temp_83 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1500)) ;
-    temp_83.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 0")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1497)) ;
-    temp_83.addAssign_operation (GALGAS_string ("GCC_GENERATE_DEBUGGING_SYMBOLS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1498)) ;
-    temp_83.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = ()")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1499)) ;
-    temp_83.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_PARAMETER = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1500)) ;
-    extensionSetter_addToolTarget (var_xcodeProject_35193, constinArgument_inTargetName.add_operation (GALGAS_string (" tool debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1492)), constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1493)), var_buildCFileRefListForTool_38820.add_operation (var_buildCppFileRefListForTool_38868, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1494)).add_operation (var_mm_5F_FileRefList_38939, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1494)), var_toolFrameworksFileRefList_39786, temp_83, var_debugTargetRef_62314, var_debugProductFileRef_62360, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1491)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("User Resources"), GALGAS_string ("userResources"), GALGAS_stringset::constructor_setWithStringList (var_resourceFiles_27794  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1328)), var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_userResourcesGroupRef_53503, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1325)) ;
     }
     {
-    GALGAS_stringlist temp_84 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1514)) ;
-    temp_84.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 0")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1513)) ;
-    temp_84.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = ()")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1514)) ;
-    GALGAS_stringlist temp_85 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1516)) ;
-    temp_85.addAssign_operation (var_releaseTargetRef_61710  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1516)) ;
-    temp_85.addAssign_operation (var_debugTargetRef_62314  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1516)) ;
-    GALGAS__32_stringlist temp_86 = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1517)) ;
-    temp_86.addAssign_operation (var_releaseProductFileRef_61758, constinArgument_inTargetName  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1517)) ;
-    temp_86.addAssign_operation (var_debugProductFileRef_62360, constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1517))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1517)) ;
-    GALGAS_string joker_63100 ; // Joker input parameter
-    extensionSetter_addAppTarget (var_xcodeProject_35193, GALGAS_string ("Cocoa ").add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1507)), GALGAS_string ("Cocoa").add_operation (constinArgument_inTargetName.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1508)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1508)), var_m_5F_FileRefList_38903.add_operation (var_m_5F_HandCodedSourceFileRefForAppList_37462, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1509)), var_frameworksFileRefList_38982.add_operation (var_appFrameworksFileRefList_38186, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1510)), var_resourceFileBuildRefs_39025.add_operation (var_m_5F_HandCodedResourceFileRefForAppList_37520, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1511)), temp_84, temp_85, temp_86, joker_63100, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1506)) ;
+    extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28199, var_userResourcesGroupRef_53503, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1337)) ;
     }
-    extensionMethod_generateAtPath (var_xcodeProject_35193, var_dir_28183.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1522)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1522)).add_operation (GALGAS_string (".xcodeproj"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1522)), var_newIntermediateFilePath_34909, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1521)) ;
+    GALGAS_string var_frameworkGroupRef_54124 ;
+    {
+    GALGAS_stringset temp_86 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1344)) ;
+    temp_86.addAssign_operation (GALGAS_string ("AppKit.framework")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1343)) ;
+    temp_86.addAssign_operation (GALGAS_string ("Cocoa.framework")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1344)) ;
+    extensionSetter_addGroupWithFiles (var_xcodeProject_28199, GALGAS_string ("Frameworks for App"), GALGAS_string ("/System/Library/Frameworks"), temp_86, var_buildCFileRefListForTool_31826, var_buildCppFileRefListForTool_31874, var_m_5F_FileRefList_31909, var_mm_5F_FileRefList_31945, var_frameworksFileRefList_31988, var_resourceFileBuildRefs_32031, var_frameworkGroupRef_54124, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1339)) ;
+    }
+    {
+    extensionSetter_placeGroupAsMainGroup (var_xcodeProject_28199, var_frameworkGroupRef_54124, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1354)) ;
+    }
+    GALGAS_string var_releaseTargetRef_54716 ;
+    GALGAS_string var_releaseProductFileRef_54764 ;
+    {
+    GALGAS_stringlist temp_87 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1364)) ;
+    temp_87.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 2")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1362)) ;
+    temp_87.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1363)) ;
+    temp_87.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_PARAMETER = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1364)) ;
+    extensionSetter_addToolTarget (var_xcodeProject_28199, constinArgument_inTargetName.add_operation (GALGAS_string (" tool"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1357)), constinArgument_inTargetName, var_buildCFileRefListForTool_31826.add_operation (var_buildCppFileRefListForTool_31874, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1359)).add_operation (var_mm_5F_FileRefList_31945, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1359)), var_toolFrameworksFileRefList_32792, temp_87, var_releaseTargetRef_54716, var_releaseProductFileRef_54764, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1356)) ;
+    }
+    GALGAS_string var_debugTargetRef_55320 ;
+    GALGAS_string var_debugProductFileRef_55366 ;
+    {
+    GALGAS_stringlist temp_88 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1379)) ;
+    temp_88.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 0")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1376)) ;
+    temp_88.addAssign_operation (GALGAS_string ("GCC_GENERATE_DEBUGGING_SYMBOLS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1377)) ;
+    temp_88.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = ()")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1378)) ;
+    temp_88.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_PARAMETER = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1379)) ;
+    extensionSetter_addToolTarget (var_xcodeProject_28199, constinArgument_inTargetName.add_operation (GALGAS_string (" tool debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1371)), constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1372)), var_buildCFileRefListForTool_31826.add_operation (var_buildCppFileRefListForTool_31874, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1373)).add_operation (var_mm_5F_FileRefList_31945, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1373)), var_toolFrameworksFileRefList_32792, temp_88, var_debugTargetRef_55320, var_debugProductFileRef_55366, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1370)) ;
+    }
+    GALGAS_stringlist temp_89 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1387)) ;
+    temp_89.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 0")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1386)) ;
+    temp_89.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = ()")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1387)) ;
+    GALGAS_stringlist var_configurationSettingList_55437 = temp_89 ;
+    const enumGalgasBool test_90 = GALGAS_bool (kIsNotEqual, var_macCodeSign_16835.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    if (kBoolTrue == test_90) {
+      var_configurationSettingList_55437.addAssign_operation (GALGAS_string ("CODE_SIGN_IDENTITY = \"Mac Developer\"")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1390)) ;
+      var_configurationSettingList_55437.addAssign_operation (GALGAS_string ("DEVELOPMENT_TEAM = \"").add_operation (var_macCodeSign_16835.getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1391)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1391))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1391)) ;
+    }
+    {
+    GALGAS_stringlist temp_91 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1400)) ;
+    temp_91.addAssign_operation (var_releaseTargetRef_54716  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1400)) ;
+    temp_91.addAssign_operation (var_debugTargetRef_55320  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1400)) ;
+    GALGAS__32_stringlist temp_92 = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1401)) ;
+    temp_92.addAssign_operation (var_releaseProductFileRef_54764, constinArgument_inTargetName  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1401)) ;
+    temp_92.addAssign_operation (var_debugProductFileRef_55366, constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1401))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1401)) ;
+    GALGAS_string joker_56376 ; // Joker input parameter
+    extensionSetter_addAppTarget (var_xcodeProject_28199, GALGAS_string ("Cocoa ").add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1394)), GALGAS_string ("Cocoa").add_operation (constinArgument_inTargetName.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1395)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1395)), var_m_5F_FileRefList_31909.add_operation (var_m_5F_HandCodedSourceFileRefForAppList_30468, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1396)), var_frameworksFileRefList_31988.add_operation (var_appFrameworksFileRefList_31192, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1397)), var_resourceFileBuildRefs_32031.add_operation (var_m_5F_HandCodedResourceFileRefForAppList_30526, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1398)), var_configurationSettingList_55437, temp_91, temp_92, joker_56376, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1393)) ;
+    }
+    extensionMethod_generateAtPath (var_xcodeProject_28199, var_dir_26254.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1406)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1406)).add_operation (GALGAS_string (".xcodeproj"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1406)), var_newIntermediateFilePath_27915, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1405)) ;
   }
 }
 
+
+#include "project_header.h"
+#include "command_line_interface/F_mainForLIBPM.h"
+#include "command_line_interface/F_Analyze_CLI_Options.h"
+#include "utilities/F_DisplayException.h"
+#include "galgas2/C_galgas_CLI_Options.h"
+#include "galgas2/F_verbose_output.h"
+#include "galgas2/cLexiqueIntrospection.h"
+#include "command_line_interface/C_builtin_CLI_Options.h"
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      print_tool_help_message                                                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void print_tool_help_message (void) {
+  co << "Compiled with GALGAS revision NUMERO_REVISION_GALGAS\n" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static const char * kSourceFileExtensions [] = {
+  "galgas",
+  "galgasTemplate",
+  "galgasProject",
+  NULL
+} ;    
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static const char * kSourceFileHelpMessages [] = {
+  "a GALGAS source file",
+  "a GALGAS Template source file",
+  "a GALGAS project source file",
+  NULL
+} ;    
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const char * projectVersionString (void) {
+  return "3.3.3" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                                  Routine 'before'                                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void routine_before (C_Compiler * inCompiler
+                            COMMA_UNUSED_LOCATION_ARGS) {
+  {
+    GALGAS_string var_creationProjectName_1992 = GALGAS_string (gOption_galgas_5F_cli_5F_options_create_5F_project.getter_value ()) ;
+    {
+    routine_projectCreation (var_creationProjectName_1992, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 20)) ;
+    }
+  }
+  {
+    const enumGalgasBool test_0 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions.getter_value ()).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      {
+      routine_printPredefinedLexicalActions (inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 27)) ;
+      }
+    }
+  }
+  {
+    const enumGalgasBool test_1 = GALGAS_bool (kIsNotEqual, GALGAS_string (gOption_galgas_5F_cli_5F_options_extractLIBPMOption.getter_value ()).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+    if (kBoolTrue == test_1) {
+      {
+      routine_updateLIBPMatPath (GALGAS_string (gOption_galgas_5F_cli_5F_options_extractLIBPMOption.getter_value ()), inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 35)) ;
+      }
+    }
+  }
+  {
+    const enumGalgasBool test_2 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_check_5F_gmp.getter_value ()).boolEnum () ;
+    if (kBoolTrue == test_2) {
+      {
+      routine_checkGMP (inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 45)) ;
+      }
+    }
+  }
+  {
+    const enumGalgasBool test_3 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_displayUnicodeLexicalTestFunctions.getter_value ()).boolEnum () ;
+    if (kBoolTrue == test_3) {
+      {
+      routine_displayUnicodeLexicalTestFunctions (inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 55)) ;
+      }
+    }
+  }
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                                   Routine 'after'                                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void routine_after (C_Compiler * /* inCompiler */
+                           COMMA_UNUSED_LOCATION_ARGS) {
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                               Routine 'programRule_0'                                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void routine_programRule_5F__30_ (const GALGAS_lstring constinArgument_inSourceFile,
+                                         C_Compiler * inCompiler
+                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string var_parentDirectory_4035 = constinArgument_inSourceFile.getter_string (HERE).getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 70)).getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 70)) ;
+  GALGAS_stringlist temp_0 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 71)) ;
+  temp_0.addAssign_operation (GALGAS_string ("galgasProject")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 71)) ;
+  GALGAS_stringlist var_candidateProjectFiles_4157 = var_parentDirectory_4035.getter_regularFilesWithExtensions (GALGAS_bool (false), temp_0 COMMA_SOURCE_FILE ("galgas_prgm.galgas", 71)) ;
+  const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, var_candidateProjectFiles_4157.getter_length (SOURCE_FILE ("galgas_prgm.galgas", 72)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_1) {
+    TC_Array <C_FixItDescription> fixItArray2 ;
+    inCompiler->emitSemanticError (constinArgument_inSourceFile.getter_location (SOURCE_FILE ("galgas_prgm.galgas", 73)), GALGAS_string ("no project file in parent directory of source file"), fixItArray2  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 73)) ;
+  }else if (kBoolFalse == test_1) {
+    const enumGalgasBool test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles_4157.getter_length (SOURCE_FILE ("galgas_prgm.galgas", 74)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+    if (kBoolTrue == test_3) {
+      GALGAS_string var_s_4413 = GALGAS_string ("several project files in source file parent directory:") ;
+      cEnumerator_stringlist enumerator_4508 (var_candidateProjectFiles_4157, kENUMERATION_UP) ;
+      while (enumerator_4508.hasCurrentObject ()) {
+        var_s_4413.plusAssign_operation(GALGAS_string ("\n"
+          "  - ").add_operation (enumerator_4508.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 77)), inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 77)) ;
+        enumerator_4508.gotoNextObject () ;
+      }
+      TC_Array <C_FixItDescription> fixItArray4 ;
+      inCompiler->emitSemanticError (constinArgument_inSourceFile.getter_location (SOURCE_FILE ("galgas_prgm.galgas", 79)), var_s_4413, fixItArray4  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 79)) ;
+    }else if (kBoolFalse == test_3) {
+      GALGAS_string var_projectFilePath_4606 = var_parentDirectory_4035.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 81)).add_operation (var_candidateProjectFiles_4157.getter_mValueAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 81)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 81)) ;
+      {
+      routine_parseAndAnalyzeProject (GALGAS_lstring::constructor_new (var_projectFilePath_4606, constinArgument_inSourceFile.getter_location (HERE)  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 82)), constinArgument_inSourceFile.getter_string (HERE), inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 82)) ;
+      }
+    }
+  }
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                               Routine 'programRule_1'                                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void routine_programRule_5F__31_ (const GALGAS_lstring constinArgument_inSourceFile,
+                                         C_Compiler * inCompiler
+                                         COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_templateInstructionListAST joker_5559 ; // Joker input parameter
+  cGrammar_templateGrammar::_performSourceFileParsing_ (inCompiler, constinArgument_inSourceFile, joker_5559  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 96)) ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                               Routine 'programRule_2'                                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void routine_programRule_5F__32_ (const GALGAS_lstring constinArgument_inProjectSourceFile,
+                                         C_Compiler * inCompiler
+                                         COMMA_UNUSED_LOCATION_ARGS) {
+  {
+  routine_parseAndAnalyzeProject (constinArgument_inProjectSourceFile, GALGAS_string::makeEmptyString (), inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 109)) ;
+  }
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      M A I N    F O R    L I B P M                                                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+int mainForLIBPM (int inArgc, const char * inArgv []) {
+//--- Analyze Command Line Options
+  TC_UniqueArray <C_String> sourceFilesArray ;
+  F_Analyze_CLI_Options (inArgc, inArgv,
+                         sourceFilesArray,
+                         kSourceFileExtensions,
+                         kSourceFileHelpMessages,
+                         print_tool_help_message) ;
+//---
+  int returnCode = 0 ; // No error
+//--- Set Execution mode
+  C_String executionModeOptionErrorMessage ;
+  setExecutionMode (executionModeOptionErrorMessage) ;
+  if (executionModeOptionErrorMessage.length () > 0) {
+    co << executionModeOptionErrorMessage ;
+    returnCode = 1 ;
+  }else{
+  //--- Common lexique object
+    C_Compiler * commonCompiler = NULL ;
+    macroMyNew (commonCompiler, C_Compiler (NULL COMMA_HERE)) ;
+    try{
+      routine_before (commonCompiler COMMA_HERE) ;
+      cLexiqueIntrospection::handleGetKeywordListOption (commonCompiler) ;
+      const bool verboseOptionOn = verboseOutput () ;
+      for (int32_t i=0 ; i<sourceFilesArray.count () ; i++) {
+        const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
+        const GALGAS_string sfp = GALGAS_string (sourceFilesArray (i COMMA_HERE)) ;
+        const GALGAS_location location = commonCompiler->here () ;
+        const GALGAS_lstring sourceFilePath (sfp, location) ;
+        int r = 0 ;
+        if (fileExtension == "galgas") {
+          switch (executionMode ()) {
+          case kExecutionModeNormal :
+            routine_programRule_5F__30_ (sourceFilePath, commonCompiler COMMA_HERE) ;
+            break ;
+          case kExecutionModeLexicalAnalysisOnly :
+            cGrammar_galgas_33_Grammar::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeSyntaxAnalysisOnly :
+            cGrammar_galgas_33_Grammar::performOnlySyntaxAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeIndexing :
+            cGrammar_galgas_33_Grammar::performIndexing (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeLatex :
+            cGrammar_galgas_33_Grammar::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          }
+        }else if (fileExtension == "galgasTemplate") {
+          switch (executionMode ()) {
+          case kExecutionModeNormal :
+            routine_programRule_5F__31_ (sourceFilePath, commonCompiler COMMA_HERE) ;
+            break ;
+          case kExecutionModeLexicalAnalysisOnly :
+            cGrammar_templateGrammar::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeSyntaxAnalysisOnly :
+            cGrammar_templateGrammar::performOnlySyntaxAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeIndexing :
+            cGrammar_templateGrammar::performIndexing (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeLatex :
+            cGrammar_templateGrammar::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          }
+        }else if (fileExtension == "galgasProject") {
+          switch (executionMode ()) {
+          case kExecutionModeNormal :
+            routine_programRule_5F__32_ (sourceFilePath, commonCompiler COMMA_HERE) ;
+            break ;
+          case kExecutionModeLexicalAnalysisOnly :
+            cGrammar_galgas_33_ProjectGrammar::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeSyntaxAnalysisOnly :
+            cGrammar_galgas_33_ProjectGrammar::performOnlySyntaxAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeIndexing :
+            cGrammar_galgas_33_ProjectGrammar::performIndexing (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          case kExecutionModeLatex :
+            cGrammar_galgas_33_ProjectGrammar::performOnlyLexicalAnalysis (commonCompiler, sourceFilesArray (i COMMA_HERE)) ;
+            break ;
+          }
+        }else{
+          printf ("*** Error: unhandled extension for file '%s' ***\n", sourceFilesArray (i COMMA_HERE).cString (HERE)) ;
+          r = 1 ;
+        }
+        if (r != 0) {
+          returnCode = r ;
+        }
+      }
+    //--- Error or warnings ?
+      if (totalErrorCount () > 0) {
+        returnCode = 1 ; // Error code
+      }else if (totalWarningCount () > 0) {
+        if (gOption_galgas_5F_builtin_5F_options_treat_5F_warnings_5F_as_5F_error.mValue) {
+          returnCode = 1 ; // Error code
+          if (verboseOptionOn) {
+            printf ("** Note: warnings are treated as errors. **\n") ;
+          }
+        }
+      }
+    //--- Epilogue
+      routine_after (commonCompiler COMMA_HERE) ;
+    //--- Emit JSON issue file ?
+      if (gOption_generic_5F_cli_5F_options_emit_5F_issue_5F_json_5F_file.mValue != "") {
+        commonCompiler->writeIssueJSONFile (gOption_generic_5F_cli_5F_options_emit_5F_issue_5F_json_5F_file.mValue) ;
+      }
+    //--- Display error and warnings count
+      if (verboseOptionOn || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {
+        C_String message ;
+        if (totalWarningCount () == 0) {
+          message << "No warning" ;
+        }else if (totalWarningCount () == 1) {
+          message << "1 warning" ;
+        }else{
+          message << cStringWithSigned (totalWarningCount ()) << " warnings" ;
+        }
+        message << ", " ;
+        if (totalErrorCount () == 0) {
+          message << "no error" ;
+        }else if (totalErrorCount () == 1) {
+          message << "1 error" ;
+        }else{
+          message << cStringWithSigned (totalErrorCount ()) << " errors" ;
+        }
+        message << ".\n" ;
+        ggs_printMessage (message COMMA_HERE) ;
+      }
+    }catch (const ::std:: exception & e) {
+      F_default_display_exception (e) ;
+      returnCode = 1 ; // Error code
+    }catch (...) {
+      printf ("**** Unknow exception ****\n") ;
+      throw ;
+    }
+    macroDetachSharedObject (commonCompiler) ;
+  }
+  return returnCode ;
+}
 

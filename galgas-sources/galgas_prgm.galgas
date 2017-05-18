@@ -15,57 +15,6 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-#before {
-#  let b = @binaryset.binarySetWithEqualComparison {!0 !2 !2}
-#  log b
-#  let vr = @uintlist {!0, !1, !0, !1}
-#  let r = [b transposedBy !vr]
-#  log r
-#}
-
-#shared class @classeSemantiqueDeReference {
-#  @uint propriété %setter ;
-#}
-
-#before {
-#@classeSemantiqueDeReference a = .new {!10}
-#message "Propriété de a " + a.propriété + "\n"
-#}
-
-#before {
-#  @stringset s1 = {}
-#  let @timer t = .start
-#  for i in 0 ..< 10000 do
-#    s1 += ![i string]
-#  end
-#  message "Durée insertion: " + [t string] + "\n"
-#}
-
-#before {
-#  @stringset s1 = {}
-#  @stringset s2 = {}
-#  let @timer t = .start
-#  for i in 0 ..< 10000 do
-#    s2 = s1
-#    s1 += ![i string]
-#  end
-#  message "Durée insertion et copie: " + [t string] + "\n"
-#}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-#before {
-#  let un = 1.0
-#  var increment = 1.0
-#  for i in 0 ... 20 do
-#    increment = increment / 10
-#    let v = (un + increment) - un
-#    message "" + i + ": " + v + "\n"
-#  end
-#}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 before { #--- Generate project
   let creationProjectName = [option galgas_cli_options.create_project value]
   projectCreation ( !creationProjectName )
@@ -433,7 +382,6 @@ private proc projectGeneration
   generateSemanticDeclarationsGalgas3 (
     !inTypeMap
     !productDirectory
-#    !cacheDirectory
     !inSemanticDeclarationSortedListForGeneration
     !?toolCppFileList
     !?toolHeaderFileList

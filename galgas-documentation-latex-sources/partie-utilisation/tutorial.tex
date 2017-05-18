@@ -251,16 +251,16 @@ Dans la suite de la compilation GALGAS, tous les chemins sont indiqués relative
 Donc, vous devez obtenir à la suite de la décompression le répertoire \tpp{constructionGALGAS/galgas}.
 
 Nous allons maintenant compiler GALGAS. Avec le terminal, sur Linux :
-\begin{description}
-  \item[ ] \tpp{cd constructionGALGAS/galgas/makefile-unix}
-  \item[ ] \tpp{./build.py}
-\end{description}
+\begin{SHELL}
+cd constructionGALGAS/galgas/makefile-unix\\
+./build.py
+\end{SHELL}
 
 Sur Mac :
-\begin{description}
-  \item[ ] \tpp{cd constructionGALGAS/galgas/makefile-macosx}
-  \item[ ] \tpp{./build.py}
-\end{description}
+\begin{SHELL}
+cd constructionGALGAS/galgas/makefile-macosx\\
+./build.py
+\end{SHELL}
 
 La compilation de GALGAS peut prendre une dizaine de minutes. Deux exécutables sont produits :
 
@@ -285,16 +285,16 @@ Pour pouvoir appeler les exécutables sans avoir besoin de mentionner un chemin,
 Attention, le répertoire \tpp{$\sim$/bin} n'existe peut-être pas pour votre compte : il faut alors le créer, et l'ajouter dans la variable \tpp{\$PATH}.
 
 Sur Linux :
-\begin{description}
-  \item[ ] \tpp{mkdir $\sim$/bin/}
-  \item[ ] \tpp{echo \textquotesingle export~PATH=\$PATH{}:$\sim$/bin\textquotesingle~\textgreater{}\textgreater~/home/user/.bashrc}
-\end{description}
+\begin{SHELL}
+mkdir $\sim$/bin/\\
+echo \textquotesingle export~PATH=\$PATH{}:$\sim$/bin\textquotesingle~\textgreater{}\textgreater~/home/user/.bashrc
+\end{SHELL}
 
 Sur Mac :
-\begin{description}
-  \item[ ] \tpp{mkdir $\sim$/bin/}
-  \item[ ] \tpp{echo \textquotesingle export~PATH=\$PATH{}:$\sim$/bin\textquotesingle~\textgreater{}\textgreater~$\sim$/.bash\_profile}
-\end{description}
+\begin{SHELL}
+mkdir $\sim$/bin/\\
+echo \textquotesingle export~PATH=\$PATH{}:$\sim$/bin\textquotesingle~\textgreater{}\textgreater~$\sim$/.bash\_profile
+\end{SHELL}
 
 
 
@@ -319,16 +319,16 @@ Pour tout le tutorial vous devez utiliser un répertoire dont le chemin ne conti
 Dans toute la suite de ce tutorial, les chemins sont indiqués relativement à ce répertoire, qui sera appelé \tpp{chezmoi}.
 
 La création :
-\begin{description}
-  \item[ ] \tpp{cd chezmoi}
-  \item[ ] \tpp{galgas -{}-create-project=logo}
-\end{description}
+\begin{SHELL}
+cd chezmoi\\
+galgas -{}-create-project=logo
+\end{SHELL}
 
 Le message affiché par cette opération est :
-\begin{description}
-  \item[ ] \tpp{*** PERFORM PROJECT CREATION (-{}-create-project=logo option) ***}
-  \item[ ] \tpp{*** DONE ***}
-\end{description}
+\begin{SHELL}
+*** PERFORM PROJECT CREATION (-{}-create-project=logo option) ***\\
+*** DONE ***
+\end{SHELL}
 
 L’affichage de \tpp{DONE} indique que la création s’est effectuée avec succès : un répertoire nommé \tpp{logo} a été créé dans le répertoire \tpp{chezmoi}.
 
@@ -374,9 +374,9 @@ Une compilation s'effectue en deux temps :
 \subsubsection{Compilation GALGAS}
 
 Vous devez d'abord compiler les sources GALGAS :
-\begin{description}
-  \item[ ] \tpp{galgas chezmoi/logo/+logo.galgasProject}
-\end{description}
+\begin{SHELL}
+galgas chezmoi/logo/+logo.galgasProject
+\end{SHELL}
 
 L'exécution provoque l'affichage de messages : observez ceux qui indiquent la création des fichiers C++. Ceux-ci sont rangés dans le répertoire \tpp{chezmoi/logo/build/output} et \tpp{chezmoi/logo/build/libpm}.
 
@@ -395,7 +395,6 @@ Le répertoire \tpp{logo} est complété par de nouveaux répertoires (\refFigur
   \begin{tabular}{ll}
     \textbf{Répertoire} & \textbf{Contenu} \\
     \tpp{makefile-macosx} & Makefile pour compiler sur Mac OS X \\
-%    \tpp{makefile-msys32-on-windows} & Makefile pour compiler sur Win 32 \\
     \tpp{makefile-unix} & Makefile pour compiler sur Unix \\
     \tpp{makefile-win32-on-macosx} & Makefile pour compiler sur Mac OS X pour Win 32 \\
     \tpp{makefile-x86linux32-on-macosx} & Makefile pour compiler sur Mac OS X pour x86 Linux 32 bits \\
@@ -413,15 +412,15 @@ Le répertoire \tpp{logo} est complété par de nouveaux répertoires (\refFigur
 Choisissez le répertoire correspondant à votre plateforme (\tpp{makefile-macosx} ou \tpp{makefile-unix}) et lancer le script de compilation \tpp{build.py} (soit via la ligne de commande, soit en double-cliquant).
 
 Par exemple :
-\begin{description}
-  \item[ ] \tpp{chezmoi/logo/makefile-unix/build.py}
-\end{description}
+\begin{SHELL}
+chezmoi/logo/makefile-unix/build.py
+\end{SHELL}
 
 Vous obtenez deux exécutables :
-\begin{description}
-  \item[ ] \tpp{chezmoi/logo/makefile-unix/logo}
-  \item[ ] \tpp{chezmoi/logo/makefile-unix/logo-debug}
-\end{description}
+\begin{SHELL}
+chezmoi/logo/makefile-unix/logo\\
+chezmoi/logo/makefile-unix/logo-debug
+\end{SHELL}
 
 Sous Mac, vous pouvez utiliser le projet Xcode engendré, et ainsi créer une application Cocoa nommée \tpp{CocoaLogo}.
 

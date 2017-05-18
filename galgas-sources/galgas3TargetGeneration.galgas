@@ -6,66 +6,6 @@
 #  details.                                                                                                            *
 #----------------------------------------------------------------------------------------------------------------------*
 
-private filewrapper updaterGalgas3ApplicationFileWrapper in "../generation_templates/cocoa_application_update/updater-application" {
-}{
-}{
- template credits "UpdaterAppCredits.rtf"
- template info_plist_strings "UpdaterAppInfoPlist.strings"
- template main_menu_xib "UpdaterAppMainMenu.xib"
-   ?@string TARGET_NAME
- template application_delegate_header "PMUpdaterAppDelegate.h.galgasTemplate"
- template application_delegate_implementation "PMUpdaterAppDelegate.m.galgasTemplate"
-   ?@string BUNDLE_BASE_NAME
-   ?@string TARGET_NAME
- template info_plist "updater-app-Info.plist.txt"
-   ?@string BUNDLE_BASE_NAME
-   ?@string TARGET_NAME
-   ?@string CODE_SIGNING_IDENTITY
- template main "updater-app-main.m.galgasTemplate"
- template prefix "updater-app-Prefix.pch.galgasTemplate"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-private filewrapper updaterGalgas3ToolFileWrapper in "../generation_templates/cocoa_application_update/updater-tool" {
-}{
-}{
- template updater_object_protocol "PMUpdaterServerProtocol.h.galgasTemplate"
- template updater_object_header "PMUpdaterServerObject.h.galgasTemplate"
- template updater_object_implementation "PMUpdaterServerObject.m.galgasTemplate"
- template updater_object_main "updater-tool-main.m.galgasTemplate"
-   ?@string BUNDLE_BASE_NAME
-   ?@string TARGET_NAME
- template updater_tool_info_plist "updater-tool-Info.plist.txt"
-   ?@string BUNDLE_BASE_NAME
-   ?@string TARGET_NAME
-   ?@string CODE_SIGNING_IDENTITY
- template updater_tool_launchd_plist "updater-tool-Launchd.plist.txt"
-   ?@string BUNDLE_BASE_NAME
-   ?@string TARGET_NAME
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-private filewrapper applicationGalgas3UpdateFileWrapper in "../generation_templates/cocoa_application_update/application" {
-}{
-}{
- template application_update_header "PMApplicationUpdate.h.galgasTemplate"
- template application_update_implementation "PMApplicationUpdate.m.galgasTemplate"
-   ?@string PROJECT_NAME
-   ?@string REPOSITORY_URL
-   ?@string BUNDLE_BASE_NAME
- template application_update_nib "PMApplicationUpdate.xib.galgasTemplate"
-   ?@string PROJECT_NAME
- template download_data_header "PMDownloadData.h.galgasTemplate"
- template download_data_implementation "PMDownloadData.m.galgasTemplate"
- template download_file_header "PMDownloadFile.h.galgasTemplate"
- template download_file_implementation "PMDownloadFile.m.galgasTemplate"
- template compatibility_header "PMSnowLeopardLionCompatibility.h.galgasTemplate"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templates/target_generation" {
  "bat", "rtf", "py"
 }{
@@ -362,6 +302,17 @@ proc updateGalgas3Targets
   else
     toolCppFileList += !"C_galgas_quiet_option.cpp"
   end
+#----------------------------------------------------------- macCodeSign
+  @lstring macCodeSign
+  with "macCodeSign" in inProjectQualifiedFeatureMap  do
+    if mFeatureValue.string == "" then
+      error mFeatureValue:"the %macCodeSign attribute should not be empty" : macCodeSign
+    else
+      macCodeSign = mFeatureValue
+    end
+  else
+    macCodeSign = ["" nowhere]
+  end
 #----------------------------------------------------------- LIBPM path
   @string libpmPath
   with "libpmAtPath" in inProjectQualifiedFeatureMap  do
@@ -374,9 +325,7 @@ proc updateGalgas3Targets
     updateLIBPMatPath (![inProjectSourceFilePath stringByDeletingLastPathComponent] + "/build/libpm" )
     libpmPath = "../build/libpm"
   end
-#--- 
-#--- Check target names, file base name uniqueness, and build target file list
-#---
+#---------------------------------------- Check target names, file base name uniqueness, and build target file list
   @stringset guiSourceSet_app = .setWithStringList {!inAppProductFileList}
 #---
   @stringset sourceFileSet = {}
@@ -411,8 +360,8 @@ proc updateGalgas3Targets
       if [generationFeatures hasKey !mValue.string] then
         error mValue: "duplicate '" + mValue + "' feature"
       end
-      let macOsDuplicateMessage = "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\","
-          " \"Yosemite\", \"ElCapitanYosemite\", \"ElCapitan\", \"ElCapitanSierra\", \"Sierra\", \"LatestMacOS\" are exclusive"
+      let macOsDuplicateMessage = "the \"%SnowLeopard\", \"%Lion\", \"%MountainLion\", \"%Mavericks\","
+          " \"%Yosemite\", \"%ElCapitanYosemite\", \"%ElCapitan\", \"%ElCapitanSierra\", \"%Sierra\", \"%LatestMacOS\" are exclusive"
     #--- SnowLeopard
       if mValue.string == "SnowLeopard" then
         if (SDK != "") then
@@ -493,7 +442,13 @@ proc updateGalgas3Targets
       error mValue: "unknown '" + mValue + "' feature" fixit { replace s }
     end
   end
-#--- Generation of Xcode project given by command line opition ?
+#--- Codesign without selecting OSX ?
+  if (macCodeSign.string != "") && (SDK == "") then
+    error macCodeSign : "the %macCodeSign attribute implies the definition of an OS X target system:"
+     " \"%SnowLeopard\", \"%Lion\", \"%MountainLion\", \"%Mavericks\","
+     " \"%Yosemite\", \"%ElCapitanYosemite\", \"%ElCapitan\", \"%ElCapitanSierra\", \"%Sierra\", \"%LatestMacOS\""
+  end
+#--- Generation of Xcode project given by command line option ?
   if [option galgas_cli_options.macosxSDK value] != 0 then
     SDK = "macosx10." + [option galgas_cli_options.macosxSDK value]
     MACOSX_DEPLOYMENT_TARGET = "10." + [option galgas_cli_options.macosxSDK value]
@@ -620,82 +575,6 @@ proc updateGalgas3Targets
     let Credits_rtf_path = dir + "/English.lproj/Credits.rtf"
     if not [Credits_rtf_path fileExists] then
       [[filewrapper targetGalgas3GenerationFileWrapper."project_xcode/English.lproj/Credits.rtf"] writeToFile !Credits_rtf_path]
-    end
-  #--- Application update files
-    with "repositoryURL" in inProjectQualifiedFeatureMap  do
-      let applicationUpdateDir = projectDirectory + "/xcode-project/cocoa-application-update/application"
-      [applicationUpdateDir makeDirectory]
-      [[filewrapper applicationGalgas3UpdateFileWrapper.application_update_header ] writeToFileWhenDifferentContents !applicationUpdateDir + "/PMApplicationUpdate.h" ?*]
-      [[filewrapper applicationGalgas3UpdateFileWrapper.application_update_implementation
-         !inTargetName
-         !mFeatureValue.string # Repository URL
-         !applicationBundleBase
-       ] writeToFileWhenDifferentContents
-        !applicationUpdateDir + "/PMApplicationUpdate.m"
-        ?*
-      ]
-      [[filewrapper applicationGalgas3UpdateFileWrapper.application_update_nib !inTargetName] writeToFileWhenDifferentContents !applicationUpdateDir + "/English.lproj/PMApplicationUpdate.xib" ?*]
-      [[filewrapper applicationGalgas3UpdateFileWrapper.download_data_header] writeToFileWhenDifferentContents !applicationUpdateDir + "/PMDownloadData.h" ?*]
-      [[filewrapper applicationGalgas3UpdateFileWrapper.download_data_implementation] writeToFileWhenDifferentContents !applicationUpdateDir + "/PMDownloadData.m" ?*]
-      [[filewrapper applicationGalgas3UpdateFileWrapper.download_file_header] writeToFileWhenDifferentContents !applicationUpdateDir + "/PMDownloadFile.h" ?*]
-      [[filewrapper applicationGalgas3UpdateFileWrapper.download_file_implementation] writeToFileWhenDifferentContents !applicationUpdateDir + "/PMDownloadFile.m" ?*]
-      [[filewrapper applicationGalgas3UpdateFileWrapper.compatibility_header] writeToFileWhenDifferentContents !applicationUpdateDir + "/PMSnowLeopardLionCompatibility.h" ?*]
-    #--- Updater tool
-      @string codeSignIdentity
-      with "codeSigning" in inProjectQualifiedFeatureMap  do
-        codeSignIdentity = mFeatureValue.string
-      else
-        codeSignIdentity = ""
-      end
-      let @string updaterToolDir = projectDirectory + "/xcode-project/cocoa-application-update/updater-tool"
-      [updaterToolDir makeDirectory]
-      [[filewrapper updaterGalgas3ToolFileWrapper.updater_object_protocol] writeToFileWhenDifferentContents !updaterToolDir + "/PMUpdaterServerProtocol.h" ?*]
-      [[filewrapper updaterGalgas3ToolFileWrapper.updater_object_header] writeToFileWhenDifferentContents !updaterToolDir + "/PMUpdaterServerObject.h" ?*]
-      [[filewrapper updaterGalgas3ToolFileWrapper.updater_object_implementation] writeToFileWhenDifferentContents !updaterToolDir + "/PMUpdaterServerObject.m" ?*]
-      [[filewrapper updaterGalgas3ToolFileWrapper.updater_tool_info_plist
-         !applicationBundleBase
-         !inTargetName
-         !codeSignIdentity
-       ] writeToFileWhenDifferentContents
-        !updaterToolDir + "/updater-tool-Info.plist"
-        ?*
-      ]
-      [[filewrapper updaterGalgas3ToolFileWrapper.updater_tool_launchd_plist
-         !applicationBundleBase
-         !inTargetName
-       ] writeToFileWhenDifferentContents
-        !updaterToolDir + "/updater-tool-Launchd.plist"
-        ?*
-      ]
-      [[filewrapper updaterGalgas3ToolFileWrapper.updater_object_main
-         !applicationBundleBase
-         !inTargetName
-       ] writeToFileWhenDifferentContents
-        !updaterToolDir + "/updater-tool-main.m"
-        ?*
-      ]
-    #--- Updater application
-      let updaterApplicationDir = projectDirectory + "/xcode-project/cocoa-application-update/updater-application"
-      [updaterApplicationDir makeDirectory]
-      [[filewrapper updaterGalgas3ApplicationFileWrapper.credits] writeToFileWhenDifferentContents !updaterApplicationDir + "/English.lproj/UpdaterAppCredits.rtf" ?*]
-      [[filewrapper updaterGalgas3ApplicationFileWrapper.info_plist_strings] writeToFileWhenDifferentContents !updaterApplicationDir + "/English.lproj/UpdaterAppInfoPlist.strings" ?*]
-      [[filewrapper updaterGalgas3ApplicationFileWrapper.main_menu_xib !inTargetName] writeToFileWhenDifferentContents !updaterApplicationDir + "/English.lproj/UpdaterAppMainMenu.xib" ?*]
-      [[filewrapper updaterGalgas3ApplicationFileWrapper.application_delegate_header] writeToFileWhenDifferentContents !updaterApplicationDir + "/PMUpdaterAppDelegate.h" ?*]
-      [[filewrapper updaterGalgas3ApplicationFileWrapper.application_delegate_implementation
-         !applicationBundleBase
-         !inTargetName
-       ]
-       writeToFileWhenDifferentContents !updaterApplicationDir + "/PMUpdaterAppDelegate.m" ?*
-      ]
-      [[filewrapper updaterGalgas3ApplicationFileWrapper.info_plist
-         !applicationBundleBase
-         !inTargetName
-         !codeSignIdentity
-       ]
-       writeToFileWhenDifferentContents !updaterApplicationDir + "/updater-app-Info.plist" ?*
-      ]
-      [[filewrapper updaterGalgas3ApplicationFileWrapper.main] writeToFileWhenDifferentContents !updaterApplicationDir + "/updater-app-main.m" ?*]
-      [[filewrapper updaterGalgas3ApplicationFileWrapper.prefix] writeToFileWhenDifferentContents !updaterApplicationDir + "/updater-app-Prefix.pch" ?*]
     end
   #--- Enumerate icons files in "userResources" directory
     let userResourceDir = projectDirectory + "/xcode-project/userResources"
@@ -1503,16 +1382,21 @@ proc updateGalgas3Targets
       ?productFileRef:let debugProductFileRef
     ]
   #--- Add Cocoa target
+    @stringlist configurationSettingList = {
+      !"GCC_OPTIMIZATION_LEVEL = 0",
+      !"GCC_PREPROCESSOR_DEFINITIONS = ()"
+    }
+    if macCodeSign.string != "" then
+      configurationSettingList += !"CODE_SIGN_IDENTITY = \"Mac Developer\""
+      configurationSettingList += !"DEVELOPMENT_TEAM = \"" + macCodeSign.string + "\""
+    end
     [!?xcodeProject addAppTarget
       !targetName:"Cocoa " + inTargetName
       !productFileName:"Cocoa" + [inTargetName stringByCapitalizingFirstCharacter]
       !sources:m_FileRefList + m_HandCodedSourceFileRefForAppList
       !frameworkFileRefs:frameworksFileRefList + appFrameworksFileRefList
       !resourceFileRefs:resourceFileBuildRefs + m_HandCodedResourceFileRefForAppList
-      !buildConfigurationSettingList:{
-        !"GCC_OPTIMIZATION_LEVEL = 0",
-        !"GCC_PREPROCESSOR_DEFINITIONS = ()"
-      }
+      !buildConfigurationSettingList:configurationSettingList
       !dependantTargetList:{!releaseTargetRef, !debugTargetRef}
       !productCopyList:{!releaseProductFileRef !inTargetName, !debugProductFileRef !inTargetName + "-debug"}
       ?productFileRef:*
