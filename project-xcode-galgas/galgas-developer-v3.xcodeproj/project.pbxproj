@@ -341,6 +341,10 @@
 		CF2C86111CC3B0890008D960 /* GALGAS_bigint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCEC3FA1B7FA158001D89B8 /* GALGAS_bigint.cpp */; };
 		CF2D3B9D129725F800E93E98 /* AC_GALGAS_graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2D3B99129725F800E93E98 /* AC_GALGAS_graph.cpp */; };
 		CF2D3B9E129725F800E93E98 /* AC_GALGAS_graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2D3B99129725F800E93E98 /* AC_GALGAS_graph.cpp */; };
+		CF301BC71ECE4092006796F6 /* PMDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7060AD19F3E00713406 /* PMDownloadData.m */; };
+		CF301BC81ECE4096006796F6 /* PMDownloadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7080AD19F3E00713406 /* PMDownloadFile.m */; };
+		CF301BCF1ECE4101006796F6 /* PMCancelButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF301BCA1ECE40F4006796F6 /* PMCancelButtonForPanel.m */; };
+		CF301BD01ECE410D006796F6 /* PMOkButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF301BCC1ECE40F4006796F6 /* PMOkButtonForPanel.m */; };
 		CF333686126B07C1008DA1DE /* AC_GALGAS_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF33366E126B07C1008DA1DE /* AC_GALGAS_class.cpp */; };
 		CF333687126B07C1008DA1DE /* AC_GALGAS_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF333670126B07C1008DA1DE /* AC_GALGAS_list.cpp */; };
 		CF333689126B07C1008DA1DE /* AC_GALGAS_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF333674126B07C1008DA1DE /* AC_GALGAS_map.cpp */; };
@@ -368,8 +372,6 @@
 		CF3D9FDE1257733E0037D473 /* cSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC71257733E0037D473 /* cSortedListElement.cpp */; };
 		CF3FDE2114E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
 		CF3FDE2214E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
-		CF4397FD0ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */; };
-		CF4397FF0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */; };
 		CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
 		CF51F02315C9200E00387A48 /* PMDebug.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF51F02115C9200E00387A48 /* PMDebug.xib */; };
 		CF51F02715C9201800387A48 /* PMDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = CF51F02615C9201800387A48 /* PMDebug.m */; };
@@ -732,9 +734,6 @@
 		CFB02C8419F3FC2F0011D03D /* all-declarations-24.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB02C7B19F3FC2F0011D03D /* all-declarations-24.cpp */; };
 		CFB02C8519F3FC2F0011D03D /* all-declarations-24.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB02C7B19F3FC2F0011D03D /* all-declarations-24.cpp */; };
 		CFB02CA119F3FCE70011D03D /* NSString+identifierRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB02CA019F3FCE70011D03D /* NSString+identifierRepresentation.m */; };
-		CFB2EC701D637AEA00A023DE /* all-declarations-26.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB2EC6F1D637AEA00A023DE /* all-declarations-26.cpp */; };
-		CFB2EC711D637B0300A023DE /* all-declarations-26.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB2EC6F1D637AEA00A023DE /* all-declarations-26.cpp */; };
-		CFB2EC721D637B0500A023DE /* all-declarations-26.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB2EC6F1D637AEA00A023DE /* all-declarations-26.cpp */; };
 		CFB3190417B38D98009424C2 /* C_DirectedGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */; };
 		CFB3190517B38D98009424C2 /* C_DirectedGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */; };
 		CFB3190817B3C553009424C2 /* C_UIntSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190717B3C553009424C2 /* C_UIntSet.cpp */; };
@@ -793,8 +792,6 @@
 		CFD94B681290677400864538 /* grammarComputations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD94B641290677400864538 /* grammarComputations.cpp */; };
 		CFDACD081003D0B60096A8E5 /* F_mainForLIBPM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */; };
 		CFDACD091003D0B60096A8E5 /* F_mainForLIBPM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */; };
-		CFDAE70A0AD19F3E00713406 /* PMDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7060AD19F3E00713406 /* PMDownloadData.m */; };
-		CFDAE70C0AD19F3E00713406 /* PMDownloadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7080AD19F3E00713406 /* PMDownloadFile.m */; };
 		CFE167840E8E7A2B00AFDAFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE167820E8E7A2B00AFDAFC /* main.m */; };
 		CFE71EC515010F3500EAD989 /* cEnumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE71EC415010F3500EAD989 /* cEnumerator_range.cpp */; };
 		CFE71EC615010F3500EAD989 /* cEnumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE71EC415010F3500EAD989 /* cEnumerator_range.cpp */; };
@@ -936,6 +933,10 @@
 		CF2D3B9A129725F800E93E98 /* AC_GALGAS_graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AC_GALGAS_graph.h; sourceTree = "<group>"; };
 		CF2F92601E421222003E11C2 /* lexique-json-53-canner-cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "lexique-json-53-canner-cocoa.h"; sourceTree = "<group>"; };
 		CF2F92611E421222003E11C2 /* lexique-json-53-canner-cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "lexique-json-53-canner-cocoa.m"; sourceTree = "<group>"; };
+		CF301BC91ECE40F4006796F6 /* PMCancelButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMCancelButtonForPanel.h; sourceTree = "<group>"; };
+		CF301BCA1ECE40F4006796F6 /* PMCancelButtonForPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMCancelButtonForPanel.m; sourceTree = "<group>"; };
+		CF301BCB1ECE40F4006796F6 /* PMOkButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMOkButtonForPanel.h; sourceTree = "<group>"; };
+		CF301BCC1ECE40F4006796F6 /* PMOkButtonForPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMOkButtonForPanel.m; sourceTree = "<group>"; };
 		CF33366E126B07C1008DA1DE /* AC_GALGAS_class.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = AC_GALGAS_class.cpp; sourceTree = "<group>"; };
 		CF33366F126B07C1008DA1DE /* AC_GALGAS_class.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AC_GALGAS_class.h; sourceTree = "<group>"; };
 		CF333670126B07C1008DA1DE /* AC_GALGAS_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = AC_GALGAS_list.cpp; sourceTree = "<group>"; };
@@ -972,10 +973,6 @@
 		CF3FDE2314E6D3CD0040331C /* C_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_Data.h; sourceTree = "<group>"; };
 		CF43498E1B9E041600B90CAC /* libgmp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgmp.a; path = "../libpm/gmp/Darwin-i386/libgmp.a"; sourceTree = "<group>"; };
 		CF4349921B9E157700B90CAC /* libgmp-Darwin-Intel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgmp-Darwin-Intel.a"; path = "../libpm/gmp/libgmp-Darwin-Intel.a"; sourceTree = "<group>"; };
-		CF4397F40ADFE16D0085F47C /* PMCancelButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMCancelButtonForPanel.h; sourceTree = "<group>"; };
-		CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PMCancelButtonForPanel.m; sourceTree = "<group>"; };
-		CF4397F60ADFE16D0085F47C /* PMOkButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMOkButtonForPanel.h; sourceTree = "<group>"; };
-		CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PMOkButtonForPanel.m; sourceTree = "<group>"; };
 		CF4398030ADFE1900085F47C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		CF443912144E144600E38AA4 /* TC_prime_cache2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TC_prime_cache2.h; sourceTree = "<group>"; };
 		CF4C28B91EC227F700DE807B /* switch-fallthrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "switch-fallthrough.h"; sourceTree = "<group>"; };
@@ -1249,7 +1246,6 @@
 		CFB02C9E19F3FC570011D03D /* all-declarations-24.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-24.h"; sourceTree = "<group>"; };
 		CFB02C9F19F3FCE70011D03D /* NSString+identifierRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+identifierRepresentation.h"; sourceTree = "<group>"; };
 		CFB02CA019F3FCE70011D03D /* NSString+identifierRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+identifierRepresentation.m"; sourceTree = "<group>"; };
-		CFB2EC6F1D637AEA00A023DE /* all-declarations-26.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-26.cpp"; sourceTree = "<group>"; };
 		CFB3190217B38D76009424C2 /* C_DirectedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_DirectedGraph.h; sourceTree = "<group>"; };
 		CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_DirectedGraph.cpp; sourceTree = "<group>"; };
 		CFB3190617B3C545009424C2 /* C_UIntSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_UIntSet.h; sourceTree = "<group>"; };
@@ -1490,7 +1486,6 @@
 				CFB02C7A19F3FC2F0011D03D /* all-declarations-23.cpp */,
 				CFB02C7B19F3FC2F0011D03D /* all-declarations-24.cpp */,
 				CFEEE0FA1A064DE800E38AAC /* all-declarations-25.cpp */,
-				CFB2EC6F1D637AEA00A023DE /* all-declarations-26.cpp */,
 				CF12C0BD1D043E610060778F /* all-predefined-types.cpp */,
 			);
 			name = "C++ files";
@@ -1916,14 +1911,14 @@
 			isa = PBXGroup;
 			children = (
 				CFE167820E8E7A2B00AFDAFC /* main.m */,
-				CF4397F40ADFE16D0085F47C /* PMCancelButtonForPanel.h */,
-				CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */,
-				CF4397F60ADFE16D0085F47C /* PMOkButtonForPanel.h */,
-				CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */,
+				CF301BC91ECE40F4006796F6 /* PMCancelButtonForPanel.h */,
+				CF301BCA1ECE40F4006796F6 /* PMCancelButtonForPanel.m */,
 				CFDAE7050AD19F3E00713406 /* PMDownloadData.h */,
 				CFDAE7060AD19F3E00713406 /* PMDownloadData.m */,
 				CFDAE7070AD19F3E00713406 /* PMDownloadFile.h */,
 				CFDAE7080AD19F3E00713406 /* PMDownloadFile.m */,
+				CF301BCB1ECE40F4006796F6 /* PMOkButtonForPanel.h */,
+				CF301BCC1ECE40F4006796F6 /* PMOkButtonForPanel.m */,
 			);
 			path = cocoa_utilities;
 			sourceTree = "<group>";
@@ -2207,9 +2202,8 @@
 						ProvisioningStyle = Automatic;
 					};
 					CF6DF20D09E3F3A700506859 = {
-						DevelopmentTeam = YW8QY74J2A;
 						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 0;
@@ -2443,7 +2437,6 @@
 				CF2C85BE1CC3B0890008D960 /* FIRST_computations.cpp in Sources */,
 				CF2C85BF1CC3B0890008D960 /* follow_by_empty_computation.cpp in Sources */,
 				CF2C85C01CC3B0890008D960 /* mpz-clear.c in Sources */,
-				CFB2EC721D637B0500A023DE /* all-declarations-26.cpp in Sources */,
 				CF2C85C11CC3B0890008D960 /* check-gmp.cpp in Sources */,
 				CF2C85C21CC3B0890008D960 /* all-declarations-8.cpp in Sources */,
 				CF2C85C31CC3B0890008D960 /* C_BigInt.cpp in Sources */,
@@ -2707,7 +2700,6 @@
 				CF985CFD1B99F46C006ACAD5 /* C_BigInt.cpp in Sources */,
 				CFD94ADE1290635400864538 /* FOLLOW_computations.cpp in Sources */,
 				CF9234131BADBFF6001032DA /* mpz-tdiv_qr.c in Sources */,
-				CFB2EC701D637AEA00A023DE /* all-declarations-26.cpp in Sources */,
 				CFC89AB11BAF10D6002AF9C2 /* check-gmp.cpp in Sources */,
 				CF9E75351BADD83300DBEFEE /* mpn-toom_interpolate_16pts.c in Sources */,
 				CFB02C8219F3FC2F0011D03D /* all-declarations-23.cpp in Sources */,
@@ -2969,7 +2961,6 @@
 				CFD94AE81290635400864538 /* FIRST_computations.cpp in Sources */,
 				CFD94AE91290635400864538 /* follow_by_empty_computation.cpp in Sources */,
 				CF92341D1BADC11B001032DA /* mpz-clear.c in Sources */,
-				CFB2EC711D637B0300A023DE /* all-declarations-26.cpp in Sources */,
 				CFC89AB21BAF10D6002AF9C2 /* check-gmp.cpp in Sources */,
 				CF23745D19967C4F0061D2D8 /* all-declarations-8.cpp in Sources */,
 				CF985CFE1B99F46C006ACAD5 /* C_BigInt.cpp in Sources */,
@@ -3061,11 +3052,8 @@
 			files = (
 				CF6DF24209E3F3A700506859 /* OC_GGS_Document.m in Sources */,
 				CF6DF24409E3F3A700506859 /* OC_GGS_RulerViewForTextView.m in Sources */,
-				CFDAE70A0AD19F3E00713406 /* PMDownloadData.m in Sources */,
-				CFDAE70C0AD19F3E00713406 /* PMDownloadFile.m in Sources */,
-				CF4397FD0ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */,
+				CF301BC71ECE4092006796F6 /* PMDownloadData.m in Sources */,
 				CFB02CA119F3FCE70011D03D /* NSString+identifierRepresentation.m in Sources */,
-				CF4397FF0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */,
 				CF8D51990E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */,
 				CFE167840E8E7A2B00AFDAFC /* main.m in Sources */,
 				CF3CFB2D0FEBEA6C00CE4488 /* PMFontButton.m in Sources */,
@@ -3073,9 +3061,11 @@
 				CF9950CF0FF14697006E6395 /* OC_Lexique.m in Sources */,
 				CF9E55FC0FF5372D007692D1 /* OC_Token.m in Sources */,
 				CF72AED81B55AF6A00BE5E3B /* OC_GGS_FileEventStream.m in Sources */,
+				CF301BCF1ECE4101006796F6 /* PMCancelButtonForPanel.m in Sources */,
 				CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */,
 				CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */,
 				CFFCE7BD14686081009DB6D5 /* PMIssueDescriptor.m in Sources */,
+				CF301BC81ECE4096006796F6 /* PMDownloadFile.m in Sources */,
 				CFEE63DC147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m in Sources */,
 				CFEE63E0147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m in Sources */,
 				CF9BA5FE14824EEB009DF1C8 /* OC_GGS_TextView.m in Sources */,
@@ -3090,6 +3080,7 @@
 				CFBF7006179ACAD400789D8A /* PMUndoManager.m in Sources */,
 				CF13F11A1861CD5700A875A4 /* PMTableViewRefusesFirstResponder.m in Sources */,
 				CF273B09186741EF00DD528D /* PMSearchResultDescriptor.m in Sources */,
+				CF301BD01ECE410D006796F6 /* PMOkButtonForPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3288,12 +3279,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEPLOYMENT_LOCATION = NO;
-				DEVELOPMENT_TEAM = YW8QY74J2A;
+				DEVELOPMENT_TEAM = "";
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 1;

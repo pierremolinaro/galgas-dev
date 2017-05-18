@@ -19,6 +19,18 @@ Vous pouvez demander à GALGAS d'engendrer un projet \texttt{Xcode}, qui contien
 
 \sectionLabel{Paramétrage du projet GALGAS}{parametrageProjetGALGAS}
 
+Pour engendrer un projet \texttt{Xcode}, il y a deux attributs obligatoires, et un attribut optionnel~:
+\begin{itemize}
+\item un premier attribut obligatoire qui définit le OSX SDK et la version système cible (\refSubsectionPage{attributOSXSDK})~;
+\item un second attribut obligatoire \ggs=%applicationBundleBase= (\refSubsectionPage{attributapplicationBundleBase})~;
+\item un attribut optionnel \ggs=%macCodeSign=, qui définit comment est signé l'application OS X engendrée (\refSubsectionPage{attributmacCodeSign}).
+\end{itemize}
+
+
+
+
+\subsectionLabel{Attribut définissant le OSX SDK et la version système cible}{attributOSXSDK}
+
 Pour engendrer un projet \texttt{Xcode}, il vous suffit d'ajouter une déclaration telle que \ggs+%Lion+ dans votre fichier projet (d'extension \tpp{.galgasProject}, voir \refChapterPage{composantProjet}). Par exemple~:
 
 \begin{galgas}
@@ -32,10 +44,8 @@ Vous pouvez aussi utiliser l'option \texttt{-{-}macosx=$n$} (\refSectionPage{opt
 
 Un projet \texttt{Xcode} définit la version de Mac OS pour laquelle il va être compilé~: ainsi, \ggs+%Lion+ définit la version \texttt{Lion} (10.7). Le \refTableau{options-pour-xcode} liste les différents options possibles. GALGAS fixe la version indiquée dans le projet \texttt{Xcode}, et il faut ensuite que la version de \texttt{Xcode} utilisée soit compatible avec ce réglage. L'option \ggs+%LatestMacOS+ correspond au réglage correspondant du projet \texttt{Xcode} engendré. Quand \ggs+%SnowLeopard+ est sélectionné, l'application Cocoa engendrée utilise le \emph{garbage collector}. Sinon, elle adopte l'\emph{Automatic Reference Counting} (\emph{ARC}).
 
-Il y a une seconde option à ajouter dans le projet GALGAS~: \ggs+%applicationBundleBase+. Celle-ci fixe le \emph{Bundle Identifier} de l'application Cocoa. À la chaîne définie dans l'option (ici \ggs+"fr.what"+) est ajouté le nom du projet (défini dans l'en-tête, ici \ggs+"logo"+), précédé par un point~: le \emph{Bundle Identifier} est donc \tpp{fr.what.logo}.
 
-
-\begin{table}[t]
+\begin{table}[!t]
   \centering
   \begin{tabular}{rlll}
     \textbf{Option} & \textbf{Version SDK Mac OS} & \textbf{Version de}  &  \textbf{Gestion mémoire}\\
@@ -60,6 +70,171 @@ Il y a une seconde option à ajouter dans le projet GALGAS~: \ggs+%applicationBu
 
 
 
+\subsectionLabel{Attribut \texttt{\%applicationBundleBase}}{attributapplicationBundleBase}\index{\%applicationBundleBase}
+
+Il y a un second attribut obligatoire à ajouter dans le projet GALGAS~: \ggs+%applicationBundleBase+. Celle-ci fixe le \emph{Bundle Identifier} de l'application Cocoa. À la chaîne définie dans l'option (ici \ggs+"fr.what"+) est ajouté le nom du projet (défini dans l'en-tête, ici \ggs+"logo"+), précédé par un point~: le \emph{Bundle Identifier} est donc \tpp{fr.what.logo}.
+
+
+\subsectionLabel{Attribut \texttt{\%macCodeSign}}{attributmacCodeSign}\index{\%macCodeSign}
+
+Par défaut, l'application engendrée par Xcode n'est pas signée. Cela signifie qu'elle tournera sur le système et la machine où elle a été compilée, mais pas sur un autre système et / ou une autre machine.
+
+Pour pouvoir tourner sur une autre machine, l'application doit être être signée. L'attribut \ggs=%macCodeSign= permet de préciser comment Xcode va signer l'application.
+
+\fbox{\begin{minipage}{1.0\textwidth}
+Dans la version actuelle de GALGAS, l'attribut \texttt{\%macCodeSign} permet uniquement de signer l'application avec votre compte \texttt{Mac Developer}.
+\end{minipage}}
+
+L'attribut \ggs=%macCodeSign= doit être associé à une chaîne de caractères, du style suivant~:
+\begin{galgas}
+  %macCodeSign = "ZW8HY75J3X"
+\end{galgas}
+
+La chaîne \ggs="ZW8HY75J3X"= est juste un exemple, il faut que vous utilisiez la chaîne qui correspond à votre compte \texttt{Mac Developer}. Pour l'obtenir, vous avez plusieurs solutions~:
+\begin{itemize}
+  \item utiliser l'utilitaire \texttt{certtool} (\refSubsubsectionPage{utilitaireCerttool})~;
+  \item utiliser l'application \emph{Trousseaux d'accès} (\refSubsubsectionPage{appKeyChain})~;
+  \item signer l'application dans le projet Xcode engendré, et observer sa description dans un éditeur de texte~: \refSubsubsectionPage{signatureDansXcode}.
+\end{itemize}
+
+Une fois que l'attribut \ggs=%macCodeSign= aura été défini, vous pourrez effectuer la compilation GALGAS de votre projet. Compiler le projet Xcode engendrera une application signée. On pourra le vérifier, comme expliqué à la \refSubsectionPage{verifierSignatureAppli}.
+
+\subsubsectionLabel{Utilitaire \texttt{certtool}}{utilitaireCerttool}
+
+Sur Mac OS X, l'utilitaire \texttt{certtool} permet de manipuler les certificats. L'option \texttt{y} permet de les afficher. Entrer dans le terminal~:
+\begin{SHELL}
+certtool y
+\end{SHELL}
+L'exécution de la commande affiche sur le terminal une grande quantité de lignes dans lesquelles il faut rechercher le certificat correspondant à votre compte  \texttt{Mac Developer}. On peut faciliter ce travail en redirigeant la sortie de la commande dans un fichier~: 
+\begin{SHELL}
+certtool y > certificats.txt
+\end{SHELL}
+
+Rechercher dans la sortie de la commande la chaîne \tpp{Mac Developer}. Vous la trouvez associée avec l'adresse électronique de votre compte développeur (ici \tpp{john@smith.nowhere})~:
+\begin{SHELL}
+Subject Name~~~~:\\
+Other name~~~~~~: 9ZED6TWL8M\\
+Common Name~~~~~: Mac Developer: john@smith.nowhere (Q933RG93DL)\\
+OrgUnit~~~~~~~~~: ZW8HY75J3X\\
+Org~~~~~~~~~~~~~: JOHN SMITH\\
+Country~~~~~~~~~: US
+\end{SHELL}
+
+La chaîne recherchée apparaît associée à l'entrée \tpp{OrgUnit}.
+
+
+
+\subsubsectionLabel{Application \emph{Trousseaux d'accès}}{appKeyChain}
+
+L'application \emph{Trousseaux d'accès} (« KeyChain ») permet de retrouver les certificats~; ouvrir l'application, sélectionner dans la barre latérale \tpp{Mes certificats}, et, éventuellement, entrer \tpp{Mac Developer} dans la zone recherche. Le certificat recherché doit apparaître comme l'indique la \refFigure{}{figureAppliTrousseauxAccess}. Double-cliquer pour en avoir le détail~: \refFigure{}{figureDetailCertificat}. La chaîne recherchée apparaît associée à l'entrée \tpp{Unité d'organisation}.
+
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=14cm]{chapitre-cocoa-features/trousseaux-acces.png}
+  \caption{Application \emph{Trousseaux d'accès}}
+  \labelFigure{figureAppliTrousseauxAccess}
+  \ligne
+\end{figure}
+
+
+
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=14cm]{chapitre-cocoa-features/certificat.png}
+  \caption{Détail du certificat}
+  \labelFigure{figureDetailCertificat}
+  \ligne
+\end{figure}
+
+
+
+
+
+
+\subsubsectionLabel{Signature dans Xcode}{signatureDansXcode}
+
+On peut utiler Xcode pour retrouver la chaîne recherchée. Pour cela, on va modifier le projet Xcode engendré pour signer l'application engendrée. 
+
+\fbox{\begin{minipage}{1.0\textwidth}
+Évidemment, toute modification de Xcode pourra être écrasée par une recompilation GALGAS du projet : on n'utilise donc la modification du projet juste pour découvrir la chaîne recherchée.
+\end{minipage}}
+
+
+
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=15cm]{chapitre-cocoa-features/projet-xcode-sans-signature.png}
+  \caption{Projet \texttt{Xcode} sans signature}
+  \labelFigure{figureXcodeSansSignature}
+  \ligne
+\end{figure}
+
+
+\begin{figure}[!t]
+  \centering
+  \includegraphics[width=15cm]{chapitre-cocoa-features/projet-xcode-avec-signature.png}
+  \caption{Signature à partir du projet \texttt{Xcode}}
+  \labelFigure{figureSignatureXcode}
+  \ligne
+\end{figure}
+
+Ouvrir donc le projet Xcode, sélectionner \tpp{logo} dans la barre latérale gauche, puis la cible (dans «~TARGETS~») \tpp{Cocoa logo}, puis l'onglet \tpp{General}, et repérer le bloc \tpp{Signing}~: \refFigure{}{figureXcodeSansSignature}. Cliquez alors sur «~Enable Development Signing~», de façon à aboutir à la \refFigure{}{figureSignatureXcode}. 
+
+Maintenant, fermer Xcode. Le fichier projet Xcode \tpp{logo.xcodeproj} est en fait un répertoire. Pour afficher son contenu, effectuer un clic secondaire sur l'icône de \tpp{logo.xcodeproj}, et sélectionner dans le menu contextuel qui apparaît l'item «~\emph{Afficher le contenu du paquet}~» (\refFigure{a}{figureOuverturePaquetXcode})~; la fenêtre qui apparaît (\refFigure{b}{figureOuverturePaquetXcode}) montre le contenu de paquet. Le fichier qui nous intéresse est \tpp{project.pbxproj}. Ce fichier est un fichier texte seul, ouvrez-le avec un éditeur de texte. Repérer la ligne définissant le paramètre \tpp{DEVELOPMENT\_TEAM}~:
+\begin{SHELL}
+DEVELOPMENT\_TEAM = ZW8HY75J3X;
+\end{SHELL}
+La valeur associée au paramètre \tpp{DEVELOPMENT\_TEAM} est la chaîne recherchée~: \texttt{ZW8HY75J3X}.
+
+\begin{figure}[!t]
+  \centering
+  \subfloat[Afficher le contenu du paquet]{
+   \includegraphics[width=8cm]{chapitre-cocoa-features/ouverture-paquet-xcode.png}
+  }
+  \hspace{1 cm}
+  \subfloat[Contenu du paquet]{
+   \includegraphics[width=5cm]{chapitre-cocoa-features/contenu-paquet-xcode.png}
+  }
+  \caption{Afficher dans le Finder le contenu du paquet projet Xcode}
+  \labelFigure{figureOuverturePaquetXcode}
+  \ligne
+\end{figure}
+
+
+
+\subsectionLabel{Vérifier la signature d'une application}{verifierSignatureAppli}
+
+Pour vérifier la signature d'une application, on peut utiliser l'outil \tpp{spctl}. Dans le terminal, exécutez~:
+\begin{SHELL}
+spctl -a -t exec -vv \emph{chemin.app}
+\end{SHELL}
+
+Où \tpp{chemin.app} est le chemin vers l'application que la compilation du projet Xcode a créé. L'exécution de la commande affiche~:
+
+\begin{SHELL}
+\emph{chemin.app}: accepted\\
+override=security disabled\\
+origin=Mac Developer: john@smith.nowhere (Q933RG93DL)
+\end{SHELL}
+Ceci indique que l'application est correctement signée.
+
+
+À titre d'information, l'exécution de la commande pour une application non signée affiche~:
+\begin{SHELL}
+\emph{chemin.app}: accepted\\
+source=no usable signature\\
+override=security disabled
+\end{SHELL}
+
+
+
+
+
+
+
 
 
 \section{Projet \texttt{Xcode} engendré}
@@ -76,9 +251,9 @@ Quand le projet GALGAS est compilé, un répertoire \tpp{xcode-project} director
 
 Le rôle de chacun est précisé par le \refTableau{fichiers-repertoires-xcode}. Ne pas modifier ces fichiers et répertoires à la main, une compilation GALGAS supprimerait vos changements. La seule exception est le contenu du répertoire \tpp{userResources} qui n'est pas modifié par les compilations GALGAS.
 
-\begin{table}[t]
+\begin{table}[!t]
   \centering
-  \begin{tabular}{rp{11cm}}
+  \begin{tabular}{rp{10cm}}
     \textbf{Fichier ou répertoire} & \textbf{Rôle}\\
     \tpp{build.command} & Effectue la compilation Xcode, appelable via une commande \emph{Shell} \\
     \tpp{Info.plist}    & Informations pour l'application Cocoa \\
@@ -137,9 +312,9 @@ Vous pouvez configurer votre projet GALGAS pour que l'application Cocoa engendr�
 
 %You can configure your project for enabling cross-referencing entities with your Cocoa application. This has been done in GALGAS, providing such feature (\refFigure{}{indexingUnderCocoaGALGAS}). The contextual menu is displayed with a \texttt{cmd-click}.
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
-  \includegraphics[width=16cm]{chapitre-cocoa-features/indexing-sample.png}
+  \includegraphics[width=14cm]{chapitre-cocoa-features/indexing-sample.png}
   \caption{Indexation et références croisées dans l'application CocoaGalgas}
   \labelFigure{indexingUnderCocoaGALGAS}
   \ligne
@@ -293,7 +468,7 @@ rule <instruction> {
 
 Les modifications sont terminées. Vous pouvez recompiler votre projet (compilation GALGAS puis compilation de la cible Cocoa du projet \texttt{Xcode}). La \refFigure{}{exemple-indexation-logo} montre le résultat obtenu en effectuant un \tpp{cmd-click} sur le nom de la routine.
 
-\begin{figure}[t]
+\begin{figure}[!t]
   \centering
   \includegraphics[width=8cm]{chapitre-cocoa-features/exemple-indexation-logo.png}
   \caption{Exemple d'indexation en LOGO}
