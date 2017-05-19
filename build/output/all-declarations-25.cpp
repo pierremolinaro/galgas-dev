@@ -5530,20 +5530,38 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     GALGAS_stringlist var_configurationSettingList_55437 = temp_89 ;
     const enumGalgasBool test_90 = GALGAS_bool (kIsNotEqual, var_macCodeSign_16835.getter_string (HERE).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
     if (kBoolTrue == test_90) {
-      var_configurationSettingList_55437.addAssign_operation (GALGAS_string ("CODE_SIGN_IDENTITY = \"Mac Developer\"")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1390)) ;
-      var_configurationSettingList_55437.addAssign_operation (GALGAS_string ("DEVELOPMENT_TEAM = \"").add_operation (var_macCodeSign_16835.getter_string (HERE), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1391)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1391))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1391)) ;
+      GALGAS_stringlist var_components_55585 = var_macCodeSign_16835.getter_string (HERE).getter_componentsSeparatedByString (GALGAS_string (":") COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1390)) ;
+      const enumGalgasBool test_91 = GALGAS_bool (kIsNotEqual, var_components_55585.getter_length (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1391)).objectCompare (GALGAS_uint ((uint32_t) 2U))).boolEnum () ;
+      if (kBoolTrue == test_91) {
+        TC_Array <C_FixItDescription> fixItArray92 ;
+        inCompiler->emitSemanticError (var_macCodeSign_16835.getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1392)), GALGAS_string ("the %macCodeSign attribute associated string should be \"key:value\""), fixItArray92  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1392)) ;
+      }else if (kBoolFalse == test_91) {
+        const enumGalgasBool test_93 = GALGAS_bool (kIsEqual, var_components_55585.getter_mValueAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1393)).objectCompare (GALGAS_string ("MacDeveloper"))).boolEnum () ;
+        if (kBoolTrue == test_93) {
+          var_configurationSettingList_55437.addAssign_operation (GALGAS_string ("CODE_SIGN_IDENTITY = \"Mac Developer\"")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1394)) ;
+          var_configurationSettingList_55437.addAssign_operation (GALGAS_string ("DEVELOPMENT_TEAM = \"").add_operation (var_components_55585.getter_mValueAtIndex (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1395)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1395)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1395))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1395)) ;
+        }else if (kBoolFalse == test_93) {
+          const enumGalgasBool test_94 = GALGAS_bool (kIsEqual, var_components_55585.getter_mValueAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1396)).objectCompare (GALGAS_string ("Certificate"))).boolEnum () ;
+          if (kBoolTrue == test_94) {
+            var_configurationSettingList_55437.addAssign_operation (GALGAS_string ("CODE_SIGN_IDENTITY = \"").add_operation (var_components_55585.getter_mValueAtIndex (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1397)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1397)).add_operation (GALGAS_string ("\""), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1397))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1397)) ;
+          }else if (kBoolFalse == test_94) {
+            TC_Array <C_FixItDescription> fixItArray95 ;
+            inCompiler->emitSemanticError (var_macCodeSign_16835.getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1399)), GALGAS_string ("the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'"), fixItArray95  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1399)) ;
+          }
+        }
+      }
     }
     {
-    GALGAS_stringlist temp_91 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1400)) ;
-    temp_91.addAssign_operation (var_releaseTargetRef_54716  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1400)) ;
-    temp_91.addAssign_operation (var_debugTargetRef_55320  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1400)) ;
-    GALGAS__32_stringlist temp_92 = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1401)) ;
-    temp_92.addAssign_operation (var_releaseProductFileRef_54764, constinArgument_inTargetName  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1401)) ;
-    temp_92.addAssign_operation (var_debugProductFileRef_55366, constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1401))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1401)) ;
-    GALGAS_string joker_56376 ; // Joker input parameter
-    extensionSetter_addAppTarget (var_xcodeProject_28199, GALGAS_string ("Cocoa ").add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1394)), GALGAS_string ("Cocoa").add_operation (constinArgument_inTargetName.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1395)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1395)), var_m_5F_FileRefList_31909.add_operation (var_m_5F_HandCodedSourceFileRefForAppList_30468, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1396)), var_frameworksFileRefList_31988.add_operation (var_appFrameworksFileRefList_31192, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1397)), var_resourceFileBuildRefs_32031.add_operation (var_m_5F_HandCodedResourceFileRefForAppList_30526, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1398)), var_configurationSettingList_55437, temp_91, temp_92, joker_56376, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1393)) ;
+    GALGAS_stringlist temp_96 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1409)) ;
+    temp_96.addAssign_operation (var_releaseTargetRef_54716  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1409)) ;
+    temp_96.addAssign_operation (var_debugTargetRef_55320  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1409)) ;
+    GALGAS__32_stringlist temp_97 = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1410)) ;
+    temp_97.addAssign_operation (var_releaseProductFileRef_54764, constinArgument_inTargetName  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1410)) ;
+    temp_97.addAssign_operation (var_debugProductFileRef_55366, constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1410))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1410)) ;
+    GALGAS_string joker_56992 ; // Joker input parameter
+    extensionSetter_addAppTarget (var_xcodeProject_28199, GALGAS_string ("Cocoa ").add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1403)), GALGAS_string ("Cocoa").add_operation (constinArgument_inTargetName.getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1404)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1404)), var_m_5F_FileRefList_31909.add_operation (var_m_5F_HandCodedSourceFileRefForAppList_30468, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1405)), var_frameworksFileRefList_31988.add_operation (var_appFrameworksFileRefList_31192, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1406)), var_resourceFileBuildRefs_32031.add_operation (var_m_5F_HandCodedResourceFileRefForAppList_30526, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1407)), var_configurationSettingList_55437, temp_96, temp_97, joker_56992, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1402)) ;
     }
-    extensionMethod_generateAtPath (var_xcodeProject_28199, var_dir_26254.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1406)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1406)).add_operation (GALGAS_string (".xcodeproj"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1406)), var_newIntermediateFilePath_27915, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1405)) ;
+    extensionMethod_generateAtPath (var_xcodeProject_28199, var_dir_26254.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1415)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1415)).add_operation (GALGAS_string (".xcodeproj"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1415)), var_newIntermediateFilePath_27915, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1414)) ;
   }
 }
 

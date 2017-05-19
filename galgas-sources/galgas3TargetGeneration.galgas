@@ -1387,8 +1387,17 @@ proc updateGalgas3Targets
       !"GCC_PREPROCESSOR_DEFINITIONS = ()"
     }
     if macCodeSign.string != "" then
-      configurationSettingList += !"CODE_SIGN_IDENTITY = \"Mac Developer\""
-      configurationSettingList += !"DEVELOPMENT_TEAM = \"" + macCodeSign.string + "\""
+      let components = [macCodeSign.string componentsSeparatedByString !":"] ;
+      if [components length] != 2 then
+        error macCodeSign : "the %macCodeSign attribute associated string should be \"key:value\""
+      elsif [components mValueAtIndex !0] == "MacDeveloper" then
+        configurationSettingList += !"CODE_SIGN_IDENTITY = \"Mac Developer\""
+        configurationSettingList += !"DEVELOPMENT_TEAM = \"" + [components mValueAtIndex !1] + "\""
+      elsif [components mValueAtIndex !0] == "Certificate" then
+        configurationSettingList += !"CODE_SIGN_IDENTITY = \"" + [components mValueAtIndex !1] + "\""
+      else
+        error macCodeSign : "the %macCodeSign attribute string is \"key:value\", but key should be 'MacDeveloper' or 'Certificate'"
+      end
     end
     [!?xcodeProject addAppTarget
       !targetName:"Cocoa " + inTargetName

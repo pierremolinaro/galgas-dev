@@ -77,25 +77,38 @@ Il y a un second attribut obligatoire à ajouter dans le projet GALGAS~: \ggs+%a
 
 \subsectionLabel{Attribut \texttt{\%macCodeSign}}{attributmacCodeSign}\index{\%macCodeSign}
 
-Par défaut, l'application engendrée par Xcode n'est pas signée. Cela signifie qu'elle tournera sur le système et la machine où elle a été compilée, mais pas sur un autre système et / ou une autre machine.
+Par défaut, l'application engendrée par Xcode n'est pas signée. Cela signifie qu'elle tournera sur le système et la machine où elle a été compilée, mais peut-être pas sur un autre système et / ou une autre machine.
 
-Pour pouvoir tourner sur une autre machine, l'application doit être être signée. L'attribut \ggs=%macCodeSign= permet de préciser comment Xcode va signer l'application.
+L'attribut \ggs=%macCodeSign= permet de préciser comment Xcode va signer l'application.
 
 \fbox{\begin{minipage}{1.0\textwidth}
-Dans la version actuelle de GALGAS, l'attribut \texttt{\%macCodeSign} permet uniquement de signer l'application avec votre compte \texttt{Mac Developer}.
+Dans la version actuelle de GALGAS, l'attribut \texttt{\%macCodeSign} permet de signer l'application avec votre compte \texttt{Mac Developer}, ou un certificat défini dans le \emph{Trousseau d'accès}, par exemple un certificat auto-signé.
 \end{minipage}}
 
-L'attribut \ggs=%macCodeSign= doit être associé à une chaîne de caractères, du style suivant~:
+L'attribut \ggs=%macCodeSign= doit être associé à une chaîne de caractères, qui comprend deux éléments séparés par un «~:~»~:
 \begin{galgas}
-  %macCodeSign = "ZW8HY75J3X"
+  %macCodeSign = "MacDeveloper:ZW8HY75J3X"
 \end{galgas}
+ou 
+\begin{galgas}
+  %macCodeSign = "Certificate:John Egg Smith"
+\end{galgas}
+Le premier correspond au certificat associé à votre compte \texttt{Mac Developer}, le second à un certificat détenu dans le \emph{Trousseau d'accès} («~\emph{Key Chain}~»).
 
-La chaîne \ggs="ZW8HY75J3X"= est juste un exemple, il faut que vous utilisiez la chaîne qui correspond à votre compte \texttt{Mac Developer}. Pour l'obtenir, vous avez plusieurs solutions~:
+\fbox{\begin{minipage}{1.0\textwidth}
+Manifestement, Apple recommande de signer l'application par votre compte \texttt{Mac Developer} : l'interface de Xcode 8 ne permet pas de signer une application avec un certificat auto-signé, mais accepte un projet contenant cette signature.
+\end{minipage}}
+
+Les chaînes \tpp{ZW8HY75J3X} et \tpp{John Egg Smith} sont juste des exemples, il faut que vous utilisiez des valeurs valides.
+
+Pour obtenir la chaîne associée à votre compte \texttt{Mac Developer}, vous avez plusieurs possibilités~:
 \begin{itemize}
   \item utiliser l'utilitaire \texttt{certtool} (\refSubsubsectionPage{utilitaireCerttool})~;
   \item utiliser l'application \emph{Trousseaux d'accès} (\refSubsubsectionPage{appKeyChain})~;
   \item signer l'application dans le projet Xcode engendré, et observer sa description dans un éditeur de texte~: \refSubsubsectionPage{signatureDansXcode}.
 \end{itemize}
+
+La \refSubsubsectionPage{definirCertificatAutoSigne} montre comment définir un certificat auto-signé. 
 
 Une fois que l'attribut \ggs=%macCodeSign= aura été défini, vous pourrez effectuer la compilation GALGAS de votre projet. Compiler le projet Xcode engendrera une application signée. On pourra le vérifier, comme expliqué à la \refSubsectionPage{verifierSignatureAppli}.
 
@@ -126,7 +139,7 @@ La chaîne recherchée apparaît associée à l'entrée \tpp{OrgUnit}.
 
 \subsubsectionLabel{Application \emph{Trousseaux d'accès}}{appKeyChain}
 
-L'application \emph{Trousseaux d'accès} (« KeyChain ») permet de retrouver les certificats~; ouvrir l'application, sélectionner dans la barre latérale \tpp{Mes certificats}, et, éventuellement, entrer \tpp{Mac Developer} dans la zone recherche. Le certificat recherché doit apparaître comme l'indique la \refFigure{}{figureAppliTrousseauxAccess}. Double-cliquer pour en avoir le détail~: \refFigure{}{figureDetailCertificat}. La chaîne recherchée apparaît associée à l'entrée \tpp{Unité d'organisation}.
+L'application \emph{Trousseaux d'accès} (« Keychain Access ») permet de retrouver les certificats~; ouvrir l'application, sélectionner dans la barre latérale \tpp{Mes certificats}, et, éventuellement, entrer \tpp{Mac Developer} dans la zone recherche. Le certificat recherché doit apparaître comme l'indique la \refFigure{}{figureAppliTrousseauxAccess}. Double-cliquer pour en avoir le détail~: \refFigure{}{figureDetailCertificat}. La chaîne recherchée apparaît associée à l'entrée \tpp{Unité d'organisation}.
 
 
 \begin{figure}[!t]
@@ -205,6 +218,37 @@ La valeur associée au paramètre \tpp{DEVELOPMENT\_TEAM} est la chaîne recherc
 
 
 
+
+
+
+\subsubsectionLabel{Définir un certificat auto-signé}{definirCertificatAutoSigne}
+
+Pour définir un certificat auto-signé, appler l'application «~\emph{Trousseaux d'accès}~» («~\emph{Keychain Access}~»). Ensuite, sélectionner dans le menu de l'application \tpp{Assistant de certification} -> \tpp{Créer un certificat…}, comme indiqué à la \refFigure{a}{figureDefinirCertificatAutoSigne}. Ensuite, dans la fenêtre qui apparaît (\refFigure{b}{figureDefinirCertificatAutoSigne}), entrer le nom que vous allez donner au certificat (ici «~John Egg Smith~»), sélectionner pour le \tpp{Type d'identité} «~Racine auto-signée~», et pour \tpp{Type de certificat} «~Signature de code~». Terminer la création en cliquant sur \tpp{Créer}.
+
+Le nom que vous avez donné au certificat est important, c'est lui que vous allez utilisez pour l'attribut \ggs=%macCodeSign= (respecter absolument la casse et les espaces)~:
+\begin{galgas}
+  %macCodeSign = "Certificate:John Egg Smith"
+\end{galgas}
+
+
+\begin{figure}[!t]
+  \centering
+  \subfloat[Menu de création d'un certificat]{
+   \includegraphics[width=7cm]{chapitre-cocoa-features/menu-creation-certificat.png}
+  }
+  \hspace{0.5cm}
+  \subfloat[Création d'un certificat auto-signé]{
+   \includegraphics[width=7cm]{chapitre-cocoa-features/creation-certificat-autosigne.png}
+  }
+  \caption{Certificat auto-signé}
+  \labelFigure{figureDefinirCertificatAutoSigne}
+  \ligne
+\end{figure}
+
+
+
+
+
 \subsectionLabel{Vérifier la signature d'une application}{verifierSignatureAppli}
 
 Pour vérifier la signature d'une application, on peut utiliser l'outil \tpp{spctl}. Dans le terminal, exécutez~:
@@ -212,17 +256,27 @@ Pour vérifier la signature d'une application, on peut utiliser l'outil \tpp{spc
 spctl -a -t exec -vv \emph{chemin.app}
 \end{SHELL}
 
-Où \tpp{chemin.app} est le chemin vers l'application que la compilation du projet Xcode a créé. L'exécution de la commande affiche~:
+Où \tpp{chemin.app} est le chemin vers l'application que la compilation du projet Xcode a créé.
+
+Si l'application a été signée par le compte \texttt{Mac Developer}, l'exécution de la commande affiche~:
 
 \begin{SHELL}
 \emph{chemin.app}: accepted\\
 override=security disabled\\
 origin=Mac Developer: john@smith.nowhere (Q933RG93DL)
 \end{SHELL}
-Ceci indique que l'application est correctement signée.
 
 
-À titre d'information, l'exécution de la commande pour une application non signée affiche~:
+Si l'application a été signée par un certificat auto-signé, l'exécution de la commande affiche~:
+
+\begin{SHELL}
+\emph{chemin.app}: accepted\\
+override=security disabled\\
+origin=John Egg Smith
+\end{SHELL}
+
+
+Si l'application n'a pas été signée, l'exécution de la commande~:
 \begin{SHELL}
 \emph{chemin.app}: accepted\\
 source=no usable signature\\
