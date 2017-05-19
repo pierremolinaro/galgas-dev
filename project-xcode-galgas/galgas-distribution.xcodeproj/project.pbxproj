@@ -3578,7 +3578,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "Pierre Canari Molinaro";
+				CODE_SIGN_IDENTITY = "Pierre Molinaro GALGAS Developer";
 				DEPLOYMENT_LOCATION = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_ENABLE_TRIGRAPHS = NO;
@@ -3667,6 +3667,7 @@
 		CFC639EB1ECF09A700C524FA /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Pierre Molinaro GALGAS Developer";
 				DEPLOYMENT_LOCATION = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_ENABLE_OBJC_GC = required;
@@ -3681,6 +3682,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_CFLAGS = "-Wall";
 				PRODUCT_NAME = "cocoaGalgas-gc";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
