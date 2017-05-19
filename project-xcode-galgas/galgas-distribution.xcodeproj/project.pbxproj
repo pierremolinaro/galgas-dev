@@ -905,7 +905,7 @@
 		2A37F4BAFDCFA73011CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = English.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		8D15AC370486D014006FF6A4 /* cocoaGalgas-arc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cocoaGalgas-arc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D15AC370486D014006FF6A4 /* cocoaGalgas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoaGalgas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF01558B1267796800917801 /* cObjectArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cObjectArray.cpp; sourceTree = "<group>"; };
 		CF01558C1267796800917801 /* cObjectArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cObjectArray.h; sourceTree = "<group>"; };
 		CF04216C0B0B51AA00BB53E5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
@@ -1552,7 +1552,7 @@
 		19C28FB0FE9D524F11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D15AC370486D014006FF6A4 /* cocoaGalgas-arc.app */,
+				8D15AC370486D014006FF6A4 /* cocoaGalgas.app */,
 				CFF98D73058CCD4700176BCE /* galgas */,
 				CF7A1403058CEFE2007126C1 /* galgas-debug */,
 				CF826D911CC3BED50062B347 /* galgas-debug-32 */,
@@ -2439,9 +2439,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D15AC270486D014006FF6A4 /* GALGAS Cocoa ARC */ = {
+		8D15AC270486D014006FF6A4 /* GALGAS Cocoa */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CF0DA6A1085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS Cocoa ARC" */;
+			buildConfigurationList = CF0DA6A1085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS Cocoa" */;
 			buildPhases = (
 				8D15AC2B0486D014006FF6A4 /* Resources */,
 				8D15AC300486D014006FF6A4 /* Sources */,
@@ -2453,10 +2453,10 @@
 				CF3780780AE93C5400D69EDB /* PBXTargetDependency */,
 				CF37807A0AE93C5400D69EDB /* PBXTargetDependency */,
 			);
-			name = "GALGAS Cocoa ARC";
+			name = "GALGAS Cocoa";
 			productInstallPath = "$(HOME)/Applications";
 			productName = essai_cocoa;
-			productReference = 8D15AC370486D014006FF6A4 /* cocoaGalgas-arc.app */;
+			productReference = 8D15AC370486D014006FF6A4 /* cocoaGalgas.app */;
 			productType = "com.apple.product-type.application";
 		};
 		8DD76F620486A84900D96B5E /* GALGAS tool */ = {
@@ -2552,7 +2552,7 @@
 				8DD76F620486A84900D96B5E /* GALGAS tool */,
 				CF7A1402058CEFE2007126C1 /* GALGAS tool Debug */,
 				CF826C901CC3BED50062B347 /* GALGAS tool Debug 32 */,
-				8D15AC270486D014006FF6A4 /* GALGAS Cocoa ARC */,
+				8D15AC270486D014006FF6A4 /* GALGAS Cocoa */,
 				CFC639B31ECF09A700C524FA /* GALGAS Cocoa GC */,
 			);
 		};
@@ -3587,10 +3587,10 @@
 				GCC_SHORT_ENUMS = NO;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
-				INFOPLIST_FILE = "Info-arc.plist";
+				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_CFLAGS = "-Wall";
-				PRODUCT_NAME = "cocoaGalgas-arc";
+				PRODUCT_NAME = cocoaGalgas;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
@@ -3706,7 +3706,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
 		};
-		CF0DA6A1085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS Cocoa ARC" */ = {
+		CF0DA6A1085630E800F38E67 /* Build configuration list for PBXNativeTarget "GALGAS Cocoa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CF0DA6A3085630E800F38E67 /* Default */,
