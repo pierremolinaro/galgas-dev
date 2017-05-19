@@ -124,12 +124,12 @@ remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, DIR + "/galgas/project-xcod
 for root, dirs, files in os.walk (DIR + "/galgas/galgas-sources"):
   for filename in files:
     (base, extension) = os.path.splitext (filename)
-    if (extension == ".galgas") or (extension == ".galgasProject") or (extension == ".h") or (extension == ".cpp") or (extension == ".m") :
+    if (extension == ".galgas") or (extension == ".galgasProject") or (extension == ".h") or (extension == ".cpp") or (extension == ".m") or (extension == ".pbxproj") :
       remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, root + "/" + filename)
 for root, dirs, files in os.walk (DIR + "/galgas/build"):
   for filename in files:
     (base, extension) = os.path.splitext (filename)
-    if (extension == ".galgas") or (extension == ".galgasProject") or (extension == ".h") or (extension == ".cpp") or (extension == ".m") :
+    if (extension == ".galgas") or (extension == ".galgasProject") or (extension == ".h") or (extension == ".cpp") or (extension == ".m") or (extension == ".pbxproj") :
       remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, root + "/" + filename)
 #-------------------- Creer l'archive des sources de galgas
 runCommand (["eolc", "-unix", "-D" + DIR + "/galgas", "-Eh", "-Ec", "-Ecpp", "-Em", "-Emm", "-Epy", "-Ebat"])
@@ -202,22 +202,12 @@ runCommand (["tar", "-cf", "cocoaGalgas.app.tar", "cocoaGalgas.app"])
 runCommand (["bzip2", "-9", "cocoaGalgas.app.tar"])
 runCommand (["rm", "-fr", DIR + "/cocoaGalgas.app"])
 #-------------------- Creer l'archive de Cocoa Galgas ARC
-runCommand (["mkdir", DIR + "/COCOA-GALGAS-ARC"])
-runCommand (["cp", DIR + "/galgas/AUTHORS", DIR + "/COCOA-GALGAS-ARC"])
-runCommand (["cp", DIR + "/galgas/COPYING", DIR + "/COCOA-GALGAS-ARC"])
-runCommand (["mv", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas-arc.app", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app"])
-runCommand (["cp", "-r", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app", DIR + "/COCOA-GALGAS-ARC"])
-runCommand (["hdiutil", "create", "-srcfolder", DIR + "/COCOA-GALGAS-ARC", DIR + "/cocoa-galgas-arc.dmg"])
-runCommand (["rm", "-fr", DIR + "/COCOA-GALGAS-ARC"])
-runCommand (["mv", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas-arc.app"])
-#-------------------- Creer l'archive de Cocoa Galgas GC
-runCommand (["mkdir", DIR + "/COCOA-GALGAS-GC"])
-runCommand (["cp", DIR + "/galgas/AUTHORS", DIR + "/COCOA-GALGAS-GC"])
-runCommand (["cp", DIR + "/galgas/COPYING", DIR + "/COCOA-GALGAS-GC"])
-runCommand (["mv", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas-gc.app", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app"])
-runCommand (["cp", "-r", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app", DIR + "/COCOA-GALGAS-GC"])
-runCommand (["hdiutil", "create", "-srcfolder", DIR + "/COCOA-GALGAS-GC", DIR + "/cocoa-galgas-gc.dmg"])
-runCommand (["rm", "-fr", DIR + "/COCOA-GALGAS-GC"])
+runCommand (["mkdir", DIR + "/COCOA-GALGAS"])
+runCommand (["cp", DIR + "/galgas/AUTHORS", DIR + "/COCOA-GALGAS"])
+runCommand (["cp", DIR + "/galgas/COPYING", DIR + "/COCOA-GALGAS"])
+runCommand (["cp", "-r", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app", DIR + "/COCOA-GALGAS"])
+runCommand (["hdiutil", "create", "-srcfolder", DIR + "/COCOA-GALGAS", DIR + "/cocoa-galgas.dmg"])
+runCommand (["rm", "-fr", DIR + "/COCOA-GALGAS"])
 #-------------------- Creer l'archive de l'outil ligne de commande pour mac
 runCommand (["mkdir", DIR + "/COCOA-TOOL"])
 runCommand (["cp", DIR + "/galgas/AUTHORS", DIR + "/COCOA-TOOL"])
