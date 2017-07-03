@@ -9,6 +9,161 @@
 
 
 //---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                     Extension method '@semanticInstructionForGeneration appendSyntaxSignature'                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static TC_UniqueArray <extensionMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature> gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterExtensionMethod_appendSyntaxSignature (const int32_t inClassIndex,
+                                                 extensionMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature inMethod) {
+  gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void callExtensionMethod_appendSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
+                                                const GALGAS_string constin_inPosfix,
+                                                GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) {
+  if (NULL != inObject) {
+    macroValidSharedObject (inObject, cPtr_semanticInstructionForGeneration) ;
+    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
+    const int32_t classIndex = info->mSlotID ;
+    extensionMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature f = NULL ;
+    if (classIndex < gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.count ()) {
+      f = gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature (classIndex COMMA_HERE) ;
+    }
+    if (NULL == f) {
+       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
+       while ((NULL == f) && (NULL != p)) {
+         if (p->mSlotID < gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.count ()) {
+           f = gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature (p->mSlotID COMMA_HERE) ;
+         }
+         p = p->mSuperclassDescriptor ;
+       }
+       gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+    }
+    if (NULL == f) {
+      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
+    }else{
+      f (inObject, constin_inPosfix, io_ioInstructionListForGeneration, inCompiler COMMA_THERE) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void extensionMethod_semanticInstructionForGeneration_appendSyntaxSignature (const cPtr_semanticInstructionForGeneration * /* inObject */,
+                                                                                    const GALGAS_string /* constinArgument_inPosfix */,
+                                                                                    GALGAS_semanticInstructionListForGeneration & /* ioArgument_ioInstructionListForGeneration */,
+                                                                                    C_Compiler * /* inCompiler */
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineExtensionMethod_semanticInstructionForGeneration_appendSyntaxSignature (void) {
+  enterExtensionMethod_appendSyntaxSignature (kTypeDescriptor_GALGAS_semanticInstructionForGeneration.mSlotID,
+                                              extensionMethod_semanticInstructionForGeneration_appendSyntaxSignature) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void freeExtensionMethod_semanticInstructionForGeneration_appendSyntaxSignature (void) {
+  gExtensionMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.free () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_semanticInstructionForGeneration_appendSyntaxSignature (defineExtensionMethod_semanticInstructionForGeneration_appendSyntaxSignature,
+                                                                                   freeExtensionMethod_semanticInstructionForGeneration_appendSyntaxSignature) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Extension getter '@semanticInstructionForGeneration compareInstructionSyntaxSignature'                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static TC_UniqueArray <enterExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature> gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterExtensionGetter_compareInstructionSyntaxSignature (const int32_t inClassIndex,
+                                                             enterExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature inGetter) {
+  gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool callExtensionGetter_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * inObject,
+                                                                   const GALGAS_semanticInstructionForGeneration in_inTestedInstruction,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  GALGAS_bool result ;
+//--- Find Reader
+  if (NULL != inObject) {
+    macroValidSharedObject (inObject, cPtr_semanticInstructionForGeneration) ;
+    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
+    const int32_t classIndex = info->mSlotID ;
+    enterExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature f = NULL ;
+    if (classIndex < gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature.count ()) {
+      f = gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature (classIndex COMMA_HERE) ;
+    }
+    if (NULL == f) {
+       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
+       while ((NULL == f) && (NULL != p)) {
+         if (p->mSlotID < gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature.count ()) {
+           f = gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature (p->mSlotID COMMA_HERE) ;
+         }
+         p = p->mSuperclassDescriptor ;
+       }
+       gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+    }
+    if (NULL == f) {
+      fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
+    }else{
+      result = f (inObject, in_inTestedInstruction, inCompiler COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_bool extensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature (const cPtr_semanticInstructionForGeneration * /* inObject */,
+                                                                                                       const GALGAS_semanticInstructionForGeneration /* constinArgument_inTestedInstruction */,
+                                                                                                       C_Compiler * /* inCompiler */
+                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_bool result_outOk ; // Returned variable
+  result_outOk = GALGAS_bool (true) ;
+//---
+  return result_outOk ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature (void) {
+  enterExtensionGetter_compareInstructionSyntaxSignature (kTypeDescriptor_GALGAS_semanticInstructionForGeneration.mSlotID,
+                                                          extensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void freeExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature (void) {
+  gExtensionGetterTable_semanticInstructionForGeneration_compareInstructionSyntaxSignature.free () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature (defineExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature,
+                                                                                               freeExtensionGetter_semanticInstructionForGeneration_compareInstructionSyntaxSignature) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
 //   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 

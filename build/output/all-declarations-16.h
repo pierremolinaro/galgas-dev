@@ -5679,4 +5679,17 @@ void routine_projectCreation (const class GALGAS_string constinArgument0,
                               class C_Compiler * inCompiler
                               COMMA_LOCATION_ARGS) ;
 
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                 Routine 'checkAssignmentTypeWithImplicitGetterCall'                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_checkAssignmentTypeWithImplicitGetterCall (const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
+                                                        const class GALGAS_unifiedTypeMap_2D_proxy constinArgument1,
+                                                        const class GALGAS_location constinArgument2,
+                                                        class GALGAS_semanticExpressionForGeneration & ioArgument3,
+                                                        class C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) ;
+
 #endif

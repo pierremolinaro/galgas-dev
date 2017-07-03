@@ -81,9 +81,9 @@ override method @enumDeclarationAST enterDeclarationInGraph
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 #--- There is a circular reference if all constant names current type in associated values
   var circularReference = true
-  for () in mConstantList do
+  for () in mConstantList while circularReference do
     var namesCurrentType = false
-    for () in mAssociatedValueDefinitionList do
+    for () in mAssociatedValueDefinitionList while not namesCurrentType do
       let propertyKey = @lstring.new {!"@" + mValue0 ![mValue0 location]}
       if propertyKey.string == key.string then
         namesCurrentType = true
@@ -93,12 +93,14 @@ override method @enumDeclarationAST enterDeclarationInGraph
       circularReference = false
     end
   end
-#--- Enter dependances, and only circular reference
-  for () in mConstantList do
-    for () in mAssociatedValueDefinitionList do
-      let propertyKey = @lstring.new {!"@" + mValue0 ![mValue0 location]}
-      if (propertyKey.string != key.string) || circularReference then
-        [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
+#--- Enter dependances, and only when there is circular reference
+  if circularReference then
+    for () in mConstantList do
+      for () in mAssociatedValueDefinitionList do
+        let propertyKey = @lstring.new {!"@" + mValue0 ![mValue0 location]}
+        if (propertyKey.string != key.string) || circularReference then
+          [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
+        end
       end
     end
   end
