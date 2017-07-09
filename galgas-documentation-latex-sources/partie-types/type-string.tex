@@ -955,7 +955,7 @@ Retourne la sous-chaîne constituée des \ggs!inLength! derniers caractères du 
 getter length -> @uint
 \end{galgasbox}
 
-Retourne le nombre de caractères du récepteur.
+Retourne le nombre de caractères UTF-32 du récepteur. Si le récepteur n'est pas une chaîne ASCII, ce getter ne donne pas le nombre d'octets de sa représentation en UTF-8~: pour cela utilser le \refGetterPage{string}{utf8Length}.
 
 
 
@@ -1444,6 +1444,30 @@ getter utf32Representation -> @string
 
 
 
+
+
+
+
+
+
+
+
+\subsectionGetter{utf8Length}{string}
+
+\begin{galgasbox}
+getter utf8Length -> @uint
+\end{galgasbox}
+
+Retourne le nombre d'octets de la représentation UTF-8 de la valeur du récepteur. Si le récepteur n'est pas une chaîne ASCII, ce nombre diffère de la valeur retournée par le \refGetterPage{string}{length}~:
+
+\begin{galgas}
+ var s1 = "Toto"
+ var nUTF32 = [s length] # 4
+ var nUTF8  = [s utf8Length] # 4
+ s1 = "Tâche"
+ nUTF32 = [s length] # 5
+ nUTF8  = [s utf8Length] # 6
+\end{galgas}
 
 
 
