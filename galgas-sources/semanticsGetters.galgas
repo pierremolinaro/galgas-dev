@@ -518,6 +518,13 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
+    !"utf8Length"
+    !returnedTypeName:"uint"
+    !hasCompilerArgument:false
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
     !"utf32Representation"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
