@@ -317,7 +317,7 @@ override method @classDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !@classMethodMap.emptyMap
     !@enumerationDescriptorList.emptyList
-    !0
+    !.none
     !@functionSignature.emptyList
     !{}
     !{}

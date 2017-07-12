@@ -267,7 +267,7 @@ override method @listDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !{}
     !enumerationDescriptor
-    !doNotGenererateObjectCompare () | plusEqualOperatorWithExpression () | infixAddOperator ()
+    !.doNotGenererateObjectCompare | .plusEqualOperatorWithExpression | .infixAddOperator
     !constructorAttributeTypeList
     !{}
     !{}

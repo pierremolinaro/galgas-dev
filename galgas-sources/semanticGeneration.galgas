@@ -784,7 +784,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@instanceMethodMap INSTANCE_METHOD_MAP
     ?@classMethodMap CLASS_METHOD_MAP
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
-    ?@uint SUPPORTED_OPERATORS
+    ?@operators SUPPORTED_OPERATORS
     ?@functionSignature ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@unifiedTypeMap-proxy ENUMERATED_OBJECT_TYPE
 
@@ -792,7 +792,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@unifiedTypeMap-proxy SUPER_TYPE_INDEX
-    ?@uint SUPPORTED_OPERATORS
+    ?@operators SUPPORTED_OPERATORS
 
 #---------- Extern Type
   template externTypeHeader1 "GALGAS_extern_type.h1.galgasTemplate"

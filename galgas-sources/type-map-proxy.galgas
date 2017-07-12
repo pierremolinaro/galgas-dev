@@ -200,7 +200,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !classMethodMap
     !@enumerationDescriptorList.emptyList
-    !doNotGenererateObjectCompare ()
+    !.doNotGenererateObjectCompare
     !@functionSignature.emptyList
     !{}
     !{}

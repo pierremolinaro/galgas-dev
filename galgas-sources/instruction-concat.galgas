@@ -179,7 +179,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     ]
   end
 #--- Check target variable type support '+= exp' operator
-  if ([targetType mHandledOperatorFlags] & plusEqualOperatorWithExpression ()) == 0 then
+  if not [[targetType mHandledOperatorFlags] plusEqualOperatorWithExpression] then
     error mInstructionLocation
     :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '+=' operator"
   end
@@ -230,7 +230,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
     ]
   end
 #--- Check target variable type support '-= exp' operator
-  if ([targetType mHandledOperatorFlags] & minusEqualOperatorWithExpression ()) == 0 then
+  if not [[targetType mHandledOperatorFlags] minusEqualOperatorWithExpression] then
     error mInstructionLocation
     :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '-=' operator"
   end
@@ -281,7 +281,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
     ]
   end
 #--- Check target variable type support '*= exp' operator
-  if ([targetType mHandledOperatorFlags] & mulEqualOperatorWithExpression ()) == 0 then
+  if [[targetType mHandledOperatorFlags] mulEqualOperatorWithExpression] then
     error mInstructionLocation
     :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '*=' operator"
   end
@@ -332,7 +332,7 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
     ]
   end
 #--- Check target variable type support '/= exp' operator
-  if ([targetType mHandledOperatorFlags] & divEqualOperatorWithExpression ()) == 0 then
+  if [[targetType mHandledOperatorFlags] divEqualOperatorWithExpression] then
     error mInstructionLocation
     :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '/=' operator"
   end
@@ -470,7 +470,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
-  if ([mTargetType mHandledOperatorFlags] & plusEqualOperatorWithFieldListNeedsCompilerArg ()) != 0 then
+  if [[mTargetType mHandledOperatorFlags] plusEqualOperatorWithFieldListNeedsCompilerArg] then
     ioGeneratedCode  += ", " + compilerCppName ()
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   end

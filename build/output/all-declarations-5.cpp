@@ -3077,6 +3077,783 @@ GALGAS_string extensionGetter_kind (const GALGAS_typeKindEnum & inObject,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_operators::GALGAS_operators (void) :
+mFlags (0),
+mIsValid (false) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators::GALGAS_operators (const uint64_t inFlags) :
+mFlags (inFlags),
+mIsValid (true) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_none (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (0) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_all (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (0x7FFFFFFF) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_infixAddOperator (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 0) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_infixSubOperator (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 1) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_infixMulOperator (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 2) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_infixDivOperator (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 3) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_infixModOperator (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 4) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_infixShiftOperator (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 5) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_prefixPlusOperator (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 6) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_prefixMinusOperator (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 7) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_prefixTildeOperator (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 8) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_incDecOperator (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 9) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_infixAndOperator (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 10) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_infixOrOperator (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 11) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_infixXorOperator (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 12) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_prefixNotOperator (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 13) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_isComparable (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 14) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_plusEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 15) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_minusEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 16) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_mulEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 17) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_divEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 18) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_infixAddOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 19) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_infixSubOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 20) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_infixMulOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 21) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_infixDivOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 22) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_prefixMinusOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 23) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_incDecOperatorNoOVF (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 24) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_supportWithAccessor (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 25) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_plusEqualOperatorWithFieldListNeedsCompilerArg (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 26) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_generateEnumerationHelperMethods (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 27) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_doNotGenererateObjectCompare (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 28) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_generateDescriptionGetterUtilityMethod (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 29) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::constructor_generateCopyConstructorAndAssignmentOperator (UNUSED_LOCATION_ARGS) {
+  return GALGAS_operators (((uint64_t) 1) << 30) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators::~ GALGAS_operators (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_operators::objectCompare (const GALGAS_operators & inOperand) const {
+   typeComparisonResult result = kOperandNotValid ;
+   if (mIsValid && inOperand.mIsValid) {
+     result = kOperandEqual ;
+     if (mFlags < inOperand.mFlags) {
+       result = kFirstOperandLowerThanSecond ;
+     }else if (mFlags > inOperand.mFlags) {
+       result = kFirstOperandGreaterThanSecond ;
+     }
+   }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_operators::isValid (void) const {
+  return mIsValid ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_operators::drop (void) {
+  mIsValid = false ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::operator_or (const GALGAS_operators & inOperand
+                                                COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_operators result ;
+  if (mIsValid && inOperand.mIsValid) {
+    result = GALGAS_operators (mFlags | inOperand.mFlags) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::operator_and (const GALGAS_operators & inOperand
+                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_operators result ;
+  if (mIsValid && inOperand.mIsValid) {
+    result = GALGAS_operators (mFlags & inOperand.mFlags) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::operator_xor (const GALGAS_operators & inOperand
+                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_operators result ;
+  if (mIsValid && inOperand.mIsValid) {
+    result = GALGAS_operators (mFlags ^ inOperand.mFlags) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::substract_operation (const GALGAS_operators & inOperand,
+                                                        C_Compiler * /* inCompiler */
+                                                        COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_operators result ;
+  if (mIsValid && inOperand.mIsValid) {
+    result = GALGAS_operators (mFlags & ~ inOperand.mFlags) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::operator_tilde (UNUSED_LOCATION_ARGS) const {
+  GALGAS_operators result ;
+  if (mIsValid) {
+    result = GALGAS_operators (~ mFlags) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_operators::description (C_String & ioString,
+                                    const int32_t /* inIndentation */) const {
+  ioString << "<boolset @operators:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    if ((mFlags & ((uint64_t) 1) << 0) != 0) {
+      ioString << " infixAddOperator" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 1) != 0) {
+      ioString << " infixSubOperator" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 2) != 0) {
+      ioString << " infixMulOperator" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 3) != 0) {
+      ioString << " infixDivOperator" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 4) != 0) {
+      ioString << " infixModOperator" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 5) != 0) {
+      ioString << " infixShiftOperator" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 6) != 0) {
+      ioString << " prefixPlusOperator" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 7) != 0) {
+      ioString << " prefixMinusOperator" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 8) != 0) {
+      ioString << " prefixTildeOperator" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 9) != 0) {
+      ioString << " incDecOperator" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 10) != 0) {
+      ioString << " infixAndOperator" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 11) != 0) {
+      ioString << " infixOrOperator" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 12) != 0) {
+      ioString << " infixXorOperator" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 13) != 0) {
+      ioString << " prefixNotOperator" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 14) != 0) {
+      ioString << " isComparable" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 15) != 0) {
+      ioString << " plusEqualOperatorWithExpression" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 16) != 0) {
+      ioString << " minusEqualOperatorWithExpression" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 17) != 0) {
+      ioString << " mulEqualOperatorWithExpression" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 18) != 0) {
+      ioString << " divEqualOperatorWithExpression" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 19) != 0) {
+      ioString << " infixAddOperatorNoOVF" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 20) != 0) {
+      ioString << " infixSubOperatorNoOVF" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 21) != 0) {
+      ioString << " infixMulOperatorNoOVF" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 22) != 0) {
+      ioString << " infixDivOperatorNoOVF" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 23) != 0) {
+      ioString << " prefixMinusOperatorNoOVF" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 24) != 0) {
+      ioString << " incDecOperatorNoOVF" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 25) != 0) {
+      ioString << " supportWithAccessor" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 26) != 0) {
+      ioString << " plusEqualOperatorWithFieldListNeedsCompilerArg" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 27) != 0) {
+      ioString << " generateEnumerationHelperMethods" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 28) != 0) {
+      ioString << " doNotGenererateObjectCompare" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 29) != 0) {
+      ioString << " generateDescriptionGetterUtilityMethod" ;
+    }
+    if ((mFlags & ((uint64_t) 1) << 30) != 0) {
+      ioString << " generateCopyConstructorAndAssignmentOperator" ;
+    }
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_none (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool (mFlags == 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_all (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool (mFlags == 0x7FFFFFFF) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_infixAddOperator (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 0) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_infixSubOperator (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 1) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_infixMulOperator (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 2) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_infixDivOperator (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 3) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_infixModOperator (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 4) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_infixShiftOperator (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 5) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_prefixPlusOperator (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 6) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_prefixMinusOperator (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 7) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_prefixTildeOperator (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 8) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_incDecOperator (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 9) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_infixAndOperator (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 10) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_infixOrOperator (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 11) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_infixXorOperator (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 12) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_prefixNotOperator (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 13) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_isComparable (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 14) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_plusEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 15) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_minusEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 16) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_mulEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 17) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_divEqualOperatorWithExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 18) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_infixAddOperatorNoOVF (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 19) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_infixSubOperatorNoOVF (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 20) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_infixMulOperatorNoOVF (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 21) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_infixDivOperatorNoOVF (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 22) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_prefixMinusOperatorNoOVF (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 23) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_incDecOperatorNoOVF (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 24) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_supportWithAccessor (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 25) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_plusEqualOperatorWithFieldListNeedsCompilerArg (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 26) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_generateEnumerationHelperMethods (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 27) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_doNotGenererateObjectCompare (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 28) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_generateDescriptionGetterUtilityMethod (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 29) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_operators::getter_generateCopyConstructorAndAssignmentOperator (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (mIsValid) {
+    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << 30) != 0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                                   @operators type                                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_operators ("operators",
+                                  NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_operators::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_operators ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_operators::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_operators (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_operators GALGAS_operators::extractObject (const GALGAS_object & inObject,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_operators result ;
+  const GALGAS_operators * p = (const GALGAS_operators *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_operators *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("operators", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 cMapElement_attributeMap::cMapElement_attributeMap (const GALGAS_lstring & inKey,
                                                     const GALGAS_unifiedTypeMap_2D_proxy & in_mAttributeType
                                                     COMMA_LOCATION_ARGS) :
@@ -3783,7 +4560,7 @@ cMapElement_unifiedTypeMap::cMapElement_unifiedTypeMap (const GALGAS_lstring & i
                                                         const GALGAS_instanceMethodMap & in_mInstanceMethodMap,
                                                         const GALGAS_classMethodMap & in_mClassMethodMap,
                                                         const GALGAS_enumerationDescriptorList & in_mEnumerationDescriptor,
-                                                        const GALGAS_uint & in_mHandledOperatorFlags,
+                                                        const GALGAS_operators & in_mHandledOperatorFlags,
                                                         const GALGAS_functionSignature & in_mAddAssignOperatorArguments,
                                                         const GALGAS_constantIndexMap & in_mEnumConstantMap,
                                                         const GALGAS_enumConstantList & in_mEnumConstantList,
@@ -4094,7 +4871,7 @@ void GALGAS_unifiedTypeMap::setter_insertKey (GALGAS_lstring inKey,
                                               GALGAS_instanceMethodMap inArgument11,
                                               GALGAS_classMethodMap inArgument12,
                                               GALGAS_enumerationDescriptorList inArgument13,
-                                              GALGAS_uint inArgument14,
+                                              GALGAS_operators inArgument14,
                                               GALGAS_functionSignature inArgument15,
                                               GALGAS_constantIndexMap inArgument16,
                                               GALGAS_enumConstantList inArgument17,
@@ -4142,7 +4919,7 @@ void GALGAS_unifiedTypeMap::method_searchKey (GALGAS_lstring inKey,
                                               GALGAS_instanceMethodMap & outArgument11,
                                               GALGAS_classMethodMap & outArgument12,
                                               GALGAS_enumerationDescriptorList & outArgument13,
-                                              GALGAS_uint & outArgument14,
+                                              GALGAS_operators & outArgument14,
                                               GALGAS_functionSignature & outArgument15,
                                               GALGAS_constantIndexMap & outArgument16,
                                               GALGAS_enumConstantList & outArgument17,
@@ -4427,12 +5204,12 @@ GALGAS_enumerationDescriptorList GALGAS_unifiedTypeMap::getter_mEnumerationDescr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_unifiedTypeMap::getter_mHandledOperatorFlagsForKey (const GALGAS_string & inKey,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const {
+GALGAS_operators GALGAS_unifiedTypeMap::getter_mHandledOperatorFlagsForKey (const GALGAS_string & inKey,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) attributes ;
-  GALGAS_uint result ;
+  GALGAS_operators result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
     result = p->mProperty_mHandledOperatorFlags ;
@@ -4788,7 +5565,7 @@ void GALGAS_unifiedTypeMap::setter_setMEnumerationDescriptorForKey (GALGAS_enume
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_unifiedTypeMap::setter_setMHandledOperatorFlagsForKey (GALGAS_uint inAttributeValue,
+void GALGAS_unifiedTypeMap::setter_setMHandledOperatorFlagsForKey (GALGAS_operators inAttributeValue,
                                                                    GALGAS_string inKey,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) {
@@ -5080,7 +5857,7 @@ GALGAS_enumerationDescriptorList cEnumerator_unifiedTypeMap::current_mEnumeratio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint cEnumerator_unifiedTypeMap::current_mHandledOperatorFlags (LOCATION_ARGS) const {
+GALGAS_operators cEnumerator_unifiedTypeMap::current_mHandledOperatorFlags (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
   return p->mProperty_mHandledOperatorFlags ;
@@ -8150,7 +8927,7 @@ static void extensionMethod_predefinedTypeAST_getConstructorMap (const cPtr_pred
                                                                  GALGAS_constructorMap & outArgument_outConstructorMap,
                                                                  C_Compiler * /* inCompiler */
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outConstructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 436)) ;
+  outArgument_outConstructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 438)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -8226,7 +9003,7 @@ static void extensionMethod_predefinedTypeAST_getGetterMap (const cPtr_predefine
                                                             GALGAS_getterMap & outArgument_outGetterMap,
                                                             C_Compiler * /* inCompiler */
                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outGetterMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 444)) ;
+  outArgument_outGetterMap = GALGAS_getterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 446)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -8302,7 +9079,7 @@ static void extensionMethod_predefinedTypeAST_getSetterMap (const cPtr_predefine
                                                             GALGAS_setterMap & outArgument_outSetterMap,
                                                             C_Compiler * /* inCompiler */
                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outSetterMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 452)) ;
+  outArgument_outSetterMap = GALGAS_setterMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 454)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -8378,7 +9155,7 @@ static void extensionMethod_predefinedTypeAST_getInstanceMethodMap (const cPtr_p
                                                                     GALGAS_instanceMethodMap & outArgument_outInstanceMethodMap,
                                                                     C_Compiler * /* inCompiler */
                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 460)) ;
+  outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 462)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -8454,7 +9231,7 @@ static void extensionMethod_predefinedTypeAST_getClassMethodMap (const cPtr_pred
                                                                  GALGAS_classMethodMap & outArgument_outClassMethodMap,
                                                                  C_Compiler * /* inCompiler */
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outClassMethodMap = GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 468)) ;
+  outArgument_outClassMethodMap = GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 470)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -8491,10 +9268,10 @@ void enterExtensionGetter_getSupportedOperatorFlags (const int32_t inClassIndex,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_uint callExtensionGetter_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * inObject,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_uint result ;
+GALGAS_operators callExtensionGetter_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * inObject,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_operators result ;
 //--- Find Reader
   if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
@@ -8525,11 +9302,11 @@ GALGAS_uint callExtensionGetter_getSupportedOperatorFlags (const cPtr_predefined
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static GALGAS_uint extensionGetter_predefinedTypeAST_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * /* inObject */,
-                                                                                C_Compiler * /* inCompiler */
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_uint result_outFlags ; // Returned variable
-  result_outFlags = GALGAS_uint ((uint32_t) 0U) ;
+static GALGAS_operators extensionGetter_predefinedTypeAST_getSupportedOperatorFlags (const cPtr_predefinedTypeAST * /* inObject */,
+                                                                                     C_Compiler * /* inCompiler */
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_operators result_outFlags ; // Returned variable
+  result_outFlags = GALGAS_operators::constructor_none (SOURCE_FILE ("semanticsTypes.galgas", 476)) ;
 //---
   return result_outFlags ;
 }
@@ -8609,7 +9386,7 @@ static void extensionMethod_predefinedTypeAST_getAddAssignArgumentList (const cP
                                                                         GALGAS_functionSignature & outArgument_outAddAssignArgumentList,
                                                                         C_Compiler * /* inCompiler */
                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outAddAssignArgumentList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 483)) ;
+  outArgument_outAddAssignArgumentList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 484)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -8688,7 +9465,7 @@ static void extensionMethod_predefinedTypeAST_getEnumerationList (const cPtr_pre
                                                                   GALGAS_string & outArgument_outEnumeratedType,
                                                                   C_Compiler * /* inCompiler */
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outEnumerationList = GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 497)) ;
+  outArgument_outEnumerationList = GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 498)) ;
   outArgument_outEnumeratedType = GALGAS_string::makeEmptyString () ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14008,548 +14785,6 @@ GALGAS_extensionSetterMapForBuildingContext GALGAS_extensionSetterMapForBuilding
       result = *p ;
     }else{
       inCompiler->castError ("extensionSetterMapForBuildingContext", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cMapElement_extensionGetterMapForType::cMapElement_extensionGetterMapForType (const GALGAS_lstring & inKey,
-                                                                              const GALGAS_lstring & in_mResultTypeName,
-                                                                              const GALGAS_formalInputParameterListAST & in_mInputFormalParameterList
-                                                                              COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mResultTypeName (in_mResultTypeName),
-mProperty_mInputFormalParameterList (in_mInputFormalParameterList) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cMapElement_extensionGetterMapForType::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mResultTypeName.isValid () && mProperty_mInputFormalParameterList.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cMapElement * cMapElement_extensionGetterMapForType::copy (void) {
-  cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_extensionGetterMapForType (mProperty_lkey, mProperty_mResultTypeName, mProperty_mInputFormalParameterList COMMA_HERE)) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cMapElement_extensionGetterMapForType::description (C_String & ioString, const int32_t inIndentation) const {
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mResultTypeName" ":" ;
-  mProperty_mResultTypeName.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mInputFormalParameterList" ":" ;
-  mProperty_mInputFormalParameterList.description (ioString, inIndentation) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cMapElement_extensionGetterMapForType::compare (const cCollectionElement * inOperand) const {
-  cMapElement_extensionGetterMapForType * operand = (cMapElement_extensionGetterMapForType *) inOperand ;
-  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultTypeName.objectCompare (operand->mProperty_mResultTypeName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mInputFormalParameterList.objectCompare (operand->mProperty_mInputFormalParameterList) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForType::GALGAS_extensionGetterMapForType (void) :
-AC_GALGAS_map () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForType::GALGAS_extensionGetterMapForType (const GALGAS_extensionGetterMapForType & inSource) :
-AC_GALGAS_map (inSource) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForType & GALGAS_extensionGetterMapForType::operator = (const GALGAS_extensionGetterMapForType & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForType GALGAS_extensionGetterMapForType::constructor_emptyMap (LOCATION_ARGS) {
-  GALGAS_extensionGetterMapForType result ;
-  result.makeNewEmptyMap (THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForType GALGAS_extensionGetterMapForType::constructor_mapWithMapToOverride (const GALGAS_extensionGetterMapForType & inMapToOverride
-                                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_extensionGetterMapForType result ;
-  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForType GALGAS_extensionGetterMapForType::getter_overriddenMap (C_Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_extensionGetterMapForType result ;
-  getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_extensionGetterMapForType::addAssign_operation (const GALGAS_lstring & inKey,
-                                                            const GALGAS_lstring & inArgument0,
-                                                            const GALGAS_formalInputParameterListAST & inArgument1,
-                                                            C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) {
-  cMapElement_extensionGetterMapForType * p = NULL ;
-  macroMyNew (p, cMapElement_extensionGetterMapForType (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@extensionGetterMapForType insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_extensionGetterMapForType::setter_insertKey (GALGAS_lstring inKey,
-                                                         GALGAS_lstring inArgument0,
-                                                         GALGAS_formalInputParameterListAST inArgument1,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) {
-  cMapElement_extensionGetterMapForType * p = NULL ;
-  macroMyNew (p, cMapElement_extensionGetterMapForType (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' getter has been already declared in %L" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_extensionGetterMapForType::getter_mResultTypeNameForKey (const GALGAS_string & inKey,
-                                                                               C_Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_extensionGetterMapForType * p = (const cMapElement_extensionGetterMapForType *) attributes ;
-  GALGAS_lstring result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_extensionGetterMapForType) ;
-    result = p->mProperty_mResultTypeName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalInputParameterListAST GALGAS_extensionGetterMapForType::getter_mInputFormalParameterListForKey (const GALGAS_string & inKey,
-                                                                                                             C_Compiler * inCompiler
-                                                                                                             COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_extensionGetterMapForType * p = (const cMapElement_extensionGetterMapForType *) attributes ;
-  GALGAS_formalInputParameterListAST result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_extensionGetterMapForType) ;
-    result = p->mProperty_mInputFormalParameterList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_extensionGetterMapForType::setter_setMResultTypeNameForKey (GALGAS_lstring inAttributeValue,
-                                                                        GALGAS_string inKey,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_extensionGetterMapForType * p = (cMapElement_extensionGetterMapForType *) attributes ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_extensionGetterMapForType) ;
-    p->mProperty_mResultTypeName = inAttributeValue ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_extensionGetterMapForType::setter_setMInputFormalParameterListForKey (GALGAS_formalInputParameterListAST inAttributeValue,
-                                                                                  GALGAS_string inKey,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_extensionGetterMapForType * p = (cMapElement_extensionGetterMapForType *) attributes ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_extensionGetterMapForType) ;
-    p->mProperty_mInputFormalParameterList = inAttributeValue ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cMapElement_extensionGetterMapForType * GALGAS_extensionGetterMapForType::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
-                                                                                                             const GALGAS_string & inKey
-                                                                                                             COMMA_LOCATION_ARGS) {
-  cMapElement_extensionGetterMapForType * result = (cMapElement_extensionGetterMapForType *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_extensionGetterMapForType) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_extensionGetterMapForType::cEnumerator_extensionGetterMapForType (const GALGAS_extensionGetterMapForType & inEnumeratedObject,
-                                                                              const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForType_2D_element cEnumerator_extensionGetterMapForType::current (LOCATION_ARGS) const {
-  const cMapElement_extensionGetterMapForType * p = (const cMapElement_extensionGetterMapForType *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_extensionGetterMapForType) ;
-  return GALGAS_extensionGetterMapForType_2D_element (p->mProperty_lkey, p->mProperty_mResultTypeName, p->mProperty_mInputFormalParameterList) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cEnumerator_extensionGetterMapForType::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cEnumerator_extensionGetterMapForType::current_mResultTypeName (LOCATION_ARGS) const {
-  const cMapElement_extensionGetterMapForType * p = (const cMapElement_extensionGetterMapForType *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_extensionGetterMapForType) ;
-  return p->mProperty_mResultTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalInputParameterListAST cEnumerator_extensionGetterMapForType::current_mInputFormalParameterList (LOCATION_ARGS) const {
-  const cMapElement_extensionGetterMapForType * p = (const cMapElement_extensionGetterMapForType *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_extensionGetterMapForType) ;
-  return p->mProperty_mInputFormalParameterList ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                           @extensionGetterMapForType type                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionGetterMapForType ("extensionGetterMapForType",
-                                                  NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_extensionGetterMapForType::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionGetterMapForType ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_extensionGetterMapForType::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_extensionGetterMapForType (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForType GALGAS_extensionGetterMapForType::extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_extensionGetterMapForType result ;
-  const GALGAS_extensionGetterMapForType * p = (const GALGAS_extensionGetterMapForType *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionGetterMapForType *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("extensionGetterMapForType", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cMapElement_extensionGetterMapForBuildingContext::cMapElement_extensionGetterMapForBuildingContext (const GALGAS_lstring & inKey,
-                                                                                                    const GALGAS_extensionGetterMapForType & in_mExtensionGetterMapForType
-                                                                                                    COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE),
-mProperty_mExtensionGetterMapForType (in_mExtensionGetterMapForType) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cMapElement_extensionGetterMapForBuildingContext::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mExtensionGetterMapForType.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cMapElement * cMapElement_extensionGetterMapForBuildingContext::copy (void) {
-  cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_extensionGetterMapForBuildingContext (mProperty_lkey, mProperty_mExtensionGetterMapForType COMMA_HERE)) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cMapElement_extensionGetterMapForBuildingContext::description (C_String & ioString, const int32_t inIndentation) const {
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mExtensionGetterMapForType" ":" ;
-  mProperty_mExtensionGetterMapForType.description (ioString, inIndentation) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cMapElement_extensionGetterMapForBuildingContext::compare (const cCollectionElement * inOperand) const {
-  cMapElement_extensionGetterMapForBuildingContext * operand = (cMapElement_extensionGetterMapForBuildingContext *) inOperand ;
-  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mExtensionGetterMapForType.objectCompare (operand->mProperty_mExtensionGetterMapForType) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForBuildingContext::GALGAS_extensionGetterMapForBuildingContext (void) :
-AC_GALGAS_map () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForBuildingContext::GALGAS_extensionGetterMapForBuildingContext (const GALGAS_extensionGetterMapForBuildingContext & inSource) :
-AC_GALGAS_map (inSource) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForBuildingContext & GALGAS_extensionGetterMapForBuildingContext::operator = (const GALGAS_extensionGetterMapForBuildingContext & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForBuildingContext GALGAS_extensionGetterMapForBuildingContext::constructor_emptyMap (LOCATION_ARGS) {
-  GALGAS_extensionGetterMapForBuildingContext result ;
-  result.makeNewEmptyMap (THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForBuildingContext GALGAS_extensionGetterMapForBuildingContext::constructor_mapWithMapToOverride (const GALGAS_extensionGetterMapForBuildingContext & inMapToOverride
-                                                                                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_extensionGetterMapForBuildingContext result ;
-  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForBuildingContext GALGAS_extensionGetterMapForBuildingContext::getter_overriddenMap (C_Compiler * inCompiler
-                                                                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_extensionGetterMapForBuildingContext result ;
-  getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_extensionGetterMapForBuildingContext::addAssign_operation (const GALGAS_lstring & inKey,
-                                                                       const GALGAS_extensionGetterMapForType & inArgument0,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) {
-  cMapElement_extensionGetterMapForBuildingContext * p = NULL ;
-  macroMyNew (p, cMapElement_extensionGetterMapForBuildingContext (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@extensionGetterMapForBuildingContext insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_extensionGetterMapForBuildingContext::setter_insertKey (GALGAS_lstring inKey,
-                                                                    GALGAS_extensionGetterMapForType inArgument0,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) {
-  cMapElement_extensionGetterMapForBuildingContext * p = NULL ;
-  macroMyNew (p, cMapElement_extensionGetterMapForBuildingContext (inKey, inArgument0 COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "internal error" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const char * kSearchErrorMessage_extensionGetterMapForBuildingContext_searchKey = "internal error" ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_extensionGetterMapForBuildingContext::method_searchKey (GALGAS_lstring inKey,
-                                                                    GALGAS_extensionGetterMapForType & outArgument0,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) const {
-  const cMapElement_extensionGetterMapForBuildingContext * p = (const cMapElement_extensionGetterMapForBuildingContext *) performSearch (inKey,
-                                                                                                                                         inCompiler,
-                                                                                                                                         kSearchErrorMessage_extensionGetterMapForBuildingContext_searchKey
-                                                                                                                                         COMMA_THERE) ;
-  if (NULL == p) {
-    outArgument0.drop () ;
-  }else{
-    macroValidSharedObject (p, cMapElement_extensionGetterMapForBuildingContext) ;
-    outArgument0 = p->mProperty_mExtensionGetterMapForType ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForType GALGAS_extensionGetterMapForBuildingContext::getter_mExtensionGetterMapForTypeForKey (const GALGAS_string & inKey,
-                                                                                                                       C_Compiler * inCompiler
-                                                                                                                       COMMA_LOCATION_ARGS) const {
-  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_extensionGetterMapForBuildingContext * p = (const cMapElement_extensionGetterMapForBuildingContext *) attributes ;
-  GALGAS_extensionGetterMapForType result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_extensionGetterMapForBuildingContext) ;
-    result = p->mProperty_mExtensionGetterMapForType ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_extensionGetterMapForBuildingContext::setter_setMExtensionGetterMapForTypeForKey (GALGAS_extensionGetterMapForType inAttributeValue,
-                                                                                              GALGAS_string inKey,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_extensionGetterMapForBuildingContext * p = (cMapElement_extensionGetterMapForBuildingContext *) attributes ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_extensionGetterMapForBuildingContext) ;
-    p->mProperty_mExtensionGetterMapForType = inAttributeValue ;
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cMapElement_extensionGetterMapForBuildingContext * GALGAS_extensionGetterMapForBuildingContext::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
-                                                                                                                                   const GALGAS_string & inKey
-                                                                                                                                   COMMA_LOCATION_ARGS) {
-  cMapElement_extensionGetterMapForBuildingContext * result = (cMapElement_extensionGetterMapForBuildingContext *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_extensionGetterMapForBuildingContext) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_extensionGetterMapForBuildingContext::cEnumerator_extensionGetterMapForBuildingContext (const GALGAS_extensionGetterMapForBuildingContext & inEnumeratedObject,
-                                                                                                    const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForBuildingContext_2D_element cEnumerator_extensionGetterMapForBuildingContext::current (LOCATION_ARGS) const {
-  const cMapElement_extensionGetterMapForBuildingContext * p = (const cMapElement_extensionGetterMapForBuildingContext *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_extensionGetterMapForBuildingContext) ;
-  return GALGAS_extensionGetterMapForBuildingContext_2D_element (p->mProperty_lkey, p->mProperty_mExtensionGetterMapForType) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cEnumerator_extensionGetterMapForBuildingContext::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mProperty_lkey ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForType cEnumerator_extensionGetterMapForBuildingContext::current_mExtensionGetterMapForType (LOCATION_ARGS) const {
-  const cMapElement_extensionGetterMapForBuildingContext * p = (const cMapElement_extensionGetterMapForBuildingContext *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_extensionGetterMapForBuildingContext) ;
-  return p->mProperty_mExtensionGetterMapForType ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                     @extensionGetterMapForBuildingContext type                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_extensionGetterMapForBuildingContext ("extensionGetterMapForBuildingContext",
-                                                             NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_extensionGetterMapForBuildingContext::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_extensionGetterMapForBuildingContext ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_extensionGetterMapForBuildingContext::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_extensionGetterMapForBuildingContext (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_extensionGetterMapForBuildingContext GALGAS_extensionGetterMapForBuildingContext::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_extensionGetterMapForBuildingContext result ;
-  const GALGAS_extensionGetterMapForBuildingContext * p = (const GALGAS_extensionGetterMapForBuildingContext *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_extensionGetterMapForBuildingContext *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("extensionGetterMapForBuildingContext", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

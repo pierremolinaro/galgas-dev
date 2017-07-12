@@ -404,7 +404,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !@enumerationDescriptorList.emptyList
-    !doNotGenererateObjectCompare ()
+    !. doNotGenererateObjectCompare
     !@functionSignature.emptyList
     !{}
     !{}

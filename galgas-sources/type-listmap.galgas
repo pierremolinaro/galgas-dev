@@ -183,7 +183,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !enumeratorDescriptor
-    !doNotGenererateObjectCompare ()
+    !. doNotGenererateObjectCompare
     !addAssignOperatorDescription
     !{}
     !{}

@@ -201,7 +201,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !@enumerationDescriptorList.emptyList
-    !0
+    !.none
     !@functionSignature.emptyList # addAssignOperatorDescription
     !{}
     !{}

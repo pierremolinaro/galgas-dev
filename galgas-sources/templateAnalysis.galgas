@@ -269,7 +269,7 @@ override method @templateAndOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixAndOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixAndOperator]
     !"&"
     !mOperatorLocation
     !?rightExpression
@@ -309,7 +309,7 @@ override method @templateOrOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixOrOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixOrOperator]
     !"|"
     !mOperatorLocation
     !?rightExpression
@@ -349,7 +349,7 @@ override method @templateXorOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixXorOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixXorOperator]
     !"^"
     !mOperatorLocation
     !?rightExpression
@@ -501,7 +501,7 @@ override method @templateNotOperatorAST templateExpressionAnalysis
   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
-  if ([type mHandledOperatorFlags] & prefixNotOperator ()) == 0 then
+  if not [[type mHandledOperatorFlags] prefixNotOperator] then
     error mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the 'not' operator"
     :outExpression
@@ -532,7 +532,7 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
-  if ([type mHandledOperatorFlags] & prefixTildeOperator ()) == 0 then
+  if not [[type mHandledOperatorFlags] prefixTildeOperator] then
     error mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the '~' operator"
     :outExpression
@@ -751,7 +751,7 @@ override method @templateAddOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixAddOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixAddOperator]
     !"+"
     !mOperatorLocation
     !?rightExpression
@@ -793,7 +793,7 @@ override method @templateSubOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixSubOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixSubOperator]
     !"-"
     !mOperatorLocation
     !?rightExpression
@@ -835,7 +835,7 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixMulOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixMulOperator]
     !"*"
     !mOperatorLocation
     !?rightExpression
@@ -877,7 +877,7 @@ override method @templateDivideOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixDivOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixDivOperator]
     !"/"
     !mOperatorLocation
     !?rightExpression
@@ -919,7 +919,7 @@ override method @templateModuloOperationAST templateExpressionAnalysis
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixModOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixModOperator]
     !"mod"
     !mOperatorLocation
     !?rightExpression
@@ -952,7 +952,7 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
-  if ([type mHandledOperatorFlags] & prefixMinusOperator ()) == 0 then
+  if not [[type mHandledOperatorFlags] prefixMinusOperator] then
     error mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the prefix minus operator"
     :outExpression
@@ -1109,7 +1109,7 @@ override method @templateStrictInfTestAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
+  if not [[leftType mHandledOperatorFlags] isComparable] then
     error mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support the '<' operator"
     :outExpression
@@ -1152,7 +1152,7 @@ override method @templateInfOrEqualTestAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
+  if not [[leftType mHandledOperatorFlags] isComparable] then
     error mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support the '<=' operator"
     :outExpression
@@ -1195,7 +1195,7 @@ override method @templateStrictSupTestAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
+  if not [[leftType mHandledOperatorFlags] isComparable] then
     error mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support the '>' operator"
     :outExpression
@@ -1238,7 +1238,7 @@ override method @templateSupOrEqualTestAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
+  if not [[leftType mHandledOperatorFlags] isComparable] then
     error mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support the '>=' operator"
     :outExpression
@@ -1281,7 +1281,7 @@ override method @templateLeftShiftOperationAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if ([leftType mHandledOperatorFlags] & infixShiftOperator ()) == 0 then
+  if not [[leftType mHandledOperatorFlags] infixShiftOperator] then
     error mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
     :outExpression
@@ -1324,7 +1324,7 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if ([leftType mHandledOperatorFlags] & infixShiftOperator ()) == 0 then
+  if not [[leftType mHandledOperatorFlags] infixShiftOperator] then
     error mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
     :outExpression

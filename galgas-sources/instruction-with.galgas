@@ -239,7 +239,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- Object Array cpp name
   let objectArrayCppName = "objectArray_" + [mInstructionLocation locationIndex]
 #--- Check this type handle 'with' access
-  if ([receiverType mHandledOperatorFlags] & supportWithAccessor ()) == 0 then
+  if not [[receiverType mHandledOperatorFlags] supportWithAccessor] then
     error mEndOfReceiverExpression : "the '@"+ [receiverType key] + "' type cannot be used in a 'with' instruction"
   end  
 #--- Enter in a select block
@@ -332,15 +332,11 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     let attributeMap = [targetType mAttributeMap]
     [attributeMap searchKey
       !mValue
-#      ??@bool isPrivate
       ?targetType
     ]
-#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-#      error mValue : "this field is private" ;
-#    end if ;
   end
 #--- Check this type handle 'with' access
-  if ([targetType mHandledOperatorFlags] & supportWithAccessor ()) == 0 then
+  if not [[targetType mHandledOperatorFlags] supportWithAccessor] then
     error mEndOfReceiverExpression : "the '@"+ [targetType key] + "' type cannot be used in a 'with' instruction"
   end  
 #--- Check search method

@@ -698,123 +698,6 @@ class GALGAS_bool function_generateFewHeaderFiles (class C_Compiler * inCompiler
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                            Function 'prefixPlusOperator'                                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_prefixPlusOperator (class C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                              Function 'incDecOperator'                                              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_incDecOperator (class C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                     Function 'minusEqualOperatorWithExpression'                                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_minusEqualOperatorWithExpression (class C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      Function 'mulEqualOperatorWithExpression'                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_mulEqualOperatorWithExpression (class C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      Function 'divEqualOperatorWithExpression'                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_divEqualOperatorWithExpression (class C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                          Function 'infixAddOperatorNoOVF'                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_infixAddOperatorNoOVF (class C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                          Function 'infixSubOperatorNoOVF'                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_infixSubOperatorNoOVF (class C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                          Function 'infixMulOperatorNoOVF'                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_infixMulOperatorNoOVF (class C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                          Function 'infixDivOperatorNoOVF'                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_infixDivOperatorNoOVF (class C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                         Function 'prefixMinusOperatorNoOVF'                                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_prefixMinusOperatorNoOVF (class C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                           Function 'incDecOperatorNoOVF'                                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_incDecOperatorNoOVF (class C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                     Function 'generateEnumerationHelperMethods'                                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_generateEnumerationHelperMethods (class C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               Function 'generateCopyConstructorAndAssignmentOperator'                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-class GALGAS_uint function_generateCopyConstructorAndAssignmentOperator (class C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                      Routine 'enterConstructorWith2Arguments'                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -850,5 +733,59 @@ void routine_enterConstructorWith_33_Arguments (class GALGAS_constructorMap & io
                                                 const class GALGAS_bool constinArgument10,
                                                 class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     Routine 'enterBaseFinalGetterWithArgument'                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_enterBaseFinalGetterWithArgument (class GALGAS_getterMap & ioArgument0,
+                                               class GALGAS_unifiedTypeMap & ioArgument1,
+                                               const class GALGAS_string constinArgument2,
+                                               const class GALGAS_string constinArgument3,
+                                               const class GALGAS_string constinArgument4,
+                                               const class GALGAS_string constinArgument5,
+                                               const class GALGAS_bool constinArgument6,
+                                               class C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                    Routine 'enterBaseFinalGetterWith2Arguments'                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_enterBaseFinalGetterWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
+                                                    class GALGAS_unifiedTypeMap & ioArgument1,
+                                                    const class GALGAS_string constinArgument2,
+                                                    const class GALGAS_string constinArgument3,
+                                                    const class GALGAS_string constinArgument4,
+                                                    const class GALGAS_string constinArgument5,
+                                                    const class GALGAS_string constinArgument6,
+                                                    const class GALGAS_string constinArgument7,
+                                                    const class GALGAS_bool constinArgument8,
+                                                    class C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                    Routine 'enterBaseFinalGetterWith3Arguments'                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_enterBaseFinalGetterWith_33_Arguments (class GALGAS_getterMap & ioArgument0,
+                                                    class GALGAS_unifiedTypeMap & ioArgument1,
+                                                    const class GALGAS_string constinArgument2,
+                                                    const class GALGAS_string constinArgument3,
+                                                    const class GALGAS_string constinArgument4,
+                                                    const class GALGAS_string constinArgument5,
+                                                    const class GALGAS_string constinArgument6,
+                                                    const class GALGAS_string constinArgument7,
+                                                    const class GALGAS_string constinArgument8,
+                                                    const class GALGAS_string constinArgument9,
+                                                    const class GALGAS_bool constinArgument10,
+                                                    class C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
 #endif

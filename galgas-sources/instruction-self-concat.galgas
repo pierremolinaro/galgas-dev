@@ -214,7 +214,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
   end
 #--- Check target variable type support '+= exp' operator
-  if ([selfTypeProxy mHandledOperatorFlags] & plusEqualOperatorWithExpression ()) == 0 then
+  if not [[selfTypeProxy mHandledOperatorFlags] plusEqualOperatorWithExpression] then
     error mInstructionLocation
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '+=' operator"
   end
@@ -259,7 +259,7 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
   end
 #--- Check target variable type support '-= exp' operator
-  if ([selfTypeProxy mHandledOperatorFlags] & minusEqualOperatorWithExpression ()) == 0 then
+  if not [[selfTypeProxy mHandledOperatorFlags] minusEqualOperatorWithExpression] then
     error mInstructionLocation
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '-=' operator"
   end
@@ -304,7 +304,7 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
   end
 #--- Check target variable type support '*= exp' operator
-  if ([selfTypeProxy mHandledOperatorFlags] & mulEqualOperatorWithExpression ()) == 0 then
+  if [[selfTypeProxy mHandledOperatorFlags] mulEqualOperatorWithExpression] then
     error mInstructionLocation
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '*=' operator"
   end
@@ -349,7 +349,7 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
   end
 #--- Check target variable type support '/= exp' operator
-  if ([selfTypeProxy mHandledOperatorFlags] & divEqualOperatorWithExpression ()) == 0 then
+  if [[selfTypeProxy mHandledOperatorFlags] divEqualOperatorWithExpression] then
     error mInstructionLocation
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '/=' operator"
   end
