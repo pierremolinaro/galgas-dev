@@ -220,10 +220,10 @@ Pour une structure, comme on va le voir plus bas, le constructeur par défaut ap
 
 \subsubsection{Les constructeurs par défaut pour chaque type}
 
-Le \refTableau{constructeurParDefaut} précise par chaque type l'existence du constructeur par défaut.
+Le \refTableauPage{constructeurParDefaut} précise par chaque type l'existence du constructeur par défaut.
 
 
-\begin{table}[t]
+\begin{table}[t!]
   \centering
   \begin{tabular}{@{}lllllll@{}}
   \textbf{Type} & \textbf{Constructeur par défaut} \\
@@ -232,6 +232,7 @@ Le \refTableau{constructeurParDefaut} précise par chaque type l'existence du co
   \ggs+array @T+ & \emph{Pas de constructeur par défaut} \\
   \ggs+@bigint+ & Équivalent au constructeur \ggs+zero+, initialisation à \ggs!0G! \\
   \ggs+@bool+ & Initialisation à \ggs+false+ \\
+  \ggs+@boolset @T+ & Équivalent au constructeur \ggs+.none+ (\refSubsectionPage{constructeurBoolsetDefault}) \\
   \ggs+@char+ & Initialisation au caractère \texttt{NULL} : \ggs!'\0'! \\
   \ggs+class @T+ & Oui, si tous les attributs possèdent un constructeur par défaut \\
   \ggs+@data+ & Équivalent au constructeur \ggs+emptyData+ \\
