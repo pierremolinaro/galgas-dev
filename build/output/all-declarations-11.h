@@ -289,7 +289,7 @@ class GALGAS_boolsetTypeForGeneration : public GALGAS_semanticTypeForGeneration 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mSlotList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mFlagList (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -310,18 +310,18 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetTypeForGener
 
 class cPtr_boolsetTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attributes
-  public : GALGAS_lstringlist mProperty_mSlotList ;
+  public : GALGAS_lstringlist mProperty_mFlagList ;
 
 //--- Constructor
   public : cPtr_boolsetTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
-                                          const GALGAS_lstringlist & in_mSlotList
+                                          const GALGAS_lstringlist & in_mFlagList
                                           COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mSlotList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mFlagList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

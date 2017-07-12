@@ -4,7 +4,7 @@
 
 class @boolsetDeclarationAST : @semanticDeclarationAST {
   @lstring mBoolsetTypeName
-  @lstringlist mSlotList
+  @lstringlist mFlagList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -65,8 +65,8 @@ private func %once forbiddenKeysForBoolset -> @stringset outResult {
   outResult = {}
   outResult += !"description"
   outResult += !"object"
-  outResult += !"empty"
-  outResult += !"full"
+  outResult += !"none"
+  outResult += !"all"
 }
 
 #·······················································································································
@@ -79,7 +79,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
 {
 #--- Check unicity of slot names
   @stringset slotNameSet = {}
-  for (slotName) in mSlotList do
+  for (slotName) in mFlagList do
     if [forbiddenKeysForBoolset () hasKey !slotName.string] then
       @string m = "a slot cannot be named:"
       for s in forbiddenKeysForBoolset () do
@@ -97,23 +97,23 @@ override method @boolsetDeclarationAST enterInSemanticContext
 #--- Constructors and attribute map
   commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?@getterMap getterMap)
   @constructorMap constructorMap = {}
-  [!?constructorMap insertKey !["empty" nowhere] !{} !false !boolsetTypeIndex] 
-  [!?constructorMap insertKey !["full" nowhere] !{} !false !boolsetTypeIndex] 
+  [!?constructorMap insertKey !["none" nowhere] !{} !false !boolsetTypeIndex] 
+  [!?constructorMap insertKey !["all" nowhere] !{} !false !boolsetTypeIndex] 
   enterBaseFinalGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap 
-    !getterName:"empty"
+    !getterName:"none"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
   enterBaseFinalGetterWithoutArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap 
-    !getterName:"full"
+    !getterName:"all"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
-  for (slotName) in mSlotList do
+  for (slotName) in mFlagList do
     if not [constructorMap hasKey !slotName] then
       [!?constructorMap insertKey !slotName !{} !false !boolsetTypeIndex] 
       enterBaseFinalGetterWithoutArgument (
@@ -168,7 +168,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
     !{}
     !false # Do not generate header in separate file
     !.null # No type for enumerated element for "for" instruction
-    !"default" # Default constructor name
+    !"none" # Default constructor name
     !"boolset-" + [mBoolsetTypeName fileNameRepresentation]
     !.oneHeader
   ]
@@ -187,44 +187,19 @@ override method @boolsetDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
+#--- Check flags count
+  if [mFlagList length] > 64 then
+    let s = [mFlagList mValueAtIndex !64]
+    error s : "max flags count is 64 (here: " + [mFlagList length] + ")"
+  end
 #--- Useful entities graph
   let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (!mBoolsetTypeName)
   [!?ioUsefulEntitiesGraph addNode !boolsetNameForUsefulness !boolsetNameForUsefulness]
-#---
-#  if [mAttributeList length] == 0 then
-#    error mBoolsetTypeName: "a structure cannot be empty: it must have at least one field" 
-#  end
-#  @typedPropertyList typedAttributeList = {}
-#  @attributeIndexMap attributeMap = {}
-#  for () in mAttributeList do
-#    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
-#    [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
-#    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
-#    for () in mFeatureList do
-#      error mValue : "a struct attribute does not accept any feature"
-#    end
-#    let hasSetter = false
-#    let hasGetter = false
-#    typedAttributeList +=
-#      !t
-#      !mPropertyName
-#      !hasSetter
-#      !hasGetter
-#    if [forbiddenKeysForBoolset () hasKey !mPropertyName.string] then
-#      @string m = "an attribute cannot be named:"
-#      for s in forbiddenKeysForBoolset () do
-#        m+= " " + s
-#      end
-#      m += "; theses names are reserved"
-#      error mPropertyName: m
-#    end
-#    [!?attributeMap insertKey !mPropertyName !t]
-#  end
   ioSemanticDeclarationListForGeneration +=
     !"boolset " + mBoolsetTypeName
     !@boolsetTypeForGeneration.new {
       !.searchKey {!inSemanticContext.mTypeMap !mBoolsetTypeName}
-      !mSlotList
+      !mFlagList
     }
 }
 
@@ -233,7 +208,7 @@ override method @boolsetDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @boolsetTypeForGeneration : @semanticTypeForGeneration {
-  @lstringlist mSlotList
+  @lstringlist mFlagList
 }
 
 #·······················································································································
@@ -262,7 +237,7 @@ override method @boolsetTypeForGeneration appendDeclaration1
   outHeader = [filewrapper structGenerationTemplate.boolsetTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
-    !mSlotList
+    !mFlagList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -291,8 +266,8 @@ override method @boolsetTypeForGeneration appendSpecificImplementation
   outImplementation = [filewrapper structGenerationTemplate.boolsetTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
-    !mSlotList
-    !(1G << [mSlotList length]) - 1G
+    !mFlagList
+    !(1G << [mFlagList length]) - 1G
   ]
  }
 

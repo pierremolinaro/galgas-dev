@@ -6620,7 +6620,7 @@ typeComparisonResult cPtr_boolsetDeclarationAST::dynamicObjectCompare (const acP
     result = mProperty_mBoolsetTypeName.objectCompare (p->mProperty_mBoolsetTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mSlotList.objectCompare (p->mProperty_mSlotList) ;
+    result = mProperty_mFlagList.objectCompare (p->mProperty_mFlagList) ;
   }
   return result ;
 }
@@ -6670,11 +6670,11 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 
 GALGAS_boolsetDeclarationAST GALGAS_boolsetDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                             const GALGAS_lstring & inAttribute_mBoolsetTypeName,
-                                                                            const GALGAS_lstringlist & inAttribute_mSlotList
+                                                                            const GALGAS_lstringlist & inAttribute_mFlagList
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_boolsetDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mBoolsetTypeName.isValid () && inAttribute_mSlotList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_boolsetDeclarationAST (inAttribute_mIsPredefined, inAttribute_mBoolsetTypeName, inAttribute_mSlotList COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mBoolsetTypeName.isValid () && inAttribute_mFlagList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_boolsetDeclarationAST (inAttribute_mIsPredefined, inAttribute_mBoolsetTypeName, inAttribute_mFlagList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -6699,20 +6699,20 @@ GALGAS_lstring cPtr_boolsetDeclarationAST::getter_mBoolsetTypeName (UNUSED_LOCAT
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_boolsetDeclarationAST::getter_mSlotList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_boolsetDeclarationAST::getter_mFlagList (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
   if (NULL != mObjectPtr) {
     const cPtr_boolsetDeclarationAST * p = (const cPtr_boolsetDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_boolsetDeclarationAST) ;
-    result = p->mProperty_mSlotList ;
+    result = p->mProperty_mFlagList ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist cPtr_boolsetDeclarationAST::getter_mSlotList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mSlotList ;
+GALGAS_lstringlist cPtr_boolsetDeclarationAST::getter_mFlagList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mFlagList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6721,11 +6721,11 @@ GALGAS_lstringlist cPtr_boolsetDeclarationAST::getter_mSlotList (UNUSED_LOCATION
 
 cPtr_boolsetDeclarationAST::cPtr_boolsetDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                         const GALGAS_lstring & in_mBoolsetTypeName,
-                                                        const GALGAS_lstringlist & in_mSlotList
+                                                        const GALGAS_lstringlist & in_mFlagList
                                                         COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mProperty_mBoolsetTypeName (in_mBoolsetTypeName),
-mProperty_mSlotList (in_mSlotList) {
+mProperty_mFlagList (in_mFlagList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6741,7 +6741,7 @@ void cPtr_boolsetDeclarationAST::description (C_String & ioString,
   ioString << ", " ;
   mProperty_mBoolsetTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mSlotList.description (ioString, inIndentation+1) ;
+  mProperty_mFlagList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6749,7 +6749,7 @@ void cPtr_boolsetDeclarationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_boolsetDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_boolsetDeclarationAST (mProperty_mIsPredefined, mProperty_mBoolsetTypeName, mProperty_mSlotList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_boolsetDeclarationAST (mProperty_mIsPredefined, mProperty_mBoolsetTypeName, mProperty_mFlagList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -6809,7 +6809,7 @@ typeComparisonResult cPtr_boolsetTypeForGeneration::dynamicObjectCompare (const 
     result = mProperty_mTypeProxy.objectCompare (p->mProperty_mTypeProxy) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mSlotList.objectCompare (p->mProperty_mSlotList) ;
+    result = mProperty_mFlagList.objectCompare (p->mProperty_mFlagList) ;
   }
   return result ;
 }
@@ -6857,31 +6857,31 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_boolsetTypeForGeneration GALGAS_boolsetTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTypeProxy,
-                                                                                  const GALGAS_lstringlist & inAttribute_mSlotList
+                                                                                  const GALGAS_lstringlist & inAttribute_mFlagList
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_boolsetTypeForGeneration result ;
-  if (inAttribute_mTypeProxy.isValid () && inAttribute_mSlotList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_boolsetTypeForGeneration (inAttribute_mTypeProxy, inAttribute_mSlotList COMMA_THERE)) ;
+  if (inAttribute_mTypeProxy.isValid () && inAttribute_mFlagList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_boolsetTypeForGeneration (inAttribute_mTypeProxy, inAttribute_mFlagList COMMA_THERE)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_boolsetTypeForGeneration::getter_mSlotList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_boolsetTypeForGeneration::getter_mFlagList (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
   if (NULL != mObjectPtr) {
     const cPtr_boolsetTypeForGeneration * p = (const cPtr_boolsetTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_boolsetTypeForGeneration) ;
-    result = p->mProperty_mSlotList ;
+    result = p->mProperty_mFlagList ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist cPtr_boolsetTypeForGeneration::getter_mSlotList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mSlotList ;
+GALGAS_lstringlist cPtr_boolsetTypeForGeneration::getter_mFlagList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mFlagList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6889,10 +6889,10 @@ GALGAS_lstringlist cPtr_boolsetTypeForGeneration::getter_mSlotList (UNUSED_LOCAT
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_boolsetTypeForGeneration::cPtr_boolsetTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
-                                                              const GALGAS_lstringlist & in_mSlotList
+                                                              const GALGAS_lstringlist & in_mFlagList
                                                               COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mTypeProxy COMMA_THERE),
-mProperty_mSlotList (in_mSlotList) {
+mProperty_mFlagList (in_mFlagList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6906,7 +6906,7 @@ void cPtr_boolsetTypeForGeneration::description (C_String & ioString,
   ioString << "[@boolsetTypeForGeneration:" ;
   mProperty_mTypeProxy.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mSlotList.description (ioString, inIndentation+1) ;
+  mProperty_mFlagList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -6914,7 +6914,7 @@ void cPtr_boolsetTypeForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_boolsetTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_boolsetTypeForGeneration (mProperty_mTypeProxy, mProperty_mSlotList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_boolsetTypeForGeneration (mProperty_mTypeProxy, mProperty_mFlagList COMMA_THERE)) ;
   return ptr ;
 }
 

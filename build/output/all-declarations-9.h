@@ -1105,7 +1105,7 @@ class GALGAS_boolsetDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mBoolsetTypeName (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mSlotList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mFlagList (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -1127,12 +1127,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolsetDeclarationA
 class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mProperty_mBoolsetTypeName ;
-  public : GALGAS_lstringlist mProperty_mSlotList ;
+  public : GALGAS_lstringlist mProperty_mFlagList ;
 
 //--- Constructor
   public : cPtr_boolsetDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                        const GALGAS_lstring & in_mBoolsetTypeName,
-                                       const GALGAS_lstringlist & in_mSlotList
+                                       const GALGAS_lstringlist & in_mFlagList
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -1140,7 +1140,7 @@ class cPtr_boolsetDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mBoolsetTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mSlotList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mFlagList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
