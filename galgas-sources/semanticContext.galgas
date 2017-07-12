@@ -351,13 +351,6 @@ override getter @sortedListDeclarationAST keyRepresentation
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @structDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "struct @" + mStructTypeName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override getter @listDeclarationAST keyRepresentation
   ->@string outString {
   outString = "list @" + mListTypeName

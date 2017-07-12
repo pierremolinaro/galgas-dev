@@ -109,7 +109,7 @@ override method @sortedListDeclarationAST addAssociatedElement
     !""}
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @sortedListDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -307,7 +307,7 @@ list @sortDescriptorListForGeneration {
   @bool mAscendingOrder
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 class @sortedListTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-proxy mListElementTypeIndex
@@ -315,7 +315,7 @@ class @sortedListTypeForGeneration : @semanticTypeForGeneration {
   @sortDescriptorListForGeneration mSortDescriptorList
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 filewrapper sortedListGenerationTemplate in "../generation_templates/type_generation" {
 }{
@@ -331,7 +331,7 @@ filewrapper sortedListGenerationTemplate in "../generation_templates/type_genera
     ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @sortedListTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -357,7 +357,7 @@ override method @sortedListTypeForGeneration appendDeclaration1
   ]
  }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @sortedListTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap

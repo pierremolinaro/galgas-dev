@@ -196,7 +196,7 @@ override method @templateConstructorAST templateExpressionAnalysis
   @semanticExpressionListForGeneration constructorEffectiveParameterList
   if [mExpressionList length] != [constructorFormalArgumentTypeList length] then
     error mConstructorName
-    : "calling the '" + mConstructorName + "' constructor of '@" + mTypeName + "' requires "
+    : "calling the '" + mConstructorName + "' constructor of '@" + [constructorType key] + "' requires "
     + [[constructorFormalArgumentTypeList length] string] + " parameter(s), while this call has "
     + [[mExpressionList length] string] + " parameter(s)" 
     : constructorEffectiveParameterList

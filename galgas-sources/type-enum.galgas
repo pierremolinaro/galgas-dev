@@ -8,7 +8,7 @@ class @enumDeclarationAST : @semanticDeclarationAST {
   @lstring mDefaultConstantName
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 list @enumConstantList {
   @lstring mConstantName
@@ -282,14 +282,14 @@ list @enumConstantListForGeneration {
   @unifiedTypeMapProxyList mAssociatedValueTypeList
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 class @enumTypeForGeneration : @semanticTypeForGeneration {
   @enumConstantListForGeneration mConstantList
 }
 
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 filewrapper enumGenerationTemplate in "../generation_templates/type_generation" {
 }{
@@ -313,7 +313,7 @@ filewrapper enumGenerationTemplate in "../generation_templates/type_generation" 
     ?@bool HAS_ASSOCIATED_VALUES
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @enumTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -344,7 +344,7 @@ override method @enumTypeForGeneration appendDeclaration1
   ]
  }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @enumTypeForGeneration appendDeclaration2
   ?let @string unused inOutputDirectory
@@ -367,7 +367,7 @@ override method @enumTypeForGeneration appendDeclaration2
   ]
  }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @enumTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap

@@ -181,6 +181,9 @@ static const char * gSyntaxErrorMessage_galgasTemplateScanner_between = "the 'be
 //--- Syntax error message for terminal '$block$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_block = "the 'block' keyword" ;
 
+//--- Syntax error message for terminal '$boolset$' :
+static const char * gSyntaxErrorMessage_galgasTemplateScanner_boolset = "the 'boolset' keyword" ;
+
 //--- Syntax error message for terminal '$case$' :
 static const char * gSyntaxErrorMessage_galgasTemplateScanner_case = "the 'case' keyword" ;
 
@@ -534,7 +537,7 @@ static const char * gSyntaxErrorMessage_galgasTemplateScanner__26__2F_ = "the '&
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
-  static const char * syntaxErrorMessageArray [145] = {kEndOfSourceLexicalErrorMessage,
+  static const char * syntaxErrorMessageArray [146] = {kEndOfSourceLexicalErrorMessage,
     gSyntaxErrorMessage_galgasTemplateScanner_identifier,
     gSyntaxErrorMessage_galgasTemplateScanner__40_type,
     gSyntaxErrorMessage_galgasTemplateScanner_double_2E_xxx,
@@ -563,6 +566,7 @@ C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t i
     gSyntaxErrorMessage_galgasTemplateScanner_before,
     gSyntaxErrorMessage_galgasTemplateScanner_between,
     gSyntaxErrorMessage_galgasTemplateScanner_block,
+    gSyntaxErrorMessage_galgasTemplateScanner_boolset,
     gSyntaxErrorMessage_galgasTemplateScanner_case,
     gSyntaxErrorMessage_galgasTemplateScanner_cast,
     gSyntaxErrorMessage_galgasTemplateScanner_class,
@@ -1027,6 +1031,18 @@ static const utf32 kUnicodeString_galgasTemplateScanner_block [] = {
   TO_UNICODE ('o'),
   TO_UNICODE ('c'),
   TO_UNICODE ('k'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$boolset$'
+static const utf32 kUnicodeString_galgasTemplateScanner_boolset [] = {
+  TO_UNICODE ('b'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('t'),
   TO_UNICODE (0)
 } ;
 
@@ -1928,7 +1944,7 @@ int16_t C_Lexique_galgasTemplateScanner::search_into_galgasDelimitorsList (const
 //             Key words table 'galgasKeyWordList'                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int32_t ktable_size_galgasTemplateScanner_galgasKeyWordList = 87 ;
+static const int32_t ktable_size_galgasTemplateScanner_galgasKeyWordList = 88 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galgasKeyWordList [ktable_size_galgasTemplateScanner_galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_do, 2, C_Lexique_galgasTemplateScanner::kToken_do),
@@ -1999,6 +2015,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galg
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_syntax, 6, C_Lexique_galgasTemplateScanner::kToken_syntax),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_unused, 6, C_Lexique_galgasTemplateScanner::kToken_unused),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_between, 7, C_Lexique_galgasTemplateScanner::kToken_between),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_boolset, 7, C_Lexique_galgasTemplateScanner::kToken_boolset),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_default, 7, C_Lexique_galgasTemplateScanner::kToken_default),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_foreach, 7, C_Lexique_galgasTemplateScanner::kToken_foreach),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_grammar, 7, C_Lexique_galgasTemplateScanner::kToken_grammar),
@@ -2207,6 +2224,11 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
     case kToken_block:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("block") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken_boolset:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("boolset") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_case:
@@ -2818,7 +2840,7 @@ static const cTemplateDelimiter galgasTemplateScanner_kTemplateReplacementArray 
 //            Terminal Symbols as end of script in template mark                                                       *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [144] = {
+static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [145] = {
   false /* identifier */,
   false /* @type */,
   false /* double.xxx */,
@@ -2847,6 +2869,7 @@ static const bool galgasTemplateScanner_kEndOfScriptInTemplateArray [144] = {
   false /* before */,
   false /* between */,
   false /* block */,
+  false /* boolset */,
   false /* case */,
   false /* cast */,
   false /* class */,
@@ -3923,6 +3946,7 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("before") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("between") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("block") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("boolset") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("case") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("cast") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("class") COMMA_THERE) ;
@@ -4163,6 +4187,7 @@ static void getKeywordsForIdentifier_galgasTemplateScanner (const C_String & inI
     ioList.appendObject ("syntax") ;
     ioList.appendObject ("unused") ;
     ioList.appendObject ("between") ;
+    ioList.appendObject ("boolset") ;
     ioList.appendObject ("default") ;
     ioList.appendObject ("foreach") ;
     ioList.appendObject ("grammar") ;
@@ -4197,7 +4222,7 @@ __attribute__ ((unused)) (getKeywordLists_galgasTemplateScanner, getKeywordsForI
 //---------------------------------------------------------------------------------------------------------------------*
 
 uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [145] = {0,
+  static const uint32_t kTerminalSymbolStyles [146] = {0,
     0 /* galgasTemplateScanner_1_identifier */,
     10 /* galgasTemplateScanner_1__40_type */,
     7 /* galgasTemplateScanner_1_double_2E_xxx */,
@@ -4226,6 +4251,7 @@ uint32_t C_Lexique_galgasTemplateScanner::styleIndexForTerminal (const int32_t i
     1 /* galgasTemplateScanner_1_before */,
     1 /* galgasTemplateScanner_1_between */,
     1 /* galgasTemplateScanner_1_block */,
+    1 /* galgasTemplateScanner_1_boolset */,
     1 /* galgasTemplateScanner_1_case */,
     1 /* galgasTemplateScanner_1_cast */,
     1 /* galgasTemplateScanner_1_class */,
@@ -14812,69 +14838,6 @@ void callExtensionMethod_templateExpressionAnalysis (const cPtr_templateExpressi
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
       f (inObject, constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, out_outExpression, inCompiler COMMA_THERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                   Abstract extension method '@templateInstructionAST templateInstructionAnalysis'                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static TC_UniqueArray <extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis> gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void enterExtensionMethod_templateInstructionAnalysis (const int32_t inClassIndex,
-                                                       extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis inMethod) {
-  gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void freeExtensionMethod_templateInstructionAST_templateInstructionAnalysis (void) {
-  gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.free () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_templateInstructionAST_templateInstructionAnalysis (NULL,
-                                                                               freeExtensionMethod_templateInstructionAST_templateInstructionAnalysis) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void callExtensionMethod_templateInstructionAnalysis (const cPtr_templateInstructionAST * inObject,
-                                                      const GALGAS_lstring constin_inUsefulnessCallerEntityName,
-                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                      const GALGAS_templateAnalysisContext constin_inAnalysisContext,
-                                                      GALGAS_templateInstructionListForGeneration & io_ioInstructionList,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) {
-//--- Drop output arguments
-//--- Find method
-  if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_templateInstructionAST) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis f = NULL ;
-    if (classIndex < gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.count ()) {
-      f = gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-      while ((NULL == f) && (NULL != p)) {
-        if (p->mSlotID < gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.count ()) {
-          f = gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis (p->mSlotID COMMA_HERE) ;
-        }
-        p = p->mSuperclassDescriptor ;
-      }
-      gExtensionMethodTable_templateInstructionAST_templateInstructionAnalysis.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      f (inObject, constin_inUsefulnessCallerEntityName, io_ioUsefulEntitiesGraph, constin_inAnalysisContext, io_ioInstructionList, inCompiler COMMA_THERE) ;
     }
   }
 }

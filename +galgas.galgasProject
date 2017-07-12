@@ -66,6 +66,7 @@ project (3:3:5) -> "galgas" {
 
 #--- Type declaration
   "galgas-sources/type-array.galgas"
+  "galgas-sources/type-boolset.galgas"
   "galgas-sources/type-class.galgas"
   "galgas-sources/type-enum.galgas"
   "galgas-sources/type-extern.galgas"

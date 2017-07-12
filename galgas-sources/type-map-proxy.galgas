@@ -259,7 +259,7 @@ class @mapProxyTypeForGeneration : @semanticTypeForGeneration {
   @mapSearchMethodListAST mSearchMethodList
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 filewrapper mapProxyGenerationTemplate in "../generation_templates/type_generation" {
 }{
@@ -277,7 +277,7 @@ filewrapper mapProxyGenerationTemplate in "../generation_templates/type_generati
 }
 
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @mapProxyTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -303,7 +303,7 @@ override method @mapProxyTypeForGeneration appendDeclaration1
   ]
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @mapProxyTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap

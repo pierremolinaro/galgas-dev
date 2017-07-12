@@ -281,7 +281,7 @@ override method @listDeclarationAST enterInSemanticContext
   ]
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @listDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList
@@ -370,7 +370,7 @@ class @listTypeForGeneration : @semanticTypeForGeneration {
   @typedPropertyList mTypedAttributeList
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 filewrapper listGenerationTemplate in "../generation_templates/type_generation" {
 }{
@@ -386,7 +386,7 @@ filewrapper listGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedPropertyList ATTRIBUTE_LIST
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @listTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -413,7 +413,7 @@ override method @listTypeForGeneration appendDeclaration1
   ]
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @listTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap

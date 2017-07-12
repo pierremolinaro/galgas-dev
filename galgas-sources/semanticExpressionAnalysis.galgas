@@ -921,7 +921,7 @@ proc analyzeConstructorInvocation
   #--- Analysis arguments
     if [inConstuctorEffectiveParameterExpressions length] != [constructorFormalArgumentTypeList length] then
       error inConstructorName
-      : "calling the '" + inConstructorName + "' constructor of '@" + inTypeName + "' requires "
+      : "calling the '" + inConstructorName + "' constructor of '@" + [outConstructorType key] + "' requires "
       + [[constructorFormalArgumentTypeList length] string] + " parameter(s), while this call has "
       + [[inConstuctorEffectiveParameterExpressions length] string] + " parameter(s)"
     end
@@ -3586,7 +3586,7 @@ override method @collectionValueAST analyzeSemanticExpression
   if targetType == .null then
     error mTypeName : "Cannot infer type" : outExpression
   elsif not [targetType mSupportCollectionValue] then
-    error mTypeName : "the @" + mTypeName + " type does not support collection value" : outExpression
+    error mTypeName : "the @" + [targetType key] + " type does not support collection value" : outExpression
   else
     let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![targetType key] !mEndOfCollectionValue})
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]

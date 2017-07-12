@@ -56,6 +56,14 @@ override method @structDeclarationAST enterDeclarationInGraph
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
+#   KEY REPRESENTATION                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @structDeclarationAST keyRepresentation ->@string outString {
+  outString = "struct @" + mStructTypeName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
 #   SEMANTIC CONTEXT                                                                                                   *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -67,11 +75,11 @@ override method @structDeclarationAST enterInSemanticContext
 #--- Struct type index
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mStructTypeName ?let structTypeIndex]
 #--- Constructors and attribute map
-  var attributeMap =@attributeMap.emptyMap{}
-  var constructorMap =@constructorMap.emptyMap{}
-  var constructorAttributeTypeList =@functionSignature {}
-  var typedAttributeList =@typedPropertyList {}
-  var typesToIncludeInHeaderCompilation = @unifiedTypeMapProxyList.emptyList
+  @attributeMap attributeMap = {}
+  @constructorMap constructorMap = {}
+  @functionSignature constructorAttributeTypeList = {}
+  @typedPropertyList typedAttributeList = {}
+  @unifiedTypeMapProxyList typesToIncludeInHeaderCompilation = {}
   for () in mAttributeList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
@@ -81,7 +89,6 @@ override method @structDeclarationAST enterInSemanticContext
     typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
     [!?attributeMap insertKey
       !mPropertyName
-#      !mIsPrivate
       !attributeTypeIndex
     ]
   end
@@ -104,9 +111,9 @@ override method @structDeclarationAST enterInSemanticContext
     )
   end
 #--- Modifiers
-  var setterMap = @setterMap {}
+  @setterMap setterMap = {}
 #--- Instance methods
-  var instanceMethodMap = @instanceMethodMap {}
+  @instanceMethodMap instanceMethodMap = {}
 #--- Add Categories
   addExtensions (
     !inExtensionMethodMapForBuildingContext
@@ -172,13 +179,12 @@ override method @structDeclarationAST enterInSemanticContext
 #----------------------------------------------------------------------------------------------------------------------*
 
 private func %once forbiddenKeysForStruct -> @stringset outResult {
-  outResult = @stringset. emptySet
+  outResult = {}
   outResult += !"description"
   outResult += !"object"
 }
 
-
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @structDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
@@ -237,9 +243,9 @@ class @structTypeForGeneration : @semanticTypeForGeneration {
   @typedPropertyList mTypedAttributeList
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
-filewrapper structGenerationTemplate in "../generation_templates/type_generation" {
+filewrapper boolsetGenerationTemplate in "../generation_templates/type_generation" {
 }{
 }{
   template structTypeHeader1 "GALGAS_struct.h1.galgasTemplate"
@@ -255,7 +261,7 @@ filewrapper structGenerationTemplate in "../generation_templates/type_generation
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @structTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
@@ -265,7 +271,7 @@ override method @structTypeForGeneration appendDeclaration1
     [t addHeaderFileName1 !?ioInclusionSet]
   end
 
-  outHeader = [filewrapper structGenerationTemplate.structTypeHeader1
+  outHeader = [filewrapper boolsetGenerationTemplate.structTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
@@ -287,7 +293,7 @@ override method @structTypeForGeneration appendDeclaration1
   ]
  }
 
-#••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••*
+#·······················································································································
 
 override method @structTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -295,7 +301,7 @@ override method @structTypeForGeneration appendSpecificImplementation
   !@string outImplementation
 {
   [mTypeProxy addHeaderFileName !?ioInclusionSet]
-  outImplementation = [filewrapper structGenerationTemplate.structTypeSpecificImplementation
+  outImplementation = [filewrapper boolsetGenerationTemplate.structTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
@@ -304,4 +310,3 @@ override method @structTypeForGeneration appendSpecificImplementation
  }
 
 #----------------------------------------------------------------------------------------------------------------------*
-

@@ -5202,6 +5202,9 @@ static const char * gSyntaxErrorMessage_galgas_33_Scanner_between = "the 'betwee
 //--- Syntax error message for terminal '$block$' :
 static const char * gSyntaxErrorMessage_galgas_33_Scanner_block = "the 'block' keyword" ;
 
+//--- Syntax error message for terminal '$boolset$' :
+static const char * gSyntaxErrorMessage_galgas_33_Scanner_boolset = "the 'boolset' keyword" ;
+
 //--- Syntax error message for terminal '$cast$' :
 static const char * gSyntaxErrorMessage_galgas_33_Scanner_cast = "the 'cast' keyword" ;
 
@@ -5555,7 +5558,7 @@ static const char * gSyntaxErrorMessage_galgas_33_Scanner__26__2B__2B_ = "the '&
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgas_33_Scanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
-  static const char * syntaxErrorMessageArray [149] = {kEndOfSourceLexicalErrorMessage,
+  static const char * syntaxErrorMessageArray [150] = {kEndOfSourceLexicalErrorMessage,
     gSyntaxErrorMessage_galgas_33_Scanner_identifier,
     gSyntaxErrorMessage_galgas_33_Scanner_double_2E_xxx,
     gSyntaxErrorMessage_galgas_33_Scanner_uint_33__32_,
@@ -5588,6 +5591,7 @@ C_String C_Lexique_galgas_33_Scanner::getMessageForTerminal (const int16_t inTer
     gSyntaxErrorMessage_galgas_33_Scanner_before,
     gSyntaxErrorMessage_galgas_33_Scanner_between,
     gSyntaxErrorMessage_galgas_33_Scanner_block,
+    gSyntaxErrorMessage_galgas_33_Scanner_boolset,
     gSyntaxErrorMessage_galgas_33_Scanner_cast,
     gSyntaxErrorMessage_galgas_33_Scanner_case,
     gSyntaxErrorMessage_galgas_33_Scanner_class,
@@ -6054,6 +6058,18 @@ static const utf32 kUnicodeString_galgas_33_Scanner_block [] = {
   TO_UNICODE ('o'),
   TO_UNICODE ('c'),
   TO_UNICODE ('k'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$boolset$'
+static const utf32 kUnicodeString_galgas_33_Scanner_boolset [] = {
+  TO_UNICODE ('b'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('l'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('t'),
   TO_UNICODE (0)
 } ;
 
@@ -6919,7 +6935,7 @@ int16_t C_Lexique_galgas_33_Scanner::search_into_galgasDelimitorsList (const C_S
 //             Key words table 'galgasKeyWordList'                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int32_t ktable_size_galgas_33_Scanner_galgasKeyWordList = 83 ;
+static const int32_t ktable_size_galgas_33_Scanner_galgasKeyWordList = 84 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKeyWordList [ktable_size_galgas_33_Scanner_galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_as, 2, C_Lexique_galgas_33_Scanner::kToken_as),
@@ -6987,6 +7003,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_syntax, 6, C_Lexique_galgas_33_Scanner::kToken_syntax),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_unused, 6, C_Lexique_galgas_33_Scanner::kToken_unused),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_between, 7, C_Lexique_galgas_33_Scanner::kToken_between),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_boolset, 7, C_Lexique_galgas_33_Scanner::kToken_boolset),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_default, 7, C_Lexique_galgas_33_Scanner::kToken_default),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_grammar, 7, C_Lexique_galgas_33_Scanner::kToken_grammar),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_lexique, 7, C_Lexique_galgas_33_Scanner::kToken_lexique),
@@ -7220,6 +7237,11 @@ C_String C_Lexique_galgas_33_Scanner::getCurrentTokenString (const cToken * inTo
     case kToken_block:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("block") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken_boolset:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("boolset") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_cast:
@@ -8854,6 +8876,7 @@ GALGAS_stringlist C_Lexique_galgas_33_Scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("before") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("between") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("block") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("boolset") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("cast") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("case") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("class") COMMA_THERE) ;
@@ -9096,6 +9119,7 @@ static void getKeywordsForIdentifier_galgas_33_Scanner (const C_String & inIdent
     ioList.appendObject ("syntax") ;
     ioList.appendObject ("unused") ;
     ioList.appendObject ("between") ;
+    ioList.appendObject ("boolset") ;
     ioList.appendObject ("default") ;
     ioList.appendObject ("grammar") ;
     ioList.appendObject ("lexique") ;
@@ -9129,7 +9153,7 @@ __attribute__ ((unused)) (getKeywordLists_galgas_33_Scanner, getKeywordsForIdent
 //---------------------------------------------------------------------------------------------------------------------*
 
 uint32_t C_Lexique_galgas_33_Scanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [149] = {0,
+  static const uint32_t kTerminalSymbolStyles [150] = {0,
     0 /* galgas3Scanner_1_identifier */,
     8 /* galgas3Scanner_1_double_2E_xxx */,
     6 /* galgas3Scanner_1_uint_33__32_ */,
@@ -9162,6 +9186,7 @@ uint32_t C_Lexique_galgas_33_Scanner::styleIndexForTerminal (const int32_t inTer
     1 /* galgas3Scanner_1_before */,
     1 /* galgas3Scanner_1_between */,
     1 /* galgas3Scanner_1_block */,
+    1 /* galgas3Scanner_1_boolset */,
     1 /* galgas3Scanner_1_cast */,
     1 /* galgas3Scanner_1_case */,
     1 /* galgas3Scanner_1_class */,
