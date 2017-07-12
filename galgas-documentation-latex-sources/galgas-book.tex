@@ -44,9 +44,9 @@
 % http://www.tuteurs.ens.fr/logiciels/latex/xetex.html
 \RequirePackage{etex}
 \usepackage{fontspec}
-\setmainfont{Verdana}[Ligatures=TeX]
-\setsansfont{Courier}[Ligatures=NoCommon]
-\setmonofont{Menlo}[Ligatures=NoCommon]
+\setmainfont[Ligatures=TeX, Scale=1.22]{GillSans} % Verdana
+\setsansfont[Ligatures=NoCommon]{Courier}
+\setmonofont[Ligatures=NoCommon]{Menlo}
 \usepackage{polyglossia}
 \setdefaultlanguage{french}
 
@@ -151,6 +151,7 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 %\usepackage{array}
+\renewcommand{\arraystretch}{1.2}
 
 %  http://en.wikibooks.org/wiki/LaTeX/Colors
 \usepackage[dvipsnames, svgnames, table]{xcolor} % À placer avant \usepackage{listings}
@@ -605,6 +606,7 @@
   \input{partie-types/type-bigint.tex}
   \input{partie-types/type-binaryset.tex}
   \input{partie-types/type-bool.tex}
+  \input{partie-types/boolset-type.tex}
   \input{partie-types/type-char.tex}
   \input{partie-types/type-data.tex}
   \input{partie-types/type-double.tex}

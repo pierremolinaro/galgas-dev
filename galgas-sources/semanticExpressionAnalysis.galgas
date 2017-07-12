@@ -497,11 +497,6 @@ proc checkAssignmentTypeWithImplicitGetterCall
      : "target object type is '@" + [inTargetType key] + "' and cannot be assigned from an '@" + [inSourceType key]
      + "' object; this type have no '"
     + [inTargetType key] + "' getter without argument that returns a '@" + [inTargetType key] + "' object"
-#    error inErrorLocation
-#    : "left operand type of '" + inOperatorNameForErrorMessage + "' operator is '@" + [inTargetType key]
-#    + "', right operand type is '@" + [inSourceType key]
-#    + "', it should be either the same, either inherits from left operand type, either have a '"
-#    + [inTargetType key] + "' getter without argument that returns a '@" + [inTargetType key] + "' object"
   end
 }
 
@@ -1685,7 +1680,7 @@ override method @equalExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !true
+    !true # Always available
     !"=="
     !mOperatorLocation
     !?rightExpression
@@ -1740,7 +1735,7 @@ override method @notEqualExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !true
+    !true # Always available
     !"!="
     !mOperatorLocation
     !?rightExpression
@@ -1795,7 +1790,7 @@ override method @lowerOrEqualExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !true
+    ![[leftType mHandledOperatorFlags] isComparable]
     !"<="
     !mOperatorLocation
     !?rightExpression
@@ -1850,7 +1845,7 @@ override method @greaterOrEqualExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !true
+    ![[leftType mHandledOperatorFlags] isComparable]
     !">="
     !mOperatorLocation
     !?rightExpression
@@ -1905,7 +1900,7 @@ override method @strictGreaterExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !true
+    ![[leftType mHandledOperatorFlags] isComparable]
     !">"
     !mOperatorLocation
     !?rightExpression
@@ -1960,7 +1955,7 @@ override method @strictLowerExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !true
+    ![[leftType mHandledOperatorFlags] isComparable]
     !"<"
     !mOperatorLocation
     !?rightExpression
