@@ -1,0 +1,299 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @boolsetDeclarationAST : @semanticDeclarationAST {
+  @lstring mBoolsetTypeName
+  @lstringlist mSlotList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $boolset$
+    $@type$ ?let @lstring boolsetTypeName indexing structDefinition
+    ${$
+    @lstringlist slotList = {}
+    repeat
+      $identifier$ ?let slotName
+      slotList += !slotName
+    while
+      $,$
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@boolsetDeclarationAST.new {
+      !false # Is not predefined
+      !boolsetTypeName
+      !slotList
+    }
+  }
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @boolsetDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+{
+  let key = @lstring.new {!"@" + mBoolsetTypeName ![mBoolsetTypeName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !key !self]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   KEY REPRESENTATION                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @boolsetDeclarationAST keyRepresentation ->@string outString {
+  outString = "boolset @" + mBoolsetTypeName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC CONTEXT                                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
+private func %once forbiddenKeysForBoolset -> @stringset outResult {
+  outResult = {}
+  outResult += !"description"
+  outResult += !"object"
+  outResult += !"empty"
+  outResult += !"full"
+}
+
+#·······················································································································
+
+override method @boolsetDeclarationAST enterInSemanticContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+  ?!@semanticContext ioSemanticContext
+{
+#--- Check unicity of slot names
+  @stringset slotNameSet = {}
+  for (slotName) in mSlotList do
+    if [forbiddenKeysForBoolset () hasKey !slotName.string] then
+      @string m = "a slot cannot be named:"
+      for s in forbiddenKeysForBoolset () do
+        m += " " + s
+      end
+      m += "; theses names are reserved"
+      error slotName: m
+    elsif [slotNameSet hasKey !slotName] then
+      error slotName : "duplicated slot name"
+    end
+    slotNameSet += !slotName
+  end  
+#--- boolset type index
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mBoolsetTypeName ?let boolsetTypeIndex]
+#--- Constructors and attribute map
+  commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?@getterMap getterMap)
+  @constructorMap constructorMap = {}
+  [!?constructorMap insertKey !["empty" nowhere] !{} !false !boolsetTypeIndex] 
+  [!?constructorMap insertKey !["full" nowhere] !{} !false !boolsetTypeIndex] 
+  enterBaseFinalGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap 
+    !getterName:"empty"
+    !returnedTypeName:"bool"
+    !hasCompilerArgument:false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap 
+    !getterName:"full"
+    !returnedTypeName:"bool"
+    !hasCompilerArgument:false
+  )
+  for (slotName) in mSlotList do
+    if not [constructorMap hasKey !slotName] then
+      [!?constructorMap insertKey !slotName !{} !false !boolsetTypeIndex] 
+      enterBaseFinalGetterWithoutArgument (
+        !?getterMap
+        !?ioSemanticContext.mTypeMap 
+        !getterName:slotName.string
+        !returnedTypeName:"bool"
+        !hasCompilerArgument:false
+      )
+    end
+  end
+#--- Setters
+  @setterMap setterMap = {}
+#--- Instance methods
+  @instanceMethodMap instanceMethodMap = {}
+#--- Add Categories
+  addExtensions (
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
+    !?ioSemanticContext
+    !mBoolsetTypeName
+    !?getterMap
+    !?setterMap
+    !?instanceMethodMap
+  )
+#--- Operators
+  let operators = infixAndOperator () | infixOrOperator () | infixXorOperator () | prefixTildeOperator ()
+    | generateDescriptionGetterUtilityMethod () | isComparable () | infixSubOperator ()
+#--- Enter in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    !mBoolsetTypeName
+    !mIsPredefined
+    !true # Concrete Type
+    !@unifiedTypeMap-proxy.null
+    !@typeKindEnum.boolsetType
+    !false # Does not support collection value
+    !{}
+    !{}
+    !{}
+    !constructorMap
+    !getterMap
+    !setterMap
+    !instanceMethodMap
+    !{}
+    !{}
+    !operators
+    !{}
+    !{}
+    !{}
+    !{}
+    !{}
+    !false # Do not generate header in separate file
+    !.null # No type for enumerated element for "for" instruction
+    !"default" # Default constructor name
+    !"boolset-" + [mBoolsetTypeName fileNameRepresentation]
+    !.oneHeader
+  ]
+}
+
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @boolsetDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (!mBoolsetTypeName)
+  [!?ioUsefulEntitiesGraph addNode !boolsetNameForUsefulness !boolsetNameForUsefulness]
+#---
+#  if [mAttributeList length] == 0 then
+#    error mBoolsetTypeName: "a structure cannot be empty: it must have at least one field" 
+#  end
+#  @typedPropertyList typedAttributeList = {}
+#  @attributeIndexMap attributeMap = {}
+#  for () in mAttributeList do
+#    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
+#    [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
+#    let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+#    for () in mFeatureList do
+#      error mValue : "a struct attribute does not accept any feature"
+#    end
+#    let hasSetter = false
+#    let hasGetter = false
+#    typedAttributeList +=
+#      !t
+#      !mPropertyName
+#      !hasSetter
+#      !hasGetter
+#    if [forbiddenKeysForBoolset () hasKey !mPropertyName.string] then
+#      @string m = "an attribute cannot be named:"
+#      for s in forbiddenKeysForBoolset () do
+#        m+= " " + s
+#      end
+#      m += "; theses names are reserved"
+#      error mPropertyName: m
+#    end
+#    [!?attributeMap insertKey !mPropertyName !t]
+#  end
+  ioSemanticDeclarationListForGeneration +=
+    !"boolset " + mBoolsetTypeName
+    !@boolsetTypeForGeneration.new {
+      !.searchKey {!inSemanticContext.mTypeMap !mBoolsetTypeName}
+      !mSlotList
+    }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @boolsetTypeForGeneration : @semanticTypeForGeneration {
+  @lstringlist mSlotList
+}
+
+#·······················································································································
+
+filewrapper structGenerationTemplate in "../generation_templates/type_generation" {
+}{
+}{
+  template boolsetTypeHeader1 "GALGAS_boolset.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@lstringlist SLOT_LIST
+
+  template boolsetTypeSpecificImplementation "GALGAS_boolset.cpp.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@lstringlist SLOT_LIST
+    ?@bigint FULL_SET
+}
+
+#·······················································································································
+
+override method @boolsetTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+{
+  outHeader = [filewrapper structGenerationTemplate.boolsetTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mSlotList
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mGetterMap]
+    ![mTypeProxy mSetterMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ]
+ }
+
+#·······················································································································
+
+override method @boolsetTypeForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
+{
+  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  outImplementation = [filewrapper structGenerationTemplate.boolsetTypeSpecificImplementation
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mSlotList
+    !(1G << [mSlotList length]) - 1G
+  ]
+ }
+
+#----------------------------------------------------------------------------------------------------------------------*

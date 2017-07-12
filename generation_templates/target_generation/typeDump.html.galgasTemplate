@@ -80,6 +80,7 @@ end
     case uniqueMapType : %unique map%
     case mapProxyType : %map proxy%
     case listMapType : %list map%
+    case boolsetType : %boolset%
     case structType : %struct%
     case graphType : %graph%
     case arrayType : %array%

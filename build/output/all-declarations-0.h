@@ -102,6 +102,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
    kToken_before,
    kToken_between,
    kToken_block,
+   kToken_boolset,
    kToken_case,
    kToken_cast,
    kToken_class,
@@ -264,7 +265,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
   protected : virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public : virtual int16_t terminalVocabularyCount (void) const { return 144 ; }
+  public : virtual int16_t terminalVocabularyCount (void) const { return 145 ; }
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
@@ -8148,6 +8149,7 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
     kEnum_uniqueMapType,
     kEnum_mapProxyType,
     kEnum_listMapType,
+    kEnum_boolsetType,
     kEnum_structType,
     kEnum_graphType,
     kEnum_externType,
@@ -8180,6 +8182,8 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_typeKindEnum constructor_arrayType (LOCATION_ARGS) ;
+
+  public : static class GALGAS_typeKindEnum constructor_boolsetType (LOCATION_ARGS) ;
 
   public : static class GALGAS_typeKindEnum constructor_classType (const class GALGAS_bool & inOperand0
                                                                    COMMA_LOCATION_ARGS) ;
@@ -8223,6 +8227,8 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_isArrayType (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_isBoolsetType (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_isClassType (LOCATION_ARGS) const ;
 
@@ -10578,34 +10584,5 @@ class GALGAS_templateAnalysisContext : public AC_GALGAS_root {
 //---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateAnalysisContext ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                   Abstract extension method '@templateInstructionAST templateInstructionAnalysis'                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typedef void (*extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis) (const class cPtr_templateInstructionAST * inObject,
-                                                                                             const class GALGAS_lstring constinArgument0,
-                                                                                             class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                                                                             const class GALGAS_templateAnalysisContext constinArgument2,
-                                                                                             class GALGAS_templateInstructionListForGeneration & ioArgument3,
-                                                                                             class C_Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void enterExtensionMethod_templateInstructionAnalysis (const int32_t inClassIndex,
-                                                       extensionMethodSignature_templateInstructionAST_templateInstructionAnalysis inMethod) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void callExtensionMethod_templateInstructionAnalysis (const class cPtr_templateInstructionAST * inObject,
-                                                      const GALGAS_lstring constin_inUsefulnessCallerEntityName,
-                                                      GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
-                                                      const GALGAS_templateAnalysisContext constin_inAnalysisContext,
-                                                      GALGAS_templateInstructionListForGeneration & io_ioInstructionList,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
 
 #endif

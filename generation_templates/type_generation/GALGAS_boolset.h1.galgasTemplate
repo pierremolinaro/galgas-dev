@@ -1,0 +1,34 @@
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//%!["@" + TYPE_IDENTIFIER + " struct" stringByLeftAndRightPadding !117 !' ']%*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+//--------------------------------- Properties
+  private : uint64_t mFlags ;
+  private : bool mIsValid ;
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_%!TYPE_IDENTIFIER% constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
+//--------------------------------- Private constructor
+  private : GALGAS_%!TYPE_IDENTIFIER% (const uint64_t inFlags) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
+//--------------------------------- Native constructors
+  public : GALGAS_%!TYPE_IDENTIFIER% (%?^
+for () in SLOT_LIST
+  do %const GALGAS_%!TYPE_IDENTIFIER% & in_%![mValue identifierRepresentation]
+  between %,\n%!^
+end%) ;
+

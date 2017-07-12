@@ -212,6 +212,7 @@ enum @typeKindEnum {
   case uniqueMapType 
   case mapProxyType 
   case listMapType 
+  case boolsetType 
   case structType 
   case graphType 
   case externType 
@@ -232,6 +233,7 @@ getter @typeKindEnum kind -> @string outResult {
     case mapProxyType : outResult = "map proxy"
     case listMapType : outResult = "list map"
     case structType : outResult = "struct"
+    case boolsetType : outResult = "boolset"
     case graphType : outResult = "graph"
     case predefinedType : outResult = "predefined"
     case arrayType : outResult = "array"
