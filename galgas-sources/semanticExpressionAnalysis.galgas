@@ -1303,7 +1303,7 @@ let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixOrOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixOrOperator]
     !"|"
     !mOperatorLocation
     !?rightExpression
@@ -1357,7 +1357,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixOrOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixOrOperator]
     !"|"
     !mOperatorLocation
     !?rightExpression
@@ -1411,7 +1411,7 @@ override method @andExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixAndOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixAndOperator]
     !"&"
     !mOperatorLocation
     !?rightExpression
@@ -1465,7 +1465,7 @@ override method @andShortExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixAndOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixAndOperator]
     !"&"
     !mOperatorLocation
     !?rightExpression
@@ -1519,7 +1519,7 @@ override method @xorExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixXorOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixXorOperator]
     !"^"
     !mOperatorLocation
     !?rightExpression
@@ -2023,7 +2023,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
        !mOperatorLocation
        ![left mValue] >> [right mValue]
      }
-  elsif ([leftType mHandledOperatorFlags] & infixShiftOperator ()) == 0 then
+  elsif not [[leftType mHandledOperatorFlags] infixShiftOperator] then
     error mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
     :outExpression
@@ -2091,7 +2091,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
        !mOperatorLocation
        ![left mValue] << [right mValue]
      }
-  elsif ([leftType mHandledOperatorFlags] & infixShiftOperator ()) == 0 then
+  elsif not [[leftType mHandledOperatorFlags] infixShiftOperator] then
     error mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
     :outExpression
@@ -2152,7 +2152,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixAddOperatorNoOVF ()) != 0
+    ![[leftType mHandledOperatorFlags] infixAddOperatorNoOVF]
     !"&+"
     !mOperatorLocation
     !?rightExpression
@@ -2207,7 +2207,7 @@ override method @addExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixAddOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixAddOperator]
     !"+"
     !mOperatorLocation
     !?rightExpression
@@ -2263,7 +2263,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixSubOperatorNoOVF ()) != 0
+    ![[leftType mHandledOperatorFlags] infixSubOperatorNoOVF]
     !"&-"
     !mOperatorLocation
     !?rightExpression
@@ -2318,7 +2318,7 @@ override method @subExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixSubOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixSubOperator]
     !"-"
     !mOperatorLocation
     !?rightExpression
@@ -2373,7 +2373,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixMulOperatorNoOVF ()) != 0
+    ![[leftType mHandledOperatorFlags] infixMulOperatorNoOVF]
     !"&*"
     !mOperatorLocation
     !?rightExpression
@@ -2427,7 +2427,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixMulOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixMulOperator]
     !"*"
     !mOperatorLocation
     !?rightExpression
@@ -2481,7 +2481,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixDivOperatorNoOVF ()) != 0
+    ![[leftType mHandledOperatorFlags] infixDivOperatorNoOVF]
     !"&/"
     !mOperatorLocation
     !?rightExpression
@@ -2536,7 +2536,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixDivOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixDivOperator]
     !"/"
     !mOperatorLocation
     !?rightExpression
@@ -2590,7 +2590,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
-    !([leftType mHandledOperatorFlags] & infixModOperator ()) != 0
+    ![[leftType mHandledOperatorFlags] infixModOperator]
     !"mod"
     !mOperatorLocation
     !?rightExpression
@@ -2632,7 +2632,7 @@ override method @unaryMinusNoOverflowExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
-  if ([type mHandledOperatorFlags] & prefixMinusOperatorNoOVF ()) == 0 then
+  if not [[type mHandledOperatorFlags] prefixMinusOperatorNoOVF] then
     error mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the prefix minus operator"
     :outExpression
@@ -2681,7 +2681,7 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
       ![exp mLocation]
       !- [exp mValue]
     }
-  elsif ([type mHandledOperatorFlags] & prefixMinusOperator ()) == 0 then
+  elsif not [[type mHandledOperatorFlags] prefixMinusOperator] then
     error mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the prefix minus operator"
     :outExpression
@@ -2723,7 +2723,7 @@ override method @unaryPlusExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [outExpression mResultType]
-  if ([type mHandledOperatorFlags] & prefixPlusOperator ()) == 0 then
+  if not [[type mHandledOperatorFlags] prefixPlusOperator] then
     error mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the prefix '+' operator"
     :outExpression
@@ -2763,7 +2763,7 @@ override method @notExpressionAST analyzeSemanticExpression
     outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mOperatorLocation}
   elsif expression is == @falseExpressionForGeneration then
     outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mOperatorLocation}
-  elsif ([type mHandledOperatorFlags] & prefixNotOperator ()) == 0 then
+  elsif not [[type mHandledOperatorFlags] prefixNotOperator] then
     error mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the 'not' operator"
     :outExpression
@@ -2854,7 +2854,7 @@ override method @complementExpressionAST analyzeSemanticExpression
       ![exp mLocation]
       !~ [exp mValue]
     }
-  elsif ([type mHandledOperatorFlags] & prefixTildeOperator ()) == 0 then
+  elsif not [[type mHandledOperatorFlags] prefixTildeOperator] then
     error mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the '~' operator"
     :outExpression

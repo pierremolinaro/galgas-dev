@@ -6108,8 +6108,8 @@ class GALGAS_unifiedTypeMap_2D_proxy : public AC_GALGAS_uniqueMapProxy {
   public : VIRTUAL_IN_DEBUG class GALGAS_getterMap getter_mGetterMap (C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mHandledOperatorFlags (C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_operators getter_mHandledOperatorFlags (C_Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mHeaderFileName (C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const ;
@@ -8055,6 +8055,249 @@ class cEnumerator_syntaxComponentMap : public cGenericAbstractEnumerator {
 //---------------------------------------------------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxComponentMap ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                                  @operators struct                                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_operators : public AC_GALGAS_root {
+//--------------------------------- Properties
+  private : uint64_t mFlags ;
+  private : bool mIsValid ;
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_operators (void) ;
+
+//--------------------------------- Private constructor
+  private : GALGAS_operators (const uint64_t inFlags) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_operators (void) ;
+
+//--------------------------------- Native constructors
+  public : GALGAS_operators (const GALGAS_operators & in_infixAddOperator,
+                             const GALGAS_operators & in_infixSubOperator,
+                             const GALGAS_operators & in_infixMulOperator,
+                             const GALGAS_operators & in_infixDivOperator,
+                             const GALGAS_operators & in_infixModOperator,
+                             const GALGAS_operators & in_infixShiftOperator,
+                             const GALGAS_operators & in_prefixPlusOperator,
+                             const GALGAS_operators & in_prefixMinusOperator,
+                             const GALGAS_operators & in_prefixTildeOperator,
+                             const GALGAS_operators & in_incDecOperator,
+                             const GALGAS_operators & in_infixAndOperator,
+                             const GALGAS_operators & in_infixOrOperator,
+                             const GALGAS_operators & in_infixXorOperator,
+                             const GALGAS_operators & in_prefixNotOperator,
+                             const GALGAS_operators & in_isComparable,
+                             const GALGAS_operators & in_plusEqualOperatorWithExpression,
+                             const GALGAS_operators & in_minusEqualOperatorWithExpression,
+                             const GALGAS_operators & in_mulEqualOperatorWithExpression,
+                             const GALGAS_operators & in_divEqualOperatorWithExpression,
+                             const GALGAS_operators & in_infixAddOperatorNoOVF,
+                             const GALGAS_operators & in_infixSubOperatorNoOVF,
+                             const GALGAS_operators & in_infixMulOperatorNoOVF,
+                             const GALGAS_operators & in_infixDivOperatorNoOVF,
+                             const GALGAS_operators & in_prefixMinusOperatorNoOVF,
+                             const GALGAS_operators & in_incDecOperatorNoOVF,
+                             const GALGAS_operators & in_supportWithAccessor,
+                             const GALGAS_operators & in_plusEqualOperatorWithFieldListNeedsCompilerArg,
+                             const GALGAS_operators & in_generateEnumerationHelperMethods,
+                             const GALGAS_operators & in_doNotGenererateObjectCompare,
+                             const GALGAS_operators & in_generateDescriptionGetterUtilityMethod,
+                             const GALGAS_operators & in_generateCopyConstructorAndAssignmentOperator) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_operators extractObject (const GALGAS_object & inObject,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_operators constructor_all (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_divEqualOperatorWithExpression (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_doNotGenererateObjectCompare (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_generateCopyConstructorAndAssignmentOperator (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_generateDescriptionGetterUtilityMethod (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_generateEnumerationHelperMethods (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_incDecOperator (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_incDecOperatorNoOVF (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_infixAddOperator (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_infixAddOperatorNoOVF (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_infixAndOperator (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_infixDivOperator (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_infixDivOperatorNoOVF (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_infixModOperator (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_infixMulOperator (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_infixMulOperatorNoOVF (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_infixOrOperator (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_infixShiftOperator (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_infixSubOperator (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_infixSubOperatorNoOVF (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_infixXorOperator (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_isComparable (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_minusEqualOperatorWithExpression (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_mulEqualOperatorWithExpression (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_none (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_plusEqualOperatorWithExpression (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_plusEqualOperatorWithFieldListNeedsCompilerArg (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_prefixMinusOperator (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_prefixMinusOperatorNoOVF (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_prefixNotOperator (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_prefixPlusOperator (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_prefixTildeOperator (LOCATION_ARGS) ;
+
+  public : static class GALGAS_operators constructor_supportWithAccessor (LOCATION_ARGS) ;
+
+//--------------------------------- & operator
+  public : VIRTUAL_IN_DEBUG GALGAS_operators operator_and (const GALGAS_operators & inOperand
+                                                           COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- | operator
+  public : VIRTUAL_IN_DEBUG GALGAS_operators operator_or (const GALGAS_operators & inOperand
+                                                          COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ^ operator
+  public : VIRTUAL_IN_DEBUG GALGAS_operators operator_xor (const GALGAS_operators & inOperand
+                                                           COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- ~ operator
+  public : VIRTUAL_IN_DEBUG GALGAS_operators operator_tilde (LOCATION_ARGS) const ;
+
+//--------------------------------- - operator
+  public : VIRTUAL_IN_DEBUG GALGAS_operators substract_operation (const GALGAS_operators & inOperand,
+                                                                  C_Compiler * inCompiler
+                                                                  COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Implementation of getter 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_operators & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_all (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_divEqualOperatorWithExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_doNotGenererateObjectCompare (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_generateCopyConstructorAndAssignmentOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_generateDescriptionGetterUtilityMethod (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_generateEnumerationHelperMethods (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_incDecOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_incDecOperatorNoOVF (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_infixAddOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_infixAddOperatorNoOVF (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_infixAndOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_infixDivOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_infixDivOperatorNoOVF (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_infixModOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_infixMulOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_infixMulOperatorNoOVF (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_infixOrOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_infixShiftOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_infixSubOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_infixSubOperatorNoOVF (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_infixXorOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_isComparable (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_minusEqualOperatorWithExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mulEqualOperatorWithExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_none (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_plusEqualOperatorWithExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_plusEqualOperatorWithFieldListNeedsCompilerArg (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_prefixMinusOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_prefixMinusOperatorNoOVF (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_prefixNotOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_prefixPlusOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_prefixTildeOperator (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_supportWithAccessor (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_operators class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_operators ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -10074,7 +10317,7 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                    class GALGAS_instanceMethodMap constinArgument12,
                                                    class GALGAS_classMethodMap constinArgument13,
                                                    class GALGAS_enumerationDescriptorList constinArgument14,
-                                                   class GALGAS_uint constinArgument15,
+                                                   class GALGAS_operators constinArgument15,
                                                    class GALGAS_functionSignature constinArgument16,
                                                    class GALGAS_constantIndexMap constinArgument17,
                                                    class GALGAS_enumConstantList constinArgument18,
@@ -10148,7 +10391,7 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void setter_setMHandledOperatorFlagsForKey (class GALGAS_uint constinArgument0,
+  public : VIRTUAL_IN_DEBUG void setter_setMHandledOperatorFlagsForKey (class GALGAS_operators constinArgument0,
                                                                         class GALGAS_string constinArgument1,
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
@@ -10230,7 +10473,7 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                    class GALGAS_instanceMethodMap & outArgument12,
                                                    class GALGAS_classMethodMap & outArgument13,
                                                    class GALGAS_enumerationDescriptorList & outArgument14,
-                                                   class GALGAS_uint & outArgument15,
+                                                   class GALGAS_operators & outArgument15,
                                                    class GALGAS_functionSignature & outArgument16,
                                                    class GALGAS_constantIndexMap & outArgument17,
                                                    class GALGAS_enumConstantList & outArgument18,
@@ -10295,9 +10538,9 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mHandledOperatorFlagsForKey (const class GALGAS_string & constinOperand0,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_operators getter_mHandledOperatorFlagsForKey (const class GALGAS_string & constinOperand0,
+                                                                                       C_Compiler * inCompiler
+                                                                                       COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mHeaderFileNameForKey (const class GALGAS_string & constinOperand0,
                                                                               C_Compiler * inCompiler
@@ -10384,7 +10627,7 @@ class cEnumerator_unifiedTypeMap : public cGenericAbstractEnumerator {
   public : class GALGAS_instanceMethodMap current_mInstanceMethodMap (LOCATION_ARGS) const ;
   public : class GALGAS_classMethodMap current_mClassMethodMap (LOCATION_ARGS) const ;
   public : class GALGAS_enumerationDescriptorList current_mEnumerationDescriptor (LOCATION_ARGS) const ;
-  public : class GALGAS_uint current_mHandledOperatorFlags (LOCATION_ARGS) const ;
+  public : class GALGAS_operators current_mHandledOperatorFlags (LOCATION_ARGS) const ;
   public : class GALGAS_functionSignature current_mAddAssignOperatorArguments (LOCATION_ARGS) const ;
   public : class GALGAS_constantIndexMap current_mEnumConstantMap (LOCATION_ARGS) const ;
   public : class GALGAS_enumConstantList current_mEnumConstantList (LOCATION_ARGS) const ;

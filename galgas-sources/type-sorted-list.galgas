@@ -228,7 +228,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !@classMethodMap. emptyMap
     !enumerationDescriptor
-    !doNotGenererateObjectCompare () | plusEqualOperatorWithExpression ()
+    !.doNotGenererateObjectCompare | .plusEqualOperatorWithExpression
     !constructorAttributeTypeList
     !{}
     !{}

@@ -11,60 +11,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                     Routine 'enterBaseFinalGetterWithArgument'                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_enterBaseFinalGetterWithArgument (class GALGAS_getterMap & ioArgument0,
-                                               class GALGAS_unifiedTypeMap & ioArgument1,
-                                               const class GALGAS_string constinArgument2,
-                                               const class GALGAS_string constinArgument3,
-                                               const class GALGAS_string constinArgument4,
-                                               const class GALGAS_string constinArgument5,
-                                               const class GALGAS_bool constinArgument6,
-                                               class C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    Routine 'enterBaseFinalGetterWith2Arguments'                                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_enterBaseFinalGetterWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
-                                                    class GALGAS_unifiedTypeMap & ioArgument1,
-                                                    const class GALGAS_string constinArgument2,
-                                                    const class GALGAS_string constinArgument3,
-                                                    const class GALGAS_string constinArgument4,
-                                                    const class GALGAS_string constinArgument5,
-                                                    const class GALGAS_string constinArgument6,
-                                                    const class GALGAS_string constinArgument7,
-                                                    const class GALGAS_bool constinArgument8,
-                                                    class C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    Routine 'enterBaseFinalGetterWith3Arguments'                                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_enterBaseFinalGetterWith_33_Arguments (class GALGAS_getterMap & ioArgument0,
-                                                    class GALGAS_unifiedTypeMap & ioArgument1,
-                                                    const class GALGAS_string constinArgument2,
-                                                    const class GALGAS_string constinArgument3,
-                                                    const class GALGAS_string constinArgument4,
-                                                    const class GALGAS_string constinArgument5,
-                                                    const class GALGAS_string constinArgument6,
-                                                    const class GALGAS_string constinArgument7,
-                                                    const class GALGAS_string constinArgument8,
-                                                    const class GALGAS_string constinArgument9,
-                                                    const class GALGAS_bool constinArgument10,
-                                                    class C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                      Routine 'enterModifierWithInputArgument'                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -262,5 +208,54 @@ void routine_analyzeConstructorInvocation (const class GALGAS_lstring constinArg
                                            class GALGAS_bool & outArgument11,
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                  Function 'filewrapperNameForUsefulEntitiesGraph'                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_lstring function_filewrapperNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
+                                                                     class C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                              Function 'filewrapperTemplateNameForUsefulEntitiesGraph'                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_lstring function_filewrapperTemplateNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
+                                                                             const class GALGAS_lstring & constinArgument1,
+                                                                             class C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                    Function 'lexiqueNameForUsefulEntitiesGraph'                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_lstring function_lexiqueNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
+                                                                 class C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      Routine 'analyzeSemanticInstructionList'                                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void routine_analyzeSemanticInstructionList (const class GALGAS_lstring constinArgument0,
+                                             class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                             const class GALGAS_analysisContext constinArgument2,
+                                             const class GALGAS_localConstantList constinArgument3,
+                                             const class GALGAS_localInitializedVariableList constinArgument4,
+                                             const class GALGAS_semanticInstructionListAST constinArgument5,
+                                             const class GALGAS_location constinArgument6,
+                                             class GALGAS_variableMap & ioArgument7,
+                                             class GALGAS_semanticInstructionListForGeneration & outArgument8,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
 
 #endif

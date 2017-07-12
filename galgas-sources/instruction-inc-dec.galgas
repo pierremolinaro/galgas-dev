@@ -169,7 +169,7 @@ override method @incDecInstructionAST analyzeSemanticInstruction
     ]
   end
 #--- Check target type accepts incrementation
-  if ([targetType mHandledOperatorFlags] & incDecOperator ()) == 0 then
+  if not [[targetType mHandledOperatorFlags] incDecOperator] then
     error mInstructionLocation
     :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '++', '--' operators"
   end
@@ -204,7 +204,7 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
     ]
   end
 #--- Check target type accepts incrementation
-  if ([targetType mHandledOperatorFlags] & incDecOperator ()) == 0 then
+  if not [[targetType mHandledOperatorFlags] incDecOperator] then
     error mInstructionLocation
     :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '&++', '&--' operators"
   end
@@ -237,7 +237,7 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
   end
 #--- Check target type accepts incrementation
-  if ([selfTypeProxy mHandledOperatorFlags] & incDecOperator ()) == 0 then
+  if not [[selfTypeProxy mHandledOperatorFlags] incDecOperator] then
     error mInstructionLocation
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '&++' and  '&--' operators"
   end
@@ -270,7 +270,7 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
   end
 #--- Check target type accepts incrementation
-  if ([selfTypeProxy mHandledOperatorFlags] & incDecOperator ()) == 0 then
+  if not [[selfTypeProxy mHandledOperatorFlags] incDecOperator] then
     error mInstructionLocation
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '++' and  '--' operators"
   end

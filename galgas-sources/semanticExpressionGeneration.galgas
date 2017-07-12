@@ -1360,7 +1360,7 @@ override method @expressionListCollectionForGeneration generateCollectionElement
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
-  if ([inTargetType mHandledOperatorFlags] & plusEqualOperatorWithFieldListNeedsCompilerArg ()) != 0 then
+  if [[inTargetType mHandledOperatorFlags] plusEqualOperatorWithFieldListNeedsCompilerArg] then
     ioGeneratedCode  += ", " + compilerCppName ()
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   end

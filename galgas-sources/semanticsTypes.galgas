@@ -243,48 +243,50 @@ getter @typeKindEnum kind -> @string outResult {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  O P E R A T O R    F L A G S                                                                                        *
+#  O P E R A T O R    Boolset                                                                                          *
 #                                                                                                                      *
-# Theses masks are used for the mHandledOperatorFlags attribute of the                                                 *
-# @unifiedTypeMap map, for indicating the handled operators.                                                           *
+# This type is used for the mHandledOperatorFlags attribute of the @unifiedTypeMap map, for indicating the handled     *
+# operators.                                                                                                           *
 #----------------------------------------------------------------------------------------------------------------------*
 
-func %once infixAddOperator    -> @uint outMask { outMask = 1 << 0 }
-func %once infixSubOperator    -> @uint outMask { outMask = 1 << 1 }
-func %once infixMulOperator    -> @uint outMask { outMask = 1 << 2 }
-func %once infixDivOperator    -> @uint outMask { outMask = 1 << 3 }
-func %once infixModOperator    -> @uint outMask { outMask = 1 << 4 }
-func %once infixShiftOperator  -> @uint outMask { outMask = 1 << 5 }
-func %once prefixPlusOperator  -> @uint outMask { outMask = 1 << 6 }
-func %once prefixMinusOperator -> @uint outMask { outMask = 1 << 7 }
-func %once prefixTildeOperator -> @uint outMask { outMask = 1 << 8 }
-func %once incDecOperator      -> @uint outMask { outMask = 1 << 9 }
+boolset @operators {
+  infixAddOperator,
+  infixSubOperator,
+  infixMulOperator,
+  infixDivOperator,
+  infixModOperator,
+  infixShiftOperator,
+  prefixPlusOperator,
+  prefixMinusOperator,
+  prefixTildeOperator,
+  incDecOperator,
 
-func %once infixAndOperator -> @uint outMask { outMask = 1 << 10 }
-func %once infixOrOperator  -> @uint outMask { outMask = 1 << 11 }
-func %once infixXorOperator -> @uint outMask { outMask = 1 << 12 }
-func %once prefixNotOperator  -> @uint outMask { outMask = 1 << 13 }
+  infixAndOperator,
+  infixOrOperator,
+  infixXorOperator,
+  prefixNotOperator,
 
-func %once isComparable -> @uint outMask { outMask = 1 << 14 } # Supports <, <=, >, >= operators
+  isComparable, # Supports <, <=, >, >= operators
 
-func %once plusEqualOperatorWithExpression  -> @uint outMask { outMask = 1 << 15 } # var += exp ;
-func %once minusEqualOperatorWithExpression -> @uint outMask { outMask = 1 << 16 } # var -= exp ;
-func %once mulEqualOperatorWithExpression   -> @uint outMask { outMask = 1 << 17 } # var *= exp ;
-func %once divEqualOperatorWithExpression   -> @uint outMask { outMask = 1 << 18 } # var /= exp ;
+  plusEqualOperatorWithExpression, # var += exp ;
+  minusEqualOperatorWithExpression, # var -= exp ;
+  mulEqualOperatorWithExpression, # var *= exp ;
+  divEqualOperatorWithExpression, # var /= exp ;
 
-func %once infixAddOperatorNoOVF    -> @uint outMask { outMask = 1 << 19 }
-func %once infixSubOperatorNoOVF    -> @uint outMask { outMask = 1 << 20 }
-func %once infixMulOperatorNoOVF    -> @uint outMask { outMask = 1 << 21 }
-func %once infixDivOperatorNoOVF    -> @uint outMask { outMask = 1 << 22 }
-func %once prefixMinusOperatorNoOVF -> @uint outMask { outMask = 1 << 23 }
-func %once incDecOperatorNoOVF      -> @uint outMask { outMask = 1 << 24 }
+  infixAddOperatorNoOVF,
+  infixSubOperatorNoOVF,
+  infixMulOperatorNoOVF,
+  infixDivOperatorNoOVF,
+  prefixMinusOperatorNoOVF,
+  incDecOperatorNoOVF,
 
-func %once supportWithAccessor                            -> @uint outMask { outMask = 1 << 26 }
-func %once plusEqualOperatorWithFieldListNeedsCompilerArg -> @uint outMask { outMask = 1 << 27 }
-func %once generateEnumerationHelperMethods               -> @uint outMask { outMask = 1 << 28 }
-func %once doNotGenererateObjectCompare                   -> @uint outMask { outMask = 1 << 29 }
-func %once generateDescriptionGetterUtilityMethod         -> @uint outMask { outMask = 1 << 30 }
-func %once generateCopyConstructorAndAssignmentOperator   -> @uint outMask { outMask = 1 << 31 }
+  supportWithAccessor,
+  plusEqualOperatorWithFieldListNeedsCompilerArg,
+  generateEnumerationHelperMethods,
+  doNotGenererateObjectCompare,
+  generateDescriptionGetterUtilityMethod,
+  generateCopyConstructorAndAssignmentOperator
+}
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -330,7 +332,7 @@ shared map @unifiedTypeMap {
   @instanceMethodMap mInstanceMethodMap
   @classMethodMap mClassMethodMap
   @enumerationDescriptorList mEnumerationDescriptor # Empty List if cannot be enumerated
-  @uint mHandledOperatorFlags
+  @operators mHandledOperatorFlags
   @functionSignature mAddAssignOperatorArguments # Empty list if += operator is not supported
   @constantIndexMap mEnumConstantMap
   @enumConstantList mEnumConstantList
@@ -470,9 +472,8 @@ method @predefinedTypeAST getClassMethodMap
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-getter @predefinedTypeAST getSupportedOperatorFlags
-  ->@uint outFlags {
-  outFlags = 0 # No supported operator
+getter @predefinedTypeAST getSupportedOperatorFlags -> @operators outFlags {
+  outFlags = .none # No supported operator
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

@@ -141,8 +141,8 @@ override method @boolsetDeclarationAST enterInSemanticContext
     !?instanceMethodMap
   )
 #--- Operators
-  let operators = infixAndOperator () | infixOrOperator () | infixXorOperator () | prefixTildeOperator ()
-    | generateDescriptionGetterUtilityMethod () | isComparable () | infixSubOperator ()
+  let operators = @operators.infixAndOperator | .infixOrOperator | .infixXorOperator | .prefixTildeOperator
+    | .generateDescriptionGetterUtilityMethod | .isComparable | .infixSubOperator
 #--- Enter in type map
   [!?ioSemanticContext.mTypeMap insertKey
     !mBoolsetTypeName
