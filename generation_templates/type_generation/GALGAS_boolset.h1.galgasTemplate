@@ -13,9 +13,6 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_%!TYPE_IDENTIFIER% constructor_default (LOCATION_ARGS) ;
-
 //--------------------------------- Default constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
