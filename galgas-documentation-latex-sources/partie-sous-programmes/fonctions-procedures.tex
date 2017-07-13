@@ -2,7 +2,7 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapterLabel{Fonctions et procédures}{fonctions}
+\chapterLabel{Sous-programmes}{fonctions}
 %-------------------------------------------------------------
 
 GALGAS définit les sous-programmes suivants :
@@ -13,6 +13,21 @@ GALGAS définit les sous-programmes suivants :
   \item les \emph{getters} (\refSectionPage{categoryGetter}) ;
   \item les \emph{setters} (\refSectionPage{categorySetter}).
 \end{itemize}
+
+Une \emph{fonction} n'accepte que des arguments en entrée, et retourne une valeur. Elle est appelée dans une expression (\refSubsectionPage{appelFonction}).
+
+Une \emph{procédure} accepte des arguments en entrée, en sortie, en entrée/sortie. Elle est appelée dans une instruction (\refSectionPage{instructionAppelProcedure}).
+
+Une \emph{méthode} accepte des arguments en entrée, en sortie, en entrée/sortie, et nomme un objet courant, qui est inchangé par l'exécution de la méthode. Une \emph{méthode} est appelée dans une instruction (\refSectionPage{methodCallInstruction}).
+
+Un \emph{getter} n'accepte que des arguments en entrée, retourne une valeur, et nomme un objet courant, qui est inchangé par l'exécution du getter. Il est appelé dans une expression (\refSubsectionPage{appelGetter}).
+
+Un \emph{setter} accepte des arguments en entrée, en sortie, en entrée/sortie, et nomme un objet courant, qui est modifié par l'exécution du setter. Un \emph{setter} est appelé dans une instruction (\refSectionPage{setterCallInstruction}).
+
+
+
+
+
 
 \sectionLabel{Fonction}{declarationFonction}
 
@@ -106,7 +121,7 @@ private func %once %usefull masque -> @uint {
 
 \sectionLabel{Procédure}{declarationProcedure}\index{Procédure!Déclaration}
 
-Une procédure GALGAS accepte que des arguments en entrée, en sortie, en entrée/sortie. Elle est appelée dans une instruction (\refSectionPage{instructionAppelProcedure}).
+Une procédure GALGAS accepte des arguments en entrée, en sortie, en entrée/sortie. Elle est appelée dans une instruction (\refSectionPage{instructionAppelProcedure}).
 
 \subsection{Déclaration d'une procédure}\index{Procédure!Déclaration}
 
