@@ -63,6 +63,7 @@ override getter @boolsetDeclarationAST keyRepresentation ->@string outString {
 
 private func %once forbiddenKeysForBoolset -> @stringset outResult {
   outResult = {}
+  outResult += !"dynamicType"
   outResult += !"description"
   outResult += !"object"
   outResult += !"none"
