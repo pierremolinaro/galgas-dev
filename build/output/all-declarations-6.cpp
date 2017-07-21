@@ -9710,34 +9710,34 @@ void callExtensionMethod_checkAgainstFormalArgument (const cPtr_actualParameterA
 GALGAS_string extensionGetter_correspondingEffectiveParameterString (const GALGAS_formalArgumentPassingModeAST & inObject,
                                                                      C_Compiler * /* inCompiler */
                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_formalArgumentPassingModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_formalArgumentPassingModeAST::kNotBuilt:
     break ;
   case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn:
     {
-      result_outResult = GALGAS_string ("!") ;
+      result_result = GALGAS_string ("!") ;
     }
     break ;
   case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn:
     {
-      result_outResult = GALGAS_string ("!") ;
+      result_result = GALGAS_string ("!") ;
     }
     break ;
   case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut:
     {
-      result_outResult = GALGAS_string ("\?") ;
+      result_result = GALGAS_string ("\?") ;
     }
     break ;
   case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut:
     {
-      result_outResult = GALGAS_string ("!\?") ;
+      result_result = GALGAS_string ("!\?") ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 

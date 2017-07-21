@@ -422,8 +422,8 @@ filewrapper typeDumpGenerationTemplate in "../generation_templates/target_genera
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-func linkForType ?let @string inTypeName -> @string outResult {
-  outResult = "<a class=\"header_link\" href=\"#" + inTypeName + "\">@" + inTypeName + "</a>"
+func linkForType ?let @string inTypeName -> @string {
+  result = "<a class=\"header_link\" href=\"#" + inTypeName + "\">@" + inTypeName + "</a>"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

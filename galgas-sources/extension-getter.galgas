@@ -247,8 +247,8 @@ class @extensionGetterForGeneration : @semanticDeclarationWithHeaderForGeneratio
 
 #·······················································································································
 
-override getter @extensionGetterForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind.oneHeader
+override getter @extensionGetterForGeneration headerKind ->@headerKind {
+  result = @headerKind.oneHeader
 }
 
 #·······················································································································

@@ -101,15 +101,14 @@ abstract method @actualParameterAST checkAgainstFormalArgument
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-getter @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @string outResult {
+getter @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @string {
   switch self
-    case argumentConstantIn : outResult = "!"
-    case argumentIn : outResult = "!"
-    case argumentOut : outResult = "?"
-    case argumentInOut : outResult = "!?"
+    case argumentConstantIn : result = "!"
+    case argumentIn : result = "!"
+    case argumentOut : result = "?"
+    case argumentInOut : result = "!?"
   end
 }
-
 
 #----------------------------------------------------------------------------------------------------------------------*
 

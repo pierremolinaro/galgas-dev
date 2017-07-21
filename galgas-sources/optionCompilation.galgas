@@ -237,14 +237,14 @@ class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneratio
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @optionComponentForGeneration isPredefined -> @bool outResult {
-  outResult = mIsPredefined
+override getter @optionComponentForGeneration isPredefined -> @bool {
+  result = mIsPredefined
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @optionComponentForGeneration headerKind -> @headerKind outResult {
-  outResult = if mIsPredefined then .noHeader else .oneHeader end
+override getter @optionComponentForGeneration headerKind -> @headerKind {
+  result = if mIsPredefined then .noHeader else .oneHeader end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

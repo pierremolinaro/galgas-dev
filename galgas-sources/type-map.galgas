@@ -564,11 +564,11 @@ proc check_K_L_escapeCharacters ?@lstring inString {  #--- Check escape sequence
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-private func %once forbiddenKeysForMap -> @stringset outResult {
-  outResult = {}
-  outResult += !"lkey"
-  outResult += !"description"
-  outResult += !"object"
+private func %once forbiddenKeysForMap -> @stringset {
+  result = {}
+  result += !"lkey"
+  result += !"description"
+  result += !"object"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

@@ -114,7 +114,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::substract_operation (%?^%co
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_tilde (UNUSED_LOCATION_ARGS) const {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   if (mIsValid) {
-    result = GALGAS_%!TYPE_IDENTIFIER% (~ mFlags) ;
+    result = GALGAS_%!TYPE_IDENTIFIER% (%![FULL_SET hexString]% ^ mFlags) ;
   }
   return result ;
 }

@@ -78,8 +78,8 @@ override getter @grammarForGeneration headerKind -> @headerKind outHeaderKind {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @grammarForGeneration isPredefined -> @bool outResult {
-  outResult = false
+override getter @grammarForGeneration isPredefined -> @bool {
+  result = false
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -104,8 +104,8 @@ override getter @syntaxDeclarationForGeneration headerKind -> @headerKind outHea
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @syntaxDeclarationForGeneration isPredefined -> @bool outResult {
-  outResult = false
+override getter @syntaxDeclarationForGeneration isPredefined -> @bool {
+  result = false
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1075,8 +1075,8 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
 #! Proc
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @routinePrototypeDeclarationForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind.oneHeader
+override getter @routinePrototypeDeclarationForGeneration headerKind ->@headerKind {
+  result = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1094,8 +1094,8 @@ override method @routinePrototypeDeclarationForGeneration appendDeclaration1
 #! func
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @functionPrototypeDeclarationForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind.oneHeader
+override getter @functionPrototypeDeclarationForGeneration headerKind ->@headerKind {
+  result = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1112,8 +1112,8 @@ override method @functionPrototypeDeclarationForGeneration appendDeclaration1
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @onceFunctionDeclarationForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind.oneHeader
+override getter @onceFunctionDeclarationForGeneration headerKind ->@headerKind {
+  result = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1229,8 +1229,8 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
 #! Lexique
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @lexiqueDeclarationForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind.oneHeader
+override getter @lexiqueDeclarationForGeneration headerKind ->@headerKind {
+  result = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1288,8 +1288,8 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
 #! Program
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @programComponentForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind.noHeader
+override getter @programComponentForGeneration headerKind ->@headerKind {
+  result = @headerKind.noHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1308,8 +1308,8 @@ override method @programComponentForGeneration appendSpecificImplementation
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @filewrapperDeclarationForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind.oneHeader
+override getter @filewrapperDeclarationForGeneration headerKind ->@headerKind {
+  result = @headerKind.oneHeader
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

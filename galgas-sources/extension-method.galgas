@@ -201,8 +201,8 @@ class @extensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneratio
 
 #·······················································································································
 
-override getter @extensionMethodForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind.oneHeader
+override getter @extensionMethodForGeneration headerKind ->@headerKind {
+  result = @headerKind.oneHeader
 }
 
 #·······················································································································

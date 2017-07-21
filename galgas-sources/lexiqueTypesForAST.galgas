@@ -351,31 +351,31 @@ enum @lexicalArgumentModeAST {
   case lexicalInputMode  case lexicalInputOutputMode
 }
 
-getter @lexicalArgumentModeAST lexicalFormalModeName -> @string outResult {
+getter @lexicalArgumentModeAST lexicalFormalModeName -> @string {
   switch self
-  case lexicalInputMode       : outResult = "!"
-  case lexicalInputOutputMode : outResult = "?!"
+  case lexicalInputMode       : result = "!"
+  case lexicalInputOutputMode : result = "?!"
   end
 }
 
-getter @lexicalArgumentModeAST cppConstInFormalArgument -> @string outResult {
+getter @lexicalArgumentModeAST cppConstInFormalArgument -> @string {
   switch self
-  case lexicalInputMode       : outResult = "const "
-  case lexicalInputOutputMode : outResult = ""
+  case lexicalInputMode       : result = "const "
+  case lexicalInputOutputMode : result = ""
   end
 }
 
-getter @lexicalArgumentModeAST cppReferenceInFormalArgument -> @string outResult {
+getter @lexicalArgumentModeAST cppReferenceInFormalArgument -> @string {
   switch self
-  case lexicalInputMode       : outResult = ""
-  case lexicalInputOutputMode : outResult = " &"
+  case lexicalInputMode       : result = ""
+  case lexicalInputOutputMode : result = " &"
   end
 }
 
-getter @lexicalArgumentModeAST cocoaPointerInFormalArgument -> @string outResult {
+getter @lexicalArgumentModeAST cocoaPointerInFormalArgument -> @string {
   switch self
-  case lexicalInputMode       : outResult = ""
-  case lexicalInputOutputMode : outResult = " *"
+  case lexicalInputMode       : result = ""
+  case lexicalInputOutputMode : result = " *"
   end
 }
 

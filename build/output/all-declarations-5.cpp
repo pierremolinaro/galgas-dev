@@ -2992,84 +2992,84 @@ GALGAS_typeKindEnum GALGAS_typeKindEnum::extractObject (const GALGAS_object & in
 GALGAS_string extensionGetter_kind (const GALGAS_typeKindEnum & inObject,
                                     C_Compiler * /* inCompiler */
                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_typeKindEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_typeKindEnum::kNotBuilt:
     break ;
   case GALGAS_typeKindEnum::kEnum_classType:
     {
-      result_outResult = GALGAS_string ("class") ;
+      result_result = GALGAS_string ("class") ;
     }
     break ;
   case GALGAS_typeKindEnum::kEnum_enumType:
     {
-      result_outResult = GALGAS_string ("enumeration") ;
+      result_result = GALGAS_string ("enumeration") ;
     }
     break ;
   case GALGAS_typeKindEnum::kEnum_listType:
     {
-      result_outResult = GALGAS_string ("list") ;
+      result_result = GALGAS_string ("list") ;
     }
     break ;
   case GALGAS_typeKindEnum::kEnum_sortedListType:
     {
-      result_outResult = GALGAS_string ("sorted list") ;
+      result_result = GALGAS_string ("sorted list") ;
     }
     break ;
   case GALGAS_typeKindEnum::kEnum_mapType:
     {
-      result_outResult = GALGAS_string ("map") ;
+      result_result = GALGAS_string ("map") ;
     }
     break ;
   case GALGAS_typeKindEnum::kEnum_uniqueMapType:
     {
-      result_outResult = GALGAS_string ("unique map") ;
+      result_result = GALGAS_string ("unique map") ;
     }
     break ;
   case GALGAS_typeKindEnum::kEnum_mapProxyType:
     {
-      result_outResult = GALGAS_string ("map proxy") ;
+      result_result = GALGAS_string ("map proxy") ;
     }
     break ;
   case GALGAS_typeKindEnum::kEnum_listMapType:
     {
-      result_outResult = GALGAS_string ("list map") ;
+      result_result = GALGAS_string ("list map") ;
     }
     break ;
   case GALGAS_typeKindEnum::kEnum_structType:
     {
-      result_outResult = GALGAS_string ("struct") ;
+      result_result = GALGAS_string ("struct") ;
     }
     break ;
   case GALGAS_typeKindEnum::kEnum_boolsetType:
     {
-      result_outResult = GALGAS_string ("boolset") ;
+      result_result = GALGAS_string ("boolset") ;
     }
     break ;
   case GALGAS_typeKindEnum::kEnum_graphType:
     {
-      result_outResult = GALGAS_string ("graph") ;
+      result_result = GALGAS_string ("graph") ;
     }
     break ;
   case GALGAS_typeKindEnum::kEnum_predefinedType:
     {
-      result_outResult = GALGAS_string ("predefined") ;
+      result_result = GALGAS_string ("predefined") ;
     }
     break ;
   case GALGAS_typeKindEnum::kEnum_arrayType:
     {
-      result_outResult = GALGAS_string ("array") ;
+      result_result = GALGAS_string ("array") ;
     }
     break ;
   case GALGAS_typeKindEnum::kEnum_externType:
     {
-      result_outResult = GALGAS_string ("extern") ;
+      result_result = GALGAS_string ("extern") ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
@@ -3369,7 +3369,7 @@ GALGAS_operators GALGAS_operators::substract_operation (const GALGAS_operators &
 GALGAS_operators GALGAS_operators::operator_tilde (UNUSED_LOCATION_ARGS) const {
   GALGAS_operators result ;
   if (mIsValid) {
-    result = GALGAS_operators (~ mFlags) ;
+    result = GALGAS_operators (0x7FFFFFFF ^ mFlags) ;
   }
   return result ;
 }
@@ -9495,18 +9495,18 @@ C_PrologueEpilogue gMethod_predefinedTypeAST_getEnumerationList (defineExtension
 GALGAS_string extensionGetter_sourceFile (const GALGAS_location & inObject,
                                           C_Compiler * inCompiler
                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_location temp_0 = inObject ;
   const enumGalgasBool test_1 = temp_0.getter_isNowhere (SOURCE_FILE ("semanticContext.galgas", 19)).boolEnum () ;
   if (kBoolTrue == test_1) {
-    result_outResult = GALGAS_string ("SOURCE_FILE (\"\", 0)") ;
+    result_result = GALGAS_string ("SOURCE_FILE (\"\", 0)") ;
   }else if (kBoolFalse == test_1) {
     const GALGAS_location temp_2 = inObject ;
     const GALGAS_location temp_3 = inObject ;
-    result_outResult = GALGAS_string ("SOURCE_FILE (").add_operation (temp_2.getter_file (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).getter_lastPathComponent (SOURCE_FILE ("semanticContext.galgas", 22)).getter_utf_38_Representation (SOURCE_FILE ("semanticContext.galgas", 22)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).add_operation (temp_3.getter_line (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).getter_string (SOURCE_FILE ("semanticContext.galgas", 22)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)) ;
+    result_result = GALGAS_string ("SOURCE_FILE (").add_operation (temp_2.getter_file (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).getter_lastPathComponent (SOURCE_FILE ("semanticContext.galgas", 22)).getter_utf_38_Representation (SOURCE_FILE ("semanticContext.galgas", 22)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).add_operation (temp_3.getter_line (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).getter_string (SOURCE_FILE ("semanticContext.galgas", 22)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)) ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
@@ -9521,11 +9521,11 @@ GALGAS_string extensionGetter_sourceFile (const GALGAS_location & inObject,
 GALGAS_string extensionGetter_commaSourceFile (const GALGAS_location & inObject,
                                                C_Compiler * inCompiler
                                                COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_location temp_0 = inObject ;
-  result_outResult = GALGAS_string (" COMMA_").add_operation (extensionGetter_sourceFile (temp_0, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 29)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 29)) ;
+  result_result = GALGAS_string (" COMMA_").add_operation (extensionGetter_sourceFile (temp_0, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 29)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 29)) ;
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
@@ -9662,10 +9662,10 @@ void extensionMethod_enterInstructionListInSemanticContext (const GALGAS_semanti
                                                             C_Compiler * inCompiler
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_semanticInstructionListAST temp_0 = inObject ;
-  cEnumerator_semanticInstructionListAST enumerator_3573 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_3573.hasCurrentObject ()) {
-    callExtensionMethod_enterInstructionInSemanticContext ((const cPtr_semanticInstructionAST *) enumerator_3573.current_mInstruction (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 58)) ;
-    enumerator_3573.gotoNextObject () ;
+  cEnumerator_semanticInstructionListAST enumerator_3544 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_3544.hasCurrentObject ()) {
+    callExtensionMethod_enterInstructionInSemanticContext ((const cPtr_semanticInstructionAST *) enumerator_3544.current_mInstruction (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 58)) ;
+    enumerator_3544.gotoNextObject () ;
   }
 }
 
@@ -9681,10 +9681,10 @@ void extensionMethod_enterInSemanticContext (const GALGAS_actualOutputExpression
                                              C_Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_actualOutputExpressionList temp_0 = inObject ;
-  cEnumerator_actualOutputExpressionList enumerator_3880 (temp_0, kENUMERATION_UP) ;
-  while (enumerator_3880.hasCurrentObject ()) {
-    callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) enumerator_3880.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 68)) ;
-    enumerator_3880.gotoNextObject () ;
+  cEnumerator_actualOutputExpressionList enumerator_3851 (temp_0, kENUMERATION_UP) ;
+  while (enumerator_3851.hasCurrentObject ()) {
+    callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) enumerator_3851.current_mExpression (HERE).ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 68)) ;
+    enumerator_3851.gotoNextObject () ;
   }
 }
 
