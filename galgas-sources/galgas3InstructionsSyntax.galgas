@@ -270,27 +270,26 @@ rule <actual_parameter_list>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <syntax_directed_translation_result>
-  !@abstractGrammarInstructionSyntaxDirectedTranslationResult outResult {
+rule <syntax_directed_translation_result> !@abstractGrammarInstructionSyntaxDirectedTranslationResult result {
   $?$ ?let selector
   if selector.string != "" then
     error selector : "the selector should be '?'"
   end
   select
     $*$
-    outResult = @grammarInstructionSyntaxDirectedTranslationDropResult.new {!@location.here}
+    result = @grammarInstructionSyntaxDirectedTranslationDropResult.new {!@location.here}
   or
     $@type$ ?let actualParameterTypeName
     $identifier$ ?let actualParameterName
-    outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.new {!actualParameterTypeName !actualParameterName}
+    result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.new {!actualParameterTypeName !actualParameterName}
   or
     $let$
     $@type$ ?let actualParameterTypeName
     $identifier$ ?let actualParameterName
-    outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.new {!actualParameterTypeName !actualParameterName}
+    result = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.new {!actualParameterTypeName !actualParameterName}
   or
     $identifier$ ?let actualParameterName
-    outResult = @grammarInstructionSyntaxDirectedTranslationResultInVar.new {!actualParameterName}
+    result = @grammarInstructionSyntaxDirectedTranslationResultInVar.new {!actualParameterName}
   end
 }
 

@@ -274,34 +274,34 @@ enum @formalArgumentPassingModeAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-getter @formalArgumentPassingModeAST string -> @string outResult {
+getter @formalArgumentPassingModeAST string -> @string {
   switch self
-    case argumentConstantIn : outResult = "??"
-    case argumentIn : outResult = "?"
-    case argumentOut : outResult = "!"
-    case argumentInOut : outResult = "?!"
+    case argumentConstantIn : result = "??"
+    case argumentIn : result = "?"
+    case argumentOut : result = "!"
+    case argumentInOut : result = "?!"
   end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-getter @formalArgumentPassingModeAST formalArgumentMessage -> @string outResult {
+getter @formalArgumentPassingModeAST formalArgumentMessage -> @string {
   switch self
-    case argumentConstantIn : outResult = "a constant input (??) formal argument"
-    case argumentIn : outResult = "an input (?) formal argument"
-    case argumentOut : outResult = "an output (!) formal argument"
-    case argumentInOut : outResult = "an input/output (?!) formal argument"
+    case argumentConstantIn : result = "a constant input (??) formal argument"
+    case argumentIn : result = "an input (?) formal argument"
+    case argumentOut : result = "an output (!) formal argument"
+    case argumentInOut : result = "an input/output (?!) formal argument"
   end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-getter @formalArgumentPassingModeAST formalArgumentString -> @string outResult {
+getter @formalArgumentPassingModeAST formalArgumentString -> @string {
   switch self
-    case argumentConstantIn : outResult = "'??'"
-    case argumentIn : outResult = "'?'"
-    case argumentOut : outResult = "'!'"
-    case argumentInOut : outResult = "'?!'"
+    case argumentConstantIn : result = "'??'"
+    case argumentIn : result = "'?'"
+    case argumentOut : result = "'!'"
+    case argumentInOut : result = "'?!'"
   end
 }
 

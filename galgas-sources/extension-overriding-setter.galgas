@@ -204,8 +204,8 @@ class @overridingExtensionSetterForGeneration : @semanticDeclarationWithHeaderFo
 
 #·······················································································································
 
-override getter @overridingExtensionSetterForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind.noHeader
+override getter @overridingExtensionSetterForGeneration headerKind ->@headerKind {
+  result = @headerKind.noHeader
 }
 
 #·······················································································································

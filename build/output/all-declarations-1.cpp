@@ -8501,24 +8501,24 @@ GALGAS_lexicalArgumentModeAST GALGAS_lexicalArgumentModeAST::extractObject (cons
 GALGAS_string extensionGetter_lexicalFormalModeName (const GALGAS_lexicalArgumentModeAST & inObject,
                                                      C_Compiler * /* inCompiler */
                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_lexicalArgumentModeAST::kNotBuilt:
     break ;
   case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputMode:
     {
-      result_outResult = GALGAS_string ("!") ;
+      result_result = GALGAS_string ("!") ;
     }
     break ;
   case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputOutputMode:
     {
-      result_outResult = GALGAS_string ("\?!") ;
+      result_result = GALGAS_string ("\?!") ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
@@ -8533,24 +8533,24 @@ GALGAS_string extensionGetter_lexicalFormalModeName (const GALGAS_lexicalArgumen
 GALGAS_string extensionGetter_cppConstInFormalArgument (const GALGAS_lexicalArgumentModeAST & inObject,
                                                         C_Compiler * /* inCompiler */
                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_lexicalArgumentModeAST::kNotBuilt:
     break ;
   case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputMode:
     {
-      result_outResult = GALGAS_string ("const ") ;
+      result_result = GALGAS_string ("const ") ;
     }
     break ;
   case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputOutputMode:
     {
-      result_outResult = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
@@ -8565,24 +8565,24 @@ GALGAS_string extensionGetter_cppConstInFormalArgument (const GALGAS_lexicalArgu
 GALGAS_string extensionGetter_cppReferenceInFormalArgument (const GALGAS_lexicalArgumentModeAST & inObject,
                                                             C_Compiler * /* inCompiler */
                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_lexicalArgumentModeAST::kNotBuilt:
     break ;
   case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputMode:
     {
-      result_outResult = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputOutputMode:
     {
-      result_outResult = GALGAS_string (" &") ;
+      result_result = GALGAS_string (" &") ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
@@ -8597,24 +8597,24 @@ GALGAS_string extensionGetter_cppReferenceInFormalArgument (const GALGAS_lexical
 GALGAS_string extensionGetter_cocoaPointerInFormalArgument (const GALGAS_lexicalArgumentModeAST & inObject,
                                                             C_Compiler * /* inCompiler */
                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalArgumentModeAST temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_lexicalArgumentModeAST::kNotBuilt:
     break ;
   case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputMode:
     {
-      result_outResult = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_lexicalArgumentModeAST::kEnum_lexicalInputOutputMode:
     {
-      result_outResult = GALGAS_string (" *") ;
+      result_result = GALGAS_string (" *") ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 

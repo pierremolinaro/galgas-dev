@@ -15,18 +15,18 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-getter @location sourceFile -> @string outResult {
+getter @location sourceFile -> @string {
   if [self isNowhere] then
-    outResult = "SOURCE_FILE (\"\", 0)"
+    result = "SOURCE_FILE (\"\", 0)"
   else
-    outResult = "SOURCE_FILE (" + [[[self file] lastPathComponent] utf8Representation] + ", " +  [[self line] string] + ")"
+    result = "SOURCE_FILE (" + [[[self file] lastPathComponent] utf8Representation] + ", " +  [[self line] string] + ")"
   end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-getter @location commaSourceFile -> @string outResult {
-  outResult = " COMMA_" + [self sourceFile]
+getter @location commaSourceFile -> @string {
+  result = " COMMA_" + [self sourceFile]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -549,8 +549,8 @@ getter @predefinedTypeKindEnum defaultConstructorName
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-func %once elementTypeNameSuffix -> @string outResult {
-  outResult = "-element"
+func %once elementTypeNameSuffix -> @string {
+  result = "-element"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

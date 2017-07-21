@@ -178,11 +178,11 @@ override method @structDeclarationAST enterInSemanticContext
 #   SEMANTIC ANALYSIS                                                                                                  *
 #----------------------------------------------------------------------------------------------------------------------*
 
-private func %once forbiddenKeysForStruct -> @stringset outResult {
-  outResult = {}
-  outResult += !"description"
-  outResult += !"object"
-  outResult += !"dynamicType"
+private func %once forbiddenKeysForStruct -> @stringset {
+  result = {}
+  result += !"description"
+  result += !"object"
+  result += !"dynamicType"
 }
 
 #·······················································································································

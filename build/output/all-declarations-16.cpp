@@ -6890,10 +6890,10 @@ GALGAS_bool callExtensionGetter_isTrueExpression (const cPtr_semanticExpressionF
 static GALGAS_bool extensionGetter_semanticExpressionForGeneration_isTrueExpression (const cPtr_semanticExpressionForGeneration * /* inObject */,
                                                                                      C_Compiler * /* inCompiler */
                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bool result_outResult ; // Returned variable
-  result_outResult = GALGAS_bool (false) ;
+  GALGAS_bool result_result ; // Returned variable
+  result_result = GALGAS_bool (false) ;
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 

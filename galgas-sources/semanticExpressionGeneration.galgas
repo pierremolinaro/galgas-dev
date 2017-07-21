@@ -19,14 +19,14 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-getter @semanticExpressionForGeneration isTrueExpression -> @bool outResult {
-  outResult = false
+getter @semanticExpressionForGeneration isTrueExpression -> @bool {
+  result = false
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @trueExpressionForGeneration isTrueExpression ->@bool outResult {
-  outResult = true
+override getter @trueExpressionForGeneration isTrueExpression ->@bool {
+  result = true
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

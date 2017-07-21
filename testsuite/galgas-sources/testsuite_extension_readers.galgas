@@ -6,14 +6,14 @@ class @B_B : @A_A {}
 
 abstract getter @A_A aReader ?@uint inA ?let@string inB -> @string
 
-override getter @B_B aReader ?@uint inA ?let@string inB -> @string outResult {
+override getter @B_B aReader ?@uint inA ?let@string inB -> @string {
   inA ++
-  outResult = inB + inA
+  result = inB + inA
 }
 
-getter @B_B otherReader ?@uint inA ?let@string inB -> @string outResult {
+getter @B_B otherReader ?@uint inA ?let@string inB -> @string {
   inA ++
-  outResult = inB + inA + [self aReader !inA !inB] + [self aReader !inA !inB]
+  result = inB + inA + [self aReader !inA !inB] + [self aReader !inA !inB]
 }
 
 abstract class @C_C : @B_B {}

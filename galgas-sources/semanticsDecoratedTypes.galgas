@@ -507,8 +507,8 @@ override getter @semanticTypeForGeneration hasCppHeaderFile -> @bool outHasHeade
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @semanticTypeForGeneration isPredefined -> @bool outResult {
-  outResult = [mTypeProxy mIsPredefined]
+override getter @semanticTypeForGeneration isPredefined -> @bool {
+  result = [mTypeProxy mIsPredefined]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -548,8 +548,8 @@ override getter @semanticDeclarationWithHeaderForGeneration headerKind -> @heade
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @semanticDeclarationWithHeaderForGeneration isPredefined -> @bool outResult {
-  outResult = false
+override getter @semanticDeclarationWithHeaderForGeneration isPredefined -> @bool {
+  result = false
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

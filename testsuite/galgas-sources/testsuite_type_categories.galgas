@@ -29,19 +29,19 @@ proc testsuite_type_categories {
 }
 
 #----------- Extension readers
-getter @uint64 square -> @uint64 outResult {
-  outResult = self * self
+getter @uint64 square -> @uint64 {
+  result = self * self
 }
 
-getter @uintlist sum -> @uint outResult {
-  outResult = 0
+getter @uintlist sum -> @uint {
+  result = 0
   for () in self do
-    outResult = outResult + mValue
+    result = result + mValue
   end
 }
 
-getter @lstring op -> @string outResult {
-  outResult = string + " !"
+getter @lstring op -> @string {
+  result = string + " !"
 }
 
 #------------ Extension methods

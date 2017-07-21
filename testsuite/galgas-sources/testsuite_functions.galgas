@@ -3,13 +3,13 @@
 func functionTest
   ?@uint inArg1
   ?let@uint inArg2
--> @uint outResult {
-  outResult = inArg1 + inArg2
+-> @uint result {
+  result = inArg1 + inArg2
 }
 
 extern func externTestFunction
   ?@uint inArg1
-  ?let@uint inArg2
+  ?let @uint inArg2
 -> @uint
 
 proc testsuite_functions {

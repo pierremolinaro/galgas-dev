@@ -28,11 +28,11 @@ method @semanticInstructionForGeneration appendSyntaxSignature # Capture all sem
 func syntaxSignatureOfInstructionList
   ?let @string inPosfix
   ?let @semanticInstructionListForGeneration inInstructionList
-  ->@semanticInstructionListForGeneration outResult
+  ->@semanticInstructionListForGeneration
  {
-  outResult = @semanticInstructionListForGeneration.emptyList
+  result = @semanticInstructionListForGeneration.emptyList
   for () in inInstructionList do
-    [mInstruction appendSyntaxSignature !inPosfix !?outResult]
+    [mInstruction appendSyntaxSignature !inPosfix !?result]
   end
 }
 

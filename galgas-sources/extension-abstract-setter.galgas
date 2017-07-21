@@ -164,8 +164,8 @@ class @abstractExtensionSetterForGeneration : @semanticDeclarationWithHeaderForG
 
 #·······················································································································
 
-override getter @abstractExtensionSetterForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind.oneHeader
+override getter @abstractExtensionSetterForGeneration headerKind ->@headerKind {
+  result = @headerKind.oneHeader
 }
 
 #·······················································································································

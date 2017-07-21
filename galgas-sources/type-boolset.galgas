@@ -50,24 +50,24 @@ override method @boolsetDeclarationAST enterDeclarationInGraph
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#   KEY REPRESENTATION                                                                                                  *
+#   KEY REPRESENTATION                                                                                                 *
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @boolsetDeclarationAST keyRepresentation ->@string outString {
-  outString = "boolset @" + mBoolsetTypeName
+override getter @boolsetDeclarationAST keyRepresentation -> @string {
+  result = "boolset @" + mBoolsetTypeName
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #   SEMANTIC CONTEXT                                                                                                   *
 #----------------------------------------------------------------------------------------------------------------------*
 
-private func %once forbiddenKeysForBoolset -> @stringset outResult {
-  outResult = {}
-  outResult += !"dynamicType"
-  outResult += !"description"
-  outResult += !"object"
-  outResult += !"none"
-  outResult += !"all"
+private func %once forbiddenKeysForBoolset -> @stringset {
+  result = {}
+  result += !"all"
+  result += !"description"
+  result += !"dynamicType"
+  result += !"none"
+  result += !"object"
 }
 
 #·······················································································································

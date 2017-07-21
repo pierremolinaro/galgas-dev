@@ -216,7 +216,7 @@ rule <actual_input_parameter_list>
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <syntax_directed_translation_result>
-  !@abstractGrammarInstructionSyntaxDirectedTranslationResult outResult
+  !@abstractGrammarInstructionSyntaxDirectedTranslationResult result
 
 #----------------------------------------------------------------------------------------------------------------------*
 

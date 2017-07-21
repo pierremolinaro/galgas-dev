@@ -174,8 +174,8 @@ override method @abstractExtensionMethodForGeneration appendDeclaration1
 
 #·······················································································································
 
-override getter @abstractExtensionMethodForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind.oneHeader
+override getter @abstractExtensionMethodForGeneration headerKind ->@headerKind {
+  result = @headerKind.oneHeader
 }
 
 #·······················································································································

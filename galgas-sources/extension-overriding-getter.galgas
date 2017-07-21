@@ -256,8 +256,8 @@ class @overrideExtensionGetterForGeneration : @semanticDeclarationWithHeaderForG
 
 #·······················································································································
 
-override getter @overrideExtensionGetterForGeneration headerKind ->@headerKind outResult {
-  outResult = @headerKind.noHeader
+override getter @overrideExtensionGetterForGeneration headerKind ->@headerKind {
+  result = @headerKind.noHeader
 }
 
 #·······················································································································

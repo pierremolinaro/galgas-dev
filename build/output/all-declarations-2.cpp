@@ -2614,54 +2614,54 @@ GALGAS_string callExtensionGetter_generateForUnicodeTestFunctions (const cPtr_le
 GALGAS_string extensionGetter_lexicalTypeBaseName (const GALGAS_lexicalTypeEnum & inObject,
                                                    C_Compiler * /* inCompiler */
                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_lexicalTypeEnum::kNotBuilt:
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
     {
-      result_outResult = GALGAS_string ("string") ;
+      result_result = GALGAS_string ("string") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
     {
-      result_outResult = GALGAS_string ("char") ;
+      result_result = GALGAS_string ("char") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
     {
-      result_outResult = GALGAS_string ("uint") ;
+      result_result = GALGAS_string ("uint") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
     {
-      result_outResult = GALGAS_string ("uint64") ;
+      result_result = GALGAS_string ("uint64") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
     {
-      result_outResult = GALGAS_string ("sint") ;
+      result_result = GALGAS_string ("sint") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
     {
-      result_outResult = GALGAS_string ("sint64") ;
+      result_result = GALGAS_string ("sint64") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
     {
-      result_outResult = GALGAS_string ("double") ;
+      result_result = GALGAS_string ("double") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
     {
-      result_outResult = GALGAS_string ("bigint") ;
+      result_result = GALGAS_string ("bigint") ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
@@ -3409,54 +3409,54 @@ GALGAS_string callExtensionGetter_generateCocoaCode (const cPtr_abstractLexicalR
 GALGAS_string extensionGetter_cppTypeName (const GALGAS_lexicalTypeEnum & inObject,
                                            C_Compiler * /* inCompiler */
                                            COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_lexicalTypeEnum::kNotBuilt:
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
     {
-      result_outResult = GALGAS_string ("C_String") ;
+      result_result = GALGAS_string ("C_String") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
     {
-      result_outResult = GALGAS_string ("utf32") ;
+      result_result = GALGAS_string ("utf32") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
     {
-      result_outResult = GALGAS_string ("uint32_t") ;
+      result_result = GALGAS_string ("uint32_t") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
     {
-      result_outResult = GALGAS_string ("uint64_t") ;
+      result_result = GALGAS_string ("uint64_t") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
     {
-      result_outResult = GALGAS_string ("int32_t") ;
+      result_result = GALGAS_string ("int32_t") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
     {
-      result_outResult = GALGAS_string ("int64_t") ;
+      result_result = GALGAS_string ("int64_t") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
     {
-      result_outResult = GALGAS_string ("double") ;
+      result_result = GALGAS_string ("double") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
     {
-      result_outResult = GALGAS_string ("C_BigInt") ;
+      result_result = GALGAS_string ("C_BigInt") ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
@@ -3471,54 +3471,54 @@ GALGAS_string extensionGetter_cppTypeName (const GALGAS_lexicalTypeEnum & inObje
 GALGAS_string extensionGetter_appendMethodName (const GALGAS_lexicalTypeEnum & inObject,
                                                 C_Compiler * /* inCompiler */
                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_lexicalTypeEnum::kNotBuilt:
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
     {
-      result_outResult = GALGAS_string ("appendCLiteralStringConstant") ;
+      result_result = GALGAS_string ("appendCLiteralStringConstant") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
     {
-      result_outResult = GALGAS_string ("appendUnicodeCharacter") ;
+      result_result = GALGAS_string ("appendUnicodeCharacter") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
     {
-      result_outResult = GALGAS_string ("appendUnsigned") ;
+      result_result = GALGAS_string ("appendUnsigned") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
     {
-      result_outResult = GALGAS_string ("appendUnsigned") ;
+      result_result = GALGAS_string ("appendUnsigned") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
     {
-      result_outResult = GALGAS_string ("appendSigned") ;
+      result_result = GALGAS_string ("appendSigned") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
     {
-      result_outResult = GALGAS_string ("appendSigned") ;
+      result_result = GALGAS_string ("appendSigned") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
     {
-      result_outResult = GALGAS_string ("appendDouble") ;
+      result_result = GALGAS_string ("appendDouble") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
     {
-      result_outResult = GALGAS_string ("appendCLiteralStringConstant") ;
+      result_result = GALGAS_string ("appendCLiteralStringConstant") ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
@@ -3533,54 +3533,54 @@ GALGAS_string extensionGetter_appendMethodName (const GALGAS_lexicalTypeEnum & i
 GALGAS_string extensionGetter_appendArgumentOfMethod (const GALGAS_lexicalTypeEnum & inObject,
                                                       C_Compiler * /* inCompiler */
                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_lexicalTypeEnum::kNotBuilt:
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
     {
-      result_outResult = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
     {
-      result_outResult = GALGAS_string (" COMMA_HERE") ;
+      result_result = GALGAS_string (" COMMA_HERE") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
     {
-      result_outResult = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
     {
-      result_outResult = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
     {
-      result_outResult = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
     {
-      result_outResult = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
     {
-      result_outResult = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
     {
-      result_outResult = GALGAS_string (".decimalString ()") ;
+      result_result = GALGAS_string (".decimalString ()") ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
@@ -3595,54 +3595,54 @@ GALGAS_string extensionGetter_appendArgumentOfMethod (const GALGAS_lexicalTypeEn
 GALGAS_string extensionGetter_initialization (const GALGAS_lexicalTypeEnum & inObject,
                                               C_Compiler * /* inCompiler */
                                               COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_lexicalTypeEnum::kNotBuilt:
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
     {
-      result_outResult = GALGAS_string (".setLengthToZero ()") ;
+      result_result = GALGAS_string (".setLengthToZero ()") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
     {
-      result_outResult = GALGAS_string (" = TO_UNICODE (0)") ;
+      result_result = GALGAS_string (" = TO_UNICODE (0)") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
     {
-      result_outResult = GALGAS_string (" = 0") ;
+      result_result = GALGAS_string (" = 0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
     {
-      result_outResult = GALGAS_string (" = 0") ;
+      result_result = GALGAS_string (" = 0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
     {
-      result_outResult = GALGAS_string (" = 0") ;
+      result_result = GALGAS_string (" = 0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
     {
-      result_outResult = GALGAS_string (" = 0") ;
+      result_result = GALGAS_string (" = 0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
     {
-      result_outResult = GALGAS_string (" = 0.0") ;
+      result_result = GALGAS_string (" = 0.0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
     {
-      result_outResult = GALGAS_string (".setToZero ()") ;
+      result_result = GALGAS_string (".setToZero ()") ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
@@ -3657,54 +3657,54 @@ GALGAS_string extensionGetter_initialization (const GALGAS_lexicalTypeEnum & inO
 GALGAS_string extensionGetter_cocoaTypeName (const GALGAS_lexicalTypeEnum & inObject,
                                              C_Compiler * /* inCompiler */
                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_lexicalTypeEnum::kNotBuilt:
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
     {
-      result_outResult = GALGAS_string ("NSMutableString *") ;
+      result_result = GALGAS_string ("NSMutableString *") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
     {
-      result_outResult = GALGAS_string ("UInt32") ;
+      result_result = GALGAS_string ("UInt32") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
     {
-      result_outResult = GALGAS_string ("UInt32") ;
+      result_result = GALGAS_string ("UInt32") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
     {
-      result_outResult = GALGAS_string ("UInt64") ;
+      result_result = GALGAS_string ("UInt64") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
     {
-      result_outResult = GALGAS_string ("SInt32") ;
+      result_result = GALGAS_string ("SInt32") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
     {
-      result_outResult = GALGAS_string ("SInt64") ;
+      result_result = GALGAS_string ("SInt64") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
     {
-      result_outResult = GALGAS_string ("double") ;
+      result_result = GALGAS_string ("double") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
     {
-      result_outResult = GALGAS_string ("NSMutableString *") ;
+      result_result = GALGAS_string ("NSMutableString *") ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
@@ -3719,54 +3719,54 @@ GALGAS_string extensionGetter_cocoaTypeName (const GALGAS_lexicalTypeEnum & inOb
 GALGAS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const GALGAS_lexicalTypeEnum & inObject,
                                                                 C_Compiler * /* inCompiler */
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bool result_outResult ; // Returned variable
+  GALGAS_bool result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_lexicalTypeEnum::kNotBuilt:
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
     {
-      result_outResult = GALGAS_bool (false) ;
+      result_result = GALGAS_bool (false) ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
     {
-      result_outResult = GALGAS_bool (true) ;
+      result_result = GALGAS_bool (true) ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
     {
-      result_outResult = GALGAS_bool (true) ;
+      result_result = GALGAS_bool (true) ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
     {
-      result_outResult = GALGAS_bool (true) ;
+      result_result = GALGAS_bool (true) ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
     {
-      result_outResult = GALGAS_bool (true) ;
+      result_result = GALGAS_bool (true) ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
     {
-      result_outResult = GALGAS_bool (true) ;
+      result_result = GALGAS_bool (true) ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
     {
-      result_outResult = GALGAS_bool (true) ;
+      result_result = GALGAS_bool (true) ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
     {
-      result_outResult = GALGAS_bool (false) ;
+      result_result = GALGAS_bool (false) ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
@@ -3781,54 +3781,54 @@ GALGAS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const GALGAS_lex
 GALGAS_string extensionGetter_cocoaInitializationCode (const GALGAS_lexicalTypeEnum & inObject,
                                                        C_Compiler * /* inCompiler */
                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_lexicalTypeEnum::kNotBuilt:
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
     {
-      result_outResult = GALGAS_string ("[[NSMutableString alloc] init]") ;
+      result_result = GALGAS_string ("[[NSMutableString alloc] init]") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
     {
-      result_outResult = GALGAS_string ("0") ;
+      result_result = GALGAS_string ("0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
     {
-      result_outResult = GALGAS_string ("0") ;
+      result_result = GALGAS_string ("0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
     {
-      result_outResult = GALGAS_string ("0") ;
+      result_result = GALGAS_string ("0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
     {
-      result_outResult = GALGAS_string ("0") ;
+      result_result = GALGAS_string ("0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
     {
-      result_outResult = GALGAS_string ("0") ;
+      result_result = GALGAS_string ("0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
     {
-      result_outResult = GALGAS_string ("0.0") ;
+      result_result = GALGAS_string ("0.0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
     {
-      result_outResult = GALGAS_string ("[[NSMutableString alloc] init]") ;
+      result_result = GALGAS_string ("[[NSMutableString alloc] init]") ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
@@ -3843,54 +3843,54 @@ GALGAS_string extensionGetter_cocoaInitializationCode (const GALGAS_lexicalTypeE
 GALGAS_string extensionGetter_cocoaResetPrefix (const GALGAS_lexicalTypeEnum & inObject,
                                                 C_Compiler * /* inCompiler */
                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_lexicalTypeEnum::kNotBuilt:
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
     {
-      result_outResult = GALGAS_string ("[") ;
+      result_result = GALGAS_string ("[") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
     {
-      result_outResult = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
     {
-      result_outResult = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
     {
-      result_outResult = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
     {
-      result_outResult = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
     {
-      result_outResult = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
     {
-      result_outResult = GALGAS_string::makeEmptyString () ;
+      result_result = GALGAS_string::makeEmptyString () ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
     {
-      result_outResult = GALGAS_string ("[") ;
+      result_result = GALGAS_string ("[") ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
@@ -3905,54 +3905,54 @@ GALGAS_string extensionGetter_cocoaResetPrefix (const GALGAS_lexicalTypeEnum & i
 GALGAS_string extensionGetter_cocoaReset (const GALGAS_lexicalTypeEnum & inObject,
                                           C_Compiler * /* inCompiler */
                                           COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outResult ; // Returned variable
+  GALGAS_string result_result ; // Returned variable
   const GALGAS_lexicalTypeEnum temp_0 = inObject ;
   switch (temp_0.enumValue ()) {
   case GALGAS_lexicalTypeEnum::kNotBuilt:
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_string:
     {
-      result_outResult = GALGAS_string (" setString:@\"\"]") ;
+      result_result = GALGAS_string (" setString:@\"\"]") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_char:
     {
-      result_outResult = GALGAS_string (" = 0") ;
+      result_result = GALGAS_string (" = 0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint:
     {
-      result_outResult = GALGAS_string (" = 0") ;
+      result_result = GALGAS_string (" = 0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_uint_36__34_:
     {
-      result_outResult = GALGAS_string (" = 0") ;
+      result_result = GALGAS_string (" = 0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint:
     {
-      result_outResult = GALGAS_string (" = 0") ;
+      result_result = GALGAS_string (" = 0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_sint_36__34_:
     {
-      result_outResult = GALGAS_string (" = 0") ;
+      result_result = GALGAS_string (" = 0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_double:
     {
-      result_outResult = GALGAS_string (" = 0.0") ;
+      result_result = GALGAS_string (" = 0.0") ;
     }
     break ;
   case GALGAS_lexicalTypeEnum::kEnum_lexicalType_5F_bigint:
     {
-      result_outResult = GALGAS_string (" setString:@\"\"]") ;
+      result_result = GALGAS_string (" setString:@\"\"]") ;
     }
     break ;
   }
 //---
-  return result_outResult ;
+  return result_result ;
 }
 
 
