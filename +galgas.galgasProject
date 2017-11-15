@@ -4,7 +4,7 @@
 #                                                                                                                      *
 #  Copyright (C) 1997, ..., 2017 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#  e-mail : molinaro@ls2n.fr                                                                                           *
 #                                                                                                                      *
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
@@ -23,9 +23,11 @@ project (3:3:7) -> "galgas" {
   %makefile-x86linux32-on-macosx
   %makefile-x86linux64-on-macosx
   %makefile-win32-on-macosx
+  %codeblocks-mac
   %codeblocks-windows
   %codeblocks-linux32
   %codeblocks-linux64
+  
 
 #--- JSON Parser
 #  "galgas-sources/json.galgas"

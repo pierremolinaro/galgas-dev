@@ -71,6 +71,21 @@ Returns an \ggs+@uint+ object that contains the number of warnings. The returned
 
 \section{Getters}
 
+\subsectionGetter{alphaString}{uint}
+
+Ce \emph{getter} permet de convertir un \ggs!@uint! en une chaîne de caractères, telle que l'ordre des entiers est conservé sur la chaîne obtenue.
+
+La chaîne obtenue comporte exactement 7 lettres minuscules. C'est en fait une conversion en base 26, la lettre \ggs=a= ayant la valeur $0$, et la lettre \ggs=z= la valeur $25$.
+
+
+\begin{galgas}
+  message [0 alphaString] + "\n"         # aaaaaaa
+  message [12_345 alphaString] + "\n"    # aaaasgv
+  message [@uint.max alphaString] + "\n" # nxmrlxv
+\end{galgas}
+
+
+
 \subsectionGetter{bigint}{uint}
 
 Ce \emph{getter} permet de convertir un \ggs!@uint! en \ggs!@bigint!. Comme la plage des valeurs des \ggs!bigint! n'est limitée que par la mémoire disponible, il n'échoue jamais.
