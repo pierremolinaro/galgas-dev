@@ -4,7 +4,7 @@
 #                                                                                                                      *
 #  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#  e-mail : molinaro@ls2n.fr                                                                                           *
 #                                                                                                                      *
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
@@ -16,6 +16,12 @@
 #----------------------------------------------------------------------------------------------------------------------*
 
 before { #--- Generate project
+#  message "0 -->       " + [0 alphaString] + "\n"
+#  message "12_345 -->  " + [12_345 alphaString] + "\n"
+#  message "max32 -->   " + [@uint.max alphaString] + "\n"
+#  message "0L -->      " + [0L alphaString] + "\n"
+#  message "12_345L --> " + [12_345L alphaString] + "\n"
+#  message "max64 -->   " + [@uint64.max alphaString] + "\n"
   let creationProjectName = [option galgas_cli_options.create_project value]
   projectCreation ( !creationProjectName )
 }

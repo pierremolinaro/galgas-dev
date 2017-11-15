@@ -4,7 +4,7 @@
 #                                                                                                                      *
 #  Copyright (C) 2009, ..., 2017 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#  e-mail : molinaro@ls2n.fr                                                                                           *
 #                                                                                                                      *
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
@@ -1183,6 +1183,13 @@ override method @uintPredefinedTypeAST getGetterMap
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
+    !getterName:"alphaString"
+    !returnedTypeName:"string"
+    !hasCompilerArgument:false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
     !getterName:"hexString"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
@@ -1379,6 +1386,13 @@ override method @uint64PredefinedTypeAST getGetterMap
     !"uintSlice" !"uint" !"inStartBit" !"uint" !"inBitCount"
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"alphaString"
+    !returnedTypeName:"string"
+    !hasCompilerArgument:false
   )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
