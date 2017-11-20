@@ -1,5 +1,4 @@
-#ifndef all_2D_declarations_2D__31__31__ENTITIES_DEFINED
-#define all_2D_declarations_2D__31__31__ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2015,4 +2014,3 @@ class cPtr_extensionMethodForGeneration : public cPtr_semanticDeclarationWithHea
 
 } ;
 
-#endif

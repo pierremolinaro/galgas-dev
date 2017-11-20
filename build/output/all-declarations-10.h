@@ -1,5 +1,4 @@
-#ifndef all_2D_declarations_2D__31__30__ENTITIES_DEFINED
-#define all_2D_declarations_2D__31__30__ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -490,4 +489,3 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-#endif

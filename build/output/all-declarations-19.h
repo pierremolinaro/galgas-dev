@@ -1,5 +1,4 @@
-#ifndef all_2D_declarations_2D__31__39__ENTITIES_DEFINED
-#define all_2D_declarations_2D__31__39__ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -788,4 +787,3 @@ void routine_enterBaseFinalGetterWith_33_Arguments (class GALGAS_getterMap & ioA
                                                     class C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
-#endif

@@ -17,8 +17,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef LL1_COMPUTATIONS_ROUTINE_DEFINED
-#define LL1_COMPUTATIONS_ROUTINE_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -56,5 +55,3 @@ LL1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
                   const C_String & inSyntaxDirectedTranslationVarName) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef %![COMPONENT_NAME identifierRepresentation]%_ENTITIES_DEFINED
-#define %![COMPONENT_NAME identifierRepresentation]%_ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 

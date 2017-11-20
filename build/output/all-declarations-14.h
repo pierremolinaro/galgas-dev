@@ -1,5 +1,4 @@
-#ifndef all_2D_declarations_2D__31__34__ENTITIES_DEFINED
-#define all_2D_declarations_2D__31__34__ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -489,4 +488,3 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (c
                                                                                const class GALGAS_string & in_PROJECT_5F_BUILD_5F_DEFAULT_5F_CONFIGURATION_5F_REF
                                                                                COMMA_LOCATION_ARGS) ;
 
-#endif

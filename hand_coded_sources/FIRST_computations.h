@@ -17,8 +17,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef FIRST_COMPUTATION_ROUTINES_DEFINED
-#define FIRST_COMPUTATION_ROUTINES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -48,5 +47,3 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                     const bool inVerboseOptionOn) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-#endif

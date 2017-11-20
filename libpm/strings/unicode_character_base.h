@@ -20,8 +20,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef UNICODE_BASE_ROUTINES_DEFINED
-#define UNICODE_BASE_ROUTINES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -94,6 +93,7 @@ bool isRestrictedUnicodeLetter (const utf32 inUnicodeCharacter) ;
 #ifdef __cplusplus
   utf32 unicodeCharacterFromHTMLSequence (const C_String & inString) ;
 #endif
+
 #ifdef __OBJC__
   utf32 unicodeCharacterFromHTMLSequence (NSString * inString) ;
 #endif
@@ -116,5 +116,3 @@ int32_t UTF8StringFromUTF32Character (const utf32 inUnicodeChar, char outSequenc
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-#endif

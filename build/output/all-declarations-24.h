@@ -1,5 +1,4 @@
-#ifndef all_2D_declarations_2D__32__34__ENTITIES_DEFINED
-#define all_2D_declarations_2D__32__34__ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -928,5 +927,5 @@ extern const cDirectoryWrapper gWrapperDirectory_12_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_13_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_14_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_15_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_16_libpmFileWrapper ;
 
-#endif

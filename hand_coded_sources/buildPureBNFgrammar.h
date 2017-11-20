@@ -17,8 +17,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef BUILD_PURE_BNF_GRAMMAR_ROUTINE_DEFINED
-#define BUILD_PURE_BNF_GRAMMAR_ROUTINE_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -40,5 +39,3 @@ printPureBNFgrammarInBNFfile (C_HTMLString & inHTMLfile,
                               const cPureBNFproductionsList & inProductions) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef all_2D_declarations_2D__31__37__ENTITIES_DEFINED
-#define all_2D_declarations_2D__31__37__ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -246,4 +245,3 @@ GALGAS_string filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementation
                                                                                           const class GALGAS_lexicalFunctionListAST & in_UNICODE_5F_TEST_5F_FUNCTIONS
                                                                                           COMMA_LOCATION_ARGS) ;
 
-#endif

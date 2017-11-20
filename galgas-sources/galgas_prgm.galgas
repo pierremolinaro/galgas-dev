@@ -436,7 +436,7 @@ private proc projectGeneration
   end
 #---------------------------------- Remove useless files
   if 0 == @uint.errorCount then
-    var allActualFileSet = @stringset. emptySet
+    var allActualFileSet = @stringset {}
     for () in [productDirectory regularFiles !false] do
       allActualFileSet += !mValue
     end

@@ -17,8 +17,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef EMPTY_STRINGS_COMPUTATIONS_ROUTINE_DEFINED
-#define EMPTY_STRINGS_COMPUTATIONS_ROUTINE_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -34,14 +33,11 @@ class C_RelationConfiguration ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-C_Relation
-empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                            C_HTMLString & ioHTMLFileContents,
-                            const bool inPopulateHTMLstring,
-                            TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
-                            const C_RelationConfiguration & inVocabularyConfiguration,
-                            const bool inVerboseOptionOn) ;
+C_Relation empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
+                                       C_HTMLString & ioHTMLFileContents,
+                                       const bool inPopulateHTMLstring,
+                                       TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
+                                       const C_RelationConfiguration & inVocabularyConfiguration,
+                                       const bool inVerboseOptionOn) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-#endif
