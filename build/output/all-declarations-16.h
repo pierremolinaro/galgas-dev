@@ -1,5 +1,4 @@
-#ifndef all_2D_declarations_2D__31__36__ENTITIES_DEFINED
-#define all_2D_declarations_2D__31__36__ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -5692,4 +5691,3 @@ void routine_checkAssignmentTypeWithImplicitGetterCall (const class GALGAS_unifi
                                                         class C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
-#endif

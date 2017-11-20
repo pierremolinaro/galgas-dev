@@ -17,8 +17,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef FOLLOW_COMPUTATIONS_ROUTINES_DEFINED
-#define FOLLOW_COMPUTATIONS_ROUTINES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -49,5 +48,3 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      const bool inVerboseOptionOn) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-#endif

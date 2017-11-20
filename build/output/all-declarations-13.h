@@ -1,5 +1,4 @@
-#ifndef all_2D_declarations_2D__31__33__ENTITIES_DEFINED
-#define all_2D_declarations_2D__31__33__ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2903,4 +2902,3 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-#endif

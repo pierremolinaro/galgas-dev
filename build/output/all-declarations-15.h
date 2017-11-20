@@ -1,5 +1,4 @@
-#ifndef all_2D_declarations_2D__31__35__ENTITIES_DEFINED
-#define all_2D_declarations_2D__31__35__ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -2818,4 +2817,3 @@ class cPtr_andShortExpressionForGeneration : public cPtr_semanticExpressionForGe
 
 } ;
 
-#endif

@@ -1,5 +1,4 @@
-#ifndef all_2D_declarations_2D__32__32__ENTITIES_DEFINED
-#define all_2D_declarations_2D__32__32__ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -448,4 +447,3 @@ void routine_analyzeErrorOrWarningInstruction (const class GALGAS_lstring consti
                                                class C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
 
-#endif

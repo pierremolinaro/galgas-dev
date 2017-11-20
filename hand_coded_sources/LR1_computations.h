@@ -17,8 +17,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef LR1_COMPUTATION_ROUTINES_DEFINED
-#define LR1_COMPUTATION_ROUTINES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -52,5 +51,3 @@ void LR1_computations (const TC_UniqueArray <C_String> & inImplementationFileHea
                        const C_String & inSyntaxDirectedTranslationVarName) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-#endif

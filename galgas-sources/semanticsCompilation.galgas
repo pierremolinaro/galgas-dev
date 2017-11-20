@@ -24,6 +24,7 @@ filewrapper semanticFileGenerationTemplate in "../generation_templates/semantic_
   template semanticFileHeader "semantic-file.h.galgasTemplate"
     ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
+
   template semanticFileImplementation "semantic-file.cpp.galgasTemplate"
     ?@stringlist IMPORTED_COMPONENT_LIST
 }

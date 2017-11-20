@@ -17,8 +17,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef FOLLOW_BY_EMPTY_COMPUTATIONS_ROUTINES_DEFINED
-#define FOLLOW_BY_EMPTY_COMPUTATIONS_ROUTINES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -44,5 +43,3 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                               const bool inVerboseOptionOn) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-#endif

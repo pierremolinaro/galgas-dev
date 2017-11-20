@@ -1,5 +1,4 @@
-#ifndef all_2D_declarations_2D__31__38__ENTITIES_DEFINED
-#define all_2D_declarations_2D__31__38__ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -863,4 +862,3 @@ GALGAS_string filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeSpeci
                                                                                                    const class GALGAS_string & in_SHADOW_5F_MESSAGE
                                                                                                    COMMA_LOCATION_ARGS) ;
 
-#endif

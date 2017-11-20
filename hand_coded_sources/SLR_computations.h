@@ -17,8 +17,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef SLR_COMPUTATION_ROUTINES_DEFINED
-#define SLR_COMPUTATION_ROUTINES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -52,5 +51,3 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
                   const C_String & inSyntaxDirectedTranslationVarName) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-#endif

@@ -296,7 +296,7 @@ private proc generateManyHeaders
   var headerInclusionList2 = @stringlist.emptyList
   for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
-      var inclusionSet1 = @stringset. emptySet
+      var inclusionSet1 = @stringset {}
       [mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerDef1]
       var headerIncludes1 = ""
       if [inclusionSet1 hasKey !""] then
@@ -306,7 +306,7 @@ private proc generateManyHeaders
         headerIncludes1 += "#include \"" + s + ".h\"\n"
       end
       headerIncludes1 += headerDef1
-      var inclusionSet2 = @stringset. emptySet
+      var inclusionSet2 = @stringset {}
       [mDeclaration appendDeclaration2 !inProductDirectory !?inclusionSet2 ?let @string headerDef2]
       var headerIncludes2 = ""
       if [inclusionSet2 hasKey !""] then
@@ -393,7 +393,7 @@ private proc generateManyHeaders
   [@string generateFile
     !inProductDirectory
     !"all-declarations.h"
-    !headerString + "#endif\n"
+    !headerString
   ]
 }
 
@@ -401,18 +401,17 @@ private proc generateManyHeaders
 
 private proc generateOneBigHeader
   ?let @string inProductDirectory
-#  ?let @string unused inCacheDirectory
   ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringset ioAllProductFileSet
   ?!@stringlist ioToolHeaderFileList {
   var headerString = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
     !"all-declarations"
-    !@stringlist.emptyList
+    !{}
   ]
 #--- Declaration 1
   for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
-      var inclusionSet1 = @stringset. emptySet
+      var inclusionSet1 = @stringset.emptySet
       [mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerString1]
       headerString += headerString1
     end
@@ -420,7 +419,7 @@ private proc generateOneBigHeader
 #--- Declaration 2
   for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
-      var inclusionSet2 = @stringset. emptySet
+      var inclusionSet2 = @stringset {}
       [mDeclaration appendDeclaration2 !inProductDirectory !?inclusionSet2 ?let @string headerString2]
       headerString += headerString2
     end
@@ -430,7 +429,7 @@ private proc generateOneBigHeader
   [@string generateFile
     !inProductDirectory
     !"all-declarations.h"
-    !headerString + "#endif\n"
+    !headerString
   ]
 }
 
@@ -643,7 +642,7 @@ private proc generateFewImplementationFilesWithFewHeaders
         [@string generateFile
           !inProductDirectory
           !headerFileName + ".h"
-          !startOfHeader + headerString + "#endif\n"
+          !startOfHeader + headerString
         ]
       #---
         fileIdx ++
@@ -680,7 +679,7 @@ private proc generateFewImplementationFilesWithFewHeaders
     [@string generateFile
       !inProductDirectory
       !headerFileName + ".h"
-      !startOfHeader + headerString + "#endif\n"
+      !startOfHeader + headerString
     ]
   end
 #--- all declarations header
@@ -693,7 +692,7 @@ private proc generateFewImplementationFilesWithFewHeaders
   [@string generateFile
     !inProductDirectory
     !"all-declarations.h"
-    !startOfAllDeclarationsHeader + "#endif\n"
+    !startOfAllDeclarationsHeader
   ]
 }
 

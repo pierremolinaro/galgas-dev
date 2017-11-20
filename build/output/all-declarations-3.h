@@ -1,5 +1,4 @@
-#ifndef all_2D_declarations_2D__33__ENTITIES_DEFINED
-#define all_2D_declarations_2D__33__ENTITIES_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7366,4 +7365,3 @@ class cPtr_equalExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-#endif

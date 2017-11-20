@@ -3,8 +3,7 @@
 
 //--- END OF USER ZONE 1
 
-#ifndef GALGAS2_INCLUDED_DEFINITIONS
-#define GALGAS2_INCLUDED_DEFINITIONS
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -6130,4 +6129,3 @@ class cMapElement : public cCollectionElement {
 
 
 //--- END OF USER ZONE 2
-#endif

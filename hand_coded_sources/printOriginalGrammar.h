@@ -17,8 +17,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef ORIGINAL_GRAMMAR_PRINT_ROUTINE_DEFINED
-#define ORIGINAL_GRAMMAR_PRINT_ROUTINE_DEFINED
+#pragma once
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -31,5 +30,3 @@ void printOriginalGrammar (C_HTMLString & inHTMLfile,
                            const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-#endif
