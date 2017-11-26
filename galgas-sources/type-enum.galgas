@@ -199,7 +199,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !@typeKindEnum.enumType
     !false # Does not support collection value
     !@typedPropertyList.emptyList
-    !@attributeMap.emptyMap
+    !{}
     !@typedPropertyList.emptyList
     !constructorMap
     !getterMap

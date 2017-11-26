@@ -90,14 +90,14 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       returnedType = @unifiedTypeMap-proxy.null
       kind = @methodKind. definedAsMember
       for () in [receiverType mCurrentTypedAttributeList] do
-        let @getterMap aMap = [mAttributeTypeProxy mGetterMap]
+        let @getterMap aMap = [mPropertyTypeProxy mGetterMap]
         with [mGetterName string] in aMap  do
           matchingReaderCount ++
           getterFormalArgumentTypeList = mArgumentTypeList
           hasCompilerArgument = mHasCompilerArgument
           returnedType = mReturnedType
           kind = mKind
-          fieldList += ![mAttributeName string]
+          fieldList += ![mPropertyName string]
         end
       end
       if matchingReaderCount == 0 then
@@ -987,12 +987,8 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
   if [type mTypeKindEnum] != @typeKindEnum. structType then
     error mStructFieldName:"the '.' operator requires the receiver to be a struct"
   end
-  let @attributeMap attributeMap = [type mAttributeMap]
-  [attributeMap searchKey
-    !mStructFieldName
-#    ??@bool isPrivate
-    ?type
-  ]
+  let attributeMap = [type mAttributeMap]
+  [attributeMap searchKey !mStructFieldName ?type]
 #  if isPrivate && ([mStructFieldName file] != [[attributeMap locationForKey !mStructFieldName->string] file]) then
 #    error mStructFieldName : "this field is private" ;
 #  end if ;

@@ -3854,204 +3854,204 @@ GALGAS_operators GALGAS_operators::extractObject (const GALGAS_object & inObject
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement_attributeMap::cMapElement_attributeMap (const GALGAS_lstring & inKey,
-                                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mAttributeType
-                                                    COMMA_LOCATION_ARGS) :
+cMapElement_propertyMap::cMapElement_propertyMap (const GALGAS_lstring & inKey,
+                                                  const GALGAS_unifiedTypeMap_2D_proxy & in_mPropertyType
+                                                  COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
-mProperty_mAttributeType (in_mAttributeType) {
+mProperty_mPropertyType (in_mPropertyType) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool cMapElement_attributeMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mAttributeType.isValid () ;
+bool cMapElement_propertyMap::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mPropertyType.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement * cMapElement_attributeMap::copy (void) {
+cMapElement * cMapElement_propertyMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_attributeMap (mProperty_lkey, mProperty_mAttributeType COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_propertyMap (mProperty_lkey, mProperty_mPropertyType COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cMapElement_attributeMap::description (C_String & ioString, const int32_t inIndentation) const {
+void cMapElement_propertyMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mAttributeType" ":" ;
-  mProperty_mAttributeType.description (ioString, inIndentation) ;
+  ioString << "mPropertyType" ":" ;
+  mProperty_mPropertyType.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult cMapElement_attributeMap::compare (const cCollectionElement * inOperand) const {
-  cMapElement_attributeMap * operand = (cMapElement_attributeMap *) inOperand ;
+typeComparisonResult cMapElement_propertyMap::compare (const cCollectionElement * inOperand) const {
+  cMapElement_propertyMap * operand = (cMapElement_propertyMap *) inOperand ;
   typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
   if (kOperandEqual == result) {
-    result = mProperty_mAttributeType.objectCompare (operand->mProperty_mAttributeType) ;
+    result = mProperty_mPropertyType.objectCompare (operand->mProperty_mPropertyType) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap::GALGAS_attributeMap (void) :
+GALGAS_propertyMap::GALGAS_propertyMap (void) :
 AC_GALGAS_map () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap::GALGAS_attributeMap (const GALGAS_attributeMap & inSource) :
+GALGAS_propertyMap::GALGAS_propertyMap (const GALGAS_propertyMap & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap & GALGAS_attributeMap::operator = (const GALGAS_attributeMap & inSource) {
+GALGAS_propertyMap & GALGAS_propertyMap::operator = (const GALGAS_propertyMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap GALGAS_attributeMap::constructor_emptyMap (LOCATION_ARGS) {
-  GALGAS_attributeMap result ;
+GALGAS_propertyMap GALGAS_propertyMap::constructor_emptyMap (LOCATION_ARGS) {
+  GALGAS_propertyMap result ;
   result.makeNewEmptyMap (THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap GALGAS_attributeMap::constructor_mapWithMapToOverride (const GALGAS_attributeMap & inMapToOverride
-                                                                           COMMA_LOCATION_ARGS) {
-  GALGAS_attributeMap result ;
+GALGAS_propertyMap GALGAS_propertyMap::constructor_mapWithMapToOverride (const GALGAS_propertyMap & inMapToOverride
+                                                                         COMMA_LOCATION_ARGS) {
+  GALGAS_propertyMap result ;
   result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap GALGAS_attributeMap::getter_overriddenMap (C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) const {
-  GALGAS_attributeMap result ;
+GALGAS_propertyMap GALGAS_propertyMap::getter_overriddenMap (C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const {
+  GALGAS_propertyMap result ;
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_attributeMap::addAssign_operation (const GALGAS_lstring & inKey,
-                                               const GALGAS_unifiedTypeMap_2D_proxy & inArgument0,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) {
-  cMapElement_attributeMap * p = NULL ;
-  macroMyNew (p, cMapElement_attributeMap (inKey, inArgument0 COMMA_HERE)) ;
+void GALGAS_propertyMap::addAssign_operation (const GALGAS_lstring & inKey,
+                                              const GALGAS_unifiedTypeMap_2D_proxy & inArgument0,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) {
+  cMapElement_propertyMap * p = NULL ;
+  macroMyNew (p, cMapElement_propertyMap (inKey, inArgument0 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@attributeMap insert error: '%K' already in map" ;
+  const char * kInsertErrorMessage = "@propertyMap insert error: '%K' already in map" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_attributeMap::setter_insertKey (GALGAS_lstring inKey,
-                                            GALGAS_unifiedTypeMap_2D_proxy inArgument0,
-                                            C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) {
-  cMapElement_attributeMap * p = NULL ;
-  macroMyNew (p, cMapElement_attributeMap (inKey, inArgument0 COMMA_HERE)) ;
+void GALGAS_propertyMap::setter_insertKey (GALGAS_lstring inKey,
+                                           GALGAS_unifiedTypeMap_2D_proxy inArgument0,
+                                           C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) {
+  cMapElement_propertyMap * p = NULL ;
+  macroMyNew (p, cMapElement_propertyMap (inKey, inArgument0 COMMA_HERE)) ;
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' attribute has been already declared in %L" ;
+  const char * kInsertErrorMessage = "the '%K' property has been already declared in %L" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const char * kSearchErrorMessage_attributeMap_searchKey = "the '%K' attribute is not declared" ;
+const char * kSearchErrorMessage_propertyMap_searchKey = "the '%K' property is not declared" ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_attributeMap::method_searchKey (GALGAS_lstring inKey,
-                                            GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
-                                            C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) const {
-  const cMapElement_attributeMap * p = (const cMapElement_attributeMap *) performSearch (inKey,
-                                                                                         inCompiler,
-                                                                                         kSearchErrorMessage_attributeMap_searchKey
-                                                                                         COMMA_THERE) ;
+void GALGAS_propertyMap::method_searchKey (GALGAS_lstring inKey,
+                                           GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                           C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) const {
+  const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) performSearch (inKey,
+                                                                                       inCompiler,
+                                                                                       kSearchErrorMessage_propertyMap_searchKey
+                                                                                       COMMA_THERE) ;
   if (NULL == p) {
     outArgument0.drop () ;
   }else{
-    macroValidSharedObject (p, cMapElement_attributeMap) ;
-    outArgument0 = p->mProperty_mAttributeType ;
+    macroValidSharedObject (p, cMapElement_propertyMap) ;
+    outArgument0 = p->mProperty_mPropertyType ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_attributeMap::getter_mAttributeTypeForKey (const GALGAS_string & inKey,
-                                                                                 C_Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_propertyMap::getter_mPropertyTypeForKey (const GALGAS_string & inKey,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
-  const cMapElement_attributeMap * p = (const cMapElement_attributeMap *) attributes ;
+  const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) attributes ;
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_attributeMap) ;
-    result = p->mProperty_mAttributeType ;
+    macroValidSharedObject (p, cMapElement_propertyMap) ;
+    result = p->mProperty_mPropertyType ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_attributeMap::setter_setMAttributeTypeForKey (GALGAS_unifiedTypeMap_2D_proxy inAttributeValue,
-                                                          GALGAS_string inKey,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) {
+void GALGAS_propertyMap::setter_setMPropertyTypeForKey (GALGAS_unifiedTypeMap_2D_proxy inAttributeValue,
+                                                        GALGAS_string inKey,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
-  cMapElement_attributeMap * p = (cMapElement_attributeMap *) attributes ;
+  cMapElement_propertyMap * p = (cMapElement_propertyMap *) attributes ;
   if (NULL != p) {
-    macroValidSharedObject (p, cMapElement_attributeMap) ;
-    p->mProperty_mAttributeType = inAttributeValue ;
+    macroValidSharedObject (p, cMapElement_propertyMap) ;
+    p->mProperty_mPropertyType = inAttributeValue ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cMapElement_attributeMap * GALGAS_attributeMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
-                                                                                   const GALGAS_string & inKey
-                                                                                   COMMA_LOCATION_ARGS) {
-  cMapElement_attributeMap * result = (cMapElement_attributeMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_attributeMap) ;
+cMapElement_propertyMap * GALGAS_propertyMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                                 const GALGAS_string & inKey
+                                                                                 COMMA_LOCATION_ARGS) {
+  cMapElement_propertyMap * result = (cMapElement_propertyMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_propertyMap) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cEnumerator_attributeMap::cEnumerator_attributeMap (const GALGAS_attributeMap & inEnumeratedObject,
-                                                    const typeEnumerationOrder inOrder) :
+cEnumerator_propertyMap::cEnumerator_propertyMap (const GALGAS_propertyMap & inEnumeratedObject,
+                                                  const typeEnumerationOrder inOrder) :
 cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap_2D_element cEnumerator_attributeMap::current (LOCATION_ARGS) const {
-  const cMapElement_attributeMap * p = (const cMapElement_attributeMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_attributeMap) ;
-  return GALGAS_attributeMap_2D_element (p->mProperty_lkey, p->mProperty_mAttributeType) ;
+GALGAS_propertyMap_2D_element cEnumerator_propertyMap::current (LOCATION_ARGS) const {
+  const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_propertyMap) ;
+  return GALGAS_propertyMap_2D_element (p->mProperty_lkey, p->mProperty_mPropertyType) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cEnumerator_attributeMap::current_lkey (LOCATION_ARGS) const {
+GALGAS_lstring cEnumerator_propertyMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement) ;
   return p->mProperty_lkey ;
@@ -4059,52 +4059,52 @@ GALGAS_lstring cEnumerator_attributeMap::current_lkey (LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cEnumerator_attributeMap::current_mAttributeType (LOCATION_ARGS) const {
-  const cMapElement_attributeMap * p = (const cMapElement_attributeMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_attributeMap) ;
-  return p->mProperty_mAttributeType ;
+GALGAS_unifiedTypeMap_2D_proxy cEnumerator_propertyMap::current_mPropertyType (LOCATION_ARGS) const {
+  const cMapElement_propertyMap * p = (const cMapElement_propertyMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_propertyMap) ;
+  return p->mProperty_mPropertyType ;
 }
 
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                                 @attributeMap type                                                  *
+//                                                  @propertyMap type                                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_attributeMap ("attributeMap",
-                                     NULL) ;
+kTypeDescriptor_GALGAS_propertyMap ("propertyMap",
+                                    NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_attributeMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_attributeMap ;
+const C_galgas_type_descriptor * GALGAS_propertyMap::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_propertyMap ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_attributeMap::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_propertyMap::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_attributeMap (*this)) ;
+    macroMyNew (result, GALGAS_propertyMap (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap GALGAS_attributeMap::extractObject (const GALGAS_object & inObject,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_attributeMap result ;
-  const GALGAS_attributeMap * p = (const GALGAS_attributeMap *) inObject.embeddedObject () ;
+GALGAS_propertyMap GALGAS_propertyMap::extractObject (const GALGAS_object & inObject,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_propertyMap result ;
+  const GALGAS_propertyMap * p = (const GALGAS_propertyMap *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_attributeMap *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_propertyMap *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("attributeMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("propertyMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -4552,7 +4552,7 @@ cMapElement_unifiedTypeMap::cMapElement_unifiedTypeMap (const GALGAS_lstring & i
                                                         const GALGAS_typeKindEnum & in_mTypeKindEnum,
                                                         const GALGAS_bool & in_mSupportCollectionValue,
                                                         const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
-                                                        const GALGAS_attributeMap & in_mAttributeMap,
+                                                        const GALGAS_propertyMap & in_mAttributeMap,
                                                         const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
                                                         const GALGAS_constructorMap & in_mConstructorMap,
                                                         const GALGAS_getterMap & in_mGetterMap,
@@ -4863,7 +4863,7 @@ void GALGAS_unifiedTypeMap::setter_insertKey (GALGAS_lstring inKey,
                                               GALGAS_typeKindEnum inArgument3,
                                               GALGAS_bool inArgument4,
                                               GALGAS_typedPropertyList inArgument5,
-                                              GALGAS_attributeMap inArgument6,
+                                              GALGAS_propertyMap inArgument6,
                                               GALGAS_typedPropertyList inArgument7,
                                               GALGAS_constructorMap inArgument8,
                                               GALGAS_getterMap inArgument9,
@@ -4911,7 +4911,7 @@ void GALGAS_unifiedTypeMap::method_searchKey (GALGAS_lstring inKey,
                                               GALGAS_typeKindEnum & outArgument3,
                                               GALGAS_bool & outArgument4,
                                               GALGAS_typedPropertyList & outArgument5,
-                                              GALGAS_attributeMap & outArgument6,
+                                              GALGAS_propertyMap & outArgument6,
                                               GALGAS_typedPropertyList & outArgument7,
                                               GALGAS_constructorMap & outArgument8,
                                               GALGAS_getterMap & outArgument9,
@@ -5084,12 +5084,12 @@ GALGAS_typedPropertyList GALGAS_unifiedTypeMap::getter_mAllTypedAttributeListFor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap GALGAS_unifiedTypeMap::getter_mAttributeMapForKey (const GALGAS_string & inKey,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const {
+GALGAS_propertyMap GALGAS_unifiedTypeMap::getter_mAttributeMapForKey (const GALGAS_string & inKey,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) attributes ;
-  GALGAS_attributeMap result ;
+  GALGAS_propertyMap result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
     result = p->mProperty_mAttributeMap ;
@@ -5453,7 +5453,7 @@ void GALGAS_unifiedTypeMap::setter_setMAllTypedAttributeListForKey (GALGAS_typed
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_unifiedTypeMap::setter_setMAttributeMapForKey (GALGAS_attributeMap inAttributeValue,
+void GALGAS_unifiedTypeMap::setter_setMAttributeMapForKey (GALGAS_propertyMap inAttributeValue,
                                                            GALGAS_string inKey,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) {
@@ -5793,7 +5793,7 @@ GALGAS_typedPropertyList cEnumerator_unifiedTypeMap::current_mAllTypedAttributeL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap cEnumerator_unifiedTypeMap::current_mAttributeMap (LOCATION_ARGS) const {
+GALGAS_propertyMap cEnumerator_unifiedTypeMap::current_mAttributeMap (LOCATION_ARGS) const {
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
   return p->mProperty_mAttributeMap ;

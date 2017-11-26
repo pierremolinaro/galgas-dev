@@ -396,7 +396,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !@typeKindEnum. graphType
     !false # Does not support collection value
     !@typedPropertyList.emptyList
-    !@attributeMap. emptyMap
+    !{}
     !@typedPropertyList.emptyList
     !constructorMap
     !getterMap

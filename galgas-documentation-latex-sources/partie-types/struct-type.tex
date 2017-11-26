@@ -55,6 +55,19 @@ Si le contexte le permet, l'annotation de type peut être omis lors de l'appel d
 @maStructure aVariable = .new {!123 !true}
 \end{galgas}
 
+À partir de la version 3.3.8, il est possible d'ajouter l'attribut \ggs=%selector= à la déclaration d'une propriété de structure. Le faire impose d'utiliser le sélecteur portant le nom de la propriété dans l'appel du constructeur \ggs=new=. Par exemple, si on déclare~:
+\begin{galgas}
+struct @maStructure {
+  @uint mProp1 %selector
+  @bool mProp2
+}
+\end{galgas}
+
+Alors l'appel du constructeur \ggs!new! devient~:
+\begin{galgas}
+var aVariable = @maStructure.new {!mProp1:123 !true}
+\end{galgas}
+
 
 \subsection{Constructeur \texttt{default}}
 

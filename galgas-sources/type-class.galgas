@@ -121,7 +121,7 @@ override method @classDeclarationAST enterInSemanticContext
   @setterMap setterMap
   @instanceMethodMap instanceMethodMap
   @typedPropertyList inheritedTypedAttributeList
-  @attributeMap attributeMap = {}
+  @propertyMap attributeMap = {}
 #--- Handle super class
   @unifiedTypeMap-proxy superClassIndex
   @bool generateHeaderInSeparateFile
@@ -131,7 +131,7 @@ override method @classDeclarationAST enterInSemanticContext
     setterMap = @setterMap. emptyMap
     instanceMethodMap = @instanceMethodMap. emptyMap
     inheritedTypedAttributeList = @typedPropertyList.emptyList
-    attributeMap = @attributeMap. emptyMap
+    attributeMap = {}
     generateHeaderInSeparateFile = false
     for () in mClassFeatureList do
       if [mValue string] == "generatedInSeparateFile" then
@@ -206,7 +206,7 @@ override method @classDeclarationAST enterInSemanticContext
 #--- Build attribute Map and constructor argument list
   @functionSignature constructorAttributeTypeList = {}
   for () in inheritedTypedAttributeList do
-    constructorAttributeTypeList += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
+    constructorAttributeTypeList += !["" nowhere] !mPropertyTypeProxy !mPropertyName.string
   end
   for () in mAttributeList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
@@ -268,9 +268,9 @@ override method @classDeclarationAST enterInSemanticContext
   for () in currentClassTypedAttributeList do
     if mHasSetter then
       [!?setterMap insertKey
-        !@lstring.new {!"set"+ [[mAttributeName string] stringByCapitalizingFirstCharacter] !@location.here}
+        !@lstring.new {!"set"+ [[mPropertyName string] stringByCapitalizingFirstCharacter] !@location.here}
         !@methodKind.definedAsMember
-        !{!["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentIn !mAttributeName.string}
+        !{!["" nowhere] !mPropertyTypeProxy !@formalArgumentPassingModeAST.argumentIn !mPropertyName.string}
         !false # No compiler argument
         !@methodQualifier.isBasicFinal
         !"" # No error message
@@ -296,7 +296,7 @@ override method @classDeclarationAST enterInSemanticContext
     defaultConstructorName = [superClassIndex mDefaultConstructorName]
   end
   for () in currentClassTypedAttributeList while defaultConstructorName != "" do
-    if ([mAttributeTypeProxy mDefaultConstructorName] == "") | not [mAttributeTypeProxy mIsConcrete] then
+    if ([mPropertyTypeProxy mDefaultConstructorName] == "") | not [mPropertyTypeProxy mIsConcrete] then
       defaultConstructorName = ""
     end
   end
@@ -397,7 +397,7 @@ override method @classDeclarationAST semanticAnalysis
   end
 #------ Enter attributes
   @typedPropertyList typedAttributeList = {}
-  @attributeIndexMap attributeMap = {}
+  @propertyIndexMap attributeMap = {}
   for () in mAttributeList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]

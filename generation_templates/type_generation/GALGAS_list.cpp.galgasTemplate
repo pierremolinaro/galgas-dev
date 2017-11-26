@@ -10,7 +10,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 //--- Constructor
   public : cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   for () in ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
 %\n%
@@ -33,7 +33,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 
 cCollectionElement_%!TYPE_IDENTIFIER%::cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   for () in ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
 %\n%
@@ -41,7 +41,7 @@ cCollectionElement_%!TYPE_IDENTIFIER%::cCollectionElement_%!TYPE_IDENTIFIER% (%?
 cCollectionElement (THERE),
 mObject (%
 for () in ATTRIBUTE_LIST
-  do %in_%![mAttributeName identifierRepresentation]
+  do %in_%![mPropertyName identifierRepresentation]
   between %, %
 end
 %) {
@@ -59,7 +59,7 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
   cCollectionElement * result = NULL ;
   macroMyNew (result, cCollectionElement_%!TYPE_IDENTIFIER% (%
     for () in ATTRIBUTE_LIST
-      do %mObject.mProperty_%![mAttributeName identifierRepresentation]
+      do %mObject.mProperty_%![mPropertyName identifierRepresentation]
       between %, %
     end
   % COMMA_HERE)) ;
@@ -73,8 +73,8 @@ void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, co
   for () in ATTRIBUTE_LIST do
     %  ioString << "\\n" ;\n%
     %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
-    %  ioString << %![mAttributeName utf8Representation]% ":" ;\n%
-    %  mObject.mProperty_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
+    %  ioString << %![mPropertyName utf8Representation]% ":" ;\n%
+    %  mObject.mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end
 %}
 
@@ -108,7 +108,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (UNUS
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
   %\n%!^%COMMA_LOCATION_ARGS) {
@@ -135,14 +135,14 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (
 
 void GALGAS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
   for () in ATTRIBUTE_LIST
-    do %,\n%!^%const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    do %,\n%!^%const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   end
 %\n%
 !^%COMMA_LOCATION_ARGS) {
   cCollectionElement_%!TYPE_IDENTIFIER% * p = NULL ;
   macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   for () in ATTRIBUTE_LIST
-    do %in_%![mAttributeName identifierRepresentation]
+    do %in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
   % COMMA_THERE)) ;
@@ -154,7 +154,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (%?^%capCollectionElem
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
   %\n%!^%COMMA_LOCATION_ARGS) {
@@ -181,7 +181,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^
   for () in ATTRIBUTE_LIST do index IDX
-    %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inOperand%![IDX string]%,\n%!^
+    %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% inOperand%![IDX string]%,\n%!^
   end
    %const GALGAS_uint inInsertionIndex,\n%!^
    %C_Compiler * inCompiler\n%!^
@@ -209,7 +209,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^
   for () in ATTRIBUTE_LIST do index IDX
-    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string]%,\n%!^
+    %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outOperand%![IDX string]%,\n%!^
   end
    %const GALGAS_uint inRemoveIndex,\n%!^
    %C_Compiler * inCompiler\n%!^
@@ -227,7 +227,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^
       macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %      outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+    %      outOperand%![IDX string] % = p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
 %    }
   }
@@ -237,7 +237,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
@@ -253,7 +253,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -262,7 +262,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_popLast (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
@@ -278,7 +278,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popLast (%?^
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -287,7 +287,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popLast (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) const {
@@ -303,7 +303,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -312,7 +312,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) const {
@@ -328,7 +328,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -388,7 +388,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::plusAssign_operation (%?^%const GALGAS_%!TYPE_ID
 for () in ATTRIBUTE_LIST do index IDX
   if mHasSetter then
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inOperand,\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% inOperand,\n%
   %                                              %!^%GALGAS_uint inIndex,\n%
   %                                              %!^%C_Compiler * inCompiler\n%
   %                                              %!^%COMMA_LOCATION_ARGS) {\n%
@@ -396,22 +396,22 @@ for () in ATTRIBUTE_LIST do index IDX
   %  if (NULL != p) {\n%
   %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %    macroUniqueSharedObject (p) ;\n%
-  %    p->mObject.mProperty_%![mAttributeName identifierRepresentation]% = inOperand ;\n%
+  %    p->mObject.mProperty_%![mPropertyName identifierRepresentation]% = inOperand ;\n%
   %  }\n%
   %}\n\n%
   end
 
   if mHasGetter then
     %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mAttributeName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint & inIndex,\n%
+    %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint & inIndex,\n%
     %                                              %!^%C_Compiler * inCompiler\n%
     %                                              %!^%COMMA_LOCATION_ARGS) const {\n%
     %  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
     %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%
-    %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
+    %  GALGAS_%![mPropertyTypeProxy identifierRepresentation]% result ;\n%
     %  if (NULL != p) {\n%
     %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
-    %    result = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+    %    result = p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
     %  }\n%
     %  return result ;\n%
     %}\n\n%
@@ -438,10 +438,10 @@ GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LO
 
 %for () in ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
-  %  return p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+  %  return p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   %}\n\n%
 end
 %

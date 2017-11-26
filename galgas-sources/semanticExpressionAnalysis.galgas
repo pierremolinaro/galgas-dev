@@ -1087,17 +1087,17 @@ override method @getterCallExpressionAST analyzeSemanticExpression
       for () in [receiverType mCurrentTypedAttributeList] do
         let attributeType = @unifiedTypeMap-proxy.searchKey {
           !inAnalysisContext.mSemanticContext.mTypeMap
-          !@lstring.new {![mAttributeTypeProxy key] !@location.here}
+          !@lstring.new {![mPropertyTypeProxy key] !@location.here}
         }
         let aMap = [attributeType mGetterMap]
         with mGetterName.string in aMap  do
-          if [attributeType key] == mAttributeName.string then
+          if [attributeType key] == mPropertyName.string then
             matchingReaderCount ++
             getterFormalArgumentTypeList = mArgumentTypeList
             hasCompilerArgument = mHasCompilerArgument
             returnedType = mReturnedType
             kind = mKind
-            fieldList += !mAttributeName.string
+            fieldList += !mPropertyName.string
             if mErrorMessage != "" then
               error mGetterName : mErrorMessage
             end
@@ -2802,7 +2802,7 @@ override method @structFieldAccessExpressionAST analyzeSemanticExpression
   if (not [[type mTypeKindEnum] isStructType]) & (not [[type mTypeKindEnum] isClassType]) then
     error mStructFieldName:"the '.' operator requires the receiver to be a struct or a class"
   end
-  let @attributeMap attributeMap = [type mAttributeMap]
+  let attributeMap = [type mAttributeMap]
   [attributeMap searchKey !mStructFieldName ?type]
 #--- Generate expression
   outExpression = @structFieldAccessExpressionForGeneration.new {

@@ -41,13 +41,13 @@ void GALGAS_%!TYPE_IDENTIFIER%::class_method_makeProxyFromString (%?^%GALGAS_%!A
 
 %for () in ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mAttributeName identifierRepresentation]% (%?^%C_Compiler * inCompiler\n%
+  %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (%?^%C_Compiler * inCompiler\n%
   %                                       %!^%COMMA_LOCATION_ARGS) const {\n%
-  %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
-  %  const cMapElement_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% * p = (const cMapElement_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% *) getAttributeListPointer (inCompiler, %![mAttributeName utf8Representation]% COMMA_THERE) ;\n%
+  %  GALGAS_%![mPropertyTypeProxy identifierRepresentation]% result ;\n%
+  %  const cMapElement_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% * p = (const cMapElement_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% *) getAttributeListPointer (inCompiler, %![mPropertyName utf8Representation]% COMMA_THERE) ;\n%
   %  if (NULL != p) {\n%
   %    macroValidSharedObject (p, cMapElement_%!ASSOCIATED_MAP_TYPE_IDENTIFIER%) ;\n%
-  %    result = p->mProperty_%![mAttributeName identifierRepresentation]%;\n%
+  %    result = p->mProperty_%![mPropertyName identifierRepresentation]%;\n%
   %  }\n%
   %  return result ;\n%
   %}\n\n%

@@ -3819,136 +3819,136 @@ GALGAS_localInitializedVariableList_2D_element GALGAS_localInitializedVariableLi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeIndexMap_2D_element::GALGAS_attributeIndexMap_2D_element (void) :
+GALGAS_propertyIndexMap_2D_element::GALGAS_propertyIndexMap_2D_element (void) :
 mProperty_lkey (),
-mProperty_mAttributeTypeIndex () {
+mProperty_mPropertyTypeIndex () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeIndexMap_2D_element::~ GALGAS_attributeIndexMap_2D_element (void) {
+GALGAS_propertyIndexMap_2D_element::~ GALGAS_propertyIndexMap_2D_element (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeIndexMap_2D_element::GALGAS_attributeIndexMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inOperand1) :
+GALGAS_propertyIndexMap_2D_element::GALGAS_propertyIndexMap_2D_element (const GALGAS_lstring & inOperand0,
+                                                                        const GALGAS_unifiedTypeMap_2D_proxy & inOperand1) :
 mProperty_lkey (inOperand0),
-mProperty_mAttributeTypeIndex (inOperand1) {
+mProperty_mPropertyTypeIndex (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeIndexMap_2D_element GALGAS_attributeIndexMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_attributeIndexMap_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                              GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE)) ;
+GALGAS_propertyIndexMap_2D_element GALGAS_propertyIndexMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_propertyIndexMap_2D_element (GALGAS_lstring::constructor_default (HERE),
+                                             GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeIndexMap_2D_element GALGAS_attributeIndexMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inOperand1 
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_attributeIndexMap_2D_element result ;
+GALGAS_propertyIndexMap_2D_element GALGAS_propertyIndexMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
+                                                                                        const GALGAS_unifiedTypeMap_2D_proxy & inOperand1 
+                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_propertyIndexMap_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_attributeIndexMap_2D_element (inOperand0, inOperand1) ;
+    result = GALGAS_propertyIndexMap_2D_element (inOperand0, inOperand1) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult GALGAS_attributeIndexMap_2D_element::objectCompare (const GALGAS_attributeIndexMap_2D_element & inOperand) const {
+typeComparisonResult GALGAS_propertyIndexMap_2D_element::objectCompare (const GALGAS_propertyIndexMap_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mAttributeTypeIndex.objectCompare (inOperand.mProperty_mAttributeTypeIndex) ;
+    result = mProperty_mPropertyTypeIndex.objectCompare (inOperand.mProperty_mPropertyTypeIndex) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool GALGAS_attributeIndexMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mAttributeTypeIndex.isValid () ;
+bool GALGAS_propertyIndexMap_2D_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mPropertyTypeIndex.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_attributeIndexMap_2D_element::drop (void) {
+void GALGAS_propertyIndexMap_2D_element::drop (void) {
   mProperty_lkey.drop () ;
-  mProperty_mAttributeTypeIndex.drop () ;
+  mProperty_mPropertyTypeIndex.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_attributeIndexMap_2D_element::description (C_String & ioString,
-                                                       const int32_t inIndentation) const {
-  ioString << "<struct @attributeIndexMap-element:" ;
+void GALGAS_propertyIndexMap_2D_element::description (C_String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString << "<struct @propertyIndexMap-element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mAttributeTypeIndex.description (ioString, inIndentation+1) ;
+    mProperty_mPropertyTypeIndex.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_attributeIndexMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_propertyIndexMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_attributeIndexMap_2D_element::getter_mAttributeTypeIndex (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mAttributeTypeIndex ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_propertyIndexMap_2D_element::getter_mPropertyTypeIndex (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mPropertyTypeIndex ;
 }
 
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                           @attributeIndexMap-element type                                           *
+//                                           @propertyIndexMap-element type                                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_attributeIndexMap_2D_element ("attributeIndexMap-element",
-                                                     NULL) ;
+kTypeDescriptor_GALGAS_propertyIndexMap_2D_element ("propertyIndexMap-element",
+                                                    NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_attributeIndexMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_attributeIndexMap_2D_element ;
+const C_galgas_type_descriptor * GALGAS_propertyIndexMap_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_propertyIndexMap_2D_element ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_attributeIndexMap_2D_element::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_propertyIndexMap_2D_element::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_attributeIndexMap_2D_element (*this)) ;
+    macroMyNew (result, GALGAS_propertyIndexMap_2D_element (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeIndexMap_2D_element GALGAS_attributeIndexMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_attributeIndexMap_2D_element result ;
-  const GALGAS_attributeIndexMap_2D_element * p = (const GALGAS_attributeIndexMap_2D_element *) inObject.embeddedObject () ;
+GALGAS_propertyIndexMap_2D_element GALGAS_propertyIndexMap_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_propertyIndexMap_2D_element result ;
+  const GALGAS_propertyIndexMap_2D_element * p = (const GALGAS_propertyIndexMap_2D_element *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_attributeIndexMap_2D_element *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_propertyIndexMap_2D_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("attributeIndexMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("propertyIndexMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

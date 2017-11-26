@@ -11003,8 +11003,8 @@ class cCollectionElement_typedPropertyList : public cCollectionElement {
   public : GALGAS_typedPropertyList_2D_element mObject ;
 
 //--- Constructor
-  public : cCollectionElement_typedPropertyList (const GALGAS_unifiedTypeMap_2D_proxy & in_mAttributeTypeProxy,
-                                                 const GALGAS_lstring & in_mAttributeName,
+  public : cCollectionElement_typedPropertyList (const GALGAS_unifiedTypeMap_2D_proxy & in_mPropertyTypeProxy,
+                                                 const GALGAS_lstring & in_mPropertyName,
                                                  const GALGAS_bool & in_mHasSetter,
                                                  const GALGAS_bool & in_mHasGetter
                                                  COMMA_LOCATION_ARGS) ;
@@ -11024,13 +11024,13 @@ class cCollectionElement_typedPropertyList : public cCollectionElement {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cCollectionElement_typedPropertyList::cCollectionElement_typedPropertyList (const GALGAS_unifiedTypeMap_2D_proxy & in_mAttributeTypeProxy,
-                                                                            const GALGAS_lstring & in_mAttributeName,
+cCollectionElement_typedPropertyList::cCollectionElement_typedPropertyList (const GALGAS_unifiedTypeMap_2D_proxy & in_mPropertyTypeProxy,
+                                                                            const GALGAS_lstring & in_mPropertyName,
                                                                             const GALGAS_bool & in_mHasSetter,
                                                                             const GALGAS_bool & in_mHasGetter
                                                                             COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mAttributeTypeProxy, in_mAttributeName, in_mHasSetter, in_mHasGetter) {
+mObject (in_mPropertyTypeProxy, in_mPropertyName, in_mHasSetter, in_mHasGetter) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11043,7 +11043,7 @@ bool cCollectionElement_typedPropertyList::isValid (void) const {
 
 cCollectionElement * cCollectionElement_typedPropertyList::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_typedPropertyList (mObject.mProperty_mAttributeTypeProxy, mObject.mProperty_mAttributeName, mObject.mProperty_mHasSetter, mObject.mProperty_mHasGetter COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_typedPropertyList (mObject.mProperty_mPropertyTypeProxy, mObject.mProperty_mPropertyName, mObject.mProperty_mHasSetter, mObject.mProperty_mHasGetter COMMA_HERE)) ;
   return result ;
 }
 
@@ -11052,12 +11052,12 @@ cCollectionElement * cCollectionElement_typedPropertyList::copy (void) {
 void cCollectionElement_typedPropertyList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mAttributeTypeProxy" ":" ;
-  mObject.mProperty_mAttributeTypeProxy.description (ioString, inIndentation) ;
+  ioString << "mPropertyTypeProxy" ":" ;
+  mObject.mProperty_mPropertyTypeProxy.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mAttributeName" ":" ;
-  mObject.mProperty_mAttributeName.description (ioString, inIndentation) ;
+  ioString << "mPropertyName" ":" ;
+  mObject.mProperty_mPropertyName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mHasSetter" ":" ;
@@ -11114,14 +11114,14 @@ GALGAS_typedPropertyList GALGAS_typedPropertyList::constructor_listWithValue (co
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_typedPropertyList::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                          const GALGAS_unifiedTypeMap_2D_proxy & in_mAttributeTypeProxy,
-                                                          const GALGAS_lstring & in_mAttributeName,
+                                                          const GALGAS_unifiedTypeMap_2D_proxy & in_mPropertyTypeProxy,
+                                                          const GALGAS_lstring & in_mPropertyName,
                                                           const GALGAS_bool & in_mHasSetter,
                                                           const GALGAS_bool & in_mHasGetter
                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement_typedPropertyList * p = NULL ;
-  macroMyNew (p, cCollectionElement_typedPropertyList (in_mAttributeTypeProxy,
-                                                       in_mAttributeName,
+  macroMyNew (p, cCollectionElement_typedPropertyList (in_mPropertyTypeProxy,
+                                                       in_mPropertyName,
                                                        in_mHasSetter,
                                                        in_mHasGetter COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
@@ -11184,8 +11184,8 @@ void GALGAS_typedPropertyList::setter_removeAtIndex (GALGAS_unifiedTypeMap_2D_pr
       outOperand3.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
-      outOperand0 = p->mObject.mProperty_mAttributeTypeProxy ;
-      outOperand1 = p->mObject.mProperty_mAttributeName ;
+      outOperand0 = p->mObject.mProperty_mPropertyTypeProxy ;
+      outOperand1 = p->mObject.mProperty_mPropertyName ;
       outOperand2 = p->mObject.mProperty_mHasSetter ;
       outOperand3 = p->mObject.mProperty_mHasGetter ;
     }
@@ -11210,8 +11210,8 @@ void GALGAS_typedPropertyList::setter_popFirst (GALGAS_unifiedTypeMap_2D_proxy &
     outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
-    outOperand0 = p->mObject.mProperty_mAttributeTypeProxy ;
-    outOperand1 = p->mObject.mProperty_mAttributeName ;
+    outOperand0 = p->mObject.mProperty_mPropertyTypeProxy ;
+    outOperand1 = p->mObject.mProperty_mPropertyName ;
     outOperand2 = p->mObject.mProperty_mHasSetter ;
     outOperand3 = p->mObject.mProperty_mHasGetter ;
   }
@@ -11235,8 +11235,8 @@ void GALGAS_typedPropertyList::setter_popLast (GALGAS_unifiedTypeMap_2D_proxy & 
     outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
-    outOperand0 = p->mObject.mProperty_mAttributeTypeProxy ;
-    outOperand1 = p->mObject.mProperty_mAttributeName ;
+    outOperand0 = p->mObject.mProperty_mPropertyTypeProxy ;
+    outOperand1 = p->mObject.mProperty_mPropertyName ;
     outOperand2 = p->mObject.mProperty_mHasSetter ;
     outOperand3 = p->mObject.mProperty_mHasGetter ;
   }
@@ -11260,8 +11260,8 @@ void GALGAS_typedPropertyList::method_first (GALGAS_unifiedTypeMap_2D_proxy & ou
     outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
-    outOperand0 = p->mObject.mProperty_mAttributeTypeProxy ;
-    outOperand1 = p->mObject.mProperty_mAttributeName ;
+    outOperand0 = p->mObject.mProperty_mPropertyTypeProxy ;
+    outOperand1 = p->mObject.mProperty_mPropertyName ;
     outOperand2 = p->mObject.mProperty_mHasSetter ;
     outOperand3 = p->mObject.mProperty_mHasGetter ;
   }
@@ -11285,8 +11285,8 @@ void GALGAS_typedPropertyList::method_last (GALGAS_unifiedTypeMap_2D_proxy & out
     outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
-    outOperand0 = p->mObject.mProperty_mAttributeTypeProxy ;
-    outOperand1 = p->mObject.mProperty_mAttributeName ;
+    outOperand0 = p->mObject.mProperty_mPropertyTypeProxy ;
+    outOperand1 = p->mObject.mProperty_mPropertyName ;
     outOperand2 = p->mObject.mProperty_mHasSetter ;
     outOperand3 = p->mObject.mProperty_mHasGetter ;
   }
@@ -11345,30 +11345,30 @@ void GALGAS_typedPropertyList::plusAssign_operation (const GALGAS_typedPropertyL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_typedPropertyList::getter_mAttributeTypeProxyAtIndex (const GALGAS_uint & inIndex,
-                                                                                            C_Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_typedPropertyList::getter_mPropertyTypeProxyAtIndex (const GALGAS_uint & inIndex,
+                                                                                           C_Compiler * inCompiler
+                                                                                           COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_typedPropertyList * p = (cCollectionElement_typedPropertyList *) attributes.ptr () ;
   GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
-    result = p->mObject.mProperty_mAttributeTypeProxy ;
+    result = p->mObject.mProperty_mPropertyTypeProxy ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_typedPropertyList::getter_mAttributeNameAtIndex (const GALGAS_uint & inIndex,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_typedPropertyList::getter_mPropertyNameAtIndex (const GALGAS_uint & inIndex,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_typedPropertyList * p = (cCollectionElement_typedPropertyList *) attributes.ptr () ;
   GALGAS_lstring result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
-    result = p->mObject.mProperty_mAttributeName ;
+    result = p->mObject.mProperty_mPropertyName ;
   }
   return result ;
 }
@@ -11424,18 +11424,18 @@ GALGAS_typedPropertyList_2D_element cEnumerator_typedPropertyList::current (LOCA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy cEnumerator_typedPropertyList::current_mAttributeTypeProxy (LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cEnumerator_typedPropertyList::current_mPropertyTypeProxy (LOCATION_ARGS) const {
   const cCollectionElement_typedPropertyList * p = (const cCollectionElement_typedPropertyList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
-  return p->mObject.mProperty_mAttributeTypeProxy ;
+  return p->mObject.mProperty_mPropertyTypeProxy ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cEnumerator_typedPropertyList::current_mAttributeName (LOCATION_ARGS) const {
+GALGAS_lstring cEnumerator_typedPropertyList::current_mPropertyName (LOCATION_ARGS) const {
   const cCollectionElement_typedPropertyList * p = (const cCollectionElement_typedPropertyList *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_typedPropertyList) ;
-  return p->mObject.mProperty_mAttributeName ;
+  return p->mObject.mProperty_mPropertyName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

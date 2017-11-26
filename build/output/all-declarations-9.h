@@ -3431,11 +3431,11 @@ class GALGAS_structDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionListAST getter_mAttributeList (LOCATION_ARGS) const ;
-
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mEnumeratedElementTypeName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mStructTypeName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionListAST getter_mStructurePropertyList (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -3457,13 +3457,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structDeclarationAS
 class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mProperty_mStructTypeName ;
-  public : GALGAS_propertyInCollectionListAST mProperty_mAttributeList ;
+  public : GALGAS_propertyInCollectionListAST mProperty_mStructurePropertyList ;
   public : GALGAS_string mProperty_mEnumeratedElementTypeName ;
 
 //--- Constructor
   public : cPtr_structDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                       const GALGAS_lstring & in_mStructTypeName,
-                                      const GALGAS_propertyInCollectionListAST & in_mAttributeList,
+                                      const GALGAS_propertyInCollectionListAST & in_mStructurePropertyList,
                                       const GALGAS_string & in_mEnumeratedElementTypeName
                                       COMMA_LOCATION_ARGS) ;
 
@@ -3472,7 +3472,7 @@ class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mStructTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_propertyInCollectionListAST getter_mAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_propertyInCollectionListAST getter_mStructurePropertyList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_string getter_mEnumeratedElementTypeName (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,

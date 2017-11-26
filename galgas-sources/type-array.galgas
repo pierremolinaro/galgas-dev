@@ -193,7 +193,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@typeKindEnum. listMapType
     !false # Does not support collection value
     !@typedPropertyList.emptyList
-    !@attributeMap. emptyMap
+    !{}
     !@typedPropertyList.emptyList
     !constructorMap
     !getterMap

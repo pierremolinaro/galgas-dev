@@ -14196,8 +14196,8 @@ GALGAS_enumerationDescriptorList_2D_element GALGAS_enumerationDescriptorList_2D_
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_typedPropertyList_2D_element::GALGAS_typedPropertyList_2D_element (void) :
-mProperty_mAttributeTypeProxy (),
-mProperty_mAttributeName (),
+mProperty_mPropertyTypeProxy (),
+mProperty_mPropertyName (),
 mProperty_mHasSetter (),
 mProperty_mHasGetter () {
 }
@@ -14213,8 +14213,8 @@ GALGAS_typedPropertyList_2D_element::GALGAS_typedPropertyList_2D_element (const 
                                                                           const GALGAS_lstring & inOperand1,
                                                                           const GALGAS_bool & inOperand2,
                                                                           const GALGAS_bool & inOperand3) :
-mProperty_mAttributeTypeProxy (inOperand0),
-mProperty_mAttributeName (inOperand1),
+mProperty_mPropertyTypeProxy (inOperand0),
+mProperty_mPropertyName (inOperand1),
 mProperty_mHasSetter (inOperand2),
 mProperty_mHasGetter (inOperand3) {
 }
@@ -14247,10 +14247,10 @@ GALGAS_typedPropertyList_2D_element GALGAS_typedPropertyList_2D_element::constru
 typeComparisonResult GALGAS_typedPropertyList_2D_element::objectCompare (const GALGAS_typedPropertyList_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mProperty_mAttributeTypeProxy.objectCompare (inOperand.mProperty_mAttributeTypeProxy) ;
+    result = mProperty_mPropertyTypeProxy.objectCompare (inOperand.mProperty_mPropertyTypeProxy) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mAttributeName.objectCompare (inOperand.mProperty_mAttributeName) ;
+    result = mProperty_mPropertyName.objectCompare (inOperand.mProperty_mPropertyName) ;
   }
   if (result == kOperandEqual) {
     result = mProperty_mHasSetter.objectCompare (inOperand.mProperty_mHasSetter) ;
@@ -14264,14 +14264,14 @@ typeComparisonResult GALGAS_typedPropertyList_2D_element::objectCompare (const G
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_typedPropertyList_2D_element::isValid (void) const {
-  return mProperty_mAttributeTypeProxy.isValid () && mProperty_mAttributeName.isValid () && mProperty_mHasSetter.isValid () && mProperty_mHasGetter.isValid () ;
+  return mProperty_mPropertyTypeProxy.isValid () && mProperty_mPropertyName.isValid () && mProperty_mHasSetter.isValid () && mProperty_mHasGetter.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_typedPropertyList_2D_element::drop (void) {
-  mProperty_mAttributeTypeProxy.drop () ;
-  mProperty_mAttributeName.drop () ;
+  mProperty_mPropertyTypeProxy.drop () ;
+  mProperty_mPropertyName.drop () ;
   mProperty_mHasSetter.drop () ;
   mProperty_mHasGetter.drop () ;
 }
@@ -14284,9 +14284,9 @@ void GALGAS_typedPropertyList_2D_element::description (C_String & ioString,
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mProperty_mAttributeTypeProxy.description (ioString, inIndentation+1) ;
+    mProperty_mPropertyTypeProxy.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mAttributeName.description (ioString, inIndentation+1) ;
+    mProperty_mPropertyName.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mHasSetter.description (ioString, inIndentation+1) ;
     ioString << ", " ;
@@ -14297,14 +14297,14 @@ void GALGAS_typedPropertyList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_typedPropertyList_2D_element::getter_mAttributeTypeProxy (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mAttributeTypeProxy ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_typedPropertyList_2D_element::getter_mPropertyTypeProxy (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mPropertyTypeProxy ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_typedPropertyList_2D_element::getter_mAttributeName (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mAttributeName ;
+GALGAS_lstring GALGAS_typedPropertyList_2D_element::getter_mPropertyName (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mPropertyName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14366,136 +14366,136 @@ GALGAS_typedPropertyList_2D_element GALGAS_typedPropertyList_2D_element::extract
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap_2D_element::GALGAS_attributeMap_2D_element (void) :
+GALGAS_propertyMap_2D_element::GALGAS_propertyMap_2D_element (void) :
 mProperty_lkey (),
-mProperty_mAttributeType () {
+mProperty_mPropertyType () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap_2D_element::~ GALGAS_attributeMap_2D_element (void) {
+GALGAS_propertyMap_2D_element::~ GALGAS_propertyMap_2D_element (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap_2D_element::GALGAS_attributeMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand1) :
+GALGAS_propertyMap_2D_element::GALGAS_propertyMap_2D_element (const GALGAS_lstring & inOperand0,
+                                                              const GALGAS_unifiedTypeMap_2D_proxy & inOperand1) :
 mProperty_lkey (inOperand0),
-mProperty_mAttributeType (inOperand1) {
+mProperty_mPropertyType (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap_2D_element GALGAS_attributeMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_attributeMap_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                         GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE)) ;
+GALGAS_propertyMap_2D_element GALGAS_propertyMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_propertyMap_2D_element (GALGAS_lstring::constructor_default (HERE),
+                                        GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap_2D_element GALGAS_attributeMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand1 
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_attributeMap_2D_element result ;
+GALGAS_propertyMap_2D_element GALGAS_propertyMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
+                                                                              const GALGAS_unifiedTypeMap_2D_proxy & inOperand1 
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_propertyMap_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_attributeMap_2D_element (inOperand0, inOperand1) ;
+    result = GALGAS_propertyMap_2D_element (inOperand0, inOperand1) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult GALGAS_attributeMap_2D_element::objectCompare (const GALGAS_attributeMap_2D_element & inOperand) const {
+typeComparisonResult GALGAS_propertyMap_2D_element::objectCompare (const GALGAS_propertyMap_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mProperty_lkey.objectCompare (inOperand.mProperty_lkey) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mAttributeType.objectCompare (inOperand.mProperty_mAttributeType) ;
+    result = mProperty_mPropertyType.objectCompare (inOperand.mProperty_mPropertyType) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool GALGAS_attributeMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mAttributeType.isValid () ;
+bool GALGAS_propertyMap_2D_element::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mPropertyType.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_attributeMap_2D_element::drop (void) {
+void GALGAS_propertyMap_2D_element::drop (void) {
   mProperty_lkey.drop () ;
-  mProperty_mAttributeType.drop () ;
+  mProperty_mPropertyType.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_attributeMap_2D_element::description (C_String & ioString,
-                                                  const int32_t inIndentation) const {
-  ioString << "<struct @attributeMap-element:" ;
+void GALGAS_propertyMap_2D_element::description (C_String & ioString,
+                                                 const int32_t inIndentation) const {
+  ioString << "<struct @propertyMap-element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
     mProperty_lkey.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mAttributeType.description (ioString, inIndentation+1) ;
+    mProperty_mPropertyType.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_attributeMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_propertyMap_2D_element::getter_lkey (UNUSED_LOCATION_ARGS) const {
   return mProperty_lkey ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_attributeMap_2D_element::getter_mAttributeType (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mAttributeType ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_propertyMap_2D_element::getter_mPropertyType (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mPropertyType ;
 }
 
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                             @attributeMap-element type                                              *
+//                                              @propertyMap-element type                                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_attributeMap_2D_element ("attributeMap-element",
-                                                NULL) ;
+kTypeDescriptor_GALGAS_propertyMap_2D_element ("propertyMap-element",
+                                               NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_attributeMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_attributeMap_2D_element ;
+const C_galgas_type_descriptor * GALGAS_propertyMap_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_propertyMap_2D_element ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_attributeMap_2D_element::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_propertyMap_2D_element::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_attributeMap_2D_element (*this)) ;
+    macroMyNew (result, GALGAS_propertyMap_2D_element (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeMap_2D_element GALGAS_attributeMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_attributeMap_2D_element result ;
-  const GALGAS_attributeMap_2D_element * p = (const GALGAS_attributeMap_2D_element *) inObject.embeddedObject () ;
+GALGAS_propertyMap_2D_element GALGAS_propertyMap_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_propertyMap_2D_element result ;
+  const GALGAS_propertyMap_2D_element * p = (const GALGAS_propertyMap_2D_element *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_attributeMap_2D_element *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_propertyMap_2D_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("attributeMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("propertyMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

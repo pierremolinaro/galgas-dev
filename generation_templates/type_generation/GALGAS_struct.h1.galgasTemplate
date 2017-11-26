@@ -7,8 +7,8 @@
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Properties
 %
-for () in ATTRIBUTE_LIST do
-  %  public : GALGAS_%![mAttributeTypeProxy identifierRepresentation]% mProperty_%![mAttributeName identifierRepresentation]% ;\n\n%
+for () in PROPERTY_LIST do
+  %  public : GALGAS_%![mPropertyTypeProxy identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n\n%
 end%//--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
   public : VIRTUAL_IN_DEBUG void drop (void) ;
@@ -27,8 +27,8 @@ end
 
 //--------------------------------- Native constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (%?^
-for () in ATTRIBUTE_LIST
-  do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+for () in PROPERTY_LIST
+  do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   between %,\n%!^
 end%) ;
 

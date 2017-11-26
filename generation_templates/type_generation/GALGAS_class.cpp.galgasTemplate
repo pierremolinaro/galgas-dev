@@ -18,7 +18,7 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;
 % for () in ALL_ATTRIBUTE_LIST do
     %  if (kOperandEqual == result) {\n%
-    %    result = mProperty_%![mAttributeName identifierRepresentation]%.objectCompare (p->mProperty_%![mAttributeName identifierRepresentation]%) ;\n%
+    %    result = mProperty_%![mPropertyName identifierRepresentation]%.objectCompare (p->mProperty_%![mPropertyName identifierRepresentation]%) ;\n%
     %  }\n%
   end
 %  return result ;
@@ -56,7 +56,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_default (LOCATI
   return GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
 if [ALL_ATTRIBUTE_LIST length] > 0 then
 for () in ALL_ATTRIBUTE_LIST do
-   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]%::constructor_%![[mAttributeTypeProxy mDefaultConstructorName] identifierRepresentation]% (HERE)%
+   %GALGAS_%![mPropertyTypeProxy identifierRepresentation]%::constructor_%![[mPropertyTypeProxy mDefaultConstructorName] identifierRepresentation]% (HERE)%
   between %,\n%!^
 end%\n%!^%COMMA_THERE%
 else
@@ -87,7 +87,7 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
   for () in ALL_ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inAttribute_%![mAttributeName identifierRepresentation]
+    do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inAttribute_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
   if [ALL_ATTRIBUTE_LIST length] == 0 then
@@ -99,13 +99,13 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   GALGAS_%!TYPE_IDENTIFIER% result ;
   if (%
     for () in ALL_ATTRIBUTE_LIST
-      do %inAttribute_%![mAttributeName identifierRepresentation]%.isValid ()%
+      do %inAttribute_%![mPropertyName identifierRepresentation]%.isValid ()%
       between % && %
     end
   %) {
     macroMyNew (result.mObjectPtr, cPtr_%!TYPE_IDENTIFIER% (%
     for () in ALL_ATTRIBUTE_LIST
-      do %inAttribute_%![mAttributeName identifierRepresentation]
+      do %inAttribute_%![mPropertyName identifierRepresentation]
       between %, %
     end
     % COMMA_THERE)) ;\n%
@@ -117,18 +117,18 @@ end
 for () in CURRENT_ATTRIBUTE_LIST do
   if mHasGetter then
     %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-    %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
+    %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+    %  GALGAS_%![mPropertyTypeProxy identifierRepresentation]% result ;\n%
     %  if (NULL != mObjectPtr) {\n%
     %    const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
     %    macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
-    %    result = p->mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+    %    result = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
     %  }\n%
     %  return result ;\n%
     %}\n\n%
     %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cPtr_%!TYPE_IDENTIFIER%::getter_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-    %  return mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+    %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% cPtr_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+    %  return mProperty_%![mPropertyName identifierRepresentation]% ;\n%
     %}\n\n%
   end
 end
@@ -136,19 +136,19 @@ end
 for () in CURRENT_ATTRIBUTE_LIST do
   if mHasSetter then
     %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-    %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inValue\n%
+    %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% inValue\n%
                           !^%COMMA_LOCATION_ARGS) {\n%
     %  if (NULL != mObjectPtr) {\n%
     %    insulate (THERE) ;\n%
     %    cPtr_%!TYPE_IDENTIFIER% * p = (cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
     %    macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
-    %    p->mProperty_%![mAttributeName identifierRepresentation]% = inValue ;\n%
+    %    p->mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n%
     %  }\n%
     %}\n\n%
     %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-    %void cPtr_%!TYPE_IDENTIFIER%::setter_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inValue\n%
+    %void cPtr_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% inValue\n%
                           !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
-    %  mProperty_%![mAttributeName identifierRepresentation]% = inValue ;\n%
+    %  mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n%
     %}\n\n%
   end
 end
@@ -159,7 +159,7 @@ end
 
 cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
   for () in ALL_ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
   if [ALL_ATTRIBUTE_LIST length] > 0 then
@@ -170,7 +170,7 @@ cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
 %) :
 %if SUPER_TYPE_IDENTIFIER == "" then %acPtr_class% else %cPtr_%!SUPER_TYPE_IDENTIFIER end% (%
   for () in INHERITED_ATTRIBUTE_LIST
-    do %in_%![mAttributeName identifierRepresentation]
+    do %in_%![mPropertyName identifierRepresentation]
     between %, %
   end
   if [INHERITED_ATTRIBUTE_LIST length] > 0 then
@@ -180,7 +180,7 @@ cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
   end
 %)%
   for () in CURRENT_ATTRIBUTE_LIST
-    do %,\n% %mProperty_%![mAttributeName identifierRepresentation]% (in_%![mAttributeName identifierRepresentation]%)%
+    do %,\n% %mProperty_%![mPropertyName identifierRepresentation]% (in_%![mPropertyName identifierRepresentation]%)%
   end
 % {
 }
@@ -201,7 +201,7 @@ if not IS_ABSTRACT then
                                !^%const int32_t inIndentation) const {\n%
     %  ioString << "[@%!TYPE_NAME%:" ;\n%
     for () in ALL_ATTRIBUTE_LIST
-      do %  mProperty_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
+      do %  mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
       between %  ioString << ", " ;\n%
     end
     %  ioString << "]" ;\n%
@@ -216,7 +216,7 @@ acPtr_class * cPtr_%!TYPE_IDENTIFIER%::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
   macroMyNew (ptr, cPtr_%!TYPE_IDENTIFIER% (%
   for () in ALL_ATTRIBUTE_LIST
-  do  %mProperty_%![mAttributeName identifierRepresentation]
+  do  %mProperty_%![mPropertyName identifierRepresentation]
   between %, %
   after % COMMA_%
   end

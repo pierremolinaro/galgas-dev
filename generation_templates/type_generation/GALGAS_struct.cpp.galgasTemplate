@@ -2,8 +2,8 @@
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 %
-for () in ATTRIBUTE_LIST
-  do %mProperty_%![mAttributeName identifierRepresentation]% ()%
+for () in PROPERTY_LIST
+  do %mProperty_%![mPropertyName identifierRepresentation]% ()%
   between %,\n%
 end% {
 }
@@ -16,12 +16,12 @@ GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
-for () in ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
+for () in PROPERTY_LIST
+  do index IDX %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end%) :\n%
-for () in ATTRIBUTE_LIST do index IDX
-  %mProperty_%![mAttributeName identifierRepresentation]% (inOperand%![IDX string]%)%
+for () in PROPERTY_LIST do index IDX
+  %mProperty_%![mPropertyName identifierRepresentation]% (inOperand%![IDX string]%)%
   between %,\n%
 end
 % {
@@ -32,8 +32,8 @@ end
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER% (%?^
-for () in ATTRIBUTE_LIST do
-   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]%::constructor_%![[mAttributeTypeProxy mDefaultConstructorName] identifierRepresentation]% (HERE)%
+for () in PROPERTY_LIST do
+   %GALGAS_%![mPropertyTypeProxy identifierRepresentation]%::constructor_%![[mPropertyTypeProxy mDefaultConstructorName] identifierRepresentation]% (HERE)%
   between %,\n%!^
 end%) ;
 }
@@ -42,19 +42,19 @@ end%) ;
 %//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
-for () in ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
+for () in PROPERTY_LIST
+  do index IDX %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end% \n%!^%COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   if (%
-for () in ATTRIBUTE_LIST
+for () in PROPERTY_LIST
   do index IDX %inOperand%![IDX string]%.isValid ()%
   between % && %
 end
 %) {
     result = GALGAS_%!TYPE_IDENTIFIER% (%
-for () in ATTRIBUTE_LIST
+for () in PROPERTY_LIST
   do index IDX %inOperand%![IDX string]
   between %, %
 end
@@ -68,9 +68,9 @@ end
 
 typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
-%for () in ATTRIBUTE_LIST do
+%for () in PROPERTY_LIST do
   %  if (result == kOperandEqual) {\n%
-  %    result = mProperty_%![mAttributeName identifierRepresentation]%.objectCompare (inOperand.mProperty_%![mAttributeName identifierRepresentation]%) ;\n%
+  %    result = mProperty_%![mPropertyName identifierRepresentation]%.objectCompare (inOperand.mProperty_%![mPropertyName identifierRepresentation]%) ;\n%
   %  }\n%
 end
 %  return result ;
@@ -80,8 +80,8 @@ end
 
 bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
   return %
-    for () in ATTRIBUTE_LIST
-      do %mProperty_%![mAttributeName identifierRepresentation]%.isValid ()%
+    for () in PROPERTY_LIST
+      do %mProperty_%![mPropertyName identifierRepresentation]%.isValid ()%
       between % && %
     end
 % ;
@@ -90,8 +90,8 @@ bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
-%  for () in ATTRIBUTE_LIST
-    do %  mProperty_%![mAttributeName identifierRepresentation]%.drop () ;\n%
+%  for () in PROPERTY_LIST
+    do %  mProperty_%![mPropertyName identifierRepresentation]%.drop () ;\n%
   end
 %}
 
@@ -104,18 +104,18 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
     ioString << " not built" ;
   }else{
 %
-for () in ATTRIBUTE_LIST
-  do index IDX %    mProperty_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
+for () in PROPERTY_LIST
+  do index IDX %    mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
   between %    ioString << ", " ;\n%
 end
 %  }
   ioString << ">" ;
 }
 
-%for () in ATTRIBUTE_LIST do
+%for () in PROPERTY_LIST do
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-  %  return mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+  %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+  %  return mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   %}\n\n%
 
 end

@@ -248,10 +248,10 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   var localConstantList =@localConstantList {}
   for () in [receiverType mCurrentTypedAttributeList] do
     localConstantList +=
-      !mAttributeTypeProxy
-      !@lstring.new {!mPrefix.string + mAttributeName !mEndOfReceiverExpression}
+      !mPropertyTypeProxy
+      !@lstring.new {!mPrefix.string + mPropertyName !mEndOfReceiverExpression}
       !true # Do not warn if unused
-      !objectArrayCppName + "->mProperty_" + [mAttributeName identifierRepresentation]
+      !objectArrayCppName + "->mProperty_" + [mPropertyName identifierRepresentation]
   end
 #--- Add lkey as @lstring constant
   localConstantList +=
@@ -355,9 +355,9 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   @localInitializedVariableList localInitializedVariableList = {}
   for () in [targetType mCurrentTypedAttributeList] do
     localInitializedVariableList +=
-      !mAttributeTypeProxy
-      !@lstring.new {!mPrefix.string + mAttributeName !mEndOfReceiverExpression}
-      !objectArrayCppName + "->mProperty_" + [mAttributeName identifierRepresentation]
+      !mPropertyTypeProxy
+      !@lstring.new {!mPrefix.string + mPropertyName !mEndOfReceiverExpression}
+      !objectArrayCppName + "->mProperty_" + [mPropertyName identifierRepresentation]
   end
   let localConstantList = @localConstantList {
     !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}

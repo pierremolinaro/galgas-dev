@@ -10,7 +10,7 @@ class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
 //--- Constructor
   public : cSortedListElement_%!TYPE_IDENTIFIER% (%?^
   for () in ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
 %\n%
@@ -36,7 +36,7 @@ class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
 
 cSortedListElement_%!TYPE_IDENTIFIER%::cSortedListElement_%!TYPE_IDENTIFIER% (%?^
   for () in ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
 %\n%
@@ -44,7 +44,7 @@ cSortedListElement_%!TYPE_IDENTIFIER%::cSortedListElement_%!TYPE_IDENTIFIER% (%?
 cSortedListElement (THERE),
 mObject (%
 for () in ATTRIBUTE_LIST
-  do %in_%![mAttributeName identifierRepresentation]
+  do %in_%![mPropertyName identifierRepresentation]
   between %, %
 end
 %) {
@@ -62,7 +62,7 @@ cSortedListElement * cSortedListElement_%!TYPE_IDENTIFIER%::copy (void) {
   cSortedListElement * result = NULL ;
   macroMyNew (result, cSortedListElement_%!TYPE_IDENTIFIER% (%
     for () in ATTRIBUTE_LIST
-      do %mObject.mProperty_%![mAttributeName identifierRepresentation]
+      do %mObject.mProperty_%![mPropertyName identifierRepresentation]
       between %, %
     end
   % COMMA_HERE)) ;
@@ -76,8 +76,8 @@ void cSortedListElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, co
   for () in ATTRIBUTE_LIST do
     %  ioString << "\\n" ;\n%
     %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
-    %  ioString << %![mAttributeName utf8Representation]% ":" ;\n%
-    %  mObject.mProperty_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
+    %  ioString << %![mPropertyName utf8Representation]% ":" ;\n%
+    %  mObject.mProperty_%![mPropertyName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end
 %}
 
@@ -127,7 +127,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithValue (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
   %\n%!^%COMMA_LOCATION_ARGS) {
@@ -150,7 +150,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithV
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
 %
@@ -184,7 +184,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::plusAssign_operation (%?^%const GALGAS_%!TYPE_ID
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_popSmallest (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
            %C_Compiler * inCompiler\n%
          !^%COMMA_LOCATION_ARGS) {
@@ -200,7 +200,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popSmallest (%?^
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -209,7 +209,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popSmallest (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_popGreatest (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
            %C_Compiler * inCompiler\n%
          !^%COMMA_LOCATION_ARGS) {
@@ -225,7 +225,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popGreatest (%?^
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -234,7 +234,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popGreatest (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
      %C_Compiler * inCompiler\n%
      !^%COMMA_LOCATION_ARGS) const {
@@ -250,7 +250,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -259,7 +259,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
   for () in ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end
      %C_Compiler * inCompiler\n%
      !^%COMMA_LOCATION_ARGS) const {
@@ -275,7 +275,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  for () in ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   end
 %  }
 }
@@ -298,10 +298,10 @@ GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LO
 
 %for () in ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;\n%
-  %  return p->mObject.mProperty_%![mAttributeName identifierRepresentation]% ;\n%
+  %  return p->mObject.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   %}\n\n%
 end
 %

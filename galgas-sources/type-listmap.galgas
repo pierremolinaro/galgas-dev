@@ -147,7 +147,7 @@ override method @listmapDeclarationAST enterInSemanticContext
   var addAssignOperatorDescription =@functionSignature {}
   addAssignOperatorDescription += !["" nowhere] !stringTypeIndex !"inKey"
   for () in listTypedAttributeList do
-    addAssignOperatorDescription += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
+    addAssignOperatorDescription += !["" nowhere] !mPropertyTypeProxy !mPropertyName.string
   end
 #--- Add Categories
   addExtensions (
@@ -175,7 +175,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !@typeKindEnum. arrayType
     !true # Support collection value
     !@typedPropertyList.emptyList
-    !@attributeMap. emptyMap
+    !{}
     !listTypedAttributeList
     !constructorMap
     !getterMap

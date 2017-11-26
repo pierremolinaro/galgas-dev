@@ -104,8 +104,8 @@ abstract method @semanticDeclarationAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-map @attributeIndexMap {
-  @unifiedTypeMap-proxy mAttributeTypeIndex
+map @propertyIndexMap {
+  @unifiedTypeMap-proxy mPropertyTypeIndex
   insert insertKey error message "the '%K' attribute is already declared"
   search searchKey error message "the '%K' attribute is not declared"
 }
@@ -182,18 +182,18 @@ proc analyzeRoutineBody
 #--- Enter non mutable instance attributes
   for () in inNonMutableTypedAttributeList do
     [!?variableMap insertNonMutableAttribute
-      !mAttributeName
-      !mAttributeTypeProxy
-      !inAttributeVariableNamePrefix + "mProperty_"+ [[mAttributeName string] identifierRepresentation]
+      !mPropertyName
+      !mPropertyTypeProxy
+      !inAttributeVariableNamePrefix + "mProperty_"+ [[mPropertyName string] identifierRepresentation]
       !inAnalysisContext.mSelfObjectCppName
     ]
   end
 #--- Enter mutable instance attributes
   for () in inMutableTypedAttributeList do
     [!?variableMap insertMutableAttribute
-      !mAttributeName
-      !mAttributeTypeProxy
-      !inAttributeVariableNamePrefix + "mProperty_"+ [[mAttributeName string] identifierRepresentation]
+      !mPropertyName
+      !mPropertyTypeProxy
+      !inAttributeVariableNamePrefix + "mProperty_"+ [[mPropertyName string] identifierRepresentation]
       !inAnalysisContext.mSelfObjectCppName
     ]
   end
@@ -354,9 +354,9 @@ proc analyzeFunctionBody
 #--- Enter instance attributes
   for () in inTypedAttributeList do
     [!?variableMap insertNonMutableAttribute
-      !mAttributeName
-      !mAttributeTypeProxy
-      !inAttributeVariableNamePrefix + "mProperty_"+ [[mAttributeName string] identifierRepresentation]
+      !mPropertyName
+      !mPropertyTypeProxy
+      !inAttributeVariableNamePrefix + "mProperty_"+ [[mPropertyName string] identifierRepresentation]
       !inAnalysisContext.mSelfObjectCppName
     ]
   end
