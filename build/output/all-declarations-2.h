@@ -5667,9 +5667,9 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectio
 
 class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mAttributeTypeProxy ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mPropertyTypeProxy ;
 
-  public : GALGAS_lstring mProperty_mAttributeName ;
+  public : GALGAS_lstring mProperty_mPropertyName ;
 
   public : GALGAS_bool mProperty_mHasSetter ;
 
@@ -5689,8 +5689,8 @@ class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG ~ GALGAS_typedPropertyList_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_typedPropertyList_2D_element (const GALGAS_unifiedTypeMap_2D_proxy & in_mAttributeTypeProxy,
-                                                const GALGAS_lstring & in_mAttributeName,
+  public : GALGAS_typedPropertyList_2D_element (const GALGAS_unifiedTypeMap_2D_proxy & in_mPropertyTypeProxy,
+                                                const GALGAS_lstring & in_mPropertyName,
                                                 const GALGAS_bool & in_mHasSetter,
                                                 const GALGAS_bool & in_mHasGetter) ;
 
@@ -5723,13 +5723,13 @@ class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mAttributeName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mAttributeTypeProxy (LOCATION_ARGS) const ;
-
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mHasGetter (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mHasSetter (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mPropertyName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mPropertyTypeProxy (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection

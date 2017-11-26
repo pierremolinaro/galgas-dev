@@ -94,10 +94,10 @@ override method @listDeclarationAST enterInSemanticContext
   @formalParameterSignature setterOutputFormalArgumentList = {}
   @formalParameterSignature setterInputFormalArgumentList = {}
   for () in typedAttributeList do
-    enumerationDescriptor += !mAttributeTypeProxy ![mAttributeName string]
-    constructorAttributeTypeList += !["" nowhere] !mAttributeTypeProxy !mAttributeName.string
-    setterOutputFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentOut !mAttributeName.string
-    setterInputFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentConstantIn !mAttributeName.string
+    enumerationDescriptor += !mPropertyTypeProxy ![mPropertyName string]
+    constructorAttributeTypeList += !["" nowhere] !mPropertyTypeProxy !mPropertyName.string
+    setterOutputFormalArgumentList += !["" nowhere] !mPropertyTypeProxy !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
+    setterInputFormalArgumentList += !["" nowhere] !mPropertyTypeProxy !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
   end
 #--- Constructors
   var constructorMap =@constructorMap.emptyMap{}
@@ -154,12 +154,12 @@ override method @listDeclarationAST enterInSemanticContext
   for () in typedAttributeList do
     if mHasGetter then
       [!?getterMap insertOrReplace
-        !@lstring.new {![mAttributeName string] + "AtIndex" ![mAttributeName location]}
+        !@lstring.new {![mPropertyName string] + "AtIndex" ![mPropertyName location]}
         !@methodKind.definedAsMember
         !@functionSignature {!["" nowhere] !uintType !"inIndex"}
         !@location.here
         !true
-        !mAttributeTypeProxy
+        !mPropertyTypeProxy
         !@methodQualifier.isBasic
         !"" # No Error message
       ]
@@ -216,10 +216,10 @@ override method @listDeclarationAST enterInSemanticContext
   for () in typedAttributeList do
     if mHasSetter then
       var setterFormalArgumentList =@formalParameterSignature {}
-      setterFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST.argumentConstantIn !mAttributeName.string
-      setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !mAttributeName.string
+      setterFormalArgumentList += !["" nowhere] !mPropertyTypeProxy !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
+      setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
       [!?setterMap insertOrReplace
-        !@lstring.new {!"set" + [[mAttributeName string] stringByCapitalizingFirstCharacter] + "AtIndex" ![mAttributeName location]}
+        !@lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "AtIndex" ![mPropertyName location]}
         !@methodKind.definedAsMember
         !setterFormalArgumentList
         !true
@@ -321,7 +321,7 @@ override method @listDeclarationAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #---
   @typedPropertyList typedAttributeList = {}
-  @attributeIndexMap attributeMap = {}
+  @propertyIndexMap attributeMap = {}
   for () in mAttributeList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]

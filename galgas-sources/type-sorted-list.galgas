@@ -220,7 +220,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !@typeKindEnum. sortedListType
     !true # Support collection value
     !typedAttributeList
-    !@attributeMap. emptyMap
+    !{}
     !@typedPropertyList.emptyList
     !constructorMap
     !getterMap
@@ -261,7 +261,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !elementTypeNameForUsefulness]
 #--- Attribute
   var typedAttributeList =@typedPropertyList {}
-  var attributeMap =@attributeIndexMap.emptyMap{}
+  @propertyIndexMap attributeMap = {}
   for () in mAttributeList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !propertyTypeNameForUsefulness]

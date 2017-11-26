@@ -163,8 +163,8 @@ list @enumerationDescriptorList {
 #----------------------------------------------------------------------------------------------------------------------*
 
 list @typedPropertyList {
-  @unifiedTypeMap-proxy mAttributeTypeProxy
-  @lstring mAttributeName
+  @unifiedTypeMap-proxy mPropertyTypeProxy
+  @lstring mPropertyName
   @bool mHasSetter
   @bool mHasGetter
 }
@@ -290,10 +290,10 @@ boolset @operators {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-map @attributeMap {
-  @unifiedTypeMap-proxy mAttributeType
-  insert insertKey error message "the '%K' attribute has been already declared in %L"
-  search searchKey error message "the '%K' attribute is not declared"
+map @propertyMap {
+  @unifiedTypeMap-proxy mPropertyType
+  insert insertKey error message "the '%K' property has been already declared in %L"
+  search searchKey error message "the '%K' property is not declared"
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -324,7 +324,7 @@ shared map @unifiedTypeMap {
   @typeKindEnum mTypeKindEnum
   @bool mSupportCollectionValue
   @typedPropertyList mAllTypedAttributeList
-  @attributeMap mAttributeMap # struct, class
+  @propertyMap mAttributeMap # struct, class
   @typedPropertyList mCurrentTypedAttributeList
   @constructorMap mConstructorMap
   @getterMap mGetterMap

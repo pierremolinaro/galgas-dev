@@ -151,22 +151,22 @@ override method @mapProxyDeclarationAST enterInSemanticContext
 #--- Enter associated map attribute names as getters
   let @getterMap inheritedGetterMap = getterMap
   for () in mapTypedAttributeList do
-    if [inheritedGetterMap hasKey ![mAttributeName string]] then
+    if [inheritedGetterMap hasKey ![mPropertyName string]] then
       @string s = ""
       for () in [inheritedGetterMap keySet]
         do s += "'" + key + "'"
         between s += ", "
       end
-      error mAttributeName : "the map has a associated map proxy, which has predefined getters: " + s
+      error mPropertyName : "the map has a associated map proxy, which has predefined getters: " + s
        + "; you cannot use theses names for naming an attribute of this map"
     else
       [!?getterMap insertKey
-        !mAttributeName
+        !mPropertyName
         !@methodKind.definedAsMember
         !@functionSignature {}
         !@location.here
         !true
-        !mAttributeTypeProxy
+        !mPropertyTypeProxy
         !@methodQualifier.isBasic
         !"" # No Error message
       ]
@@ -192,7 +192,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !@typeKindEnum. mapProxyType
     !false # Does not support collection value
     !mapTypedAttributeList #[@typedPropertyList emptyList]
-    !@attributeMap. emptyMap
+    !{}
     !mapTypedAttributeList
     !constructorMap
     !getterMap

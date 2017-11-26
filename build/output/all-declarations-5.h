@@ -879,18 +879,18 @@ class GALGAS_string extensionGetter_kind (const class GALGAS_typeKindEnum & inOb
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                      Class for element of '@attributeMap' map                                       *
+//                                       Class for element of '@propertyMap' map                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cMapElement_attributeMap : public cMapElement {
+class cMapElement_propertyMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mAttributeType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mPropertyType ;
 
 //--- Constructor
-  public : cMapElement_attributeMap (const GALGAS_lstring & inKey,
-                                     const GALGAS_unifiedTypeMap_2D_proxy & in_mAttributeType
-                                     COMMA_LOCATION_ARGS) ;
+  public : cMapElement_propertyMap (const GALGAS_lstring & inKey,
+                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mPropertyType
+                                    COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -907,32 +907,32 @@ class cMapElement_attributeMap : public cMapElement {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                           @attributeMap_2D_element struct                                           *
+//                                           @propertyMap_2D_element struct                                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_attributeMap_2D_element : public AC_GALGAS_root {
+class GALGAS_propertyMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
   public : GALGAS_lstring mProperty_lkey ;
 
-  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mAttributeType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mPropertyType ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_attributeMap_2D_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_propertyMap_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_attributeMap_2D_element (void) ;
+  public : GALGAS_propertyMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_attributeMap_2D_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_propertyMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_attributeMap_2D_element (const GALGAS_lstring & in_lkey,
-                                           const GALGAS_unifiedTypeMap_2D_proxy & in_mAttributeType) ;
+  public : GALGAS_propertyMap_2D_element (const GALGAS_lstring & in_lkey,
+                                          const GALGAS_unifiedTypeMap_2D_proxy & in_mPropertyType) ;
 
 //-- Start of generic part --*
 
@@ -940,20 +940,20 @@ class GALGAS_attributeMap_2D_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_attributeMap_2D_element extractObject (const GALGAS_object & inObject,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_propertyMap_2D_element extractObject (const GALGAS_object & inObject,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static class GALGAS_attributeMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                        const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1
-                                                                        COMMA_LOCATION_ARGS) ;
+  public : static class GALGAS_propertyMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                       const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_attributeMap_2D_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_propertyMap_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -963,18 +963,18 @@ class GALGAS_attributeMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_lkey (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mAttributeType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mPropertyType (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_attributeMap_2D_element class
+} ; // End of GALGAS_propertyMap_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_attributeMap_2D_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyMap_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -1097,7 +1097,7 @@ class cMapElement_unifiedTypeMap : public cMapElement {
   public : GALGAS_typeKindEnum mProperty_mTypeKindEnum ;
   public : GALGAS_bool mProperty_mSupportCollectionValue ;
   public : GALGAS_typedPropertyList mProperty_mAllTypedAttributeList ;
-  public : GALGAS_attributeMap mProperty_mAttributeMap ;
+  public : GALGAS_propertyMap mProperty_mAttributeMap ;
   public : GALGAS_typedPropertyList mProperty_mCurrentTypedAttributeList ;
   public : GALGAS_constructorMap mProperty_mConstructorMap ;
   public : GALGAS_getterMap mProperty_mGetterMap ;
@@ -1125,7 +1125,7 @@ class cMapElement_unifiedTypeMap : public cMapElement {
                                        const GALGAS_typeKindEnum & in_mTypeKindEnum,
                                        const GALGAS_bool & in_mSupportCollectionValue,
                                        const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
-                                       const GALGAS_attributeMap & in_mAttributeMap,
+                                       const GALGAS_propertyMap & in_mAttributeMap,
                                        const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
                                        const GALGAS_constructorMap & in_mConstructorMap,
                                        const GALGAS_getterMap & in_mGetterMap,

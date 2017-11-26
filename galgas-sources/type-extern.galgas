@@ -297,7 +297,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     !@typeKindEnum. externType
     !false # Does not support collection value
     !@typedPropertyList.emptyList
-    !@attributeMap. emptyMap
+    !{}
     !@typedPropertyList.emptyList
     !constructorMap
     !getterMap

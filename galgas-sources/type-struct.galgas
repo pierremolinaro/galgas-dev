@@ -4,7 +4,7 @@
 
 class @structDeclarationAST : @semanticDeclarationAST {
   @lstring mStructTypeName
-  @propertyInCollectionListAST mAttributeList
+  @propertyInCollectionListAST mStructurePropertyList
   @string mEnumeratedElementTypeName # Empty string if not enumerable
 }
 
@@ -18,10 +18,10 @@ syntax extension galgas3DeclarationsSyntax {
     $struct$
     $@type$ ?let @lstring structTypeName indexing structDefinition
     ${$
-    @propertyInCollectionListAST attributeList = {}
+    @propertyInCollectionListAST propertyList = {}
     repeat
     while
-      <property_declaration> !?attributeList
+      <property_declaration> !?propertyList
     while
       $;$
     end
@@ -29,7 +29,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@structDeclarationAST.new {
       !false # Is not predefined
       !structTypeName
-      !attributeList
+      !propertyList
       !""
     }
   }
@@ -49,7 +49,7 @@ override method @structDeclarationAST enterDeclarationInGraph
 {
   let key = @lstring.new {!"@" + mStructTypeName ![mStructTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for () in mAttributeList do
+  for () in mStructurePropertyList do
     let propertyKey = @lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}
     [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
   end
@@ -67,6 +67,12 @@ override getter @structDeclarationAST keyRepresentation ->@string outString {
 #   SEMANTIC CONTEXT                                                                                                   *
 #----------------------------------------------------------------------------------------------------------------------*
 
+private func %once selectorFeatureForNewConstructor -> @string {
+  result = "selector"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @structDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
@@ -74,39 +80,42 @@ override method @structDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext {
 #--- Struct type index
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mStructTypeName ?let structTypeIndex]
-#--- Constructors and attribute map
-  @attributeMap attributeMap = {}
+#--- Constructors and property map
+  @propertyMap propertyMap = {}
   @constructorMap constructorMap = {}
-  @functionSignature constructorAttributeTypeList = {}
-  @typedPropertyList typedAttributeList = {}
+  @functionSignature constructorPropertyTypeList = {}
+  @typedPropertyList typedPropertyList = {}
   @unifiedTypeMapProxyList typesToIncludeInHeaderCompilation = {}
-  for () in mAttributeList do
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    typesToIncludeInHeaderCompilation += !attributeTypeIndex
+  for () in mStructurePropertyList do
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let propertyTypeProxy]
+    @lstring selector = ["" nowhere]
+    for () in mFeatureList do
+      if mValue.string == selectorFeatureForNewConstructor () then
+        selector = mPropertyName
+      end
+    end
+    constructorPropertyTypeList += !selector !propertyTypeProxy !mPropertyName.string
+    typesToIncludeInHeaderCompilation += !propertyTypeProxy
     var hasSetter = false
     var hasGetter = true
-    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
-    [!?attributeMap insertKey
-      !mPropertyName
-      !attributeTypeIndex
-    ]
+    typedPropertyList += !propertyTypeProxy !mPropertyName !hasSetter !hasGetter
+    [!?propertyMap insertKey !mPropertyName !propertyTypeProxy]
   end
   [!?constructorMap insertKey
     !@lstring.new {!"new" !.here}
-    !constructorAttributeTypeList
+    !constructorPropertyTypeList
     !false
     !structTypeIndex
   ]
 #--- Readers
   @getterMap getterMap
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
-  for () in typedAttributeList do
+  for () in typedPropertyList do
     enterBaseFinalGetterWithoutArgument (
       !?getterMap
       !?ioSemanticContext.mTypeMap 
-      !getterName:[mAttributeName string]
-      !returnedTypeName:[mAttributeTypeProxy key]
+      !getterName:[mPropertyName string]
+      !returnedTypeName:[mPropertyTypeProxy key]
       !hasCompilerArgument:false
     )
   end
@@ -138,8 +147,8 @@ override method @structDeclarationAST enterInSemanticContext
   end
 #--- Generate a "default" constructor ?
   @string defaultConstructorName = "default"
-  for () in typedAttributeList while defaultConstructorName != "" do
-    if ([mAttributeTypeProxy mDefaultConstructorName] == "") | not [mAttributeTypeProxy mIsConcrete] then
+  for () in typedPropertyList while defaultConstructorName != "" do
+    if ([mPropertyTypeProxy mDefaultConstructorName] == "") | not [mPropertyTypeProxy mIsConcrete] then
       defaultConstructorName = ""
     end
   end  
@@ -151,9 +160,9 @@ override method @structDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy.null
     !@typeKindEnum. structType
     !false # Does not support collection value
-    !typedAttributeList
-    !attributeMap
-    !typedAttributeList
+    !typedPropertyList
+    !propertyMap
+    !typedPropertyList
     !constructorMap
     !getterMap
     !setterMap
@@ -199,40 +208,47 @@ override method @structDeclarationAST semanticAnalysis
   let structNameForUsefulness = typeNameForUsefulEntitiesGraph (!mStructTypeName)
   [!?ioUsefulEntitiesGraph addNode !structNameForUsefulness !structNameForUsefulness]
 #---
-  if [mAttributeList length] == 0 then
-    error mStructTypeName: "a structure cannot be empty: it must have at least one field" 
+  if [mStructurePropertyList length] == 0 then
+    error mStructTypeName: "a structure cannot be empty: it must have at least one property" 
   end
-  @typedPropertyList typedAttributeList = {}
-  @attributeIndexMap attributeMap = {}
-  for () in mAttributeList do
+  @typedPropertyList typedPropertyList = {}
+  @propertyIndexMap propertyMap = {}
+  for () in mStructurePropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
+    var hasSelector = false
     for () in mFeatureList do
-      error mValue : "a struct attribute does not accept any feature"
+      if mValue.string != selectorFeatureForNewConstructor () then
+        error mValue : "a struct property accepts only the %" + selectorFeatureForNewConstructor () + " feature"
+      end if hasSelector then
+        error mValue : "duplicated %" + selectorFeatureForNewConstructor () + " feature"
+      else
+        hasSelector = true
+      end
     end
     let hasSetter = false
     let hasGetter = false
-    typedAttributeList +=
+    typedPropertyList +=
       !t
       !mPropertyName
       !hasSetter
       !hasGetter
     if [forbiddenKeysForStruct () hasKey !mPropertyName.string] then
-      @string m = "an attribute cannot be named:"
+      @string m = "an property cannot be named:"
       for s in forbiddenKeysForStruct () do
         m+= " " + s
       end
       m += "; theses names are reserved"
       error mPropertyName: m
     end
-    [!?attributeMap insertKey !mPropertyName !t]
+    [!?propertyMap insertKey !mPropertyName !t]
   end
   ioSemanticDeclarationListForGeneration +=
     !"struct " + mStructTypeName
     !@structTypeForGeneration.new {
       !.searchKey {!inSemanticContext.mTypeMap !mStructTypeName}
-      !typedAttributeList
+      !typedPropertyList
     }
 }
 
@@ -241,7 +257,7 @@ override method @structDeclarationAST semanticAnalysis
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @structTypeForGeneration : @semanticTypeForGeneration {
-  @typedPropertyList mTypedAttributeList
+  @typedPropertyList mTypedPropertyList
 }
 
 #·······················································································································
@@ -252,13 +268,13 @@ filewrapper boolsetGenerationTemplate in "../generation_templates/type_generatio
   template structTypeHeader1 "GALGAS_struct.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@typedPropertyList PROPERTY_LIST
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 
   template structTypeSpecificImplementation "GALGAS_struct.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@typedPropertyList PROPERTY_LIST
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 }
 
@@ -268,14 +284,14 @@ override method @structTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader
 {
-  for (t ...) in mTypedAttributeList do
+  for (t ...) in mTypedPropertyList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
 
   outHeader = [filewrapper boolsetGenerationTemplate.structTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
+    !mTypedPropertyList
     ![mTypeProxy mDefaultConstructorName] != ""
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
@@ -305,7 +321,7 @@ override method @structTypeForGeneration appendSpecificImplementation
   outImplementation = [filewrapper boolsetGenerationTemplate.structTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
+    !mTypedPropertyList
     ![mTypeProxy mDefaultConstructorName] != ""
   ]
  }

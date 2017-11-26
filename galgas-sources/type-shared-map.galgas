@@ -630,7 +630,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !@typeKindEnum.uniqueMapType
     !false # Does not support collection value
     !@typedPropertyList.emptyList
-    !@attributeMap. emptyMap
+    !{}
     !typedAttributeList
     !constructorMap
     !getterMap
@@ -983,7 +983,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #------ Enter attributes
   @typedPropertyList typedAttributeList = {}
-  @attributeIndexMap attributeMap = {}
+  @propertyIndexMap attributeMap = {}
   for () in mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
