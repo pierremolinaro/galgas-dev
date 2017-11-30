@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2009, ..., 2015 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2009, ..., 2017 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -25,6 +25,16 @@
 #include "galgas2/C_galgas_io.h"
 #include "strings/unicode_character_cpp.h"
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark C++ constructors
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//       C++ Constructors                                                                                              *
+//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint::GALGAS_uint (void) :
@@ -50,6 +60,49 @@ mUIntValue (inValue) {
 GALGAS_uint::GALGAS_uint (const bool inValid, const uint32_t inValue) :
 mIsValid (inValid),
 mUIntValue (inValue) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark GALGAS Class methods
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//       Class methods                                                                                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_uint::class_method_setRandomSeed (class GALGAS_uint inSeed
+                                              COMMA_UNUSED_LOCATION_ARGS) {
+  if (inSeed.isValid  ()) {
+    #if COMPILE_FOR_WINDOWS == 1
+      srand (inSeed.uintValue ()) ;
+    #else
+      srandom (inSeed.uintValue ()) ;
+    #endif
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark GALGAS constructors
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//       GALGAS Constructors                                                                                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_uint::constructor_random (UNUSED_LOCATION_ARGS) {
+  #if COMPILE_FOR_WINDOWS == 1
+    return GALGAS_uint ((uint32_t) rand ()) ;
+  #else
+    return GALGAS_uint ((uint32_t) random ()) ;
+  #endif
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

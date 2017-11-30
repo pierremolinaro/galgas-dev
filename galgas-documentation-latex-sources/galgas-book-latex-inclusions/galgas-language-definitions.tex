@@ -231,13 +231,13 @@
 %   C O N S T R U C T O R   C R O S S    R E F E R E N C I N G                                                          *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-\newcommand\sectionConstructor[2]{\section{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!constructeur "@#2}}
+\newcommand\sectionConstructor[2]{\section{Constructeur \texttt{#1}}\label{constructor:#1:#2}\index{#1!constructeur "@#2}}
 
-\newcommand\subsectionConstructor[2]{\subsection{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!constructeur "@#2}}
+\newcommand\subsectionConstructor[2]{\subsection{Constructeur \texttt{#1}}\label{constructor:#1:#2}\index{#1!constructeur "@#2}}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 
-\newcommand \refConstructorPage[2] {\hyperref[constructor:#1:#2]{\em constructeur \texttt{#2} du type \texttt{@#1} (page \pageref{constructor:#1:#2})}}
+\newcommand \refConstructorPage[2] {\hyperref[constructor:#2:#1]{\em constructeur \texttt{#2} du type \texttt{@#1} -- page \pageref{constructor:#2:#1}}}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %   S T A T I C    P R O C   C R O S S    R E F E R E N C I N G                                                     *
