@@ -26,6 +26,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint::GALGAS_sint (void) :
+AC_GALGAS_root (),
 mIsValid (false),
 mSIntValue (0) {
 }
@@ -39,6 +40,7 @@ GALGAS_sint GALGAS_sint::constructor_default (UNUSED_LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint::GALGAS_sint (const int32_t inValue) :
+AC_GALGAS_root (),
 mIsValid (true),
 mSIntValue (inValue) {
 }

@@ -19,13 +19,3 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Private constructor
   private : GALGAS_%!TYPE_IDENTIFIER% (const uint64_t inFlags) ;
 
-//--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
-
-//--------------------------------- Native constructors
-  public : GALGAS_%!TYPE_IDENTIFIER% (%?^
-for () in SLOT_LIST
-  do %const GALGAS_%!TYPE_IDENTIFIER% & in_%![mValue identifierRepresentation]
-  between %,\n%!^
-end%) ;
-

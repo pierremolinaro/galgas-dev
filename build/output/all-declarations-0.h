@@ -8076,42 +8076,6 @@ class GALGAS_operators : public AC_GALGAS_root {
 //--------------------------------- Private constructor
   private : GALGAS_operators (const uint64_t inFlags) ;
 
-//--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_operators (void) ;
-
-//--------------------------------- Native constructors
-  public : GALGAS_operators (const GALGAS_operators & in_infixAddOperator,
-                             const GALGAS_operators & in_infixSubOperator,
-                             const GALGAS_operators & in_infixMulOperator,
-                             const GALGAS_operators & in_infixDivOperator,
-                             const GALGAS_operators & in_infixModOperator,
-                             const GALGAS_operators & in_infixShiftOperator,
-                             const GALGAS_operators & in_prefixPlusOperator,
-                             const GALGAS_operators & in_prefixMinusOperator,
-                             const GALGAS_operators & in_prefixTildeOperator,
-                             const GALGAS_operators & in_incDecOperator,
-                             const GALGAS_operators & in_infixAndOperator,
-                             const GALGAS_operators & in_infixOrOperator,
-                             const GALGAS_operators & in_infixXorOperator,
-                             const GALGAS_operators & in_prefixNotOperator,
-                             const GALGAS_operators & in_isComparable,
-                             const GALGAS_operators & in_plusEqualOperatorWithExpression,
-                             const GALGAS_operators & in_minusEqualOperatorWithExpression,
-                             const GALGAS_operators & in_mulEqualOperatorWithExpression,
-                             const GALGAS_operators & in_divEqualOperatorWithExpression,
-                             const GALGAS_operators & in_infixAddOperatorNoOVF,
-                             const GALGAS_operators & in_infixSubOperatorNoOVF,
-                             const GALGAS_operators & in_infixMulOperatorNoOVF,
-                             const GALGAS_operators & in_infixDivOperatorNoOVF,
-                             const GALGAS_operators & in_prefixMinusOperatorNoOVF,
-                             const GALGAS_operators & in_incDecOperatorNoOVF,
-                             const GALGAS_operators & in_supportWithAccessor,
-                             const GALGAS_operators & in_plusEqualOperatorWithFieldListNeedsCompilerArg,
-                             const GALGAS_operators & in_generateEnumerationHelperMethods,
-                             const GALGAS_operators & in_doNotGenererateObjectCompare,
-                             const GALGAS_operators & in_generateDescriptionGetterUtilityMethod,
-                             const GALGAS_operators & in_generateCopyConstructorAndAssignmentOperator) ;
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

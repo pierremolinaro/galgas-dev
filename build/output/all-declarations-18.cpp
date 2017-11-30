@@ -2076,10 +2076,9 @@ const cDirectoryWrapper gWrapperDirectory_0_structGenerationTemplate (
 GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_ (C_Compiler * inCompiler,
                                                                                   const GALGAS_string & /* in_TYPE_5F_NAME */,
                                                                                   const GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                  const GALGAS_lstringlist & in_SLOT_5F_LIST
+                                                                                  const GALGAS_lstringlist & /* in_SLOT_5F_LIST */
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  uint32_t columnMarker = 0 ;
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//" ;
@@ -2108,34 +2107,6 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeHeader_31_
     "  private : GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (const uint64_t inFlags) ;\n"
-    "\n"
-    "//--------------------------------- Virtual destructor (in debug mode)\n"
-    "  public : VIRTUAL_IN_DEBUG ~ GALGAS_" ;
-  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
-  result << " (void) ;\n"
-    "\n"
-    "//--------------------------------- Native constructors\n"
-    "  public : GALGAS_" ;
-  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
-  result << " (" ;
-  columnMarker = result.currentColumn () ;
-  GALGAS_uint index_1362_ (0) ;
-  if (in_SLOT_5F_LIST.isValid ()) {
-    cEnumerator_lstringlist enumerator_1362 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1362.hasCurrentObject ()) {
-      result << "const GALGAS_" ;
-      result << in_TYPE_5F_IDENTIFIER.stringValue () ;
-      result << " & in_" ;
-      result << enumerator_1362.current_mValue (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_boolset.h1.galgasTemplate", 28)).stringValue () ;
-      if (enumerator_1362.hasNextObject ()) {
-        result << ",\n" ;
-        result.appendSpacesUntilColumn (columnMarker) ;
-      }
-      index_1362_.increment () ;
-      enumerator_1362.gotoNextObject () ;
-    }
-  }
-  result << ") ;\n"
     "\n" ;
   return GALGAS_string (result) ;
 }
@@ -2161,6 +2132,7 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
   result << "::GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (void) :\n"
+    "AC_GALGAS_root (),\n"
     "mFlags (0),\n"
     "mIsValid (false) {\n"
     "}\n"
@@ -2172,6 +2144,7 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
   result << "::GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (const uint64_t inFlags) :\n"
+    "AC_GALGAS_root (),\n"
     "mFlags (inFlags),\n"
     "mIsValid (true) {\n"
     "}\n"
@@ -2198,14 +2171,14 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
     "  return GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (" ;
-  result << in_FULL_5F_SET.getter_hexString (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 24)).stringValue () ;
+  result << in_FULL_5F_SET.getter_hexString (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 26)).stringValue () ;
   result << ") ;\n"
     "}\n"
     "\n" ;
-  GALGAS_uint index_1034_idx (0) ;
+  GALGAS_uint index_1072_idx (0) ;
   if (in_SLOT_5F_LIST.isValid ()) {
-    cEnumerator_lstringlist enumerator_1034 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1034.hasCurrentObject ()) {
+    cEnumerator_lstringlist enumerator_1072 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1072.hasCurrentObject ()) {
       result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "GALGAS_" ;
@@ -2213,29 +2186,20 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
       result << " GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::constructor_" ;
-      result << enumerator_1034.current_mValue (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 30)).stringValue () ;
+      result << enumerator_1072.current_mValue (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 32)).stringValue () ;
       result << " (UNUSED_LOCATION_ARGS) {\n"
         "  return GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << " (((uint64_t) 1) << " ;
-      result << index_1034_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 31)).stringValue () ;
+      result << index_1072_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 33)).stringValue () ;
       result << ") ;\n"
         "}\n"
         "\n" ;
-      index_1034_idx.increment () ;
-      enumerator_1034.gotoNextObject () ;
+      index_1072_idx.increment () ;
+      enumerator_1072.gotoNextObject () ;
     }
   }
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "GALGAS_" ;
-  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
-  result << "::~ GALGAS_" ;
-  result << in_TYPE_5F_IDENTIFIER.stringValue () ;
-  result << " (void) {\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n"
     "typeComparisonResult GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -2387,7 +2351,7 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
     "    result = GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (" ;
-  result << in_FULL_5F_SET.getter_hexString (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 117)).stringValue () ;
+  result << in_FULL_5F_SET.getter_hexString (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 114)).stringValue () ;
   result << " ^ mFlags) ;\n"
     "  }\n"
     "  return result ;\n"
@@ -2409,19 +2373,19 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
     "  if (! isValid ()) {\n"
     "    ioString << \" not built\" ;\n"
     "  }else{\n" ;
-  GALGAS_uint index_5287_idx (0) ;
+  GALGAS_uint index_5136_idx (0) ;
   if (in_SLOT_5F_LIST.isValid ()) {
-    cEnumerator_lstringlist enumerator_5287 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_5287.hasCurrentObject ()) {
+    cEnumerator_lstringlist enumerator_5136 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_5136.hasCurrentObject ()) {
       result << "    if ((mFlags & ((uint64_t) 1) << " ;
-      result << index_5287_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 132)).stringValue () ;
+      result << index_5136_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 129)).stringValue () ;
       result << ") != 0) {\n"
         "      ioString << \" " ;
-      result << enumerator_5287.current_mValue (HERE).getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 133)).stringValue () ;
+      result << enumerator_5136.current_mValue (HERE).getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 130)).stringValue () ;
       result << "\" ;\n"
         "    }\n" ;
-      index_5287_idx.increment () ;
-      enumerator_5287.gotoNextObject () ;
+      index_5136_idx.increment () ;
+      enumerator_5136.gotoNextObject () ;
     }
   }
   result << "  }\n"
@@ -2448,34 +2412,34 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
     "  GALGAS_bool result ;\n"
     "  if (mIsValid) {\n"
     "    result = GALGAS_bool (mFlags == " ;
-  result << in_FULL_5F_SET.getter_hexString (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 155)).stringValue () ;
+  result << in_FULL_5F_SET.getter_hexString (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 152)).stringValue () ;
   result << ") ;\n"
     "  }\n"
     "  return result ;\n"
     "}\n"
     "\n" ;
-  GALGAS_uint index_6126_idx (0) ;
+  GALGAS_uint index_5975_idx (0) ;
   if (in_SLOT_5F_LIST.isValid ()) {
-    cEnumerator_lstringlist enumerator_6126 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_6126.hasCurrentObject ()) {
+    cEnumerator_lstringlist enumerator_5975 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_5975.hasCurrentObject ()) {
       result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "GALGAS_bool GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::getter_" ;
-      result << enumerator_6126.current_mValue (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 162)).stringValue () ;
+      result << enumerator_5975.current_mValue (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 159)).stringValue () ;
       result << " (UNUSED_LOCATION_ARGS) const {\n"
         "  GALGAS_bool result ;\n"
         "  if (mIsValid) {\n"
         "    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << " ;
-      result << index_6126_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 165)).stringValue () ;
+      result << index_5975_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 162)).stringValue () ;
       result << ") != 0) ;\n"
         "  }\n"
         "  return result ;\n"
         "}\n"
         "\n" ;
-      index_6126_idx.increment () ;
-      enumerator_6126.gotoNextObject () ;
+      index_5975_idx.increment () ;
+      enumerator_5975.gotoNextObject () ;
     }
   }
   return GALGAS_string (result) ;

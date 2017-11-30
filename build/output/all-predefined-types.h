@@ -161,8 +161,7 @@ AC_OutputStream & operator << (AC_OutputStream & inStream,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_string : public AC_GALGAS_root
- {
+class GALGAS_string : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private : bool mIsValid ;
   private : C_String mString ;

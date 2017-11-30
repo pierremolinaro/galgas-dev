@@ -31,6 +31,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint_36__34_::GALGAS_sint_36__34_ (void) :
+AC_GALGAS_root (),
 mIsValid (false),
 mSInt64Value (0) {
 }
@@ -44,6 +45,7 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::constructor_default (UNUSED_LOCATION_AR
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint_36__34_::GALGAS_sint_36__34_ (const int64_t inValue) :
+AC_GALGAS_root (),
 mIsValid (true),
 mSInt64Value (inValue) {
 }
