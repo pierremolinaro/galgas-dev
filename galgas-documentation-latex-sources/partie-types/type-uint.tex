@@ -39,6 +39,26 @@ constructor max -> @uint
 Returns an \ggs+@uint+ object that the maximum value of the 32-bit unsigned range ($2^{32}-1$).
 
 
+
+
+
+
+\subsectionConstructor{random}{uint}
+
+\begin{galgas}
+constructor random -> @uint
+\end{galgas}
+
+Retourne une valeur aléatoire de type \ggs+@uint+. La procédure de type \refStaticProcPage{uint}{setRandomSeed} permet d'en fixer la valeur initiale.
+
+\begin{galgas}
+  let v = @uint.random
+\end{galgas}
+
+
+{\bf Note. } Sur Unix, la valeur renvoyée est la valeur renvoyée par l'appel de la fonction \texttt{random} de la librairie \texttt{libc}. Sur Windows, c'est la fonction \texttt{rand} qui est appelée.
+
+
 \subsectionConstructor{valueWithMask}{uint}
 
 \begin{galgas}
@@ -54,7 +74,7 @@ A run-time error is raised if \emph{inLowerIndex $>$ inUpperIndex} or if \emph{i
 
 \textbf{Exemple :}
 \begin{galgas}
-@uint x = [@uint valueWithMask !2 !4] ; # x is equal to 28 (11100 in binary)
+@uint x = [@uint valueWithMask !2 !4] ; # x is equal to 28 (0b1_1100)
 \end{galgas}
 
 
@@ -68,6 +88,31 @@ constructor warningCount -> @uint
 
 
 Returns an \ggs+@uint+ object that contains the number of warnings. The returned value is the cumulative count of warnings from the beginning of execution.
+
+
+
+
+
+\section{Procédure de type}
+
+
+\subsectionStaticProc{setRandomSeed}{uint}
+
+
+\begin{galgasbox}
+proc @uint setRandomSeed ?@uint inSeed
+\end{galgasbox}
+
+Affecte la valeur initiale utilisée par le générateur de nombres aléatoires (voir le \refConstructorPage{uint}{random}) Par exemple~:
+
+\begin{galgas}
+  [@uint setRandomSeed !0]
+\end{galgas}
+
+
+
+
+
 
 \section{Getters}
 

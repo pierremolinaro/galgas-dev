@@ -54,6 +54,23 @@ proc enterClassMethodWithStringInputArgument
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @uintPredefinedTypeAST getClassMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@classMethodMap outClassMethodMap
+{
+  outClassMethodMap = {}
+  enterClassMethodWithInputArgument (
+    !?outClassMethodMap
+    !?ioUnifiedTypeMap
+    !"setRandomSeed"
+    !"uint"
+    !"inSeed"
+    !false
+  )
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @stringPredefinedTypeAST getClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@classMethodMap outClassMethodMap
@@ -93,17 +110,6 @@ override method @stringPredefinedTypeAST getClassMethodMap
     !argList
     !true
   ]
-#--- Generate file with cache
-#  argList = {}
-#  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileDirectory"
-#  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
-#  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
-#  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inCacheDirectory"
-#  [!?outClassMethodMap insertOrReplace
-#    !.new {!"generateFileWithCache" !.here}
-#    !argList
-#    !true
-#  ]
 #--- Generate file with pattern
   argList = {}
   argList += !["startPath" nowhere] !stringType !.argumentConstantIn !"inStartPath"
