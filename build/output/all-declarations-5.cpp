@@ -3078,6 +3078,7 @@ GALGAS_string extensionGetter_kind (const GALGAS_typeKindEnum & inObject,
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_operators::GALGAS_operators (void) :
+AC_GALGAS_root (),
 mFlags (0),
 mIsValid (false) {
 }
@@ -3085,6 +3086,7 @@ mIsValid (false) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_operators::GALGAS_operators (const uint64_t inFlags) :
+AC_GALGAS_root (),
 mFlags (inFlags),
 mIsValid (true) {
 }
@@ -3285,11 +3287,6 @@ GALGAS_operators GALGAS_operators::constructor_generateDescriptionGetterUtilityM
 
 GALGAS_operators GALGAS_operators::constructor_generateCopyConstructorAndAssignmentOperator (UNUSED_LOCATION_ARGS) {
   return GALGAS_operators (((uint64_t) 1) << 30) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_operators::~ GALGAS_operators (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

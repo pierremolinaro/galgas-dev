@@ -32,6 +32,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_::GALGAS_uint_36__34_ (const uint64_t inValue) :
+AC_GALGAS_root (),
 mIsValid (true),
 mUInt64Value (inValue) {
 }
@@ -45,6 +46,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_default (UNUSED_LOCATION_AR
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_::GALGAS_uint_36__34_ (void) :
+AC_GALGAS_root (),
 mIsValid (false),
 mUInt64Value (0) {
 }

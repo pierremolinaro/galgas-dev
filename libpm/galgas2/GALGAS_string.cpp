@@ -67,6 +67,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string::GALGAS_string (void) :
+AC_GALGAS_root (),
 mIsValid (false),
 mString () {
 }
@@ -74,6 +75,7 @@ mString () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string::GALGAS_string (const C_String & inString) :
+AC_GALGAS_root (),
 mIsValid (true),
 mString (inString) {
 }

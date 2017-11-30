@@ -30,6 +30,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bool::GALGAS_bool (void) :
+AC_GALGAS_root (),
 mIsValid (false),
 mBoolValue (false) {
 }
@@ -43,6 +44,7 @@ GALGAS_bool GALGAS_bool::constructor_default (UNUSED_LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bool::GALGAS_bool (const bool inValue) :
+AC_GALGAS_root (),
 mIsValid (true),
 mBoolValue (inValue) {
 }
@@ -51,6 +53,7 @@ mBoolValue (inValue) {
 
 GALGAS_bool::GALGAS_bool (const bool inIsBuilt,
                           const bool inValue) :
+AC_GALGAS_root (),
 mIsValid (inIsBuilt),
 mBoolValue (inValue) {
 }

@@ -34,6 +34,7 @@ static const double PI_CONSTANT = 3.14159265358979323846 ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_double::GALGAS_double (void) :
+AC_GALGAS_root (),
 mIsValid (false),
 mDoubleValue (0.0) {
 }
@@ -47,6 +48,7 @@ GALGAS_double GALGAS_double::constructor_default (UNUSED_LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_double::GALGAS_double (const double inValue) :
+AC_GALGAS_root (),
 mIsValid (true),
 mDoubleValue (inValue) {
 }
