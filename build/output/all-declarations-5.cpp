@@ -3100,7 +3100,7 @@ GALGAS_operators GALGAS_operators::constructor_none (UNUSED_LOCATION_ARGS) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_operators GALGAS_operators::constructor_all (UNUSED_LOCATION_ARGS) {
-  return GALGAS_operators (0x7FFFFFFF) ;
+  return GALGAS_operators ((uint64_t) 0x7FFFFFFF) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3366,7 +3366,7 @@ GALGAS_operators GALGAS_operators::substract_operation (const GALGAS_operators &
 GALGAS_operators GALGAS_operators::operator_tilde (UNUSED_LOCATION_ARGS) const {
   GALGAS_operators result ;
   if (mIsValid) {
-    result = GALGAS_operators (0x7FFFFFFF ^ mFlags) ;
+    result = GALGAS_operators (((uint64_t) 0x7FFFFFFF) ^ mFlags) ;
   }
   return result ;
 }
@@ -3491,7 +3491,7 @@ GALGAS_bool GALGAS_operators::getter_none (UNUSED_LOCATION_ARGS) const {
 GALGAS_bool GALGAS_operators::getter_all (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (mIsValid) {
-    result = GALGAS_bool (mFlags == 0x7FFFFFFF) ;
+    result = GALGAS_bool (mFlags == (uint64_t) 0x7FFFFFFF) ;
   }
   return result ;
 }

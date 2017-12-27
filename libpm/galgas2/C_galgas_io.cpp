@@ -430,7 +430,7 @@ void signalSemanticError (C_Compiler * inCompiler,
                           const C_IssueWithFixIt & inIssue,
                           const C_String & inErrorMessage
                           COMMA_LOCATION_ARGS) {
-  const C_LocationInSource inEndErrorLocation = inIssue.mStartLocation ; // §
+  const C_LocationInSource inEndErrorLocation = inIssue.mStartLocation ;
 //--- Increment error count
   mErrorTotalCount ++ ;
 //--- Construct location error message

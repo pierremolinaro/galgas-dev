@@ -2024,6 +2024,14 @@ case constante (* *) :
 end
 \end{galgas}
 
+Ou aussi~:
+\begin{galgas}
+switch expression
+case constante (2*) :
+...
+end
+\end{galgas}
+
 
 Ou utiliser le mot clé \ggs+unused+ (avec ou sans annotation de type)~:
 \begin{galgas}
@@ -2034,7 +2042,7 @@ end
 \end{galgas}
 
 
-Enfin, on peut mentionner dans le même branche \ggs+case+ plusieurs constantes déclarant des valeurs associées, à la condition que ces valeurs associées soient de même nombre et de même type. Par exemple~:
+Enfin, on peut mentionner dans la même branche \ggs+case+ plusieurs constantes déclarant des valeurs associées, à la condition que ces valeurs associées soient de même nombre et de même type. Par exemple~:
 
 \begin{galgas}
 enum @erreur {
