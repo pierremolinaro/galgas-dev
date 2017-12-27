@@ -190,8 +190,8 @@ proc buildGalgas3SemanticContext
 proc generateSemanticDeclarationsGalgas3
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
-#  ?let @string inCacheDirectory
   ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?!@stringlist ioCocoaProductFileList
   ?!@stringlist ioToolProductFileList
   ?!@stringlist ioToolHeaderFileList
   ?!@stringset ioAllProductFileSet
@@ -201,6 +201,7 @@ proc generateSemanticDeclarationsGalgas3
     [mDeclaration appendSpecificFiles
       !inProductDirectory
       !?ioAllProductFileSet
+      !?ioCocoaProductFileList
     ]
   end
 #---
@@ -208,7 +209,6 @@ proc generateSemanticDeclarationsGalgas3
     if [option galgas_cli_options.generateOneHeader value] & [option galgas_cli_options.generateManyFiles value] then
        generateOneBigHeader (
         !inProductDirectory
-#        !inCacheDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioAllProductFileSet
         !?ioToolHeaderFileList
@@ -216,7 +216,6 @@ proc generateSemanticDeclarationsGalgas3
       generateManyImplementationFiles (
         !inUnifiedTypeMap
         !inProductDirectory
-#        !inCacheDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioToolProductFileList
         !?ioAllProductFileSet

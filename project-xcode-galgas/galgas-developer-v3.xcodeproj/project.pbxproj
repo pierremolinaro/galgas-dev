@@ -373,12 +373,15 @@
 		CF3FDE2114E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
 		CF3FDE2214E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
 		CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
+		CF4E85961FF3EB6200A28AE6 /* option-galgas-5F-cli-5F-options-cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1A80BD1D7AD2050012A113 /* option-galgas-5F-cli-5F-options-cocoa.m */; };
 		CF51F02315C9200E00387A48 /* PMDebug.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF51F02115C9200E00387A48 /* PMDebug.xib */; };
 		CF51F02715C9201800387A48 /* PMDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = CF51F02615C9201800387A48 /* PMDebug.m */; };
 		CF560731199679270074A7B2 /* galgas-developer in Resources */ = {isa = PBXBuildFile; fileRef = CF6DF18F09E3F23700506859 /* galgas-developer */; };
 		CF560733199679410074A7B2 /* galgas-developer-debug in Resources */ = {isa = PBXBuildFile; fileRef = CF6DF20509E3F30400506859 /* galgas-developer-debug */; };
 		CF5610A5137B32C30007E1BC /* typeComparisonResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */; };
 		CF5610A6137B32C30007E1BC /* typeComparisonResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */; };
+		CF57E62E1FF3F371007BA0E4 /* lexique-galgas3-53-canner-cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1A80C31D7AD44C0012A113 /* lexique-galgas3-53-canner-cocoa.m */; };
+		CF57E62F1FF3F377007BA0E4 /* lexique-galgas-54-emplate-53-canner-cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1A80C11D7AD44C0012A113 /* lexique-galgas-54-emplate-53-canner-cocoa.m */; };
 		CF59565C15C81988000E6B8B /* OC_GGS_DocumentData.m in Sources */ = {isa = PBXBuildFile; fileRef = CF59565B15C81988000E6B8B /* OC_GGS_DocumentData.m */; };
 		CF63B55310FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */; };
 		CF63B55410FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */; };
@@ -931,8 +934,6 @@
 		CF2C86141CC3B0890008D960 /* galgas-developer-debug-32 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "galgas-developer-debug-32"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF2D3B99129725F800E93E98 /* AC_GALGAS_graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = AC_GALGAS_graph.cpp; sourceTree = "<group>"; };
 		CF2D3B9A129725F800E93E98 /* AC_GALGAS_graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AC_GALGAS_graph.h; sourceTree = "<group>"; };
-		CF2F92601E421222003E11C2 /* lexique-json-53-canner-cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "lexique-json-53-canner-cocoa.h"; sourceTree = "<group>"; };
-		CF2F92611E421222003E11C2 /* lexique-json-53-canner-cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "lexique-json-53-canner-cocoa.m"; sourceTree = "<group>"; };
 		CF301BC91ECE40F4006796F6 /* PMCancelButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMCancelButtonForPanel.h; sourceTree = "<group>"; };
 		CF301BCA1ECE40F4006796F6 /* PMCancelButtonForPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMCancelButtonForPanel.m; sourceTree = "<group>"; };
 		CF301BCB1ECE40F4006796F6 /* PMOkButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMOkButtonForPanel.h; sourceTree = "<group>"; };
@@ -1537,8 +1538,6 @@
 			isa = PBXGroup;
 			children = (
 				CF1A80C01D7AD44C0012A113 /* lexique-galgas-54-emplate-53-canner-cocoa.h */,
-				CF2F92601E421222003E11C2 /* lexique-json-53-canner-cocoa.h */,
-				CF2F92611E421222003E11C2 /* lexique-json-53-canner-cocoa.m */,
 				CF1A80C11D7AD44C0012A113 /* lexique-galgas-54-emplate-53-canner-cocoa.m */,
 				CF1A80C21D7AD44C0012A113 /* lexique-galgas3-53-canner-cocoa.h */,
 				CF1A80C31D7AD44C0012A113 /* lexique-galgas3-53-canner-cocoa.m */,
@@ -3055,7 +3054,9 @@
 				CF8D51990E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */,
 				CFE167840E8E7A2B00AFDAFC /* main.m in Sources */,
 				CF3CFB2D0FEBEA6C00CE4488 /* PMFontButton.m in Sources */,
+				CF57E62E1FF3F371007BA0E4 /* lexique-galgas3-53-canner-cocoa.m in Sources */,
 				CF7FD6AE0FF13CFB001EA1B7 /* unicode_character_m.m in Sources */,
+				CF57E62F1FF3F377007BA0E4 /* lexique-galgas-54-emplate-53-canner-cocoa.m in Sources */,
 				CF9950CF0FF14697006E6395 /* OC_Lexique.m in Sources */,
 				CF9E55FC0FF5372D007692D1 /* OC_Token.m in Sources */,
 				CF72AED81B55AF6A00BE5E3B /* OC_GGS_FileEventStream.m in Sources */,
@@ -3071,6 +3072,7 @@
 				CFB697DF1483D47900BCAE41 /* PMIssueInRuler.m in Sources */,
 				CF3C17A814E97CCC0016A381 /* OC_GGS_BuildTask.m in Sources */,
 				CF59565C15C81988000E6B8B /* OC_GGS_DocumentData.m in Sources */,
+				CF4E85961FF3EB6200A28AE6 /* option-galgas-5F-cli-5F-options-cocoa.m in Sources */,
 				CF9DE67E15C8766700D44EE3 /* OC_GGS_RulerViewForBuildOutput.m in Sources */,
 				CF2378C919967DF10061D2D8 /* gui-cocoa.m in Sources */,
 				CF51F02715C9201800387A48 /* PMDebug.m in Sources */,

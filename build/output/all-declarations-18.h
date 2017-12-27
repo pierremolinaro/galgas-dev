@@ -151,7 +151,8 @@ extern const cDirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates ;
 
 GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (class C_Compiler * inCompiler,
                                                                                 const class GALGAS_guiAnalysisContext & in_GUI_5F_CONTEXT,
-                                                                                const class GALGAS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT
+                                                                                const class GALGAS_bool & in_QUIET_5F_OUTPUT_5F_BY_5F_DEFAULT,
+                                                                                const class GALGAS_string & in_BUILD_5F_RUN_5F_OPTION
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*

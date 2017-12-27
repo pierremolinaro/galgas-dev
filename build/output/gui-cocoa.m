@@ -5,8 +5,9 @@
 
 #import "OC_Token.h"
 #import "F_CocoaWrapperForGalgas.h"
-#import "lexique-galgas3-53-canner-cocoa.m"
-#import "lexique-galgas-54-emplate-53-canner-cocoa.m"
+#import "OC_GGS_CommandLineOption.h"
+#import "lexique-galgas3-53-canner-cocoa.h"
+#import "lexique-galgas-54-emplate-53-canner-cocoa.h"
 #import "GGSUpdateCocoaGalgas.h"
 
 #ifdef USER_DEFAULT_COLORS_DEFINED
@@ -41,7 +42,7 @@ NSArray * nibsAndClasses (void) {
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#import "option-galgas-5F-cli-5F-options-cocoa.m"
+#import "option-galgas-5F-cli-5F-options-cocoa.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -546,6 +547,12 @@ NSArray * tokenizers (void) {
     [OC_Tokenizer_galgasTemplateScanner new],
     nil
   ] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+NSString * buildRunOption (void) {
+  return @"" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

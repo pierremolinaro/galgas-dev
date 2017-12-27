@@ -19,7 +19,8 @@ void routine_generateSemanticDeclarationsGalgas_33_ (const class GALGAS_unifiedT
                                                      const class GALGAS_semanticDeclarationListForGeneration constinArgument2,
                                                      class GALGAS_stringlist & ioArgument3,
                                                      class GALGAS_stringlist & ioArgument4,
-                                                     class GALGAS_stringset & ioArgument5,
+                                                     class GALGAS_stringlist & ioArgument5,
+                                                     class GALGAS_stringset & ioArgument6,
                                                      class C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
@@ -927,4 +928,5 @@ extern const cDirectoryWrapper gWrapperDirectory_12_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_13_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_14_libpmFileWrapper ;
 extern const cDirectoryWrapper gWrapperDirectory_15_libpmFileWrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_16_libpmFileWrapper ;
 

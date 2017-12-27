@@ -796,7 +796,9 @@ method @semanticDeclarationForGeneration appendSpecificImplementation
 
 method @semanticDeclarationForGeneration appendSpecificFiles
   ?let @string unused inProductDirectory
-  ?!@stringset unused ioAllProductFileSet {
+  ?!@stringset unused ioAllProductFileSet
+  ?!@stringlist unused ioCocoaProductFileList
+{
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

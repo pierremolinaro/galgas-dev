@@ -22,6 +22,7 @@
 #import "PMIssueDescriptor.h"
 #import "OC_GGS_Document.h"
 #import "OC_GGS_ApplicationDelegate.h"
+#import "F_CocoaWrapperForGalgas.h"
 #import "PMDebug.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -40,7 +41,8 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (OC_GGS_BuildTask *) initWithDocument: (OC_GGS_Document *) inDocument
-                       filePath: (NSString *) inFilePath {
+                       filePath: (NSString *) inFilePath
+                       isBuildRun: (BOOL) inIsBuildRun {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -70,6 +72,12 @@
       [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
       [arguments addObject:inFilePath] ;
       [arguments addObject:@"--cocoa"] ;
+      if (inIsBuildRun) {
+        NSString * option = buildRunOption () ;
+        if ([option length] > 0) {
+          [arguments addObject:option] ;
+        }
+      }
    //--- Create task
       mTask = [NSTask new] ;
       if ([gCocoaApplicationDelegate prefixByToolUtility]) {

@@ -1,8 +1,9 @@
 
 #import "OC_Token.h"
 #import "F_CocoaWrapperForGalgas.h"
+#import "OC_GGS_CommandLineOption.h"
 %for () in [GUI_CONTEXT mWithLexiqueList] do
-  %#import "lexique-%![mLexiqueClassName fileNameRepresentation]%-cocoa.m"\n%
+  %#import "lexique-%![mLexiqueClassName fileNameRepresentation]%-cocoa.h"\n%
 end
 for () in [GUI_CONTEXT mNibAndClassList] do
   %#import "%!mValue%.h"\n%
@@ -51,7 +52,7 @@ end
 
 %
 for () in [GUI_CONTEXT mImportedOptionComponentList] do
-  %#import "option-%![mValue fileNameRepresentation]%-cocoa.m"\n%
+  %#import "option-%![mValue fileNameRepresentation]%-cocoa.h"\n%
 end
 %
 //---------------------------------------------------------------------------------------------------------------------*
@@ -190,6 +191,12 @@ NSArray * tokenizers (void) {
 end
 %    nil
   ] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+NSString * buildRunOption (void) {
+  return @"%!BUILD_RUN_OPTION%" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

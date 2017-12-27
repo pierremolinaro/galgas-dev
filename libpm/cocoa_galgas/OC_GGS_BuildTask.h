@@ -38,7 +38,8 @@
 }
 
 - (id) initWithDocument: (OC_GGS_Document *) inDocument
-       filePath: (NSString *) inFilePath ;
+       filePath: (NSString *) inFilePath
+       isBuildRun: (BOOL) inIsBuildRun ;
 
 - (void) terminate ;
 

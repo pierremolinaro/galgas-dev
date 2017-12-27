@@ -6322,6 +6322,7 @@ void enterExtensionMethod_appendSpecificFiles (const int32_t inClassIndex,
 void callExtensionMethod_appendSpecificFiles (const cPtr_semanticDeclarationForGeneration * inObject,
                                               const GALGAS_string constin_inProductDirectory,
                                               GALGAS_stringset & io_ioAllProductFileSet,
+                                              GALGAS_stringlist & io_ioCocoaProductFileList,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) {
   if (NULL != inObject) {
@@ -6345,7 +6346,7 @@ void callExtensionMethod_appendSpecificFiles (const cPtr_semanticDeclarationForG
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, constin_inProductDirectory, io_ioAllProductFileSet, inCompiler COMMA_THERE) ;
+      f (inObject, constin_inProductDirectory, io_ioAllProductFileSet, io_ioCocoaProductFileList, inCompiler COMMA_THERE) ;
     }
   }
 }
@@ -6355,6 +6356,7 @@ void callExtensionMethod_appendSpecificFiles (const cPtr_semanticDeclarationForG
 static void extensionMethod_semanticDeclarationForGeneration_appendSpecificFiles (const cPtr_semanticDeclarationForGeneration * /* inObject */,
                                                                                   const GALGAS_string /* constinArgument_inProductDirectory */,
                                                                                   GALGAS_stringset & /* ioArgument_ioAllProductFileSet */,
+                                                                                  GALGAS_stringlist & /* ioArgument_ioCocoaProductFileList */,
                                                                                   C_Compiler * /* inCompiler */
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
 }
@@ -12777,179 +12779,6 @@ GALGAS_keySortedList GALGAS_keySortedList::extractObject (const GALGAS_object & 
       result = *p ;
     }else{
       inCompiler->castError ("keySortedList", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                            '@usefulEntitiesGraph' graph                                             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_usefulEntitiesGraph::GALGAS_usefulEntitiesGraph (void) :
-AC_GALGAS_graph () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_usefulEntitiesGraph GALGAS_usefulEntitiesGraph::constructor_emptyGraph (LOCATION_ARGS) {
-  GALGAS_usefulEntitiesGraph result ;
-  result.makeNewEmptyGraph (THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_usefulEntitiesGraph::setter_addNode (GALGAS_lstring inKey,
-                                                 GALGAS_lstring inArgument_0,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  GALGAS_lstringlist::makeAttributesFromObjects (attributes, inArgument_0 COMMA_THERE) ;
-  const char * kErrorMessage = "the '%K' entity is already declared at %L" ;
-  internalAddNode (inKey, kErrorMessage, attributes, inCompiler COMMA_THERE) ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_usefulEntitiesGraph::method_topologicalSort (GALGAS_lstringlist & outSortedList,
-                                                         GALGAS_lstringlist & outSortedKeyList,
-                                                         GALGAS_lstringlist & outUnsortedList,
-                                                         GALGAS_lstringlist & outUnsortedKeyList,
-                                                         C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) const {
-  capCollectionElementArray sortedList ;
-  capCollectionElementArray unsortedList ;
-  internalTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
-  outSortedList = GALGAS_lstringlist (sortedList) ;
-  outUnsortedList = GALGAS_lstringlist (unsortedList) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_usefulEntitiesGraph::method_depthFirstTopologicalSort (GALGAS_lstringlist & outSortedList,
-                                                                   GALGAS_lstringlist & outSortedKeyList,
-                                                                   GALGAS_lstringlist & outUnsortedList,
-                                                                   GALGAS_lstringlist & outUnsortedKeyList,
-                                                                   C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) const {
-  capCollectionElementArray sortedList ;
-  capCollectionElementArray unsortedList ;
-  internalDepthFirstTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
-  outSortedList = GALGAS_lstringlist (sortedList) ;
-  outUnsortedList = GALGAS_lstringlist (unsortedList) ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_usefulEntitiesGraph GALGAS_usefulEntitiesGraph::getter_reversedGraph (LOCATION_ARGS) const {
-  GALGAS_usefulEntitiesGraph result ;
-  result.reversedGraphFromGraph (*this COMMA_THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_usefulEntitiesGraph::method_circularities (GALGAS_lstringlist & outInfoList,
-                                                       GALGAS_lstringlist & outKeyList
-                                                       COMMA_LOCATION_ARGS) const {
-  capCollectionElementArray infoList ;
-  internalFindCircularities (infoList, outKeyList COMMA_THERE) ;
-  outInfoList = GALGAS_lstringlist (infoList) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_usefulEntitiesGraph::method_nodesWithNoSuccessor (GALGAS_lstringlist & outInfoList,
-                                                              GALGAS_lstringlist & outKeyList
-                                                              COMMA_LOCATION_ARGS) const {
-  capCollectionElementArray infoList ;
-  internalNodesWithNoSuccessor (infoList, outKeyList COMMA_THERE) ;
-  outInfoList = GALGAS_lstringlist (infoList) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_usefulEntitiesGraph::method_nodesWithNoPredecessor (GALGAS_lstringlist & outInfoList,
-                                                                GALGAS_lstringlist & outKeyList
-                                                                COMMA_LOCATION_ARGS) const {
-  capCollectionElementArray infoList ;
-  internalNodesWithNoPredecessor (infoList, outKeyList COMMA_THERE) ;
-  outInfoList = GALGAS_lstringlist (infoList) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_usefulEntitiesGraph GALGAS_usefulEntitiesGraph::getter_subgraphFromNodes (const GALGAS_lstringlist & inStartKeyList,
-                                                                                 const GALGAS_stringset & inKeysToExclude,
-                                                                                 C_Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const {
-  GALGAS_usefulEntitiesGraph result ;
-  subGraph (result, inStartKeyList, inKeysToExclude, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstringlist GALGAS_usefulEntitiesGraph::getter_accessibleNodesFrom (const GALGAS_lstringlist & inStartKeyList,
-                                                                           const GALGAS_stringset & inNodesToExclude,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const {
-  GALGAS_lstringlist result ;
-  GALGAS_usefulEntitiesGraph resultingGraph ;
-  subGraph (resultingGraph,
-            inStartKeyList,
-            inNodesToExclude,
-            inCompiler
-            COMMA_THERE) ;
-  if (resultingGraph.isValid ()) {
-    result = resultingGraph.getter_lkeyList (THERE) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                              @usefulEntitiesGraph type                                              *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_usefulEntitiesGraph ("usefulEntitiesGraph",
-                                            NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_usefulEntitiesGraph::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_usefulEntitiesGraph ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_usefulEntitiesGraph::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_usefulEntitiesGraph (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_usefulEntitiesGraph GALGAS_usefulEntitiesGraph::extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_usefulEntitiesGraph result ;
-  const GALGAS_usefulEntitiesGraph * p = (const GALGAS_usefulEntitiesGraph *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_usefulEntitiesGraph *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("usefulEntitiesGraph", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

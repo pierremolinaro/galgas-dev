@@ -219,7 +219,6 @@ override method @optionComponentDeclarationAST semanticAnalysis
       !stringOptionMap
       !stringListOptionMap
     }
-#    !""
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -271,7 +270,8 @@ override method @optionComponentForGeneration appendDeclaration1
 override method @optionComponentForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
-  !@string outImplementation {
+  !@string outImplementation
+{
   if mIsPredefined then
     outImplementation = ""
   else
@@ -290,9 +290,11 @@ override method @optionComponentForGeneration appendSpecificImplementation
 
 override method @optionComponentForGeneration appendSpecificFiles
   ?let @string inProductDirectory
-  ?!@stringset ioAllProductFileSet {
+  ?!@stringset ioAllProductFileSet
+  ?!@stringlist ioCocoaProductFileList
+{
 #--- Generate Cocoa header
-  if @uint. errorCount == 0 && not mIsPredefined then
+  if @uint.errorCount == 0 && not mIsPredefined then
     ioAllProductFileSet += !"option-" + [mOptionComponentName fileNameRepresentation] + "-cocoa.h"
     [@string generateFileWithPattern
       !startPath:inProductDirectory
@@ -311,6 +313,7 @@ override method @optionComponentForGeneration appendSpecificFiles
     ]
   #--- Generate Cocoa Implementation
     ioAllProductFileSet += !"option-" + [mOptionComponentName fileNameRepresentation] + "-cocoa.m"
+    ioCocoaProductFileList += !"option-" + [mOptionComponentName fileNameRepresentation] + "-cocoa.m"
     [@string generateFileWithPattern
       !startPath:inProductDirectory
       !fileName:"option-" + [mOptionComponentName fileNameRepresentation] + "-cocoa.m"

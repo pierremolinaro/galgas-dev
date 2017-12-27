@@ -33,4 +33,6 @@ OC_Lexique * tokenizerForExtension (const NSString * inExtension) ;
 
 NSArray * tokenizers (void) ;
 
+NSString * buildRunOption (void) ;
+
 //---------------------------------------------------------------------------------------------------------------------*

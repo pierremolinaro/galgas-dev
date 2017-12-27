@@ -197,8 +197,6 @@ private proc compileProject
     elsif mFeatureName.string == "libpmAtPath" then
     elsif mFeatureName.string == "applicationBundleBase" then
     elsif mFeatureName.string == "macCodeSign" then
-#    elsif mFeatureName.string == "codeSigning" then
-#    elsif mFeatureName.string == "repositoryURL" then
     else
       error mFeatureName : "unknown feature"
     end
@@ -390,6 +388,7 @@ private proc projectGeneration
     !inTypeMap
     !productDirectory
     !inSemanticDeclarationSortedListForGeneration
+    !?appProductFileList
     !?toolCppFileList
     !?toolHeaderFileList
     !?allProductFileSet

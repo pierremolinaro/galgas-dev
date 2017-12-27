@@ -10086,7 +10086,8 @@ mProperty_mUIntOptionList (),
 mProperty_mStringOptionList (),
 mProperty_mNibAndClassList (),
 mProperty_mExtensionMap (),
-mProperty_mWithLexiqueList () {
+mProperty_mWithLexiqueList (),
+mProperty_mBuildRunOption () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10102,14 +10103,16 @@ GALGAS_guiAnalysisContext::GALGAS_guiAnalysisContext (const GALGAS_stringlist & 
                                                       const GALGAS_guiCommandLineOptionList & inOperand3,
                                                       const GALGAS_stringlist & inOperand4,
                                                       const GALGAS_extensionMap & inOperand5,
-                                                      const GALGAS_importedLexiqueList & inOperand6) :
+                                                      const GALGAS_importedLexiqueList & inOperand6,
+                                                      const GALGAS_string & inOperand7) :
 mProperty_mImportedOptionComponentList (inOperand0),
 mProperty_mBoolOptionList (inOperand1),
 mProperty_mUIntOptionList (inOperand2),
 mProperty_mStringOptionList (inOperand3),
 mProperty_mNibAndClassList (inOperand4),
 mProperty_mExtensionMap (inOperand5),
-mProperty_mWithLexiqueList (inOperand6) {
+mProperty_mWithLexiqueList (inOperand6),
+mProperty_mBuildRunOption (inOperand7) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10121,7 +10124,8 @@ GALGAS_guiAnalysisContext GALGAS_guiAnalysisContext::constructor_default (UNUSED
                                     GALGAS_guiCommandLineOptionList::constructor_emptyList (HERE),
                                     GALGAS_stringlist::constructor_emptyList (HERE),
                                     GALGAS_extensionMap::constructor_emptyMap (HERE),
-                                    GALGAS_importedLexiqueList::constructor_emptyList (HERE)) ;
+                                    GALGAS_importedLexiqueList::constructor_emptyList (HERE),
+                                    GALGAS_string::constructor_default (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10132,11 +10136,12 @@ GALGAS_guiAnalysisContext GALGAS_guiAnalysisContext::constructor_new (const GALG
                                                                       const GALGAS_guiCommandLineOptionList & inOperand3,
                                                                       const GALGAS_stringlist & inOperand4,
                                                                       const GALGAS_extensionMap & inOperand5,
-                                                                      const GALGAS_importedLexiqueList & inOperand6 
+                                                                      const GALGAS_importedLexiqueList & inOperand6,
+                                                                      const GALGAS_string & inOperand7 
                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_guiAnalysisContext result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
-    result = GALGAS_guiAnalysisContext (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid ()) {
+    result = GALGAS_guiAnalysisContext (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7) ;
   }
   return result ;
 }
@@ -10166,13 +10171,16 @@ typeComparisonResult GALGAS_guiAnalysisContext::objectCompare (const GALGAS_guiA
   if (result == kOperandEqual) {
     result = mProperty_mWithLexiqueList.objectCompare (inOperand.mProperty_mWithLexiqueList) ;
   }
+  if (result == kOperandEqual) {
+    result = mProperty_mBuildRunOption.objectCompare (inOperand.mProperty_mBuildRunOption) ;
+  }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_guiAnalysisContext::isValid (void) const {
-  return mProperty_mImportedOptionComponentList.isValid () && mProperty_mBoolOptionList.isValid () && mProperty_mUIntOptionList.isValid () && mProperty_mStringOptionList.isValid () && mProperty_mNibAndClassList.isValid () && mProperty_mExtensionMap.isValid () && mProperty_mWithLexiqueList.isValid () ;
+  return mProperty_mImportedOptionComponentList.isValid () && mProperty_mBoolOptionList.isValid () && mProperty_mUIntOptionList.isValid () && mProperty_mStringOptionList.isValid () && mProperty_mNibAndClassList.isValid () && mProperty_mExtensionMap.isValid () && mProperty_mWithLexiqueList.isValid () && mProperty_mBuildRunOption.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10185,6 +10193,7 @@ void GALGAS_guiAnalysisContext::drop (void) {
   mProperty_mNibAndClassList.drop () ;
   mProperty_mExtensionMap.drop () ;
   mProperty_mWithLexiqueList.drop () ;
+  mProperty_mBuildRunOption.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10208,6 +10217,8 @@ void GALGAS_guiAnalysisContext::description (C_String & ioString,
     mProperty_mExtensionMap.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mWithLexiqueList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mBuildRunOption.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -10252,6 +10263,12 @@ GALGAS_extensionMap GALGAS_guiAnalysisContext::getter_mExtensionMap (UNUSED_LOCA
 
 GALGAS_importedLexiqueList GALGAS_guiAnalysisContext::getter_mWithLexiqueList (UNUSED_LOCATION_ARGS) const {
   return mProperty_mWithLexiqueList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_guiAnalysisContext::getter_mBuildRunOption (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mBuildRunOption ;
 }
 
 
