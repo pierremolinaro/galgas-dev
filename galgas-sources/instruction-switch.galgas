@@ -87,6 +87,12 @@ syntax extension galgas3InstructionsSyntax {
       $($
       repeat
         select
+          $uint32$ ?let n
+          $*$
+          for a in 0 ..< n.uint do
+            outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
+          end
+         or
           $*$
           outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
          or

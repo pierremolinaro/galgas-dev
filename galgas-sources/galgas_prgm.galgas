@@ -194,6 +194,13 @@ private proc compileProject
       end
     elsif mFeatureName.string == "app-link" then
       handCodedLinkAppFileList += !mFeatureValue.string
+    elsif mFeatureName.string == "libpmAtPath" then
+    elsif mFeatureName.string == "applicationBundleBase" then
+    elsif mFeatureName.string == "macCodeSign" then
+#    elsif mFeatureName.string == "codeSigning" then
+#    elsif mFeatureName.string == "repositoryURL" then
+    else
+      error mFeatureName : "unknown feature"
     end
   end
 #---------------------------------- Display result

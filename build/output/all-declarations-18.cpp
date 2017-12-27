@@ -2170,15 +2170,15 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
   result << "::constructor_all (UNUSED_LOCATION_ARGS) {\n"
     "  return GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
-  result << " (" ;
+  result << " ((uint64_t) " ;
   result << in_FULL_5F_SET.getter_hexString (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 26)).stringValue () ;
   result << ") ;\n"
     "}\n"
     "\n" ;
-  GALGAS_uint index_1072_idx (0) ;
+  GALGAS_uint index_1083_idx (0) ;
   if (in_SLOT_5F_LIST.isValid ()) {
-    cEnumerator_lstringlist enumerator_1072 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1072.hasCurrentObject ()) {
+    cEnumerator_lstringlist enumerator_1083 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1083.hasCurrentObject ()) {
       result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "GALGAS_" ;
@@ -2186,17 +2186,17 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
       result << " GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::constructor_" ;
-      result << enumerator_1072.current_mValue (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 32)).stringValue () ;
+      result << enumerator_1083.current_mValue (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 32)).stringValue () ;
       result << " (UNUSED_LOCATION_ARGS) {\n"
         "  return GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << " (((uint64_t) 1) << " ;
-      result << index_1072_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 33)).stringValue () ;
+      result << index_1083_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 33)).stringValue () ;
       result << ") ;\n"
         "}\n"
         "\n" ;
-      index_1072_idx.increment () ;
-      enumerator_1072.gotoNextObject () ;
+      index_1083_idx.increment () ;
+      enumerator_1083.gotoNextObject () ;
     }
   }
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -2350,9 +2350,9 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
     "  if (mIsValid) {\n"
     "    result = GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
-  result << " (" ;
+  result << " (((uint64_t) " ;
   result << in_FULL_5F_SET.getter_hexString (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 114)).stringValue () ;
-  result << " ^ mFlags) ;\n"
+  result << ") ^ mFlags) ;\n"
     "  }\n"
     "  return result ;\n"
     "}\n"
@@ -2373,19 +2373,19 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
     "  if (! isValid ()) {\n"
     "    ioString << \" not built\" ;\n"
     "  }else{\n" ;
-  GALGAS_uint index_5136_idx (0) ;
+  GALGAS_uint index_5160_idx (0) ;
   if (in_SLOT_5F_LIST.isValid ()) {
-    cEnumerator_lstringlist enumerator_5136 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_5136.hasCurrentObject ()) {
+    cEnumerator_lstringlist enumerator_5160 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_5160.hasCurrentObject ()) {
       result << "    if ((mFlags & ((uint64_t) 1) << " ;
-      result << index_5136_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 129)).stringValue () ;
+      result << index_5160_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 129)).stringValue () ;
       result << ") != 0) {\n"
         "      ioString << \" " ;
-      result << enumerator_5136.current_mValue (HERE).getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 130)).stringValue () ;
+      result << enumerator_5160.current_mValue (HERE).getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 130)).stringValue () ;
       result << "\" ;\n"
         "    }\n" ;
-      index_5136_idx.increment () ;
-      enumerator_5136.gotoNextObject () ;
+      index_5160_idx.increment () ;
+      enumerator_5160.gotoNextObject () ;
     }
   }
   result << "  }\n"
@@ -2411,35 +2411,35 @@ GALGAS_string filewrapperTemplate_structGenerationTemplate_boolsetTypeSpecificIm
   result << "::getter_all (UNUSED_LOCATION_ARGS) const {\n"
     "  GALGAS_bool result ;\n"
     "  if (mIsValid) {\n"
-    "    result = GALGAS_bool (mFlags == " ;
+    "    result = GALGAS_bool (mFlags == (uint64_t) " ;
   result << in_FULL_5F_SET.getter_hexString (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 152)).stringValue () ;
   result << ") ;\n"
     "  }\n"
     "  return result ;\n"
     "}\n"
     "\n" ;
-  GALGAS_uint index_5975_idx (0) ;
+  GALGAS_uint index_6010_idx (0) ;
   if (in_SLOT_5F_LIST.isValid ()) {
-    cEnumerator_lstringlist enumerator_5975 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_5975.hasCurrentObject ()) {
+    cEnumerator_lstringlist enumerator_6010 (in_SLOT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_6010.hasCurrentObject ()) {
       result << "//---------------------------------------------------------------------------------------------------------------------*\n"
         "\n"
         "GALGAS_bool GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::getter_" ;
-      result << enumerator_5975.current_mValue (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 159)).stringValue () ;
+      result << enumerator_6010.current_mValue (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 159)).stringValue () ;
       result << " (UNUSED_LOCATION_ARGS) const {\n"
         "  GALGAS_bool result ;\n"
         "  if (mIsValid) {\n"
         "    result = GALGAS_bool ((mFlags & ((uint64_t) 1) << " ;
-      result << index_5975_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 162)).stringValue () ;
+      result << index_6010_idx.getter_string (SOURCE_FILE ("GALGAS_boolset.cpp.galgasTemplate", 162)).stringValue () ;
       result << ") != 0) ;\n"
         "  }\n"
         "  return result ;\n"
         "}\n"
         "\n" ;
-      index_5975_idx.increment () ;
-      enumerator_5975.gotoNextObject () ;
+      index_6010_idx.increment () ;
+      enumerator_6010.gotoNextObject () ;
     }
   }
   return GALGAS_string (result) ;

@@ -4199,10 +4199,11 @@
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    & & & & & & & & & & & & & & & & & & & & \node (p4-20) [point] {}; & \\
-    & & & & & & & & & & & & \node (p3-12) [point] {}; & & & \node (p3-15) [terminal] {unused}; & \\
-    & & & & & & \node (p2-6) [point] {}; & & & & & \node (p2-11) [point] {}; & \node (p2-12) [terminal] {@type}; & \node (p2-13) [point] {}; & \node (p2-14) [point] {}; & \node (p2-15) [point] {}; & \node (p2-16) [point] {}; & \node (p2-17) [terminal] {identifier}; & \\
-    & & & & & \node (p1-5) [terminal] {,}; & & & \node (p1-8) [terminal] {(}; & \node (p1-9) [point] {}; & \node (p1-10) [point] {}; & \node (p1-11) [terminal] {*}; & & & & & & & \node (p1-18) [point] {}; & \node (p1-19) [point] {}; & & \node (p1-21) [terminal] {)}; & \\
+    & & & & & & & & & & & & & & & & & & & & \node (p5-20) [point] {}; & \\
+    & & & & & & & & & & & & \node (p4-12) [point] {}; & & & \node (p4-15) [terminal] {unused}; & \\
+    & & & & & & & & & & & \node (p3-11) [point] {}; & \node (p3-12) [terminal] {@type}; & \node (p3-13) [point] {}; & \node (p3-14) [point] {}; & \node (p3-15) [point] {}; & \node (p3-16) [point] {}; & \node (p3-17) [terminal] {identifier}; & \\
+    & & & & & & \node (p2-6) [point] {}; & & & & & \node (p2-11) [terminal] {*}; & \\
+    & & & & & \node (p1-5) [terminal] {,}; & & & \node (p1-8) [terminal] {(}; & \node (p1-9) [point] {}; & \node (p1-10) [point] {}; & \node (p1-11) [terminal] {uint32}; & \node (p1-12) [terminal] {*}; & & & & & & \node (p1-18) [point] {}; & \node (p1-19) [point] {}; & & \node (p1-21) [terminal] {)}; & \\
     \node (P0start) [firstPoint] {}; & & \node (p0-2) [point] {}; & \node (p0-3) [terminal] {identifier}; & \node (p0-4) [point] {}; & & & \node (p0-7) [point] {}; & \node (p0-8) [point] {}; & & & & & & & & & & & & & & \node (p0-22) [point] {}; & \node (p0-23) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-3) ;
@@ -4212,19 +4213,22 @@
   \draw (p0-3) -- (p0-8) ;
   \draw[->] (p0-7) |- (p1-8) ;
   \draw[->] (p1-8) -- (p1-11) ;
-  \draw[->] (p1-10) |- (p2-12) ;
-  \draw (p2-11) |- (p3-12) ;
-  \draw (p2-12) -- (p2-13) ;
-  \draw[->] (p3-12) -| (p2-13) ;
-  \draw (p2-13) -- (p2-15) ;
-  \draw[->] (p2-14) |- (p3-15) ;
-  \draw (p2-15) -- (p2-16) ;
-  \draw[->] (p3-15) -| (p2-16) ;
-  \draw[->] (p2-16) -- (p2-17) ;
-  \draw (p1-11) -- (p1-18) ;
-  \draw[->] (p2-17) -| (p1-18) ;
-  \draw[->] (p4-20) -| (p1-9) ;
-  \draw[->] (p1-19) -| (p4-20) ;
+  \draw[->] (p1-11) -- (p1-12) ;
+  \draw[->] (p1-10) |- (p2-11) ;
+  \draw[->] (p1-10) |- (p3-12) ;
+  \draw (p3-11) |- (p4-12) ;
+  \draw (p3-12) -- (p3-13) ;
+  \draw[->] (p4-12) -| (p3-13) ;
+  \draw (p3-13) -- (p3-15) ;
+  \draw[->] (p3-14) |- (p4-15) ;
+  \draw (p3-15) -- (p3-16) ;
+  \draw[->] (p4-15) -| (p3-16) ;
+  \draw[->] (p3-16) -- (p3-17) ;
+  \draw (p1-12) -- (p1-18) ;
+  \draw[->] (p2-11) -| (p1-18) ;
+  \draw[->] (p3-17) -| (p1-18) ;
+  \draw[->] (p5-20) -| (p1-9) ;
+  \draw[->] (p1-19) -| (p5-20) ;
   \draw[->] (p1-18) -- (p1-21) ;
   \draw (p0-8) -- (p0-22) ;
   \draw[->] (p1-21) -| (p0-22) ;
