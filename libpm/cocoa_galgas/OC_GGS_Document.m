@@ -1048,6 +1048,18 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+- (IBAction) actionBuildRun: (id) inUnusedSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  if (nil == mBuildTask) {
+    OC_GGS_TextDisplayDescriptor * tdd = [mDisplayDescriptorArrayHigh objectAtIndex:0] ;
+    [self compileFileAtPath:tdd.sourceURL.path] ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 - (void) compileFileAtPath: (NSString *) inFilePath {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
