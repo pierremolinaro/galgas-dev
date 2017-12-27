@@ -33,6 +33,7 @@
 #import "PMDebug.h"
 #import "PMSearchResultDescriptor.h"
 #import "NSString+identifierRepresentation.h"
+#import "F_CocoaWrapperForGalgas.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -649,6 +650,8 @@
   if ((item.action == @selector (actionComment:)) || (item.action == @selector (actionUncomment:))) {
     OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayControllerHigh.selectedObjects objectAtIndex:0] ;
     result = selectedObject.documentData.textSyntaxColoring.tokenizer.blockComment.length > 0 ;
+  }else if (item.action == @selector (actionBuildRun:)) {
+    result = buildRunOption ().length > 0 ;
   }
   return result ;
 }
