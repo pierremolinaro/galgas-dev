@@ -3445,6 +3445,7 @@ void callExtensionMethod_appendSpecificImplementation (const class cPtr_semantic
 typedef void (*extensionMethodSignature_semanticDeclarationForGeneration_appendSpecificFiles) (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                                                                const class GALGAS_string constinArgument0,
                                                                                                class GALGAS_stringset & ioArgument1,
+                                                                                               class GALGAS_stringlist & ioArgument2,
                                                                                                class C_Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) ;
 
@@ -3458,6 +3459,7 @@ void enterExtensionMethod_appendSpecificFiles (const int32_t inClassIndex,
 void callExtensionMethod_appendSpecificFiles (const class cPtr_semanticDeclarationForGeneration * inObject,
                                               const GALGAS_string constin_inProductDirectory,
                                               GALGAS_stringset & io_ioAllProductFileSet,
+                                              GALGAS_stringlist & io_ioCocoaProductFileList,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 

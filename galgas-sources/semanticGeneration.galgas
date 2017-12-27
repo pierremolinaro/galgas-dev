@@ -1255,7 +1255,9 @@ override method @lexiqueDeclarationForGeneration appendSpecificImplementation
 
 override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ?let @string inProductDirectory
-  ?!@stringset ioAllProductFileSet {
+  ?!@stringset ioAllProductFileSet
+  ?!@stringlist ioCocoaProductFileList
+{
 #--- Generate cocoa header file
   ioAllProductFileSet += !"lexique-" + [mLexiqueName fileNameRepresentation] + "-cocoa.h"
   [@string generateFileWithPattern
@@ -1271,6 +1273,7 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ]
 #--- Generate Cocoa implementation file
   ioAllProductFileSet += !"lexique-" + [mLexiqueName fileNameRepresentation] + "-cocoa.m"
+  ioCocoaProductFileList += !"lexique-" + [mLexiqueName fileNameRepresentation] + "-cocoa.m"
   [@string generateFileWithPattern
     !startPath:inProductDirectory
     !fileName:"lexique-" + [mLexiqueName fileNameRepresentation] + "-cocoa.m"

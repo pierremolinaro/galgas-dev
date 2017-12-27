@@ -5,10 +5,10 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterOptionsFor_%![OPTION_COMPONENT_NAME identifierRepresentation]% (NSMutableArray * ioBoolOptionArray,
-                                                       NSMutableArray * ioUIntOptionArray,
-                                                       NSMutableArray * ioStringOptionArray,
-                                                       NSMutableArray * ioStringListOptionArray) {
+void enterOptionsFor_%![OPTION_COMPONENT_NAME identifierRepresentation]% (%?^%NSMutableArray * ioBoolOptionArray,
+           %!^%NSMutableArray * ioUIntOptionArray,
+           %!^%NSMutableArray * ioStringOptionArray,
+           %!^%NSMutableArray * ioStringListOptionArray) {
 %if ([BOOL_OPTION_MAP count] + [UINT_OPTION_MAP count] + [STRING_OPTION_MAP count] + [STRING_LIST_OPTION_MAP count]) > 0 then
   %  OC_GGS_CommandLineOption * option ;\n%
 end

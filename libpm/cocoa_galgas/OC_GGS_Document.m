@@ -2,7 +2,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2003, ..., 2016 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2003, ..., 2017 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -1042,7 +1042,7 @@
   #endif
   if (nil == mBuildTask) {
     OC_GGS_TextDisplayDescriptor * tdd = [mDisplayDescriptorArrayHigh objectAtIndex:0] ;
-    [self compileFileAtPath:tdd.sourceURL.path] ;
+    [self compileFileAtPath:tdd.sourceURL.path isBuildRun:NO] ;
   }
 }
 
@@ -1054,13 +1054,14 @@
   #endif
   if (nil == mBuildTask) {
     OC_GGS_TextDisplayDescriptor * tdd = [mDisplayDescriptorArrayHigh objectAtIndex:0] ;
-    [self compileFileAtPath:tdd.sourceURL.path] ;
+    [self compileFileAtPath:tdd.sourceURL.path isBuildRun:YES] ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (void) compileFileAtPath: (NSString *) inFilePath {
+- (void) compileFileAtPath: (NSString *) inFilePath
+         isBuildRun: (BOOL) inIsBuildRun {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -1084,6 +1085,7 @@
   mBuildTask = [[OC_GGS_BuildTask alloc]
     initWithDocument:self
     filePath:inFilePath
+    isBuildRun:inIsBuildRun
   ] ;
   self.mBuildTaskIsRunning = YES ;
 //---

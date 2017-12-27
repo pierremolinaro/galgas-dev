@@ -5158,6 +5158,8 @@ class GALGAS_guiAnalysisContext : public AC_GALGAS_root {
 
   public : GALGAS_importedLexiqueList mProperty_mWithLexiqueList ;
 
+  public : GALGAS_string mProperty_mBuildRunOption ;
+
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
   public : VIRTUAL_IN_DEBUG void drop (void) ;
@@ -5178,7 +5180,8 @@ class GALGAS_guiAnalysisContext : public AC_GALGAS_root {
                                       const GALGAS_guiCommandLineOptionList & in_mStringOptionList,
                                       const GALGAS_stringlist & in_mNibAndClassList,
                                       const GALGAS_extensionMap & in_mExtensionMap,
-                                      const GALGAS_importedLexiqueList & in_mWithLexiqueList) ;
+                                      const GALGAS_importedLexiqueList & in_mWithLexiqueList,
+                                      const GALGAS_string & in_mBuildRunOption) ;
 
 //-- Start of generic part --*
 
@@ -5197,7 +5200,8 @@ class GALGAS_guiAnalysisContext : public AC_GALGAS_root {
                                                                    const class GALGAS_guiCommandLineOptionList & inOperand3,
                                                                    const class GALGAS_stringlist & inOperand4,
                                                                    const class GALGAS_extensionMap & inOperand5,
-                                                                   const class GALGAS_importedLexiqueList & inOperand6
+                                                                   const class GALGAS_importedLexiqueList & inOperand6,
+                                                                   const class GALGAS_string & inOperand7
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -5213,6 +5217,8 @@ class GALGAS_guiAnalysisContext : public AC_GALGAS_root {
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_guiCommandLineOptionList getter_mBoolOptionList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mBuildRunOption (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_extensionMap getter_mExtensionMap (LOCATION_ARGS) const ;
 

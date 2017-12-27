@@ -221,6 +221,7 @@ struct @guiAnalysisContext {
   @stringlist mNibAndClassList
   @extensionMap mExtensionMap
   @importedLexiqueList mWithLexiqueList
+  @string mBuildRunOption
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -258,15 +259,7 @@ private proc guiComponentSemanticAnalysis
     error inGUIComponentAST.mGUIComponentName : "the gui name should be 'cocoa'"
   end
 #--- 
-  @guiAnalysisContext context = .new {
-    !@stringlist.emptyList
-    !@guiCommandLineOptionList.emptyList # Bool options
-    !@guiCommandLineOptionList.emptyList # UInt options
-    !@guiCommandLineOptionList.emptyList # string options
-    !@stringlist.emptyList
-    !@extensionMap.emptyMap
-    !@importedLexiqueList.emptyList
-  }
+  @guiAnalysisContext context = .default
 #--- Check imported options components
   for () in inGUIComponentAST.mImportedOptionList do
     [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
@@ -276,13 +269,23 @@ private proc guiComponentSemanticAnalysis
     context.mImportedOptionComponentList += !mValue.string
   end
 #--- Nib and main classes
+  var runOptionDefined = false
   for () in inGUIComponentAST.mGlobalSimpleAttributeList do
-    if [mKey string] != "nibAndMainClass" then
-      warning mKey:"the '" + mKey + "' key is invalid and has no effect"
-    else
+    if mKey.string == "run" then
+      if runOptionDefined then
+        error mKey : "option already defined"
+      elsif mValue.string == "" then
+        error mValue : "run option string should not be empty"
+      else
+        context.mBuildRunOption = mValue.string
+        runOptionDefined = true
+      end
+    elsif mKey.string == "nibAndMainClass" then
       for component in [mValue.string componentsSeparatedByString !"."] do
         context.mNibAndClassList += !component.mValue
       end
+    else
+      warning mKey:"the '" + mKey + "' key is invalid and has no effect"
     end
   end
 #--- 'with lexique' construct analysis
@@ -308,7 +311,7 @@ private proc guiComponentSemanticAnalysis
       end
     end
   #--- Compound attributes
-    var textMacroList =@textMacroList {}
+    @textMacroList textMacroList = {}
     for () in mCompoundAttributes do
       if [mKey string] != "textMacro" then
         error mKey: "for a compound attribute, only the 'textMacro' key is valid"
@@ -380,13 +383,18 @@ proc generateAllGuiComponentsGalgas3
     let fileName = "gui-" + lkey + ".m"
     ioApplicationSourceSet += !fileName
     ioAllProductFileSet += !fileName
+    let s = [filewrapper guiGenerationTemplates.gui_implementation
+      !mGuiComponentContext
+      !inQuietOutputByDefault
+      !mGuiComponentContext.mBuildRunOption
+    ]
     [@string generateFileWithPattern
       !startPath:inOutputDirectory
       !fileName:fileName
       !lineComment:"//"
       !header:"" # Header
       !defaultUserZone1:"\n\n" # Defaut user zone1
-      !generatedZone2:[filewrapper guiGenerationTemplates.gui_implementation !mGuiComponentContext !inQuietOutputByDefault]
+      !generatedZone2:s
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:"\n\n" # Zone 3
       !makeExecutable:false
@@ -404,5 +412,6 @@ filewrapper guiGenerationTemplates in "../generation_templates/gui_generation" {
   template gui_implementation "gui-implementation.m.galgasTemplate"
     ?@guiAnalysisContext GUI_CONTEXT
     ?@bool QUIET_OUTPUT_BY_DEFAULT
+    ?@string BUILD_RUN_OPTION
 }
 

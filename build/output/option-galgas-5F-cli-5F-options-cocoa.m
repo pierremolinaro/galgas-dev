@@ -10,9 +10,9 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArray,
-                                                       NSMutableArray * ioUIntOptionArray,
-                                                       NSMutableArray * ioStringOptionArray,
-                                                       NSMutableArray * ioStringListOptionArray) {
+                                               NSMutableArray * ioUIntOptionArray,
+                                               NSMutableArray * ioStringOptionArray,
+                                               NSMutableArray * ioStringListOptionArray) {
   OC_GGS_CommandLineOption * option ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
