@@ -67,7 +67,6 @@
   @private IBOutlet NSTextField * mGotoLineTextField ;
 
 //--- Build, stop button
-  @private IBOutlet NSMenuItem * mRunButton ;
   @private IBOutlet NSButton * mStartBuildButton ;
   @private IBOutlet NSProgressIndicator * mBuildProgressIndicator ;
   @private IBOutlet NSButton * mStopBuildButton ;

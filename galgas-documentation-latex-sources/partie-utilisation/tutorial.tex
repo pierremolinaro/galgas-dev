@@ -318,11 +318,19 @@ Pour tout le tutorial vous devez utiliser un répertoire dont le chemin ne conti
 
 Dans toute la suite de ce tutorial, les chemins sont indiqués relativement à ce répertoire, qui sera appelé \tpp{chezmoi}.
 
-La création :
+La création (Unix)~:
 \begin{SHELL}
 cd chezmoi\\
 galgas -{}-create-project=logo
 \end{SHELL}
+
+La création (Windows)~:
+\begin{SHELL}
+cd chezmoi\\
+galgas -{}-no-dialog -{}-create-project=logo
+\end{SHELL}
+
+Sous Windows, si aucun fichier source à compiler n'est indiqué dans la ligne de commande, GALGAS affiche un dialogue proposant d'entrer ce fichier. L'option \tpp{-{}-no-dialog} (\refSectionPage{optionGenerales}) permet de ne pas faire apparaître ce dialogue.
 
 Le message affiché par cette opération est :
 \begin{SHELL}
@@ -474,7 +482,7 @@ Explications :
   \item \ggs|style keywordsStyle -> "Keywords"| déclare un style (uniquement utile pour l’application Cocoa engendrée, vous pouvez ignorer cette ligne) ;
   \item \ggs+$identifier$ ! tokenString error message "an identifier"+ déclare le terminal \ggs+$identifier$+ qui sera transmis à l’analyseur syntaxique accompagné de la valeur de \ggs+tokenString+ ; le message d’erreur qui suit est celui qui est utilisé lors d’une erreur syntaxique ;
   \item \ggs+list keyWordList style keywordsStyle error ...+ déclare une liste de mots réservés associés à un style d’affichage (pour l’application Cocoa sur Mac), un message d’erreur syntaxique ; telle qu’elle est présente, cette définition déclare les deux non terminaux \ggs+$begin$+ et \ggs+$end$+ ;
-  \item enfin, \ggs+rule 'a'->'z' | 'A'->'Z' ...+ effectue l’analyse lexicale des identificateurs en accumulant dans \ggs+tokenString+ les caractères rencontrés ; la recherche d'un mot réservé est effectuée par\ggs+send search tokenString in keyWordList default $identifier$+ : par défaut si la chaîne entrée n'est pas un mot réservé, un identificateur est retourné à l’analyseur syntaxique.
+  \item enfin, \ggs+rule 'a'->'z' | 'A'->'Z' ...+ effectue l’analyse lexicale des identificateurs en accumulant dans \ggs+tokenString+ les caractères rencontrés~; la recherche d'un mot réservé est effectuée par \ggs+send search tokenString in keyWordList+ \ggs+default $identifier$+ : par défaut si la chaîne entrée n'est pas un mot réservé, un identificateur est retourné à l’analyseur syntaxique.
 \end{enumerate}
 
 \textbf{Travail à faire.} Modifier la liste des mots réservés en y plaçant ceux du langage LOGO.
