@@ -74,12 +74,16 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t inTerminalIndex) const {
-  static const char * syntaxErrorMessageArray [%![[TERMINAL_LIST length] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
+  C_String result = "<unknown>" ;
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < %![[TERMINAL_LIST length] + 1 string]%)) {
+    static const char * syntaxErrorMessageArray [%![[TERMINAL_LIST length] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
   for () in TERMINAL_LIST do
-   %,\n    gSyntaxErrorMessage_%!LEXIQUE_IDENTIFIER%_%![[mTerminalName string] identifierRepresentation]
+   %,\n        gSyntaxErrorMessage_%!LEXIQUE_IDENTIFIER%_%![[mTerminalName string] identifierRepresentation]
   end
-%} ;
-  return syntaxErrorMessageArray [inTerminalIndex] ;
+%\n    } ;
+    result = syntaxErrorMessageArray [inTerminalIndex] ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -315,6 +319,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER
   cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = NULL ;
   macroMyNew (ptr, cTokenFor_%!LEXIQUE_IDENTIFIER% ()) ;
   ptr->mTokenCode = ioToken.mTokenCode ;
+  // ptr->mIsOptional = ioToken.mIsOptional ;
   ptr->mStartLocation = mTokenStartLocation ;
   ptr->mEndLocation = mTokenEndLocation ;
   ptr->mTemplateStringBeforeToken = ioToken.mTemplateStringBeforeToken ;
@@ -332,7 +337,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER
   for () in LEXICAL_ATTRIBUTE_MAP do
     %//---------------------------------------------------------------------------------------------------------------------*\n\n%
     ![mLexicalType cppTypeName]% C_Lexique_%!LEXIQUE_IDENTIFIER%::attributeValue_%![lkey identifierRepresentation]% (void) const {\n%
-    %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
+    %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) currentTokenPtr (HERE) ;\n%
     %  return ptr->mLexicalAttribute_%![lkey identifierRepresentation]% ;\n%
     %}\n\n%
   end
@@ -342,7 +347,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER
   for () in LEXICAL_ATTRIBUTE_MAP do
     %//---------------------------------------------------------------------------------------------------------------------*\n\n%
     %GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% C_Lexique_%!LEXIQUE_IDENTIFIER%::synthetizedAttribute_%![lkey identifierRepresentation]% (void) const {\n%
-    %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
+    %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) currentTokenPtr (HERE) ;\n%
     %  macroValidSharedObject (ptr, cTokenFor_%!LEXIQUE_IDENTIFIER%) ;\n%
     %  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;\n%
     %  GALGAS_%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% value (ptr->mLexicalAttribute_%![lkey identifierRepresentation]%) ;\n%

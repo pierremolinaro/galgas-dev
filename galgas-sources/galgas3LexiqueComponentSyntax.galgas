@@ -405,6 +405,14 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+#rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+#  $option$
+#  $\$terminal\$$ ?let terminalName
+#  ioInstructionList += !@lexicalOptionInstructionAST.new {!terminalName}
+#}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $tag$
   $identifier$ ?let tagName

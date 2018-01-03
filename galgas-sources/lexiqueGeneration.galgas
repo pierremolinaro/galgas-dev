@@ -169,7 +169,9 @@ abstract getter @lexicalSendDefaultActionAST generateDefaultSendCode
 
 override getter @lexicalSendTerminalByDefaultAST generateDefaultSendCode
   ?let @string unused inScannerClassName
-  -> @string outGeneratedCode {
+  -> @string outGeneratedCode
+{
+#  outGeneratedCode  = "token.mIsOptional = false ;\n"
   outGeneratedCode = "token.mTokenCode = kToken_" + mDefaultSentTerminal + " ;\n"
 }
 
@@ -200,6 +202,7 @@ override getter @lexicalStructuredSendInstructionAST generateInstructionCode
   outGeneratedCode = ""
   for () in mLexicalSendSearchList do
     outGeneratedCode += "if (token.mTokenCode == -1) {\n"
+#    outGeneratedCode += "  token.mIsOptional = false ;\n"
     outGeneratedCode += "  token.mTokenCode = search_into_" + mSearchListName + " (token.mLexicalAttribute_" + [mAttributeName identifierRepresentation] + ") ;\n"
     outGeneratedCode += "}\n"
   end
@@ -221,12 +224,25 @@ override getter @lexicalDropInstructionAST generateInstructionCode
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+#override getter @lexicalOptionInstructionAST generateInstructionCode
+#  ?let @string unused inScannerClassName
+#  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+#  -> @string outGeneratedCode
+#{
+#  outGeneratedCode  = "token.mTokenCode = kToken_" + [mTerminalName identifierRepresentation] + " ;\n"
+##  outGeneratedCode += "token.mIsOptional = true ;\n"
+#  outGeneratedCode += "enterToken (token) ;\n"
+#}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override getter @lexicalSimpleSendInstructionAST generateInstructionCode
   ?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 {
   outGeneratedCode  = "token.mTokenCode = kToken_" + [mSentTerminal identifierRepresentation] + " ;\n"
+#  outGeneratedCode += "token.mIsOptional = false ;\n"
   outGeneratedCode += "enterToken (token) ;\n"
 }
 
@@ -352,6 +368,7 @@ override getter @lexicalRewindInstructionAST generateInstructionCode
                     + "mTokenEndLocation = endLocationForTag_" + mLexicalTagName + " ;\n"
                     + "mCurrentChar = currentCharForTag_" + mLexicalTagName + " ;\n"
                     + "token.mTokenCode = kToken_" + [mTerminalName identifierRepresentation] + " ;\n"
+#                    + "token.mIsOptional = false ;\n"
                     + "enterToken (token) ;\n"
 }
 
@@ -389,6 +406,7 @@ override getter @lexicalImplicitRuleAST generateCode
     outGeneratedCode += [[mName length] string]
     outGeneratedCode += ", true)) {\n"
     outGeneratedCode += "  token.mTokenCode = kToken_" + [mTerminalName identifierRepresentation] + " ;\n"
+#    outGeneratedCode += "  token.mIsOptional = false ;\n"
     outGeneratedCode += "  enterToken (token) ;\n"
     outGeneratedCode += "}else "
   end

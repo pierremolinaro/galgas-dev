@@ -718,6 +718,7 @@ mStartLocation (),
 mEndLocation (),
 mTemplateStringBeforeToken (),
 mSeparatorStringBeforeToken (),
+// mIsOptional (false),
 mTokenCode (0) {
 }
 

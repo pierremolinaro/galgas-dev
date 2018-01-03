@@ -317,6 +317,12 @@ class @lexicalDropInstructionAST : @lexicalInstructionAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+#class @lexicalOptionInstructionAST : @lexicalInstructionAST {
+#  @lstring mTerminalName
+#}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 class @lexicalErrorInstructionAST : @lexicalInstructionAST {
   @lstring mErrorMessageName
 }
