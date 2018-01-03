@@ -637,6 +637,15 @@ override method @lexicalDropInstructionAST checkLexicalInstruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+#override method @lexicalOptionInstructionAST checkLexicalInstruction
+#  ?!@lexiqueAnalysisContext  ioLexiqueAnalysisContext
+#  ?!@lexicalTagMap unused ioTagMap
+#{
+#  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mTerminalName ?*]
+#}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @lexicalTagInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?!@lexicalTagMap ioTagMap {

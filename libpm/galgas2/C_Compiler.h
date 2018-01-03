@@ -38,16 +38,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  #define ACCEPT_TERMINAL(t) t
-  #define FORMAL_ARG_ACCEPT_TERMINAL const int16_t inExpectedTerminal
-#else
-  #define ACCEPT_TERMINAL(t)
-  #define FORMAL_ARG_ACCEPT_TERMINAL
-#endif
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 class GALGAS_location ;
 class GALGAS_string ;
 class GALGAS_lstring ;

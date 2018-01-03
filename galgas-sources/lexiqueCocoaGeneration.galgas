@@ -311,6 +311,15 @@ override getter @lexicalDropInstructionAST generateCocoaInstructionCode
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+#override getter @lexicalOptionInstructionAST generateCocoaInstructionCode
+#  ?let @string inScannerClassName
+#  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
+#  -> @string outGeneratedCode {
+#  outGeneratedCode = "mTokenCode = " + inScannerClassName + "_1_" + [[mTerminalName string] identifierRepresentation] + " ;\n"
+#}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override getter @lexicalErrorInstructionAST generateCocoaInstructionCode
   ?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext

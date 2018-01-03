@@ -45,7 +45,7 @@ void C_HTMLString::writeStartCode (const C_String & inWindowTitle,
   outputRawData ("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n"
                  "<html>"
                  "<head>\n"
-                 "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\n"
+                 "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n"
                  "<title>\n") ;
   *this << inWindowTitle ;
   outputRawData ("</title>") ;

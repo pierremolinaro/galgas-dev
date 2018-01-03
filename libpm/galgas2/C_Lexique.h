@@ -74,10 +74,15 @@ class C_Lexique : public C_Compiler {
 //--- Token list
   private : cToken * mFirstToken ;
   private : cToken * mLastToken ;
-  protected : cToken * mCurrentTokenPtr ;
+  private : cToken * mCurrentTokenPtr ;
   protected : void enterTokenFromPointer (cToken * inToken) ;
-  protected : int32_t mLastSeparatorIndex ;
+  private : int32_t mLastSeparatorIndex ;
   public : void appendLastSeparatorTo (C_String & ioString) const ;
+
+  protected : cToken * currentTokenPtr (LOCATION_ARGS) const {
+    macroValidPointerThere (mCurrentTokenPtr) ;
+    return mCurrentTokenPtr ;
+  }
 
 //--- Syntax directed translation : accessing current token
   public : C_String preceedingSeparatorString (void) const ;
@@ -175,7 +180,7 @@ class C_Lexique : public C_Compiler {
   protected : void lexicalLog (LOCATION_ARGS) ;
 
 //--- Methods for parsing during second pass
-  public : void acceptTerminal (FORMAL_ARG_ACCEPT_TERMINAL COMMA_LOCATION_ARGS) ;
+  public : void acceptTerminal (const int16_t inExpectedTerminal COMMA_LOCATION_ARGS) ;
   public : int16_t nextProductionIndex (void) ;
   public : virtual int16_t terminalVocabularyCount (void) const = 0 ;
 
