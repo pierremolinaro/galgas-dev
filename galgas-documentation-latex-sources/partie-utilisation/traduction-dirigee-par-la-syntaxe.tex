@@ -9,11 +9,11 @@ GALGAS permet de construire un \emph{traducteur dirigée par la syntaxe}. Ce typ
 
 Mettre en place une traduction dirigée par la syntaxe en GALGAS fait appel aux constructions suivantes :
 \begin{itemize}
-  \item activer la traduction dirigée par la syntaxe pour chaque composant \ggs+syntax+ ;
-  \item activer la traduction dirigée par la syntaxe pour le composant \ggs+grammar+ ;
-  \item modifier l'instruction \ggs+grammar+, de façon à récupérer les informations de traduction ;
-  \item modifier l'instruction d'appel de terminal, de façon à récupérer les informations relatives à l'occurrence du terminal ;
-  \item modifier l'instruction d'appel de non terminal, de façon à récupérer la traduction du non terminal ;
+  \item activer la traduction dirigée par la syntaxe pour chaque composant \ggs+syntax+~;
+  \item activer la traduction dirigée par la syntaxe pour le composant \ggs+grammar+~;
+  \item modifier l'instruction \ggs+grammar+, de façon à récupérer les informations de traduction~;
+  \item modifier l'instruction d'appel de terminal, de façon à récupérer les informations relatives à l'occurrence du terminal~;
+  \item modifier l'instruction d'appel de non terminal, de façon à récupérer la traduction du non terminal~;
   \item appeler l'instruction \ggs+send+ pour insérer du texte dans la chaîne produite.
 \end{itemize}
 
@@ -119,8 +119,8 @@ L'instruction déclare une variable \ggs+s+ de type \ggs+@string+ et lui affecte
 
 Par défaut, la chaîne traduite est identique à la chaîne source. Obtenir une chaîne différente est contrôlé par trois instructions :
 \begin{itemize}
-  \item l'instruction d'appel de terminal, de façon à récupérer les informations relatives à l'occurrence du terminal ;
-  \item l'instruction d'appel de non terminal, de façon à récupérer la traduction du non terminal ;
+  \item l'instruction d'appel de terminal, de façon à récupérer les informations relatives à l'occurrence du terminal~;
+  \item l'instruction d'appel de non terminal, de façon à récupérer la traduction du non terminal~;
   \item l'instruction \ggs+send+ pour insérer du texte dans la chaîne produite.
 \end{itemize}
 
@@ -139,7 +139,7 @@ $idf$ ?*
 
 Par défaut, cette instruction recopie à l'identique dans la chaîne produite deux informations :
 \begin{itemize}
-  \item les séparateurs qui précèdent le terminal ;
+  \item les séparateurs qui précèdent le terminal~;
   \item le terminal lui-même.
 \end{itemize}
 
@@ -210,7 +210,7 @@ send exp
 
 \ggs+exp+ est une expression de type \ggs+@string+. Son comportement est simple : la valeur de l'expression chaîne de caractères est simplement transmise à la chaîne produite.
 
-Par exemple, supposons que l'on veuille transformer les parenthèses en accolades ; on écrit le composant \ggs+syntax+ comme suit (là encore, il existe une forme plus concise de l'instruction \ggs+$($ :> ?@string s ?@string t+, puisque \ggs+t+ est inutilisé : c'est \ggs+$($ :> ?@string s ?*+, décrite  à la \refSectionPage{instruction-appel-terminal}) :
+Par exemple, supposons que l'on veuille transformer les parenthèses en accolades~; on écrit le composant \ggs+syntax+ comme suit (là encore, il existe une forme plus concise de l'instruction \ggs+$($ :> ?@string s ?@string t+, puisque \ggs+t+ est inutilisé : c'est \ggs+$($ :> ?@string s ?*+, décrite  à la \refSectionPage{instruction-appel-terminal}) :
 \begin{galgas}
 syntax expSyntax {
   rule <expression> {
@@ -248,7 +248,7 @@ else
 end
 \end{galgas}
 
-L'analyse des instructions \ggs+send A+ et  \ggs+send B+ déclenche une erreur ; en effet, les branches d'une instruction \ggs+if+ ne peuvent contenir que des instructions sémantiques. Les instructions \ggs+send+ ne peuvent figurer que directement dans des règles de production, soient dans les branches des instructions \ggs+select+, \ggs+repeat+ ou \ggs+parse+. Pour contourner cette interdiction, écrire :
+L'analyse des instructions \ggs+send A+ et  \ggs+send B+ déclenche une erreur~; en effet, les branches d'une instruction \ggs+if+ ne peuvent contenir que des instructions sémantiques. Les instructions \ggs+send+ ne peuvent figurer que directement dans des règles de production, soient dans les branches des instructions \ggs+select+, \ggs+repeat+ ou \ggs+parse+. Pour contourner cette interdiction, écrire :
 \begin{galgas}
 @string s
 if condition then
@@ -281,7 +281,7 @@ La chaîne obtenue par la dérivation du non terminal \ggs+<expression>+ n'est p
 <expression> :> ?@string e ; send e
 \end{galgas}
 
-On utilise souvent cette construction pour ne pas transmettre la chaîne obtenue par la dérivation d'un non terminal ; par exemple, si on ne veut pas transmettre les expressions entre parenthèses, on modifie la dernière règle \ggs+facteur+ en (ou encore : \ggs+<expression> :> ?*+) :
+On utilise souvent cette construction pour ne pas transmettre la chaîne obtenue par la dérivation d'un non terminal~; par exemple, si on ne veut pas transmettre les expressions entre parenthèses, on modifie la dernière règle \ggs+facteur+ en (ou encore : \ggs+<expression> :> ?*+) :
 \begin{galgas}
 syntax expSyntax {
   ...

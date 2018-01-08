@@ -63,7 +63,7 @@ see https://www.gnu.org/licenses/.  */
 #pragma GCC diagnostic ignored "-Wpointer-arith"
 #pragma GCC diagnostic ignored "-Wundef"
 #if __GNUC__ < 6
-  #pragma GCC diagnostic ignored "-Werror"
+  // #pragma GCC diagnostic ignored "-Werror"
   #pragma GCC diagnostic error "-w"
 #endif
 

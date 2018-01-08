@@ -91,9 +91,9 @@ On obtient ainsi (noter l'identation de la première ligne)~:
 }
 
 
-\subsection{option \texttt{-{}-mode:suffixe=latex}}
+\subsection{option \texttt{-{}-mode{}:suffixe=latex}}
 
-Si vous documentez plusieurs compilateurs, vous pouvez avoir une collision de nom de style. Une variante de l'option \tpp{-{}-mode=latex} est de préciser un suffixe~: \tpp{-{}-mode:suffixe=latex}. Le \tpp{suffixe} doit être un nom uniquement constitué de lettres (minuscules ou majuscules). Ce suffixe est ajouté aux noms de style. En appelant le compilateur LOGO par la commande \tpp{logo -{}-mode=latex:Logo test.logo}, le fichier \tpp{test.logo.tex} est engendré et contient~:
+Si vous documentez plusieurs compilateurs, vous pouvez avoir une collision de nom de style. Une variante de l'option \tpp{-{}-mode=latex} est de préciser un suffixe~: \tpp{-{}-mode{}:suffixe=latex}. Le \tpp{suffixe} doit être un nom uniquement constitué de lettres (minuscules ou majuscules). Ce suffixe est ajouté aux noms de style. En appelant le compilateur LOGO par la commande \tpp{logo -{}-mode=latex:Logo test.logo}, le fichier \tpp{test.logo.tex} est engendré et contient~:
 
 {\small
 \begin{verbatim}
@@ -183,8 +183,8 @@ On obtient~:
 
 La traduction s'effectue comme suit~:
 \begin{itemize}
-  \item à chaque \ggs+style+ défini dans l'analyseur lexical correspond une commande \LaTeX parti-culière~: par exemple à \tpp{keywordsStyle} correspond \tpp{\textbackslash keywordsStyle}\footnote{Si un suffixe est précisé (\texttt{-{}-mode:suffixe=latex}), alors ce suffixe est ajouté à la commande \tpp{\textbackslash keywordsStyle}.} (\refSubsectionPage{fonctionnement-mode-latex})~;
-  \item si une erreur lexicale est détectée, une commande \tpp{\textbackslash lexicalError}\footnote{Si un suffixe est précisé (\texttt{-{}-mode:suffixe=latex}), alors ce suffixe est ajouté à la commande \tpp{\textbackslash lexicalError}.} est insérée~;
+  \item à chaque \ggs+style+ défini dans l'analyseur lexical correspond une commande \LaTeX parti-culière~: par exemple à \tpp{keywordsStyle} correspond \tpp{\textbackslash keywordsStyle}\footnote{Si un suffixe est précisé (\texttt{-{}-mode{}:suffixe=latex}), alors ce suffixe est ajouté à la commande \tpp{\textbackslash keywordsStyle}.} (\refSubsectionPage{fonctionnement-mode-latex})~;
+  \item si une erreur lexicale est détectée, une commande \tpp{\textbackslash lexicalError}\footnote{Si un suffixe est précisé (\texttt{-{}-mode{}:suffixe=latex}), alors ce suffixe est ajouté à la commande \tpp{\textbackslash lexicalError}.} est insérée~;
   \item les caractères possédant une signification particulière en \LaTeX sont échappés ou substitués selon le \refTableau{substitution-latex}~;
   \item après tout caractère non échappé ni substitué est ajoutée la séquence \tpp{\{\}}.
 \end{itemize}
