@@ -826,8 +826,8 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
   //---
     int32_t indentationForParseOnly = 0 ;
     cToken * tokenPtr = mFirstToken ;
-//    while ((currentTokenPtr != NULL) && currentTokenPtr->mIsOptional) {
-//      currentTokenPtr = currentTokenPtr->mNextToken ;
+//    while ((tokenPtr != NULL) && tokenPtr->mIsOptional) {
+//      tokenPtr = tokenPtr->mNextToken ;
 //    }
 
     if (executionModeIsSyntaxAnalysisOnly ()) {
@@ -1185,31 +1185,31 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
     int32_t errorSignalingUselessEntryOnTopOfStack = 0 ;
     TC_Array <int16_t> poppedErrors (1000 COMMA_HERE)  ;
     
-    cToken * currentTokenPtr = mFirstToken ;
+    cToken * tokenPtr = mFirstToken ;
 
     int16_t currentToken = (int16_t) -1 ;
 //    bool currentTokenIsOptional = false ;
-    if (currentTokenPtr == NULL) {
+    if (tokenPtr == NULL) {
       mCurrentLocation.resetLocation () ;
     }else{
-      currentToken = currentTokenPtr->mTokenCode ;
-//      currentTokenIsOptional = currentTokenPtr->mIsOptional ;
-      mCurrentLocation = currentTokenPtr->mEndLocation ;
+      currentToken = tokenPtr->mTokenCode ;
+//      currentTokenIsOptional = tokenPtr->mIsOptional ;
+      mCurrentLocation = tokenPtr->mEndLocation ;
     }
     bool loop = true ;
     result = true ;
     while (loop) {
       if (currentToken < 0) {
-        if (currentTokenPtr == NULL) {
+        if (tokenPtr == NULL) {
           currentToken = 0 ; // 0 means end of source file
         }else{
-          currentTokenPtr = currentTokenPtr->mNextToken ;
+          tokenPtr = tokenPtr->mNextToken ;
           currentToken = 0 ;
 //          currentTokenIsOptional = false ;
-          if (currentTokenPtr != NULL) {
-            mCurrentLocation = currentTokenPtr->mEndLocation ;
-            currentToken = currentTokenPtr->mTokenCode ;
-//            currentTokenIsOptional = currentTokenPtr->mIsOptional ;
+          if (tokenPtr != NULL) {
+            mCurrentLocation = tokenPtr->mEndLocation ;
+            currentToken = tokenPtr->mTokenCode ;
+//            currentTokenIsOptional = tokenPtr->mIsOptional ;
           }
         }
       }
@@ -1241,7 +1241,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
           C_String terminalUniqueName ;
           terminalUniqueName << "T" << cStringWithUnsigned (uniqueTerminalIndex) ;
           syntaxTreeDescriptionString << "  " << terminalUniqueName << " [shape=ellipse, label=" ;
-          syntaxTreeDescriptionString.appendCLiteralStringConstant (getCurrentTokenString (currentTokenPtr)) ;
+          syntaxTreeDescriptionString.appendCLiteralStringConstant (getCurrentTokenString (tokenPtr)) ;
           syntaxTreeDescriptionString << "];\n" ;
           shiftedElementStack.appendObject (terminalUniqueName) ;
           uniqueTerminalIndex ++ ;
@@ -1249,7 +1249,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
       //--- Parse Only : print terminal symbol
         if (executionModeIsSyntaxAnalysisOnly ()) {
           co << "  [S" << cStringWithSigned (currentState) << ", "
-             << getCurrentTokenString (currentTokenPtr)
+             << getCurrentTokenString (tokenPtr)
              << "] |- Shift -> S" << cStringWithSigned (actionCode) << "\n" ;
         }
         // co <<  "EXTENSION executionList: " << executionList.count () << "\n" ;
@@ -1308,7 +1308,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
           currentProductionName ++ ;
         }
         if (executionModeIsSyntaxAnalysisOnly ()) {
-          co << "  [S" << cStringWithSigned (currentState) << ", " << getCurrentTokenString (currentTokenPtr)
+          co << "  [S" << cStringWithSigned (currentState) << ", " << getCurrentTokenString (tokenPtr)
              << "] |- Reduce "
              << inNonTerminalSymbolNames [nonTerminal]
              << " -> S"
@@ -1320,7 +1320,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
         loop = false ;
         executionList (0 COMMA_HERE).mergeListAtBottom (executionList (1 COMMA_HERE)) ;
         if (executionModeIsSyntaxAnalysisOnly ()) {
-          co << "  [S" << cStringWithSigned (currentState) << ", " << getCurrentTokenString (currentTokenPtr) << "] : Accept\n" ;
+          co << "  [S" << cStringWithSigned (currentState) << ", " << getCurrentTokenString (tokenPtr) << "] : Accept\n" ;
         }
 //      }else if (currentTokenIsOptional) {
 //        currentToken = -1 ; //--- Token has been used
