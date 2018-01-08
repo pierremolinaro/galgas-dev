@@ -5,7 +5,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.                                                                     *
+//  Copyright (C) 1996, ..., 2018 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -825,7 +825,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
     }
   //---
     int32_t indentationForParseOnly = 0 ;
-    cToken * currentTokenPtr = mFirstToken ;
+    cToken * tokenPtr = mFirstToken ;
 //    while ((currentTokenPtr != NULL) && currentTokenPtr->mIsOptional) {
 //      currentTokenPtr = currentTokenPtr->mNextToken ;
 //    }
@@ -837,35 +837,35 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
     TC_Array <int16_t> stack (10000 COMMA_HERE) ;
     TC_Array <int16_t> errorStack ;
     int32_t errorStackCount = 0 ;
-    bool loop = currentTokenPtr != NULL ;
+    bool loop = tokenPtr != NULL ;
     result = true ;
     int16_t programCounter = inProgramCounterInitialValue ;
     int16_t errorProgramCounter = inProgramCounterInitialValue ;
-    int16_t currentToken = (currentTokenPtr != NULL) ? currentTokenPtr->mTokenCode : ((int16_t) -1) ;
-    if (currentTokenPtr == NULL) {
+    int16_t currentToken = (tokenPtr != NULL) ? tokenPtr->mTokenCode : ((int16_t) -1) ;
+    if (tokenPtr == NULL) {
       mCurrentLocation.resetLocation () ;
     }else{
-      mCurrentLocation = currentTokenPtr->mEndLocation ;
+      mCurrentLocation = tokenPtr->mEndLocation ;
     }
     while (loop) {
     //--- If no current token, get one
       if (currentToken < 0) {
-        if (currentTokenPtr == NULL) {
+        if (tokenPtr == NULL) {
           currentToken = 0 ; // 0 means end of source file
         }else{
-          currentTokenPtr = currentTokenPtr->mNextToken ;
-//          while ((currentTokenPtr != NULL) && currentTokenPtr->mIsOptional) {
-//            currentTokenPtr = currentTokenPtr->mNextToken ;
+          tokenPtr = tokenPtr->mNextToken ;
+//          while ((tokenPtr != NULL) && tokenPtr->mIsOptional) {
+//            tokenPtr = tokenPtr->mNextToken ;
 //          }
-          currentToken = (currentTokenPtr != NULL) ? currentTokenPtr->mTokenCode : ((int16_t) 0) ;
-          if (currentTokenPtr != NULL) {
-            mCurrentLocation = currentTokenPtr->mEndLocation ;
+          currentToken = (tokenPtr != NULL) ? tokenPtr->mTokenCode : ((int16_t) 0) ;
+          if (tokenPtr != NULL) {
+            mCurrentLocation = tokenPtr->mEndLocation ;
           }
         }
       }
       #ifdef TRACE_LL1_PARSING
         co << "---------------------------\n"
-              "Current token is " << getCurrentTokenString (currentTokenPtr) << " (#" << currentToken << ")\n" ;
+              "Current token is " << getCurrentTokenString (tokenPtr) << " (#" << currentToken << ")\n" ;
         co.flush () ;
       #endif
     //--- Get instruction to do
@@ -981,12 +981,12 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
         if (currentToken == terminalSymbol) {
           if (executionModeIsSyntaxAnalysisOnly ()) {
             indentForParseOnly (indentationForParseOnly) ;
-            co << getCurrentTokenString (currentTokenPtr) << "\n" ;
+            co << getCurrentTokenString (tokenPtr) << "\n" ;
           }
           currentToken = -1 ; // Ok, current terminal symbol is no longer available
           if (produceSyntaxTree) {
             syntaxTreeDescriptionString << "  T" << cStringWithUnsigned (uniqueTerminalIndex) << " [shape=ellipse, label=" ;
-            syntaxTreeDescriptionString.appendCLiteralStringConstant (getCurrentTokenString (currentTokenPtr)) ;
+            syntaxTreeDescriptionString.appendCLiteralStringConstant (getCurrentTokenString (tokenPtr)) ;
             syntaxTreeDescriptionString << "];\n"
                                         << "  NT"
                                         << cStringWithUnsigned (currentProductionName)

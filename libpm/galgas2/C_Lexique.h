@@ -5,7 +5,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1996, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 1996, ..., 2018 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
