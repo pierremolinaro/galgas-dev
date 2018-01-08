@@ -27,7 +27,7 @@
      <Add option="-Wall" />
      <Add option="-W" />
      <Add option="-DDO_NOT_GENERATE_CHECKINGS" />
-% if GENERATE_FOR_WINDOWS then !"<Add option=\"-D_WIN32_WINNT=0x501\" />" else end
+     % if GENERATE_FOR_WINDOWS then !"<Add option=\"-D_WIN32_WINNT=0x501\" />\n" else end
 %    </Compiler>
    </Target>
    <Target title="Debug">
@@ -51,7 +51,7 @@
      <Add option="-Wshadow" />
      <Add option="-Wall" />
      <Add option="-W" />
-% if GENERATE_FOR_WINDOWS then !"<Add option=\"-D_WIN32_WINNT=0x501\" />" else end
+     % if GENERATE_FOR_WINDOWS then !"<Add option=\"-D_WIN32_WINNT=0x501\" />\n" else end
 %    </Compiler>
    </Target>
   </Build>
@@ -68,7 +68,7 @@ for () in HAND_CODED_SOURCE_TOOL_DIRECTORY_SET do
 end
 %  </Compiler>
   <Linker>
-%if GENERATE_FOR_WINDOWS then !"   <Add library=\"Ws2_32\" />\n   <Add library=\"Comdlg32\" />" else end
+%if GENERATE_FOR_WINDOWS then !"   <Add library=\"Ws2_32\" />\n   <Add library=\"Comdlg32\" />\n" else end
 %  </Linker>
   <Unit filename="%!LIBPM_PATH%/all-libpm.cpp" />
   <Unit filename="%!LIBPM_PATH%/galgas2/all-galgas.cpp" />
@@ -84,8 +84,7 @@ end
 for () in HAND_CODED_SOURCE_TOOL_FILE_LIST do
 %  <Unit filename="../%!mValue%" />\n%
 end
-%
-  <Unit filename="%!LIBPM_PATH%/gmp/32-mp_bases.c" />
+%  <Unit filename="%!LIBPM_PATH%/gmp/32-mp_bases.c" />
   <Unit filename="%!LIBPM_PATH%/gmp/64-mp_bases.c" />
   <Unit filename="%!LIBPM_PATH%/gmp/mpn-add.c" />
   <Unit filename="%!LIBPM_PATH%/gmp/mpn-add_1.c" />
@@ -196,8 +195,8 @@ end
   <Unit filename="%!LIBPM_PATH%/gmp/root-mp_bpl.c" />
   <Unit filename="%!LIBPM_PATH%/gmp/root-mp_clz_tab.c" />
   <Unit filename="%!LIBPM_PATH%/gmp/root-mp_dv_tab.c" />
-  <Unit filename="%!LIBPM_PATH%/gmp/root-mp_minv_tab.c" />" />" />
-  <Unit filename="%!LIBPM_PATH%/gmp/root-tal-notreent.c"
+  <Unit filename="%!LIBPM_PATH%/gmp/root-mp_minv_tab.c" />
+  <Unit filename="%!LIBPM_PATH%/gmp/root-tal-notreent.c" />
   <Extensions>
    <code_completion />
    <envvars />

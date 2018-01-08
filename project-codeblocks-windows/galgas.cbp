@@ -27,7 +27,8 @@
      <Add option="-Wall" />
      <Add option="-W" />
      <Add option="-DDO_NOT_GENERATE_CHECKINGS" />
-<Add option="-D_WIN32_WINNT=0x501" />    </Compiler>
+     <Add option="-D_WIN32_WINNT=0x501" />
+    </Compiler>
    </Target>
    <Target title="Debug">
     <Option platforms="Windows;" />
@@ -50,7 +51,8 @@
      <Add option="-Wshadow" />
      <Add option="-Wall" />
      <Add option="-W" />
-<Add option="-D_WIN32_WINNT=0x501" />    </Compiler>
+     <Add option="-D_WIN32_WINNT=0x501" />
+    </Compiler>
    </Target>
   </Build>
   <VirtualTargets>
@@ -64,7 +66,8 @@
   </Compiler>
   <Linker>
    <Add library="Ws2_32" />
-   <Add library="Comdlg32" />  </Linker>
+   <Add library="Comdlg32" />
+  </Linker>
   <Unit filename="../libpm/all-libpm.cpp" />
   <Unit filename="../libpm/galgas2/all-galgas.cpp" />
   <Unit filename="../libpm/galgas2/C_galgas_quiet_option.cpp" />
@@ -110,7 +113,6 @@
   <Unit filename="../hand_coded_sources/SLR_computations.cpp" />
   <Unit filename="../hand_coded_sources/check-gmp.cpp" />
   <Unit filename="../hand_coded_sources/displayUnicodeLexicalTestFunctions.cpp" />
-
   <Unit filename="../libpm/gmp/32-mp_bases.c" />
   <Unit filename="../libpm/gmp/64-mp_bases.c" />
   <Unit filename="../libpm/gmp/mpn-add.c" />
@@ -222,8 +224,8 @@
   <Unit filename="../libpm/gmp/root-mp_bpl.c" />
   <Unit filename="../libpm/gmp/root-mp_clz_tab.c" />
   <Unit filename="../libpm/gmp/root-mp_dv_tab.c" />
-  <Unit filename="../libpm/gmp/root-mp_minv_tab.c" />" />" />
-  <Unit filename="../libpm/gmp/root-tal-notreent.c"
+  <Unit filename="../libpm/gmp/root-mp_minv_tab.c" />
+  <Unit filename="../libpm/gmp/root-tal-notreent.c" />
   <Extensions>
    <code_completion />
    <envvars />

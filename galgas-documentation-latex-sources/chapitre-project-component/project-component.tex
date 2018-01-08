@@ -8,9 +8,9 @@
 
 Le composant \ggs!project! permet de paramétrer un projet GALGAS. Il doit être placé dans un fichier source particulier, d'extension « \texttt{.galgasProject} ». Sont déclarés dans un fichier projet :
 \begin{itemize}
-  \item la version du projet (dans l'en-tête : \refSectionPage{enTeteProjet}) ;
-  \item le nom des exécutables engendrés (dans l'en-tête : \refSectionPage{enTeteProjet}) ;
-  \item les cibles de compilation : \refSectionPage{ciblesCompilation}  ;
+  \item la version du projet (dans l'en-tête : \refSectionPage{enTeteProjet})~;
+  \item le nom des exécutables engendrés (dans l'en-tête : \refSectionPage{enTeteProjet})~;
+  \item les cibles de compilation : \refSectionPage{ciblesCompilation} ~;
   \item les fichiers sources : \refSectionPage{defFichierSourceProjet}.
 \end{itemize}
 
@@ -51,7 +51,7 @@ project (1:2:3) -> "logo" {
 
 L'en-tête d'un projet définit deux informations :
 \begin{itemize}
-  \item la version du projet ;
+  \item la version du projet~;
   \item le nom des exécutables engendrés.
 \end{itemize}
 
@@ -86,13 +86,13 @@ GALGAS peut engendrer des cibles de compilation pour Mac, Linux et Windows. Les 
 
 Deux choix sont possibles :
 \begin{itemize}
-\item \texttt{Code::Blocks} ;
+\item \texttt{Code{}::Blocks}~;
 \item compilation en ligne de commande.
 \end{itemize}
 
-\subsubsection{\texttt{Code::Blocks} pour Linux}
+\subsubsection{\texttt{Code{}::Blocks} pour Linux}
 
-L'option \ggs!%codeblocks-linux32! engendre une cible qui peut être compilée sur Linux 32 bits, et \ggs!%codeblocks-linux64! une cible compilable sur Linux 64 bits, en utilisant \texttt{Code::Blocks}\footnote{\url{http://www.codeblocks.org}}.
+L'option \ggs!%codeblocks-linux32! engendre une cible qui peut être compilée sur Linux 32 bits, et \ggs!%codeblocks-linux64! une cible compilable sur Linux 64 bits, en utilisant \texttt{Code{}::Blocks}\footnote{\url{http://www.codeblocks.org}}.
 \begin{galgas}
 project (0:0:1) -> "logo" {
   %codeblocks-linux32
@@ -116,11 +116,11 @@ project (0:0:1) -> "logo" {
 
 Comme GALGAS est développé sur Mac, c'est pour cette plateforme que l'on trouve le plus grand nombre de cibles :
 \begin{itemize}
-  \item application Cocoa ;
-  \item compilation via Code::Blocks ;
-  \item compilation en ligne de commande ;
-  \item cross-compilation pour Win32 ;
-  \item cross-compilation pour Linux32 ;
+  \item application Cocoa~;
+  \item compilation via \texttt{Code{}::Blocks}~;
+  \item compilation en ligne de commande~;
+  \item cross-compilation pour Win32~;
+  \item cross-compilation pour Linux32~;
   \item cross-compilation pour Linux64.
 \end{itemize}
 
@@ -138,9 +138,9 @@ project (0:0:1) -> "logo" {
 }
 \end{galgas}
 
-\subsubsection{\texttt{Code::Blocks} pour Mac}
+\subsubsection{\texttt{Code{}::Blocks} pour Mac}
 
-L'option \ggs!%codeblocks-mac! engendre une cible qui peut être compilée sur Mac en utilisant \texttt{Code::Blocks}\footnote{\url{http://www.codeblocks.org}}.
+L'option \ggs!%codeblocks-mac! engendre une cible qui peut être compilée sur Mac en utilisant \texttt{Code{}::Blocks}\footnote{\url{http://www.codeblocks.org}}.
 \begin{galgas}
 project (0:0:1) -> "logo" {
   %codeblocks-linux32
@@ -150,7 +150,7 @@ project (0:0:1) -> "logo" {
 
 \subsubsection{Cross-compilation en ligne de commande pour Win32}
 
-La déclaration \ggs!%makefile-win32-on-macosx! engendre une cible pour obtenir sur Mac un exécutable en ligne de commande pour Win32. À la première cross-compilation, le cross-compilateur est téléchargé à partir du site \texttt{rts-software} et placé dans \texttt{$\sim$/galgas-tools-for-cross-compilation}.
+La déclaration \ggs!%makefile-win32-on-macosx! engendre une cible pour obtenir sur Mac un exécutable en ligne de commande pour \texttt{Win32}. À la première cross-compilation, le cross-compilateur est téléchargé à partir du site \texttt{rts-software} et placé dans le répertoire \texttt{$\sim$/galgas-tools-for-cross-compilation}.
 
 \begin{galgas}
 project (0:0:1) -> "logo" {
@@ -187,7 +187,7 @@ project (0:0:1) -> "logo" {
 
 \subsection{Cible pour Windows : \texttt{CodeBlocks}}
 
-Sur Windows, la compilation C++ du projet engendré s'effectue avec \texttt{Code::Blocks}\footnote{\url{http://www.codeblocks.org}}. La cible est engendrée par la déclaration \ggs!%codeblocks-windows!.
+Sur Windows, la compilation C++ du projet engendré s'effectue avec \texttt{Code{}::Blocks}\footnote{\url{http://www.codeblocks.org}}. La cible est engendrée par la déclaration \ggs!%codeblocks-windows!.
 
 \begin{galgas}
 project (0:0:1) -> "logo" {
@@ -217,8 +217,8 @@ project (0:0:1) -> "logo" {
 
 En résumé :
 \begin{itemize}
-\item par défaut, sans l'option \ggs!%quietOutputByDefault! parmi les déclarations du fichier projet, l'exécutable est bavard par défaut, et l'option de la ligne de commande \emph{quiet} permet de le rendre silencieux ; l'option de la ligne de commande \emph{verbose} n'existe pas ;
-\item si l'option \ggs!%quietOutputByDefault! est présente parmi les déclarations du fichier projet, l'exécutable est silencieux par défaut, et l'option de la ligne de commande \emph{verbose} permet de le rendre bavard ; l'option de la ligne de commande \emph{quiet} n'existe pas.
+\item par défaut, sans l'option \ggs!%quietOutputByDefault! parmi les déclarations du fichier projet, l'exécutable est bavard par défaut, et l'option de la ligne de commande \emph{quiet} permet de le rendre silencieux~; l'option de la ligne de commande \emph{verbose} n'existe pas~;
+\item si l'option \ggs!%quietOutputByDefault! est présente parmi les déclarations du fichier projet, l'exécutable est silencieux par défaut, et l'option de la ligne de commande \emph{verbose} permet de le rendre bavard~; l'option de la ligne de commande \emph{quiet} n'existe pas.
 \end{itemize}
 
 Une conséquence est que ni la présence de l'option \emph{quiet} ni la présence de l'option \emph{verbose} ne peuvent être testées par la construction \ggs+[option nom_composant_option.nom_option nom_info]+ (voir \refSubsectionPage{appelOption}). Il faut utiliser le \refConstructorPage{application}{verboseOutput}.
@@ -233,14 +233,14 @@ Une conséquence est que ni la présence de l'option \emph{quiet} ni la présenc
 
 Deux types de fichiers sources peuvent être déclarés :
 \begin{itemize}
-  \item des fichiers sources GALGAS ;
+  \item des fichiers sources GALGAS~;
   \item des fichiers sources C++.
 \end{itemize}
 
 Un fichier source est déclaré sous la forme d'une chaîne de caractères qui définit son chemin :
 \begin{itemize}
-\item le chemin est absolu si il commence par un « / » ;
-\item sinon il est relatif au répertoire qui contient le fichier projet ;
+\item le chemin est absolu si il commence par un « / »~;
+\item sinon il est relatif au répertoire qui contient le fichier projet~;
 \item l'extension du chemin définit le type : « \texttt{.galgas} » pour un source GALGAS, « \texttt{.cpp} » pour un source C++.
 \end{itemize}
 

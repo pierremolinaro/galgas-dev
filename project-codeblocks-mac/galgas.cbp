@@ -27,7 +27,7 @@
      <Add option="-Wall" />
      <Add option="-W" />
      <Add option="-DDO_NOT_GENERATE_CHECKINGS" />
-    </Compiler>
+         </Compiler>
    </Target>
    <Target title="Debug">
     <Option platforms="Mac;" />
@@ -50,7 +50,7 @@
      <Add option="-Wshadow" />
      <Add option="-Wall" />
      <Add option="-W" />
-    </Compiler>
+         </Compiler>
    </Target>
   </Build>
   <VirtualTargets>
@@ -109,7 +109,6 @@
   <Unit filename="../hand_coded_sources/SLR_computations.cpp" />
   <Unit filename="../hand_coded_sources/check-gmp.cpp" />
   <Unit filename="../hand_coded_sources/displayUnicodeLexicalTestFunctions.cpp" />
-
   <Unit filename="../libpm/gmp/32-mp_bases.c" />
   <Unit filename="../libpm/gmp/64-mp_bases.c" />
   <Unit filename="../libpm/gmp/mpn-add.c" />
@@ -221,8 +220,8 @@
   <Unit filename="../libpm/gmp/root-mp_bpl.c" />
   <Unit filename="../libpm/gmp/root-mp_clz_tab.c" />
   <Unit filename="../libpm/gmp/root-mp_dv_tab.c" />
-  <Unit filename="../libpm/gmp/root-mp_minv_tab.c" />" />" />
-  <Unit filename="../libpm/gmp/root-tal-notreent.c"
+  <Unit filename="../libpm/gmp/root-mp_minv_tab.c" />
+  <Unit filename="../libpm/gmp/root-tal-notreent.c" />
   <Extensions>
    <code_completion />
    <envvars />
