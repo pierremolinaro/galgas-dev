@@ -236,7 +236,7 @@ proc generateProcedure
   !@string outGeneratedCode
 {
 #--- Build unused variable set
-  var unusedVariableCppNameSet =@stringset {}
+  @stringset unusedVariableCppNameSet = {}
   if inGenerateSyntaxDirectedTranslationString then
     unusedVariableCppNameSet += !syntaxDirectedTranslationResultVarName ()
   end
@@ -352,11 +352,12 @@ proc generateFunction
   ?let @unifiedTypeMap-proxy inResultType
   ?let @string inResultVariableCppName
   ?let @bool inIsStatic
-  !@string outGeneratedCode {
+  !@string outGeneratedCode
+{
   outGeneratedCode = ""
   [inResultType addHeaderFileName !?ioInclusionSet]
 #--- Build unused variable set
-  var unusedVariableCppNameSet =@stringset {}
+  @stringset unusedVariableCppNameSet = {}
   unusedVariableCppNameSet += !compilerCppName ()
 #--- Release 'in' and 'const in' arguments at the end of the routine
   for () in inFormalArgumentList do
@@ -423,7 +424,7 @@ proc generateFunction
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# E X T E N S I O N    M O D I F I E R    I M P L E M E N A T I O N           *
+# E X T E N S I O N    M O D I F I E R    I M P L E M E N T A T I O N                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -436,7 +437,7 @@ proc generateExtensionSetter
   ?let @semanticInstructionListForGeneration inInstructionList
   !@string outGeneratedCode {
 #--- Build unused variable set
-  var unusedVariableCppNameSet =@stringset {}
+  @stringset unusedVariableCppNameSet = {}
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
   for () in inFormalArgumentList do
@@ -519,7 +520,7 @@ proc generateExtensionSetter
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# E X T E N S I O N    M E T H O D    I M P L E M E N A T I O N               *
+# E X T E N S I O N    M E T H O D    I M P L E M E N T A T I O N                                                      *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -533,7 +534,7 @@ proc generateExtensionMethod
   !@string outGeneratedCode {
   let className = [inReceiverType key]
 #--- Build unused variable set
-  var unusedVariableCppNameSet =@stringset {}
+  @stringset unusedVariableCppNameSet = {}
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
   for () in inFormalArgumentList do
@@ -635,7 +636,7 @@ proc generateExtensionMethod
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# E X T E N S I O N    R E A D E R    I M P L E M E N T A T I O N                                                        *
+# E X T E N S I O N    R E A D E R    I M P L E M E N T A T I O N                                                      *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -653,7 +654,7 @@ proc generateExtensionGetter
 {
   let className = [inReceiverType key]
 #--- Build unused variable set
-  var unusedVariableCppNameSet =@stringset {}
+  @stringset unusedVariableCppNameSet = {}
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
   for () in inFormalArgumentList do
@@ -1638,10 +1639,6 @@ override method @primitiveTypeForGeneration appendPrimitiveTypePreDeclaration ?!
 
 #----------------------------------------------------------------------------------------------------------------------*
 #! Generate Predefined types
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-# G E N E R A T E    P R E D E F I N E D    T Y P E    F I L E S                                                       *
-#                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
 proc generatePredefinedTypeFiles

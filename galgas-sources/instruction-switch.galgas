@@ -163,7 +163,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   end
 #--- Enum constant map
   let enumConstantMap = [[switchExpression mResultType] mEnumConstantMap]
-  var constantsNamedInSwitchInstruction =@stringset {}
+  @stringset constantsNamedInSwitchInstruction = {}
 #--- Analyze branches
   [!?ioVariableMap openOverrideForSelectBlock]
   var switchBranchesForGeneration =@switchBranchesForGeneration {}

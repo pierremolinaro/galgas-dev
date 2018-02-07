@@ -62,6 +62,22 @@ getter double -> @double
 Returns the receiver's value converted in a \ggs+@double+ object. As a 32-bit integer value can always be converted in a \ggs+@double+ value, this getter never fails.
 
 
+\subsectionGetter{hexStringSeparatedBy}{sint}
+
+\begin{galgas}
+getter hexStringSeparatedBy ?@char inSeparator ?@uint inGroup -> @string
+\end{galgas}
+
+Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. Groups of \ggs=inGroup= digits are separated by the \ggs=inSeparator= character.
+
+If \ggs=inGroup= is equal to zero, a run-time error is raised.
+
+For example:
+\begin{galgas}
+let s = [0x12345678S hexStringSeparatedBy !'_' !2] # 0x12_34_56_78
+\end{galgas}
+
+
 
 
 

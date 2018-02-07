@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2012, ..., 2012 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2012, ..., 2018 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -755,10 +755,7 @@ C_String C_FileManager::currentDirectory (void) {
   #if COMPILE_FOR_WINDOWS == 1
     const int32_t fileLength = (int32_t) strlen (cwd) ;
     int32_t firstChar = 0 ;
-    if ((fileLength > 3)
-     && isalpha (cwd [0])
-     && (cwd [1] == ':')
-     && (cwd [2] == '\\')) {
+    if ((fileLength > 3) && isalpha (cwd [0]) && (cwd [1] == ':') && (cwd [2] == '\\')) {
       cwd [1] = cwd [0] ;
       cwd [0] = '/' ;
       cwd [2] = '/' ;

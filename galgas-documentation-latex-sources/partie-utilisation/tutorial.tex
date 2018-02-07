@@ -699,7 +699,7 @@ Noter l’écriture \ggs+$identifier$ ?*+~: en effet, quand l’analyseur lexica
 
 Il en est de même pour le token \ggs+$integer$+ qui est accompagné d’une valeur entière.
 
-Si des erreurs d'analyse de la grammaire surviennent, vous pouvez utiliser l'option \tpp{-{}-output-html-grammar} dans la ligne de commande~: celle-ci provoque la génération du fichier \tpp{chezmoi/logo/build/helpers/lo}\-\tpp{go\_grammar.html} qui contient tous les détails de l'analyse de la grammaire.
+Si des erreurs d'analyse de la grammaire surviennent, vous pouvez ajouter dans la ligne de commande l'option \tpp{-{}-output-html-grammar}~: celle-ci provoquera la génération du fichier \tpp{chezmoi/logo/build/helpers/lo}\-\tpp{go\_grammar.html} qui contient tous les détails de l'analyse de la grammaire.
 
 À l'issue de ce travail, l'exécutable obtenu doit analyser correctement les programmes LOGO cités en exemple (\refTableauPage{carreEtoilePentagoneLogo},  \refTableauPage{hexagoneOctogoneLogo} et \refTableauPage{logoErreurSemantiques}. Comme l'analyse sémantique n'est pas encore écrite, les erreurs sémantiques ne sont pas détectées.
 
@@ -1052,8 +1052,7 @@ Recompiler les sources GALGAS, et examiner les erreurs produites. Corrigez les e
   \end{description}
 \end{itemize}
 
-Prise en compte de l'instruction CALL
-Il suffit d'ajouter à la liste courante des instructions toutes les instructions de la routine appelée par CALL~:
+{\bf Prise en compte de l'instruction \tpp{CALL}.} Il suffit d'ajouter à la liste courante des instructions toutes les instructions de la routine appelée par \tpp{CALL}~:
 \begin{galgas}
 ...
 [maTable searchKey !nomRoutine ?listeInstructionRoutine]
@@ -1092,7 +1091,7 @@ L'allure du calcul des tracés est la suivante (à placer à la fin de la règle
 Pour exprimer l'action à réaliser, des méthodes (définies et implémentées en dehors de leurs classes) vont être utilisées.
 
 \subsection{Déclaration de la méthode abstraite}
-Elle est nommée par exemple \ggs+codeDisplay+ et on peut la déclarer dans n'importe que fichier~; par souci de simplicité, on choisit le fichier \tpp{chezmoi/logo/galgas-sources/logo-semantics.galgas} qui contient les déclarations sémantiques.
+Elle est nommée par exemple \ggs+codeDisplay+ et on peut la déclarer dans n'importe que fichier~; par souci de simplicité, on choisit le fichier qui contient les déclarations sémantiques, c'est-à-dire \tpp{chezmoi/logo/galgas-sources/logo-semantics.galgas}.
 
 \begin{galgas}
 abstract method @instruction codeDisplay
@@ -1117,7 +1116,7 @@ override method @penUp codeDisplay
 }
 \end{galgas}
 
-L'mplémentation de la méthode héritière concrète pour \ggs+@penDown+ est élémentaire.
+L'implémentation de la méthode héritière concrète pour \ggs+@penDown+ est élémentaire.
 
 \subsection{Implémentation de l'héritière concrète pour \texttt{@rotate}}
 Il faut accumuler l'angle de rotation dans l'argument \ggs+ioAngle+. Or l'attribut \ggs+mAngle+ de la classe \ggs+@rotate+ n'est pas du type \ggs+@uint+, mais du type \ggs+@luint+. Pour extraire la composante \ggs+@uint+ d’un \ggs+@luint+, on écrit \ggs+[mAngle uint]+. Pour transformer un objet \ggs+unUint+ de type \ggs+@uint+ en \ggs+@double+, on écrit de la même façon \ggs+[unUint double]+. 
@@ -1197,7 +1196,7 @@ Créer un fichier \tpp{chezmoi/logo/galgas-sources/logo-svg.galgasTemplate} et y
 
 Notez~:
 \begin{itemize}
-  \item l'échappement des caractères \tpp{\%} à la ligne \tpp{<svg width ... >}~;
+  \item l'échappement des caractères \tpp{\%}~: pour obtenir \texttt{"100\%"}, on écrit \tpp{"100\textbackslash\%"}~;
   \item les deux symboles \ggs+TITLE+ et \ggs+DRAWINGS+.
 \end{itemize}
 

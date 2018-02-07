@@ -295,7 +295,7 @@ private proc generateManyHeaders
   var headerInclusionList2 = @stringlist.emptyList
   for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
-      var inclusionSet1 = @stringset {}
+      @stringset inclusionSet1 = {}
       [mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerDef1]
       var headerIncludes1 = ""
       if [inclusionSet1 hasKey !""] then
@@ -305,7 +305,7 @@ private proc generateManyHeaders
         headerIncludes1 += "#include \"" + s + ".h\"\n"
       end
       headerIncludes1 += headerDef1
-      var inclusionSet2 = @stringset {}
+      @stringset inclusionSet2 = {}
       [mDeclaration appendDeclaration2 !inProductDirectory !?inclusionSet2 ?let @string headerDef2]
       var headerIncludes2 = ""
       if [inclusionSet2 hasKey !""] then
@@ -410,7 +410,7 @@ private proc generateOneBigHeader
 #--- Declaration 1
   for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
-      var inclusionSet1 = @stringset.emptySet
+      @stringset inclusionSet1 = {}
       [mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerString1]
       headerString += headerString1
     end
@@ -418,7 +418,7 @@ private proc generateOneBigHeader
 #--- Declaration 2
   for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
-      var inclusionSet2 = @stringset {}
+      @stringset inclusionSet2 = {}
       [mDeclaration appendDeclaration2 !inProductDirectory !?inclusionSet2 ?let @string headerString2]
       headerString += headerString2
     end

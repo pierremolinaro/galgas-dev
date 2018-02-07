@@ -276,8 +276,8 @@ override method @sortedListDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #--- Sort descriptor
-  var attributesUsedForSorting =@stringset {}
-  var sortDescriptorList =@sortDescriptorListForGeneration {}
+  @stringset attributesUsedForSorting = {}
+  @sortDescriptorListForGeneration sortDescriptorList = {}
   for () in mSortDescriptorList do
     [attributeMap searchKey !mSortedAttributeName ?let @unifiedTypeMap-proxy type]
     sortDescriptorList += !type ![mSortedAttributeName string] !mAscending

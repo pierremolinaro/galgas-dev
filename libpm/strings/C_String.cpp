@@ -723,6 +723,14 @@ void C_String::linesArray (TC_UniqueArray <C_String> & outStringArray) const {
       switch (state) {
       case kAppendToCurrentLine :
         switch (UNICODE_VALUE (c)) {
+        case 0x000B : // VT: Vertical Tab
+        case 0x000C : // FF: Form Feed
+        case 0x0085 : // NEL: Next Line
+        case 0x2028 : // LS: Line Separator
+        case 0x2029 : // PS: Paragraph Separator
+          outStringArray.appendObject (C_String ()) ;
+          index ++ ;
+          break ;
         case '\n' : // LF
           state = kGotLineFeed ;
           break ;
@@ -1971,8 +1979,19 @@ bool C_String::parseUTF8 (const C_Data & inDataString,
       idx ++ ;
     }else{
       const utf32 uc = utf32CharacterForPointer (inDataString.unsafeDataPointer (), idx, inDataString.length (), ok) ;
-      outString.appendUnicodeCharacter (uc COMMA_HERE) ;
-      foundCR = false ;
+      switch (UNICODE_VALUE (uc)) {
+        case 0x000B : // VT: Vertical Tab
+        case 0x000C : // FF: Form Feed
+        case 0x0085 : // NEL: Next Line
+        case 0x2028 : // LS: Line Separator
+        case 0x2029 : // PS: Paragraph Separator
+          outString.appendUnicodeCharacter ('\n' COMMA_HERE) ;
+        break ;
+      default :
+        outString.appendUnicodeCharacter (uc COMMA_HERE) ;
+        foundCR = false ;
+        break ;
+      }
     }
   }
   if (foundCR) {

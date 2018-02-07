@@ -71,7 +71,7 @@ proc testsuite_foreach_instruction {
     message "  do '" + s + "' (idx: " + [idx string] + ")\n"
   end
   message "--- begin of foreach instruction test 7\n"
-  var set = @stringset {}
+  @stringset set = {}
   set += !"A"
   set += !"B"
   set += !"C"

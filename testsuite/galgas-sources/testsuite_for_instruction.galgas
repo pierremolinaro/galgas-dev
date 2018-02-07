@@ -77,7 +77,7 @@ proc testsuite_for_instruction {
   end
 
   message "--- begin of for instruction test 7\n"
-  var set = @stringset {}
+  @stringset set = {}
   set += !"A"
   set += !"B"
   set += !"C"

@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2006, ..., 2015 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2006, ..., 2018 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -566,47 +566,91 @@ GALGAS_bigint GALGAS_uint_36__34_::getter_bigint (UNUSED_LOCATION_ARGS) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_double GALGAS_uint_36__34_::getter_double (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_double ((double) mUInt64Value) ;
+  GALGAS_double result ;
+  if (isValid ()) {
+    result = GALGAS_double ((double) mUInt64Value) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_uint_36__34_::getter_alphaString (UNUSED_LOCATION_ARGS) const {
-  C_String s = "aaaaaaaaaaaaaa" ; // 2**64 values needs 14 characters (base 26) : n = 64 * log (2) / log (26)
-  uint64_t v = mUInt64Value ;
-  int32_t idx = 13 ;
-  while (v > 0) {
-    const utf32 c = TO_UNICODE ((uint32_t) ((v % 26) + 'a')) ;
-    s.setUnicodeCharacterAtIndex (c, idx COMMA_HERE) ;
-    idx -= 1 ;
-    v /= 26 ;
+  GALGAS_string result ;
+  if (isValid ()) {
+    C_String s = "aaaaaaaaaaaaaa" ; // 2**64 values needs 14 characters (base 26) : n = 64 * log (2) / log (26)
+    uint64_t v = mUInt64Value ;
+    int32_t idx = 13 ;
+    while (v > 0) {
+      const utf32 c = TO_UNICODE ((uint32_t) ((v % 26) + 'a')) ;
+      s.setUnicodeCharacterAtIndex (c, idx COMMA_HERE) ;
+      idx -= 1 ;
+      v /= 26 ;
+    }
+    result = GALGAS_string (s) ;
   }
-  return GALGAS_string (s) ;
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_uint_36__34_::getter_string (UNUSED_LOCATION_ARGS) const {
-  C_String s ;
-  s.appendUnsigned (mUInt64Value) ;
-  return GALGAS_string (s) ;
+  GALGAS_string result ;
+  if (isValid ()) {
+    C_String s ;
+    s.appendUnsigned (mUInt64Value) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_uint_36__34_::getter_hexString (UNUSED_LOCATION_ARGS) const {
-  C_String s ;
-  s.appendCString ("0x") ;
-  s.appendUnsignedHex16 (mUInt64Value) ;
-  return GALGAS_string (s) ;
+  GALGAS_string result ;
+  if (isValid ()) {
+    C_String s ;
+    s.appendCString ("0x") ;
+    s.appendUnsignedHex16 (mUInt64Value) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_uint_36__34_::getter_hexStringSeparatedBy (const GALGAS_char & inSeparator,
+                                                                const GALGAS_uint & inGroup,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid () && inSeparator.isValid () && inGroup.isValid ()) {
+    const int group = (int) inGroup.uintValue () ;
+    if (group <= 0) {
+      inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
+    }else{
+      C_String s ;
+      s.appendUnsignedHex16 (mUInt64Value) ;
+      const utf32 separator = inSeparator.charValue() ;
+      for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
+        s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
+      }
+      result = GALGAS_string (C_String ("0x") + s) ;
+    }
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_uint_36__34_::getter_xString (UNUSED_LOCATION_ARGS) const {
-  C_String s ;
-  s.appendUnsignedHex16 (mUInt64Value) ;
-  return GALGAS_string (s) ;
+  GALGAS_string result ;
+  if (isValid ()) {
+    C_String s ;
+    s.appendUnsignedHex16 (mUInt64Value) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

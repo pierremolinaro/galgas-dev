@@ -95,7 +95,7 @@ operator @bigint <  @bigint -> @bool
 \subsectionGetter{isZero}{bigint}
 
 \begin{galgasbox}
-getter @bigint isZero -> @bool
+getter isZero -> @bool
 \end{galgasbox}
 
 Ce \emph{getter} renvoie \ggs!true! si valeur du récepteur est nulle, et \ggs!false! dans le cas contraire.
@@ -110,7 +110,7 @@ message [[1G isZero] ocString] + "\n" # NO
 \subsectionGetter{sign}{bigint}
 
 \begin{galgasbox}
-getter @bigint sign -> @sint
+getter sign -> @sint
 \end{galgasbox}
 
 Ce \emph{getter} renvoie :
@@ -159,7 +159,7 @@ Ils échouent si le récepteur ne peut pas être converti sans perte. On peut ut
 \subsectionGetter{bitCountForSignedRepresentation}{bigint}
 
 \begin{galgasbox}
-getter @bigint bitCountForSignedRepresentation -> @uint
+getter bitCountForSignedRepresentation -> @uint
 \end{galgasbox}
 
 Ce \emph{getter} permet de connaître le nombre de bits nécessaires pour écrire la valeur du récepteur dans la représentation binaire \emph{complément à deux}.
@@ -188,7 +188,7 @@ Et pour le nombre de mots de 32 bits :
 \subsectionGetter{bitCountForUnsignedRepresentation}{bigint}
 
 \begin{galgasbox}
-getter @bigint bitCountForUnsignedRepresentation -> @uint
+getter bitCountForUnsignedRepresentation -> @uint
 \end{galgasbox}
 
 Ce \emph{getter} permet de connaître le nombre de bits nécessaires pour écrire la valeur absolue du récepteur dans la représentation binaire \emph{naturelle}. 
@@ -216,7 +216,7 @@ Et pour le nombre de mots de 32 bits :
 \subsectionGetter{fitsInSInt}{bigint}
 
 \begin{galgasbox}
-getter @bigint fitsInSInt -> @bool
+getter fitsInSInt -> @bool
 \end{galgasbox}
 
 Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@sint!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{sint}.
@@ -235,7 +235,7 @@ message [[-0x8000_0001G fitsInSInt] ocString] + "\n" # NO
 \subsectionGetter{fitsInSInt64}{bigint}
 
 \begin{galgasbox}
-getter @bigint fitsInSInt64 -> @bool
+getter fitsInSInt64 -> @bool
 \end{galgasbox}
 
 Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@sint64!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{sint64}.
@@ -254,7 +254,7 @@ message [[-0x8000_0000_0000_0001G fitsInSInt64] ocString] + "\n" # NO
 \subsectionGetter{fitsInUInt}{bigint}
 
 \begin{galgasbox}
-getter @bigint fitsInUInt -> @bool
+getter fitsInUInt -> @bool
 \end{galgasbox}
 
 Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@uint!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{uint}.
@@ -273,7 +273,7 @@ message [[-1G fitsInUInt] ocString] + "\n" # NO
 \subsectionGetter{fitsInUInt64}{bigint}
 
 \begin{galgasbox}
-getter @bigint fitsInUInt64 -> @bool
+getter fitsInUInt64 -> @bool
 \end{galgasbox}
 
 Ce \emph{getter} permet de savoir si le récepteur peut être converti en \ggs!@uint64!. Pour effectuer la conversion, utilisez le \refGetterPage{bigint}{uint64}.
@@ -288,7 +288,7 @@ message [[-1G fitsInUInt64] ocString] + "\n" # NO
 \subsectionGetter{sint}{bigint}
 
 \begin{galgasbox}
-getter @bigint sint -> @sint
+getter sint -> @sint
 \end{galgasbox}
 
 Ce \emph{getter} permet de convertir le récepteur en \ggs!@sint!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInSInt}.
@@ -303,7 +303,7 @@ message [[-0x1234_5678G sint] hexString] + "\n" # 0xEDCBA988
 \subsectionGetter{sint64}{bigint}
 
 \begin{galgasbox}
-getter @bigint sint64 -> @sint64
+getter sint64 -> @sint64
 \end{galgasbox}
 
 Ce \emph{getter} permet de convertir le récepteur en \ggs!@sint64!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInSInt64}.
@@ -316,7 +316,7 @@ message [[-0x1234_5678_9ABC_DEF0G sint64] hexString] + "\n" # 0xEDCBA98765432110
 \subsectionGetter{uint}{bigint}
 
 \begin{galgasbox}
-getter @bigint uint -> @uint
+getter uint -> @uint
 \end{galgasbox}
 
 Ce \emph{getter} permet de convertir le récepteur en \ggs!@uint!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInUInt}.
@@ -329,7 +329,7 @@ message [[0x1234_5678G uint] hexString] + "\n" # 0x12345678
 \subsectionGetter{uint64}{bigint}
 
 \begin{galgasbox}
-getter @bigint uint64 -> @uint64
+getter uint64 -> @uint64
 \end{galgasbox}
 
 Ce \emph{getter} permet de convertir le récepteur en \ggs!@uint64!. Si la conversion n'est pas possible, un message d'erreur est affiché et la valeur renvoyée n'est pas construite. On peut tester si la conversion est possible en appelant le \refGetterPage{bigint}{fitsInUInt64}.
@@ -357,7 +357,7 @@ Plusieurs \emph{getters} sont disponibles pour convertir un \ggs!bigint! en \ggs
 \subsectionGetter{string}{bigint}
 
 \begin{galgasbox}
-getter @bigint string -> @string
+getter string -> @string
 \end{galgasbox}
 
 Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères décimaux (de \ggs!0! à \ggs!9!). Si cette valeur est négative, le premier caractère est un signe \ggs!-!. Par exemple :
@@ -372,7 +372,7 @@ message [a string] + "\n" # -123456789012345678901234567890
 \subsectionGetter{spacedString}{bigint}
 
 \begin{galgasbox}
-getter @bigint spacedString ?@uint inSeparation -> @string
+getter spacedString ?@uint inSeparation -> @string
 \end{galgasbox}
 
 Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères décimaux (de \ggs!0! à \ggs!9!). Si cette valeur est négative, le premier caractère est un signe \ggs!-!. Un espace est inséré entre \texttt{inSeparation} caractères consécutifs. Si la valeur du récepteur est négative, aucun espace n'est ajouté après le signe « \texttt{-} ». Par exemple :
@@ -391,7 +391,7 @@ message [-123_456_789_012_345_678G spacedString !3] + "\n"
 \subsectionGetter{hexString}{bigint}
 
 \begin{galgasbox}
-getter @bigint hexString -> @string
+getter hexString -> @string
 \end{galgasbox}
 
 Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères héxadécimaux (\ggs!0! à \ggs!9!, \ggs!A! à \ggs!F!). La valeur retournée est préfixée par « \texttt{0x} », qui est placé après un éventuel signe « \texttt{-} ». Exemple :
@@ -408,10 +408,30 @@ message [a hexString] + "\n" # -0x18EE90FF6C373E0EE4E3F0AD2
 
 
 
+\subsectionGetter{hexStringSeparatedBy}{bigint}
+
+\begin{galgasbox}
+getter hexStringSeparatedBy ?@char inSeparator ?@uint inGroup -> @string
+\end{galgasbox}
+
+Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. Groups of \ggs=inGroup= digits are separated by the \ggs=inSeparator= character.
+
+If \ggs=inGroup= is equal to zero, a run-time error is raised.
+
+For example:
+\begin{galgas}
+let s = [0x123456789ABCDEF0G hexStringSeparatedBy !'_' !4] # 0x1234_5678_9ABC_DEF0
+\end{galgas}
+
+
+
+
+
+
 \subsectionGetter{xString}{bigint}
 
 \begin{galgasbox}
-getter @bigint xString -> @string
+getter xString -> @string
 \end{galgasbox}
 
 Ce getter renvoie la valeur du récepteur sous la forme d'une chaîne de caractères héxadécimaux (\ggs!0! à \ggs!9!, \ggs!A! à \ggs!F!). Si cette valeur est négative, le premier caractère est un signe \ggs!-!. Il n'y a pas de préfixe « \texttt{0x} ». Exemple :
@@ -446,7 +466,7 @@ Les \emph{getters} « \texttt{extract8…} » fournissent des mots de $8$ bits, 
 \subsectionGetter{extract8ForUnsignedRepresentation}{bigint}
 
 \begin{galgasbox}
-getter @bigint extract8ForUnsignedRepresentation -> @uintlist
+getter extract8ForUnsignedRepresentation -> @uintlist
 \end{galgasbox}
 
 Ce \emph{getter} permet d'obtenir la représentation binaire \emph{naturelle} de la valeur absolue du récepteur sous la forme d'un \ggs!@uintlist!, dont la valeur de chaque élément est comprise entre $0$ et $255$. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
@@ -486,7 +506,7 @@ message s + "\n" # 0x0
 \subsectionGetter{extract8ForSignedRepresentation}{bigint}
 
 \begin{galgasbox}
-getter @bigint extract8ForSignedRepresentation -> @uintlist
+getter extract8ForSignedRepresentation -> @uintlist
 \end{galgasbox}
 
 Ce \emph{getter} permet d'obtenir la représentation binaire \emph{complément à deux} de la valeur du récepteur sous la forme d'un \ggs!@uintlist!, dont la valeur de chaque élément est comprise entre $0$ et $255$. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
@@ -536,7 +556,7 @@ message s + "\n" # 0xBB 0xCC 0xDD 0xEF
 \subsectionGetter{extract32ForUnsignedRepresentation}{bigint}
 
 \begin{galgasbox}
-getter @bigint extract32ForUnsignedRepresentation -> @uintlist
+getter extract32ForUnsignedRepresentation -> @uintlist
 \end{galgasbox}
 
 Ce \emph{getter} permet d'obtenir la représentation binaire \emph{naturelle} de la valeur absolue du récepteur sous la forme d'un \ggs!@uintlist!. Le mot de poids faible est à l'indice $0$, et le mot de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
@@ -579,7 +599,7 @@ message s + "\n" # 0x0
 \subsectionGetter{extract32ForSignedRepresentation}{bigint}
 
 \begin{galgasbox}
-getter @bigint extract32ForSignedRepresentation -> @uintlist
+getter extract32ForSignedRepresentation -> @uintlist
 \end{galgasbox}
 
 Ce \emph{getter} permet d'obtenir la représentation binaire \emph{complément à deux} de la valeur du récepteur sous la forme d'un \ggs!@uintlist!. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
@@ -633,7 +653,7 @@ message s + "\n" # 0xFFFFFFAA 0xBBCCDDEF
 \subsectionGetter{extract64ForUnsignedRepresentation}{bigint}
 
 \begin{galgasbox}
-getter @bigint extract64ForUnsignedRepresentation -> @uint64list
+getter extract64ForUnsignedRepresentation -> @uint64list
 \end{galgasbox}
 
 Ce \emph{getter} permet d'obtenir la représentation binaire \emph{naturelle} de la valeur absolue du récepteur sous la forme d'un \ggs!@uint64list!. Le mot de poids faible est à l'indice $0$, et le mot de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
@@ -676,7 +696,7 @@ message s + "\n" # 0x0
 \subsectionGetter{extract64ForSignedRepresentation}{bigint}
 
 \begin{galgasbox}
-getter @bigint extract64ForSignedRepresentation -> @uint64list
+getter extract64ForSignedRepresentation -> @uint64list
 \end{galgasbox}
 
 Ce \emph{getter} permet d'obtenir la représentation binaire \emph{complément à deux} de la valeur du récepteur sous la forme d'un \ggs!@uintlist!. L'octet de poids faible est à l'indice $0$, et l'octet de poids fort au dernier indice. Suivant le sens de parcours de la liste, on peut construire une représentation \emph{little endian} ou \emph{big endian}.
@@ -764,7 +784,7 @@ message [a string] + "\n" # 123456789012345678901234567890
 \subsectionGetter{abs}{bigint}
 
 \begin{galgasbox}
-getter @bigint abs -> @bigint
+getter abs -> @bigint
 \end{galgasbox}
 
 Le \emph{getter} \ggs!abs! retourne la valeur absolue.
@@ -1218,7 +1238,7 @@ Par exemple :
 \subsectionGetter{bitAtIndex}{bigint}
 
 \begin{galgasbox}
-getter @bigint bitAtIndex ?@uint inIndex -> @bool
+getter bitAtIndex ?@uint inIndex -> @bool
 \end{galgasbox}
 
 Ce \emph{getter} permet d'obtenir la valeur d'un bit particulier de la représentation signée en \emph{complément à deux} du récepteur. À partir d'un certain rang, la valeur obtenue pour un nombre positif est toujours \ggs!false!, et pour un nombre négatif toujours \ggs!true!.

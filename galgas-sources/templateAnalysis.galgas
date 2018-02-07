@@ -1606,8 +1606,8 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
   end
   let enumConstantMap = [[switchExpression mResultType] mEnumConstantMap]
 #---
-  var templateInstructionSwitchBranchList =@templateInstructionSwitchBranchListForGeneration {}
-  var namedConstantSet =@stringset {}
+  @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = {}
+  @stringset namedConstantSet = {}
   for () in mTemplateInstructionSwitchBranchList do
     for () in mConstantList do
       if not [enumConstantMap hasKey ![mValue string]] then

@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2004, ..., 2015 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2004, ..., 2018 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -78,10 +78,12 @@ GALGAS_sint GALGAS_sint::constructor_min (UNUSED_LOCATION_ARGS) {
 GALGAS_uint GALGAS_sint::getter_uint (C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
-  if (mSIntValue < 0) {
-    inCompiler->onTheFlyRunTimeError ("cannot convert a negative @sint into unsigned value" COMMA_THERE) ;
-  }else{
-    result = GALGAS_uint ((uint32_t) mSIntValue) ;
+  if (isValid ()) {
+    if (mSIntValue < 0) {
+      inCompiler->onTheFlyRunTimeError ("cannot convert a negative @sint into unsigned value" COMMA_THERE) ;
+    }else{
+      result = GALGAS_uint ((uint32_t) mSIntValue) ;
+    }
   }
   return result ;
 }
@@ -91,10 +93,12 @@ GALGAS_uint GALGAS_sint::getter_uint (C_Compiler * inCompiler
 GALGAS_uint_36__34_ GALGAS_sint::getter_uint_36__34_ (C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
-  if (mSIntValue < 0) {
-    inCompiler->onTheFlyRunTimeError ("cannot convert a negative @sint into unsigned value" COMMA_THERE) ;
-  }else{
-    result = GALGAS_uint_36__34_ ((uint64_t) mSIntValue) ;
+  if (isValid ()) {
+    if (mSIntValue < 0) {
+      inCompiler->onTheFlyRunTimeError ("cannot convert a negative @sint into unsigned value" COMMA_THERE) ;
+    }else{
+      result = GALGAS_uint_36__34_ ((uint64_t) mSIntValue) ;
+    }
   }
   return result ;
 }
@@ -102,13 +106,21 @@ GALGAS_uint_36__34_ GALGAS_sint::getter_uint_36__34_ (C_Compiler * inCompiler
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_sint_36__34_ GALGAS_sint::getter_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_sint_36__34_ (mSIntValue) ;
+  GALGAS_sint_36__34_ result ;
+  if (isValid ()) {
+    result = GALGAS_sint_36__34_ (mSIntValue) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_double GALGAS_sint::getter_double (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_double (mSIntValue) ;
+  GALGAS_double result ;
+  if (isValid ()) {
+    result = GALGAS_double ((double) mSIntValue) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -124,26 +136,62 @@ GALGAS_bigint GALGAS_sint::getter_bigint (UNUSED_LOCATION_ARGS) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_sint::getter_string (UNUSED_LOCATION_ARGS) const {
-  C_String s ; s.appendSigned (mSIntValue) ;
-  return GALGAS_string (s) ;
+  GALGAS_string result ;
+  if (isValid ()) {
+    C_String s ; s.appendSigned (mSIntValue) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_sint::getter_hexString (UNUSED_LOCATION_ARGS) const {
-  const uint32_t v = (uint32_t) mSIntValue ;
-  C_String s ;
-  s << "0x" ;
-  s.appendUnsignedHex8 (v) ;
-  return GALGAS_string (s) ;
+  GALGAS_string result ;
+  if (isValid ()) {
+    const uint32_t v = (uint32_t) mSIntValue ;
+    C_String s ;
+    s << "0x" ;
+    s.appendUnsignedHex8 (v) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_sint::getter_hexStringSeparatedBy (const GALGAS_char & inSeparator,
+                                                        const GALGAS_uint & inGroup,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid () && inSeparator.isValid () && inGroup.isValid ()) {
+    const int group = (int) inGroup.uintValue () ;
+    if (group <= 0) {
+      inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
+    }else{
+      C_String s ;
+      s.appendUnsignedHex ((uint32_t) mSIntValue) ;
+      const utf32 separator = inSeparator.charValue() ;
+      for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
+        s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
+      }
+      result = GALGAS_string (C_String ("0x") + s) ;
+    }
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_sint::getter_xString (UNUSED_LOCATION_ARGS) const {
-  const uint32_t v = (uint32_t) mSIntValue ;
-  C_String s ; s.appendUnsignedHex8 (v) ;
-  return GALGAS_string (s) ;
+  GALGAS_string result ;
+  if (isValid ()) {
+    const uint32_t v = (uint32_t) mSIntValue ;
+    C_String s ; s.appendUnsignedHex8 (v) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
