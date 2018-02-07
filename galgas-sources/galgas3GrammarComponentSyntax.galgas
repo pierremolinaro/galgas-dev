@@ -90,18 +90,17 @@ rule <declaration>
 rule <grammar_start_symbol_label>
   ?let @lstring inLabelName
   ?!@nonTerminalLabelListAST ioLabelList {
-  var argumentNameSet =@stringset {}
-  var mFormalParameterList =@formalParameterListAST {}
+  @stringset argumentNameSet = {}
+  @formalParameterListAST mFormalParameterList = {}
   repeat
   while
-    @lstring argumentName
-    <label_formal_parameter> ?argumentName !?mFormalParameterList
+    <label_formal_parameter> ?let argumentName !?mFormalParameterList
     if [argumentNameSet hasKey ![argumentName string]] then
       error argumentName: "there is already an argument named '" + argumentName + "'"
     end
     argumentNameSet += ![argumentName string]
   end
-  ioLabelList += !inLabelName !mFormalParameterList !@location.here
+  ioLabelList += !inLabelName !mFormalParameterList !.here
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

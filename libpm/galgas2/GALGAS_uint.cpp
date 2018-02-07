@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2009, ..., 2017 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2009, ..., 2018 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -230,7 +230,7 @@ typeComparisonResult GALGAS_uint::objectCompare (const GALGAS_uint & inOperand) 
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Readers
+  #pragma mark Getters
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -305,18 +305,50 @@ GALGAS_bigint GALGAS_uint::getter_bigint (UNUSED_LOCATION_ARGS) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_uint::getter_string (UNUSED_LOCATION_ARGS) const {
-  C_String s ;
-  s.appendUnsigned (mUIntValue) ;
-  return GALGAS_string (s) ;
+  GALGAS_string result ;
+  if (isValid ()) {
+    C_String s ;
+    s.appendUnsigned (mUIntValue) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_uint::getter_hexString (UNUSED_LOCATION_ARGS) const {
-  C_String s ;
-  s.appendCString ("0x") ;
-  s.appendUnsignedHex (mUIntValue) ;
-  return GALGAS_string (s) ;
+  GALGAS_string result ;
+  if (isValid ()) {
+    C_String s ;
+    s.appendCString ("0x") ;
+    s.appendUnsignedHex (mUIntValue) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_uint::getter_hexStringSeparatedBy (const GALGAS_char & inSeparator,
+                                                        const GALGAS_uint & inGroup,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid () && inSeparator.isValid () && inGroup.isValid ()) {
+    const int group = (int) inGroup.uintValue () ;
+    if (group <= 0) {
+      inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
+    }else{
+      C_String s ;
+      s.appendUnsignedHex (mUIntValue) ;
+      const utf32 separator = inSeparator.charValue() ;
+      for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
+        s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
+      }
+      result = GALGAS_string (C_String ("0x") + s) ;
+    }
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

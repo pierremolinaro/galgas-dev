@@ -749,7 +749,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
     end
   end
 #--- Compute initial state set
-  var initialStateSet = @stringset {}
+  @stringset initialStateSet = {}
   for () in mInsertMethodList do
     if [mMapStateList length] > 0 then
       if [mInitialStateName string] == "" then
@@ -878,9 +878,9 @@ override method @sharedMapDeclarationAST semanticAnalysis
 #---
   @mapOverrideList mapOverrideList = {}
   for () in mMapOverrideBlockListAST do
-    var handledAssociations =@stringset {}
-    var neededCombinaisons =@stringset {}
-    var branchBehaviourSortedListForMapOverride1 =@branchBehaviourSortedListForMapOverride.emptySortedList{}
+    @stringset handledAssociations = {}
+    @stringset neededCombinaisons = {}
+    @branchBehaviourSortedListForMapOverride branchBehaviourSortedListForMapOverride1 = {}
     for () in mMapOverrideBlockDescriptor1AST do
       [mapAutomatonStateMap searchKey !mLeftState ?let startStateNameIndex ?*]
       [mapAutomatonStateMap searchKey !mRightState ?let currentStateNameIndex ?*]
@@ -921,8 +921,8 @@ override method @sharedMapDeclarationAST semanticAnalysis
       end
       error @location.here: [[forgottenAssociations count] string] + " associations should be defined:" + s
     end
-    var definedCombinaisons =@stringset {}
-    var branchBehaviourSortedListForMapOverride2 =@branchBehaviourSortedListForMapOverride.emptySortedList{}
+    @stringset definedCombinaisons = {}
+    @branchBehaviourSortedListForMapOverride branchBehaviourSortedListForMapOverride2 = {}
     for () in mMapOverrideBlockDescriptor2AST do
       [mapAutomatonStateMap searchKey !mLeftState ?let leftStateIndex ?*]
       [mapAutomatonStateMap searchKey !mRightState ?let rightStateIndex ?*]

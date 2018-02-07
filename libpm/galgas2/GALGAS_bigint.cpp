@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2015, ..., 2015 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2015, ..., 2018 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -360,6 +360,29 @@ GALGAS_string GALGAS_bigint::getter_hexString (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {
     result = GALGAS_string (mValue.hexString ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_bigint::getter_hexStringSeparatedBy (const GALGAS_char & inSeparator,
+                                                          const GALGAS_uint & inGroup,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid () && inSeparator.isValid () && inGroup.isValid ()) {
+    const int group = (int) inGroup.uintValue () ;
+    if (group <= 0) {
+      inCompiler->onTheFlyRunTimeError ("last argument should be > 0" COMMA_THERE) ;
+    }else{
+      C_String s = mValue.xString () ;
+      const utf32 separator = inSeparator.charValue() ;
+      for (int i = (int) (s.length () - group) ; i > 0 ; i -= group) {
+        s.insertCharacterAtIndex (separator, i COMMA_HERE) ;
+      }
+      result = GALGAS_string (C_String ("0x") + s) ;
+    }
   }
   return result ;
 }

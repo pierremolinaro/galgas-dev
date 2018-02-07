@@ -396,7 +396,7 @@ private proc projectGeneration
 #---------------------------------- Update targets
 #  message "*** update targets\n" ;
   if 0 == @uint.errorCount then
-    var handledExtensionSet =@stringset {}
+    @stringset handledExtensionSet = {}
     for () in inSourceRuleList do
       handledExtensionSet += !mSourceFileExtension.string
     end
@@ -436,7 +436,7 @@ private proc projectGeneration
   end
 #---------------------------------- Remove useless files
   if 0 == @uint.errorCount then
-    var allActualFileSet = @stringset {}
+    @stringset allActualFileSet = {}
     for () in [productDirectory regularFiles !false] do
       allActualFileSet += !mValue
     end

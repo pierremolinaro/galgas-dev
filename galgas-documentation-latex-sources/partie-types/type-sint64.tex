@@ -56,6 +56,23 @@ Returns the receiver's value converted in a \ggs+@double+ object. As a 64-bit in
 
 
 
+\subsectionGetter{hexStringSeparatedBy}{sint64}
+
+\begin{galgas}
+getter hexStringSeparatedBy ?@char inSeparator ?@uint inGroup -> @string
+\end{galgas}
+
+Returns the an hexadecimal string representation of the receiver value, prefixed by the string \texttt{0x}. Groups of \ggs=inGroup= digits are separated by the \ggs=inSeparator= character.
+
+If \ggs=inGroup= is equal to zero, a run-time error is raised.
+
+For example:
+\begin{galgas}
+let s = [0x123456789ABCDEF0LS hexStringSeparatedBy !'_' !3] # 0x1_234_567_89A_BCD_EF0
+\end{galgas}
+
+
+
 
 \subsectionGetter{sint}{sint64}
 

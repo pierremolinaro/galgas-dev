@@ -1792,46 +1792,46 @@ static void extensionMethod_templateInstructionSwitchAST_templateInstructionAnal
     inCompiler->emitSemanticError (var_switchExpression_65564.getter_mLocation (SOURCE_FILE ("templateAnalysis.galgas", 1604)), GALGAS_string ("'switch' expression type should be an enumeration (it is a ").add_operation (extensionGetter_kind (var_switchExpression_65564.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1605)).getter_mTypeKindEnum (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1605)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1605)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1604)).add_operation (GALGAS_string (" type)"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1605)), fixItArray1  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1604)) ;
   }
   GALGAS_constantIndexMap var_enumConstantMap_66013 = var_switchExpression_65564.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1607)).getter_mEnumConstantMap (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1607)) ;
-  GALGAS_templateInstructionSwitchBranchListForGeneration var_templateInstructionSwitchBranchList_66112 = GALGAS_templateInstructionSwitchBranchListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1609)) ;
-  GALGAS_stringset var_namedConstantSet_66189 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("templateAnalysis.galgas", 1610)) ;
-  cEnumerator_templateInstructionSwitchBranchListAST enumerator_66253 (object->mProperty_mTemplateInstructionSwitchBranchList, kENUMERATION_UP) ;
-  while (enumerator_66253.hasCurrentObject ()) {
-    cEnumerator_lstringlist enumerator_66284 (enumerator_66253.current_mConstantList (HERE), kENUMERATION_UP) ;
-    while (enumerator_66284.hasCurrentObject ()) {
-      const enumGalgasBool test_2 = var_enumConstantMap_66013.getter_hasKey (enumerator_66284.current_mValue (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1613)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1613)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1613)).boolEnum () ;
+  GALGAS_templateInstructionSwitchBranchListForGeneration var_templateInstructionSwitchBranchList_66158 = GALGAS_templateInstructionSwitchBranchListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1609)) ;
+  GALGAS_stringset var_namedConstantSet_66193 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("templateAnalysis.galgas", 1610)) ;
+  cEnumerator_templateInstructionSwitchBranchListAST enumerator_66247 (object->mProperty_mTemplateInstructionSwitchBranchList, kENUMERATION_UP) ;
+  while (enumerator_66247.hasCurrentObject ()) {
+    cEnumerator_lstringlist enumerator_66278 (enumerator_66247.current_mConstantList (HERE), kENUMERATION_UP) ;
+    while (enumerator_66278.hasCurrentObject ()) {
+      const enumGalgasBool test_2 = var_enumConstantMap_66013.getter_hasKey (enumerator_66278.current_mValue (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1613)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1613)).operator_not (SOURCE_FILE ("templateAnalysis.galgas", 1613)).boolEnum () ;
       if (kBoolTrue == test_2) {
         TC_Array <C_FixItDescription> fixItArray3 ;
-        inCompiler->emitSemanticError (enumerator_66284.current_mValue (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 1614)), GALGAS_string ("the '").add_operation (enumerator_66284.current_mValue (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1614)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1614)).add_operation (GALGAS_string ("' is not a contant of '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1614)).add_operation (var_switchExpression_65564.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1614)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1614)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1614)).add_operation (GALGAS_string ("' enumeration type"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1614)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1614)) ;
+        inCompiler->emitSemanticError (enumerator_66278.current_mValue (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 1614)), GALGAS_string ("the '").add_operation (enumerator_66278.current_mValue (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1614)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1614)).add_operation (GALGAS_string ("' is not a contant of '@"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1614)).add_operation (var_switchExpression_65564.getter_mResultType (SOURCE_FILE ("templateAnalysis.galgas", 1614)).getter_key (inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1614)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1614)).add_operation (GALGAS_string ("' enumeration type"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1614)), fixItArray3  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1614)) ;
       }
-      const enumGalgasBool test_4 = var_namedConstantSet_66189.getter_hasKey (enumerator_66284.current_mValue (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1616)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1616)).boolEnum () ;
+      const enumGalgasBool test_4 = var_namedConstantSet_66193.getter_hasKey (enumerator_66278.current_mValue (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1616)) COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1616)).boolEnum () ;
       if (kBoolTrue == test_4) {
         TC_Array <C_FixItDescription> fixItArray5 ;
-        inCompiler->emitSemanticError (enumerator_66284.current_mValue (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 1617)), GALGAS_string ("the '").add_operation (enumerator_66284.current_mValue (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1617)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1617)).add_operation (GALGAS_string ("' constant is already named in the switch instruction"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1617)), fixItArray5  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1617)) ;
+        inCompiler->emitSemanticError (enumerator_66278.current_mValue (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 1617)), GALGAS_string ("the '").add_operation (enumerator_66278.current_mValue (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1617)), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1617)).add_operation (GALGAS_string ("' constant is already named in the switch instruction"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1617)), fixItArray5  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1617)) ;
       }
-      var_namedConstantSet_66189.addAssign_operation (enumerator_66284.current_mValue (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1619))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1619)) ;
-      enumerator_66284.gotoNextObject () ;
+      var_namedConstantSet_66193.addAssign_operation (enumerator_66278.current_mValue (HERE).getter_string (SOURCE_FILE ("templateAnalysis.galgas", 1619))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1619)) ;
+      enumerator_66278.gotoNextObject () ;
     }
-    GALGAS_templateInstructionListForGeneration var_instructionList_66728 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1621)) ;
+    GALGAS_templateInstructionListForGeneration var_instructionList_66722 = GALGAS_templateInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("templateAnalysis.galgas", 1621)) ;
     {
-    routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, enumerator_66253.current_mInstructionList (HERE), var_instructionList_66728, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1622)) ;
+    routine_templateInstructionListAnalysis (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, enumerator_66247.current_mInstructionList (HERE), var_instructionList_66722, inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1622)) ;
     }
-    var_templateInstructionSwitchBranchList_66112.addAssign_operation (enumerator_66253.current_mConstantList (HERE), var_instructionList_66728  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1629)) ;
-    enumerator_66253.gotoNextObject () ;
+    var_templateInstructionSwitchBranchList_66158.addAssign_operation (enumerator_66247.current_mConstantList (HERE), var_instructionList_66722  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1629)) ;
+    enumerator_66247.gotoNextObject () ;
   }
-  GALGAS_stringset var_missingConstants_67099 = var_enumConstantMap_66013.getter_keySet (SOURCE_FILE ("templateAnalysis.galgas", 1632)).substract_operation (var_namedConstantSet_66189, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1632)) ;
-  const enumGalgasBool test_6 = GALGAS_bool (kIsStrictSup, var_missingConstants_67099.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 1633)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  GALGAS_stringset var_missingConstants_67093 = var_enumConstantMap_66013.getter_keySet (SOURCE_FILE ("templateAnalysis.galgas", 1632)).substract_operation (var_namedConstantSet_66193, inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1632)) ;
+  const enumGalgasBool test_6 = GALGAS_bool (kIsStrictSup, var_missingConstants_67093.getter_count (SOURCE_FILE ("templateAnalysis.galgas", 1633)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_6) {
-    GALGAS_string var_m_67198 = GALGAS_string ("all constants should be named in a switch instruction; the following constants are missing:") ;
-    cEnumerator_stringset enumerator_67325 (var_missingConstants_67099, kENUMERATION_UP) ;
-    while (enumerator_67325.hasCurrentObject ()) {
-      var_m_67198.plusAssign_operation(GALGAS_string ("\n"
-        "  - '").add_operation (enumerator_67325.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1636)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1636)), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1636)) ;
-      enumerator_67325.gotoNextObject () ;
+    GALGAS_string var_m_67192 = GALGAS_string ("all constants should be named in a switch instruction; the following constants are missing:") ;
+    cEnumerator_stringset enumerator_67319 (var_missingConstants_67093, kENUMERATION_UP) ;
+    while (enumerator_67319.hasCurrentObject ()) {
+      var_m_67192.plusAssign_operation(GALGAS_string ("\n"
+        "  - '").add_operation (enumerator_67319.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1636)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1636)), inCompiler  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1636)) ;
+      enumerator_67319.gotoNextObject () ;
     }
     TC_Array <C_FixItDescription> fixItArray7 ;
-    inCompiler->emitSemanticError (object->mProperty_mSwitchExpressionEndLocation, var_m_67198, fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1638)) ;
+    inCompiler->emitSemanticError (object->mProperty_mSwitchExpressionEndLocation, var_m_67192, fixItArray7  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1638)) ;
   }
-  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionSwitchForGeneration::constructor_new (var_switchExpression_65564, var_templateInstructionSwitchBranchList_66112  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1641))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1641)) ;
+  ioArgument_ioInstructionList.addAssign_operation (GALGAS_templateInstructionSwitchForGeneration::constructor_new (var_switchExpression_65564, var_templateInstructionSwitchBranchList_66158  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1641))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 1641)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

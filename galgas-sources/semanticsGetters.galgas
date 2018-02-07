@@ -227,7 +227,7 @@ proc enterBaseGetterWith2Arguments
 proc enterBaseFinalGetterWith2Arguments
   ?!@getterMap ioGetterMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?let @string inGetterName
+  ?getterName:let @string inGetterName
   ?let @string inArgument1TypeName
   ?let @string inArgument1Name
   ?let @string inArgument2TypeName
@@ -1194,6 +1194,17 @@ override method @uintPredefinedTypeAST getGetterMap
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
+  enterBaseFinalGetterWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"hexStringSeparatedBy"
+    !"char"
+    !"inSeparator"
+    !"uint"
+    !"inGroupCount"
+    !returnedTypeName:"string"
+    !hasCompilerArgument:true
+  )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
@@ -1301,6 +1312,17 @@ override method @sintPredefinedTypeAST getGetterMap
     !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
+  enterBaseFinalGetterWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"hexStringSeparatedBy"
+    !"char"
+    !"inSeparator"
+    !"uint"
+    !"inGroupCount"
+    !returnedTypeName:"string"
+    !hasCompilerArgument:true
+  )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
@@ -1383,7 +1405,9 @@ override method @uint64PredefinedTypeAST getGetterMap
   enterBaseFinalGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"uintSlice" !"uint" !"inStartBit" !"uint" !"inBitCount"
+    !getterName:"uintSlice"
+    !"uint" !"inStartBit"
+    !"uint" !"inBitCount"
     !returnedTypeName:"uint"
     !hasCompilerArgument:true
   )
@@ -1407,6 +1431,17 @@ override method @uint64PredefinedTypeAST getGetterMap
     !getterName:"hexString"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
+  )
+  enterBaseFinalGetterWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"hexStringSeparatedBy"
+    !"char"
+    !"inSeparator"
+    !"uint"
+    !"inGroupCount"
+    !returnedTypeName:"string"
+    !hasCompilerArgument:true
   )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
@@ -1500,6 +1535,17 @@ override method @sint64PredefinedTypeAST getGetterMap
     !getterName:"hexString"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
+  )
+  enterBaseFinalGetterWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"hexStringSeparatedBy"
+    !"char"
+    !"inSeparator"
+    !"uint"
+    !"inGroupCount"
+    !returnedTypeName:"string"
+    !hasCompilerArgument:true
   )
   enterBaseFinalGetterWithoutArgument (
     !?outMap
@@ -1746,7 +1792,7 @@ override method @binarysetPredefinedTypeAST getGetterMap
   enterBaseFinalGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"ITE"
+    !getterName:"ITE"
     !"binaryset" !"inTHENoperand"
     !"binaryset" !"inELSEoperand"
     !returnedTypeName:"binaryset"
@@ -1755,7 +1801,7 @@ override method @binarysetPredefinedTypeAST getGetterMap
   enterBaseFinalGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"print"
+    !getterName:"print"
     !"stringlist" !"inVariableList"
     !"uintlist" !"inBDDCount"
     !returnedTypeName:"string"
@@ -1855,7 +1901,7 @@ override method @binarysetPredefinedTypeAST getGetterMap
   enterBaseFinalGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"stringValueListWithNameList" !"uint" !"inBitCount" !"stringlist" !"inNameList"
+    !getterName:"stringValueListWithNameList" !"uint" !"inBitCount" !"stringlist" !"inNameList"
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:true
   )
@@ -1876,7 +1922,7 @@ override method @binarysetPredefinedTypeAST getGetterMap
   enterBaseFinalGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"swap10" !"uint" !"inBitCount1" !"uint" !"inBitCount2"
+    !getterName:"swap10" !"uint" !"inBitCount1" !"uint" !"inBitCount2"
     !returnedTypeName:"binaryset"
     !hasCompilerArgument:false
   )
@@ -1932,7 +1978,7 @@ override method @binarysetPredefinedTypeAST getGetterMap
   enterBaseFinalGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"accessibleStates" !"binaryset" !"inInitialStateSet" !"uint" !"inBitCount"
+    !getterName:"accessibleStates" !"binaryset" !"inInitialStateSet" !"uint" !"inBitCount"
     !returnedTypeName:"binaryset"
     !hasCompilerArgument:false
   )
@@ -1988,7 +2034,7 @@ override method @binarysetPredefinedTypeAST getGetterMap
   enterBaseFinalGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"binarySetByTranslatingFromIndex" !"uint" !"inFirstIndexToTranslate" !"uint" !"inTranslation"
+    !getterName:"binarySetByTranslatingFromIndex" !"uint" !"inFirstIndexToTranslate" !"uint" !"inTranslation"
     !returnedTypeName:"binaryset"
     !hasCompilerArgument:false
   )
@@ -2002,7 +2048,7 @@ override method @binarysetPredefinedTypeAST getGetterMap
   enterBaseFinalGetterWith2Arguments (
     !?outMap
     !?ioUnifiedTypeMap
-    !"existsOnBitRange" !"uint" !"inFirstBit" !"uint" !"inBitCount"
+    !getterName:"existsOnBitRange" !"uint" !"inFirstBit" !"uint" !"inBitCount"
     !returnedTypeName:"binaryset"
     !hasCompilerArgument:false
   )
@@ -2086,7 +2132,10 @@ override method @functionPredefinedTypeAST getGetterMap
     !returnedTypeName:"typelist"
     !hasCompilerArgument:false
   )
-  enterBaseFinalGetterWith2Arguments ( !?outMap !?ioUnifiedTypeMap !"invoke" !"objectlist" !"inParameters" !"location" !"inErrorLocation"
+  enterBaseFinalGetterWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"invoke" !"objectlist" !"inParameters" !"location" !"inErrorLocation"
     !returnedTypeName:"object"
     !hasCompilerArgument:true
   )
@@ -2299,6 +2348,17 @@ override method @bigintPredefinedTypeAST getGetterMap
     !getterName:"hexString"
     !returnedTypeName:"string"
     !hasCompilerArgument:false
+  )
+  enterBaseFinalGetterWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"hexStringSeparatedBy"
+    !"char"
+    !"inSeparator"
+    !"uint"
+    !"inGroupCount"
+    !returnedTypeName:"string"
+    !hasCompilerArgument:true
   )
   enterBaseFinalGetterWithoutArgument (
     !?outMap

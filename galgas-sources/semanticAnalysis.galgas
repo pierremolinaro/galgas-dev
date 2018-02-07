@@ -639,7 +639,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
     ?let @lstring indexingDirectory
   ]
 #--------------------------------------- Build "indexing" set
-  var indexNameSet =@stringset {}
+  @stringset indexNameSet = {}
   for () in indexingListAST do
     indexNameSet += !mIndexName.string
   end
@@ -909,7 +909,7 @@ override method @lexiqueComponentAST semanticAnalysis
     !@terminalList {}
     !@lexicalAttributeMap {}
     !@lexicalExplicitTokenListMapMap {}
-    !@stringset {}
+    !{}
     !@templateDelimitorList {}
     !@styleMap {}
     !unicodeTestFunctions
