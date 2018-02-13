@@ -1980,12 +1980,12 @@ bool C_String::parseUTF8 (const C_Data & inDataString,
     }else{
       const utf32 uc = utf32CharacterForPointer (inDataString.unsafeDataPointer (), idx, inDataString.length (), ok) ;
       switch (UNICODE_VALUE (uc)) {
-        case 0x000B : // VT: Vertical Tab
-        case 0x000C : // FF: Form Feed
-        case 0x0085 : // NEL: Next Line
-        case 0x2028 : // LS: Line Separator
-        case 0x2029 : // PS: Paragraph Separator
-          outString.appendUnicodeCharacter ('\n' COMMA_HERE) ;
+      case 0x000B : // VT: Vertical Tab
+      case 0x000C : // FF: Form Feed
+      case 0x0085 : // NEL: Next Line
+      case 0x2028 : // LS: Line Separator
+      case 0x2029 : // PS: Paragraph Separator
+        outString.appendUnicodeCharacter ('\n' COMMA_HERE) ;
         break ;
       default :
         outString.appendUnicodeCharacter (uc COMMA_HERE) ;

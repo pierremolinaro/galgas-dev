@@ -72,7 +72,7 @@ end
   <td>
     %if not type_mIsConcrete then%abstract %end
     switch type_mTypeKindEnum
-    case classType : %class%
+    case classType (*) : %class%
     case enumType : %enum%
     case listType : %list%
     case sortedListType : %sorted list%

@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Semantic decorated types for template generation                         *
+#  Semantic decorated types for template generation                                                                    *
 #                                                                                                                      *
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@ls2n.fr                                                                                           *
 #                                                                                                                      *
@@ -13,10 +13,6 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-
-
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @templateInstructionStringForGeneration : @templateInstructionForGeneration {
@@ -72,20 +68,6 @@ list @templateInstructionIfBranchListForGeneration {
 class @templateInstructionIfForGeneration : @templateInstructionForGeneration {
   @templateInstructionIfBranchListForGeneration mTemplateInstructionIfBranchList
   @templateInstructionListForGeneration mElseInstructionList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-list @templateInstructionSwitchBranchListForGeneration {
-  @lstringlist mConstantList
-  @templateInstructionListForGeneration mInstructionList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @templateInstructionSwitchForGeneration : @templateInstructionForGeneration {
-  @semanticExpressionForGeneration mSwitchExpression
-  @templateInstructionSwitchBranchListForGeneration mTemplateInstructionSwitchBranchList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
