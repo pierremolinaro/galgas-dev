@@ -666,43 +666,6 @@ rule <template_instruction> ?!@templateInstructionListAST ioResultingInstruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
-  $switch$
-#--- Switch expression
-  <expression> ?let @templateExpressionAST switchExpression
-  let @location endOfSwitchExpression = @location.here
-#--- Loop on "when' clauses
-  @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList = {}
-  repeat
-  while
-    $case$
-    @lstringlist constantList = {}
-    repeat
-      $identifier$ ?var @lstring constantName
-      constantList += !constantName
-    while
-      $,$
-    end
-    $:$
-    @templateInstructionListAST instructionList = {}
-    repeat
-      enterTemplateString (!?instructionList)
-    while
-      <template_instruction> !?instructionList
-    end
-    templateInstructionSwitchBranchList += !constantList !instructionList
-  end
-#---
-  $end$
-  ioResultingInstructionList += !@templateInstructionSwitchAST.new {
-    !switchExpression
-    !endOfSwitchExpression
-    !templateInstructionSwitchBranchList
-  }
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 rule <template_parser_start_symbol> !@templateInstructionListAST outResultingInstructionList {
   outResultingInstructionList = {}
   repeat
@@ -718,7 +681,7 @@ rule <template_parser_start_symbol> !@templateInstructionListAST outResultingIns
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-private proc enterTemplateString ?!@templateInstructionListAST outResultingInstructionList {
+proc enterTemplateString ?!@templateInstructionListAST outResultingInstructionList {
   let s = @string.retrieveAndResetTemplateString
   if [s length] > 0 then
     outResultingInstructionList += !@templateInstructionStringAST.new {!s}

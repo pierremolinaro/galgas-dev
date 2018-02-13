@@ -1,0 +1,340 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @templateInstructionSwitchBranchListAST {
+  @lstringlist mConstantList
+  @switchExtractedValuesListAST mAssociatedValuesExtraction
+  @templateInstructionListAST mInstructionList
+  @location mEndOfBranch
+}
+
+#·······················································································································
+
+class @templateInstructionSwitchAST : @templateInstructionAST {
+  @templateExpressionAST mSwitchExpression
+  @location mSwitchExpressionEndLocation
+  @templateInstructionSwitchBranchListAST mTemplateInstructionSwitchBranchList
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension templateSyntax {
+
+  #·····················································································································
+
+  rule <template_instruction> ?!@templateInstructionListAST ioResultingInstructionList {
+    $switch$
+  #--- Switch expression
+    <expression> ?let switchExpression
+    let @location endOfSwitchExpression = .here
+  #--- Loop on "case" clauses
+    @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList = {}
+    repeat
+    while
+      $case$
+      <switch_case>
+        ?let @lstringlist constantNameList
+        ?let @switchExtractedValuesListAST associatedValuesExtraction
+      $:$
+      @templateInstructionListAST instructionList = {}
+      repeat
+        enterTemplateString (!?instructionList)
+      while
+        <template_instruction> !?instructionList
+      end
+      templateInstructionSwitchBranchList += !constantNameList !associatedValuesExtraction !instructionList !.here
+    end
+    $end$
+  #---
+    ioResultingInstructionList += !@templateInstructionSwitchAST.new {
+      !switchExpression
+      !endOfSwitchExpression
+      !templateInstructionSwitchBranchList
+    }
+  }
+
+  #····················································································································*
+
+  rule <switch_case>
+    !@lstringlist outConstantNameList
+    !@switchExtractedValuesListAST outAssociatedValuesExtraction
+  {
+    outConstantNameList = {}
+    repeat
+      $identifier$ ?let @lstring constantName
+      outConstantNameList += !constantName
+    while
+      $,$
+    end
+    outAssociatedValuesExtraction = {}
+    select
+    or
+      $($
+      repeat
+        select
+          $uint32$ ?let n
+          $*$
+          for a in 0 ..< n.uint do
+            outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
+          end
+         or
+          $*$
+          outAssociatedValuesExtraction += !["" nowhere] !["" nowhere] !false
+         or
+          @lstring typeName
+          select
+            $@type$ ?typeName
+          or
+            typeName = ["" nowhere]
+          end
+          @bool constantMarkedAsUnused
+          select
+            constantMarkedAsUnused = false
+          or
+            $unused$
+            constantMarkedAsUnused = true
+          end
+          $identifier$ ?let @lstring constantName
+          outAssociatedValuesExtraction += !typeName !constantName !constantMarkedAsUnused
+        end
+      while
+      end
+      $)$
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! ANALYSIS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @templateInstructionSwitchAST templateInstructionAnalysis
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @templateAnalysisContext inAnalysisContext
+  ?!@templateInstructionListForGeneration ioInstructionList
+{
+#---
+  @semanticExpressionForGeneration switchExpression
+  [mSwitchExpression templateExpressionAnalysis 
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    ?switchExpression
+  ]
+  if [[switchExpression mResultType] mTypeKindEnum] != .enumType then
+    error [switchExpression mLocation] : "'switch' expression type should be an enumeration (it is a "
+       + [[[switchExpression mResultType] mTypeKindEnum] kind] + " type)"
+  end
+  let enumConstantMap = [[switchExpression mResultType] mEnumConstantMap]
+  @stringset constantsNamedInSwitchInstruction = {}
+#--- Analyze branches
+#  @switchBranchesForGeneration switchBranchesForGeneration = {}
+  @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = {}
+  for () in mTemplateInstructionSwitchBranchList do
+    @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}
+    @bool firstConstant = true
+    var analysisContext = inAnalysisContext 
+    for () in mConstantList do
+      if [enumConstantMap hasKey ![mValue string]] then
+        if [constantsNamedInSwitchInstruction hasKey ![mValue string]] then
+          error mValue
+          :"the '" + mValue + "' constant is already named in this switch instruction"
+        end
+        constantsNamedInSwitchInstruction += ![mValue string]
+        [enumConstantMap searchKey !mValue ?* ?let @unifiedTypeMapProxyList associatedTypeList]
+        if ([associatedTypeList length] > 0) & ([mAssociatedValuesExtraction length] == 0) then
+          error mValue
+            :"the associated values of '" + mValue + "' constant should be extracted"
+        elsif ([associatedTypeList length] == 0) & ([mAssociatedValuesExtraction length] > 0) then
+          error mValue
+            :"the '" + mValue + "' constant has no associated value"
+        elsif [associatedTypeList length]  != [mAssociatedValuesExtraction length] then
+          error mValue
+            :"the '" + mValue + "' constant requires " + [associatedTypeList length] + "  associated value"
+            + if [associatedTypeList length] > 1 then "s" else "" end
+        else
+          var associatedValueIndex = 0
+          for () in associatedTypeList, () in mAssociatedValuesExtraction do
+            if mExtractedValueTypeName.string != "" then # Explicit type ?
+              if [mType key] != mExtractedValueTypeName.string then
+                error mExtractedValueTypeName : "the required type is '@" + [mType key] + "'"
+              end
+            end
+            if firstConstant & (mExtractedValueName.string != "") then
+              let cppName = "extractedValue_" + mExtractedValueName
+              extractedAssociatedValuesForGeneration += !mType !cppName !associatedValueIndex
+              [!?analysisContext.mTemplateVariableMap insertKey !mExtractedValueName !mType !cppName]
+            end
+            associatedValueIndex ++
+          end%for
+        end
+      else
+        error mValue
+        :"'" + mValue + "' is not a constant of '@" + [[switchExpression mResultType] key] + "' enumeration type"
+      end
+      firstConstant = false
+    end
+    @templateInstructionListForGeneration instructionList = {}
+    templateInstructionListAnalysis (
+      !inUsefulnessCallerEntityName
+      !?ioUsefulEntitiesGraph
+      !analysisContext
+      !mInstructionList
+      !?instructionList
+    )
+    templateInstructionSwitchBranchList +=
+      !mConstantList
+      !extractedAssociatedValuesForGeneration
+      ![mEndOfBranch locationIndex]
+      !instructionList
+  end
+#--- Check all constants have been named
+  let forgottenConstants = [enumConstantMap keySet] - constantsNamedInSwitchInstruction
+  if [forgottenConstants count] > 0 then
+    @string s = ""
+    for () in forgottenConstants do
+      s += "\n  - " + key
+    end
+    error mSwitchExpressionEndLocation
+    : "the switch instruction should name all enumeration constants; missing constants are:" + s
+  end
+
+
+
+
+
+
+
+
+
+
+
+#---
+#  @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = {}
+#  @stringset namedConstantSet = {}
+#  for () in mTemplateInstructionSwitchBranchList do
+#    for () in mConstantList do
+#      if not [enumConstantMap hasKey ![mValue string]] then
+#        error mValue
+#          : "the '" + mValue + "' is not a constant of '@" + [[switchExpression mResultType] key] + "' enumeration type"
+#      end
+#      if [namedConstantSet hasKey ![mValue string]] then
+#        error mValue : "the '" + mValue + "' constant is already named in the switch instruction"
+#      end
+#      namedConstantSet += ![mValue string]
+#    end
+#    @templateInstructionListForGeneration instructionList = {}
+#    templateInstructionListAnalysis (
+#      !inUsefulnessCallerEntityName
+#      !?ioUsefulEntitiesGraph
+#      !inAnalysisContext
+#      !mInstructionList
+#      !?instructionList
+#    )
+#    templateInstructionSwitchBranchList += !mConstantList !instructionList
+#  end
+#--- Check every constant is named
+#  @stringset missingConstants = [enumConstantMap keySet] - namedConstantSet
+#  if [missingConstants count] > 0 then
+#    @string m = "all constants should be named in a switch instruction; the following constants are missing:"
+#    for () in missingConstants do
+#      m += "\n  - '" + key + "'"
+#    end
+#    error mSwitchExpressionEndLocation : m
+#  end
+#---
+  ioInstructionList += !@templateInstructionSwitchForGeneration.new {
+    ![switchExpression mResultType]
+    !switchExpression
+    !templateInstructionSwitchBranchList
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @templateInstructionSwitchBranchListForGeneration {
+  @lstringlist mConstantList
+  @extractedAssociatedValuesForGeneration mExtractedAssociatedValuesForGeneration
+  @uint mEndOfBranchLocationIndex
+  @templateInstructionListForGeneration mInstructionList
+}
+
+#·······················································································································
+
+class @templateInstructionSwitchForGeneration : @templateInstructionForGeneration {
+  @unifiedTypeMap-proxy mEnumType
+  @semanticExpressionForGeneration mSwitchExpression
+  @templateInstructionSwitchBranchListForGeneration mTemplateInstructionSwitchBranchList
+}
+
+#·······················································································································
+
+override method @templateInstructionSwitchForGeneration templateCodeGeneration
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?!@bool ioUseColumnMarker
+{
+#--- Expression
+  [mSwitchExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let switchVarCppName
+  ]
+#---
+  ioGeneratedCode += "switch (" + switchVarCppName + ".enumValue ()) {\n"
+  ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kNotBuilt :\n"
+  ioGeneratedCode += "  break ;\n"
+#---
+  for () in mTemplateInstructionSwitchBranchList do
+    for () in mConstantList do
+      ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation]
+                      + "::kEnum_" + [[mValue string] identifierRepresentation] + " :\n"
+    end
+    [!?ioGeneratedCode incIndentation !2]
+    ioGeneratedCode += "{\n"
+    if [mExtractedAssociatedValuesForGeneration length] > 0 then
+      let type = "const cEnumAssociatedValues_" + [mEnumType identifierRepresentation]
+        + "_" + [mConstantList mValueAtIndex!0].string + " *"
+      let varPtr = "extractPtr_" + mEndOfBranchLocationIndex
+      ioGeneratedCode += "  " + type + " " + varPtr + " = (" + type + ") (" + switchVarCppName + ".unsafePointer ()) ;\n"
+      for () in mExtractedAssociatedValuesForGeneration do
+        ioGeneratedCode += "  const GALGAS_" + [mType identifierRepresentation] + " " + mCppName
+          + " = " + varPtr + "->mAssociatedValue" + mIndex + " ;\n"
+      end
+    end
+    if [mInstructionList length] > 0 then
+      [!?ioGeneratedCode incIndentation !2]
+      templateCodeGenerationForListInstruction (
+        !mInstructionList
+        !?ioGeneratedCode
+        !?ioInclusionSet
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        !?ioUseColumnMarker
+      )
+      [!?ioGeneratedCode decIndentation !2]
+    end
+    ioGeneratedCode += "}\n"
+    ioGeneratedCode += "break ;\n"
+    [!?ioGeneratedCode decIndentation !2]
+  end
+#---
+  ioGeneratedCode += "}\n"
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+

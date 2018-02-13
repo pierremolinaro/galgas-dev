@@ -398,18 +398,3 @@ class @templateInstructionIfAST : @templateInstructionAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-list @templateInstructionSwitchBranchListAST {
-  @lstringlist mConstantList
-  @templateInstructionListAST mInstructionList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-class @templateInstructionSwitchAST : @templateInstructionAST {
-  @templateExpressionAST mSwitchExpression
-  @location mSwitchExpressionEndLocation
-  @templateInstructionSwitchBranchListAST mTemplateInstructionSwitchBranchList
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-

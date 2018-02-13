@@ -1,6 +1,6 @@
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @switchExtractedValuesListAST {
   @lstring mExtractedValueTypeName
@@ -8,7 +8,7 @@ list @switchExtractedValuesListAST {
   @bool mMarkedAsUnused
 }
 
-#·····················································································································*
+#·······················································································································
 
 list @switchBranchesAST {
   @lstringlist mSwitchConstantList
@@ -17,7 +17,7 @@ list @switchBranchesAST {
   @location mEndOfBranch
 }
 
-#·····················································································································*
+#·······················································································································
 
 class @switchInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mSwitchExpression
@@ -26,9 +26,9 @@ class @switchInstructionAST : @semanticInstructionAST {
   @location mEndOf_switch_instruction
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
@@ -37,16 +37,16 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $switch$
     let instructionLocation = @location.here
-    <expression> ?let @semanticExpressionAST switchExpression
+    <expression> ?let switchExpression
     let endOfSwitchExpression = @location.here
-    var switchBranches =@switchBranchesAST {}
+    @switchBranchesAST switchBranches = {}
     repeat
       $case$
       <switch_case>
         ?let @lstringlist constantNameList
         ?let @switchExtractedValuesListAST associatedValuesExtraction
       $:$
-      <semantic_instruction_list> ?let @semanticInstructionListAST instructions
+      <semantic_instruction_list> ?let instructions
       switchBranches += !constantNameList !associatedValuesExtraction !instructions !@location.here
     while
     end
@@ -122,9 +122,9 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @switchInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -135,16 +135,17 @@ override method @switchInstructionAST enterInstructionInSemanticContext
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @switchInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@variableMap ioVariableMap
+{
 #--- Analyze switch expression
   @semanticExpressionForGeneration switchExpression
   [mSwitchExpression analyzeSemanticExpression
@@ -166,7 +167,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   @stringset constantsNamedInSwitchInstruction = {}
 #--- Analyze branches
   [!?ioVariableMap openOverrideForSelectBlock]
-  var switchBranchesForGeneration =@switchBranchesForGeneration {}
+  @switchBranchesForGeneration switchBranchesForGeneration = {}
   for () in mBranches do
     @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}
     @bool firstConstant = true
@@ -245,9 +246,9 @@ override method @switchInstructionAST analyzeSemanticInstruction
     !switchBranchesForGeneration}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @extractedAssociatedValuesForGeneration {
   @unifiedTypeMap-proxy mType
@@ -255,16 +256,16 @@ list @extractedAssociatedValuesForGeneration {
   @uint mIndex
 }
 
-#·····················································································································*
+#·······················································································································
 
 list @switchBranchesForGeneration {
   @lstringlist mSwitchConstantList
   @extractedAssociatedValuesForGeneration mExtractedAssociatedValuesForGeneration
-  @uint mLocationIndex
+  @uint mEndOfBranchLocationIndex
   @semanticInstructionListForGeneration mInstructions
 }
 
-#·····················································································································*
+#·······················································································································
 
 class @switchInstructionForGeneration : @semanticInstructionForGeneration {
   @unifiedTypeMap-proxy mEnumType
@@ -272,14 +273,15 @@ class @switchInstructionForGeneration : @semanticInstructionForGeneration {
   @switchBranchesForGeneration mBranches
 }
 
-#·····················································································································*
+#·······················································································································
 
 override method @switchInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+  ?!@string ioGeneratedCode
+{
 #--- Switch expression
   [mSwitchExpression generateExpression
     !?ioGeneratedCode
@@ -300,7 +302,7 @@ override method @switchInstructionForGeneration generateInstruction
     if [mExtractedAssociatedValuesForGeneration length] > 0 then
       let type = "const cEnumAssociatedValues_" + [mEnumType identifierRepresentation]
         + "_" + [mSwitchConstantList mValueAtIndex!0].string + " *"
-      let varPtr = "extractPtr_" + mLocationIndex
+      let varPtr = "extractPtr_" + mEndOfBranchLocationIndex
       ioGeneratedCode += "  " + type + " " + varPtr + " = (" + type + ") (" + switchVar + ".unsafePointer ()) ;\n"
       for () in mExtractedAssociatedValuesForGeneration do
         ioGeneratedCode += "  const GALGAS_" + [mType identifierRepresentation] + " " + mCppName
@@ -322,4 +324,4 @@ override method @switchInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

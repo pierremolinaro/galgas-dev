@@ -381,6 +381,15 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
   public : virtual void nt_simple_5F_expression_ (GALGAS_templateExpressionAST & outArgument0,
                                                   C_Lexique_galgasTemplateScanner * inCompiler) ;
 
+//------------------------------------- 'switch_case' non terminal
+//--- 'parse' label
+  public : virtual void nt_switch_5F_case_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_switch_5F_case_ (GALGAS_lstringlist & outArgument0,
+                                            GALGAS_switchExtractedValuesListAST & outArgument1,
+                                            C_Lexique_galgasTemplateScanner * inCompiler) ;
+
 //------------------------------------- 'template_instruction' non terminal
 //--- 'parse' label
   public : virtual void nt_template_5F_instruction_parse (C_Lexique_galgasTemplateScanner * inCompiler) ;
@@ -486,6 +495,16 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
   public : virtual int32_t select_templateSyntax_27 (C_Lexique_galgasTemplateScanner *) ;
 
   public : virtual int32_t select_templateSyntax_28 (C_Lexique_galgasTemplateScanner *) ;
+
+  public : virtual int32_t select_templateSyntax_29 (C_Lexique_galgasTemplateScanner *) ;
+
+  public : virtual int32_t select_templateSyntax_30 (C_Lexique_galgasTemplateScanner *) ;
+
+  public : virtual int32_t select_templateSyntax_31 (C_Lexique_galgasTemplateScanner *) ;
+
+  public : virtual int32_t select_templateSyntax_32 (C_Lexique_galgasTemplateScanner *) ;
+
+  public : virtual int32_t select_templateSyntax_33 (C_Lexique_galgasTemplateScanner *) ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
