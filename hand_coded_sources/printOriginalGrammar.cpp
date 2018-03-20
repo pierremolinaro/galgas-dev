@@ -1,4 +1,4 @@
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
 //  Routines for printing original grammar (with 'select' and 'repeat')                                                *
 //                                                                                                                     *
@@ -15,18 +15,18 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
 //  more details.                                                                                                      *
 //                                                                                                                     *
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 #include "utilities/MF_MemoryControl.h"
 #include "strings/C_HTMLString.h"
 #include "galgas2/C_SourceTextInString.h"
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 #include "printOriginalGrammar.h"
 #include "grammarCompilation.h"
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 static void
 printInstructionsListForGrammar (const GALGAS_syntaxInstructionListForGrammarAnalysis & inInstructionsList,
@@ -39,7 +39,7 @@ printInstructionsListForGrammar (const GALGAS_syntaxInstructionListForGrammarAna
   }
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void cPtr_repeatInstructionForGrammarAnalysis::
 printInstructionForGrammar (C_HTMLString & inHTMLfile) {
@@ -67,7 +67,7 @@ printInstructionForGrammar (C_HTMLString & inHTMLfile) {
   inHTMLfile.outputRawData ("</span></span>") ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void cPtr_selectInstructionForGrammarAnalysis::
 printInstructionForGrammar (C_HTMLString & inHTMLfile) {
@@ -95,7 +95,7 @@ printInstructionForGrammar (C_HTMLString & inHTMLfile) {
   inHTMLfile.outputRawData ("</span></span>") ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
 printInstructionForGrammar (C_HTMLString & inHTMLfile) {
@@ -104,7 +104,7 @@ printInstructionForGrammar (C_HTMLString & inHTMLfile) {
   inHTMLfile.outputRawData ("</span>") ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void cPtr_terminalInstructionForGrammarAnalysis::
 printInstructionForGrammar (C_HTMLString & inHTMLfile) {
@@ -113,7 +113,7 @@ printInstructionForGrammar (C_HTMLString & inHTMLfile) {
   inHTMLfile.outputRawData ("</span>") ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void printOriginalGrammar (C_HTMLString & inHTMLfile,
                            const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) {
@@ -168,4 +168,4 @@ void printOriginalGrammar (C_HTMLString & inHTMLfile,
   inHTMLfile.outputRawData ("</table>") ;
 }
 
-//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
