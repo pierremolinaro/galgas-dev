@@ -2119,6 +2119,10 @@ class GALGAS_application : public AC_GALGAS_root {
 
   public : static class GALGAS__32_stringlist constructor_boolOptionNameList (LOCATION_ARGS) ;
 
+  public : static class GALGAS_bool constructor_boolOptionValue (const class GALGAS_string & inOperand0,
+                                                                 const class GALGAS_string & inOperand1
+                                                                 COMMA_LOCATION_ARGS) ;
+
   public : static class GALGAS_string constructor_commandLineArgumentAtIndex (const class GALGAS_uint & inOperand0,
                                                                               class C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) ;
@@ -2148,6 +2152,10 @@ class GALGAS_application : public AC_GALGAS_root {
 
   public : static class GALGAS__32_stringlist constructor_stringOptionNameList (LOCATION_ARGS) ;
 
+  public : static class GALGAS_string constructor_stringOptionValue (const class GALGAS_string & inOperand0,
+                                                                     const class GALGAS_string & inOperand1
+                                                                     COMMA_LOCATION_ARGS) ;
+
   public : static class GALGAS_string constructor_system (LOCATION_ARGS) ;
 
   public : static class GALGAS_string constructor_uintOptionCommentString (const class GALGAS_string & inOperand0,
@@ -2164,6 +2172,10 @@ class GALGAS_application : public AC_GALGAS_root {
 
   public : static class GALGAS__32_stringlist constructor_uintOptionNameList (LOCATION_ARGS) ;
 
+  public : static class GALGAS_uint constructor_uintOptionValue (const class GALGAS_string & inOperand0,
+                                                                 const class GALGAS_string & inOperand1
+                                                                 COMMA_LOCATION_ARGS) ;
+
   public : static class GALGAS_bool constructor_verboseOutput (LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -2176,6 +2188,21 @@ class GALGAS_application : public AC_GALGAS_root {
 
 //--------------------------------- Instance Methods
 //--------------------------------- Class Methods
+  public : static void class_method_setBoolOptionValue (class GALGAS_string constinArgument0,
+                                                        class GALGAS_string constinArgument1,
+                                                        class GALGAS_bool constinArgument2
+                                                        COMMA_LOCATION_ARGS) ;
+
+  public : static void class_method_setStringOptionValue (class GALGAS_string constinArgument0,
+                                                          class GALGAS_string constinArgument1,
+                                                          class GALGAS_string constinArgument2
+                                                          COMMA_LOCATION_ARGS) ;
+
+  public : static void class_method_setUIntOptionValue (class GALGAS_string constinArgument0,
+                                                        class GALGAS_string constinArgument1,
+                                                        class GALGAS_uint constinArgument2
+                                                        COMMA_LOCATION_ARGS) ;
+
 
 //--------------------------------- Getters
 

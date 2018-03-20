@@ -1,10 +1,10 @@
-//---------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //                                                                                                                     *
 //  Generic Unsigned Command Line Interface Option                                                                     *
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2009, ..., 2017 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2009, ..., 2018 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -18,17 +18,17 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
 //  more details.                                                                                                      *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #pragma once
 
-//---------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #include "C_CommandLineOption.h"
 #include "utilities/M_machine.h"
 #include "strings/C_String.h"
 
-//---------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class C_UIntCommandLineOption : public C_CommandLineOption {
 //--- Constructor
@@ -69,6 +69,13 @@ class C_UIntCommandLineOption : public C_CommandLineOption {
 
   public : static C_String getUIntOptionCommentString (const C_String & inDomainName,
                                                        const C_String & inIdentifier) ;
+
+  public : static uint32_t getUIntOptionValue (const C_String & inDomainName,
+                                               const C_String & inIdentifier) ;
+
+  public : static void setUIntOptionValue (const C_String & inDomainName,
+                                           const C_String & inIdentifier,
+                                           const uint32_t inValue) ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

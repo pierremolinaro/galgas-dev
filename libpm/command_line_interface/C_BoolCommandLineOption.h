@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //                                                                                                                     *
 //  Generic Boolean Command Line Interface Option                                                                      *
 //                                                                                                                     *
@@ -18,17 +18,17 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
 //  more details.                                                                                                      *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #pragma once
 
-//---------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #include "C_CommandLineOption.h"
 #include "utilities/M_machine.h"
 #include "strings/C_String.h"
 
-//---------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class C_BoolCommandLineOption : public C_CommandLineOption {
 //--- Constructor
@@ -69,6 +69,13 @@ class C_BoolCommandLineOption : public C_CommandLineOption {
 
   public : static C_String getBoolOptionCommentString (const C_String & inDomainName,
                                                        const C_String & inIdentifier) ;
+
+  public : static bool getBoolOptionValue (const C_String & inDomainName,
+                                           const C_String & inIdentifier) ;
+
+  public : static void setBoolOptionValue (const C_String & inDomainName,
+                                           const C_String & inIdentifier,
+                                           const bool inValue) ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

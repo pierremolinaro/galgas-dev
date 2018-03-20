@@ -1,4 +1,4 @@
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #                                                                                                                      *
 #  Type constructors                                                                                                   *
 #                                                                                                                      *
@@ -12,7 +12,7 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 proc enterConstructorWithoutArgument
   ?!@constructorMap ioConstructorMap
@@ -34,7 +34,7 @@ proc enterConstructorWithoutArgument
   ]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 proc enterConstructorWithArgument
   ?!@constructorMap ioConstructorMap
@@ -55,7 +55,7 @@ proc enterConstructorWithArgument
   ]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 proc enterConstructorWith2Arguments
   ?!@constructorMap ioConstructorMap
@@ -84,7 +84,7 @@ proc enterConstructorWith2Arguments
   ]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 proc enterConstructorWith3Arguments
   ?!@constructorMap ioConstructorMap
@@ -115,7 +115,7 @@ proc enterConstructorWith3Arguments
   ]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @locationPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -144,7 +144,7 @@ override method @locationPredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @stringPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -293,7 +293,7 @@ override method @stringPredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @applicationPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -384,6 +384,17 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !resultTypeName:"string"
     !hasLexiqueAndLocationArgs:false
   )
+  enterConstructorWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"boolOptionValue"
+    !argTypeName1:"string"
+    !argName1:"inOptionComponentName"
+    !argTypeName2:"string"
+    !argName2:"inOptionName"
+    !resultTypeName:"bool"
+    !hasLexiqueAndLocationArgs:false
+  )
 #--- Constructors for "uint" options
   enterConstructorWithoutArgument (
     !?outMap
@@ -423,6 +434,17 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !argTypeName2:"string"
     !argName2:"inOptionName"
     !resultTypeName:"string"
+    !hasLexiqueAndLocationArgs:false
+  )
+  enterConstructorWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"uintOptionValue"
+    !argTypeName1:"string"
+    !argName1:"inOptionComponentName"
+    !argTypeName2:"string"
+    !argName2:"inOptionName"
+    !resultTypeName:"uint"
     !hasLexiqueAndLocationArgs:false
   )
 #--- Constructors for "string" options
@@ -466,6 +488,17 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !resultTypeName:"string"
     !hasLexiqueAndLocationArgs:false
   )
+  enterConstructorWith2Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"stringOptionValue"
+    !argTypeName1:"string"
+    !argName1:"inOptionComponentName"
+    !argTypeName2:"string"
+    !argName2:"inOptionName"
+    !resultTypeName:"string"
+    !hasLexiqueAndLocationArgs:false
+  )
 #--- Constructors for lexical keyword lists
   enterConstructorWithoutArgument (
     !?outMap
@@ -485,7 +518,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @charPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -517,7 +550,7 @@ override method @charPredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @uintPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -571,7 +604,7 @@ override method @uintPredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @sintPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -593,7 +626,7 @@ override method @sintPredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @uint64PredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -635,7 +668,7 @@ override method @uint64PredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @sint64PredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -657,7 +690,7 @@ override method @sint64PredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @stringsetPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -699,7 +732,7 @@ override method @stringsetPredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @binarysetPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -895,7 +928,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @typePredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -910,7 +943,7 @@ override method @typePredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @bigintPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -926,7 +959,7 @@ override method @bigintPredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @dataPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -951,7 +984,7 @@ override method @dataPredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @functionPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -984,7 +1017,7 @@ override method @functionPredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @doublePredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1009,7 +1042,7 @@ override method @doublePredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @timerPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -1025,5 +1058,5 @@ override method @timerPredefinedTypeAST getConstructorMap
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

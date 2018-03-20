@@ -1,6 +1,6 @@
 \startSymbol{template\_parser\_start\_symbol}{9}
 
-\nonTerminalSummaryStart \nonTerminalSummary{expression}{0}\nonTerminalSummarySeparator \nonTerminalSummary{factor}{5}\nonTerminalSummarySeparator \nonTerminalSummary{output\_expression\_list}{7}\nonTerminalSummarySeparator \nonTerminalSummary{primary}{6}\nonTerminalSummarySeparator \nonTerminalSummary{relation\_factor}{2}\nonTerminalSummarySeparator \nonTerminalSummary{relation\_term}{1}\nonTerminalSummarySeparator \nonTerminalSummary{simple\_expression}{3}\nonTerminalSummarySeparator \nonTerminalSummary{template\_instruction}{8}\nonTerminalSummarySeparator \nonTerminalSummary{template\_parser\_start\_symbol}{9}\nonTerminalSummarySeparator \nonTerminalSummary{term}{4}\nonTerminalSummaryEnd \nonTerminalSection{expression}{0}
+\nonTerminalSummaryStart \nonTerminalSummary{expression}{0}\nonTerminalSummarySeparator \nonTerminalSummary{factor}{5}\nonTerminalSummarySeparator \nonTerminalSummary{output\_expression\_list}{7}\nonTerminalSummarySeparator \nonTerminalSummary{primary}{6}\nonTerminalSummarySeparator \nonTerminalSummary{relation\_factor}{2}\nonTerminalSummarySeparator \nonTerminalSummary{relation\_term}{1}\nonTerminalSummarySeparator \nonTerminalSummary{simple\_expression}{3}\nonTerminalSummarySeparator \nonTerminalSummary{switch\_case}{10}\nonTerminalSummarySeparator \nonTerminalSummary{template\_instruction}{8}\nonTerminalSummarySeparator \nonTerminalSummary{template\_parser\_start\_symbol}{9}\nonTerminalSummarySeparator \nonTerminalSummary{term}{4}\nonTerminalSummaryEnd \nonTerminalSection{expression}{0}
 
 \ruleSubsection{templateSyntax}{templateSyntax}{26}
 
@@ -357,6 +357,48 @@
   \draw[->] (p0-4) -- (p0-9) ;
 \end{tikzpicture}
 
+\nonTerminalSection{switch\_case}{10}
+
+\ruleSubsection{templateSyntax}{template-switch-instruction}{61}
+
+\begin{tikzpicture}
+  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
+    & & & & & & & & & & & & & & & & & & & & \node (p5-20) [point] {}; & \\
+    & & & & & & & & & & & & \node (p4-12) [point] {}; & & & \node (p4-15) [terminal] {unused}; & \\
+    & & & & & & & & & & & \node (p3-11) [point] {}; & \node (p3-12) [terminal] {@type}; & \node (p3-13) [point] {}; & \node (p3-14) [point] {}; & \node (p3-15) [point] {}; & \node (p3-16) [point] {}; & \node (p3-17) [terminal] {identifier}; & \\
+    & & & & & & \node (p2-6) [point] {}; & & & & & \node (p2-11) [terminal] {*}; & \\
+    & & & & & \node (p1-5) [terminal] {,}; & & & \node (p1-8) [terminal] {(}; & \node (p1-9) [point] {}; & \node (p1-10) [point] {}; & \node (p1-11) [terminal] {uint32}; & \node (p1-12) [terminal] {*}; & & & & & & \node (p1-18) [point] {}; & \node (p1-19) [point] {}; & & \node (p1-21) [terminal] {)}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [point] {}; & \node (p0-3) [terminal] {identifier}; & \node (p0-4) [point] {}; & & & \node (p0-7) [point] {}; & \node (p0-8) [point] {}; & & & & & & & & & & & & & & \node (p0-22) [point] {}; & \node (p0-23) [lastPoint] {}; & \\
+  };
+  \draw[->] (P0start) -- (p0-3) ;
+  \draw[->] (p0-4) |- (p1-5) ;
+  \draw[->] (p2-6) -| (p0-2) ;
+  \draw[->] (p1-5) -| (p2-6) ;
+  \draw (p0-3) -- (p0-8) ;
+  \draw[->] (p0-7) |- (p1-8) ;
+  \draw[->] (p1-8) -- (p1-11) ;
+  \draw[->] (p1-11) -- (p1-12) ;
+  \draw[->] (p1-10) |- (p2-11) ;
+  \draw[->] (p1-10) |- (p3-12) ;
+  \draw (p3-11) |- (p4-12) ;
+  \draw (p3-12) -- (p3-13) ;
+  \draw[->] (p4-12) -| (p3-13) ;
+  \draw (p3-13) -- (p3-15) ;
+  \draw[->] (p3-14) |- (p4-15) ;
+  \draw (p3-15) -- (p3-16) ;
+  \draw[->] (p4-15) -| (p3-16) ;
+  \draw[->] (p3-16) -- (p3-17) ;
+  \draw (p1-12) -- (p1-18) ;
+  \draw[->] (p2-11) -| (p1-18) ;
+  \draw[->] (p3-17) -| (p1-18) ;
+  \draw[->] (p5-20) -| (p1-9) ;
+  \draw[->] (p1-19) -| (p5-20) ;
+  \draw[->] (p1-18) -- (p1-21) ;
+  \draw (p0-8) -- (p0-22) ;
+  \draw[->] (p1-21) -| (p0-22) ;
+  \draw[->] (p0-22) -- (p0-23) ;
+\end{tikzpicture}
+
 \nonTerminalSection{template\_instruction}{8}
 
 \ruleSubsection{templateSyntax}{templateSyntax}{499}
@@ -503,38 +545,35 @@
   \draw[->] (p0-22) -- (p0-23) ;
 \end{tikzpicture}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{669}
+\ruleSubsection{templateSyntax}{template-switch-instruction}{28}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    & & & & & & & & & & & & & & & & & & & \node (p4-19) [point] {}; & \\
-    & & & & & & & & & & & & \node (p3-12) [point] {}; & & & & & & \node (p3-18) [point] {}; & \\
-    & & & & & & & & & & & \node (p2-11) [terminal] {,}; & & & & & & \node (p2-17) [nonterminal] {\nonTerminalSymbol{template\_instruction}{8}}; & \\
-    & & & & & & & \node (p1-7) [terminal] {case}; & \node (p1-8) [point] {}; & \node (p1-9) [terminal] {identifier}; & \node (p1-10) [point] {}; & & & \node (p1-13) [terminal] {:}; & \node (p1-14) [point] {}; & \node (p1-15) [point] {}; & \node (p1-16) [point] {}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {switch}; & \node (p0-3) [nonterminal] {\nonTerminalSymbol{expression}{0}}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & & & & & & & & & & & & & \node (p0-20) [terminal] {end}; & \node (p0-21) [lastPoint] {}; & \\
+    & & & & & & & & & & & & & & & \node (p4-15) [point] {}; & \\
+    & & & & & & & & & & & & & & \node (p3-14) [point] {}; & \\
+    & & & & & & & & & & & & & \node (p2-13) [nonterminal] {\nonTerminalSymbol{template\_instruction}{8}}; & \\
+    & & & & & & & \node (p1-7) [terminal] {case}; & \node (p1-8) [nonterminal] {\nonTerminalSymbol{switch\_case}{10}}; & \node (p1-9) [terminal] {:}; & \node (p1-10) [point] {}; & \node (p1-11) [point] {}; & \node (p1-12) [point] {}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {switch}; & \node (p0-3) [nonterminal] {\nonTerminalSymbol{expression}{0}}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & & & & & & & & & \node (p0-16) [terminal] {end}; & \node (p0-17) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
   \draw (p0-3) -- (p0-5) ;
   \draw[->] (p0-6) |- (p1-7) ;
-  \draw[->] (p1-7) -- (p1-9) ;
-  \draw[->] (p1-10) |- (p2-11) ;
-  \draw[->] (p3-12) -| (p1-8) ;
-  \draw[->] (p2-11) -| (p3-12) ;
-  \draw[->] (p1-9) -- (p1-13) ;
-  \draw (p1-13) -- (p1-15) ;
-  \draw[->] (p1-16) |- (p2-17) ;
-  \draw[->] (p3-18) -| (p1-14) ;
-  \draw[->] (p2-17) -| (p3-18) ;
-  \draw[->] (p4-19) -| (p0-4) ;
-  \draw[->] (p1-15) -| (p4-19) ;
-  \draw[->] (p0-5) -- (p0-20) ;
-  \draw[->] (p0-20) -- (p0-21) ;
+  \draw[->] (p1-7) -- (p1-8) ;
+  \draw[->] (p1-8) -- (p1-9) ;
+  \draw (p1-9) -- (p1-11) ;
+  \draw[->] (p1-12) |- (p2-13) ;
+  \draw[->] (p3-14) -| (p1-10) ;
+  \draw[->] (p2-13) -| (p3-14) ;
+  \draw[->] (p4-15) -| (p0-4) ;
+  \draw[->] (p1-11) -| (p4-15) ;
+  \draw[->] (p0-5) -- (p0-16) ;
+  \draw[->] (p0-16) -- (p0-17) ;
 \end{tikzpicture}
 
 \nonTerminalSection{template\_parser\_start\_symbol}{9}
 
-\ruleSubsection{templateSyntax}{templateSyntax}{706}
+\ruleSubsection{templateSyntax}{templateSyntax}{669}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {

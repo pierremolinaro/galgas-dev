@@ -181,6 +181,32 @@ Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne
 
 
 
+\subsectionConstructor{boolOptionValue}{application}
+
+\begin{galgasbox}
+constructor @application boolOptionValue
+    ?@string inDomainName
+    ?@string inOptionIdentifier -> @bool
+\end{galgasbox}
+
+Ce constructeur renvoie la valeur associée à l'option booléenne spécifiée par son nom de domaine et son identificateur. Si l'option n'existe pas, le résultat n'est pas construit.
+
+
+
+
+\subsectionStaticProc{setBoolOptionValue}{application}
+
+
+\begin{galgasbox}
+proc @application setBoolOptionValue
+    ?@string inDomainName
+    ?@string inOptionIdentifier
+    ?@bool inValue
+\end{galgasbox}
+
+Ce procédure de type affecte la valeur de \ggs=inValue= à l'option booléenne spécifiée par son nom de domaine et son identificateur. Si l'option n'existe pas, cette fonction est sans effet.
+
+
 
 
 
@@ -268,6 +294,37 @@ end
 \end{galgas}
 
 Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.
+
+
+\subsectionConstructor{uintOptionValue}{application}
+
+\begin{galgasbox}
+constructor @application uintOptionValue
+    ?@string inDomainName
+    ?@string inOptionIdentifier -> @uint
+\end{galgasbox}
+
+Ce constructeur renvoie la valeur associée à l'option entière spécifiée par son nom de domaine et son identificateur. Si l'option n'existe pas, le résultat n'est pas construit.
+
+
+
+
+\subsectionStaticProc{setUIntOptionValue}{application}
+
+
+\begin{galgasbox}
+proc @application setUIntOptionValue
+    ?@string inDomainName
+    ?@string inOptionIdentifier
+    ?@uint inValue
+\end{galgasbox}
+
+Ce procédure de type affecte la valeur de \ggs=inValue= à l'option entière spécifiée par son nom de domaine et son identificateur. Si l'option n'existe pas, cette fonction est sans effet.
+
+
+
+
+
 
 
 
@@ -362,6 +419,38 @@ end
 \end{galgas}
 
 Une erreur d'exécution est déclenchée si l'option n'existe pas, et la chaîne renvoyée n'est pas construite.
+
+
+
+
+\subsectionConstructor{stringOptionValue}{application}
+
+\begin{galgasbox}
+constructor @application stringOptionValue
+    ?@string inDomainName
+    ?@string inOptionIdentifier -> @string
+\end{galgasbox}
+
+Ce constructeur renvoie la valeur associée à l'option chaîne de caractères spécifiée par son nom de domaine et son identificateur. Si l'option n'existe pas, le résultat n'est pas construit.
+
+
+
+
+\subsectionStaticProc{setStringOptionValue}{application}
+
+
+\begin{galgasbox}
+proc @application setStringOptionValue
+    ?@string inDomainName
+    ?@string inOptionIdentifier
+    ?@string inValue
+\end{galgasbox}
+
+Ce procédure de type affecte la valeur de \ggs=inValue= à l'option chaîne de caractères spécifiée par son nom de domaine et son identificateur. Si l'option n'existe pas, cette fonction est sans effet.
+
+
+
+
 
 
 
