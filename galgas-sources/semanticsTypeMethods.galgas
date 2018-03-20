@@ -1,8 +1,8 @@
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 #                                                                                                                      *
 #  semantics definitions for semantics component                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2010, ..., 2015 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2010, ..., 2018 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@ls2n.fr                                                                                           *
 #                                                                                                                      *
@@ -13,15 +13,15 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-proc enterClassMethodWithInputArgument
+private proc enterClassMethodWithInputArgument
   ?!@classMethodMap ioClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?let @string inClassMethodName
-  ?let @string inArgumentTypeName
-  ?let @string inArgumentName
-  ?let @bool inHasCompilerArgument
+  ?methodName:let @string inClassMethodName
+  ?argType:let @string inArgumentTypeName
+  ?argName:let @string inArgumentName
+  ?compilerArgument:let @bool inHasCompilerArgument
 {
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgumentTypeName ?let argumentTypeIndex]
   @formalParameterSignature argList = {}
@@ -33,14 +33,42 @@ proc enterClassMethodWithInputArgument
   ]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-proc enterClassMethodWithStringInputArgument
+private proc enterClassMethodWith3InputArguments
   ?!@classMethodMap ioClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?let @string inClassMethodName
-  ?let @string inStringArgumentName
-  ?let @bool inHasCompilerArgument
+  ?methodName:let @string inClassMethodName
+  ?argType1:let @string inArgumentTypeName1
+  ?argName1:let @string inArgumentName1
+  ?argType2:let @string inArgumentTypeName2
+  ?argName2:let @string inArgumentName2
+  ?argType3:let @string inArgumentTypeName3
+  ?argName3:let @string inArgumentName3
+  ?compilerArgument:let @bool inHasCompilerArgument
+{
+  @formalParameterSignature argList = {}
+#--- Argument 1
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgumentTypeName1 ?let argumentTypeIndex1]
+  argList += !["" nowhere] !argumentTypeIndex1 !.argumentConstantIn !inArgumentName1
+#--- Argument 2
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgumentTypeName2 ?let argumentTypeIndex2]
+  argList += !["" nowhere] !argumentTypeIndex2 !.argumentConstantIn !inArgumentName2
+#--- Argument 3
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgumentTypeName3 ?let argumentTypeIndex3]
+  argList += !["" nowhere] !argumentTypeIndex3 !.argumentConstantIn !inArgumentName3
+#---
+  [!?ioClassMethodMap insertOrReplace !.new {!inClassMethodName !.here} !argList !inHasCompilerArgument]
+}
+
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+private proc enterClassMethodWithStringInputArgument
+  ?!@classMethodMap ioClassMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ?classMethod:let @string inClassMethodName
+  ?argName:let @string inStringArgumentName
+  ?compilerArg:let @bool inHasCompilerArgument
 {
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?let argumentTypeIndex]
   @formalParameterSignature argList = {}
@@ -52,7 +80,7 @@ proc enterClassMethodWithStringInputArgument
   ]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @uintPredefinedTypeAST getClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -62,41 +90,92 @@ override method @uintPredefinedTypeAST getClassMethodMap
   enterClassMethodWithInputArgument (
     !?outClassMethodMap
     !?ioUnifiedTypeMap
-    !"setRandomSeed"
-    !"uint"
-    !"inSeed"
-    !false
+    !methodName:"setRandomSeed"
+    !argType:"uint"
+    !argName:"inSeed"
+    !compilerArgument:false
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+override method @applicationPredefinedTypeAST getClassMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@classMethodMap outClassMethodMap
+{
+  outClassMethodMap = {}
+  enterClassMethodWith3InputArguments (
+    !?outClassMethodMap
+    !?ioUnifiedTypeMap
+    !methodName:"setBoolOptionValue"
+    !argType1:"string"
+    !argName1:"inDomain"
+    !argType2:"string"
+    !argName2:"inIdentifier"
+    !argType3:"bool"
+    !argName3:"inValue"
+    !compilerArgument:false
+  )
+  enterClassMethodWith3InputArguments (
+    !?outClassMethodMap
+    !?ioUnifiedTypeMap
+    !methodName:"setUIntOptionValue"
+    !argType1:"string"
+    !argName1:"inDomain"
+    !argType2:"string"
+    !argName2:"inIdentifier"
+    !argType3:"uint"
+    !argName3:"inValue"
+    !compilerArgument:false
+  )
+  enterClassMethodWith3InputArguments (
+    !?outClassMethodMap
+    !?ioUnifiedTypeMap
+    !methodName:"setStringOptionValue"
+    !argType1:"string"
+    !argName1:"inDomain"
+    !argType2:"string"
+    !argName2:"inIdentifier"
+    !argType3:"string"
+    !argName3:"inValue"
+    !compilerArgument:false
+  )
+}
+
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @stringPredefinedTypeAST getClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@classMethodMap outClassMethodMap
 {
   outClassMethodMap = {}
-  enterClassMethodWithStringInputArgument (!?outClassMethodMap !?ioUnifiedTypeMap !"deleteFile" !"inFilePath" !true )
   enterClassMethodWithStringInputArgument (
     !?outClassMethodMap
     !?ioUnifiedTypeMap
-    !"deleteFileIfExists"
-    !"inFilePath"
-    !true
+    !classMethod:"deleteFile"
+    !argName:"inFilePath"
+    !compilerArg:true
   )
   enterClassMethodWithStringInputArgument (
     !?outClassMethodMap
     !?ioUnifiedTypeMap
-    !"removeEmptyDirectory"
-    !"inDirectoryPath"
-    !true
+    !classMethod:"deleteFileIfExists"
+    !argName:"inFilePath"
+    !compilerArg:true
   )
   enterClassMethodWithStringInputArgument (
     !?outClassMethodMap
     !?ioUnifiedTypeMap
-    !"removeDirectoryRecursively"
-    !"inDirectoryPath"
-    !true
+    !classMethod:"removeEmptyDirectory"
+    !argName:"inDirectoryPath"
+    !compilerArg:true
+  )
+  enterClassMethodWithStringInputArgument (
+    !?outClassMethodMap
+    !?ioUnifiedTypeMap
+    !classMethod:"removeDirectoryRecursively"
+    !argName:"inDirectoryPath"
+    !compilerArg:true
   )
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?let @unifiedTypeMap-proxy stringType]
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?let @unifiedTypeMap-proxy boolType]
@@ -128,7 +207,7 @@ override method @stringPredefinedTypeAST getClassMethodMap
   ]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @binarysetPredefinedTypeAST getClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -138,20 +217,20 @@ override method @binarysetPredefinedTypeAST getClassMethodMap
   enterClassMethodWithInputArgument (
     !?outClassMethodMap
     !?ioUnifiedTypeMap
-    !"setNodeTableSize"
-    !"uint"
-    !"inTableSize"
-    !false
+    !methodName:"setNodeTableSize"
+    !argType:"uint"
+    !argName:"inTableSize"
+    !compilerArgument:false
   )
   enterClassMethodWithInputArgument (
     !?outClassMethodMap
     !?ioUnifiedTypeMap
-    !"setAndTableSize"
-    !"uint"
-    !"inTableSize"
-    !false
+    !methodName:"setAndTableSize"
+    !argType:"uint"
+    !argName:"inTableSize"
+    !compilerArgument:false
   )
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

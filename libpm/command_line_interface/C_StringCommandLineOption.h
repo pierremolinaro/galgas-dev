@@ -1,10 +1,10 @@
-//---------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 //                                                                                                                     *
 //  Generic String Command Line Interface Option                                                                       *
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2009, ..., 2017 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2009, ..., 2018 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -18,16 +18,16 @@
 //  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
 //  more details.                                                                                                      *
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #pragma once
 
-//---------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #include "C_CommandLineOption.h"
 #include "strings/C_String.h"
 
-//---------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class C_StringCommandLineOption : public C_CommandLineOption {
 //--- Constructor
@@ -70,6 +70,13 @@ class C_StringCommandLineOption : public C_CommandLineOption {
 
   public : static C_String getStringOptionCommentString (const C_String & inDomainName,
                                                        const C_String & inIdentifier) ;
+
+  public : static C_String getStringOptionValue (const C_String & inDomainName,
+                                                 const C_String & inIdentifier) ;
+
+  public : static void setStringOptionValue (const C_String & inDomainName,
+                                             const C_String & inIdentifier,
+                                             const C_String & inValue) ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
