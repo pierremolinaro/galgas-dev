@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_lstring & inKey%
   for () in ATTRIBUTE_LIST
@@ -13,7 +13,7 @@ end
 % {
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
   return mProperty_lkey.isValid ()%
@@ -23,7 +23,7 @@ bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
   % ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
   cMapElement * result = NULL ;
@@ -35,7 +35,7 @@ cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 %if [ATTRIBUTE_LIST length] == 0 then
   %void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {\n%
@@ -50,7 +50,7 @@ else
 end
 %}
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 typeComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
   cMapElement_%!TYPE_IDENTIFIER% * operand = (cMapElement_%!TYPE_IDENTIFIER% *) inOperand ;
@@ -63,7 +63,7 @@ typeComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionE
 %  return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_uniqueMap (%
@@ -75,20 +75,20 @@ AC_GALGAS_uniqueMap (%
 %, %![SHADOW_MESSAGE utf8Representation]%) {
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) :
 AC_GALGAS_uniqueMap (inSource) {
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) {
   * ((AC_GALGAS_uniqueMap *) this) = inSource ;
   return * this ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
@@ -96,9 +96,9 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCAT
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //  Map automaton states                                                                                               *
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 %
 for () in MAP_AUTOMATON_STATE_MAP
@@ -110,9 +110,9 @@ do
   %static const uint32_t kMapState_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% = %![mStateIndex string]% ;\n%
 end
 %
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //  Map automaton state names                                                                                          *
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 %
 for () in MAP_AUTOMATON_STATE_MAP_ORDERED_LIST
@@ -126,9 +126,9 @@ after
   %\n} ;\n%
 end
 %
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //  Map automaton actions                                                                                              *
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 %
 for () in MAP_AUTOMATON_ACTION_MAP
@@ -138,9 +138,9 @@ do
   %static const uint32_t kMapAction_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% = %![mActionIndex string]% ;\n%
 end
 %
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //  Map automaton transitions                                                                                          *
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 %
 for () in MAP_AUTOMATON_DEFINITION_SORTEDLIST
@@ -170,9 +170,9 @@ after
  %} ;\n%
 end
 %
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //  Map automaton final state issues                                                                                   *
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 %
 for () in MAP_AUTOMATON_DEFINITION_SORTEDLIST
@@ -196,7 +196,7 @@ after
 end
 
 if [MAP_AUTOMATON_DEFINITION_SORTEDLIST length] > 0 then
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::setter_closeBranch (%?^%GALGAS_location inErrorLocation,\n%
                             !^%C_Compiler * inCompiler\n%
                             !^%COMMA_LOCATION_ARGS) {\n%
@@ -210,7 +210,7 @@ if [MAP_AUTOMATON_DEFINITION_SORTEDLIST length] > 0 then
 end
 
 if [MAP_AUTOMATON_DEFINITION_SORTEDLIST length] > 0 then
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::method_checkAutomatonStates (%?^%GALGAS_location inErrorLocation,\n%
                             !^%C_Compiler * inCompiler\n%
                             !^%COMMA_LOCATION_ARGS) const {\n%
@@ -219,9 +219,9 @@ if [MAP_AUTOMATON_DEFINITION_SORTEDLIST length] > 0 then
 end
 
 for () in MAP_OVERRIDE_LIST do
-  %//---------------------------------------------------------------------------------------------------------------------*\n%
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n%
   %//%!["map override '" + mOverrideName + "'" stringByLeftAndRightPadding !117 !' ']%*\n%
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %static const cBranchOverrideTransformationDescriptor kBranchBehaviourForOverride_%
   !TYPE_IDENTIFIER
   %_%
@@ -245,7 +245,7 @@ for () in MAP_OVERRIDE_LIST do
     %},\n%
   end  
   %} ;\n\n%
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %static const cBranchOverrideCompatibilityDescriptor kBranchCombinationForOverride_%
   !TYPE_IDENTIFIER
   %_%
@@ -269,7 +269,7 @@ for () in MAP_OVERRIDE_LIST do
     %},\n%
   end  
   %} ;\n\n%
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::setter_openOverrideFor%![[mOverrideName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%C_Compiler * inCompiler\n%
                                 !^%COMMA_LOCATION_ARGS) {\n%
   %  openOverride (kBranchBehaviourForOverride_%!TYPE_IDENTIFIER%_%![mOverrideName identifierRepresentation]%, %![[mBranchBehaviourSortedListForMapOverride length] string]%,\n%
@@ -282,7 +282,7 @@ end
 
 %
 %for () in INSERT_METHOD_LIST do
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::setter_%![mInsertMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
     for () in ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% inArgument%![IDX string]
@@ -320,9 +320,9 @@ end
 end
 
 for () in SEARCH_METHOD_LIST do
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %const char * kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% = %![mErrorMessage utf8Representation]% ;\n\n%
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::%
     if [mActionName string] == "" then
       %method_%
@@ -367,7 +367,7 @@ for () in SEARCH_METHOD_LIST do
 end
 
 for () in ATTRIBUTE_LIST do index IDX
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%ForKey (%?^%const GALGAS_string & inKey,\n%
   %                                               %!^%C_Compiler * inCompiler\n%
   %                                               %!^%COMMA_LOCATION_ARGS) const {\n%
@@ -383,7 +383,7 @@ for () in ATTRIBUTE_LIST do index IDX
 end 
 
 for () in ATTRIBUTE_LIST do index IDX
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% inAttributeValue,\n%
   %                           %!^%GALGAS_string inKey,\n%
   %                           %!^%C_Compiler * inCompiler\n%
@@ -397,7 +397,7 @@ for () in ATTRIBUTE_LIST do index IDX
   %}\n\n%
 end 
 
-%//---------------------------------------------------------------------------------------------------------------------*
+%//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 cMapElement_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::readWriteAccessForWithInstruction (%?^%C_Compiler * inCompiler,\n%
              !^%const GALGAS_string & inKey\n%
@@ -407,7 +407,7 @@ cMapElement_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::readWriteAccessForWi
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                        %!^%const typeEnumerationOrder inOrder) :
@@ -415,7 +415,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
@@ -424,7 +424,7 @@ GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) cons
 }
 
 %for () in ATTRIBUTE_LIST do index IDX
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
