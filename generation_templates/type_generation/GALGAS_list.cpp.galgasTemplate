@@ -1,8 +1,8 @@
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
 //%!["Class for element of '@" + TYPE_IDENTIFIER + "' list" stringByLeftAndRightPadding !117 !' ']%*
 //                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
   public : GALGAS_%!TYPE_IDENTIFIER%_2D_element mObject ;
@@ -29,7 +29,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
   public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 cCollectionElement_%!TYPE_IDENTIFIER%::cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   for () in ATTRIBUTE_LIST
@@ -47,13 +47,13 @@ end
 %) {
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 bool cCollectionElement_%!TYPE_IDENTIFIER%::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
   cCollectionElement * result = NULL ;
@@ -66,7 +66,7 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, const int32_t inIndentation) const {
 %
@@ -78,7 +78,7 @@ void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, co
   end
 %}
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 typeComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_%!TYPE_IDENTIFIER% * operand = (cCollectionElement_%!TYPE_IDENTIFIER% *) inOperand ;
@@ -86,25 +86,25 @@ typeComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cColl
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_list () {
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER%  (capCollectionElementArray ()) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (%?^
   for () in ATTRIBUTE_LIST
@@ -131,7 +131,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void GALGAS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
   for () in ATTRIBUTE_LIST
@@ -150,7 +150,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (%?^%capCollectionElem
   macroDetachSharedObject (p) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   for () in ATTRIBUTE_LIST
@@ -177,7 +177,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   }
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^
   for () in ATTRIBUTE_LIST do index IDX
@@ -205,7 +205,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_insertAtIndex (%?^
   }
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^
   for () in ATTRIBUTE_LIST do index IDX
@@ -233,7 +233,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_removeAtIndex (%?^
   }
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^
   for () in ATTRIBUTE_LIST
@@ -258,7 +258,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popFirst (%?^
 %  }
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_popLast (%?^
   for () in ATTRIBUTE_LIST
@@ -283,7 +283,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_popLast (%?^
 %  }
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
   for () in ATTRIBUTE_LIST
@@ -308,7 +308,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
 %  }
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
   for () in ATTRIBUTE_LIST
@@ -333,7 +333,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
 %  }
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,
                                             %!^%C_Compiler * /* inCompiler */
@@ -346,7 +346,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GA
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListWithRange (%?^%const GALGAS_range & inRange,
                                                %!^%C_Compiler * inCompiler
@@ -356,7 +356,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListWithRange (%?
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListFromIndex (%?^%const GALGAS_uint & inIndex,
                                                %!^%C_Compiler * inCompiler
@@ -366,7 +366,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListFromIndex (%?
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListToIndex (%?^%const GALGAS_uint & inIndex,
                                                %!^%C_Compiler * inCompiler
@@ -376,7 +376,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subListToIndex (%?^%
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void GALGAS_%!TYPE_IDENTIFIER%::plusAssign_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% inOperand,
                           %!^%C_Compiler * /* inCompiler */
@@ -387,7 +387,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::plusAssign_operation (%?^%const GALGAS_%!TYPE_ID
 %
 for () in ATTRIBUTE_LIST do index IDX
   if mHasSetter then
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% inOperand,\n%
   %                                              %!^%GALGAS_uint inIndex,\n%
   %                                              %!^%C_Compiler * inCompiler\n%
@@ -402,7 +402,7 @@ for () in ATTRIBUTE_LIST do index IDX
   end
 
   if mHasGetter then
-    %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+    %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
     %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint & inIndex,\n%
     %                                              %!^%C_Compiler * inCompiler\n%
     %                                              %!^%COMMA_LOCATION_ARGS) const {\n%
@@ -419,7 +419,7 @@ for () in ATTRIBUTE_LIST do index IDX
 end
 %
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                    %!^%const typeEnumerationOrder inOrder) :
@@ -427,7 +427,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
@@ -437,7 +437,7 @@ GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LO
 
 
 %for () in ATTRIBUTE_LIST do index IDX
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
