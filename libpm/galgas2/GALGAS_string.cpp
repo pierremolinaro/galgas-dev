@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1996, ..., 2016 Pierre Molinaro.                                                                     *
+//  Copyright (C) 1996, ..., 2018 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -364,6 +364,13 @@ GALGAS_string GALGAS_string::constructor_retrieveAndResetTemplateString (C_Compi
   return inCompiler->retrieveAndResetTemplateString () ;
 }
 
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_string GALGAS_string::constructor_separatorString (C_Compiler * inCompiler
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  return inCompiler->separatorString () ;
+}
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

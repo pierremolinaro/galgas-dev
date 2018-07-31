@@ -725,6 +725,7 @@
 		CFA1756C1C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA175691C89BF8E00BB0B17 /* cLexiqueIntrospection.cpp */; };
 		CFA59E4F128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA59E4B128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp */; };
 		CFA59E50128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA59E4B128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp */; };
+		CFA684E82110C0BF0088A8A1 /* all-declarations-26.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF64D73A2062B2C80058C8CA /* all-declarations-26.cpp */; };
 		CFAC1A0B1C3318B800465212 /* C_galgas_quiet_option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAC1A091C3318B800465212 /* C_galgas_quiet_option.cpp */; };
 		CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */; };
 		CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */; };
@@ -2391,6 +2392,7 @@
 				CF2C858E1CC3B0890008D960 /* GALGAS_string.cpp in Sources */,
 				CF2C858F1CC3B0890008D960 /* mpn-addmul_1.c in Sources */,
 				CF2C85901CC3B0890008D960 /* mpn-toom3_sqr.c in Sources */,
+				CFA684E82110C0BF0088A8A1 /* all-declarations-26.cpp in Sources */,
 				CF2C85911CC3B0890008D960 /* GALGAS_type.cpp in Sources */,
 				CF2C85921CC3B0890008D960 /* GALGAS_uint_36__34_.cpp in Sources */,
 				CF2C85931CC3B0890008D960 /* GALGAS_uint.cpp in Sources */,

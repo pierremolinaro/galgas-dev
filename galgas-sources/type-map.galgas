@@ -253,7 +253,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !name:"emptyMap"
     !resultTypeName:[mMapTypeName string]
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?constructorMap
@@ -262,7 +262,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !argTypeName:[mMapTypeName string]
     !argName:"inMap"
     !resultTypeName:[mMapTypeName string]
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 #--- Getters
   enterInheritedGetterWithoutArgument (

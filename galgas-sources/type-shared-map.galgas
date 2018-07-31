@@ -373,7 +373,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !name:"emptyMap"
     !resultTypeName:[mMapTypeName string]
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 #--- Readers
   enterInheritedGetterWithoutArgument (

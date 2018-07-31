@@ -91,7 +91,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !name:"null"
     !resultTypeName:[mMapProxyTypeName string]
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 #--- Search methods of associated map as constructors
   var constructorAttributeTypeList =@functionSignature {}

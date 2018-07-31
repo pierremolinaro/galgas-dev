@@ -106,7 +106,7 @@ override method @listDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap 
     !name:"emptyList"
     !resultTypeName:[mListTypeName string]
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   [!?constructorMap insertKey
     !@lstring.new {!"listWithValue" !@location.here}

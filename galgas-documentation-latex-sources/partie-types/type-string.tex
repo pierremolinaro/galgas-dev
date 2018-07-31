@@ -146,6 +146,45 @@ Ce constructeur est utilisé pour la génération de \emph{templates}.
 
 
 
+
+
+\subsectionConstructor{separatorString}{string}
+
+\begin{galgasbox}
+constructor separatorString -> @string
+\end{galgasbox}
+
+Ce constructeur renvoie la chaîne de caractères formant le séparateur entre le token courant et le suivant (y compris les commentaires). Son utilisation principale est de permettre d'implémenter un mécanisme permettant de vérifier qu'une instruction se termine par une fin de ligne, ou un \ggs=;=.
+
+Par exemple, considérons l'analyse d'une liste d'instructions :
+
+\begin{galgas}
+repeat
+while
+  <instruction>
+end
+\end{galgas}
+
+Dans le code ci-dessus, rien n'oblige à séparer les instructions par une fin de ligne. On impose l'occurrence d'une fin de ligne (ou plusieurs) ou d'un \ggs=;= en écrivant :
+
+\begin{galgas}
+repeat
+while
+  <instruction>
+  select
+   $;$
+  or
+    let s = @string.separatorString 
+    if not [s containsCharacter !'\n'] then
+      error .here
+       : "instruction should be terminated by an end of line or a ';'"
+    end
+  end
+end
+\end{galgas}
+
+
+
 \subsectionConstructor{stringWithContentsOfFile}{string}
 
 \begin{galgasbox}

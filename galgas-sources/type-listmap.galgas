@@ -137,7 +137,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !name:"emptyMap"
     !resultTypeName:[mListmapTypeName string]
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 #--- Enumerator description
   var enumeratorDescriptor =@enumerationDescriptorList {}

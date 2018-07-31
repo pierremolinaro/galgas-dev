@@ -6,6 +6,24 @@
 *.list
 *.o
 *.dep
+testsuite/*
+build/*
+project-xcode-galgas/build-developer-v3/*
+project-xcode-galgas/galgas-developer-v3.xcodeproj/xcuserdata/*
+project-xcode-galgas/galgas-developer-v3.xcodeproj/project.xcworkspace/*
+
+project-xcode-galgas/galgas-distribution/*
+project-xcode-galgas/galgas-distribution.xcodeproj/xcuserdata/*
+project-xcode-galgas/galgas-distribution.xcodeproj/project.xcworkspace/*
+
+makefile-macosx/galgas
+makefile-macosx/galgas-debug
+makefile-x86linux32-on-macosx/galgas
+makefile-x86linux32-on-macosx/galgas-debug
+makefile-x86linux64-on-macosx/galgas
+makefile-x86linux64-on-macosx/galgas-debug
+makefile-win32-on-macosx/galgas.exe
+makefile-win32-on-macosx/galgas-debug.exe
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

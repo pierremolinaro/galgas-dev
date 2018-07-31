@@ -145,7 +145,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !?ioSemanticContext.mTypeMap
     !name:"emptySortedList"
     !resultTypeName:[mSortedListTypeName string]
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   [!?constructorMap insertKey
     !@lstring.new {!"sortedListWithValue" !@location.here}

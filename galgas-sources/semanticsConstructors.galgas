@@ -19,7 +19,7 @@ proc enterConstructorWithoutArgument
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ?name:let @string inConstructorName
   ?resultTypeName:let @string inReturnedTypeName
-  ?hasLexiqueAndLocationArgs:let @bool inHasLexiqueAndLocationArguments
+  ?hasLexiqueArg:let @bool inHasLexiqueArgument
 {
   [@unifiedTypeMap-proxy makeProxyFromString
     !?ioUnifiedTypeMap
@@ -29,7 +29,7 @@ proc enterConstructorWithoutArgument
   [!?ioConstructorMap insertOrReplace
     !@lstring.new {!inConstructorName !@location.here}
     !@functionSignature {}
-    !inHasLexiqueAndLocationArguments
+    !inHasLexiqueArgument
     !returnedTypeIndex
   ]
 }
@@ -43,14 +43,14 @@ proc enterConstructorWithArgument
   ?argTypeName:let @string inArgument1TypeName
   ?argName:let @string inArgument1Name
   ?resultTypeName:let @string inReturnedTypeName
-  ?hasLexiqueAndLocationArgs:let @bool inHasLexiqueAndLocationArguments
+  ?hasLexiqueArg:let @bool inHasLexiqueArgument
 {
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?let t]
   [!?ioConstructorMap insertOrReplace
     !@lstring.new {!inConstructorName !@location.here}
     !@functionSignature {!["" nowhere] !t !inArgument1Name}
-    !inHasLexiqueAndLocationArguments
+    !inHasLexiqueArgument
     !returnedTypeIndex
   ]
 }
@@ -66,7 +66,7 @@ proc enterConstructorWith2Arguments
   ?argTypeName2:let @string inArgument2TypeName
   ?argName2:let @string inArgument2Name
   ?resultTypeName:let @string inReturnedTypeName
-  ?hasLexiqueAndLocationArgs:let @bool inHasLexiqueAndLocationArguments
+  ?hasLexiqueArg:let @bool inHasLexiqueArgument
 {
   @unifiedTypeMap-proxy returnedTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
@@ -79,7 +79,7 @@ proc enterConstructorWith2Arguments
   [!?ioConstructorMap insertOrReplace
     !@lstring.new {!inConstructorName !@location.here}
     !argumentTypeList
-    !inHasLexiqueAndLocationArguments
+    !inHasLexiqueArgument
     !returnedTypeIndex
   ]
 }
@@ -97,7 +97,7 @@ proc enterConstructorWith3Arguments
   ?argTypeName3:let @string inArgument3TypeName
   ?argName3:let @string inArgument3Name
   ?resultTypeName:let @string inReturnedTypeName
-  ?hasLexiqueAndLocationArgs:let @bool inHasLexiqueAndLocationArguments
+  ?hasLexiqueArg:let @bool inHasLexiqueArgument
 {
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let @unifiedTypeMap-proxy returnedTypeIndex]
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?@unifiedTypeMap-proxy t]
@@ -110,7 +110,7 @@ proc enterConstructorWith3Arguments
   [!?ioConstructorMap insertOrReplace
     !@lstring.new {!inConstructorName !@location.here}
     !argumentTypeList
-    !inHasLexiqueAndLocationArguments
+    !inHasLexiqueArgument
     !returnedTypeIndex
   ]
 }
@@ -126,21 +126,21 @@ override method @locationPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"nowhere"
     !resultTypeName:"location"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"here"
     !resultTypeName:"location"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"next"
     !resultTypeName:"location"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
 }
 
@@ -155,21 +155,28 @@ override method @stringPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"homeDirectory"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"newWithStdIn"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"retrieveAndResetTemplateString"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
+  )
+  enterConstructorWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name:"separatorString"
+    !resultTypeName:"string"
+    !hasLexiqueArg:true
   )
   enterConstructorWithArgument (
     !?outMap
@@ -178,21 +185,21 @@ override method @stringPredefinedTypeAST getConstructorMap
     !argTypeName:"string"
     !argName:"inPath"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"stringWithSourceFilePath"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"stringWithCurrentDirectory"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -201,14 +208,14 @@ override method @stringPredefinedTypeAST getConstructorMap
     !argTypeName:"string"
     !argName:"inFilePath"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"stringWithCurrentDateTime"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -217,7 +224,7 @@ override method @stringPredefinedTypeAST getConstructorMap
     !argTypeName:"string"
     !argName:"inVariableName"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWithArgument (
     !?outMap
@@ -226,21 +233,21 @@ override method @stringPredefinedTypeAST getConstructorMap
     !argTypeName:"string"
     !argName:"inVariableName"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"CppLineComment"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"CppSpaceComment"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -249,7 +256,7 @@ override method @stringPredefinedTypeAST getConstructorMap
     !argTypeName:"string"
     !argName:"inString"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -258,7 +265,7 @@ override method @stringPredefinedTypeAST getConstructorMap
     !argTypeName:"string"
     !argName:"inString"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -267,7 +274,7 @@ override method @stringPredefinedTypeAST getConstructorMap
     !argTypeName:"char"
     !argName:"inChar"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWith2Arguments (
     !?outMap
@@ -278,7 +285,7 @@ override method @stringPredefinedTypeAST getConstructorMap
     !argTypeName2:"string"
     !argName2:"inSeparator"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWith2Arguments (
     !?outMap
@@ -289,7 +296,7 @@ override method @stringPredefinedTypeAST getConstructorMap
     !argTypeName2:"uint"
     !argName2:"inCount"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 }
 
@@ -304,35 +311,35 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"system"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"verboseOutput"
     !resultTypeName:"bool"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"projectVersionString"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"galgasVersionString"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"commandLineArgumentCount"
     !resultTypeName:"uint"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -341,7 +348,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !argTypeName:"uint"
     !argName:"inIndex"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
 #--- Constructors for "bool" options
   enterConstructorWithoutArgument (
@@ -349,7 +356,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"boolOptionNameList"
     !resultTypeName:"2stringlist"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWith2Arguments (
     !?outMap
@@ -360,7 +367,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !argTypeName2:"string"
     !argName2:"inOptionName"
     !resultTypeName:"char"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWith2Arguments (
     !?outMap
@@ -371,7 +378,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !argTypeName2:"string"
     !argName2:"inOptionName"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWith2Arguments (
     !?outMap
@@ -382,7 +389,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !argTypeName2:"string"
     !argName2:"inOptionName"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWith2Arguments (
     !?outMap
@@ -393,7 +400,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !argTypeName2:"string"
     !argName2:"inOptionName"
     !resultTypeName:"bool"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 #--- Constructors for "uint" options
   enterConstructorWithoutArgument (
@@ -401,7 +408,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"uintOptionNameList"
     !resultTypeName:"2stringlist"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWith2Arguments (
     !?outMap
@@ -412,7 +419,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !argTypeName2:"string"
     !argName2:"inOptionName"
     !resultTypeName:"char"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWith2Arguments (
     !?outMap
@@ -423,7 +430,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !argTypeName2:"string"
     !argName2:"inOptionName"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWith2Arguments (
     !?outMap
@@ -434,7 +441,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !argTypeName2:"string"
     !argName2:"inOptionName"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWith2Arguments (
     !?outMap
@@ -445,7 +452,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !argTypeName2:"string"
     !argName2:"inOptionName"
     !resultTypeName:"uint"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 #--- Constructors for "string" options
   enterConstructorWithoutArgument (
@@ -453,7 +460,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"stringOptionNameList"
     !resultTypeName:"2stringlist"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWith2Arguments (
     !?outMap
@@ -464,7 +471,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !argTypeName2:"string"
     !argName2:"inOptionName"
     !resultTypeName:"char"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWith2Arguments (
     !?outMap
@@ -475,7 +482,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !argTypeName2:"string"
     !argName2:"inOptionName"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWith2Arguments (
     !?outMap
@@ -486,7 +493,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !argTypeName2:"string"
     !argName2:"inOptionName"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWith2Arguments (
     !?outMap
@@ -497,7 +504,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !argTypeName2:"string"
     !argName2:"inOptionName"
     !resultTypeName:"string"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 #--- Constructors for lexical keyword lists
   enterConstructorWithoutArgument (
@@ -505,7 +512,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"keywordIdentifierSet"
     !resultTypeName:"stringset"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -514,7 +521,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
     !argTypeName:"string"
     !argName:"inIdentifier"
     !resultTypeName:"stringlist"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 }
 
@@ -530,7 +537,7 @@ override method @charPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"replacementCharacter"
     !resultTypeName:"char"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -539,14 +546,14 @@ override method @charPredefinedTypeAST getConstructorMap
     !argTypeName:"uint"
     !argName:"inValue"
     !resultTypeName:"char"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"unicodeCharacterFromRawKeyboard"
     !resultTypeName:"char"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
 }
 
@@ -561,35 +568,35 @@ override method @uintPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"compilationMode"
     !resultTypeName:"uint"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"random"
     !resultTypeName:"uint"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"max"
     !resultTypeName:"uint"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"errorCount"
     !resultTypeName:"uint"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"warningCount"
     !resultTypeName:"uint"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWith2Arguments (
     !?outMap
@@ -600,7 +607,7 @@ override method @uintPredefinedTypeAST getConstructorMap
     !argTypeName2:"uint"
     !argName2:"inUpperIndex"
     !resultTypeName:"uint"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
 }
 
@@ -615,14 +622,14 @@ override method @sintPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"max"
     !resultTypeName:"sint"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"min"
     !resultTypeName:"sint"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 }
 
@@ -637,7 +644,7 @@ override method @uint64PredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"max"
     !resultTypeName:"uint64"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -646,7 +653,7 @@ override method @uint64PredefinedTypeAST getConstructorMap
     !argTypeName:"string"
     !argName:"inBitString"
     !resultTypeName:"uint64"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWithArgument (
     !?outMap
@@ -655,7 +662,7 @@ override method @uint64PredefinedTypeAST getConstructorMap
     !argTypeName:"string"
     !argName:"inBitString"
     !resultTypeName:"uint64"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWithArgument (
     !?outMap
@@ -664,7 +671,7 @@ override method @uint64PredefinedTypeAST getConstructorMap
     !argTypeName:"string"
     !argName:"inBitString"
     !resultTypeName:"uint64"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
 }
 
@@ -679,14 +686,14 @@ override method @sint64PredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"max"
     !resultTypeName:"sint64"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"min"
     !resultTypeName:"sint64"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 }
 
@@ -701,7 +708,7 @@ override method @stringsetPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"emptySet"
     !resultTypeName:"stringset"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -710,7 +717,7 @@ override method @stringsetPredefinedTypeAST getConstructorMap
     !argTypeName:"string"
     !argName:"inString"
     !resultTypeName:"stringset"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -719,7 +726,7 @@ override method @stringsetPredefinedTypeAST getConstructorMap
     !argTypeName:"stringlist"
     !argName:"inStringList"
     !resultTypeName:"stringset"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -728,7 +735,7 @@ override method @stringsetPredefinedTypeAST getConstructorMap
     !argTypeName:"lstringlist"
     !argName:"inLStringList"
     !resultTypeName:"stringset"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 }
 
@@ -745,21 +752,21 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !argTypeName:"uint"
     !argName:"inBitIndex"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"emptyBinarySet"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithoutArgument (
     !?outMap
     !?ioUnifiedTypeMap
     !name:"fullBinarySet"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -768,7 +775,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !argTypeName:"string"
     !argName:"inPredicateString"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWith3Arguments (
     !?outMap
@@ -781,7 +788,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !argTypeName3:"uint"
     !argName3:"inRightFirstIndex"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWith3Arguments (
     !?outMap
@@ -794,7 +801,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !argTypeName3:"uint"
     !argName3:"inRightFirstIndex"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWith3Arguments (
     !?outMap
@@ -807,7 +814,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !argTypeName3:"uint"
     !argName3:"inRightFirstIndex"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWith3Arguments (
     !?outMap
@@ -820,7 +827,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !argTypeName3:"uint"
     !argName3:"inRightFirstIndex"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWith3Arguments (
     !?outMap
@@ -833,7 +840,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !argTypeName3:"uint"
     !argName3:"inRightFirstIndex"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWith3Arguments (
     !?outMap
@@ -846,7 +853,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !argTypeName3:"uint"
     !argName3:"inRightFirstIndex"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWith3Arguments (
     !?outMap
@@ -859,7 +866,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !argTypeName3:"uint64"
     !argName3:"inConstant"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWith3Arguments (
     !?outMap
@@ -872,7 +879,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !argTypeName3:"uint64"
     !argName3:"inConstant"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWith3Arguments (
     !?outMap
@@ -885,7 +892,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !argTypeName3:"uint64"
     !argName3:"inConstant"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWith3Arguments (
     !?outMap
@@ -898,7 +905,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !argTypeName3:"uint64"
     !argName3:"inConstant"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWith3Arguments (
     !?outMap
@@ -911,7 +918,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !argTypeName3:"uint64"
     !argName3:"inConstant"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
   enterConstructorWith3Arguments (
     !?outMap
@@ -924,7 +931,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
     !argTypeName3:"uint64"
     !argName3:"inConstant"
     !resultTypeName:"binaryset"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
 }
 
@@ -939,7 +946,7 @@ override method @typePredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"typeList"
     !resultTypeName:"typelist"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 }
 
@@ -955,7 +962,7 @@ override method @bigintPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"zero"
     !resultTypeName:"bigint"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 }
 
@@ -971,7 +978,7 @@ override method @dataPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"emptyData"
     !resultTypeName:"data"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -980,7 +987,7 @@ override method @dataPredefinedTypeAST getConstructorMap
     !argTypeName:"string"
     !argName:"inFilePath"
     !resultTypeName:"data"
-    !hasLexiqueAndLocationArgs:true
+    !hasLexiqueArg:true
   )
 }
 
@@ -995,7 +1002,7 @@ override method @functionPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"functionList"
     !resultTypeName:"functionlist"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -1004,7 +1011,7 @@ override method @functionPredefinedTypeAST getConstructorMap
     !argTypeName:"string"
     !argName:"inName"
     !resultTypeName:"function"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -1013,7 +1020,7 @@ override method @functionPredefinedTypeAST getConstructorMap
     !argTypeName:"string"
     !argName:"inFunctionName"
     !resultTypeName:"bool"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 }
 
@@ -1029,7 +1036,7 @@ override method @doublePredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"pi"
     !resultTypeName:"double"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
   enterConstructorWithArgument (
     !?outMap
@@ -1038,7 +1045,7 @@ override method @doublePredefinedTypeAST getConstructorMap
     !argTypeName:"uint64"
     !argName:"inBinaryImage"
     !resultTypeName:"double"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 }
 
@@ -1054,7 +1061,7 @@ override method @timerPredefinedTypeAST getConstructorMap
     !?ioUnifiedTypeMap
     !name:"start"
     !resultTypeName:"timer"
-    !hasLexiqueAndLocationArgs:false
+    !hasLexiqueArg:false
   )
 }
 

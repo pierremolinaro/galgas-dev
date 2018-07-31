@@ -218,6 +218,9 @@ class GALGAS_string : public AC_GALGAS_root {
   public : static class GALGAS_string constructor_retrieveAndResetTemplateString (C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) ;
 
+  public : static class GALGAS_string constructor_separatorString (C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) ;
+
   public : static class GALGAS_string constructor_stringWithContentsOfFile (const class GALGAS_string & inOperand0,
                                                                             class C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) ;
