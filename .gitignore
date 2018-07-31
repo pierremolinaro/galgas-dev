@@ -25,6 +25,10 @@ makefile-x86linux64-on-macosx/galgas-debug
 makefile-win32-on-macosx/galgas.exe
 makefile-win32-on-macosx/galgas-debug.exe
 
+galgas-documentation-latex-sources/galgas-book.pdf
+galgas-documentation-latex-sources/temp.galgas
+galgas-documentation-latex-sources/temp.galgas.tex
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
