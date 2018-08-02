@@ -1,0 +1,40 @@
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//%!["@" + TYPE_NAME + " dict" stringByLeftAndRightPadding !117 !' ']%*
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class cSharedDictRoot_%!TYPE_IDENTIFIER% ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+//--------------------------------- Attributes
+  private : cSharedDictRoot_%!TYPE_IDENTIFIER% * mSharedDict ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
+//--------------------------------- Destructor
+  public : virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
+//--------------------------------- Handle copy
+  public : GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
+  public : GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
+
+//--- isValid
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSharedDict != NULL ; }
+
+//--- drop
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--- Implementation of reader 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+
+//--- Insulate
+  private : void insulate (LOCATION_ARGS) ;
+
+//--- Enumeration
+  public : void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
+

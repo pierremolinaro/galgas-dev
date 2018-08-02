@@ -1,0 +1,463 @@
+#----------------------------------------------------------------------------------------------------------------------*
+#   AST                                                                                                                *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @dictDeclarationAST : @semanticDeclarationAST {
+  @lstring mDictTypeName
+  @lstring mKeyTypeName
+  @lstringlist mAttributeList
+  @propertyInCollectionListAST mPropertyList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override getter @dictDeclarationAST keyRepresentation ->@string outString {
+  outString = "dict @" + mDictTypeName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SYNTAX                                                                                                             *
+#----------------------------------------------------------------------------------------------------------------------*
+
+syntax extension galgas3DeclarationsSyntax {
+
+  #·····················································································································
+  
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
+    $dict$
+  #--- Dict type name
+    $@type$ ?let mDictTypeName indexing mapDefinition, structDefinition "-element"
+  #--- Dict key type name
+    $:$
+    $@type$ ?let keyTypeName
+  #--- Map attributes
+    @lstringlist mapAttributeList = {}
+    repeat
+    while
+      $%attribute$ ?let attribute
+      mapAttributeList += !attribute
+    end
+  #--- Map properties
+    ${$
+    var propertyList =@propertyInCollectionListAST {}
+    repeat
+    while
+      <property_declaration> !? propertyList
+    while
+      $;$
+    end
+    $}$
+    ioDeclarations.mDeclarationList += !@dictDeclarationAST.new {
+      !false # Is not predefined
+      !mDictTypeName
+      !keyTypeName
+      !mapAttributeList
+      !propertyList
+    }
+  }
+  
+  #·····················································································································
+
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ASSOCIATED ELEMENT                                                                                                 *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationListAST ioSemanticDeclarationList {
+  @propertyInCollectionListAST structAttributeList = {}
+  structAttributeList += !mKeyTypeName !["key" nowhere] !{}
+  for () in mPropertyList do
+    structAttributeList += !mPropertyTypeName !mPropertyName !{}
+  end
+  ioSemanticDeclarationList += !@structDeclarationAST.new {
+    !mIsPredefined
+    !.new {!mDictTypeName.string + elementTypeNameSuffix () !mDictTypeName.location}
+    !structAttributeList
+    !""
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN GRAPH                                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @dictDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@extensionMethodMapForBuildingContext unused ioExtensionMethodMapForBuildingContext
+  ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
+  ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
+ {
+  let dictionary = @lstring.new {!"@" + mDictTypeName ![mDictTypeName location]}
+  [!?ioSemanticTypePrecedenceGraph addNode !dictionary !self]
+  [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mKeyTypeName !mKeyTypeName}]
+  for () in mPropertyList do
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName}]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   ENTER IN SEMANTIC CONTEXT                                                                                          *
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @dictDeclarationAST enterInSemanticContext
+  ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
+  ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
+  ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
+  ?!@semanticContext ioSemanticContext {
+#--- key type index
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !mKeyTypeName ?let keyTypeIndex]
+#--- Enumeration description
+  var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!keyTypeIndex !"key"}
+#--- Attributes
+  @bool usesSelectorsInInsertAndSearch = false
+  for (s) in mAttributeList do
+    if s.string == "selectors" then
+      if usesSelectorsInInsertAndSearch then
+        error s : "duplicated attribute"
+      end
+      usesSelectorsInInsertAndSearch = true
+    else
+      error s : "unknown attribute"
+    end
+  end
+#---
+  @constructorMap constructorMap = {}
+  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
+  @setterMap setterMap = {}
+  @instanceMethodMap instanceMethodMap = {}
+#--- Constructors
+  enterConstructorWithoutArgument (
+    !?constructorMap
+    !?ioSemanticContext.mTypeMap
+    !name:"emptyDict"
+    !resultTypeName:mDictTypeName.string
+    !hasLexiqueArg:false
+  )
+#--- Getters
+  enterInheritedGetterWithArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"hasKey"
+    !argumentTypeName:"string"
+    !argumentName:"inKey"
+    !returnedTypeName:"bool"
+    !hasCompilerArgument:false
+  )
+  enterInheritedGetterWithoutArgument (
+    !?getterMap
+    !?ioSemanticContext.mTypeMap
+    !getterName:"count"
+    !returnedTypeName:"uint"
+    !hasCompilerArgument:false
+  )
+#--- Handle properties
+  @formalParameterSignature insertMethodFormalArgumentList = {}
+  @typedPropertyList typedPropertyList = {}
+  @functionSignature argumentTypeListForAddAssignWithFieldExpressionList = {}
+  argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !keyTypeIndex !"key"
+  insertMethodFormalArgumentList +=
+    ![if usesSelectorsInInsertAndSearch then "key" else "" end nowhere]
+    !keyTypeIndex
+    !@formalArgumentPassingModeAST.argumentConstantIn
+    !"inKey"
+  @formalParameterSignature removeMethodFormalArgumentList = {}
+  removeMethodFormalArgumentList +=
+    ![if usesSelectorsInInsertAndSearch then "key" else "" end nowhere]
+    !keyTypeIndex
+    !@formalArgumentPassingModeAST.argumentConstantIn
+    !"inKey"
+  var typesToIncludeInHeaderCompilation = @unifiedTypeMapProxyList.emptyList
+  for () in mPropertyList do
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    @bool hasGetter = true
+    @bool hasSetter = true
+    argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
+    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
+    typesToIncludeInHeaderCompilation += !attributeTypeIndex
+    enumerationDescriptor += !attributeTypeIndex ![mPropertyName string]
+    insertMethodFormalArgumentList +=
+      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
+      !attributeTypeIndex
+      !@formalArgumentPassingModeAST.argumentConstantIn
+      !mPropertyName.string
+    removeMethodFormalArgumentList +=
+      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
+      !attributeTypeIndex
+      !@formalArgumentPassingModeAST.argumentOut
+      !mPropertyName.string
+  end
+#--- Handle remove setter
+  [!?setterMap insertOrReplace
+    !.new {!"removeKey" !mDictTypeName.location}
+    !@methodKind.definedAsMember
+    !removeMethodFormalArgumentList
+    !true
+    !@methodQualifier.isBasic
+    !""
+  ]
+#--- Handle search methods (methods if no state, setters if states)
+  [!?instanceMethodMap insertKey
+    !.new {!"searchKey" !mDictTypeName}
+    !@methodKind.definedAsMember
+    !removeMethodFormalArgumentList
+    !mDictTypeName.location
+    !true
+    !@methodQualifier.isBasic
+    !"" # No error message
+  ]
+#--- Enter "attributeForKey" getters
+  for () in mPropertyList do
+    let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
+    [!?getterMap insertOrReplace
+      !accessorName
+      !@methodKind.definedAsMember
+      !@functionSignature {!["" nowhere] !keyTypeIndex !"inKey"}
+      !@location.here
+      !true
+      !attributeTypeIndex
+      !@methodQualifier.isBasic
+      !"" # No Error message
+    ]
+  end
+#---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
+  for () in mPropertyList do
+    let accessorName = @lstring.new {
+      !"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey"
+      ![mPropertyName location]
+    }
+    [@unifiedTypeMap-proxy makeProxy
+      !?ioSemanticContext.mTypeMap
+      !mPropertyTypeName
+      ?let @unifiedTypeMap-proxy attributeTypeIndex
+    ]
+    var accessorFormalArgumentList =@formalParameterSignature {}
+    accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
+    accessorFormalArgumentList += !["" nowhere] !keyTypeIndex !.argumentConstantIn !"key"
+    [!?setterMap insertOrReplace
+      !accessorName
+      !@methodKind.definedAsMember
+      !accessorFormalArgumentList
+      !true
+      !@methodQualifier.isBasic
+      !"" # No error message
+    ]
+  end
+#--- Add Categories
+  addExtensions (
+    !inExtensionMethodMapForBuildingContext
+    !inExtensionGetterMapForBuildingContext
+    !inExtensionSetterMapForBuildingContext
+    !?ioSemanticContext
+    !mDictTypeName
+    !?getterMap
+    !?setterMap
+    !?instanceMethodMap
+  )
+#--- Element type index
+  [@unifiedTypeMap-proxy makeProxy
+    !?ioSemanticContext.mTypeMap
+    !@lstring.new {!mDictTypeName.string + elementTypeNameSuffix () !mDictTypeName.location}
+    ?let @unifiedTypeMap-proxy elementTypeProxy
+  ]
+#--- Enter in type map
+  [!?ioSemanticContext.mTypeMap insertKey
+    !mDictTypeName
+    !mIsPredefined
+    !true # Concrete Type
+    !@unifiedTypeMap-proxy.null
+    !@typeKindEnum.mapType
+    !true # Support collection value
+    !@typedPropertyList.emptyList
+    !{}
+    !typedPropertyList
+    !constructorMap
+    !getterMap
+    !setterMap
+    !instanceMethodMap
+    !@classMethodMap.emptyMap
+    !enumerationDescriptor
+    !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
+    !argumentTypeListForAddAssignWithFieldExpressionList
+    !{}
+    !{}
+    !{}
+    !{}
+    !false # Do not generate header in separate file
+    !elementTypeProxy # Type for enumerated element for "for" instruction
+    !"emptyDict"
+    !"dict-" + [mDictTypeName fileNameRepresentation]
+    !@headerKind.oneHeader
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#   SEMANTIC ANALYSIS                                                                                                  *
+#----------------------------------------------------------------------------------------------------------------------*
+
+proc check_K_escapeCharacters ?@lstring inString {  #--- Check escape sequences : only %K or %%
+  for components in [[inString string] componentsSeparatedByString !"%%"] do
+    @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
+    [!?explodedArray popFirst ?*]
+    for () in explodedArray do
+      if [mValue length] > 0 then
+        let @char c = [mValue characterAtIndex !0]
+        if c != 'K' then
+          error inString: "only '%K' and '%%' escape sequences are allowed in this error message"
+        end
+      end
+    end
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+proc check_K_L_escapeCharacters ?@lstring inString {  #--- Check escape sequences : only %K, %L or %%
+  for components in [[inString string] componentsSeparatedByString !"%%"] do
+    @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
+    [!?explodedArray popFirst ?*]
+    for () in explodedArray do
+      if [mValue length] > 0 then
+        let @char c = [mValue characterAtIndex !0]
+        if (c != 'K') & (c != 'L') then
+          error inString: "only '%K', '%L' and '%%' escape sequences are allowed in this error message"
+        end
+      end
+    end
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+func %once forbiddenKeysForMapAndDict -> @stringset {
+  result = {}
+  result += !"key"
+  result += !"description"
+  result += !"object"
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @dictDeclarationAST semanticAnalysis
+  ?!@lstringlist unused ioUsefulnessRootEntities 
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @string unused inProductDirectory
+  ?let @semanticContext inSemanticContext
+  ?let @predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
+{
+#--- Useful entities graph
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mDictTypeName)
+  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!mDictTypeName.string + "-element" !mDictTypeName})
+  [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
+#------ Enter attributes
+  @typedPropertyList typedAttributeList = {}
+  @propertyIndexMap attributeMap = {}
+  for () in mPropertyList do
+    let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
+    [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
+    @unifiedTypeMap-proxy t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
+    @bool hasSetter = true
+    @bool hasGetter = true
+    typedAttributeList +=
+      !t
+      !mPropertyName
+      !hasSetter
+      !hasGetter
+    if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
+      @string m = "a property cannot be named:"
+      for s in forbiddenKeysForMapAndDict () do
+        m+= " " + s
+      end
+      m += "; theses names are reserved"
+      error mPropertyName: m
+    end
+    [!?attributeMap insertKey !mPropertyName !t]
+  end
+#--- Enter map declaration
+  ioSemanticDeclarationListForGeneration +=
+    !"dict " + mDictTypeName
+    !@dictTypeForGeneration.new {
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mDictTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!mDictTypeName.string + elementTypeNameSuffix () !mDictTypeName.location}}
+      !mDictTypeName
+      !typedAttributeList
+      !mKeyTypeName
+    }
+}
+  
+#----------------------------------------------------------------------------------------------------------------------*
+#   CODE GENERATION                                                                                                    *
+#----------------------------------------------------------------------------------------------------------------------*
+
+class @dictTypeForGeneration : @semanticTypeForGeneration {
+  @unifiedTypeMap-proxy mElementTypeProxy
+  @lstring mDictTypeName
+  @typedPropertyList mTypedAttributeList
+  @lstring mKeyTypeName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @dictTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+{
+  outHeader = [filewrapper typeGenerationTemplate.dictTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mTypedAttributeList
+  ]
+  outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mGetterMap]
+    ![mTypeProxy mSetterMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ]
+}
+
+##----------------------------------------------------------------------------------------------------------------------*
+#
+#override method @dictTypeForGeneration appendDeclaration2
+#  ?let @string unused inOutputDirectory
+#  ?!@stringset ioInclusionSet
+#  !@string outHeader {
+#  for (t ...) in mTypedAttributeList do
+#    [t addHeaderFileName1 !?ioInclusionSet]
+#  end
+#
+#  outHeader = [filewrapper typeGenerationTemplate.dictTypeHeader2
+#    ![mTypeProxy key]
+#    ![mTypeProxy identifierRepresentation]
+#    !mTypedAttributeList
+#    ![mKeyTypeName identifierRepresentation]
+#  ]
+#}
+#
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @dictTypeForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inTypeMap
+  ?!@stringset ioInclusionSet
+  !@string outImplementation {
+  [mElementTypeProxy addHeaderFileName !?ioInclusionSet]
+  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  outImplementation = [filewrapper typeGenerationTemplate.dictTypeSpecificImplementation
+    ![mTypeProxy identifierRepresentation]
+    !mTypedAttributeList
+    ![mKeyTypeName identifierRepresentation]
+  ]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*

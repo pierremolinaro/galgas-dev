@@ -23,7 +23,7 @@ end
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public : virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (%?^

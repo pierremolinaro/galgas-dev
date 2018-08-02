@@ -121,6 +121,7 @@ list galgasKeyWordList style keywordsStyle error message "the '%K' keyword" {
   "class",
   "constructor",
   "default",
+  "dict",
   "do",
   "drop",
   "else",

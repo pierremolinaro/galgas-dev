@@ -857,6 +857,17 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
     ?@bool HAS_INSERT_OR_REPLACE
 
+#---------- dict
+  template dictTypeHeader1 "GALGAS_dict.h1.galgasTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+
+  template dictTypeSpecificImplementation "GALGAS_dict.cpp.galgasTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedPropertyList ATTRIBUTE_LIST
+    ?@string KEY_TYPE_IDENTIFIER
+
 #---------- Class
   template classTypeHeader1 "GALGAS_class.h1.galgasTemplate"
     ?@string TYPE_NAME

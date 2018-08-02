@@ -184,7 +184,7 @@ class GALGAS_BuildFileList_2D_element : public AC_GALGAS_root {
   public : GALGAS_BuildFileList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_BuildFileList_2D_element (void) ;
+  public : virtual ~ GALGAS_BuildFileList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_BuildFileList_2D_element (const GALGAS_string & in_mFileReference,

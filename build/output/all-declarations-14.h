@@ -69,7 +69,7 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
   public : GALGAS_XcodeProjectDescriptor (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_XcodeProjectDescriptor (void) ;
+  public : virtual ~ GALGAS_XcodeProjectDescriptor (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_XcodeProjectDescriptor (const GALGAS_uint & in_mSequenceNumber,

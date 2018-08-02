@@ -323,13 +323,6 @@ override getter @predefinedTypeAST keyRepresentation
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override getter @mapDeclarationAST keyRepresentation
-  ->@string outString {
-  outString = "map @" + mMapTypeName
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override getter @mapProxyDeclarationAST keyRepresentation
   ->@string outString {
   outString = "map proxy @" + mMapProxyTypeName

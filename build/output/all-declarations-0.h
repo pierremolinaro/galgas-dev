@@ -108,6 +108,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
    kToken_const,
    kToken_constructor,
    kToken_default,
+   kToken_dict,
    kToken_do,
    kToken_drop,
    kToken_else,
@@ -264,7 +265,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
   protected : virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public : virtual int16_t terminalVocabularyCount (void) const { return 145 ; }
+  public : virtual int16_t terminalVocabularyCount (void) const { return 146 ; }
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
@@ -487,7 +488,7 @@ class GALGAS_templateInstructionListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_templateInstructionListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_templateInstructionListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_templateInstructionListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_templateInstructionListAST_2D_element (const GALGAS_templateInstructionAST & in_mInstruction) ;
@@ -773,7 +774,7 @@ class GALGAS_templateExpressionListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_templateExpressionListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_templateExpressionListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_templateExpressionListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_templateExpressionListAST_2D_element (const GALGAS_lstring & in_mActualSelector,
@@ -3235,7 +3236,7 @@ class GALGAS_templateInstructionIfBranchListAST_2D_element : public AC_GALGAS_ro
   public : GALGAS_templateInstructionIfBranchListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_templateInstructionIfBranchListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_templateInstructionIfBranchListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_templateInstructionIfBranchListAST_2D_element (const GALGAS_templateExpressionAST & in_mExpression,
@@ -5764,7 +5765,7 @@ class GALGAS_templateInstructionListForGeneration_2D_element : public AC_GALGAS_
   public : GALGAS_templateInstructionListForGeneration_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_templateInstructionListForGeneration_2D_element (void) ;
+  public : virtual ~ GALGAS_templateInstructionListForGeneration_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_templateInstructionListForGeneration_2D_element (const GALGAS_templateInstructionForGeneration & in_mInstruction) ;
@@ -6336,7 +6337,7 @@ class GALGAS_templateInstructionIfBranchListForGeneration_2D_element : public AC
   public : GALGAS_templateInstructionIfBranchListForGeneration_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_templateInstructionIfBranchListForGeneration_2D_element (void) ;
+  public : virtual ~ GALGAS_templateInstructionIfBranchListForGeneration_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_templateInstructionIfBranchListForGeneration_2D_element (const GALGAS_semanticExpressionForGeneration & in_mExpression,
@@ -6646,7 +6647,7 @@ class GALGAS_templateVariableMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_templateVariableMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_templateVariableMap_2D_element (void) ;
+  public : virtual ~ GALGAS_templateVariableMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_templateVariableMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -6874,7 +6875,7 @@ class GALGAS_predefinedTypes : public AC_GALGAS_root {
   public : GALGAS_predefinedTypes (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_predefinedTypes (void) ;
+  public : virtual ~ GALGAS_predefinedTypes (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_predefinedTypes (const GALGAS_unifiedTypeMap_2D_proxy & in_mLocationType,
@@ -10564,7 +10565,7 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
   public : GALGAS_semanticContext (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_semanticContext (void) ;
+  public : virtual ~ GALGAS_semanticContext (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_semanticContext (const GALGAS_unifiedTypeMap & in_mTypeMap,
@@ -10661,7 +10662,7 @@ class GALGAS_templateAnalysisContext : public AC_GALGAS_root {
   public : GALGAS_templateAnalysisContext (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_templateAnalysisContext (void) ;
+  public : virtual ~ GALGAS_templateAnalysisContext (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_templateAnalysisContext (const GALGAS_semanticContext & in_mSemanticContext,
@@ -10800,7 +10801,7 @@ class GALGAS_templateInstructionSwitchBranchListAST_2D_element : public AC_GALGA
   public : GALGAS_templateInstructionSwitchBranchListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_templateInstructionSwitchBranchListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_templateInstructionSwitchBranchListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_templateInstructionSwitchBranchListAST_2D_element (const GALGAS_lstringlist & in_mConstantList,
@@ -10881,7 +10882,7 @@ class GALGAS_switchExtractedValuesListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_switchExtractedValuesListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_switchExtractedValuesListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_switchExtractedValuesListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_switchExtractedValuesListAST_2D_element (const GALGAS_lstring & in_mExtractedValueTypeName,

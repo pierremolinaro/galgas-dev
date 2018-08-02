@@ -13,7 +13,7 @@ class GALGAS_application : public AC_GALGAS_root {
   public : GALGAS_application (void) ;
 
 //--------------------------------- Destructor (virtual in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_application (void) ;
+  public : virtual ~ GALGAS_application (void) ;
 
 //--------------------------------- Handle copy
   public : GALGAS_application (const GALGAS_application & inSource) ;

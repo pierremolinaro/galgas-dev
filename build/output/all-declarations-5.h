@@ -67,7 +67,7 @@ class GALGAS_constructorMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_constructorMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_constructorMap_2D_element (void) ;
+  public : virtual ~ GALGAS_constructorMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_constructorMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -349,7 +349,7 @@ class GALGAS_getterMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_getterMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_getterMap_2D_element (void) ;
+  public : virtual ~ GALGAS_getterMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_getterMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -610,7 +610,7 @@ class GALGAS_formalParameterSignature_2D_element : public AC_GALGAS_root {
   public : GALGAS_formalParameterSignature_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_formalParameterSignature_2D_element (void) ;
+  public : virtual ~ GALGAS_formalParameterSignature_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_formalParameterSignature_2D_element (const GALGAS_lstring & in_mFormalSelector,
@@ -730,7 +730,7 @@ class GALGAS_setterMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_setterMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_setterMap_2D_element (void) ;
+  public : virtual ~ GALGAS_setterMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_setterMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -862,7 +862,7 @@ class GALGAS_instanceMethodMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_instanceMethodMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_instanceMethodMap_2D_element (void) ;
+  public : virtual ~ GALGAS_instanceMethodMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_instanceMethodMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -985,7 +985,7 @@ class GALGAS_classMethodMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_classMethodMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_classMethodMap_2D_element (void) ;
+  public : virtual ~ GALGAS_classMethodMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_classMethodMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -1060,7 +1060,7 @@ class GALGAS_enumerationDescriptorList_2D_element : public AC_GALGAS_root {
   public : GALGAS_enumerationDescriptorList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_enumerationDescriptorList_2D_element (void) ;
+  public : virtual ~ GALGAS_enumerationDescriptorList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_enumerationDescriptorList_2D_element (const GALGAS_unifiedTypeMap_2D_proxy & in_mEnumeratedType,
@@ -1341,7 +1341,7 @@ class GALGAS_propertyMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_propertyMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_propertyMap_2D_element (void) ;
+  public : virtual ~ GALGAS_propertyMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_propertyMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -1444,7 +1444,7 @@ class GALGAS_constantIndexMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_constantIndexMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_constantIndexMap_2D_element (void) ;
+  public : virtual ~ GALGAS_constantIndexMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_constantIndexMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -3632,7 +3632,7 @@ class GALGAS_grammarLabelMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_grammarLabelMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_grammarLabelMap_2D_element (void) ;
+  public : virtual ~ GALGAS_grammarLabelMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_grammarLabelMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -3739,7 +3739,7 @@ class GALGAS_grammarMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_grammarMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_grammarMap_2D_element (void) ;
+  public : virtual ~ GALGAS_grammarMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_grammarMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -3850,7 +3850,7 @@ class GALGAS_routineMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_routineMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_routineMap_2D_element (void) ;
+  public : virtual ~ GALGAS_routineMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_routineMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -3961,7 +3961,7 @@ class GALGAS_functionMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_functionMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_functionMap_2D_element (void) ;
+  public : virtual ~ GALGAS_functionMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_functionMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -4223,7 +4223,7 @@ class GALGAS_wrapperFileMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_wrapperFileMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_wrapperFileMap_2D_element (void) ;
+  public : virtual ~ GALGAS_wrapperFileMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_wrapperFileMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -4472,7 +4472,7 @@ class GALGAS_wrapperDirectoryMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_wrapperDirectoryMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_wrapperDirectoryMap_2D_element (void) ;
+  public : virtual ~ GALGAS_wrapperDirectoryMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_wrapperDirectoryMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -4700,7 +4700,7 @@ class GALGAS_filewrapperTemplateMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_filewrapperTemplateMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_filewrapperTemplateMap_2D_element (void) ;
+  public : virtual ~ GALGAS_filewrapperTemplateMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_filewrapperTemplateMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -4823,7 +4823,7 @@ class GALGAS_filewrapperMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_filewrapperMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_filewrapperMap_2D_element (void) ;
+  public : virtual ~ GALGAS_filewrapperMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_filewrapperMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -4958,7 +4958,7 @@ class GALGAS_optionComponentMapForSemanticAnalysis_2D_element : public AC_GALGAS
   public : GALGAS_optionComponentMapForSemanticAnalysis_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_optionComponentMapForSemanticAnalysis_2D_element (void) ;
+  public : virtual ~ GALGAS_optionComponentMapForSemanticAnalysis_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_optionComponentMapForSemanticAnalysis_2D_element (const GALGAS_lstring & in_lkey,
@@ -5081,7 +5081,7 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element : public AC_GALGA
   public : GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (void) ;
+  public : virtual ~ GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexiqueComponentMapForSemanticAnalysis_2D_element (const GALGAS_lstring & in_lkey,
@@ -5200,7 +5200,7 @@ class GALGAS_syntaxComponentMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_syntaxComponentMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_syntaxComponentMap_2D_element (void) ;
+  public : virtual ~ GALGAS_syntaxComponentMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_syntaxComponentMap_2D_element (const GALGAS_lstring & in_lkey,

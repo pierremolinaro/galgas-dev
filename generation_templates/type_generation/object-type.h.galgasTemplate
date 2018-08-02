@@ -24,7 +24,7 @@ class GALGAS_object : public AC_GALGAS_root {
                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Destructor (virtual in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_object (void) ;
+  public : virtual ~ GALGAS_object (void) ;
 
 //--------------------------------- Handle copy
   public : GALGAS_object (const GALGAS_object & inSource) ;

@@ -407,7 +407,7 @@ class GALGAS_keySortedList_2D_element : public AC_GALGAS_root {
   public : GALGAS_keySortedList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_keySortedList_2D_element (void) ;
+  public : virtual ~ GALGAS_keySortedList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_keySortedList_2D_element (const GALGAS_string & in_mKey,
@@ -601,7 +601,7 @@ class GALGAS_uselessEntityLocationMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_uselessEntityLocationMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_uselessEntityLocationMap_2D_element (void) ;
+  public : virtual ~ GALGAS_uselessEntityLocationMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_uselessEntityLocationMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -854,7 +854,7 @@ class GALGAS_castInstructionBranchListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_castInstructionBranchListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_castInstructionBranchListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_castInstructionBranchListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_castInstructionBranchListAST_2D_element (const GALGAS_lstring & in_mTypeName,
@@ -1204,7 +1204,7 @@ class GALGAS_castInstructionBranchListForGeneration_2D_element : public AC_GALGA
   public : GALGAS_castInstructionBranchListForGeneration_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_castInstructionBranchListForGeneration_2D_element (void) ;
+  public : virtual ~ GALGAS_castInstructionBranchListForGeneration_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_castInstructionBranchListForGeneration_2D_element (const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
@@ -1648,7 +1648,7 @@ class GALGAS_fixitListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_fixitListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_fixitListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_fixitListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_fixitListAST_2D_element (const GALGAS_fixitElementAST & in_mElement) ;
@@ -2094,7 +2094,7 @@ class GALGAS_fixitListForGeneration_2D_element : public AC_GALGAS_root {
   public : GALGAS_fixitListForGeneration_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_fixitListForGeneration_2D_element (void) ;
+  public : virtual ~ GALGAS_fixitListForGeneration_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_fixitListForGeneration_2D_element (const GALGAS_fixitElementForGeneration & in_mElement) ;
@@ -2337,7 +2337,7 @@ class GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element : public AC
   public : GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_forInstructionEnumeratedObjectElementListAST_2D_element (const GALGAS_lstring & in_mOptionalTypeName,
@@ -2710,7 +2710,7 @@ class GALGAS_forInstructionEnumeratedObjectListAST_2D_element : public AC_GALGAS
   public : GALGAS_forInstructionEnumeratedObjectListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_forInstructionEnumeratedObjectListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_forInstructionEnumeratedObjectListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_forInstructionEnumeratedObjectListAST_2D_element (const GALGAS_bool & in_mAscending,
@@ -2989,7 +2989,7 @@ class GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element : public
   public : GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element (void) ;
+  public : virtual ~ GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_forInstructionEnumeratedObjectListForGeneration_2D_element (const GALGAS_string & in_mEnumerationOrder,
@@ -3700,7 +3700,7 @@ class GALGAS_logListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_logListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_logListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_logListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_logListAST_2D_element (const GALGAS_lstring & in_mLogMessage,
@@ -4129,7 +4129,7 @@ class GALGAS_matchEntryListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_matchEntryListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_matchEntryListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_matchEntryListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_matchEntryListAST_2D_element (const GALGAS_bool & in_mIsType,
@@ -4357,7 +4357,7 @@ class GALGAS_matchInstructionBranchListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_matchInstructionBranchListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_matchInstructionBranchListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_matchInstructionBranchListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_matchInstructionBranchListAST_2D_element (const GALGAS_matchEntryListAST & in_mMatchEntryList,
@@ -4693,7 +4693,7 @@ class GALGAS_matchListForGeneration_2D_element : public AC_GALGAS_root {
   public : GALGAS_matchListForGeneration_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_matchListForGeneration_2D_element (void) ;
+  public : virtual ~ GALGAS_matchListForGeneration_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_matchListForGeneration_2D_element (const GALGAS_bool & in_mIsType,
@@ -4905,7 +4905,7 @@ class GALGAS_matchInstructionBranchListForGeneration_2D_element : public AC_GALG
   public : GALGAS_matchInstructionBranchListForGeneration_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_matchInstructionBranchListForGeneration_2D_element (void) ;
+  public : virtual ~ GALGAS_matchInstructionBranchListForGeneration_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_matchInstructionBranchListForGeneration_2D_element (const GALGAS_matchListForGeneration & in_mMatchListForGeneration,
@@ -5825,7 +5825,7 @@ class GALGAS_switchBranchesAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_switchBranchesAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_switchBranchesAST_2D_element (void) ;
+  public : virtual ~ GALGAS_switchBranchesAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_switchBranchesAST_2D_element (const GALGAS_lstringlist & in_mSwitchConstantList,
@@ -6174,7 +6174,7 @@ class GALGAS_switchBranchesForGeneration_2D_element : public AC_GALGAS_root {
   public : GALGAS_switchBranchesForGeneration_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_switchBranchesForGeneration_2D_element (void) ;
+  public : virtual ~ GALGAS_switchBranchesForGeneration_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_switchBranchesForGeneration_2D_element (const GALGAS_lstringlist & in_mSwitchConstantList,

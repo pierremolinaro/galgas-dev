@@ -1,0 +1,707 @@
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class cNode_%!TYPE_IDENTIFIER% : public GALGAS_%!TYPE_IDENTIFIER%_2D_element {
+  public : cNode_%!TYPE_IDENTIFIER% * mInfPtr ;
+  public : cNode_%!TYPE_IDENTIFIER% * mSupPtr ;
+  public : int32_t mBalance ;
+
+  public : cNode_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & in_key%
+for () in ATTRIBUTE_LIST
+  do %,\n%!^%const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inProperty_%![mPropertyName identifierRepresentation]
+end
+%) :
+  GALGAS_%!TYPE_IDENTIFIER%_2D_element (in_key%
+for () in ATTRIBUTE_LIST
+  do %, inProperty_%![mPropertyName identifierRepresentation]
+end
+%),
+  mInfPtr (NULL),
+  mSupPtr (NULL),
+  mBalance (0) {
+  }
+
+  public : cNode_%!TYPE_IDENTIFIER% (cNode_%!TYPE_IDENTIFIER% * inNode) ;
+
+  public : virtual ~ cNode_%!TYPE_IDENTIFIER% (void) {
+    macroMyDelete (mInfPtr) ;
+    macroMyDelete (mSupPtr) ;
+  }
+} ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class cSharedDictRoot_%!TYPE_IDENTIFIER% : public C_SharedObject {
+//--------------------------------- Attributes
+  private : cNode_%!TYPE_IDENTIFIER% * mRoot ;
+  private : uint32_t mCount ;
+
+//--------------------------------- Constructor
+  protected : cSharedDictRoot_%!TYPE_IDENTIFIER% (LOCATION_ARGS) :
+  C_SharedObject (THERE),
+  mRoot (NULL),
+  mCount (0) {
+  }
+
+//--------------------------------- Virtual destructor
+  protected : virtual ~ cSharedDictRoot_%!TYPE_IDENTIFIER% (void) {
+    macroMyDelete (mRoot) ;
+  }
+
+//--------------------------------- No copy
+  private : cSharedDictRoot_%!TYPE_IDENTIFIER% (const cSharedDictRoot_%!TYPE_IDENTIFIER% &) ;
+  private : cSharedDictRoot_%!TYPE_IDENTIFIER% & operator = (const cSharedDictRoot_%!TYPE_IDENTIFIER% &) ;
+
+//--------------------------------- Copy a map
+  protected : VIRTUAL_IN_DEBUG void copyFrom (const cSharedDictRoot_%!TYPE_IDENTIFIER% * inSource) ;
+
+//--------------------------------- Insert
+  protected : VIRTUAL_IN_DEBUG void performInsert (const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inNewNode) {
+    macroUniqueSharedObject (this) ;
+    bool extension = false ;
+    bool entryAdded = false ;
+    recursiveAddEntry (mRoot, inNewNode, entryAdded, extension) ;
+    if (entryAdded) {
+      mCount ++ ;
+    }
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      checkDict (HERE) ;
+    #endif
+  }
+
+  protected : static void rotateLeft (cNode_%!TYPE_IDENTIFIER% * & ioRootPtr) {
+    cNode_%!TYPE_IDENTIFIER% * ptr = ioRootPtr->mSupPtr ;
+    ioRootPtr->mSupPtr = ptr->mInfPtr ;
+    ptr->mInfPtr = ioRootPtr;
+
+    if (ptr->mBalance >= 0) {
+      ioRootPtr->mBalance ++ ;
+    }else{
+      ioRootPtr->mBalance += 1 - ptr->mBalance ;
+    }
+
+    if (ioRootPtr->mBalance > 0) {
+      ptr->mBalance += ioRootPtr->mBalance + 1 ;
+    }else{
+      ptr->mBalance ++ ;
+    }
+    ioRootPtr = ptr ;
+  }
+
+  protected : static void rotateRight (cNode_%!TYPE_IDENTIFIER% * & ioRootPtr) {
+    cNode_%!TYPE_IDENTIFIER% * ptr = ioRootPtr->mInfPtr ;
+    ioRootPtr->mInfPtr = ptr->mSupPtr ;
+    ptr->mSupPtr = ioRootPtr ;
+   
+    if (ptr->mBalance > 0) {
+      ioRootPtr->mBalance += -ptr->mBalance - 1 ;
+    }else{
+      ioRootPtr->mBalance -- ;
+    }
+    if (ioRootPtr->mBalance >= 0) {
+      ptr->mBalance -- ;
+    }else{
+      ptr->mBalance += ioRootPtr->mBalance - 1 ;
+    }
+    ioRootPtr = ptr ;
+  }
+
+  protected : static void recursiveAddEntry (cNode_%!TYPE_IDENTIFIER% * & ioRootPtr,
+                                             const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inNewNode,
+                                             bool & outEntryAdded,
+                                             bool & ioExtension) {
+    if (ioRootPtr == NULL) {
+      macroMyNew (ioRootPtr, cNode_%!TYPE_IDENTIFIER% (inNewNode.mProperty_key%
+for () in ATTRIBUTE_LIST
+  do %, inNewNode.mProperty_%![mPropertyName identifierRepresentation]
+end
+      %)) ;
+      ioExtension = true ;
+      outEntryAdded = true ;
+    }else{
+      macroValidPointer (ioRootPtr) ;
+      const typeComparisonResult comparaison = ioRootPtr->mProperty_key.objectCompare (inNewNode.mProperty_key) ;
+      if (comparaison == kFirstOperandGreaterThanSecond) {
+        recursiveAddEntry (ioRootPtr->mInfPtr, inNewNode, outEntryAdded, ioExtension) ;
+        if (ioExtension) {
+          ioRootPtr->mBalance++;
+          if (ioRootPtr->mBalance == 0) {
+            ioExtension = false;
+          }else if (ioRootPtr->mBalance == 2) {
+            if (ioRootPtr->mInfPtr->mBalance == -1) {
+              rotateLeft (ioRootPtr->mInfPtr) ;
+            }
+            rotateRight (ioRootPtr) ;
+            ioExtension = false;
+          }
+        }
+      }else if (comparaison == kFirstOperandLowerThanSecond) {
+        recursiveAddEntry (ioRootPtr->mSupPtr, inNewNode, outEntryAdded, ioExtension) ;
+        if (ioExtension) {
+          ioRootPtr->mBalance-- ;
+          if (ioRootPtr->mBalance == 0) {
+            ioExtension = false ;
+          }else if (ioRootPtr->mBalance == -2) {
+            if (ioRootPtr->mSupPtr->mBalance == 1) {
+              rotateRight (ioRootPtr->mSupPtr) ;
+            }
+            rotateLeft (ioRootPtr) ;
+            ioExtension = false;
+          }
+        }
+      }else{  // Found
+        ioExtension = false ;
+        outEntryAdded = false ;
+%
+for () in ATTRIBUTE_LIST
+  do %        ioRootPtr->mProperty_%![mPropertyName identifierRepresentation]% = inNewNode.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+end
+%      }
+    }
+  }
+
+//--------------------------------- Search
+  private : VIRTUAL_IN_DEBUG cNode_%!TYPE_IDENTIFIER% * findEntryInDict (const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey) const {
+    cNode_%!TYPE_IDENTIFIER% * result = NULL ;
+    cNode_%!TYPE_IDENTIFIER% * currentNode = mRoot ;
+    while ((currentNode != NULL) && (NULL == result)) {
+      macroValidPointer (currentNode) ;
+      const typeComparisonResult comparaison = currentNode->mProperty_key.objectCompare (inKey) ;
+      if (comparaison == kFirstOperandGreaterThanSecond) {
+        currentNode = currentNode->mInfPtr ;
+      }else if (comparaison == kFirstOperandLowerThanSecond) {
+        currentNode = currentNode->mSupPtr ;
+      }else{ // Found
+        result = currentNode ;
+      }
+    }
+    return result ;
+  }
+
+//--------------------------------- Remove
+  protected : VIRTUAL_IN_DEBUG void performRemove (const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey, cNode_%!TYPE_IDENTIFIER% * & outRemovedNodePtr) {
+    bool branchHasBeenRemoved = false ; // Unused here
+    internalRemoveRecursively (mRoot, inKey, outRemovedNodePtr, branchHasBeenRemoved) ;
+    if (NULL != outRemovedNodePtr) {
+      mCount -- ;
+    }
+  }
+
+  protected : static void supBranchDecreased (cNode_%!TYPE_IDENTIFIER% * & ioRoot,
+                                              bool & ioBranchHasBeenRemoved) {
+    ioRoot->mBalance ++ ;
+    switch (ioRoot->mBalance) {
+    case 0:
+      break;
+    case 1:
+      ioBranchHasBeenRemoved = false;
+      break;
+    case 2:
+      switch (ioRoot->mInfPtr->mBalance) {
+      case -1:
+        rotateLeft (ioRoot->mInfPtr) ;
+        rotateRight (ioRoot) ;
+        break;
+      case 0:
+        rotateRight (ioRoot) ;
+        ioBranchHasBeenRemoved = false;
+        break;
+      case 1:
+        rotateRight (ioRoot) ;
+        break;
+      }
+      break;
+    }
+  }
+
+  protected : static void infBranchDecreased (cNode_%!TYPE_IDENTIFIER% * & ioRoot,
+                                              bool & ioBranchHasBeenRemoved) {
+    ioRoot->mBalance -- ;
+    switch (ioRoot->mBalance) {
+    case 0:
+      break;
+    case -1:
+      ioBranchHasBeenRemoved = false;
+      break;
+    case -2:
+      switch (ioRoot->mSupPtr->mBalance) {
+      case 1:
+        rotateRight (ioRoot->mSupPtr) ;
+        rotateLeft (ioRoot) ;
+        break;
+      case 0:
+        rotateLeft (ioRoot) ;
+        ioBranchHasBeenRemoved = false;
+        break;
+      case -1:
+        rotateLeft (ioRoot) ;
+        break;
+      }
+      break;
+    }
+  }
+
+  protected : static void  getPreviousElement (cNode_%!TYPE_IDENTIFIER% * & ioRoot,
+                                               cNode_%!TYPE_IDENTIFIER% * & ioElement,
+                                               bool & ioBranchHasBeenRemoved) {
+    if (ioRoot->mSupPtr == NULL) {
+      ioElement = ioRoot ;
+      ioRoot = ioRoot->mInfPtr ;
+      ioBranchHasBeenRemoved = true ;
+    }else{
+      getPreviousElement (ioRoot->mSupPtr, ioElement, ioBranchHasBeenRemoved) ;
+      if (ioBranchHasBeenRemoved) {
+        supBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
+      }
+    }
+  }
+
+  protected : static void  internalRemoveRecursively (cNode_%!TYPE_IDENTIFIER% * & ioRoot,
+                                                      const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKeyToRemove,
+                                                      cNode_%!TYPE_IDENTIFIER% * & outRemovedNode,
+                                                      bool & ioBranchHasBeenRemoved) {
+    if (ioRoot != NULL) {
+      const typeComparisonResult comparaison = ioRoot->mProperty_key.objectCompare (inKeyToRemove) ;
+      if (comparaison == kFirstOperandGreaterThanSecond) {
+        internalRemoveRecursively (ioRoot->mInfPtr, inKeyToRemove, outRemovedNode, ioBranchHasBeenRemoved);
+        if (ioBranchHasBeenRemoved) {
+          infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
+        }
+      }else if (comparaison == kFirstOperandLowerThanSecond) {
+        internalRemoveRecursively (ioRoot->mSupPtr, inKeyToRemove, outRemovedNode, ioBranchHasBeenRemoved);
+        if (ioBranchHasBeenRemoved) {
+          supBranchDecreased (ioRoot, ioBranchHasBeenRemoved);
+        }
+      }else{
+        cNode_%!TYPE_IDENTIFIER% * p = ioRoot ;
+        if (p->mInfPtr == NULL) {
+          ioRoot = p->mSupPtr;
+          p->mSupPtr = NULL;
+          ioBranchHasBeenRemoved = true;
+        }else if (p->mSupPtr == NULL) {
+          ioRoot = p->mInfPtr;
+          p->mInfPtr = NULL;
+          ioBranchHasBeenRemoved = true;
+        }else{
+          getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;
+          ioRoot->mSupPtr = p->mSupPtr;
+          p->mSupPtr = NULL;
+          ioRoot->mInfPtr = p->mInfPtr;
+          p->mInfPtr = NULL;
+          ioRoot->mBalance = p->mBalance;
+          p->mBalance = 0;
+          if (ioBranchHasBeenRemoved) {
+            infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
+          }
+        }
+        outRemovedNode = p ;
+      }
+    }
+  }
+
+//--------------------------------- Internal method for enumeration
+  protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
+
+//--------------------------------- Check Dictionary
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+      private : VIRTUAL_IN_DEBUG void checkDict (LOCATION_ARGS) const {
+      uint32_t n = 0 ;
+      checkNode (mRoot, n) ;
+      MF_AssertThere (n == mCount, "n (\%lld) != mCount (\%lld)", n, mCount) ;
+    }
+  #endif
+
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    private : static void checkNode (const cNode_%!TYPE_IDENTIFIER% * inNode,
+                                     uint32_t & ioCount) {
+      if (NULL != inNode) {
+        checkNode (inNode->mInfPtr, ioCount) ;
+        ioCount ++ ;
+        checkNode (inNode->mSupPtr, ioCount) ;
+      }
+    }
+  #endif
+
+//--------------------------------- Friend
+  friend class GALGAS_%!TYPE_IDENTIFIER% ;
+} ;
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
+AC_GALGAS_root (),
+mSharedDict (NULL) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
+  macroDetachSharedObject (mSharedDict) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) :
+AC_GALGAS_root (),
+mSharedDict (NULL) {
+  macroAssignSharedObject (mSharedDict, inSource.mSharedDict) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) {
+  macroAssignSharedObject (mSharedDict, inSource.mSharedDict) ;
+  return * this ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
+  macroDetachSharedObject (mSharedDict) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyDict (LOCATION_ARGS) {
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  macroMyNew (result.mSharedDict, cSharedDictRoot_%!TYPE_IDENTIFIER% (THERE)) ;
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Description
+#endif
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void internalDescription_%!TYPE_IDENTIFIER% (const cNode_%!TYPE_IDENTIFIER% * inNode,
+                                 C_String & ioString,
+                                 const int32_t inIndentation) {
+  if (NULL != inNode) {
+    internalDescription_%!TYPE_IDENTIFIER% (inNode->mInfPtr, ioString, inIndentation) ;
+    ioString << "\\n" ;
+    inNode->description (ioString, inIndentation) ;
+    internalDescription_%!TYPE_IDENTIFIER% (inNode->mSupPtr, ioString, inIndentation) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_%!TYPE_IDENTIFIER%::description (C_String & ioString,
+                                             const int32_t inIndentation) const {
+  ioString << "<dict @" << staticTypeDescriptor ()->mGalgasTypeName << ":" ;
+  if (isValid ()) {
+    internalDescription_%!TYPE_IDENTIFIER% (mSharedDict->mRoot, ioString, inIndentation) ;
+  }else{
+    ioString << " not built" ;
+  }
+  ioString << ">" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Insulate
+#endif
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cNode_%!TYPE_IDENTIFIER%::cNode_%!TYPE_IDENTIFIER% (cNode_%!TYPE_IDENTIFIER% * inNode) :
+GALGAS_%!TYPE_IDENTIFIER%_2D_element (inNode->mProperty_key%
+for () in ATTRIBUTE_LIST
+  do %, inNode->mProperty_%![mPropertyName identifierRepresentation]
+end
+%),
+mInfPtr (NULL),
+mSupPtr (NULL),
+mBalance (inNode->mBalance) {
+  if (inNode->mInfPtr != NULL) {
+    macroMyNew (mInfPtr, cNode_%!TYPE_IDENTIFIER% (inNode->mInfPtr)) ;
+  }
+  if (inNode->mSupPtr != NULL) {
+    macroMyNew (mSupPtr, cNode_%!TYPE_IDENTIFIER% (inNode->mSupPtr)) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cSharedDictRoot_%!TYPE_IDENTIFIER%::copyFrom (const cSharedDictRoot_%!TYPE_IDENTIFIER% * inSource) {
+  macroUniqueSharedObject (this) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    inSource->checkDict (HERE) ;
+  #endif
+  macroValidSharedObject (inSource, cSharedDictRoot_%!TYPE_IDENTIFIER%) ;
+  mCount = inSource->mCount ;
+  if (NULL != inSource->mRoot) {
+    macroMyNew (mRoot, cNode_%!TYPE_IDENTIFIER% (inSource->mRoot)) ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkDict (HERE) ;
+  #endif
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
+  if ((NULL != mSharedDict) && !mSharedDict->isUniquelyReferenced ()) {
+    cSharedDictRoot_%!TYPE_IDENTIFIER% * p = NULL ;
+    macroMyNew (p, cSharedDictRoot_%!TYPE_IDENTIFIER% (THERE)) ;
+    p->copyFrom (mSharedDict) ;
+    macroAssignSharedObject (mSharedDict, p) ;
+    macroDetachSharedObject (p) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Insert
+#endif
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey%
+for () in ATTRIBUTE_LIST
+  do index IDX %,\n%!^%const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inArgument%![IDX string]
+end
+%,\n %!^%C_Compiler * /* inCompiler */%
+%\n %!^%COMMA_LOCATION_ARGS) {\n%
+%  GALGAS_%!TYPE_IDENTIFIER%_2D_element newElement (inKey%
+for () in ATTRIBUTE_LIST
+  do index IDX %, inArgument%![IDX string]
+end
+%) ;
+  if (isValid () && newElement.isValid ()) {
+    insulate (THERE) ;
+    macroUniqueSharedObject (mSharedDict) ;
+    mSharedDict->performInsert (newElement) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
+%void GALGAS_%!TYPE_IDENTIFIER%::method_searchKey (%?^%GALGAS_%!KEY_TYPE_IDENTIFIER% inKey%
+for () in ATTRIBUTE_LIST
+  do index IDX %,\n%!^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outArgument%![IDX string]
+end
+%,\n %!^%C_Compiler * inCompiler%
+%\n %!^%COMMA_LOCATION_ARGS) const {
+  const cNode_%!TYPE_IDENTIFIER% * p = NULL ;
+  if (isValid () && inKey.isValid ()) {
+    p = mSharedDict->findEntryInDict (inKey) ;
+    if (NULL == p) {
+    //--- Build error message
+      C_String message ;
+      message << "cannot search in dict: the key does not exist" ;
+    //--- Emit error message
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (NULL == p) {
+%
+for () in ATTRIBUTE_LIST do index IDX
+  %    outArgument%![IDX string]%.drop () ;\n%
+end
+%  }else{
+    macroValidSharedObject (p, cNode_%!TYPE_IDENTIFIER%) ;
+%
+for () in ATTRIBUTE_LIST do index IDX
+  %    outArgument%![IDX string]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+end
+%  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
+%void GALGAS_%!TYPE_IDENTIFIER%::setter_removeKey (%?^%GALGAS_%!KEY_TYPE_IDENTIFIER% inKey%
+for () in ATTRIBUTE_LIST
+  do index IDX %,\n%!^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outArgument%![IDX string]
+end
+%,\n %!^%C_Compiler * inCompiler%
+%\n %!^%COMMA_LOCATION_ARGS) {
+  cNode_%!TYPE_IDENTIFIER% * p = NULL ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (THERE) ;
+    macroUniqueSharedObject (mSharedDict) ;
+    mSharedDict->performRemove (inKey, p) ;
+    if (NULL == p) {
+    //--- Build error message
+      C_String message ;
+      message << "cannot remove in dict: the key does not exist" ;
+    //--- Emit error message
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
+    }
+  }
+  if (NULL == p) {
+%
+for () in ATTRIBUTE_LIST do index IDX
+  %    outArgument%![IDX string]%.drop () ;\n%
+end
+%  }else{
+    macroValidSharedObject (p, cNode_%!TYPE_IDENTIFIER%) ;
+%
+for () in ATTRIBUTE_LIST do index IDX
+  %    outArgument%![IDX string]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+end
+%  }
+}
+
+%for () in ATTRIBUTE_LIST do
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
+  %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%ForKey (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey,\n%
+  %                                               %!^%C_Compiler * inCompiler\n%
+  %                                               %!^%COMMA_LOCATION_ARGS) const {\n%
+  %  GALGAS_%![mPropertyTypeProxy identifierRepresentation]% result ;\n%
+  %  if (isValid () && inKey.isValid ()) {\n%
+  %  const cNode_%!TYPE_IDENTIFIER% * p = mSharedDict->findEntryInDict (inKey) ;\n%
+  %   if (NULL == p) {\n%
+  %    //--- Build error message\n%
+  %      C_String message ;\n%
+  %      message << "cannot get %![mPropertyName identifierRepresentation]% ForKey in dict: the key does not exist" ;\n%
+  %    //--- Emit error message\n%
+  %      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;\n%
+  %    }else{\n%
+  %      macroValidSharedObject (p, cNode_%!TYPE_IDENTIFIER%) ;\n%
+  %      result = p->mProperty_%![mPropertyName identifierRepresentation]%  ;\n%
+  %    }\n%
+  %  }\n%
+  %  return result ;\n%
+  %}\n\n%
+end 
+
+for () in ATTRIBUTE_LIST do
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% inPropertyValue,\n%
+  %                           %!^%GALGAS_%!KEY_TYPE_IDENTIFIER% inKey,\n%
+  %                           %!^%C_Compiler * inCompiler\n%
+  %                           %!^%COMMA_LOCATION_ARGS) {\n%
+  %  if (isValid () && inKey.isValid ()) {\n%
+  %    insulate (THERE) ;\n%
+  %    macroUniqueSharedObject (mSharedDict) ;\n%
+  %    cNode_%!TYPE_IDENTIFIER% * p = mSharedDict->findEntryInDict (inKey) ;\n%
+  %    if (NULL == p) {\n%
+  %    //--- Build error message\n%
+  %      C_String message ;\n%
+  %      message << "cannot set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey in dict: the key does not exist" ;\n%
+  %    //--- Emit error message\n%
+  %      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;\n%
+  %    }else{\n%
+  %      p->mProperty_%![mPropertyName identifierRepresentation]% = inPropertyValue ;\n%
+  %    }\n%
+  %  }\n%
+  %}\n\n%
+end 
+
+%//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark map Enumeration
+#endif
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
+  public : GALGAS_%!TYPE_IDENTIFIER%_2D_element mElement ;
+
+//--- Constructor
+  public : cCollectionElement_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER%_2D_element & inElement) :
+  cCollectionElement (HERE),
+  mElement (inElement) {
+  }
+
+//--- No copy
+  private : cCollectionElement_%!TYPE_IDENTIFIER% (const cCollectionElement_%!TYPE_IDENTIFIER% &) ;
+  private : cCollectionElement_%!TYPE_IDENTIFIER% & operator = (const cCollectionElement_%!TYPE_IDENTIFIER% &) ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const { return mElement.isValid () ; }
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const {
+    const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) inOperand ;
+    return mElement.objectCompare (p->mElement) ;
+  }
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (mElement)) ;
+    return p ;
+  }
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const {
+    mElement.description (ioString, inIndentation) ;
+  }
+} ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void enterAscendingEnumeration_%!TYPE_IDENTIFIER% (cNode_%!TYPE_IDENTIFIER% * inNode,
+                                                       capCollectionElementArray & ioEnumerationArray) {
+  if (inNode != NULL) {
+    enterAscendingEnumeration_%!TYPE_IDENTIFIER% (inNode->mInfPtr, ioEnumerationArray) ;
+    cCollectionElement_%!TYPE_IDENTIFIER% * p = NULL ;
+    macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (*inNode)) ;
+    capCollectionElement element ;
+    element.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    ioEnumerationArray.appendObject (element) ;
+    enterAscendingEnumeration_%!TYPE_IDENTIFIER% (inNode->mSupPtr, ioEnumerationArray) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cSharedDictRoot_%!TYPE_IDENTIFIER%::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkDict (HERE) ;
+  #endif
+  ioEnumerationArray.setCapacity (mCount) ;
+  enterAscendingEnumeration_%!TYPE_IDENTIFIER% (mRoot, ioEnumerationArray) ;
+  MF_Assert (mCount == ioEnumerationArray.count (), "mCount (\%lld) != ioEnumerationArray.count () (\%lld)", mCount, ioEnumerationArray.count ()) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_%!TYPE_IDENTIFIER%::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
+  if (NULL != mSharedDict) {
+    mSharedDict->populateEnumerationArray (ioEnumerationArray) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
+                                                        const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  const cCollectionElement_%!TYPE_IDENTIFIER%* p = (const cCollectionElement_%!TYPE_IDENTIFIER%*) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+  return GALGAS_%!TYPE_IDENTIFIER%_2D_element (p->mElement) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_%!KEY_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCATION_ARGS) const {
+  const cCollectionElement_%!TYPE_IDENTIFIER%* p = (const cCollectionElement_%!TYPE_IDENTIFIER%*) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+  return p->mElement.mProperty_key ;
+}
+
+%for () in ATTRIBUTE_LIST do index IDX
+  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
+  %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  const cCollectionElement_%!TYPE_IDENTIFIER%* p = (const cCollectionElement_%!TYPE_IDENTIFIER%*) currentObjectPtr (THERE) ;\n%
+  %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  return p->mElement.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+  %}\n\n%
+end 
+%
+

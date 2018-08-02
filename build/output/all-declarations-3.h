@@ -184,7 +184,7 @@ class GALGAS_externTypeGetterList_2D_element : public AC_GALGAS_root {
   public : GALGAS_externTypeGetterList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_externTypeGetterList_2D_element (void) ;
+  public : virtual ~ GALGAS_externTypeGetterList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_externTypeGetterList_2D_element (const GALGAS_lstring & in_mGetterName,
@@ -559,7 +559,7 @@ class GALGAS_externTypeSetterList_2D_element : public AC_GALGAS_root {
   public : GALGAS_externTypeSetterList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_externTypeSetterList_2D_element (void) ;
+  public : virtual ~ GALGAS_externTypeSetterList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_externTypeSetterList_2D_element (const GALGAS_lstring & in_mSetterName,
@@ -783,7 +783,7 @@ class GALGAS_externTypeMethodList_2D_element : public AC_GALGAS_root {
   public : GALGAS_externTypeMethodList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_externTypeMethodList_2D_element (void) ;
+  public : virtual ~ GALGAS_externTypeMethodList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_externTypeMethodList_2D_element (const GALGAS_lstring & in_mMethodName,
@@ -860,7 +860,7 @@ class GALGAS_typeNameFormalParameterNameList_2D_element : public AC_GALGAS_root 
   public : GALGAS_typeNameFormalParameterNameList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_typeNameFormalParameterNameList_2D_element (void) ;
+  public : virtual ~ GALGAS_typeNameFormalParameterNameList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_typeNameFormalParameterNameList_2D_element (const GALGAS_lstring & in_mFormalSelector,
@@ -1015,7 +1015,7 @@ class GALGAS_formalParameterListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_formalParameterListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_formalParameterListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_formalParameterListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_formalParameterListAST_2D_element (const GALGAS_lstring & in_mFormalSelector,
@@ -1227,7 +1227,7 @@ class GALGAS_graphInsertModifierList_2D_element : public AC_GALGAS_root {
   public : GALGAS_graphInsertModifierList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_graphInsertModifierList_2D_element (void) ;
+  public : virtual ~ GALGAS_graphInsertModifierList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_graphInsertModifierList_2D_element (const GALGAS_lstring & in_mInsertModifierName,
@@ -1451,7 +1451,7 @@ class GALGAS_insertMethodListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_insertMethodListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_insertMethodListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_insertMethodListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_insertMethodListAST_2D_element (const GALGAS_lstring & in_mInsertMethodName,
@@ -1534,7 +1534,7 @@ class GALGAS_mapSearchMethodListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_mapSearchMethodListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_mapSearchMethodListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_mapSearchMethodListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_mapSearchMethodListAST_2D_element (const GALGAS_lstring & in_mSearchMethodName,
@@ -1742,7 +1742,7 @@ class GALGAS_mapRemoveMethodListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_mapRemoveMethodListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_mapRemoveMethodListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_mapRemoveMethodListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_mapRemoveMethodListAST_2D_element (const GALGAS_lstring & in_mMethodName,
@@ -1930,7 +1930,7 @@ class GALGAS_insertOrReplaceDeclarationListAST_2D_element : public AC_GALGAS_roo
   public : GALGAS_insertOrReplaceDeclarationListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_insertOrReplaceDeclarationListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_insertOrReplaceDeclarationListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_insertOrReplaceDeclarationListAST_2D_element (const GALGAS_location & in_mInsertOrReplaceDeclarationLocation) ;
@@ -2104,7 +2104,7 @@ class GALGAS_insertMethodMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_insertMethodMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_insertMethodMap_2D_element (void) ;
+  public : virtual ~ GALGAS_insertMethodMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_insertMethodMap_2D_element (const GALGAS_lstring & in_lkey) ;
@@ -2278,7 +2278,7 @@ class GALGAS_searchMethodMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_searchMethodMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_searchMethodMap_2D_element (void) ;
+  public : virtual ~ GALGAS_searchMethodMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_searchMethodMap_2D_element (const GALGAS_lstring & in_lkey) ;
@@ -2567,7 +2567,7 @@ class GALGAS_mapStateTransitionList_2D_element : public AC_GALGAS_root {
   public : GALGAS_mapStateTransitionList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_mapStateTransitionList_2D_element (void) ;
+  public : virtual ~ GALGAS_mapStateTransitionList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_mapStateTransitionList_2D_element (const GALGAS_lstring & in_mActionName,
@@ -2796,7 +2796,7 @@ class GALGAS_mapStateList_2D_element : public AC_GALGAS_root {
   public : GALGAS_mapStateList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_mapStateList_2D_element (void) ;
+  public : virtual ~ GALGAS_mapStateList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_mapStateList_2D_element (const GALGAS_lstring & in_mStateName,
@@ -3037,7 +3037,7 @@ class GALGAS_mapOverrideBlockDescriptorAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_mapOverrideBlockDescriptorAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_mapOverrideBlockDescriptorAST_2D_element (void) ;
+  public : virtual ~ GALGAS_mapOverrideBlockDescriptorAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_mapOverrideBlockDescriptorAST_2D_element (const GALGAS_lstring & in_mLeftState,
@@ -3261,7 +3261,7 @@ class GALGAS_mapOverrideBlockListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_mapOverrideBlockListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_mapOverrideBlockListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_mapOverrideBlockListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_mapOverrideBlockListAST_2D_element (const GALGAS_lstring & in_mOverrideBlockName,
@@ -3489,7 +3489,7 @@ class GALGAS_sharedMapAttributeListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_sharedMapAttributeListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_sharedMapAttributeListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_sharedMapAttributeListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_sharedMapAttributeListAST_2D_element (const GALGAS_lstring & in_mAttributeName,
@@ -3688,7 +3688,7 @@ class GALGAS_mapStateTransitionSortedList_2D_element : public AC_GALGAS_root {
   public : GALGAS_mapStateTransitionSortedList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_mapStateTransitionSortedList_2D_element (void) ;
+  public : virtual ~ GALGAS_mapStateTransitionSortedList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_mapStateTransitionSortedList_2D_element (const GALGAS_uint & in_mActionIndex,
@@ -3890,7 +3890,7 @@ class GALGAS_mapStateSortedList_2D_element : public AC_GALGAS_root {
   public : GALGAS_mapStateSortedList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_mapStateSortedList_2D_element (void) ;
+  public : virtual ~ GALGAS_mapStateSortedList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_mapStateSortedList_2D_element (const GALGAS_uint & in_mStateIndex,
@@ -4119,7 +4119,7 @@ class GALGAS_mapAutomatonStateMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_mapAutomatonStateMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_mapAutomatonStateMap_2D_element (void) ;
+  public : virtual ~ GALGAS_mapAutomatonStateMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_mapAutomatonStateMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -4326,7 +4326,7 @@ class GALGAS_mapAutomatonActionMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_mapAutomatonActionMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_mapAutomatonActionMap_2D_element (void) ;
+  public : virtual ~ GALGAS_mapAutomatonActionMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_mapAutomatonActionMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -4539,7 +4539,7 @@ class GALGAS_branchBehaviourSortedListForMapOverride_2D_element : public AC_GALG
   public : GALGAS_branchBehaviourSortedListForMapOverride_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_branchBehaviourSortedListForMapOverride_2D_element (void) ;
+  public : virtual ~ GALGAS_branchBehaviourSortedListForMapOverride_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_branchBehaviourSortedListForMapOverride_2D_element (const GALGAS_uint & in_mStartStateIndex,
@@ -4787,7 +4787,7 @@ class GALGAS_mapOverrideList_2D_element : public AC_GALGAS_root {
   public : GALGAS_mapOverrideList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_mapOverrideList_2D_element (void) ;
+  public : virtual ~ GALGAS_mapOverrideList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_mapOverrideList_2D_element (const GALGAS_string & in_mOverrideName,
@@ -4991,7 +4991,7 @@ class GALGAS_sortedListSortDescriptorListAST_2D_element : public AC_GALGAS_root 
   public : GALGAS_sortedListSortDescriptorListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_sortedListSortDescriptorListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_sortedListSortDescriptorListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_sortedListSortDescriptorListAST_2D_element (const GALGAS_lstring & in_mSortedAttributeName,
@@ -5215,7 +5215,7 @@ class GALGAS_sortDescriptorListForGeneration_2D_element : public AC_GALGAS_root 
   public : GALGAS_sortDescriptorListForGeneration_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_sortDescriptorListForGeneration_2D_element (void) ;
+  public : virtual ~ GALGAS_sortDescriptorListForGeneration_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_sortDescriptorListForGeneration_2D_element (const GALGAS_unifiedTypeMap_2D_proxy & in_mAttributeTypeIndex,
@@ -5455,7 +5455,7 @@ class GALGAS_formalInputParameterListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_formalInputParameterListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_formalInputParameterListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_formalInputParameterListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_formalInputParameterListAST_2D_element (const GALGAS_lstring & in_mFormalSelector,
@@ -5723,7 +5723,7 @@ class GALGAS_formalInputParameterListForGeneration_2D_element : public AC_GALGAS
   public : GALGAS_formalInputParameterListForGeneration_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_formalInputParameterListForGeneration_2D_element (void) ;
+  public : virtual ~ GALGAS_formalInputParameterListForGeneration_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_formalInputParameterListForGeneration_2D_element (const GALGAS_lstring & in_mFormalSelector,
@@ -5988,7 +5988,7 @@ class GALGAS_formalParameterListForGeneration_2D_element : public AC_GALGAS_root
   public : GALGAS_formalParameterListForGeneration_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_formalParameterListForGeneration_2D_element (void) ;
+  public : virtual ~ GALGAS_formalParameterListForGeneration_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_formalParameterListForGeneration_2D_element (const GALGAS_lstring & in_mFormalSelector,
@@ -6329,7 +6329,7 @@ class GALGAS_semanticInstructionListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_semanticInstructionListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_semanticInstructionListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_semanticInstructionListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_semanticInstructionListAST_2D_element (const GALGAS_semanticInstructionAST & in_mInstruction) ;
@@ -6583,7 +6583,7 @@ class GALGAS_semanticInstructionListForGeneration_2D_element : public AC_GALGAS_
   public : GALGAS_semanticInstructionListForGeneration_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_semanticInstructionListForGeneration_2D_element (void) ;
+  public : virtual ~ GALGAS_semanticInstructionListForGeneration_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_semanticInstructionListForGeneration_2D_element (const GALGAS_semanticInstructionForGeneration & in_mInstruction) ;
@@ -6857,7 +6857,7 @@ class GALGAS_actualOutputExpressionList_2D_element : public AC_GALGAS_root {
   public : GALGAS_actualOutputExpressionList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_actualOutputExpressionList_2D_element (void) ;
+  public : virtual ~ GALGAS_actualOutputExpressionList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_actualOutputExpressionList_2D_element (const GALGAS_lstring & in_mActualSelector,
@@ -7058,7 +7058,7 @@ class GALGAS_semanticExpressionListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_semanticExpressionListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_semanticExpressionListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_semanticExpressionListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_semanticExpressionListAST_2D_element (const GALGAS_semanticExpressionAST & in_mExpression,

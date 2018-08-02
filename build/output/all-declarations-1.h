@@ -351,7 +351,7 @@ class GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element : publi
   public : GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element (void) ;
+  public : virtual ~ GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_templateInstructionSwitchBranchListForGeneration_2D_element (const GALGAS_lstringlist & in_mConstantList,
@@ -432,7 +432,7 @@ class GALGAS_extractedAssociatedValuesForGeneration_2D_element : public AC_GALGA
   public : GALGAS_extractedAssociatedValuesForGeneration_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_extractedAssociatedValuesForGeneration_2D_element (void) ;
+  public : virtual ~ GALGAS_extractedAssociatedValuesForGeneration_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_extractedAssociatedValuesForGeneration_2D_element (const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
@@ -833,7 +833,7 @@ class GALGAS_lexicalInstructionListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_lexicalInstructionListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalInstructionListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalInstructionListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalInstructionListAST_2D_element (const GALGAS_lexicalInstructionAST & in_mInstruction) ;
@@ -1041,7 +1041,7 @@ class GALGAS_metamodelTemplateDelimitorListAST_2D_element : public AC_GALGAS_roo
   public : GALGAS_metamodelTemplateDelimitorListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_metamodelTemplateDelimitorListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_metamodelTemplateDelimitorListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_metamodelTemplateDelimitorListAST_2D_element (const GALGAS_lstring & in_mStartString,
@@ -1257,7 +1257,7 @@ class GALGAS_templateReplacementListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_templateReplacementListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_templateReplacementListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_templateReplacementListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_templateReplacementListAST_2D_element (const GALGAS_lstring & in_mMatchString,
@@ -1515,7 +1515,7 @@ class GALGAS_lexicalRuleListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_lexicalRuleListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalRuleListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalRuleListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalRuleListAST_2D_element (const GALGAS_abstractLexicalRuleAST & in_mLexicalRule) ;
@@ -1798,7 +1798,7 @@ class GALGAS_lexicalMessageDeclarationListAST_2D_element : public AC_GALGAS_root
   public : GALGAS_lexicalMessageDeclarationListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalMessageDeclarationListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalMessageDeclarationListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalMessageDeclarationListAST_2D_element (const GALGAS_lstring & in_mMessageName,
@@ -1998,7 +1998,7 @@ class GALGAS_lexicalAttributeListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_lexicalAttributeListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalAttributeListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalAttributeListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalAttributeListAST_2D_element (const GALGAS_lstring & in_mTypeName,
@@ -2198,7 +2198,7 @@ class GALGAS_lexicalStyleListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_lexicalStyleListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalStyleListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalStyleListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalStyleListAST_2D_element (const GALGAS_lstring & in_mName,
@@ -2571,7 +2571,7 @@ class GALGAS_terminalDeclarationListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_terminalDeclarationListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_terminalDeclarationListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_terminalDeclarationListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_terminalDeclarationListAST_2D_element (const GALGAS_lstring & in_mName,
@@ -2654,7 +2654,7 @@ class GALGAS_sentLexicalAttributeListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_sentLexicalAttributeListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_sentLexicalAttributeListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_sentLexicalAttributeListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_sentLexicalAttributeListAST_2D_element (const GALGAS_lstring & in_mFormalSelector,
@@ -2866,7 +2866,7 @@ class GALGAS_lexicalListEntryListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_lexicalListEntryListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalListEntryListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalListEntryListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalListEntryListAST_2D_element (const GALGAS_lstring & in_mEntrySpelling,
@@ -3106,7 +3106,7 @@ class GALGAS_lexicalListDeclarationListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_lexicalListDeclarationListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalListDeclarationListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalListDeclarationListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalListDeclarationListAST_2D_element (const GALGAS_lstring & in_mName,
@@ -3405,7 +3405,7 @@ class GALGAS_lexicalSendSearchListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_lexicalSendSearchListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalSendSearchListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalSendSearchListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalSendSearchListAST_2D_element (const GALGAS_lstring & in_mAttributeName,
@@ -3758,7 +3758,7 @@ class GALGAS_lexicalWhileBranchListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_lexicalWhileBranchListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalWhileBranchListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalWhileBranchListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalWhileBranchListAST_2D_element (const GALGAS_lexicalExpressionAST & in_mWhileExpression,
@@ -4045,7 +4045,7 @@ class GALGAS_lexicalSelectBranchListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_lexicalSelectBranchListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalSelectBranchListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalSelectBranchListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalSelectBranchListAST_2D_element (const GALGAS_lexicalExpressionAST & in_mSelectExpression,
@@ -4394,7 +4394,7 @@ class GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element : public AC_GALG
   public : GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalRoutineCallActualArgumentListAST_2D_element (const GALGAS_abstractLexicalRoutineActualArgumentAST & in_mLexicalRoutineActualArgument) ;
@@ -4727,7 +4727,7 @@ class GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element : public AC_GAL
   public : GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalFunctionCallActualArgumentListAST_2D_element (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & in_mLexicalActualInputArgument) ;
@@ -5201,7 +5201,7 @@ class GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element : public AC_GA
   public : GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalExternRoutineFormalArgumentListAST_2D_element (const GALGAS_lexicalArgumentModeAST & in_mPassingMode,
@@ -5417,7 +5417,7 @@ class GALGAS_externRoutineListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_externRoutineListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_externRoutineListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_externRoutineListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_externRoutineListAST_2D_element (const GALGAS_lstring & in_mRoutineName,
@@ -5621,7 +5621,7 @@ class GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element : public AC_G
   public : GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element (const GALGAS_lstring & in_mLexicalTypeName,
@@ -5833,7 +5833,7 @@ class GALGAS_externFunctionListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_externFunctionListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_externFunctionListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_externFunctionListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_externFunctionListAST_2D_element (const GALGAS_lstring & in_mFunctionName,
@@ -6037,7 +6037,7 @@ class GALGAS_indexingListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_indexingListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_indexingListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_indexingListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_indexingListAST_2D_element (const GALGAS_lstring & in_mIndexName,
@@ -6311,7 +6311,7 @@ class GALGAS_lexicalFunctionListAST_2D_element : public AC_GALGAS_root {
   public : GALGAS_lexicalFunctionListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalFunctionListAST_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalFunctionListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalFunctionListAST_2D_element (const GALGAS_lstring & in_mFunctionName,
@@ -6629,7 +6629,7 @@ class GALGAS_lexicalSentValueList_2D_element : public AC_GALGAS_root {
   public : GALGAS_lexicalSentValueList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalSentValueList_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalSentValueList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalSentValueList_2D_element (const GALGAS_lstring & in_mLexicalFormalSelector,
@@ -6836,7 +6836,7 @@ class GALGAS_terminalMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_terminalMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_terminalMap_2D_element (void) ;
+  public : virtual ~ GALGAS_terminalMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_terminalMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -7036,7 +7036,7 @@ class GALGAS_lexicalTypeMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_lexicalTypeMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalTypeMap_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalTypeMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalTypeMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -7236,7 +7236,7 @@ class GALGAS_lexicalAttributeMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_lexicalAttributeMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalAttributeMap_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalAttributeMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalAttributeMap_2D_element (const GALGAS_lstring & in_lkey,
@@ -7508,7 +7508,7 @@ class GALGAS_terminalList_2D_element : public AC_GALGAS_root {
   public : GALGAS_terminalList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_terminalList_2D_element (void) ;
+  public : virtual ~ GALGAS_terminalList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_terminalList_2D_element (const GALGAS_lstring & in_mTerminalName,
@@ -7744,7 +7744,7 @@ class GALGAS_lexicalExplicitTokenListMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_lexicalExplicitTokenListMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lexicalExplicitTokenListMap_2D_element (void) ;
+  public : virtual ~ GALGAS_lexicalExplicitTokenListMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_lexicalExplicitTokenListMap_2D_element (const GALGAS_lstring & in_lkey,

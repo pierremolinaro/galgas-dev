@@ -734,7 +734,7 @@ class GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element : public AC_GALG
   public : GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element (void) ;
+  public : virtual ~ GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_syntaxInstructionListForGrammarAnalysis_2D_element (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis & in_mInstruction) ;
@@ -970,7 +970,7 @@ class GALGAS_productionRuleListForGrammarAnalysis_2D_element : public AC_GALGAS_
   public : GALGAS_productionRuleListForGrammarAnalysis_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_productionRuleListForGrammarAnalysis_2D_element (void) ;
+  public : virtual ~ GALGAS_productionRuleListForGrammarAnalysis_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_productionRuleListForGrammarAnalysis_2D_element (const GALGAS_lstring & in_mLeftNonterminalSymbol,
@@ -1172,7 +1172,7 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element : public AC
   public : GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element (void) ;
+  public : virtual ~ GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2D_element (const GALGAS_lstring & in_lkey,
@@ -1343,7 +1343,7 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element : public A
   public : GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element (void) ;
+  public : virtual ~ GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2D_element (const GALGAS_lstring & in_mNonTerminalSymbol,
@@ -1539,7 +1539,7 @@ class GALGAS_branchListForGrammarAnalysis_2D_element : public AC_GALGAS_root {
   public : GALGAS_branchListForGrammarAnalysis_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_branchListForGrammarAnalysis_2D_element (void) ;
+  public : virtual ~ GALGAS_branchListForGrammarAnalysis_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_branchListForGrammarAnalysis_2D_element (const GALGAS_syntaxInstructionListForGrammarAnalysis & in_mSyntaxInstructionList) ;
@@ -1865,7 +1865,7 @@ class GALGAS_syntaxComponentListForGrammarAnalysis_2D_element : public AC_GALGAS
   public : GALGAS_syntaxComponentListForGrammarAnalysis_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_syntaxComponentListForGrammarAnalysis_2D_element (void) ;
+  public : virtual ~ GALGAS_syntaxComponentListForGrammarAnalysis_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_syntaxComponentListForGrammarAnalysis_2D_element (const GALGAS_productionRuleListForGrammarAnalysis & in_mProductionRulesList,
@@ -2068,7 +2068,7 @@ class GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element : public AC_GALGAS_
   public : GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element (void) ;
+  public : virtual ~ GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_terminalSymbolsMapForGrammarAnalysis_2D_element (const GALGAS_lstring & in_lkey,
@@ -2363,7 +2363,7 @@ class GALGAS_rowList_2D_element : public AC_GALGAS_root {
   public : GALGAS_rowList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_rowList_2D_element (void) ;
+  public : virtual ~ GALGAS_rowList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_rowList_2D_element (const GALGAS__32_stringlist & in_columns) ;
@@ -2579,7 +2579,7 @@ class GALGAS_programListForGeneration_2D_element : public AC_GALGAS_root {
   public : GALGAS_programListForGeneration_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_programListForGeneration_2D_element (void) ;
+  public : virtual ~ GALGAS_programListForGeneration_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_programListForGeneration_2D_element (const GALGAS_semanticDeclarationForGeneration & in_mDeclaration) ;
@@ -2711,7 +2711,7 @@ class GALGAS_genericExtensionMethodListMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_genericExtensionMethodListMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_genericExtensionMethodListMap_2D_element (void) ;
+  public : virtual ~ GALGAS_genericExtensionMethodListMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_genericExtensionMethodListMap_2D_element (const GALGAS_string & in_key,
@@ -2892,7 +2892,7 @@ class GALGAS_descendantClassListMap_2D_element : public AC_GALGAS_root {
   public : GALGAS_descendantClassListMap_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_descendantClassListMap_2D_element (void) ;
+  public : virtual ~ GALGAS_descendantClassListMap_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_descendantClassListMap_2D_element (const GALGAS_string & in_key,
@@ -3070,7 +3070,7 @@ class GALGAS_extensionMethodMapForGlobalCheckings_2D_element : public AC_GALGAS_
   public : GALGAS_extensionMethodMapForGlobalCheckings_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_extensionMethodMapForGlobalCheckings_2D_element (void) ;
+  public : virtual ~ GALGAS_extensionMethodMapForGlobalCheckings_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_extensionMethodMapForGlobalCheckings_2D_element (const GALGAS_lstring & in_lkey) ;
@@ -3244,7 +3244,7 @@ class GALGAS_extensionSetterMapForGlobalCheckings_2D_element : public AC_GALGAS_
   public : GALGAS_extensionSetterMapForGlobalCheckings_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_extensionSetterMapForGlobalCheckings_2D_element (void) ;
+  public : virtual ~ GALGAS_extensionSetterMapForGlobalCheckings_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_extensionSetterMapForGlobalCheckings_2D_element (const GALGAS_lstring & in_lkey) ;
@@ -3418,7 +3418,7 @@ class GALGAS_extensionGetterMapForGlobalCheckings_2D_element : public AC_GALGAS_
   public : GALGAS_extensionGetterMapForGlobalCheckings_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_extensionGetterMapForGlobalCheckings_2D_element (void) ;
+  public : virtual ~ GALGAS_extensionGetterMapForGlobalCheckings_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_extensionGetterMapForGlobalCheckings_2D_element (const GALGAS_lstring & in_lkey) ;
@@ -3563,6 +3563,7 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
    kToken_class,
    kToken_constructor,
    kToken_default,
+   kToken_dict,
    kToken_do,
    kToken_drop,
    kToken_else,
@@ -3779,7 +3780,7 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
   protected : virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public : virtual int16_t terminalVocabularyCount (void) const { return 149 ; }
+  public : virtual int16_t terminalVocabularyCount (void) const { return 150 ; }
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
@@ -4021,7 +4022,7 @@ class GALGAS_galgas_33_ProjectComponentAST : public AC_GALGAS_root {
   public : GALGAS_galgas_33_ProjectComponentAST (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_galgas_33_ProjectComponentAST (void) ;
+  public : virtual ~ GALGAS_galgas_33_ProjectComponentAST (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_galgas_33_ProjectComponentAST (const GALGAS_lstringlist & in_mProjectSourceList,
@@ -4116,7 +4117,7 @@ class GALGAS_galgas_33_QualifiedFeatureList_2D_element : public AC_GALGAS_root {
   public : GALGAS_galgas_33_QualifiedFeatureList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_galgas_33_QualifiedFeatureList_2D_element (void) ;
+  public : virtual ~ GALGAS_galgas_33_QualifiedFeatureList_2D_element (void) ;
 
 //--------------------------------- Native constructor
   public : GALGAS_galgas_33_QualifiedFeatureList_2D_element (const GALGAS_lstring & in_mFeatureName,

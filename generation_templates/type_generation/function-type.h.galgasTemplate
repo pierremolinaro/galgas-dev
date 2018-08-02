@@ -21,7 +21,7 @@ class GALGAS_function : public AC_GALGAS_root {
   public : GALGAS_function (void) ;
 
 //--------------------------------- Destructor (virtual in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_function (void) ;
+  public : virtual ~ GALGAS_function (void) ;
 
 //--------------------------------- Handle copy
   public : GALGAS_function (const GALGAS_function & inSource) ;

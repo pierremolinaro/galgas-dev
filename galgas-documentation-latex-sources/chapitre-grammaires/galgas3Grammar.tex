@@ -528,7 +528,33 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas3DeclarationsSyntax}{type-map}{54}
+\ruleSubsection{galgas3DeclarationsSyntax}{type-dict}{25}
+
+\begin{tikzpicture}
+  \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
+    & & & & & & & & & & & & & & \node (p3-14) [point] {}; & \\
+    & & & & & & & & \node (p2-8) [point] {}; & & & & & \node (p2-13) [terminal] {;}; & \\
+    & & & & & & & \node (p1-7) [terminal] {\verb=%=attribute}; & & & & & & \node (p1-13) [nonterminal] {\nonTerminalSymbol{property\_declaration}{33}}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {dict}; & \node (p0-3) [terminal] {@type}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & & \node (p0-9) [terminal] {\{}; & \node (p0-10) [point] {}; & \node (p0-11) [point] {}; & \node (p0-12) [point] {}; & & & \node (p0-15) [terminal] {\}}; & \node (p0-16) [lastPoint] {}; & \\
+  };
+  \draw[->] (P0start) -- (p0-2) ;
+  \draw[->] (p0-2) -- (p0-3) ;
+  \draw (p0-3) -- (p0-5) ;
+  \draw[->] (p0-6) |- (p1-7) ;
+  \draw[->] (p2-8) -| (p0-4) ;
+  \draw[->] (p1-7) -| (p2-8) ;
+  \draw[->] (p0-5) -- (p0-9) ;
+  \draw (p0-9) -- (p0-11) ;
+  \draw[->] (p0-12) |- (p1-13) ;
+  \draw[->] (p0-12) |- (p2-13) ;
+  \draw[->] (p3-14) -| (p0-10) ;
+  \draw[->] (p1-13) -| (p3-14) ;
+  \draw[->] (p2-13) -| (p3-14) ;
+  \draw[->] (p0-11) -- (p0-15) ;
+  \draw[->] (p0-15) -- (p0-16) ;
+\end{tikzpicture}
+
+\ruleSubsection{galgas3DeclarationsSyntax}{type-map}{60}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -1943,7 +1969,7 @@
 
 \nonTerminalSection{insert\_or\_replace\_declaration}{45}
 
-\ruleSubsection{galgas3DeclarationsSyntax}{type-map}{134}
+\ruleSubsection{galgas3DeclarationsSyntax}{type-map}{140}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -2600,7 +2626,7 @@
 
 \nonTerminalSection{map\_insert\_setter\_declaration}{46}
 
-\ruleSubsection{galgas3DeclarationsSyntax}{type-map}{143}
+\ruleSubsection{galgas3DeclarationsSyntax}{type-map}{149}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -3196,7 +3222,7 @@
 
 \nonTerminalSection{remove\_declaration}{44}
 
-\ruleSubsection{galgas3DeclarationsSyntax}{type-map}{123}
+\ruleSubsection{galgas3DeclarationsSyntax}{type-map}{129}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
@@ -3236,7 +3262,7 @@
 
 \nonTerminalSection{search\_declaration}{43}
 
-\ruleSubsection{galgas3DeclarationsSyntax}{type-map}{101}
+\ruleSubsection{galgas3DeclarationsSyntax}{type-map}{107}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {

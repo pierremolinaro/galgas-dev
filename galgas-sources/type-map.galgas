@@ -44,6 +44,12 @@ class @mapDeclarationAST : @semanticDeclarationAST {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
+
+override getter @mapDeclarationAST keyRepresentation ->@string outString {
+  outString = "map @" + mMapTypeName
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
 #   SYNTAX                                                                                                             *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -530,49 +536,6 @@ map @searchMethodMap {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc check_K_escapeCharacters ?@lstring inString {  #--- Check escape sequences : only %K or %%
-  for components in [[inString string] componentsSeparatedByString !"%%"] do
-    @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
-    [!?explodedArray popFirst ?*]
-    for () in explodedArray do
-      if [mValue length] > 0 then
-        let @char c = [mValue characterAtIndex !0]
-        if c != 'K' then
-          error inString: "only '%K' and '%%' escape sequences are allowed in this error message"
-        end
-      end
-    end
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-proc check_K_L_escapeCharacters ?@lstring inString {  #--- Check escape sequences : only %K, %L or %%
-  for components in [[inString string] componentsSeparatedByString !"%%"] do
-    @stringlist explodedArray = [components.mValue componentsSeparatedByString !"%"]
-    [!?explodedArray popFirst ?*]
-    for () in explodedArray do
-      if [mValue length] > 0 then
-        let @char c = [mValue characterAtIndex !0]
-        if (c != 'K') & (c != 'L') then
-          error inString: "only '%K', '%L' and '%%' escape sequences are allowed in this error message"
-        end
-      end
-    end
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
-private func %once forbiddenKeysForMap -> @stringset {
-  result = {}
-  result += !"lkey"
-  result += !"description"
-  result += !"object"
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @mapDeclarationAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
@@ -600,9 +563,9 @@ override method @mapDeclarationAST semanticAnalysis
       !mPropertyName
       !hasSetter
       !hasGetter
-    if [forbiddenKeysForMap () hasKey !mPropertyName.string] then
+    if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
       @string m = "a property cannot be named:"
-      for s in forbiddenKeysForMap () do
+      for s in forbiddenKeysForMapAndDict () do
         m+= " " + s
       end
       m += "; theses names are reserved"

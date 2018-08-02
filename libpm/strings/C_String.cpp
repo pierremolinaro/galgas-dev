@@ -74,7 +74,7 @@ class cEmbeddedString : public C_SharedObject {
                             const uint32_t inCapacity
                             COMMA_LOCATION_ARGS) ;
 
-  public : ~cEmbeddedString (void) ;
+  public : virtual ~cEmbeddedString (void) ;
 
 //--- No copy
   private : cEmbeddedString (const cEmbeddedString &) ;

@@ -6307,6 +6307,9 @@ static const char * gSyntaxErrorMessage_galgas_33_Scanner_constructor = "the 'co
 //--- Syntax error message for terminal '$default$' :
 static const char * gSyntaxErrorMessage_galgas_33_Scanner_default = "the 'default' keyword" ;
 
+//--- Syntax error message for terminal '$dict$' :
+static const char * gSyntaxErrorMessage_galgas_33_Scanner_dict = "the 'dict' keyword" ;
+
 //--- Syntax error message for terminal '$do$' :
 static const char * gSyntaxErrorMessage_galgas_33_Scanner_do = "the 'do' keyword" ;
 
@@ -6646,8 +6649,8 @@ static const char * gSyntaxErrorMessage_galgas_33_Scanner__26__2B__2B_ = "the '&
 
 C_String C_Lexique_galgas_33_Scanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
   C_String result = "<unknown>" ;
-  if ((inTerminalIndex >= 0) && (inTerminalIndex < 150)) {
-    static const char * syntaxErrorMessageArray [150] = {kEndOfSourceLexicalErrorMessage,
+  if ((inTerminalIndex >= 0) && (inTerminalIndex < 151)) {
+    static const char * syntaxErrorMessageArray [151] = {kEndOfSourceLexicalErrorMessage,
         gSyntaxErrorMessage_galgas_33_Scanner_identifier,
         gSyntaxErrorMessage_galgas_33_Scanner_double_2E_xxx,
         gSyntaxErrorMessage_galgas_33_Scanner_uint_33__32_,
@@ -6686,6 +6689,7 @@ C_String C_Lexique_galgas_33_Scanner::getMessageForTerminal (const int16_t inTer
         gSyntaxErrorMessage_galgas_33_Scanner_class,
         gSyntaxErrorMessage_galgas_33_Scanner_constructor,
         gSyntaxErrorMessage_galgas_33_Scanner_default,
+        gSyntaxErrorMessage_galgas_33_Scanner_dict,
         gSyntaxErrorMessage_galgas_33_Scanner_do,
         gSyntaxErrorMessage_galgas_33_Scanner_drop,
         gSyntaxErrorMessage_galgas_33_Scanner_else,
@@ -7217,6 +7221,15 @@ static const utf32 kUnicodeString_galgas_33_Scanner_default [] = {
   TO_UNICODE ('a'),
   TO_UNICODE ('u'),
   TO_UNICODE ('l'),
+  TO_UNICODE ('t'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$dict$'
+static const utf32 kUnicodeString_galgas_33_Scanner_dict [] = {
+  TO_UNICODE ('d'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('c'),
   TO_UNICODE ('t'),
   TO_UNICODE (0)
 } ;
@@ -8027,7 +8040,7 @@ int16_t C_Lexique_galgas_33_Scanner::search_into_galgasDelimitorsList (const C_S
 //             Key words table 'galgasKeyWordList'                            *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-static const int32_t ktable_size_galgas_33_Scanner_galgasKeyWordList = 84 ;
+static const int32_t ktable_size_galgas_33_Scanner_galgasKeyWordList = 85 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKeyWordList [ktable_size_galgas_33_Scanner_galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_as, 2, C_Lexique_galgas_33_Scanner::kToken_as),
@@ -8049,6 +8062,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_var, 3, C_Lexique_galgas_33_Scanner::kToken_var),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_case, 4, C_Lexique_galgas_33_Scanner::kToken_case),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_cast, 4, C_Lexique_galgas_33_Scanner::kToken_cast),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_dict, 4, C_Lexique_galgas_33_Scanner::kToken_dict),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_drop, 4, C_Lexique_galgas_33_Scanner::kToken_drop),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_else, 4, C_Lexique_galgas_33_Scanner::kToken_else),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_enum, 4, C_Lexique_galgas_33_Scanner::kToken_enum),
@@ -8359,6 +8373,11 @@ C_String C_Lexique_galgas_33_Scanner::getCurrentTokenString (const cToken * inTo
     case kToken_default:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("default") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken_dict:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("dict") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_do:
@@ -9975,6 +9994,7 @@ GALGAS_stringlist C_Lexique_galgas_33_Scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("class") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("constructor") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("default") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("dict") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("do") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("drop") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("else") COMMA_THERE) ;
@@ -10166,6 +10186,7 @@ static void getKeywordsForIdentifier_galgas_33_Scanner (const C_String & inIdent
     ioList.appendObject ("var") ;
     ioList.appendObject ("case") ;
     ioList.appendObject ("cast") ;
+    ioList.appendObject ("dict") ;
     ioList.appendObject ("drop") ;
     ioList.appendObject ("else") ;
     ioList.appendObject ("enum") ;
@@ -10246,7 +10267,7 @@ __attribute__ ((unused)) (getKeywordLists_galgas_33_Scanner, getKeywordsForIdent
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 uint32_t C_Lexique_galgas_33_Scanner::styleIndexForTerminal (const int32_t inTerminalIndex) const {
-  static const uint32_t kTerminalSymbolStyles [150] = {0,
+  static const uint32_t kTerminalSymbolStyles [151] = {0,
     0 /* galgas3Scanner_1_identifier */,
     8 /* galgas3Scanner_1_double_2E_xxx */,
     6 /* galgas3Scanner_1_uint_33__32_ */,
@@ -10285,6 +10306,7 @@ uint32_t C_Lexique_galgas_33_Scanner::styleIndexForTerminal (const int32_t inTer
     1 /* galgas3Scanner_1_class */,
     1 /* galgas3Scanner_1_constructor */,
     1 /* galgas3Scanner_1_default */,
+    1 /* galgas3Scanner_1_dict */,
     1 /* galgas3Scanner_1_do */,
     1 /* galgas3Scanner_1_drop */,
     1 /* galgas3Scanner_1_else */,

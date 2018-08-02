@@ -76,6 +76,7 @@ project (3:3:11) -> "galgas" {
   "galgas-sources/type-graph.galgas"
   "galgas-sources/type-list.galgas"
   "galgas-sources/type-listmap.galgas"
+  "galgas-sources/type-dict.galgas"
   "galgas-sources/type-map.galgas"
   "galgas-sources/type-map-proxy.galgas"
   "galgas-sources/type-shared-map.galgas"

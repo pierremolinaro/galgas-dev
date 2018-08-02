@@ -173,7 +173,7 @@ class cMapNode {
   public : cMapNode (cMapNode * inNode) ;
 
 //--- Destructor
-  public : ~ cMapNode (void) ;
+  public : virtual ~ cMapNode (void) ;
 
 //--- No copy
   private : cMapNode (const cMapNode &) ;
