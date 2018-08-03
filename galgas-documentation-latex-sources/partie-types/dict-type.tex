@@ -7,7 +7,7 @@
 
 Un objet de type \ggs+dict+ est un dictionnaire. Contrairement à un objet de type \ggs+map+ , le type de la clé est déclaré explicitement et peut être d'un type quelconque.
 
-{\bf\color{red} Attention ! } Le type de la clé d'un dictionnaire peut être un \ggs+@lstring+, comme la clé implicite d'une \ggs+map+. Toutefois, la sémantique est différente. Dans une \ggs=map=, c'est la composante \ggs=string= de la clé qui est prise en compte comme clé effective. La composante \ggs=location= n'est utilisée que pour le signalement d'erreur. Dans un \ggs=dict=, c'est le type déclaré comme clé qui est pris en compte : si la clé d'un \ggs=dict= est un \ggs=@lstring=, la comparaison des clés prend en compte la composante \ggs=string= {\bf et} la composante \ggs=location=.
+{\bf\color{red} Attention ! } Le type de la clé d'un dictionnaire peut être un \ggs+@lstring+, comme la clé implicite d'une \ggs+map+. Toutefois, la sémantique est différente. Dans une \ggs=map=, c'est la composante \ggs=string= de la clé qui est prise en compte comme clé effective. La composante \ggs=location= n'est utilisée que pour le signalement d'erreur. Dans un \ggs=dict=, le type déclaré comme clé est intégralement pris en compte : si la clé d'un \ggs=dict= est un \ggs=@lstring=, la comparaison des clés prend en compte la composante \ggs=string= {\bf et} la composante \ggs=location=.
 
 \section{Déclaration}
 
@@ -25,9 +25,13 @@ La déclaration d'un type \ggs+dict+ nomme~:
   \item les propriétés associées (ici \ggs=mPremier= et \ggs=mSecond=).
 \end{itemize}
 
-Il faut déclarer au moins une propriété. Le nom \ggs=key= est interdit pour une propriété.
+Les noms \ggs=key=, \ggs=object= et \ggs=desciption= sont interdits pour une propriété.
 
+On peut déclarer un dictionaire sans propriété, et ainsi gérer des \emph{ensembles} :
 
+\begin{galgas}
+dict @autreDictionnaire : @uint { }
+\end{galgas}
 
 
 

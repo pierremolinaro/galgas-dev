@@ -4717,7 +4717,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
                             inCompiler->emitSemanticError (enumerator_19083.current_mValue (HERE).getter_location (SOURCE_FILE ("galgas3TargetGeneration.galgas", 431)), var_macOsDuplicateMessage_19308, fixItArray37  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 431)) ;
                           }
                           var_SDK_19006 = GALGAS_string ("macosx") ;
-                          var_MACOSX_5F_DEPLOYMENT_5F_TARGET_19046 = GALGAS_string ("10.6") ;
+                          var_MACOSX_5F_DEPLOYMENT_5F_TARGET_19046 = GALGAS_string ("10.7") ;
                         }else if (kBoolFalse == test_35) {
                           var_generationFeatures_18949.addAssign_operation (enumerator_19083.current_mValue (HERE).getter_string (HERE)  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 436)) ;
                         }

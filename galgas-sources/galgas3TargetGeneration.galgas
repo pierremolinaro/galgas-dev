@@ -431,7 +431,7 @@ proc updateGalgas3Targets
           error mValue: macOsDuplicateMessage
         end
         SDK = "macosx"
-        MACOSX_DEPLOYMENT_TARGET = "10.6"
+        MACOSX_DEPLOYMENT_TARGET = "10.7"
       else
         generationFeatures += !mValue.string
       end

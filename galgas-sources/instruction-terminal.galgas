@@ -254,7 +254,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
 #--- Syntax directed translation
   [mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor generateCode
     !inGenerateSyntaxDirectedTranslationString
-    !"inCompiler->preceedingSeparatorString ()"
+    !"inCompiler->separatorString ()"
     !?ioUnusedVariableCppNameSet
     !?ioGeneratedCode
   ]

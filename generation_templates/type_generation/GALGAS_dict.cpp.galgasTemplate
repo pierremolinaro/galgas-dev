@@ -682,7 +682,7 @@ cGenericAbstractEnumerator (inOrder) {
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
-  const cCollectionElement_%!TYPE_IDENTIFIER%* p = (const cCollectionElement_%!TYPE_IDENTIFIER%*) currentObjectPtr (THERE) ;
+  const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;
   macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
   return GALGAS_%!TYPE_IDENTIFIER%_2D_element (p->mElement) ;
 }
@@ -690,7 +690,7 @@ GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LO
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_%!KEY_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCATION_ARGS) const {
-  const cCollectionElement_%!TYPE_IDENTIFIER%* p = (const cCollectionElement_%!TYPE_IDENTIFIER%*) currentObjectPtr (THERE) ;
+  const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;
   macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
   return p->mElement.mProperty_key ;
 }
@@ -698,7 +698,7 @@ GALGAS_%!KEY_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCAT
 %for () in ATTRIBUTE_LIST do index IDX
   %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
-  %  const cCollectionElement_%!TYPE_IDENTIFIER%* p = (const cCollectionElement_%!TYPE_IDENTIFIER%*) currentObjectPtr (THERE) ;\n%
+  %  const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;\n%
   %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mElement.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   %}\n\n%

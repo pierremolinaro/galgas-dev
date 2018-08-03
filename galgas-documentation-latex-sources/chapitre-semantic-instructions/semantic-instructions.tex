@@ -895,6 +895,7 @@ Les types pouvant être énumérés sont listés dans le \refTableau{typesEnumer
   \begin{tabular}{ll}
   \textbf{Type} & \textbf{Ordre d'énumération}\\
   \ggs+@data+ & Ordre croissant des indices\\
+  \ggs+dict @T+ & Ordre alphabétique des clés \\
   \ggs+list @T+ & Ordre croissant des indices \\
   \ggs+map @T+ & Ordre alphabétique des clés \\
   \ggs+listmap @T+ & Ordre alphabétique des clés \\
@@ -930,6 +931,7 @@ Des constantes correspondants à chaque champ de l'élément courant sont implic
   \begin{tabular}{lp{12cm}}
   \textbf{Type} & \textbf{Constantes implicitement déclarées}\\
   \ggs+@data+ & \ggs+data+, de type \ggs+@uint+\\
+  \ggs+dict @T+ & \ggs+key+ représente la clé, et à chaque champ de la table, correspond une constante de même nom.\\
   \ggs+list @T+ & À chaque champ de la liste, correspond une constante de même nom.\\
   \ggs+map @T+ & \ggs+lkey+, de type \ggs+@lstring+, qui représente la clé, et à chaque champ de la table, correspond une constante de même nom.\\
   \ggs+listmap @T+ & \ggs+key+, de type \ggs+@string+, qui représente la clé, et \ggs+mList+, qui représente la liste associée.\\
@@ -1063,6 +1065,7 @@ Dans cette forme, une seule constante est déclarée (\ggs+cst+), et son type es
   \begin{tabular}{llp{7cm}}
   \textbf{Type de \texttt{expression}} & \textbf{Type implicite de la constante \texttt{cst}}\\
   \ggs+@data+ & \ggs+@uint+\\
+  \ggs+dict @T+ & \ggs+@T-element+\\
   \ggs+list @T+ & \ggs+@T-element+\\
   \ggs+map @T+ & \ggs+@T-element+\\
   \ggs+listmap @T+ & \ggs+@T-element+\\
@@ -1162,6 +1165,7 @@ Le \refTableau{enumerationParListeConstantes} liste pour chaque type le nombre e
   \begin{tabular}{lp{12cm}}
   \textbf{Type} & \textbf{Constantes à déclarer}\\
   \ggs+@data+ & \emph{Ce type n'est pas pris en charge par cette forme.}\\
+  \ggs+dict @T+ & Une constante de type de la clé, suivi d'une constante pour chaque champ de la table, dans l'ordre de déclaration.\\
   \ggs+list @T+ & Une constante pour chaque champ, dans l'ordre de déclaration.\\
   \ggs+map @T+ & Une constante de type \ggs+@lstring+, qui représente la clé, suivi d'une constante pour chaque champ de la table, dans l'ordre de déclaration.\\
   \ggs+listmap @T+ & Une constante de type \ggs+@string+, qui représente la clé, et une constante qui représente la liste associée.\\
