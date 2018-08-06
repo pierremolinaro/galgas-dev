@@ -100,7 +100,7 @@ override method @listDeclarationAST enterInSemanticContext
     setterInputFormalArgumentList += !["" nowhere] !mPropertyTypeProxy !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
   end
 #--- Constructors
-  var constructorMap =@constructorMap.emptyMap{}
+  @constructorMap constructorMap = {}
   enterConstructorWithoutArgument (
     !?constructorMap
     !?ioSemanticContext.mTypeMap 
@@ -166,7 +166,7 @@ override method @listDeclarationAST enterInSemanticContext
     end
   end
 #------------------------- Instance methods
-  var instanceMethodMap =@instanceMethodMap.emptyMap{}
+  @instanceMethodMap instanceMethodMap = {}
   [!?instanceMethodMap insertKey
     !@lstring.new {!"first" !@location.here}
     !@methodKind.definedAsMember
@@ -186,7 +186,15 @@ override method @listDeclarationAST enterInSemanticContext
     !""
   ]
 #----------------------------------------- Modifiers
-  var setterMap =@setterMap.emptyMap{}
+  @setterMap setterMap = {}
+  [!?setterMap insertOrReplace
+    !@lstring.new {!"append" !@location.here}
+    !@methodKind.definedAsMember
+    !{!["" nowhere] !listElementTypeIndex !@formalArgumentPassingModeAST.argumentIn !"inElement"}
+    !true
+    !@methodQualifier.isBasic
+    !""
+  ]
   [!?setterMap insertOrReplace
     !@lstring.new {!"popFirst" !@location.here}
     !@methodKind.definedAsMember
@@ -239,7 +247,7 @@ override method @listDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
   drop setterInputFormalArgumentList
-#--- Add Categories
+#--- Add extensions
   addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext
@@ -384,6 +392,7 @@ filewrapper listGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedPropertyList ATTRIBUTE_LIST
+    ?@string ELEMENT_TYPE_IDENTIFIER
 }
 
 #·······················································································································
@@ -428,6 +437,7 @@ override method @listTypeForGeneration appendSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
+    ![[mTypeProxy mTypeForEnumeratedElement] identifierRepresentation]
   ]
  }
 

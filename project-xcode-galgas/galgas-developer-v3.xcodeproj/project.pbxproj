@@ -373,6 +373,9 @@
 		CF3FDE2114E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
 		CF3FDE2214E6CD4E0040331C /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE2014E6CD4E0040331C /* C_Data.cpp */; };
 		CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
+		CF4A1A592118A8B800BF7D12 /* all-declarations-27.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4A1A582118A8B800BF7D12 /* all-declarations-27.cpp */; };
+		CF4A1A5B2118A8EE00BF7D12 /* all-declarations-27.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4A1A582118A8B800BF7D12 /* all-declarations-27.cpp */; };
+		CF4A1A5C2118A8EF00BF7D12 /* all-declarations-27.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4A1A582118A8B800BF7D12 /* all-declarations-27.cpp */; };
 		CF4E85961FF3EB6200A28AE6 /* option-galgas-5F-cli-5F-options-cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1A80BD1D7AD2050012A113 /* option-galgas-5F-cli-5F-options-cocoa.m */; };
 		CF51F02315C9200E00387A48 /* PMDebug.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF51F02115C9200E00387A48 /* PMDebug.xib */; };
 		CF51F02715C9201800387A48 /* PMDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = CF51F02615C9201800387A48 /* PMDebug.m */; };
@@ -979,6 +982,8 @@
 		CF4349921B9E157700B90CAC /* libgmp-Darwin-Intel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgmp-Darwin-Intel.a"; path = "../libpm/gmp/libgmp-Darwin-Intel.a"; sourceTree = "<group>"; };
 		CF4398030ADFE1900085F47C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		CF443912144E144600E38AA4 /* TC_prime_cache2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TC_prime_cache2.h; sourceTree = "<group>"; };
+		CF4A1A582118A8B800BF7D12 /* all-declarations-27.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-27.cpp"; sourceTree = "<group>"; };
+		CF4A1A5A2118A8C500BF7D12 /* all-declarations-27.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-27.h"; sourceTree = "<group>"; };
 		CF4C28B91EC227F700DE807B /* switch-fallthrough.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "switch-fallthrough.h"; sourceTree = "<group>"; };
 		CF51F02215C9200E00387A48 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/PMDebug.xib; sourceTree = "<group>"; };
 		CF51F02515C9201800387A48 /* PMDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMDebug.h; sourceTree = "<group>"; };
@@ -1492,6 +1497,7 @@
 				CFB02C7B19F3FC2F0011D03D /* all-declarations-24.cpp */,
 				CFEEE0FA1A064DE800E38AAC /* all-declarations-25.cpp */,
 				CF64D73A2062B2C80058C8CA /* all-declarations-26.cpp */,
+				CF4A1A582118A8B800BF7D12 /* all-declarations-27.cpp */,
 				CF12C0BD1D043E610060778F /* all-predefined-types.cpp */,
 			);
 			name = "C++ files";
@@ -1527,6 +1533,7 @@
 				CFB02C9E19F3FC570011D03D /* all-declarations-24.h */,
 				CF393C641A0681A000153A38 /* all-declarations-25.h */,
 				CF64D73C2062B2D70058C8CA /* all-declarations-26.h */,
+				CF4A1A5A2118A8C500BF7D12 /* all-declarations-27.h */,
 				CF2374E319967D5D0061D2D8 /* all-declarations.h */,
 				CF12C0BF1D043E6C0060778F /* all-predefined-types.h */,
 				CF0EBF7E1DACE65F007B4D58 /* galgas_cli_options.h */,
@@ -2506,6 +2513,7 @@
 				CFB339351DAA4D7300C0563C /* cGenericAbstractEnumerator.cpp in Sources */,
 				CF2C85FE1CC3B0890008D960 /* mpn-nussbaumer_mul.c in Sources */,
 				CF2C85FF1CC3B0890008D960 /* all-declarations-21.cpp in Sources */,
+				CF4A1A5C2118A8EF00BF7D12 /* all-declarations-27.cpp in Sources */,
 				CF2C86001CC3B0890008D960 /* mpz-get_si.c in Sources */,
 				CF2C86011CC3B0890008D960 /* mpz-get_ui.c in Sources */,
 				CF2C86021CC3B0890008D960 /* mpn-sbpi1_divappr_q.c in Sources */,
@@ -2769,6 +2777,7 @@
 				CF9234381BADC452001032DA /* mpz-mul.c in Sources */,
 				CFB02C7E19F3FC2F0011D03D /* all-declarations-21.cpp in Sources */,
 				CF9E75501BADD98300DBEFEE /* mpn-toom_eval_pm2.c in Sources */,
+				CF4A1A592118A8B800BF7D12 /* all-declarations-27.cpp in Sources */,
 				CF9233C11BADAE68001032DA /* mpz-get_si.c in Sources */,
 				CF9233C41BADAEB3001032DA /* mpz-get_ui.c in Sources */,
 				CFC1042C161DFE2000253307 /* PMUInt128.cpp in Sources */,
@@ -3032,6 +3041,7 @@
 				CFB339341DAA4D7200C0563C /* cGenericAbstractEnumerator.cpp in Sources */,
 				CF9E75731BADDD4900DBEFEE /* mpn-nussbaumer_mul.c in Sources */,
 				CFB02C7F19F3FC2F0011D03D /* all-declarations-21.cpp in Sources */,
+				CF4A1A5B2118A8EE00BF7D12 /* all-declarations-27.cpp in Sources */,
 				CF9233C21BADAE68001032DA /* mpz-get_si.c in Sources */,
 				CF9233C51BADAEB3001032DA /* mpz-get_ui.c in Sources */,
 				CF9E757A1BADDDA900DBEFEE /* mpn-sbpi1_divappr_q.c in Sources */,

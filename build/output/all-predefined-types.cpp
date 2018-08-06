@@ -113,9 +113,10 @@ GALGAS_stringlist GALGAS_stringlist::extractObject (const GALGAS_object & inObje
 class cCollectionElement_stringlist : public cCollectionElement {
   public : GALGAS_stringlist_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_stringlist (const GALGAS_string & in_mValue
                                           COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_stringlist (const GALGAS_stringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -136,6 +137,13 @@ cCollectionElement_stringlist::cCollectionElement_stringlist (const GALGAS_strin
                                                               COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mValue) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_stringlist::cCollectionElement_stringlist (const GALGAS_stringlist_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mValue) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -219,6 +227,21 @@ void GALGAS_stringlist::addAssign_operation (const GALGAS_string & inOperand0
   if (isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_stringlist (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_stringlist::setter_append (GALGAS_stringlist_2D_element inElement,
+                                       C_Compiler * /* inCompiler */
+                                       COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_stringlist (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -573,9 +596,10 @@ GALGAS_lstringlist GALGAS_lstringlist::extractObject (const GALGAS_object & inOb
 class cCollectionElement_lstringlist : public cCollectionElement {
   public : GALGAS_lstringlist_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_lstringlist (const GALGAS_lstring & in_mValue
                                            COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_lstringlist (const GALGAS_lstringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -596,6 +620,13 @@ cCollectionElement_lstringlist::cCollectionElement_lstringlist (const GALGAS_lst
                                                                 COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mValue) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_lstringlist::cCollectionElement_lstringlist (const GALGAS_lstringlist_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mValue) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -679,6 +710,21 @@ void GALGAS_lstringlist::addAssign_operation (const GALGAS_lstring & inOperand0
   if (isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_lstringlist (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_lstringlist::setter_append (GALGAS_lstringlist_2D_element inElement,
+                                        C_Compiler * /* inCompiler */
+                                        COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lstringlist (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -1076,10 +1122,11 @@ GALGAS__32_lstringlist GALGAS__32_lstringlist::extractObject (const GALGAS_objec
 class cCollectionElement__32_lstringlist : public cCollectionElement {
   public : GALGAS__32_lstringlist_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement__32_lstringlist (const GALGAS_lstring & in_mValue_30_,
                                                const GALGAS_lstring & in_mValue_31_
                                                COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement__32_lstringlist (const GALGAS__32_lstringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -1101,6 +1148,13 @@ cCollectionElement__32_lstringlist::cCollectionElement__32_lstringlist (const GA
                                                                         COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mValue_30_, in_mValue_31_) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement__32_lstringlist::cCollectionElement__32_lstringlist (const GALGAS__32_lstringlist_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mValue_30_, inElement.mProperty_mValue_31_) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -1192,6 +1246,21 @@ void GALGAS__32_lstringlist::addAssign_operation (const GALGAS_lstring & inOpera
   if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement__32_lstringlist (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS__32_lstringlist::setter_append (GALGAS__32_lstringlist_2D_element inElement,
+                                            C_Compiler * /* inCompiler */
+                                            COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement__32_lstringlist (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -1865,10 +1934,11 @@ GALGAS__32_stringlist GALGAS__32_stringlist::extractObject (const GALGAS_object 
 class cCollectionElement__32_stringlist : public cCollectionElement {
   public : GALGAS__32_stringlist_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement__32_stringlist (const GALGAS_string & in_mValue_30_,
                                               const GALGAS_string & in_mValue_31_
                                               COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement__32_stringlist (const GALGAS__32_stringlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -1890,6 +1960,13 @@ cCollectionElement__32_stringlist::cCollectionElement__32_stringlist (const GALG
                                                                       COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mValue_30_, in_mValue_31_) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement__32_stringlist::cCollectionElement__32_stringlist (const GALGAS__32_stringlist_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mValue_30_, inElement.mProperty_mValue_31_) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -1981,6 +2058,21 @@ void GALGAS__32_stringlist::addAssign_operation (const GALGAS_string & inOperand
   if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement__32_stringlist (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS__32_stringlist::setter_append (GALGAS__32_stringlist_2D_element inElement,
+                                           C_Compiler * /* inCompiler */
+                                           COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement__32_stringlist (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -2646,9 +2738,10 @@ GALGAS_functionlist GALGAS_functionlist::extractObject (const GALGAS_object & in
 class cCollectionElement_functionlist : public cCollectionElement {
   public : GALGAS_functionlist_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_functionlist (const GALGAS_function & in_mValue
                                             COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_functionlist (const GALGAS_functionlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -2669,6 +2762,13 @@ cCollectionElement_functionlist::cCollectionElement_functionlist (const GALGAS_f
                                                                   COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mValue) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_functionlist::cCollectionElement_functionlist (const GALGAS_functionlist_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mValue) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -2752,6 +2852,21 @@ void GALGAS_functionlist::addAssign_operation (const GALGAS_function & inOperand
   if (isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_functionlist (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_functionlist::setter_append (GALGAS_functionlist_2D_element inElement,
+                                         C_Compiler * /* inCompiler */
+                                         COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_functionlist (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -3020,9 +3135,10 @@ GALGAS_luintlist GALGAS_luintlist::extractObject (const GALGAS_object & inObject
 class cCollectionElement_luintlist : public cCollectionElement {
   public : GALGAS_luintlist_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_luintlist (const GALGAS_luint & in_mValue
                                          COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_luintlist (const GALGAS_luintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -3043,6 +3159,13 @@ cCollectionElement_luintlist::cCollectionElement_luintlist (const GALGAS_luint &
                                                             COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mValue) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_luintlist::cCollectionElement_luintlist (const GALGAS_luintlist_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mValue) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -3126,6 +3249,21 @@ void GALGAS_luintlist::addAssign_operation (const GALGAS_luint & inOperand0
   if (isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_luintlist (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_luintlist::setter_append (GALGAS_luintlist_2D_element inElement,
+                                      C_Compiler * /* inCompiler */
+                                      COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_luintlist (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -3394,9 +3532,10 @@ GALGAS_objectlist GALGAS_objectlist::extractObject (const GALGAS_object & inObje
 class cCollectionElement_objectlist : public cCollectionElement {
   public : GALGAS_objectlist_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_objectlist (const GALGAS_object & in_mValue
                                           COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_objectlist (const GALGAS_objectlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -3417,6 +3556,13 @@ cCollectionElement_objectlist::cCollectionElement_objectlist (const GALGAS_objec
                                                               COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mValue) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_objectlist::cCollectionElement_objectlist (const GALGAS_objectlist_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mValue) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -3500,6 +3646,21 @@ void GALGAS_objectlist::addAssign_operation (const GALGAS_object & inOperand0
   if (isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_objectlist (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_objectlist::setter_append (GALGAS_objectlist_2D_element inElement,
+                                       C_Compiler * /* inCompiler */
+                                       COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_objectlist (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -3768,9 +3929,10 @@ GALGAS_typelist GALGAS_typelist::extractObject (const GALGAS_object & inObject,
 class cCollectionElement_typelist : public cCollectionElement {
   public : GALGAS_typelist_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_typelist (const GALGAS_type & in_mValue
                                         COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_typelist (const GALGAS_typelist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -3791,6 +3953,13 @@ cCollectionElement_typelist::cCollectionElement_typelist (const GALGAS_type & in
                                                           COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mValue) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_typelist::cCollectionElement_typelist (const GALGAS_typelist_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mValue) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -3874,6 +4043,21 @@ void GALGAS_typelist::addAssign_operation (const GALGAS_type & inOperand0
   if (isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_typelist (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_typelist::setter_append (GALGAS_typelist_2D_element inElement,
+                                     C_Compiler * /* inCompiler */
+                                     COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_typelist (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -4142,9 +4326,10 @@ GALGAS_uintlist GALGAS_uintlist::extractObject (const GALGAS_object & inObject,
 class cCollectionElement_uintlist : public cCollectionElement {
   public : GALGAS_uintlist_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_uintlist (const GALGAS_uint & in_mValue
                                         COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_uintlist (const GALGAS_uintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -4165,6 +4350,13 @@ cCollectionElement_uintlist::cCollectionElement_uintlist (const GALGAS_uint & in
                                                           COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mValue) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_uintlist::cCollectionElement_uintlist (const GALGAS_uintlist_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mValue) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -4248,6 +4440,21 @@ void GALGAS_uintlist::addAssign_operation (const GALGAS_uint & inOperand0
   if (isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_uintlist (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_uintlist::setter_append (GALGAS_uintlist_2D_element inElement,
+                                     C_Compiler * /* inCompiler */
+                                     COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_uintlist (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -4516,9 +4723,10 @@ GALGAS_uint_36__34_list GALGAS_uint_36__34_list::extractObject (const GALGAS_obj
 class cCollectionElement_uint_36__34_list : public cCollectionElement {
   public : GALGAS_uint_36__34_list_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_uint_36__34_list (const GALGAS_uint_36__34_ & in_mValue
                                                 COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_uint_36__34_list (const GALGAS_uint_36__34_list_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -4539,6 +4747,13 @@ cCollectionElement_uint_36__34_list::cCollectionElement_uint_36__34_list (const 
                                                                           COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mValue) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_uint_36__34_list::cCollectionElement_uint_36__34_list (const GALGAS_uint_36__34_list_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mValue) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -4622,6 +4837,21 @@ void GALGAS_uint_36__34_list::addAssign_operation (const GALGAS_uint_36__34_ & i
   if (isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_uint_36__34_list (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_uint_36__34_list::setter_append (GALGAS_uint_36__34_list_2D_element inElement,
+                                             C_Compiler * /* inCompiler */
+                                             COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_uint_36__34_list (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -4890,9 +5120,10 @@ GALGAS_bigintlist GALGAS_bigintlist::extractObject (const GALGAS_object & inObje
 class cCollectionElement_bigintlist : public cCollectionElement {
   public : GALGAS_bigintlist_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_bigintlist (const GALGAS_bigint & in_mValue
                                           COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_bigintlist (const GALGAS_bigintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -4913,6 +5144,13 @@ cCollectionElement_bigintlist::cCollectionElement_bigintlist (const GALGAS_bigin
                                                               COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mValue) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_bigintlist::cCollectionElement_bigintlist (const GALGAS_bigintlist_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mValue) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -4996,6 +5234,21 @@ void GALGAS_bigintlist::addAssign_operation (const GALGAS_bigint & inOperand0
   if (isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_bigintlist (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_bigintlist::setter_append (GALGAS_bigintlist_2D_element inElement,
+                                       C_Compiler * /* inCompiler */
+                                       COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_bigintlist (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -5264,9 +5517,10 @@ GALGAS_lbigintlist GALGAS_lbigintlist::extractObject (const GALGAS_object & inOb
 class cCollectionElement_lbigintlist : public cCollectionElement {
   public : GALGAS_lbigintlist_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_lbigintlist (const GALGAS_lbigint & in_mValue
                                            COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_lbigintlist (const GALGAS_lbigintlist_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -5287,6 +5541,13 @@ cCollectionElement_lbigintlist::cCollectionElement_lbigintlist (const GALGAS_lbi
                                                                 COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (in_mValue) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_lbigintlist::cCollectionElement_lbigintlist (const GALGAS_lbigintlist_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mValue) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -5370,6 +5631,21 @@ void GALGAS_lbigintlist::addAssign_operation (const GALGAS_lbigint & inOperand0
   if (isValid () && inOperand0.isValid ()) {
     cCollectionElement * p = NULL ;
     macroMyNew (p, cCollectionElement_lbigintlist (inOperand0 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_lbigintlist::setter_append (GALGAS_lbigintlist_2D_element inElement,
+                                        C_Compiler * /* inCompiler */
+                                        COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lbigintlist (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;

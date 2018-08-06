@@ -11,8 +11,8 @@ A \ggs+list+ type declaration names all attributes of the list elements:
 
 \begin{galgas}
 list @MyList {
-  @string mFirstAttribute ;
-  @bool mSecondAttribute ;
+  @string mFirstAttribute
+  @bool mSecondAttribute
 }
 \end{galgas}
 
@@ -23,7 +23,7 @@ list @MyList {
 For every list, an \ggs+emptyList+ constructor is implicitly declared. It returns an empty list:
 
 \begin{galgas}
-@MyList aList = [@MyList emptyList] ;
+@MyList aList = [@MyList emptyList]
 \end{galgas}
 
 
@@ -32,15 +32,15 @@ For every list, an \ggs+emptyList+ constructor is implicitly declared. It return
 A list can be constructed directly with one value:
 
 \begin{galgas}
-@MyList aList = [@myList listWithValue !"c" !3] ;
+@MyList aList = [@myList listWithValue !"c" !3]
 \end{galgas}
 
 
 Using this constructor is equivalent to:
 
 \begin{galgas}
-@MyList aList = [@MyList emptyList] ;
-aList += !"c" !3 ;
+@MyList aList = [@MyList emptyList]
+aList += !"c" !3
 \end{galgas}
 
 \section{Adding elements}
@@ -50,16 +50,16 @@ aList += !"c" !3 ;
 The  \ggs*+=* operator adds a new element at the end of the list. The right side expressions should correspond to the attributes declared in the \ggs+list+ declaration:\\
 
 \begin{galgas}
-@MyList aList = ... ;
-@string aString = ... ;
-@bool aBool = ... ;
-aList += !aString !aBool ;
+@MyList aList = ...
+@string aString = ...
+@bool aBool = ...
+aList += !aString !aBool
 \end{galgas}
 
 
 \subsection{L'instruction \texttt{+=}}
 
-L'instruction \ggs*cible += expression* concatène la liste définie par la valeur de \ggs+expression+ à la la liste \ggs+cible+ :
+L'instruction \ggs*cible += expression* concatène la liste définie par la valeur de \ggs+expression+ à la liste \ggs+cible+ :
 
 \begin{galgas}
 @MyList aList = ...
@@ -69,17 +69,35 @@ aList += secondList
 
 
 
+
+
+
+
+\subsection{Le setter \texttt{append}}
+
+Le setter \texttt{append} permet d'ajouter un élément à la fin de la liste, à partir d'un objet du type \emph{élément de la liste} implicitement déclaré.
+
+
+\begin{galgas}
+@MyList aList = ... 
+@string aString = ... 
+@bool aBool = ... 
+@MyList-element élément = .new {!aString !aBool}
+[!?aList append !élément]
+\end{galgas}
+
+
 \subsection{The \texttt{prependValue} setter}
 
-{\bf \textcolor{red}{Ce setter a été supprimé ; utiliser le setter \emph{insertAtIndex}.}}
+{\bf \textcolor{red}{Ce setter a été supprimé~; utiliser le setter \emph{insertAtIndex}.}}
 
 The \ggs+prependValue+ setter adds a new element at the begining of the list. The right side expressions should correspond to the attributes declared in the  \ggs+list+ declaration:
 
 \begin{galgas}
-@MyList aList = ... ;
-@string aString = ... ;
-@bool aBool = ... ;
-[!?aList prependValue !aString !aBool];
+@MyList aList = ...
+@string aString = ...
+@bool aBool = ...
+[!?aList prependValue !aString !aBool]
 \end{galgas}
 
 
@@ -89,7 +107,7 @@ The \ggs+prependValue+ setter adds a new element at the begining of the list. Th
 
 Le setter \ggs+insertAtIndex+ permet d'insérer un nouvel élément à une position quelconque de la liste. Si le type \ggs+list+ correspondant déclare $n$ champs, l'appel du setter comprend $n+1$ arguments :
 \begin{itemize}
-  \item les $n$ premiers correspondent aux valeurs des champs du nouvel élément inséré ;
+  \item les $n$ premiers correspondent aux valeurs des champs du nouvel élément inséré~;
   \item le dernier est l'indice d'insertion, une valeur de type \ggs+@uint+.
 \end{itemize}
 
@@ -98,10 +116,10 @@ L'indice d'insertion peut varier entre $0$ (insertion au début, comme le faisai
 Par exemple :
 
 \begin{galgas}
-@MyList aList = ... ;
-@string aString = ... ;
-@bool aBool = ... ;
-[!?aList insertAtIndex !aString !aBool !0];
+@MyList aList = ...
+@string aString = ...
+@bool aBool = ..
+[!?aList insertAtIndex !aString !aBool !0]
 \end{galgas}
 
 \subsection{The concatenation operator}
@@ -110,9 +128,9 @@ The «~\ggs*+*~» operator can be used for concatenating two lists of the same t
 
 
 \begin{galgas}
-@MyList firstList = ... ;
-@MyList secondList = ... ;
-@MyList thirdList = firstList . secondList ;
+@MyList firstList = ..
+@MyList secondList = ..
+@MyList thirdList = firstList + secondList
 \end{galgas}
 
 \section{Removing elements}
@@ -123,10 +141,10 @@ The «~\ggs*+*~» operator can be used for concatenating two lists of the same t
 The \ggs+popFirst+ setter removes and returns the first element of the list. The right side expressions should correspond to the attributes declared in the \ggs+list+ declaration:
 
 \begin{galgas}
-@MyList aList = ... ;
-@string aString ;
-@bool aBool ;
-[!?aList popFirst ?aString ?aBool];
+@MyList aList = ...
+@string aString
+@bool aBool
+[!?aList popFirst ?aString ?aBool]
 \end{galgas}
 
 If the list is empty when \ggs+popFirst+ setter is invoked, a run-time error is raised and the input arguments are not valuated.
@@ -137,10 +155,10 @@ If the list is empty when \ggs+popFirst+ setter is invoked, a run-time error is 
 The \ggs+popLast+ setter removes and returns the last element of the list. The right side expressions should correspond to the attributes declared in the \ggs+list+ declaration:
 
 \begin{galgas}
-@MyList aList = ... ;
-@string aString ;
-@bool aBool ;
-[!?aList popLast ?aString ?aBool];
+@MyList aList = ...
+@string aString
+@bool aBool
+[!?aList popLast ?aString ?aBool]
 \end{galgas}
 
 If the list is empty when \ggs+popLast+ is invoked, a run-time error is raised and the input arguments are not valuated.
@@ -152,10 +170,10 @@ If the list is empty when \ggs+popLast+ is invoked, a run-time error is raised a
 The \ggs+first+ method returns the first element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \ggs+list+ declaration:
 
 \begin{galgas}
-@MyList aList = ... ;
-@string aString ;
-@bool aBool ;
-[aList first ?aString ?aBool];
+@MyList aList = ...
+@string aString
+@bool aBool
+[aList first ?aString ?aBool]
 \end{galgas}
 
 If the list is empty when \ggs+first+ is invoked, a run-time error is raised and the input arguments are not valuated.
@@ -165,10 +183,10 @@ If the list is empty when \ggs+first+ is invoked, a run-time error is raised and
 The \ggs+last+ method returns the last element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \ggs+list+ declaration:\\
 
 \begin{galgas}
-@MyList aList = ... ;
-@string aString ;
-@bool aBool ;
-[aList last ?aString ?aBool];
+@MyList aList = ...
+@string aString
+@bool aBool
+[aList last ?aString ?aBool]
 \end{galgas}
 
 
@@ -186,7 +204,7 @@ If the list is empty when \ggs+last+ is invoked, a run-time error is raised and 
 \subsection{Le getter \texttt{length}}
 
 \begin{galgas}
-getter length -> @uint ;
+getter length -> @uint
 \end{galgas}
 
 Le \emph{getter} \ggs+length+ retourne le nombre d'éléments du récepteur.
@@ -195,7 +213,7 @@ Le \emph{getter} \ggs+length+ retourne le nombre d'éléments du récepteur.
 \subsection{Le getter \texttt{range}}
 
 \begin{galgas}
-getter range -> @range ;
+getter range -> @range
 \end{galgas}
 
 The \ggs+range+ getter returns a range starting at $0$ of length equal to the number of elements of the receiver.
@@ -241,6 +259,16 @@ This getter returns a list containing the elements of the receiver that lie with
 
 
 
+
+
+
+
+
+
+
+
+
+
 \section{Enumerating a list with a \texttt{for} instruction}
 
 The \ggs+for+ instruction can be used for enumerating list objects. By default, lists are enumerated in the insertion order; enumeration in the reverse order is performed using the \ggs+>+ qualifier.
@@ -255,8 +283,8 @@ Given the list declaration:
 
 \begin{galgas}
 list @MyList {
-  @string mFirstAttribute ;
-  @bool mSecondAttribute ;
+  @string mFirstAttribute
+  @bool mSecondAttribute
 }
 \end{galgas}
 
@@ -317,12 +345,12 @@ You can disable the default getter generation, by using \ggs+%nogetter+.
 For example:
 \begin{galgas}
 list @MyList {
-  @string mFirstAttribute ;
-  @bool mSecondAttribute %nogetter ;
+  @string mFirstAttribute
+  @bool mSecondAttribute %nogetter
 }
 ...
-@MyList aList = ... ;
-@string s = [aList mFirstAttributeAtIndex !1] ;
+@MyList aList = ...
+@string s = [aList mFirstAttributeAtIndex !1]
 \end{galgas}
 
 One getter is available: \ggs+mFirstAttributeAtIndex+; the \ggs+mSecondAttributeAtIndex+ getter is not available.
@@ -338,12 +366,12 @@ For example:
 
 \begin{galgas}
 list @MyList {
-  @string mFirstAttribute %setter ;
-  @bool mSecondAttribute ;
+  @string mFirstAttribute %setter
+  @bool mSecondAttribute
 }
 ...
-@string s = ... ;
-[!?aList setMFirstAttributeAtIndex !s !1] ;
+@string s = ...
+[!?aList setMFirstAttributeAtIndex !s !1]
 \end{galgas}
 
 One setter is available: \ggs+setMFirstAttributeAtIndex+; the \ggs+setMSecondAttributeAtIndex+ setter is not available.
@@ -352,34 +380,34 @@ One setter is available: \ggs+setMFirstAttributeAtIndex+; the \ggs+setMSecondAtt
 
 \begin{galgas}
 list @myList {
-  @string name ;
+  @string name
 }
 ...
-@myList strList [emptyList] ;
-strList += !"a" ;
-strList += !"b" ;
-strList += !"c" ;
-strList += !"d" ;
-@string s = [strList nameAtIndex !0] ;
-log s ; # displays LOGGING s: <@string:"a">
-s = [strList nameAtIndex !1] ;
-log s ; # displays LOGGING s: <@string:"b">
-s = [strList nameAtIndex !2] ;
-log s ; # displays LOGGING s: <@string:"c">
-s = [strList nameAtIndex !3] ;
-log s ; # displays LOGGING s: <@string:"d">
-[!?strList setNameAtIndex !"x" !0] ;
-[!?strList setNameAtIndex !"y" !1] ;
-[!?strList setNameAtIndex !"z" !2] ;
-[!?strList setNameAtIndex !"t" !3] ;
-s = [strList nameAtIndex !0] ;
-log s ; # displays LOGGING s: <@string:"x">
-s = [strList nameAtIndex !1] ;
-log s ; # displays LOGGING s: <@string:"y">
-s = [strList nameAtIndex !2] ;
-log s ; # displays LOGGING s: <@string:"z">
-s = [strList nameAtIndex !3] ;
-log s ; # displays LOGGING s: <@string:"t">
+@myList strList [emptyList]
+strList += !"a"
+strList += !"b"
+strList += !"c"
+strList += !"d"
+@string s = [strList nameAtIndex !0]
+log s # displays LOGGING s: <@string:"a">
+s = [strList nameAtIndex !1]
+log s # displays LOGGING s: <@string:"b">
+s = [strList nameAtIndex !2]
+log s # displays LOGGING s: <@string:"c">
+s = [strList nameAtIndex !3]
+log s # displays LOGGING s: <@string:"d">
+[!?strList setNameAtIndex !"x" !0]
+[!?strList setNameAtIndex !"y" !1]
+[!?strList setNameAtIndex !"z" !2]
+[!?strList setNameAtIndex !"t" !3]
+s = [strList nameAtIndex !0]
+log s # displays LOGGING s: <@string:"x">
+s = [strList nameAtIndex !1]
+log s # displays LOGGING s: <@string:"y">
+s = [strList nameAtIndex !2]
+log s # displays LOGGING s: <@string:"z">
+s = [strList nameAtIndex !3]
+log s # displays LOGGING s: <@string:"t">
 \end{galgas}
 
 

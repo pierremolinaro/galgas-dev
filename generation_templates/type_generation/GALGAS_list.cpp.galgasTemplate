@@ -7,7 +7,7 @@
 class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
   public : GALGAS_%!TYPE_IDENTIFIER%_2D_element mObject ;
 
-//--- Constructor
+//--- Constructors
   public : cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   for () in ATTRIBUTE_LIST
     do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
@@ -15,6 +15,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
   end
 %\n%
 !^%COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_%!TYPE_IDENTIFIER% (const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
@@ -42,6 +43,18 @@ cCollectionElement (THERE),
 mObject (%
 for () in ATTRIBUTE_LIST
   do %in_%![mPropertyName identifierRepresentation]
+  between %, %
+end
+%) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cCollectionElement_%!TYPE_IDENTIFIER%::cCollectionElement_%!TYPE_IDENTIFIER% (const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (%
+for () in ATTRIBUTE_LIST
+  do %inElement.mProperty_%![mPropertyName identifierRepresentation]
   between %, %
 end
 %) {
@@ -170,6 +183,21 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
     between %, %
     end
     % COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_%!TYPE_IDENTIFIER%::setter_append (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% inElement,\n%
+   !^%C_Compiler * /* inCompiler */\n%
+   !^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (inElement COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
