@@ -322,6 +322,23 @@ end
     }
   #endif
 
+//--------------------------------- Compare Dictionaries
+  public : typeComparisonResult compare (const cSharedDictRoot_%!TYPE_IDENTIFIER% * inOperand) const {
+    typeComparisonResult result = kOperandEqual ;
+    if (mCount < inOperand->mCount) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mCount > inOperand->mCount) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      capCollectionElementArray enumerationArray ;
+      populateEnumerationArray (enumerationArray) ;
+      capCollectionElementArray operandEnumerationArray ;
+      inOperand->populateEnumerationArray (operandEnumerationArray) ;
+      result = enumerationArray.compareCollectionElementArray (operandEnumerationArray) ;
+    }
+    return result ;
+  }
+
 //--------------------------------- Friend
   friend class GALGAS_%!TYPE_IDENTIFIER% ;
 } ;
@@ -594,6 +611,22 @@ for () in ATTRIBUTE_LIST do
 end 
 
 %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Object compare
+#endif
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    result = mSharedDict->compare (inOperand.mSharedDict) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark map Enumeration

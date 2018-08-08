@@ -35,6 +35,9 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--- Insulate
   private : void insulate (LOCATION_ARGS) ;
 
+//--- Object compare
+  public : VIRTUAL_IN_DEBUG typeComparisonResult objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;
+
 //--- Enumeration
   public : void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
 
