@@ -368,10 +368,12 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
 #--- Check target variable
-  @unifiedTypeMap-proxy targetType
-  @string targetVariableCppName
-  @string nameForCheckingFormalParameterUsing
-  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
+  [!?ioVariableMap searchForReadWriteAccess
+    !mReceiverName
+    ?var targetType
+    ?let targetVariableCppName
+    ?let nameForCheckingFormalParameterUsing
+  ]
   for () in mStructAttributeList do
     let attributeMap = [targetType mAttributeMap]
     [attributeMap searchKey
@@ -395,7 +397,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
     + [[addAssignOperatorArguments length] string] + " parameter(s), while this invocation has "
     + [[mExpressions length] string] + " parameter(s)"
   else
-    var effectiveParameterList =@semanticExpressionListForGeneration {}
+    @semanticExpressionListForGeneration effectiveParameterList = {}
     for () in mExpressions, () in addAssignOperatorArguments do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName

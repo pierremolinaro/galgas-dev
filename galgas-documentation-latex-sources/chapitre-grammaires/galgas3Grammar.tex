@@ -528,30 +528,32 @@
   \draw[->] (p0-2) -- (p0-3) ;
 \end{tikzpicture}
 
-\ruleSubsection{galgas3DeclarationsSyntax}{type-dict}{25}
+\ruleSubsection{galgas3DeclarationsSyntax}{type-dict}{26}
 
 \begin{tikzpicture}
   \matrix[column sep=\ruleMatrixColumnSeparation, row sep=\ruleMatrixRowSeparation] {
-    & & & & & & & & & & & & & & \node (p3-14) [point] {}; & \\
-    & & & & & & & & \node (p2-8) [point] {}; & & & & & \node (p2-13) [terminal] {;}; & \\
-    & & & & & & & \node (p1-7) [terminal] {\verb=%=attribute}; & & & & & & \node (p1-13) [nonterminal] {\nonTerminalSymbol{property\_declaration}{33}}; & \\
-    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {dict}; & \node (p0-3) [terminal] {@type}; & \node (p0-4) [point] {}; & \node (p0-5) [point] {}; & \node (p0-6) [point] {}; & & & \node (p0-9) [terminal] {\{}; & \node (p0-10) [point] {}; & \node (p0-11) [point] {}; & \node (p0-12) [point] {}; & & & \node (p0-15) [terminal] {\}}; & \node (p0-16) [lastPoint] {}; & \\
+    & & & & & & & & & & & & & & & & \node (p3-16) [point] {}; & \\
+    & & & & & & & & & & \node (p2-10) [point] {}; & & & & & \node (p2-15) [terminal] {;}; & \\
+    & & & & & & & & & \node (p1-9) [terminal] {\verb=%=attribute}; & & & & & & \node (p1-15) [nonterminal] {\nonTerminalSymbol{property\_declaration}{33}}; & \\
+    \node (P0start) [firstPoint] {}; & & \node (p0-2) [terminal] {dict}; & \node (p0-3) [terminal] {@type}; & \node (p0-4) [terminal] {:}; & \node (p0-5) [terminal] {@type}; & \node (p0-6) [point] {}; & \node (p0-7) [point] {}; & \node (p0-8) [point] {}; & & & \node (p0-11) [terminal] {\{}; & \node (p0-12) [point] {}; & \node (p0-13) [point] {}; & \node (p0-14) [point] {}; & & & \node (p0-17) [terminal] {\}}; & \node (p0-18) [lastPoint] {}; & \\
   };
   \draw[->] (P0start) -- (p0-2) ;
   \draw[->] (p0-2) -- (p0-3) ;
-  \draw (p0-3) -- (p0-5) ;
-  \draw[->] (p0-6) |- (p1-7) ;
-  \draw[->] (p2-8) -| (p0-4) ;
-  \draw[->] (p1-7) -| (p2-8) ;
-  \draw[->] (p0-5) -- (p0-9) ;
-  \draw (p0-9) -- (p0-11) ;
-  \draw[->] (p0-12) |- (p1-13) ;
-  \draw[->] (p0-12) |- (p2-13) ;
-  \draw[->] (p3-14) -| (p0-10) ;
-  \draw[->] (p1-13) -| (p3-14) ;
-  \draw[->] (p2-13) -| (p3-14) ;
-  \draw[->] (p0-11) -- (p0-15) ;
-  \draw[->] (p0-15) -- (p0-16) ;
+  \draw[->] (p0-3) -- (p0-4) ;
+  \draw[->] (p0-4) -- (p0-5) ;
+  \draw (p0-5) -- (p0-7) ;
+  \draw[->] (p0-8) |- (p1-9) ;
+  \draw[->] (p2-10) -| (p0-6) ;
+  \draw[->] (p1-9) -| (p2-10) ;
+  \draw[->] (p0-7) -- (p0-11) ;
+  \draw (p0-11) -- (p0-13) ;
+  \draw[->] (p0-14) |- (p1-15) ;
+  \draw[->] (p0-14) |- (p2-15) ;
+  \draw[->] (p3-16) -| (p0-12) ;
+  \draw[->] (p1-15) -| (p3-16) ;
+  \draw[->] (p2-15) -| (p3-16) ;
+  \draw[->] (p0-13) -- (p0-17) ;
+  \draw[->] (p0-17) -- (p0-18) ;
 \end{tikzpicture}
 
 \ruleSubsection{galgas3DeclarationsSyntax}{type-map}{60}

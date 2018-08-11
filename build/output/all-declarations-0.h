@@ -9030,7 +9030,8 @@ class GALGAS_typedPropertyList : public AC_GALGAS_list {
                                                   const class GALGAS_unifiedTypeMap_2D_proxy & in_mPropertyTypeProxy,
                                                   const class GALGAS_lstring & in_mPropertyName,
                                                   const class GALGAS_bool & in_mHasSetter,
-                                                  const class GALGAS_bool & in_mHasGetter
+                                                  const class GALGAS_bool & in_mHasGetter,
+                                                  const class GALGAS_bool & in_mHasSelector
                                                   COMMA_LOCATION_ARGS) ;
 
 //-- Start of generic part --*
@@ -9049,7 +9050,8 @@ class GALGAS_typedPropertyList : public AC_GALGAS_list {
   public : static class GALGAS_typedPropertyList constructor_listWithValue (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                             const class GALGAS_lstring & inOperand1,
                                                                             const class GALGAS_bool & inOperand2,
-                                                                            const class GALGAS_bool & inOperand3
+                                                                            const class GALGAS_bool & inOperand3,
+                                                                            const class GALGAS_bool & inOperand4
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
@@ -9061,7 +9063,8 @@ class GALGAS_typedPropertyList : public AC_GALGAS_list {
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                       const class GALGAS_lstring & inOperand1,
                                                       const class GALGAS_bool & inOperand2,
-                                                      const class GALGAS_bool & inOperand3
+                                                      const class GALGAS_bool & inOperand3,
+                                                      const class GALGAS_bool & inOperand4
                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_typedPropertyList add_operation (const GALGAS_typedPropertyList & inOperand,
@@ -9078,7 +9081,8 @@ class GALGAS_typedPropertyList : public AC_GALGAS_list {
                                                        class GALGAS_lstring constinArgument1,
                                                        class GALGAS_bool constinArgument2,
                                                        class GALGAS_bool constinArgument3,
-                                                       class GALGAS_uint constinArgument4,
+                                                       class GALGAS_bool constinArgument4,
+                                                       class GALGAS_uint constinArgument5,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
@@ -9086,6 +9090,7 @@ class GALGAS_typedPropertyList : public AC_GALGAS_list {
                                                   class GALGAS_lstring & outArgument1,
                                                   class GALGAS_bool & outArgument2,
                                                   class GALGAS_bool & outArgument3,
+                                                  class GALGAS_bool & outArgument4,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
@@ -9093,6 +9098,7 @@ class GALGAS_typedPropertyList : public AC_GALGAS_list {
                                                  class GALGAS_lstring & outArgument1,
                                                  class GALGAS_bool & outArgument2,
                                                  class GALGAS_bool & outArgument3,
+                                                 class GALGAS_bool & outArgument4,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
@@ -9100,7 +9106,8 @@ class GALGAS_typedPropertyList : public AC_GALGAS_list {
                                                        class GALGAS_lstring & outArgument1,
                                                        class GALGAS_bool & outArgument2,
                                                        class GALGAS_bool & outArgument3,
-                                                       class GALGAS_uint constinArgument4,
+                                                       class GALGAS_bool & outArgument4,
+                                                       class GALGAS_uint constinArgument5,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
@@ -9110,6 +9117,7 @@ class GALGAS_typedPropertyList : public AC_GALGAS_list {
                                                class GALGAS_lstring & outArgument1,
                                                class GALGAS_bool & outArgument2,
                                                class GALGAS_bool & outArgument3,
+                                               class GALGAS_bool & outArgument4,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const ;
 
@@ -9117,6 +9125,7 @@ class GALGAS_typedPropertyList : public AC_GALGAS_list {
                                               class GALGAS_lstring & outArgument1,
                                               class GALGAS_bool & outArgument2,
                                               class GALGAS_bool & outArgument3,
+                                              class GALGAS_bool & outArgument4,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
@@ -9126,6 +9135,10 @@ class GALGAS_typedPropertyList : public AC_GALGAS_list {
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mHasGetterAtIndex (const class GALGAS_uint & constinOperand0,
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mHasSelectorAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mHasSetterAtIndex (const class GALGAS_uint & constinOperand0,
                                                                         C_Compiler * inCompiler
@@ -9173,6 +9186,7 @@ class cEnumerator_typedPropertyList : public cGenericAbstractEnumerator {
   public : class GALGAS_lstring current_mPropertyName (LOCATION_ARGS) const ;
   public : class GALGAS_bool current_mHasSetter (LOCATION_ARGS) const ;
   public : class GALGAS_bool current_mHasGetter (LOCATION_ARGS) const ;
+  public : class GALGAS_bool current_mHasSelector (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_typedPropertyList_2D_element current (LOCATION_ARGS) const ;
 } ;

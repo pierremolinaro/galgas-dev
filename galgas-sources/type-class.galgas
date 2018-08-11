@@ -240,17 +240,20 @@ override method @classDeclarationAST enterInSemanticContext
   @typedPropertyList allTypedAttributeList = inheritedTypedAttributeList
   for () in mAttributeList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    @bool hasSetter = false
-    @bool hasGetter = true
+    var hasSetter = false
+    var hasGetter = true
+    var hasSelector = false
     for () in mFeatureList do
       if [mValue string] == "setter" then
         hasSetter = true
       elsif [mValue string] == "nogetter" then
         hasGetter = false
+      elsif [mValue string] == "selector" then
+        hasSelector = true
       end
     end
-    currentClassTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
-    allTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
+    currentClassTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
+    allTypedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
     if hasGetter then
       [!?getterMap insertKey
         !mPropertyName
@@ -383,7 +386,7 @@ override method @classDeclarationAST semanticAnalysis
           end
           generatedInSeparateFileFeature = true
         else
-          error mValue:"only the 'generatedInSeparateFile' feature is allowed here"
+          error mValue:"only the 'generatedInSeparateFile' attribute is allowed here"
         end
       end
     end
@@ -402,21 +405,30 @@ override method @classDeclarationAST semanticAnalysis
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
-    @bool hasSetter = false
-    @bool hasGetter = true
+    var hasSetter = false
+    var hasGetter = true
+    var hasSelector = false
     for () in mFeatureList do
       if [mValue string] == "setter" then
         if hasSetter then
-          error mValue : "the 'setter' feature is already named"
+          error mValue : "the '%setter' attribute is already named"
         end
         hasSetter = true
       elsif [mValue string] == "nogetter" then
         if not hasGetter then
-          error mValue : "the 'nogetter' feature is already named"
+          error mValue : "the '%nogetter' attribute is already named"
         end
         hasGetter = false
+      elsif [mValue string] == "selector" then
+        if hasSelector then
+          error mValue : "the '%selector' attribute is already named"
+        end
+        hasSelector = true
       else
-        error mValue : "only the 'setter' or 'nogetter' are allowed here"
+        error mValue
+        : "only '%setter', '%nogetter' or '%selector' are allowed here"
+        fixit { replace {!"%nogetter", !"%setter", !"%selector"} }
+
       end
     end
     typedAttributeList +=
@@ -424,11 +436,13 @@ override method @classDeclarationAST semanticAnalysis
       !mPropertyName
       !hasSetter
       !hasGetter
+      !hasSelector
     allAttributeList +=
       !t
       !mPropertyName
       !hasSetter
       !hasGetter
+      !hasSelector
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #------

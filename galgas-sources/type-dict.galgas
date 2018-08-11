@@ -171,10 +171,11 @@ override method @dictDeclarationAST enterInSemanticContext
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapProxyList.emptyList
   for () in mPropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    @bool hasGetter = true
-    @bool hasSetter = true
+    let hasGetter = true
+    let hasSetter = true
+    let hasSelector = false
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
-    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
+    typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex ![mPropertyName string]
     insertMethodFormalArgumentList +=
@@ -360,13 +361,15 @@ override method @dictDeclarationAST semanticAnalysis
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     @unifiedTypeMap-proxy t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
-    @bool hasSetter = true
-    @bool hasGetter = true
+    let hasSetter = true
+    let hasGetter = true
+    let hasSelector = false
     typedAttributeList +=
       !t
       !mPropertyName
       !hasSetter
       !hasGetter
+      !hasSelector
     if [forbiddenKeysForMapAndDict () hasKey !mPropertyName.string] then
       @string m = "a property cannot be named:"
       for s in forbiddenKeysForMapAndDict () do

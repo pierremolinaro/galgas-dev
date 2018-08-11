@@ -167,6 +167,7 @@ list @typedPropertyList {
   @lstring mPropertyName
   @bool mHasSetter
   @bool mHasGetter
+  @bool mHasSelector
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

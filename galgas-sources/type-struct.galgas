@@ -96,9 +96,10 @@ override method @structDeclarationAST enterInSemanticContext
     end
     constructorPropertyTypeList += !selector !propertyTypeProxy !mPropertyName.string
     typesToIncludeInHeaderCompilation += !propertyTypeProxy
-    var hasSetter = false
-    var hasGetter = true
-    typedPropertyList += !propertyTypeProxy !mPropertyName !hasSetter !hasGetter
+    let hasSetter = false
+    let hasGetter = true
+    let hasSelector = false
+    typedPropertyList += !propertyTypeProxy !mPropertyName !hasSetter !hasGetter !hasSelector
     [!?propertyMap insertKey !mPropertyName !propertyTypeProxy]
   end
   [!?constructorMap insertKey
@@ -234,6 +235,7 @@ override method @structDeclarationAST semanticAnalysis
       !mPropertyName
       !hasSetter
       !hasGetter
+      !hasSelector
     if [forbiddenKeysForStruct () hasKey !mPropertyName.string] then
       @string m = "an property cannot be named:"
       for s in forbiddenKeysForStruct () do

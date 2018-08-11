@@ -17,9 +17,9 @@ syntax extension galgas3DeclarationsSyntax {
     $list$
     $@type$ ?var @lstring listTypeName indexing listDefinition, structDefinition "-element"
     ${$
-    @propertyInCollectionListAST attributeList = {}
+    @propertyInCollectionListAST propertyList = {}
     repeat
-      <property_declaration> !? attributeList
+      <property_declaration> !?propertyList
       select
       or
         $;$
@@ -30,7 +30,7 @@ syntax extension galgas3DeclarationsSyntax {
     ioDeclarations.mDeclarationList += !@listDeclarationAST.new {
       !false # Is not predefined
       !listTypeName
-      !attributeList
+      !propertyList
     }
   }
 
@@ -67,16 +67,32 @@ override method @listDeclarationAST enterInSemanticContext
   @typedPropertyList typedAttributeList = {}
   for () in mAttributeList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    @bool hasGetter = true
-    @bool hasSetter = false
+    var hasSetter = false
+    var hasGetter = true
+    var hasSelector = false
     for () in mFeatureList do
-      if mValue.string == "nogetter" then
-        hasGetter = false
-      elsif mValue.string == "setter" then
+      if [mValue string] == "setter" then
+        if hasSetter then
+          error mValue : "the '%setter' attribute is already named"
+        end
         hasSetter = true
+      elsif [mValue string] == "nogetter" then
+        if not hasGetter then
+          error mValue : "the '%nogetter' attribute is already named"
+        end
+        hasGetter = false
+      elsif [mValue string] == "selector" then
+        if hasSelector then
+          error mValue : "the '%selector' attribute is already named"
+        end
+        hasSelector = true
+      else
+        error mValue
+        : "only '%setter', '%nogetter' or '%selector' attributes are allowed here"
+        fixit { replace {!"%nogetter", !"%setter", !"%selector"} }
       end
     end
-    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
   end
 #--- uint type index
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"uint" ?let uintType]
@@ -94,10 +110,22 @@ override method @listDeclarationAST enterInSemanticContext
   @formalParameterSignature setterOutputFormalArgumentList = {}
   @formalParameterSignature setterInputFormalArgumentList = {}
   for () in typedAttributeList do
-    enumerationDescriptor += !mPropertyTypeProxy ![mPropertyName string]
-    constructorAttributeTypeList += !["" nowhere] !mPropertyTypeProxy !mPropertyName.string
-    setterOutputFormalArgumentList += !["" nowhere] !mPropertyTypeProxy !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
-    setterInputFormalArgumentList += !["" nowhere] !mPropertyTypeProxy !@formalArgumentPassingModeAST.argumentConstantIn !mPropertyName.string
+    let selector = if mHasSelector then mPropertyName.string else "" end
+    enumerationDescriptor += !mPropertyTypeProxy !mPropertyName.string
+    constructorAttributeTypeList +=
+      ![selector nowhere]
+      !mPropertyTypeProxy
+      !mPropertyName.string
+    setterOutputFormalArgumentList +=
+      ![selector nowhere]
+      !mPropertyTypeProxy
+      !.argumentOut
+      !mPropertyName.string
+    setterInputFormalArgumentList +=
+      ![selector nowhere]
+      !mPropertyTypeProxy
+      !.argumentConstantIn
+      !mPropertyName.string
   end
 #--- Constructors
   @constructorMap constructorMap = {}
@@ -334,21 +362,29 @@ override method @listDeclarationAST semanticAnalysis
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
-    var hasGetter = true
     var hasSetter = false
+    var hasGetter = true
+    var hasSelector = false
     for () in mFeatureList do
-      if mValue.string == "nogetter" then
-        if not hasGetter then
-          error mValue:"duplicate attribute" fixit { remove }
-        end
-        hasGetter = false
-      elsif mValue.string == "setter" then
+      if [mValue string] == "setter" then
         if hasSetter then
-          error mValue:"duplicate attribute" fixit { remove }
+          error mValue : "the '%setter' attribute is already named"
         end
         hasSetter = true
+      elsif [mValue string] == "nogetter" then
+        if not hasGetter then
+          error mValue : "the '%nogetter' attribute is already named"
+        end
+        hasGetter = false
+      elsif [mValue string] == "selector" then
+        if hasSelector then
+          error mValue : "the '%selector' attribute is already named"
+        end
+        hasSelector = true
       else
-        error mValue:"unknown feature" fixit { replace {!"nogetter", !"setter"} }
+        error mValue
+        : "only '%setter', '%nogetter' or '%selector' attributes are allowed here"
+        fixit { replace {!"%nogetter", !"%setter", !"%selector"} }
       end
     end
     typedAttributeList +=
@@ -356,6 +392,7 @@ override method @listDeclarationAST semanticAnalysis
       !mPropertyName
       !hasSetter
       !hasGetter
+      !hasSelector
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #---

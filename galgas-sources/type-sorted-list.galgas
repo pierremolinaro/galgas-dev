@@ -131,9 +131,10 @@ override method @sortedListDeclarationAST enterInSemanticContext
   @typedPropertyList typedAttributeList = {}
   for () in mAttributeList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    @bool hasGetter = true
-    @bool hasSetter = true
-    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
+    let hasGetter = true
+    let hasSetter = true
+    let hasSelector = false
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
     enumerationDescriptor += !attributeTypeIndex !mPropertyName.string
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
     setterFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
@@ -266,13 +267,15 @@ override method @sortedListDeclarationAST semanticAnalysis
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
-    @bool hasSetter = true
-    @bool hasGetter = true
+    let hasSetter = true
+    let hasGetter = true
+    let hasSelector = true
     typedAttributeList +=
       !t
       !mPropertyName
       !hasSetter
       !hasGetter
+      !hasSelector
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #--- Sort descriptor

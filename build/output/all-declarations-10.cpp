@@ -3401,14 +3401,14 @@ void GALGAS_projectQualifiedFeatureMap::setter_insertKey (GALGAS_lstring inKey,
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' feature is already declared" ;
+  const char * kInsertErrorMessage = "the '%K' attribute is already declared" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-const char * kSearchErrorMessage_projectQualifiedFeatureMap_searchKey = "the '%K' feature is not declared" ;
+const char * kSearchErrorMessage_projectQualifiedFeatureMap_searchKey = "the '%K' attribute is not declared" ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

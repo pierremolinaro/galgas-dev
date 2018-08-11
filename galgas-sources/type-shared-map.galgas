@@ -452,9 +452,10 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !"inLKey"
   for () in mPropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    @bool hasGetter = true
-    @bool hasSetter = true
-    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter
+    let hasGetter = true
+    let hasSetter = true
+    let hasSelector = false
+    typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
     enumerationDescriptor += !attributeTypeIndex ![mPropertyName string]
     insertMethodFormalArgumentList +=
       !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
@@ -990,11 +991,13 @@ override method @sharedMapDeclarationAST semanticAnalysis
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     let hasSetter = true
     let hasGetter = true
+    let hasSelector = false
     typedAttributeList +=
       !t
       !mPropertyName
       !hasSetter
       !hasGetter
+      !hasSelector
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #--- Enter insert setters
