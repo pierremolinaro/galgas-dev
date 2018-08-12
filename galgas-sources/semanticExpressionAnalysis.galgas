@@ -872,7 +872,7 @@ override method @literalBigIntExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-proc analyzeConstructorInvocation
+private proc analyzeConstructorInvocation
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy inType
@@ -888,10 +888,12 @@ proc analyzeConstructorInvocation
 {
   outConstructorType = inType
   if inTypeName.string != "" then
-    outConstructorType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !inTypeName}
+    outConstructorType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !inTypeName}
   end
   if [outConstructorType isNull] then
-    error inTypeName : "cannot infer type" : outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument
+    error inTypeName
+    : "cannot infer type"
+    : outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument
   else
   #--- Get constructor map from type map
     let @constructorMap constructorMap = [outConstructorType mConstructorMap]
@@ -908,7 +910,7 @@ proc analyzeConstructorInvocation
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
       else
         error inConstructorName
-        : "the '@"+ inTypeName + "' type does not define the '" + inConstructorName + "' constructor"
+        : "the '@"+ [outConstructorType key] + "' type does not define the '" + inConstructorName + "' constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
         fixit { replace [constructorMap keyList] }
       end
@@ -1137,7 +1139,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
     + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
     + [[mExpressions length] string] + " parameter(s)" : outExpression
   else
-    var constructorEffectiveParameterList =@semanticExpressionListForGeneration {}
+    @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
     for () in mExpressions, () in getterFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName

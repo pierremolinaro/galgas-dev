@@ -136,12 +136,10 @@ override method @dictDeclarationAST enterInSemanticContext
     !hasLexiqueArg:false
   )
 #--- Getters
-  enterInheritedGetterWithArgument (
+  enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !getterName:"hasKey"
-    !argumentTypeName:"string"
-    !argumentName:"inKey"
+    !"hasKey" !mKeyTypeName.string !"inKey"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )

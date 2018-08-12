@@ -255,10 +255,10 @@ end
     }
   }
 
-  protected : static void  internalRemoveRecursively (cNode_%!TYPE_IDENTIFIER% * & ioRoot,
-                                                      const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKeyToRemove,
-                                                      cNode_%!TYPE_IDENTIFIER% * & outRemovedNode,
-                                                      bool & ioBranchHasBeenRemoved) {
+  protected : static void internalRemoveRecursively (cNode_%!TYPE_IDENTIFIER% * & ioRoot,
+                                                     const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKeyToRemove,
+                                                     cNode_%!TYPE_IDENTIFIER% * & outRemovedNode,
+                                                     bool & ioBranchHasBeenRemoved) {
     if (ioRoot != NULL) {
       const typeComparisonResult comparaison = ioRoot->mProperty_key.objectCompare (inKeyToRemove) ;
       if (comparaison == kFirstOperandGreaterThanSecond) {
@@ -498,8 +498,21 @@ end
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
-%void GALGAS_%!TYPE_IDENTIFIER%::method_searchKey (%?^%GALGAS_%!KEY_TYPE_IDENTIFIER% inKey%
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_hasKey (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey%
+%\n %!^%COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inKey.isValid ()) {
+    const cNode_%!TYPE_IDENTIFIER% * p = mSharedDict->findEntryInDict (inKey) ;
+    result = GALGAS_bool (p != NULL) ;
+   }
+   return result ;
+ }
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_%!TYPE_IDENTIFIER%::method_searchKey (%?^%GALGAS_%!KEY_TYPE_IDENTIFIER% inKey%
 for () in ATTRIBUTE_LIST
   do index IDX %,\n%!^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outArgument%![IDX string]
 end

@@ -872,7 +872,9 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
-    !"regularFiles" !"bool" !"inRecursiveSearch"
+    !"regularFiles"
+    !"bool"
+    !"inRecursiveSearch"
     !returnedTypeName:"stringlist"
     !hasCompilerArgument:false
   )
