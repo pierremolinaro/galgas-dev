@@ -235,7 +235,7 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- lstring type index
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
 #--- Enumeration description
-  var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!lstringTypeIndex !"lkey"}
+  @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
 #--- Attributes
   @bool usesSelectorsInInsertAndSearch = false
   for (s) in mAttributeList do
@@ -249,10 +249,10 @@ override method @mapDeclarationAST enterInSemanticContext
     end
   end
 #---
-  var constructorMap =@constructorMap.emptyMap{}
-  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  var setterMap =@setterMap.emptyMap{}
-  var instanceMethodMap =@instanceMethodMap.emptyMap{}
+  @constructorMap constructorMap = {}
+  commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap)
+  @setterMap setterMap = {}
+  @instanceMethodMap instanceMethodMap = {}
 #--- Constructors
   enterConstructorWithoutArgument (
     !?constructorMap
@@ -356,20 +356,28 @@ override method @mapDeclarationAST enterInSemanticContext
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasGetter = true
     let hasSetter = true
-    let hasSelector = false
+    var hasSelector = false
+    for (attribute) in mFeatureList do
+      if attribute.string == "selector" then
+        hasSelector = true
+        if hasSelector && usesSelectorsInInsertAndSearch then
+          warning attribute : "%selector useless, map has %selectors attributes"
+        end
+      end
+    end
     argumentTypeListForAddAssignWithFieldExpressionList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
     typedPropertyList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
     typesToIncludeInHeaderCompilation += !attributeTypeIndex
     enumerationDescriptor += !attributeTypeIndex ![mPropertyName string]
     insertMethodFormalArgumentList +=
-      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
+      !if usesSelectorsInInsertAndSearch || hasSelector then mPropertyName else ["" nowhere] end
       !attributeTypeIndex
-      !@formalArgumentPassingModeAST.argumentConstantIn
+      !.argumentConstantIn
       !mPropertyName.string
     removeMethodFormalArgumentList +=
-      !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
+      !if usesSelectorsInInsertAndSearch || hasSelector then mPropertyName else ["" nowhere] end
       !attributeTypeIndex
-      !@formalArgumentPassingModeAST.argumentOut
+      !.argumentOut
       !mPropertyName.string
   end
 #--- Handle insert setters
@@ -461,7 +469,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !mPropertyTypeName
       ?let @unifiedTypeMap-proxy attributeTypeIndex
     ]
-    var accessorFormalArgumentList =@formalParameterSignature {}
+    @formalParameterSignature accessorFormalArgumentList = {}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !.argumentConstantIn !mPropertyName.string
     accessorFormalArgumentList += !["" nowhere] !stringTypeIndex !.argumentConstantIn !"key"
     [!?setterMap insertOrReplace
