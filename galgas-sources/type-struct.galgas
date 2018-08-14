@@ -89,7 +89,7 @@ override method @structDeclarationAST enterInSemanticContext
   for () in mStructurePropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let propertyTypeProxy]
     @lstring selector = ["" nowhere]
-    for () in mFeatureList do
+    for () in mAttributeList do
       if mValue.string == selectorFeatureForNewConstructor () then
         selector = mPropertyName
       end
@@ -219,7 +219,7 @@ override method @structDeclarationAST semanticAnalysis
     [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     var hasSelector = false
-    for () in mFeatureList do
+    for () in mAttributeList do
       if mValue.string != selectorFeatureForNewConstructor () then
         error mValue : "a struct property accepts only the %" + selectorFeatureForNewConstructor () + " feature"
       end if hasSelector then

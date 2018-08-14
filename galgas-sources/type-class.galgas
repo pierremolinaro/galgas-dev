@@ -8,7 +8,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
   @lstring mClassTypeName %nogetter
   @lstring mSuperClassName %nogetter # Empty if no super class
   @lstringlist mClassFeatureList %nogetter
-  @propertyInCollectionListAST mAttributeList %nogetter
+  @propertyInCollectionListAST mPropertyList %nogetter
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -63,10 +63,10 @@ syntax extension galgas3DeclarationsSyntax {
     ${$
     @string mClassMessage = ""
   #--- Class properties
-    var mAttributeList =@propertyInCollectionListAST {}
+    @propertyInCollectionListAST propertyList = {}
     repeat
     while
-      <property_declaration> !? mAttributeList
+      <property_declaration> !? propertyList
     while
       $;$
     end
@@ -79,7 +79,7 @@ syntax extension galgas3DeclarationsSyntax {
         !mValue
         !mSuperClassName # Empty if no super class
         !classFeatureList
-        !mAttributeList
+        !propertyList
       }
     end
   }
@@ -102,7 +102,7 @@ override method @classDeclarationAST enterDeclarationInGraph
   if mSuperClassName.string != "" then
     [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mSuperClassName !mSuperClassName.location}]
   end
-  for () in mAttributeList do
+  for () in mPropertyList do
     [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mPropertyTypeName !mSuperClassName.location}]
   end
 }
@@ -127,7 +127,7 @@ override method @classDeclarationAST enterInSemanticContext
   @bool generateHeaderInSeparateFile
   if [mSuperClassName string] == "" then
     superClassIndex = @unifiedTypeMap-proxy.null
-    commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
+    commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap )
     setterMap = @setterMap. emptyMap
     instanceMethodMap = @instanceMethodMap. emptyMap
     inheritedTypedAttributeList = @typedPropertyList.emptyList
@@ -164,7 +164,7 @@ override method @classDeclarationAST enterInSemanticContext
       error mSuperClassName : "the @" + mSuperClassName + " should be a class type"
     end
   #--- Mark all setters as inherited
-    setterMap = @setterMap.emptyMap
+    setterMap = {}
     for () in inheritedSetterMap do
       [!?setterMap insertKey
         !lkey
@@ -176,7 +176,7 @@ override method @classDeclarationAST enterInSemanticContext
       ] 
     end
   #--- Mark all getters as inherited
-    getterMap = @getterMap. emptyMap
+    getterMap = {}
     for () in inheritedGetterMap do
       [!?getterMap insertKey
         !lkey
@@ -185,7 +185,7 @@ override method @classDeclarationAST enterInSemanticContext
         !mDeclarationLocation
         !mHasCompilerArgument
         !mReturnedType
-        !@methodQualifier. isInherited
+        !.isInherited
         !mErrorMessage
       ] 
     end
@@ -198,7 +198,7 @@ override method @classDeclarationAST enterInSemanticContext
         !mParameterList
         !mDeclarationLocation
         !mHasCompilerArgument
-        !@methodQualifier. isInherited
+        !.isInherited
         !mErrorMessage
       ] 
     end
@@ -206,11 +206,26 @@ override method @classDeclarationAST enterInSemanticContext
 #--- Build attribute Map and constructor argument list
   @functionSignature constructorAttributeTypeList = {}
   for () in inheritedTypedAttributeList do
-    constructorAttributeTypeList += !["" nowhere] !mPropertyTypeProxy !mPropertyName.string
+    constructorAttributeTypeList +=
+      !if mHasSelector then mPropertyName else ["" nowhere] end
+      !mPropertyTypeProxy
+      !mPropertyName.string
   end
-  for () in mAttributeList do
+  for () in mPropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mPropertyName.string
+    var hasSelector = false
+    for (attribute) in mAttributeList do
+      if attribute.string == "selector" then
+        if hasSelector then
+          error attribute : "duplicated attribute" fixit { remove }
+        end
+        hasSelector = true
+      end
+    end
+    constructorAttributeTypeList += 
+      !if hasSelector then mPropertyName else ["" nowhere] end
+      !attributeTypeIndex
+      !mPropertyName.string
     [!?attributeMap insertKey
       !mPropertyName
       !attributeTypeIndex
@@ -238,12 +253,12 @@ override method @classDeclarationAST enterInSemanticContext
 #--- Typed attribute list
   @typedPropertyList currentClassTypedAttributeList = {}
   @typedPropertyList allTypedAttributeList = inheritedTypedAttributeList
-  for () in mAttributeList do
+  for () in mPropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     var hasSetter = false
     var hasGetter = true
     var hasSelector = false
-    for () in mFeatureList do
+    for () in mAttributeList do
       if [mValue string] == "setter" then
         hasSetter = true
       elsif [mValue string] == "nogetter" then
@@ -376,7 +391,7 @@ override method @classDeclarationAST semanticAnalysis
 # A class without a super class admits the 'generatedInSeparateFile' feature
   @typedPropertyList allAttributeList
   if superClassProxy == .null then
-    allAttributeList = @typedPropertyList.emptyList
+    allAttributeList = {}
     @bool generatedInSeparateFileFeature = false
     if [mClassFeatureList length] > 0 then
       for () in mClassFeatureList do
@@ -401,14 +416,14 @@ override method @classDeclarationAST semanticAnalysis
 #------ Enter attributes
   @typedPropertyList typedAttributeList = {}
   @propertyIndexMap attributeMap = {}
-  for () in mAttributeList do
+  for () in mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     var hasSetter = false
     var hasGetter = true
     var hasSelector = false
-    for () in mFeatureList do
+    for () in mAttributeList do
       if [mValue string] == "setter" then
         if hasSetter then
           error mValue : "the '%setter' attribute is already named"

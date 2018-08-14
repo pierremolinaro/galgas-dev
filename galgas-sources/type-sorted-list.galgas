@@ -11,7 +11,7 @@ list @sortedListSortDescriptorListAST {
 
 class @sortedListDeclarationAST : @semanticDeclarationAST {
   @lstring mSortedListTypeName
-  @propertyInCollectionListAST mAttributeList
+  @propertyInCollectionListAST mPropertyList
   @sortedListSortDescriptorListAST mSortDescriptorList
 }
 
@@ -83,7 +83,7 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + mSortedListTypeName ![mSortedListTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for () in mAttributeList do
+  for () in mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
   end
 }
@@ -95,7 +95,7 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
 override method @sortedListDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var structAttributeList =@propertyInCollectionListAST {}
-  for () in mAttributeList do
+  for () in mPropertyList do
     structAttributeList +=
 #      !mIsPrivate
       !mPropertyTypeName
@@ -129,7 +129,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
   @functionSignature constructorAttributeTypeList = {}
   @formalParameterSignature setterFormalArgumentList = {}
   @typedPropertyList typedAttributeList = {}
-  for () in mAttributeList do
+  for () in mPropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasGetter = true
     let hasSetter = true
@@ -263,7 +263,7 @@ override method @sortedListDeclarationAST semanticAnalysis
 #--- Attribute
   var typedAttributeList =@typedPropertyList {}
   @propertyIndexMap attributeMap = {}
-  for () in mAttributeList do
+  for () in mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}

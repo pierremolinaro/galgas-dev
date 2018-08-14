@@ -357,7 +357,7 @@ override method @mapDeclarationAST enterInSemanticContext
     let hasGetter = true
     let hasSetter = true
     var hasSelector = false
-    for (attribute) in mFeatureList do
+    for (attribute) in mAttributeList do
       if attribute.string == "selector" then
         hasSelector = true
         if hasSelector && usesSelectorsInInsertAndSearch then

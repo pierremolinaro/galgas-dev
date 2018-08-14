@@ -552,7 +552,7 @@ class @onceFunctionDeclarationAST : @semanticDeclarationAST {
 list @propertyInCollectionListAST {
   @lstring mPropertyTypeName
   @lstring mPropertyName
-  @lstringlist mFeatureList
+  @lstringlist mAttributeList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

@@ -2763,7 +2763,7 @@ class GALGAS_lexicalListEntryListAST : public AC_GALGAS_list {
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_lstring & in_mEntrySpelling,
                                                   const class GALGAS_lstring & in_mTerminalSpelling,
-                                                  const class GALGAS_lstringlist & in_mFeatureList
+                                                  const class GALGAS_lstringlist & in_mAttributeList
                                                   COMMA_LOCATION_ARGS) ;
 
 //-- Start of generic part --*
@@ -2880,7 +2880,7 @@ class cEnumerator_lexicalListEntryListAST : public cGenericAbstractEnumerator {
 //--- Current element access
   public : class GALGAS_lstring current_mEntrySpelling (LOCATION_ARGS) const ;
   public : class GALGAS_lstring current_mTerminalSpelling (LOCATION_ARGS) const ;
-  public : class GALGAS_lstringlist current_mFeatureList (LOCATION_ARGS) const ;
+  public : class GALGAS_lstringlist current_mAttributeList (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_lexicalListEntryListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
@@ -2901,7 +2901,7 @@ class GALGAS_lexicalListEntryListAST_2D_element : public AC_GALGAS_root {
 
   public : GALGAS_lstring mProperty_mTerminalSpelling ;
 
-  public : GALGAS_lstringlist mProperty_mFeatureList ;
+  public : GALGAS_lstringlist mProperty_mAttributeList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -2919,7 +2919,7 @@ class GALGAS_lexicalListEntryListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public : GALGAS_lexicalListEntryListAST_2D_element (const GALGAS_lstring & in_mEntrySpelling,
                                                       const GALGAS_lstring & in_mTerminalSpelling,
-                                                      const GALGAS_lstringlist & in_mFeatureList) ;
+                                                      const GALGAS_lstringlist & in_mAttributeList) ;
 
 //-- Start of generic part --*
 
@@ -2949,9 +2949,9 @@ class GALGAS_lexicalListEntryListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mEntrySpelling (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mAttributeList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mFeatureList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mEntrySpelling (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mTerminalSpelling (LOCATION_ARGS) const ;
 

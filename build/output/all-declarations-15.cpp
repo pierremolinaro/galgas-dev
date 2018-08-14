@@ -2284,7 +2284,7 @@ GALGAS_terminalDeclarationListAST_2D_element GALGAS_terminalDeclarationListAST_2
 GALGAS_lexicalListEntryListAST_2D_element::GALGAS_lexicalListEntryListAST_2D_element (void) :
 mProperty_mEntrySpelling (),
 mProperty_mTerminalSpelling (),
-mProperty_mFeatureList () {
+mProperty_mAttributeList () {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -2299,7 +2299,7 @@ GALGAS_lexicalListEntryListAST_2D_element::GALGAS_lexicalListEntryListAST_2D_ele
                                                                                       const GALGAS_lstringlist & inOperand2) :
 mProperty_mEntrySpelling (inOperand0),
 mProperty_mTerminalSpelling (inOperand1),
-mProperty_mFeatureList (inOperand2) {
+mProperty_mAttributeList (inOperand2) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -2334,7 +2334,7 @@ typeComparisonResult GALGAS_lexicalListEntryListAST_2D_element::objectCompare (c
     result = mProperty_mTerminalSpelling.objectCompare (inOperand.mProperty_mTerminalSpelling) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mFeatureList.objectCompare (inOperand.mProperty_mFeatureList) ;
+    result = mProperty_mAttributeList.objectCompare (inOperand.mProperty_mAttributeList) ;
   }
   return result ;
 }
@@ -2342,7 +2342,7 @@ typeComparisonResult GALGAS_lexicalListEntryListAST_2D_element::objectCompare (c
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 bool GALGAS_lexicalListEntryListAST_2D_element::isValid (void) const {
-  return mProperty_mEntrySpelling.isValid () && mProperty_mTerminalSpelling.isValid () && mProperty_mFeatureList.isValid () ;
+  return mProperty_mEntrySpelling.isValid () && mProperty_mTerminalSpelling.isValid () && mProperty_mAttributeList.isValid () ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -2350,7 +2350,7 @@ bool GALGAS_lexicalListEntryListAST_2D_element::isValid (void) const {
 void GALGAS_lexicalListEntryListAST_2D_element::drop (void) {
   mProperty_mEntrySpelling.drop () ;
   mProperty_mTerminalSpelling.drop () ;
-  mProperty_mFeatureList.drop () ;
+  mProperty_mAttributeList.drop () ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -2365,7 +2365,7 @@ void GALGAS_lexicalListEntryListAST_2D_element::description (C_String & ioString
     ioString << ", " ;
     mProperty_mTerminalSpelling.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mFeatureList.description (ioString, inIndentation+1) ;
+    mProperty_mAttributeList.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -2384,8 +2384,8 @@ GALGAS_lstring GALGAS_lexicalListEntryListAST_2D_element::getter_mTerminalSpelli
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-GALGAS_lstringlist GALGAS_lexicalListEntryListAST_2D_element::getter_mFeatureList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mFeatureList ;
+GALGAS_lstringlist GALGAS_lexicalListEntryListAST_2D_element::getter_mAttributeList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mAttributeList ;
 }
 
 
@@ -4376,7 +4376,7 @@ GALGAS_terminalList_2D_element GALGAS_terminalList_2D_element::extractObject (co
 GALGAS_lexicalExplicitTokenListMap_2D_element::GALGAS_lexicalExplicitTokenListMap_2D_element (void) :
 mProperty_lkey (),
 mProperty_mTerminal (),
-mProperty_mFeatureList () {
+mProperty_mAttributeList () {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -4391,7 +4391,7 @@ GALGAS_lexicalExplicitTokenListMap_2D_element::GALGAS_lexicalExplicitTokenListMa
                                                                                               const GALGAS_lstringlist & inOperand2) :
 mProperty_lkey (inOperand0),
 mProperty_mTerminal (inOperand1),
-mProperty_mFeatureList (inOperand2) {
+mProperty_mAttributeList (inOperand2) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -4426,7 +4426,7 @@ typeComparisonResult GALGAS_lexicalExplicitTokenListMap_2D_element::objectCompar
     result = mProperty_mTerminal.objectCompare (inOperand.mProperty_mTerminal) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mFeatureList.objectCompare (inOperand.mProperty_mFeatureList) ;
+    result = mProperty_mAttributeList.objectCompare (inOperand.mProperty_mAttributeList) ;
   }
   return result ;
 }
@@ -4434,7 +4434,7 @@ typeComparisonResult GALGAS_lexicalExplicitTokenListMap_2D_element::objectCompar
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 bool GALGAS_lexicalExplicitTokenListMap_2D_element::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mTerminal.isValid () && mProperty_mFeatureList.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mTerminal.isValid () && mProperty_mAttributeList.isValid () ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -4442,7 +4442,7 @@ bool GALGAS_lexicalExplicitTokenListMap_2D_element::isValid (void) const {
 void GALGAS_lexicalExplicitTokenListMap_2D_element::drop (void) {
   mProperty_lkey.drop () ;
   mProperty_mTerminal.drop () ;
-  mProperty_mFeatureList.drop () ;
+  mProperty_mAttributeList.drop () ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -4457,7 +4457,7 @@ void GALGAS_lexicalExplicitTokenListMap_2D_element::description (C_String & ioSt
     ioString << ", " ;
     mProperty_mTerminal.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mFeatureList.description (ioString, inIndentation+1) ;
+    mProperty_mAttributeList.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -4476,8 +4476,8 @@ GALGAS_lstring GALGAS_lexicalExplicitTokenListMap_2D_element::getter_mTerminal (
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-GALGAS_lstringlist GALGAS_lexicalExplicitTokenListMap_2D_element::getter_mFeatureList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mFeatureList ;
+GALGAS_lstringlist GALGAS_lexicalExplicitTokenListMap_2D_element::getter_mAttributeList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mAttributeList ;
 }
 
 
@@ -10976,7 +10976,7 @@ GALGAS_actualInputParameterListAST_2D_element GALGAS_actualInputParameterListAST
 GALGAS_propertyInCollectionListAST_2D_element::GALGAS_propertyInCollectionListAST_2D_element (void) :
 mProperty_mPropertyTypeName (),
 mProperty_mPropertyName (),
-mProperty_mFeatureList () {
+mProperty_mAttributeList () {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -10991,7 +10991,7 @@ GALGAS_propertyInCollectionListAST_2D_element::GALGAS_propertyInCollectionListAS
                                                                                               const GALGAS_lstringlist & inOperand2) :
 mProperty_mPropertyTypeName (inOperand0),
 mProperty_mPropertyName (inOperand1),
-mProperty_mFeatureList (inOperand2) {
+mProperty_mAttributeList (inOperand2) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -11026,7 +11026,7 @@ typeComparisonResult GALGAS_propertyInCollectionListAST_2D_element::objectCompar
     result = mProperty_mPropertyName.objectCompare (inOperand.mProperty_mPropertyName) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mFeatureList.objectCompare (inOperand.mProperty_mFeatureList) ;
+    result = mProperty_mAttributeList.objectCompare (inOperand.mProperty_mAttributeList) ;
   }
   return result ;
 }
@@ -11034,7 +11034,7 @@ typeComparisonResult GALGAS_propertyInCollectionListAST_2D_element::objectCompar
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 bool GALGAS_propertyInCollectionListAST_2D_element::isValid (void) const {
-  return mProperty_mPropertyTypeName.isValid () && mProperty_mPropertyName.isValid () && mProperty_mFeatureList.isValid () ;
+  return mProperty_mPropertyTypeName.isValid () && mProperty_mPropertyName.isValid () && mProperty_mAttributeList.isValid () ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -11042,7 +11042,7 @@ bool GALGAS_propertyInCollectionListAST_2D_element::isValid (void) const {
 void GALGAS_propertyInCollectionListAST_2D_element::drop (void) {
   mProperty_mPropertyTypeName.drop () ;
   mProperty_mPropertyName.drop () ;
-  mProperty_mFeatureList.drop () ;
+  mProperty_mAttributeList.drop () ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -11057,7 +11057,7 @@ void GALGAS_propertyInCollectionListAST_2D_element::description (C_String & ioSt
     ioString << ", " ;
     mProperty_mPropertyName.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mFeatureList.description (ioString, inIndentation+1) ;
+    mProperty_mAttributeList.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -11076,8 +11076,8 @@ GALGAS_lstring GALGAS_propertyInCollectionListAST_2D_element::getter_mPropertyNa
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-GALGAS_lstringlist GALGAS_propertyInCollectionListAST_2D_element::getter_mFeatureList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mFeatureList ;
+GALGAS_lstringlist GALGAS_propertyInCollectionListAST_2D_element::getter_mAttributeList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mAttributeList ;
 }
 
 

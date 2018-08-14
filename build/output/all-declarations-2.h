@@ -60,10 +60,10 @@ class GALGAS_lexicalExplicitTokenListMap : public AC_GALGAS_map {
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void setter_setMFeatureListForKey (class GALGAS_lstringlist constinArgument0,
-                                                               class GALGAS_string constinArgument1,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG void setter_setMAttributeListForKey (class GALGAS_lstringlist constinArgument0,
+                                                                 class GALGAS_string constinArgument1,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_setMTerminalForKey (class GALGAS_lstring constinArgument0,
                                                             class GALGAS_string constinArgument1,
@@ -81,9 +81,9 @@ class GALGAS_lexicalExplicitTokenListMap : public AC_GALGAS_map {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mFeatureListForKey (const class GALGAS_string & constinOperand0,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mAttributeListForKey (const class GALGAS_string & constinOperand0,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mTerminalForKey (const class GALGAS_string & constinOperand0,
                                                                          C_Compiler * inCompiler
@@ -116,7 +116,7 @@ class cEnumerator_lexicalExplicitTokenListMap : public cGenericAbstractEnumerato
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
   public : class GALGAS_lstring current_mTerminal (LOCATION_ARGS) const ;
-  public : class GALGAS_lstringlist current_mFeatureList (LOCATION_ARGS) const ;
+  public : class GALGAS_lstringlist current_mAttributeList (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_lexicalExplicitTokenListMap_2D_element current (LOCATION_ARGS) const ;
 } ;
@@ -134,12 +134,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexicalExplicitToke
 class cMapElement_lexicalExplicitTokenListMap : public cMapElement {
 //--- Map attributes
   public : GALGAS_lstring mProperty_mTerminal ;
-  public : GALGAS_lstringlist mProperty_mFeatureList ;
+  public : GALGAS_lstringlist mProperty_mAttributeList ;
 
 //--- Constructor
   public : cMapElement_lexicalExplicitTokenListMap (const GALGAS_lstring & inKey,
                                                     const GALGAS_lstring & in_mTerminal,
-                                                    const GALGAS_lstringlist & in_mFeatureList
+                                                    const GALGAS_lstringlist & in_mAttributeList
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
@@ -167,7 +167,7 @@ class GALGAS_lexicalExplicitTokenListMap_2D_element : public AC_GALGAS_root {
 
   public : GALGAS_lstring mProperty_mTerminal ;
 
-  public : GALGAS_lstringlist mProperty_mFeatureList ;
+  public : GALGAS_lstringlist mProperty_mAttributeList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -185,7 +185,7 @@ class GALGAS_lexicalExplicitTokenListMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public : GALGAS_lexicalExplicitTokenListMap_2D_element (const GALGAS_lstring & in_lkey,
                                                           const GALGAS_lstring & in_mTerminal,
-                                                          const GALGAS_lstringlist & in_mFeatureList) ;
+                                                          const GALGAS_lstringlist & in_mAttributeList) ;
 
 //-- Start of generic part --*
 
@@ -217,7 +217,7 @@ class GALGAS_lexicalExplicitTokenListMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_lkey (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mFeatureList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mAttributeList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mTerminal (LOCATION_ARGS) const ;
 
@@ -6599,7 +6599,7 @@ class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list {
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_lstring & in_mPropertyTypeName,
                                                   const class GALGAS_lstring & in_mPropertyName,
-                                                  const class GALGAS_lstringlist & in_mFeatureList
+                                                  const class GALGAS_lstringlist & in_mAttributeList
                                                   COMMA_LOCATION_ARGS) ;
 
 //-- Start of generic part --*
@@ -6684,9 +6684,9 @@ class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mFeatureListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                 C_Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mAttributeListAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                   C_Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mPropertyNameAtIndex (const class GALGAS_uint & constinOperand0,
                                                                               C_Compiler * inCompiler
@@ -6728,7 +6728,7 @@ class cEnumerator_propertyInCollectionListAST : public cGenericAbstractEnumerato
 //--- Current element access
   public : class GALGAS_lstring current_mPropertyTypeName (LOCATION_ARGS) const ;
   public : class GALGAS_lstring current_mPropertyName (LOCATION_ARGS) const ;
-  public : class GALGAS_lstringlist current_mFeatureList (LOCATION_ARGS) const ;
+  public : class GALGAS_lstringlist current_mAttributeList (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_propertyInCollectionListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
@@ -6749,7 +6749,7 @@ class GALGAS_propertyInCollectionListAST_2D_element : public AC_GALGAS_root {
 
   public : GALGAS_lstring mProperty_mPropertyName ;
 
-  public : GALGAS_lstringlist mProperty_mFeatureList ;
+  public : GALGAS_lstringlist mProperty_mAttributeList ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -6767,7 +6767,7 @@ class GALGAS_propertyInCollectionListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public : GALGAS_propertyInCollectionListAST_2D_element (const GALGAS_lstring & in_mPropertyTypeName,
                                                           const GALGAS_lstring & in_mPropertyName,
-                                                          const GALGAS_lstringlist & in_mFeatureList) ;
+                                                          const GALGAS_lstringlist & in_mAttributeList) ;
 
 //-- Start of generic part --*
 
@@ -6797,7 +6797,7 @@ class GALGAS_propertyInCollectionListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mFeatureList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mAttributeList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mPropertyName (LOCATION_ARGS) const ;
 

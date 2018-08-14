@@ -15,7 +15,7 @@ list @terminalList {
 
 map @lexicalExplicitTokenListMap {
   @lstring mTerminal
-  @lstringlist mFeatureList
+  @lstringlist mAttributeList
   insert insertKey error message "the '%K' terminal has been already declared in the list"
   search searchKey error message "the '%K' terminal is not declared"
 }

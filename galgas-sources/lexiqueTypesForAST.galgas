@@ -111,7 +111,7 @@ list @terminalDeclarationListAST {
 list @lexicalListEntryListAST {
   @lstring mEntrySpelling %nogetter
   @lstring mTerminalSpelling %nogetter
-  @lstringlist mFeatureList %nogetter
+  @lstringlist mAttributeList %nogetter
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

@@ -4,7 +4,7 @@
 
 class @listDeclarationAST : @semanticDeclarationAST {
   @lstring mListTypeName %nogetter
-  @propertyInCollectionListAST mAttributeList %nogetter
+  @propertyInCollectionListAST mPropertyList %nogetter
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -48,7 +48,7 @@ override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
   let key = @lstring.new {!"@" + mListTypeName ![mListTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for () in mAttributeList do
+  for () in mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
   end
 }
@@ -65,12 +65,12 @@ override method @listDeclarationAST enterInSemanticContext
 {
 #--- Handle attributes
   @typedPropertyList typedAttributeList = {}
-  for () in mAttributeList do
+  for () in mPropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     var hasSetter = false
     var hasGetter = true
     var hasSelector = false
-    for () in mFeatureList do
+    for () in mAttributeList do
       if [mValue string] == "setter" then
         if hasSetter then
           error mValue : "the '%setter' attribute is already named"
@@ -323,7 +323,7 @@ override method @listDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList
 {
   @propertyInCollectionListAST structAttributeList = {}
-  for () in mAttributeList do
+  for () in mPropertyList do
     structAttributeList +=
       !mPropertyTypeName
       !mPropertyName
@@ -358,14 +358,14 @@ override method @listDeclarationAST semanticAnalysis
 #---
   @typedPropertyList typedAttributeList = {}
   @propertyIndexMap attributeMap = {}
-  for () in mAttributeList do
+  for () in mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
     var hasSetter = false
     var hasGetter = true
     var hasSelector = false
-    for () in mFeatureList do
+    for () in mAttributeList do
       if [mValue string] == "setter" then
         if hasSetter then
           error mValue : "the '%setter' attribute is already named"

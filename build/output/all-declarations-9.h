@@ -6284,7 +6284,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
   public : GALGAS_lstring mProperty_mClassTypeName ;
   public : GALGAS_lstring mProperty_mSuperClassName ;
   public : GALGAS_lstringlist mProperty_mClassFeatureList ;
-  public : GALGAS_propertyInCollectionListAST mProperty_mAttributeList ;
+  public : GALGAS_propertyInCollectionListAST mProperty_mPropertyList ;
 
 //--- Constructor
   public : cPtr_classDeclarationAST (const GALGAS_bool & in_mIsPredefined,
@@ -6293,7 +6293,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
                                      const GALGAS_lstring & in_mClassTypeName,
                                      const GALGAS_lstring & in_mSuperClassName,
                                      const GALGAS_lstringlist & in_mClassFeatureList,
-                                     const GALGAS_propertyInCollectionListAST & in_mAttributeList
+                                     const GALGAS_propertyInCollectionListAST & in_mPropertyList
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -7260,12 +7260,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listDeclarationAST 
 class cPtr_listDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mProperty_mListTypeName ;
-  public : GALGAS_propertyInCollectionListAST mProperty_mAttributeList ;
+  public : GALGAS_propertyInCollectionListAST mProperty_mPropertyList ;
 
 //--- Constructor
   public : cPtr_listDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                     const GALGAS_lstring & in_mListTypeName,
-                                    const GALGAS_propertyInCollectionListAST & in_mAttributeList
+                                    const GALGAS_propertyInCollectionListAST & in_mPropertyList
                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -8501,7 +8501,7 @@ class GALGAS_sortedListDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionListAST getter_mAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionListAST getter_mPropertyList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_sortedListSortDescriptorListAST getter_mSortDescriptorList (LOCATION_ARGS) const ;
 
@@ -8527,13 +8527,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListDeclarati
 class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mProperty_mSortedListTypeName ;
-  public : GALGAS_propertyInCollectionListAST mProperty_mAttributeList ;
+  public : GALGAS_propertyInCollectionListAST mProperty_mPropertyList ;
   public : GALGAS_sortedListSortDescriptorListAST mProperty_mSortDescriptorList ;
 
 //--- Constructor
   public : cPtr_sortedListDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                           const GALGAS_lstring & in_mSortedListTypeName,
-                                          const GALGAS_propertyInCollectionListAST & in_mAttributeList,
+                                          const GALGAS_propertyInCollectionListAST & in_mPropertyList,
                                           const GALGAS_sortedListSortDescriptorListAST & in_mSortDescriptorList
                                           COMMA_LOCATION_ARGS) ;
 
@@ -8542,7 +8542,7 @@ class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mSortedListTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_propertyInCollectionListAST getter_mAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_propertyInCollectionListAST getter_mPropertyList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_sortedListSortDescriptorListAST getter_mSortDescriptorList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,

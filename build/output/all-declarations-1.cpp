@@ -5526,7 +5526,7 @@ class cCollectionElement_lexicalListEntryListAST : public cCollectionElement {
 //--- Constructors
   public : cCollectionElement_lexicalListEntryListAST (const GALGAS_lstring & in_mEntrySpelling,
                                                        const GALGAS_lstring & in_mTerminalSpelling,
-                                                       const GALGAS_lstringlist & in_mFeatureList
+                                                       const GALGAS_lstringlist & in_mAttributeList
                                                        COMMA_LOCATION_ARGS) ;
   public : cCollectionElement_lexicalListEntryListAST (const GALGAS_lexicalListEntryListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
@@ -5547,17 +5547,17 @@ class cCollectionElement_lexicalListEntryListAST : public cCollectionElement {
 
 cCollectionElement_lexicalListEntryListAST::cCollectionElement_lexicalListEntryListAST (const GALGAS_lstring & in_mEntrySpelling,
                                                                                         const GALGAS_lstring & in_mTerminalSpelling,
-                                                                                        const GALGAS_lstringlist & in_mFeatureList
+                                                                                        const GALGAS_lstringlist & in_mAttributeList
                                                                                         COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mEntrySpelling, in_mTerminalSpelling, in_mFeatureList) {
+mObject (in_mEntrySpelling, in_mTerminalSpelling, in_mAttributeList) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 cCollectionElement_lexicalListEntryListAST::cCollectionElement_lexicalListEntryListAST (const GALGAS_lexicalListEntryListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_mEntrySpelling, inElement.mProperty_mTerminalSpelling, inElement.mProperty_mFeatureList) {
+mObject (inElement.mProperty_mEntrySpelling, inElement.mProperty_mTerminalSpelling, inElement.mProperty_mAttributeList) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -5570,7 +5570,7 @@ bool cCollectionElement_lexicalListEntryListAST::isValid (void) const {
 
 cCollectionElement * cCollectionElement_lexicalListEntryListAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_lexicalListEntryListAST (mObject.mProperty_mEntrySpelling, mObject.mProperty_mTerminalSpelling, mObject.mProperty_mFeatureList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_lexicalListEntryListAST (mObject.mProperty_mEntrySpelling, mObject.mProperty_mTerminalSpelling, mObject.mProperty_mAttributeList COMMA_HERE)) ;
   return result ;
 }
 
@@ -5587,8 +5587,8 @@ void cCollectionElement_lexicalListEntryListAST::description (C_String & ioStrin
   mObject.mProperty_mTerminalSpelling.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mFeatureList" ":" ;
-  mObject.mProperty_mFeatureList.description (ioString, inIndentation) ;
+  ioString << "mAttributeList" ":" ;
+  mObject.mProperty_mAttributeList.description (ioString, inIndentation) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -5638,12 +5638,12 @@ GALGAS_lexicalListEntryListAST GALGAS_lexicalListEntryListAST::constructor_listW
 void GALGAS_lexicalListEntryListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                 const GALGAS_lstring & in_mEntrySpelling,
                                                                 const GALGAS_lstring & in_mTerminalSpelling,
-                                                                const GALGAS_lstringlist & in_mFeatureList
+                                                                const GALGAS_lstringlist & in_mAttributeList
                                                                 COMMA_LOCATION_ARGS) {
   cCollectionElement_lexicalListEntryListAST * p = NULL ;
   macroMyNew (p, cCollectionElement_lexicalListEntryListAST (in_mEntrySpelling,
                                                              in_mTerminalSpelling,
-                                                             in_mFeatureList COMMA_THERE)) ;
+                                                             in_mAttributeList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -5717,7 +5717,7 @@ void GALGAS_lexicalListEntryListAST::setter_removeAtIndex (GALGAS_lstring & outO
       macroValidSharedObject (p, cCollectionElement_lexicalListEntryListAST) ;
       outOperand0 = p->mObject.mProperty_mEntrySpelling ;
       outOperand1 = p->mObject.mProperty_mTerminalSpelling ;
-      outOperand2 = p->mObject.mProperty_mFeatureList ;
+      outOperand2 = p->mObject.mProperty_mAttributeList ;
     }
   }
 }
@@ -5740,7 +5740,7 @@ void GALGAS_lexicalListEntryListAST::setter_popFirst (GALGAS_lstring & outOperan
     macroValidSharedObject (p, cCollectionElement_lexicalListEntryListAST) ;
     outOperand0 = p->mObject.mProperty_mEntrySpelling ;
     outOperand1 = p->mObject.mProperty_mTerminalSpelling ;
-    outOperand2 = p->mObject.mProperty_mFeatureList ;
+    outOperand2 = p->mObject.mProperty_mAttributeList ;
   }
 }
 
@@ -5762,7 +5762,7 @@ void GALGAS_lexicalListEntryListAST::setter_popLast (GALGAS_lstring & outOperand
     macroValidSharedObject (p, cCollectionElement_lexicalListEntryListAST) ;
     outOperand0 = p->mObject.mProperty_mEntrySpelling ;
     outOperand1 = p->mObject.mProperty_mTerminalSpelling ;
-    outOperand2 = p->mObject.mProperty_mFeatureList ;
+    outOperand2 = p->mObject.mProperty_mAttributeList ;
   }
 }
 
@@ -5784,7 +5784,7 @@ void GALGAS_lexicalListEntryListAST::method_first (GALGAS_lstring & outOperand0,
     macroValidSharedObject (p, cCollectionElement_lexicalListEntryListAST) ;
     outOperand0 = p->mObject.mProperty_mEntrySpelling ;
     outOperand1 = p->mObject.mProperty_mTerminalSpelling ;
-    outOperand2 = p->mObject.mProperty_mFeatureList ;
+    outOperand2 = p->mObject.mProperty_mAttributeList ;
   }
 }
 
@@ -5806,7 +5806,7 @@ void GALGAS_lexicalListEntryListAST::method_last (GALGAS_lstring & outOperand0,
     macroValidSharedObject (p, cCollectionElement_lexicalListEntryListAST) ;
     outOperand0 = p->mObject.mProperty_mEntrySpelling ;
     outOperand1 = p->mObject.mProperty_mTerminalSpelling ;
-    outOperand2 = p->mObject.mProperty_mFeatureList ;
+    outOperand2 = p->mObject.mProperty_mAttributeList ;
   }
 }
 
@@ -5898,10 +5898,10 @@ GALGAS_lstring cEnumerator_lexicalListEntryListAST::current_mTerminalSpelling (L
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-GALGAS_lstringlist cEnumerator_lexicalListEntryListAST::current_mFeatureList (LOCATION_ARGS) const {
+GALGAS_lstringlist cEnumerator_lexicalListEntryListAST::current_mAttributeList (LOCATION_ARGS) const {
   const cCollectionElement_lexicalListEntryListAST * p = (const cCollectionElement_lexicalListEntryListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_lexicalListEntryListAST) ;
-  return p->mObject.mProperty_mFeatureList ;
+  return p->mObject.mProperty_mAttributeList ;
 }
 
 

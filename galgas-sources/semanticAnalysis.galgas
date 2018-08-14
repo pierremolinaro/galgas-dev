@@ -981,7 +981,7 @@ override method @lexiqueComponentAST semanticAnalysis
       @string syntaxErrorMessage = [[mSyntaxErrorMessage string] stringByReplacingStringByString !"%K" ![mTerminalSpelling string]]
       var isEndOfTemplateMark = false
       var atomicSelection = true
-      for () in mFeatureList do
+      for () in mAttributeList do
         if [mValue string] == "nonAtomicSelection" then
           if atomicSelection then
             atomicSelection = false
@@ -1004,7 +1004,7 @@ override method @lexiqueComponentAST semanticAnalysis
         !atomicSelection
         !terminalStyleIndex
       [!?lexiqueAnalysisContext.mTerminalMap insertKey !mTerminalSpelling !argumentTypeList]
-      [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mFeatureList]
+      [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mAttributeList]
       tokenSortedlist += ![[mEntrySpelling string] length] ![mEntrySpelling string] ![mTerminalSpelling string]
       lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mEntrySpelling string]
     end

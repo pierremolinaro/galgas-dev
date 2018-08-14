@@ -11,24 +11,24 @@
 
 cMapElement_lexicalExplicitTokenListMap::cMapElement_lexicalExplicitTokenListMap (const GALGAS_lstring & inKey,
                                                                                   const GALGAS_lstring & in_mTerminal,
-                                                                                  const GALGAS_lstringlist & in_mFeatureList
+                                                                                  const GALGAS_lstringlist & in_mAttributeList
                                                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
 mProperty_mTerminal (in_mTerminal),
-mProperty_mFeatureList (in_mFeatureList) {
+mProperty_mAttributeList (in_mAttributeList) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 bool cMapElement_lexicalExplicitTokenListMap::isValid (void) const {
-  return mProperty_lkey.isValid () && mProperty_mTerminal.isValid () && mProperty_mFeatureList.isValid () ;
+  return mProperty_lkey.isValid () && mProperty_mTerminal.isValid () && mProperty_mAttributeList.isValid () ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 cMapElement * cMapElement_lexicalExplicitTokenListMap::copy (void) {
   cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_lexicalExplicitTokenListMap (mProperty_lkey, mProperty_mTerminal, mProperty_mFeatureList COMMA_HERE)) ;
+  macroMyNew (result, cMapElement_lexicalExplicitTokenListMap (mProperty_lkey, mProperty_mTerminal, mProperty_mAttributeList COMMA_HERE)) ;
   return result ;
 }
 
@@ -41,8 +41,8 @@ void cMapElement_lexicalExplicitTokenListMap::description (C_String & ioString, 
   mProperty_mTerminal.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mFeatureList" ":" ;
-  mProperty_mFeatureList.description (ioString, inIndentation) ;
+  ioString << "mAttributeList" ":" ;
+  mProperty_mAttributeList.description (ioString, inIndentation) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -54,7 +54,7 @@ typeComparisonResult cMapElement_lexicalExplicitTokenListMap::compare (const cCo
     result = mProperty_mTerminal.objectCompare (operand->mProperty_mTerminal) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mFeatureList.objectCompare (operand->mProperty_mFeatureList) ;
+    result = mProperty_mAttributeList.objectCompare (operand->mProperty_mAttributeList) ;
   }
   return result ;
 }
@@ -159,7 +159,7 @@ void GALGAS_lexicalExplicitTokenListMap::method_searchKey (GALGAS_lstring inKey,
   }else{
     macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
     outArgument0 = p->mProperty_mTerminal ;
-    outArgument1 = p->mProperty_mFeatureList ;
+    outArgument1 = p->mProperty_mAttributeList ;
   }
 }
 
@@ -180,15 +180,15 @@ GALGAS_lstring GALGAS_lexicalExplicitTokenListMap::getter_mTerminalForKey (const
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-GALGAS_lstringlist GALGAS_lexicalExplicitTokenListMap::getter_mFeatureListForKey (const GALGAS_string & inKey,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_lexicalExplicitTokenListMap::getter_mAttributeListForKey (const GALGAS_string & inKey,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) attributes ;
   GALGAS_lstringlist result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-    result = p->mProperty_mFeatureList ;
+    result = p->mProperty_mAttributeList ;
   }
   return result ;
 }
@@ -209,15 +209,15 @@ void GALGAS_lexicalExplicitTokenListMap::setter_setMTerminalForKey (GALGAS_lstri
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-void GALGAS_lexicalExplicitTokenListMap::setter_setMFeatureListForKey (GALGAS_lstringlist inAttributeValue,
-                                                                       GALGAS_string inKey,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) {
+void GALGAS_lexicalExplicitTokenListMap::setter_setMAttributeListForKey (GALGAS_lstringlist inAttributeValue,
+                                                                         GALGAS_string inKey,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
   cMapElement_lexicalExplicitTokenListMap * p = (cMapElement_lexicalExplicitTokenListMap *) attributes ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-    p->mProperty_mFeatureList = inAttributeValue ;
+    p->mProperty_mAttributeList = inAttributeValue ;
   }
 }
 
@@ -244,7 +244,7 @@ cGenericAbstractEnumerator (inOrder) {
 GALGAS_lexicalExplicitTokenListMap_2D_element cEnumerator_lexicalExplicitTokenListMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-  return GALGAS_lexicalExplicitTokenListMap_2D_element (p->mProperty_lkey, p->mProperty_mTerminal, p->mProperty_mFeatureList) ;
+  return GALGAS_lexicalExplicitTokenListMap_2D_element (p->mProperty_lkey, p->mProperty_mTerminal, p->mProperty_mAttributeList) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -265,10 +265,10 @@ GALGAS_lstring cEnumerator_lexicalExplicitTokenListMap::current_mTerminal (LOCAT
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-GALGAS_lstringlist cEnumerator_lexicalExplicitTokenListMap::current_mFeatureList (LOCATION_ARGS) const {
+GALGAS_lstringlist cEnumerator_lexicalExplicitTokenListMap::current_mAttributeList (LOCATION_ARGS) const {
   const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_lexicalExplicitTokenListMap) ;
-  return p->mProperty_mFeatureList ;
+  return p->mProperty_mAttributeList ;
 }
 
 
@@ -12622,7 +12622,7 @@ class cCollectionElement_propertyInCollectionListAST : public cCollectionElement
 //--- Constructors
   public : cCollectionElement_propertyInCollectionListAST (const GALGAS_lstring & in_mPropertyTypeName,
                                                            const GALGAS_lstring & in_mPropertyName,
-                                                           const GALGAS_lstringlist & in_mFeatureList
+                                                           const GALGAS_lstringlist & in_mAttributeList
                                                            COMMA_LOCATION_ARGS) ;
   public : cCollectionElement_propertyInCollectionListAST (const GALGAS_propertyInCollectionListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
 
@@ -12643,17 +12643,17 @@ class cCollectionElement_propertyInCollectionListAST : public cCollectionElement
 
 cCollectionElement_propertyInCollectionListAST::cCollectionElement_propertyInCollectionListAST (const GALGAS_lstring & in_mPropertyTypeName,
                                                                                                 const GALGAS_lstring & in_mPropertyName,
-                                                                                                const GALGAS_lstringlist & in_mFeatureList
+                                                                                                const GALGAS_lstringlist & in_mAttributeList
                                                                                                 COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mPropertyTypeName, in_mPropertyName, in_mFeatureList) {
+mObject (in_mPropertyTypeName, in_mPropertyName, in_mAttributeList) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 cCollectionElement_propertyInCollectionListAST::cCollectionElement_propertyInCollectionListAST (const GALGAS_propertyInCollectionListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_mPropertyTypeName, inElement.mProperty_mPropertyName, inElement.mProperty_mFeatureList) {
+mObject (inElement.mProperty_mPropertyTypeName, inElement.mProperty_mPropertyName, inElement.mProperty_mAttributeList) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -12666,7 +12666,7 @@ bool cCollectionElement_propertyInCollectionListAST::isValid (void) const {
 
 cCollectionElement * cCollectionElement_propertyInCollectionListAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_propertyInCollectionListAST (mObject.mProperty_mPropertyTypeName, mObject.mProperty_mPropertyName, mObject.mProperty_mFeatureList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_propertyInCollectionListAST (mObject.mProperty_mPropertyTypeName, mObject.mProperty_mPropertyName, mObject.mProperty_mAttributeList COMMA_HERE)) ;
   return result ;
 }
 
@@ -12683,8 +12683,8 @@ void cCollectionElement_propertyInCollectionListAST::description (C_String & ioS
   mObject.mProperty_mPropertyName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mFeatureList" ":" ;
-  mObject.mProperty_mFeatureList.description (ioString, inIndentation) ;
+  ioString << "mAttributeList" ":" ;
+  mObject.mProperty_mAttributeList.description (ioString, inIndentation) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -12734,12 +12734,12 @@ GALGAS_propertyInCollectionListAST GALGAS_propertyInCollectionListAST::construct
 void GALGAS_propertyInCollectionListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                     const GALGAS_lstring & in_mPropertyTypeName,
                                                                     const GALGAS_lstring & in_mPropertyName,
-                                                                    const GALGAS_lstringlist & in_mFeatureList
+                                                                    const GALGAS_lstringlist & in_mAttributeList
                                                                     COMMA_LOCATION_ARGS) {
   cCollectionElement_propertyInCollectionListAST * p = NULL ;
   macroMyNew (p, cCollectionElement_propertyInCollectionListAST (in_mPropertyTypeName,
                                                                  in_mPropertyName,
-                                                                 in_mFeatureList COMMA_THERE)) ;
+                                                                 in_mAttributeList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -12813,7 +12813,7 @@ void GALGAS_propertyInCollectionListAST::setter_removeAtIndex (GALGAS_lstring & 
       macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
       outOperand0 = p->mObject.mProperty_mPropertyTypeName ;
       outOperand1 = p->mObject.mProperty_mPropertyName ;
-      outOperand2 = p->mObject.mProperty_mFeatureList ;
+      outOperand2 = p->mObject.mProperty_mAttributeList ;
     }
   }
 }
@@ -12836,7 +12836,7 @@ void GALGAS_propertyInCollectionListAST::setter_popFirst (GALGAS_lstring & outOp
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
     outOperand0 = p->mObject.mProperty_mPropertyTypeName ;
     outOperand1 = p->mObject.mProperty_mPropertyName ;
-    outOperand2 = p->mObject.mProperty_mFeatureList ;
+    outOperand2 = p->mObject.mProperty_mAttributeList ;
   }
 }
 
@@ -12858,7 +12858,7 @@ void GALGAS_propertyInCollectionListAST::setter_popLast (GALGAS_lstring & outOpe
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
     outOperand0 = p->mObject.mProperty_mPropertyTypeName ;
     outOperand1 = p->mObject.mProperty_mPropertyName ;
-    outOperand2 = p->mObject.mProperty_mFeatureList ;
+    outOperand2 = p->mObject.mProperty_mAttributeList ;
   }
 }
 
@@ -12880,7 +12880,7 @@ void GALGAS_propertyInCollectionListAST::method_first (GALGAS_lstring & outOpera
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
     outOperand0 = p->mObject.mProperty_mPropertyTypeName ;
     outOperand1 = p->mObject.mProperty_mPropertyName ;
-    outOperand2 = p->mObject.mProperty_mFeatureList ;
+    outOperand2 = p->mObject.mProperty_mAttributeList ;
   }
 }
 
@@ -12902,7 +12902,7 @@ void GALGAS_propertyInCollectionListAST::method_last (GALGAS_lstring & outOperan
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
     outOperand0 = p->mObject.mProperty_mPropertyTypeName ;
     outOperand1 = p->mObject.mProperty_mPropertyName ;
-    outOperand2 = p->mObject.mProperty_mFeatureList ;
+    outOperand2 = p->mObject.mProperty_mAttributeList ;
   }
 }
 
@@ -12989,15 +12989,15 @@ GALGAS_lstring GALGAS_propertyInCollectionListAST::getter_mPropertyNameAtIndex (
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-GALGAS_lstringlist GALGAS_propertyInCollectionListAST::getter_mFeatureListAtIndex (const GALGAS_uint & inIndex,
-                                                                                   C_Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) const {
+GALGAS_lstringlist GALGAS_propertyInCollectionListAST::getter_mAttributeListAtIndex (const GALGAS_uint & inIndex,
+                                                                                     C_Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_propertyInCollectionListAST * p = (cCollectionElement_propertyInCollectionListAST *) attributes.ptr () ;
   GALGAS_lstringlist result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-    result = p->mObject.mProperty_mFeatureList ;
+    result = p->mObject.mProperty_mAttributeList ;
   }
   return result ;
 }
@@ -13039,10 +13039,10 @@ GALGAS_lstring cEnumerator_propertyInCollectionListAST::current_mPropertyName (L
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-GALGAS_lstringlist cEnumerator_propertyInCollectionListAST::current_mFeatureList (LOCATION_ARGS) const {
+GALGAS_lstringlist cEnumerator_propertyInCollectionListAST::current_mAttributeList (LOCATION_ARGS) const {
   const cCollectionElement_propertyInCollectionListAST * p = (const cCollectionElement_propertyInCollectionListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_propertyInCollectionListAST) ;
-  return p->mObject.mProperty_mFeatureList ;
+  return p->mObject.mProperty_mAttributeList ;
 }
 
 

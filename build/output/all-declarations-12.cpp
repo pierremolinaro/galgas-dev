@@ -199,7 +199,7 @@ typeComparisonResult cPtr_classDeclarationAST::dynamicObjectCompare (const acPtr
     result = mProperty_mClassFeatureList.objectCompare (p->mProperty_mClassFeatureList) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mAttributeList.objectCompare (p->mProperty_mAttributeList) ;
+    result = mProperty_mPropertyList.objectCompare (p->mProperty_mPropertyList) ;
   }
   return result ;
 }
@@ -257,11 +257,11 @@ GALGAS_classDeclarationAST GALGAS_classDeclarationAST::constructor_new (const GA
                                                                         const GALGAS_lstring & inAttribute_mClassTypeName,
                                                                         const GALGAS_lstring & inAttribute_mSuperClassName,
                                                                         const GALGAS_lstringlist & inAttribute_mClassFeatureList,
-                                                                        const GALGAS_propertyInCollectionListAST & inAttribute_mAttributeList
+                                                                        const GALGAS_propertyInCollectionListAST & inAttribute_mPropertyList
                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_classDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mIsAbstract.isValid () && inAttribute_mIsShared.isValid () && inAttribute_mClassTypeName.isValid () && inAttribute_mSuperClassName.isValid () && inAttribute_mClassFeatureList.isValid () && inAttribute_mAttributeList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_classDeclarationAST (inAttribute_mIsPredefined, inAttribute_mIsAbstract, inAttribute_mIsShared, inAttribute_mClassTypeName, inAttribute_mSuperClassName, inAttribute_mClassFeatureList, inAttribute_mAttributeList COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mIsAbstract.isValid () && inAttribute_mIsShared.isValid () && inAttribute_mClassTypeName.isValid () && inAttribute_mSuperClassName.isValid () && inAttribute_mClassFeatureList.isValid () && inAttribute_mPropertyList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_classDeclarationAST (inAttribute_mIsPredefined, inAttribute_mIsAbstract, inAttribute_mIsShared, inAttribute_mClassTypeName, inAttribute_mSuperClassName, inAttribute_mClassFeatureList, inAttribute_mPropertyList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -276,7 +276,7 @@ cPtr_classDeclarationAST::cPtr_classDeclarationAST (const GALGAS_bool & in_mIsPr
                                                     const GALGAS_lstring & in_mClassTypeName,
                                                     const GALGAS_lstring & in_mSuperClassName,
                                                     const GALGAS_lstringlist & in_mClassFeatureList,
-                                                    const GALGAS_propertyInCollectionListAST & in_mAttributeList
+                                                    const GALGAS_propertyInCollectionListAST & in_mPropertyList
                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mProperty_mIsAbstract (in_mIsAbstract),
@@ -284,7 +284,7 @@ mProperty_mIsShared (in_mIsShared),
 mProperty_mClassTypeName (in_mClassTypeName),
 mProperty_mSuperClassName (in_mSuperClassName),
 mProperty_mClassFeatureList (in_mClassFeatureList),
-mProperty_mAttributeList (in_mAttributeList) {
+mProperty_mPropertyList (in_mPropertyList) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -308,7 +308,7 @@ void cPtr_classDeclarationAST::description (C_String & ioString,
   ioString << ", " ;
   mProperty_mClassFeatureList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mAttributeList.description (ioString, inIndentation+1) ;
+  mProperty_mPropertyList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -316,7 +316,7 @@ void cPtr_classDeclarationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_classDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_classDeclarationAST (mProperty_mIsPredefined, mProperty_mIsAbstract, mProperty_mIsShared, mProperty_mClassTypeName, mProperty_mSuperClassName, mProperty_mClassFeatureList, mProperty_mAttributeList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_classDeclarationAST (mProperty_mIsPredefined, mProperty_mIsAbstract, mProperty_mIsShared, mProperty_mClassTypeName, mProperty_mSuperClassName, mProperty_mClassFeatureList, mProperty_mPropertyList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -2047,7 +2047,7 @@ typeComparisonResult cPtr_listDeclarationAST::dynamicObjectCompare (const acPtr_
     result = mProperty_mListTypeName.objectCompare (p->mProperty_mListTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mAttributeList.objectCompare (p->mProperty_mAttributeList) ;
+    result = mProperty_mPropertyList.objectCompare (p->mProperty_mPropertyList) ;
   }
   return result ;
 }
@@ -2097,11 +2097,11 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 
 GALGAS_listDeclarationAST GALGAS_listDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                       const GALGAS_lstring & inAttribute_mListTypeName,
-                                                                      const GALGAS_propertyInCollectionListAST & inAttribute_mAttributeList
+                                                                      const GALGAS_propertyInCollectionListAST & inAttribute_mPropertyList
                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_listDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mListTypeName.isValid () && inAttribute_mAttributeList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_listDeclarationAST (inAttribute_mIsPredefined, inAttribute_mListTypeName, inAttribute_mAttributeList COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mListTypeName.isValid () && inAttribute_mPropertyList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_listDeclarationAST (inAttribute_mIsPredefined, inAttribute_mListTypeName, inAttribute_mPropertyList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -2112,11 +2112,11 @@ GALGAS_listDeclarationAST GALGAS_listDeclarationAST::constructor_new (const GALG
 
 cPtr_listDeclarationAST::cPtr_listDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                   const GALGAS_lstring & in_mListTypeName,
-                                                  const GALGAS_propertyInCollectionListAST & in_mAttributeList
+                                                  const GALGAS_propertyInCollectionListAST & in_mPropertyList
                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mProperty_mListTypeName (in_mListTypeName),
-mProperty_mAttributeList (in_mAttributeList) {
+mProperty_mPropertyList (in_mPropertyList) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -2132,7 +2132,7 @@ void cPtr_listDeclarationAST::description (C_String & ioString,
   ioString << ", " ;
   mProperty_mListTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mAttributeList.description (ioString, inIndentation+1) ;
+  mProperty_mPropertyList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -2140,7 +2140,7 @@ void cPtr_listDeclarationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_listDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_listDeclarationAST (mProperty_mIsPredefined, mProperty_mListTypeName, mProperty_mAttributeList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_listDeclarationAST (mProperty_mIsPredefined, mProperty_mListTypeName, mProperty_mPropertyList COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -5108,7 +5108,7 @@ typeComparisonResult cPtr_sortedListDeclarationAST::dynamicObjectCompare (const 
     result = mProperty_mSortedListTypeName.objectCompare (p->mProperty_mSortedListTypeName) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mAttributeList.objectCompare (p->mProperty_mAttributeList) ;
+    result = mProperty_mPropertyList.objectCompare (p->mProperty_mPropertyList) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mSortDescriptorList.objectCompare (p->mProperty_mSortDescriptorList) ;
@@ -5162,12 +5162,12 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 
 GALGAS_sortedListDeclarationAST GALGAS_sortedListDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                   const GALGAS_lstring & inAttribute_mSortedListTypeName,
-                                                                                  const GALGAS_propertyInCollectionListAST & inAttribute_mAttributeList,
+                                                                                  const GALGAS_propertyInCollectionListAST & inAttribute_mPropertyList,
                                                                                   const GALGAS_sortedListSortDescriptorListAST & inAttribute_mSortDescriptorList
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_sortedListDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mSortedListTypeName.isValid () && inAttribute_mAttributeList.isValid () && inAttribute_mSortDescriptorList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_sortedListDeclarationAST (inAttribute_mIsPredefined, inAttribute_mSortedListTypeName, inAttribute_mAttributeList, inAttribute_mSortDescriptorList COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mSortedListTypeName.isValid () && inAttribute_mPropertyList.isValid () && inAttribute_mSortDescriptorList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_sortedListDeclarationAST (inAttribute_mIsPredefined, inAttribute_mSortedListTypeName, inAttribute_mPropertyList, inAttribute_mSortDescriptorList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -5192,20 +5192,20 @@ GALGAS_lstring cPtr_sortedListDeclarationAST::getter_mSortedListTypeName (UNUSED
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-GALGAS_propertyInCollectionListAST GALGAS_sortedListDeclarationAST::getter_mAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_propertyInCollectionListAST GALGAS_sortedListDeclarationAST::getter_mPropertyList (UNUSED_LOCATION_ARGS) const {
   GALGAS_propertyInCollectionListAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_sortedListDeclarationAST * p = (const cPtr_sortedListDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_sortedListDeclarationAST) ;
-    result = p->mProperty_mAttributeList ;
+    result = p->mProperty_mPropertyList ;
   }
   return result ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-GALGAS_propertyInCollectionListAST cPtr_sortedListDeclarationAST::getter_mAttributeList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mAttributeList ;
+GALGAS_propertyInCollectionListAST cPtr_sortedListDeclarationAST::getter_mPropertyList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mPropertyList ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -5232,12 +5232,12 @@ GALGAS_sortedListSortDescriptorListAST cPtr_sortedListDeclarationAST::getter_mSo
 
 cPtr_sortedListDeclarationAST::cPtr_sortedListDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                               const GALGAS_lstring & in_mSortedListTypeName,
-                                                              const GALGAS_propertyInCollectionListAST & in_mAttributeList,
+                                                              const GALGAS_propertyInCollectionListAST & in_mPropertyList,
                                                               const GALGAS_sortedListSortDescriptorListAST & in_mSortDescriptorList
                                                               COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mProperty_mSortedListTypeName (in_mSortedListTypeName),
-mProperty_mAttributeList (in_mAttributeList),
+mProperty_mPropertyList (in_mPropertyList),
 mProperty_mSortDescriptorList (in_mSortDescriptorList) {
 }
 
@@ -5254,7 +5254,7 @@ void cPtr_sortedListDeclarationAST::description (C_String & ioString,
   ioString << ", " ;
   mProperty_mSortedListTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mAttributeList.description (ioString, inIndentation+1) ;
+  mProperty_mPropertyList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mSortDescriptorList.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -5264,7 +5264,7 @@ void cPtr_sortedListDeclarationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_sortedListDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_sortedListDeclarationAST (mProperty_mIsPredefined, mProperty_mSortedListTypeName, mProperty_mAttributeList, mProperty_mSortDescriptorList COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_sortedListDeclarationAST (mProperty_mIsPredefined, mProperty_mSortedListTypeName, mProperty_mPropertyList, mProperty_mSortDescriptorList COMMA_THERE)) ;
   return ptr ;
 }
 
