@@ -5,9 +5,9 @@
 \chapterLabel{Le type \texttt{list}}{typeList}
 %-------------------------------------------------------------
 
-\section{List Type Declaration}
+\section{Déclaration d'un type de liste}
 
-A \ggs+list+ type declaration names all attributes of the list elements:
+La déclaration d'un type \ggs+list+ nomme toutes les propriétés des éléments de la liste~:
 
 \begin{galgas}
 list @MyList {
@@ -16,20 +16,20 @@ list @MyList {
 }
 \end{galgas}
 
-\section{Constructors}
+\section{Constructeurs}
 
-\subsection{The \texttt{emptyList} constructor}
+\subsection{Le constructeur \texttt{emptyList}}
 
-For every list, an \ggs+emptyList+ constructor is implicitly declared. It returns an empty list:
+Pour chaque liste, le constructeur \ggs+emptyList+ est implicitement déclaré. Il retourne une liste vide~:
 
 \begin{galgas}
 @MyList aList = [@MyList emptyList]
 \end{galgas}
 
 
-\subsection{The \texttt{listWithValue} constructor}
+\subsection{Le constructeur \texttt{listWithValue}}
 
-A list can be constructed directly with one value:
+Ce constructeur permet de construire directement une liste contenant un élément~:
 
 \begin{galgas}
 @MyList aList = [@myList listWithValue !"c" !3]
