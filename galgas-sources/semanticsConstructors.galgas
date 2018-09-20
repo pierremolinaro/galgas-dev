@@ -289,6 +289,17 @@ override method @stringPredefinedTypeAST getConstructorMap
   )
   enterConstructorWith2Arguments (
     !?outMap
+    !?ioUnifiedTypeMap 
+    !name:"stringByRepeatingString"
+    !argTypeName1:"string"
+    !argName1:"inString"
+    !argTypeName2:"uint"
+    !argName2:"inCount"
+    !resultTypeName:"string"
+    !hasLexiqueArg:false
+  )
+  enterConstructorWith2Arguments (
+    !?outMap
     !?ioUnifiedTypeMap
     !name:"stringWithSequenceOfCharacters" 
     !argTypeName1:"char"

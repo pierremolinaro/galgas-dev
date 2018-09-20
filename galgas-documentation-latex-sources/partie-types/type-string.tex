@@ -185,6 +185,24 @@ end
 
 
 
+\subsectionConstructor{stringByRepeatingString}{string}
+
+\begin{galgasbox}
+constructor stringByRepeatingString
+  ?@string inString
+  ?@uint inCount
+  -> @string
+\end{galgasbox}
+
+Ce constructeur retourne la chaîne de caractères constituée d'une séquence de \ggs!inCount! chaînes \ggs!inString!.
+
+
+
+
+
+
+
+
 \subsectionConstructor{stringWithContentsOfFile}{string}
 
 \begin{galgasbox}
@@ -266,7 +284,7 @@ constructor stringWithSequenceOfCharacters
   -> @string
 \end{galgasbox}
 
-Ce constructeur retourne la chaîne de caractères constituée d'une séquence de \ggs!inCount! caractères \ggs!inChar!.
+Ce constructeur retourne la chaîne de caractères constituée d'une séquence de \ggs!inCount! caractères \ggs!inChar!. Pour répéter une chaîne de caractères, voir le \refConstructorPage{string}{stringByRepeatingString}.
 
 
 

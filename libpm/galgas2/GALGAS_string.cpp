@@ -154,6 +154,22 @@ AC_OutputStream & operator << (AC_OutputStream & inStream,
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+GALGAS_string GALGAS_string::constructor_stringByRepeatingString (const GALGAS_string & inString,
+                                                                  const GALGAS_uint & inCount
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result ;
+  if (inString.isValid () && inCount.isValid ()) {
+    C_String s ;
+    for (uint32_t i=0 ; i<inCount.uintValue () ; i++) {
+      s << inString.stringValue () ;
+    }
+    result = GALGAS_string (s) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
 GALGAS_string GALGAS_string::constructor_newWithStdIn (UNUSED_LOCATION_ARGS) {
   return GALGAS_string (C_String::newWithStdIn ()) ;
 }
