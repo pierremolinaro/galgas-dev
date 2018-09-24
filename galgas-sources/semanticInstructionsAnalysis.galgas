@@ -1,4 +1,4 @@
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #  metamodel that defines expression                                                                                   *
 #                                                                                                                      *
@@ -13,11 +13,11 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #    I N S T R U C T I O N    A N A L Y S I S                                                                          *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticInstructionAST analyzeSemanticInstruction
   ?let @lstring inUsefulnessCallerEntityName
@@ -26,7 +26,7 @@ abstract method @semanticInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @localConstantList {
   @unifiedTypeMap-proxy mType
@@ -35,7 +35,7 @@ list @localConstantList {
   @string mCppName
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @localInitializedVariableList {
   @unifiedTypeMap-proxy mType
@@ -43,7 +43,7 @@ list @localInitializedVariableList {
   @string mCppName
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc analyzeSemanticInstructionList
   ?let @lstring inUsefulnessCallerEntityName
@@ -56,9 +56,36 @@ proc analyzeSemanticInstructionList
   ?!@variableMap ioVariableMap
   !@semanticInstructionListForGeneration outInstructionListForGeneration
 {
-  outInstructionListForGeneration = {}
 #--- Begin branch
   [!?ioVariableMap openBranch]
+#---
+  analyzeSemanticInstructionListWithoutBranch (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    !inLocalConstantList
+    !inLocalInitializedVariableList
+    !inSemanticInstructionListAST
+    !?ioVariableMap
+    ?outInstructionListForGeneration
+  )
+#--- Branch end
+  [!?ioVariableMap closeBranch !inEndOfBranchLocation]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+proc analyzeSemanticInstructionListWithoutBranch
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @analysisContext inAnalysisContext
+  ?let @localConstantList inLocalConstantList
+  ?let @localInitializedVariableList inLocalInitializedVariableList
+  ?let @semanticInstructionListAST inSemanticInstructionListAST
+  ?!@variableMap ioVariableMap
+  !@semanticInstructionListForGeneration outInstructionListForGeneration
+{
+  outInstructionListForGeneration = {}
 #--- Declare local constants
   for () in inLocalConstantList do
     if mNoWarningIfUnused then
@@ -81,11 +108,9 @@ proc analyzeSemanticInstructionList
       !?ioVariableMap
     ]
   end
-#--- Branch end
-  [!?ioVariableMap closeBranch !inEndOfBranchLocation]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @actualParameterAST checkAgainstFormalArgument
   ?let @lstring inUsefulnessCallerEntityName
@@ -99,7 +124,7 @@ abstract method @actualParameterAST checkAgainstFormalArgument
   ?!@stringset ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @string {
   switch self
@@ -110,7 +135,7 @@ getter @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @s
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputActualParameterAST checkAgainstFormalArgument
   ?let @lstring inUsefulnessCallerEntityName
@@ -152,7 +177,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputActualParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -208,7 +233,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
     !typeList}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -246,7 +271,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
     !@unifiedTypeMapProxyList. listWithValue {!inFormalArgumentType}}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputJokerParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -282,7 +307,7 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
     !@unifiedTypeMapProxyList. listWithValue {!inFormalArgumentType}}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualExistingVariableParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -326,7 +351,7 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
     !targetVariableCppName}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -385,7 +410,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
     !targetVariableCppName}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -454,7 +479,7 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -482,7 +507,7 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputJokerActualParameterAST checkAgainstFormalArgument
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -509,57 +534,57 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @actualParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap ioTypeMap
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualExistingVariableParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualNewConstantParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualNewVariableParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputJokerActualParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputSingleJokerActualParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputActualParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [mOutputActualParameterExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputActualParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputJokerParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputSingleJokerParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc analyzeRoutineArguments
   ?let @lstring inUsefulnessCallerEntityName
@@ -599,7 +624,7 @@ proc analyzeRoutineArguments
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkExpressionIsBoolean
   ?let @analysisContext inAnalysisContext
@@ -615,12 +640,8 @@ proc checkExpressionIsBoolean
     if [[expressionType mAttributeMap] hasKey !"bool"] then
       [[expressionType mAttributeMap] searchKey
         !@lstring.new {!"bool" !@location.here}
-#        ??@bool isPrivate
         ?let @unifiedTypeMap-proxy attributeType
       ]
-#      if isPrivate && ([inErrorLocation file] != [[[expressionType mAttributeMap] locationForKey !"bool"] file]) then
-#        error inErrorLocation : "this field is private" ;
-#      end if ;
       if attributeType == boolType then
         outExpression = @structFieldAccessExpressionForGeneration.new {
           !boolType
@@ -671,7 +692,7 @@ proc checkExpressionIsBoolean
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -680,7 +701,7 @@ abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analy
   ?!@stringlist ioAssignementList
   ?!@variableMap ioVariableMap
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGrammarInstructionSDT
   ?let @analysisContext unused inAnalysisContext
@@ -690,7 +711,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGr
   ?!@variableMap unused ioVariableMap {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeGrammarInstructionSDT
   ?let @analysisContext unused inAnalysisContext
@@ -703,7 +724,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeG
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -724,7 +745,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
   ioAssignementList += !cppName + " = GALGAS_string (" + inSyntaxDirectedTranslationResultVarName + ") ;" 
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -747,7 +768,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   ioAssignementList += !"GALGAS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;" 
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -770,5 +791,5 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   ioAssignementList += !"const GALGAS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;" 
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

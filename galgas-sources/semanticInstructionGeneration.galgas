@@ -1,4 +1,4 @@
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #  Generate predefined types                                                                                           *
 #                                                                                                                      *
@@ -13,7 +13,7 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputActualParameterForGeneration generateActualParameter
   ?!@stringset ioInclusionSet
@@ -27,7 +27,7 @@ override method @outputActualParameterForGeneration generateActualParameter
   [mOutputActualParameterExpression generateExpression !?ioImplementation !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?outCppName]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @outputInputActualParameterForGeneration generateActualParameter
   ?!@stringset ioInclusionSet
@@ -47,7 +47,7 @@ override method @outputInputActualParameterForGeneration generateActualParameter
   [!?ioUnusedVariableCppNameSet removeKey !mOutputInputVariableCppName]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualParameterForGeneration generateActualParameter
   ?!@stringset unused ioInclusionSet
@@ -62,7 +62,7 @@ override method @inputActualParameterForGeneration generateActualParameter
   [!?ioUnusedVariableCppNameSet removeKey !outCppName]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputJokerParameterForGeneration generateActualParameter
   ?!@stringset ioInclusionSet
@@ -79,7 +79,7 @@ override method @inputJokerParameterForGeneration generateActualParameter
   ioOutputVariableList += !mInputActualCppName
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @semanticBlockInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -99,4 +99,4 @@ override method @semanticBlockInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

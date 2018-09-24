@@ -4,7 +4,7 @@
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templates/target_generation" {
  "bat", "rtf", "py"
@@ -78,7 +78,7 @@ private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templat
     ?@string VERSION_STRING
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgasCodeBlocksWindowsTarget
   ?let @string inProjectDirectory
@@ -104,7 +104,7 @@ private proc generateGalgasCodeBlocksWindowsTarget
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgasCodeBlocksMacTarget
   ?let @string inProjectDirectory
@@ -130,7 +130,7 @@ private proc generateGalgasCodeBlocksMacTarget
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgasCodeBlocksLinuxI686Target
   ?let @string inProjectDirectory
@@ -156,7 +156,7 @@ private proc generateGalgasCodeBlocksLinuxI686Target
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgasCodeBlocksLinuxX86_64Target
   ?let @string inProjectDirectory
@@ -182,7 +182,7 @@ private proc generateGalgasCodeBlocksLinuxX86_64Target
   [s writeToFileWhenDifferentContents !dir + "/" + inProjectName + ".cbp" ?*]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgas3MinGWOnMacOSXTarget
   ?let @string inProjectDirectory
@@ -201,7 +201,7 @@ private proc generateGalgas3MinGWOnMacOSXTarget
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgas3MakefileMacOSXTarget
   ?let @string inProjectDirectory
@@ -218,7 +218,7 @@ private proc generateGalgas3MakefileMacOSXTarget
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgas3MakefileUnixTarget
   ?let @string inProjectDirectory
@@ -235,7 +235,7 @@ private proc generateGalgas3MakefileUnixTarget
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgas3Linux32OnMacOSXTarget
   ?let @string inProjectDirectory
@@ -251,7 +251,7 @@ private proc generateGalgas3Linux32OnMacOSXTarget
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc generateGalgas3Linux64OnMacOSXTarget
   ?let @string inProjectDirectory
@@ -267,7 +267,7 @@ private proc generateGalgas3Linux64OnMacOSXTarget
   [@string deleteFileIfExists !dir + "/makefile"]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc updateGalgas3Targets
   ?let @string inProjectSourceFilePath
@@ -455,7 +455,7 @@ proc updateGalgas3Targets
     MACOSX_DEPLOYMENT_TARGET = "10." + [option galgas_cli_options.macosxSDK value]
   end
 #--- Check Cocoa features
-  if (SDK != "") & not [inProjectQualifiedFeatureMap hasKey !"applicationBundleBase"] then
+  if SDK != "", not [inProjectQualifiedFeatureMap hasKey !"applicationBundleBase"] then
     warning @location.here: "For a Cocoa project, the \"applicationBundleBase\" feature should be set; for example: '%applicationBundleBase : \"fr.what\" ;'"
   end
 #--- Generation
@@ -1419,4 +1419,4 @@ proc updateGalgas3Targets
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -59,6 +59,23 @@ void routine_analyzeSemanticInstructionList (const class GALGAS_lstring constinA
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
+//                                Routine 'analyzeSemanticInstructionListWithoutBranch'                                *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void routine_analyzeSemanticInstructionListWithoutBranch (const class GALGAS_lstring constinArgument0,
+                                                          class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                          const class GALGAS_analysisContext constinArgument2,
+                                                          const class GALGAS_localConstantList constinArgument3,
+                                                          const class GALGAS_localInitializedVariableList constinArgument4,
+                                                          const class GALGAS_semanticInstructionListAST constinArgument5,
+                                                          class GALGAS_variableMap & ioArgument6,
+                                                          class GALGAS_semanticInstructionListForGeneration & outArgument7,
+                                                          class C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
 //                                          Routine 'analyzeRoutineArguments'                                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

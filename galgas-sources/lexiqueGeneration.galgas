@@ -1,4 +1,4 @@
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #  'lexique' component generation                                                                                      *
 #                                                                                                                      *
@@ -13,15 +13,15 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N                                             *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @lexicalExpressionAST generateConditionCode
   ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalOrExpressionAST generateConditionCode
   ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
@@ -31,7 +31,7 @@ override getter @lexicalOrExpressionAST generateConditionCode
   outGeneratedCode += [mRightOperand generateConditionCode !context:inLexiqueAnalysisContext]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalCharacterIntervalMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
@@ -44,7 +44,7 @@ override getter @lexicalCharacterIntervalMatchAST generateConditionCode
   outGeneratedCode += ")"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalStringMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
@@ -55,7 +55,7 @@ override getter @lexicalStringMatchAST generateConditionCode
   outGeneratedCode += ", true)"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalStringNotMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
@@ -70,7 +70,7 @@ override getter @lexicalStringNotMatchAST generateConditionCode
   outGeneratedCode += " COMMA_LINE_AND_SOURCE_FILE)"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalCharacterMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
@@ -80,7 +80,7 @@ override getter @lexicalCharacterMatchAST generateConditionCode
   outGeneratedCode += ")"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalCharacterSetMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
@@ -90,42 +90,42 @@ override getter @lexicalCharacterSetMatchAST generateConditionCode
   outGeneratedCode += ")"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #     R O U T I N E    O R    F U N C T I O N    A R G U M E N T                                                       *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineOrFunctionArgument
   -> @string
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalAttributeInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = "token.mLexicalAttribute_" + [mAttributeName identifierRepresentation]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalCharacterInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = [[mCharacter char] utf32CharConstantRepresentation]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalUnsignedInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = [[mUnsigned uint] string]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalCurrentCharacterInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = "previousChar ()"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalFunctionInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode {
@@ -136,36 +136,36 @@ override getter @lexicalFunctionInputArgumentAST generateRoutineOrFunctionArgume
   outGeneratedCode += ")"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                   R O U T I N E    A R G U M E N T                                                                   *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @abstractLexicalRoutineActualArgumentAST generateRoutineArgument
   -> @string
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalAttributeInputOutputArgumentAST generateRoutineArgument
   -> @string outGeneratedCode {
   outGeneratedCode = "token.mLexicalAttribute_" + [mAttributeName identifierRepresentation]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalFormalInputArgumentAST generateRoutineArgument
   -> @string outGeneratedCode {
   outGeneratedCode = [mRoutineOrFunctionFormalInputArgument generateRoutineOrFunctionArgument]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #  L E X I C A L    S E N D  I N S T R U C T I O N    D E F A U L T                                                    *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @lexicalSendDefaultActionAST generateDefaultSendCode
   ?let @string inScannerClassName
   -> @string
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalSendTerminalByDefaultAST generateDefaultSendCode
   ?let @string unused inScannerClassName
@@ -175,7 +175,7 @@ override getter @lexicalSendTerminalByDefaultAST generateDefaultSendCode
   outGeneratedCode = "token.mTokenCode = kToken_" + mDefaultSentTerminal + " ;\n"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalErrorByDefaultAST generateDefaultSendCode
   ?let @string inScannerClassName
@@ -184,16 +184,16 @@ override getter @lexicalErrorByDefaultAST generateDefaultSendCode
      + "_" + mDefaultErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #  L E X I C A L    I N S T R U C T I O N    C O D E    G E N E R A T I O N                                            *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @lexicalInstructionAST generateInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string 
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalStructuredSendInstructionAST generateInstructionCode
   ?let @string inScannerClassName
@@ -212,7 +212,7 @@ override getter @lexicalStructuredSendInstructionAST generateInstructionCode
   outGeneratedCode += "enterToken (token) ;\n"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalDropInstructionAST generateInstructionCode
   ?let @string unused inScannerClassName
@@ -222,7 +222,7 @@ override getter @lexicalDropInstructionAST generateInstructionCode
   outGeneratedCode = "enterDroppedTerminal (kToken_" + [mTerminalName identifierRepresentation] + ") ;\n"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override getter @lexicalOptionInstructionAST generateInstructionCode
 #  ?let @string unused inScannerClassName
@@ -234,7 +234,7 @@ override getter @lexicalDropInstructionAST generateInstructionCode
 #  outGeneratedCode += "enterToken (token) ;\n"
 #}
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalSimpleSendInstructionAST generateInstructionCode
   ?let @string unused inScannerClassName
@@ -246,7 +246,7 @@ override getter @lexicalSimpleSendInstructionAST generateInstructionCode
   outGeneratedCode += "enterToken (token) ;\n"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalRepeatInstructionAST generateInstructionCode
   ?let @string inScannerClassName
@@ -280,7 +280,7 @@ override getter @lexicalRepeatInstructionAST generateInstructionCode
                       "mLoop = true ;\n"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalSelectInstructionAST generateInstructionCode
   ?let @string inScannerClassName
@@ -313,7 +313,7 @@ override getter @lexicalSelectInstructionAST generateInstructionCode
   outGeneratedCode += "}\n"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalRoutineInstructionAST generateInstructionCode
   ?let @string inScannerClassName
@@ -329,7 +329,7 @@ override getter @lexicalRoutineInstructionAST generateInstructionCode
   outGeneratedCode += ") ;\n"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalErrorInstructionAST generateInstructionCode
   ?let @string inScannerClassName
@@ -338,7 +338,7 @@ override getter @lexicalErrorInstructionAST generateInstructionCode
   outGeneratedCode = "lexicalError (gLexicalMessage_" + inScannerClassName + "_" + mErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalWarningInstructionAST generateInstructionCode
   ?let @string inScannerClassName
@@ -347,7 +347,7 @@ override getter @lexicalWarningInstructionAST generateInstructionCode
   outGeneratedCode = "lexicalWarning (gLexicalMessage_" + inScannerClassName + "_" + mWarningMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalTagInstructionAST generateInstructionCode
   ?let @string unused inScannerClassName
@@ -358,7 +358,7 @@ override getter @lexicalTagInstructionAST generateInstructionCode
                     + "const utf32 currentCharForTag_" + mLexicalTagName + " = mCurrentChar ;\n"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalRewindInstructionAST generateInstructionCode
   ?let @string unused inScannerClassName
@@ -372,7 +372,7 @@ override getter @lexicalRewindInstructionAST generateInstructionCode
                     + "enterToken (token) ;\n"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalLogInstructionAST generateInstructionCode
   ?let @string unused inScannerClassName
@@ -381,16 +381,16 @@ override getter @lexicalLogInstructionAST generateInstructionCode
   outGeneratedCode = "lexicalLog (LINE_AND_SOURCE_FILE) ;\n"
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #        L E X I C A L    R U L E    C O D E    G E N E R A T I O N                                                    *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract getter @abstractLexicalRuleAST generateCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string 
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalImplicitRuleAST generateCode
   ?let @string inScannerClassName
@@ -412,7 +412,7 @@ override getter @lexicalImplicitRuleAST generateCode
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalExplicitRuleAST generateCode
   ?let @string inScannerClassName
@@ -429,5 +429,5 @@ override getter @lexicalExplicitRuleAST generateCode
   outGeneratedCode += "}else "
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

@@ -4,7 +4,7 @@
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper libpmFileWrapper in "../libpm" {
  "h", "cpp", "c", "m", "mak", "py" # Text files
@@ -13,7 +13,7 @@ filewrapper libpmFileWrapper in "../libpm" {
 }{
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc updateLIBPMatPath ?let @string inLIBPMPath {
 #  message "LIBPM path: '" . inLIBPMPath . "'\n" ;
@@ -53,5 +53,5 @@ proc updateLIBPMatPath ?let @string inLIBPMPath {
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

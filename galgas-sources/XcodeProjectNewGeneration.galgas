@@ -4,7 +4,7 @@
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @projectQualifiedFeatureMap {
   @lstring mFeatureValue
@@ -12,7 +12,7 @@ map @projectQualifiedFeatureMap {
   search searchKey error message "the '%K' attribute is not declared"  
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addICNS_file
   ?fileName:let @string inFileName
@@ -21,7 +21,7 @@ setter @XcodeProjectDescriptor addICNS_file
   mICNS_fileList += !outFileRef !inFileName
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addTIFF_file
   ?fileName:let @string inFileName
@@ -30,7 +30,7 @@ setter @XcodeProjectDescriptor addTIFF_file
   mTIFF_fileList += !outFileRef !inFileName
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addInfoPlistFile
   ?fileName:let @string inFileName
@@ -39,7 +39,7 @@ setter @XcodeProjectDescriptor addInfoPlistFile
   mInfoPlistFileList += !outFileRef !inFileName
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addXIBFile
   ?fileName:let @string inFileName
@@ -48,7 +48,7 @@ setter @XcodeProjectDescriptor addXIBFile
   mXIB_fileList += !outFileRef !inFileName
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addFrameworkFile
   ?fileName:let @string inFileName
@@ -57,7 +57,7 @@ setter @XcodeProjectDescriptor addFrameworkFile
   mFrameworkFileList += !outFileRef !inFileName
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addMFile
   ?fileName:let @string inFileName
@@ -66,7 +66,7 @@ setter @XcodeProjectDescriptor addMFile
   m_M_FileList += !outFileRef !inFileName
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addMMFile
   ?fileName:let @string inFileName
@@ -75,7 +75,7 @@ setter @XcodeProjectDescriptor addMMFile
   m_MM_FileList += !outFileRef !inFileName
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addCppFile
   ?fileName:let @string inFileName
@@ -84,7 +84,7 @@ setter @XcodeProjectDescriptor addCppFile
   mCppFileList += !outFileRef !inFileName
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addCFile
   ?fileName:let @string inFileName
@@ -93,7 +93,7 @@ setter @XcodeProjectDescriptor addCFile
   mCFileList += !outFileRef !inFileName
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addHeaderFile
   ?fileName:let @string inFileName
@@ -102,7 +102,7 @@ setter @XcodeProjectDescriptor addHeaderFile
   mHeaderFileList += !outFileRef !inFileName
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addBuildFile
   ?fileRef:let @string inFileReference
@@ -112,7 +112,7 @@ setter @XcodeProjectDescriptor addBuildFile
   mBuildFileList += !inFileReference !inFileName !outBuildRef
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addToolTarget
   ?targetName:let @string inTargetName
@@ -142,7 +142,7 @@ setter @XcodeProjectDescriptor addToolTarget
     !frameworkBuildRef
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addAppTarget
   ?targetName:let @string inTargetName
@@ -188,7 +188,7 @@ setter @XcodeProjectDescriptor addAppTarget
     !resourceFileBuildRefs
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addGroup
   ?groupName:let @string inGroupName
@@ -208,7 +208,7 @@ setter @XcodeProjectDescriptor addGroup
   mGroupList += !outGroupRef !inGroupName !inGroupPath !inChildrenRefs
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addGroupWithFiles
   ?groupName:let @string inGroupName
@@ -287,21 +287,21 @@ setter @XcodeProjectDescriptor addGroupWithFiles
   mGroupList += !outGroupRef !inGroupName !inGroupPath !childrenRefs
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor placeGroupAsMainGroup
   ?groupRef:let @string inGroupRef {
   mMainGroupChildrenRefs += !inGroupRef
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor addSettingsToDefaultConfiguration
   ?settingList:let @stringlist inSettingList {
   mDefaultConfigurationSettingList += inSettingList
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @XCodeGroupList {
   @string mGroupReference
@@ -310,7 +310,7 @@ list @XCodeGroupList {
   @stringlist mChildrenRefs
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @XCodeToolTargetList {
   @string mTargetRef
@@ -326,7 +326,7 @@ list @XCodeToolTargetList {
   @string mFrameworkBuildPhaseRef
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @XCodeAppTargetList {
   @string mTargetRef
@@ -345,7 +345,7 @@ list @XCodeAppTargetList {
   @stringlist mResourceFileBuildRefs
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @BuildFileList {
   @string mFileReference
@@ -353,7 +353,7 @@ list @BuildFileList {
   @string mBuildReference
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 setter @XcodeProjectDescriptor getReferenceKey
   !ref:@string outRef {
@@ -365,7 +365,7 @@ setter @XcodeProjectDescriptor getReferenceKey
   mSequenceNumber += 1
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @XcodeProjectDescriptor {
   @uint mSequenceNumber
@@ -393,7 +393,7 @@ struct @XcodeProjectDescriptor {
   @2stringlist mICNS_fileList
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private filewrapper xcodeProjectGenerationFilewrapper in "../generation_templates/target_generation/project_xcode" {
 }{
@@ -421,7 +421,7 @@ private filewrapper xcodeProjectGenerationFilewrapper in "../generation_template
     ?@string PROJECT_BUILD_DEFAULT_CONFIGURATION_REF
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 method @XcodeProjectDescriptor generateAtPath
   ?xcodeprojPath:let @string inPath
@@ -455,5 +455,5 @@ method @XcodeProjectDescriptor generateAtPath
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

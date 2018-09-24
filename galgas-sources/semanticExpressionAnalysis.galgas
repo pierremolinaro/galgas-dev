@@ -1,4 +1,4 @@
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #  Semantic Analysis of expression                                                                                     *
 #                                                                                                                      *
@@ -13,11 +13,11 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #    V A R I A B L E    M A P                                                                                          *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 shared map @variableMap {
   @unifiedTypeMap-proxy mTypeProxy
@@ -430,7 +430,7 @@ shared map @variableMap {
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkAssignmentTypes
   ?let @unifiedTypeMap-proxy inTargetType
@@ -449,7 +449,7 @@ proc checkAssignmentTypes
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkAssignmentTypeWithImplicitGetterCall
   ?let @unifiedTypeMap-proxy inTargetType
@@ -500,7 +500,7 @@ proc checkAssignmentTypeWithImplicitGetterCall
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkDiadicOperator
   ?let @unifiedTypeMap-proxy inLeftType
@@ -559,11 +559,11 @@ proc checkDiadicOperator
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #    S E M A N T I C    C O N T E X T    F O R    A N A L Y S I S                                                      *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @predefinedTypes {
   @unifiedTypeMap-proxy mLocationType
@@ -590,11 +590,11 @@ struct @predefinedTypes {
   @unifiedTypeMap-proxy mLStringListType
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #    A N A L Y S I S    C O N T E X T                                                                                  *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 struct @analysisContext {
   @semanticContext mSemanticContext
@@ -604,11 +604,11 @@ struct @analysisContext {
   @unifiedTypeMap-proxy mSelfTypeProxy # isNull if outside a setter extension
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #    E X P R E S S I O N    A N A L Y S I S                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @semanticExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -618,17 +618,17 @@ abstract method @semanticExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! Literal
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @selfCopyInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @selfCopyInExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -646,14 +646,14 @@ override method @selfCopyInExpressionAST analyzeSemanticExpression
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @trueExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @trueExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -666,14 +666,14 @@ override method @trueExpressionAST analyzeSemanticExpression
   outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @falseExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @falseExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -686,14 +686,14 @@ override method @falseExpressionAST analyzeSemanticExpression
   outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalCharExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalCharExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -710,14 +710,14 @@ override method @literalCharExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalStringExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalStringExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -734,14 +734,14 @@ override method @literalStringExpressionAST analyzeSemanticExpression
   outExpression = @literalStringExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mStringType !mLocation !s}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalDoubleExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalDoubleExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -754,14 +754,14 @@ override method @literalDoubleExpressionAST analyzeSemanticExpression
   outExpression = @literalDoubleExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mDoubleType ![mValue location] ![mValue double]}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalUIntExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalUIntExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -778,14 +778,14 @@ override method @literalUIntExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalUInt64ExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalUInt64ExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -802,14 +802,14 @@ override method @literalUInt64ExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalSIntExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalSIntExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -822,21 +822,21 @@ override method @literalSIntExpressionAST analyzeSemanticExpression
   outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSIntType ![mValue location] ![mValue sint]}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalSInt64ExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalBigIntExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalSInt64ExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -853,7 +853,7 @@ override method @literalSInt64ExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalBigIntExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -870,7 +870,7 @@ override method @literalBigIntExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc analyzeConstructorInvocation
   ?let @lstring inUsefulnessCallerEntityName
@@ -942,7 +942,7 @@ private proc analyzeConstructorInvocation
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @defaultConstructorExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -952,7 +952,7 @@ override method @defaultConstructorExpressionAST enterExpressionInSemanticContex
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @defaultConstructorExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -986,7 +986,7 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @constructorExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -995,7 +995,7 @@ override method @constructorExpressionAST enterExpressionInSemanticContext
   [mExpressions enterInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @constructorExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1034,7 +1034,7 @@ override method @constructorExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @getterCallExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -1043,7 +1043,7 @@ override method @getterCallExpressionAST enterExpressionInSemanticContext
   [mExpressions enterInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @getterCallExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1167,14 +1167,14 @@ override method @getterCallExpressionAST analyzeSemanticExpression
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @optionExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1259,7 +1259,7 @@ override method @optionExpressionAST analyzeSemanticExpression
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @orExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -1268,7 +1268,7 @@ override method @orExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @orExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1313,7 +1313,7 @@ let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @orShortExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -1322,7 +1322,7 @@ override method @orShortExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @orShortExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1367,7 +1367,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
     !rightExpression}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @andExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -1376,7 +1376,7 @@ override method @andExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @andExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1421,7 +1421,7 @@ override method @andExpressionAST analyzeSemanticExpression
     !rightExpression}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @andShortExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -1430,7 +1430,7 @@ override method @andShortExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @andShortExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1475,7 +1475,7 @@ override method @andShortExpressionAST analyzeSemanticExpression
     !rightExpression}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @xorExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -1484,7 +1484,7 @@ override method @xorExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @xorExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1530,7 +1530,7 @@ override method @xorExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @closedSliceExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -1539,7 +1539,7 @@ override method @closedSliceExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @closedSliceExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1585,7 +1585,7 @@ override method @closedSliceExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @openedSliceExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -1594,7 +1594,7 @@ override method @openedSliceExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @openedSliceExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1640,7 +1640,7 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @equalExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -1649,7 +1649,7 @@ override method @equalExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @equalExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1696,7 +1696,7 @@ override method @equalExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @notEqualExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -1705,7 +1705,7 @@ override method @notEqualExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @notEqualExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1751,7 +1751,7 @@ override method @notEqualExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lowerOrEqualExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -1760,7 +1760,7 @@ override method @lowerOrEqualExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lowerOrEqualExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1806,7 +1806,7 @@ override method @lowerOrEqualExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @greaterOrEqualExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -1815,7 +1815,7 @@ override method @greaterOrEqualExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @greaterOrEqualExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1861,7 +1861,7 @@ override method @greaterOrEqualExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @strictGreaterExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -1870,7 +1870,7 @@ override method @strictGreaterExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @strictGreaterExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1916,7 +1916,7 @@ override method @strictGreaterExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @strictLowerExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -1925,7 +1925,7 @@ override method @strictLowerExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @strictLowerExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -1971,7 +1971,7 @@ override method @strictLowerExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @rightShiftExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -1980,7 +1980,7 @@ override method @rightShiftExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @rightShiftExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2039,7 +2039,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @leftShiftExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2048,7 +2048,7 @@ override method @leftShiftExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @leftShiftExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2107,7 +2107,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @addExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2116,7 +2116,7 @@ override method @addExpressionNoOverflowAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @addExpressionNoOverflowAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2163,7 +2163,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @addExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2172,7 +2172,7 @@ override method @addExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @addExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2218,7 +2218,7 @@ override method @addExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @subExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2227,7 +2227,7 @@ override method @subExpressionNoOverflowAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @subExpressionNoOverflowAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2274,7 +2274,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @subExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2283,7 +2283,7 @@ override method @subExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @subExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2329,7 +2329,7 @@ override method @subExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @multiplicationExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2338,7 +2338,7 @@ override method @multiplicationExpressionNoOverflowAST enterExpressionInSemantic
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2383,7 +2383,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
     !rightExpression}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @multiplicationExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2392,7 +2392,7 @@ override method @multiplicationExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @multiplicationExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2437,7 +2437,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     !rightExpression}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @divisionExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2446,7 +2446,7 @@ override method @divisionExpressionNoOverflowAST enterExpressionInSemanticContex
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2492,7 +2492,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @divisionExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2501,7 +2501,7 @@ override method @divisionExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @divisionExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2546,7 +2546,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
     !rightExpression}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @moduloExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2555,7 +2555,7 @@ override method @moduloExpressionAST enterExpressionInSemanticContext
   [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @moduloExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2600,7 +2600,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
     !rightExpression}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @unaryMinusNoOverflowExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2608,7 +2608,7 @@ override method @unaryMinusNoOverflowExpressionAST enterExpressionInSemanticCont
   [mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @unaryMinusNoOverflowExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2642,7 +2642,7 @@ override method @unaryMinusNoOverflowExpressionAST analyzeSemanticExpression
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @unaryMinusExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2650,7 +2650,7 @@ override method @unaryMinusExpressionAST enterExpressionInSemanticContext
   [mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @unaryMinusExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2692,7 +2692,7 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @unaryPlusExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2700,7 +2700,7 @@ override method @unaryPlusExpressionAST enterExpressionInSemanticContext
   [mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @unaryPlusExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2727,7 +2727,7 @@ override method @unaryPlusExpressionAST analyzeSemanticExpression
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @notExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2735,7 +2735,7 @@ override method @notExpressionAST enterExpressionInSemanticContext
   [mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @notExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2774,14 +2774,14 @@ override method @notExpressionAST analyzeSemanticExpression
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @structFieldAccessExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @structFieldAccessExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2815,7 +2815,7 @@ override method @structFieldAccessExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @complementExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2823,7 +2823,7 @@ override method @complementExpressionAST enterExpressionInSemanticContext
   [mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @complementExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2865,7 +2865,7 @@ override method @complementExpressionAST analyzeSemanticExpression
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @ifExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2875,7 +2875,7 @@ override method @ifExpressionAST enterExpressionInSemanticContext
   [mElseExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @ifExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -2935,7 +2935,7 @@ override method @ifExpressionAST analyzeSemanticExpression
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @functionCallExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -2945,7 +2945,7 @@ override method @functionCallExpressionAST enterExpressionInSemanticContext
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @functionCallExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -3003,14 +3003,14 @@ override method @functionCallExpressionAST analyzeSemanticExpression
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @varInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @varInExpressionAST analyzeSemanticExpression
   ?let @lstring unused inUsefulnessCallerEntityName
@@ -3034,7 +3034,7 @@ override method @varInExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalTypeInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -3042,7 +3042,7 @@ override method @literalTypeInExpressionAST enterExpressionInSemanticContext
   [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mLiteralTypeName ?*]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @literalTypeInExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -3065,7 +3065,7 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @testDynamicClassInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -3073,7 +3073,7 @@ override method @testDynamicClassInExpressionAST enterExpressionInSemanticContex
   [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -3122,7 +3122,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
     !castType}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @castInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -3130,7 +3130,7 @@ override method @castInExpressionAST enterExpressionInSemanticContext
   [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @castInExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -3196,14 +3196,14 @@ override method @castInExpressionAST analyzeSemanticExpression
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperObjectInstanciationInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -3237,7 +3237,7 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
     ![filewrapperPath string]}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperTemplateInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
@@ -3247,7 +3247,7 @@ override method @filewrapperTemplateInExpressionAST enterExpressionInSemanticCon
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -3310,14 +3310,14 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     !effectiveParameterList}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @filewrapperInExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -3397,14 +3397,14 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
     !isTextFile}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexiqueIntrospectionExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap unused ioTypeMap
 {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -3433,25 +3433,25 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
     !mLexiqueGetterName.string}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! Collection value
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractCollectionValueElement enterInSemanticContext ?!@unifiedTypeMap ioTypeMap
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @expressionCollectionValue enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @expressionListCollectionValue enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [mExpressionList enterInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractCollectionValueElement analyze
   ?let @lstring inUsefulnessCallerEntityName
@@ -3461,7 +3461,7 @@ abstract method @abstractCollectionValueElement analyze
   ?!@variableMap ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @expressionCollectionValue analyze
   ?let @lstring inUsefulnessCallerEntityName
@@ -3485,7 +3485,7 @@ override method @expressionCollectionValue analyze
   ioCollectionValueElementListForGeneration += !@expressionCollectionValueForGeneration.new {!mExpressionLocation !expression}
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @expressionListCollectionValue analyze
   ?let @lstring inUsefulnessCallerEntityName
@@ -3524,37 +3524,37 @@ override method @expressionListCollectionValue analyze
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @collectionValueElementListForGeneration {
   @abstractCollectionValueElementForGeneration mElement
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract class @abstractCollectionValueElementForGeneration {
   @location mExpressionLocation
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @expressionCollectionValueForGeneration : @abstractCollectionValueElementForGeneration {
   @semanticExpressionForGeneration mExpression
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @expressionListCollectionForGeneration : @abstractCollectionValueElementForGeneration {
   @semanticExpressionListForGeneration mExpressionList
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @expressionCollectionForGeneration : @semanticExpressionForGeneration {
   @collectionValueElementListForGeneration mElementList
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @collectionValueAST enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   for () in mElementList do
@@ -3562,7 +3562,7 @@ override method @collectionValueAST enterExpressionInSemanticContext ?!@unifiedT
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @collectionValueAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
@@ -3614,5 +3614,5 @@ override method @collectionValueAST analyzeSemanticExpression
 #---
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

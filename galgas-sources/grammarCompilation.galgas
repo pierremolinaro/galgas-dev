@@ -1,4 +1,4 @@
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #  Grammar component compilation                                                                                       *
 #                                                                                                                      *
@@ -12,7 +12,7 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 func transformLabelMap
   ?let @nonTerminalLabelListAST inLabels
@@ -31,7 +31,7 @@ func transformLabelMap
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc checkLabelMap
   ?let @location inNonTerminalLocation
@@ -84,7 +84,7 @@ proc checkLabelMap
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc handleNonTerminalDeclarations
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
@@ -107,7 +107,7 @@ proc handleNonTerminalDeclarations
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc handleNonTerminalDeclarationsFromRuleList
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
@@ -137,9 +137,9 @@ proc handleNonTerminalDeclarationsFromRuleList
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                     transformInstructionList                                                                         *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @syntaxInstructionAST transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -147,7 +147,7 @@ abstract method @syntaxInstructionAST transformInstruction
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @semanticInstructionAST transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
@@ -156,7 +156,7 @@ override method @semanticInstructionAST transformInstruction
   ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc transformInstructionList
   ?let @syntaxInstructionList inInstructionList
@@ -174,7 +174,7 @@ proc transformInstructionList
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc buildRuleList
   ?let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis
@@ -211,11 +211,11 @@ proc buildRuleList
     !inSyntaxComponentName
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #    G R A M M A R    H E A D E R    F I L E    G E N E R A T I O N                                                    *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper grammarGenerationTemplate in "../generation_templates/grammar_generation" {
 }{
@@ -231,11 +231,11 @@ filewrapper grammarGenerationTemplate in "../generation_templates/grammar_genera
     ?@lstringlist SYNTAX_COMPONENTS
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #   Extern routine that performs grammar analysis                                                                      *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 extern proc grammarAnalysisAndGeneration
   ?let @stringset inImplementationFileHeaderSet
@@ -253,5 +253,5 @@ extern proc grammarAnalysisAndGeneration
   !@string outGrammarCppFile
   !@string outGrammarHTMLHelperContents
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

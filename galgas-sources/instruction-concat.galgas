@@ -1,6 +1,6 @@
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @plusEqualElementsInstructionAST : @semanticInstructionAST {
   @lstring mReceiverName
@@ -40,13 +40,13 @@ class @divEqualExpressionInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mExpression
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #····················································································································*
+  #·····················································································································
 
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $identifier$ ?let @lstring mReceiverName
@@ -107,7 +107,7 @@ syntax extension galgas3InstructionsSyntax {
     end
   }  
 
-  #····················································································································*
+  #·····················································································································
 
   rule <non_empty_output_expression_list> !@actualOutputExpressionList outExpressionList {
     outExpressionList = {}
@@ -121,27 +121,27 @@ syntax extension galgas3InstructionsSyntax {
 
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @plusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @minusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mulEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @divEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
   [mExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -153,9 +153,9 @@ override method @plusEqualElementsInstructionAST enterInstructionInSemanticConte
   [mExpressions enterInSemanticContext !?ioTypeMap]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # += exp
   ?let @lstring inUsefulnessCallerEntityName
@@ -206,7 +206,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction # -= exp
   ?let @lstring inUsefulnessCallerEntityName
@@ -257,7 +257,7 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *= exp
   ?let @lstring inUsefulnessCallerEntityName
@@ -308,7 +308,7 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   }
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /= exp
   ?let @lstring inUsefulnessCallerEntityName
@@ -425,9 +425,9 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
   @string mReceiverCppName
@@ -519,4 +519,4 @@ override method @opEqualInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !mTargetVariableCppName]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

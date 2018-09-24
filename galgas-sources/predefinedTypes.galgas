@@ -1,4 +1,4 @@
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #  Generate predefined types                                                                                           *
 #                                                                                                                      *
@@ -13,7 +13,7 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc appendPredefinedListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
@@ -35,7 +35,7 @@ private proc appendPredefinedListTypeAST
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !inElementTypeName + "list")
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc appendPredefined2StringListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
@@ -61,7 +61,7 @@ private proc appendPredefined2StringListTypeAST
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"2stringlist")
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc appendPredefined2LStringListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
@@ -87,7 +87,7 @@ private proc appendPredefined2LStringListTypeAST
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"2lstringlist")
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc appendStructASTForTypeWithLocation
   ?!@semanticDeclarationListAST ioDeclarationListASTs
@@ -113,7 +113,7 @@ private proc appendStructASTForTypeWithLocation
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"l" + inElementTypeName)
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc appendStructASTForRangeType
   ?!@semanticDeclarationListAST ioDeclarationListASTs
@@ -137,14 +137,14 @@ private proc appendStructASTForRangeType
   insertInUsefulnessEntities (!?ioUsefulnessRootEntities !"range")
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 private proc insertInUsefulnessEntities ?!@lstringlist ioUsefulnessRootEntities ?let @string inTypeName {
   let typeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{!inTypeName !.nowhere})
   ioUsefulnessRootEntities += !typeUsefulnessName
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 proc appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs
@@ -216,9 +216,9 @@ proc appendPredefinedTypesASTs
   appendStructASTForRangeType (!?ioDeclarationListASTs !?ioUsefulnessRootEntities)
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #   ENTER IN GRAPH                                                                                                     *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @predefinedTypeAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
@@ -232,7 +232,7 @@ override method @predefinedTypeAST enterDeclarationInGraph
 }
 
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @predefinedTypeAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
@@ -305,7 +305,7 @@ override method @predefinedTypeAST enterInSemanticContext
   ]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @predefinedTypeAST semanticAnalysis
   ?!@lstringlist unused ioUsefulnessRootEntities 
@@ -331,5 +331,5 @@ override method @predefinedTypeAST semanticAnalysis
 #    !""
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 

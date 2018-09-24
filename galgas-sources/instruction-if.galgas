@@ -1,26 +1,40 @@
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! AST
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  class @ifInstructionAST : @semanticInstructionAST {
-    @semanticExpressionAST m_if_expression
-    @semanticInstructionListAST m_then_instructionList
-    @location mEndOf_then_branch
-    @semanticInstructionListAST m_else_instructionList
-    @location mEndOf_if_instruction
-  }
+enum @ifExpressionKind {
+  case regularExp (@semanticExpressionAST exp)
+  case letExp (@lstring constantName @semanticExpressionAST exp @location endOfExp @lstring typeName)
+}
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+list @ifExpressionList {
+  @ifExpressionKind mExpression
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @ifInstructionAST : @semanticInstructionAST {
+  @ifExpressionList mExpressions
+  @semanticInstructionListAST m_then_instructionList
+  @location mEndOf_then_branch
+  @semanticInstructionListAST m_else_instructionList
+  @location mEndOf_if_instruction
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3InstructionsSyntax {
 
-  #····················································································································*
+  #·····················································································································
 
   rule <if_instruction_core> !@semanticInstructionAST outInstruction {
     let instructionLocation = @location.here
-    <expression> ?let if_expression
+    <if_expression> ?let testExpression
     $then$
     <semantic_instruction_list> ?let then_instructionList
     let endOf_then_branchLocation = @location.here
@@ -37,7 +51,7 @@ syntax extension galgas3InstructionsSyntax {
     end
     outInstruction = @ifInstructionAST.new {
       !instructionLocation
-      !if_expression
+      !testExpression
       !then_instructionList
       !endOf_then_branchLocation
       !else_instructionList
@@ -45,7 +59,7 @@ syntax extension galgas3InstructionsSyntax {
     }
   }
   
-  #····················································································································*
+  #·····················································································································
   
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $if$
@@ -60,134 +74,276 @@ syntax extension galgas3InstructionsSyntax {
     end
   }
 
-  #····················································································································*
+  #·····················································································································
 
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! CONTEXT
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  override method @ifInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-    [m_if_expression enterExpressionInSemanticContext !?ioTypeMap]
-    [m_then_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
-    [m_else_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
-  }
+override method @ifInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  for (expression) in mExpressions do
+    switch expression
+    case regularExp (exp) :
+      [exp enterExpressionInSemanticContext !?ioTypeMap]
+    case letExp (* exp * @lstring typeName) :
+      [exp enterExpressionInSemanticContext !?ioTypeMap]
+      [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !typeName ?*]
+    end
+  end
+  [m_then_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  [m_else_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
+}
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SEMANTICS
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+# l'expression a peut être de la forme let varA = exp as @T ; idem pout-r b
+#
+# L'instruction : IF a, b THEN X ELSE Y END est analysée par :
+#
+#  analyser (a), création varA
+#  openOverrideForSelect
+#    openBranch
+#      insertion varA dans table des symboles
+#      analyser (b), création varB
+#      openOverrideForSelect
+#        openBranch
+#          insertion varB dans table des symboles
+#          X
+#        closeBranch
+#      closeOverride
+#    closeBranch
+#    openBranch
+#      Y
+#    closeBranch
+#  closeOverride
+#
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
   
-  override method @ifInstructionAST analyzeSemanticInstruction
-    ?let @lstring inUsefulnessCallerEntityName
-    ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-    ?let @analysisContext inAnalysisContext
-    ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-    ?!@variableMap ioVariableMap
-  {
-  #--- Test expression
-    [m_if_expression analyzeSemanticExpression
-      !inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !@unifiedTypeMap-proxy.null
-      !inAnalysisContext
-      !?ioVariableMap
-      ?let analyzed_if_expression
-    ]
-    [!?ioVariableMap openOverrideForSelectBlock]
-  #--- Check tested expression type
-    checkExpressionIsBoolean (
-      !inAnalysisContext
-      !mEndOf_if_instruction
-      !analyzed_if_expression
-      ?let if_expression
-    )
-  #--- Then branch
-    analyzeSemanticInstructionList (
-      !inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !@localConstantList.emptyList
-      !@localInitializedVariableList.emptyList
-      !m_then_instructionList
-      !mEndOf_then_branch
-      !?ioVariableMap
-      ?let then_instructionList
-    )
-  #--- else branch
-    analyzeSemanticInstructionList (
-      !inUsefulnessCallerEntityName
-      !?ioUsefulEntitiesGraph
-      !inAnalysisContext
-      !@localConstantList.emptyList
-      !@localInitializedVariableList.emptyList
-      !m_else_instructionList
-      !mEndOf_if_instruction
-      !?ioVariableMap
-      ?let else_instructionList
-    )
-    [!?ioVariableMap closeOverride !mEndOf_if_instruction]
-  #--- Generate instruction
-    ioInstructionListForGeneration += !@ifInstructionForGeneration.new {
-      !mEndOf_then_branch
-      !if_expression
-      !then_instructionList
-      !else_instructionList
-    }
+override method @ifInstructionAST analyzeSemanticInstruction
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+{
+#--- Test expression
+  @ifTestListForGeneration testListForGeneration = {}
+  for (expression) in mExpressions do
+    switch expression
+    case regularExp (exp) :
+      [exp analyzeSemanticExpression
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !.null
+        !inAnalysisContext
+        !?ioVariableMap
+        ?let analyzed_if_expression
+      ]
+      checkExpressionIsBoolean (
+        !inAnalysisContext
+        !mEndOf_if_instruction
+        !analyzed_if_expression
+        ?let if_expression
+      )
+      testListForGeneration += !.regular {!exp: if_expression}
+      [!?ioVariableMap openOverrideForSelectBlock]
+      [!?ioVariableMap openBranch]
+    case letExp (constantName exp * @lstring typeName) :
+      [exp analyzeSemanticExpression
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !.null
+        !inAnalysisContext
+        !?ioVariableMap
+        ?let analyzedExpression
+      ]
+    #--- Get type information
+      let castType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !typeName}
+    #--- Check this is a class
+      if [[[analyzedExpression mResultType] mTypeKindEnum] isClassType] then
+      #--- Check expression type is a descendant of named type
+        @unifiedTypeMap-proxy t = castType
+        @bool found = t == [analyzedExpression mResultType]
+        loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+        while (not found) & not [[t mSuperType] isNull] do
+          t = [t mSuperType]
+          found = t == [analyzedExpression mResultType]
+        end
+        if not found then
+          error typeName
+          : "the '@" + typeName + "' is not a descendant of the '@" + [[analyzedExpression mResultType] key]
+            + "' type of the cast expression"
+        end
+      else
+        error [analyzedExpression mLocation]: "expression should be a class instance: it is an @"
+         +  [[analyzedExpression mResultType] key] + " instance"
+      end
+      [!?ioVariableMap openOverrideForSelectBlock]
+      [!?ioVariableMap openBranch]
+      let targetVariableCppName = "var_" + [constantName identifierRepresentation]
+         + "_" + [constantName.location locationIndex]
+      [!?ioVariableMap insertLocalConstant
+        !constantName
+        !castType # [analyzedExpression mResultType]
+        !targetVariableCppName
+        !targetVariableCppName
+      ]
+      testListForGeneration += !.letExp {!targetVarCppName: targetVariableCppName !exp: analyzedExpression !type:castType}
+    end
+  end
+  var expressions = mExpressions
+  [!?expressions popLast ?*]
+  for (expression) in expressions do
+    [!?ioVariableMap closeBranch !mEndOf_then_branch]
+    [!?ioVariableMap closeOverride !mEndOf_then_branch]
+  end
+#--- Then branch
+  analyzeSemanticInstructionListWithoutBranch (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    !@localConstantList.emptyList
+    !@localInitializedVariableList.emptyList
+    !m_then_instructionList
+    !?ioVariableMap
+    ?let then_instructionList
+  )
+  [!?ioVariableMap closeBranch !mEndOf_then_branch]
+#--- else branch
+  analyzeSemanticInstructionList (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext
+    !@localConstantList.emptyList
+    !@localInitializedVariableList.emptyList
+    !m_else_instructionList
+    !mEndOf_if_instruction
+    !?ioVariableMap
+    ?let else_instructionList
+  )
+  [!?ioVariableMap closeOverride !mEndOf_if_instruction]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@ifInstructionForGeneration.new {
+    !mEndOf_then_branch
+    !testListForGeneration
+    !then_instructionList
+    !else_instructionList
   }
+}
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! GENERATION
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+# L'instruction : IF a, b THEN X ELSE Y END est traduite en :
+#
+#  enumGalgasBool testResult = kBoolTrue ;
+#  if (testResult == kBoolTrue) {
+#    testResult = evaluation (a)
+#    if (testResult == kBoolTrue) {
+#      testResult = evaluation (b)
+#      if (testResult == kBoolTrue) {
+#        X
+#      }
+#    }
+#  }
+#  if (testResult == kBoolFalse) {
+#    Y
+#  }
+#
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  class @ifInstructionForGeneration : @semanticInstructionForGeneration {
-    @location mInstructionLocation
-    @semanticExpressionForGeneration mIFexpression
-    @semanticInstructionListForGeneration m_then_instructionList
-    @semanticInstructionListForGeneration m_else_instructionList
-  }
+enum @ifTestForGeneration {
+  case regular (@semanticExpressionForGeneration exp)
+  case letExp (@string targetVarCppName @semanticExpressionForGeneration exp @unifiedTypeMap-proxy type)
+}
 
-  #····················································································································*
+#·······················································································································
 
-  override method @ifInstructionForGeneration generateInstruction
-    ?!@stringset ioInclusionSet
-    ?!@uint ioTemporaryVariableIndex
-    ?!@stringset ioUnusedVariableCppNameSet
-    ?let @bool inGenerateSyntaxDirectedTranslationString
-    ?!@string ioGeneratedCode {
-  #--- Generate test expression
-    @string cppVarName
-    [mIFexpression generateExpression
-      !?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      ?cppVarName
-    ]
-    let testVar = "test_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
-    ioGeneratedCode += "const enumGalgasBool " + testVar + " = " + cppVarName + ".boolEnum () ;\n"
-  #--- If test expression is not valuated or false, execute 'else' part
+list @ifTestListForGeneration {
+  @ifTestForGeneration mExpression
+}
+
+#·······················································································································
+
+class @ifInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @ifTestListForGeneration mExpressions
+  @semanticInstructionListForGeneration m_then_instructionList
+  @semanticInstructionListForGeneration m_else_instructionList
+}
+
+#·······················································································································
+
+override method @ifInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Generate test expression
+  let testVar = "test_" + [ioTemporaryVariableIndex string]
+  ioTemporaryVariableIndex ++
+  ioGeneratedCode += "enumGalgasBool " + testVar + " = kBoolTrue ;\n"
+  for (expression) in mExpressions do
     ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
+    [!?ioGeneratedCode incIndentation !2]
+    switch expression
+    case regular (exp) :
+      [exp generateExpression
+        !?ioGeneratedCode
+        !?ioInclusionSet
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        ?let cppVarName
+      ]
+      ioGeneratedCode += testVar + " = " + cppVarName + ".boolEnum () ;\n"
+    case letExp (targetVarCppName exp type) :
+      let typeName = [type identifierRepresentation]
+      [exp generateExpression
+        !?ioGeneratedCode
+        !?ioInclusionSet
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        ?let cppVarName
+      ]
+      ioGeneratedCode += "GALGAS_" + typeName + " " + targetVarCppName
+        + " (dynamic_cast <const cPtr_" + typeName + " *> (" + cppVarName + ".ptr ())) ;\n"
+      ioGeneratedCode += "if (NULL == " + targetVarCppName + ".ptr ()) {\n"
+      ioGeneratedCode += "  " + testVar + " = kBoolFalse ;\n"
+      ioGeneratedCode += "}\n"
+    end
+  end
+#--- Then branch
+  ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
+  generateInstructionList (
+    !?ioInclusionSet
+    !m_then_instructionList
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  ioGeneratedCode += "}\n"
+  for () in mExpressions do
+    [!?ioGeneratedCode decIndentation !2]
+    ioGeneratedCode += "}\n"
+  end
+#--- else branch
+  if [m_else_instructionList length] > 0 then
+    ioGeneratedCode += "if (kBoolFalse == " + testVar + ") {\n"
     generateInstructionList (
       !?ioInclusionSet
-      !m_then_instructionList
+      !m_else_instructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     )
-    if [m_else_instructionList length] > 0 then
-      ioGeneratedCode += "}else if (kBoolFalse == " + testVar + ") {\n"
-      generateInstructionList (
-        !?ioInclusionSet
-        !m_else_instructionList
-        !?ioTemporaryVariableIndex
-        !?ioUnusedVariableCppNameSet
-        !inGenerateSyntaxDirectedTranslationString
-        !?ioGeneratedCode
-      )
-    end
     ioGeneratedCode += "}\n"
-  }
+  end
+}
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

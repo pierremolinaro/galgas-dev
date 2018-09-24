@@ -1,4 +1,4 @@
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #  'lexique' component metamodel                                                                                       *
 #                                                                                                                      *
@@ -13,7 +13,7 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @lexicalTypeEnum cppTypeName -> @string {
   switch self
@@ -28,7 +28,7 @@ getter @lexicalTypeEnum cppTypeName -> @string {
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @lexicalTypeEnum appendMethodName -> @string {
   switch self
@@ -43,7 +43,7 @@ getter @lexicalTypeEnum appendMethodName -> @string {
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @lexicalTypeEnum appendArgumentOfMethod -> @string {
   switch self
@@ -58,7 +58,7 @@ getter @lexicalTypeEnum appendArgumentOfMethod -> @string {
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @lexicalTypeEnum initialization -> @string {
   switch self
@@ -73,7 +73,7 @@ getter @lexicalTypeEnum initialization -> @string {
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @lexicalTypeEnum cocoaTypeName -> @string {
   switch self
@@ -88,7 +88,7 @@ getter @lexicalTypeEnum cocoaTypeName -> @string {
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @lexicalTypeEnum needsReferenceInInputOutputInCocoa -> @bool {
   switch self
@@ -103,7 +103,7 @@ getter @lexicalTypeEnum needsReferenceInInputOutputInCocoa -> @bool {
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @lexicalTypeEnum cocoaInitializationCode -> @string {
   switch self
@@ -119,7 +119,7 @@ getter @lexicalTypeEnum cocoaInitializationCode -> @string {
 }
 
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @lexicalTypeEnum cocoaResetPrefix -> @string {
   switch self
@@ -134,7 +134,7 @@ getter @lexicalTypeEnum cocoaResetPrefix -> @string {
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 getter @lexicalTypeEnum cocoaReset -> @string {
   switch self
@@ -149,35 +149,35 @@ getter @lexicalTypeEnum cocoaReset -> @string {
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                     checkLexicalDefaultAction                                                                        *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @lexicalSendDefaultActionAST checkLexicalDefaultAction
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalSendTerminalByDefaultAST checkLexicalDefaultAction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
   [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mDefaultSentTerminal ?*]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalErrorByDefaultAST checkLexicalDefaultAction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
   [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mDefaultErrorMessageName.string]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                       checkLexicalExpression                                                                         *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @lexicalExpressionAST checkLexicalExpression
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalOrExpressionAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
@@ -185,13 +185,13 @@ override method @lexicalOrExpressionAST checkLexicalExpression
   [mRightOperand checkLexicalExpression !? ioLexiqueAnalysisContext]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalCharacterMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalCharacterSetMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -201,20 +201,20 @@ override method @lexicalCharacterSetMatchAST checkLexicalExpression
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalCharacterIntervalMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalStringMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
   ioLexiqueAnalysisContext.mUnicodeStringToGenerate += ![mString string]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalStringNotMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
@@ -222,15 +222,15 @@ override method @lexicalStringNotMatchAST checkLexicalExpression
   [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mErrorMessage.string]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                       checkLexicalFunctionCallArgument                                                               *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -251,7 +251,7 @@ override method @lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgume
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalCharacterInputArgumentAST checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
@@ -265,7 +265,7 @@ override method @lexicalCharacterInputArgumentAST checkLexicalFunctionCallArgume
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalUnsignedInputArgumentAST checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
@@ -279,7 +279,7 @@ override method @lexicalUnsignedInputArgumentAST checkLexicalFunctionCallArgumen
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalCurrentCharacterInputArgumentAST checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
@@ -293,7 +293,7 @@ override method @lexicalCurrentCharacterInputArgumentAST checkLexicalFunctionCal
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -337,15 +337,15 @@ override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgumen
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                       checkLexicalRoutineCallArgument                                                                *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -366,7 +366,7 @@ override method @lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgumen
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalCharacterInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
@@ -380,7 +380,7 @@ override method @lexicalCharacterInputArgumentAST checkLexicalRoutineCallArgumen
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalUnsignedInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
@@ -394,7 +394,7 @@ override method @lexicalUnsignedInputArgumentAST checkLexicalRoutineCallArgument
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalCurrentCharacterInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
@@ -408,7 +408,7 @@ override method @lexicalCurrentCharacterInputArgumentAST checkLexicalRoutineCall
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -452,16 +452,16 @@ override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                       checkLexicalRoutineCallArgument                                                                *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalArgumentModeAST unused inLexicalRoutineFormalArgumentMode
   ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -487,7 +487,7 @@ override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallA
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -504,15 +504,15 @@ override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                       checkLexicalInstruction                                                                        *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @lexicalInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -524,7 +524,7 @@ override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
   [mLexicalSendDefaultAction checkLexicalDefaultAction !?ioLexiqueAnalysisContext]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalSimpleSendInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -532,7 +532,7 @@ override method @lexicalSimpleSendInstructionAST checkLexicalInstruction
   [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mSentTerminal ?*]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalRepeatInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -550,7 +550,7 @@ override method @lexicalRepeatInstructionAST checkLexicalInstruction
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalSelectInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -568,7 +568,7 @@ override method @lexicalSelectInstructionAST checkLexicalInstruction
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalRoutineInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -611,14 +611,14 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalLogInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap {
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalRewindInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -627,7 +627,7 @@ override method @lexicalRewindInstructionAST checkLexicalInstruction
   [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mTerminalName ?*]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalDropInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext  ioLexiqueAnalysisContext
@@ -635,7 +635,7 @@ override method @lexicalDropInstructionAST checkLexicalInstruction
   [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mTerminalName ?*]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 #override method @lexicalOptionInstructionAST checkLexicalInstruction
 #  ?!@lexiqueAnalysisContext  ioLexiqueAnalysisContext
@@ -644,7 +644,7 @@ override method @lexicalDropInstructionAST checkLexicalInstruction
 #  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mTerminalName ?*]
 #}
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalTagInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
@@ -652,7 +652,7 @@ override method @lexicalTagInstructionAST checkLexicalInstruction
   [!?ioTagMap insertKey !mLexicalTagName]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalErrorInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -661,7 +661,7 @@ override method @lexicalErrorInstructionAST checkLexicalInstruction
   [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mErrorMessageName.string]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalWarningInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
@@ -669,21 +669,21 @@ override method @lexicalWarningInstructionAST checkLexicalInstruction
   [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mWarningMessageName.string]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                         compileLexiqueComponent                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 abstract method @abstractLexicalRuleAST checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalImplicitRuleAST checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
   [[ioLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?* ?*]
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalExplicitRuleAST checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
@@ -694,9 +694,9 @@ override method @lexicalExplicitRuleAST checkLexicalRule
   end
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #         G E N E R A T I O N    T E M P L A T E S                                                                     *
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_generation" {
 }{
@@ -755,5 +755,5 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@lexicalFunctionListAST UNICODE_TEST_FUNCTIONS
 }
 
-#----------------------------------------------------------------------------------------------------------------------*
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
