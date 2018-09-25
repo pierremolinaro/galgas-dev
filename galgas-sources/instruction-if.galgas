@@ -187,18 +187,12 @@ override method @ifInstructionAST analyzeSemanticInstruction
          + "_" + [constantName.location locationIndex]
       [!?ioVariableMap insertLocalConstant
         !constantName
-        !castType # [analyzedExpression mResultType]
+        !castType
         !targetVariableCppName
         !targetVariableCppName
       ]
       testListForGeneration += !.letExp {!targetVarCppName: targetVariableCppName !exp: analyzedExpression !type:castType}
     end
-  end
-  var expressions = mExpressions
-  [!?expressions popLast ?*]
-  for (expression) in expressions do
-    [!?ioVariableMap closeBranch !mEndOf_then_branch]
-    [!?ioVariableMap closeOverride !mEndOf_then_branch]
   end
 #--- Then branch
   analyzeSemanticInstructionListWithoutBranch (
@@ -211,6 +205,12 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?let then_instructionList
   )
+  var expressions = mExpressions
+  [!?expressions popLast ?*]
+  for (expression) in expressions do
+    [!?ioVariableMap closeBranch !mEndOf_then_branch]
+    [!?ioVariableMap closeOverride !mEndOf_then_branch]
+  end
   [!?ioVariableMap closeBranch !mEndOf_then_branch]
 #--- else branch
   analyzeSemanticInstructionList (

@@ -2011,10 +2011,8 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if (leftExpression is == @literalBigIntExpressionForGeneration)
-   && (rightExpression is == @literalUIntExpressionForGeneration) then
-     let left  =  leftExpression as @literalBigIntExpressionForGeneration
-     let right = rightExpression as @literalUIntExpressionForGeneration
+  if let left = leftExpression as @literalBigIntExpressionForGeneration,
+     let right = rightExpression as @literalUIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
        !inAnalysisContext.mPredefinedTypes.mBigIntType
        !mOperatorLocation
@@ -2079,10 +2077,16 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-  if (leftExpression is == @literalBigIntExpressionForGeneration)
-   && (rightExpression is == @literalUIntExpressionForGeneration) then
-     let left  =  leftExpression as @literalBigIntExpressionForGeneration
-     let right = rightExpression as @literalUIntExpressionForGeneration
+#  if let left = leftExpression as @literalBigIntExpressionForGeneration,
+#     let right = rightExpression as @literalUIntExpressionForGeneration then
+#     let useusedExp = @literalBigIntExpressionForGeneration.new {
+#       !inAnalysisContext.mPredefinedTypes.mBigIntType
+#       !mOperatorLocation
+#       ![left mValue] << [right mValue]
+#     }
+#  end
+  if let left = leftExpression as @literalBigIntExpressionForGeneration,
+     let right = rightExpression as @literalUIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
        !inAnalysisContext.mPredefinedTypes.mBigIntType
        !mOperatorLocation
@@ -2671,8 +2675,7 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
-  if expression is == @literalBigIntExpressionForGeneration then
-    let exp = expression as @literalBigIntExpressionForGeneration
+  if let exp = expression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration.new {
       ![exp mResultType]
       ![exp mLocation]
@@ -2844,8 +2847,7 @@ override method @complementExpressionAST analyzeSemanticExpression
   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
-  if expression is == @literalBigIntExpressionForGeneration then
-    let exp = expression as @literalBigIntExpressionForGeneration
+  if let exp = expression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration.new {
       ![exp mResultType]
       ![exp mLocation]

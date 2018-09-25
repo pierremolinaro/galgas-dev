@@ -109,24 +109,6 @@ rule <expression> !@semanticExpressionAST outExpression {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
-#   A S    E X P R E S S I O N                                                                                         *
-#                                                                                                                      *
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#rule <as_expression> !@semanticExpressionAST outExpression {
-#  <casted_expression> ?outExpression
-#  let @location endOfReceiverExpression = @location.here
-#  $as$
-#  $@type$ ?let typeName
-#  outExpression = @castInExpressionAST.new {
-#    !outExpression
-#    !endOfReceiverExpression
-#    !typeName
-#  }
-#}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
 #   C O N C A T E N A T I O N    T E R M                                                                               *
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
