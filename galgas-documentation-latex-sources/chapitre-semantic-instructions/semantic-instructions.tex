@@ -1446,16 +1446,15 @@ else
 end
 \end{galgas}
 
+Le langage permet plusieurs aux conditions notées \ggs+condition+ et \ggs+condition2+ dans les exemples ci-dessus :
+\begin{itemize}
+  \item soit une simple expression ;
+  \item soit une affectation conditionnelle ;
+  \item soit une liste de simples expressions et d'affectations conditionnelles.
+\end{itemize}
 
-%So, for describing \emph{if} instruction static and dynamic semantics, we only need to describe an \emph{if} instruction without any \emph{elsif} branch and with an \emph{else} branch:
-%\begin{galgas}
-%if condition then
-%  instructions
-%else
-%  else_instructions
-%end
-%\end{galgas}
 
+\subsection{Simple expression}
 Le langage permet que le type des \ggs+condition+ et \ggs+condition2+ soit différent du type \refTypePredefini{bool}, sous certaines conditions. La règle complète est que le type des \ggs+condition+ et \ggs+condition2+ est~:
 \begin{itemize}
 \item soit le type \ggs+@bool+~;
@@ -1515,6 +1514,44 @@ end
 \end{galgas}
 
 
+\subsectionLabel{L'affectation conditionnelle}{affectationConditionnelle}
+
+L'affectation conditionnelle a la syntaxe suivante~:
+\begin{galgas}
+if let cible = expression as @T then
+  then_instructions # cible est défini, du type @T
+else
+  else_instructions # cible n'est pas défini
+end
+\end{galgas}
+
+Si l'\ggs=expression= est de type \ggs=@T=, alors la condition est vraie et les \ggs=then_instructions= sont exécutées. La constante\ggs=cible= est définie dans ces instructions, elle a pour type \ggs=@tT= et pour valeur celle de l'\ggs=expression=.
+
+Si l'\ggs=expression= n'est pas de type \ggs=@T=, alors la condition est fausse et les \ggs=else_instructions= sont exécutées. La constante\ggs=cible= n'est pas définie dans ces instructions.
+
+L'affectation conditionnelle permet de faire une affectation polymorphique inverse de manière propre, sans utiliser l'\emph{expression de conversion polymorphique inverse} (\ggs=expression as @T=, \refSubsectionPage{expConversionPolymorphiqueInverse}).
+
+
+\subsection{Liste de simples expressions et d'affectations conditionnelles}
+
+La condition d'une instruction \ggs=if= peut être une liste simples expressions et d'affectations conditionnelles, le séparateur étant la virgule \ggs=,=. L'évaluation s'effectue de gauche à droite, sous la forme d'un court-circuit~:
+\begin{itemize}
+\item dès qu'une condition ou affectation conditionnelle n'est pas vraie (c'est-à-dire fausse ou non construite), les éléments suivants ne sont pas évalués et la condition est fausse ;
+\item la condition est vraie si les évaluations de gauche à droite de toutes les simples expressions et affectations conditionnelles sont vraies.
+\end{itemize}
+
+Le résultat d'une affectation conditionnelle peut être utilisé dans les éléments suivants~:
+\begin{galgas}
+if let cible = exp as @T, let cible2 = [cible unGetter] as @U then
+  then_instructions # cible et cible2 sont définis
+else
+  else_instructions # Ni cible ni cible2 ne sont définis
+end
+\end{galgas}
+
+
+
+
 
 
 
@@ -1525,6 +1562,10 @@ L'instruction \ggs+grammar+ permet d'exécuter l'analyse d'un texte par une gram
   \item dans un fichier (\refSubsectionPage{texteSourceDansFichier})~;
   \item dans une chaîne de caractères (\refSubsectionPage{texteSourceDansChaine}).
 \end{itemize}
+
+
+
+
 
 
 
