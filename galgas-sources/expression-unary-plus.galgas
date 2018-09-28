@@ -1,0 +1,66 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @unaryPlusExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mExpression
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+
+  rule <factor> !@semanticExpressionAST outExpression {
+    let operatorLocation = @location.here
+    $+$
+    <factor> ? outExpression
+    outExpression = @unaryPlusExpressionAST.new {!operatorLocation !outExpression}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @unaryPlusExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#·······················································································································
+
+override method @unaryPlusExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Expression analysis
+  [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?outExpression
+  ]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy type = [outExpression mResultType]
+  if not [[type mHandledOperatorFlags] prefixPlusOperator] then
+    error mOperatorLocation
+    : "operand type is '@" + [type key] + "' and does not support the prefix '+' operator"
+    :outExpression
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

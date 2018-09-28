@@ -32,6 +32,10 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
+  rule <casted_expression> !@semanticExpressionAST outExpression
+
+  #·····················································································································
+
   rule <if_instruction_core> !@semanticInstructionAST outInstruction {
     let instructionLocation = @location.here
     <if_expression> ?let testExpression
@@ -71,6 +75,34 @@ syntax extension galgas3InstructionsSyntax {
       if terminator.string != "if" then
         error terminator : "the terminator attribute should be '%if'" fixit { replace "%if" }
       end
+    end
+  }
+
+  #·····················································································································
+
+  rule <if_expression> !@ifExpressionList outExpressionList {
+    outExpressionList = {}
+    repeat
+      select
+        $let$
+        $identifier$ ?let constantName
+        $=$
+        <casted_expression> ?let expression
+        let endOfReceiverExpression = @location.here
+        $as$
+        $@type$ ?let @lstring typeName
+        outExpressionList += !.letExp {
+          !constantName: constantName
+          !exp: expression
+          !endOfExp: endOfReceiverExpression
+          !typeName: typeName
+        }
+      or
+        <expression> ?let expression
+        outExpressionList += !.regularExp {!exp: expression}
+      end
+    while
+      $,$
     end
   }
 

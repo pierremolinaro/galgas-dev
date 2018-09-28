@@ -168,9 +168,7 @@ class @orExpressionAST,
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @unaryMinusExpressionAST,
-      @unaryMinusNoOverflowExpressionAST,
-      @unaryPlusExpressionAST,
+class @unaryMinusNoOverflowExpressionAST,
       @notExpressionAST,
       @complementExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
@@ -183,15 +181,6 @@ class @structFieldAccessExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mExpression
   @lstring mStructFieldName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @ifExpressionAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mIfExpression
-  @semanticExpressionAST mThenExpression
-  @semanticExpressionAST mElseExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

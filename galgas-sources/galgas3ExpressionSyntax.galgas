@@ -35,38 +35,6 @@ rule <output_expression_list> !@actualOutputExpressionList outExpressionList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
-#   IF EXPRESSION                                                                                                      *
-#                                                                                                                      *
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-rule <if_expression> !@ifExpressionList outExpressionList {
-  outExpressionList = {}
-  repeat
-    select
-      $let$
-      $identifier$ ?let constantName
-      $=$
-      <casted_expression> ?let expression
-      let endOfReceiverExpression = @location.here
-      $as$
-      $@type$ ?let @lstring typeName
-      outExpressionList += !.letExp {
-        !constantName: constantName
-        !exp: expression
-        !endOfExp: endOfReceiverExpression
-        !typeName: typeName
-      }
-    or
-      <expression> ?let expression
-      outExpressionList += !.regularExp {!exp: expression}
-    end
-  while
-    $,$
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
 #   C A S T                                                                                                            *
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -75,7 +43,7 @@ rule <expression> !@semanticExpressionAST outExpression {
   <casted_expression> ?outExpression
   select
   or
-    let @location endOfReceiverExpression = @location.here
+    let endOfReceiverExpression = @location.here
     $is$
     @dynamicTypeComparisonKind kind
     select
@@ -88,7 +56,7 @@ rule <expression> !@semanticExpressionAST outExpression {
       $>$
       kind = .strictlyInherited
     end
-    $@type$ ?let @lstring typeName
+    $@type$ ?let typeName
     outExpression = @testDynamicClassInExpressionAST.new {
       !outExpression
       !endOfReceiverExpression
@@ -96,7 +64,7 @@ rule <expression> !@semanticExpressionAST outExpression {
       !typeName
     }
   or
-    let @location endOfReceiverExpression = @location.here
+    let endOfReceiverExpression = @location.here
     $as$
     $@type$ ?let typeName
     outExpression = @castInExpressionAST.new {
@@ -313,32 +281,6 @@ rule <term> !@semanticExpressionAST outExpression {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
-#   F A C T O R    :    + factor                                                                                       *
-#                                                                                                                      *
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-rule <factor> !@semanticExpressionAST outExpression {
-  let operatorLocation = @location.here
-  $+$
-  <factor> ? outExpression
-  outExpression = @unaryPlusExpressionAST.new {!operatorLocation !outExpression}
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#   F A C T O R    :    - factor                                                                                       *
-#                                                                                                                      *
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-rule <factor> !@semanticExpressionAST outExpression {
-  let operatorLocation = @location.here
-  $-$
-  <factor> ? outExpression
-  outExpression = @unaryMinusExpressionAST.new {!operatorLocation !outExpression}
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
 #   F A C T O R    :    &- factor                                                                                      *
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -539,29 +481,6 @@ rule <primary> !@semanticExpressionAST outExpression {
 rule <primary> !@semanticExpressionAST outExpression {
   $double.xxx$ ?let @ldouble literalDouble ?*
   outExpression = @literalDoubleExpressionAST.new {!literalDouble}
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#   P R I M A R Y    :    if exp then exp else exp end                                                                 *
-#                                                                                                                      *
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-rule <primary> !@semanticExpressionAST outExpression {
-  $if$
-  <expression> ?let ifExpression
-  let operatorLocation = @location.here
-  $then$
-  <expression> ?let thenExpression
-  $else$
-  <expression> ?let elseExpression
-  $end$
-  outExpression = @ifExpressionAST.new {
-    !operatorLocation
-    !ifExpression
-    !thenExpression
-    !elseExpression
-  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

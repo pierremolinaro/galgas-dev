@@ -1,0 +1,172 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @ifExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mIfExpression
+  @semanticExpressionAST mThenExpression
+  @semanticExpressionAST mElseExpression
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+
+  rule <primary> !@semanticExpressionAST outExpression {
+    $if$
+    <expression> ?let ifExpression
+    let operatorLocation = @location.here
+    $then$
+    <expression> ?let thenExpression
+    $else$
+    <expression> ?let elseExpression
+    $end$
+    outExpression = @ifExpressionAST.new {
+      !operatorLocation
+      !ifExpression
+      !thenExpression
+      !elseExpression
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @ifExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mIfExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mThenExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mElseExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#·······················································································································
+
+override method @ifExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+#--- 'if' expression analysis
+  [mIfExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration if_expression
+  ]
+#--- 'then' expression analysis
+  @semanticExpressionForGeneration then_expression
+  [mThenExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?then_expression
+  ]
+#--- 'else' expression analysis
+  @semanticExpressionForGeneration else_expression
+  [mElseExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?else_expression
+  ]
+#--- Check 'if' expression is boolean
+  if [[if_expression mResultType] key] != "bool" then
+    error mOperatorLocation
+    :"the test expression type is '@" + [[if_expression mResultType] key] + "', it should be '@bool'"
+    :outExpression
+  elsif [then_expression mResultType] != [else_expression mResultType] then
+    error mOperatorLocation
+    :"operand expression types are '@" + [[then_expression mResultType] key] + "' and '@"+ [[else_expression mResultType] key] + "': they should be the same"
+    :outExpression
+  else
+  #--- Generate expression
+    outExpression = @ifExpressionForGeneration.new {
+      ![then_expression mResultType]
+      !mOperatorLocation
+      !if_expression
+      !then_expression
+      !else_expression
+    }
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @ifExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mIfExpression
+  @semanticExpressionForGeneration mThenExpression
+  @semanticExpressionForGeneration mElseExpression
+}
+
+#·······················································································································
+
+override method @ifExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+{
+#--- 'if' expression
+  [mIfExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let ifExpression
+  ]
+#--- Result variable
+  outCppExpression = "temp_" + [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++
+  ioGeneratedCode += "GALGAS_" + [[mThenExpression mResultType] identifierRepresentation] + " " + outCppExpression + " ;\n"
+  let testVar = "test_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+  ioGeneratedCode += "const enumGalgasBool " + testVar + " = " + ifExpression + ".boolEnum () ;\n"
+  ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
+#--- 'then' expression
+  [!?ioGeneratedCode incIndentation !2]
+  [mThenExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let thenExpression
+  ]
+  ioGeneratedCode += outCppExpression + " = " + thenExpression + " ;\n"
+  [!?ioGeneratedCode decIndentation !2]
+#--- 'else' expression
+  ioGeneratedCode += "}else if (kBoolFalse == " + testVar + ") {\n"
+  [!?ioGeneratedCode incIndentation !2]
+  [mElseExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let elseExpression
+  ]
+  ioGeneratedCode += outCppExpression + " = " + elseExpression + " ;\n"
+  [!?ioGeneratedCode decIndentation !2]
+  ioGeneratedCode += "}\n"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

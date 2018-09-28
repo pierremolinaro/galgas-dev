@@ -108,15 +108,22 @@ project (3:3:11) -> "galgas" {
   "galgas-sources/semanticsTypeMethods.galgas"
   "galgas-sources/semanticContext.galgas"
   "galgas-sources/semanticsDecoratedTypes.galgas"
-  "galgas-sources/semanticExpressionAnalysis.galgas"
   "galgas-sources/semanticInstructionsAnalysis.galgas"
   "galgas-sources/semanticAnalysis.galgas"
-  "galgas-sources/semanticExpressionGeneration.galgas"
   "galgas-sources/semanticInstructionGeneration.galgas"
   "galgas-sources/semanticGeneration.galgas"
   "galgas-sources/semanticsCompilation.galgas"
   "galgas-sources/predefinedTypes.galgas"
   "galgas-sources/useful-entities-computation.galgas"
+
+#--- Expressions
+  "galgas-sources/expression-if.galgas"
+  "galgas-sources/expression-unary-plus.galgas"
+  "galgas-sources/expression-unary-minus.galgas"
+
+  "galgas-sources/galgas3ExpressionSyntax.galgas"
+  "galgas-sources/semanticExpressionAnalysis.galgas"
+  "galgas-sources/semanticExpressionGeneration.galgas"
 
 #--- Instructions
   "galgas-sources/instruction-assignment.galgas"
@@ -181,7 +188,6 @@ project (3:3:11) -> "galgas" {
   "galgas-sources/galgas3projectAST.galgas"
 
 #--- GALGAS File
-  "galgas-sources/galgas3ExpressionSyntax.galgas"
   "galgas-sources/galgas3ParameterArgumentSyntax.galgas"
   "galgas-sources/galgas3InstructionsSyntax.galgas"
   "galgas-sources/galgas3DeclarationsSyntax.galgas"

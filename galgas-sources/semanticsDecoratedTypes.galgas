@@ -225,8 +225,7 @@ class @orShortExpressionForGeneration,
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @unaryMinusExpressionForGeneration,
-      @unaryMinusExpressionNoOverflowForGeneration : @semanticExpressionForGeneration {
+class @unaryMinusExpressionNoOverflowForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mExpression
 }
 
@@ -247,14 +246,6 @@ class @structFieldAccessExpressionForGeneration : @semanticExpressionForGenerati
 
 class @tildeExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mExpression
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @ifExpressionForGeneration : @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mIfExpression
-  @semanticExpressionForGeneration mThenExpression
-  @semanticExpressionForGeneration mElseExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
