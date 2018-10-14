@@ -310,7 +310,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (90 types)
+--- Type list (88 types)
   @2lstringlist
   @2lstringlist-element
   @2stringlist
@@ -364,8 +364,6 @@ LOGGING r: <@uint:5>
   @luintlist-element
   @maTable
   @maTable-proxy
-  @monDictionaire
-  @monDictionaire-element
   @myList
   @myList-element
   @myListMap
@@ -631,167 +629,4 @@ YES
 LOGGING a: <map @myMap (1 object): 
 |-at 0: key 'var' 
 | | value:<@string:"Hello">>
-*************************************** begin of dict
-LOGGING m: <dict @monDictionaire:
-<struct @monDictionaire-element:<@string:"s">, <@uint:37>>>
-LOGGING v: <@uint:37>
-LOGGING m: <dict @monDictionaire:
-<struct @monDictionaire-element:<@string:"s">, <@uint:37>>>
-LOGGING m: <dict @monDictionaire:
-<struct @monDictionaire-element:<@string:"s">, <@uint:37>>>
-LOGGING mm: <dict @monDictionaire:>
-LOGGING mmm: <dict @monDictionaire:>
-LOGGING otherDict: <dict @monDictionaire:
-<struct @monDictionaire-element:<@string:"A">, <@uint:1>>
-<struct @monDictionaire-element:<@string:"B">, <@uint:2>>
-<struct @monDictionaire-element:<@string:"C">, <@uint:3>>
-<struct @monDictionaire-element:<@string:"D">, <@uint:4>>
-<struct @monDictionaire-element:<@string:"E">, <@uint:5>>
-<struct @monDictionaire-element:<@string:"F">, <@uint:6>>
-<struct @monDictionaire-element:<@string:"G">, <@uint:7>>
-<struct @monDictionaire-element:<@string:"H">, <@uint:8>>
-<struct @monDictionaire-element:<@string:"I">, <@uint:9>>
-<struct @monDictionaire-element:<@string:"K">, <@uint:10>>
-<struct @monDictionaire-element:<@string:"L">, <@uint:11>>
-<struct @monDictionaire-element:<@string:"M">, <@uint:12>>
-<struct @monDictionaire-element:<@string:"N">, <@uint:13>>
-<struct @monDictionaire-element:<@string:"O">, <@uint:14>>
-<struct @monDictionaire-element:<@string:"P">, <@uint:15>>
-<struct @monDictionaire-element:<@string:"R">, <@uint:16>>
-<struct @monDictionaire-element:<@string:"S">, <@uint:17>>
-<struct @monDictionaire-element:<@string:"T">, <@uint:18>>
-<struct @monDictionaire-element:<@string:"U">, <@uint:19>>
-<struct @monDictionaire-element:<@string:"V">, <@uint:20>>
-<struct @monDictionaire-element:<@string:"W">, <@uint:21>>
-<struct @monDictionaire-element:<@string:"X">, <@uint:22>>
-<struct @monDictionaire-element:<@string:"Y">, <@uint:23>>
-<struct @monDictionaire-element:<@string:"Z">, <@uint:24>>
-<struct @monDictionaire-element:<@string:"a">, <@uint:25>>
-<struct @monDictionaire-element:<@string:"b">, <@uint:26>>
-<struct @monDictionaire-element:<@string:"c">, <@uint:27>>
-<struct @monDictionaire-element:<@string:"d">, <@uint:28>>
-<struct @monDictionaire-element:<@string:"e">, <@uint:29>>
-<struct @monDictionaire-element:<@string:"f">, <@uint:30>>
-<struct @monDictionaire-element:<@string:"g">, <@uint:31>>
-<struct @monDictionaire-element:<@string:"h">, <@uint:32>>
-<struct @monDictionaire-element:<@string:"i">, <@uint:33>>
-<struct @monDictionaire-element:<@string:"j">, <@uint:34>>
-<struct @monDictionaire-element:<@string:"k">, <@uint:35>>
-<struct @monDictionaire-element:<@string:"l">, <@uint:36>>
-<struct @monDictionaire-element:<@string:"m">, <@uint:37>>
-<struct @monDictionaire-element:<@string:"n">, <@uint:38>>
-<struct @monDictionaire-element:<@string:"o">, <@uint:39>>
-<struct @monDictionaire-element:<@string:"p">, <@uint:40>>
-<struct @monDictionaire-element:<@string:"q">, <@uint:41>>
-<struct @monDictionaire-element:<@string:"r">, <@uint:42>>
-<struct @monDictionaire-element:<@string:"s">, <@uint:43>>
-<struct @monDictionaire-element:<@string:"t">, <@uint:44>>
-<struct @monDictionaire-element:<@string:"u">, <@uint:45>>
-<struct @monDictionaire-element:<@string:"v">, <@uint:46>>
-<struct @monDictionaire-element:<@string:"w">, <@uint:47>>
-<struct @monDictionaire-element:<@string:"x">, <@uint:48>>
-<struct @monDictionaire-element:<@string:"y">, <@uint:49>>
-<struct @monDictionaire-element:<@string:"z">, <@uint:50>>>
-Enumeration 1
-  key 'A', value: 1
-  key 'B', value: 2
-  key 'C', value: 3
-  key 'D', value: 4
-  key 'E', value: 5
-  key 'F', value: 6
-  key 'G', value: 7
-  key 'H', value: 8
-  key 'I', value: 9
-  key 'K', value: 10
-  key 'L', value: 11
-  key 'M', value: 12
-  key 'N', value: 13
-  key 'O', value: 14
-  key 'P', value: 15
-  key 'R', value: 16
-  key 'S', value: 17
-  key 'T', value: 18
-  key 'U', value: 19
-  key 'V', value: 20
-  key 'W', value: 21
-  key 'X', value: 22
-  key 'Y', value: 23
-  key 'Z', value: 24
-  key 'a', value: 25
-  key 'b', value: 26
-  key 'c', value: 27
-  key 'd', value: 28
-  key 'e', value: 29
-  key 'f', value: 30
-  key 'g', value: 31
-  key 'h', value: 32
-  key 'i', value: 33
-  key 'j', value: 34
-  key 'k', value: 35
-  key 'l', value: 36
-  key 'm', value: 37
-  key 'n', value: 38
-  key 'o', value: 39
-  key 'p', value: 40
-  key 'q', value: 41
-  key 'r', value: 42
-  key 's', value: 43
-  key 't', value: 44
-  key 'u', value: 45
-  key 'v', value: 46
-  key 'w', value: 47
-  key 'x', value: 48
-  key 'y', value: 49
-  key 'z', value: 50
-Enumeration 2
-  key 'A', value: 1
-  key 'B', value: 2
-  key 'C', value: 3
-  key 'D', value: 4
-  key 'E', value: 5
-  key 'F', value: 6
-  key 'G', value: 7
-  key 'H', value: 8
-  key 'I', value: 9
-  key 'K', value: 10
-  key 'L', value: 11
-  key 'M', value: 12
-  key 'N', value: 13
-  key 'O', value: 14
-  key 'P', value: 15
-  key 'R', value: 16
-  key 'S', value: 17
-  key 'T', value: 18
-  key 'U', value: 19
-  key 'V', value: 20
-  key 'W', value: 21
-  key 'X', value: 22
-  key 'Y', value: 23
-  key 'Z', value: 24
-  key 'a', value: 25
-  key 'b', value: 26
-  key 'c', value: 27
-  key 'd', value: 28
-  key 'e', value: 29
-  key 'f', value: 30
-  key 'g', value: 31
-  key 'h', value: 32
-  key 'i', value: 33
-  key 'j', value: 34
-  key 'k', value: 35
-  key 'l', value: 36
-  key 'm', value: 37
-  key 'n', value: 38
-  key 'o', value: 39
-  key 'p', value: 40
-  key 'q', value: 41
-  key 'r', value: 42
-  key 's', value: 43
-  key 't', value: 44
-  key 'u', value: 45
-  key 'v', value: 46
-  key 'w', value: 47
-  key 'x', value: 48
-  key 'y', value: 49
-  key 'z', value: 50
 No warning, no error.

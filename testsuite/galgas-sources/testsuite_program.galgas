@@ -22,7 +22,7 @@ before {
   testsuite_extern_type ()
   testsuite_bigint_type ()
   bugMap ()
-  testsuite_dict ()
+#  testsuite_dict ()
 }
 
 #--- 'when' clauses

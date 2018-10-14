@@ -96,12 +96,13 @@ runCommand (["rm", "-fr", TEMP_DIR])
 #-------------------- Creer le repertoire contenant la distribution
 runCommand (["mkdir", TEMP_DIR])
 #-------------------- Importer galgas
-texteSurConsole = runHiddenCommand (["svn", "export", "https://galgas.rts-software.org/svn/", TEMP_DIR + "/galgas"])
-components = texteSurConsole.split ("Exported revision")
-#print "'" + components [1] + "'"
-components = components [1].split (".")
-numeroRevisionSVN = components [0].strip ()
-print "Révision SVN : '" + numeroRevisionSVN + "'"
+runCommand (["git", "clone", "https://github.com/pierremolinaro/galgas-dev", TEMP_DIR + "/galgas"])
+# texteSurConsole = runHiddenCommand (["svn", "export", "https://galgas.rts-software.org/svn/", TEMP_DIR + "/galgas"])
+# components = texteSurConsole.split ("Exported revision")
+# #print "'" + components [1] + "'"
+# components = components [1].split (".")
+# numeroRevisionSVN = components [0].strip ()
+# print "Révision SVN : '" + numeroRevisionSVN + "'"
 #-------------------- Obtenir l'année
 ANNEE = str (datetime.datetime.now().year)
 print "ANNÉE : '" + ANNEE + "'"
@@ -118,7 +119,7 @@ runCommand (["rm", "-fr", DIR])
 runCommand (["mv", TEMP_DIR, DIR])
 #-------------------- Mettre a jour les numéros de version
 writeFile (versionGALGAS, DIR + "/version-galgas.txt")
-writeFile (numeroRevisionSVN, DIR + "/version-repository.txt")
+# writeFile (numeroRevisionSVN, DIR + "/version-repository.txt")
 remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, DIR + "/galgas/project-xcode-galgas/Info.plist")
 remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, DIR + "/galgas/project-xcode-galgas/English.lproj/InfoPlist.strings")
 for root, dirs, files in os.walk (DIR + "/galgas/galgas-sources"):
@@ -144,7 +145,7 @@ runCommand (["bzip2", "-9", "galgas-sources-crlf.tar"])
 runCommand (["mv", DIR + "/galgas/changeLog.html", DIR + "/changeLog.html"])
 #-------------------- Recompiler le projet Xcode
 os.chdir (DIR + "/galgas/project-xcode-galgas")
-runCommand (["xcodebuild", "-project", "galgas-distribution.xcodeproj", "-alltargets", "-configuration", "Default"])
+runCommand (["xcodebuild", "-project", "galgas-developer-v3.xcodeproj", "-alltargets", "-configuration", "Default"])
 os.chdir (DIR)
 #-------------------- Vérifier les programmes d'exemple
 runCommand ([DIR + "/galgas/sample_code/-build-all-macosx.command"])

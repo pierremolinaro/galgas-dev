@@ -12,7 +12,7 @@ project (1:0:0) -> "testsuite" {
   "galgas-sources/testsuite_list.galgas"
   "galgas-sources/testsuite_struct.galgas"
   "galgas-sources/testsuite_listmap.galgas"
-  "galgas-sources/testsuite_dict.galgas"
+#  "galgas-sources/testsuite_dict.galgas"
   "galgas-sources/testsuite_map.galgas"
   "galgas-sources/testsuite_functions.galgas"
   "galgas-sources/testsuite_introspection.galgas"
