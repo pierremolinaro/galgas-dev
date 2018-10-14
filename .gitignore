@@ -7,7 +7,6 @@
 *.o
 *.dep
 testsuite/*
-build/*
 project-xcode-galgas/build-developer-v3/*
 project-xcode-galgas/galgas-developer-v3.xcodeproj/xcuserdata/*
 project-xcode-galgas/galgas-developer-v3.xcodeproj/project.xcworkspace/*
