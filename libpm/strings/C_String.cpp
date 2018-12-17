@@ -651,12 +651,15 @@ void C_String::suppress (const int32_t inLocation,
                     inLength, mEmbeddedString->mLength) ;
     const int32_t bytesToMove = 1 + ((int32_t) mEmbeddedString->mLength) - inLength - inLocation ;
     if ((inLocation >= 0) && (bytesToMove > 0)) {
+//      for (int32_t i=0 ; i<bytesToMove ; i++) {
+//        mEmbeddedString->mString [inLocation + i] = mEmbeddedString->mString [inLocation + i + inLength] ;
+//      }
       ::memmove (& mEmbeddedString->mString [inLocation],
                  & mEmbeddedString->mString [inLocation + inLength],
                  ((size_t) bytesToMove) * sizeof (utf32)) ;
       MF_Assert (mEmbeddedString->mLength >= (uint32_t) inLength,
-               "mLength (%lld) < inLength (%lld)",
-                mEmbeddedString->mLength, inLength) ;
+                 "mLength (%lld) < inLength (%lld)",
+                 mEmbeddedString->mLength, inLength) ;
       mEmbeddedString->mLength -= (uint32_t) inLength ;
       #ifndef DO_NOT_GENERATE_CHECKINGS
         checkString (HERE) ;
