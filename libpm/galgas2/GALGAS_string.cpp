@@ -1014,7 +1014,7 @@ static void recursiveSearchForRegularFiles (const C_String & inUnixStartPath,
       if (current->d_name [0] != '.') {
         C_String name = nativeStartPath ;
         name << "/" << current->d_name ;
-        if (C_FileManager::directoryExists (name)) {
+        if (C_FileManager::directoryExistsWithNativePath (name)) {
           if (inRecursiveSearch) {
             recursiveSearchForRegularFiles (name,
                                             inRecursiveSearch,
@@ -1028,8 +1028,8 @@ static void recursiveSearchForRegularFiles (const C_String & inUnixStartPath,
       }
       current = readdir (dir) ;
     }
+    closedir (dir) ;
   }
-  closedir (dir) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -1061,7 +1061,7 @@ static void recursiveSearchForHiddenFiles (const C_String & inUnixStartPath,
       if ((strlen (current->d_name) > 1) && (current->d_name [0] == '.') && (strcmp (current->d_name, "..") != 0)) {
         C_String name = nativeStartPath ;
         name << "/" << current->d_name ;
-        if (C_FileManager::directoryExists (name)) {
+        if (C_FileManager::directoryExistsWithNativePath (name)) {
           if (inRecursiveSearch) {
             recursiveSearchForHiddenFiles (name,
                                            inRecursiveSearch,
@@ -1075,8 +1075,8 @@ static void recursiveSearchForHiddenFiles (const C_String & inUnixStartPath,
       }
       current = readdir (dir) ;
     }
+    closedir (dir) ;
   }
-  closedir (dir) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -1108,7 +1108,7 @@ static void recursiveSearchForDirectories (const C_String & inUnixStartPath,
       if (current->d_name [0] != '.') {
         C_String name = nativeStartPath ;
         name << "/" << current->d_name ;
-        if (C_FileManager::directoryExists (name)) {
+        if (C_FileManager::directoryExistsWithNativePath (name)) {
           const C_String relativePath = inRelativePath + current->d_name ;
           ioResult.addAssign_operation (GALGAS_string (relativePath) COMMA_HERE) ;
           if (inRecursiveSearch) {
@@ -1121,8 +1121,8 @@ static void recursiveSearchForDirectories (const C_String & inUnixStartPath,
       }
       current = readdir (dir) ;
     }
+    closedir (dir) ;
   }
-  closedir (dir) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -1157,7 +1157,7 @@ static void recursiveSearchForRegularFiles (const C_String & inUnixStartPath,
       if (current->d_name [0] != '.') {
         C_String name = nativeStartPath ;
         name << "/" << current->d_name ;
-        if (C_FileManager::directoryExists (name)) {
+        if (C_FileManager::directoryExistsWithNativePath (name)) {
           if (inRecursiveSearch) {
             recursiveSearchForRegularFiles (name,
                                             inExtensionList,
@@ -1181,8 +1181,8 @@ static void recursiveSearchForRegularFiles (const C_String & inUnixStartPath,
       }
       current = readdir (dir) ;
     }
+    closedir (dir) ;
   }
-  closedir (dir) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -1219,7 +1219,7 @@ static void recursiveSearchForDirectories (const C_String & inUnixStartPath,
       if (current->d_name [0] != '.') {
         C_String name = nativeStartPath ;
         name << "/" << current->d_name ;
-        if (C_FileManager::directoryExists (name)) {
+        if (C_FileManager::directoryExistsWithNativePath (name)) {
         //--- Look for extension
           const C_String extension = name.pathExtension () ;
           bool extensionFound = false ;
@@ -1244,8 +1244,8 @@ static void recursiveSearchForDirectories (const C_String & inUnixStartPath,
       }
       current = readdir (dir) ;
     }
+    closedir (dir) ;
   }
-  closedir (dir) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -2062,7 +2062,7 @@ static C_String recursiveRemoveDirectory (const C_String & inUnixDirectoryPath) 
       if ((strcmp (current->d_name, ".") != 0) && (strcmp (current->d_name, "..") != 0)) {
         C_String name = nativeStartPath ;
         name << "/" << current->d_name ;
-        if (C_FileManager::directoryExists (name)) {
+        if (C_FileManager::directoryExistsWithNativePath (name)) {
           recursiveRemoveDirectory (name) ;
         }else if (C_FileManager::fileExistsAtPath (name)) {
           result = C_FileManager::deleteFile (name) ;
@@ -2070,8 +2070,8 @@ static C_String recursiveRemoveDirectory (const C_String & inUnixDirectoryPath) 
       }
       current = readdir (dir) ;
     }
+    closedir (dir) ;
   }
-  closedir (dir) ;
   if (result.length () == 0) {
     result = C_FileManager::removeDirectory (inUnixDirectoryPath) ;
   }
