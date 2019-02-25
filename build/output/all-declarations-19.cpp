@@ -81,7 +81,7 @@ static void extensionMethod_optionComponentDeclarationAST_enterInSemanticContext
             test_3 = GALGAS_bool (kIsNotEqual, enumerator_4881.current_mOptionDefaultValueKind (HERE).objectCompare (GALGAS_optionDefaultValueEnumAST::constructor_noDefaultValue (SOURCE_FILE ("optionCompilation.galgas", 133)))).boolEnum () ;
             if (kBoolTrue == test_3) {
               TC_Array <C_FixItDescription> fixItArray4 ;
-              inCompiler->emitSemanticError (enumerator_4881.current_mOptionDefaultValue (HERE).getter_location (SOURCE_FILE ("optionCompilation.galgas", 134)), GALGAS_string ("an @bool option cannot have a default value (default value is allways false)"), fixItArray4  COMMA_SOURCE_FILE ("optionCompilation.galgas", 134)) ;
+              inCompiler->emitSemanticError (enumerator_4881.current_mOptionDefaultValue (HERE).getter_location (SOURCE_FILE ("optionCompilation.galgas", 134)), GALGAS_string ("an @bool option cannot have a default value (default value is always false)"), fixItArray4  COMMA_SOURCE_FILE ("optionCompilation.galgas", 134)) ;
             }
           }
         }
@@ -191,17 +191,17 @@ static void extensionMethod_optionComponentDeclarationAST_semanticAnalysis (cons
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_optionComponentDeclarationAST * object = (const cPtr_optionComponentDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_optionComponentDeclarationAST) ;
-  GALGAS_lstring var_nameForUsefulness_8063 = function_optionNameForUsefulEntitiesGraph (object->mProperty_mOptionComponentName, inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 198)) ;
+  GALGAS_lstring var_nameForUsefulness_8062 = function_optionNameForUsefulEntitiesGraph (object->mProperty_mOptionComponentName, inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 198)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_8063, var_nameForUsefulness_8063, inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 199)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_8062, var_nameForUsefulness_8062, inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 199)) ;
   }
-  GALGAS_bool var_isPredefined_8325 ;
-  GALGAS_commandLineOptionMap var_boolOptionMap_8370 ;
-  GALGAS_commandLineOptionMap var_uintOptionMap_8415 ;
-  GALGAS_commandLineOptionMap var_stringOptionMap_8462 ;
-  GALGAS_commandLineOptionMap var_stringListOptionMap_8513 ;
-  constinArgument_inSemanticContext.getter_mOptionComponentMapForSemanticAnalysis (HERE).method_searchKey (object->mProperty_mOptionComponentName, var_isPredefined_8325, var_boolOptionMap_8370, var_uintOptionMap_8415, var_stringOptionMap_8462, var_stringListOptionMap_8513, inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 201)) ;
-  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("option ").add_operation (object->mProperty_mOptionComponentName.getter_string (SOURCE_FILE ("optionCompilation.galgas", 211)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 211)), GALGAS_optionComponentForGeneration::constructor_new (GALGAS_bool (true), GALGAS_string ("option-").add_operation (object->mProperty_mOptionComponentName.getter_string (HERE).getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 214)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 214)), var_isPredefined_8325, object->mProperty_mOptionComponentName.getter_string (HERE), var_boolOptionMap_8370, var_uintOptionMap_8415, var_stringOptionMap_8462, var_stringListOptionMap_8513  COMMA_SOURCE_FILE ("optionCompilation.galgas", 212))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 210)) ;
+  GALGAS_bool var_isPredefined_8324 ;
+  GALGAS_commandLineOptionMap var_boolOptionMap_8369 ;
+  GALGAS_commandLineOptionMap var_uintOptionMap_8414 ;
+  GALGAS_commandLineOptionMap var_stringOptionMap_8461 ;
+  GALGAS_commandLineOptionMap var_stringListOptionMap_8512 ;
+  constinArgument_inSemanticContext.getter_mOptionComponentMapForSemanticAnalysis (HERE).method_searchKey (object->mProperty_mOptionComponentName, var_isPredefined_8324, var_boolOptionMap_8369, var_uintOptionMap_8414, var_stringOptionMap_8461, var_stringListOptionMap_8512, inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 201)) ;
+  ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("option ").add_operation (object->mProperty_mOptionComponentName.getter_string (SOURCE_FILE ("optionCompilation.galgas", 211)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 211)), GALGAS_optionComponentForGeneration::constructor_new (GALGAS_bool (true), GALGAS_string ("option-").add_operation (object->mProperty_mOptionComponentName.getter_string (HERE).getter_fileNameRepresentation (SOURCE_FILE ("optionCompilation.galgas", 214)), inCompiler COMMA_SOURCE_FILE ("optionCompilation.galgas", 214)), var_isPredefined_8324, object->mProperty_mOptionComponentName.getter_string (HERE), var_boolOptionMap_8369, var_uintOptionMap_8414, var_stringOptionMap_8461, var_stringListOptionMap_8512  COMMA_SOURCE_FILE ("optionCompilation.galgas", 212))  COMMA_SOURCE_FILE ("optionCompilation.galgas", 210)) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

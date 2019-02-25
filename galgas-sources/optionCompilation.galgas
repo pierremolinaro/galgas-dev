@@ -131,7 +131,7 @@ override method @optionComponentDeclarationAST enterInSemanticContext
         !"false"
       ]
       if mOptionDefaultValueKind != @optionDefaultValueEnumAST. noDefaultValue then
-        error mOptionDefaultValue:"an @bool option cannot have a default value (default value is allways false)"      
+        error mOptionDefaultValue:"an @bool option cannot have a default value (default value is always false)"      
       end
     elsif [mOptionTypeName string] == "uint" then
       [!?uintOptionMap insertKey

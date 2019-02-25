@@ -1303,7 +1303,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
   }
 //--- Print in BNF file
   if (inPopulateHTMLHelperString) {
-  ioHTMLFileContents.appendCppTitleComment ("Checking SLR condition", "title") ;
+    ioHTMLFileContents.appendCppTitleComment ("Checking SLR condition", "title") ;
   }
 
 //--- Build SLR table... detect if grammar is not SLR
@@ -1356,8 +1356,9 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
       }
       if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
         if (inPopulateHTMLHelperString) {
+          const C_String symbol = inVocabulary.getSymbol (SLRdecisionTable (state, terminal COMMA_HERE).parameter () COMMA_HERE) ;
           ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
-          ioHTMLFileContents << " *** CONFLICT ***" ;
+          ioHTMLFileContents << " *** CONFLICT (" << symbol << ") ***" ;
           ioHTMLFileContents.outputRawData ("</span>") ;
         }
         conflictCount ++ ;
@@ -1384,8 +1385,9 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
         }
         if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
           if (inPopulateHTMLHelperString) {
+            const C_String symbol = inVocabulary.getSymbol (SLRdecisionTable (state, terminal COMMA_HERE).parameter () COMMA_HERE) ;
             ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
-            ioHTMLFileContents << " *** CONFLICT ***" ;
+            ioHTMLFileContents << " *** CONFLICT (" << symbol << ") ***" ;
             ioHTMLFileContents.outputRawData ("</span>") ;
           }
           conflictCount ++ ;
@@ -1419,7 +1421,7 @@ SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderLi
     if (conflictCount == 0) {
       co << "ok.\n" ;
     }else{
-      co << "error.\n" ;
+      co << "error, " << cStringWithSigned (conflictCount) << " conflict" << ((conflictCount > 1) ? "s" : "") << ".\n" ;
     }
     co.flush () ;
   }
