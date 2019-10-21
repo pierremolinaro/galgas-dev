@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1997, ..., 2016 Pierre Molinaro.                                                                     *
+//  Copyright (C) 1997, ..., 2019 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -651,12 +651,9 @@ void C_String::suppress (const int32_t inLocation,
                     inLength, mEmbeddedString->mLength) ;
     const int32_t bytesToMove = 1 + ((int32_t) mEmbeddedString->mLength) - inLength - inLocation ;
     if ((inLocation >= 0) && (bytesToMove > 0)) {
-//      for (int32_t i=0 ; i<bytesToMove ; i++) {
-//        mEmbeddedString->mString [inLocation + i] = mEmbeddedString->mString [inLocation + i + inLength] ;
-//      }
-      ::memmove (& mEmbeddedString->mString [inLocation],
-                 & mEmbeddedString->mString [inLocation + inLength],
-                 ((size_t) bytesToMove) * sizeof (utf32)) ;
+      for (int32_t i=0 ; i<bytesToMove ; i++) {
+        mEmbeddedString->mString [inLocation + i] = mEmbeddedString->mString [inLocation + i + inLength] ;
+      }
       MF_Assert (mEmbeddedString->mLength >= (uint32_t) inLength,
                  "mLength (%lld) < inLength (%lld)",
                  mEmbeddedString->mLength, inLength) ;
@@ -689,10 +686,8 @@ void C_String::insertCharacterAtIndex (const utf32 inChar,
                  "inIndex (%ld) > mLength (%ld)",
                   inIndex, mEmbeddedString->mLength) ;
   const int32_t bytesToMove = 1 + ((int32_t) mEmbeddedString->mLength) - inIndex ;
-  if (bytesToMove > 0) {
-    ::memmove (& mEmbeddedString->mString [inIndex + 1],
-               & mEmbeddedString->mString [inIndex],
-               ((size_t) bytesToMove) * sizeof (utf32)) ;
+  for (int32_t i=bytesToMove ; i>0 ; i--) {
+    mEmbeddedString->mString [inIndex + i] = mEmbeddedString->mString [inIndex + i - 1] ;
   }
   mEmbeddedString->mString [inIndex] = inChar ;
   mEmbeddedString->mLength += 1 ;
