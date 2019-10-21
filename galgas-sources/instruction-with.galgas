@@ -224,7 +224,8 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
       found = mSearchMethodName.string == mSearchMethodNameForErrorSignaling.string
     end
     if not found then
-      error mSearchMethodNameForErrorSignaling : "there is no '" + mSearchMethodNameForErrorSignaling + "' search method declared in the '@" + [receiverType key] + "' map"
+      error mSearchMethodNameForErrorSignaling : "there is no '" + mSearchMethodNameForErrorSignaling
+          + "' search method declared in the '@" + [receiverType key] + "' map"
     end
   end
 #--- Analyze key expression
@@ -301,7 +302,8 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@variableMap ioVariableMap
+{
 #--- Analyze source expression
   [mKeyExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
@@ -490,16 +492,24 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+  ?!@string ioGeneratedCode
+{
   @string receiverCppName = mReceiverVariableCppName
   for () in mStructAttributeList do
     receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
 #--- key expression
-  [mKeyExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string keyVarCppName]
+  [mKeyExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string keyVarCppName
+  ]
 #---
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverVariableCppName]
+  [mReceiverType addHeaderFileName !?ioInclusionSet]
   ioGeneratedCode += "cMapElement_" + [mReceiverType identifierRepresentation]
                   + " * " + mObjectArrayCppName + " = (cMapElement_" + [mReceiverType identifierRepresentation]
                   + " *) " + receiverCppName + "."
@@ -510,8 +520,8 @@ override method @readWriteWithInstructionForGeneration generateInstruction
     ioGeneratedCode += ", kSearchErrorMessage_" + [mReceiverType identifierRepresentation] + "_" + mSearchMethodNameForErrorSignaling
   end
   ioGeneratedCode +=  " " + [mInstructionLocation commaSourceFile] + ") ;\n"
-                  +  "if (NULL != " + mObjectArrayCppName + ") {\n"
-                  +  "    macroValidSharedObject (" + mObjectArrayCppName + ", cMapElement_" + [mReceiverType identifierRepresentation] + ") ;\n"
+    +  "if (NULL != " + mObjectArrayCppName + ") {\n"
+    +  "  macroValidSharedObject (" + mObjectArrayCppName + ", cMapElement_" + [mReceiverType identifierRepresentation] + ") ;\n"
   generateInstructionList (
     !?ioInclusionSet
     !mDoBranchInstructions

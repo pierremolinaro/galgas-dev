@@ -1061,7 +1061,8 @@ override method @varInExpressionForGeneration generateExpression
   ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
+  !@string outCppExpression
+{
   [mResultType addHeaderFileName !?ioInclusionSet]
   outCppExpression = mCppVarName
   [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
@@ -1081,12 +1082,24 @@ override method @getterCallExpressionForGeneration generateExpression
 #--- Add return type header
   [mResultType addHeaderFileName !?ioInclusionSet]
 #--- Receiver expression
-  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverCppName]
+  [mReceiverExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string receiverCppName
+  ]
 #--- Reader operands
   @stringlist getterArgumentCppNameList = {}
   for () in mExpressions do
     @string argumentCppName
-    [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?argumentCppName]
+    [mExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?argumentCppName
+    ]
     getterArgumentCppNameList += !argumentCppName
   end
 #--- Generate Reader call

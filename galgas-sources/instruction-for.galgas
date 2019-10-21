@@ -474,7 +474,8 @@ override method @forInstructionAST analyzeSemanticInstruction
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@variableMap ioVariableMap
+{
 #--- Begin override for foreach defined constants
   [!?ioVariableMap openOverrideForSelectBlock]
   [!?ioVariableMap openBranch]
@@ -574,7 +575,7 @@ override method @forInstructionAST analyzeSemanticInstruction
 #--- Handle index
   [!?ioVariableMap openOverrideForRepeatBlock]
   @string indexCppName = ""
-  var indexDeclaration =@localConstantList {}
+  @localConstantList indexDeclaration = {}
   if [mIndexVariableName string] != "" then
     indexCppName = "index_" + [mInstructionLocation locationIndex]
     indexDeclaration +=
@@ -646,26 +647,34 @@ override method @forInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
-  var enumerationVarCppNameList =@stringlist {}
+  ?!@string ioGeneratedCode
+{
+  @stringlist enumerationVarCppNameList = {}
   for () in mEnumeratedObjectList do
     @string enumerationVar
-    [mEnumeratedExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?enumerationVar]
+    [mEnumeratedExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?enumerationVar
+    ]
     enumerationVarCppNameList += !enumerationVar
   end
   for () in mEnumeratedObjectList, () in enumerationVarCppNameList do
-    ioGeneratedCode += "cEnumerator_" + [[mEnumeratedExpression mResultType] identifierRepresentation] + " " + mEnumeratorCppName + " (" + mValue
-                    + ", kENUMERATION_" + mEnumerationOrder + ") ;\n"
+    ioGeneratedCode += "cEnumerator_" + [[mEnumeratedExpression mResultType] identifierRepresentation]
+      + " " + mEnumeratorCppName + " (" + mValue
+      + ", kENUMERATION_" + mEnumerationOrder + ") ;\n"
   end
 #--- Analyse 'while' expression
-  let @bool whileExpressionIsAllwaysTrue = [mWhileExpression isTrueExpression]
+  let whileExpressionIsAllwaysTrue = [mWhileExpression isTrueExpression]
 #--- Has 'before', 'after' or expression ? If yes, generate 'before' instructions
   if (([mBeforeInstructionList length] + [mAfterInstructionList length]) > 0) | not whileExpressionIsAllwaysTrue then
   #--- Index
     if mIndexVariableCppName != "" then
       ioGeneratedCode += "GALGAS_uint " + mIndexVariableCppName + " ((uint32_t) 0) ;\n"
     end
-    let @string boolVarCppName = "bool_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+    let boolVarCppName = "bool_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
     if whileExpressionIsAllwaysTrue then
       ioGeneratedCode += "const bool " + boolVarCppName + " = true ;\n"
     else
@@ -717,7 +726,13 @@ override method @forInstructionForGeneration generateInstruction
       end
       ioGeneratedCode += ") {\n"
       @string whileVar
-      [mWhileExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVar]
+      [mWhileExpression generateExpression
+        !?ioGeneratedCode
+        !?ioInclusionSet
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        ?whileVar
+      ]
       ioGeneratedCode += "    " + boolVarCppName + " = " + whileVar + ".isValidAndTrue () ;\n"
       ioGeneratedCode += "  }\n"
     end

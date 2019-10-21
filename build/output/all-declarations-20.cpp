@@ -5693,7 +5693,7 @@ static void extensionMethod_abstractExtensionGetterAST_enterDeclarationInGraph (
   }
   cMapElement_extensionGetterMapForBuildingContext * objectArray_3992 = (cMapElement_extensionGetterMapForBuildingContext *) ioArgument_ioExtensionGetterMapForBuildingContext.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, object->mProperty_mTypeName, kSearchErrorMessage_extensionGetterMapForBuildingContext_searchKey  COMMA_SOURCE_FILE ("extension-abstract-getter.galgas", 80)) ;
   if (NULL != objectArray_3992) {
-      macroValidSharedObject (objectArray_3992, cMapElement_extensionGetterMapForBuildingContext) ;
+    macroValidSharedObject (objectArray_3992, cMapElement_extensionGetterMapForBuildingContext) ;
     {
     objectArray_3992->mProperty_mExtensionGetterMapForType.setter_insertKey (object->mProperty_mAbstractExtensionGetterName, object->mProperty_mAbstractExtensionGetterReturnedTypeName, object->mProperty_mAbstractExtensionGetterFormalInputParameterList, inCompiler COMMA_SOURCE_FILE ("extension-abstract-getter.galgas", 81)) ;
     }
@@ -5955,7 +5955,7 @@ static void extensionMethod_abstractExtensionMethodAST_enterDeclarationInGraph (
   }
   cMapElement_extensionMethodMapForBuildingContext * objectArray_3048 = (cMapElement_extensionMethodMapForBuildingContext *) ioArgument_ioExtensionMethodMapForBuildingContext.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, object->mProperty_mTypeName, kSearchErrorMessage_extensionMethodMapForBuildingContext_searchKey  COMMA_SOURCE_FILE ("extension-abstract-method.galgas", 58)) ;
   if (NULL != objectArray_3048) {
-      macroValidSharedObject (objectArray_3048, cMapElement_extensionMethodMapForBuildingContext) ;
+    macroValidSharedObject (objectArray_3048, cMapElement_extensionMethodMapForBuildingContext) ;
     {
     objectArray_3048->mProperty_mExtensionMethodMapForType.setter_insertKey (object->mProperty_mAbstractExtensionMethodName, object->mProperty_mAbstractExtensionMethodFormalParameterList, inCompiler COMMA_SOURCE_FILE ("extension-abstract-method.galgas", 59)) ;
     }
@@ -6245,7 +6245,7 @@ static void extensionMethod_abstractExtensionSetterAST_enterDeclarationInGraph (
   }
   cMapElement_extensionSetterMapForBuildingContext * objectArray_3080 = (cMapElement_extensionSetterMapForBuildingContext *) ioArgument_ioExtensionSetterMapForBuildingContext.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, object->mProperty_mTypeName, kSearchErrorMessage_extensionSetterMapForBuildingContext_searchKey  COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 58)) ;
   if (NULL != objectArray_3080) {
-      macroValidSharedObject (objectArray_3080, cMapElement_extensionSetterMapForBuildingContext) ;
+    macroValidSharedObject (objectArray_3080, cMapElement_extensionSetterMapForBuildingContext) ;
     {
     objectArray_3080->mProperty_mExtensionSetterMapForType.setter_insertKey (object->mProperty_mAbstractExtensionSetterName, object->mProperty_mAbstractExtensionSetterFormalParameterList, inCompiler COMMA_SOURCE_FILE ("extension-abstract-setter.galgas", 59)) ;
     }
@@ -6564,7 +6564,7 @@ static void extensionMethod_extensionGetterAST_enterDeclarationInGraph (const cP
   }
   cMapElement_extensionGetterMapForBuildingContext * objectArray_4318 = (cMapElement_extensionGetterMapForBuildingContext *) ioArgument_ioExtensionGetterMapForBuildingContext.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, object->mProperty_mTypeName, kSearchErrorMessage_extensionGetterMapForBuildingContext_searchKey  COMMA_SOURCE_FILE ("extension-getter.galgas", 87)) ;
   if (NULL != objectArray_4318) {
-      macroValidSharedObject (objectArray_4318, cMapElement_extensionGetterMapForBuildingContext) ;
+    macroValidSharedObject (objectArray_4318, cMapElement_extensionGetterMapForBuildingContext) ;
     {
     objectArray_4318->mProperty_mExtensionGetterMapForType.setter_insertKey (object->mProperty_mExtensionGetterName, object->mProperty_mExtensionGetterReturnedTypeName, object->mProperty_mExtensionGetterFormalInputParameterList, inCompiler COMMA_SOURCE_FILE ("extension-getter.galgas", 88)) ;
     }
@@ -6940,7 +6940,7 @@ static void extensionMethod_extensionMethodAST_enterDeclarationInGraph (const cP
   }
   cMapElement_extensionMethodMapForBuildingContext * objectArray_3817 = (cMapElement_extensionMethodMapForBuildingContext *) ioArgument_ioExtensionMethodMapForBuildingContext.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, object->mProperty_mTypeName, kSearchErrorMessage_extensionMethodMapForBuildingContext_searchKey  COMMA_SOURCE_FILE ("extension-method.galgas", 74)) ;
   if (NULL != objectArray_3817) {
-      macroValidSharedObject (objectArray_3817, cMapElement_extensionMethodMapForBuildingContext) ;
+    macroValidSharedObject (objectArray_3817, cMapElement_extensionMethodMapForBuildingContext) ;
     {
     objectArray_3817->mProperty_mExtensionMethodMapForType.setter_insertKey (object->mProperty_mExtensionMethodName, object->mProperty_mExtensionMethodFormalParameterList, inCompiler COMMA_SOURCE_FILE ("extension-method.galgas", 75)) ;
     }
@@ -7313,7 +7313,7 @@ static void extensionMethod_extensionSetterAST_enterDeclarationInGraph (const cP
   }
   cMapElement_extensionSetterMapForBuildingContext * objectArray_3836 = (cMapElement_extensionSetterMapForBuildingContext *) ioArgument_ioExtensionSetterMapForBuildingContext.readWriteAccessForWithInstructionWithErrorMessage (inCompiler, object->mProperty_mTypeName, kSearchErrorMessage_extensionSetterMapForBuildingContext_searchKey  COMMA_SOURCE_FILE ("extension-setter.galgas", 73)) ;
   if (NULL != objectArray_3836) {
-      macroValidSharedObject (objectArray_3836, cMapElement_extensionSetterMapForBuildingContext) ;
+    macroValidSharedObject (objectArray_3836, cMapElement_extensionSetterMapForBuildingContext) ;
     {
     objectArray_3836->mProperty_mExtensionSetterMapForType.setter_insertKey (object->mProperty_mExtensionSetterName, object->mProperty_mExtensionSetterFormalParameterList, inCompiler COMMA_SOURCE_FILE ("extension-setter.galgas", 74)) ;
     }

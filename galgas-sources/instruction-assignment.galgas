@@ -155,6 +155,7 @@ override method @assignmentInstructionForGeneration generateInstruction
   ]
   [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
 #---
+  [mTargetType addHeaderFileName !?ioInclusionSet]
   @string receiverCppName = mTargetCppName
   for () in mStructAttributeList do
     receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]

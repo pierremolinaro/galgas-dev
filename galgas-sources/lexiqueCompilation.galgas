@@ -586,7 +586,7 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
     error mRoutineName: "this lexical routine call names "
     + [[mActualArgumentList length] string]
     + " actual argument(s), but the lexical routine prototype requires "
-    + [[lexicalRoutineFormalArgumentList length] string] + " actual argument(s)"
+    + [lexicalRoutineFormalArgumentList length] + " actual argument(s)"
   end
 #--- Check actual argument against formal parameters
   for () in lexicalRoutineFormalArgumentList, () in mActualArgumentList do
@@ -634,15 +634,6 @@ override method @lexicalDropInstructionAST checkLexicalInstruction
   ?!@lexicalTagMap unused ioTagMap {
   [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mTerminalName ?*]
 }
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#override method @lexicalOptionInstructionAST checkLexicalInstruction
-#  ?!@lexiqueAnalysisContext  ioLexiqueAnalysisContext
-#  ?!@lexicalTagMap unused ioTagMap
-#{
-#  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mTerminalName ?*]
-#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
