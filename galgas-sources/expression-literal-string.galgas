@@ -1,0 +1,81 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @literalStringExpressionAST : @semanticExpressionAST {
+  @location mLocation
+  @stringlist mStringSequence
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    @stringlist literalStringList = {}
+    repeat
+      $"string"$ ?let literalString
+      literalStringList += !literalString.string
+    while
+    end
+    outExpression = @literalStringExpressionAST.new {!@location.here !literalStringList}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @literalStringExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#·····················································································································
+
+override method @literalStringExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  @string s = ""
+  for () in mStringSequence do
+    s += mValue
+  end
+  outExpression = @literalStringExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mStringType !mLocation !s}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @literalStringExpressionForGeneration : @semanticExpressionForGeneration {
+  @string mString
+}
+
+#·····················································································································
+
+override method @literalStringExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  if mString == "" then
+    outCppExpression = "GALGAS_string::makeEmptyString ()"
+  else
+    outCppExpression = "GALGAS_string (" + [mString utf8Representation] + ")"
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

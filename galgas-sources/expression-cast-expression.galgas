@@ -1,0 +1,299 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @testDynamicClassInExpressionAST : @semanticExpressionAST {
+  @semanticExpressionAST mReceiverExpression
+  @location mEndOfReceiverExpression
+  @dynamicTypeComparisonKind mTypeComparisonKind
+  @lstring mTypeName
+}
+
+#·····················································································································
+
+enum @dynamicTypeComparisonKind {
+  case equal  # ==
+  case inherited  # >=
+  case strictlyInherited # >
+}
+
+
+#·····················································································································
+
+class @castInExpressionAST : @semanticExpressionAST {
+  @semanticExpressionAST mReceiverExpression
+  @location mEndOfReceiverExpression
+  @lstring mTypeName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <expression> !@semanticExpressionAST outExpression {
+    <casted_expression> ?outExpression
+    select
+    or
+      let endOfReceiverExpression = @location.here
+      $is$
+      @dynamicTypeComparisonKind kind
+      select
+        $==$
+        kind = .equal
+      or
+        $>=$
+        kind = .inherited
+      or
+        $>$
+        kind = .strictlyInherited
+      end
+      $@type$ ?let typeName
+      outExpression = @testDynamicClassInExpressionAST.new {
+        !outExpression
+        !endOfReceiverExpression
+        !kind
+        !typeName
+      }
+    or
+      let endOfReceiverExpression = @location.here
+      $as$
+      $@type$ ?let typeName
+      outExpression = @castInExpressionAST.new {
+        !outExpression
+        !endOfReceiverExpression
+        !typeName
+      }
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @testDynamicClassInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#·····················································································································
+
+override method @testDynamicClassInExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+#--- Receiver expression analysis
+  @semanticExpressionForGeneration expression
+  [mReceiverExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?expression
+  ]
+#--- Get type information
+   let castType = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+#--- This type is either a class
+  if [[[expression mResultType] mTypeKindEnum] isClassType] then
+  #--- Check expression type is a descendant of named type
+    @unifiedTypeMap-proxy t = castType
+    @bool found = t == [expression mResultType]
+    loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+    while (not found) & not [[t mSuperType] isNull] do
+      t = [t mSuperType]
+      found = t == [expression mResultType]
+    end
+    if not found then
+      error mTypeName
+      :"the '@" + mTypeName + "' is not a descendant of the '@" + [[expression mResultType] key] + "' type of the cast expression"
+    end
+  else
+    error [expression mLocation]: "expression should be a class instance: it is an @"
+     +  [[expression mResultType] key] + " instance"
+  end
+#--- Generate expression
+  outExpression = @testDynamicClassInExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    ![mTypeName location]
+    !expression
+    !mTypeComparisonKind
+    !castType}
+}
+
+#·····················································································································
+
+override method @castInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @castInExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+#--- Receiver expression analysis
+  [mReceiverExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext 
+    !?ioVariableMap
+    ?var @semanticExpressionForGeneration expression
+   ]
+#--- Get type information
+   let type = @unifiedTypeMap-proxy. searchKey {
+     !inAnalysisContext.mSemanticContext.mTypeMap
+     !mTypeName
+   }
+#--- This type is an @object type
+  if [[[expression mResultType] mTypeKindEnum] isClassType]then
+  #--- Check expression type is a descendant of named type
+    @unifiedTypeMap-proxy t = type
+    @bool found = t == [expression mResultType]
+    loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+    while (not found) & not [[t mSuperType] isNull] do
+      t = [t mSuperType]
+      found = t == [expression mResultType]
+    end
+    if not found then
+      error mTypeName
+      :"the '@" + mTypeName + "' is not a descendant of the '@"
+      + [[expression mResultType] key] + "' type of the cast expression"
+    end
+  elsif [[expression mResultType] key] != "object" then
+    error [expression mLocation]:
+      "cast expression should be a class instance or an @object instance: it is an @"
+     +  [[expression mResultType] key] + " instance"
+  end
+#--- Generate expression
+  if [[expression mResultType] key] == "object" then
+    outExpression = @extractObjectInExpressionForGeneration.new {
+      !type
+      !mEndOfReceiverExpression
+      !expression
+      ![mTypeName string]}
+  else
+    outExpression = @castInExpressionForGeneration.new {
+      !type
+      ![mTypeName location]
+      !expression
+      ![mTypeName string]
+      !type
+    }
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @testDynamicClassInExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression
+  @dynamicTypeComparisonKind mTypeComparisonKind
+  @unifiedTypeMap-proxy mCastType
+}
+
+#·····················································································································
+
+override method @testDynamicClassInExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  let typeNameRepresentation = [[mCastType key] identifierRepresentation]
+#--- Receiver expression
+  [mReceiverExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?var @string receiverExpression
+  ]
+#--- Generated test
+  [mCastType addHeaderFileName !?ioInclusionSet]
+  switch mTypeComparisonKind
+  case equal :
+    outCppExpression = "GALGAS_bool (" + receiverExpression
+      + ".dynamicTypeDescriptor () == & kTypeDescriptor_GALGAS_"
+      + typeNameRepresentation + ")"
+  case inherited :
+    outCppExpression = "GALGAS_bool (NULL != dynamic_cast <const cPtr_"
+    + typeNameRepresentation
+    + " *> (" + receiverExpression + ".ptr ()))"
+  case strictlyInherited :
+    outCppExpression = "GALGAS_bool ((" + receiverExpression
+      + ".dynamicTypeDescriptor () != & kTypeDescriptor_GALGAS_"
+      + typeNameRepresentation + ") && (NULL != dynamic_cast <const cPtr_"
+    + typeNameRepresentation
+    + " *> (" + receiverExpression + ".ptr ())))"
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @castInExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+{
+  [mCastType addHeaderFileName !?ioInclusionSet] 
+  outCppExpression = "temp_" + [ioTemporaryVariableIndex string]
+  ioTemporaryVariableIndex ++
+#--- Receiver expression
+  [mReceiverExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?var @string receiverExpression
+  ]
+#---
+  ioGeneratedCode += "GALGAS_" + [mTypeName identifierRepresentation]
+  + " " + outCppExpression + " ;\n"
+  + "if (" + receiverExpression + ".isValid ()) {\n"
+  [!?ioGeneratedCode incIndentation !2]
+#--- 
+  ioGeneratedCode +=
+    "if (NULL != dynamic_cast <const cPtr_"
+  + [mTypeName identifierRepresentation]
+  + " *> (" + receiverExpression + ".ptr ())) {\n"
+  + "  " + outCppExpression + " = (cPtr_" + [mTypeName identifierRepresentation] + " *) "
+  + receiverExpression + ".ptr () ;\n"
+  + "}else{\n"
+  [!?ioGeneratedCode incIndentation !2]
+  ioGeneratedCode +=
+    compilerCppName () + "->castError (\""
+  + [mTypeName identifierRepresentation] 
+  + "\", " + receiverExpression + ".ptr ()->classDescriptor ()"
+  + [mLocation commaSourceFile] + ") ;\n"
+  [!?ioGeneratedCode decIndentation !2]
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  ioGeneratedCode += "}\n"
+  [!?ioGeneratedCode decIndentation !2]
+  ioGeneratedCode += "}\n"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

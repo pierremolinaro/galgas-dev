@@ -1,0 +1,73 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @literalDoubleExpressionAST : @semanticExpressionAST {
+  @ldouble mValue
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $double.xxx$ ?let @ldouble literalDouble ?*
+    outExpression = @literalDoubleExpressionAST.new {!literalDouble}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @literalDoubleExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#·····················································································································
+
+override method @literalDoubleExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  outExpression = @literalDoubleExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mDoubleType
+    ![mValue location]
+    ![mValue double]
+  }
+}
+
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @literalDoubleExpressionForGeneration : @semanticExpressionForGeneration {
+  @double mValue
+}
+
+#·····················································································································
+
+override method @literalDoubleExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  outCppExpression = "GALGAS_double (" + [mValue string]+ ")"
+}
+
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

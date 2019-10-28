@@ -1,0 +1,72 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @literalCharExpressionAST : @semanticExpressionAST {
+  @lchar mCharacter
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $'char'$ ?let @lchar literalChar
+    outExpression = @literalCharExpressionAST.new {!literalChar}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @literalCharExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#·····················································································································
+
+override method @literalCharExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  outExpression = @literalCharExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mCharType
+    ![mCharacter location]
+    ![mCharacter char]
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @literalCharExpressionForGeneration : @semanticExpressionForGeneration {
+  @char mCharacter
+}
+
+#·····················································································································
+
+override method @literalCharExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  outCppExpression = "GALGAS_char (TO_UNICODE (" + [[mCharacter uint] string] + "))"
+}
+
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

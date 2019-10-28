@@ -2,7 +2,7 @@
 #                                                                                                                      *
 #  Compile all galgas sources                                                                                          *
 #                                                                                                                      *
-#  Copyright (C) 1997, ..., 2018 Pierre Molinaro.                                                                      *
+#  Copyright (C) 1997, ..., 2019 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@ls2n.fr                                                                                           *
 #                                                                                                                      *
@@ -115,11 +115,21 @@ project (3:3:12) -> "galgas" {
   "galgas-sources/semanticsCompilation.galgas"
   "galgas-sources/predefinedTypes.galgas"
   "galgas-sources/useful-entities-computation.galgas"
+  "galgas-sources/expression-cast-expression.galgas"
 
 #--- Expressions
   "galgas-sources/expression-if.galgas"
   "galgas-sources/expression-unary-plus.galgas"
   "galgas-sources/expression-unary-minus.galgas"
+  "galgas-sources/expression-var.galgas"
+  "galgas-sources/expression-output-expression-list.galgas"
+  "galgas-sources/expression-true-false.galgas"
+  "galgas-sources/expression-literal-string.galgas"
+  "galgas-sources/expression-literal-char.galgas"
+  "galgas-sources/expression-literal-double.galgas"
+  "galgas-sources/expression-literal-integer.galgas"
+  "galgas-sources/expression-comparison.galgas"
+  "galgas-sources/expression-additive.galgas"
 
   "galgas-sources/galgas3ExpressionSyntax.galgas"
   "galgas-sources/semanticExpressionAnalysis.galgas"

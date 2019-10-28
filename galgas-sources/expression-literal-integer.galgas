@@ -1,0 +1,287 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @literalUIntExpressionAST : @semanticExpressionAST {
+  @luint mValue
+}
+
+#·····················································································································
+
+class @literalUInt64ExpressionAST : @semanticExpressionAST {
+  @luint64 mValue
+}
+
+#·····················································································································
+
+class @literalSIntExpressionAST : @semanticExpressionAST {
+  @lsint mValue
+}
+
+#·····················································································································
+
+class @literalSInt64ExpressionAST : @semanticExpressionAST {
+  @lsint64 mValue
+}
+
+#·····················································································································
+
+class @literalBigIntExpressionAST : @semanticExpressionAST {
+  @lbigint mValue
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $uint32$ ?let @luint literalInt
+    outExpression = @literalUIntExpressionAST.new {!literalInt}
+  }
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $sint32_S$ ?let @lsint literalInt
+    outExpression = @literalSIntExpressionAST.new {!literalInt}
+  }
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $uint64_L$ ?let @luint64 literalInt
+    outExpression = @literalUInt64ExpressionAST.new {!literalInt}
+  }
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $sint64_LS$ ?let @lsint64 literalInt
+    outExpression = @literalSInt64ExpressionAST.new {!literalInt}
+  }
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $bigint_G$ ?let @lbigint literalInt
+    outExpression = @literalBigIntExpressionAST.new {!literalInt}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @literalUIntExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#·····················································································································
+
+override method @literalUIntExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  outExpression = @literalUIntExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mUIntType
+    !mValue # [mValue location]
+    !mValue # [mValue uint]
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @literalUInt64ExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#·····················································································································
+
+override method @literalUInt64ExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  outExpression = @literalUInt64ExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mUInt64Type
+    ![mValue location]
+    ![mValue uint64]
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @literalSIntExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#·····················································································································
+
+override method @literalSIntExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSIntType ![mValue location] ![mValue sint]}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @literalSInt64ExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#·····················································································································
+
+override method @literalSInt64ExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  outExpression = @literalSInt64ExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mSInt64Type
+    ![mValue location]
+    ![mValue sint64]
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @literalBigIntExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#·····················································································································
+
+override method @literalBigIntExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  outExpression = @literalBigIntExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mBigIntType
+    ![mValue location]
+    ![mValue bigint]
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @literalUIntExpressionForGeneration : @semanticExpressionForGeneration {
+  @uint mValue
+}
+
+#·····················································································································
+
+override method @literalUIntExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  outCppExpression = "GALGAS_uint ((uint32_t) " + [mValue string]+ "U)"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @literalUInt64ExpressionForGeneration : @semanticExpressionForGeneration {
+  @uint64 mValue
+}
+
+#·····················································································································
+
+override method @literalUInt64ExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  outCppExpression = "GALGAS_uint_36__34_ ((uint64_t) " + [mValue string]+ "ULL)"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @literalSIntExpressionForGeneration : @semanticExpressionForGeneration {
+  @sint mValue
+}
+
+#·····················································································································
+
+override method @literalSIntExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  outCppExpression = "GALGAS_sint ((int32_t) " + [mValue string]+ "L)"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @literalSInt64ExpressionForGeneration : @semanticExpressionForGeneration {
+  @sint64 mValue
+}
+
+#·····················································································································
+
+override method @literalSInt64ExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  outCppExpression = "GALGAS_sint_36__34_ ((int64_t) " + [mValue string]+ "LL)"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @literalBigIntExpressionForGeneration : @semanticExpressionForGeneration {
+  @bigint mValue
+}
+
+#·····················································································································
+
+override method @literalBigIntExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+{
+  outCppExpression = "GALGAS_bigint (\"" + [mValue string]+ "\", "
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  outCppExpression += compilerCppName ()
+  outCppExpression += " " + [mLocation commaSourceFile] + ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

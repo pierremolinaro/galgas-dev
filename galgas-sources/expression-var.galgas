@@ -1,0 +1,82 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @varInExpressionAST : @semanticExpressionAST {
+  @lstring mVarName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $identifier$ ?let identifier
+    outExpression = @varInExpressionAST.new {!identifier}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @varInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#·····················································································································
+
+override method @varInExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext unused inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  [!?ioVariableMap searchForReadAccess
+    !mVarName
+    ?let @unifiedTypeMap-proxy type
+    ?let @string sourceVariableCppName
+    ?let @string nameForCheckingFormalParameterUsing
+  ]
+  outExpression = @varInExpressionForGeneration.new {
+    !type
+    ![mVarName location]
+    !sourceVariableCppName
+    !nameForCheckingFormalParameterUsing
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @varInExpressionForGeneration : @semanticExpressionForGeneration {
+  @string mCppVarName
+  @string mNameForCheckingFormalParameterUsing
+}
+
+#·····················································································································
+
+override method @varInExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+{
+  [mResultType addHeaderFileName !?ioInclusionSet]
+  outCppExpression = mCppVarName
+  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

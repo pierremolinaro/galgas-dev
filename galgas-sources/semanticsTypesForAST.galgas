@@ -18,14 +18,6 @@ abstract class @semanticExpressionAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-list @actualOutputExpressionList {
-  @lstring mActualSelector %nogetter
-  @semanticExpressionAST mExpression %nogetter
-  @location mEndOfExpressionLocation %nogetter
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 list @semanticExpressionListAST {
   @semanticExpressionAST mExpression %nogetter
   @location mEndOfExpressionLocation %nogetter
@@ -35,67 +27,6 @@ list @semanticExpressionListAST {
 
 class @selfCopyInExpressionAST : @semanticExpressionAST {
   @location mSelfLocation
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @trueExpressionAST : @semanticExpressionAST {
-  @location mLocation
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @falseExpressionAST : @semanticExpressionAST {
-  @location mLocation
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @literalCharExpressionAST : @semanticExpressionAST {
-  @lchar mCharacter
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @literalStringExpressionAST : @semanticExpressionAST {
-  @location mLocation
-  @stringlist mStringSequence
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @literalDoubleExpressionAST : @semanticExpressionAST {
-  @ldouble mValue
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @literalUIntExpressionAST : @semanticExpressionAST {
-  @luint mValue
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @literalUInt64ExpressionAST : @semanticExpressionAST {
-  @luint64 mValue
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @literalSIntExpressionAST : @semanticExpressionAST {
-  @lsint mValue
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @literalSInt64ExpressionAST : @semanticExpressionAST {
-  @lsint64 mValue
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @literalBigIntExpressionAST : @semanticExpressionAST {
-  @lbigint mValue
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -144,18 +75,6 @@ class @orExpressionAST,
       @openedSliceExpressionAST,
       @andShortExpressionAST,
       @andExpressionAST,
-      @equalExpressionAST,
-      @notEqualExpressionAST,
-      @lowerOrEqualExpressionAST,
-      @greaterOrEqualExpressionAST,
-      @strictGreaterExpressionAST,
-      @strictLowerExpressionAST,
-      @rightShiftExpressionAST,
-      @leftShiftExpressionAST,
-      @addExpressionAST,
-      @addExpressionNoOverflowAST,
-      @subExpressionAST,
-      @subExpressionNoOverflowAST,
       @multiplicationExpressionAST,
       @multiplicationExpressionNoOverflowAST,
       @divisionExpressionAST,
@@ -192,39 +111,8 @@ class @functionCallExpressionAST : @semanticExpressionAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @varInExpressionAST : @semanticExpressionAST {
-  @lstring mVarName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 class @literalTypeInExpressionAST : @semanticExpressionAST {
   @lstring mLiteralTypeName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @castInExpressionAST : @semanticExpressionAST {
-  @semanticExpressionAST mReceiverExpression
-  @location mEndOfReceiverExpression
-  @lstring mTypeName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-enum @dynamicTypeComparisonKind {
-  case equal  # ==
-  case inherited  # >=
-  case strictlyInherited # >
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @testDynamicClassInExpressionAST : @semanticExpressionAST {
-  @semanticExpressionAST mReceiverExpression
-  @location mEndOfReceiverExpression
-  @dynamicTypeComparisonKind mTypeComparisonKind
-  @lstring mTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

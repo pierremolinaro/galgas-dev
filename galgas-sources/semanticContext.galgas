@@ -60,16 +60,6 @@ method @semanticInstructionListAST enterInstructionListInSemanticContext
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-method @actualOutputExpressionList enterInSemanticContext 
-  ?!@unifiedTypeMap ioTypeMap
-{
-  for () in self do
-    [mExpression enterExpressionInSemanticContext !?ioTypeMap]
-  end
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #  G R A M M A R   M A P                                                                                               *
 #                                                                                                                      *
