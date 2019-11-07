@@ -96,20 +96,12 @@ runCommand (["rm", "-fr", TEMP_DIR])
 #-------------------- Creer le repertoire contenant la distribution
 runCommand (["mkdir", TEMP_DIR])
 #-------------------- Importer galgas
-#runCommand ("/usr/bin/curl", ["-L", "https://github.com/pierremolinaro/ElCanari-dev/archive/master.zip", "-o", "archive.zip"])
-#runCommand (["git", "clone", "https://github.com/pierremolinaro/galgas-dev", TEMP_DIR + "/galgas"])
 os.chdir (TEMP_DIR)
 runCommand (["/usr/bin/curl", "-L", "https://github.com/pierremolinaro/galgas-dev/archive/master.zip", "-o",  "galgas.zip"])
 runCommand (["/usr/bin/unzip", "galgas.zip"])
 runCommand (["/bin/rm", "galgas.zip"])
 runCommand (["mv", "galgas-dev-master", "galgas"])
 os.chdir (scriptDir)
-# texteSurConsole = runHiddenCommand (["svn", "export", "https://galgas.rts-software.org/svn/", TEMP_DIR + "/galgas"])
-# components = texteSurConsole.split ("Exported revision")
-# #print "'" + components [1] + "'"
-# components = components [1].split (".")
-# numeroRevisionSVN = components [0].strip ()
-# print "Révision SVN : '" + numeroRevisionSVN + "'"
 #-------------------- Obtenir l'année
 ANNEE = str (datetime.datetime.now().year)
 print "ANNÉE : '" + ANNEE + "'"
@@ -128,7 +120,7 @@ runCommand (["mv", TEMP_DIR, DIR])
 writeFile (versionGALGAS, DIR + "/version-galgas.txt")
 # writeFile (numeroRevisionSVN, DIR + "/version-repository.txt")
 remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, DIR + "/galgas/project-xcode-galgas/Info.plist")
-remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, DIR + "/galgas/project-xcode-galgas/English.lproj/InfoPlist.strings")
+remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, DIR + "/galgas/project-xcode-galgas/en.lproj/InfoPlist.strings")
 for root, dirs, files in os.walk (DIR + "/galgas/galgas-sources"):
   for filename in files:
     (base, extension) = os.path.splitext (filename)
@@ -164,7 +156,7 @@ runCommand (["rm", "-fr", DIR + "/galgas/testsuite"])
 runCommand ([DIR + "/galgas/-verifier-create-galgas.command"])
 #-------------------- Vérifier GMP
 runCommand ([DIR + "/galgas/project-xcode-galgas/build-developer-v3/Default/galgas", "--check-gmp"])
-runCommand ([DIR + "/galgas/project-xcode-galgas/build-developer-v3/Default/galgas-debug-32", "--check-gmp"])
+runCommand ([DIR + "/galgas/project-xcode-galgas/build-developer-v3/Default/galgas-debug", "--check-gmp"])
 #-------------------- Construire la documentation Latex
 for root, dirs, files in os.walk (DIR + "/galgas/galgas-documentation-latex-sources"):
   for filename in files:

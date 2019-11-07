@@ -751,7 +751,7 @@
 		CF6CEC581278CBD500E8F785 /* scanner_actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = scanner_actions.h; sourceTree = "<group>"; };
 		CF6DF18F09E3F23700506859 /* galgas */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgas; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6DF20509E3F30400506859 /* galgas-debug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "galgas-debug"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF6DF25509E3F3A700506859 /* cocoaGalgasDeveloper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoaGalgasDeveloper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF6DF25509E3F3A700506859 /* cocoaGalgas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoaGalgas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF70273E137C53D600FA7C3E /* C_ColoredConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_ColoredConsole.cpp; sourceTree = "<group>"; };
 		CF7034FF23747419000456CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		CF7035002374741A000456CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1141,7 +1141,7 @@
 			children = (
 				CF6DF18F09E3F23700506859 /* galgas */,
 				CF6DF20509E3F30400506859 /* galgas-debug */,
-				CF6DF25509E3F3A700506859 /* cocoaGalgasDeveloper.app */,
+				CF6DF25509E3F3A700506859 /* cocoaGalgas.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1910,7 +1910,7 @@
 			name = "GALGAS Cocoa";
 			productInstallPath = "$(HOME)/Applications";
 			productName = essai_cocoa;
-			productReference = CF6DF25509E3F3A700506859 /* cocoaGalgasDeveloper.app */;
+			productReference = CF6DF25509E3F3A700506859 /* cocoaGalgas.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2766,7 +2766,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.ec-nantes.irccyn.molinaro.cocoaGalgas";
-				PRODUCT_NAME = cocoaGalgasDeveloper;
+				PRODUCT_NAME = cocoaGalgas;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
