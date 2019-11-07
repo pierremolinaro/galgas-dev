@@ -96,7 +96,14 @@ runCommand (["rm", "-fr", TEMP_DIR])
 #-------------------- Creer le repertoire contenant la distribution
 runCommand (["mkdir", TEMP_DIR])
 #-------------------- Importer galgas
-runCommand (["git", "clone", "https://github.com/pierremolinaro/galgas-dev", TEMP_DIR + "/galgas"])
+#runCommand ("/usr/bin/curl", ["-L", "https://github.com/pierremolinaro/ElCanari-dev/archive/master.zip", "-o", "archive.zip"])
+#runCommand (["git", "clone", "https://github.com/pierremolinaro/galgas-dev", TEMP_DIR + "/galgas"])
+os.chdir (TEMP_DIR)
+runCommand (["/usr/bin/curl", "-L", "https://github.com/pierremolinaro/galgas-dev/archive/master.zip", "-o",  "galgas.zip"])
+runCommand (["/usr/bin/unzip", "galgas.zip"])
+runCommand (["/bin/rm", "galgas.zip"])
+runCommand (["mv", "galgas-dev-master", "galgas"])
+os.chdir (scriptDir)
 # texteSurConsole = runHiddenCommand (["svn", "export", "https://galgas.rts-software.org/svn/", TEMP_DIR + "/galgas"])
 # components = texteSurConsole.split ("Exported revision")
 # #print "'" + components [1] + "'"
@@ -156,8 +163,8 @@ runCommand (["rm", "-fr", DIR + "/galgas/testsuite"])
 #-------------------- Vérifier la création de projet
 runCommand ([DIR + "/galgas/-verifier-create-galgas.command"])
 #-------------------- Vérifier GMP
-runCommand ([DIR + "/galgas/project-xcode-galgas/build/Default/galgas", "--check-gmp"])
-runCommand ([DIR + "/galgas/project-xcode-galgas/build/Default/galgas-debug-32", "--check-gmp"])
+runCommand ([DIR + "/galgas/project-xcode-galgas/build-developer-v3/Default/galgas", "--check-gmp"])
+runCommand ([DIR + "/galgas/project-xcode-galgas/build-developer-v3/Default/galgas-debug-32", "--check-gmp"])
 #-------------------- Construire la documentation Latex
 for root, dirs, files in os.walk (DIR + "/galgas/galgas-documentation-latex-sources"):
   for filename in files:
@@ -198,7 +205,7 @@ runCommand (["mv", DIR + "/galgas/makefile-x86linux64-on-macosx/galgas-debug.zip
 runCommand (["rm", "-fr", "galgas/makefile-x86linux64-on-macosx"])
 runCommand (["rm", "-fr", "galgas/build/cli-objects"])
 #-------------------- Creer l'archive BZ2 de cocoa galgas
-runCommand (["cp", "-r", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app", DIR])
+runCommand (["cp", "-r", DIR + "/galgas/project-xcode-galgas/build-developer-v3/Default/cocoaGalgas.app", DIR])
 runCommand (["tar", "-cf", "cocoaGalgas.app.tar", "cocoaGalgas.app"])
 runCommand (["bzip2", "-9", "cocoaGalgas.app.tar"])
 runCommand (["rm", "-fr", DIR + "/cocoaGalgas.app"])
@@ -206,15 +213,15 @@ runCommand (["rm", "-fr", DIR + "/cocoaGalgas.app"])
 runCommand (["mkdir", DIR + "/COCOA-GALGAS"])
 runCommand (["cp", DIR + "/galgas/AUTHORS", DIR + "/COCOA-GALGAS"])
 runCommand (["cp", DIR + "/galgas/COPYING", DIR + "/COCOA-GALGAS"])
-runCommand (["cp", "-r", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app", DIR + "/COCOA-GALGAS"])
+runCommand (["cp", "-r", DIR + "/galgas/project-xcode-galgas/build-developer-v3/Default/cocoaGalgas.app", DIR + "/COCOA-GALGAS"])
 runCommand (["hdiutil", "create", "-srcfolder", DIR + "/COCOA-GALGAS", DIR + "/cocoa-galgas.dmg"])
 runCommand (["rm", "-fr", DIR + "/COCOA-GALGAS"])
 #-------------------- Creer l'archive de l'outil ligne de commande pour mac
 runCommand (["mkdir", DIR + "/COCOA-TOOL"])
 runCommand (["cp", DIR + "/galgas/AUTHORS", DIR + "/COCOA-TOOL"])
 runCommand (["cp", DIR + "/galgas/COPYING", DIR + "/COCOA-TOOL"])
-runCommand (["cp", "-r", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app/Contents/Resources/galgas", DIR + "/COCOA-TOOL/galgas"])
-runCommand (["cp", "-r", DIR + "/galgas/project-xcode-galgas/build/Default/cocoaGalgas.app/Contents/Resources/galgas-debug", DIR + "/COCOA-TOOL/galgas-debug"])
+runCommand (["cp", "-r", DIR + "/galgas/project-xcode-galgas/build-developer-v3/Default/cocoaGalgas.app/Contents/Resources/galgas", DIR + "/COCOA-TOOL/galgas"])
+runCommand (["cp", "-r", DIR + "/galgas/project-xcode-galgas/build-developer-v3/Default/cocoaGalgas.app/Contents/Resources/galgas-debug", DIR + "/COCOA-TOOL/galgas-debug"])
 runCommand (["hdiutil", "create", "-srcfolder", DIR + "/COCOA-TOOL", DIR + "/galgas-tool.dmg"])
 runCommand (["rm", "-fr", DIR + "/COCOA-TOOL"])
 #-------------------- Supprimer les repertoires sources

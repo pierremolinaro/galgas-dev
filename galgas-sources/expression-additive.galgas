@@ -101,14 +101,13 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
   [mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inAnalysisContext.mPredefinedTypes.mUIntType
+    !inAnalysisContext.mPredefinedTypes.mBigIntType
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
   if let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalUIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
@@ -116,14 +115,21 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
        !mOperatorLocation
        ![left mValue] >> [right mValue]
      }
+  elsif let left = leftExpression as @literalBigIntExpressionForGeneration,
+     let right = rightExpression as @literalBigIntExpressionForGeneration then
+     outExpression = @literalBigIntExpressionForGeneration.new {
+       !inAnalysisContext.mPredefinedTypes.mBigIntType
+       !mOperatorLocation
+       ![left mValue] >> [[right mValue] uint]
+     }
   elsif not [[leftType mHandledOperatorFlags] infixShiftOperator] then
     error mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
     :outExpression
-  elsif [rightType key] != "uint" then
-    error mOperatorLocation
-    : "for a shift operator, right operand type should be '@uint': it is '@" + [rightType key] + "'"
-    :outExpression
+#  elsif [rightType key] != "uint" then
+#    error mOperatorLocation
+#    : "for a shift operator, right operand type should be '@uint': it is '@" + [rightType key] + "'"
+#    :outExpression
   else
   #--- Generate expression
     outExpression = @rightShiftExpressionForGeneration.new {
@@ -167,22 +173,13 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
   [mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
-    !inAnalysisContext.mPredefinedTypes.mUIntType
+    !inAnalysisContext.mPredefinedTypes.mBigIntType
     !inAnalysisContext
     !?ioVariableMap
     ?let @semanticExpressionForGeneration rightExpression
   ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
-#  if let left = leftExpression as @literalBigIntExpressionForGeneration,
-#     let right = rightExpression as @literalUIntExpressionForGeneration then
-#     let useusedExp = @literalBigIntExpressionForGeneration.new {
-#       !inAnalysisContext.mPredefinedTypes.mBigIntType
-#       !mOperatorLocation
-#       ![left mValue] << [right mValue]
-#     }
-#  end
   if let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalUIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
@@ -190,13 +187,16 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
        !mOperatorLocation
        ![left mValue] << [right mValue]
      }
+  elsif let left = leftExpression as @literalBigIntExpressionForGeneration,
+     let right = rightExpression as @literalBigIntExpressionForGeneration then
+     outExpression = @literalBigIntExpressionForGeneration.new {
+       !inAnalysisContext.mPredefinedTypes.mBigIntType
+       !mOperatorLocation
+       ![left mValue] << [[right mValue] uint]
+     }
   elsif not [[leftType mHandledOperatorFlags] infixShiftOperator] then
     error mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
-    :outExpression
-  elsif [rightType key] != "uint" then
-    error mOperatorLocation
-    : "for a shift operator, right operand type should be '@uint': it is '@" + [rightType key] + "'"
     :outExpression
   else
   #--- Generate expression
@@ -257,12 +257,21 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @addExpressionNoOverflowForGeneration.new {
-    !leftType
-    !mOperatorLocation
-    !leftExpression
-    !rightExpression
-  }
+  if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
+     let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
+    outExpression = @literalBigIntExpressionForGeneration.new {
+      !inAnalysisContext.mPredefinedTypes.mBigIntType
+      !mOperatorLocation
+      !leftBigint.mValue + rightBigint.mValue
+    }
+  else
+    outExpression = @addExpressionNoOverflowForGeneration.new {
+      !leftType
+      !mOperatorLocation
+      !leftExpression
+      !rightExpression
+    }
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -312,12 +321,21 @@ override method @addExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @addExpressionForGeneration.new {
-    !leftType
-    !mOperatorLocation
-    !leftExpression
-    !rightExpression
-  }
+  if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
+     let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
+    outExpression = @literalBigIntExpressionForGeneration.new {
+      !inAnalysisContext.mPredefinedTypes.mBigIntType
+      !mOperatorLocation
+      !leftBigint.mValue + rightBigint.mValue
+    }
+  else
+    outExpression = @addExpressionForGeneration.new {
+      !leftType
+      !mOperatorLocation
+      !leftExpression
+      !rightExpression
+    }
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -368,12 +386,21 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @subExpressionNoOverflowForGeneration.new {
-    !leftType
-    !mOperatorLocation
-    !leftExpression
-    !rightExpression
-  }
+  if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
+     let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
+    outExpression = @literalBigIntExpressionForGeneration.new {
+      !inAnalysisContext.mPredefinedTypes.mBigIntType
+      !mOperatorLocation
+      !leftBigint.mValue - rightBigint.mValue
+    }
+  else
+    outExpression = @subExpressionNoOverflowForGeneration.new {
+      !leftType
+      !mOperatorLocation
+      !leftExpression
+      !rightExpression
+    }
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -423,12 +450,21 @@ override method @subExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @subExpressionForGeneration.new {
-    !leftType
-    !mOperatorLocation
-    !leftExpression
-    !rightExpression
-  }
+  if let leftBigint  = leftExpression as @literalBigIntExpressionForGeneration,
+     let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
+    outExpression = @literalBigIntExpressionForGeneration.new {
+      !inAnalysisContext.mPredefinedTypes.mBigIntType
+      !mOperatorLocation
+      !leftBigint.mValue - rightBigint.mValue
+    }
+  else
+    outExpression = @subExpressionForGeneration.new {
+      !leftType
+      !mOperatorLocation
+      !leftExpression
+      !rightExpression
+    }
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -462,7 +498,8 @@ override method @rightShiftExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
 #--- Generate Comparison
   outCppExpression = leftTemporaryOperand + ".right_shift_operation ("
-                   + rightTemporaryOperand + [mLocation commaSourceFile] + ")"
+                   + rightTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + ")"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
 #·····················································································································
@@ -482,7 +519,8 @@ override method @leftShiftExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
 #--- Generate Comparison
   outCppExpression = leftTemporaryOperand + ".left_shift_operation ("
-                   +  rightTemporaryOperand + [mLocation commaSourceFile] + ")"
+                   +  rightTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + ")"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
 #·····················································································································

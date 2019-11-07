@@ -43,7 +43,7 @@ option galgas_cli_options {
 
   @bool displayUnicodeLexicalTestFunctions : '\0', "display-lexical-test-functions" -> "Display Unicode Lexical Test Functions"
 
-  @uint macosxSDK : '\0', "macosx" -> "Generate an Xcode project for OS X 10.n"
+  @uint macosxSDK : '\0', "macosx" -> "Generate an Xcode project for OS X"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

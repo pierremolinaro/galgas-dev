@@ -32,16 +32,15 @@
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-static void
-computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
-                   const C_Relation & inNonterminalSymbolsFollowedByEmpty,
-                   const cVocabulary & inVocabulary,
-                   const TC_UniqueArray <bool> & inNonterminalSymbolsDerivingInEmpty,
-                   const C_Relation & inFIRSTsets,
-                   const int32_t inTerminalSymbolsCount,
-                   C_Relation & outFOLLOWsets,
-                   TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFOLLOWarray,
-                   int32_t & outIterationsCount) {
+static void computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
+                               const C_Relation & inNonterminalSymbolsFollowedByEmpty,
+                               const cVocabulary & inVocabulary,
+                               const TC_UniqueArray <bool> & inNonterminalSymbolsDerivingInEmpty,
+                               const C_Relation & inFIRSTsets,
+                               const int32_t inTerminalSymbolsCount,
+                               C_Relation & outFOLLOWsets,
+                               TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFOLLOWarray,
+                               int32_t & outIterationsCount) {
   C_Relation directFollowers (inFIRSTsets.configuration(), false) ;
   directFollowers.addVariable ("last", inFIRSTsets.configuration().typeForVariable(0 COMMA_HERE)) ;
   C_Relation lastOfProduction (directFollowers.configuration(), false) ;

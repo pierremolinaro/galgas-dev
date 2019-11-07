@@ -12686,7 +12686,7 @@ C_UIntCommandLineOption gOption_galgas_5F_cli_5F_options_macosxSDK ("galgas_cli_
                                          "macosxSDK",
                                          0,
                                          "macosx",
-                                         "Generate an Xcode project for OS X 10.n",
+                                         "Generate an Xcode project for OS X",
                                          0) ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

@@ -2951,7 +2951,7 @@ void cParser_galgas_33_GuiComponentSyntax::rule_galgas_33_GuiComponentSyntax_gui
               inCompiler->emitSemanticError (var_endingStrip_4739.getter_location (SOURCE_FILE ("guiCompilation.galgas", 154)), GALGAS_string ("tail strip should be < 15"), fixItArray5  COMMA_SOURCE_FILE ("guiCompilation.galgas", 154)) ;
             }
           }
-          var_displayFlags_4370 = var_leadingStrip_4564.getter_uint (HERE).left_shift_operation (GALGAS_uint ((uint32_t) 4U) COMMA_SOURCE_FILE ("guiCompilation.galgas", 156)).operator_or (var_endingStrip_4739.getter_uint (SOURCE_FILE ("guiCompilation.galgas", 156)) COMMA_SOURCE_FILE ("guiCompilation.galgas", 156)) ;
+          var_displayFlags_4370 = var_leadingStrip_4564.getter_uint (HERE).left_shift_operation (GALGAS_uint ((uint32_t) 4U), inCompiler COMMA_SOURCE_FILE ("guiCompilation.galgas", 156)).operator_or (var_endingStrip_4739.getter_uint (SOURCE_FILE ("guiCompilation.galgas", 156)) COMMA_SOURCE_FILE ("guiCompilation.galgas", 156)) ;
           inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__29_ COMMA_SOURCE_FILE ("guiCompilation.galgas", 157)) ;
         } break ;
         default:

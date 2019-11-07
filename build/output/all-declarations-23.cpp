@@ -5102,6 +5102,7 @@ GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_bigint_5F_typ
     "\n"
     "//--------------------------------- Accessors\n"
     "  public : inline bool isValid (void) const { return mIsValid ; }\n"
+    "  public : inline C_BigInt bigintValue (void) const { return mValue ; }\n"
     "  public : VIRTUAL_IN_DEBUG void drop (void) ;\n"
     "\n"
     "//--------------------------------- Default constructor\n"

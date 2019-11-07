@@ -39,9 +39,17 @@ end
 
 if [SUPPORTED_OPERATORS infixShiftOperator] then
   %//--------------------------------- << and >> shift operators\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const GALGAS_uint inShiftOperand\n%
+  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const GALGAS_uint inShiftOperand,\n%
+  !^%class C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const GALGAS_uint inShiftOperand\n%
+  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const GALGAS_bigint inShiftOperand,\n%
+  !^%class C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) const ;\n\n%
+  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const GALGAS_uint inShiftOperand,\n%
+  !^%class C_Compiler * inCompiler\n%
+  !^%COMMA_LOCATION_ARGS) const ;\n\n%
+  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const GALGAS_bigint inShiftOperand,\n%
+  !^%class C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 

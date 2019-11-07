@@ -11,6 +11,7 @@ class GALGAS_bigint : public AC_GALGAS_root {
 
 //--------------------------------- Accessors
   public : inline bool isValid (void) const { return mIsValid ; }
+  public : inline C_BigInt bigintValue (void) const { return mValue ; }
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
