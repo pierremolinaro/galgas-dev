@@ -198,7 +198,7 @@
 	<key>CFBundleSignature</key>
 	<string>GGSX</string>
 	<key>CFBundleVersion</key>
-	<string>BUILD_AND_LIBPM</string>
+	<string>GALGASBETAVERSION</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
