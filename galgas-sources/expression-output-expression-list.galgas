@@ -3,9 +3,9 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @actualOutputExpressionList {
-  @lstring mActualSelector %nogetter
-  @semanticExpressionAST mExpression %nogetter
-  @location mEndOfExpressionLocation %nogetter
+  @lstring mActualSelector
+  @semanticExpressionAST mExpression
+  @location mEndOfExpressionLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

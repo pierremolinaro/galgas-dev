@@ -292,6 +292,7 @@ boolset @operators {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 map @propertyMap {
+  @bool mIsPublic
   @unifiedTypeMap-proxy mPropertyType
   insert insertKey error message "the '%K' property has been already declared in %L"
   search searchKey error message "the '%K' property is not declared"
@@ -325,7 +326,7 @@ shared map @unifiedTypeMap {
   @typeKindEnum mTypeKindEnum
   @bool mSupportCollectionValue
   @typedPropertyList mAllTypedAttributeList
-  @propertyMap mAttributeMap # struct, class
+  @propertyMap mPropertyMap # struct, class
   @typedPropertyList mCurrentTypedAttributeList
   @constructorMap mConstructorMap
   @getterMap mGetterMap
@@ -342,7 +343,7 @@ shared map @unifiedTypeMap {
   @bool mGenerateHeaderInSeparateFile # Significant only for classes
   @unifiedTypeMap-proxy mTypeForEnumeratedElement
   @string mDefaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
-  @string mHeaderFileName %nogetter # Name of C++ header file that contains type declaration
+  @string mHeaderFileName # Name of C++ header file that contains type declaration
   @headerKind mHeaderKind
 
   insert insertKey error message "the '@%K' type has been already declared in %L"

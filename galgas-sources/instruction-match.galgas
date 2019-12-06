@@ -3,18 +3,18 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @matchEntryListAST {
-  @bool mIsType %nogetter # true if type, false if enum
-  @lstring mTypeNameOrEnumerationConstantName %nogetter
-  @lstring mLocalConstantName %nogetter # Empty string if no constant
+  @bool mIsType # true if type, false if enum
+  @lstring mTypeNameOrEnumerationConstantName
+  @lstring mLocalConstantName # Empty string if no constant
 }
 
 #······················································································································*
 
 list @matchInstructionBranchListAST {
-  @matchEntryListAST mMatchEntryList %nogetter
-  @location mEndOfMatchEntryList %nogetter
-  @semanticInstructionListAST mMatchBranchInstructionList %nogetter
-  @location mEndOf_instructionList %nogetter
+  @matchEntryListAST mMatchEntryList
+  @location mEndOfMatchEntryList
+  @semanticInstructionListAST mMatchBranchInstructionList
+  @location mEndOf_instructionList
 }
 
 #······················································································································*

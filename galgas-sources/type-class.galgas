@@ -3,12 +3,12 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @classDeclarationAST : @semanticDeclarationAST {
-  @bool mIsAbstract %nogetter
-  @bool mIsShared %nogetter
-  @lstring mClassTypeName %nogetter
-  @lstring mSuperClassName %nogetter # Empty if no super class
-  @lstringlist mClassFeatureList %nogetter
-  @propertyInCollectionListAST mPropertyList %nogetter
+  @bool mIsAbstract
+  @bool mIsShared
+  @lstring mClassTypeName
+  @lstring mSuperClassName # Empty if no super class
+  @lstringlist mClassFeatureList
+  @propertyInCollectionListAST mPropertyList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -16,7 +16,6 @@ class @classDeclarationAST : @semanticDeclarationAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 syntax extension galgas3DeclarationsSyntax {
-
 
   rule <declaration>
    ?!@galgas3DeclarationAST ioDeclarations {
@@ -228,6 +227,7 @@ override method @classDeclarationAST enterInSemanticContext
       !mPropertyName.string
     [!?attributeMap insertKey
       !mPropertyName
+      !mIsPublic
       !attributeTypeIndex
     ]
     if [getterMap hasKey ![mPropertyName string]] then
@@ -255,14 +255,16 @@ override method @classDeclarationAST enterInSemanticContext
   @typedPropertyList allTypedAttributeList = inheritedTypedAttributeList
   for () in mPropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    var hasSetter = false
-    var hasGetter = true
+    let hasSetter = mIsPublic
+    let hasGetter = mIsPublic
     var hasSelector = false
     for () in mAttributeList do
       if [mValue string] == "setter" then
-        hasSetter = true
+        warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
+#        hasSetter = true
       elsif [mValue string] == "nogetter" then
-        hasGetter = false
+        warning mValue : "obsolete attribute: use 'private' qualifier"
+#        hasGetter = false
       elsif [mValue string] == "selector" then
         hasSelector = true
       end
@@ -420,20 +422,22 @@ override method @classDeclarationAST semanticAnalysis
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
-    var hasSetter = false
-    var hasGetter = true
+    let hasSetter = mIsPublic
+    let hasGetter = mIsPublic
     var hasSelector = false
     for () in mAttributeList do
       if [mValue string] == "setter" then
-        if hasSetter then
-          error mValue : "the '%setter' attribute is already named"
-        end
-        hasSetter = true
+        warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
+#        if hasSetter then
+#          error mValue : "the '%setter' attribute is already named"
+#        end
+#        hasSetter = true
       elsif [mValue string] == "nogetter" then
-        if not hasGetter then
-          error mValue : "the '%nogetter' attribute is already named"
-        end
-        hasGetter = false
+        warning mValue : "obsolete attribute: use 'private' qualifier"
+#        if not hasGetter then
+#          error mValue : "the '%nogetter' attribute is already named"
+#        end
+#        hasGetter = false
       elsif [mValue string] == "selector" then
         if hasSelector then
           error mValue : "the '%selector' attribute is already named"
@@ -441,8 +445,8 @@ override method @classDeclarationAST semanticAnalysis
         hasSelector = true
       else
         error mValue
-        : "only '%setter', '%nogetter' or '%selector' are allowed here"
-        fixit { replace {!"%nogetter", !"%setter", !"%selector"} }
+        : "only '%selector' is allowed here"
+        fixit { replace {!"%selector"} }
 
       end
     end

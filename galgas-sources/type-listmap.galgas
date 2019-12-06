@@ -36,15 +36,15 @@ override method @listmapDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   var structAttributeList =@propertyInCollectionListAST {}
   structAttributeList +=
-#    !false # Is not private
     !["string" nowhere]
     !["key" nowhere]
-    !@lstringlist.emptyList
+    !true
+    !{}
   structAttributeList +=
-#    !false # Is not private
     !mAssociatedListTypeName
     !["mList" nowhere]
-    !@lstringlist.emptyList
+    !true
+    !{}
 #---
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !mIsPredefined

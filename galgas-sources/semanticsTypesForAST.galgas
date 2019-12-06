@@ -19,8 +19,8 @@ abstract class @semanticExpressionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @semanticExpressionListAST {
-  @semanticExpressionAST mExpression %nogetter
-  @location mEndOfExpressionLocation %nogetter
+  @semanticExpressionAST mExpression
+  @location mEndOfExpressionLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -190,10 +190,10 @@ getter @formalArgumentPassingModeAST formalArgumentString -> @string {
 
 list @formalParameterListAST {
   @lstring mFormalSelector
-  @formalArgumentPassingModeAST mFormalArgumentPassingMode %nogetter
-  @lstring mFormalArgumentTypeName %nogetter
-  @lstring mFormalArgumentName %nogetter
-  @bool mIsUnused %nogetter
+  @formalArgumentPassingModeAST mFormalArgumentPassingMode
+  @lstring mFormalArgumentTypeName
+  @lstring mFormalArgumentName
+  @bool mIsUnused
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -203,11 +203,11 @@ list @formalParameterListAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @formalInputParameterListAST {
-  @lstring mFormalSelector %nogetter
-  @lstring mFormalArgumentTypeName %nogetter
-  @lstring mFormalArgumentName %nogetter
-  @bool mIsUnused %nogetter
-  @bool mIsConstant %nogetter
+  @lstring mFormalSelector
+  @lstring mFormalArgumentTypeName
+  @lstring mFormalArgumentName
+  @bool mIsUnused
+  @bool mIsConstant
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -346,13 +346,13 @@ abstract class @semanticInstructionAST : @syntaxInstructionAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @semanticInstructionListAST {
-  @semanticInstructionAST mInstruction %nogetter
+  @semanticInstructionAST mInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @semanticDeclarationListAST {
-  @semanticDeclarationAST mSemanticDeclaration %nogetter
+  @semanticDeclarationAST mSemanticDeclaration
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -429,6 +429,7 @@ class @onceFunctionDeclarationAST : @semanticDeclarationAST {
 list @propertyInCollectionListAST {
   @lstring mPropertyTypeName
   @lstring mPropertyName
+  @bool mIsPublic
   @lstringlist mAttributeList
 }
 
@@ -440,17 +441,17 @@ list @propertyInCollectionListAST {
 
 list @formalTemplateInputParameterListAST {
   @lstring mFormalTemplateSelector
-  @lstring mFormalArgumentTypeName %nogetter
-  @lstring mFormalArgumentName %nogetter
-  @bool mIsUnused %nogetter
+  @lstring mFormalArgumentTypeName
+  @lstring mFormalArgumentName
+  @bool mIsUnused
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @filewrapperTemplateListAST {
-  @lstring mFilewrapperTemplateName %nogetter
-  @lstring mFilewrapperTemplatePath %nogetter
-  @formalTemplateInputParameterListAST mFilewrapperTemplateFormalInputParameters %nogetter
+  @lstring mFilewrapperTemplateName
+  @lstring mFilewrapperTemplatePath
+  @formalTemplateInputParameterListAST mFilewrapperTemplateFormalInputParameters
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -468,39 +469,39 @@ class @filewrapperDeclarationAST : @semanticDeclarationAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxInstructionList {
-  @syntaxInstructionAST mInstruction %nogetter
+  @syntaxInstructionAST mInstruction
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @nonTerminalLabelListAST {
-  @lstring mLabelName %nogetter
-  @formalParameterListAST mFormalArgumentList %nogetter
-  @location mEndOfArgumentLocation %nogetter
+  @lstring mLabelName
+  @formalParameterListAST mFormalArgumentList
+  @location mEndOfArgumentLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @nonterminalDeclarationListAST {
-  @lstring mNonterminalName %nogetter
-  @nonTerminalLabelListAST mLabels %nogetter
+  @lstring mNonterminalName
+  @nonTerminalLabelListAST mLabels
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxRuleLabelListAST {
-  @lstring mLabelName %nogetter
-  @formalParameterListAST mFormalArguments %nogetter
-  @location mEndOfArgumentLocation %nogetter
-  @syntaxInstructionList mSyntaxInstructionList %nogetter
-  @location mEndOfInstructionList %nogetter
+  @lstring mLabelName
+  @formalParameterListAST mFormalArguments
+  @location mEndOfArgumentLocation
+  @syntaxInstructionList mSyntaxInstructionList
+  @location mEndOfInstructionList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @syntaxRuleListAST {
-  @lstring mNonterminalName %nogetter
-  @syntaxRuleLabelListAST mLabelList %nogetter
+  @lstring mNonterminalName
+  @syntaxRuleLabelListAST mLabelList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -510,8 +511,8 @@ list @syntaxRuleListAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @listOfSyntaxInstructionList {
-  @syntaxInstructionList mSyntaxInstructionList %nogetter
-  @location mEndOf_instructions %nogetter
+  @syntaxInstructionList mSyntaxInstructionList
+  @location mEndOf_instructions
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -21,12 +21,11 @@ private proc appendPredefinedListTypeAST
   ?!@lstringlist ioUsefulnessRootEntities 
  {
   @propertyInCollectionListAST attributeList = {}
-  @lstringlist attributeFeatureList = {}
-  attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
     !@lstring.new {!inElementTypeName !@location.here}
     !@lstring.new {!"mValue" !@location.here}
-    !attributeFeatureList
+    !true
+    !{}
   ioDeclarationListASTs += !@listDeclarationAST.new {
     !true # Is predefined
     !@lstring.new {!inElementTypeName + "list" !@location.here}
@@ -42,16 +41,16 @@ private proc appendPredefined2StringListTypeAST
   ?!@lstringlist ioUsefulnessRootEntities 
 {
   var attributeList =@propertyInCollectionListAST {}
-  var attributeFeatureList =@lstringlist {}
-  attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
     !@lstring.new {!"string" !@location.here}
     !@lstring.new {!"mValue0" !@location.here}
-    !attributeFeatureList
+    !true
+    !{}
   attributeList +=
     !@lstring.new {!"string" !@location.here}
     !@lstring.new {!"mValue1" !@location.here}
-    !attributeFeatureList
+    !true
+    !{}
 
   ioDeclarationListASTs += !@listDeclarationAST.new {
     !true # Is predefined
@@ -68,16 +67,16 @@ private proc appendPredefined2LStringListTypeAST
   ?!@lstringlist ioUsefulnessRootEntities 
 {
   @propertyInCollectionListAST attributeList = {}
-  @lstringlist attributeFeatureList = {}
-  attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
     !@lstring.new {!"lstring" !@location.here}
     !@lstring.new {!"mValue0" !@location.here}
-    !attributeFeatureList
+    !true
+    !{}
   attributeList +=
     !@lstring.new {!"lstring" !@location.here}
     !@lstring.new {!"mValue1" !@location.here}
-    !attributeFeatureList
+    !true
+    !{}
 
   ioDeclarationListASTs += !@listDeclarationAST.new {
     !true # Is predefined
@@ -94,16 +93,17 @@ private proc appendStructASTForTypeWithLocation
   ?let @string inElementTypeName
   ?!@lstringlist ioUsefulnessRootEntities 
 {
-  var featureList =@lstringlist {}
   var attributeList =@propertyInCollectionListAST {}
   attributeList += 
     !@lstring.new {!inElementTypeName !@location.here}
     !@lstring.new {!inElementTypeName !@location.here}
-    !featureList
+    !true
+    !{}
   attributeList +=
     !@lstring.new {!"location" !@location.here}
     !@lstring.new {!"location" !@location.here}
-    !featureList
+    !true
+    !{}
   ioDeclarationListASTs += !@structDeclarationAST.new {
     !true # Is prefined
     !@lstring.new {!"l" + inElementTypeName !@location.here}
@@ -123,10 +123,12 @@ private proc appendStructASTForRangeType
   attributeList +=
     !@lstring.new {!"uint" !@location.here}
     !@lstring.new {!"start" !@location.here}
+    !true
     !{}
   attributeList +=
     !@lstring.new {!"uint" !@location.here}
     !@lstring.new {!"length" !@location.here}
+    !true
     !{}
   ioDeclarationListASTs += !@structDeclarationAST.new {
     !true # Is prefined

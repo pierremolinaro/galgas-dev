@@ -77,11 +77,11 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
       ?*
     ]
     for () in mStructAttributeList do
-      let attributeMap = [targetType mAttributeMap]
-      [attributeMap searchKey 
-        !mValue
-        ?targetType
-      ]
+      let propertyMap = [targetType mPropertyMap]
+      [propertyMap searchKey !mValue ?let isPublic  ?targetType]
+      if not isPublic then
+        error mValue : " inaccessible property (due to its 'private' qualifier)"
+      end
     end
   end
 #--- Analyze source expression

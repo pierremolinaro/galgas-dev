@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @sortedListSortDescriptorListAST {
-  @lstring mSortedAttributeName %nogetter
-  @bool mAscending %nogetter
+  @lstring mSortedAttributeName
+  @bool mAscending
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -94,12 +94,12 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
 
 override method @sortedListDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
-  var structAttributeList =@propertyInCollectionListAST {}
+  @propertyInCollectionListAST structAttributeList = {}
   for () in mPropertyList do
     structAttributeList +=
-#      !mIsPrivate
       !mPropertyTypeName
       !mPropertyName
+      !true
       !@lstringlist.emptyList
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {

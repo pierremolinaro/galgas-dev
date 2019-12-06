@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @graphInsertModifierList {
-  @lstring mInsertModifierName %nogetter
-  @lstring mInsertErrorMessage %nogetter
+  @lstring mInsertModifierName
+  @lstring mInsertErrorMessage
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

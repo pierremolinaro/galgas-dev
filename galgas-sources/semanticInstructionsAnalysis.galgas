@@ -202,15 +202,15 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   [!?ioVariableMap searchForReadWriteAccess !mOutputInputActualParameterName ?var @unifiedTypeMap-proxy parameterType ?variableCppName ?*]
   var typeList = @unifiedTypeMapProxyList. listWithValue {!parameterType}
   for () in mStructAttributeList do
-    let attributeMap = [parameterType mAttributeMap]
-    [attributeMap searchKey
+    let propertyMap = [parameterType mPropertyMap]
+    [propertyMap searchKey
       !mValue
-#      ??@bool isPrivate
+      ?let isPublic 
       ?parameterType
     ]
-#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-#      error mValue : "this field is private" ;
-#    end if ;
+    if not isPublic then
+      error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
     typeList += !parameterType
   end
 #--- Check type
@@ -637,11 +637,15 @@ proc checkExpressionIsBoolean
   if expressionType == boolType then
     outExpression = inExpression
   elsif [expressionType mTypeKindEnum] == @typeKindEnum. structType then
-    if [[expressionType mAttributeMap] hasKey !"bool"] then
-      [[expressionType mAttributeMap] searchKey
-        !@lstring.new {!"bool" !@location.here}
+    if [[expressionType mPropertyMap] hasKey !"bool"] then
+      [[expressionType mPropertyMap] searchKey
+        !@lstring.new {!"bool" !inErrorLocation}
+        ?let isPublic 
         ?let @unifiedTypeMap-proxy attributeType
       ]
+      if not isPublic then
+        error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
+      end
       if attributeType == boolType then
         outExpression = @structFieldAccessExpressionForGeneration.new {
           !boolType

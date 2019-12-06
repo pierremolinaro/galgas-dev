@@ -66,9 +66,9 @@ syntax extension galgas3DeclarationsSyntax {
 
 override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   @propertyInCollectionListAST structAttributeList = {}
-  structAttributeList += !mKeyTypeName !["key" nowhere] !{}
+  structAttributeList += !mKeyTypeName !["key" nowhere] !true !{}
   for () in mPropertyList do
-    structAttributeList += !mPropertyTypeName !mPropertyName !{}
+    structAttributeList += !mPropertyTypeName !mPropertyName !true !{}
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !mIsPredefined

@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @forInstructionEnumeratedObjectElementListAST {
-  @lstring mOptionalTypeName %nogetter # Empty string if joker
-  @lstring mOptionalConstantName %nogetter  # Empty string if joker
+  @lstring mOptionalTypeName # Empty string if joker
+  @lstring mOptionalConstantName  # Empty string if joker
 }
 
 #·····················································································································*

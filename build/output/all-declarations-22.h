@@ -10,334 +10,239 @@
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          Routine 'analyzeRoutineArguments'                                          *
+//                                        Filewrapper 'enumGenerationTemplate'                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-void routine_analyzeRoutineArguments (const class GALGAS_lstring constinArgument0,
-                                      class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                      const class GALGAS_analysisContext constinArgument2,
-                                      const class GALGAS_lstring constinArgument3,
-                                      const class GALGAS_string constinArgument4,
-                                      const class GALGAS_formalParameterSignature constinArgument5,
-                                      const class GALGAS_actualParameterListAST constinArgument6,
-                                      class GALGAS_variableMap & ioArgument7,
-                                      class GALGAS_semanticInstructionListForGeneration & ioArgument8,
-                                      class GALGAS_actualParameterListForGeneration & outArgument9,
-                                      class C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_enumGenerationTemplate ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         Routine 'checkExpressionIsBoolean'                                          *
+//                            Filewrapper template 'enumGenerationTemplate enumTypeHeader1'                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-void routine_checkExpressionIsBoolean (const class GALGAS_analysisContext constinArgument0,
-                                       const class GALGAS_location constinArgument1,
-                                       const class GALGAS_semanticExpressionForGeneration constinArgument2,
-                                       class GALGAS_semanticExpressionForGeneration & outArgument3,
-                                       class C_Compiler * inCompiler
-                                       COMMA_LOCATION_ARGS) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                   Function 'procedureNameForUsefulEntitiesGraph'                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_lstring function_procedureNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                   class C_Compiler * inCompiler
-                                                                   COMMA_LOCATION_ARGS) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Function 'filewrapperNameForUsefulEntitiesGraph'                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_lstring function_filewrapperNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                     class C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              Function 'filewrapperTemplateNameForUsefulEntitiesGraph'                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_lstring function_filewrapperTemplateNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                             const class GALGAS_lstring & constinArgument1,
-                                                                             class C_Compiler * inCompiler
+GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                             const class GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,
+                                                                             const class GALGAS_bool & in_HAS_5F_ASSOCIATED_5F_VALUES
                                                                              COMMA_LOCATION_ARGS) ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Function 'syntaxNameForUsefulEntitiesGraph'                                     *
+//                            Filewrapper template 'enumGenerationTemplate enumTypeHeader2'                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-class GALGAS_lstring function_syntaxNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                class C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (class C_Compiler * inCompiler,
+                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                             const class GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,
+                                                                             const class GALGAS_bool & in_HAS_5F_ASSOCIATED_5F_VALUES
+                                                                             COMMA_LOCATION_ARGS) ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Routine 'semanticAnalysisOfSyntaxComponent'                                     *
+//                    Filewrapper template 'enumGenerationTemplate enumTypeSpecificImplementation'                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-void routine_semanticAnalysisOfSyntaxComponent (const class GALGAS_lstring constinArgument0,
-                                                class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                                const class GALGAS_nonterminalDeclarationListAST constinArgument2,
-                                                const class GALGAS_syntaxRuleListAST constinArgument3,
-                                                const class GALGAS_string constinArgument4,
-                                                const class GALGAS_string constinArgument5,
-                                                const class GALGAS_semanticContext constinArgument6,
-                                                const class GALGAS_predefinedTypes constinArgument7,
-                                                const class GALGAS_terminalMap constinArgument8,
-                                                const class GALGAS_stringset constinArgument9,
-                                                const class GALGAS_bool constinArgument10,
-                                                const class GALGAS_bool constinArgument11,
-                                                class GALGAS_syntaxDeclarationForGeneration & outArgument12,
-                                                class C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                         const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                         const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                         const class GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,
+                                                                                         const class GALGAS_bool & in_HAS_5F_ASSOCIATED_5F_VALUES
+                                                                                         COMMA_LOCATION_ARGS) ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    Function 'grammarNameForUsefulEntitiesGraph'                                     *
+//                                       Routine 'enterBaseGetterWith2Arguments'                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-class GALGAS_lstring function_grammarNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                 class C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
+void routine_enterBaseGetterWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
+                                               class GALGAS_unifiedTypeMap & ioArgument1,
+                                               const class GALGAS_string constinArgument2,
+                                               const class GALGAS_string constinArgument3,
+                                               const class GALGAS_string constinArgument4,
+                                               const class GALGAS_string constinArgument5,
+                                               const class GALGAS_string constinArgument6,
+                                               const class GALGAS_string constinArgument7,
+                                               const class GALGAS_bool constinArgument8,
+                                               class C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    Function 'lexiqueNameForUsefulEntitiesGraph'                                     *
+//                                     Routine 'enterInheritedGetterWithArgument'                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-class GALGAS_lstring function_lexiqueNameForUsefulEntitiesGraph (const class GALGAS_lstring & constinArgument0,
-                                                                 class C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) ;
+void routine_enterInheritedGetterWithArgument (class GALGAS_getterMap & ioArgument0,
+                                               class GALGAS_unifiedTypeMap & ioArgument1,
+                                               const class GALGAS_string constinArgument2,
+                                               const class GALGAS_string constinArgument3,
+                                               const class GALGAS_string constinArgument4,
+                                               const class GALGAS_string constinArgument5,
+                                               const class GALGAS_bool constinArgument6,
+                                               class C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                               Routine 'buildRuleList'                                               *
+//                                    Routine 'enterInheritedGetterWithoutArgument'                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-void routine_buildRuleList (const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis constinArgument0,
-                            const class GALGAS_lstring constinArgument1,
-                            const class GALGAS_syntaxRuleListAST constinArgument2,
-                            class GALGAS_terminalSymbolsMapForGrammarAnalysis & ioArgument3,
-                            class GALGAS_syntaxComponentListForGrammarAnalysis & ioArgument4,
-                            class GALGAS_uint & ioArgument5,
-                            class C_Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) ;
+void routine_enterInheritedGetterWithoutArgument (class GALGAS_getterMap & ioArgument0,
+                                                  class GALGAS_unifiedTypeMap & ioArgument1,
+                                                  const class GALGAS_string constinArgument2,
+                                                  const class GALGAS_string constinArgument3,
+                                                  const class GALGAS_bool constinArgument4,
+                                                  class C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                               Routine 'checkLabelMap'                                               *
+//                                          Function 'elementTypeNameSuffix'                                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-void routine_checkLabelMap (const class GALGAS_location constinArgument0,
-                            const class GALGAS_nonTerminalLabelListAST constinArgument1,
-                            const class GALGAS_location constinArgument2,
-                            const class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis constinArgument3,
-                            class C_Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) ;
+class GALGAS_string function_elementTypeNameSuffix (class C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       Routine 'emitProductionRulesInTexFile'                                        *
+//                                        Routine 'check_K_L_escapeCharacters'                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-void routine_emitProductionRulesInTexFile (const class GALGAS_string constinArgument0,
-                                           const class GALGAS_string constinArgument1,
-                                           const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis constinArgument2,
-                                           const class GALGAS_syntaxComponentListForGrammarAnalysis constinArgument3,
-                                           const class GALGAS_lstring constinArgument4,
-                                           class C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
+void routine_check_5F_K_5F_L_5F_escapeCharacters (class GALGAS_lstring inArgument0,
+                                                  class C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       Routine 'grammarAnalysisAndGeneration'                                        *
+//                                      Routine 'enterConstructorWithoutArgument'                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-void routine_grammarAnalysisAndGeneration (const class GALGAS_stringset constinArgument0,
-                                           const class GALGAS_lstring constinArgument1,
-                                           const class GALGAS_lstring constinArgument2,
-                                           const class GALGAS_uint constinArgument3,
-                                           const class GALGAS_string constinArgument4,
-                                           const class GALGAS_terminalSymbolsMapForGrammarAnalysis constinArgument5,
-                                           const class GALGAS_syntaxComponentListForGrammarAnalysis constinArgument6,
-                                           const class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis constinArgument7,
-                                           const class GALGAS_string constinArgument8,
-                                           const class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis constinArgument9,
-                                           const class GALGAS_bool constinArgument10,
-                                           const class GALGAS_string constinArgument11,
-                                           class GALGAS_string & outArgument12,
-                                           class GALGAS_string & outArgument13,
-                                           class C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Routine 'handleNonTerminalDeclarations'                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void routine_handleNonTerminalDeclarations (class GALGAS_nonTerminalSymbolMapForGrammarAnalysis & ioArgument0,
-                                            const class GALGAS_nonterminalDeclarationListAST constinArgument1,
-                                            class C_Compiler * inCompiler
-                                            COMMA_LOCATION_ARGS) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Routine 'handleNonTerminalDeclarationsFromRuleList'                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void routine_handleNonTerminalDeclarationsFromRuleList (class GALGAS_nonTerminalSymbolMapForGrammarAnalysis & ioArgument0,
-                                                        const class GALGAS_syntaxRuleListAST constinArgument1,
-                                                        class C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           Function 'buildPredefinedTypes'                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_predefinedTypes function_buildPredefinedTypes (const class GALGAS_semanticContext & constinArgument0,
-                                                            class C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Filewrapper 'syntaxFileGenerationTemplate'                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const cDirectoryWrapper gWrapperDirectory_0_syntaxFileGenerationTemplate ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                 Filewrapper template 'syntaxFileGenerationTemplate syntaxFileImplementationGalgas3'                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxFileImplementationGalgas_33_ (class C_Compiler * inCompiler,
-                                                                                                   const class GALGAS_stringset & in_INCLUSION_5F_SET
-                                                                                                   COMMA_LOCATION_ARGS) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                 Filewrapper template 'syntaxFileGenerationTemplate syntaxAnalyserClassDeclaration'                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassDeclaration (class C_Compiler * inCompiler,
-                                                                                               const class GALGAS_string & in_COMPONENT_5F_NAME,
-                                                                                               const class GALGAS_string & in_LEXIQUE_5F_NAME,
-                                                                                               const class GALGAS_nonterminalMap & in_NONTERMINAL_5F_MAP,
-                                                                                               const class GALGAS_ruleDeclarationList & in_RULE_5F_DECLARATION_5F_LIST,
-                                                                                               const class GALGAS_uintlist & in_SELECT_5F_METHOD_5F_LIST,
-                                                                                               const class GALGAS_bool & in_HAS_5F_INDEXING,
-                                                                                               const class GALGAS_bool & in_HAS_5F_TRANSLATE_5F_FEATURE
-                                                                                               COMMA_LOCATION_ARGS) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Routine 'enterNonterminalNonTerminalInMapAndCheck'                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void routine_enterNonterminalNonTerminalInMapAndCheck (const class GALGAS_lstring constinArgument0,
-                                                       const class GALGAS_nonterminalLabelMap constinArgument1,
-                                                       class GALGAS_nonterminalMap & ioArgument2,
-                                                       class C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Routine 'buildNonterminalDeclarationsMap'                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void routine_buildNonterminalDeclarationsMap (const class GALGAS_nonterminalDeclarationListAST constinArgument0,
-                                              const class GALGAS_semanticContext constinArgument1,
-                                              class GALGAS_nonterminalMap & outArgument2,
+void routine_enterConstructorWithoutArgument (class GALGAS_constructorMap & ioArgument0,
+                                              class GALGAS_unifiedTypeMap & ioArgument1,
+                                              const class GALGAS_string constinArgument2,
+                                              const class GALGAS_string constinArgument3,
+                                              const class GALGAS_bool constinArgument4,
                                               class C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       Routine 'analyzeSyntaxInstructionList'                                        *
+//                                        Filewrapper 'listGenerationTemplate'                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-void routine_analyzeSyntaxInstructionList (const class GALGAS_lstring constinArgument0,
-                                           class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                           const class GALGAS_analysisContext constinArgument2,
-                                           const class GALGAS_bool constinArgument3,
-                                           const class GALGAS_terminalMap constinArgument4,
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_listGenerationTemplate ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                            Filewrapper template 'listGenerationTemplate listTypeHeader1'                            *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                             const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                             const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                             const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                    Filewrapper template 'listGenerationTemplate listTypeSpecificImplementation'                     *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_string filewrapperTemplate_listGenerationTemplate_listTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                         const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                         const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                         const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                         const class GALGAS_string & in_ELEMENT_5F_TYPE_5F_IDENTIFIER
+                                                                                         COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                         Routine 'check_K_escapeCharacters'                                          *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void routine_check_5F_K_5F_escapeCharacters (class GALGAS_lstring inArgument0,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                        Function 'forbiddenKeysForMapAndDict'                                        *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+class GALGAS_stringset function_forbiddenKeysForMapAndDict (class C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                       Routine 'enterConstructorWithArgument'                                        *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void routine_enterConstructorWithArgument (class GALGAS_constructorMap & ioArgument0,
+                                           class GALGAS_unifiedTypeMap & ioArgument1,
+                                           const class GALGAS_string constinArgument2,
+                                           const class GALGAS_string constinArgument3,
+                                           const class GALGAS_string constinArgument4,
                                            const class GALGAS_string constinArgument5,
-                                           const class GALGAS_nonterminalMap constinArgument6,
-                                           const class GALGAS_string constinArgument7,
-                                           const class GALGAS_syntaxInstructionList constinArgument8,
-                                           const class GALGAS_location constinArgument9,
-                                           const class GALGAS_stringset constinArgument10,
-                                           class GALGAS_variableMap & ioArgument11,
-                                           class GALGAS_uint & ioArgument12,
-                                           class GALGAS_semanticInstructionListForGeneration & outArgument13,
+                                           const class GALGAS_bool constinArgument6,
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        Routine 'semanticAnalysisOfRuleLabel'                                        *
+//                                    Routine 'enterInheritedGetterWith2Arguments'                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-void routine_semanticAnalysisOfRuleLabel (const class GALGAS_lstring constinArgument0,
-                                          class GALGAS_usefulEntitiesGraph & ioArgument1,
-                                          const class GALGAS_formalParameterListAST constinArgument2,
-                                          const class GALGAS_syntaxInstructionList constinArgument3,
-                                          const class GALGAS_analysisContext constinArgument4,
-                                          const class GALGAS_terminalMap constinArgument5,
-                                          const class GALGAS_bool constinArgument6,
-                                          const class GALGAS_string constinArgument7,
-                                          const class GALGAS_nonterminalMap constinArgument8,
-                                          const class GALGAS_string constinArgument9,
-                                          const class GALGAS_location constinArgument10,
-                                          const class GALGAS_stringset constinArgument11,
-                                          class GALGAS_uint & ioArgument12,
-                                          class GALGAS_formalParameterListForGeneration & outArgument13,
-                                          class GALGAS_formalParameterSignature & outArgument14,
-                                          class GALGAS_semanticInstructionListForGeneration & outArgument15,
-                                          class C_Compiler * inCompiler
-                                          COMMA_LOCATION_ARGS) ;
+void routine_enterInheritedGetterWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
+                                                    class GALGAS_unifiedTypeMap & ioArgument1,
+                                                    const class GALGAS_string constinArgument2,
+                                                    const class GALGAS_string constinArgument3,
+                                                    const class GALGAS_string constinArgument4,
+                                                    const class GALGAS_string constinArgument5,
+                                                    const class GALGAS_string constinArgument6,
+                                                    const class GALGAS_string constinArgument7,
+                                                    const class GALGAS_bool constinArgument8,
+                                                    class C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       Filewrapper 'grammarGenerationTemplate'                                       *
+//                                      Filewrapper 'mapProxyGenerationTemplate'                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -350,33 +255,92 @@ void routine_semanticAnalysisOfRuleLabel (const class GALGAS_lstring constinArgu
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-extern const cDirectoryWrapper gWrapperDirectory_0_grammarGenerationTemplate ;
+extern const cDirectoryWrapper gWrapperDirectory_0_mapProxyGenerationTemplate ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                     Filewrapper template 'grammarGenerationTemplate grammarZone3HeaderGalgas3'                      *
+//                        Filewrapper template 'mapProxyGenerationTemplate mapProxyTypeHeader1'                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-GALGAS_string filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_HeaderGalgas_33_ (class C_Compiler * inCompiler,
-                                                                                             const class GALGAS_string & in_LEXIQUE_5F_IDENTIFIER,
-                                                                                             const class GALGAS_nonTerminalSymbolMapForGrammarAnalysis & in_NON_5F_TERMINAL_5F_MAP,
-                                                                                             const class GALGAS_nonTerminalToAddList & in_ADDED_5F_NON_5F_TERMINAL_5F_LIST,
-                                                                                             const class GALGAS_bool & in_HAS_5F_INDEXING,
-                                                                                             const class GALGAS_string & in_START_5F_SYMBOL_5F_NAME,
-                                                                                             const class GALGAS_bool & in_HAS_5F_TRANSLATE_5F_FEATURE,
-                                                                                             const class GALGAS_string & in_GRAMMAR_5F_NAME,
-                                                                                             const class GALGAS_lstringlist & in_SYNTAX_5F_COMPONENTS
-                                                                                             COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_mapProxyGenerationTemplate_mapProxyTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                                     const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                     const class GALGAS_string & in_TYPE_5F_IDENTIFIER
+                                                                                     COMMA_LOCATION_ARGS) ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Function 'syntaxSignatureOfInstructionList'                                     *
+//                Filewrapper template 'mapProxyGenerationTemplate mapProxyTypeSpecificImplementation'                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-class GALGAS_semanticInstructionListForGeneration function_syntaxSignatureOfInstructionList (const class GALGAS_string & constinArgument0,
-                                                                                             const class GALGAS_semanticInstructionListForGeneration & constinArgument1,
-                                                                                             class C_Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) ;
+GALGAS_string filewrapperTemplate_mapProxyGenerationTemplate_mapProxyTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                                 const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                                 const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                                 const class GALGAS_string & in_ASSOCIATED_5F_MAP_5F_TYPE_5F_IDENTIFIER,
+                                                                                                 const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                                 const class GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST
+                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                      Filewrapper 'sharedMapGenerationTemplate'                                      *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_sharedMapGenerationTemplate ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                       Filewrapper template 'sharedMapGenerationTemplate uniqueMapTypeHeader1'                       *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_string filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeHeader_31_ (class C_Compiler * inCompiler,
+                                                                                       const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                       const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                       const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                       const class GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                       Filewrapper template 'sharedMapGenerationTemplate uniqueMapTypeHeader2'                       *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_string filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeHeader_32_ (class C_Compiler * inCompiler,
+                                                                                       const class GALGAS_string & in_TYPE_5F_NAME,
+                                                                                       const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                       const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//               Filewrapper template 'sharedMapGenerationTemplate uniqueMapTypeSpecificImplementation'                *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_string filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeSpecificImplementation (class C_Compiler * inCompiler,
+                                                                                                   const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
+                                                                                                   const class GALGAS_typedPropertyList & in_ATTRIBUTE_5F_LIST,
+                                                                                                   const class GALGAS_insertMethodListAST & in_INSERT_5F_METHOD_5F_LIST,
+                                                                                                   const class GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST,
+                                                                                                   const class GALGAS_mapAutomatonStateMap & in_MAP_5F_AUTOMATON_5F_STATE_5F_MAP,
+                                                                                                   const class GALGAS_mapAutomatonActionMap & in_MAP_5F_AUTOMATON_5F_ACTION_5F_MAP,
+                                                                                                   const class GALGAS_mapStateSortedList & in_MAP_5F_AUTOMATON_5F_DEFINITION_5F_SORTEDLIST,
+                                                                                                   const class GALGAS_mapOverrideList & in_MAP_5F_OVERRIDE_5F_LIST,
+                                                                                                   const class GALGAS_keySortedList & in_MAP_5F_AUTOMATON_5F_STATE_5F_MAP_5F_ORDERED_5F_LIST,
+                                                                                                   const class GALGAS_mapAutomatonMessageKind & in_SHADOW_5F_BEHAVIOUR,
+                                                                                                   const class GALGAS_string & in_SHADOW_5F_MESSAGE
+                                                                                                   COMMA_LOCATION_ARGS) ;
 

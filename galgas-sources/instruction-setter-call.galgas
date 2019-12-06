@@ -129,11 +129,11 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
      ?let @string receiverVariableBaseName
   ]
   for () in mReceiverStructAttributes do
-    let attributeMap = [receiverType mAttributeMap]
-    [attributeMap searchKey
-      !mValue
-      ?receiverType
-    ]
+    let propertyMap = [receiverType mPropertyMap]
+    [propertyMap searchKey !mValue ?let isPublic ?receiverType]
+    if not isPublic then
+      error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
   end
 #--- Type cast ?
   @unifiedTypeMap-proxy castType

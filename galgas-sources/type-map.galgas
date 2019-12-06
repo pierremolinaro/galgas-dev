@@ -3,32 +3,32 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @insertMethodListAST {
-  @lstring mInsertMethodName %nogetter
-  @lstring mErrorMessage %nogetter
-  @lstring mShadowErrorMessage %nogetter
-  @lstring mInitialStateName %nogetter
+  @lstring mInsertMethodName
+  @lstring mErrorMessage
+  @lstring mShadowErrorMessage
+  @lstring mInitialStateName
 }
 
 #·······················································································································
 
 list @mapSearchMethodListAST {
-  @lstring mSearchMethodName %nogetter
-  @lstring mErrorMessage %nogetter
-  @lstring mActionName %nogetter
-  @bool mLocationAttribute %nogetter
+  @lstring mSearchMethodName
+  @lstring mErrorMessage
+  @lstring mActionName
+  @bool mLocationAttribute
 }
 
 #·······················································································································
 
 list @mapRemoveMethodListAST {
-  @lstring mMethodName %nogetter
-  @lstring mErrorMessage %nogetter
+  @lstring mMethodName
+  @lstring mErrorMessage
 }
 
 #·······················································································································
 
 list @insertOrReplaceDeclarationListAST {
-  @location mInsertOrReplaceDeclarationLocation %nogetter
+  @location mInsertOrReplaceDeclarationLocation
 }
 
 #·······················································································································
@@ -187,12 +187,14 @@ override method @mapDeclarationAST addAssociatedElement
   structAttributeList +=
     !["lstring" nowhere]
     !["lkey" nowhere]
-    !@lstringlist.emptyList
+    !true
+    !{}
   for () in mPropertyList do
     structAttributeList +=
       !mPropertyTypeName
       !mPropertyName
-      !@lstringlist.emptyList
+      !true
+      !{}
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !mIsPredefined

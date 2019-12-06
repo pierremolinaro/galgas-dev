@@ -3,8 +3,8 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @listDeclarationAST : @semanticDeclarationAST {
-  @lstring mListTypeName %nogetter
-  @propertyInCollectionListAST mPropertyList %nogetter
+  @lstring mListTypeName
+  @propertyInCollectionListAST mPropertyList
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -67,20 +67,22 @@ override method @listDeclarationAST enterInSemanticContext
   @typedPropertyList typedAttributeList = {}
   for () in mPropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    var hasSetter = false
-    var hasGetter = true
+    let hasSetter = mIsPublic
+    let hasGetter = mIsPublic
     var hasSelector = false
     for () in mAttributeList do
       if [mValue string] == "setter" then
-        if hasSetter then
-          error mValue : "the '%setter' attribute is already named"
-        end
-        hasSetter = true
+        warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
+#        if hasSetter then
+#          error mValue : "the '%setter' attribute is already named"
+#        end
+#        hasSetter = true
       elsif [mValue string] == "nogetter" then
-        if not hasGetter then
-          error mValue : "the '%nogetter' attribute is already named"
-        end
-        hasGetter = false
+        warning mValue : "obsolete attribute: use 'private' qualifier"
+#        if not hasGetter then
+#          error mValue : "the '%nogetter' attribute is already named"
+#        end
+#        hasGetter = false
       elsif [mValue string] == "selector" then
         if hasSelector then
           error mValue : "the '%selector' attribute is already named"
@@ -88,8 +90,8 @@ override method @listDeclarationAST enterInSemanticContext
         hasSelector = true
       else
         error mValue
-        : "only '%setter', '%nogetter' or '%selector' attributes are allowed here"
-        fixit { replace {!"%nogetter", !"%setter", !"%selector"} }
+        : "only '%selector' attribute is allowed here"
+        fixit { replace {!"%selector"} }
       end
     end
     typedAttributeList += !attributeTypeIndex !mPropertyName !hasSetter !hasGetter !hasSelector
@@ -327,6 +329,7 @@ override method @listDeclarationAST addAssociatedElement
     structAttributeList +=
       !mPropertyTypeName
       !mPropertyName
+      !true
       !{}
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
@@ -362,20 +365,22 @@ override method @listDeclarationAST semanticAnalysis
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
-    var hasSetter = false
-    var hasGetter = true
+    let hasSetter = mIsPublic
+    let hasGetter = mIsPublic
     var hasSelector = false
     for () in mAttributeList do
       if [mValue string] == "setter" then
-        if hasSetter then
-          error mValue : "the '%setter' attribute is already named"
-        end
-        hasSetter = true
+        warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
+#        if hasSetter then
+#          error mValue : "the '%setter' attribute is already named"
+#        end
+#        hasSetter = true
       elsif [mValue string] == "nogetter" then
-        if not hasGetter then
-          error mValue : "the '%nogetter' attribute is already named"
-        end
-        hasGetter = false
+        warning mValue : "obsolete attribute: use 'private' qualifier"
+#        if not hasGetter then
+#          error mValue : "the '%nogetter' attribute is already named"
+#        end
+#        hasGetter = false
       elsif [mValue string] == "selector" then
         if hasSelector then
           error mValue : "the '%selector' attribute is already named"
@@ -383,8 +388,8 @@ override method @listDeclarationAST semanticAnalysis
         hasSelector = true
       else
         error mValue
-        : "only '%setter', '%nogetter' or '%selector' attributes are allowed here"
-        fixit { replace {!"%nogetter", !"%setter", !"%selector"} }
+        : "only '%selector' attribut is allowed here"
+        fixit { replace {!"%selector"} }
       end
     end
     typedAttributeList +=

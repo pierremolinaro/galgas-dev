@@ -172,11 +172,11 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     ?@string nameForCheckingFormalParameterUsing
   ]
   for () in mStructAttributeList do
-    let attributeMap = [targetType mAttributeMap]
-    [attributeMap searchKey
-      !mValue
-      ?targetType
-    ]
+    let propertyMap = [targetType mPropertyMap]
+    [propertyMap searchKey !mValue ?let isPublic  ?targetType]
+    if not isPublic then
+      error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
   end
 #--- Check target variable type support '+= exp' operator
   if not [[targetType mHandledOperatorFlags] plusEqualOperatorWithExpression] then
@@ -223,11 +223,11 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
     ?@string nameForCheckingFormalParameterUsing
   ]
   for () in mStructAttributeList do
-    let attributeMap = [targetType mAttributeMap]
-    [attributeMap searchKey
-      !mValue
-      ?targetType
-    ]
+    let propertyMap = [targetType mPropertyMap]
+    [propertyMap searchKey !mValue ?let isPublic  ?targetType]
+    if not isPublic then
+      error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
   end
 #--- Check target variable type support '-= exp' operator
   if not [[targetType mHandledOperatorFlags] minusEqualOperatorWithExpression] then
@@ -274,11 +274,11 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
     ?@string nameForCheckingFormalParameterUsing
   ]
   for () in mStructAttributeList do
-    let attributeMap = [targetType mAttributeMap]
-    [attributeMap searchKey
-      !mValue
-      ?targetType
-    ]
+    let propertyMap = [targetType mPropertyMap]
+    [propertyMap searchKey !mValue ?let isPublic  ?targetType]
+    if not isPublic then
+      error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
   end
 #--- Check target variable type support '*= exp' operator
   if [[targetType mHandledOperatorFlags] mulEqualOperatorWithExpression] then
@@ -325,11 +325,11 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
     ?@string nameForCheckingFormalParameterUsing
   ]
   for () in mStructAttributeList do
-    let attributeMap = [targetType mAttributeMap]
-    [attributeMap searchKey
-      !mValue
-      ?targetType
-    ]
+    let propertyMap = [targetType mPropertyMap]
+    [propertyMap searchKey !mValue ?let isPublic  ?targetType]
+    if not isPublic then
+      error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
   end
 #--- Check target variable type support '/= exp' operator
   if [[targetType mHandledOperatorFlags] divEqualOperatorWithExpression] then
@@ -375,15 +375,11 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
     ?let nameForCheckingFormalParameterUsing
   ]
   for () in mStructAttributeList do
-    let attributeMap = [targetType mAttributeMap]
-    [attributeMap searchKey
-      !mValue
-#      ??@bool isPrivate
-      ?targetType
-    ]
-#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-#      error mValue : "this field is private" ;
-#    end if ;
+    let propertyMap = [targetType mPropertyMap]
+    [propertyMap searchKey !mValue ?let isPublic  ?targetType]
+    if not isPublic then
+      error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
   end
 #--- Check target variable type support '+=' operator
   let addAssignOperatorArguments= [targetType mAddAssignOperatorArguments] # Empty list if += operator is not supported

@@ -162,11 +162,11 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   @string targetVariableCppName
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*]
   for () in mStructAttributeList do
-    let attributeMap = [targetType mAttributeMap]
-    [attributeMap searchKey
-      !mValue
-      ?targetType
-    ]
+    let propertyMap = [targetType mPropertyMap]
+    [propertyMap searchKey !mValue ?let isPublic  ?targetType]
+    if not isPublic then
+      error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
   end
 #--- Check target type accepts incrementation
   if not [[targetType mHandledOperatorFlags] incDecOperator] then
@@ -197,11 +197,11 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
   @string targetVariableCppName
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*]
   for () in mStructAttributeList do
-    let attributeMap = [targetType mAttributeMap]
-    [attributeMap searchKey
-      !mValue
-      ?targetType
-    ]
+    let propertyMap = [targetType mPropertyMap]
+    [propertyMap searchKey !mValue ?let isPublic  ?targetType]
+    if not isPublic then
+      error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
   end
 #--- Check target type accepts incrementation
   if not [[targetType mHandledOperatorFlags] incDecOperator] then

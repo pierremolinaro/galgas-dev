@@ -26,37 +26,37 @@ enum @mapAutomatonMessageKind {
 #·······················································································································
 
 list @mapStateTransitionList {
-  @lstring mActionName %nogetter
-  @lstring mTargetStateName %nogetter
-  @mapAutomatonMessageKind mTransitionMessageKind %nogetter
-  @lstring mTransitionMessage %nogetter
+  @lstring mActionName
+  @lstring mTargetStateName
+  @mapAutomatonMessageKind mTransitionMessageKind
+  @lstring mTransitionMessage
 }
 
 #·······················································································································
 
 list @mapStateList {
-  @lstring mStateName %nogetter
-  @mapAutomatonMessageKind mStateMessageKind %nogetter
-  @lstring mStateMessage %nogetter
-  @mapStateTransitionList mTransitionList %nogetter
+  @lstring mStateName
+  @mapAutomatonMessageKind mStateMessageKind
+  @lstring mStateMessage
+  @mapStateTransitionList mTransitionList
 }
 
 #·······················································································································
 
 list @mapOverrideBlockDescriptorAST {
-  @lstring mLeftState %nogetter
-  @lstring mRightState %nogetter
-  @lstring mResultingState %nogetter
-  @mapAutomatonMessageKind mMessageKind %nogetter
-  @lstring mTransitionMessage %nogetter
+  @lstring mLeftState
+  @lstring mRightState
+  @lstring mResultingState
+  @mapAutomatonMessageKind mMessageKind
+  @lstring mTransitionMessage
 }
 
 #·······················································································································
 
 list @mapOverrideBlockListAST {
-  @lstring mOverrideBlockName %nogetter
-  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor1AST %nogetter
-  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor2AST %nogetter
+  @lstring mOverrideBlockName
+  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor1AST
+  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor2AST
 }
 
 #·······················································································································

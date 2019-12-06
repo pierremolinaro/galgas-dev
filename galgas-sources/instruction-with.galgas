@@ -331,11 +331,11 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     ?*
   ]
   for () in mFieldList do
-    let attributeMap = [targetType mAttributeMap]
-    [attributeMap searchKey
-      !mValue
-      ?targetType
-    ]
+    let propertyMap = [targetType mPropertyMap]
+    [propertyMap searchKey !mValue ?let isPublic ?targetType]
+    if not isPublic then
+      error mValue : "inaccessible property (due to 'private' qualifier)"
+    end
   end
 #--- Check this type handle 'with' access
   if not [[targetType mHandledOperatorFlags] supportWithAccessor] then

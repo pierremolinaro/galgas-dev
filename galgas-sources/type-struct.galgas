@@ -96,11 +96,11 @@ override method @structDeclarationAST enterInSemanticContext
     end
     constructorPropertyTypeList += !selector !propertyTypeProxy !mPropertyName.string
     typesToIncludeInHeaderCompilation += !propertyTypeProxy
-    let hasSetter = false
-    let hasGetter = true
+    let hasSetter = mIsPublic
+    let hasGetter = mIsPublic
     let hasSelector = false
     typedPropertyList += !propertyTypeProxy !mPropertyName !hasSetter !hasGetter !hasSelector
-    [!?propertyMap insertKey !mPropertyName !propertyTypeProxy]
+    [!?propertyMap insertKey !mPropertyName !mIsPublic !propertyTypeProxy]
   end
   [!?constructorMap insertKey
     !@lstring.new {!"new" !.here}
@@ -112,13 +112,15 @@ override method @structDeclarationAST enterInSemanticContext
   @getterMap getterMap
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?getterMap )
   for () in typedPropertyList do
-    enterBaseFinalGetterWithoutArgument (
-      !?getterMap
-      !?ioSemanticContext.mTypeMap 
-      !getterName:[mPropertyName string]
-      !returnedTypeName:[mPropertyTypeProxy key]
-      !hasCompilerArgument:false
-    )
+    if mHasGetter then
+      enterBaseFinalGetterWithoutArgument (
+        !?getterMap
+        !?ioSemanticContext.mTypeMap 
+        !getterName:[mPropertyName string]
+        !returnedTypeName:[mPropertyTypeProxy key]
+        !hasCompilerArgument:false
+      )
+    end
   end
 #--- Modifiers
   @setterMap setterMap = {}
@@ -159,7 +161,7 @@ override method @structDeclarationAST enterInSemanticContext
     !mIsPredefined
     !true # Concrete Type
     !@unifiedTypeMap-proxy.null
-    !@typeKindEnum. structType
+    !@typeKindEnum.structType
     !false # Does not support collection value
     !typedPropertyList
     !propertyMap
@@ -228,8 +230,8 @@ override method @structDeclarationAST semanticAnalysis
         hasSelector = true
       end
     end
-    let hasSetter = false
-    let hasGetter = false
+    let hasSetter = mIsPublic
+    let hasGetter = mIsPublic
     typedPropertyList +=
       !t
       !mPropertyName

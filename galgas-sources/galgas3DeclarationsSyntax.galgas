@@ -56,6 +56,13 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
+  @bool isPublic
+  select
+    isPublic = true
+  or
+    $private$
+    isPublic = false
+  end
   $@type$ ?var  @lstring mAttributeTypeName
   $identifier$ ?var  @lstring mAttributeName
   var featureList =@lstringlist {}
@@ -67,6 +74,7 @@ rule <property_declaration> ?!@propertyInCollectionListAST ioAttributeInCollecti
   ioAttributeInCollectionList +=
     !mAttributeTypeName
     !mAttributeName
+    !isPublic
     !featureList
 }
 

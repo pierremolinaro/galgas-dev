@@ -259,7 +259,7 @@ method @syntaxInstructionListForGrammarAnalysis tikzNodeForSyntaxInstruction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 list @rowList {
-  @2stringlist columns %setter # Node name, node definition
+  @2stringlist columns # Node name, node definition
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1032,11 +1032,11 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
   if [type mTypeKindEnum] != @typeKindEnum. structType then
     error mStructFieldName:"the '.' operator requires the receiver to be a struct"
   end
-  let attributeMap = [type mAttributeMap]
-  [attributeMap searchKey !mStructFieldName ?type]
-#  if isPrivate && ([mStructFieldName file] != [[attributeMap locationForKey !mStructFieldName->string] file]) then
-#    error mStructFieldName : "this field is private" ;
-#  end if ;
+  let propertyMap = [type mPropertyMap]
+  [propertyMap searchKey !mStructFieldName ?let isPublic  ?type]
+  if not isPublic then
+    error mStructFieldName : " inaccessible property (due to its 'private' qualifier)"
+  end
 #--- Generate expression
   outExpression = @structFieldAccessExpressionForGeneration.new {
     !type
