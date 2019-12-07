@@ -34,7 +34,7 @@ def allCompilerOptions (platformOptions):
 
 def compilerReleaseOptions (platformOptions):
   result = platformOptions
-  result.append ("-fomit-frame-pointer")
+#   result.append ("-fomit-frame-pointer")
   result.append ("-DDO_NOT_GENERATE_CHECKINGS")
   result.append ("-Wunused-variable")
   return result

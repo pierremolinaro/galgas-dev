@@ -61,7 +61,7 @@ Par défaut, une classe GALGAS a une \emph{sémantique de valeur}, c'est-à-dire
 
 \begin{galgas}
 class @classeSemantiqueDeValeur {
-  @uint propriété %setter
+  @uint propriété
 }
 \end{galgas}
 
@@ -81,7 +81,7 @@ Lors de l'affectation \ggs+b=a+, \ggs=b= reçoit une copie de la valeur de \ggs=
 
 \begin{galgas}
 shared class @classeSemantiqueDeReference {
-  @uint propriété %setter
+  @uint propriété
 }
 \end{galgas}
 
@@ -200,16 +200,7 @@ Et pour une variable \ggs+c+ de type \ggs+@C+, on peut écrire~:
 @uint v = c.prop
 \end{galgas}
 
-Il est possible d'inhiber la génération implicite d'un \emph{getter} de lecture d'une propriété en complétant sa déclaration par \ggs+%nogetter+, comme par exemple~:
-
-\begin{galgas}
-class @C {
-  @uint prop %nogetter
-}
-\end{galgas}
-
-Les écritures \ggs+c.prop+ et \ggs+[c prop]+ sont alors rejetées par le compilateur.
-
+Si la propriété a été déclarée \ggs+private+, seules les \emph{méthodes}, \emph{getters} et \emph{setters} de cette classe peuvent accéder cette propriété.
 
 
 
@@ -220,13 +211,11 @@ Les écritures \ggs+c.prop+ et \ggs+[c prop]+ sont alors rejetées par le compil
 
 \section{Écriture d'une propriété}
 
-Par défaut, l'écriture d'une propriété n'est pas activée : une façon de modifier la valeur d'une propriété est d'écrire une extension (\refChapterPage{chapitreExtensions}) ; l'autre possibilité, décrite ci-dessous, est d'activer le \emph{setter} d'écriture}.
-
-Pour activer la génération d'un \emph{setter} permettant d'écrire une propriété, compléter la déclaration de cette propriété par la propriété \ggs+%setter+. Un \emph{setter} est alors engendré, et porte le nom \texttt{set<Propriété>}, c'est-à-dire le nom de la propriété avec sa première lettre en majuscule, précédé par \texttt{set}. Par exemple :
+Par défaut, une propriété est publique et un \emph{setter} est engendré implicitement. Ce \emph{setter} porte le nom \texttt{set<Propriété>}, c'est-à-dire le nom de la propriété avec sa première lettre en majuscule, précédé par \texttt{set}. Par exemple :
 
 \begin{galgas}
 class @C {
-  @uint prop %setter
+  @uint prop
 }
 \end{galgas}
 
@@ -237,21 +226,7 @@ Pour modifier la propriété \ggs+prop+ d'un objet \ggs=c= instance de \ggs=@C=,
 [!?c setProp !12]
 \end{galgas}
 
-Si on veut à la fois inhiber la génération implicite d'un \emph{getter} de lecture d'une propriété et engendrer le \emph{setter} d'écriture, il suffit de déclarer la propriété par :
-
-\begin{galgas}
-class @C {
-  @uint prop %setter %nogetter
-}
-\end{galgas}
-
-Ou encore, comme l'ordre des attributs est sans importance~:
-
-\begin{galgas}
-class @C {
-  @uint prop %nogetter %setter
-}
-\end{galgas}
+Si la propriété a été déclarée \ggs+private+, seules les \emph{méthodes}, \emph{getters} et \emph{setters} de cette classe peuvent accéder cette propriété.
 
 
 
