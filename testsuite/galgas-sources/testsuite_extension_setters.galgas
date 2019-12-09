@@ -56,7 +56,7 @@ abstract class @abstractOverridingTestExtensionSetter : @TestExtensionSetter {
 
 class @adjMat{
    @uint dim
-   @stringlist nodes %setter
+   @stringlist nodes
 }
 
 setter @adjMat addNode {
