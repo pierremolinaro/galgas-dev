@@ -77,21 +77,19 @@ override method @extensionGetterAST enterDeclarationInGraph
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
-#  if not [option galgas_cli_options.newExtensionGeneration value] then
-    if not [ioExtensionGetterMapForBuildingContext hasKey ![mTypeName string]] then
-      [!?ioExtensionGetterMapForBuildingContext insertKey
-        !mTypeName
-        !@extensionGetterMapForType.emptyMap
-      ]
-    end
-    with mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
-      [!?mExtensionGetterMapForType insertKey
-        !mExtensionGetterName
-        !mExtensionGetterReturnedTypeName
-        !mExtensionGetterFormalInputParameterList
-      ]
-    end
-#  end
+  if not [ioExtensionGetterMapForBuildingContext hasKey ![mTypeName string]] then
+    [!?ioExtensionGetterMapForBuildingContext insertKey
+      !mTypeName
+      !@extensionGetterMapForType.emptyMap
+    ]
+  end
+  with mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
+    [!?mExtensionGetterMapForType insertKey
+      !mExtensionGetterName
+      !mExtensionGetterReturnedTypeName
+      !mExtensionGetterFormalInputParameterList
+    ]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -104,28 +102,6 @@ override method @extensionGetterAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext
 {
-#  if [option galgas_cli_options.newExtensionGeneration value] then
-#  #--- Compute method signature
-#    @functionSignature functionSignature = {}
-#    for () in mExtensionGetterFormalInputParameterList do
-#      functionSignature +=
-#        !mFormalSelector
-#        !.searchKey {!ioSemanticContext.mTypeMap !mFormalArgumentTypeName}
-#        ![mFormalArgumentName string]
-#    end
-#    var getterMap = [ioSemanticContext.mTypeMap mGetterMapForKey !mTypeName.string]
-#    [!?getterMap insertKey
-#      !mExtensionGetterName
-#      !.definedAsMember
-#      !functionSignature
-#      !mExtensionGetterName.location
-#      !true
-#      !.searchKey {!ioSemanticContext.mTypeMap !mExtensionGetterReturnedTypeName}
-#      !.isBasic
-#      !"" # If not empty, calling the method raises an error with this message
-#    ]
-#    [!?ioSemanticContext.mTypeMap setMGetterMapForKey !getterMap !mTypeName.string]
-#  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -205,7 +181,6 @@ override method @extensionGetterAST semanticAnalysis
       ![selfType mAllTypedAttributeList]
       !semanticInstructionListForGeneration
     }
-#    !"~"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

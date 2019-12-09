@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="101003" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -343,7 +343,7 @@
             <rect key="contentRect" x="316" y="243" width="600" height="560"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="500" height="500"/>
-            <view key="contentView" id="210">
+            <view key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="210">
                 <rect key="frame" x="0.0" y="0.0" width="600" height="560"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -1476,6 +1476,7 @@
                     </subviews>
                 </customView>
             </subviews>
+            <point key="canvasLocation" x="137" y="537"/>
         </customView>
         <customView id="1190" userLabel="NewDocumentAccessoryView">
             <rect key="frame" x="0.0" y="0.0" width="485" height="93"/>
