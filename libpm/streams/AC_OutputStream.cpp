@@ -29,6 +29,7 @@
 
 #include <string.h>
 #include <ctype.h>
+#include <inttypes.h>
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -297,7 +298,10 @@ void AC_OutputStream::appendBool (const bool inValue) {
 
 void AC_OutputStream::appendUnsignedWithZeroFill (const uint64_t inValue, const uint32_t inWidth) {
   char s [32] = "" ;
-  snprintf (s, 31, "%0*llu", inWidth, (unsigned long long) inValue) ;
+  snprintf (s, 31, "%llu", (unsigned long long) inValue) ;
+  for (uint32_t i = uint32_t (strlen (s)) ; i < inWidth ; i++) {
+    appendCString (" ") ;
+  }
   appendCString (s) ;
 }
 

@@ -165,7 +165,7 @@ FILE * C_FileManager::openBinaryFileForReading (const C_String & inFilePath) {
 #endif
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-  
+
 bool C_FileManager::binaryDataWithContentOfFile (const C_String & inFilePath,
                                                  C_Data & outBinaryData) {
   outBinaryData.free () ;
@@ -193,7 +193,7 @@ bool C_FileManager::binaryDataWithContentOfFile (const C_String & inFilePath,
 //--- Read file
   if (ok) {
     uint8_t * binaryData = NULL ;
-    macroMyNewArray (binaryData, uint8_t, fileSize) ;
+    macroMyNewArray (binaryData, uint8_t, uint32_t (fileSize)) ;
     const int32_t sizeRead = (int32_t) (fread (binaryData, 1, (uint32_t) fileSize, inputFile) & UINT32_MAX) ;
     ok = sizeRead == fileSize ;
     if (ok) {
@@ -218,7 +218,7 @@ bool C_FileManager::binaryDataWithContentOfFile (const C_String & inFilePath,
 #endif
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-  
+
 static bool parseUTF32LE (const C_Data & inDataString,
                           const int32_t inOffset,
                           C_String & outString) {
@@ -241,7 +241,7 @@ static bool parseUTF32LE (const C_Data & inDataString,
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-  
+
 static bool parseUTF32BE (const C_Data & inDataString,
                           const int32_t inOffset,
                           C_String & outString) {
@@ -265,7 +265,7 @@ static bool parseUTF32BE (const C_Data & inDataString,
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 // UTF-16 http://fr.wikipedia.org/wiki/UTF-16
-//    
+//
 static bool parseUTF16LE (const C_Data & inDataString,
                           const int32_t inOffset,
                           C_String & outString) {
@@ -334,7 +334,7 @@ static bool parseUTF16BE (const C_Data & inDataString,
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-  
+
 static bool searchBOMandParse (const C_Data & inDataString,
                                const int32_t inLength,
                                PMTextFileEncoding & outTextFileEncoding,
@@ -380,7 +380,7 @@ static bool searchBOMandParse (const C_Data & inDataString,
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-  
+
 static bool sniffUTFEncodingAndParse (const C_Data & inDataString,
                                       PMTextFileEncoding & outTextFileEncoding,
                                       C_String & outResultString) {
@@ -437,7 +437,7 @@ static bool sniffUTFEncodingAndParse (const C_Data & inDataString,
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-  
+
 typedef struct {
   const char * mEncodingName ;
   const PMTextFileEncoding mTextFileEncoding ;
@@ -445,7 +445,7 @@ typedef struct {
 } encodingStruct ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-  
+
 static const int32_t kEncodingCount = 18 ;
 
 static const encodingStruct kEncodings [kEncodingCount] = {
@@ -470,7 +470,7 @@ static const encodingStruct kEncodings [kEncodingCount] = {
 } ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-  
+
 static bool parseWithEncoding (const C_Data & inDataString,
                                const PMStringEncoding inTextFileEncoding,
                                C_String & outString) {
@@ -503,7 +503,7 @@ static bool parseWithEncoding (const C_Data & inDataString,
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-  
+
 static bool searchForEncodingTagAndParse (const C_Data & inDataString,
                                           PMTextFileEncoding & outTextFileEncoding,
                                           C_String & outResultString) {
@@ -548,7 +548,7 @@ static bool searchForEncodingTagAndParse (const C_Data & inDataString,
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-  
+
 static void parseASCIIWithReplacementCharacter (const C_Data & inDataString,
                                                 C_String & outString) {
   bool foundCR = false ;
@@ -575,7 +575,7 @@ static void parseASCIIWithReplacementCharacter (const C_Data & inDataString,
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-  
+
 C_String C_FileManager::stringWithContentOfFile (const C_String & inFilePath,
                                                  PMTextFileEncoding & outTextFileEncoding,
                                                  bool & outOk) {
@@ -614,7 +614,7 @@ C_String C_FileManager::stringWithContentOfFile (const C_String & inFilePath,
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-  
+
 C_String C_FileManager::stringWithContentOfFile (const C_String & inFilePath) {
   bool ok = false ;
   PMTextFileEncoding textFileEncoding ;
@@ -647,7 +647,7 @@ bool C_FileManager::writeStringToFile (const C_String & inString,
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-  
+
 bool C_FileManager::writeStringToExecutableFile (const C_String & inString,
                                                  const C_String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
@@ -667,7 +667,7 @@ bool C_FileManager::writeStringToExecutableFile (const C_String & inString,
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-  
+
 bool C_FileManager::writeBinaryDataToFile (const C_Data & inBinaryData,
                                            const C_String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
@@ -684,7 +684,7 @@ bool C_FileManager::writeBinaryDataToFile (const C_Data & inBinaryData,
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-  
+
 bool C_FileManager::writeBinaryDataToExecutableFile (const C_Data & inBinaryData,
                                                      const C_String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;

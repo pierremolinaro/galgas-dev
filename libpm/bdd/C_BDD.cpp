@@ -1067,8 +1067,8 @@ static void internalValueCount128UsingCache (const uint32_t inValue,
       nombreDirect += nombreDirect ;
       nombreComplement += nombreComplement ;
     }
-    ioDirectCacheArray.forceObjectAtIndex (inValue / 2, nombreDirect, 0 COMMA_HERE) ;
-    ioComplementCacheArray.forceObjectAtIndex (inValue / 2, nombreComplement, 0 COMMA_HERE) ;
+    ioDirectCacheArray.forceObjectAtIndex (int32_t (inValue / 2), nombreDirect, 0 COMMA_HERE) ;
+    ioComplementCacheArray.forceObjectAtIndex (int32_t (inValue / 2), nombreComplement, 0 COMMA_HERE) ;
   }
   if ((inValue & 1) != 0) {
     const PMUInt128 tempo = nombreDirect ;

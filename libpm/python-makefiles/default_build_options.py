@@ -9,7 +9,6 @@
 
 def allCompilerOptions (platformOptions):
   result = platformOptions
-#  result.append ("-std=c++11")
   result.append ("-Wall")
   result.append ("-Werror")
   result.append ("-Wreturn-type")
@@ -34,7 +33,6 @@ def allCompilerOptions (platformOptions):
 
 def compilerReleaseOptions (platformOptions):
   result = platformOptions
-#   result.append ("-fomit-frame-pointer")
   result.append ("-DDO_NOT_GENERATE_CHECKINGS")
   result.append ("-Wunused-variable")
   return result
@@ -69,6 +67,7 @@ def C_CompilerOptions (platformOptions):
 
 def Cpp_CompilerOptions (platformOptions):
   result = platformOptions
+#  result.append ("-std=c++17")
   result.append ("-Woverloaded-virtual")
   return result
 

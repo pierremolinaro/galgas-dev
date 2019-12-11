@@ -27,7 +27,6 @@ project (3:3:14) -> "galgas" {
   %codeblocks-windows
   %codeblocks-linux32
   %codeblocks-linux64
-  
 
 #--- JSON Parser
 #  "galgas-sources/json.galgas"

@@ -6,7 +6,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2001 Pierre Molinaro.                                                                                *
+//  Copyright (C) 2001, ..., 2019 Pierre Molinaro.                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //  LS2N, Laboratoire des Sciences du Numérique de Nantes, ECN, École Centrale de Nantes (France)                      *
 //                                                                                                                     *
@@ -239,7 +239,7 @@ getByExchangeAndSuppressLastItem (TYPE & outInfo) {
      p = mLastItem ;
    }else{
      if (mItemsArray == NULL) {
-       macroMyNewArray (mItemsArray, TC_FIFO_element *, mListLength) ;
+       macroMyNewArray (mItemsArray, TC_FIFO_element *, uint32_t (mListLength)) ;
        p = mFirstItem ;
        for (int32_t i=0 ; i<mListLength ; i++) {
          mItemsArray [i] = p ;
@@ -265,7 +265,7 @@ getByExchangeAndSuppressLastItem (TYPE & outInfo) {
      p = mLastItem ;
    }else{
      if (mItemsArray == NULL) {
-       macroMyNewArray (mItemsArray, TC_FIFO_element *, mListLength) ;
+       macroMyNewArray (mItemsArray, TC_FIFO_element *, uint32_t (mListLength)) ;
        p = mFirstItem ;
        for (int32_t i=0 ; i<mListLength ; i++) {
          mItemsArray [i] = p ;

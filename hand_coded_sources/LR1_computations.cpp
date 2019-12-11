@@ -2,7 +2,7 @@
 //                                                                                                                     *
 //     Routines for LR(1) grammar computations                                                                         *
 //                                                                                                                     *
-//  Copyright (C) 2002, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2002, ..., 2019 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -351,7 +351,7 @@ mCapacity (0) {
     MF_AssertThere (inAllocatedSize >= 0, "inAllocatedSize (%ld) < 0", inAllocatedSize, 0) ;
   #endif
   if (inAllocatedSize > 0) {
-    macroMyNewArray (mArray, const cLR1_items_AVL_tree *, inAllocatedSize) ;
+    macroMyNewArray (mArray, const cLR1_items_AVL_tree *, uint32_t (inAllocatedSize)) ;
     for (int32_t i=0 ; i<inAllocatedSize ; i++) {
       mArray [i] = NULL ;
     }
@@ -382,7 +382,7 @@ void cLR1ItemUniqueArray::makeRoom (const int32_t inNewCapacity) {
       newCapacity <<= 1 ;
     }
     const cLR1_items_AVL_tree * * newArray = NULL ;
-    macroMyNewArray (newArray, const cLR1_items_AVL_tree *, newCapacity) ;
+    macroMyNewArray (newArray, const cLR1_items_AVL_tree *, uint32_t (newCapacity)) ;
     for (int32_t i=0 ; i<mCapacity ; i++) {
       newArray [i] = mArray [i] ;
     }

@@ -32,16 +32,22 @@ mDecision (kUndefinedState) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-cDecisionTableElement::
-cDecisionTableElement (const cDecisionTableElement & inSource) :
+cDecisionTableElement::cDecisionTableElement (const cDecisionTableElement & inSource) :
 mParameter (inSource.mParameter),
 mDecision (inSource.mDecision) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-cDecisionTableElement::
-cDecisionTableElement (const int32_t inParameter, const enumDecision inDecision) :
+cDecisionTableElement & cDecisionTableElement::operator = (const cDecisionTableElement & inSource) {
+  mParameter = inSource.mParameter ;
+  mDecision = inSource.mDecision ;
+  return *this ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cDecisionTableElement::cDecisionTableElement (const int32_t inParameter, const enumDecision inDecision) :
 mParameter (inParameter),
 mDecision (inDecision) {
 }

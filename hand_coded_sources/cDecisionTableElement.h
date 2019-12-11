@@ -41,6 +41,8 @@ class cDecisionTableElement {
 
   public : cDecisionTableElement (const cDecisionTableElement & inSource) ;
 
+  public : cDecisionTableElement & operator = (const cDecisionTableElement & inSource) ;
+
   private : cDecisionTableElement (const int32_t inParameter, const enumDecision inDecision) ;
   
   public : static cDecisionTableElement shiftDecision (const int32_t inNextState) ;
