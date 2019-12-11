@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1997, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 1997, ..., 2019 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -29,6 +29,8 @@
 
 #include <string.h>
 #include <ctype.h>
+
+#define __STDC_FORMAT_MACROS // This is required for GCC for windows
 #include <inttypes.h>
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -202,51 +204,59 @@ void AC_OutputStream::appendDouble (const double inValue) {
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-static void printfUINT64 (char ioString [],
-                          const uint64_t inValue,
-                          int32_t & ioLength) {
-  const uint64_t quotient = inValue / 10UL ;
-  if (quotient != 0) {
-    printfUINT64 (ioString, quotient, ioLength) ;
-  }
-  const uint32_t v = (uint32_t) ((inValue % 10UL) & UINT32_MAX) ;
-  ioString [ioLength] = (char) (('0' + v) & 255) ;
-  ioLength ++ ;
-}
+//static void printfUINT64 (char ioString [],
+//                          const uint64_t inValue,
+//                          int32_t & ioLength) {
+//  const uint64_t quotient = inValue / 10UL ;
+//  if (quotient != 0) {
+//    printfUINT64 (ioString, quotient, ioLength) ;
+//  }
+//  const uint32_t v = (uint32_t) ((inValue % 10UL) & UINT32_MAX) ;
+//  ioString [ioLength] = (char) (('0' + v) & 255) ;
+//  ioLength ++ ;
+//}
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void AC_OutputStream::appendUnsigned (const uint64_t inValue) {
-  char s [30] = "" ;
-  int32_t length = 0 ;
-  printfUINT64 (s, inValue, length) ;
-  s [length] = '\0' ;
-  MF_Assert (length < 30, "C string overflow", 0, 0) ;
-  genericCharArrayOutput (s, length) ;
+//  char s [30] = "" ;
+//  int32_t length = 0 ;
+//  printfUINT64 (s, inValue, length) ;
+//  s [length] = '\0' ;
+//  MF_Assert (length < 30, "C string overflow", 0, 0) ;
+//  genericCharArrayOutput (s, length) ;
+
+  char s [32] ;
+  snprintf (s, 31, "%" PRIu64, inValue) ;
+  appendCString (s) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-static void printfUINT64Hex (char ioString [],
-                             const uint64_t inValue,
-                             int & ioLength) {
-  const uint64_t quotient = inValue >> 4 ;
-  if (quotient != 0) {
-    printfUINT64Hex (ioString, quotient, ioLength) ;
-  }
-  const uint32_t v = (uint32_t) (inValue & 15UL) ;
-  sprintf (& ioString [ioLength], "%X", v) ;
-  ioLength ++ ;
-}
+//static void printfUINT64Hex (char ioString [],
+//                             const uint64_t inValue,
+//                             int & ioLength) {
+//  const uint64_t quotient = inValue >> 4 ;
+//  if (quotient != 0) {
+//    printfUINT64Hex (ioString, quotient, ioLength) ;
+//  }
+//  const uint32_t v = (uint32_t) (inValue & 15UL) ;
+//  sprintf (& ioString [ioLength], "%X", v) ;
+//  ioLength ++ ;
+//}
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void AC_OutputStream::appendUnsignedHex16 (const uint64_t inValue) {
-  int length = 0 ;
+//  int length = 0 ;
+//  char s [32] ;
+//  printfUINT64Hex (s, (uint64_t) inValue, length) ;
+//  MF_Assert (length < 32, "C string overflow", 0, 0) ;
+//  genericCharArrayOutput (s, length) ;
+
   char s [32] ;
-  printfUINT64Hex (s, (uint64_t) inValue, length) ;
-  MF_Assert (length < 32, "C string overflow", 0, 0) ;
-  genericCharArrayOutput (s, length) ;
+  snprintf (s, 31, "%016" PRIX64, inValue) ;
+  appendCString (s) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -258,22 +268,25 @@ void AC_OutputStream::appendUnsignedHex16 (const uint64_t inValue) {
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void AC_OutputStream::appendSigned (const int64_t inValue) {
-  int32_t length = 0 ;
-  char s [30] = "" ;
-  if (inValue >= 0) {
-    printfUINT64 (s, (uint64_t) inValue, length) ;
-  }else if (inValue == INT64_MIN) {
-    s [0] = '-' ;
-    length = 1 ;
-    printfUINT64 (s, (uint64_t) INT64_MIN, length) ;
-  }else{
-    s [0] = '-' ;
-    length = 1 ;
-    printfUINT64 (s, (uint64_t) (- inValue), length) ;
-  }
-  s [length] = '\0' ;
-  MF_Assert (length < 30, "C string overflow", 0, 0) ;
-  genericCharArrayOutput (s, length) ;
+//  int32_t length = 0 ;
+//  char s [30] = "" ;
+//  if (inValue >= 0) {
+//    printfUINT64 (s, (uint64_t) inValue, length) ;
+//  }else if (inValue == INT64_MIN) {
+//    s [0] = '-' ;
+//    length = 1 ;
+//    printfUINT64 (s, (uint64_t) INT64_MIN, length) ;
+//  }else{
+//    s [0] = '-' ;
+//    length = 1 ;
+//    printfUINT64 (s, (uint64_t) (- inValue), length) ;
+//  }
+//  s [length] = '\0' ;
+//  MF_Assert (length < 30, "C string overflow", 0, 0) ;
+//  genericCharArrayOutput (s, length) ;
+  char s [32] ;
+  snprintf (s, 31, "%" PRId64, inValue) ;
+  appendCString (s) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -298,7 +311,7 @@ void AC_OutputStream::appendBool (const bool inValue) {
 
 void AC_OutputStream::appendUnsignedWithZeroFill (const uint64_t inValue, const uint32_t inWidth) {
   char s [32] = "" ;
-  snprintf (s, 31, "%llu", (unsigned long long) inValue) ;
+  snprintf (s, 31, "%" PRIu64, inValue) ;
   for (uint32_t i = uint32_t (strlen (s)) ; i < inWidth ; i++) {
     appendCString (" ") ;
   }
@@ -309,7 +322,7 @@ void AC_OutputStream::appendUnsignedWithZeroFill (const uint64_t inValue, const 
 
 void AC_OutputStream::appendUnsignedHex (const uint64_t inValue) {
   char s [32] = "" ;
-  snprintf (s, 31, "%llX", (unsigned long long) inValue) ;
+  snprintf (s, 31, "%" PRIX64, inValue) ;
   genericCharArrayOutput (s, (int32_t) (strlen (s) & UINT32_MAX)) ;
 }
 
@@ -317,7 +330,7 @@ void AC_OutputStream::appendUnsignedHex (const uint64_t inValue) {
 
 void AC_OutputStream::appendUnsignedHex2 (const uint64_t inValue) {
   char s [32] = "" ;
-  snprintf (s, 31, "%02llX", (unsigned long long) (inValue & 0xFF)) ;
+  snprintf (s, 31, "%02" PRIX64, inValue & 0xFF) ;
   genericCharArrayOutput (s, (int32_t) (strlen (s) & UINT32_MAX)) ;
 }
 
@@ -325,7 +338,7 @@ void AC_OutputStream::appendUnsignedHex2 (const uint64_t inValue) {
 
 void AC_OutputStream::appendUnsignedHex4 (const uint64_t inValue) {
   char s [32] = "" ;
-  snprintf (s, 31, "%04llX", (unsigned long long) (inValue & 0xFFFF)) ;
+  snprintf (s, 31, "%04" PRIX64, inValue & 0xFFFF) ;
   genericCharArrayOutput (s, (int32_t) (strlen (s) & UINT32_MAX)) ;
 }
 
@@ -333,7 +346,7 @@ void AC_OutputStream::appendUnsignedHex4 (const uint64_t inValue) {
 
 void AC_OutputStream::appendUnsignedHex8 (const uint64_t inValue) {
   char s [32] = "" ;
-  snprintf (s, 31, "%08llX", (unsigned long long) (inValue)) ;
+  snprintf (s, 31, "%08" PRIX64, inValue) ;
   genericCharArrayOutput (s, (int32_t) (strlen (s) & UINT32_MAX)) ;
 }
 
