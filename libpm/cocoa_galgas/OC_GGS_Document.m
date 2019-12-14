@@ -86,9 +86,8 @@
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-- (void) FINALIZE_OR_DEALLOC {
+- (void) dealloc {
   noteObjectDeallocation (self) ;
-  macroSuperFinalize ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -893,7 +892,7 @@
 
 - (BOOL) writeToURL: (NSURL *) inAbsoluteURL
          ofType: (NSString *) inTypeName
-         error: (NSError * macroAutoreleasingInARC *) outError {
+         error: (NSError * __autoreleasing *) outError {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s, URL %@", __PRETTY_FUNCTION__, inAbsoluteURL) ;
   #endif
@@ -911,7 +910,7 @@
     ofType:(NSString *)documentTypeName
     forSaveOperation:(NSSaveOperationType)saveOperationType
     originalContentsURL: (NSURL *) inOriginalURL
-    error: (NSError * macroAutoreleasingInARC *) outError {
+    error: (NSError * __autoreleasing *) outError {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -1005,7 +1004,7 @@
 
 - (BOOL) readFromURL:(NSURL *) inAbsoluteURL
          ofType:(NSString *) inTypeName
-         error:(NSError * macroAutoreleasingInARC *) outError {
+         error:(NSError * __autoreleasing *) outError {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s, URL '%@'", __PRETTY_FUNCTION__, inAbsoluteURL) ;
   #endif

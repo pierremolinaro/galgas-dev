@@ -99,25 +99,21 @@ template <typename TYPE> class TC_FIFO {
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-TC_FIFO <TYPE>::TC_FIFO_element::TC_FIFO_element (void) :
+template <typename TYPE> TC_FIFO <TYPE>::TC_FIFO_element::TC_FIFO_element (void) :
 mInfo (),
 mNextItem (NULL) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-TC_FIFO <TYPE>::TC_FIFO_element::
-TC_FIFO_element (const TYPE & inSource) :
+template <typename TYPE> TC_FIFO <TYPE>::TC_FIFO_element::TC_FIFO_element (const TYPE & inSource) :
 mInfo (inSource),
 mNextItem (NULL) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-TC_FIFO <TYPE>::TC_FIFO (void) :
+template <typename TYPE> TC_FIFO <TYPE>::TC_FIFO (void) :
 mFirstItem (NULL),
 mLastItem (NULL),
 mListLength (0),
@@ -126,9 +122,7 @@ mItemsArray (NULL) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-TC_FIFO<TYPE>::
-~TC_FIFO (void) {
+template <typename TYPE> TC_FIFO<TYPE>::~TC_FIFO (void) {
   macroMyDeleteArray (mItemsArray) ;
   while (mFirstItem != (TC_FIFO_element *) NULL) {
     mLastItem = mFirstItem->mNextItem ;
@@ -140,9 +134,7 @@ TC_FIFO<TYPE>::
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-void TC_FIFO<TYPE>::
-insertByCopy (const TYPE & inInfo) {
+template <typename TYPE> void TC_FIFO<TYPE>::insertByCopy (const TYPE & inInfo) {
   TC_FIFO_element * p = NULL ;
   macroMyNew (p, TC_FIFO_element (inInfo)) ; // Copy
   if (mLastItem == NULL) {
@@ -157,9 +149,7 @@ insertByCopy (const TYPE & inInfo) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-void TC_FIFO<TYPE>::
-insertByExchange (TYPE & ioInfo) {
+template <typename TYPE> void TC_FIFO<TYPE>::insertByExchange (TYPE & ioInfo) {
   TC_FIFO_element * p = NULL ;
   macroMyNew (p, TC_FIFO_element ()) ;
   swap (p->mInfo, ioInfo) ; // Exchange
@@ -175,9 +165,7 @@ insertByExchange (TYPE & ioInfo) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-void TC_FIFO<TYPE>::
-deleteLastItem (void) {
+template <typename TYPE> void TC_FIFO<TYPE>::deleteLastItem (void) {
   if (mFirstItem != NULL) {
     TC_FIFO_element * p = mFirstItem->mNextItem ;
     macroMyDelete (mFirstItem) ;
@@ -192,9 +180,7 @@ deleteLastItem (void) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-void TC_FIFO <TYPE>::
-getByCopyAndSuppressLastItem (TYPE & outInfo) {
+template <typename TYPE> void TC_FIFO <TYPE>::getByCopyAndSuppressLastItem (TYPE & outInfo) {
   if (mFirstItem != NULL) {
     outInfo = mFirstItem->mInfo ;
     TC_FIFO_element * p = mFirstItem->mNextItem ;
@@ -209,9 +195,7 @@ getByCopyAndSuppressLastItem (TYPE & outInfo) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-void TC_FIFO<TYPE>::
-getByExchangeAndSuppressLastItem (TYPE & outInfo) {
+template <typename TYPE> void TC_FIFO<TYPE>::getByExchangeAndSuppressLastItem (TYPE & outInfo) {
   if (mFirstItem != NULL) {
     swap (outInfo, mFirstItem->mInfo) ;
     TC_FIFO_element * p = mFirstItem->mNextItem ;
@@ -227,9 +211,7 @@ getByExchangeAndSuppressLastItem (TYPE & outInfo) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
- template <typename TYPE>
- TYPE & TC_FIFO<TYPE>::
- operator () (const int32_t inIndex COMMA_LOCATION_ARGS) {
+template <typename TYPE>TYPE & TC_FIFO<TYPE>::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) {
    MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
    MF_AssertThere (inIndex < mListLength, "inIndex (%ld) >= mListLength (%ld)", inIndex, mListLength) ;
    TC_FIFO_element * p = (TC_FIFO_element *) NULL ;
@@ -249,13 +231,11 @@ getByExchangeAndSuppressLastItem (TYPE & outInfo) {
      p = mItemsArray [inIndex] ;
    }
    return p->mInfo ;
- }
+}
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
- template <typename TYPE>
- TYPE & TC_FIFO <TYPE>::
- operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
+template <typename TYPE> TYPE & TC_FIFO <TYPE>::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
    MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
    MF_AssertThere (inIndex < mListLength, "inIndex (%ld) >= mListLength (%ld)", inIndex, mListLength) ;
    TC_FIFO_element * p = (TC_FIFO_element *) NULL ;
@@ -275,6 +255,6 @@ getByExchangeAndSuppressLastItem (TYPE & outInfo) {
      p = mItemsArray [inIndex] ;
    }
    return p->mInfo ;
- }
+}
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

@@ -18,7 +18,7 @@
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-#import "CocoaGalgasPrefix.h"
+#import <Objc/Objc.h>
 #import "unicode_character_m.h"
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -29,9 +29,9 @@
 
 @interface OC_GGS_TemplateDelimiter : NSObject
 
-@property (assign, readonly PROPERTY_COMMA_ATOMIC) NSString * startString ;
-@property (assign, readonly PROPERTY_COMMA_ATOMIC) NSString * endString ;
-@property (assign, readonly PROPERTY_COMMA_ATOMIC) BOOL discardStartString ;
+@property (assign, readonly, atomic) NSString * startString ;
+@property (assign, readonly, atomic) NSString * endString ;
+@property (assign, readonly, atomic) BOOL discardStartString ;
 
 - (id) initWithStartString: (NSString *) inStartString
        endString: (NSString *) inEndString
@@ -68,7 +68,7 @@ typedef struct {
   @private NSDictionary * mCustomSyntaxColoringDictionary ;
 }
 
-@property (retain, readonly PROPERTY_COMMA_ATOMIC) NSMenu * menuForEntryPopUpButton ;
+@property (retain, readonly, atomic) NSMenu * menuForEntryPopUpButton ;
 
 - (void) detach ;
 

@@ -24,6 +24,8 @@
 #             added test (job.mReturnCode != None) lines 727 and 739
 # 3.1: may 26th, 2018
 #        Added tolerance in secondary dependency file syntax:
+# 3.2: december 11th, 2019
+#             added test (job.mReturnCode != None) lines 771 and 779
 #
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 # http://www.diveintopython3.net/porting-code-to-python-3-with-2to3.html
@@ -767,7 +769,7 @@ class Make:
                       os.system ("open -a \"" + self.mMacTextEditor + "\" \"" + components [0] + "\"")
                     elif sys.platform == "linux2":
                       os.system ("\"" + self.mLinuxTextEditor + "\" \"" + components [0] + "\"")
-            elif (job.mState == 3) and (job.mReturnCode == 0): # post command is terminated without error
+            elif (job.mState == 3) and (job.mReturnCode != None) and (job.mReturnCode == 0): # post command is terminated without error
               jobCount = jobCount - 1
               job.mPostCommands.pop (0) # Remove completed post command
               if len (job.mPostCommands) > 0:
@@ -775,7 +777,7 @@ class Make:
               else:
                 job.mState = 4 # Completed
                 index = index - 1 # For removing job from list
-            elif (job.mState == 3) and (job.mReturnCode > 0): # post command is terminated with error
+            elif (job.mState == 3) and (job.mReturnCode != None) and (job.mReturnCode > 0): # post command is terminated with error
               jobCount = jobCount - 1
               job.mState = 4 # Completed
               index = index - 1 # For removing job from list

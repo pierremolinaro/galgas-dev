@@ -18,7 +18,7 @@
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-#import "CocoaGalgasPrefix.h"
+#import <Cocoa/Cocoa.h>
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -42,8 +42,8 @@
   @private OC_GGS_Document * mDocumentUsedForDisplaying ;
 }
 
-@property (assign, readonly PROPERTY_COMMA_ATOMIC) OC_GGS_DocumentData * documentData ;
-@property PROPERTY_ATOMIC BOOL isDirty ;
+@property (assign, readonly, atomic) OC_GGS_DocumentData * documentData ;
+@property (atomic) BOOL isDirty ;
 
 - (OC_GGS_TextDisplayDescriptor *) initWithDocumentData: (OC_GGS_DocumentData *) inDocumentData
                                    displayDocument: (OC_GGS_Document *) inDocumentUsedForDisplaying ;

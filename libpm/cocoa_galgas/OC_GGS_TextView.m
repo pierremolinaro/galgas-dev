@@ -81,7 +81,7 @@
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-- (void) FINALIZE_OR_DEALLOC {
+- (void) dealloc {
   NSUserDefaults * df = [NSUserDefaults standardUserDefaults] ;
   [df
     removeObserver:self
@@ -96,7 +96,6 @@
     forKeyPath:GGS_editor_background_color
   ] ;
   noteObjectDeallocation (self) ;
-  macroSuperFinalize ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

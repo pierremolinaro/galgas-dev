@@ -70,7 +70,7 @@ template <typename TYPE> class TC_UniqueArray {
 //--- Virtual Destructor
   public : virtual ~TC_UniqueArray (void) ;
 
-//--- No implicit copy
+//--- No copy
   private : TC_UniqueArray (const TC_UniqueArray <TYPE> &) ;
   private : TC_UniqueArray <TYPE> & operator = (const TC_UniqueArray <TYPE> &) ;
 
@@ -593,8 +593,7 @@ template <typename TYPE> void TC_UniqueArray <TYPE>::appendDefaultObjectUsingSwa
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::
-appendObjectsFromArray (const TC_UniqueArray <TYPE> &  inObjectArray) {
+template <typename TYPE> void TC_UniqueArray <TYPE>::appendObjectsFromArray (const TC_UniqueArray <TYPE> &  inObjectArray) {
   if (inObjectArray.mCount > 0) {
     setCapacity (mCount + inObjectArray.mCount) ;
     for (int32_t i=0 ; i<inObjectArray.mCount ; i++) {
@@ -611,9 +610,7 @@ appendObjectsFromArray (const TC_UniqueArray <TYPE> &  inObjectArray) {
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  template <typename TYPE>
-  void TC_UniqueArray <TYPE>::
-  checkIndexForInsertion (const int32_t inIndex COMMA_LOCATION_ARGS) const {
+  template <typename TYPE> void TC_UniqueArray <TYPE>::checkIndexForInsertion (const int32_t inIndex COMMA_LOCATION_ARGS) const {
     MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
     MF_AssertThere (inIndex <= mCount, "inIndex (%d) > mCount (%ld)", inIndex, mCount) ;
   }
@@ -625,8 +622,9 @@ appendObjectsFromArray (const TC_UniqueArray <TYPE> &  inObjectArray) {
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::
-insertObjectAtIndex (const TYPE & inValue, const int32_t inIndex COMMA_LOCATION_ARGS) { // inValue is copied
+template <typename TYPE> void TC_UniqueArray <TYPE>::insertObjectAtIndex (const TYPE & inValue,
+                                                                          const int32_t inIndex
+                                                                          COMMA_LOCATION_ARGS) { // inValue is copied
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndexForInsertion (inIndex COMMA_THERE) ;
   #endif
@@ -644,9 +642,10 @@ insertObjectAtIndex (const TYPE & inValue, const int32_t inIndex COMMA_LOCATION_
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE> void TC_UniqueArray <TYPE>::
-insertObjectsAtIndex (const int32_t inCount, const TYPE & inValue,
-                      const int32_t inStartingIndex COMMA_LOCATION_ARGS) { // inValue is copied
+template <typename TYPE> void TC_UniqueArray <TYPE>::insertObjectsAtIndex (const int32_t inCount,
+                                                                           const TYPE & inValue,
+                                                                           const int32_t inStartingIndex
+                                                                           COMMA_LOCATION_ARGS) { // inValue is copied
   if (inCount > 0) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkIndexForInsertion (inStartingIndex COMMA_THERE) ;

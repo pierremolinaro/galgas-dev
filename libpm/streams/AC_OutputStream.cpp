@@ -186,9 +186,9 @@ void AC_OutputStream::appendUnicodeCharacter (const utf32 inUnicodeCharacter COM
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void AC_OutputStream::appendDouble (const double inValue) {
-  char s [40] = "" ;
+  char s [40] ;
   snprintf (s, 40, "%g", inValue) ;
-  genericCharArrayOutput (s, (int32_t) (strlen (s) & UINT32_MAX)) ;
+  appendCString (s) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -310,7 +310,7 @@ void AC_OutputStream::appendBool (const bool inValue) {
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void AC_OutputStream::appendUnsignedWithZeroFill (const uint64_t inValue, const uint32_t inWidth) {
-  char s [32] = "" ;
+  char s [32] ;
   snprintf (s, 31, "%" PRIu64, inValue) ;
   for (uint32_t i = uint32_t (strlen (s)) ; i < inWidth ; i++) {
     appendCString (" ") ;
@@ -321,33 +321,33 @@ void AC_OutputStream::appendUnsignedWithZeroFill (const uint64_t inValue, const 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void AC_OutputStream::appendUnsignedHex (const uint64_t inValue) {
-  char s [32] = "" ;
+  char s [32] ;
   snprintf (s, 31, "%" PRIX64, inValue) ;
-  genericCharArrayOutput (s, (int32_t) (strlen (s) & UINT32_MAX)) ;
+  appendCString (s) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void AC_OutputStream::appendUnsignedHex2 (const uint64_t inValue) {
-  char s [32] = "" ;
+  char s [32] ;
   snprintf (s, 31, "%02" PRIX64, inValue & 0xFF) ;
-  genericCharArrayOutput (s, (int32_t) (strlen (s) & UINT32_MAX)) ;
+  appendCString (s) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void AC_OutputStream::appendUnsignedHex4 (const uint64_t inValue) {
-  char s [32] = "" ;
+  char s [32] ;
   snprintf (s, 31, "%04" PRIX64, inValue & 0xFFFF) ;
-  genericCharArrayOutput (s, (int32_t) (strlen (s) & UINT32_MAX)) ;
+  appendCString (s) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void AC_OutputStream::appendUnsignedHex8 (const uint64_t inValue) {
-  char s [32] = "" ;
+  char s [32] ;
   snprintf (s, 31, "%08" PRIX64, inValue) ;
-  genericCharArrayOutput (s, (int32_t) (strlen (s) & UINT32_MAX)) ;
+  appendCString (s) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -359,9 +359,9 @@ void AC_OutputStream::appendUnsignedHex8 (const uint64_t inValue) {
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 void AC_OutputStream::appendPointer (const void * inValue) {
-  char s [30] = "" ;
+  char s [30] ;
   snprintf (s, 29, "%p", inValue) ;
-  genericCharArrayOutput (s, (int32_t) (strlen (s) & UINT32_MAX)) ;
+  appendCString (s) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

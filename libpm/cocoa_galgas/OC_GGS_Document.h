@@ -18,7 +18,7 @@
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-#import "CocoaGalgasPrefix.h"
+#import <Cocoa/Cocoa.h>
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -106,7 +106,7 @@
   @private BOOL mHasSpoken ;
 }
 
-@property (assign PROPERTY_COMMA_ATOMIC) BOOL mBuildTaskIsRunning ;
+@property (assign, atomic) BOOL mBuildTaskIsRunning ;
 
 - (IBAction) openSourceInNewWindowAction: (id) inSender ;
 - (IBAction) moveSourceInNewWindowAction: (id) inSender ;

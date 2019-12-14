@@ -18,7 +18,7 @@
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-#import "CocoaGalgasPrefix.h"
+#import <Cocoa/Cocoa.h>
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -35,8 +35,8 @@
   @private NSStringEncoding mFileEncoding ;
 }
 
-@property (assign, readonly PROPERTY_COMMA_ATOMIC) OC_GGS_Document * document ; // May be nil
-@property (copy, readonly PROPERTY_COMMA_ATOMIC) NSURL * fileURL ;
+@property (assign, readonly, atomic) OC_GGS_Document * document ; // May be nil
+@property (copy, readonly, atomic) NSURL * fileURL ;
 
 + (void) saveAllDocuments ;
 

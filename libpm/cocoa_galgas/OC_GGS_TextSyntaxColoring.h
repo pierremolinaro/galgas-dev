@@ -18,7 +18,7 @@
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-#import "CocoaGalgasPrefix.h"
+#import <Cocoa/Cocoa.h>
 
 @class OC_GGS_TextDisplayDescriptor ;
 @class OC_Lexique ;
@@ -51,8 +51,8 @@
   @private NSTimer * mTimerForAutosaving ;
 }
 
-@property (readonly PROPERTY_COMMA_ATOMIC) BOOL isDirty ;
-@property (assign, readonly PROPERTY_COMMA_ATOMIC) OC_GGS_DocumentData * documentData ;
+@property (readonly, atomic) BOOL isDirty ;
+@property (assign, readonly, atomic) OC_GGS_DocumentData * documentData ;
 
 - (OC_GGS_TextSyntaxColoring *) initWithSourceString: (NSString *) inSource
                                 tokenizer: (OC_Lexique *) inTokenizer

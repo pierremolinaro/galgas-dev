@@ -62,9 +62,8 @@ bool galgasUnicodeLetter (const utf32 inUnicodeCharacter) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-- (void) FINALIZE_OR_DEALLOC {
+- (void) dealloc {
   noteObjectDeallocation (self) ;
-  macroSuperFinalize ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

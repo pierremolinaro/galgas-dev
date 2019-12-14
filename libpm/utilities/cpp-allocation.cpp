@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1994, ..., 2010 Pierre Molinaro.                                                                     *
+//  Copyright (C) 1994, ..., 2019 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -83,7 +83,11 @@
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 #ifdef REDEFINE_NEW_DELETE_OPERATORS
-void * operator new (size_t inSizeInBytes) throw (std::bad_alloc) {
+  #if __cplusplus >= 201703
+    void * operator new (size_t inSizeInBytes) {
+  #else
+    void * operator new (size_t inSizeInBytes) throw (std::bad_alloc) {
+  #endif
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (gAllocProloguePendings <= 0) {
       gBlockAllocatedWithoutUsingMacroMyNew ++ ;
@@ -108,32 +112,40 @@ void * operator new (size_t inSizeInBytes) throw (std::bad_alloc) {
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 #ifdef REDEFINE_NEW_DELETE_OPERATORS
-void * operator new [] (size_t inSizeInBytes) throw (std::bad_alloc) {
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    if (gAllocProloguePendings <= 0) {
-      gBlockAllocatedWithoutUsingMacroMyNewArray ++ ;
-    }
-    gAllocProloguePendings -- ;
+  #if __cplusplus >= 201703
+    void * operator new [] (size_t inSizeInBytes) {
+  #else
+    void * operator new [] (size_t inSizeInBytes) throw (std::bad_alloc) {
   #endif
-  void * result = NULL ;
-  if (inSizeInBytes > 0) {
-    result = ::myAllocRoutine (inSizeInBytes) ;
-    if (NULL == result) {
-      throw std::bad_alloc () ;
-    }
-    #ifdef REGISTER_ALLOCATION_STATS
-      gCurrentArrayCount ++ ;
-      gAllocatedArrayCount ++ ;
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      if (gAllocProloguePendings <= 0) {
+        gBlockAllocatedWithoutUsingMacroMyNewArray ++ ;
+      }
+      gAllocProloguePendings -- ;
     #endif
+    void * result = NULL ;
+    if (inSizeInBytes > 0) {
+      result = ::myAllocRoutine (inSizeInBytes) ;
+      if (NULL == result) {
+        throw std::bad_alloc () ;
+      }
+      #ifdef REGISTER_ALLOCATION_STATS
+        gCurrentArrayCount ++ ;
+        gAllocatedArrayCount ++ ;
+      #endif
+    }
+    return result ;
   }
-  return result ;
-}
 #endif
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 #ifdef REDEFINE_NEW_DELETE_OPERATORS
-void operator delete (void * inPointer) throw () {
+//  #if __cplusplus >= 201703
+//    void operator delete (void * inPointer) {
+//  #else
+    void operator delete (void * inPointer) throw () {
+//  #endif
   if (inPointer != NULL) {
     ::myFreeRoutine (inPointer) ;
     #ifdef REGISTER_ALLOCATION_STATS
@@ -146,7 +158,11 @@ void operator delete (void * inPointer) throw () {
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 #ifdef REDEFINE_NEW_DELETE_OPERATORS
-void operator delete [] (void * inPointer) throw () {
+//  #if __cplusplus >= 201703
+//    void operator delete [] (void * inPointer) {
+//  #else
+    void operator delete [] (void * inPointer) throw () {
+//  #endif
   if (inPointer != NULL) {
     ::myFreeRoutine (inPointer) ;
     #ifdef REGISTER_ALLOCATION_STATS

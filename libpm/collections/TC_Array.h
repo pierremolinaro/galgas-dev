@@ -194,7 +194,7 @@ template <typename TYPE> class TC_Array {
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>TC_Array <TYPE>::TC_Array (void) :
+template <typename TYPE> TC_Array <TYPE>::TC_Array (void) :
 mSharedArray (NULL) {
 }
 
@@ -204,7 +204,7 @@ mSharedArray (NULL) {
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>TC_Array <TYPE>::~ TC_Array (void) {
+template <typename TYPE> TC_Array <TYPE>::~ TC_Array (void) {
   macroDetachSharedObject (mSharedArray) ;
 }
 

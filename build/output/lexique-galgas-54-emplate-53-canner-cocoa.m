@@ -64,9 +64,8 @@ static NSArray * kTemplateDefinitionArray_galgasTemplateScanner ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-- (void) FINALIZE_OR_DEALLOC {
+- (void) dealloc {
   noteObjectDeallocation (self) ;
-  macroSuperFinalize ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

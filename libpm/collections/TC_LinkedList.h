@@ -92,8 +92,7 @@ template <typename TYPE> class TC_LinkedList {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-TC_LinkedList <TYPE>::TC_LinkedList (void) :
+template <typename TYPE>  TC_LinkedList <TYPE>::TC_LinkedList (void) :
 mTopItem ((cElement *) NULL),
 mBottomItem ((cElement *) NULL),
 mCount (0) {
@@ -101,15 +100,13 @@ mCount (0) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-TC_LinkedList <TYPE>::~TC_LinkedList (void) {
+template <typename TYPE> TC_LinkedList <TYPE>::~TC_LinkedList (void) {
   makeListEmpty () ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-void TC_LinkedList <TYPE>::makeListEmpty (void) {
+template <typename TYPE> void TC_LinkedList <TYPE>::makeListEmpty (void) {
   while (mTopItem != NULL) {
     mBottomItem = mTopItem->mNextItem ;
     macroMyDelete (mTopItem) ;
@@ -120,8 +117,7 @@ void TC_LinkedList <TYPE>::makeListEmpty (void) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-void TC_LinkedList <TYPE>::insertAtBottom (const TYPE & inInfo) {
+template <typename TYPE> void TC_LinkedList <TYPE>::insertAtBottom (const TYPE & inInfo) {
   cElement * p = (cElement *) NULL ;
   macroMyNew (p, cElement) ;
   p->mNextItem = (cElement *) NULL ;
@@ -137,8 +133,7 @@ void TC_LinkedList <TYPE>::insertAtBottom (const TYPE & inInfo) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-void TC_LinkedList<TYPE> ::insertAtTop (const TYPE & inInfo) {
+template <typename TYPE> void TC_LinkedList<TYPE> ::insertAtTop (const TYPE & inInfo) {
   cElement * p = (cElement *) NULL ;
   macroMyNew (p, cElement) ;
   p->mNextItem = mTopItem ;
@@ -152,8 +147,7 @@ void TC_LinkedList<TYPE> ::insertAtTop (const TYPE & inInfo) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-TYPE TC_LinkedList <TYPE>::getByCopyAndSuppressTopItem (LOCATION_ARGS) {
+template <typename TYPE> TYPE TC_LinkedList <TYPE>::getByCopyAndSuppressTopItem (LOCATION_ARGS) {
   MF_AssertThere (mTopItem != NULL, "mTopItem == NULL", 0, 0) ;
   TYPE info (mTopItem->mInfo) ; // Copy constructor call
   cElement * p = mTopItem->mNextItem ;
@@ -168,8 +162,7 @@ TYPE TC_LinkedList <TYPE>::getByCopyAndSuppressTopItem (LOCATION_ARGS) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-void TC_LinkedList <TYPE>::mergeListAtTop (TC_LinkedList <TYPE> & ioList) {
+template <typename TYPE> void TC_LinkedList <TYPE>::mergeListAtTop (TC_LinkedList <TYPE> & ioList) {
   MF_Assert (this != & ioList, "this == & ioList", 0, 0) ;
   if (ioList.mTopItem != NULL) {
     if (mBottomItem == NULL) {
@@ -187,8 +180,7 @@ void TC_LinkedList <TYPE>::mergeListAtTop (TC_LinkedList <TYPE> & ioList) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-void TC_LinkedList <TYPE>::mergeListAtBottom (TC_LinkedList <TYPE> & ioList) {
+template <typename TYPE> void TC_LinkedList <TYPE>::mergeListAtBottom (TC_LinkedList <TYPE> & ioList) {
   MF_Assert (this != & ioList, "this == & ioList", 0, 0) ;
   if (ioList.mTopItem != NULL) {
     if (mBottomItem == NULL) {
@@ -206,8 +198,7 @@ void TC_LinkedList <TYPE>::mergeListAtBottom (TC_LinkedList <TYPE> & ioList) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-void TC_LinkedList <TYPE>::copyIntoArray (TC_UniqueArray <TYPE> & outArray) {
+template <typename TYPE> void TC_LinkedList <TYPE>::copyIntoArray (TC_UniqueArray <TYPE> & outArray) {
   outArray.free () ;
   outArray.setCapacity (mCount) ;
   cElement * p = mTopItem ;
@@ -219,9 +210,8 @@ void TC_LinkedList <TYPE>::copyIntoArray (TC_UniqueArray <TYPE> & outArray) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-template <typename TYPE>
-void swap (TC_LinkedList <TYPE> & ioList1,
-           TC_LinkedList <TYPE> & ioList2) {
+template <typename TYPE>void swap (TC_LinkedList <TYPE> & ioList1,
+                                   TC_LinkedList <TYPE> & ioList2) {
   swap (ioList1.mTopItem, ioList2.mTopItem) ;
   swap (ioList1.mBottomItem, ioList2.mBottomItem) ;
   swap (ioList1.mCount, ioList2.mCount) ;

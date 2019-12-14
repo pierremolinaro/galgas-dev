@@ -68,7 +68,8 @@ int main (int argc, const char * argv []) {
   // C_DirectedGraph::example () ;
   C_DateTime::enterCurrentToolModificationTime (argv [0]) ;
   int returnCode = 0 ; // No error
-//--- Print options
+//--- Print options`
+  // printf ("Version C++ %ld\n", __cplusplus) ;
   /* printf ("Command line options:\n") ;
   for (int i=1 ; i<argc ; i++) {
     printf ("  - '%s'\n", argv [i]) ;

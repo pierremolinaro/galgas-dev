@@ -251,9 +251,8 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 
   //····················································································································
 
-  - (void) FINALIZE_OR_DEALLOC {
+  - (void) dealloc {
     noteObjectDeallocation (self) ;
-    macroSuperFinalize ;
   }
 
   //····················································································································

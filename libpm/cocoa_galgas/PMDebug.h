@@ -18,15 +18,7 @@
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-#import "CocoaGalgasPrefix.h"
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-#if __has_feature(objc_arc)
-  #define macroAutoreleasingInARC __autoreleasing
-#else
-  #define macroAutoreleasingInARC
-#endif
+#import <Cocoa/Cocoa.h>
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -36,11 +28,7 @@ void noteObjectDeallocation (NSObject * inObject) ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-@interface PMDebug : NSObject
-#if MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_5
-  <NSTableViewDataSource>
-#endif  
-{
+@interface PMDebug : NSObject <NSTableViewDataSource> {
   @private IBOutlet NSButton * mAllocationStatsWindowVisibleAtLaunchCheckbox ;
   @private IBOutlet NSButton * mCollectExhaustivelyButton ;
   @private IBOutlet NSPopUpButton * mDisplayFilterPopUpButton ;
@@ -62,10 +50,10 @@ void noteObjectDeallocation (NSObject * inObject) ;
   #endif
 }
 
-@property PROPERTY_ATOMIC BOOL mAllocationStatsWindowVisibleAtLaunch ;
-@property PROPERTY_ATOMIC NSUInteger mAllocatedObjectCount ;
-@property PROPERTY_ATOMIC NSUInteger mTotalAllocatedObjectCount ;
-@property PROPERTY_ATOMIC NSInteger mDisplayFilter ;
+@property (atomic) BOOL mAllocationStatsWindowVisibleAtLaunch ;
+@property (atomic) NSUInteger mAllocatedObjectCount ;
+@property (atomic) NSUInteger mTotalAllocatedObjectCount ;
+@property (atomic) NSInteger mDisplayFilter ;
 
 - (void) pmNoteObjectAllocation: (NSObject *) inObject ;
 - (void) pmNoteObjectDeallocation: (NSObject *) inObject ;
