@@ -1,0 +1,140 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @functionCallExpressionAST : @semanticExpressionAST {
+  @lstring mFunctionName
+  @actualOutputExpressionList mExpressionList
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $identifier$ ?let @lstring functionName indexing functionCall
+    $($
+    <output_expression_list> ?let @actualOutputExpressionList expressionList
+    $)$
+    outExpression = @functionCallExpressionAST.new {
+      !functionName
+      !expressionList
+    }
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @functionCallExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  for () in mExpressionList do
+    [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  end
+}
+
+#·····················································································································
+
+override method @functionCallExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  let usefulnessName = functionNameForUsefulEntitiesGraph (!mFunctionName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+#--- Retrieve function features
+  [inAnalysisContext.mSemanticContext.mFunctionMap searchKey
+    !mFunctionName
+    ?let @functionSignature functionSignature
+    ?let @unifiedTypeMap-proxy resultType
+    ?let @bool isInternal
+  ]
+#--- Check internal
+  if isInternal then
+    let procDeclarationLocation = [inAnalysisContext.mSemanticContext.mFunctionMap locationForKey !mFunctionName.string]
+    if [mFunctionName.location file] != [procDeclarationLocation file] then
+      error mFunctionName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
+    end
+  end
+#--- Analyze effective parameters
+  if [functionSignature length] != [mExpressionList length] then
+    error mFunctionName
+    :"the '" + mFunctionName + "' function header declares " + [[functionSignature length] string]
+      + " formal parameter(s), but this function call names " + [[mExpressionList length] string]
+      + " effective argument(s)"
+    : outExpression
+  else
+    var semanticExpressionListForGeneration =@semanticExpressionListForGeneration {}
+    for () in functionSignature, () in mExpressionList do
+      [mExpression analyzeSemanticExpression
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !mFormalArgumentType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?@semanticExpressionForGeneration expression
+      ]
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation !?expression)
+      if mFormalSelector.string != mActualSelector.string then
+        error mActualSelector : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
+      end
+      semanticExpressionListForGeneration += !expression
+    end
+    outExpression = @functionCallExpressionForGeneration.new {
+      !resultType
+      ![mFunctionName location]
+      ![mFunctionName string]
+      !semanticExpressionListForGeneration}
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @functionCallExpressionForGeneration : @semanticExpressionForGeneration {
+  @string mFunctionName
+  @semanticExpressionListForGeneration mExpressions
+}
+
+#·····················································································································
+
+override method @functionCallExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+#--- Add return type header
+  [mResultType addHeaderFileName !?ioInclusionSet]
+#--- Add function header
+  ioInclusionSet += !"func-" + [mFunctionName fileNameRepresentation]
+#---
+  var parameterList =@stringlist {}
+  for () in mExpressions do
+    @string parameter
+    [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?parameter]
+    parameterList += !parameter  
+  end
+  outCppExpression = "function_" + [mFunctionName identifierRepresentation] + " ("
+  for () in parameterList
+    do outCppExpression += mValue + ", "
+  end
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  outCppExpression += compilerCppName ()
+  outCppExpression += [mLocation commaSourceFile] + ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

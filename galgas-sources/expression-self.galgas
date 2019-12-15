@@ -1,0 +1,74 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @selfInExpressionAST : @semanticExpressionAST {
+  @location mSelfLocation
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $self$
+    outExpression = @selfInExpressionAST.new {!@location.here}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @selfInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#·····················································································································
+
+override method @selfInExpressionAST analyzeSemanticExpression
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+    error mSelfLocation: "'self' cannot be used in this context" : outExpression
+  else
+    let @string selfCppName = inAnalysisContext.mSelfObjectCppName
+    outExpression = @selfInExpressionForGeneration.new {!inAnalysisContext.mSelfCopyTypeProxy !mSelfLocation !selfCppName}
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @selfInExpressionForGeneration : @semanticExpressionForGeneration {
+  @string mSelfCppName
+}
+
+#·····················································································································
+
+override method @selfInExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset unused ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  outCppExpression = "temp_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+  ioGeneratedCode += "const GALGAS_" + [mResultType identifierRepresentation] + " " + outCppExpression + " = " + mSelfCppName + " ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !mSelfCppName]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,0 +1,104 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @tildeExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mExpression
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <factor> !@semanticExpressionAST outExpression {
+    let operatorLocation = @location.here
+    $~$
+    <factor> ? outExpression
+    outExpression = @tildeExpressionAST.new {!operatorLocation !outExpression}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @tildeExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#·····················································································································
+
+override method @tildeExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+#--- Expression analysis
+  [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy type = [expression mResultType]
+  if let exp = expression as @literalBigIntExpressionForGeneration then
+    outExpression = @literalBigIntExpressionForGeneration.new {
+      ![exp mResultType]
+      ![exp mLocation]
+      !~ [exp mValue]
+    }
+  elsif not [[type mHandledOperatorFlags] prefixTildeOperator] then
+    error mOperatorLocation
+    : "operand type is '@" + [type key] + "' and does not support the '~' operator"
+    :outExpression
+  else
+  #--- Generate expression
+    outExpression = @tildeExpressionForGeneration.new {
+      !type
+      !mOperatorLocation
+      !expression
+    }
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @tildeExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mExpression
+}
+
+#·····················································································································
+
+override method @tildeExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  [[mExpression mResultType] addHeaderFileName !?ioInclusionSet]
+#--- Operand
+  @string operand
+  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?operand]
+#--- Generate
+  outCppExpression = operand + ".operator_tilde (" + [mLocation sourceFile] + ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

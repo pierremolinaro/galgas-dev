@@ -1,0 +1,94 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @lexiqueIntrospectionExpressionAST : @semanticExpressionAST {
+  @lstring mLexiqueComponentName
+  @lstring mLexiqueGetterName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $[$
+    $lexique$
+    $identifier$ ?let lexiqueName
+    $:$
+    $identifier$ ?let getterName
+    outExpression = @lexiqueIntrospectionExpressionAST.new {!lexiqueName !getterName}
+    $]$
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @lexiqueIntrospectionExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#·····················································································································
+
+override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+ let usefulnessName = lexiqueNameForUsefulEntitiesGraph (!mLexiqueComponentName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+#--- Check  lexique is declared
+  [inAnalysisContext.mSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
+    !mLexiqueComponentName
+    ?3*
+  ]
+#--- Check getter name
+  if mLexiqueGetterName.string != "symbols" then
+    error mLexiqueGetterName:"unknown getter"
+  end
+#---
+  outExpression = @lexiqueIntrospectionForGeneration.new {
+    !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["stringlist" nowhere]}
+    !mLexiqueComponentName.location
+    !mLexiqueComponentName.string
+    !mLexiqueGetterName.string}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @lexiqueIntrospectionForGeneration : @semanticExpressionForGeneration {
+  @string mLexiqueComponentName
+  @string mLexiqueGetterName
+}
+
+#·····················································································································
+
+override method @lexiqueIntrospectionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+#---
+  ioInclusionSet += !"lexique-" + [mLexiqueComponentName fileNameRepresentation]
+  outCppExpression = "C_Lexique_" + [mLexiqueComponentName identifierRepresentation] + "::"
+  + [mLexiqueGetterName identifierRepresentation]
+  + "(" + [mLocation sourceFile] + ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

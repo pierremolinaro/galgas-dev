@@ -1,0 +1,82 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @literalTypeInExpressionAST : @semanticExpressionAST {
+  @lstring mLiteralTypeName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+
+  rule <primary> !@semanticExpressionAST outExpression {
+    $`$
+    $@type$ ?let @lstring typeName
+    outExpression = @literalTypeInExpressionAST.new {!typeName}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @literalTypeInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mLiteralTypeName ?*]
+}
+
+#·····················································································································
+
+override method @literalTypeInExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  let usefulnessName = typeNameForUsefulEntitiesGraph (!mLiteralTypeName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+#--- Get constructor map from type map
+  [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mLiteralTypeName ?25*]
+#---
+  let type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mLiteralTypeName}
+  outExpression = @literalTypeInExpressionForGeneration.new {
+    !@unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"type" !.here}}
+    ![mLiteralTypeName location]
+    !type
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @literalTypeInExpressionForGeneration : @semanticExpressionForGeneration {
+  @unifiedTypeMap-proxy mLiteralType
+}
+
+#·····················································································································
+
+override method @literalTypeInExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression
+{
+  [mLiteralType addHeaderFileName !?ioInclusionSet]
+  outCppExpression = "GALGAS_type (& kTypeDescriptor_GALGAS_"
+                  + [[mLiteralType key] identifierRepresentation] + ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

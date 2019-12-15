@@ -74,69 +74,6 @@ list @semanticExpressionListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @selfCopyInExpressionForGeneration : @semanticExpressionForGeneration {
-  @string mSelfCppName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @defaultConstructorExpressionForGeneration : @semanticExpressionForGeneration {
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @constructorExpressionForGeneration : @semanticExpressionForGeneration {
-  @unifiedTypeMap-proxy mConstructorType
-  @string mConstructorName
-  @semanticExpressionListForGeneration mEffectiveParameterList
-  @bool mHasCompilerArgument
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
-  @methodKind mKind
-  @semanticExpressionForGeneration mReceiverExpression
-  @stringlist mFieldList
-  @string mGetterName
-  @semanticExpressionListForGeneration mExpressions
-  @bool mHasCompilerArgument
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @optionValueExpressionForGeneration : @semanticExpressionForGeneration {
-  @bool mOptionComponentIsPredefined
-  @string mOptionComponentName
-  @string mOptionEntryName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @optionCharExpressionForGeneration : @semanticExpressionForGeneration {
-  @bool mOptionComponentIsPredefined
-  @string mOptionComponentName
-  @string mOptionEntryName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @optionStringExpressionForGeneration : @semanticExpressionForGeneration {
-  @bool mOptionComponentIsPredefined
-  @string mOptionComponentName
-  @string mOptionEntryName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @optionCommentExpressionForGeneration : @semanticExpressionForGeneration {
-  @bool mOptionComponentIsPredefined
-  @string mOptionComponentName
-  @string mOptionEntryName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 class @orShortExpressionForGeneration,
       @orExpressionForGeneration,
       @xorExpressionForGeneration,
@@ -155,47 +92,6 @@ class @orShortExpressionForGeneration,
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @unaryMinusExpressionNoOverflowForGeneration : @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mExpression
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @notExpressionForGeneration : @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mExpression
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @structFieldAccessExpressionForGeneration : @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mExpression
-  @string mStructFieldName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @tildeExpressionForGeneration : @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mExpression
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @functionCallExpressionForGeneration : @semanticExpressionForGeneration {
-  @string mFunctionName
-  @semanticExpressionListForGeneration mExpressions
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @literalTypeInExpressionForGeneration : @semanticExpressionForGeneration {
-  @unifiedTypeMap-proxy mLiteralType
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 class @castInExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression
   @string mTypeName
@@ -207,36 +103,6 @@ class @castInExpressionForGeneration : @semanticExpressionForGeneration {
 class @extractObjectInExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression
   @string mTypeName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @filewrapperInExpressionForGeneration : @semanticExpressionForGeneration {
-  @string mFilewrapperName
-  @string mFilewrapperPath
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @filewrapperStaticPathInExpressionForGeneration : @semanticExpressionForGeneration {
-  @string mFilewrapperName
-  @uint mFilewrapperFileIndex
-  @bool mIsTextFile
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGeneration {
-  @string mFilewrapperName
-  @string mFilewrapperTemplateName
-  @semanticExpressionListForGeneration mActualOutputParameterList
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @lexiqueIntrospectionForGeneration : @semanticExpressionForGeneration {
-  @string mLexiqueComponentName
-  @string mLexiqueGetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

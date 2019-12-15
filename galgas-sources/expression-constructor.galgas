@@ -1,0 +1,312 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @constructorExpressionAST : @semanticExpressionAST {
+  @lstring mTypeName
+  @lstring mConstructorName
+  @actualOutputExpressionList mExpressions
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @defaultConstructorExpressionAST : @semanticExpressionAST {
+  @lstring mTypeName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+
+  rule <optional_type> !@lstring outTypeName {
+    select
+      outTypeName = .new {!"" !.here}
+    or
+      $@type$ ?outTypeName indexing typeReferenceInConstructor
+    end
+  }
+  
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+  #--- Type name
+    <optional_type> ?let @lstring typeName
+    $.$
+  #--- Constructor name
+    $identifier$ ?let @lstring constructorName
+  #--- Actual arguments
+    @actualOutputExpressionList expressionList
+    select
+      expressionList = {}
+    or
+      ${$
+      <output_expression_list> ?expressionList
+      $}$
+    end
+    outExpression = @constructorExpressionAST.new {
+      !typeName
+      !constructorName
+      !expressionList}
+  }
+  
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    <optional_type> ?let @lstring typeName
+    $.$
+    $default$
+    outExpression = @defaultConstructorExpressionAST.new {!typeName}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @constructorExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [@unifiedTypeMap-proxy makeOptionalProxy !?ioTypeMap !mTypeName ?*]
+  [mExpressions enterInSemanticContext !?ioTypeMap]
+}
+
+#·····················································································································
+
+private proc analyzeConstructorInvocation
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  ?let @lstring inTypeName
+  ?let @lstring inConstructorName
+  ?let @actualOutputExpressionList inConstuctorEffectiveParameterExpressions
+  !@unifiedTypeMap-proxy outReturnedType
+  !@unifiedTypeMap-proxy outConstructorType
+  !@semanticExpressionListForGeneration outConstructorEffectiveParameterList
+  !@bool outHasCompilerArgument
+{
+  outConstructorType = inType
+  if inTypeName.string != "" then
+    outConstructorType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !inTypeName}
+  end
+  if [outConstructorType isNull] then
+    error inTypeName
+    : "cannot infer type"
+    : outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument
+  else
+  #--- Get constructor map from type map
+    let @constructorMap constructorMap = [outConstructorType mConstructorMap]
+  #--- Search contructor
+    @functionSignature constructorFormalArgumentTypeList
+    with [inConstructorName string] in constructorMap  do
+      constructorFormalArgumentTypeList = mArgumentTypeList
+      outHasCompilerArgument = mHasCompilerArgument
+      outReturnedType = mReturnedType
+    else
+      if [constructorMap count] == 0 then
+        error inConstructorName
+        : "the '@"+ [outConstructorType key] + "' type does not define any constructor"
+        : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
+      else
+        error inConstructorName
+        : "the '@"+ [outConstructorType key] + "' type does not define the '" + inConstructorName + "' constructor"
+        : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
+        fixit { replace [constructorMap keyList] }
+      end
+    end
+  #--- Analysis arguments
+    if [inConstuctorEffectiveParameterExpressions length] != [constructorFormalArgumentTypeList length] then
+      error inConstructorName
+      : "calling the '" + inConstructorName + "' constructor of '@" + [outConstructorType key] + "' requires "
+      + [[constructorFormalArgumentTypeList length] string] + " parameter(s), while this call has "
+      + [[inConstuctorEffectiveParameterExpressions length] string] + " parameter(s)"
+    end
+    outConstructorEffectiveParameterList = {}
+    for () in inConstuctorEffectiveParameterExpressions, () in constructorFormalArgumentTypeList do
+      [mExpression analyzeSemanticExpression
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !mFormalArgumentType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?@semanticExpressionForGeneration exp
+      ]
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation !?exp)
+      outConstructorEffectiveParameterList += !exp
+      if mFormalSelector.string != mActualSelector.string then
+        error mActualSelector 
+         : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
+      end
+    end
+  end
+}
+
+#·····················································································································
+
+override method @constructorExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  analyzeConstructorInvocation (
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inType
+    !inAnalysisContext
+    !?ioVariableMap
+    !mTypeName
+    !mConstructorName
+    !mExpressions
+    ?let @unifiedTypeMap-proxy returnedType
+    ?let @unifiedTypeMap-proxy constructorType
+    ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
+    ?let @bool hasCompilerArgument
+  )
+  let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![constructorType key] !mTypeName})
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !constructorTypeUsefulnessName]
+  let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![returnedType key] !mTypeName})
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !returnedTypeUsefulnessName]
+#---
+  outExpression = @constructorExpressionForGeneration.new {
+    !returnedType
+    ![mConstructorName location]
+    !constructorType
+    ![mConstructorName string]
+    !constructorEffectiveParameterList
+    !hasCompilerArgument
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @defaultConstructorExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  if mTypeName.string != "" then
+    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
+  end
+}
+
+#·····················································································································
+
+override method @defaultConstructorExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  var type = inType
+  if mTypeName.string != "" then
+    type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  end
+  if [type isNull] then
+    error mTypeName : "cannot infer type" : outExpression
+  else
+  #--- Check type accepts default constructor
+    if not [type mIsConcrete] then
+      error mTypeName: "an abstract class does not support the default constructor"
+    elsif [type mDefaultConstructorName] == "" then
+      error mTypeName: "this class does not support the default constructor"
+    end
+  #---
+    let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![type key] !mTypeName})
+    [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+  #---
+    outExpression = @defaultConstructorExpressionForGeneration.new {
+      !type
+      !mTypeName.location
+    }
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @constructorExpressionForGeneration : @semanticExpressionForGeneration {
+  @unifiedTypeMap-proxy mConstructorType
+  @string mConstructorName
+  @semanticExpressionListForGeneration mEffectiveParameterList
+  @bool mHasCompilerArgument
+}
+
+#·····················································································································
+
+override method @constructorExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+{
+  [mResultType addHeaderFileName !?ioInclusionSet]
+  @stringlist parameterList = {}
+  for () in mEffectiveParameterList do
+    [mExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet 
+      ?let @string parameter
+    ]
+    parameterList += !parameter  
+  end
+  outCppExpression = "GALGAS_"  + [mConstructorType identifierRepresentation]
+                   + "::constructor_" + [mConstructorName identifierRepresentation]
+                   + " ("
+  for () in parameterList
+    do outCppExpression += mValue
+    between outCppExpression += ", "
+  end
+  @bool needsComma = [parameterList length] > 0
+  if mHasCompilerArgument then
+    if needsComma then
+      outCppExpression += ", "
+    end
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    outCppExpression += compilerCppName ()
+    needsComma = true
+  end
+  if needsComma then
+    outCppExpression += " " + [mLocation commaSourceFile] + ")"
+  else
+    outCppExpression += [mLocation sourceFile] + ")"
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @defaultConstructorExpressionForGeneration : @semanticExpressionForGeneration {
+}
+
+#·····················································································································
+
+override method @defaultConstructorExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression
+{
+  [mResultType addHeaderFileName !?ioInclusionSet]
+  outCppExpression =
+    "GALGAS_"  + [mResultType identifierRepresentation]
+  + "::constructor_"
+  + [[mResultType mDefaultConstructorName] identifierRepresentation]
+  + " (" + [mLocation sourceFile] + ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

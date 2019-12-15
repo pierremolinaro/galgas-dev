@@ -647,11 +647,12 @@ proc checkExpressionIsBoolean
         error inErrorLocation : " inaccessible property (due to its 'private' qualifier)"
       end
       if attributeType == boolType then
-        outExpression = @structFieldAccessExpressionForGeneration.new {
+        outExpression = @structPropertyAccessExpressionForGeneration.new {
           !boolType
           !inErrorLocation
           !inExpression
-          !"bool"}
+          !"bool"
+        }
       else
         error inErrorLocation
         : "the '@"+ [expressionType key] + "' struct type defines an attribute named 'bool', but its type is not '@bool'"

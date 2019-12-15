@@ -25,49 +25,6 @@ list @semanticExpressionListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @selfCopyInExpressionAST : @semanticExpressionAST {
-  @location mSelfLocation
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @constructorExpressionAST : @semanticExpressionAST {
-  @lstring mTypeName
-  @lstring mConstructorName
-  @actualOutputExpressionList mExpressions
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @defaultConstructorExpressionAST : @semanticExpressionAST {
-  @lstring mTypeName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @getterCallExpressionAST : @semanticExpressionAST {
-  @semanticExpressionAST mReceiver
-  @lstring mGetterName
-  @actualOutputExpressionList mExpressions
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @optionExpressionAST : @semanticExpressionAST {
-  @lstring mOptionComponentName
-  @lstring mOptionEntryName
-  @lstring mOptionGetterName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @lexiqueIntrospectionExpressionAST : @semanticExpressionAST {
-  @lstring mLexiqueComponentName
-  @lstring mLexiqueGetterName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 class @orExpressionAST,
       @orShortExpressionAST,
       @xorExpressionAST,
@@ -83,57 +40,6 @@ class @orExpressionAST,
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @unaryMinusNoOverflowExpressionAST,
-      @notExpressionAST,
-      @complementExpressionAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mExpression
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @structFieldAccessExpressionAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mExpression
-  @lstring mStructFieldName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @functionCallExpressionAST : @semanticExpressionAST {
-  @lstring mFunctionName
-  @actualOutputExpressionList mExpressionList
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @literalTypeInExpressionAST : @semanticExpressionAST {
-  @lstring mLiteralTypeName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @filewrapperObjectInstanciationInExpressionAST : @semanticExpressionAST {
-  @lstring mFilewrapperName
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @filewrapperInExpressionAST : @semanticExpressionAST {
-  @lstring mFilewrapperName
-  @lstring mFilewrapperPath
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
-  @lstring mFilewrapperName
-  @lstring mFilewrapperTemplateName
-  @actualOutputExpressionList mExpressions
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -513,42 +419,6 @@ list @syntaxRuleListAST {
 list @listOfSyntaxInstructionList {
   @syntaxInstructionList mSyntaxInstructionList
   @location mEndOf_instructions
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#                                                                                                                      *
-#   Collection value                                                                                                   *
-#                                                                                                                      *
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-list @collectionValueElementList {
-  @abstractCollectionValueElement mElement
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-abstract class @abstractCollectionValueElement {}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @expressionCollectionValue : @abstractCollectionValueElement {
-  @semanticExpressionAST mExpression
-  @location mExpressionLocation
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @expressionListCollectionValue : @abstractCollectionValueElement {
-  @actualOutputExpressionList mExpressionList
-  @location mEndOfExpressionLocation
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @collectionValueAST : @semanticExpressionAST {
-  @lstring mTypeName # Empty string if infered
-  @collectionValueElementList mElementList
-  @location mEndOfCollectionValue
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

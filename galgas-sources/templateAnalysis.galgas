@@ -1038,11 +1038,12 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
     error mStructFieldName : " inaccessible property (due to its 'private' qualifier)"
   end
 #--- Generate expression
-  outExpression = @structFieldAccessExpressionForGeneration.new {
+  outExpression = @structPropertyAccessExpressionForGeneration.new {
     !type
     !mOperatorLocation
     !expression
-    !mStructFieldName.string}
+    !mStructFieldName.string
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

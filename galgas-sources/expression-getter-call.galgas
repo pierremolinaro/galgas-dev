@@ -1,0 +1,267 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @getterCallExpressionAST : @semanticExpressionAST {
+  @semanticExpressionAST mReceiver
+  @lstring mGetterName
+  @actualOutputExpressionList mExpressions
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $[$
+  #--- Get source identity characteristics
+    <expression> ?let @semanticExpressionAST receiverExpression
+  #--- Get getter name
+    $identifier$ ?let @lstring getterName
+  #--- Actual parameters
+    <output_expression_list> ?let @actualOutputExpressionList expressionList
+    $]$
+    outExpression = @getterCallExpressionAST.new {!receiverExpression !getterName !expressionList}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @getterCallExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mReceiver enterExpressionInSemanticContext !?ioTypeMap]
+  [mExpressions enterInSemanticContext !?ioTypeMap]
+}
+
+#·····················································································································
+
+override method @getterCallExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+#--- Expression analysis
+  [mReceiver analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration receiverExpression
+  ]
+  let @unifiedTypeMap-proxy receiverType = [receiverExpression mResultType]
+#--- Get getter map
+  let @getterMap getterMap = [receiverType mGetterMap]
+#--- Search getter
+  @functionSignature getterFormalArgumentTypeList
+  @methodKind kind
+  @bool hasCompilerArgument
+  @unifiedTypeMap-proxy returnedType
+  @stringlist fieldList = {}
+  with [mGetterName string] in getterMap  do
+    getterFormalArgumentTypeList = mArgumentTypeList
+    hasCompilerArgument = mHasCompilerArgument
+    returnedType = mReturnedType
+    kind = mKind
+    if mErrorMessage != "" then
+      error mGetterName : mErrorMessage
+    end
+  else
+    @uint matchingReaderCount = 0
+    if [receiverType mTypeKindEnum] == @typeKindEnum.structType then
+      getterFormalArgumentTypeList = {}
+      hasCompilerArgument = true
+      returnedType = @unifiedTypeMap-proxy.null
+      kind = @methodKind. definedAsExtension
+      for () in [receiverType mCurrentTypedAttributeList] do
+        let attributeType = @unifiedTypeMap-proxy.searchKey {
+          !inAnalysisContext.mSemanticContext.mTypeMap
+          !@lstring.new {![mPropertyTypeProxy key] !@location.here}
+        }
+        let aMap = [attributeType mGetterMap]
+        with mGetterName.string in aMap  do
+          if [attributeType key] == mPropertyName.string then
+            matchingReaderCount ++
+            getterFormalArgumentTypeList = mArgumentTypeList
+            hasCompilerArgument = mHasCompilerArgument
+            returnedType = mReturnedType
+            kind = mKind
+            fieldList += !mPropertyName.string
+            if mErrorMessage != "" then
+              error mGetterName : mErrorMessage
+            end
+          end
+        end
+      end
+      if matchingReaderCount == 0 then
+        error mGetterName
+        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mGetterName string]
+        + "' getter, and none of its fields defines it"
+        : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+      elsif matchingReaderCount > 1 then
+        @string s = ""
+        for () in fieldList
+          do s += mValue
+          between s += ", "
+        end
+        error mGetterName
+        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mGetterName string]
+        + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
+        : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+      end
+    elsif [getterMap count] == 0 then
+      error mGetterName
+      : "the '@"+ [receiverType key] + "' type does not define any getter"
+      : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+    else
+      error mGetterName
+      : "the '@"+ [receiverType key] + "' type does not define the '" + mGetterName + "' getter "
+      : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+      fixit { replace [getterMap keyList] }
+    end
+  end
+#--- Analysis arguments
+  if [mExpressions length] != [getterFormalArgumentTypeList length] then
+    error mGetterName: "calling the '" + mGetterName + "' getter of '@" + [receiverType key] + "' requires "
+    + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
+    + [[mExpressions length] string] + " parameter(s)" : outExpression
+  else
+    @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
+    for () in mExpressions, () in getterFormalArgumentTypeList do
+      [mExpression analyzeSemanticExpression
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !mFormalArgumentType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?@semanticExpressionForGeneration exp
+      ]
+      if mFormalSelector.string != mActualSelector.string then
+        error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+      end
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation !?exp)
+      constructorEffectiveParameterList += !exp
+    end
+    outExpression = @getterCallExpressionForGeneration.new {
+      !returnedType
+      ![mGetterName location]
+      !kind
+      !receiverExpression
+      !fieldList
+      ![mGetterName string]
+      !constructorEffectiveParameterList
+      !hasCompilerArgument}
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @getterCallExpressionForGeneration : @semanticExpressionForGeneration {
+  @methodKind mKind
+  @semanticExpressionForGeneration mReceiverExpression
+  @stringlist mFieldList
+  @string mGetterName
+  @semanticExpressionListForGeneration mExpressions
+  @bool mHasCompilerArgument
+}
+
+#·····················································································································
+
+override method @getterCallExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+{
+#--- Add return type header
+  [mResultType addHeaderFileName !?ioInclusionSet]
+#--- Receiver expression
+  [mReceiverExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string receiverCppName
+  ]
+#--- Reader operands
+  @stringlist getterArgumentCppNameList = {}
+  for () in mExpressions do
+    @string argumentCppName
+    [mExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?argumentCppName
+    ]
+    getterArgumentCppNameList += !argumentCppName
+  end
+#--- Generate Reader call
+  switch mKind
+  case definedAsExtension :
+   [[[mReceiverExpression mResultType] baseType] addHeaderFileName !?ioInclusionSet]
+    @unifiedTypeMap-proxy baseType = [mReceiverExpression mResultType]
+    @bool searching = true
+    loop (@uint.max) while searching do
+      if not [[baseType mSuperType] isNull] then
+        if [[[baseType mSuperType] mGetterMap] hasKey !mGetterName] then
+          baseType = [baseType mSuperType]
+        else
+          searching = false
+        end
+      else
+        searching = false
+      end  
+    end
+    ioInclusionSet += !"getter-" + [[baseType key] fileNameRepresentation] + "-" + [mGetterName fileNameRepresentation]
+    [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
+    if [[[mReceiverExpression mResultType] mTypeKindEnum] isClassType] then
+      outCppExpression = "callExtensionGetter_" + [mGetterName identifierRepresentation]
+         + " ((const cPtr_" + [[mReceiverExpression mResultType] identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
+    else
+      [[mReceiverExpression mResultType] addHeaderFileName !?ioInclusionSet]
+      outCppExpression = "extensionGetter_" + [mGetterName identifierRepresentation] + " (" + receiverCppName + ", "
+    end
+  case definedAsMember :
+    outCppExpression = receiverCppName
+    for () in mFieldList do
+      outCppExpression += ".getter_" + [mValue identifierRepresentation] + " (HERE)"
+    end
+    [mResultType addHeaderFileName !?ioInclusionSet]
+    outCppExpression +=  ".getter_" + [mGetterName identifierRepresentation] + " ("
+  end
+  for () in getterArgumentCppNameList
+    do outCppExpression += mValue
+    between outCppExpression += ", "
+  end
+  if [getterArgumentCppNameList length] == 0 then
+    if mHasCompilerArgument then
+      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+      outCppExpression += compilerCppName () + " COMMA_"
+    end
+  elsif mHasCompilerArgument then
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    outCppExpression += ", " + compilerCppName () + " COMMA_"
+  else
+    outCppExpression += " COMMA_"
+  end
+  outCppExpression += [mLocation sourceFile] + ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

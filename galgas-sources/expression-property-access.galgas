@@ -1,0 +1,103 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @structPropertyAccessExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mExpression
+  @lstring mStructFieldName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <factor> !@semanticExpressionAST outExpression {
+    <primary> ? outExpression
+    repeat
+    while
+      $.$
+      $identifier$ ?let structFieldName
+      outExpression = @structPropertyAccessExpressionAST.new {!structFieldName.location !outExpression !structFieldName}
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @structPropertyAccessExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#·····················································································································
+
+override method @structPropertyAccessExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Expression analysis
+  [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Check field access availability
+  @unifiedTypeMap-proxy type = [expression mResultType]
+  if (not [[type mTypeKindEnum] isStructType]) & (not [[type mTypeKindEnum] isClassType]) then
+    error mStructFieldName: "the '.' operator requires the receiver to be a struct or a class"
+  end
+  let propertyMap = [type mPropertyMap]
+  [propertyMap searchKey !mStructFieldName ?let isPublic  ?type]
+  if not isPublic then
+    error mStructFieldName : " inaccessible property (due to its 'private' qualifier)"
+  end
+#--- Generate expression
+  outExpression = @structPropertyAccessExpressionForGeneration.new {
+    !type
+    !mOperatorLocation
+    !expression
+    !mStructFieldName.string
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @structPropertyAccessExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mExpression
+  @string mStructFieldName
+}
+
+#·····················································································································
+
+override method @structPropertyAccessExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  [mResultType addHeaderFileName !?ioInclusionSet]
+#--- Operand
+  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string operand]
+#--- Generate
+  outCppExpression = operand + ".getter_" + [mStructFieldName identifierRepresentation] + " (HERE)"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

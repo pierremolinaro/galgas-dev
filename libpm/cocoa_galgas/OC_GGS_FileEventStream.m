@@ -64,7 +64,7 @@ static NSMutableArray * gFileEventStreamArray = nil ;
     if (self) {
       mDocuments = [NSMutableArray new] ;
       [mDocuments addObject:inDocument] ;
-      NSString * path = inDocument.fileURL.path.stringByDeletingLastPathComponent ;
+      NSString * path = inDocument.fileURL.path ;
       NSArray * pathsToWatch = [NSArray arrayWithObject:path] ;
       const CFAbsoluteTime latency = 1.0 ; // Latency in seconds
       FSEventStreamContext context = {
@@ -84,7 +84,7 @@ static NSMutableArray * gFileEventStreamArray = nil ;
         kFSEventStreamCreateFlagNoDefer
         | kFSEventStreamCreateFlagUseCFTypes
         | kFSEventStreamCreateFlagWatchRoot
-        | 0x10 // kFSEventStreamCreateFlagFileEvents // Not defined in 10.6
+        | kFSEventStreamCreateFlagFileEvents
         | kFSEventStreamCreateFlagIgnoreSelf // Do not report events from current application
       ) ;
       FSEventStreamScheduleWithRunLoop (mFSEventStream, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);

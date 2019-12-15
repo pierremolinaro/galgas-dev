@@ -2,7 +2,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2003, ..., 2017 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2003, ..., 2019 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -2293,6 +2293,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
         initWithDocumentData:documentData
         displayDocument:self
       ] ;
+      // NSLog (@"Inserted %@", tdd) ;
       [mSourceDisplayArrayControllerHigh insertObject:tdd atArrangedObjectIndex:(NSUInteger) inRow] ;
       [mSourceDisplayArrayControllerHigh setSelectedObjects:[NSArray arrayWithObject:tdd]] ;
       [self registerConfigurationInPreferences] ;

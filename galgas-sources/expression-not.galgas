@@ -1,0 +1,102 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @notExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mExpression
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <factor> !@semanticExpressionAST outExpression {
+    let operatorLocation = @location.here
+    $not$
+    <factor> ? outExpression
+    outExpression = @notExpressionAST.new {!operatorLocation !outExpression}
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @notExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#·····················································································································
+
+override method @notExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Expression analysis
+  @semanticExpressionForGeneration expression
+  [mExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?expression
+  ]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy type = [expression mResultType]
+  if expression is == @trueExpressionForGeneration then
+    outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mOperatorLocation}
+  elsif expression is == @falseExpressionForGeneration then
+    outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mOperatorLocation}
+  elsif not [[type mHandledOperatorFlags] prefixNotOperator] then
+    error mOperatorLocation
+    : "operand type is '@" + [type key] + "' and does not support the 'not' operator"
+    :outExpression
+  else
+  #--- Generate expression
+    outExpression = @notExpressionForGeneration.new {
+      !type
+      !mOperatorLocation
+      !expression
+    }
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @notExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mExpression
+}
+
+#·····················································································································
+
+override method @notExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  [[mExpression mResultType] addHeaderFileName !?ioInclusionSet]
+#--- Operand
+  @string operand
+  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?operand]
+#--- Generate
+  outCppExpression = operand + ".operator_not (" + [mLocation sourceFile] + ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

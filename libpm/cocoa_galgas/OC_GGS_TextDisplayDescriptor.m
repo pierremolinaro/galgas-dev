@@ -101,7 +101,6 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
       displayDescriptor:self
     ] ;
     mTextView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
-  //  mTextView.wantsLayer = YES ;
     [mTextView setGrammarCheckingEnabled:NO] ;
     [mTextView setContinuousSpellCheckingEnabled:NO] ;
     mTextView.allowsUndo = YES ;

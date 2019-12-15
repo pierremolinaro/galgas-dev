@@ -114,7 +114,6 @@ project (3:3:14) -> "galgas" {
   "galgas-sources/semanticsCompilation.galgas"
   "galgas-sources/predefinedTypes.galgas"
   "galgas-sources/useful-entities-computation.galgas"
-  "galgas-sources/expression-cast-expression.galgas"
 
 #--- Expressions
   "galgas-sources/expression-if.galgas"
@@ -129,6 +128,20 @@ project (3:3:14) -> "galgas" {
   "galgas-sources/expression-literal-integer.galgas"
   "galgas-sources/expression-comparison.galgas"
   "galgas-sources/expression-additive.galgas"
+  "galgas-sources/expression-cast-expression.galgas"
+  "galgas-sources/expression-option.galgas"
+  "galgas-sources/expression-lexique.galgas"
+  "galgas-sources/expression-filewrapper.galgas"
+  "galgas-sources/expression-getter-call.galgas"
+  "galgas-sources/expression-constructor.galgas"
+  "galgas-sources/expression-function-call.galgas"
+  "galgas-sources/expression-literal-type.galgas"
+  "galgas-sources/expression-collection-value.galgas"
+  "galgas-sources/expression-self.galgas"
+  "galgas-sources/expression-property-access.galgas"
+  "galgas-sources/expression-not.galgas"
+  "galgas-sources/expression-tilde.galgas"
+  "galgas-sources/expression-unary-wrapping-minus.galgas"
 
   "galgas-sources/galgas3ExpressionSyntax.galgas"
   "galgas-sources/semanticExpressionAnalysis.galgas"

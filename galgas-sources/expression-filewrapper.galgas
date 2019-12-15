@@ -1,0 +1,350 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @filewrapperObjectInstanciationInExpressionAST : @semanticExpressionAST {
+  @lstring mFilewrapperName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @filewrapperInExpressionAST : @semanticExpressionAST {
+  @lstring mFilewrapperName
+  @lstring mFilewrapperPath
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
+  @lstring mFilewrapperName
+  @lstring mFilewrapperTemplateName
+  @actualOutputExpressionList mExpressions
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $[$
+    $filewrapper$
+    $identifier$ ?let filewrapperName indexing filewrapperReference
+    select
+      outExpression = @filewrapperObjectInstanciationInExpressionAST.new {
+        !filewrapperName
+      }
+    or
+      $.$
+      select
+        $"string"$ ?let @lstring filePath
+        outExpression = @filewrapperInExpressionAST.new {
+          !filewrapperName
+          !filePath
+        }
+      or
+        $identifier$ ?let @lstring filewrapperTemplateName
+        <output_expression_list> ?let @actualOutputExpressionList expressionList
+        outExpression = @filewrapperTemplateInExpressionAST.new {
+          !filewrapperName
+          !filewrapperTemplateName
+          !expressionList
+        }
+      end
+    end
+    $]$
+  }  
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @filewrapperObjectInstanciationInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#·····················································································································
+
+override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+#--- Search for filewrapper name in filewrapper map
+  [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
+    !mFilewrapperName
+    ?let @lstring filewrapperPath
+    ?4*
+    ?let @bool isInternal
+  ]
+#--- Check internal
+  if isInternal then
+    let filewrapperDeclarationLocation = [inAnalysisContext.mSemanticContext.mFilewrapperMap locationForKey !mFilewrapperName.string]
+    if [mFilewrapperName.location file] != [filewrapperDeclarationLocation file] then
+      error mFilewrapperName : "this filewrapper is internal to '" + [filewrapperDeclarationLocation file] + "' file"
+    end
+  end
+#---
+  outExpression = @filewrapperInExpressionForGeneration.new {
+    !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"filewrapper" ![mFilewrapperName location]}}
+    ![mFilewrapperName location]
+    ![mFilewrapperName string]
+    ![filewrapperPath string]}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @filewrapperTemplateInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  for () in mExpressions do
+    [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  end
+}
+
+#·····················································································································
+
+override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  let usefulnessName = filewrapperTemplateNameForUsefulEntitiesGraph (!mFilewrapperName !mFilewrapperTemplateName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+#---
+  [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
+     !mFilewrapperName
+     ?4*
+     ?let @filewrapperTemplateMap filewrapperTemplateMap
+     ?let @bool isInternal
+   ]
+#--- Check internal
+  if isInternal then
+    let filewrapperDeclarationLocation = [inAnalysisContext.mSemanticContext.mFilewrapperMap locationForKey !mFilewrapperName.string]
+    if [mFilewrapperName.location file] != [filewrapperDeclarationLocation file] then
+      error mFilewrapperName : "this filewrapper is internal to '" + [filewrapperDeclarationLocation file] + "' file"
+    end
+  end
+#---
+  [filewrapperTemplateMap searchKey !mFilewrapperTemplateName ?let @functionSignature templateSignature ?*]
+#--- Analysis arguments
+  @semanticExpressionListForGeneration effectiveParameterList
+  if [mExpressions length] != [templateSignature length] then
+    error mFilewrapperTemplateName
+    : "calling the '" + mFilewrapperTemplateName + "' template of '" + mFilewrapperName + "' filewrapper requires "
+    + [[templateSignature length] string] + " parameter(s), while this call has "
+    + [[mExpressions length] string] + " parameter(s)" 
+    : effectiveParameterList
+  else
+    effectiveParameterList = {}
+    for () in mExpressions, () in templateSignature do
+      if mFormalSelector.string != mActualSelector.string then
+        error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+      end
+      [mExpression analyzeSemanticExpression 
+        !inUsefulnessCallerEntityName
+        !?ioUsefulEntitiesGraph
+        !mFormalArgumentType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?@semanticExpressionForGeneration exp
+      ]
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation !?exp)
+      effectiveParameterList += !exp
+    end
+  end
+#---
+  outExpression = @filewrapperTemplateInExpressionForGeneration.new {
+    !inAnalysisContext.mPredefinedTypes.mStringType
+    ![mFilewrapperName location]
+    ![mFilewrapperName string]
+    ![mFilewrapperTemplateName string]
+    !effectiveParameterList}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @filewrapperInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#·····················································································································
+
+override method @filewrapperInExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  let usefulnessName = filewrapperNameForUsefulEntitiesGraph (!mFilewrapperName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+#--- Parse filewrapper path
+  @stringlist directoryList
+  @string fileName
+  if [mFilewrapperPath length] == 0 then
+    error mFilewrapperPath : "path is empty" : directoryList, fileName
+  elsif [mFilewrapperPath firstCharacterOrNul] == '/' then
+    error mFilewrapperPath : "the path should not begin with '/'" : directoryList, fileName
+  else
+    directoryList = [mFilewrapperPath componentsSeparatedByString !"/"]
+    [!?directoryList popLast ?fileName]
+  end
+#--- Get filewrapper features
+  [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
+    !mFilewrapperName
+    ?*
+    ?*
+    ?var @wrapperFileMap filewrapperFileMap
+    ?var @wrapperDirectoryMap filewrapperDirectoryMap
+    ?*
+    ?let @bool isInternal
+  ]
+#--- Check internal
+  if isInternal then
+    let filewrapperDeclarationLocation = [inAnalysisContext.mSemanticContext.mFilewrapperMap locationForKey !mFilewrapperName.string]
+    if [mFilewrapperName.location file] != [filewrapperDeclarationLocation file] then
+      error mFilewrapperName : "this filewrapper is internal to '" + [filewrapperDeclarationLocation file] + "' file"
+    end
+  end
+#--- Search for file
+  @string builtPath = ""
+  loop( [filewrapperDirectoryMap count] + 1)
+  while [directoryList length] > 0 do
+    @string directoryName
+    [!?directoryList popFirst ?directoryName]
+    builtPath += directoryName + "/"
+    if [filewrapperDirectoryMap hasKey !directoryName] then
+      [filewrapperDirectoryMap searchKey
+        !@lstring.new {!directoryName !@location.here}
+        ?filewrapperFileMap
+        ?filewrapperDirectoryMap
+        ?*
+      ]
+    else
+      error mFilewrapperPath : "the '" + builtPath + "' path does not exists for the '" + mFilewrapperName + "' filewrapper" : filewrapperFileMap 
+      directoryList = @stringlist.emptyList # For exiting loop
+    end
+  end
+  @uint fileIndex
+  @bool isTextFile
+  if [filewrapperFileMap hasKey !fileName] then
+    [filewrapperFileMap searchKey !@lstring.new {!fileName !@location.here} ?* ?isTextFile ?* ?fileIndex]
+  else
+    error mFilewrapperPath
+    : "the '" + fileName + "' file does not exist in the '" + builtPath + "' directory of '" + mFilewrapperName + "' filewrapper"
+    : fileIndex, isTextFile
+  end
+#---
+  outExpression = @filewrapperStaticPathInExpressionForGeneration.new {
+    !if isTextFile
+      then inAnalysisContext.mPredefinedTypes.mStringType
+      else @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"data" !@location.here}}
+     end
+    ![mFilewrapperName location]
+    ![mFilewrapperName string]
+    !fileIndex
+    !isTextFile}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @filewrapperInExpressionForGeneration : @semanticExpressionForGeneration {
+  @string mFilewrapperName
+  @string mFilewrapperPath
+}
+
+#·····················································································································
+
+override method @filewrapperInExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  ioInclusionSet += !"filewrapper-" + mFilewrapperName
+  outCppExpression = "GALGAS_filewrapper (gWrapperDirectory_0_" + [mFilewrapperName identifierRepresentation] + ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGeneration {
+  @string mFilewrapperName
+  @string mFilewrapperTemplateName
+  @semanticExpressionListForGeneration mActualOutputParameterList
+}
+
+#·····················································································································
+
+override method @filewrapperTemplateInExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+#---
+  ioInclusionSet += !"filewrapper-" + mFilewrapperName
+  var parameterList =@stringlist {}
+  for () in mActualOutputParameterList do
+    @string parameter
+    [mExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?parameter
+    ]
+    parameterList += !parameter  
+  end
+  outCppExpression = "GALGAS_string (filewrapperTemplate_" + [mFilewrapperName identifierRepresentation] + "_" + [mFilewrapperTemplateName identifierRepresentation]
+                  + " (" + compilerCppName ()
+  for () in parameterList do
+    outCppExpression += ", " + mValue
+  end
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  outCppExpression += [mLocation commaSourceFile] + "))"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @filewrapperStaticPathInExpressionForGeneration : @semanticExpressionForGeneration {
+  @string mFilewrapperName
+  @uint mFilewrapperFileIndex
+  @bool mIsTextFile
+}
+
+#·····················································································································
+
+override method @filewrapperStaticPathInExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+#---
+  ioInclusionSet += !"filewrapper-" + mFilewrapperName
+  outCppExpression = if mIsTextFile then "GALGAS_string" else "GALGAS_data" end
+  outCppExpression += " (gWrapperFileContent_" + [mFilewrapperFileIndex string] + "_" + [mFilewrapperName identifierRepresentation] + ")"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

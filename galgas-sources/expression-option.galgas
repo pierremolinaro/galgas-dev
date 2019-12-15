@@ -1,0 +1,234 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @optionExpressionAST : @semanticExpressionAST {
+  @lstring mOptionComponentName
+  @lstring mOptionEntryName
+  @lstring mOptionGetterName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+
+  rule <primary> !@semanticExpressionAST outExpression {
+    $[$
+    $option$
+    $identifier$ ?let optionComponentName indexing optionComponentReference
+    $.$
+    $identifier$ ?let optionName
+    $identifier$ ?let getterName
+    outExpression = @optionExpressionAST.new {!optionComponentName !optionName !getterName}
+    $]$
+  }
+  
+  #·····················································································································
+  
+  rule <primary> !@semanticExpressionAST outExpression {
+    $[$
+    $option$
+    $.$
+    $identifier$ ?let optionName
+    $identifier$ ?let getterName
+    outExpression = @optionExpressionAST.new {!.new {!"galgas_builtin_options" !.here} !optionName !getterName}
+    $]$
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @optionExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#·······················································································································
+
+override method @optionExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+{
+  let usefulnessName = optionNameForUsefulEntitiesGraph (!mOptionComponentName)
+  [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
+#---
+  [inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
+    !mOptionComponentName
+    ?let @bool optionComponentIsPredefined
+    ?let @commandLineOptionMap boolOptionMap
+    ?let @commandLineOptionMap uintOptionMap
+    ?let @commandLineOptionMap stringOptionMap
+    ?let @commandLineOptionMap stringListOptionMap
+  ]
+  @bool found = [boolOptionMap hasKey ![mOptionEntryName string]]
+  @unifiedTypeMap-proxy returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
+  if not found then
+    found = [uintOptionMap hasKey ![mOptionEntryName string]]
+    returnedType = inAnalysisContext.mPredefinedTypes.mUIntType
+  end
+  if not found then
+    found = [stringOptionMap hasKey ![mOptionEntryName string]]
+    returnedType = inAnalysisContext.mPredefinedTypes.mStringType
+  end
+  if not found then
+    found = [stringListOptionMap hasKey ![mOptionEntryName string]]
+    returnedType = inAnalysisContext.mPredefinedTypes.mStringListType
+  end
+  if found then
+    if [mOptionGetterName string] == "value" then
+      outExpression = @optionValueExpressionForGeneration.new {
+        !returnedType
+        ![mOptionComponentName location]
+        !optionComponentIsPredefined
+        ![mOptionComponentName string]
+        ![mOptionEntryName string]}
+    elsif [mOptionGetterName string] == "char" then
+      outExpression = @optionCharExpressionForGeneration.new {
+        !inAnalysisContext.mPredefinedTypes.mCharType
+        ![mOptionComponentName location]
+        !optionComponentIsPredefined
+        ![mOptionComponentName string]
+        ![mOptionEntryName string]}
+    elsif [mOptionGetterName string] == "string" then
+      outExpression = @optionStringExpressionForGeneration.new {
+        !inAnalysisContext.mPredefinedTypes.mStringType
+        ![mOptionComponentName location]
+        !optionComponentIsPredefined
+        ![mOptionComponentName string]
+        ![mOptionEntryName string]}
+    elsif [mOptionGetterName string] == "comment" then
+      outExpression = @optionCommentExpressionForGeneration.new {
+        !inAnalysisContext.mPredefinedTypes.mStringType
+        ![mOptionComponentName location]
+        !optionComponentIsPredefined
+        ![mOptionComponentName string]
+        ![mOptionEntryName string]}
+    else
+      error mOptionGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
+    end
+  else
+    @stringlist s = {}
+    for () in boolOptionMap do
+      s += !lkey
+    end
+    for () in uintOptionMap do
+      s += !lkey
+    end
+    for () in stringOptionMap do
+      s += !lkey
+    end
+    error mOptionEntryName
+    : "the '" + mOptionComponentName + "' option component does not define the '" + mOptionEntryName + "' option"
+    : outExpression
+    fixit { replace s }
+  end
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @optionValueExpressionForGeneration : @semanticExpressionForGeneration {
+  @bool mOptionComponentIsPredefined
+  @string mOptionComponentName
+  @string mOptionEntryName
+}
+
+#·······················································································································
+
+override method @optionValueExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  if not mOptionComponentIsPredefined then
+    ioInclusionSet += !"option-" + [mOptionComponentName fileNameRepresentation]
+  end
+  outCppExpression = "GALGAS_" + [mResultType identifierRepresentation] + " (gOption_" + [mOptionComponentName identifierRepresentation]
+                   + "_" + [mOptionEntryName identifierRepresentation] + ".getter_value ())"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @optionCharExpressionForGeneration : @semanticExpressionForGeneration {
+  @bool mOptionComponentIsPredefined
+  @string mOptionComponentName
+  @string mOptionEntryName
+}
+
+#·······················································································································
+
+override method @optionCharExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  if not mOptionComponentIsPredefined then
+    ioInclusionSet += !"option-" + [mOptionComponentName fileNameRepresentation]
+  end
+  outCppExpression = "GALGAS_char (gOption_" + [mOptionComponentName identifierRepresentation]
+                  + "_" + [mOptionEntryName identifierRepresentation] + ".getter_char ())"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @optionStringExpressionForGeneration : @semanticExpressionForGeneration {
+  @bool mOptionComponentIsPredefined
+  @string mOptionComponentName
+  @string mOptionEntryName
+}
+
+#·······················································································································
+
+override method @optionStringExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  if not mOptionComponentIsPredefined then
+    ioInclusionSet += !"option-" + [mOptionComponentName fileNameRepresentation]
+  end
+  outCppExpression = "GALGAS_string (gOption_" + [mOptionComponentName identifierRepresentation]
+                  + "_" + [mOptionEntryName identifierRepresentation] + ".getter_string ())"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @optionCommentExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  if not mOptionComponentIsPredefined then
+    ioInclusionSet += !"option-" + [mOptionComponentName fileNameRepresentation]
+  end
+  outCppExpression = "gOption_" + [mOptionComponentName identifierRepresentation]
+                  + "_" + [mOptionEntryName identifierRepresentation] + ".getter_comment ()"
+}
+
+#·······················································································································
+
+class @optionCommentExpressionForGeneration : @semanticExpressionForGeneration {
+  @bool mOptionComponentIsPredefined
+  @string mOptionComponentName
+  @string mOptionEntryName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
