@@ -1,0 +1,451 @@
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#!   AST
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @multiplicationExpressionAST,
+      @multiplicationExpressionNoOverflowAST,
+      @divisionExpressionAST,
+      @divisionExpressionNoOverflowAST,
+      @moduloExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SYNTAX
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+syntax extension galgas3ExpressionSyntax {
+
+  #·····················································································································
+  
+  rule <term> !@semanticExpressionAST outExpression {
+    <factor> ? outExpression
+    repeat
+    while
+      let operatorLocation = @location.here
+      $*$
+      let leftOperand = outExpression
+      <factor> ?let @semanticExpressionAST rightOperand
+      outExpression = @multiplicationExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $&*$
+      let leftOperand = outExpression
+      <factor> ?let @semanticExpressionAST rightOperand
+      outExpression = @multiplicationExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $/$
+      let leftOperand = outExpression
+      <factor> ?let rightOperand
+      outExpression = @divisionExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $&/$
+      let leftOperand = outExpression
+      <factor> ?let rightOperand
+      outExpression = @divisionExpressionNoOverflowAST.new {!operatorLocation !leftOperand !rightOperand}
+    while
+      let operatorLocation = @location.here
+      $mod$
+      let leftOperand = outExpression
+      <factor> ?let rightOperand
+      outExpression = @moduloExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+    end
+  }
+
+  #·····················································································································
+
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! SEMANTICS
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @multiplicationExpressionNoOverflowAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#·····················································································································
+
+override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy inInferenceType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inInferenceType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
+#--- Right expression analysis
+  [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    ![leftExpression mResultType]
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    ![[leftType mHandledOperatorFlags] infixMulOperatorNoOVF]
+    !"&*"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @multiplicationExpressionNoOverflowForGeneration.new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+override method @multiplicationExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#·····················································································································
+
+override method @multiplicationExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy inInferenceType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inInferenceType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
+#--- Right expression analysis
+  [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    ![leftExpression mResultType]
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    ![[leftType mHandledOperatorFlags] infixMulOperator]
+    !"*"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @multiplicationExpressionForGeneration.new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @divisionExpressionNoOverflowAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#·····················································································································
+
+override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy inInferenceType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inInferenceType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
+#--- Right expression analysis
+  [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    ![leftExpression mResultType]
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    ![[leftType mHandledOperatorFlags] infixDivOperatorNoOVF]
+    !"&/"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @divisionExpressionNoOverflowForGeneration.new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @divisionExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#·····················································································································
+
+override method @divisionExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy inInferenceType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inInferenceType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
+#--- Right expression analysis
+  [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    ![leftExpression mResultType]
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    ![[leftType mHandledOperatorFlags] infixDivOperator]
+    !"/"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @divisionExpressionForGeneration.new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @moduloExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#·····················································································································
+
+override method @moduloExpressionAST analyzeSemanticExpression
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @unifiedTypeMap-proxy inInferenceType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  [mLeftExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !inInferenceType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
+#--- Right expression analysis
+  [mRightExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    ![leftExpression mResultType]
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    ![[leftType mHandledOperatorFlags] infixModOperator]
+    !"mod"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @moduloExpressionForGeneration.new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression}
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#! CODE GENERATION
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @multiplicationExpressionForGeneration,
+      @multiplicationExpressionNoOverflowForGeneration,
+      @divisionExpressionForGeneration,
+      @divisionExpressionNoOverflowForGeneration,
+      @moduloExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mLeftExpression
+  @semanticExpressionForGeneration mRightExpression
+}
+
+#·····················································································································
+
+override method @multiplicationExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+#--- Left operand
+  @string leftTemporaryOperand
+  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+#--- Right operand
+  @string rightTemporaryOperand
+  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+#--- Generate Comparison
+  outCppExpression = leftTemporaryOperand + ".multiply_operation ("
+                  + rightTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + ")"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+}
+
+#·····················································································································
+
+override method @multiplicationExpressionNoOverflowForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+#--- Left operand
+  @string leftTemporaryOperand
+  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+#--- Right operand
+  @string rightTemporaryOperand
+  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+#--- Generate Comparison
+  outCppExpression = leftTemporaryOperand + ".multiply_operation_no_ovf (" + rightTemporaryOperand + ")"
+}
+
+#·····················································································································
+
+override method @divisionExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+#--- Left operand
+  @string leftTemporaryOperand
+  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+#--- Right operand
+  @string rightTemporaryOperand
+  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+#--- Generate Comparison
+  outCppExpression = leftTemporaryOperand + ".divide_operation ("
+                  + rightTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + ")"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+}
+
+#·····················································································································
+
+override method @divisionExpressionNoOverflowForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+#--- Left operand
+  @string leftTemporaryOperand
+  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+#--- Right operand
+  @string rightTemporaryOperand
+  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+#--- Generate Comparison
+  outCppExpression = leftTemporaryOperand + ".divide_operation_no_ovf (" + rightTemporaryOperand + ")"
+}
+
+#·····················································································································
+
+override method @moduloExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+#--- Left operand
+  @string leftTemporaryOperand
+  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+#--- Right operand
+  @string rightTemporaryOperand
+  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+#--- Generate Comparison
+  outCppExpression = leftTemporaryOperand + ".modulo_operation ("
+                  + rightTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + ")"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

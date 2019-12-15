@@ -3451,34 +3451,34 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
 void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i31_ (GALGAS_semanticInstructionAST & outArgument_outInstruction,
                                                                                                              C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
-  GALGAS_location var_instructionLocation_1697 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 40)) ;
-  GALGAS_ifExpressionList var_testExpression_1754 ;
-  nt_if_5F_expression_ (var_testExpression_1754, inCompiler) ;
+  GALGAS_location var_instructionLocation_1693 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 40)) ;
+  GALGAS_ifExpressionList var_testExpression_1750 ;
+  nt_if_5F_expression_ (var_testExpression_1750, inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_then COMMA_SOURCE_FILE ("instruction-if.galgas", 42)) ;
-  GALGAS_semanticInstructionListAST var_then_5F_instructionList_1823 ;
-  nt_semantic_5F_instruction_5F_list_ (var_then_5F_instructionList_1823, inCompiler) ;
-  GALGAS_location var_endOf_5F_then_5F_branchLocation_1857 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 44)) ;
-  GALGAS_semanticInstructionListAST var_else_5F_instructionList_1927 ;
+  GALGAS_semanticInstructionListAST var_then_5F_instructionList_1819 ;
+  nt_semantic_5F_instruction_5F_list_ (var_then_5F_instructionList_1819, inCompiler) ;
+  GALGAS_location var_endOf_5F_then_5F_branchLocation_1853 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 44)) ;
+  GALGAS_semanticInstructionListAST var_else_5F_instructionList_1923 ;
   switch (select_galgas_33_InstructionsSyntax_44 (inCompiler)) {
   case 1: {
-    var_else_5F_instructionList_1927 = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 47)) ;
+    var_else_5F_instructionList_1923 = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 47)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_else COMMA_SOURCE_FILE ("instruction-if.galgas", 49)) ;
-    nt_semantic_5F_instruction_5F_list_ (var_else_5F_instructionList_1927, inCompiler) ;
+    nt_semantic_5F_instruction_5F_list_ (var_else_5F_instructionList_1923, inCompiler) ;
   } break ;
   case 3: {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_elsif COMMA_SOURCE_FILE ("instruction-if.galgas", 52)) ;
-    GALGAS_semanticInstructionAST var_instruction_2148 ;
-    nt_if_5F_instruction_5F_core_ (var_instruction_2148, inCompiler) ;
+    GALGAS_semanticInstructionAST var_instruction_2144 ;
+    nt_if_5F_instruction_5F_core_ (var_instruction_2144, inCompiler) ;
     GALGAS_semanticInstructionListAST temp_0 = GALGAS_semanticInstructionListAST::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 54)) ;
-    temp_0.addAssign_operation (var_instruction_2148  COMMA_SOURCE_FILE ("instruction-if.galgas", 54)) ;
-    var_else_5F_instructionList_1927 = temp_0 ;
+    temp_0.addAssign_operation (var_instruction_2144  COMMA_SOURCE_FILE ("instruction-if.galgas", 54)) ;
+    var_else_5F_instructionList_1923 = temp_0 ;
   } break ;
   default:
     break ;
   }
-  outArgument_outInstruction = GALGAS_ifInstructionAST::constructor_new (var_instructionLocation_1697, var_testExpression_1754, var_then_5F_instructionList_1823, var_endOf_5F_then_5F_branchLocation_1857, var_else_5F_instructionList_1927, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 62))  COMMA_SOURCE_FILE ("instruction-if.galgas", 56)) ;
+  outArgument_outInstruction = GALGAS_ifInstructionAST::constructor_new (var_instructionLocation_1693, var_testExpression_1750, var_then_5F_instructionList_1819, var_endOf_5F_then_5F_branchLocation_1853, var_else_5F_instructionList_1923, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 62))  COMMA_SOURCE_FILE ("instruction-if.galgas", 56)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3538,15 +3538,15 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_sem
   case 1: {
   } break ;
   case 2: {
-    GALGAS_lstring var_terminator_2737 = inCompiler->synthetizedAttribute_tokenString () ;
+    GALGAS_lstring var_terminator_2733 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__25_attribute COMMA_SOURCE_FILE ("instruction-if.galgas", 74)) ;
     enumGalgasBool test_0 = kBoolTrue ;
     if (kBoolTrue == test_0) {
-      test_0 = GALGAS_bool (kIsNotEqual, var_terminator_2737.getter_string (HERE).objectCompare (GALGAS_string ("if"))).boolEnum () ;
+      test_0 = GALGAS_bool (kIsNotEqual, var_terminator_2733.getter_string (HERE).objectCompare (GALGAS_string ("if"))).boolEnum () ;
       if (kBoolTrue == test_0) {
         TC_Array <C_FixItDescription> fixItArray1 ;
         appendFixItActions (fixItArray1, kFixItReplace, GALGAS_string ("%if")) ;
-        inCompiler->emitSemanticError (var_terminator_2737.getter_location (SOURCE_FILE ("instruction-if.galgas", 76)), GALGAS_string ("the terminator attribute should be '%if'"), fixItArray1  COMMA_SOURCE_FILE ("instruction-if.galgas", 76)) ;
+        inCompiler->emitSemanticError (var_terminator_2733.getter_location (SOURCE_FILE ("instruction-if.galgas", 76)), GALGAS_string ("the terminator attribute should be '%if'"), fixItArray1  COMMA_SOURCE_FILE ("instruction-if.galgas", 76)) ;
       }
     }
   } break ;
@@ -3601,21 +3601,21 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
     switch (select_galgas_33_InstructionsSyntax_47 (inCompiler)) {
     case 1: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_let COMMA_SOURCE_FILE ("instruction-if.galgas", 87)) ;
-      GALGAS_lstring var_constantName_3182 = inCompiler->synthetizedAttribute_tokenString () ;
+      GALGAS_lstring var_constantName_3178 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("instruction-if.galgas", 88)) ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3D_ COMMA_SOURCE_FILE ("instruction-if.galgas", 89)) ;
-      GALGAS_semanticExpressionAST var_expression_3238 ;
-      nt_casted_5F_expression_ (var_expression_3238, inCompiler) ;
-      GALGAS_location var_endOfReceiverExpression_3274 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 91)) ;
+      GALGAS_semanticExpressionAST var_expression_3230 ;
+      nt_expression_5F_or_ (var_expression_3230, inCompiler) ;
+      GALGAS_location var_endOfReceiverExpression_3266 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 91)) ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_as COMMA_SOURCE_FILE ("instruction-if.galgas", 92)) ;
-      GALGAS_lstring var_typeName_3343 = inCompiler->synthetizedAttribute_tokenString () ;
+      GALGAS_lstring var_typeName_3335 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__40_type COMMA_SOURCE_FILE ("instruction-if.galgas", 93)) ;
-      outArgument_outExpressionList.addAssign_operation (GALGAS_ifExpressionKind::constructor_letExp (var_constantName_3182, var_expression_3238, var_endOfReceiverExpression_3274, var_typeName_3343  COMMA_SOURCE_FILE ("instruction-if.galgas", 94))  COMMA_SOURCE_FILE ("instruction-if.galgas", 94)) ;
+      outArgument_outExpressionList.addAssign_operation (GALGAS_ifExpressionKind::constructor_letExp (var_constantName_3178, var_expression_3230, var_endOfReceiverExpression_3266, var_typeName_3335  COMMA_SOURCE_FILE ("instruction-if.galgas", 94))  COMMA_SOURCE_FILE ("instruction-if.galgas", 94)) ;
     } break ;
     case 2: {
-      GALGAS_semanticExpressionAST var_expression_3579 ;
-      nt_expression_ (var_expression_3579, inCompiler) ;
-      outArgument_outExpressionList.addAssign_operation (GALGAS_ifExpressionKind::constructor_regularExp (var_expression_3579  COMMA_SOURCE_FILE ("instruction-if.galgas", 102))  COMMA_SOURCE_FILE ("instruction-if.galgas", 102)) ;
+      GALGAS_semanticExpressionAST var_expression_3571 ;
+      nt_expression_ (var_expression_3571, inCompiler) ;
+      outArgument_outExpressionList.addAssign_operation (GALGAS_ifExpressionKind::constructor_regularExp (var_expression_3571  COMMA_SOURCE_FILE ("instruction-if.galgas", 102))  COMMA_SOURCE_FILE ("instruction-if.galgas", 102)) ;
     } break ;
     default:
       break ;
@@ -3641,7 +3641,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_let COMMA_SOURCE_FILE ("instruction-if.galgas", 87)) ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("instruction-if.galgas", 88)) ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3D_ COMMA_SOURCE_FILE ("instruction-if.galgas", 89)) ;
-      nt_casted_5F_expression_parse (inCompiler) ;
+      nt_expression_5F_or_parse (inCompiler) ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_as COMMA_SOURCE_FILE ("instruction-if.galgas", 92)) ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__40_type COMMA_SOURCE_FILE ("instruction-if.galgas", 93)) ;
     } break ;
@@ -3673,7 +3673,7 @@ void cParser_galgas_33_InstructionsSyntax::rule_galgas_33_InstructionsSyntax_if_
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_let COMMA_SOURCE_FILE ("instruction-if.galgas", 87)) ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("instruction-if.galgas", 88)) ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3D_ COMMA_SOURCE_FILE ("instruction-if.galgas", 89)) ;
-      nt_casted_5F_expression_indexing (inCompiler) ;
+      nt_expression_5F_or_indexing (inCompiler) ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_as COMMA_SOURCE_FILE ("instruction-if.galgas", 92)) ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__40_type COMMA_SOURCE_FILE ("instruction-if.galgas", 93)) ;
     } break ;

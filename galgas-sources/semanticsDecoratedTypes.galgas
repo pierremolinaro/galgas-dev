@@ -2,7 +2,7 @@
 #                                                                                                                      *
 #  metamodel that defines expression                                                                                   *
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2007, ..., 2019 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@ls2n.fr                                                                                           *
 #                                                                                                                      *
@@ -25,7 +25,8 @@ proc generateInstructionList
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+  ?!@string ioGeneratedCode
+{
   [!?ioGeneratedCode incIndentation !2]
   for element in inInstructionList do
     [element.mInstruction generateInstruction
@@ -74,35 +75,10 @@ list @semanticExpressionListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @orShortExpressionForGeneration,
-      @orExpressionForGeneration,
-      @xorExpressionForGeneration,
-      @openedSliceExpressionForGeneration,
-      @closedSliceExpressionForGeneration,
-      @andExpressionForGeneration,
-      @andShortExpressionForGeneration,
-      @multiplicationExpressionForGeneration,
-      @multiplicationExpressionNoOverflowForGeneration,
-      @divisionExpressionForGeneration,
-      @divisionExpressionNoOverflowForGeneration,
-      @moduloExpressionForGeneration : @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression
-  @semanticExpressionForGeneration mRightExpression
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 class @castInExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression
   @string mTypeName
   @unifiedTypeMap-proxy mCastType
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @extractObjectInExpressionForGeneration : @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mReceiverExpression
-  @string mTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

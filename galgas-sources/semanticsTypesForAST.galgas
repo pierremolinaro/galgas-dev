@@ -24,25 +24,6 @@ list @semanticExpressionListAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @orExpressionAST,
-      @orShortExpressionAST,
-      @xorExpressionAST,
-      @closedSliceExpressionAST,
-      @openedSliceExpressionAST,
-      @andShortExpressionAST,
-      @andExpressionAST,
-      @multiplicationExpressionAST,
-      @multiplicationExpressionNoOverflowAST,
-      @divisionExpressionAST,
-      @divisionExpressionNoOverflowAST,
-      @moduloExpressionAST : @semanticExpressionAST {
-  @location mOperatorLocation
-  @semanticExpressionAST mLeftExpression
-  @semanticExpressionAST mRightExpression
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #   F O R M A L    A R G U M E N T S    P A S S I N G    M O D E S                                                     *
 #                                                                                                                      *

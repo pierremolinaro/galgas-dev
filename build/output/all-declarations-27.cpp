@@ -9,6 +9,37 @@
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
+//               Overriding extension method '@filewrapperInExpressionForGeneration generateExpression'                *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_filewrapperInExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                                                     GALGAS_string & /* ioArgument_ioGeneratedCode */,
+                                                                                     GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                                     GALGAS_uint & /* ioArgument_ioTemporaryVariableIndex */,
+                                                                                     GALGAS_stringset & /* ioArgument_ioUnusedVariableCppNameSet */,
+                                                                                     GALGAS_string & outArgument_outCppExpression,
+                                                                                     C_Compiler * inCompiler
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_filewrapperInExpressionForGeneration * object = (const cPtr_filewrapperInExpressionForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_filewrapperInExpressionForGeneration) ;
+  ioArgument_ioInclusionSet.addAssign_operation (GALGAS_string ("filewrapper-").add_operation (object->mProperty_mFilewrapperName, inCompiler COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 285))  COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 285)) ;
+  outArgument_outCppExpression = GALGAS_string ("GALGAS_filewrapper (gWrapperDirectory_0_").add_operation (object->mProperty_mFilewrapperName.getter_identifierRepresentation (SOURCE_FILE ("expression-filewrapper.galgas", 286)), inCompiler COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 286)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 286)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_filewrapperInExpressionForGeneration_generateExpression (void) {
+  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_filewrapperInExpressionForGeneration.mSlotID,
+                                           extensionMethod_filewrapperInExpressionForGeneration_generateExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_filewrapperInExpressionForGeneration_generateExpression (defineExtensionMethod_filewrapperInExpressionForGeneration_generateExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
 //           Overriding extension method '@filewrapperTemplateInExpressionForGeneration generateExpression'            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -2132,6 +2163,1282 @@ C_PrologueEpilogue gMethod_unaryWrappingMinusExpressionForGeneration_generateExp
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
+//                   Overriding extension method '@orExpressionAST enterExpressionInSemanticContext'                   *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_orExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
+                                                                              GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_orExpressionAST * object = (const cPtr_orExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_orExpressionAST) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 70)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 71)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_orExpressionAST_enterExpressionInSemanticContext (void) {
+  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_orExpressionAST.mSlotID,
+                                                         extensionMethod_orExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_orExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_orExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                      Overriding extension method '@orExpressionAST analyzeSemanticExpression'                       *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_orExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                       const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                       GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                       const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
+                                                                       const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                       GALGAS_variableMap & ioArgument_ioVariableMap,
+                                                                       GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_orExpressionAST * object = (const cPtr_orExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_orExpressionAST) ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_3587 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_3587, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 84)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_3861 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_3587.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 96)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_3861, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 93)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_leftType_3933 = var_leftExpression_3587.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 102)) ;
+  {
+  routine_checkDiadicOperator (var_leftType_3933, var_rightExpression_3861.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 105)), var_leftType_3933.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 106)).getter_infixOrOperator (SOURCE_FILE ("expression-or.galgas", 106)), GALGAS_string ("|"), object->mProperty_mOperatorLocation, var_rightExpression_3861, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 103)) ;
+  }
+  outArgument_outExpression = GALGAS_orExpressionForGeneration::constructor_new (var_leftType_3933, object->mProperty_mOperatorLocation, var_leftExpression_3587, var_rightExpression_3861  COMMA_SOURCE_FILE ("expression-or.galgas", 111)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_orExpressionAST_analyzeSemanticExpression (void) {
+  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_orExpressionAST.mSlotID,
+                                                  extensionMethod_orExpressionAST_analyzeSemanticExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_orExpressionAST_analyzeSemanticExpression (defineExtensionMethod_orExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                Overriding extension method '@orShortExpressionAST enterExpressionInSemanticContext'                 *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_orShortExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
+                                                                                   GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                   C_Compiler * inCompiler
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_orShortExpressionAST * object = (const cPtr_orShortExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_orShortExpressionAST) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 124)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 125)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_orShortExpressionAST_enterExpressionInSemanticContext (void) {
+  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_orShortExpressionAST.mSlotID,
+                                                         extensionMethod_orShortExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_orShortExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_orShortExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                    Overriding extension method '@orShortExpressionAST analyzeSemanticExpression'                    *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_orShortExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                            const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                            GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                            const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
+                                                                            const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                            GALGAS_variableMap & ioArgument_ioVariableMap,
+                                                                            GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_orShortExpressionAST * object = (const cPtr_orShortExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_orShortExpressionAST) ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_5352 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_5352, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 138)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_5626 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_5352.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 150)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_5626, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 147)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_leftType_5700 = var_leftExpression_5352.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 156)) ;
+  {
+  routine_checkDiadicOperator (var_leftType_5700, var_rightExpression_5626.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 159)), var_leftType_5700.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 160)).getter_infixOrOperator (SOURCE_FILE ("expression-or.galgas", 160)), GALGAS_string ("|"), object->mProperty_mOperatorLocation, var_rightExpression_5626, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 157)) ;
+  }
+  outArgument_outExpression = GALGAS_orShortExpressionForGeneration::constructor_new (var_leftType_5700, object->mProperty_mOperatorLocation, var_leftExpression_5352, var_rightExpression_5626  COMMA_SOURCE_FILE ("expression-or.galgas", 166)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_orShortExpressionAST_analyzeSemanticExpression (void) {
+  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_orShortExpressionAST.mSlotID,
+                                                  extensionMethod_orShortExpressionAST_analyzeSemanticExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_orShortExpressionAST_analyzeSemanticExpression (defineExtensionMethod_orShortExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                  Overriding extension method '@xorExpressionAST enterExpressionInSemanticContext'                   *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_xorExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
+                                                                               GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_xorExpressionAST * object = (const cPtr_xorExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_xorExpressionAST) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 178)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 179)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_xorExpressionAST_enterExpressionInSemanticContext (void) {
+  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_xorExpressionAST.mSlotID,
+                                                         extensionMethod_xorExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_xorExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_xorExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                      Overriding extension method '@xorExpressionAST analyzeSemanticExpression'                      *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_xorExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                        const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                        GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                        const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
+                                                                        const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                        GALGAS_variableMap & ioArgument_ioVariableMap,
+                                                                        GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_xorExpressionAST * object = (const cPtr_xorExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_xorExpressionAST) ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_7138 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_7138, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 192)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_7412 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_7138.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 204)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_7412, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 201)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_leftType_7486 = var_leftExpression_7138.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 210)) ;
+  {
+  routine_checkDiadicOperator (var_leftType_7486, var_rightExpression_7412.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 213)), var_leftType_7486.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 214)).getter_infixXorOperator (SOURCE_FILE ("expression-or.galgas", 214)), GALGAS_string ("^"), object->mProperty_mOperatorLocation, var_rightExpression_7412, inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 211)) ;
+  }
+  outArgument_outExpression = GALGAS_xorExpressionForGeneration::constructor_new (var_leftType_7486, object->mProperty_mOperatorLocation, var_leftExpression_7138, var_rightExpression_7412  COMMA_SOURCE_FILE ("expression-or.galgas", 220)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_xorExpressionAST_analyzeSemanticExpression (void) {
+  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_xorExpressionAST.mSlotID,
+                                                  extensionMethod_xorExpressionAST_analyzeSemanticExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_xorExpressionAST_analyzeSemanticExpression (defineExtensionMethod_xorExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//              Overriding extension method '@closedSliceExpressionAST enterExpressionInSemanticContext'               *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_closedSliceExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
+                                                                                       GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                       C_Compiler * inCompiler
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_closedSliceExpressionAST * object = (const cPtr_closedSliceExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_closedSliceExpressionAST) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 233)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 234)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_closedSliceExpressionAST_enterExpressionInSemanticContext (void) {
+  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_closedSliceExpressionAST.mSlotID,
+                                                         extensionMethod_closedSliceExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_closedSliceExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_closedSliceExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                  Overriding extension method '@closedSliceExpressionAST analyzeSemanticExpression'                  *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_closedSliceExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                                const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                                GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                                const GALGAS_unifiedTypeMap_2D_proxy /* constinArgument_inInferenceType */,
+                                                                                const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                                GALGAS_variableMap & ioArgument_ioVariableMap,
+                                                                                GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_closedSliceExpressionAST * object = (const cPtr_closedSliceExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_closedSliceExpressionAST) ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_8976 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUIntType (HERE), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_8976, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 248)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_9266 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUIntType (HERE), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_9266, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 257)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_leftType_9340 = var_leftExpression_8976.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 266)) ;
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    test_0 = GALGAS_bool (kIsNotEqual, var_leftType_9340.getter_key (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 267)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      TC_Array <C_FixItDescription> fixItArray1 ;
+      inCompiler->emitSemanticError (var_leftExpression_8976.getter_mLocation (SOURCE_FILE ("expression-or.galgas", 268)), GALGAS_string ("the left expression or '...' operator should an @uint"), fixItArray1  COMMA_SOURCE_FILE ("expression-or.galgas", 268)) ;
+    }
+  }
+  GALGAS_unifiedTypeMap_2D_proxy var_rightType_9545 = var_rightExpression_9266.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 270)) ;
+  enumGalgasBool test_2 = kBoolTrue ;
+  if (kBoolTrue == test_2) {
+    test_2 = GALGAS_bool (kIsNotEqual, var_rightType_9545.getter_key (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 271)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
+    if (kBoolTrue == test_2) {
+      TC_Array <C_FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticError (var_rightExpression_9266.getter_mLocation (SOURCE_FILE ("expression-or.galgas", 272)), GALGAS_string ("the right expression or '...' operator should an @uint"), fixItArray3  COMMA_SOURCE_FILE ("expression-or.galgas", 272)) ;
+    }
+  }
+  outArgument_outExpression = GALGAS_closedSliceExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mTypeMap (HERE), GALGAS_lstring::constructor_new (GALGAS_string ("range"), var_leftExpression_8976.getter_mLocation (SOURCE_FILE ("expression-or.galgas", 276))  COMMA_SOURCE_FILE ("expression-or.galgas", 276)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 276)), object->mProperty_mOperatorLocation, var_leftExpression_8976, var_rightExpression_9266  COMMA_SOURCE_FILE ("expression-or.galgas", 275)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_closedSliceExpressionAST_analyzeSemanticExpression (void) {
+  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_closedSliceExpressionAST.mSlotID,
+                                                  extensionMethod_closedSliceExpressionAST_analyzeSemanticExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_closedSliceExpressionAST_analyzeSemanticExpression (defineExtensionMethod_closedSliceExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//              Overriding extension method '@openedSliceExpressionAST enterExpressionInSemanticContext'               *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_openedSliceExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
+                                                                                       GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                       C_Compiler * inCompiler
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_openedSliceExpressionAST * object = (const cPtr_openedSliceExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_openedSliceExpressionAST) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 288)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 289)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_openedSliceExpressionAST_enterExpressionInSemanticContext (void) {
+  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_openedSliceExpressionAST.mSlotID,
+                                                         extensionMethod_openedSliceExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_openedSliceExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_openedSliceExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                  Overriding extension method '@openedSliceExpressionAST analyzeSemanticExpression'                  *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_openedSliceExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                                const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                                GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                                const GALGAS_unifiedTypeMap_2D_proxy /* constinArgument_inInferenceType */,
+                                                                                const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                                GALGAS_variableMap & ioArgument_ioVariableMap,
+                                                                                GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_openedSliceExpressionAST * object = (const cPtr_openedSliceExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_openedSliceExpressionAST) ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_11087 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUIntType (HERE), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_11087, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 303)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_11377 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUIntType (HERE), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_11377, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 312)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_leftType_11451 = var_leftExpression_11087.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 321)) ;
+  enumGalgasBool test_0 = kBoolTrue ;
+  if (kBoolTrue == test_0) {
+    test_0 = GALGAS_bool (kIsNotEqual, var_leftType_11451.getter_key (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 322)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
+    if (kBoolTrue == test_0) {
+      TC_Array <C_FixItDescription> fixItArray1 ;
+      inCompiler->emitSemanticError (var_leftExpression_11087.getter_mLocation (SOURCE_FILE ("expression-or.galgas", 323)), GALGAS_string ("the left expression or '...' operator should an @uint"), fixItArray1  COMMA_SOURCE_FILE ("expression-or.galgas", 323)) ;
+    }
+  }
+  GALGAS_unifiedTypeMap_2D_proxy var_rightType_11656 = var_rightExpression_11377.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 325)) ;
+  enumGalgasBool test_2 = kBoolTrue ;
+  if (kBoolTrue == test_2) {
+    test_2 = GALGAS_bool (kIsNotEqual, var_rightType_11656.getter_key (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 326)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
+    if (kBoolTrue == test_2) {
+      TC_Array <C_FixItDescription> fixItArray3 ;
+      inCompiler->emitSemanticError (var_rightExpression_11377.getter_mLocation (SOURCE_FILE ("expression-or.galgas", 327)), GALGAS_string ("the right expression or '...' operator should an @uint"), fixItArray3  COMMA_SOURCE_FILE ("expression-or.galgas", 327)) ;
+    }
+  }
+  outArgument_outExpression = GALGAS_openedSliceExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mTypeMap (HERE), GALGAS_lstring::constructor_new (GALGAS_string ("range"), var_leftExpression_11087.getter_mLocation (SOURCE_FILE ("expression-or.galgas", 331))  COMMA_SOURCE_FILE ("expression-or.galgas", 331)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 331)), object->mProperty_mOperatorLocation, var_leftExpression_11087, var_rightExpression_11377  COMMA_SOURCE_FILE ("expression-or.galgas", 330)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_openedSliceExpressionAST_analyzeSemanticExpression (void) {
+  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_openedSliceExpressionAST.mSlotID,
+                                                  extensionMethod_openedSliceExpressionAST_analyzeSemanticExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_openedSliceExpressionAST_analyzeSemanticExpression (defineExtensionMethod_openedSliceExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                     Overriding extension method '@orExpressionForGeneration generateExpression'                     *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_orExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                                          GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                          GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                          GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                          GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                          GALGAS_string & outArgument_outCppExpression,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_orExpressionForGeneration * object = (const cPtr_orExpressionForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_orExpressionForGeneration) ;
+  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 359)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 359)) ;
+  GALGAS_string var_leftTemporaryOperand_13154 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_13154, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 362)) ;
+  GALGAS_string var_rightTemporaryOperand_13357 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_13357, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 365)) ;
+  outArgument_outCppExpression = var_leftTemporaryOperand_13154.add_operation (GALGAS_string (".operator_or ("), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 367)).add_operation (var_rightTemporaryOperand_13357, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 367)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 368)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 368)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 368)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_orExpressionForGeneration_generateExpression (void) {
+  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_orExpressionForGeneration.mSlotID,
+                                           extensionMethod_orExpressionForGeneration_generateExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_orExpressionForGeneration_generateExpression (defineExtensionMethod_orExpressionForGeneration_generateExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                  Overriding extension method '@orShortExpressionForGeneration generateExpression'                   *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_orShortExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                                               GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                               GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                               GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                               GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                               GALGAS_string & outArgument_outCppExpression,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_orShortExpressionForGeneration * object = (const cPtr_orShortExpressionForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_orShortExpressionForGeneration) ;
+  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 379)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 379)) ;
+  GALGAS_string var_leftTemporaryOperand_14302 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_14302, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 381)) ;
+  GALGAS_string var_testVar_14345 = GALGAS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("expression-or.galgas", 389)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 389)) ;
+  ioArgument_ioTemporaryVariableIndex.increment_operation (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 389)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_bool ").add_operation (var_testVar_14345, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 390)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 390)).add_operation (var_leftTemporaryOperand_14302, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 390)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 390)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 390)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolTrue != ").add_operation (var_testVar_14345, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 391)).add_operation (GALGAS_string (".boolEnum ()) {\n"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 391)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 391)) ;
+  {
+  ioArgument_ioGeneratedCode.setter_incIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 393)) ;
+  }
+  GALGAS_string var_rightTemporaryOperand_14822 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_14822, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 394)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(var_testVar_14345.add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 401)).add_operation (var_rightTemporaryOperand_14822, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 401)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 401)), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 401)) ;
+  {
+  ioArgument_ioGeneratedCode.setter_decIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 402)) ;
+  }
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 403)) ;
+  outArgument_outCppExpression = var_testVar_14345 ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_orShortExpressionForGeneration_generateExpression (void) {
+  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_orShortExpressionForGeneration.mSlotID,
+                                           extensionMethod_orShortExpressionForGeneration_generateExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_orShortExpressionForGeneration_generateExpression (defineExtensionMethod_orShortExpressionForGeneration_generateExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                    Overriding extension method '@xorExpressionForGeneration generateExpression'                     *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_xorExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                                           GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                           GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                           GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                           GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                           GALGAS_string & outArgument_outCppExpression,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_xorExpressionForGeneration * object = (const cPtr_xorExpressionForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_xorExpressionForGeneration) ;
+  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 416)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 416)) ;
+  GALGAS_string var_leftTemporaryOperand_15605 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_15605, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 418)) ;
+  GALGAS_string var_rightTemporaryOperand_15805 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_15805, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 426)) ;
+  outArgument_outCppExpression = var_leftTemporaryOperand_15605.add_operation (GALGAS_string (".operator_xor ("), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 434)).add_operation (var_rightTemporaryOperand_15805, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 434)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 435)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 435)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 435)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_xorExpressionForGeneration_generateExpression (void) {
+  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_xorExpressionForGeneration.mSlotID,
+                                           extensionMethod_xorExpressionForGeneration_generateExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_xorExpressionForGeneration_generateExpression (defineExtensionMethod_xorExpressionForGeneration_generateExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                Overriding extension method '@closedSliceExpressionForGeneration generateExpression'                 *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_closedSliceExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                                                   GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                                   GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                                   GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                                   GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                                   GALGAS_string & outArgument_outCppExpression,
+                                                                                   C_Compiler * inCompiler
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_closedSliceExpressionForGeneration * object = (const cPtr_closedSliceExpressionForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_closedSliceExpressionForGeneration) ;
+  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 446)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 446)) ;
+  GALGAS_string var_leftTemporaryOperand_16596 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_16596, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 448)) ;
+  GALGAS_string var_rightTemporaryOperand_16796 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_16796, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 456)) ;
+  outArgument_outCppExpression = GALGAS_string ("GALGAS_range (").add_operation (var_leftTemporaryOperand_16596, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 465)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 465)).add_operation (var_rightTemporaryOperand_16796, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 465)).add_operation (GALGAS_string (".substract_operation ("), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 466)).add_operation (var_leftTemporaryOperand_16596, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 466)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 466)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 466)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 466)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 466)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 466)).add_operation (GALGAS_string (").add_operation (GALGAS_uint (1), "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 466)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 466)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 466)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 466)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 466)).add_operation (GALGAS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 466)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_closedSliceExpressionForGeneration_generateExpression (void) {
+  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration.mSlotID,
+                                           extensionMethod_closedSliceExpressionForGeneration_generateExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_closedSliceExpressionForGeneration_generateExpression (defineExtensionMethod_closedSliceExpressionForGeneration_generateExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                Overriding extension method '@openedSliceExpressionForGeneration generateExpression'                 *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_openedSliceExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                                                   GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                                   GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                                   GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                                   GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                                   GALGAS_string & outArgument_outCppExpression,
+                                                                                   C_Compiler * inCompiler
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_openedSliceExpressionForGeneration * object = (const cPtr_openedSliceExpressionForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_openedSliceExpressionForGeneration) ;
+  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("expression-or.galgas", 478)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 478)) ;
+  GALGAS_string var_leftTemporaryOperand_17751 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_17751, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 480)) ;
+  GALGAS_string var_rightTemporaryOperand_17951 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_17951, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 488)) ;
+  {
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 496)) COMMA_SOURCE_FILE ("expression-or.galgas", 496)) ;
+  }
+  outArgument_outCppExpression = GALGAS_string ("GALGAS_range (").add_operation (var_leftTemporaryOperand_17751, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 498)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 498)).add_operation (var_rightTemporaryOperand_17951, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 498)).add_operation (GALGAS_string (".substract_operation ("), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 499)).add_operation (var_leftTemporaryOperand_17751, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 499)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 499)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 499)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 499)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 500)), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 499)).add_operation (GALGAS_string ("))"), inCompiler COMMA_SOURCE_FILE ("expression-or.galgas", 500)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_openedSliceExpressionForGeneration_generateExpression (void) {
+  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration.mSlotID,
+                                           extensionMethod_openedSliceExpressionForGeneration_generateExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_openedSliceExpressionForGeneration_generateExpression (defineExtensionMethod_openedSliceExpressionForGeneration_generateExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                  Overriding extension method '@andExpressionAST enterExpressionInSemanticContext'                   *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_andExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
+                                                                               GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_andExpressionAST * object = (const cPtr_andExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_andExpressionAST) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 49)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 50)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_andExpressionAST_enterExpressionInSemanticContext (void) {
+  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_andExpressionAST.mSlotID,
+                                                         extensionMethod_andExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_andExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_andExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                      Overriding extension method '@andExpressionAST analyzeSemanticExpression'                      *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_andExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                        const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                        GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                        const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
+                                                                        const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                        GALGAS_variableMap & ioArgument_ioVariableMap,
+                                                                        GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_andExpressionAST * object = (const cPtr_andExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_andExpressionAST) ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_2830 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_2830, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 63)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_3104 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_2830.getter_mResultType (SOURCE_FILE ("expression-and.galgas", 75)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_3104, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 72)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_leftType_3178 = var_leftExpression_2830.getter_mResultType (SOURCE_FILE ("expression-and.galgas", 81)) ;
+  {
+  routine_checkDiadicOperator (var_leftType_3178, var_rightExpression_3104.getter_mResultType (SOURCE_FILE ("expression-and.galgas", 84)), var_leftType_3178.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 85)).getter_infixAndOperator (SOURCE_FILE ("expression-and.galgas", 85)), GALGAS_string ("&"), object->mProperty_mOperatorLocation, var_rightExpression_3104, inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 82)) ;
+  }
+  outArgument_outExpression = GALGAS_andExpressionForGeneration::constructor_new (var_leftType_3178, object->mProperty_mOperatorLocation, var_leftExpression_2830, var_rightExpression_3104  COMMA_SOURCE_FILE ("expression-and.galgas", 91)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_andExpressionAST_analyzeSemanticExpression (void) {
+  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_andExpressionAST.mSlotID,
+                                                  extensionMethod_andExpressionAST_analyzeSemanticExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_andExpressionAST_analyzeSemanticExpression (defineExtensionMethod_andExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                Overriding extension method '@andShortExpressionAST enterExpressionInSemanticContext'                *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_andShortExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
+                                                                                    GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_andShortExpressionAST * object = (const cPtr_andShortExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_andShortExpressionAST) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 103)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 104)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_andShortExpressionAST_enterExpressionInSemanticContext (void) {
+  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_andShortExpressionAST.mSlotID,
+                                                         extensionMethod_andShortExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_andShortExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_andShortExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                   Overriding extension method '@andShortExpressionAST analyzeSemanticExpression'                    *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_andShortExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                             const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                             GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                             const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
+                                                                             const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                             GALGAS_variableMap & ioArgument_ioVariableMap,
+                                                                             GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_andShortExpressionAST * object = (const cPtr_andShortExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_andShortExpressionAST) ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_4623 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_4623, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 117)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_4897 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_4623.getter_mResultType (SOURCE_FILE ("expression-and.galgas", 129)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_4897, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 126)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_leftType_4971 = var_leftExpression_4623.getter_mResultType (SOURCE_FILE ("expression-and.galgas", 135)) ;
+  {
+  routine_checkDiadicOperator (var_leftType_4971, var_rightExpression_4897.getter_mResultType (SOURCE_FILE ("expression-and.galgas", 138)), var_leftType_4971.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 139)).getter_infixAndOperator (SOURCE_FILE ("expression-and.galgas", 139)), GALGAS_string ("&"), object->mProperty_mOperatorLocation, var_rightExpression_4897, inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 136)) ;
+  }
+  outArgument_outExpression = GALGAS_andShortExpressionForGeneration::constructor_new (var_leftType_4971, object->mProperty_mOperatorLocation, var_leftExpression_4623, var_rightExpression_4897  COMMA_SOURCE_FILE ("expression-and.galgas", 145)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_andShortExpressionAST_analyzeSemanticExpression (void) {
+  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_andShortExpressionAST.mSlotID,
+                                                  extensionMethod_andShortExpressionAST_analyzeSemanticExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_andShortExpressionAST_analyzeSemanticExpression (defineExtensionMethod_andShortExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                    Overriding extension method '@andExpressionForGeneration generateExpression'                     *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_andExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                                           GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                           GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                           GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                           GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                           GALGAS_string & outArgument_outCppExpression,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_andExpressionForGeneration * object = (const cPtr_andExpressionForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_andExpressionForGeneration) ;
+  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("expression-and.galgas", 170)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 170)) ;
+  GALGAS_string var_leftTemporaryOperand_6453 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_6453, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 172)) ;
+  GALGAS_string var_rightTemporaryOperand_6661 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_6661, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 180)) ;
+  outArgument_outCppExpression = var_leftTemporaryOperand_6453.add_operation (GALGAS_string (".operator_and ("), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 188)).add_operation (var_rightTemporaryOperand_6661, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 188)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 189)), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 189)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 189)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_andExpressionForGeneration_generateExpression (void) {
+  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_andExpressionForGeneration.mSlotID,
+                                           extensionMethod_andExpressionForGeneration_generateExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_andExpressionForGeneration_generateExpression (defineExtensionMethod_andExpressionForGeneration_generateExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                  Overriding extension method '@andShortExpressionForGeneration generateExpression'                  *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_andShortExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                                                GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                                GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                                GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                                GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                                GALGAS_string & outArgument_outCppExpression,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_andShortExpressionForGeneration * object = (const cPtr_andShortExpressionForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_andShortExpressionForGeneration) ;
+  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("expression-and.galgas", 200)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 200)) ;
+  GALGAS_string var_leftTemporaryOperand_7456 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_7456, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 202)) ;
+  GALGAS_string var_testVar_7499 = GALGAS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("expression-and.galgas", 210)), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 210)) ;
+  ioArgument_ioTemporaryVariableIndex.increment_operation (inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 210)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_bool ").add_operation (var_testVar_7499, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 211)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 211)).add_operation (var_leftTemporaryOperand_7456, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 211)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 211)), inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 211)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolTrue == ").add_operation (var_testVar_7499, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 212)).add_operation (GALGAS_string (".boolEnum ()) {\n"), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 212)), inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 212)) ;
+  {
+  ioArgument_ioGeneratedCode.setter_incIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 214)) ;
+  }
+  GALGAS_string var_rightTemporaryOperand_7976 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_7976, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 215)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(var_testVar_7499.add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 222)).add_operation (var_rightTemporaryOperand_7976, inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 222)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 222)), inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 222)) ;
+  {
+  ioArgument_ioGeneratedCode.setter_decIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("expression-and.galgas", 223)) ;
+  }
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 224)) ;
+  outArgument_outCppExpression = var_testVar_7499 ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_andShortExpressionForGeneration_generateExpression (void) {
+  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_andShortExpressionForGeneration.mSlotID,
+                                           extensionMethod_andShortExpressionForGeneration_generateExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_andShortExpressionForGeneration_generateExpression (defineExtensionMethod_andShortExpressionForGeneration_generateExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//        Overriding extension method '@multiplicationExpressionNoOverflowAST enterExpressionInSemanticContext'        *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_multiplicationExpressionNoOverflowAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
+                                                                                                    GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_multiplicationExpressionNoOverflowAST * object = (const cPtr_multiplicationExpressionNoOverflowAST *) inObject ;
+  macroValidSharedObject (object, cPtr_multiplicationExpressionNoOverflowAST) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 70)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 71)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_multiplicationExpressionNoOverflowAST_enterExpressionInSemanticContext (void) {
+  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST.mSlotID,
+                                                         extensionMethod_multiplicationExpressionNoOverflowAST_enterExpressionInSemanticContext) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_multiplicationExpressionNoOverflowAST_enterExpressionInSemanticContext (defineExtensionMethod_multiplicationExpressionNoOverflowAST_enterExpressionInSemanticContext, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//           Overriding extension method '@multiplicationExpressionNoOverflowAST analyzeSemanticExpression'            *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_multiplicationExpressionNoOverflowAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                                             const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                                             GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                                             const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
+                                                                                             const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                                             GALGAS_variableMap & ioArgument_ioVariableMap,
+                                                                                             GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                             C_Compiler * inCompiler
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_multiplicationExpressionNoOverflowAST * object = (const cPtr_multiplicationExpressionNoOverflowAST *) inObject ;
+  macroValidSharedObject (object, cPtr_multiplicationExpressionNoOverflowAST) ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_3691 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_3691, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 84)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_3965 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_3691.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 96)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_3965, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 93)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_leftType_4039 = var_leftExpression_3691.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 102)) ;
+  {
+  routine_checkDiadicOperator (var_leftType_4039, var_rightExpression_3965.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 105)), var_leftType_4039.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 106)).getter_infixMulOperatorNoOVF (SOURCE_FILE ("expression-multiplicative.galgas", 106)), GALGAS_string ("&*"), object->mProperty_mOperatorLocation, var_rightExpression_3965, inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 103)) ;
+  }
+  outArgument_outExpression = GALGAS_multiplicationExpressionNoOverflowForGeneration::constructor_new (var_leftType_4039, object->mProperty_mOperatorLocation, var_leftExpression_3691, var_rightExpression_3965  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 112)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_multiplicationExpressionNoOverflowAST_analyzeSemanticExpression (void) {
+  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST.mSlotID,
+                                                  extensionMethod_multiplicationExpressionNoOverflowAST_analyzeSemanticExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_multiplicationExpressionNoOverflowAST_analyzeSemanticExpression (defineExtensionMethod_multiplicationExpressionNoOverflowAST_analyzeSemanticExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//             Overriding extension method '@multiplicationExpressionAST enterExpressionInSemanticContext'             *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_multiplicationExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
+                                                                                          GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_multiplicationExpressionAST * object = (const cPtr_multiplicationExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_multiplicationExpressionAST) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 125)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 126)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_multiplicationExpressionAST_enterExpressionInSemanticContext (void) {
+  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_multiplicationExpressionAST.mSlotID,
+                                                         extensionMethod_multiplicationExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_multiplicationExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_multiplicationExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                Overriding extension method '@multiplicationExpressionAST analyzeSemanticExpression'                 *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_multiplicationExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                                   const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                                   GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                                   const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
+                                                                                   const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                                   GALGAS_variableMap & ioArgument_ioVariableMap,
+                                                                                   GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                   C_Compiler * inCompiler
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_multiplicationExpressionAST * object = (const cPtr_multiplicationExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_multiplicationExpressionAST) ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_5524 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_5524, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 139)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_5798 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_5524.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 151)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_5798, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 148)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_leftType_5872 = var_leftExpression_5524.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 157)) ;
+  {
+  routine_checkDiadicOperator (var_leftType_5872, var_rightExpression_5798.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 160)), var_leftType_5872.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 161)).getter_infixMulOperator (SOURCE_FILE ("expression-multiplicative.galgas", 161)), GALGAS_string ("*"), object->mProperty_mOperatorLocation, var_rightExpression_5798, inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 158)) ;
+  }
+  outArgument_outExpression = GALGAS_multiplicationExpressionForGeneration::constructor_new (var_leftType_5872, object->mProperty_mOperatorLocation, var_leftExpression_5524, var_rightExpression_5798  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 167)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_multiplicationExpressionAST_analyzeSemanticExpression (void) {
+  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_multiplicationExpressionAST.mSlotID,
+                                                  extensionMethod_multiplicationExpressionAST_analyzeSemanticExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_multiplicationExpressionAST_analyzeSemanticExpression (defineExtensionMethod_multiplicationExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//           Overriding extension method '@divisionExpressionNoOverflowAST enterExpressionInSemanticContext'           *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_divisionExpressionNoOverflowAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
+                                                                                              GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_divisionExpressionNoOverflowAST * object = (const cPtr_divisionExpressionNoOverflowAST *) inObject ;
+  macroValidSharedObject (object, cPtr_divisionExpressionNoOverflowAST) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 179)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 180)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_divisionExpressionNoOverflowAST_enterExpressionInSemanticContext (void) {
+  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST.mSlotID,
+                                                         extensionMethod_divisionExpressionNoOverflowAST_enterExpressionInSemanticContext) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_divisionExpressionNoOverflowAST_enterExpressionInSemanticContext (defineExtensionMethod_divisionExpressionNoOverflowAST_enterExpressionInSemanticContext, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//              Overriding extension method '@divisionExpressionNoOverflowAST analyzeSemanticExpression'               *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_divisionExpressionNoOverflowAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                                       const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                                       GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                                       const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
+                                                                                       const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                                       GALGAS_variableMap & ioArgument_ioVariableMap,
+                                                                                       GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                       C_Compiler * inCompiler
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_divisionExpressionNoOverflowAST * object = (const cPtr_divisionExpressionNoOverflowAST *) inObject ;
+  macroValidSharedObject (object, cPtr_divisionExpressionNoOverflowAST) ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_7348 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_7348, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 193)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_7622 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_7348.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 205)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_7622, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 202)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_leftType_7696 = var_leftExpression_7348.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 211)) ;
+  {
+  routine_checkDiadicOperator (var_leftType_7696, var_rightExpression_7622.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 214)), var_leftType_7696.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 215)).getter_infixDivOperatorNoOVF (SOURCE_FILE ("expression-multiplicative.galgas", 215)), GALGAS_string ("&/"), object->mProperty_mOperatorLocation, var_rightExpression_7622, inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 212)) ;
+  }
+  outArgument_outExpression = GALGAS_divisionExpressionNoOverflowForGeneration::constructor_new (var_leftType_7696, object->mProperty_mOperatorLocation, var_leftExpression_7348, var_rightExpression_7622  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 221)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_divisionExpressionNoOverflowAST_analyzeSemanticExpression (void) {
+  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST.mSlotID,
+                                                  extensionMethod_divisionExpressionNoOverflowAST_analyzeSemanticExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_divisionExpressionNoOverflowAST_analyzeSemanticExpression (defineExtensionMethod_divisionExpressionNoOverflowAST_analyzeSemanticExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                Overriding extension method '@divisionExpressionAST enterExpressionInSemanticContext'                *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_divisionExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
+                                                                                    GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_divisionExpressionAST * object = (const cPtr_divisionExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_divisionExpressionAST) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 234)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 235)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_divisionExpressionAST_enterExpressionInSemanticContext (void) {
+  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_divisionExpressionAST.mSlotID,
+                                                         extensionMethod_divisionExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_divisionExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_divisionExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                   Overriding extension method '@divisionExpressionAST analyzeSemanticExpression'                    *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_divisionExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                             const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                             GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                             const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
+                                                                             const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                             GALGAS_variableMap & ioArgument_ioVariableMap,
+                                                                             GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_divisionExpressionAST * object = (const cPtr_divisionExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_divisionExpressionAST) ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_9165 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_9165, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 248)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_9439 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_9165.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 260)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_9439, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 257)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_leftType_9513 = var_leftExpression_9165.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 266)) ;
+  {
+  routine_checkDiadicOperator (var_leftType_9513, var_rightExpression_9439.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 269)), var_leftType_9513.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 270)).getter_infixDivOperator (SOURCE_FILE ("expression-multiplicative.galgas", 270)), GALGAS_string ("/"), object->mProperty_mOperatorLocation, var_rightExpression_9439, inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 267)) ;
+  }
+  outArgument_outExpression = GALGAS_divisionExpressionForGeneration::constructor_new (var_leftType_9513, object->mProperty_mOperatorLocation, var_leftExpression_9165, var_rightExpression_9439  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 276)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_divisionExpressionAST_analyzeSemanticExpression (void) {
+  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_divisionExpressionAST.mSlotID,
+                                                  extensionMethod_divisionExpressionAST_analyzeSemanticExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_divisionExpressionAST_analyzeSemanticExpression (defineExtensionMethod_divisionExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                 Overriding extension method '@moduloExpressionAST enterExpressionInSemanticContext'                 *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_moduloExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
+                                                                                  GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_moduloExpressionAST * object = (const cPtr_moduloExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_moduloExpressionAST) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 288)) ;
+  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 289)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_moduloExpressionAST_enterExpressionInSemanticContext (void) {
+  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_moduloExpressionAST.mSlotID,
+                                                         extensionMethod_moduloExpressionAST_enterExpressionInSemanticContext) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_moduloExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_moduloExpressionAST_enterExpressionInSemanticContext, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                    Overriding extension method '@moduloExpressionAST analyzeSemanticExpression'                     *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_moduloExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                           const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
+                                                                           GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
+                                                                           const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
+                                                                           const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                           GALGAS_variableMap & ioArgument_ioVariableMap,
+                                                                           GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_moduloExpressionAST * object = (const cPtr_moduloExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_moduloExpressionAST) ;
+  GALGAS_semanticExpressionForGeneration var_leftExpression_10959 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_10959, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 302)) ;
+  GALGAS_semanticExpressionForGeneration var_rightExpression_11233 ;
+  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_10959.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 314)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_11233, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 311)) ;
+  GALGAS_unifiedTypeMap_2D_proxy var_leftType_11307 = var_leftExpression_10959.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 320)) ;
+  {
+  routine_checkDiadicOperator (var_leftType_11307, var_rightExpression_11233.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 323)), var_leftType_11307.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 324)).getter_infixModOperator (SOURCE_FILE ("expression-multiplicative.galgas", 324)), GALGAS_string ("mod"), object->mProperty_mOperatorLocation, var_rightExpression_11233, inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 321)) ;
+  }
+  outArgument_outExpression = GALGAS_moduloExpressionForGeneration::constructor_new (var_leftType_11307, object->mProperty_mOperatorLocation, var_leftExpression_10959, var_rightExpression_11233  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 330)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_moduloExpressionAST_analyzeSemanticExpression (void) {
+  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_moduloExpressionAST.mSlotID,
+                                                  extensionMethod_moduloExpressionAST_analyzeSemanticExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_moduloExpressionAST_analyzeSemanticExpression (defineExtensionMethod_moduloExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//               Overriding extension method '@multiplicationExpressionForGeneration generateExpression'               *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_multiplicationExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                                                      GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                                      GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                                      GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                                      GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                                      GALGAS_string & outArgument_outCppExpression,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_multiplicationExpressionForGeneration * object = (const cPtr_multiplicationExpressionForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_multiplicationExpressionForGeneration) ;
+  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 358)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 358)) ;
+  GALGAS_string var_leftTemporaryOperand_12803 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_12803, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 361)) ;
+  GALGAS_string var_rightTemporaryOperand_13006 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_13006, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 364)) ;
+  outArgument_outCppExpression = var_leftTemporaryOperand_12803.add_operation (GALGAS_string (".multiply_operation ("), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 366)).add_operation (var_rightTemporaryOperand_13006, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 366)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 367)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 367)), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 367)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 367)), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 367)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 367)) ;
+  {
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 368)) COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 368)) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_multiplicationExpressionForGeneration_generateExpression (void) {
+  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_multiplicationExpressionForGeneration.mSlotID,
+                                           extensionMethod_multiplicationExpressionForGeneration_generateExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_multiplicationExpressionForGeneration_generateExpression (defineExtensionMethod_multiplicationExpressionForGeneration_generateExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//          Overriding extension method '@multiplicationExpressionNoOverflowForGeneration generateExpression'          *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_multiplicationExpressionNoOverflowForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                                                                GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                                                GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                                                GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                                                GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                                                GALGAS_string & outArgument_outCppExpression,
+                                                                                                C_Compiler * inCompiler
+                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_multiplicationExpressionNoOverflowForGeneration * object = (const cPtr_multiplicationExpressionNoOverflowForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_multiplicationExpressionNoOverflowForGeneration) ;
+  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 379)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 379)) ;
+  GALGAS_string var_leftTemporaryOperand_13912 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_13912, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 382)) ;
+  GALGAS_string var_rightTemporaryOperand_14115 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_14115, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 385)) ;
+  outArgument_outCppExpression = var_leftTemporaryOperand_13912.add_operation (GALGAS_string (".multiply_operation_no_ovf ("), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 387)).add_operation (var_rightTemporaryOperand_14115, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 387)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 387)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_multiplicationExpressionNoOverflowForGeneration_generateExpression (void) {
+  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowForGeneration.mSlotID,
+                                           extensionMethod_multiplicationExpressionNoOverflowForGeneration_generateExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_multiplicationExpressionNoOverflowForGeneration_generateExpression (defineExtensionMethod_multiplicationExpressionNoOverflowForGeneration_generateExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                  Overriding extension method '@divisionExpressionForGeneration generateExpression'                  *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_divisionExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                                                GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                                GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                                GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                                GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                                GALGAS_string & outArgument_outCppExpression,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_divisionExpressionForGeneration * object = (const cPtr_divisionExpressionForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_divisionExpressionForGeneration) ;
+  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 398)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 398)) ;
+  GALGAS_string var_leftTemporaryOperand_14873 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_14873, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 401)) ;
+  GALGAS_string var_rightTemporaryOperand_15076 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_15076, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 404)) ;
+  outArgument_outCppExpression = var_leftTemporaryOperand_14873.add_operation (GALGAS_string (".divide_operation ("), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 406)).add_operation (var_rightTemporaryOperand_15076, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 406)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 407)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 407)), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 407)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 407)), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 407)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 407)) ;
+  {
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 408)) COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 408)) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_divisionExpressionForGeneration_generateExpression (void) {
+  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_divisionExpressionForGeneration.mSlotID,
+                                           extensionMethod_divisionExpressionForGeneration_generateExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_divisionExpressionForGeneration_generateExpression (defineExtensionMethod_divisionExpressionForGeneration_generateExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//             Overriding extension method '@divisionExpressionNoOverflowForGeneration generateExpression'             *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_divisionExpressionNoOverflowForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                                                          GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                                          GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                                          GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                                          GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                                          GALGAS_string & outArgument_outCppExpression,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_divisionExpressionNoOverflowForGeneration * object = (const cPtr_divisionExpressionNoOverflowForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_divisionExpressionNoOverflowForGeneration) ;
+  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 419)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 419)) ;
+  GALGAS_string var_leftTemporaryOperand_15974 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_15974, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 422)) ;
+  GALGAS_string var_rightTemporaryOperand_16177 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_16177, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 425)) ;
+  outArgument_outCppExpression = var_leftTemporaryOperand_15974.add_operation (GALGAS_string (".divide_operation_no_ovf ("), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 427)).add_operation (var_rightTemporaryOperand_16177, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 427)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 427)) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_divisionExpressionNoOverflowForGeneration_generateExpression (void) {
+  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_divisionExpressionNoOverflowForGeneration.mSlotID,
+                                           extensionMethod_divisionExpressionNoOverflowForGeneration_generateExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_divisionExpressionNoOverflowForGeneration_generateExpression (defineExtensionMethod_divisionExpressionNoOverflowForGeneration_generateExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                   Overriding extension method '@moduloExpressionForGeneration generateExpression'                   *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void extensionMethod_moduloExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                                              GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                              GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                              GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                              GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                              GALGAS_string & outArgument_outCppExpression,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_moduloExpressionForGeneration * object = (const cPtr_moduloExpressionForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_moduloExpressionForGeneration) ;
+  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("expression-multiplicative.galgas", 438)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 438)) ;
+  GALGAS_string var_leftTemporaryOperand_16931 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_16931, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 441)) ;
+  GALGAS_string var_rightTemporaryOperand_17134 ;
+  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_17134, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 444)) ;
+  outArgument_outCppExpression = var_leftTemporaryOperand_16931.add_operation (GALGAS_string (".modulo_operation ("), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 446)).add_operation (var_rightTemporaryOperand_17134, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 446)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 447)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 447)), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 447)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 447)), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 447)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 447)) ;
+  {
+  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 448)) COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 448)) ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static void defineExtensionMethod_moduloExpressionForGeneration_generateExpression (void) {
+  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_moduloExpressionForGeneration.mSlotID,
+                                           extensionMethod_moduloExpressionForGeneration_generateExpression) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_PrologueEpilogue gMethod_moduloExpressionForGeneration_generateExpression (defineExtensionMethod_moduloExpressionForGeneration_generateExpression, NULL) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
 //                                           Routine 'checkAssignmentTypes'                                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -2314,1346 +3621,6 @@ void routine_checkDiadicOperator (const GALGAS_unifiedTypeMap_2D_proxy constinAr
   }
 }
 
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                   Overriding extension method '@orExpressionAST enterExpressionInSemanticContext'                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_orExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
-                                                                              GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_orExpressionAST * object = (const cPtr_orExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_orExpressionAST) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 626)) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 627)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_orExpressionAST_enterExpressionInSemanticContext (void) {
-  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_orExpressionAST.mSlotID,
-                                                         extensionMethod_orExpressionAST_enterExpressionInSemanticContext) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_orExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_orExpressionAST_enterExpressionInSemanticContext, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                      Overriding extension method '@orExpressionAST analyzeSemanticExpression'                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_orExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
-                                                                       const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                       GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                       const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
-                                                                       const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                       GALGAS_variableMap & ioArgument_ioVariableMap,
-                                                                       GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_orExpressionAST * object = (const cPtr_orExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_orExpressionAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_42381 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_42381, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 640)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_42655 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_42381.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 652)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_42655, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 649)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_leftType_42727 = var_leftExpression_42381.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 658)) ;
-  {
-  routine_checkDiadicOperator (var_leftType_42727, var_rightExpression_42655.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 661)), var_leftType_42727.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 662)).getter_infixOrOperator (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 662)), GALGAS_string ("|"), object->mProperty_mOperatorLocation, var_rightExpression_42655, inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 659)) ;
-  }
-  outArgument_outExpression = GALGAS_orExpressionForGeneration::constructor_new (var_leftType_42727, object->mProperty_mOperatorLocation, var_leftExpression_42381, var_rightExpression_42655  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 667)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_orExpressionAST_analyzeSemanticExpression (void) {
-  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_orExpressionAST.mSlotID,
-                                                  extensionMethod_orExpressionAST_analyzeSemanticExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_orExpressionAST_analyzeSemanticExpression (defineExtensionMethod_orExpressionAST_analyzeSemanticExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                Overriding extension method '@orShortExpressionAST enterExpressionInSemanticContext'                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_orShortExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
-                                                                                   GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                   C_Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_orShortExpressionAST * object = (const cPtr_orShortExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_orShortExpressionAST) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 680)) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 681)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_orShortExpressionAST_enterExpressionInSemanticContext (void) {
-  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_orShortExpressionAST.mSlotID,
-                                                         extensionMethod_orShortExpressionAST_enterExpressionInSemanticContext) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_orShortExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_orShortExpressionAST_enterExpressionInSemanticContext, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                    Overriding extension method '@orShortExpressionAST analyzeSemanticExpression'                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_orShortExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
-                                                                            const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                            GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                            const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
-                                                                            const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                            GALGAS_variableMap & ioArgument_ioVariableMap,
-                                                                            GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_orShortExpressionAST * object = (const cPtr_orShortExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_orShortExpressionAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_44148 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_44148, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 694)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_44422 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_44148.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 706)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_44422, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 703)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_leftType_44496 = var_leftExpression_44148.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 712)) ;
-  {
-  routine_checkDiadicOperator (var_leftType_44496, var_rightExpression_44422.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 715)), var_leftType_44496.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 716)).getter_infixOrOperator (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 716)), GALGAS_string ("|"), object->mProperty_mOperatorLocation, var_rightExpression_44422, inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 713)) ;
-  }
-  outArgument_outExpression = GALGAS_orShortExpressionForGeneration::constructor_new (var_leftType_44496, object->mProperty_mOperatorLocation, var_leftExpression_44148, var_rightExpression_44422  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 722)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_orShortExpressionAST_analyzeSemanticExpression (void) {
-  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_orShortExpressionAST.mSlotID,
-                                                  extensionMethod_orShortExpressionAST_analyzeSemanticExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_orShortExpressionAST_analyzeSemanticExpression (defineExtensionMethod_orShortExpressionAST_analyzeSemanticExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                  Overriding extension method '@andExpressionAST enterExpressionInSemanticContext'                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_andExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
-                                                                               GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                               C_Compiler * inCompiler
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_andExpressionAST * object = (const cPtr_andExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_andExpressionAST) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 734)) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 735)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_andExpressionAST_enterExpressionInSemanticContext (void) {
-  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_andExpressionAST.mSlotID,
-                                                         extensionMethod_andExpressionAST_enterExpressionInSemanticContext) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_andExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_andExpressionAST_enterExpressionInSemanticContext, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                      Overriding extension method '@andExpressionAST analyzeSemanticExpression'                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_andExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
-                                                                        const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                        GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                        const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
-                                                                        const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                        GALGAS_variableMap & ioArgument_ioVariableMap,
-                                                                        GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_andExpressionAST * object = (const cPtr_andExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_andExpressionAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_45936 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_45936, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 748)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_46210 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_45936.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 760)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_46210, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 757)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_leftType_46284 = var_leftExpression_45936.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 766)) ;
-  {
-  routine_checkDiadicOperator (var_leftType_46284, var_rightExpression_46210.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 769)), var_leftType_46284.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 770)).getter_infixAndOperator (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 770)), GALGAS_string ("&"), object->mProperty_mOperatorLocation, var_rightExpression_46210, inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 767)) ;
-  }
-  outArgument_outExpression = GALGAS_andExpressionForGeneration::constructor_new (var_leftType_46284, object->mProperty_mOperatorLocation, var_leftExpression_45936, var_rightExpression_46210  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 776)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_andExpressionAST_analyzeSemanticExpression (void) {
-  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_andExpressionAST.mSlotID,
-                                                  extensionMethod_andExpressionAST_analyzeSemanticExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_andExpressionAST_analyzeSemanticExpression (defineExtensionMethod_andExpressionAST_analyzeSemanticExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                Overriding extension method '@andShortExpressionAST enterExpressionInSemanticContext'                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_andShortExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
-                                                                                    GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_andShortExpressionAST * object = (const cPtr_andShortExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_andShortExpressionAST) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 788)) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 789)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_andShortExpressionAST_enterExpressionInSemanticContext (void) {
-  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_andShortExpressionAST.mSlotID,
-                                                         extensionMethod_andShortExpressionAST_enterExpressionInSemanticContext) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_andShortExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_andShortExpressionAST_enterExpressionInSemanticContext, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                   Overriding extension method '@andShortExpressionAST analyzeSemanticExpression'                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_andShortExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
-                                                                             const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                             GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                             const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
-                                                                             const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                             GALGAS_variableMap & ioArgument_ioVariableMap,
-                                                                             GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                             C_Compiler * inCompiler
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_andShortExpressionAST * object = (const cPtr_andShortExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_andShortExpressionAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_47731 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_47731, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 802)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_48005 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_47731.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 814)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_48005, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 811)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_leftType_48079 = var_leftExpression_47731.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 820)) ;
-  {
-  routine_checkDiadicOperator (var_leftType_48079, var_rightExpression_48005.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 823)), var_leftType_48079.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 824)).getter_infixAndOperator (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 824)), GALGAS_string ("&"), object->mProperty_mOperatorLocation, var_rightExpression_48005, inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 821)) ;
-  }
-  outArgument_outExpression = GALGAS_andShortExpressionForGeneration::constructor_new (var_leftType_48079, object->mProperty_mOperatorLocation, var_leftExpression_47731, var_rightExpression_48005  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 830)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_andShortExpressionAST_analyzeSemanticExpression (void) {
-  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_andShortExpressionAST.mSlotID,
-                                                  extensionMethod_andShortExpressionAST_analyzeSemanticExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_andShortExpressionAST_analyzeSemanticExpression (defineExtensionMethod_andShortExpressionAST_analyzeSemanticExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                  Overriding extension method '@xorExpressionAST enterExpressionInSemanticContext'                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_xorExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
-                                                                               GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                               C_Compiler * inCompiler
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_xorExpressionAST * object = (const cPtr_xorExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_xorExpressionAST) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 842)) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 843)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_xorExpressionAST_enterExpressionInSemanticContext (void) {
-  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_xorExpressionAST.mSlotID,
-                                                         extensionMethod_xorExpressionAST_enterExpressionInSemanticContext) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_xorExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_xorExpressionAST_enterExpressionInSemanticContext, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                      Overriding extension method '@xorExpressionAST analyzeSemanticExpression'                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_xorExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
-                                                                        const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                        GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                        const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
-                                                                        const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                        GALGAS_variableMap & ioArgument_ioVariableMap,
-                                                                        GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_xorExpressionAST * object = (const cPtr_xorExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_xorExpressionAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_49521 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_49521, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 856)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_49795 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_49521.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 868)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_49795, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 865)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_leftType_49869 = var_leftExpression_49521.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 874)) ;
-  {
-  routine_checkDiadicOperator (var_leftType_49869, var_rightExpression_49795.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 877)), var_leftType_49869.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 878)).getter_infixXorOperator (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 878)), GALGAS_string ("^"), object->mProperty_mOperatorLocation, var_rightExpression_49795, inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 875)) ;
-  }
-  outArgument_outExpression = GALGAS_xorExpressionForGeneration::constructor_new (var_leftType_49869, object->mProperty_mOperatorLocation, var_leftExpression_49521, var_rightExpression_49795  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 884)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_xorExpressionAST_analyzeSemanticExpression (void) {
-  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_xorExpressionAST.mSlotID,
-                                                  extensionMethod_xorExpressionAST_analyzeSemanticExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_xorExpressionAST_analyzeSemanticExpression (defineExtensionMethod_xorExpressionAST_analyzeSemanticExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//              Overriding extension method '@closedSliceExpressionAST enterExpressionInSemanticContext'               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_closedSliceExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
-                                                                                       GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                       C_Compiler * inCompiler
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_closedSliceExpressionAST * object = (const cPtr_closedSliceExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_closedSliceExpressionAST) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 897)) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 898)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_closedSliceExpressionAST_enterExpressionInSemanticContext (void) {
-  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_closedSliceExpressionAST.mSlotID,
-                                                         extensionMethod_closedSliceExpressionAST_enterExpressionInSemanticContext) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_closedSliceExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_closedSliceExpressionAST_enterExpressionInSemanticContext, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                  Overriding extension method '@closedSliceExpressionAST analyzeSemanticExpression'                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_closedSliceExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
-                                                                                const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                                GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                                const GALGAS_unifiedTypeMap_2D_proxy /* constinArgument_inInferenceType */,
-                                                                                const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                                GALGAS_variableMap & ioArgument_ioVariableMap,
-                                                                                GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_closedSliceExpressionAST * object = (const cPtr_closedSliceExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_closedSliceExpressionAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_51361 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUIntType (HERE), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_51361, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 912)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_51651 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUIntType (HERE), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_51651, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 921)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_leftType_51725 = var_leftExpression_51361.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 930)) ;
-  enumGalgasBool test_0 = kBoolTrue ;
-  if (kBoolTrue == test_0) {
-    test_0 = GALGAS_bool (kIsNotEqual, var_leftType_51725.getter_key (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 931)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
-    if (kBoolTrue == test_0) {
-      TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (var_leftExpression_51361.getter_mLocation (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 932)), GALGAS_string ("the left expression or '...' operator should an @uint"), fixItArray1  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 932)) ;
-    }
-  }
-  GALGAS_unifiedTypeMap_2D_proxy var_rightType_51930 = var_rightExpression_51651.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 934)) ;
-  enumGalgasBool test_2 = kBoolTrue ;
-  if (kBoolTrue == test_2) {
-    test_2 = GALGAS_bool (kIsNotEqual, var_rightType_51930.getter_key (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 935)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
-    if (kBoolTrue == test_2) {
-      TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (var_rightExpression_51651.getter_mLocation (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 936)), GALGAS_string ("the right expression or '...' operator should an @uint"), fixItArray3  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 936)) ;
-    }
-  }
-  outArgument_outExpression = GALGAS_closedSliceExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mTypeMap (HERE), GALGAS_lstring::constructor_new (GALGAS_string ("range"), var_leftExpression_51361.getter_mLocation (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 940))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 940)), inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 940)), object->mProperty_mOperatorLocation, var_leftExpression_51361, var_rightExpression_51651  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 939)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_closedSliceExpressionAST_analyzeSemanticExpression (void) {
-  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_closedSliceExpressionAST.mSlotID,
-                                                  extensionMethod_closedSliceExpressionAST_analyzeSemanticExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_closedSliceExpressionAST_analyzeSemanticExpression (defineExtensionMethod_closedSliceExpressionAST_analyzeSemanticExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//              Overriding extension method '@openedSliceExpressionAST enterExpressionInSemanticContext'               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_openedSliceExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
-                                                                                       GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                       C_Compiler * inCompiler
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_openedSliceExpressionAST * object = (const cPtr_openedSliceExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_openedSliceExpressionAST) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 952)) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 953)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_openedSliceExpressionAST_enterExpressionInSemanticContext (void) {
-  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_openedSliceExpressionAST.mSlotID,
-                                                         extensionMethod_openedSliceExpressionAST_enterExpressionInSemanticContext) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_openedSliceExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_openedSliceExpressionAST_enterExpressionInSemanticContext, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                  Overriding extension method '@openedSliceExpressionAST analyzeSemanticExpression'                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_openedSliceExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
-                                                                                const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                                GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                                const GALGAS_unifiedTypeMap_2D_proxy /* constinArgument_inInferenceType */,
-                                                                                const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                                GALGAS_variableMap & ioArgument_ioVariableMap,
-                                                                                GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_openedSliceExpressionAST * object = (const cPtr_openedSliceExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_openedSliceExpressionAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_53474 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUIntType (HERE), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_53474, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 967)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_53764 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mUIntType (HERE), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_53764, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 976)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_leftType_53838 = var_leftExpression_53474.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 985)) ;
-  enumGalgasBool test_0 = kBoolTrue ;
-  if (kBoolTrue == test_0) {
-    test_0 = GALGAS_bool (kIsNotEqual, var_leftType_53838.getter_key (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 986)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
-    if (kBoolTrue == test_0) {
-      TC_Array <C_FixItDescription> fixItArray1 ;
-      inCompiler->emitSemanticError (var_leftExpression_53474.getter_mLocation (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 987)), GALGAS_string ("the left expression or '...' operator should an @uint"), fixItArray1  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 987)) ;
-    }
-  }
-  GALGAS_unifiedTypeMap_2D_proxy var_rightType_54043 = var_rightExpression_53764.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 989)) ;
-  enumGalgasBool test_2 = kBoolTrue ;
-  if (kBoolTrue == test_2) {
-    test_2 = GALGAS_bool (kIsNotEqual, var_rightType_54043.getter_key (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 990)).objectCompare (GALGAS_string ("uint"))).boolEnum () ;
-    if (kBoolTrue == test_2) {
-      TC_Array <C_FixItDescription> fixItArray3 ;
-      inCompiler->emitSemanticError (var_rightExpression_53764.getter_mLocation (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 991)), GALGAS_string ("the right expression or '...' operator should an @uint"), fixItArray3  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 991)) ;
-    }
-  }
-  outArgument_outExpression = GALGAS_openedSliceExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mTypeMap (HERE), GALGAS_lstring::constructor_new (GALGAS_string ("range"), var_leftExpression_53474.getter_mLocation (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 995))  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 995)), inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 995)), object->mProperty_mOperatorLocation, var_leftExpression_53474, var_rightExpression_53764  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 994)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_openedSliceExpressionAST_analyzeSemanticExpression (void) {
-  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_openedSliceExpressionAST.mSlotID,
-                                                  extensionMethod_openedSliceExpressionAST_analyzeSemanticExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_openedSliceExpressionAST_analyzeSemanticExpression (defineExtensionMethod_openedSliceExpressionAST_analyzeSemanticExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//        Overriding extension method '@multiplicationExpressionNoOverflowAST enterExpressionInSemanticContext'        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_multiplicationExpressionNoOverflowAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
-                                                                                                    GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                                    C_Compiler * inCompiler
-                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_multiplicationExpressionNoOverflowAST * object = (const cPtr_multiplicationExpressionNoOverflowAST *) inObject ;
-  macroValidSharedObject (object, cPtr_multiplicationExpressionNoOverflowAST) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1007)) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1008)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_multiplicationExpressionNoOverflowAST_enterExpressionInSemanticContext (void) {
-  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST.mSlotID,
-                                                         extensionMethod_multiplicationExpressionNoOverflowAST_enterExpressionInSemanticContext) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_multiplicationExpressionNoOverflowAST_enterExpressionInSemanticContext (defineExtensionMethod_multiplicationExpressionNoOverflowAST_enterExpressionInSemanticContext, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//           Overriding extension method '@multiplicationExpressionNoOverflowAST analyzeSemanticExpression'            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_multiplicationExpressionNoOverflowAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
-                                                                                             const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                                             GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                                             const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
-                                                                                             const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                                             GALGAS_variableMap & ioArgument_ioVariableMap,
-                                                                                             GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                                             C_Compiler * inCompiler
-                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_multiplicationExpressionNoOverflowAST * object = (const cPtr_multiplicationExpressionNoOverflowAST *) inObject ;
-  macroValidSharedObject (object, cPtr_multiplicationExpressionNoOverflowAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_55577 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_55577, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1021)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_55851 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_55577.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1033)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_55851, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1030)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_leftType_55925 = var_leftExpression_55577.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1039)) ;
-  {
-  routine_checkDiadicOperator (var_leftType_55925, var_rightExpression_55851.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1042)), var_leftType_55925.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1043)).getter_infixMulOperatorNoOVF (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1043)), GALGAS_string ("&*"), object->mProperty_mOperatorLocation, var_rightExpression_55851, inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1040)) ;
-  }
-  outArgument_outExpression = GALGAS_multiplicationExpressionNoOverflowForGeneration::constructor_new (var_leftType_55925, object->mProperty_mOperatorLocation, var_leftExpression_55577, var_rightExpression_55851  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1049)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_multiplicationExpressionNoOverflowAST_analyzeSemanticExpression (void) {
-  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST.mSlotID,
-                                                  extensionMethod_multiplicationExpressionNoOverflowAST_analyzeSemanticExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_multiplicationExpressionNoOverflowAST_analyzeSemanticExpression (defineExtensionMethod_multiplicationExpressionNoOverflowAST_analyzeSemanticExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//             Overriding extension method '@multiplicationExpressionAST enterExpressionInSemanticContext'             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_multiplicationExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
-                                                                                          GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                          C_Compiler * inCompiler
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_multiplicationExpressionAST * object = (const cPtr_multiplicationExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_multiplicationExpressionAST) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1061)) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1062)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_multiplicationExpressionAST_enterExpressionInSemanticContext (void) {
-  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_multiplicationExpressionAST.mSlotID,
-                                                         extensionMethod_multiplicationExpressionAST_enterExpressionInSemanticContext) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_multiplicationExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_multiplicationExpressionAST_enterExpressionInSemanticContext, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                Overriding extension method '@multiplicationExpressionAST analyzeSemanticExpression'                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_multiplicationExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
-                                                                                   const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                                   GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                                   const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
-                                                                                   const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                                   GALGAS_variableMap & ioArgument_ioVariableMap,
-                                                                                   GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                                   C_Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_multiplicationExpressionAST * object = (const cPtr_multiplicationExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_multiplicationExpressionAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_57411 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_57411, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1075)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_57685 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_57411.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1087)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_57685, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1084)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_leftType_57759 = var_leftExpression_57411.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1093)) ;
-  {
-  routine_checkDiadicOperator (var_leftType_57759, var_rightExpression_57685.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1096)), var_leftType_57759.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1097)).getter_infixMulOperator (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1097)), GALGAS_string ("*"), object->mProperty_mOperatorLocation, var_rightExpression_57685, inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1094)) ;
-  }
-  outArgument_outExpression = GALGAS_multiplicationExpressionForGeneration::constructor_new (var_leftType_57759, object->mProperty_mOperatorLocation, var_leftExpression_57411, var_rightExpression_57685  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1103)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_multiplicationExpressionAST_analyzeSemanticExpression (void) {
-  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_multiplicationExpressionAST.mSlotID,
-                                                  extensionMethod_multiplicationExpressionAST_analyzeSemanticExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_multiplicationExpressionAST_analyzeSemanticExpression (defineExtensionMethod_multiplicationExpressionAST_analyzeSemanticExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//           Overriding extension method '@divisionExpressionNoOverflowAST enterExpressionInSemanticContext'           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_divisionExpressionNoOverflowAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
-                                                                                              GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_divisionExpressionNoOverflowAST * object = (const cPtr_divisionExpressionNoOverflowAST *) inObject ;
-  macroValidSharedObject (object, cPtr_divisionExpressionNoOverflowAST) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1115)) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1116)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_divisionExpressionNoOverflowAST_enterExpressionInSemanticContext (void) {
-  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST.mSlotID,
-                                                         extensionMethod_divisionExpressionNoOverflowAST_enterExpressionInSemanticContext) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_divisionExpressionNoOverflowAST_enterExpressionInSemanticContext (defineExtensionMethod_divisionExpressionNoOverflowAST_enterExpressionInSemanticContext, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//              Overriding extension method '@divisionExpressionNoOverflowAST analyzeSemanticExpression'               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_divisionExpressionNoOverflowAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
-                                                                                       const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                                       GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                                       const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
-                                                                                       const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                                       GALGAS_variableMap & ioArgument_ioVariableMap,
-                                                                                       GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                                       C_Compiler * inCompiler
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_divisionExpressionNoOverflowAST * object = (const cPtr_divisionExpressionNoOverflowAST *) inObject ;
-  macroValidSharedObject (object, cPtr_divisionExpressionNoOverflowAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_59237 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_59237, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1129)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_59511 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_59237.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1141)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_59511, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1138)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_leftType_59585 = var_leftExpression_59237.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1147)) ;
-  {
-  routine_checkDiadicOperator (var_leftType_59585, var_rightExpression_59511.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1150)), var_leftType_59585.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1151)).getter_infixDivOperatorNoOVF (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1151)), GALGAS_string ("&/"), object->mProperty_mOperatorLocation, var_rightExpression_59511, inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1148)) ;
-  }
-  outArgument_outExpression = GALGAS_divisionExpressionNoOverflowForGeneration::constructor_new (var_leftType_59585, object->mProperty_mOperatorLocation, var_leftExpression_59237, var_rightExpression_59511  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1157)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_divisionExpressionNoOverflowAST_analyzeSemanticExpression (void) {
-  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST.mSlotID,
-                                                  extensionMethod_divisionExpressionNoOverflowAST_analyzeSemanticExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_divisionExpressionNoOverflowAST_analyzeSemanticExpression (defineExtensionMethod_divisionExpressionNoOverflowAST_analyzeSemanticExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                Overriding extension method '@divisionExpressionAST enterExpressionInSemanticContext'                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_divisionExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
-                                                                                    GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_divisionExpressionAST * object = (const cPtr_divisionExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_divisionExpressionAST) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1170)) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1171)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_divisionExpressionAST_enterExpressionInSemanticContext (void) {
-  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_divisionExpressionAST.mSlotID,
-                                                         extensionMethod_divisionExpressionAST_enterExpressionInSemanticContext) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_divisionExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_divisionExpressionAST_enterExpressionInSemanticContext, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                   Overriding extension method '@divisionExpressionAST analyzeSemanticExpression'                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_divisionExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
-                                                                             const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                             GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                             const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
-                                                                             const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                             GALGAS_variableMap & ioArgument_ioVariableMap,
-                                                                             GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                             C_Compiler * inCompiler
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_divisionExpressionAST * object = (const cPtr_divisionExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_divisionExpressionAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_61056 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_61056, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1184)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_61330 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_61056.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1196)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_61330, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1193)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_leftType_61404 = var_leftExpression_61056.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1202)) ;
-  {
-  routine_checkDiadicOperator (var_leftType_61404, var_rightExpression_61330.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1205)), var_leftType_61404.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1206)).getter_infixDivOperator (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1206)), GALGAS_string ("/"), object->mProperty_mOperatorLocation, var_rightExpression_61330, inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1203)) ;
-  }
-  outArgument_outExpression = GALGAS_divisionExpressionForGeneration::constructor_new (var_leftType_61404, object->mProperty_mOperatorLocation, var_leftExpression_61056, var_rightExpression_61330  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1212)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_divisionExpressionAST_analyzeSemanticExpression (void) {
-  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_divisionExpressionAST.mSlotID,
-                                                  extensionMethod_divisionExpressionAST_analyzeSemanticExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_divisionExpressionAST_analyzeSemanticExpression (defineExtensionMethod_divisionExpressionAST_analyzeSemanticExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                 Overriding extension method '@moduloExpressionAST enterExpressionInSemanticContext'                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_moduloExpressionAST_enterExpressionInSemanticContext (const cPtr_semanticExpressionAST * inObject,
-                                                                                  GALGAS_unifiedTypeMap & ioArgument_ioTypeMap,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_moduloExpressionAST * object = (const cPtr_moduloExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_moduloExpressionAST) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1224)) ;
-  callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1225)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_moduloExpressionAST_enterExpressionInSemanticContext (void) {
-  enterExtensionMethod_enterExpressionInSemanticContext (kTypeDescriptor_GALGAS_moduloExpressionAST.mSlotID,
-                                                         extensionMethod_moduloExpressionAST_enterExpressionInSemanticContext) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_moduloExpressionAST_enterExpressionInSemanticContext (defineExtensionMethod_moduloExpressionAST_enterExpressionInSemanticContext, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                    Overriding extension method '@moduloExpressionAST analyzeSemanticExpression'                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_moduloExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
-                                                                           const GALGAS_lstring constinArgument_inUsefulnessCallerEntityName,
-                                                                           GALGAS_usefulEntitiesGraph & ioArgument_ioUsefulEntitiesGraph,
-                                                                           const GALGAS_unifiedTypeMap_2D_proxy constinArgument_inInferenceType,
-                                                                           const GALGAS_analysisContext constinArgument_inAnalysisContext,
-                                                                           GALGAS_variableMap & ioArgument_ioVariableMap,
-                                                                           GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_moduloExpressionAST * object = (const cPtr_moduloExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_moduloExpressionAST) ;
-  GALGAS_semanticExpressionForGeneration var_leftExpression_62852 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mLeftExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inInferenceType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_leftExpression_62852, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1238)) ;
-  GALGAS_semanticExpressionForGeneration var_rightExpression_63126 ;
-  callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) object->mProperty_mRightExpression.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, var_leftExpression_62852.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1250)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_rightExpression_63126, inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1247)) ;
-  GALGAS_unifiedTypeMap_2D_proxy var_leftType_63200 = var_leftExpression_62852.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1256)) ;
-  {
-  routine_checkDiadicOperator (var_leftType_63200, var_rightExpression_63126.getter_mResultType (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1259)), var_leftType_63200.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1260)).getter_infixModOperator (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1260)), GALGAS_string ("mod"), object->mProperty_mOperatorLocation, var_rightExpression_63126, inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1257)) ;
-  }
-  outArgument_outExpression = GALGAS_moduloExpressionForGeneration::constructor_new (var_leftType_63200, object->mProperty_mOperatorLocation, var_leftExpression_62852, var_rightExpression_63126  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 1266)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_moduloExpressionAST_analyzeSemanticExpression (void) {
-  enterExtensionMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_moduloExpressionAST.mSlotID,
-                                                  extensionMethod_moduloExpressionAST_analyzeSemanticExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_moduloExpressionAST_analyzeSemanticExpression (defineExtensionMethod_moduloExpressionAST_analyzeSemanticExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                     Overriding extension getter '@trueExpressionForGeneration isTrueExpression'                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static GALGAS_bool extensionGetter_trueExpressionForGeneration_isTrueExpression (const cPtr_semanticExpressionForGeneration * /* inObject */,
-                                                                                 C_Compiler * /* inCompiler */
-                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bool result_result ; // Returned variable
-  result_result = GALGAS_bool (true) ;
-//---
-  return result_result ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionGetter_trueExpressionForGeneration_isTrueExpression (void) {
-  enterExtensionGetter_isTrueExpression (kTypeDescriptor_GALGAS_trueExpressionForGeneration.mSlotID,
-                                         extensionGetter_trueExpressionForGeneration_isTrueExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gGetter_trueExpressionForGeneration_isTrueExpression (defineExtensionGetter_trueExpressionForGeneration_isTrueExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                     Overriding extension method '@orExpressionForGeneration generateExpression'                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_orExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                                          GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                          GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                          GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                          GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                          GALGAS_string & outArgument_outCppExpression,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_orExpressionForGeneration * object = (const cPtr_orExpressionForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_orExpressionForGeneration) ;
-  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 44)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 44)) ;
-  GALGAS_string var_leftTemporaryOperand_3671 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_3671, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 47)) ;
-  GALGAS_string var_rightTemporaryOperand_3874 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_3874, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 50)) ;
-  outArgument_outCppExpression = var_leftTemporaryOperand_3671.add_operation (GALGAS_string (".operator_or ("), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 52)).add_operation (var_rightTemporaryOperand_3874, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 52)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 53)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 53)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 53)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_orExpressionForGeneration_generateExpression (void) {
-  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_orExpressionForGeneration.mSlotID,
-                                           extensionMethod_orExpressionForGeneration_generateExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_orExpressionForGeneration_generateExpression (defineExtensionMethod_orExpressionForGeneration_generateExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                  Overriding extension method '@orShortExpressionForGeneration generateExpression'                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_orShortExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                                               GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                               GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                               GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                               GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                               GALGAS_string & outArgument_outCppExpression,
-                                                                               C_Compiler * inCompiler
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_orShortExpressionForGeneration * object = (const cPtr_orShortExpressionForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_orShortExpressionForGeneration) ;
-  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 64)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 64)) ;
-  GALGAS_string var_leftTemporaryOperand_4821 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_4821, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 66)) ;
-  GALGAS_string var_testVar_4864 = GALGAS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("semanticExpressionGeneration.galgas", 74)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 74)) ;
-  ioArgument_ioTemporaryVariableIndex.increment_operation (inCompiler  COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 74)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_bool ").add_operation (var_testVar_4864, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 75)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 75)).add_operation (var_leftTemporaryOperand_4821, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 75)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 75)), inCompiler  COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 75)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolTrue != ").add_operation (var_testVar_4864, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 76)).add_operation (GALGAS_string (".boolEnum ()) {\n"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 76)), inCompiler  COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 76)) ;
-  {
-  ioArgument_ioGeneratedCode.setter_incIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 78)) ;
-  }
-  GALGAS_string var_rightTemporaryOperand_5341 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_5341, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 79)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(var_testVar_4864.add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 86)).add_operation (var_rightTemporaryOperand_5341, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 86)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 86)), inCompiler  COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 86)) ;
-  {
-  ioArgument_ioGeneratedCode.setter_decIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 87)) ;
-  }
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 88)) ;
-  outArgument_outCppExpression = var_testVar_4864 ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_orShortExpressionForGeneration_generateExpression (void) {
-  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_orShortExpressionForGeneration.mSlotID,
-                                           extensionMethod_orShortExpressionForGeneration_generateExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_orShortExpressionForGeneration_generateExpression (defineExtensionMethod_orShortExpressionForGeneration_generateExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                    Overriding extension method '@xorExpressionForGeneration generateExpression'                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_xorExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                                           GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                           GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                           GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                           GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                           GALGAS_string & outArgument_outCppExpression,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_xorExpressionForGeneration * object = (const cPtr_xorExpressionForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_xorExpressionForGeneration) ;
-  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 101)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 101)) ;
-  GALGAS_string var_leftTemporaryOperand_6126 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_6126, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 103)) ;
-  GALGAS_string var_rightTemporaryOperand_6326 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_6326, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 111)) ;
-  outArgument_outCppExpression = var_leftTemporaryOperand_6126.add_operation (GALGAS_string (".operator_xor ("), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 119)).add_operation (var_rightTemporaryOperand_6326, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 119)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 120)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 120)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 120)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_xorExpressionForGeneration_generateExpression (void) {
-  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_xorExpressionForGeneration.mSlotID,
-                                           extensionMethod_xorExpressionForGeneration_generateExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_xorExpressionForGeneration_generateExpression (defineExtensionMethod_xorExpressionForGeneration_generateExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                Overriding extension method '@closedSliceExpressionForGeneration generateExpression'                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_closedSliceExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                                                   GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                                   GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                                   GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                                   GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                                   GALGAS_string & outArgument_outCppExpression,
-                                                                                   C_Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_closedSliceExpressionForGeneration * object = (const cPtr_closedSliceExpressionForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_closedSliceExpressionForGeneration) ;
-  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 131)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 131)) ;
-  GALGAS_string var_leftTemporaryOperand_7119 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_7119, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 133)) ;
-  GALGAS_string var_rightTemporaryOperand_7319 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_7319, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 141)) ;
-  outArgument_outCppExpression = GALGAS_string ("GALGAS_range (").add_operation (var_leftTemporaryOperand_7119, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 150)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 150)).add_operation (var_rightTemporaryOperand_7319, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 150)).add_operation (GALGAS_string (".substract_operation ("), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 151)).add_operation (var_leftTemporaryOperand_7119, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 151)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 151)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 151)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 151)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 151)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 151)).add_operation (GALGAS_string (").add_operation (GALGAS_uint (1), "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 151)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 151)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 151)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 151)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 151)).add_operation (GALGAS_string ("))"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 151)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_closedSliceExpressionForGeneration_generateExpression (void) {
-  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration.mSlotID,
-                                           extensionMethod_closedSliceExpressionForGeneration_generateExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_closedSliceExpressionForGeneration_generateExpression (defineExtensionMethod_closedSliceExpressionForGeneration_generateExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                Overriding extension method '@openedSliceExpressionForGeneration generateExpression'                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_openedSliceExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                                                   GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                                   GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                                   GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                                   GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                                   GALGAS_string & outArgument_outCppExpression,
-                                                                                   C_Compiler * inCompiler
-                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_openedSliceExpressionForGeneration * object = (const cPtr_openedSliceExpressionForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_openedSliceExpressionForGeneration) ;
-  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 163)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 163)) ;
-  GALGAS_string var_leftTemporaryOperand_8276 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_8276, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 165)) ;
-  GALGAS_string var_rightTemporaryOperand_8476 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_8476, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 173)) ;
-  {
-  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 181)) COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 181)) ;
-  }
-  outArgument_outCppExpression = GALGAS_string ("GALGAS_range (").add_operation (var_leftTemporaryOperand_8276, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 183)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 183)).add_operation (var_rightTemporaryOperand_8476, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 183)).add_operation (GALGAS_string (".substract_operation ("), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 184)).add_operation (var_leftTemporaryOperand_8276, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 184)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 184)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 184)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 184)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 185)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 184)).add_operation (GALGAS_string ("))"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 185)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_openedSliceExpressionForGeneration_generateExpression (void) {
-  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration.mSlotID,
-                                           extensionMethod_openedSliceExpressionForGeneration_generateExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_openedSliceExpressionForGeneration_generateExpression (defineExtensionMethod_openedSliceExpressionForGeneration_generateExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                    Overriding extension method '@andExpressionForGeneration generateExpression'                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_andExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                                           GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                           GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                           GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                           GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                           GALGAS_string & outArgument_outCppExpression,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_andExpressionForGeneration * object = (const cPtr_andExpressionForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_andExpressionForGeneration) ;
-  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 196)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 196)) ;
-  GALGAS_string var_leftTemporaryOperand_9409 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_9409, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 198)) ;
-  GALGAS_string var_rightTemporaryOperand_9617 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_9617, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 206)) ;
-  outArgument_outCppExpression = var_leftTemporaryOperand_9409.add_operation (GALGAS_string (".operator_and ("), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 214)).add_operation (var_rightTemporaryOperand_9617, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 214)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 215)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 215)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 215)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_andExpressionForGeneration_generateExpression (void) {
-  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_andExpressionForGeneration.mSlotID,
-                                           extensionMethod_andExpressionForGeneration_generateExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_andExpressionForGeneration_generateExpression (defineExtensionMethod_andExpressionForGeneration_generateExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                  Overriding extension method '@andShortExpressionForGeneration generateExpression'                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_andShortExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                                                GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                                GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                                GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                                GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                                GALGAS_string & outArgument_outCppExpression,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_andShortExpressionForGeneration * object = (const cPtr_andShortExpressionForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_andShortExpressionForGeneration) ;
-  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 226)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 226)) ;
-  GALGAS_string var_leftTemporaryOperand_10414 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_10414, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 228)) ;
-  GALGAS_string var_testVar_10457 = GALGAS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("semanticExpressionGeneration.galgas", 236)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 236)) ;
-  ioArgument_ioTemporaryVariableIndex.increment_operation (inCompiler  COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 236)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_bool ").add_operation (var_testVar_10457, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 237)).add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 237)).add_operation (var_leftTemporaryOperand_10414, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 237)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 237)), inCompiler  COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 237)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolTrue == ").add_operation (var_testVar_10457, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 238)).add_operation (GALGAS_string (".boolEnum ()) {\n"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 238)), inCompiler  COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 238)) ;
-  {
-  ioArgument_ioGeneratedCode.setter_incIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 240)) ;
-  }
-  GALGAS_string var_rightTemporaryOperand_10934 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_10934, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 241)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(var_testVar_10457.add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 248)).add_operation (var_rightTemporaryOperand_10934, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 248)).add_operation (GALGAS_string (" ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 248)), inCompiler  COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 248)) ;
-  {
-  ioArgument_ioGeneratedCode.setter_decIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 249)) ;
-  }
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 250)) ;
-  outArgument_outCppExpression = var_testVar_10457 ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_andShortExpressionForGeneration_generateExpression (void) {
-  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_andShortExpressionForGeneration.mSlotID,
-                                           extensionMethod_andShortExpressionForGeneration_generateExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_andShortExpressionForGeneration_generateExpression (defineExtensionMethod_andShortExpressionForGeneration_generateExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//               Overriding extension method '@multiplicationExpressionForGeneration generateExpression'               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_multiplicationExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                                                      GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                                      GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                                      GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                                      GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                                      GALGAS_string & outArgument_outCppExpression,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_multiplicationExpressionForGeneration * object = (const cPtr_multiplicationExpressionForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_multiplicationExpressionForGeneration) ;
-  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 262)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 262)) ;
-  GALGAS_string var_leftTemporaryOperand_11586 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_11586, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 265)) ;
-  GALGAS_string var_rightTemporaryOperand_11789 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_11789, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 268)) ;
-  outArgument_outCppExpression = var_leftTemporaryOperand_11586.add_operation (GALGAS_string (".multiply_operation ("), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 270)).add_operation (var_rightTemporaryOperand_11789, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 270)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 271)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 271)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 271)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 271)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 271)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 271)) ;
-  {
-  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 272)) COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 272)) ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_multiplicationExpressionForGeneration_generateExpression (void) {
-  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_multiplicationExpressionForGeneration.mSlotID,
-                                           extensionMethod_multiplicationExpressionForGeneration_generateExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_multiplicationExpressionForGeneration_generateExpression (defineExtensionMethod_multiplicationExpressionForGeneration_generateExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//          Overriding extension method '@multiplicationExpressionNoOverflowForGeneration generateExpression'          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_multiplicationExpressionNoOverflowForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                                                                GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                                                GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                                                GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                                                GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                                                GALGAS_string & outArgument_outCppExpression,
-                                                                                                C_Compiler * inCompiler
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_multiplicationExpressionNoOverflowForGeneration * object = (const cPtr_multiplicationExpressionNoOverflowForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_multiplicationExpressionNoOverflowForGeneration) ;
-  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 283)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 283)) ;
-  GALGAS_string var_leftTemporaryOperand_12697 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_12697, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 286)) ;
-  GALGAS_string var_rightTemporaryOperand_12900 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_12900, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 289)) ;
-  outArgument_outCppExpression = var_leftTemporaryOperand_12697.add_operation (GALGAS_string (".multiply_operation_no_ovf ("), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 291)).add_operation (var_rightTemporaryOperand_12900, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 291)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 291)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_multiplicationExpressionNoOverflowForGeneration_generateExpression (void) {
-  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowForGeneration.mSlotID,
-                                           extensionMethod_multiplicationExpressionNoOverflowForGeneration_generateExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_multiplicationExpressionNoOverflowForGeneration_generateExpression (defineExtensionMethod_multiplicationExpressionNoOverflowForGeneration_generateExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                  Overriding extension method '@divisionExpressionForGeneration generateExpression'                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_divisionExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                                                GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                                GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                                GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                                GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                                GALGAS_string & outArgument_outCppExpression,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_divisionExpressionForGeneration * object = (const cPtr_divisionExpressionForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_divisionExpressionForGeneration) ;
-  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 302)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 302)) ;
-  GALGAS_string var_leftTemporaryOperand_13660 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_13660, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 305)) ;
-  GALGAS_string var_rightTemporaryOperand_13863 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_13863, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 308)) ;
-  outArgument_outCppExpression = var_leftTemporaryOperand_13660.add_operation (GALGAS_string (".divide_operation ("), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 310)).add_operation (var_rightTemporaryOperand_13863, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 310)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 311)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 311)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 311)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 311)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 311)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 311)) ;
-  {
-  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 312)) COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 312)) ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_divisionExpressionForGeneration_generateExpression (void) {
-  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_divisionExpressionForGeneration.mSlotID,
-                                           extensionMethod_divisionExpressionForGeneration_generateExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_divisionExpressionForGeneration_generateExpression (defineExtensionMethod_divisionExpressionForGeneration_generateExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//             Overriding extension method '@divisionExpressionNoOverflowForGeneration generateExpression'             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_divisionExpressionNoOverflowForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                                                          GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                                          GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                                          GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                                          GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                                          GALGAS_string & outArgument_outCppExpression,
-                                                                                          C_Compiler * inCompiler
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_divisionExpressionNoOverflowForGeneration * object = (const cPtr_divisionExpressionNoOverflowForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_divisionExpressionNoOverflowForGeneration) ;
-  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 323)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 323)) ;
-  GALGAS_string var_leftTemporaryOperand_14763 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_14763, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 326)) ;
-  GALGAS_string var_rightTemporaryOperand_14966 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_14966, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 329)) ;
-  outArgument_outCppExpression = var_leftTemporaryOperand_14763.add_operation (GALGAS_string (".divide_operation_no_ovf ("), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 331)).add_operation (var_rightTemporaryOperand_14966, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 331)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 331)) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_divisionExpressionNoOverflowForGeneration_generateExpression (void) {
-  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_divisionExpressionNoOverflowForGeneration.mSlotID,
-                                           extensionMethod_divisionExpressionNoOverflowForGeneration_generateExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_divisionExpressionNoOverflowForGeneration_generateExpression (defineExtensionMethod_divisionExpressionNoOverflowForGeneration_generateExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                   Overriding extension method '@moduloExpressionForGeneration generateExpression'                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_moduloExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                                              GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                              GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                              GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                              GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                              GALGAS_string & outArgument_outCppExpression,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_moduloExpressionForGeneration * object = (const cPtr_moduloExpressionForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_moduloExpressionForGeneration) ;
-  extensionMethod_addHeaderFileName (object->mProperty_mLeftExpression.getter_mResultType (SOURCE_FILE ("semanticExpressionGeneration.galgas", 342)), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 342)) ;
-  GALGAS_string var_leftTemporaryOperand_15722 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mLeftExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_leftTemporaryOperand_15722, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 345)) ;
-  GALGAS_string var_rightTemporaryOperand_15925 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mRightExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_rightTemporaryOperand_15925, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 348)) ;
-  outArgument_outCppExpression = var_leftTemporaryOperand_15722.add_operation (GALGAS_string (".modulo_operation ("), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 350)).add_operation (var_rightTemporaryOperand_15925, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 350)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 351)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 351)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 351)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 351)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 351)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 351)) ;
-  {
-  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 352)) COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 352)) ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_moduloExpressionForGeneration_generateExpression (void) {
-  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_moduloExpressionForGeneration.mSlotID,
-                                           extensionMethod_moduloExpressionForGeneration_generateExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_moduloExpressionForGeneration_generateExpression (defineExtensionMethod_moduloExpressionForGeneration_generateExpression, NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//              Overriding extension method '@extractObjectInExpressionForGeneration generateExpression'               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void extensionMethod_extractObjectInExpressionForGeneration_generateExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                                                       GALGAS_string & ioArgument_ioGeneratedCode,
-                                                                                       GALGAS_stringset & ioArgument_ioInclusionSet,
-                                                                                       GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
-                                                                                       GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
-                                                                                       GALGAS_string & outArgument_outCppExpression,
-                                                                                       C_Compiler * inCompiler
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_extractObjectInExpressionForGeneration * object = (const cPtr_extractObjectInExpressionForGeneration *) inObject ;
-  macroValidSharedObject (object, cPtr_extractObjectInExpressionForGeneration) ;
-  outArgument_outCppExpression = GALGAS_string ("temp_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("semanticExpressionGeneration.galgas", 365)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 365)) ;
-  ioArgument_ioTemporaryVariableIndex.increment_operation (inCompiler  COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 365)) ;
-  GALGAS_string var_receiverExpression_17129 ;
-  callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) object->mProperty_mReceiverExpression.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_receiverExpression_17129, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 367)) ;
-  outArgument_outCppExpression = GALGAS_string ("GALGAS_").add_operation (object->mProperty_mResultType.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 375)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 375)).add_operation (GALGAS_string ("::extractObject ("), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 375)).add_operation (var_receiverExpression_17129, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 376)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 376)).add_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 377)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 377)).add_operation (extensionGetter_commaSourceFile (object->mProperty_mLocation, inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 378)), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 377)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 378)) ;
-  {
-  ioArgument_ioUnusedVariableCppNameSet.setter_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 379)) COMMA_SOURCE_FILE ("semanticExpressionGeneration.galgas", 379)) ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionMethod_extractObjectInExpressionForGeneration_generateExpression (void) {
-  enterExtensionMethod_generateExpression (kTypeDescriptor_GALGAS_extractObjectInExpressionForGeneration.mSlotID,
-                                           extensionMethod_extractObjectInExpressionForGeneration_generateExpression) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-C_PrologueEpilogue gMethod_extractObjectInExpressionForGeneration_generateExpression (defineExtensionMethod_extractObjectInExpressionForGeneration_generateExpression, NULL) ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
@@ -6487,32 +6454,32 @@ static void extensionMethod_ifInstructionAST_enterInstructionInSemanticContext (
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_ifInstructionAST * object = (const cPtr_ifInstructionAST *) inObject ;
   macroValidSharedObject (object, cPtr_ifInstructionAST) ;
-  cEnumerator_ifExpressionList enumerator_4195 (object->mProperty_mExpressions, kENUMERATION_UP) ;
-  while (enumerator_4195.hasCurrentObject ()) {
-    switch (enumerator_4195.current_mExpression (HERE).enumValue ()) {
+  cEnumerator_ifExpressionList enumerator_4187 (object->mProperty_mExpressions, kENUMERATION_UP) ;
+  while (enumerator_4187.hasCurrentObject ()) {
+    switch (enumerator_4187.current_mExpression (HERE).enumValue ()) {
     case GALGAS_ifExpressionKind::kNotBuilt:
       break ;
     case GALGAS_ifExpressionKind::kEnum_regularExp:
       {
-        const cEnumAssociatedValues_ifExpressionKind_regularExp * extractPtr_4305 = (const cEnumAssociatedValues_ifExpressionKind_regularExp *) (enumerator_4195.current_mExpression (HERE).unsafePointer ()) ;
-        const GALGAS_semanticExpressionAST extractedValue_exp = extractPtr_4305->mAssociatedValue0 ;
+        const cEnumAssociatedValues_ifExpressionKind_regularExp * extractPtr_4297 = (const cEnumAssociatedValues_ifExpressionKind_regularExp *) (enumerator_4187.current_mExpression (HERE).unsafePointer ()) ;
+        const GALGAS_semanticExpressionAST extractedValue_exp = extractPtr_4297->mAssociatedValue0 ;
         callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) extractedValue_exp.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 121)) ;
       }
       break ;
     case GALGAS_ifExpressionKind::kEnum_letExp:
       {
-        const cEnumAssociatedValues_ifExpressionKind_letExp * extractPtr_4473 = (const cEnumAssociatedValues_ifExpressionKind_letExp *) (enumerator_4195.current_mExpression (HERE).unsafePointer ()) ;
-        const GALGAS_semanticExpressionAST extractedValue_exp = extractPtr_4473->mAssociatedValue1 ;
-        const GALGAS_lstring extractedValue_typeName = extractPtr_4473->mAssociatedValue3 ;
+        const cEnumAssociatedValues_ifExpressionKind_letExp * extractPtr_4465 = (const cEnumAssociatedValues_ifExpressionKind_letExp *) (enumerator_4187.current_mExpression (HERE).unsafePointer ()) ;
+        const GALGAS_semanticExpressionAST extractedValue_exp = extractPtr_4465->mAssociatedValue1 ;
+        const GALGAS_lstring extractedValue_typeName = extractPtr_4465->mAssociatedValue3 ;
         callExtensionMethod_enterExpressionInSemanticContext ((const cPtr_semanticExpressionAST *) extractedValue_exp.ptr (), ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 123)) ;
         {
-        GALGAS_unifiedTypeMap_2D_proxy joker_4471 ; // Joker input parameter
-        GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxy (ioArgument_ioTypeMap, extractedValue_typeName, joker_4471 COMMA_SOURCE_FILE ("instruction-if.galgas", 124)) ;
+        GALGAS_unifiedTypeMap_2D_proxy joker_4463 ; // Joker input parameter
+        GALGAS_unifiedTypeMap_2D_proxy::class_method_makeProxy (ioArgument_ioTypeMap, extractedValue_typeName, joker_4463 COMMA_SOURCE_FILE ("instruction-if.galgas", 124)) ;
         }
       }
       break ;
     }
-    enumerator_4195.gotoNextObject () ;
+    enumerator_4187.gotoNextObject () ;
   }
   extensionMethod_enterInstructionListInSemanticContext (object->mProperty_m_5F_then_5F_instructionList, ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 127)) ;
   extensionMethod_enterInstructionListInSemanticContext (object->mProperty_m_5F_else_5F_instructionList, ioArgument_ioTypeMap, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 128)) ;
@@ -6545,23 +6512,23 @@ static void extensionMethod_ifInstructionAST_analyzeSemanticInstruction (const c
                                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_ifInstructionAST * object = (const cPtr_ifInstructionAST *) inObject ;
   macroValidSharedObject (object, cPtr_ifInstructionAST) ;
-  GALGAS_ifTestListForGeneration var_testListForGeneration_5922 = GALGAS_ifTestListForGeneration::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 165)) ;
-  cEnumerator_ifExpressionList enumerator_5962 (object->mProperty_mExpressions, kENUMERATION_UP) ;
-  while (enumerator_5962.hasCurrentObject ()) {
-    switch (enumerator_5962.current_mExpression (HERE).enumValue ()) {
+  GALGAS_ifTestListForGeneration var_testListForGeneration_5914 = GALGAS_ifTestListForGeneration::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 165)) ;
+  cEnumerator_ifExpressionList enumerator_5954 (object->mProperty_mExpressions, kENUMERATION_UP) ;
+  while (enumerator_5954.hasCurrentObject ()) {
+    switch (enumerator_5954.current_mExpression (HERE).enumValue ()) {
     case GALGAS_ifExpressionKind::kNotBuilt:
       break ;
     case GALGAS_ifExpressionKind::kEnum_regularExp:
       {
-        const cEnumAssociatedValues_ifExpressionKind_regularExp * extractPtr_6539 = (const cEnumAssociatedValues_ifExpressionKind_regularExp *) (enumerator_5962.current_mExpression (HERE).unsafePointer ()) ;
-        const GALGAS_semanticExpressionAST extractedValue_exp = extractPtr_6539->mAssociatedValue0 ;
-        GALGAS_semanticExpressionForGeneration var_analyzed_5F_if_5F_expression_6224 ;
-        callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) extractedValue_exp.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("instruction-if.galgas", 172)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_analyzed_5F_if_5F_expression_6224, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 169)) ;
-        GALGAS_semanticExpressionForGeneration var_if_5F_expression_6382 ;
+        const cEnumAssociatedValues_ifExpressionKind_regularExp * extractPtr_6531 = (const cEnumAssociatedValues_ifExpressionKind_regularExp *) (enumerator_5954.current_mExpression (HERE).unsafePointer ()) ;
+        const GALGAS_semanticExpressionAST extractedValue_exp = extractPtr_6531->mAssociatedValue0 ;
+        GALGAS_semanticExpressionForGeneration var_analyzed_5F_if_5F_expression_6216 ;
+        callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) extractedValue_exp.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("instruction-if.galgas", 172)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_analyzed_5F_if_5F_expression_6216, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 169)) ;
+        GALGAS_semanticExpressionForGeneration var_if_5F_expression_6374 ;
         {
-        routine_checkExpressionIsBoolean (constinArgument_inAnalysisContext, object->mProperty_mEndOf_5F_if_5F_instruction, var_analyzed_5F_if_5F_expression_6224, var_if_5F_expression_6382, inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 177)) ;
+        routine_checkExpressionIsBoolean (constinArgument_inAnalysisContext, object->mProperty_mEndOf_5F_if_5F_instruction, var_analyzed_5F_if_5F_expression_6216, var_if_5F_expression_6374, inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 177)) ;
         }
-        var_testListForGeneration_5922.addAssign_operation (GALGAS_ifTestForGeneration::constructor_regular (var_if_5F_expression_6382  COMMA_SOURCE_FILE ("instruction-if.galgas", 183))  COMMA_SOURCE_FILE ("instruction-if.galgas", 183)) ;
+        var_testListForGeneration_5914.addAssign_operation (GALGAS_ifTestForGeneration::constructor_regular (var_if_5F_expression_6374  COMMA_SOURCE_FILE ("instruction-if.galgas", 183))  COMMA_SOURCE_FILE ("instruction-if.galgas", 183)) ;
         {
         ioArgument_ioVariableMap.setter_openOverrideForSelectBlock (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 184)) ;
         }
@@ -6572,51 +6539,51 @@ static void extensionMethod_ifInstructionAST_analyzeSemanticInstruction (const c
       break ;
     case GALGAS_ifExpressionKind::kEnum_letExp:
       {
-        const cEnumAssociatedValues_ifExpressionKind_letExp * extractPtr_8352 = (const cEnumAssociatedValues_ifExpressionKind_letExp *) (enumerator_5962.current_mExpression (HERE).unsafePointer ()) ;
-        const GALGAS_lstring extractedValue_constantName = extractPtr_8352->mAssociatedValue0 ;
-        const GALGAS_semanticExpressionAST extractedValue_exp = extractPtr_8352->mAssociatedValue1 ;
-        const GALGAS_lstring extractedValue_typeName = extractPtr_8352->mAssociatedValue3 ;
-        GALGAS_semanticExpressionForGeneration var_analyzedExpression_6801 ;
-        callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) extractedValue_exp.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("instruction-if.galgas", 190)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_analyzedExpression_6801, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 187)) ;
-        GALGAS_unifiedTypeMap_2D_proxy var_castType_6858 = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mTypeMap (HERE), extractedValue_typeName, inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 196)) ;
+        const cEnumAssociatedValues_ifExpressionKind_letExp * extractPtr_8344 = (const cEnumAssociatedValues_ifExpressionKind_letExp *) (enumerator_5954.current_mExpression (HERE).unsafePointer ()) ;
+        const GALGAS_lstring extractedValue_constantName = extractPtr_8344->mAssociatedValue0 ;
+        const GALGAS_semanticExpressionAST extractedValue_exp = extractPtr_8344->mAssociatedValue1 ;
+        const GALGAS_lstring extractedValue_typeName = extractPtr_8344->mAssociatedValue3 ;
+        GALGAS_semanticExpressionForGeneration var_analyzedExpression_6793 ;
+        callExtensionMethod_analyzeSemanticExpression ((const cPtr_semanticExpressionAST *) extractedValue_exp.ptr (), constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, GALGAS_unifiedTypeMap_2D_proxy::constructor_null (SOURCE_FILE ("instruction-if.galgas", 190)), constinArgument_inAnalysisContext, ioArgument_ioVariableMap, var_analyzedExpression_6793, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 187)) ;
+        GALGAS_unifiedTypeMap_2D_proxy var_castType_6850 = GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mTypeMap (HERE), extractedValue_typeName, inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 196)) ;
         enumGalgasBool test_0 = kBoolTrue ;
         if (kBoolTrue == test_0) {
-          test_0 = var_analyzedExpression_6801.getter_mResultType (SOURCE_FILE ("instruction-if.galgas", 198)).getter_mTypeKindEnum (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 198)).getter_isClassType (SOURCE_FILE ("instruction-if.galgas", 198)).boolEnum () ;
+          test_0 = var_analyzedExpression_6793.getter_mResultType (SOURCE_FILE ("instruction-if.galgas", 198)).getter_mTypeKindEnum (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 198)).getter_isClassType (SOURCE_FILE ("instruction-if.galgas", 198)).boolEnum () ;
           if (kBoolTrue == test_0) {
-            GALGAS_unifiedTypeMap_2D_proxy var_t_7152 = var_castType_6858 ;
-            GALGAS_bool var_found_7183 = GALGAS_bool (kIsEqual, var_t_7152.objectCompare (var_analyzedExpression_6801.getter_mResultType (SOURCE_FILE ("instruction-if.galgas", 201)))) ;
+            GALGAS_unifiedTypeMap_2D_proxy var_t_7144 = var_castType_6850 ;
+            GALGAS_bool var_found_7175 = GALGAS_bool (kIsEqual, var_t_7144.objectCompare (var_analyzedExpression_6793.getter_mResultType (SOURCE_FILE ("instruction-if.galgas", 201)))) ;
             if (constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mTypeMap (HERE).getter_count (SOURCE_FILE ("instruction-if.galgas", 202)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 202)).isValid ()) {
-              uint32_t variant_7236 = constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mTypeMap (HERE).getter_count (SOURCE_FILE ("instruction-if.galgas", 202)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 202)).uintValue () ;
-              bool loop_7236 = true ;
-              while (loop_7236) {
-                loop_7236 = var_found_7183.operator_not (SOURCE_FILE ("instruction-if.galgas", 203)).operator_and (var_t_7152.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 203)).getter_isNull (SOURCE_FILE ("instruction-if.galgas", 203)).operator_not (SOURCE_FILE ("instruction-if.galgas", 203)) COMMA_SOURCE_FILE ("instruction-if.galgas", 203)).isValid () ;
-                if (loop_7236) {
-                  loop_7236 = var_found_7183.operator_not (SOURCE_FILE ("instruction-if.galgas", 203)).operator_and (var_t_7152.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 203)).getter_isNull (SOURCE_FILE ("instruction-if.galgas", 203)).operator_not (SOURCE_FILE ("instruction-if.galgas", 203)) COMMA_SOURCE_FILE ("instruction-if.galgas", 203)).boolValue () ;
+              uint32_t variant_7228 = constinArgument_inAnalysisContext.getter_mSemanticContext (HERE).getter_mTypeMap (HERE).getter_count (SOURCE_FILE ("instruction-if.galgas", 202)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 202)).uintValue () ;
+              bool loop_7228 = true ;
+              while (loop_7228) {
+                loop_7228 = var_found_7175.operator_not (SOURCE_FILE ("instruction-if.galgas", 203)).operator_and (var_t_7144.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 203)).getter_isNull (SOURCE_FILE ("instruction-if.galgas", 203)).operator_not (SOURCE_FILE ("instruction-if.galgas", 203)) COMMA_SOURCE_FILE ("instruction-if.galgas", 203)).isValid () ;
+                if (loop_7228) {
+                  loop_7228 = var_found_7175.operator_not (SOURCE_FILE ("instruction-if.galgas", 203)).operator_and (var_t_7144.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 203)).getter_isNull (SOURCE_FILE ("instruction-if.galgas", 203)).operator_not (SOURCE_FILE ("instruction-if.galgas", 203)) COMMA_SOURCE_FILE ("instruction-if.galgas", 203)).boolValue () ;
                 }
-                if (loop_7236 && (0 == variant_7236)) {
-                  loop_7236 = false ;
+                if (loop_7228 && (0 == variant_7228)) {
+                  loop_7228 = false ;
                   inCompiler->loopRunTimeVariantError (SOURCE_FILE ("instruction-if.galgas", 202)) ;
                 }
-                if (loop_7236) {
-                  variant_7236 -- ;
-                  var_t_7152 = var_t_7152.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 204)) ;
-                  var_found_7183 = GALGAS_bool (kIsEqual, var_t_7152.objectCompare (var_analyzedExpression_6801.getter_mResultType (SOURCE_FILE ("instruction-if.galgas", 205)))) ;
+                if (loop_7228) {
+                  variant_7228 -- ;
+                  var_t_7144 = var_t_7144.getter_mSuperType (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 204)) ;
+                  var_found_7175 = GALGAS_bool (kIsEqual, var_t_7144.objectCompare (var_analyzedExpression_6793.getter_mResultType (SOURCE_FILE ("instruction-if.galgas", 205)))) ;
                 }
               }
             }
             enumGalgasBool test_1 = kBoolTrue ;
             if (kBoolTrue == test_1) {
-              test_1 = var_found_7183.operator_not (SOURCE_FILE ("instruction-if.galgas", 207)).boolEnum () ;
+              test_1 = var_found_7175.operator_not (SOURCE_FILE ("instruction-if.galgas", 207)).boolEnum () ;
               if (kBoolTrue == test_1) {
                 TC_Array <C_FixItDescription> fixItArray2 ;
-                inCompiler->emitSemanticError (extractedValue_typeName.getter_location (SOURCE_FILE ("instruction-if.galgas", 208)), GALGAS_string ("the '@").add_operation (extractedValue_typeName.getter_string (SOURCE_FILE ("instruction-if.galgas", 209)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 209)).add_operation (GALGAS_string ("' is not a descendant of the '@"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 209)).add_operation (var_analyzedExpression_6801.getter_mResultType (SOURCE_FILE ("instruction-if.galgas", 209)).getter_key (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 209)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 209)).add_operation (GALGAS_string ("' type of the cast expression"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 209)), fixItArray2  COMMA_SOURCE_FILE ("instruction-if.galgas", 208)) ;
+                inCompiler->emitSemanticError (extractedValue_typeName.getter_location (SOURCE_FILE ("instruction-if.galgas", 208)), GALGAS_string ("the '@").add_operation (extractedValue_typeName.getter_string (SOURCE_FILE ("instruction-if.galgas", 209)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 209)).add_operation (GALGAS_string ("' is not a descendant of the '@"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 209)).add_operation (var_analyzedExpression_6793.getter_mResultType (SOURCE_FILE ("instruction-if.galgas", 209)).getter_key (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 209)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 209)).add_operation (GALGAS_string ("' type of the cast expression"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 209)), fixItArray2  COMMA_SOURCE_FILE ("instruction-if.galgas", 208)) ;
               }
             }
           }
         }
         if (kBoolFalse == test_0) {
           TC_Array <C_FixItDescription> fixItArray3 ;
-          inCompiler->emitSemanticError (var_analyzedExpression_6801.getter_mLocation (SOURCE_FILE ("instruction-if.galgas", 213)), GALGAS_string ("expression should be a class instance: it is an @").add_operation (var_analyzedExpression_6801.getter_mResultType (SOURCE_FILE ("instruction-if.galgas", 214)).getter_key (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 214)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 213)).add_operation (GALGAS_string (" instance"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 214)), fixItArray3  COMMA_SOURCE_FILE ("instruction-if.galgas", 213)) ;
+          inCompiler->emitSemanticError (var_analyzedExpression_6793.getter_mLocation (SOURCE_FILE ("instruction-if.galgas", 213)), GALGAS_string ("expression should be a class instance: it is an @").add_operation (var_analyzedExpression_6793.getter_mResultType (SOURCE_FILE ("instruction-if.galgas", 214)).getter_key (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 214)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 213)).add_operation (GALGAS_string (" instance"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 214)), fixItArray3  COMMA_SOURCE_FILE ("instruction-if.galgas", 213)) ;
         }
         {
         ioArgument_ioVariableMap.setter_openOverrideForSelectBlock (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 216)) ;
@@ -6624,46 +6591,46 @@ static void extensionMethod_ifInstructionAST_analyzeSemanticInstruction (const c
         {
         ioArgument_ioVariableMap.setter_openBranch (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 217)) ;
         }
-        GALGAS_string var_targetVariableCppName_7970 = GALGAS_string ("var_").add_operation (extractedValue_constantName.getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("instruction-if.galgas", 218)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 218)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 218)).add_operation (extractedValue_constantName.getter_location (HERE).getter_locationIndex (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 219)).getter_string (SOURCE_FILE ("instruction-if.galgas", 219)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 219)) ;
+        GALGAS_string var_targetVariableCppName_7962 = GALGAS_string ("var_").add_operation (extractedValue_constantName.getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("instruction-if.galgas", 218)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 218)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 218)).add_operation (extractedValue_constantName.getter_location (HERE).getter_locationIndex (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 219)).getter_string (SOURCE_FILE ("instruction-if.galgas", 219)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 219)) ;
         {
-        ioArgument_ioVariableMap.setter_insertLocalConstant (extractedValue_constantName, var_castType_6858, var_targetVariableCppName_7970, var_targetVariableCppName_7970, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 220)) ;
+        ioArgument_ioVariableMap.setter_insertLocalConstant (extractedValue_constantName, var_castType_6850, var_targetVariableCppName_7962, var_targetVariableCppName_7962, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 220)) ;
         }
-        var_testListForGeneration_5922.addAssign_operation (GALGAS_ifTestForGeneration::constructor_letExp (var_targetVariableCppName_7970, var_analyzedExpression_6801, var_castType_6858  COMMA_SOURCE_FILE ("instruction-if.galgas", 226))  COMMA_SOURCE_FILE ("instruction-if.galgas", 226)) ;
+        var_testListForGeneration_5914.addAssign_operation (GALGAS_ifTestForGeneration::constructor_letExp (var_targetVariableCppName_7962, var_analyzedExpression_6793, var_castType_6850  COMMA_SOURCE_FILE ("instruction-if.galgas", 226))  COMMA_SOURCE_FILE ("instruction-if.galgas", 226)) ;
       }
       break ;
     }
-    enumerator_5962.gotoNextObject () ;
+    enumerator_5954.gotoNextObject () ;
   }
-  GALGAS_semanticInstructionListForGeneration var_then_5F_instructionList_8673 ;
+  GALGAS_semanticInstructionListForGeneration var_then_5F_instructionList_8665 ;
   {
-  routine_analyzeSemanticInstructionListWithoutBranch (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, GALGAS_localConstantList::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 234)), GALGAS_localInitializedVariableList::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 235)), object->mProperty_m_5F_then_5F_instructionList, ioArgument_ioVariableMap, var_then_5F_instructionList_8673, inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 230)) ;
+  routine_analyzeSemanticInstructionListWithoutBranch (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, GALGAS_localConstantList::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 234)), GALGAS_localInitializedVariableList::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 235)), object->mProperty_m_5F_then_5F_instructionList, ioArgument_ioVariableMap, var_then_5F_instructionList_8665, inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 230)) ;
   }
-  GALGAS_ifExpressionList var_expressions_8695 = object->mProperty_mExpressions ;
+  GALGAS_ifExpressionList var_expressions_8687 = object->mProperty_mExpressions ;
   {
-  GALGAS_ifExpressionKind joker_8737 ; // Joker input parameter
-  var_expressions_8695.setter_popLast (joker_8737, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 241)) ;
+  GALGAS_ifExpressionKind joker_8729 ; // Joker input parameter
+  var_expressions_8687.setter_popLast (joker_8729, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 241)) ;
   }
-  cEnumerator_ifExpressionList enumerator_8773 (var_expressions_8695, kENUMERATION_UP) ;
-  while (enumerator_8773.hasCurrentObject ()) {
+  cEnumerator_ifExpressionList enumerator_8765 (var_expressions_8687, kENUMERATION_UP) ;
+  while (enumerator_8765.hasCurrentObject ()) {
     {
     ioArgument_ioVariableMap.setter_closeBranch (object->mProperty_mEndOf_5F_then_5F_branch, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 243)) ;
     }
     {
     ioArgument_ioVariableMap.setter_closeOverride (object->mProperty_mEndOf_5F_then_5F_branch, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 244)) ;
     }
-    enumerator_8773.gotoNextObject () ;
+    enumerator_8765.gotoNextObject () ;
   }
   {
   ioArgument_ioVariableMap.setter_closeBranch (object->mProperty_mEndOf_5F_then_5F_branch, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 246)) ;
   }
-  GALGAS_semanticInstructionListForGeneration var_else_5F_instructionList_9265 ;
+  GALGAS_semanticInstructionListForGeneration var_else_5F_instructionList_9257 ;
   {
-  routine_analyzeSemanticInstructionList (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, GALGAS_localConstantList::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 252)), GALGAS_localInitializedVariableList::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 253)), object->mProperty_m_5F_else_5F_instructionList, object->mProperty_mEndOf_5F_if_5F_instruction, ioArgument_ioVariableMap, var_else_5F_instructionList_9265, inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 248)) ;
+  routine_analyzeSemanticInstructionList (constinArgument_inUsefulnessCallerEntityName, ioArgument_ioUsefulEntitiesGraph, constinArgument_inAnalysisContext, GALGAS_localConstantList::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 252)), GALGAS_localInitializedVariableList::constructor_emptyList (SOURCE_FILE ("instruction-if.galgas", 253)), object->mProperty_m_5F_else_5F_instructionList, object->mProperty_mEndOf_5F_if_5F_instruction, ioArgument_ioVariableMap, var_else_5F_instructionList_9257, inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 248)) ;
   }
   {
   ioArgument_ioVariableMap.setter_closeOverride (object->mProperty_mEndOf_5F_if_5F_instruction, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 259)) ;
   }
-  ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_ifInstructionForGeneration::constructor_new (object->mProperty_mEndOf_5F_then_5F_branch, var_testListForGeneration_5922, var_then_5F_instructionList_8673, var_else_5F_instructionList_9265  COMMA_SOURCE_FILE ("instruction-if.galgas", 261))  COMMA_SOURCE_FILE ("instruction-if.galgas", 261)) ;
+  ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_ifInstructionForGeneration::constructor_new (object->mProperty_mEndOf_5F_then_5F_branch, var_testListForGeneration_5914, var_then_5F_instructionList_8665, var_else_5F_instructionList_9257  COMMA_SOURCE_FILE ("instruction-if.galgas", 261))  COMMA_SOURCE_FILE ("instruction-if.galgas", 261)) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -6693,63 +6660,63 @@ static void extensionMethod_ifInstructionForGeneration_generateInstruction (cons
                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_ifInstructionForGeneration * object = (const cPtr_ifInstructionForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_ifInstructionForGeneration) ;
-  GALGAS_string var_testVar_11475 = GALGAS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("instruction-if.galgas", 319)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 319)) ;
+  GALGAS_string var_testVar_11467 = GALGAS_string ("test_").add_operation (ioArgument_ioTemporaryVariableIndex.getter_string (SOURCE_FILE ("instruction-if.galgas", 319)), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 319)) ;
   ioArgument_ioTemporaryVariableIndex.increment_operation (inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 320)) ;
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("enumGalgasBool ").add_operation (var_testVar_11475, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 321)).add_operation (GALGAS_string (" = kBoolTrue ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 321)), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 321)) ;
-  cEnumerator_ifTestListForGeneration enumerator_11656 (object->mProperty_mExpressions, kENUMERATION_UP) ;
-  while (enumerator_11656.hasCurrentObject ()) {
-    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolTrue == ").add_operation (var_testVar_11475, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 323)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 323)), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 323)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("enumGalgasBool ").add_operation (var_testVar_11467, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 321)).add_operation (GALGAS_string (" = kBoolTrue ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 321)), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 321)) ;
+  cEnumerator_ifTestListForGeneration enumerator_11648 (object->mProperty_mExpressions, kENUMERATION_UP) ;
+  while (enumerator_11648.hasCurrentObject ()) {
+    ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolTrue == ").add_operation (var_testVar_11467, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 323)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 323)), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 323)) ;
     {
     ioArgument_ioGeneratedCode.setter_incIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 324)) ;
     }
-    switch (enumerator_11656.current_mExpression (HERE).enumValue ()) {
+    switch (enumerator_11648.current_mExpression (HERE).enumValue ()) {
     case GALGAS_ifTestForGeneration::kNotBuilt:
       break ;
     case GALGAS_ifTestForGeneration::kEnum_regular:
       {
-        const cEnumAssociatedValues_ifTestForGeneration_regular * extractPtr_12071 = (const cEnumAssociatedValues_ifTestForGeneration_regular *) (enumerator_11656.current_mExpression (HERE).unsafePointer ()) ;
-        const GALGAS_semanticExpressionForGeneration extractedValue_exp = extractPtr_12071->mAssociatedValue0 ;
-        GALGAS_string var_cppVarName_11988 ;
-        callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) extractedValue_exp.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppVarName_11988, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 327)) ;
-        ioArgument_ioGeneratedCode.plusAssign_operation(var_testVar_11475.add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 334)).add_operation (var_cppVarName_11988, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 334)).add_operation (GALGAS_string (".boolEnum () ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 334)), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 334)) ;
+        const cEnumAssociatedValues_ifTestForGeneration_regular * extractPtr_12063 = (const cEnumAssociatedValues_ifTestForGeneration_regular *) (enumerator_11648.current_mExpression (HERE).unsafePointer ()) ;
+        const GALGAS_semanticExpressionForGeneration extractedValue_exp = extractPtr_12063->mAssociatedValue0 ;
+        GALGAS_string var_cppVarName_11980 ;
+        callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) extractedValue_exp.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppVarName_11980, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 327)) ;
+        ioArgument_ioGeneratedCode.plusAssign_operation(var_testVar_11467.add_operation (GALGAS_string (" = "), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 334)).add_operation (var_cppVarName_11980, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 334)).add_operation (GALGAS_string (".boolEnum () ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 334)), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 334)) ;
       }
       break ;
     case GALGAS_ifTestForGeneration::kEnum_letExp:
       {
-        const cEnumAssociatedValues_ifTestForGeneration_letExp * extractPtr_12687 = (const cEnumAssociatedValues_ifTestForGeneration_letExp *) (enumerator_11656.current_mExpression (HERE).unsafePointer ()) ;
-        const GALGAS_string extractedValue_targetVarCppName = extractPtr_12687->mAssociatedValue0 ;
-        const GALGAS_semanticExpressionForGeneration extractedValue_exp = extractPtr_12687->mAssociatedValue1 ;
-        const GALGAS_unifiedTypeMap_2D_proxy extractedValue_type = extractPtr_12687->mAssociatedValue2 ;
-        GALGAS_string var_typeName_12136 = extractedValue_type.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 336)) ;
-        GALGAS_string var_cppVarName_12347 ;
-        callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) extractedValue_exp.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppVarName_12347, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 337)) ;
-        ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_").add_operation (var_typeName_12136, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 344)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 344)).add_operation (extractedValue_targetVarCppName, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 344)).add_operation (GALGAS_string (" (dynamic_cast <const cPtr_"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 344)).add_operation (var_typeName_12136, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 345)).add_operation (GALGAS_string (" *> ("), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 345)).add_operation (var_cppVarName_12347, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 345)).add_operation (GALGAS_string (".ptr ())) ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 345)), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 344)) ;
+        const cEnumAssociatedValues_ifTestForGeneration_letExp * extractPtr_12679 = (const cEnumAssociatedValues_ifTestForGeneration_letExp *) (enumerator_11648.current_mExpression (HERE).unsafePointer ()) ;
+        const GALGAS_string extractedValue_targetVarCppName = extractPtr_12679->mAssociatedValue0 ;
+        const GALGAS_semanticExpressionForGeneration extractedValue_exp = extractPtr_12679->mAssociatedValue1 ;
+        const GALGAS_unifiedTypeMap_2D_proxy extractedValue_type = extractPtr_12679->mAssociatedValue2 ;
+        GALGAS_string var_typeName_12128 = extractedValue_type.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 336)) ;
+        GALGAS_string var_cppVarName_12339 ;
+        callExtensionMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) extractedValue_exp.ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_cppVarName_12339, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 337)) ;
+        ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("GALGAS_").add_operation (var_typeName_12128, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 344)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 344)).add_operation (extractedValue_targetVarCppName, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 344)).add_operation (GALGAS_string (" (dynamic_cast <const cPtr_"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 344)).add_operation (var_typeName_12128, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 345)).add_operation (GALGAS_string (" *> ("), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 345)).add_operation (var_cppVarName_12339, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 345)).add_operation (GALGAS_string (".ptr ())) ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 345)), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 344)) ;
         ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (NULL == ").add_operation (extractedValue_targetVarCppName, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 346)).add_operation (GALGAS_string (".ptr ()) {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 346)), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 346)) ;
-        ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("  ").add_operation (var_testVar_11475, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 347)).add_operation (GALGAS_string (" = kBoolFalse ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 347)), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 347)) ;
+        ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("  ").add_operation (var_testVar_11467, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 347)).add_operation (GALGAS_string (" = kBoolFalse ;\n"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 347)), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 347)) ;
         ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 348)) ;
       }
       break ;
     }
-    enumerator_11656.gotoNextObject () ;
+    enumerator_11648.gotoNextObject () ;
   }
-  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolTrue == ").add_operation (var_testVar_11475, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 352)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 352)), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 352)) ;
+  ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolTrue == ").add_operation (var_testVar_11467, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 352)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 352)), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 352)) ;
   {
   routine_generateInstructionList (ioArgument_ioInclusionSet, object->mProperty_m_5F_then_5F_instructionList, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, constinArgument_inGenerateSyntaxDirectedTranslationString, ioArgument_ioGeneratedCode, inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 353)) ;
   }
   ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 361)) ;
-  cEnumerator_ifTestListForGeneration enumerator_13045 (object->mProperty_mExpressions, kENUMERATION_UP) ;
-  while (enumerator_13045.hasCurrentObject ()) {
+  cEnumerator_ifTestListForGeneration enumerator_13037 (object->mProperty_mExpressions, kENUMERATION_UP) ;
+  while (enumerator_13037.hasCurrentObject ()) {
     {
     ioArgument_ioGeneratedCode.setter_decIndentation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 363)) ;
     }
     ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("}\n"), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 364)) ;
-    enumerator_13045.gotoNextObject () ;
+    enumerator_13037.gotoNextObject () ;
   }
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
     test_0 = GALGAS_bool (kIsStrictSup, object->mProperty_m_5F_else_5F_instructionList.getter_length (SOURCE_FILE ("instruction-if.galgas", 367)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
     if (kBoolTrue == test_0) {
-      ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolFalse == ").add_operation (var_testVar_11475, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 368)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 368)), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 368)) ;
+      ioArgument_ioGeneratedCode.plusAssign_operation(GALGAS_string ("if (kBoolFalse == ").add_operation (var_testVar_11467, inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 368)).add_operation (GALGAS_string (") {\n"), inCompiler COMMA_SOURCE_FILE ("instruction-if.galgas", 368)), inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 368)) ;
       {
       routine_generateInstructionList (ioArgument_ioInclusionSet, object->mProperty_m_5F_else_5F_instructionList, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, constinArgument_inGenerateSyntaxDirectedTranslationString, ioArgument_ioGeneratedCode, inCompiler  COMMA_SOURCE_FILE ("instruction-if.galgas", 369)) ;
       }

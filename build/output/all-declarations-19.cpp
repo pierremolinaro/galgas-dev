@@ -11,2858 +11,6 @@
 //   Object comparison                                                                                                 *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-typeComparisonResult cPtr_literalStringExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_literalStringExpressionForGeneration * p = (const cPtr_literalStringExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_literalStringExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mString.objectCompare (p->mProperty_mString) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-typeComparisonResult GALGAS_literalStringExpressionForGeneration::objectCompare (const GALGAS_literalStringExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalStringExpressionForGeneration::GALGAS_literalStringExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalStringExpressionForGeneration GALGAS_literalStringExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalStringExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                                       GALGAS_location::constructor_nowhere (HERE),
-                                                                       GALGAS_string::constructor_default (HERE)
-                                                                       COMMA_THERE) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalStringExpressionForGeneration::GALGAS_literalStringExpressionForGeneration (const cPtr_literalStringExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalStringExpressionForGeneration) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalStringExpressionForGeneration GALGAS_literalStringExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
-                                                                                                          const GALGAS_location & inAttribute_mLocation,
-                                                                                                          const GALGAS_string & inAttribute_mString
-                                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_literalStringExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mString.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_literalStringExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mString COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_string GALGAS_literalStringExpressionForGeneration::getter_mString (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_literalStringExpressionForGeneration * p = (const cPtr_literalStringExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalStringExpressionForGeneration) ;
-    result = p->mProperty_mString ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_string cPtr_literalStringExpressionForGeneration::getter_mString (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mString ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_literalStringExpressionForGeneration::setter_setMString (GALGAS_string inValue
-                                                                     COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_literalStringExpressionForGeneration * p = (cPtr_literalStringExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalStringExpressionForGeneration) ;
-    p->mProperty_mString = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_literalStringExpressionForGeneration::setter_setMString (GALGAS_string inValue
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mString = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                            Pointer class for @literalStringExpressionForGeneration class                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cPtr_literalStringExpressionForGeneration::cPtr_literalStringExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                                                      const GALGAS_location & in_mLocation,
-                                                                                      const GALGAS_string & in_mString
-                                                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mString (in_mString) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * cPtr_literalStringExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalStringExpressionForGeneration ;
-}
-
-void cPtr_literalStringExpressionForGeneration::description (C_String & ioString,
-                                                             const int32_t inIndentation) const {
-  ioString << "[@literalStringExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mString.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-acPtr_class * cPtr_literalStringExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_literalStringExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mString COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     @literalStringExpressionForGeneration type                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_literalStringExpressionForGeneration ("literalStringExpressionForGeneration",
-                                                             & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_literalStringExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalStringExpressionForGeneration ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_literalStringExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_literalStringExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalStringExpressionForGeneration GALGAS_literalStringExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_literalStringExpressionForGeneration result ;
-  const GALGAS_literalStringExpressionForGeneration * p = (const GALGAS_literalStringExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_literalStringExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("literalStringExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-typeComparisonResult cPtr_literalCharExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_literalCharExpressionForGeneration * p = (const cPtr_literalCharExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_literalCharExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mCharacter.objectCompare (p->mProperty_mCharacter) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-typeComparisonResult GALGAS_literalCharExpressionForGeneration::objectCompare (const GALGAS_literalCharExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalCharExpressionForGeneration::GALGAS_literalCharExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalCharExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                                     GALGAS_location::constructor_nowhere (HERE),
-                                                                     GALGAS_char::constructor_default (HERE)
-                                                                     COMMA_THERE) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalCharExpressionForGeneration::GALGAS_literalCharExpressionForGeneration (const cPtr_literalCharExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalCharExpressionForGeneration) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
-                                                                                                      const GALGAS_location & inAttribute_mLocation,
-                                                                                                      const GALGAS_char & inAttribute_mCharacter
-                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_literalCharExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mCharacter.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_literalCharExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mCharacter COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_char GALGAS_literalCharExpressionForGeneration::getter_mCharacter (UNUSED_LOCATION_ARGS) const {
-  GALGAS_char result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_literalCharExpressionForGeneration * p = (const cPtr_literalCharExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalCharExpressionForGeneration) ;
-    result = p->mProperty_mCharacter ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_char cPtr_literalCharExpressionForGeneration::getter_mCharacter (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mCharacter ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_literalCharExpressionForGeneration::setter_setMCharacter (GALGAS_char inValue
-                                                                      COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_literalCharExpressionForGeneration * p = (cPtr_literalCharExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalCharExpressionForGeneration) ;
-    p->mProperty_mCharacter = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_literalCharExpressionForGeneration::setter_setMCharacter (GALGAS_char inValue
-                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mCharacter = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                             Pointer class for @literalCharExpressionForGeneration class                             *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cPtr_literalCharExpressionForGeneration::cPtr_literalCharExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                                                  const GALGAS_location & in_mLocation,
-                                                                                  const GALGAS_char & in_mCharacter
-                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mCharacter (in_mCharacter) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * cPtr_literalCharExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalCharExpressionForGeneration ;
-}
-
-void cPtr_literalCharExpressionForGeneration::description (C_String & ioString,
-                                                           const int32_t inIndentation) const {
-  ioString << "[@literalCharExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mCharacter.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-acPtr_class * cPtr_literalCharExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_literalCharExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mCharacter COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      @literalCharExpressionForGeneration type                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_literalCharExpressionForGeneration ("literalCharExpressionForGeneration",
-                                                           & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_literalCharExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalCharExpressionForGeneration ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_literalCharExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_literalCharExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_literalCharExpressionForGeneration result ;
-  const GALGAS_literalCharExpressionForGeneration * p = (const GALGAS_literalCharExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_literalCharExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("literalCharExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-typeComparisonResult cPtr_literalDoubleExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_literalDoubleExpressionForGeneration * p = (const cPtr_literalDoubleExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_literalDoubleExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mValue.objectCompare (p->mProperty_mValue) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-typeComparisonResult GALGAS_literalDoubleExpressionForGeneration::objectCompare (const GALGAS_literalDoubleExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalDoubleExpressionForGeneration::GALGAS_literalDoubleExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalDoubleExpressionForGeneration GALGAS_literalDoubleExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalDoubleExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                                       GALGAS_location::constructor_nowhere (HERE),
-                                                                       GALGAS_double::constructor_default (HERE)
-                                                                       COMMA_THERE) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalDoubleExpressionForGeneration::GALGAS_literalDoubleExpressionForGeneration (const cPtr_literalDoubleExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalDoubleExpressionForGeneration) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalDoubleExpressionForGeneration GALGAS_literalDoubleExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
-                                                                                                          const GALGAS_location & inAttribute_mLocation,
-                                                                                                          const GALGAS_double & inAttribute_mValue
-                                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_literalDoubleExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mValue.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_literalDoubleExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mValue COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_double GALGAS_literalDoubleExpressionForGeneration::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  GALGAS_double result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_literalDoubleExpressionForGeneration * p = (const cPtr_literalDoubleExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalDoubleExpressionForGeneration) ;
-    result = p->mProperty_mValue ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_double cPtr_literalDoubleExpressionForGeneration::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_literalDoubleExpressionForGeneration::setter_setMValue (GALGAS_double inValue
-                                                                    COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_literalDoubleExpressionForGeneration * p = (cPtr_literalDoubleExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalDoubleExpressionForGeneration) ;
-    p->mProperty_mValue = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_literalDoubleExpressionForGeneration::setter_setMValue (GALGAS_double inValue
-                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mValue = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                            Pointer class for @literalDoubleExpressionForGeneration class                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cPtr_literalDoubleExpressionForGeneration::cPtr_literalDoubleExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                                                      const GALGAS_location & in_mLocation,
-                                                                                      const GALGAS_double & in_mValue
-                                                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mValue (in_mValue) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * cPtr_literalDoubleExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration ;
-}
-
-void cPtr_literalDoubleExpressionForGeneration::description (C_String & ioString,
-                                                             const int32_t inIndentation) const {
-  ioString << "[@literalDoubleExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mValue.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-acPtr_class * cPtr_literalDoubleExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_literalDoubleExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mValue COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     @literalDoubleExpressionForGeneration type                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration ("literalDoubleExpressionForGeneration",
-                                                             & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_literalDoubleExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalDoubleExpressionForGeneration ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_literalDoubleExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_literalDoubleExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalDoubleExpressionForGeneration GALGAS_literalDoubleExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_literalDoubleExpressionForGeneration result ;
-  const GALGAS_literalDoubleExpressionForGeneration * p = (const GALGAS_literalDoubleExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_literalDoubleExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("literalDoubleExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-typeComparisonResult cPtr_literalBigIntExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_literalBigIntExpressionAST * p = (const cPtr_literalBigIntExpressionAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_literalBigIntExpressionAST) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mValue.objectCompare (p->mProperty_mValue) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-typeComparisonResult GALGAS_literalBigIntExpressionAST::objectCompare (const GALGAS_literalBigIntExpressionAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalBigIntExpressionAST::GALGAS_literalBigIntExpressionAST (void) :
-GALGAS_semanticExpressionAST () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalBigIntExpressionAST GALGAS_literalBigIntExpressionAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalBigIntExpressionAST::constructor_new (GALGAS_lbigint::constructor_default (HERE)
-                                                             COMMA_THERE) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalBigIntExpressionAST::GALGAS_literalBigIntExpressionAST (const cPtr_literalBigIntExpressionAST * inSourcePtr) :
-GALGAS_semanticExpressionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalBigIntExpressionAST) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalBigIntExpressionAST GALGAS_literalBigIntExpressionAST::constructor_new (const GALGAS_lbigint & inAttribute_mValue
-                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_literalBigIntExpressionAST result ;
-  if (inAttribute_mValue.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_literalBigIntExpressionAST (inAttribute_mValue COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lbigint GALGAS_literalBigIntExpressionAST::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lbigint result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_literalBigIntExpressionAST * p = (const cPtr_literalBigIntExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalBigIntExpressionAST) ;
-    result = p->mProperty_mValue ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lbigint cPtr_literalBigIntExpressionAST::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_literalBigIntExpressionAST::setter_setMValue (GALGAS_lbigint inValue
-                                                          COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_literalBigIntExpressionAST * p = (cPtr_literalBigIntExpressionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalBigIntExpressionAST) ;
-    p->mProperty_mValue = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_literalBigIntExpressionAST::setter_setMValue (GALGAS_lbigint inValue
-                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mValue = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                 Pointer class for @literalBigIntExpressionAST class                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cPtr_literalBigIntExpressionAST::cPtr_literalBigIntExpressionAST (const GALGAS_lbigint & in_mValue
-                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionAST (THERE),
-mProperty_mValue (in_mValue) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * cPtr_literalBigIntExpressionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalBigIntExpressionAST ;
-}
-
-void cPtr_literalBigIntExpressionAST::description (C_String & ioString,
-                                                   const int32_t inIndentation) const {
-  ioString << "[@literalBigIntExpressionAST:" ;
-  mProperty_mValue.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-acPtr_class * cPtr_literalBigIntExpressionAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_literalBigIntExpressionAST (mProperty_mValue COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          @literalBigIntExpressionAST type                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_literalBigIntExpressionAST ("literalBigIntExpressionAST",
-                                                   & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_literalBigIntExpressionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalBigIntExpressionAST ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_literalBigIntExpressionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_literalBigIntExpressionAST (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalBigIntExpressionAST GALGAS_literalBigIntExpressionAST::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_literalBigIntExpressionAST result ;
-  const GALGAS_literalBigIntExpressionAST * p = (const GALGAS_literalBigIntExpressionAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_literalBigIntExpressionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("literalBigIntExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-typeComparisonResult cPtr_literalUIntExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_literalUIntExpressionForGeneration * p = (const cPtr_literalUIntExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_literalUIntExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mValue.objectCompare (p->mProperty_mValue) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-typeComparisonResult GALGAS_literalUIntExpressionForGeneration::objectCompare (const GALGAS_literalUIntExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalUIntExpressionForGeneration::GALGAS_literalUIntExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalUIntExpressionForGeneration GALGAS_literalUIntExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalUIntExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                                     GALGAS_location::constructor_nowhere (HERE),
-                                                                     GALGAS_uint::constructor_default (HERE)
-                                                                     COMMA_THERE) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalUIntExpressionForGeneration::GALGAS_literalUIntExpressionForGeneration (const cPtr_literalUIntExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalUIntExpressionForGeneration) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalUIntExpressionForGeneration GALGAS_literalUIntExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
-                                                                                                      const GALGAS_location & inAttribute_mLocation,
-                                                                                                      const GALGAS_uint & inAttribute_mValue
-                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_literalUIntExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mValue.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_literalUIntExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mValue COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_uint GALGAS_literalUIntExpressionForGeneration::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_literalUIntExpressionForGeneration * p = (const cPtr_literalUIntExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalUIntExpressionForGeneration) ;
-    result = p->mProperty_mValue ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_uint cPtr_literalUIntExpressionForGeneration::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_literalUIntExpressionForGeneration::setter_setMValue (GALGAS_uint inValue
-                                                                  COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_literalUIntExpressionForGeneration * p = (cPtr_literalUIntExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalUIntExpressionForGeneration) ;
-    p->mProperty_mValue = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_literalUIntExpressionForGeneration::setter_setMValue (GALGAS_uint inValue
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mValue = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                             Pointer class for @literalUIntExpressionForGeneration class                             *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cPtr_literalUIntExpressionForGeneration::cPtr_literalUIntExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                                                  const GALGAS_location & in_mLocation,
-                                                                                  const GALGAS_uint & in_mValue
-                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mValue (in_mValue) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * cPtr_literalUIntExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalUIntExpressionForGeneration ;
-}
-
-void cPtr_literalUIntExpressionForGeneration::description (C_String & ioString,
-                                                           const int32_t inIndentation) const {
-  ioString << "[@literalUIntExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mValue.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-acPtr_class * cPtr_literalUIntExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_literalUIntExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mValue COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      @literalUIntExpressionForGeneration type                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_literalUIntExpressionForGeneration ("literalUIntExpressionForGeneration",
-                                                           & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_literalUIntExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalUIntExpressionForGeneration ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_literalUIntExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_literalUIntExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalUIntExpressionForGeneration GALGAS_literalUIntExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_literalUIntExpressionForGeneration result ;
-  const GALGAS_literalUIntExpressionForGeneration * p = (const GALGAS_literalUIntExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_literalUIntExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("literalUIntExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-typeComparisonResult cPtr_literalUInt_36__34_ExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_literalUInt_36__34_ExpressionForGeneration * p = (const cPtr_literalUInt_36__34_ExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_literalUInt_36__34_ExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mValue.objectCompare (p->mProperty_mValue) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-typeComparisonResult GALGAS_literalUInt_36__34_ExpressionForGeneration::objectCompare (const GALGAS_literalUInt_36__34_ExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalUInt_36__34_ExpressionForGeneration::GALGAS_literalUInt_36__34_ExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalUInt_36__34_ExpressionForGeneration GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                                             GALGAS_location::constructor_nowhere (HERE),
-                                                                             GALGAS_uint_36__34_::constructor_default (HERE)
-                                                                             COMMA_THERE) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalUInt_36__34_ExpressionForGeneration::GALGAS_literalUInt_36__34_ExpressionForGeneration (const cPtr_literalUInt_36__34_ExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalUInt_36__34_ExpressionForGeneration) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalUInt_36__34_ExpressionForGeneration GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
-                                                                                                                      const GALGAS_location & inAttribute_mLocation,
-                                                                                                                      const GALGAS_uint_36__34_ & inAttribute_mValue
-                                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_literalUInt_36__34_ExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mValue.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_literalUInt_36__34_ExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mValue COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_uint_36__34_ GALGAS_literalUInt_36__34_ExpressionForGeneration::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  GALGAS_uint_36__34_ result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_literalUInt_36__34_ExpressionForGeneration * p = (const cPtr_literalUInt_36__34_ExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalUInt_36__34_ExpressionForGeneration) ;
-    result = p->mProperty_mValue ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_uint_36__34_ cPtr_literalUInt_36__34_ExpressionForGeneration::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_literalUInt_36__34_ExpressionForGeneration::setter_setMValue (GALGAS_uint_36__34_ inValue
-                                                                          COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_literalUInt_36__34_ExpressionForGeneration * p = (cPtr_literalUInt_36__34_ExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalUInt_36__34_ExpressionForGeneration) ;
-    p->mProperty_mValue = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_literalUInt_36__34_ExpressionForGeneration::setter_setMValue (GALGAS_uint_36__34_ inValue
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mValue = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                            Pointer class for @literalUInt64ExpressionForGeneration class                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cPtr_literalUInt_36__34_ExpressionForGeneration::cPtr_literalUInt_36__34_ExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                                                                  const GALGAS_location & in_mLocation,
-                                                                                                  const GALGAS_uint_36__34_ & in_mValue
-                                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mValue (in_mValue) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * cPtr_literalUInt_36__34_ExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration ;
-}
-
-void cPtr_literalUInt_36__34_ExpressionForGeneration::description (C_String & ioString,
-                                                                   const int32_t inIndentation) const {
-  ioString << "[@literalUInt64ExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mValue.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-acPtr_class * cPtr_literalUInt_36__34_ExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_literalUInt_36__34_ExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mValue COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     @literalUInt64ExpressionForGeneration type                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration ("literalUInt64ExpressionForGeneration",
-                                                                   & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_literalUInt_36__34_ExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalUInt_36__34_ExpressionForGeneration ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_literalUInt_36__34_ExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_literalUInt_36__34_ExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalUInt_36__34_ExpressionForGeneration GALGAS_literalUInt_36__34_ExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
-                                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_literalUInt_36__34_ExpressionForGeneration result ;
-  const GALGAS_literalUInt_36__34_ExpressionForGeneration * p = (const GALGAS_literalUInt_36__34_ExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_literalUInt_36__34_ExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("literalUInt64ExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-typeComparisonResult cPtr_literalSIntExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_literalSIntExpressionForGeneration * p = (const cPtr_literalSIntExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_literalSIntExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mValue.objectCompare (p->mProperty_mValue) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-typeComparisonResult GALGAS_literalSIntExpressionForGeneration::objectCompare (const GALGAS_literalSIntExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalSIntExpressionForGeneration::GALGAS_literalSIntExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalSIntExpressionForGeneration GALGAS_literalSIntExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalSIntExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                                     GALGAS_location::constructor_nowhere (HERE),
-                                                                     GALGAS_sint::constructor_default (HERE)
-                                                                     COMMA_THERE) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalSIntExpressionForGeneration::GALGAS_literalSIntExpressionForGeneration (const cPtr_literalSIntExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalSIntExpressionForGeneration) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalSIntExpressionForGeneration GALGAS_literalSIntExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
-                                                                                                      const GALGAS_location & inAttribute_mLocation,
-                                                                                                      const GALGAS_sint & inAttribute_mValue
-                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_literalSIntExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mValue.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_literalSIntExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mValue COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_sint GALGAS_literalSIntExpressionForGeneration::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  GALGAS_sint result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_literalSIntExpressionForGeneration * p = (const cPtr_literalSIntExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalSIntExpressionForGeneration) ;
-    result = p->mProperty_mValue ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_sint cPtr_literalSIntExpressionForGeneration::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_literalSIntExpressionForGeneration::setter_setMValue (GALGAS_sint inValue
-                                                                  COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_literalSIntExpressionForGeneration * p = (cPtr_literalSIntExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalSIntExpressionForGeneration) ;
-    p->mProperty_mValue = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_literalSIntExpressionForGeneration::setter_setMValue (GALGAS_sint inValue
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mValue = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                             Pointer class for @literalSIntExpressionForGeneration class                             *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cPtr_literalSIntExpressionForGeneration::cPtr_literalSIntExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                                                  const GALGAS_location & in_mLocation,
-                                                                                  const GALGAS_sint & in_mValue
-                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mValue (in_mValue) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * cPtr_literalSIntExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration ;
-}
-
-void cPtr_literalSIntExpressionForGeneration::description (C_String & ioString,
-                                                           const int32_t inIndentation) const {
-  ioString << "[@literalSIntExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mValue.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-acPtr_class * cPtr_literalSIntExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_literalSIntExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mValue COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      @literalSIntExpressionForGeneration type                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration ("literalSIntExpressionForGeneration",
-                                                           & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_literalSIntExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalSIntExpressionForGeneration ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_literalSIntExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_literalSIntExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalSIntExpressionForGeneration GALGAS_literalSIntExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_literalSIntExpressionForGeneration result ;
-  const GALGAS_literalSIntExpressionForGeneration * p = (const GALGAS_literalSIntExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_literalSIntExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("literalSIntExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-typeComparisonResult cPtr_literalSInt_36__34_ExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_literalSInt_36__34_ExpressionForGeneration * p = (const cPtr_literalSInt_36__34_ExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_literalSInt_36__34_ExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mValue.objectCompare (p->mProperty_mValue) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-typeComparisonResult GALGAS_literalSInt_36__34_ExpressionForGeneration::objectCompare (const GALGAS_literalSInt_36__34_ExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalSInt_36__34_ExpressionForGeneration::GALGAS_literalSInt_36__34_ExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                                             GALGAS_location::constructor_nowhere (HERE),
-                                                                             GALGAS_sint_36__34_::constructor_default (HERE)
-                                                                             COMMA_THERE) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalSInt_36__34_ExpressionForGeneration::GALGAS_literalSInt_36__34_ExpressionForGeneration (const cPtr_literalSInt_36__34_ExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalSInt_36__34_ExpressionForGeneration) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
-                                                                                                                      const GALGAS_location & inAttribute_mLocation,
-                                                                                                                      const GALGAS_sint_36__34_ & inAttribute_mValue
-                                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_literalSInt_36__34_ExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mValue.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_literalSInt_36__34_ExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mValue COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_sint_36__34_ GALGAS_literalSInt_36__34_ExpressionForGeneration::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  GALGAS_sint_36__34_ result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_literalSInt_36__34_ExpressionForGeneration * p = (const cPtr_literalSInt_36__34_ExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalSInt_36__34_ExpressionForGeneration) ;
-    result = p->mProperty_mValue ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_sint_36__34_ cPtr_literalSInt_36__34_ExpressionForGeneration::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_literalSInt_36__34_ExpressionForGeneration::setter_setMValue (GALGAS_sint_36__34_ inValue
-                                                                          COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_literalSInt_36__34_ExpressionForGeneration * p = (cPtr_literalSInt_36__34_ExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalSInt_36__34_ExpressionForGeneration) ;
-    p->mProperty_mValue = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_literalSInt_36__34_ExpressionForGeneration::setter_setMValue (GALGAS_sint_36__34_ inValue
-                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mValue = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                            Pointer class for @literalSInt64ExpressionForGeneration class                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cPtr_literalSInt_36__34_ExpressionForGeneration::cPtr_literalSInt_36__34_ExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                                                                  const GALGAS_location & in_mLocation,
-                                                                                                  const GALGAS_sint_36__34_ & in_mValue
-                                                                                                  COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mValue (in_mValue) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * cPtr_literalSInt_36__34_ExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration ;
-}
-
-void cPtr_literalSInt_36__34_ExpressionForGeneration::description (C_String & ioString,
-                                                                   const int32_t inIndentation) const {
-  ioString << "[@literalSInt64ExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mValue.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-acPtr_class * cPtr_literalSInt_36__34_ExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_literalSInt_36__34_ExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mValue COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     @literalSInt64ExpressionForGeneration type                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration ("literalSInt64ExpressionForGeneration",
-                                                                   & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_literalSInt_36__34_ExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalSInt_36__34_ExpressionForGeneration ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_literalSInt_36__34_ExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_literalSInt_36__34_ExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_ExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
-                                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_literalSInt_36__34_ExpressionForGeneration result ;
-  const GALGAS_literalSInt_36__34_ExpressionForGeneration * p = (const GALGAS_literalSInt_36__34_ExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_literalSInt_36__34_ExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("literalSInt64ExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-typeComparisonResult cPtr_literalBigIntExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_literalBigIntExpressionForGeneration * p = (const cPtr_literalBigIntExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_literalBigIntExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mValue.objectCompare (p->mProperty_mValue) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-typeComparisonResult GALGAS_literalBigIntExpressionForGeneration::objectCompare (const GALGAS_literalBigIntExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalBigIntExpressionForGeneration::GALGAS_literalBigIntExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalBigIntExpressionForGeneration GALGAS_literalBigIntExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalBigIntExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                                       GALGAS_location::constructor_nowhere (HERE),
-                                                                       GALGAS_bigint::constructor_zero (HERE)
-                                                                       COMMA_THERE) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalBigIntExpressionForGeneration::GALGAS_literalBigIntExpressionForGeneration (const cPtr_literalBigIntExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_literalBigIntExpressionForGeneration) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalBigIntExpressionForGeneration GALGAS_literalBigIntExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
-                                                                                                          const GALGAS_location & inAttribute_mLocation,
-                                                                                                          const GALGAS_bigint & inAttribute_mValue
-                                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_literalBigIntExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mValue.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_literalBigIntExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mValue COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_bigint GALGAS_literalBigIntExpressionForGeneration::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bigint result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_literalBigIntExpressionForGeneration * p = (const cPtr_literalBigIntExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalBigIntExpressionForGeneration) ;
-    result = p->mProperty_mValue ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_bigint cPtr_literalBigIntExpressionForGeneration::getter_mValue (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_literalBigIntExpressionForGeneration::setter_setMValue (GALGAS_bigint inValue
-                                                                    COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_literalBigIntExpressionForGeneration * p = (cPtr_literalBigIntExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_literalBigIntExpressionForGeneration) ;
-    p->mProperty_mValue = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_literalBigIntExpressionForGeneration::setter_setMValue (GALGAS_bigint inValue
-                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mValue = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                            Pointer class for @literalBigIntExpressionForGeneration class                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cPtr_literalBigIntExpressionForGeneration::cPtr_literalBigIntExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                                                      const GALGAS_location & in_mLocation,
-                                                                                      const GALGAS_bigint & in_mValue
-                                                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mValue (in_mValue) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * cPtr_literalBigIntExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration ;
-}
-
-void cPtr_literalBigIntExpressionForGeneration::description (C_String & ioString,
-                                                             const int32_t inIndentation) const {
-  ioString << "[@literalBigIntExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mValue.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-acPtr_class * cPtr_literalBigIntExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_literalBigIntExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mValue COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     @literalBigIntExpressionForGeneration type                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration ("literalBigIntExpressionForGeneration",
-                                                             & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_literalBigIntExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_literalBigIntExpressionForGeneration ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_literalBigIntExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_literalBigIntExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_literalBigIntExpressionForGeneration GALGAS_literalBigIntExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_literalBigIntExpressionForGeneration result ;
-  const GALGAS_literalBigIntExpressionForGeneration * p = (const GALGAS_literalBigIntExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_literalBigIntExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("literalBigIntExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-typeComparisonResult cPtr_equalExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_equalExpressionForGeneration * p = (const cPtr_equalExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_equalExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-typeComparisonResult GALGAS_equalExpressionForGeneration::objectCompare (const GALGAS_equalExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_equalExpressionForGeneration::GALGAS_equalExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_equalExpressionForGeneration::GALGAS_equalExpressionForGeneration (const cPtr_equalExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_equalExpressionForGeneration) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_equalExpressionForGeneration GALGAS_equalExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
-                                                                                          const GALGAS_location & inAttribute_mLocation,
-                                                                                          const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
-                                                                                          const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
-                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_equalExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_equalExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration GALGAS_equalExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionForGeneration result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_equalExpressionForGeneration * p = (const cPtr_equalExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_equalExpressionForGeneration) ;
-    result = p->mProperty_mLeftExpression ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration cPtr_equalExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mLeftExpression ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration GALGAS_equalExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionForGeneration result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_equalExpressionForGeneration * p = (const cPtr_equalExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_equalExpressionForGeneration) ;
-    result = p->mProperty_mRightExpression ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration cPtr_equalExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mRightExpression ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_equalExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                     COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_equalExpressionForGeneration * p = (cPtr_equalExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_equalExpressionForGeneration) ;
-    p->mProperty_mLeftExpression = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_equalExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mLeftExpression = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_equalExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                      COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_equalExpressionForGeneration * p = (cPtr_equalExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_equalExpressionForGeneration) ;
-    p->mProperty_mRightExpression = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_equalExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mRightExpression = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                Pointer class for @equalExpressionForGeneration class                                *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cPtr_equalExpressionForGeneration::cPtr_equalExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                                      const GALGAS_location & in_mLocation,
-                                                                      const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
-                                                                      const GALGAS_semanticExpressionForGeneration & in_mRightExpression
-                                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * cPtr_equalExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_equalExpressionForGeneration ;
-}
-
-void cPtr_equalExpressionForGeneration::description (C_String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString << "[@equalExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-acPtr_class * cPtr_equalExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_equalExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                         @equalExpressionForGeneration type                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_equalExpressionForGeneration ("equalExpressionForGeneration",
-                                                     & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_equalExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_equalExpressionForGeneration ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_equalExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_equalExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_equalExpressionForGeneration GALGAS_equalExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_equalExpressionForGeneration result ;
-  const GALGAS_equalExpressionForGeneration * p = (const GALGAS_equalExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_equalExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("equalExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-typeComparisonResult cPtr_notEqualExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_notEqualExpressionForGeneration * p = (const cPtr_notEqualExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_notEqualExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-typeComparisonResult GALGAS_notEqualExpressionForGeneration::objectCompare (const GALGAS_notEqualExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_notEqualExpressionForGeneration::GALGAS_notEqualExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_notEqualExpressionForGeneration::GALGAS_notEqualExpressionForGeneration (const cPtr_notEqualExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_notEqualExpressionForGeneration) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_notEqualExpressionForGeneration GALGAS_notEqualExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
-                                                                                                const GALGAS_location & inAttribute_mLocation,
-                                                                                                const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
-                                                                                                const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
-                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_notEqualExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_notEqualExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration GALGAS_notEqualExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionForGeneration result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_notEqualExpressionForGeneration * p = (const cPtr_notEqualExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_notEqualExpressionForGeneration) ;
-    result = p->mProperty_mLeftExpression ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration cPtr_notEqualExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mLeftExpression ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration GALGAS_notEqualExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionForGeneration result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_notEqualExpressionForGeneration * p = (const cPtr_notEqualExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_notEqualExpressionForGeneration) ;
-    result = p->mProperty_mRightExpression ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration cPtr_notEqualExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mRightExpression ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_notEqualExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                        COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_notEqualExpressionForGeneration * p = (cPtr_notEqualExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_notEqualExpressionForGeneration) ;
-    p->mProperty_mLeftExpression = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_notEqualExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mLeftExpression = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_notEqualExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                         COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_notEqualExpressionForGeneration * p = (cPtr_notEqualExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_notEqualExpressionForGeneration) ;
-    p->mProperty_mRightExpression = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_notEqualExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mRightExpression = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                              Pointer class for @notEqualExpressionForGeneration class                               *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cPtr_notEqualExpressionForGeneration::cPtr_notEqualExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                                            const GALGAS_location & in_mLocation,
-                                                                            const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
-                                                                            const GALGAS_semanticExpressionForGeneration & in_mRightExpression
-                                                                            COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * cPtr_notEqualExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_notEqualExpressionForGeneration ;
-}
-
-void cPtr_notEqualExpressionForGeneration::description (C_String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString << "[@notEqualExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-acPtr_class * cPtr_notEqualExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_notEqualExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        @notEqualExpressionForGeneration type                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_notEqualExpressionForGeneration ("notEqualExpressionForGeneration",
-                                                        & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_notEqualExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_notEqualExpressionForGeneration ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_notEqualExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_notEqualExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_notEqualExpressionForGeneration GALGAS_notEqualExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_notEqualExpressionForGeneration result ;
-  const GALGAS_notEqualExpressionForGeneration * p = (const GALGAS_notEqualExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_notEqualExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("notEqualExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-typeComparisonResult cPtr_lowerOrEqualExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_lowerOrEqualExpressionForGeneration * p = (const cPtr_lowerOrEqualExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_lowerOrEqualExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-typeComparisonResult GALGAS_lowerOrEqualExpressionForGeneration::objectCompare (const GALGAS_lowerOrEqualExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lowerOrEqualExpressionForGeneration::GALGAS_lowerOrEqualExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lowerOrEqualExpressionForGeneration::GALGAS_lowerOrEqualExpressionForGeneration (const cPtr_lowerOrEqualExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lowerOrEqualExpressionForGeneration) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lowerOrEqualExpressionForGeneration GALGAS_lowerOrEqualExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
-                                                                                                        const GALGAS_location & inAttribute_mLocation,
-                                                                                                        const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
-                                                                                                        const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
-                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_lowerOrEqualExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_lowerOrEqualExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration GALGAS_lowerOrEqualExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionForGeneration result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lowerOrEqualExpressionForGeneration * p = (const cPtr_lowerOrEqualExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lowerOrEqualExpressionForGeneration) ;
-    result = p->mProperty_mLeftExpression ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration cPtr_lowerOrEqualExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mLeftExpression ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration GALGAS_lowerOrEqualExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionForGeneration result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lowerOrEqualExpressionForGeneration * p = (const cPtr_lowerOrEqualExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lowerOrEqualExpressionForGeneration) ;
-    result = p->mProperty_mRightExpression ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration cPtr_lowerOrEqualExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mRightExpression ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lowerOrEqualExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                            COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lowerOrEqualExpressionForGeneration * p = (cPtr_lowerOrEqualExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lowerOrEqualExpressionForGeneration) ;
-    p->mProperty_mLeftExpression = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lowerOrEqualExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mLeftExpression = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lowerOrEqualExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                             COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lowerOrEqualExpressionForGeneration * p = (cPtr_lowerOrEqualExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lowerOrEqualExpressionForGeneration) ;
-    p->mProperty_mRightExpression = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lowerOrEqualExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mRightExpression = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                            Pointer class for @lowerOrEqualExpressionForGeneration class                             *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cPtr_lowerOrEqualExpressionForGeneration::cPtr_lowerOrEqualExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                                                    const GALGAS_location & in_mLocation,
-                                                                                    const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
-                                                                                    const GALGAS_semanticExpressionForGeneration & in_mRightExpression
-                                                                                    COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * cPtr_lowerOrEqualExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lowerOrEqualExpressionForGeneration ;
-}
-
-void cPtr_lowerOrEqualExpressionForGeneration::description (C_String & ioString,
-                                                            const int32_t inIndentation) const {
-  ioString << "[@lowerOrEqualExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-acPtr_class * cPtr_lowerOrEqualExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_lowerOrEqualExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      @lowerOrEqualExpressionForGeneration type                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lowerOrEqualExpressionForGeneration ("lowerOrEqualExpressionForGeneration",
-                                                            & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_lowerOrEqualExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lowerOrEqualExpressionForGeneration ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_lowerOrEqualExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_lowerOrEqualExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lowerOrEqualExpressionForGeneration GALGAS_lowerOrEqualExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                      C_Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_lowerOrEqualExpressionForGeneration result ;
-  const GALGAS_lowerOrEqualExpressionForGeneration * p = (const GALGAS_lowerOrEqualExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lowerOrEqualExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lowerOrEqualExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-typeComparisonResult cPtr_greaterOrEqualExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_greaterOrEqualExpressionForGeneration * p = (const cPtr_greaterOrEqualExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_greaterOrEqualExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-typeComparisonResult GALGAS_greaterOrEqualExpressionForGeneration::objectCompare (const GALGAS_greaterOrEqualExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_greaterOrEqualExpressionForGeneration::GALGAS_greaterOrEqualExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_greaterOrEqualExpressionForGeneration::GALGAS_greaterOrEqualExpressionForGeneration (const cPtr_greaterOrEqualExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_greaterOrEqualExpressionForGeneration) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_greaterOrEqualExpressionForGeneration GALGAS_greaterOrEqualExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
-                                                                                                            const GALGAS_location & inAttribute_mLocation,
-                                                                                                            const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
-                                                                                                            const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
-                                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_greaterOrEqualExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_greaterOrEqualExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration GALGAS_greaterOrEqualExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionForGeneration result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_greaterOrEqualExpressionForGeneration * p = (const cPtr_greaterOrEqualExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_greaterOrEqualExpressionForGeneration) ;
-    result = p->mProperty_mLeftExpression ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration cPtr_greaterOrEqualExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mLeftExpression ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration GALGAS_greaterOrEqualExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionForGeneration result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_greaterOrEqualExpressionForGeneration * p = (const cPtr_greaterOrEqualExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_greaterOrEqualExpressionForGeneration) ;
-    result = p->mProperty_mRightExpression ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration cPtr_greaterOrEqualExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mRightExpression ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_greaterOrEqualExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                              COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_greaterOrEqualExpressionForGeneration * p = (cPtr_greaterOrEqualExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_greaterOrEqualExpressionForGeneration) ;
-    p->mProperty_mLeftExpression = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_greaterOrEqualExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mLeftExpression = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_greaterOrEqualExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                               COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_greaterOrEqualExpressionForGeneration * p = (cPtr_greaterOrEqualExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_greaterOrEqualExpressionForGeneration) ;
-    p->mProperty_mRightExpression = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_greaterOrEqualExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mRightExpression = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                           Pointer class for @greaterOrEqualExpressionForGeneration class                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cPtr_greaterOrEqualExpressionForGeneration::cPtr_greaterOrEqualExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                                                        const GALGAS_location & in_mLocation,
-                                                                                        const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
-                                                                                        const GALGAS_semanticExpressionForGeneration & in_mRightExpression
-                                                                                        COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * cPtr_greaterOrEqualExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_greaterOrEqualExpressionForGeneration ;
-}
-
-void cPtr_greaterOrEqualExpressionForGeneration::description (C_String & ioString,
-                                                              const int32_t inIndentation) const {
-  ioString << "[@greaterOrEqualExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-acPtr_class * cPtr_greaterOrEqualExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_greaterOrEqualExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     @greaterOrEqualExpressionForGeneration type                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_greaterOrEqualExpressionForGeneration ("greaterOrEqualExpressionForGeneration",
-                                                              & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_greaterOrEqualExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_greaterOrEqualExpressionForGeneration ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_greaterOrEqualExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_greaterOrEqualExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_greaterOrEqualExpressionForGeneration GALGAS_greaterOrEqualExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                          C_Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_greaterOrEqualExpressionForGeneration result ;
-  const GALGAS_greaterOrEqualExpressionForGeneration * p = (const GALGAS_greaterOrEqualExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_greaterOrEqualExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("greaterOrEqualExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-typeComparisonResult cPtr_strictGreaterExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_strictGreaterExpressionForGeneration * p = (const cPtr_strictGreaterExpressionForGeneration *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_strictGreaterExpressionForGeneration) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-typeComparisonResult GALGAS_strictGreaterExpressionForGeneration::objectCompare (const GALGAS_strictGreaterExpressionForGeneration & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_strictGreaterExpressionForGeneration::GALGAS_strictGreaterExpressionForGeneration (void) :
-GALGAS_semanticExpressionForGeneration () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_strictGreaterExpressionForGeneration::GALGAS_strictGreaterExpressionForGeneration (const cPtr_strictGreaterExpressionForGeneration * inSourcePtr) :
-GALGAS_semanticExpressionForGeneration (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_strictGreaterExpressionForGeneration) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_strictGreaterExpressionForGeneration GALGAS_strictGreaterExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
-                                                                                                          const GALGAS_location & inAttribute_mLocation,
-                                                                                                          const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
-                                                                                                          const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
-                                                                                                          COMMA_LOCATION_ARGS) {
-  GALGAS_strictGreaterExpressionForGeneration result ;
-  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_strictGreaterExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration GALGAS_strictGreaterExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionForGeneration result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_strictGreaterExpressionForGeneration * p = (const cPtr_strictGreaterExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_strictGreaterExpressionForGeneration) ;
-    result = p->mProperty_mLeftExpression ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration cPtr_strictGreaterExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mLeftExpression ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration GALGAS_strictGreaterExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionForGeneration result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_strictGreaterExpressionForGeneration * p = (const cPtr_strictGreaterExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_strictGreaterExpressionForGeneration) ;
-    result = p->mProperty_mRightExpression ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticExpressionForGeneration cPtr_strictGreaterExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mRightExpression ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_strictGreaterExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                             COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_strictGreaterExpressionForGeneration * p = (cPtr_strictGreaterExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_strictGreaterExpressionForGeneration) ;
-    p->mProperty_mLeftExpression = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_strictGreaterExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mLeftExpression = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_strictGreaterExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                              COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_strictGreaterExpressionForGeneration * p = (cPtr_strictGreaterExpressionForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_strictGreaterExpressionForGeneration) ;
-    p->mProperty_mRightExpression = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_strictGreaterExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mRightExpression = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                            Pointer class for @strictGreaterExpressionForGeneration class                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cPtr_strictGreaterExpressionForGeneration::cPtr_strictGreaterExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                                                      const GALGAS_location & in_mLocation,
-                                                                                      const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
-                                                                                      const GALGAS_semanticExpressionForGeneration & in_mRightExpression
-                                                                                      COMMA_LOCATION_ARGS) :
-cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
-mProperty_mLeftExpression (in_mLeftExpression),
-mProperty_mRightExpression (in_mRightExpression) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * cPtr_strictGreaterExpressionForGeneration::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_strictGreaterExpressionForGeneration ;
-}
-
-void cPtr_strictGreaterExpressionForGeneration::description (C_String & ioString,
-                                                             const int32_t inIndentation) const {
-  ioString << "[@strictGreaterExpressionForGeneration:" ;
-  mProperty_mResultType.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLocation.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-acPtr_class * cPtr_strictGreaterExpressionForGeneration::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_strictGreaterExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     @strictGreaterExpressionForGeneration type                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_strictGreaterExpressionForGeneration ("strictGreaterExpressionForGeneration",
-                                                             & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_strictGreaterExpressionForGeneration::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_strictGreaterExpressionForGeneration ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_strictGreaterExpressionForGeneration::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_strictGreaterExpressionForGeneration (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_strictGreaterExpressionForGeneration GALGAS_strictGreaterExpressionForGeneration::extractObject (const GALGAS_object & inObject,
-                                                                                                        C_Compiler * inCompiler
-                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_strictGreaterExpressionForGeneration result ;
-  const GALGAS_strictGreaterExpressionForGeneration * p = (const GALGAS_strictGreaterExpressionForGeneration *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_strictGreaterExpressionForGeneration *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("strictGreaterExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
 typeComparisonResult cPtr_strictLowerExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
   const cPtr_strictLowerExpressionForGeneration * p = (const cPtr_strictLowerExpressionForGeneration *) inOperandPtr ;
@@ -4723,6 +1871,234 @@ GALGAS_testDynamicClassInExpressionForGeneration GALGAS_testDynamicClassInExpres
       result = *p ;
     }else{
       inCompiler->castError ("testDynamicClassInExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//   Object comparison                                                                                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typeComparisonResult cPtr_extractObjectInExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_extractObjectInExpressionForGeneration * p = (const cPtr_extractObjectInExpressionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_extractObjectInExpressionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mReceiverExpression.objectCompare (p->mProperty_mReceiverExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mTypeName.objectCompare (p->mProperty_mTypeName) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+typeComparisonResult GALGAS_extractObjectInExpressionForGeneration::objectCompare (const GALGAS_extractObjectInExpressionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_extractObjectInExpressionForGeneration::GALGAS_extractObjectInExpressionForGeneration (void) :
+GALGAS_semanticExpressionForGeneration () {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_extractObjectInExpressionForGeneration::GALGAS_extractObjectInExpressionForGeneration (const cPtr_extractObjectInExpressionForGeneration * inSourcePtr) :
+GALGAS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_extractObjectInExpressionForGeneration) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_extractObjectInExpressionForGeneration GALGAS_extractObjectInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
+                                                                                                              const GALGAS_location & inAttribute_mLocation,
+                                                                                                              const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
+                                                                                                              const GALGAS_string & inAttribute_mTypeName
+                                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_extractObjectInExpressionForGeneration result ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mTypeName.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_extractObjectInExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mReceiverExpression, inAttribute_mTypeName COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_extractObjectInExpressionForGeneration::getter_mReceiverExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extractObjectInExpressionForGeneration * p = (const cPtr_extractObjectInExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extractObjectInExpressionForGeneration) ;
+    result = p->mProperty_mReceiverExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_extractObjectInExpressionForGeneration::getter_mReceiverExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mReceiverExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_string GALGAS_extractObjectInExpressionForGeneration::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_extractObjectInExpressionForGeneration * p = (const cPtr_extractObjectInExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extractObjectInExpressionForGeneration) ;
+    result = p->mProperty_mTypeName ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_string cPtr_extractObjectInExpressionForGeneration::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mTypeName ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_extractObjectInExpressionForGeneration::setter_setMReceiverExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                                   COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_extractObjectInExpressionForGeneration * p = (cPtr_extractObjectInExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extractObjectInExpressionForGeneration) ;
+    p->mProperty_mReceiverExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_extractObjectInExpressionForGeneration::setter_setMReceiverExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mReceiverExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_extractObjectInExpressionForGeneration::setter_setMTypeName (GALGAS_string inValue
+                                                                         COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_extractObjectInExpressionForGeneration * p = (cPtr_extractObjectInExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_extractObjectInExpressionForGeneration) ;
+    p->mProperty_mTypeName = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_extractObjectInExpressionForGeneration::setter_setMTypeName (GALGAS_string inValue
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mTypeName = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                           Pointer class for @extractObjectInExpressionForGeneration class                           *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cPtr_extractObjectInExpressionForGeneration::cPtr_extractObjectInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+                                                                                          const GALGAS_location & in_mLocation,
+                                                                                          const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
+                                                                                          const GALGAS_string & in_mTypeName
+                                                                                          COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mReceiverExpression (in_mReceiverExpression),
+mProperty_mTypeName (in_mTypeName) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * cPtr_extractObjectInExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extractObjectInExpressionForGeneration ;
+}
+
+void cPtr_extractObjectInExpressionForGeneration::description (C_String & ioString,
+                                                               const int32_t inIndentation) const {
+  ioString << "[@extractObjectInExpressionForGeneration:" ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mReceiverExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mTypeName.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+acPtr_class * cPtr_extractObjectInExpressionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_extractObjectInExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mReceiverExpression, mProperty_mTypeName COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                    @extractObjectInExpressionForGeneration type                                     *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_extractObjectInExpressionForGeneration ("extractObjectInExpressionForGeneration",
+                                                               & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * GALGAS_extractObjectInExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extractObjectInExpressionForGeneration ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+AC_GALGAS_root * GALGAS_extractObjectInExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_extractObjectInExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_extractObjectInExpressionForGeneration GALGAS_extractObjectInExpressionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                            C_Compiler * inCompiler
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_extractObjectInExpressionForGeneration result ;
+  const GALGAS_extractObjectInExpressionForGeneration * p = (const GALGAS_extractObjectInExpressionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_extractObjectInExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("extractObjectInExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -9560,49 +6936,42 @@ GALGAS_unaryWrappingMinusExpressionForGeneration GALGAS_unaryWrappingMinusExpres
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                        Extension getter '@semanticExpressionForGeneration isTrueExpression'                         *
-//                                                                                                                     *
+//   Object comparison                                                                                                 *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-static TC_UniqueArray <enterExtensionGetter_semanticExpressionForGeneration_isTrueExpression> gExtensionGetterTable_semanticExpressionForGeneration_isTrueExpression ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void enterExtensionGetter_isTrueExpression (const int32_t inClassIndex,
-                                            enterExtensionGetter_semanticExpressionForGeneration_isTrueExpression inGetter) {
-  gExtensionGetterTable_semanticExpressionForGeneration_isTrueExpression.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
+typeComparisonResult cPtr_orShortExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_orShortExpressionForGeneration * p = (const cPtr_orShortExpressionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_orShortExpressionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
+  }
+  return result ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-GALGAS_bool callExtensionGetter_isTrueExpression (const cPtr_semanticExpressionForGeneration * inObject,
-                                                  C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_bool result ;
-//--- Find Reader
-  if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_semanticExpressionForGeneration) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    enterExtensionGetter_semanticExpressionForGeneration_isTrueExpression f = NULL ;
-    if (classIndex < gExtensionGetterTable_semanticExpressionForGeneration_isTrueExpression.count ()) {
-      f = gExtensionGetterTable_semanticExpressionForGeneration_isTrueExpression (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-       while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gExtensionGetterTable_semanticExpressionForGeneration_isTrueExpression.count ()) {
-           f = gExtensionGetterTable_semanticExpressionForGeneration_isTrueExpression (p->mSlotID COMMA_HERE) ;
-         }
-         p = p->mSuperclassDescriptor ;
-       }
-       gExtensionGetterTable_semanticExpressionForGeneration_isTrueExpression.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
+
+typeComparisonResult GALGAS_orShortExpressionForGeneration::objectCompare (const GALGAS_orShortExpressionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = f (inObject, inCompiler COMMA_THERE) ;
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
     }
   }
   return result ;
@@ -9610,33 +6979,2697 @@ GALGAS_bool callExtensionGetter_isTrueExpression (const cPtr_semanticExpressionF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-static GALGAS_bool extensionGetter_semanticExpressionForGeneration_isTrueExpression (const cPtr_semanticExpressionForGeneration * /* inObject */,
-                                                                                     C_Compiler * /* inCompiler */
-                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_bool result_result ; // Returned variable
-  result_result = GALGAS_bool (false) ;
-//---
-  return result_result ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-static void defineExtensionGetter_semanticExpressionForGeneration_isTrueExpression (void) {
-  enterExtensionGetter_isTrueExpression (kTypeDescriptor_GALGAS_semanticExpressionForGeneration.mSlotID,
-                                         extensionGetter_semanticExpressionForGeneration_isTrueExpression) ;
+GALGAS_orShortExpressionForGeneration::GALGAS_orShortExpressionForGeneration (void) :
+GALGAS_semanticExpressionForGeneration () {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-static void freeExtensionGetter_semanticExpressionForGeneration_isTrueExpression (void) {
-  gExtensionGetterTable_semanticExpressionForGeneration_isTrueExpression.free () ;
+GALGAS_orShortExpressionForGeneration::GALGAS_orShortExpressionForGeneration (const cPtr_orShortExpressionForGeneration * inSourcePtr) :
+GALGAS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_orShortExpressionForGeneration) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-C_PrologueEpilogue gGetter_semanticExpressionForGeneration_isTrueExpression (defineExtensionGetter_semanticExpressionForGeneration_isTrueExpression,
-                                                                             freeExtensionGetter_semanticExpressionForGeneration_isTrueExpression) ;
+GALGAS_orShortExpressionForGeneration GALGAS_orShortExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
+                                                                                              const GALGAS_location & inAttribute_mLocation,
+                                                                                              const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
+                                                                                              const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
+                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_orShortExpressionForGeneration result ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_orShortExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_orShortExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_orShortExpressionForGeneration * p = (const cPtr_orShortExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_orShortExpressionForGeneration) ;
+    result = p->mProperty_mLeftExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_orShortExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mLeftExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_orShortExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_orShortExpressionForGeneration * p = (const cPtr_orShortExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_orShortExpressionForGeneration) ;
+    result = p->mProperty_mRightExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_orShortExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mRightExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_orShortExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                       COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_orShortExpressionForGeneration * p = (cPtr_orShortExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_orShortExpressionForGeneration) ;
+    p->mProperty_mLeftExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_orShortExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mLeftExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_orShortExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                        COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_orShortExpressionForGeneration * p = (cPtr_orShortExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_orShortExpressionForGeneration) ;
+    p->mProperty_mRightExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_orShortExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mRightExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                               Pointer class for @orShortExpressionForGeneration class                               *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cPtr_orShortExpressionForGeneration::cPtr_orShortExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+                                                                          const GALGAS_location & in_mLocation,
+                                                                          const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
+                                                                          const GALGAS_semanticExpressionForGeneration & in_mRightExpression
+                                                                          COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * cPtr_orShortExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_orShortExpressionForGeneration ;
+}
+
+void cPtr_orShortExpressionForGeneration::description (C_String & ioString,
+                                                       const int32_t inIndentation) const {
+  ioString << "[@orShortExpressionForGeneration:" ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+acPtr_class * cPtr_orShortExpressionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_orShortExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                        @orShortExpressionForGeneration type                                         *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_orShortExpressionForGeneration ("orShortExpressionForGeneration",
+                                                       & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * GALGAS_orShortExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_orShortExpressionForGeneration ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+AC_GALGAS_root * GALGAS_orShortExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_orShortExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_orShortExpressionForGeneration GALGAS_orShortExpressionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_orShortExpressionForGeneration result ;
+  const GALGAS_orShortExpressionForGeneration * p = (const GALGAS_orShortExpressionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_orShortExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("orShortExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//   Object comparison                                                                                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typeComparisonResult cPtr_orExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_orExpressionForGeneration * p = (const cPtr_orExpressionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_orExpressionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+typeComparisonResult GALGAS_orExpressionForGeneration::objectCompare (const GALGAS_orExpressionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_orExpressionForGeneration::GALGAS_orExpressionForGeneration (void) :
+GALGAS_semanticExpressionForGeneration () {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_orExpressionForGeneration::GALGAS_orExpressionForGeneration (const cPtr_orExpressionForGeneration * inSourcePtr) :
+GALGAS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_orExpressionForGeneration) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_orExpressionForGeneration GALGAS_orExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
+                                                                                    const GALGAS_location & inAttribute_mLocation,
+                                                                                    const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
+                                                                                    const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_orExpressionForGeneration result ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_orExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_orExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_orExpressionForGeneration * p = (const cPtr_orExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_orExpressionForGeneration) ;
+    result = p->mProperty_mLeftExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_orExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mLeftExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_orExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_orExpressionForGeneration * p = (const cPtr_orExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_orExpressionForGeneration) ;
+    result = p->mProperty_mRightExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_orExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mRightExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_orExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                  COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_orExpressionForGeneration * p = (cPtr_orExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_orExpressionForGeneration) ;
+    p->mProperty_mLeftExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_orExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mLeftExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_orExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                   COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_orExpressionForGeneration * p = (cPtr_orExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_orExpressionForGeneration) ;
+    p->mProperty_mRightExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_orExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mRightExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                 Pointer class for @orExpressionForGeneration class                                  *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cPtr_orExpressionForGeneration::cPtr_orExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+                                                                const GALGAS_location & in_mLocation,
+                                                                const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
+                                                                const GALGAS_semanticExpressionForGeneration & in_mRightExpression
+                                                                COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * cPtr_orExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_orExpressionForGeneration ;
+}
+
+void cPtr_orExpressionForGeneration::description (C_String & ioString,
+                                                  const int32_t inIndentation) const {
+  ioString << "[@orExpressionForGeneration:" ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+acPtr_class * cPtr_orExpressionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_orExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                           @orExpressionForGeneration type                                           *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_orExpressionForGeneration ("orExpressionForGeneration",
+                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * GALGAS_orExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_orExpressionForGeneration ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+AC_GALGAS_root * GALGAS_orExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_orExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_orExpressionForGeneration GALGAS_orExpressionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_orExpressionForGeneration result ;
+  const GALGAS_orExpressionForGeneration * p = (const GALGAS_orExpressionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_orExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("orExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//   Object comparison                                                                                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typeComparisonResult cPtr_xorExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_xorExpressionForGeneration * p = (const cPtr_xorExpressionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_xorExpressionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+typeComparisonResult GALGAS_xorExpressionForGeneration::objectCompare (const GALGAS_xorExpressionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_xorExpressionForGeneration::GALGAS_xorExpressionForGeneration (void) :
+GALGAS_semanticExpressionForGeneration () {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_xorExpressionForGeneration::GALGAS_xorExpressionForGeneration (const cPtr_xorExpressionForGeneration * inSourcePtr) :
+GALGAS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_xorExpressionForGeneration) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_xorExpressionForGeneration GALGAS_xorExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
+                                                                                      const GALGAS_location & inAttribute_mLocation,
+                                                                                      const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
+                                                                                      const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_xorExpressionForGeneration result ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_xorExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_xorExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_xorExpressionForGeneration * p = (const cPtr_xorExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_xorExpressionForGeneration) ;
+    result = p->mProperty_mLeftExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_xorExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mLeftExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_xorExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_xorExpressionForGeneration * p = (const cPtr_xorExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_xorExpressionForGeneration) ;
+    result = p->mProperty_mRightExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_xorExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mRightExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_xorExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                   COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_xorExpressionForGeneration * p = (cPtr_xorExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_xorExpressionForGeneration) ;
+    p->mProperty_mLeftExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_xorExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mLeftExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_xorExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                    COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_xorExpressionForGeneration * p = (cPtr_xorExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_xorExpressionForGeneration) ;
+    p->mProperty_mRightExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_xorExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mRightExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                 Pointer class for @xorExpressionForGeneration class                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cPtr_xorExpressionForGeneration::cPtr_xorExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+                                                                  const GALGAS_location & in_mLocation,
+                                                                  const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
+                                                                  const GALGAS_semanticExpressionForGeneration & in_mRightExpression
+                                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * cPtr_xorExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_xorExpressionForGeneration ;
+}
+
+void cPtr_xorExpressionForGeneration::description (C_String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString << "[@xorExpressionForGeneration:" ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+acPtr_class * cPtr_xorExpressionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_xorExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                          @xorExpressionForGeneration type                                           *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_xorExpressionForGeneration ("xorExpressionForGeneration",
+                                                   & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * GALGAS_xorExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_xorExpressionForGeneration ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+AC_GALGAS_root * GALGAS_xorExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_xorExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_xorExpressionForGeneration GALGAS_xorExpressionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_xorExpressionForGeneration result ;
+  const GALGAS_xorExpressionForGeneration * p = (const GALGAS_xorExpressionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_xorExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("xorExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//   Object comparison                                                                                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typeComparisonResult cPtr_openedSliceExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_openedSliceExpressionForGeneration * p = (const cPtr_openedSliceExpressionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_openedSliceExpressionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+typeComparisonResult GALGAS_openedSliceExpressionForGeneration::objectCompare (const GALGAS_openedSliceExpressionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_openedSliceExpressionForGeneration::GALGAS_openedSliceExpressionForGeneration (void) :
+GALGAS_semanticExpressionForGeneration () {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_openedSliceExpressionForGeneration::GALGAS_openedSliceExpressionForGeneration (const cPtr_openedSliceExpressionForGeneration * inSourcePtr) :
+GALGAS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_openedSliceExpressionForGeneration) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_openedSliceExpressionForGeneration GALGAS_openedSliceExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
+                                                                                                      const GALGAS_location & inAttribute_mLocation,
+                                                                                                      const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
+                                                                                                      const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_openedSliceExpressionForGeneration result ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_openedSliceExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_openedSliceExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_openedSliceExpressionForGeneration * p = (const cPtr_openedSliceExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_openedSliceExpressionForGeneration) ;
+    result = p->mProperty_mLeftExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_openedSliceExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mLeftExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_openedSliceExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_openedSliceExpressionForGeneration * p = (const cPtr_openedSliceExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_openedSliceExpressionForGeneration) ;
+    result = p->mProperty_mRightExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_openedSliceExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mRightExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_openedSliceExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                           COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_openedSliceExpressionForGeneration * p = (cPtr_openedSliceExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_openedSliceExpressionForGeneration) ;
+    p->mProperty_mLeftExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_openedSliceExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mLeftExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_openedSliceExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                            COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_openedSliceExpressionForGeneration * p = (cPtr_openedSliceExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_openedSliceExpressionForGeneration) ;
+    p->mProperty_mRightExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_openedSliceExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mRightExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                             Pointer class for @openedSliceExpressionForGeneration class                             *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cPtr_openedSliceExpressionForGeneration::cPtr_openedSliceExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+                                                                                  const GALGAS_location & in_mLocation,
+                                                                                  const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
+                                                                                  const GALGAS_semanticExpressionForGeneration & in_mRightExpression
+                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * cPtr_openedSliceExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration ;
+}
+
+void cPtr_openedSliceExpressionForGeneration::description (C_String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString << "[@openedSliceExpressionForGeneration:" ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+acPtr_class * cPtr_openedSliceExpressionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_openedSliceExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                      @openedSliceExpressionForGeneration type                                       *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration ("openedSliceExpressionForGeneration",
+                                                           & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * GALGAS_openedSliceExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+AC_GALGAS_root * GALGAS_openedSliceExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_openedSliceExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_openedSliceExpressionForGeneration GALGAS_openedSliceExpressionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_openedSliceExpressionForGeneration result ;
+  const GALGAS_openedSliceExpressionForGeneration * p = (const GALGAS_openedSliceExpressionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_openedSliceExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("openedSliceExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//   Object comparison                                                                                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typeComparisonResult cPtr_closedSliceExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_closedSliceExpressionForGeneration * p = (const cPtr_closedSliceExpressionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_closedSliceExpressionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+typeComparisonResult GALGAS_closedSliceExpressionForGeneration::objectCompare (const GALGAS_closedSliceExpressionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_closedSliceExpressionForGeneration::GALGAS_closedSliceExpressionForGeneration (void) :
+GALGAS_semanticExpressionForGeneration () {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_closedSliceExpressionForGeneration::GALGAS_closedSliceExpressionForGeneration (const cPtr_closedSliceExpressionForGeneration * inSourcePtr) :
+GALGAS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_closedSliceExpressionForGeneration) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_closedSliceExpressionForGeneration GALGAS_closedSliceExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
+                                                                                                      const GALGAS_location & inAttribute_mLocation,
+                                                                                                      const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
+                                                                                                      const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_closedSliceExpressionForGeneration result ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_closedSliceExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_closedSliceExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_closedSliceExpressionForGeneration * p = (const cPtr_closedSliceExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_closedSliceExpressionForGeneration) ;
+    result = p->mProperty_mLeftExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_closedSliceExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mLeftExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_closedSliceExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_closedSliceExpressionForGeneration * p = (const cPtr_closedSliceExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_closedSliceExpressionForGeneration) ;
+    result = p->mProperty_mRightExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_closedSliceExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mRightExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_closedSliceExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                           COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_closedSliceExpressionForGeneration * p = (cPtr_closedSliceExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_closedSliceExpressionForGeneration) ;
+    p->mProperty_mLeftExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_closedSliceExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mLeftExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_closedSliceExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                            COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_closedSliceExpressionForGeneration * p = (cPtr_closedSliceExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_closedSliceExpressionForGeneration) ;
+    p->mProperty_mRightExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_closedSliceExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mRightExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                             Pointer class for @closedSliceExpressionForGeneration class                             *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cPtr_closedSliceExpressionForGeneration::cPtr_closedSliceExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+                                                                                  const GALGAS_location & in_mLocation,
+                                                                                  const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
+                                                                                  const GALGAS_semanticExpressionForGeneration & in_mRightExpression
+                                                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * cPtr_closedSliceExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration ;
+}
+
+void cPtr_closedSliceExpressionForGeneration::description (C_String & ioString,
+                                                           const int32_t inIndentation) const {
+  ioString << "[@closedSliceExpressionForGeneration:" ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+acPtr_class * cPtr_closedSliceExpressionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_closedSliceExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                      @closedSliceExpressionForGeneration type                                       *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration ("closedSliceExpressionForGeneration",
+                                                           & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * GALGAS_closedSliceExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+AC_GALGAS_root * GALGAS_closedSliceExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_closedSliceExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_closedSliceExpressionForGeneration GALGAS_closedSliceExpressionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_closedSliceExpressionForGeneration result ;
+  const GALGAS_closedSliceExpressionForGeneration * p = (const GALGAS_closedSliceExpressionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_closedSliceExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("closedSliceExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//   Object comparison                                                                                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typeComparisonResult cPtr_andExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_andExpressionForGeneration * p = (const cPtr_andExpressionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_andExpressionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+typeComparisonResult GALGAS_andExpressionForGeneration::objectCompare (const GALGAS_andExpressionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_andExpressionForGeneration::GALGAS_andExpressionForGeneration (void) :
+GALGAS_semanticExpressionForGeneration () {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_andExpressionForGeneration::GALGAS_andExpressionForGeneration (const cPtr_andExpressionForGeneration * inSourcePtr) :
+GALGAS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_andExpressionForGeneration) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_andExpressionForGeneration GALGAS_andExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
+                                                                                      const GALGAS_location & inAttribute_mLocation,
+                                                                                      const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
+                                                                                      const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
+                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_andExpressionForGeneration result ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_andExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_andExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_andExpressionForGeneration * p = (const cPtr_andExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_andExpressionForGeneration) ;
+    result = p->mProperty_mLeftExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_andExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mLeftExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_andExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_andExpressionForGeneration * p = (const cPtr_andExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_andExpressionForGeneration) ;
+    result = p->mProperty_mRightExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_andExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mRightExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_andExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                   COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_andExpressionForGeneration * p = (cPtr_andExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_andExpressionForGeneration) ;
+    p->mProperty_mLeftExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_andExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mLeftExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_andExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                    COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_andExpressionForGeneration * p = (cPtr_andExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_andExpressionForGeneration) ;
+    p->mProperty_mRightExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_andExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mRightExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                 Pointer class for @andExpressionForGeneration class                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cPtr_andExpressionForGeneration::cPtr_andExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+                                                                  const GALGAS_location & in_mLocation,
+                                                                  const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
+                                                                  const GALGAS_semanticExpressionForGeneration & in_mRightExpression
+                                                                  COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * cPtr_andExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_andExpressionForGeneration ;
+}
+
+void cPtr_andExpressionForGeneration::description (C_String & ioString,
+                                                   const int32_t inIndentation) const {
+  ioString << "[@andExpressionForGeneration:" ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+acPtr_class * cPtr_andExpressionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_andExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                          @andExpressionForGeneration type                                           *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_andExpressionForGeneration ("andExpressionForGeneration",
+                                                   & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * GALGAS_andExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_andExpressionForGeneration ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+AC_GALGAS_root * GALGAS_andExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_andExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_andExpressionForGeneration GALGAS_andExpressionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_andExpressionForGeneration result ;
+  const GALGAS_andExpressionForGeneration * p = (const GALGAS_andExpressionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_andExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("andExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//   Object comparison                                                                                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typeComparisonResult cPtr_andShortExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_andShortExpressionForGeneration * p = (const cPtr_andShortExpressionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_andShortExpressionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+typeComparisonResult GALGAS_andShortExpressionForGeneration::objectCompare (const GALGAS_andShortExpressionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_andShortExpressionForGeneration::GALGAS_andShortExpressionForGeneration (void) :
+GALGAS_semanticExpressionForGeneration () {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_andShortExpressionForGeneration::GALGAS_andShortExpressionForGeneration (const cPtr_andShortExpressionForGeneration * inSourcePtr) :
+GALGAS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_andShortExpressionForGeneration) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_andShortExpressionForGeneration GALGAS_andShortExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
+                                                                                                const GALGAS_location & inAttribute_mLocation,
+                                                                                                const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
+                                                                                                const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
+                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_andShortExpressionForGeneration result ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_andShortExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_andShortExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_andShortExpressionForGeneration * p = (const cPtr_andShortExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_andShortExpressionForGeneration) ;
+    result = p->mProperty_mLeftExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_andShortExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mLeftExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_andShortExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_andShortExpressionForGeneration * p = (const cPtr_andShortExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_andShortExpressionForGeneration) ;
+    result = p->mProperty_mRightExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_andShortExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mRightExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_andShortExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                        COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_andShortExpressionForGeneration * p = (cPtr_andShortExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_andShortExpressionForGeneration) ;
+    p->mProperty_mLeftExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_andShortExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mLeftExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_andShortExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                         COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_andShortExpressionForGeneration * p = (cPtr_andShortExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_andShortExpressionForGeneration) ;
+    p->mProperty_mRightExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_andShortExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mRightExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                              Pointer class for @andShortExpressionForGeneration class                               *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cPtr_andShortExpressionForGeneration::cPtr_andShortExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+                                                                            const GALGAS_location & in_mLocation,
+                                                                            const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
+                                                                            const GALGAS_semanticExpressionForGeneration & in_mRightExpression
+                                                                            COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * cPtr_andShortExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_andShortExpressionForGeneration ;
+}
+
+void cPtr_andShortExpressionForGeneration::description (C_String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString << "[@andShortExpressionForGeneration:" ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+acPtr_class * cPtr_andShortExpressionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_andShortExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                        @andShortExpressionForGeneration type                                        *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_andShortExpressionForGeneration ("andShortExpressionForGeneration",
+                                                        & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * GALGAS_andShortExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_andShortExpressionForGeneration ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+AC_GALGAS_root * GALGAS_andShortExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_andShortExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_andShortExpressionForGeneration GALGAS_andShortExpressionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_andShortExpressionForGeneration result ;
+  const GALGAS_andShortExpressionForGeneration * p = (const GALGAS_andShortExpressionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_andShortExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("andShortExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//   Object comparison                                                                                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typeComparisonResult cPtr_multiplicationExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_multiplicationExpressionForGeneration * p = (const cPtr_multiplicationExpressionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_multiplicationExpressionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+typeComparisonResult GALGAS_multiplicationExpressionForGeneration::objectCompare (const GALGAS_multiplicationExpressionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_multiplicationExpressionForGeneration::GALGAS_multiplicationExpressionForGeneration (void) :
+GALGAS_semanticExpressionForGeneration () {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_multiplicationExpressionForGeneration::GALGAS_multiplicationExpressionForGeneration (const cPtr_multiplicationExpressionForGeneration * inSourcePtr) :
+GALGAS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_multiplicationExpressionForGeneration) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_multiplicationExpressionForGeneration GALGAS_multiplicationExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
+                                                                                                            const GALGAS_location & inAttribute_mLocation,
+                                                                                                            const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
+                                                                                                            const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
+                                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_multiplicationExpressionForGeneration result ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_multiplicationExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_multiplicationExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_multiplicationExpressionForGeneration * p = (const cPtr_multiplicationExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_multiplicationExpressionForGeneration) ;
+    result = p->mProperty_mLeftExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_multiplicationExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mLeftExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_multiplicationExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_multiplicationExpressionForGeneration * p = (const cPtr_multiplicationExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_multiplicationExpressionForGeneration) ;
+    result = p->mProperty_mRightExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_multiplicationExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mRightExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_multiplicationExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                              COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_multiplicationExpressionForGeneration * p = (cPtr_multiplicationExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_multiplicationExpressionForGeneration) ;
+    p->mProperty_mLeftExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_multiplicationExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mLeftExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_multiplicationExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                               COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_multiplicationExpressionForGeneration * p = (cPtr_multiplicationExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_multiplicationExpressionForGeneration) ;
+    p->mProperty_mRightExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_multiplicationExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mRightExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                           Pointer class for @multiplicationExpressionForGeneration class                            *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cPtr_multiplicationExpressionForGeneration::cPtr_multiplicationExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+                                                                                        const GALGAS_location & in_mLocation,
+                                                                                        const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
+                                                                                        const GALGAS_semanticExpressionForGeneration & in_mRightExpression
+                                                                                        COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * cPtr_multiplicationExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_multiplicationExpressionForGeneration ;
+}
+
+void cPtr_multiplicationExpressionForGeneration::description (C_String & ioString,
+                                                              const int32_t inIndentation) const {
+  ioString << "[@multiplicationExpressionForGeneration:" ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+acPtr_class * cPtr_multiplicationExpressionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_multiplicationExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                     @multiplicationExpressionForGeneration type                                     *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_multiplicationExpressionForGeneration ("multiplicationExpressionForGeneration",
+                                                              & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * GALGAS_multiplicationExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_multiplicationExpressionForGeneration ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+AC_GALGAS_root * GALGAS_multiplicationExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_multiplicationExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_multiplicationExpressionForGeneration GALGAS_multiplicationExpressionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                          C_Compiler * inCompiler
+                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_multiplicationExpressionForGeneration result ;
+  const GALGAS_multiplicationExpressionForGeneration * p = (const GALGAS_multiplicationExpressionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_multiplicationExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("multiplicationExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//   Object comparison                                                                                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typeComparisonResult cPtr_multiplicationExpressionNoOverflowForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_multiplicationExpressionNoOverflowForGeneration * p = (const cPtr_multiplicationExpressionNoOverflowForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_multiplicationExpressionNoOverflowForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+typeComparisonResult GALGAS_multiplicationExpressionNoOverflowForGeneration::objectCompare (const GALGAS_multiplicationExpressionNoOverflowForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_multiplicationExpressionNoOverflowForGeneration::GALGAS_multiplicationExpressionNoOverflowForGeneration (void) :
+GALGAS_semanticExpressionForGeneration () {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_multiplicationExpressionNoOverflowForGeneration::GALGAS_multiplicationExpressionNoOverflowForGeneration (const cPtr_multiplicationExpressionNoOverflowForGeneration * inSourcePtr) :
+GALGAS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_multiplicationExpressionNoOverflowForGeneration) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_multiplicationExpressionNoOverflowForGeneration GALGAS_multiplicationExpressionNoOverflowForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
+                                                                                                                                const GALGAS_location & inAttribute_mLocation,
+                                                                                                                                const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
+                                                                                                                                const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
+                                                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_multiplicationExpressionNoOverflowForGeneration result ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_multiplicationExpressionNoOverflowForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_multiplicationExpressionNoOverflowForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_multiplicationExpressionNoOverflowForGeneration * p = (const cPtr_multiplicationExpressionNoOverflowForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_multiplicationExpressionNoOverflowForGeneration) ;
+    result = p->mProperty_mLeftExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_multiplicationExpressionNoOverflowForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mLeftExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_multiplicationExpressionNoOverflowForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_multiplicationExpressionNoOverflowForGeneration * p = (const cPtr_multiplicationExpressionNoOverflowForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_multiplicationExpressionNoOverflowForGeneration) ;
+    result = p->mProperty_mRightExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_multiplicationExpressionNoOverflowForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mRightExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_multiplicationExpressionNoOverflowForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                                        COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_multiplicationExpressionNoOverflowForGeneration * p = (cPtr_multiplicationExpressionNoOverflowForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_multiplicationExpressionNoOverflowForGeneration) ;
+    p->mProperty_mLeftExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_multiplicationExpressionNoOverflowForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mLeftExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_multiplicationExpressionNoOverflowForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                                         COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_multiplicationExpressionNoOverflowForGeneration * p = (cPtr_multiplicationExpressionNoOverflowForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_multiplicationExpressionNoOverflowForGeneration) ;
+    p->mProperty_mRightExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_multiplicationExpressionNoOverflowForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mRightExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                      Pointer class for @multiplicationExpressionNoOverflowForGeneration class                       *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cPtr_multiplicationExpressionNoOverflowForGeneration::cPtr_multiplicationExpressionNoOverflowForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+                                                                                                            const GALGAS_location & in_mLocation,
+                                                                                                            const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
+                                                                                                            const GALGAS_semanticExpressionForGeneration & in_mRightExpression
+                                                                                                            COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * cPtr_multiplicationExpressionNoOverflowForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowForGeneration ;
+}
+
+void cPtr_multiplicationExpressionNoOverflowForGeneration::description (C_String & ioString,
+                                                                        const int32_t inIndentation) const {
+  ioString << "[@multiplicationExpressionNoOverflowForGeneration:" ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+acPtr_class * cPtr_multiplicationExpressionNoOverflowForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_multiplicationExpressionNoOverflowForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                @multiplicationExpressionNoOverflowForGeneration type                                *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowForGeneration ("multiplicationExpressionNoOverflowForGeneration",
+                                                                        & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * GALGAS_multiplicationExpressionNoOverflowForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowForGeneration ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+AC_GALGAS_root * GALGAS_multiplicationExpressionNoOverflowForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_multiplicationExpressionNoOverflowForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_multiplicationExpressionNoOverflowForGeneration GALGAS_multiplicationExpressionNoOverflowForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                                              C_Compiler * inCompiler
+                                                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_multiplicationExpressionNoOverflowForGeneration result ;
+  const GALGAS_multiplicationExpressionNoOverflowForGeneration * p = (const GALGAS_multiplicationExpressionNoOverflowForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_multiplicationExpressionNoOverflowForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("multiplicationExpressionNoOverflowForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//   Object comparison                                                                                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typeComparisonResult cPtr_divisionExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_divisionExpressionForGeneration * p = (const cPtr_divisionExpressionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_divisionExpressionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+typeComparisonResult GALGAS_divisionExpressionForGeneration::objectCompare (const GALGAS_divisionExpressionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_divisionExpressionForGeneration::GALGAS_divisionExpressionForGeneration (void) :
+GALGAS_semanticExpressionForGeneration () {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_divisionExpressionForGeneration::GALGAS_divisionExpressionForGeneration (const cPtr_divisionExpressionForGeneration * inSourcePtr) :
+GALGAS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_divisionExpressionForGeneration) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_divisionExpressionForGeneration GALGAS_divisionExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
+                                                                                                const GALGAS_location & inAttribute_mLocation,
+                                                                                                const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
+                                                                                                const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
+                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_divisionExpressionForGeneration result ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_divisionExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_divisionExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_divisionExpressionForGeneration * p = (const cPtr_divisionExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_divisionExpressionForGeneration) ;
+    result = p->mProperty_mLeftExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_divisionExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mLeftExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_divisionExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_divisionExpressionForGeneration * p = (const cPtr_divisionExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_divisionExpressionForGeneration) ;
+    result = p->mProperty_mRightExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_divisionExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mRightExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_divisionExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                        COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_divisionExpressionForGeneration * p = (cPtr_divisionExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_divisionExpressionForGeneration) ;
+    p->mProperty_mLeftExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_divisionExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mLeftExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_divisionExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                         COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_divisionExpressionForGeneration * p = (cPtr_divisionExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_divisionExpressionForGeneration) ;
+    p->mProperty_mRightExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_divisionExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                       COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mRightExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                              Pointer class for @divisionExpressionForGeneration class                               *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cPtr_divisionExpressionForGeneration::cPtr_divisionExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+                                                                            const GALGAS_location & in_mLocation,
+                                                                            const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
+                                                                            const GALGAS_semanticExpressionForGeneration & in_mRightExpression
+                                                                            COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * cPtr_divisionExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_divisionExpressionForGeneration ;
+}
+
+void cPtr_divisionExpressionForGeneration::description (C_String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString << "[@divisionExpressionForGeneration:" ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+acPtr_class * cPtr_divisionExpressionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_divisionExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                        @divisionExpressionForGeneration type                                        *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_divisionExpressionForGeneration ("divisionExpressionForGeneration",
+                                                        & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * GALGAS_divisionExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_divisionExpressionForGeneration ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+AC_GALGAS_root * GALGAS_divisionExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_divisionExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_divisionExpressionForGeneration GALGAS_divisionExpressionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_divisionExpressionForGeneration result ;
+  const GALGAS_divisionExpressionForGeneration * p = (const GALGAS_divisionExpressionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_divisionExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("divisionExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//   Object comparison                                                                                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typeComparisonResult cPtr_divisionExpressionNoOverflowForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_divisionExpressionNoOverflowForGeneration * p = (const cPtr_divisionExpressionNoOverflowForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_divisionExpressionNoOverflowForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+typeComparisonResult GALGAS_divisionExpressionNoOverflowForGeneration::objectCompare (const GALGAS_divisionExpressionNoOverflowForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_divisionExpressionNoOverflowForGeneration::GALGAS_divisionExpressionNoOverflowForGeneration (void) :
+GALGAS_semanticExpressionForGeneration () {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_divisionExpressionNoOverflowForGeneration::GALGAS_divisionExpressionNoOverflowForGeneration (const cPtr_divisionExpressionNoOverflowForGeneration * inSourcePtr) :
+GALGAS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_divisionExpressionNoOverflowForGeneration) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_divisionExpressionNoOverflowForGeneration GALGAS_divisionExpressionNoOverflowForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
+                                                                                                                    const GALGAS_location & inAttribute_mLocation,
+                                                                                                                    const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
+                                                                                                                    const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
+                                                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_divisionExpressionNoOverflowForGeneration result ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_divisionExpressionNoOverflowForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_divisionExpressionNoOverflowForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_divisionExpressionNoOverflowForGeneration * p = (const cPtr_divisionExpressionNoOverflowForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_divisionExpressionNoOverflowForGeneration) ;
+    result = p->mProperty_mLeftExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_divisionExpressionNoOverflowForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mLeftExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_divisionExpressionNoOverflowForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_divisionExpressionNoOverflowForGeneration * p = (const cPtr_divisionExpressionNoOverflowForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_divisionExpressionNoOverflowForGeneration) ;
+    result = p->mProperty_mRightExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_divisionExpressionNoOverflowForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mRightExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_divisionExpressionNoOverflowForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                                  COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_divisionExpressionNoOverflowForGeneration * p = (cPtr_divisionExpressionNoOverflowForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_divisionExpressionNoOverflowForGeneration) ;
+    p->mProperty_mLeftExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_divisionExpressionNoOverflowForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mLeftExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_divisionExpressionNoOverflowForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                                   COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_divisionExpressionNoOverflowForGeneration * p = (cPtr_divisionExpressionNoOverflowForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_divisionExpressionNoOverflowForGeneration) ;
+    p->mProperty_mRightExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_divisionExpressionNoOverflowForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mRightExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                         Pointer class for @divisionExpressionNoOverflowForGeneration class                          *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cPtr_divisionExpressionNoOverflowForGeneration::cPtr_divisionExpressionNoOverflowForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+                                                                                                const GALGAS_location & in_mLocation,
+                                                                                                const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
+                                                                                                const GALGAS_semanticExpressionForGeneration & in_mRightExpression
+                                                                                                COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * cPtr_divisionExpressionNoOverflowForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_divisionExpressionNoOverflowForGeneration ;
+}
+
+void cPtr_divisionExpressionNoOverflowForGeneration::description (C_String & ioString,
+                                                                  const int32_t inIndentation) const {
+  ioString << "[@divisionExpressionNoOverflowForGeneration:" ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+acPtr_class * cPtr_divisionExpressionNoOverflowForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_divisionExpressionNoOverflowForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                   @divisionExpressionNoOverflowForGeneration type                                   *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_divisionExpressionNoOverflowForGeneration ("divisionExpressionNoOverflowForGeneration",
+                                                                  & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * GALGAS_divisionExpressionNoOverflowForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_divisionExpressionNoOverflowForGeneration ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+AC_GALGAS_root * GALGAS_divisionExpressionNoOverflowForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_divisionExpressionNoOverflowForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_divisionExpressionNoOverflowForGeneration GALGAS_divisionExpressionNoOverflowForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                                                  C_Compiler * inCompiler
+                                                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_divisionExpressionNoOverflowForGeneration result ;
+  const GALGAS_divisionExpressionNoOverflowForGeneration * p = (const GALGAS_divisionExpressionNoOverflowForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_divisionExpressionNoOverflowForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("divisionExpressionNoOverflowForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//   Object comparison                                                                                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typeComparisonResult cPtr_moduloExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_moduloExpressionForGeneration * p = (const cPtr_moduloExpressionForGeneration *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_moduloExpressionForGeneration) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mResultType.objectCompare (p->mProperty_mResultType) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLocation.objectCompare (p->mProperty_mLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mLeftExpression.objectCompare (p->mProperty_mLeftExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mRightExpression.objectCompare (p->mProperty_mRightExpression) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+typeComparisonResult GALGAS_moduloExpressionForGeneration::objectCompare (const GALGAS_moduloExpressionForGeneration & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_moduloExpressionForGeneration::GALGAS_moduloExpressionForGeneration (void) :
+GALGAS_semanticExpressionForGeneration () {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_moduloExpressionForGeneration::GALGAS_moduloExpressionForGeneration (const cPtr_moduloExpressionForGeneration * inSourcePtr) :
+GALGAS_semanticExpressionForGeneration (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_moduloExpressionForGeneration) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_moduloExpressionForGeneration GALGAS_moduloExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
+                                                                                            const GALGAS_location & inAttribute_mLocation,
+                                                                                            const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
+                                                                                            const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_moduloExpressionForGeneration result ;
+  if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_moduloExpressionForGeneration (inAttribute_mResultType, inAttribute_mLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_moduloExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_moduloExpressionForGeneration * p = (const cPtr_moduloExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_moduloExpressionForGeneration) ;
+    result = p->mProperty_mLeftExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_moduloExpressionForGeneration::getter_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mLeftExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration GALGAS_moduloExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionForGeneration result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_moduloExpressionForGeneration * p = (const cPtr_moduloExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_moduloExpressionForGeneration) ;
+    result = p->mProperty_mRightExpression ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_semanticExpressionForGeneration cPtr_moduloExpressionForGeneration::getter_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mRightExpression ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_moduloExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                      COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_moduloExpressionForGeneration * p = (cPtr_moduloExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_moduloExpressionForGeneration) ;
+    p->mProperty_mLeftExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_moduloExpressionForGeneration::setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mLeftExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_moduloExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                       COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_moduloExpressionForGeneration * p = (cPtr_moduloExpressionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_moduloExpressionForGeneration) ;
+    p->mProperty_mRightExpression = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_moduloExpressionForGeneration::setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mRightExpression = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                               Pointer class for @moduloExpressionForGeneration class                                *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cPtr_moduloExpressionForGeneration::cPtr_moduloExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
+                                                                        const GALGAS_location & in_mLocation,
+                                                                        const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
+                                                                        const GALGAS_semanticExpressionForGeneration & in_mRightExpression
+                                                                        COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
+mProperty_mLeftExpression (in_mLeftExpression),
+mProperty_mRightExpression (in_mRightExpression) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * cPtr_moduloExpressionForGeneration::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_moduloExpressionForGeneration ;
+}
+
+void cPtr_moduloExpressionForGeneration::description (C_String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString << "[@moduloExpressionForGeneration:" ;
+  mProperty_mResultType.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mLeftExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mRightExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+acPtr_class * cPtr_moduloExpressionForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_moduloExpressionForGeneration (mProperty_mResultType, mProperty_mLocation, mProperty_mLeftExpression, mProperty_mRightExpression COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                         @moduloExpressionForGeneration type                                         *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_moduloExpressionForGeneration ("moduloExpressionForGeneration",
+                                                      & kTypeDescriptor_GALGAS_semanticExpressionForGeneration) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * GALGAS_moduloExpressionForGeneration::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_moduloExpressionForGeneration ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+AC_GALGAS_root * GALGAS_moduloExpressionForGeneration::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_moduloExpressionForGeneration (*this)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_moduloExpressionForGeneration GALGAS_moduloExpressionForGeneration::extractObject (const GALGAS_object & inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_moduloExpressionForGeneration result ;
+  const GALGAS_moduloExpressionForGeneration * p = (const GALGAS_moduloExpressionForGeneration *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_moduloExpressionForGeneration *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("moduloExpressionForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //   Object comparison                                                                                                 *

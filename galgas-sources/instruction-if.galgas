@@ -32,7 +32,7 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
-  rule <casted_expression> !@semanticExpressionAST outExpression
+  rule <expression_or> !@semanticExpressionAST outExpression
 
   #·····················································································································
 
@@ -87,7 +87,7 @@ syntax extension galgas3InstructionsSyntax {
         $let$
         $identifier$ ?let constantName
         $=$
-        <casted_expression> ?let expression
+        <expression_or> ?let expression
         let endOfReceiverExpression = @location.here
         $as$
         $@type$ ?let @lstring typeName

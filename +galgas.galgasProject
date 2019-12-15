@@ -142,10 +142,12 @@ project (3:3:14) -> "galgas" {
   "galgas-sources/expression-not.galgas"
   "galgas-sources/expression-tilde.galgas"
   "galgas-sources/expression-unary-wrapping-minus.galgas"
+  "galgas-sources/expression-or.galgas"
+  "galgas-sources/expression-and.galgas"
+  "galgas-sources/expression-multiplicative.galgas"
 
   "galgas-sources/galgas3ExpressionSyntax.galgas"
   "galgas-sources/semanticExpressionAnalysis.galgas"
-  "galgas-sources/semanticExpressionGeneration.galgas"
 
 #--- Instructions
   "galgas-sources/instruction-assignment.galgas"

@@ -430,17 +430,6 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
   public : virtual void nt_cast_5F_instruction_5F_branch_ (GALGAS_castInstructionBranchListAST & ioArgument0,
                                                            C_Lexique_galgas_33_Scanner * inCompiler) ;
 
-//------------------------------------- 'casted_expression' non terminal
-//--- 'parse' label
-  public : virtual void nt_casted_5F_expression_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_casted_5F_expression_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_casted_5F_expression_ (GALGAS_semanticExpressionAST & outArgument0,
-                                                  C_Lexique_galgas_33_Scanner * inCompiler) ;
-
 //------------------------------------- 'collection_value_element' non terminal
 //--- 'parse' label
   public : virtual void nt_collection_5F_value_5F_element_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
@@ -485,6 +474,28 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
 //----------- '' label
   public : virtual void nt_expression_ (GALGAS_semanticExpressionAST & outArgument0,
                                         C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//------------------------------------- 'expression_and' non terminal
+//--- 'parse' label
+  public : virtual void nt_expression_5F_and_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_expression_5F_and_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_expression_5F_and_ (GALGAS_semanticExpressionAST & outArgument0,
+                                               C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//------------------------------------- 'expression_or' non terminal
+//--- 'parse' label
+  public : virtual void nt_expression_5F_or_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//--- indexing
+  public : virtual void nt_expression_5F_or_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
+
+//----------- '' label
+  public : virtual void nt_expression_5F_or_ (GALGAS_semanticExpressionAST & outArgument0,
+                                              C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //------------------------------------- 'extern_function_declaration' non terminal
 //--- 'parse' label
@@ -1084,17 +1095,6 @@ class cGrammar_galgas_33_Grammar : public cParser_galgas_33_ExpressionSyntax,
 //----------- '' label
   public : virtual void nt_relation_5F_factor_ (GALGAS_semanticExpressionAST & outArgument0,
                                                 C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//------------------------------------- 'relation_term' non terminal
-//--- 'parse' label
-  public : virtual void nt_relation_5F_term_parse (C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//--- indexing
-  public : virtual void nt_relation_5F_term_indexing (C_Lexique_galgas_33_Scanner * inCompiler) ;
-
-//----------- '' label
-  public : virtual void nt_relation_5F_term_ (GALGAS_semanticExpressionAST & outArgument0,
-                                              C_Lexique_galgas_33_Scanner * inCompiler) ;
 
 //------------------------------------- 'remove_declaration' non terminal
 //--- 'parse' label

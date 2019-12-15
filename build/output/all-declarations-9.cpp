@@ -13533,361 +13533,34 @@ GALGAS_galgas_33_QualifiedFeatureList GALGAS_galgas_33_QualifiedFeatureList::ext
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_casted_5F_expression_i0_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
-                                                                                                   C_Lexique_galgas_33_Scanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_relation_5F_term_ (outArgument_outExpression, inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_0 (inCompiler)) {
-    case 2: {
-      GALGAS_location var_operatorLocation_2733 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 30)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7C_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 31)) ;
-      GALGAS_semanticExpressionAST var_leftOperand_2778 = outArgument_outExpression ;
-      GALGAS_semanticExpressionAST var_rightOperand_2832 ;
-      nt_relation_5F_term_ (var_rightOperand_2832, inCompiler) ;
-      outArgument_outExpression = GALGAS_orExpressionAST::constructor_new (var_operatorLocation_2733, var_leftOperand_2778, var_rightOperand_2832  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 34)) ;
-    } break ;
-    case 3: {
-      GALGAS_location var_operatorLocation_2953 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 36)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7C__7C_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 37)) ;
-      GALGAS_semanticExpressionAST var_leftOperand_2999 = outArgument_outExpression ;
-      GALGAS_semanticExpressionAST var_rightOperand_3053 ;
-      nt_relation_5F_term_ (var_rightOperand_3053, inCompiler) ;
-      outArgument_outExpression = GALGAS_orShortExpressionAST::constructor_new (var_operatorLocation_2953, var_leftOperand_2999, var_rightOperand_3053  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 40)) ;
-    } break ;
-    case 4: {
-      GALGAS_location var_operatorLocation_3179 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 42)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5E_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 43)) ;
-      GALGAS_semanticExpressionAST var_leftOperand_3224 = outArgument_outExpression ;
-      GALGAS_semanticExpressionAST var_rightOperand_3278 ;
-      nt_relation_5F_term_ (var_rightOperand_3278, inCompiler) ;
-      outArgument_outExpression = GALGAS_xorExpressionAST::constructor_new (var_operatorLocation_3179, var_leftOperand_3224, var_rightOperand_3278  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 46)) ;
-    } break ;
-    case 5: {
-      GALGAS_location var_operatorLocation_3400 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 48)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E__2E__2E_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 49)) ;
-      GALGAS_semanticExpressionAST var_leftOperand_3447 = outArgument_outExpression ;
-      GALGAS_semanticExpressionAST var_rightOperand_3501 ;
-      nt_relation_5F_term_ (var_rightOperand_3501, inCompiler) ;
-      outArgument_outExpression = GALGAS_closedSliceExpressionAST::constructor_new (var_operatorLocation_3400, var_leftOperand_3447, var_rightOperand_3501  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 52)) ;
-    } break ;
-    case 6: {
-      GALGAS_location var_operatorLocation_3631 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 54)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E__2E__3C_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 55)) ;
-      GALGAS_semanticExpressionAST var_leftOperand_3678 = outArgument_outExpression ;
-      GALGAS_semanticExpressionAST var_rightOperand_3732 ;
-      nt_relation_5F_term_ (var_rightOperand_3732, inCompiler) ;
-      outArgument_outExpression = GALGAS_openedSliceExpressionAST::constructor_new (var_operatorLocation_3631, var_leftOperand_3678, var_rightOperand_3732  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 58)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_casted_5F_expression_i0_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  nt_relation_5F_term_parse (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_0 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7C_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 31)) ;
-      nt_relation_5F_term_parse (inCompiler) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7C__7C_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 37)) ;
-      nt_relation_5F_term_parse (inCompiler) ;
-    } break ;
-    case 4: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5E_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 43)) ;
-      nt_relation_5F_term_parse (inCompiler) ;
-    } break ;
-    case 5: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E__2E__2E_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 49)) ;
-      nt_relation_5F_term_parse (inCompiler) ;
-    } break ;
-    case 6: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E__2E__3C_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 55)) ;
-      nt_relation_5F_term_parse (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_casted_5F_expression_i0_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  nt_relation_5F_term_indexing (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_0 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7C_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 31)) ;
-      nt_relation_5F_term_indexing (inCompiler) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7C__7C_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 37)) ;
-      nt_relation_5F_term_indexing (inCompiler) ;
-    } break ;
-    case 4: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5E_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 43)) ;
-      nt_relation_5F_term_indexing (inCompiler) ;
-    } break ;
-    case 5: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E__2E__2E_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 49)) ;
-      nt_relation_5F_term_indexing (inCompiler) ;
-    } break ;
-    case 6: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E__2E__3C_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 55)) ;
-      nt_relation_5F_term_indexing (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_relation_5F_term_i1_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
-                                                                                               C_Lexique_galgas_33_Scanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_relation_5F_factor_ (outArgument_outExpression, inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_1 (inCompiler)) {
-    case 2: {
-      GALGAS_location var_operatorLocation_4583 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 72)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 73)) ;
-      GALGAS_semanticExpressionAST var_leftOperand_4628 = outArgument_outExpression ;
-      GALGAS_semanticExpressionAST var_rightOperand_4707 ;
-      nt_relation_5F_factor_ (var_rightOperand_4707, inCompiler) ;
-      outArgument_outExpression = GALGAS_andExpressionAST::constructor_new (var_operatorLocation_4583, var_leftOperand_4628, var_rightOperand_4707  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 76)) ;
-    } break ;
-    case 3: {
-      GALGAS_location var_operatorLocation_4829 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 78)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__26_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 79)) ;
-      GALGAS_semanticExpressionAST var_leftOperand_4875 = outArgument_outExpression ;
-      GALGAS_semanticExpressionAST var_rightOperand_4954 ;
-      nt_relation_5F_factor_ (var_rightOperand_4954, inCompiler) ;
-      outArgument_outExpression = GALGAS_andShortExpressionAST::constructor_new (var_operatorLocation_4829, var_leftOperand_4875, var_rightOperand_4954  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 82)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_relation_5F_term_i1_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  nt_relation_5F_factor_parse (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_1 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 73)) ;
-      nt_relation_5F_factor_parse (inCompiler) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__26_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 79)) ;
-      nt_relation_5F_factor_parse (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_relation_5F_term_i1_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  nt_relation_5F_factor_indexing (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_1 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 73)) ;
-      nt_relation_5F_factor_indexing (inCompiler) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__26_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 79)) ;
-      nt_relation_5F_factor_indexing (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_term_i2_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
-                                                                                   C_Lexique_galgas_33_Scanner * inCompiler) {
-  outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_factor_ (outArgument_outExpression, inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_2 (inCompiler)) {
-    case 2: {
-      GALGAS_location var_operatorLocation_5784 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 96)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2A_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 97)) ;
-      GALGAS_semanticExpressionAST var_leftOperand_5829 = outArgument_outExpression ;
-      GALGAS_semanticExpressionAST var_rightOperand_5899 ;
-      nt_factor_ (var_rightOperand_5899, inCompiler) ;
-      outArgument_outExpression = GALGAS_multiplicationExpressionAST::constructor_new (var_operatorLocation_5784, var_leftOperand_5829, var_rightOperand_5899  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 100)) ;
-    } break ;
-    case 3: {
-      GALGAS_location var_operatorLocation_6032 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 102)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__2A_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 103)) ;
-      GALGAS_semanticExpressionAST var_leftOperand_6078 = outArgument_outExpression ;
-      GALGAS_semanticExpressionAST var_rightOperand_6148 ;
-      nt_factor_ (var_rightOperand_6148, inCompiler) ;
-      outArgument_outExpression = GALGAS_multiplicationExpressionNoOverflowAST::constructor_new (var_operatorLocation_6032, var_leftOperand_6078, var_rightOperand_6148  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 106)) ;
-    } break ;
-    case 4: {
-      GALGAS_location var_operatorLocation_6291 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 108)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2F_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 109)) ;
-      GALGAS_semanticExpressionAST var_leftOperand_6336 = outArgument_outExpression ;
-      GALGAS_semanticExpressionAST var_rightOperand_6383 ;
-      nt_factor_ (var_rightOperand_6383, inCompiler) ;
-      outArgument_outExpression = GALGAS_divisionExpressionAST::constructor_new (var_operatorLocation_6291, var_leftOperand_6336, var_rightOperand_6383  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 112)) ;
-    } break ;
-    case 5: {
-      GALGAS_location var_operatorLocation_6510 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 114)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__2F_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 115)) ;
-      GALGAS_semanticExpressionAST var_leftOperand_6556 = outArgument_outExpression ;
-      GALGAS_semanticExpressionAST var_rightOperand_6603 ;
-      nt_factor_ (var_rightOperand_6603, inCompiler) ;
-      outArgument_outExpression = GALGAS_divisionExpressionNoOverflowAST::constructor_new (var_operatorLocation_6510, var_leftOperand_6556, var_rightOperand_6603  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 118)) ;
-    } break ;
-    case 6: {
-      GALGAS_location var_operatorLocation_6740 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 120)) ;
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_mod COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 121)) ;
-      GALGAS_semanticExpressionAST var_leftOperand_6787 = outArgument_outExpression ;
-      GALGAS_semanticExpressionAST var_rightOperand_6834 ;
-      nt_factor_ (var_rightOperand_6834, inCompiler) ;
-      outArgument_outExpression = GALGAS_moduloExpressionAST::constructor_new (var_operatorLocation_6740, var_leftOperand_6787, var_rightOperand_6834  COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 124)) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_term_i2_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  nt_factor_parse (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_2 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2A_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 97)) ;
-      nt_factor_parse (inCompiler) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__2A_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 103)) ;
-      nt_factor_parse (inCompiler) ;
-    } break ;
-    case 4: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2F_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 109)) ;
-      nt_factor_parse (inCompiler) ;
-    } break ;
-    case 5: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__2F_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 115)) ;
-      nt_factor_parse (inCompiler) ;
-    } break ;
-    case 6: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_mod COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 121)) ;
-      nt_factor_parse (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-  inCompiler->resetTemplateString () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_term_i2_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  nt_factor_indexing (inCompiler) ;
-  bool repeatFlag_0 = true ;
-  while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_2 (inCompiler)) {
-    case 2: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2A_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 97)) ;
-      nt_factor_indexing (inCompiler) ;
-    } break ;
-    case 3: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__2A_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 103)) ;
-      nt_factor_indexing (inCompiler) ;
-    } break ;
-    case 4: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2F_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 109)) ;
-      nt_factor_indexing (inCompiler) ;
-    } break ;
-    case 5: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__2F_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 115)) ;
-      nt_factor_indexing (inCompiler) ;
-    } break ;
-    case 6: {
-      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_mod COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 121)) ;
-      nt_factor_indexing (inCompiler) ;
-    } break ;
-    default:
-      repeatFlag_0 = false ;
-      break ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i3_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i0_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                       C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__28_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 135)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__28_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 23)) ;
   nt_expression_ (outArgument_outExpression, inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__29_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 137)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__29_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 25)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i3_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__28_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 135)) ;
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i0_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__28_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 23)) ;
   nt_expression_parse (inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__29_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 137)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__29_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 25)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i3_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__28_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 135)) ;
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i0_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+  inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__28_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 23)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__29_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 137)) ;
+  inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__29_ COMMA_SOURCE_FILE ("galgas3ExpressionSyntax.galgas", 25)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i4_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i1_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                       C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_if COMMA_SOURCE_FILE ("expression-if.galgas", 21)) ;
@@ -13906,7 +13579,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i4_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i1_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_if COMMA_SOURCE_FILE ("expression-if.galgas", 21)) ;
   nt_expression_parse (inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_then COMMA_SOURCE_FILE ("expression-if.galgas", 24)) ;
@@ -13919,7 +13592,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i4_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i1_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_if COMMA_SOURCE_FILE ("expression-if.galgas", 21)) ;
   nt_expression_indexing (inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_then COMMA_SOURCE_FILE ("expression-if.galgas", 24)) ;
@@ -13931,7 +13604,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i5_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i2_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                      C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_location var_operatorLocation_877 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 19)) ;
@@ -13942,7 +13615,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i5_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i2_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2B_ COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 20)) ;
   nt_factor_parse (inCompiler) ;
   inCompiler->resetTemplateString () ;
@@ -13950,14 +13623,14 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i5_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i2_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2B_ COMMA_SOURCE_FILE ("expression-unary-plus.galgas", 20)) ;
   nt_factor_indexing (inCompiler) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i6_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i3_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                      C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_location var_operatorLocation_878 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 19)) ;
@@ -13968,7 +13641,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i6_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i3_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2D_ COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 20)) ;
   nt_factor_parse (inCompiler) ;
   inCompiler->resetTemplateString () ;
@@ -13976,14 +13649,14 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i6_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i3_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2D_ COMMA_SOURCE_FILE ("expression-unary-minus.galgas", 20)) ;
   nt_factor_indexing (inCompiler) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i7_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i4_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                       C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_lstring var_identifier_837 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -13993,26 +13666,26 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i7_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i4_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-var.galgas", 18)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i7_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i4_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-var.galgas", 18)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_i8_ (GALGAS_actualOutputExpressionList & outArgument_outExpressionList,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_i5_ (GALGAS_actualOutputExpressionList & outArgument_outExpressionList,
                                                                                                            C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpressionList.drop () ; // Release 'out' argument
   outArgument_outExpressionList = GALGAS_actualOutputExpressionList::constructor_emptyList (SOURCE_FILE ("expression-output-expression-list.galgas", 20)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_3 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_0 (inCompiler)) {
     case 2: {
       GALGAS_lstring var_selector_963 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__21_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 23)) ;
@@ -14029,10 +13702,10 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_i8_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_i5_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_3 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_0 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__21_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 23)) ;
       nt_expression_parse (inCompiler) ;
@@ -14047,10 +13720,10 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_i8_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_5F_expression_5F_list_i5_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_3 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_0 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__21_ COMMA_SOURCE_FILE ("expression-output-expression-list.galgas", 23)) ;
       nt_expression_indexing (inCompiler) ;
@@ -14064,7 +13737,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_output_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i9_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i6_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                       C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_true COMMA_SOURCE_FILE ("expression-true-false.galgas", 24)) ;
@@ -14073,21 +13746,21 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i9_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i6_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_true COMMA_SOURCE_FILE ("expression-true-false.galgas", 24)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i9_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i6_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_true COMMA_SOURCE_FILE ("expression-true-false.galgas", 24)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i10_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
-                                                                                       C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i7_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+                                                                                      C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_false COMMA_SOURCE_FILE ("expression-true-false.galgas", 31)) ;
   outArgument_outExpression = GALGAS_falseExpressionAST::constructor_new (GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-true-false.galgas", 32))  COMMA_SOURCE_FILE ("expression-true-false.galgas", 32)) ;
@@ -14095,21 +13768,21 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i10_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i7_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_false COMMA_SOURCE_FILE ("expression-true-false.galgas", 31)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i10_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i7_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_false COMMA_SOURCE_FILE ("expression-true-false.galgas", 31)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i11_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
-                                                                                       C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i8_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+                                                                                      C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_stringlist var_literalStringList_878 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("expression-literal-string.galgas", 19)) ;
   bool repeatFlag_0 = true ;
@@ -14117,7 +13790,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
     GALGAS_lstring var_literalString_930 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("expression-literal-string.galgas", 21)) ;
     var_literalStringList_878.addAssign_operation (var_literalString_930.getter_string (HERE)  COMMA_SOURCE_FILE ("expression-literal-string.galgas", 22)) ;
-    switch (select_galgas_33_ExpressionSyntax_4 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_1 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -14130,11 +13803,11 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i11_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i8_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("expression-literal-string.galgas", 21)) ;
-    switch (select_galgas_33_ExpressionSyntax_4 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_1 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -14147,11 +13820,11 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i11_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i8_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("expression-literal-string.galgas", 21)) ;
-    switch (select_galgas_33_ExpressionSyntax_4 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_1 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -14163,8 +13836,8 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i12_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
-                                                                                       C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i9_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+                                                                                      C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_lchar var_literalChar_847 = inCompiler->synthetizedAttribute_charValue () ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("expression-literal-char.galgas", 18)) ;
@@ -14173,20 +13846,20 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i12_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i9_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("expression-literal-char.galgas", 18)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i12_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i9_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__27_char_27_ COMMA_SOURCE_FILE ("expression-literal-char.galgas", 18)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i13_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i10_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_ldouble var_literalDouble_855 = inCompiler->synthetizedAttribute_floatValue () ;
@@ -14196,20 +13869,20 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i13_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i10_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_double_2E_xxx COMMA_SOURCE_FILE ("expression-literal-double.galgas", 18)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i13_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i10_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_double_2E_xxx COMMA_SOURCE_FILE ("expression-literal-double.galgas", 18)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i14_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i11_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_luint var_literalInt_1646 = inCompiler->synthetizedAttribute_uint_33__32_value () ;
@@ -14219,20 +13892,20 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i14_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i11_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_ COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 42)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i14_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i11_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_uint_33__32_ COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 42)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i15_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i12_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_lsint var_literalInt_1934 = inCompiler->synthetizedAttribute_sint_33__32_value () ;
@@ -14242,20 +13915,20 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i15_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i12_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_sint_33__32__5F_S COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 49)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i15_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i12_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_sint_33__32__5F_S COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 49)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i16_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i13_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_luint_36__34_ var_literalInt_2224 = inCompiler->synthetizedAttribute_uint_36__34_value () ;
@@ -14265,20 +13938,20 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i16_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i13_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_uint_36__34__5F_L COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 56)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i16_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i13_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_uint_36__34__5F_L COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 56)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i17_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i14_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_lsint_36__34_ var_literalInt_2517 = inCompiler->synthetizedAttribute_sint_36__34_value () ;
@@ -14288,20 +13961,20 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i17_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i14_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_sint_36__34__5F_LS COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 63)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i17_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i14_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_sint_36__34__5F_LS COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 63)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i18_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i15_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_lbigint var_literalInt_2809 = inCompiler->synthetizedAttribute_bigintValue () ;
@@ -14311,26 +13984,26 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i18_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i15_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_bigint_5F_G COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 70)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i18_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i15_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_bigint_5F_G COMMA_SOURCE_FILE ("expression-literal-integer.galgas", 70)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_relation_5F_factor_i19_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_relation_5F_factor_i16_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                                   C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   nt_simple_5F_expression_ (outArgument_outExpression, inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_5 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_2 (inCompiler)) {
     case 2: {
       GALGAS_location var_operatorLocation_1160 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-comparison.galgas", 28)) ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3D__3D_ COMMA_SOURCE_FILE ("expression-comparison.galgas", 29)) ;
@@ -14388,11 +14061,11 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_relatio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_relation_5F_factor_i19_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_relation_5F_factor_i16_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   nt_simple_5F_expression_parse (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_5 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_2 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3D__3D_ COMMA_SOURCE_FILE ("expression-comparison.galgas", 29)) ;
       nt_simple_5F_expression_parse (inCompiler) ;
@@ -14427,11 +14100,11 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_relatio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_relation_5F_factor_i19_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_relation_5F_factor_i16_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   nt_simple_5F_expression_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_5 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_2 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3D__3D_ COMMA_SOURCE_FILE ("expression-comparison.galgas", 29)) ;
       nt_simple_5F_expression_indexing (inCompiler) ;
@@ -14465,13 +14138,13 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_relatio
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_simple_5F_expression_i20_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_simple_5F_expression_i17_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                                     C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   nt_term_ (outArgument_outExpression, inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_6 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_3 (inCompiler)) {
     case 2: {
       GALGAS_location var_operatorLocation_1138 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-additive.galgas", 28)) ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3C__3C_ COMMA_SOURCE_FILE ("expression-additive.galgas", 29)) ;
@@ -14529,11 +14202,11 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_simple_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_simple_5F_expression_i20_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_simple_5F_expression_i17_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   nt_term_parse (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_6 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_3 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3C__3C_ COMMA_SOURCE_FILE ("expression-additive.galgas", 29)) ;
       nt_term_parse (inCompiler) ;
@@ -14568,11 +14241,11 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_simple_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_simple_5F_expression_i20_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_simple_5F_expression_i17_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   nt_term_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_6 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_3 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3C__3C_ COMMA_SOURCE_FILE ("expression-additive.galgas", 29)) ;
       nt_term_indexing (inCompiler) ;
@@ -14606,43 +14279,43 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_simple_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_expression_i21_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_expression_i18_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                           C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
-  nt_casted_5F_expression_ (outArgument_outExpression, inCompiler) ;
-  switch (select_galgas_33_ExpressionSyntax_7 (inCompiler)) {
+  nt_expression_5F_or_ (outArgument_outExpression, inCompiler) ;
+  switch (select_galgas_33_ExpressionSyntax_4 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
-    GALGAS_location var_endOfReceiverExpression_1552 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 41)) ;
+    GALGAS_location var_endOfReceiverExpression_1548 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 41)) ;
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_is COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 42)) ;
-    GALGAS_dynamicTypeComparisonKind var_kind_1618 ;
-    switch (select_galgas_33_ExpressionSyntax_8 (inCompiler)) {
+    GALGAS_dynamicTypeComparisonKind var_kind_1614 ;
+    switch (select_galgas_33_ExpressionSyntax_5 (inCompiler)) {
     case 1: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3D__3D_ COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 45)) ;
-      var_kind_1618 = GALGAS_dynamicTypeComparisonKind::constructor_equal (SOURCE_FILE ("expression-cast-expression.galgas", 46)) ;
+      var_kind_1614 = GALGAS_dynamicTypeComparisonKind::constructor_equal (SOURCE_FILE ("expression-cast-expression.galgas", 46)) ;
     } break ;
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3E__3D_ COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 48)) ;
-      var_kind_1618 = GALGAS_dynamicTypeComparisonKind::constructor_inherited (SOURCE_FILE ("expression-cast-expression.galgas", 49)) ;
+      var_kind_1614 = GALGAS_dynamicTypeComparisonKind::constructor_inherited (SOURCE_FILE ("expression-cast-expression.galgas", 49)) ;
     } break ;
     case 3: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3E_ COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 51)) ;
-      var_kind_1618 = GALGAS_dynamicTypeComparisonKind::constructor_strictlyInherited (SOURCE_FILE ("expression-cast-expression.galgas", 52)) ;
+      var_kind_1614 = GALGAS_dynamicTypeComparisonKind::constructor_strictlyInherited (SOURCE_FILE ("expression-cast-expression.galgas", 52)) ;
     } break ;
     default:
       break ;
     }
-    GALGAS_lstring var_typeName_1807 = inCompiler->synthetizedAttribute_tokenString () ;
+    GALGAS_lstring var_typeName_1803 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__40_type COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 54)) ;
-    outArgument_outExpression = GALGAS_testDynamicClassInExpressionAST::constructor_new (outArgument_outExpression, var_endOfReceiverExpression_1552, var_kind_1618, var_typeName_1807  COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 55)) ;
+    outArgument_outExpression = GALGAS_testDynamicClassInExpressionAST::constructor_new (outArgument_outExpression, var_endOfReceiverExpression_1548, var_kind_1614, var_typeName_1803  COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 55)) ;
   } break ;
   case 3: {
-    GALGAS_location var_endOfReceiverExpression_2005 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 62)) ;
+    GALGAS_location var_endOfReceiverExpression_2001 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 62)) ;
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_as COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 63)) ;
-    GALGAS_lstring var_typeName_2061 = inCompiler->synthetizedAttribute_tokenString () ;
+    GALGAS_lstring var_typeName_2057 = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__40_type COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 64)) ;
-    outArgument_outExpression = GALGAS_castInExpressionAST::constructor_new (outArgument_outExpression, var_endOfReceiverExpression_2005, var_typeName_2061  COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 65)) ;
+    outArgument_outExpression = GALGAS_castInExpressionAST::constructor_new (outArgument_outExpression, var_endOfReceiverExpression_2001, var_typeName_2057  COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 65)) ;
   } break ;
   default:
     break ;
@@ -14651,14 +14324,14 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_express
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_expression_i21_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  nt_casted_5F_expression_parse (inCompiler) ;
-  switch (select_galgas_33_ExpressionSyntax_7 (inCompiler)) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_expression_i18_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+  nt_expression_5F_or_parse (inCompiler) ;
+  switch (select_galgas_33_ExpressionSyntax_4 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_is COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 42)) ;
-    switch (select_galgas_33_ExpressionSyntax_8 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_5 (inCompiler)) {
     case 1: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3D__3D_ COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 45)) ;
     } break ;
@@ -14685,14 +14358,14 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_express
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_expression_i21_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  nt_casted_5F_expression_indexing (inCompiler) ;
-  switch (select_galgas_33_ExpressionSyntax_7 (inCompiler)) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_expression_i18_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+  nt_expression_5F_or_indexing (inCompiler) ;
+  switch (select_galgas_33_ExpressionSyntax_4 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_is COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 42)) ;
-    switch (select_galgas_33_ExpressionSyntax_8 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_5 (inCompiler)) {
     case 1: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__3D__3D_ COMMA_SOURCE_FILE ("expression-cast-expression.galgas", 45)) ;
     } break ;
@@ -14718,7 +14391,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_express
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i22_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i19_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5B_ COMMA_SOURCE_FILE ("expression-option.galgas", 20)) ;
@@ -14737,7 +14410,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i22_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i19_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5B_ COMMA_SOURCE_FILE ("expression-option.galgas", 20)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_option COMMA_SOURCE_FILE ("expression-option.galgas", 21)) ;
   inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_optionComponentReference, "") ;
@@ -14751,7 +14424,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i22_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i19_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5B_ COMMA_SOURCE_FILE ("expression-option.galgas", 20)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_option COMMA_SOURCE_FILE ("expression-option.galgas", 21)) ;
   inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_optionComponentReference, "") ;
@@ -14764,7 +14437,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i23_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i20_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5B_ COMMA_SOURCE_FILE ("expression-option.galgas", 33)) ;
@@ -14780,7 +14453,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i23_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i20_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5B_ COMMA_SOURCE_FILE ("expression-option.galgas", 33)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_option COMMA_SOURCE_FILE ("expression-option.galgas", 34)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-option.galgas", 35)) ;
@@ -14792,7 +14465,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i23_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i20_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5B_ COMMA_SOURCE_FILE ("expression-option.galgas", 33)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_option COMMA_SOURCE_FILE ("expression-option.galgas", 34)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-option.galgas", 35)) ;
@@ -14803,7 +14476,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i24_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i21_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5B_ COMMA_SOURCE_FILE ("expression-lexique.galgas", 19)) ;
@@ -14819,7 +14492,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i24_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i21_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5B_ COMMA_SOURCE_FILE ("expression-lexique.galgas", 19)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_lexique COMMA_SOURCE_FILE ("expression-lexique.galgas", 20)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-lexique.galgas", 21)) ;
@@ -14831,7 +14504,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i24_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i21_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5B_ COMMA_SOURCE_FILE ("expression-lexique.galgas", 19)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_lexique COMMA_SOURCE_FILE ("expression-lexique.galgas", 20)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-lexique.galgas", 21)) ;
@@ -14842,7 +14515,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i25_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i22_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5B_ COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 33)) ;
@@ -14850,13 +14523,13 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   GALGAS_lstring var_filewrapperName_1446 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_filewrapperReference, "") ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 35)) ;
-  switch (select_galgas_33_ExpressionSyntax_9 (inCompiler)) {
+  switch (select_galgas_33_ExpressionSyntax_6 (inCompiler)) {
   case 1: {
     outArgument_outExpression = GALGAS_filewrapperObjectInstanciationInExpressionAST::constructor_new (var_filewrapperName_1446  COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 37)) ;
   } break ;
   case 2: {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 41)) ;
-    switch (select_galgas_33_ExpressionSyntax_10 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_7 (inCompiler)) {
     case 1: {
       GALGAS_lstring var_filePath_1667 = inCompiler->synthetizedAttribute_tokenString () ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 43)) ;
@@ -14881,17 +14554,17 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i25_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i22_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5B_ COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 33)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_filewrapper COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 34)) ;
   inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_filewrapperReference, "") ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 35)) ;
-  switch (select_galgas_33_ExpressionSyntax_9 (inCompiler)) {
+  switch (select_galgas_33_ExpressionSyntax_6 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 41)) ;
-    switch (select_galgas_33_ExpressionSyntax_10 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_7 (inCompiler)) {
     case 1: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 43)) ;
     } break ;
@@ -14912,17 +14585,17 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i25_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i22_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5B_ COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 33)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_filewrapper COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 34)) ;
   inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_filewrapperReference, "") ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 35)) ;
-  switch (select_galgas_33_ExpressionSyntax_9 (inCompiler)) {
+  switch (select_galgas_33_ExpressionSyntax_6 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 41)) ;
-    switch (select_galgas_33_ExpressionSyntax_10 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_7 (inCompiler)) {
     case 1: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__22_string_22_ COMMA_SOURCE_FILE ("expression-filewrapper.galgas", 43)) ;
     } break ;
@@ -14942,7 +14615,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i26_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i23_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5B_ COMMA_SOURCE_FILE ("expression-getter-call.galgas", 20)) ;
@@ -14958,7 +14631,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i26_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i23_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5B_ COMMA_SOURCE_FILE ("expression-getter-call.galgas", 20)) ;
   nt_expression_parse (inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-getter-call.galgas", 24)) ;
@@ -14969,7 +14642,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i26_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i23_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5B_ COMMA_SOURCE_FILE ("expression-getter-call.galgas", 20)) ;
   nt_expression_indexing (inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-getter-call.galgas", 24)) ;
@@ -14979,10 +14652,10 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_optional_5F_type_i27_ (GALGAS_lstring & outArgument_outTypeName,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_optional_5F_type_i24_ (GALGAS_lstring & outArgument_outTypeName,
                                                                                                 C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outTypeName.drop () ; // Release 'out' argument
-  switch (select_galgas_33_ExpressionSyntax_11 (inCompiler)) {
+  switch (select_galgas_33_ExpressionSyntax_8 (inCompiler)) {
   case 1: {
     outArgument_outTypeName = GALGAS_lstring::constructor_new (GALGAS_string::makeEmptyString (), GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-constructor.galgas", 27))  COMMA_SOURCE_FILE ("expression-constructor.galgas", 27)) ;
   } break ;
@@ -14998,8 +14671,8 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_optiona
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_optional_5F_type_i27_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  switch (select_galgas_33_ExpressionSyntax_11 (inCompiler)) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_optional_5F_type_i24_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+  switch (select_galgas_33_ExpressionSyntax_8 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
@@ -15014,8 +14687,8 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_optiona
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_optional_5F_type_i27_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  switch (select_galgas_33_ExpressionSyntax_11 (inCompiler)) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_optional_5F_type_i24_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+  switch (select_galgas_33_ExpressionSyntax_8 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
@@ -15029,7 +14702,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_optiona
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i28_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i25_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_lstring var_typeName_1457 ;
@@ -15038,7 +14711,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
   GALGAS_lstring var_constructorName_1536 = inCompiler->synthetizedAttribute_tokenString () ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-constructor.galgas", 40)) ;
   GALGAS_actualOutputExpressionList var_expressionList_1607 ;
-  switch (select_galgas_33_ExpressionSyntax_12 (inCompiler)) {
+  switch (select_galgas_33_ExpressionSyntax_9 (inCompiler)) {
   case 1: {
     var_expressionList_1607 = GALGAS_actualOutputExpressionList::constructor_emptyList (SOURCE_FILE ("expression-constructor.galgas", 44)) ;
   } break ;
@@ -15055,11 +14728,11 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i28_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i25_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   nt_optional_5F_type_parse (inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-constructor.galgas", 38)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-constructor.galgas", 40)) ;
-  switch (select_galgas_33_ExpressionSyntax_12 (inCompiler)) {
+  switch (select_galgas_33_ExpressionSyntax_9 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
@@ -15075,11 +14748,11 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i28_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i25_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   nt_optional_5F_type_indexing (inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-constructor.galgas", 38)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-constructor.galgas", 40)) ;
-  switch (select_galgas_33_ExpressionSyntax_12 (inCompiler)) {
+  switch (select_galgas_33_ExpressionSyntax_9 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
@@ -15094,7 +14767,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i29_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i26_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_lstring var_typeName_2071 ;
@@ -15106,7 +14779,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i29_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i26_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   nt_optional_5F_type_parse (inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-constructor.galgas", 60)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_default COMMA_SOURCE_FILE ("expression-constructor.galgas", 61)) ;
@@ -15115,7 +14788,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i29_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i26_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   nt_optional_5F_type_indexing (inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-constructor.galgas", 60)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_default COMMA_SOURCE_FILE ("expression-constructor.galgas", 61)) ;
@@ -15123,7 +14796,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i30_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i27_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_lstring var_functionName_906 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -15138,7 +14811,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i30_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i27_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_functionCall, "") ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-function-call.galgas", 19)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__28_ COMMA_SOURCE_FILE ("expression-function-call.galgas", 20)) ;
@@ -15149,7 +14822,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i30_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i27_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_functionCall, "") ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-function-call.galgas", 19)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__28_ COMMA_SOURCE_FILE ("expression-function-call.galgas", 20)) ;
@@ -15159,7 +14832,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i31_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i28_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__60_ COMMA_SOURCE_FILE ("expression-literal-type.galgas", 18)) ;
@@ -15170,7 +14843,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i31_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i28_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__60_ COMMA_SOURCE_FILE ("expression-literal-type.galgas", 18)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__40_type COMMA_SOURCE_FILE ("expression-literal-type.galgas", 19)) ;
   inCompiler->resetTemplateString () ;
@@ -15178,21 +14851,21 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i31_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i28_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__60_ COMMA_SOURCE_FILE ("expression-literal-type.galgas", 18)) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__40_type COMMA_SOURCE_FILE ("expression-literal-type.galgas", 19)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i32_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i29_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_lstring var_typeName_1867 ;
   nt_optional_5F_type_ (var_typeName_1867, inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7B_ COMMA_SOURCE_FILE ("expression-collection-value.galgas", 45)) ;
   GALGAS_collectionValueElementList var_elementList_1919 = GALGAS_collectionValueElementList::constructor_emptyList (SOURCE_FILE ("expression-collection-value.galgas", 46)) ;
-  switch (select_galgas_33_ExpressionSyntax_13 (inCompiler)) {
+  switch (select_galgas_33_ExpressionSyntax_10 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
@@ -15201,7 +14874,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
       GALGAS_abstractCollectionValueElement var_element_2035 ;
       nt_collection_5F_value_5F_element_ (var_element_2035, inCompiler) ;
       var_elementList_1919.addAssign_operation (var_element_2035  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 51)) ;
-      switch (select_galgas_33_ExpressionSyntax_14 (inCompiler)) {
+      switch (select_galgas_33_ExpressionSyntax_11 (inCompiler)) {
       case 2: {
         inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2C_ COMMA_SOURCE_FILE ("expression-collection-value.galgas", 53)) ;
       } break ;
@@ -15220,17 +14893,17 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i32_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i29_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   nt_optional_5F_type_parse (inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7B_ COMMA_SOURCE_FILE ("expression-collection-value.galgas", 45)) ;
-  switch (select_galgas_33_ExpressionSyntax_13 (inCompiler)) {
+  switch (select_galgas_33_ExpressionSyntax_10 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
       nt_collection_5F_value_5F_element_parse (inCompiler) ;
-      switch (select_galgas_33_ExpressionSyntax_14 (inCompiler)) {
+      switch (select_galgas_33_ExpressionSyntax_11 (inCompiler)) {
       case 2: {
         inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2C_ COMMA_SOURCE_FILE ("expression-collection-value.galgas", 53)) ;
       } break ;
@@ -15249,17 +14922,17 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i32_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i29_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   nt_optional_5F_type_indexing (inCompiler) ;
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7B_ COMMA_SOURCE_FILE ("expression-collection-value.galgas", 45)) ;
-  switch (select_galgas_33_ExpressionSyntax_13 (inCompiler)) {
+  switch (select_galgas_33_ExpressionSyntax_10 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
       nt_collection_5F_value_5F_element_indexing (inCompiler) ;
-      switch (select_galgas_33_ExpressionSyntax_14 (inCompiler)) {
+      switch (select_galgas_33_ExpressionSyntax_11 (inCompiler)) {
       case 2: {
         inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2C_ COMMA_SOURCE_FILE ("expression-collection-value.galgas", 53)) ;
       } break ;
@@ -15277,7 +14950,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collection_5F_value_5F_element_i33_ (GALGAS_abstractCollectionValueElement & outArgument_outValueElement,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collection_5F_value_5F_element_i30_ (GALGAS_abstractCollectionValueElement & outArgument_outValueElement,
                                                                                                               C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outValueElement.drop () ; // Release 'out' argument
   GALGAS_actualOutputExpressionList var_expressionList_2491 = GALGAS_actualOutputExpressionList::constructor_emptyList (SOURCE_FILE ("expression-collection-value.galgas", 67)) ;
@@ -15288,7 +14961,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collect
     GALGAS_semanticExpressionAST var_expression_2589 ;
     nt_expression_ (var_expression_2589, inCompiler) ;
     var_expressionList_2491.addAssign_operation (var_selector_2531, var_expression_2589, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 71))  COMMA_SOURCE_FILE ("expression-collection-value.galgas", 71)) ;
-    switch (select_galgas_33_ExpressionSyntax_15 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_12 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -15301,12 +14974,12 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collect
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collection_5F_value_5F_element_i33_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collection_5F_value_5F_element_i30_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__21_ COMMA_SOURCE_FILE ("expression-collection-value.galgas", 69)) ;
     nt_expression_parse (inCompiler) ;
-    switch (select_galgas_33_ExpressionSyntax_15 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_12 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -15319,12 +14992,12 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collect
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collection_5F_value_5F_element_i33_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collection_5F_value_5F_element_i30_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__21_ COMMA_SOURCE_FILE ("expression-collection-value.galgas", 69)) ;
     nt_expression_indexing (inCompiler) ;
-    switch (select_galgas_33_ExpressionSyntax_15 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_12 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -15336,7 +15009,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collect
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collection_5F_value_5F_element_i34_ (GALGAS_abstractCollectionValueElement & outArgument_outValueElement,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collection_5F_value_5F_element_i31_ (GALGAS_abstractCollectionValueElement & outArgument_outValueElement,
                                                                                                               C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outValueElement.drop () ; // Release 'out' argument
   GALGAS_semanticExpressionAST var_expression_3032 ;
@@ -15346,20 +15019,20 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collect
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collection_5F_value_5F_element_i34_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collection_5F_value_5F_element_i31_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   nt_expression_parse (inCompiler) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collection_5F_value_5F_element_i34_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_collection_5F_value_5F_element_i31_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   nt_expression_indexing (inCompiler) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i35_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i32_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                        C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_self COMMA_SOURCE_FILE ("expression-self.galgas", 18)) ;
@@ -15368,26 +15041,26 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i35_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i32_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_self COMMA_SOURCE_FILE ("expression-self.galgas", 18)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i35_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_primary_i32_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_self COMMA_SOURCE_FILE ("expression-self.galgas", 18)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i36_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i33_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                       C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   nt_primary_ (outArgument_outExpression, inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_16 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_13 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-property-access.galgas", 23)) ;
       GALGAS_lstring var_structFieldName_994 = inCompiler->synthetizedAttribute_tokenString () ;
@@ -15403,11 +15076,11 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i36_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i33_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   nt_primary_parse (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_16 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_13 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-property-access.galgas", 23)) ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-property-access.galgas", 24)) ;
@@ -15422,11 +15095,11 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i36_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i33_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   nt_primary_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    switch (select_galgas_33_ExpressionSyntax_16 (inCompiler)) {
+    switch (select_galgas_33_ExpressionSyntax_13 (inCompiler)) {
     case 2: {
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E_ COMMA_SOURCE_FILE ("expression-property-access.galgas", 23)) ;
       inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_identifier COMMA_SOURCE_FILE ("expression-property-access.galgas", 24)) ;
@@ -15440,7 +15113,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i37_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i34_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                       C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_location var_operatorLocation_873 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-not.galgas", 19)) ;
@@ -15451,7 +15124,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i37_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i34_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_not COMMA_SOURCE_FILE ("expression-not.galgas", 20)) ;
   nt_factor_parse (inCompiler) ;
   inCompiler->resetTemplateString () ;
@@ -15459,14 +15132,14 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i37_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i34_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_not COMMA_SOURCE_FILE ("expression-not.galgas", 20)) ;
   nt_factor_indexing (inCompiler) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i38_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i35_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                       C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_location var_operatorLocation_875 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-tilde.galgas", 19)) ;
@@ -15477,7 +15150,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i38_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i35_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7E_ COMMA_SOURCE_FILE ("expression-tilde.galgas", 20)) ;
   nt_factor_parse (inCompiler) ;
   inCompiler->resetTemplateString () ;
@@ -15485,14 +15158,14 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i38_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i35_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7E_ COMMA_SOURCE_FILE ("expression-tilde.galgas", 20)) ;
   nt_factor_indexing (inCompiler) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i39_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i36_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
                                                                                       C_Lexique_galgas_33_Scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_location var_operatorLocation_888 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 19)) ;
@@ -15503,7 +15176,7 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i39_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i36_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__2D_ COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 20)) ;
   nt_factor_parse (inCompiler) ;
   inCompiler->resetTemplateString () ;
@@ -15511,8 +15184,335 @@ void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i39_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_factor_i36_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
   inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__2D_ COMMA_SOURCE_FILE ("expression-unary-wrapping-minus.galgas", 20)) ;
   nt_factor_indexing (inCompiler) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_expression_5F_or_i37_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+                                                                                                C_Lexique_galgas_33_Scanner * inCompiler) {
+  outArgument_outExpression.drop () ; // Release 'out' argument
+  nt_expression_5F_and_ (outArgument_outExpression, inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_galgas_33_ExpressionSyntax_14 (inCompiler)) {
+    case 2: {
+      GALGAS_location var_operatorLocation_1105 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 27)) ;
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7C_ COMMA_SOURCE_FILE ("expression-or.galgas", 28)) ;
+      GALGAS_semanticExpressionAST var_leftOperand_1154 = outArgument_outExpression ;
+      GALGAS_semanticExpressionAST var_rightOperand_1211 ;
+      nt_expression_5F_and_ (var_rightOperand_1211, inCompiler) ;
+      outArgument_outExpression = GALGAS_orExpressionAST::constructor_new (var_operatorLocation_1105, var_leftOperand_1154, var_rightOperand_1211  COMMA_SOURCE_FILE ("expression-or.galgas", 31)) ;
+    } break ;
+    case 3: {
+      GALGAS_location var_operatorLocation_1338 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 33)) ;
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7C__7C_ COMMA_SOURCE_FILE ("expression-or.galgas", 34)) ;
+      GALGAS_semanticExpressionAST var_leftOperand_1388 = outArgument_outExpression ;
+      GALGAS_semanticExpressionAST var_rightOperand_1445 ;
+      nt_expression_5F_and_ (var_rightOperand_1445, inCompiler) ;
+      outArgument_outExpression = GALGAS_orShortExpressionAST::constructor_new (var_operatorLocation_1338, var_leftOperand_1388, var_rightOperand_1445  COMMA_SOURCE_FILE ("expression-or.galgas", 37)) ;
+    } break ;
+    case 4: {
+      GALGAS_location var_operatorLocation_1577 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 39)) ;
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5E_ COMMA_SOURCE_FILE ("expression-or.galgas", 40)) ;
+      GALGAS_semanticExpressionAST var_leftOperand_1626 = outArgument_outExpression ;
+      GALGAS_semanticExpressionAST var_rightOperand_1683 ;
+      nt_expression_5F_and_ (var_rightOperand_1683, inCompiler) ;
+      outArgument_outExpression = GALGAS_xorExpressionAST::constructor_new (var_operatorLocation_1577, var_leftOperand_1626, var_rightOperand_1683  COMMA_SOURCE_FILE ("expression-or.galgas", 43)) ;
+    } break ;
+    case 5: {
+      GALGAS_location var_operatorLocation_1811 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 45)) ;
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E__2E__2E_ COMMA_SOURCE_FILE ("expression-or.galgas", 46)) ;
+      GALGAS_semanticExpressionAST var_leftOperand_1862 = outArgument_outExpression ;
+      GALGAS_semanticExpressionAST var_rightOperand_1919 ;
+      nt_expression_5F_and_ (var_rightOperand_1919, inCompiler) ;
+      outArgument_outExpression = GALGAS_closedSliceExpressionAST::constructor_new (var_operatorLocation_1811, var_leftOperand_1862, var_rightOperand_1919  COMMA_SOURCE_FILE ("expression-or.galgas", 49)) ;
+    } break ;
+    case 6: {
+      GALGAS_location var_operatorLocation_2055 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-or.galgas", 51)) ;
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E__2E__3C_ COMMA_SOURCE_FILE ("expression-or.galgas", 52)) ;
+      GALGAS_semanticExpressionAST var_leftOperand_2106 = outArgument_outExpression ;
+      GALGAS_semanticExpressionAST var_rightOperand_2163 ;
+      nt_expression_5F_and_ (var_rightOperand_2163, inCompiler) ;
+      outArgument_outExpression = GALGAS_openedSliceExpressionAST::constructor_new (var_operatorLocation_2055, var_leftOperand_2106, var_rightOperand_2163  COMMA_SOURCE_FILE ("expression-or.galgas", 55)) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_expression_5F_or_i37_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+  nt_expression_5F_and_parse (inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_galgas_33_ExpressionSyntax_14 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7C_ COMMA_SOURCE_FILE ("expression-or.galgas", 28)) ;
+      nt_expression_5F_and_parse (inCompiler) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7C__7C_ COMMA_SOURCE_FILE ("expression-or.galgas", 34)) ;
+      nt_expression_5F_and_parse (inCompiler) ;
+    } break ;
+    case 4: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5E_ COMMA_SOURCE_FILE ("expression-or.galgas", 40)) ;
+      nt_expression_5F_and_parse (inCompiler) ;
+    } break ;
+    case 5: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E__2E__2E_ COMMA_SOURCE_FILE ("expression-or.galgas", 46)) ;
+      nt_expression_5F_and_parse (inCompiler) ;
+    } break ;
+    case 6: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E__2E__3C_ COMMA_SOURCE_FILE ("expression-or.galgas", 52)) ;
+      nt_expression_5F_and_parse (inCompiler) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+  inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_expression_5F_or_i37_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+  nt_expression_5F_and_indexing (inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_galgas_33_ExpressionSyntax_14 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7C_ COMMA_SOURCE_FILE ("expression-or.galgas", 28)) ;
+      nt_expression_5F_and_indexing (inCompiler) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__7C__7C_ COMMA_SOURCE_FILE ("expression-or.galgas", 34)) ;
+      nt_expression_5F_and_indexing (inCompiler) ;
+    } break ;
+    case 4: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__5E_ COMMA_SOURCE_FILE ("expression-or.galgas", 40)) ;
+      nt_expression_5F_and_indexing (inCompiler) ;
+    } break ;
+    case 5: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E__2E__2E_ COMMA_SOURCE_FILE ("expression-or.galgas", 46)) ;
+      nt_expression_5F_and_indexing (inCompiler) ;
+    } break ;
+    case 6: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2E__2E__3C_ COMMA_SOURCE_FILE ("expression-or.galgas", 52)) ;
+      nt_expression_5F_and_indexing (inCompiler) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_expression_5F_and_i38_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+                                                                                                 C_Lexique_galgas_33_Scanner * inCompiler) {
+  outArgument_outExpression.drop () ; // Release 'out' argument
+  nt_relation_5F_factor_ (outArgument_outExpression, inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_galgas_33_ExpressionSyntax_15 (inCompiler)) {
+    case 2: {
+      GALGAS_location var_operatorLocation_1018 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 24)) ;
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26_ COMMA_SOURCE_FILE ("expression-and.galgas", 25)) ;
+      GALGAS_semanticExpressionAST var_leftOperand_1067 = outArgument_outExpression ;
+      GALGAS_semanticExpressionAST var_rightOperand_1148 ;
+      nt_relation_5F_factor_ (var_rightOperand_1148, inCompiler) ;
+      outArgument_outExpression = GALGAS_andExpressionAST::constructor_new (var_operatorLocation_1018, var_leftOperand_1067, var_rightOperand_1148  COMMA_SOURCE_FILE ("expression-and.galgas", 28)) ;
+    } break ;
+    case 3: {
+      GALGAS_location var_operatorLocation_1276 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-and.galgas", 30)) ;
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__26_ COMMA_SOURCE_FILE ("expression-and.galgas", 31)) ;
+      GALGAS_semanticExpressionAST var_leftOperand_1326 = outArgument_outExpression ;
+      GALGAS_semanticExpressionAST var_rightOperand_1407 ;
+      nt_relation_5F_factor_ (var_rightOperand_1407, inCompiler) ;
+      outArgument_outExpression = GALGAS_andShortExpressionAST::constructor_new (var_operatorLocation_1276, var_leftOperand_1326, var_rightOperand_1407  COMMA_SOURCE_FILE ("expression-and.galgas", 34)) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_expression_5F_and_i38_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+  nt_relation_5F_factor_parse (inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_galgas_33_ExpressionSyntax_15 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26_ COMMA_SOURCE_FILE ("expression-and.galgas", 25)) ;
+      nt_relation_5F_factor_parse (inCompiler) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__26_ COMMA_SOURCE_FILE ("expression-and.galgas", 31)) ;
+      nt_relation_5F_factor_parse (inCompiler) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+  inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_expression_5F_and_i38_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+  nt_relation_5F_factor_indexing (inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_galgas_33_ExpressionSyntax_15 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26_ COMMA_SOURCE_FILE ("expression-and.galgas", 25)) ;
+      nt_relation_5F_factor_indexing (inCompiler) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__26_ COMMA_SOURCE_FILE ("expression-and.galgas", 31)) ;
+      nt_relation_5F_factor_indexing (inCompiler) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_term_i39_ (GALGAS_semanticExpressionAST & outArgument_outExpression,
+                                                                                    C_Lexique_galgas_33_Scanner * inCompiler) {
+  outArgument_outExpression.drop () ; // Release 'out' argument
+  nt_factor_ (outArgument_outExpression, inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_galgas_33_ExpressionSyntax_16 (inCompiler)) {
+    case 2: {
+      GALGAS_location var_operatorLocation_1124 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 27)) ;
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2A_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 28)) ;
+      GALGAS_semanticExpressionAST var_leftOperand_1173 = outArgument_outExpression ;
+      GALGAS_semanticExpressionAST var_rightOperand_1245 ;
+      nt_factor_ (var_rightOperand_1245, inCompiler) ;
+      outArgument_outExpression = GALGAS_multiplicationExpressionAST::constructor_new (var_operatorLocation_1124, var_leftOperand_1173, var_rightOperand_1245  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 31)) ;
+    } break ;
+    case 3: {
+      GALGAS_location var_operatorLocation_1384 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 33)) ;
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__2A_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 34)) ;
+      GALGAS_semanticExpressionAST var_leftOperand_1434 = outArgument_outExpression ;
+      GALGAS_semanticExpressionAST var_rightOperand_1506 ;
+      nt_factor_ (var_rightOperand_1506, inCompiler) ;
+      outArgument_outExpression = GALGAS_multiplicationExpressionNoOverflowAST::constructor_new (var_operatorLocation_1384, var_leftOperand_1434, var_rightOperand_1506  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 37)) ;
+    } break ;
+    case 4: {
+      GALGAS_location var_operatorLocation_1655 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 39)) ;
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2F_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 40)) ;
+      GALGAS_semanticExpressionAST var_leftOperand_1704 = outArgument_outExpression ;
+      GALGAS_semanticExpressionAST var_rightOperand_1753 ;
+      nt_factor_ (var_rightOperand_1753, inCompiler) ;
+      outArgument_outExpression = GALGAS_divisionExpressionAST::constructor_new (var_operatorLocation_1655, var_leftOperand_1704, var_rightOperand_1753  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 43)) ;
+    } break ;
+    case 5: {
+      GALGAS_location var_operatorLocation_1886 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 45)) ;
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__2F_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 46)) ;
+      GALGAS_semanticExpressionAST var_leftOperand_1936 = outArgument_outExpression ;
+      GALGAS_semanticExpressionAST var_rightOperand_1985 ;
+      nt_factor_ (var_rightOperand_1985, inCompiler) ;
+      outArgument_outExpression = GALGAS_divisionExpressionNoOverflowAST::constructor_new (var_operatorLocation_1886, var_leftOperand_1936, var_rightOperand_1985  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 49)) ;
+    } break ;
+    case 6: {
+      GALGAS_location var_operatorLocation_2128 = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 51)) ;
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_mod COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 52)) ;
+      GALGAS_semanticExpressionAST var_leftOperand_2179 = outArgument_outExpression ;
+      GALGAS_semanticExpressionAST var_rightOperand_2228 ;
+      nt_factor_ (var_rightOperand_2228, inCompiler) ;
+      outArgument_outExpression = GALGAS_moduloExpressionAST::constructor_new (var_operatorLocation_2128, var_leftOperand_2179, var_rightOperand_2228  COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 55)) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_term_i39_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
+  nt_factor_parse (inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_galgas_33_ExpressionSyntax_16 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2A_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 28)) ;
+      nt_factor_parse (inCompiler) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__2A_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 34)) ;
+      nt_factor_parse (inCompiler) ;
+    } break ;
+    case 4: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2F_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 40)) ;
+      nt_factor_parse (inCompiler) ;
+    } break ;
+    case 5: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__2F_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 46)) ;
+      nt_factor_parse (inCompiler) ;
+    } break ;
+    case 6: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_mod COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 52)) ;
+      nt_factor_parse (inCompiler) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
+  inCompiler->resetTemplateString () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cParser_galgas_33_ExpressionSyntax::rule_galgas_33_ExpressionSyntax_term_i39_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
+  nt_factor_indexing (inCompiler) ;
+  bool repeatFlag_0 = true ;
+  while (repeatFlag_0) {
+    switch (select_galgas_33_ExpressionSyntax_16 (inCompiler)) {
+    case 2: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2A_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 28)) ;
+      nt_factor_indexing (inCompiler) ;
+    } break ;
+    case 3: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__2A_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 34)) ;
+      nt_factor_indexing (inCompiler) ;
+    } break ;
+    case 4: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__2F_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 40)) ;
+      nt_factor_indexing (inCompiler) ;
+    } break ;
+    case 5: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken__26__2F_ COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 46)) ;
+      nt_factor_indexing (inCompiler) ;
+    } break ;
+    case 6: {
+      inCompiler->acceptTerminal (C_Lexique_galgas_33_Scanner::kToken_mod COMMA_SOURCE_FILE ("expression-multiplicative.galgas", 52)) ;
+      nt_factor_indexing (inCompiler) ;
+    } break ;
+    default:
+      repeatFlag_0 = false ;
+      break ;
+    }
+  }
 }
 

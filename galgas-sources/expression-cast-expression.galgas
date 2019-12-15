@@ -35,7 +35,7 @@ syntax extension galgas3ExpressionSyntax {
   #·····················································································································
   
   rule <expression> !@semanticExpressionAST outExpression {
-    <casted_expression> ?outExpression
+    <expression_or> ?outExpression
     select
     or
       let endOfReceiverExpression = @location.here
@@ -294,6 +294,38 @@ override method @castInExpressionForGeneration generateExpression
   ioGeneratedCode += "}\n"
   [!?ioGeneratedCode decIndentation !2]
   ioGeneratedCode += "}\n"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @extractObjectInExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression
+  @string mTypeName
+}
+
+#·····················································································································
+
+override method @extractObjectInExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression {
+  outCppExpression = "temp_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+#--- Receiver expression
+  [mReceiverExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?var @string receiverExpression
+  ]
+#--- Generate code
+  outCppExpression = "GALGAS_" + [mResultType identifierRepresentation]
+  + "::extractObject (" + receiverExpression
+  + ", " + compilerCppName ()
+  + [mLocation commaSourceFile] + ")"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
