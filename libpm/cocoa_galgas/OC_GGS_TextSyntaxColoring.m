@@ -342,9 +342,29 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  [mSourceTextStorage beginEditing] ;
-  [mSourceTextStorage replaceCharactersInRange:NSMakeRange (0, mSourceTextStorage.length) withString:inString] ;
-  [mSourceTextStorage endEditing] ;
+  if (![mSourceTextStorage.string isEqualToString: inString]) {
+    NSArray * allDisplays = mTextDisplayDescriptorSet.allObjects ;
+  //--- Save selection
+    NSRange * savedRangeArray = malloc (sizeof (NSRange) * allDisplays.count) ;
+    NSInteger idx = 0 ;
+    for (OC_GGS_TextDisplayDescriptor * tdd in allDisplays) {
+      const NSRange selectedRange = [tdd selectedRange] ;
+      savedRangeArray [idx] = selectedRange ;
+      idx += 1 ;
+    }
+    [mSourceTextStorage beginEditing] ;
+    [mSourceTextStorage replaceCharactersInRange: NSMakeRange (0, mSourceTextStorage.length) withString: inString] ;
+    [mSourceTextStorage endEditing] ;
+  //--- Restore selection
+    const NSRange newFullRange = NSMakeRange (0, mSourceTextStorage.length) ;
+    idx = 0 ;
+    for (OC_GGS_TextDisplayDescriptor * tdd in allDisplays) {
+      const NSRange savedSelectedRange = savedRangeArray [idx] ;
+      const NSRange newRange = NSIntersectionRange (savedSelectedRange, newFullRange) ;
+      [tdd setSelectionRange: newRange] ;
+      idx += 1 ;
+    }
+  }
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -1057,17 +1077,19 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-- (void) parseSourceFileForBuildingIndexFile: (NSString *) inSourceFileFullPath {
+- (void) parseSourceFileForBuildingIndexFile: (NSArray *) inArray {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s, file %@", __PRETTY_FUNCTION__, inSourceFileFullPath) ;
   #endif
-  NSString * compilerToolPath = gCocoaApplicationDelegate.compilerToolPath ;
+  NSString * sourceFileFullPath = [inArray objectAtIndex: 0] ;
+  const NSInteger selectedToolIndex = [[inArray objectAtIndex: 1] integerValue] ;
+  NSString * compilerToolPath = [gCocoaApplicationDelegate compilerToolPath: selectedToolIndex] ;
 //--- Command line tool does actually exist ? (First argument is not "?")
   if (! [compilerToolPath isEqualToString:@"?"]) {
   //--- Build argument array
     NSMutableArray * arguments = [NSMutableArray new] ;
-    [arguments addObject:inSourceFileFullPath] ;
-    [arguments addObject:@"--mode=indexing"] ;
+    [arguments addObject: sourceFileFullPath] ;
+    [arguments addObject: @"--mode=indexing"] ;
   //--- Create task
     NSTask * task = [NSTask new] ;
     [task setLaunchPath:compilerToolPath] ;
@@ -1117,19 +1139,21 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
         NSString * indexFileFullPath = [NSString stringWithFormat:@"%@/%@.plist", indexingDirectory, [filePath lastPathComponent]] ;
       //--- Parse source file ?
         if (! [fm fileExistsAtPath:indexFileFullPath]) { // Parse source file
+          NSNumber * toolIndexNumber = [NSNumber numberWithInteger: gCocoaApplicationDelegate.selectedToolIndex] ;
           NSInvocationOperation * op = [[NSInvocationOperation alloc] 
             initWithTarget:self
             selector:@selector (parseSourceFileForBuildingIndexFile:)
-            object:fullFilePath
+            object:[NSArray arrayWithObjects: fullFilePath, toolIndexNumber, nil]
           ] ;
           [opq addOperation:op] ;
           [availableDictionaryPathArray addObject:indexFileFullPath] ;
         }else if ([self sourceFile:fullFilePath newerThanFile:indexFileFullPath]) {
+          NSNumber * toolIndexNumber = [NSNumber numberWithInteger: gCocoaApplicationDelegate.selectedToolIndex] ;
           [fm removeItemAtPath:indexFileFullPath error:NULL] ;
           NSInvocationOperation * op = [[NSInvocationOperation alloc] 
             initWithTarget:self
             selector:@selector (parseSourceFileForBuildingIndexFile:)
-            object:fullFilePath
+            object:[NSArray arrayWithObjects: fullFilePath, toolIndexNumber, nil]
           ] ;
           [opq addOperation:op] ;
           [availableDictionaryPathArray addObject:indexFileFullPath] ;

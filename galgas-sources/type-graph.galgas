@@ -107,10 +107,10 @@ override method @graphDeclarationAST enterInSemanticContext
   ]
 #---
   commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  var constructorMap =@constructorMap.emptyMap{}
-  var setterMap =@setterMap.emptyMap{}
-  var instanceMethodMap =@instanceMethodMap.emptyMap{}
-  var classMethodMap =@classMethodMap.emptyMap{}
+  @constructorMap constructorMap = {}
+  @setterMap setterMap = {}
+  @instanceMethodMap instanceMethodMap = {}
+  @classMethodMap classMethodMap = {}
 #--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
   var formalParameterList = @formalParameterSignature {}
   formalParameterList += 
@@ -301,7 +301,7 @@ override method @graphDeclarationAST enterInSemanticContext
 #--- Constructor 'emptyGraph'
   [!?constructorMap insertKey
     !@lstring.new {!"emptyGraph" !@location.here}
-    !@functionSignature.emptyList
+    !{}
     !false # No compiler argument
     !graphTypeProxy
   ]
@@ -334,7 +334,7 @@ override method @graphDeclarationAST enterInSemanticContext
   [!?setterMap insertKey
     !@lstring.new {!"removeEdgesToDominators" !@location.here}
     !@methodKind.definedAsMember
-    !@formalParameterSignature.emptyList
+    !{}
     !false # No compiler argument
     !@methodQualifier. isInherited
     !"" # No error message

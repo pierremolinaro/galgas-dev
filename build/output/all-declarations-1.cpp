@@ -62,7 +62,7 @@ typeComparisonResult cMapElement_templateVariableMap::compare (const cCollection
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_templateVariableMap::GALGAS_templateVariableMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

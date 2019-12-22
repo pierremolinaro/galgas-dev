@@ -239,13 +239,19 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- Enumeration description
   @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
 #--- Attributes
-  @bool usesSelectorsInInsertAndSearch = false
+  var usesSelectorsInInsertAndSearch = false
+  var activateSuggestion = true
   for (s) in mAttributeList do
     if s.string == "selectors" then
       if usesSelectorsInInsertAndSearch then
         error s : "duplicated attribute"
       end
       usesSelectorsInInsertAndSearch = true
+    elsif s.string == "noSuggestion" then
+      if not activateSuggestion then
+        error s : "duplicated attribute"
+      end
+      activateSuggestion = false
     else
       error s : "unknown attribute"
     end
@@ -353,7 +359,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !lstringTypeIndex
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inLKey"
-  var typesToIncludeInHeaderCompilation = @unifiedTypeMapProxyList.emptyList
+  @unifiedTypeMapProxyList typesToIncludeInHeaderCompilation = {}
   for () in mPropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasGetter = true
@@ -505,24 +511,24 @@ override method @mapDeclarationAST enterInSemanticContext
     !mMapTypeName
     !mIsPredefined
     !true # Concrete Type
-    !@unifiedTypeMap-proxy.null
-    !@typeKindEnum.mapType
+    !.null
+    !.mapType
     !true # Support collection value
-    !@typedPropertyList.emptyList
+    !{}
     !{}
     !typedPropertyList
     !constructorMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !@classMethodMap. emptyMap
+    !{}
     !enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg | .supportWithAccessor
     !argumentTypeListForAddAssignWithFieldExpressionList
     !{}
     !{}
     !mSearchMethodList
-    !@mapSearchMethodListAST.emptyList
+    !{}
     !false # Do not generate header in separate file
     !elementTypeProxy # Type for enumerated element for "for" instruction
     !"emptyMap"
@@ -560,8 +566,18 @@ override method @mapDeclarationAST semanticAnalysis
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
   let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!mMapTypeName.string + "-element" !mMapTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
-#------ Enter attributes
-  var typedAttributeList =@typedPropertyList {}
+#--- Attributes
+  var usesSelectorsInInsertAndSearch = false
+  var activateSuggestion = true
+  for (s) in mAttributeList do
+    if s.string == "selectors" then
+      usesSelectorsInInsertAndSearch = true
+    elsif s.string == "noSuggestion" then
+      activateSuggestion = false
+    end
+  end
+#------ Enter property
+  @typedPropertyList typedAttributeList = {}
   @propertyIndexMap attributeMap = {}
   for () in mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
@@ -587,14 +603,14 @@ override method @mapDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mPropertyName !t]
   end
 #--- Enter insert setters
-  var insertMethodMap =@insertMethodMap.emptyMap{}
+  @insertMethodMap insertMethodMap = {}
   for () in mInsertMethodList do
     [!?insertMethodMap insertKey !mInsertMethodName]
     check_K_L_escapeCharacters ( !mErrorMessage )
     check_K_L_escapeCharacters ( !mShadowErrorMessage )
   end
 #--- Enter search methods
-  var searchMethodMap =@searchMethodMap.emptyMap{}
+  @searchMethodMap searchMethodMap = {}
   for () in mSearchMethodList do
     [!?searchMethodMap insertKey !mSearchMethodName]
     check_K_escapeCharacters ( !mErrorMessage )
@@ -628,6 +644,7 @@ override method @mapDeclarationAST semanticAnalysis
       !mSearchMethodList
       !mRemoveMethodList
       !hasInsertOrReplaceModifier
+      !activateSuggestion
     }
 }
   
@@ -643,6 +660,7 @@ class @mapTypeForGeneration : @semanticTypeForGeneration {
   @mapSearchMethodListAST mSearchMethodList
   @mapRemoveMethodListAST mRemoveMethodList
   @bool mHasInsertOrReplaceModifier
+  @bool mActivateSuggestions
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -705,6 +723,7 @@ override method @mapTypeForGeneration appendSpecificImplementation
     !mSearchMethodList
     !mRemoveMethodList
     !mHasInsertOrReplaceModifier
+    !mActivateSuggestions
   ]
 }
 

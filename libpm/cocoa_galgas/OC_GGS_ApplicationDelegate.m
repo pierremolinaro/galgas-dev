@@ -130,16 +130,24 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-- (NSString *) compilerToolPath {
+- (NSInteger) selectedToolIndex {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  return mToolPopUpButton.indexOfSelectedItem ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+- (NSString *) compilerToolPath: (NSInteger) inSelectedToolIndex {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   NSString * result = @"?" ; // No compiler by default
-  const NSInteger indexOfSelectedItem = [mToolPopUpButton indexOfSelectedItem] ;
-  if (indexOfSelectedItem >= 0) {
+  if (inSelectedToolIndex >= 0) {
     NSBundle * mb = [NSBundle mainBundle] ;
     NSString * rp = [mb resourcePath] ;
-    result = [rp stringByAppendingPathComponent:[mToolNameArray objectAtIndex:(NSUInteger) indexOfSelectedItem]] ;
+    result = [rp stringByAppendingPathComponent:[mToolNameArray objectAtIndex:(NSUInteger) inSelectedToolIndex]] ;
   }
   return result ;
 }
@@ -171,7 +179,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
   NSMutableArray * arguments = [NSMutableArray new] ;
 //--- Add tool path
-  [arguments addObject:[self compilerToolPath]] ;
+  [arguments addObject:[self compilerToolPath: [mToolPopUpButton indexOfSelectedItem]]] ;
 //--- Add boolean options
   for (NSUInteger i=0 ; i<[mBoolOptionArray count] ; i++) {
     OC_GGS_CommandLineOption * option = [mBoolOptionArray objectAtIndex:i] ;

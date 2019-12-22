@@ -679,7 +679,7 @@ override method @lexicalImplicitRuleAST checkLexicalRule
 override method @lexicalExplicitRuleAST checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
   [mLexicalRuleExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
-  var tagMap =@lexicalTagMap.emptyMap{}
+  @lexicalTagMap tagMap = {}
   for () in mInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end

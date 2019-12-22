@@ -1,7 +1,5 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
-#  metamodel that defines expression                                                                                   *
-#                                                                                                                      *
 #  Copyright (C) 2007, ..., 2019 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@ls2n.fr                                                                                           *
@@ -326,11 +324,6 @@ class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGenera
 list @signatureForGrammarAnalysis {
   @formalArgumentPassingModeAST mFormalArgumentPassingModeForGrammarAnalysis
   @lstring mGalgasTypeNameForGrammarAnalysis
-#--- TODO GALGAS3
-#  Ajouter cet argument ; ceci permettrait de supprimer l'argument
-#     ??@unifiedTypeMap inUnifiedTypeMap
-# des méthodes appendSpecificImplementation de generation
-#  @unifiedTypeMap-proxy mArgumentType ;
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

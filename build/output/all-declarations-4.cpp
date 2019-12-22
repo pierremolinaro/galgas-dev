@@ -439,7 +439,7 @@ typeComparisonResult cMapElement_mapAutomatonStateMap::compare (const cCollectio
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_mapAutomatonStateMap::GALGAS_mapAutomatonStateMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -739,7 +739,7 @@ typeComparisonResult cMapElement_mapAutomatonActionMap::compare (const cCollecti
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_mapAutomatonActionMap::GALGAS_mapAutomatonActionMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -12755,10 +12755,8 @@ class cCollectionElement_galgas_33_SyntaxComponentListAST : public cCollectionEl
 //--- Constructors
   public : cCollectionElement_galgas_33_SyntaxComponentListAST (const GALGAS_lstring & in_mSyntaxComponentName,
                                                                 const GALGAS_lstring & in_mImportedLexiqueFilePath,
-                                                                const GALGAS_lstringlist & in_mImportedComponentFileNameList,
                                                                 const GALGAS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
                                                                 const GALGAS_syntaxRuleListAST & in_mRuleList,
-                                                                const GALGAS_semanticDeclarationListAST & in_mSemanticDeclarationList,
                                                                 const GALGAS_bool & in_mHasTranslateFeature
                                                                 COMMA_LOCATION_ARGS) ;
   public : cCollectionElement_galgas_33_SyntaxComponentListAST (const GALGAS_galgas_33_SyntaxComponentListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
@@ -12780,21 +12778,19 @@ class cCollectionElement_galgas_33_SyntaxComponentListAST : public cCollectionEl
 
 cCollectionElement_galgas_33_SyntaxComponentListAST::cCollectionElement_galgas_33_SyntaxComponentListAST (const GALGAS_lstring & in_mSyntaxComponentName,
                                                                                                           const GALGAS_lstring & in_mImportedLexiqueFilePath,
-                                                                                                          const GALGAS_lstringlist & in_mImportedComponentFileNameList,
                                                                                                           const GALGAS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
                                                                                                           const GALGAS_syntaxRuleListAST & in_mRuleList,
-                                                                                                          const GALGAS_semanticDeclarationListAST & in_mSemanticDeclarationList,
                                                                                                           const GALGAS_bool & in_mHasTranslateFeature
                                                                                                           COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mSyntaxComponentName, in_mImportedLexiqueFilePath, in_mImportedComponentFileNameList, in_mNonterminalDeclarationList, in_mRuleList, in_mSemanticDeclarationList, in_mHasTranslateFeature) {
+mObject (in_mSyntaxComponentName, in_mImportedLexiqueFilePath, in_mNonterminalDeclarationList, in_mRuleList, in_mHasTranslateFeature) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 cCollectionElement_galgas_33_SyntaxComponentListAST::cCollectionElement_galgas_33_SyntaxComponentListAST (const GALGAS_galgas_33_SyntaxComponentListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (inElement.mProperty_mSyntaxComponentName, inElement.mProperty_mImportedLexiqueFilePath, inElement.mProperty_mImportedComponentFileNameList, inElement.mProperty_mNonterminalDeclarationList, inElement.mProperty_mRuleList, inElement.mProperty_mSemanticDeclarationList, inElement.mProperty_mHasTranslateFeature) {
+mObject (inElement.mProperty_mSyntaxComponentName, inElement.mProperty_mImportedLexiqueFilePath, inElement.mProperty_mNonterminalDeclarationList, inElement.mProperty_mRuleList, inElement.mProperty_mHasTranslateFeature) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -12807,7 +12803,7 @@ bool cCollectionElement_galgas_33_SyntaxComponentListAST::isValid (void) const {
 
 cCollectionElement * cCollectionElement_galgas_33_SyntaxComponentListAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_galgas_33_SyntaxComponentListAST (mObject.mProperty_mSyntaxComponentName, mObject.mProperty_mImportedLexiqueFilePath, mObject.mProperty_mImportedComponentFileNameList, mObject.mProperty_mNonterminalDeclarationList, mObject.mProperty_mRuleList, mObject.mProperty_mSemanticDeclarationList, mObject.mProperty_mHasTranslateFeature COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_galgas_33_SyntaxComponentListAST (mObject.mProperty_mSyntaxComponentName, mObject.mProperty_mImportedLexiqueFilePath, mObject.mProperty_mNonterminalDeclarationList, mObject.mProperty_mRuleList, mObject.mProperty_mHasTranslateFeature COMMA_HERE)) ;
   return result ;
 }
 
@@ -12824,20 +12820,12 @@ void cCollectionElement_galgas_33_SyntaxComponentListAST::description (C_String 
   mObject.mProperty_mImportedLexiqueFilePath.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mImportedComponentFileNameList" ":" ;
-  mObject.mProperty_mImportedComponentFileNameList.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mNonterminalDeclarationList" ":" ;
   mObject.mProperty_mNonterminalDeclarationList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mRuleList" ":" ;
   mObject.mProperty_mRuleList.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mSemanticDeclarationList" ":" ;
-  mObject.mProperty_mSemanticDeclarationList.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mHasTranslateFeature" ":" ;
@@ -12874,17 +12862,15 @@ GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_SyntaxComponentListAST:
 
 GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_SyntaxComponentListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                                             const GALGAS_lstring & inOperand1,
-                                                                                                            const GALGAS_lstringlist & inOperand2,
-                                                                                                            const GALGAS_nonterminalDeclarationListAST & inOperand3,
-                                                                                                            const GALGAS_syntaxRuleListAST & inOperand4,
-                                                                                                            const GALGAS_semanticDeclarationListAST & inOperand5,
-                                                                                                            const GALGAS_bool & inOperand6
+                                                                                                            const GALGAS_nonterminalDeclarationListAST & inOperand2,
+                                                                                                            const GALGAS_syntaxRuleListAST & inOperand3,
+                                                                                                            const GALGAS_bool & inOperand4
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_galgas_33_SyntaxComponentListAST result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
     result = GALGAS_galgas_33_SyntaxComponentListAST (capCollectionElementArray ()) ;
     capCollectionElement attributes ;
-    GALGAS_galgas_33_SyntaxComponentListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE) ;
+    GALGAS_galgas_33_SyntaxComponentListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
     result.appendObject (attributes) ;
   }
   return result ;
@@ -12895,19 +12881,15 @@ GALGAS_galgas_33_SyntaxComponentListAST GALGAS_galgas_33_SyntaxComponentListAST:
 void GALGAS_galgas_33_SyntaxComponentListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                          const GALGAS_lstring & in_mSyntaxComponentName,
                                                                          const GALGAS_lstring & in_mImportedLexiqueFilePath,
-                                                                         const GALGAS_lstringlist & in_mImportedComponentFileNameList,
                                                                          const GALGAS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
                                                                          const GALGAS_syntaxRuleListAST & in_mRuleList,
-                                                                         const GALGAS_semanticDeclarationListAST & in_mSemanticDeclarationList,
                                                                          const GALGAS_bool & in_mHasTranslateFeature
                                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement_galgas_33_SyntaxComponentListAST * p = NULL ;
   macroMyNew (p, cCollectionElement_galgas_33_SyntaxComponentListAST (in_mSyntaxComponentName,
                                                                       in_mImportedLexiqueFilePath,
-                                                                      in_mImportedComponentFileNameList,
                                                                       in_mNonterminalDeclarationList,
                                                                       in_mRuleList,
-                                                                      in_mSemanticDeclarationList,
                                                                       in_mHasTranslateFeature COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
@@ -12917,15 +12899,13 @@ void GALGAS_galgas_33_SyntaxComponentListAST::makeAttributesFromObjects (capColl
 
 void GALGAS_galgas_33_SyntaxComponentListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                                    const GALGAS_lstring & inOperand1,
-                                                                   const GALGAS_lstringlist & inOperand2,
-                                                                   const GALGAS_nonterminalDeclarationListAST & inOperand3,
-                                                                   const GALGAS_syntaxRuleListAST & inOperand4,
-                                                                   const GALGAS_semanticDeclarationListAST & inOperand5,
-                                                                   const GALGAS_bool & inOperand6
+                                                                   const GALGAS_nonterminalDeclarationListAST & inOperand2,
+                                                                   const GALGAS_syntaxRuleListAST & inOperand3,
+                                                                   const GALGAS_bool & inOperand4
                                                                    COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
     cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_galgas_33_SyntaxComponentListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_galgas_33_SyntaxComponentListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -12952,17 +12932,15 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_append (GALGAS_galgas_33_Sy
 
 void GALGAS_galgas_33_SyntaxComponentListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                                     const GALGAS_lstring inOperand1,
-                                                                    const GALGAS_lstringlist inOperand2,
-                                                                    const GALGAS_nonterminalDeclarationListAST inOperand3,
-                                                                    const GALGAS_syntaxRuleListAST inOperand4,
-                                                                    const GALGAS_semanticDeclarationListAST inOperand5,
-                                                                    const GALGAS_bool inOperand6,
+                                                                    const GALGAS_nonterminalDeclarationListAST inOperand2,
+                                                                    const GALGAS_syntaxRuleListAST inOperand3,
+                                                                    const GALGAS_bool inOperand4,
                                                                     const GALGAS_uint inInsertionIndex,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
     cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_galgas_33_SyntaxComponentListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_galgas_33_SyntaxComponentListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -12974,11 +12952,9 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_insertAtIndex (const GALGAS
 
 void GALGAS_galgas_33_SyntaxComponentListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                                     GALGAS_lstring & outOperand1,
-                                                                    GALGAS_lstringlist & outOperand2,
-                                                                    GALGAS_nonterminalDeclarationListAST & outOperand3,
-                                                                    GALGAS_syntaxRuleListAST & outOperand4,
-                                                                    GALGAS_semanticDeclarationListAST & outOperand5,
-                                                                    GALGAS_bool & outOperand6,
+                                                                    GALGAS_nonterminalDeclarationListAST & outOperand2,
+                                                                    GALGAS_syntaxRuleListAST & outOperand3,
+                                                                    GALGAS_bool & outOperand4,
                                                                     const GALGAS_uint inRemoveIndex,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) {
@@ -12992,17 +12968,13 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_removeAtIndex (GALGAS_lstri
       outOperand2.drop () ;
       outOperand3.drop () ;
       outOperand4.drop () ;
-      outOperand5.drop () ;
-      outOperand6.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_galgas_33_SyntaxComponentListAST) ;
       outOperand0 = p->mObject.mProperty_mSyntaxComponentName ;
       outOperand1 = p->mObject.mProperty_mImportedLexiqueFilePath ;
-      outOperand2 = p->mObject.mProperty_mImportedComponentFileNameList ;
-      outOperand3 = p->mObject.mProperty_mNonterminalDeclarationList ;
-      outOperand4 = p->mObject.mProperty_mRuleList ;
-      outOperand5 = p->mObject.mProperty_mSemanticDeclarationList ;
-      outOperand6 = p->mObject.mProperty_mHasTranslateFeature ;
+      outOperand2 = p->mObject.mProperty_mNonterminalDeclarationList ;
+      outOperand3 = p->mObject.mProperty_mRuleList ;
+      outOperand4 = p->mObject.mProperty_mHasTranslateFeature ;
     }
   }
 }
@@ -13011,11 +12983,9 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_removeAtIndex (GALGAS_lstri
 
 void GALGAS_galgas_33_SyntaxComponentListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                                GALGAS_lstring & outOperand1,
-                                                               GALGAS_lstringlist & outOperand2,
-                                                               GALGAS_nonterminalDeclarationListAST & outOperand3,
-                                                               GALGAS_syntaxRuleListAST & outOperand4,
-                                                               GALGAS_semanticDeclarationListAST & outOperand5,
-                                                               GALGAS_bool & outOperand6,
+                                                               GALGAS_nonterminalDeclarationListAST & outOperand2,
+                                                               GALGAS_syntaxRuleListAST & outOperand3,
+                                                               GALGAS_bool & outOperand4,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -13027,17 +12997,13 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_popFirst (GALGAS_lstring & 
     outOperand2.drop () ;
     outOperand3.drop () ;
     outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_galgas_33_SyntaxComponentListAST) ;
     outOperand0 = p->mObject.mProperty_mSyntaxComponentName ;
     outOperand1 = p->mObject.mProperty_mImportedLexiqueFilePath ;
-    outOperand2 = p->mObject.mProperty_mImportedComponentFileNameList ;
-    outOperand3 = p->mObject.mProperty_mNonterminalDeclarationList ;
-    outOperand4 = p->mObject.mProperty_mRuleList ;
-    outOperand5 = p->mObject.mProperty_mSemanticDeclarationList ;
-    outOperand6 = p->mObject.mProperty_mHasTranslateFeature ;
+    outOperand2 = p->mObject.mProperty_mNonterminalDeclarationList ;
+    outOperand3 = p->mObject.mProperty_mRuleList ;
+    outOperand4 = p->mObject.mProperty_mHasTranslateFeature ;
   }
 }
 
@@ -13045,11 +13011,9 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_popFirst (GALGAS_lstring & 
 
 void GALGAS_galgas_33_SyntaxComponentListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                               GALGAS_lstring & outOperand1,
-                                                              GALGAS_lstringlist & outOperand2,
-                                                              GALGAS_nonterminalDeclarationListAST & outOperand3,
-                                                              GALGAS_syntaxRuleListAST & outOperand4,
-                                                              GALGAS_semanticDeclarationListAST & outOperand5,
-                                                              GALGAS_bool & outOperand6,
+                                                              GALGAS_nonterminalDeclarationListAST & outOperand2,
+                                                              GALGAS_syntaxRuleListAST & outOperand3,
+                                                              GALGAS_bool & outOperand4,
                                                               C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -13061,17 +13025,13 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_popLast (GALGAS_lstring & o
     outOperand2.drop () ;
     outOperand3.drop () ;
     outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_galgas_33_SyntaxComponentListAST) ;
     outOperand0 = p->mObject.mProperty_mSyntaxComponentName ;
     outOperand1 = p->mObject.mProperty_mImportedLexiqueFilePath ;
-    outOperand2 = p->mObject.mProperty_mImportedComponentFileNameList ;
-    outOperand3 = p->mObject.mProperty_mNonterminalDeclarationList ;
-    outOperand4 = p->mObject.mProperty_mRuleList ;
-    outOperand5 = p->mObject.mProperty_mSemanticDeclarationList ;
-    outOperand6 = p->mObject.mProperty_mHasTranslateFeature ;
+    outOperand2 = p->mObject.mProperty_mNonterminalDeclarationList ;
+    outOperand3 = p->mObject.mProperty_mRuleList ;
+    outOperand4 = p->mObject.mProperty_mHasTranslateFeature ;
   }
 }
 
@@ -13079,11 +13039,9 @@ void GALGAS_galgas_33_SyntaxComponentListAST::setter_popLast (GALGAS_lstring & o
 
 void GALGAS_galgas_33_SyntaxComponentListAST::method_first (GALGAS_lstring & outOperand0,
                                                             GALGAS_lstring & outOperand1,
-                                                            GALGAS_lstringlist & outOperand2,
-                                                            GALGAS_nonterminalDeclarationListAST & outOperand3,
-                                                            GALGAS_syntaxRuleListAST & outOperand4,
-                                                            GALGAS_semanticDeclarationListAST & outOperand5,
-                                                            GALGAS_bool & outOperand6,
+                                                            GALGAS_nonterminalDeclarationListAST & outOperand2,
+                                                            GALGAS_syntaxRuleListAST & outOperand3,
+                                                            GALGAS_bool & outOperand4,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -13095,17 +13053,13 @@ void GALGAS_galgas_33_SyntaxComponentListAST::method_first (GALGAS_lstring & out
     outOperand2.drop () ;
     outOperand3.drop () ;
     outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_galgas_33_SyntaxComponentListAST) ;
     outOperand0 = p->mObject.mProperty_mSyntaxComponentName ;
     outOperand1 = p->mObject.mProperty_mImportedLexiqueFilePath ;
-    outOperand2 = p->mObject.mProperty_mImportedComponentFileNameList ;
-    outOperand3 = p->mObject.mProperty_mNonterminalDeclarationList ;
-    outOperand4 = p->mObject.mProperty_mRuleList ;
-    outOperand5 = p->mObject.mProperty_mSemanticDeclarationList ;
-    outOperand6 = p->mObject.mProperty_mHasTranslateFeature ;
+    outOperand2 = p->mObject.mProperty_mNonterminalDeclarationList ;
+    outOperand3 = p->mObject.mProperty_mRuleList ;
+    outOperand4 = p->mObject.mProperty_mHasTranslateFeature ;
   }
 }
 
@@ -13113,11 +13067,9 @@ void GALGAS_galgas_33_SyntaxComponentListAST::method_first (GALGAS_lstring & out
 
 void GALGAS_galgas_33_SyntaxComponentListAST::method_last (GALGAS_lstring & outOperand0,
                                                            GALGAS_lstring & outOperand1,
-                                                           GALGAS_lstringlist & outOperand2,
-                                                           GALGAS_nonterminalDeclarationListAST & outOperand3,
-                                                           GALGAS_syntaxRuleListAST & outOperand4,
-                                                           GALGAS_semanticDeclarationListAST & outOperand5,
-                                                           GALGAS_bool & outOperand6,
+                                                           GALGAS_nonterminalDeclarationListAST & outOperand2,
+                                                           GALGAS_syntaxRuleListAST & outOperand3,
+                                                           GALGAS_bool & outOperand4,
                                                            C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -13129,17 +13081,13 @@ void GALGAS_galgas_33_SyntaxComponentListAST::method_last (GALGAS_lstring & outO
     outOperand2.drop () ;
     outOperand3.drop () ;
     outOperand4.drop () ;
-    outOperand5.drop () ;
-    outOperand6.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_galgas_33_SyntaxComponentListAST) ;
     outOperand0 = p->mObject.mProperty_mSyntaxComponentName ;
     outOperand1 = p->mObject.mProperty_mImportedLexiqueFilePath ;
-    outOperand2 = p->mObject.mProperty_mImportedComponentFileNameList ;
-    outOperand3 = p->mObject.mProperty_mNonterminalDeclarationList ;
-    outOperand4 = p->mObject.mProperty_mRuleList ;
-    outOperand5 = p->mObject.mProperty_mSemanticDeclarationList ;
-    outOperand6 = p->mObject.mProperty_mHasTranslateFeature ;
+    outOperand2 = p->mObject.mProperty_mNonterminalDeclarationList ;
+    outOperand3 = p->mObject.mProperty_mRuleList ;
+    outOperand4 = p->mObject.mProperty_mHasTranslateFeature ;
   }
 }
 
@@ -13254,35 +13202,6 @@ GALGAS_lstring GALGAS_galgas_33_SyntaxComponentListAST::getter_mImportedLexiqueF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-void GALGAS_galgas_33_SyntaxComponentListAST::setter_setMImportedComponentFileNameListAtIndex (GALGAS_lstringlist inOperand,
-                                                                                               GALGAS_uint inIndex,
-                                                                                               C_Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) {
-  cCollectionElement_galgas_33_SyntaxComponentListAST * p = (cCollectionElement_galgas_33_SyntaxComponentListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_galgas_33_SyntaxComponentListAST) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mImportedComponentFileNameList = inOperand ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lstringlist GALGAS_galgas_33_SyntaxComponentListAST::getter_mImportedComponentFileNameListAtIndex (const GALGAS_uint & inIndex,
-                                                                                                          C_Compiler * inCompiler
-                                                                                                          COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_galgas_33_SyntaxComponentListAST * p = (cCollectionElement_galgas_33_SyntaxComponentListAST *) attributes.ptr () ;
-  GALGAS_lstringlist result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_galgas_33_SyntaxComponentListAST) ;
-    result = p->mObject.mProperty_mImportedComponentFileNameList ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
 void GALGAS_galgas_33_SyntaxComponentListAST::setter_setMNonterminalDeclarationListAtIndex (GALGAS_nonterminalDeclarationListAST inOperand,
                                                                                             GALGAS_uint inIndex,
                                                                                             C_Compiler * inCompiler
@@ -13335,35 +13254,6 @@ GALGAS_syntaxRuleListAST GALGAS_galgas_33_SyntaxComponentListAST::getter_mRuleLi
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_galgas_33_SyntaxComponentListAST) ;
     result = p->mObject.mProperty_mRuleList ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_galgas_33_SyntaxComponentListAST::setter_setMSemanticDeclarationListAtIndex (GALGAS_semanticDeclarationListAST inOperand,
-                                                                                         GALGAS_uint inIndex,
-                                                                                         C_Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) {
-  cCollectionElement_galgas_33_SyntaxComponentListAST * p = (cCollectionElement_galgas_33_SyntaxComponentListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_galgas_33_SyntaxComponentListAST) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mSemanticDeclarationList = inOperand ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticDeclarationListAST GALGAS_galgas_33_SyntaxComponentListAST::getter_mSemanticDeclarationListAtIndex (const GALGAS_uint & inIndex,
-                                                                                                                   C_Compiler * inCompiler
-                                                                                                                   COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_galgas_33_SyntaxComponentListAST * p = (cCollectionElement_galgas_33_SyntaxComponentListAST *) attributes.ptr () ;
-  GALGAS_semanticDeclarationListAST result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_galgas_33_SyntaxComponentListAST) ;
-    result = p->mObject.mProperty_mSemanticDeclarationList ;
   }
   return result ;
 }
@@ -13434,14 +13324,6 @@ GALGAS_lstring cEnumerator_galgas_33_SyntaxComponentListAST::current_mImportedLe
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-GALGAS_lstringlist cEnumerator_galgas_33_SyntaxComponentListAST::current_mImportedComponentFileNameList (LOCATION_ARGS) const {
-  const cCollectionElement_galgas_33_SyntaxComponentListAST * p = (const cCollectionElement_galgas_33_SyntaxComponentListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_galgas_33_SyntaxComponentListAST) ;
-  return p->mObject.mProperty_mImportedComponentFileNameList ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
 GALGAS_nonterminalDeclarationListAST cEnumerator_galgas_33_SyntaxComponentListAST::current_mNonterminalDeclarationList (LOCATION_ARGS) const {
   const cCollectionElement_galgas_33_SyntaxComponentListAST * p = (const cCollectionElement_galgas_33_SyntaxComponentListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_galgas_33_SyntaxComponentListAST) ;
@@ -13454,14 +13336,6 @@ GALGAS_syntaxRuleListAST cEnumerator_galgas_33_SyntaxComponentListAST::current_m
   const cCollectionElement_galgas_33_SyntaxComponentListAST * p = (const cCollectionElement_galgas_33_SyntaxComponentListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_galgas_33_SyntaxComponentListAST) ;
   return p->mObject.mProperty_mRuleList ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticDeclarationListAST cEnumerator_galgas_33_SyntaxComponentListAST::current_mSemanticDeclarationList (LOCATION_ARGS) const {
-  const cCollectionElement_galgas_33_SyntaxComponentListAST * p = (const cCollectionElement_galgas_33_SyntaxComponentListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_galgas_33_SyntaxComponentListAST) ;
-  return p->mObject.mProperty_mSemanticDeclarationList ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

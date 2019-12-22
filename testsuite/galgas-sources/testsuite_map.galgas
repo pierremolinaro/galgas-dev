@@ -9,7 +9,7 @@ map @aMap {
 
 proc testsuite_map {
   message "*************************************** begin of map\n"
-  var m = @aMap.emptyMap
+  @aMap m = {}
   [!?m insertKey !@lstring.new {!"g" !.here} !37]
   log m
   [!?m setValueForKey !56 !"g"]

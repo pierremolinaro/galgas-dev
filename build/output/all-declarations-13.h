@@ -1080,13 +1080,17 @@ class GALGAS_mapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                                      const class GALGAS_insertMethodListAST & inOperand4,
                                                                      const class GALGAS_mapSearchMethodListAST & inOperand5,
                                                                      const class GALGAS_mapRemoveMethodListAST & inOperand6,
-                                                                     const class GALGAS_bool & inOperand7
+                                                                     const class GALGAS_bool & inOperand7,
+                                                                     const class GALGAS_bool & inOperand8
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_mapTypeForGeneration & inOperand) const ;
 
 //--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMActivateSuggestions (class GALGAS_bool inArgument0
+                                                                 COMMA_LOCATION_ARGS) ;
+
   public : VIRTUAL_IN_DEBUG void setter_setMElementTypeProxy (class GALGAS_unifiedTypeMap_2D_proxy inArgument0
                                                               COMMA_LOCATION_ARGS) ;
 
@@ -1113,6 +1117,8 @@ class GALGAS_mapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mActivateSuggestions (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mElementTypeProxy (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mHasInsertOrReplaceModifier (LOCATION_ARGS) const ;
@@ -1153,6 +1159,7 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public : GALGAS_mapSearchMethodListAST mProperty_mSearchMethodList ;
   public : GALGAS_mapRemoveMethodListAST mProperty_mRemoveMethodList ;
   public : GALGAS_bool mProperty_mHasInsertOrReplaceModifier ;
+  public : GALGAS_bool mProperty_mActivateSuggestions ;
 
 //--- Constructor
   public : cPtr_mapTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
@@ -1162,7 +1169,8 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
                                       const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                       const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
                                       const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
-                                      const GALGAS_bool & in_mHasInsertOrReplaceModifier
+                                      const GALGAS_bool & in_mHasInsertOrReplaceModifier,
+                                      const GALGAS_bool & in_mActivateSuggestions
                                       COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -1183,6 +1191,8 @@ class cPtr_mapTypeForGeneration : public cPtr_semanticTypeForGeneration {
   public : VIRTUAL_IN_DEBUG void setter_setMRemoveMethodList (GALGAS_mapRemoveMethodListAST inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mHasInsertOrReplaceModifier (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG void setter_setMHasInsertOrReplaceModifier (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mActivateSuggestions (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMActivateSuggestions (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

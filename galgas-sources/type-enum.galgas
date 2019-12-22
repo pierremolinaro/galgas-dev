@@ -198,21 +198,21 @@ override method @enumDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy.null
     !@typeKindEnum.enumType
     !false # Does not support collection value
-    !@typedPropertyList.emptyList
     !{}
-    !@typedPropertyList.emptyList
+    !{}
+    !{}
     !constructorMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !@classMethodMap. emptyMap
-    !@enumerationDescriptorList.emptyList
+    !{}
+    !{}
     !.generateDescriptionGetterUtilityMethod | .isComparable
-    !@functionSignature.emptyList
+    !{}
     !constantMap
     !mConstantList
-    !@mapSearchMethodListAST.emptyList
-    !@mapSearchMethodListAST.emptyList
+    !{}
+    !{}
     !false # Do not generate header in separate file
     !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
     !defaultConstructorName

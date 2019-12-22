@@ -4118,7 +4118,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeHeader_31_ (C_Co
   result << " & operator = (const GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " & inSource) ;\n"
-    "\n" ;
+    "  \n" ;
   return GALGAS_string (result) ;
 }
 
@@ -4213,7 +4213,8 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
                                                                                         const GALGAS_insertMethodListAST & in_INSERT_5F_METHOD_5F_LIST,
                                                                                         const GALGAS_mapSearchMethodListAST & in_SEARCH_5F_METHOD_5F_LIST,
                                                                                         const GALGAS_mapRemoveMethodListAST & in_REMOVE_5F_METHOD_5F_LIST,
-                                                                                        const GALGAS_bool & in_HAS_5F_INSERT_5F_OR_5F_REPLACE
+                                                                                        const GALGAS_bool & in_HAS_5F_INSERT_5F_OR_5F_REPLACE,
+                                                                                        const GALGAS_bool & in_ACTIVATE_5F_REMPLACEMENT_5F_SUGGESTIONS
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
   uint32_t columnMarker = 0 ;
@@ -4370,7 +4371,9 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   result << "::GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (void) :\n"
-    "AC_GALGAS_map () {\n"
+    "AC_GALGAS_map (" ;
+  result << in_ACTIVATE_5F_REMPLACEMENT_5F_SUGGESTIONS.getter_cString (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 69)).stringValue () ;
+  result << ") {\n"
     "}\n"
     "\n"
     "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""*\n"
@@ -4458,18 +4461,18 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   result << "::addAssign_operation (" ;
   columnMarker = result.currentColumn () ;
   result << "const GALGAS_lstring & inKey" ;
-  GALGAS_uint index_4922_IDX (0) ;
+  GALGAS_uint index_4968_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_4922 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_4922.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_4968 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_4968.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "const GALGAS_" ;
-      result << enumerator_4922.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 115)).stringValue () ;
+      result << enumerator_4968.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 115)).stringValue () ;
       result << " & inArgument" ;
-      result << index_4922_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 115)).stringValue () ;
-      index_4922_IDX.increment () ;
-      enumerator_4922.gotoNextObject () ;
+      result << index_4968_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 115)).stringValue () ;
+      index_4968_IDX.increment () ;
+      enumerator_4968.gotoNextObject () ;
     }
   }
   result << ",\n"
@@ -4485,14 +4488,14 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "  macroMyNew (p, cMapElement_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " (inKey" ;
-  GALGAS_uint index_5238_IDX (0) ;
+  GALGAS_uint index_5284_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_5238 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_5238.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_5284 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_5284.hasCurrentObject ()) {
       result << ", inArgument" ;
-      result << index_5238_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 122)).stringValue () ;
-      index_5238_IDX.increment () ;
-      enumerator_5238.gotoNextObject () ;
+      result << index_5284_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 122)).stringValue () ;
+      index_5284_IDX.increment () ;
+      enumerator_5284.gotoNextObject () ;
     }
   }
   result << " COMMA_HERE)) ;\n"
@@ -4512,31 +4515,31 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
   }
   result << "}\n"
     "\n" ;
-  GALGAS_uint index_5698_ (0) ;
+  GALGAS_uint index_5744_ (0) ;
   if (in_INSERT_5F_METHOD_5F_LIST.isValid ()) {
-    cEnumerator_insertMethodListAST enumerator_5698 (in_INSERT_5F_METHOD_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_5698.hasCurrentObject ()) {
+    cEnumerator_insertMethodListAST enumerator_5744 (in_INSERT_5F_METHOD_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_5744.hasCurrentObject ()) {
       result << "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""*\n"
         "\n"
         "void GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::setter_" ;
-      result << enumerator_5698.current_mInsertMethodName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 137)).stringValue () ;
+      result << enumerator_5744.current_mInsertMethodName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 137)).stringValue () ;
       result << " (" ;
       columnMarker = result.currentColumn () ;
       result << "GALGAS_lstring inKey" ;
-      GALGAS_uint index_5992_IDX (0) ;
+      GALGAS_uint index_6038_IDX (0) ;
       if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-        cEnumerator_typedPropertyList enumerator_5992 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-        while (enumerator_5992.hasCurrentObject ()) {
+        cEnumerator_typedPropertyList enumerator_6038 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+        while (enumerator_6038.hasCurrentObject ()) {
           result << ",\n" ;
           result.appendSpacesUntilColumn (columnMarker) ;
           result << "GALGAS_" ;
-          result << enumerator_5992.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 139)).stringValue () ;
+          result << enumerator_6038.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 139)).stringValue () ;
           result << " inArgument" ;
-          result << index_5992_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 139)).stringValue () ;
-          index_5992_IDX.increment () ;
-          enumerator_5992.gotoNextObject () ;
+          result << index_6038_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 139)).stringValue () ;
+          index_6038_IDX.increment () ;
+          enumerator_6038.gotoNextObject () ;
         }
       }
       result << ",\n"
@@ -4552,14 +4555,14 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
         "  macroMyNew (p, cMapElement_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << " (inKey" ;
-      GALGAS_uint index_6324_IDX (0) ;
+      GALGAS_uint index_6370_IDX (0) ;
       if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-        cEnumerator_typedPropertyList enumerator_6324 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-        while (enumerator_6324.hasCurrentObject ()) {
+        cEnumerator_typedPropertyList enumerator_6370 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+        while (enumerator_6370.hasCurrentObject ()) {
           result << ", inArgument" ;
-          result << index_6324_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 146)).stringValue () ;
-          index_6324_IDX.increment () ;
-          enumerator_6324.gotoNextObject () ;
+          result << index_6370_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 146)).stringValue () ;
+          index_6370_IDX.increment () ;
+          enumerator_6370.gotoNextObject () ;
         }
       }
       result << " COMMA_HERE)) ;\n"
@@ -4570,10 +4573,10 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
         result.incIndentation ((int32_t) GALGAS_uint ((uint32_t) 2U).uintValue ()) ;
       }
       result << "const char * kInsertErrorMessage = " ;
-      result << enumerator_5698.current_mErrorMessage (HERE).getter_string (HERE).getter_utf_38_Representation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 153)).stringValue () ;
+      result << enumerator_5744.current_mErrorMessage (HERE).getter_string (HERE).getter_utf_38_Representation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 153)).stringValue () ;
       result << " ;\n"
         "const char * kShadowErrorMessage = " ;
-      result << enumerator_5698.current_mShadowErrorMessage (HERE).getter_string (HERE).getter_utf_38_Representation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 154)).stringValue () ;
+      result << enumerator_5744.current_mShadowErrorMessage (HERE).getter_string (HERE).getter_utf_38_Representation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 154)).stringValue () ;
       result << " ;\n"
         "performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n" ;
       if (GALGAS_uint ((uint32_t) 2U).isValid ()) {
@@ -4581,22 +4584,22 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
       }
       result << "}\n"
         "\n" ;
-      index_5698_.increment () ;
-      enumerator_5698.gotoNextObject () ;
+      index_5744_.increment () ;
+      enumerator_5744.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_6836_ (0) ;
+  GALGAS_uint index_6882_ (0) ;
   if (in_SEARCH_5F_METHOD_5F_LIST.isValid ()) {
-    cEnumerator_mapSearchMethodListAST enumerator_6836 (in_SEARCH_5F_METHOD_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_6836.hasCurrentObject ()) {
+    cEnumerator_mapSearchMethodListAST enumerator_6882 (in_SEARCH_5F_METHOD_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_6882.hasCurrentObject ()) {
       result << "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""*\n"
         "\n"
         "const char * kSearchErrorMessage_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "_" ;
-      result << enumerator_6836.current_mSearchMethodName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 162)).stringValue () ;
+      result << enumerator_6882.current_mSearchMethodName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 162)).stringValue () ;
       result << " = " ;
-      result << enumerator_6836.current_mErrorMessage (HERE).getter_string (HERE).getter_utf_38_Representation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 162)).stringValue () ;
+      result << enumerator_6882.current_mErrorMessage (HERE).getter_string (HERE).getter_utf_38_Representation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 162)).stringValue () ;
       result << " ;\n"
         "\n"
         "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""*\n"
@@ -4604,25 +4607,25 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
         "void GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::method_" ;
-      result << enumerator_6836.current_mSearchMethodName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 164)).stringValue () ;
+      result << enumerator_6882.current_mSearchMethodName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 164)).stringValue () ;
       result << " (" ;
       columnMarker = result.currentColumn () ;
       result << "GALGAS_lstring inKey" ;
-      GALGAS_uint index_7405_IDX (0) ;
+      GALGAS_uint index_7451_IDX (0) ;
       if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-        cEnumerator_typedPropertyList enumerator_7405 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-        while (enumerator_7405.hasCurrentObject ()) {
+        cEnumerator_typedPropertyList enumerator_7451 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+        while (enumerator_7451.hasCurrentObject ()) {
           result << ",\n" ;
           result.appendSpacesUntilColumn (columnMarker) ;
           result << "GALGAS_" ;
-          result << enumerator_7405.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 166)).stringValue () ;
+          result << enumerator_7451.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 166)).stringValue () ;
           result << " & outArgument" ;
-          result << index_7405_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 166)).stringValue () ;
-          index_7405_IDX.increment () ;
-          enumerator_7405.gotoNextObject () ;
+          result << index_7451_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 166)).stringValue () ;
+          index_7451_IDX.increment () ;
+          enumerator_7451.gotoNextObject () ;
         }
       }
-      const enumGalgasBool test_1 = enumerator_6836.current_mLocationAttribute (HERE).boolEnum () ;
+      const enumGalgasBool test_1 = enumerator_6882.current_mLocationAttribute (HERE).boolEnum () ;
       if (kBoolTrue == test_1) {
         result << ",\n" ;
         result.appendSpacesUntilColumn (columnMarker) ;
@@ -4649,23 +4652,23 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
       result << "kSearchErrorMessage_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "_" ;
-      result << enumerator_6836.current_mSearchMethodName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 175)).stringValue () ;
+      result << enumerator_6882.current_mSearchMethodName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 175)).stringValue () ;
       result << "\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "COMMA_THERE) ;\n"
         "  if (NULL == p) {\n" ;
-      GALGAS_uint index_8022_IDX (0) ;
+      GALGAS_uint index_8068_IDX (0) ;
       if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-        cEnumerator_typedPropertyList enumerator_8022 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-        while (enumerator_8022.hasCurrentObject ()) {
+        cEnumerator_typedPropertyList enumerator_8068 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+        while (enumerator_8068.hasCurrentObject ()) {
           result << "    outArgument" ;
-          result << index_8022_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 179)).stringValue () ;
+          result << index_8068_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 179)).stringValue () ;
           result << ".drop () ;\n" ;
-          index_8022_IDX.increment () ;
-          enumerator_8022.gotoNextObject () ;
+          index_8068_IDX.increment () ;
+          enumerator_8068.gotoNextObject () ;
         }
       }
-      const enumGalgasBool test_2 = enumerator_6836.current_mLocationAttribute (HERE).boolEnum () ;
+      const enumGalgasBool test_2 = enumerator_6882.current_mLocationAttribute (HERE).boolEnum () ;
       if (kBoolTrue == test_2) {
         result << "    outKeyLocation.drop () ;\n" ;
       }else if (kBoolFalse == test_2) {
@@ -4674,20 +4677,20 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
         "    macroValidSharedObject (p, cMapElement_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << ") ;\n" ;
-      GALGAS_uint index_8275_IDX (0) ;
+      GALGAS_uint index_8321_IDX (0) ;
       if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-        cEnumerator_typedPropertyList enumerator_8275 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-        while (enumerator_8275.hasCurrentObject ()) {
+        cEnumerator_typedPropertyList enumerator_8321 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+        while (enumerator_8321.hasCurrentObject ()) {
           result << "    outArgument" ;
-          result << index_8275_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 187)).stringValue () ;
+          result << index_8321_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 187)).stringValue () ;
           result << " = p->mProperty_" ;
-          result << enumerator_8275.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 187)).stringValue () ;
+          result << enumerator_8321.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 187)).stringValue () ;
           result << " ;\n" ;
-          index_8275_IDX.increment () ;
-          enumerator_8275.gotoNextObject () ;
+          index_8321_IDX.increment () ;
+          enumerator_8321.gotoNextObject () ;
         }
       }
-      const enumGalgasBool test_3 = enumerator_6836.current_mLocationAttribute (HERE).boolEnum () ;
+      const enumGalgasBool test_3 = enumerator_6882.current_mLocationAttribute (HERE).boolEnum () ;
       if (kBoolTrue == test_3) {
         result << "    outKeyLocation = p->mProperty_lkey.mProperty_location ;\n" ;
       }else if (kBoolFalse == test_3) {
@@ -4695,35 +4698,35 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
       result << "  }\n"
         "}\n"
         "\n" ;
-      index_6836_.increment () ;
-      enumerator_6836.gotoNextObject () ;
+      index_6882_.increment () ;
+      enumerator_6882.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_8542_ (0) ;
+  GALGAS_uint index_8588_ (0) ;
   if (in_REMOVE_5F_METHOD_5F_LIST.isValid ()) {
-    cEnumerator_mapRemoveMethodListAST enumerator_8542 (in_REMOVE_5F_METHOD_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_8542.hasCurrentObject ()) {
+    cEnumerator_mapRemoveMethodListAST enumerator_8588 (in_REMOVE_5F_METHOD_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_8588.hasCurrentObject ()) {
       result << "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""*\n"
         "\n"
         "void GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::setter_" ;
-      result << enumerator_8542.current_mMethodName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 199)).stringValue () ;
+      result << enumerator_8588.current_mMethodName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 199)).stringValue () ;
       result << " (" ;
       columnMarker = result.currentColumn () ;
       result << "GALGAS_lstring inKey" ;
-      GALGAS_uint index_8826_IDX (0) ;
+      GALGAS_uint index_8872_IDX (0) ;
       if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-        cEnumerator_typedPropertyList enumerator_8826 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-        while (enumerator_8826.hasCurrentObject ()) {
+        cEnumerator_typedPropertyList enumerator_8872 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+        while (enumerator_8872.hasCurrentObject ()) {
           result << ",\n" ;
           result.appendSpacesUntilColumn (columnMarker) ;
           result << "GALGAS_" ;
-          result << enumerator_8826.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 201)).stringValue () ;
+          result << enumerator_8872.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 201)).stringValue () ;
           result << " & outArgument" ;
-          result << index_8826_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 201)).stringValue () ;
-          index_8826_IDX.increment () ;
-          enumerator_8826.gotoNextObject () ;
+          result << index_8872_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 201)).stringValue () ;
+          index_8872_IDX.increment () ;
+          enumerator_8872.gotoNextObject () ;
         }
       }
       result << ",\n"
@@ -4734,7 +4737,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "COMMA_LOCATION_ARGS) {\n"
         "  const char * kRemoveErrorMessage = " ;
-      result << enumerator_8542.current_mErrorMessage (HERE).getter_string (HERE).getter_utf_38_Representation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 205)).stringValue () ;
+      result << enumerator_8588.current_mErrorMessage (HERE).getter_string (HERE).getter_utf_38_Representation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 205)).stringValue () ;
       result << " ;\n"
         "  capCollectionElement attributes ;\n"
         "  performRemove (inKey, attributes, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n"
@@ -4744,39 +4747,39 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << " *) attributes.ptr () ;\n"
         "  if (NULL == p) {\n" ;
-      GALGAS_uint index_9375_IDX (0) ;
+      GALGAS_uint index_9421_IDX (0) ;
       if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-        cEnumerator_typedPropertyList enumerator_9375 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-        while (enumerator_9375.hasCurrentObject ()) {
+        cEnumerator_typedPropertyList enumerator_9421 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+        while (enumerator_9421.hasCurrentObject ()) {
           result << "    outArgument" ;
-          result << index_9375_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 211)).stringValue () ;
+          result << index_9421_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 211)).stringValue () ;
           result << ".drop () ;\n" ;
-          index_9375_IDX.increment () ;
-          enumerator_9375.gotoNextObject () ;
+          index_9421_IDX.increment () ;
+          enumerator_9421.gotoNextObject () ;
         }
       }
       result << "  }else{\n"
         "    macroValidSharedObject (p, cMapElement_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << ") ;\n" ;
-      GALGAS_uint index_9556_IDX (0) ;
+      GALGAS_uint index_9602_IDX (0) ;
       if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-        cEnumerator_typedPropertyList enumerator_9556 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-        while (enumerator_9556.hasCurrentObject ()) {
+        cEnumerator_typedPropertyList enumerator_9602 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+        while (enumerator_9602.hasCurrentObject ()) {
           result << "    outArgument" ;
-          result << index_9556_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 216)).stringValue () ;
+          result << index_9602_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 216)).stringValue () ;
           result << " = p->mProperty_" ;
-          result << enumerator_9556.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 216)).stringValue () ;
+          result << enumerator_9602.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 216)).stringValue () ;
           result << " ;\n" ;
-          index_9556_IDX.increment () ;
-          enumerator_9556.gotoNextObject () ;
+          index_9602_IDX.increment () ;
+          enumerator_9602.gotoNextObject () ;
         }
       }
       result << "  }\n"
         "}\n"
         "\n" ;
-      index_8542_.increment () ;
-      enumerator_8542.gotoNextObject () ;
+      index_8588_.increment () ;
+      enumerator_8588.gotoNextObject () ;
     }
   }
   const enumGalgasBool test_4 = in_HAS_5F_INSERT_5F_OR_5F_REPLACE.boolEnum () ;
@@ -4788,18 +4791,18 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     result << "::setter_insertOrReplace (" ;
     columnMarker = result.currentColumn () ;
     result << "GALGAS_lstring inKey" ;
-    GALGAS_uint index_9976_IDX (0) ;
+    GALGAS_uint index_10022_IDX (0) ;
     if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-      cEnumerator_typedPropertyList enumerator_9976 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-      while (enumerator_9976.hasCurrentObject ()) {
+      cEnumerator_typedPropertyList enumerator_10022 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+      while (enumerator_10022.hasCurrentObject ()) {
         result << ",\n" ;
         result.appendSpacesUntilColumn (columnMarker) ;
         result << "GALGAS_" ;
-        result << enumerator_9976.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 227)).stringValue () ;
+        result << enumerator_10022.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 227)).stringValue () ;
         result << " inArgument" ;
-        result << index_9976_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 227)).stringValue () ;
-        index_9976_IDX.increment () ;
-        enumerator_9976.gotoNextObject () ;
+        result << index_10022_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 227)).stringValue () ;
+        index_10022_IDX.increment () ;
+        enumerator_10022.gotoNextObject () ;
       }
     }
     result << "\n"
@@ -4812,14 +4815,14 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
       "  macroMyNew (p, cMapElement_" ;
     result << in_TYPE_5F_IDENTIFIER.stringValue () ;
     result << " (inKey" ;
-    GALGAS_uint index_10269_IDX (0) ;
+    GALGAS_uint index_10315_IDX (0) ;
     if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-      cEnumerator_typedPropertyList enumerator_10269 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-      while (enumerator_10269.hasCurrentObject ()) {
+      cEnumerator_typedPropertyList enumerator_10315 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+      while (enumerator_10315.hasCurrentObject ()) {
         result << ", inArgument" ;
-        result << index_10269_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 233)).stringValue () ;
-        index_10269_IDX.increment () ;
-        enumerator_10269.gotoNextObject () ;
+        result << index_10315_IDX.getter_string (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 233)).stringValue () ;
+        index_10315_IDX.increment () ;
+        enumerator_10315.gotoNextObject () ;
       }
     }
     result << " COMMA_HERE)) ;\n"
@@ -4831,18 +4834,18 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
       "\n" ;
   }else if (kBoolFalse == test_4) {
   }
-  GALGAS_uint index_10540_IDX (0) ;
+  GALGAS_uint index_10586_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_10540 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_10540.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_10586 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_10586.hasCurrentObject ()) {
       result << "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""*\n"
         "\n"
         "GALGAS_" ;
-      result << enumerator_10540.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 245)).stringValue () ;
+      result << enumerator_10586.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 245)).stringValue () ;
       result << " GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::getter_" ;
-      result << enumerator_10540.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 245)).stringValue () ;
+      result << enumerator_10586.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 245)).stringValue () ;
       result << "ForKey (" ;
       columnMarker = result.currentColumn () ;
       result << "const GALGAS_string & inKey,\n"
@@ -4859,37 +4862,37 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << " *) attributes ;\n"
         "  GALGAS_" ;
-      result << enumerator_10540.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 250)).stringValue () ;
+      result << enumerator_10586.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 250)).stringValue () ;
       result << " result ;\n"
         "  if (NULL != p) {\n"
         "    macroValidSharedObject (p, cMapElement_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << ") ;\n"
         "    result = p->mProperty_" ;
-      result << enumerator_10540.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 253)).stringValue () ;
+      result << enumerator_10586.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 253)).stringValue () ;
       result << " ;\n"
         "  }\n"
         "  return result ;\n"
         "}\n"
         "\n" ;
-      index_10540_IDX.increment () ;
-      enumerator_10540.gotoNextObject () ;
+      index_10586_IDX.increment () ;
+      enumerator_10586.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_11564_IDX (0) ;
+  GALGAS_uint index_11610_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_11564 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_11564.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_11610 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_11610.hasCurrentObject ()) {
       result << "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""*\n"
         "\n"
         "void GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::setter_set" ;
-      result << enumerator_11564.current_mPropertyName (HERE).getter_string (HERE).getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 261)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 261)).stringValue () ;
+      result << enumerator_11610.current_mPropertyName (HERE).getter_string (HERE).getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 261)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 261)).stringValue () ;
       result << "ForKey (" ;
       columnMarker = result.currentColumn () ;
       result << "GALGAS_" ;
-      result << enumerator_11564.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 261)).stringValue () ;
+      result << enumerator_11610.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 261)).stringValue () ;
       result << " inAttributeValue,\n"
         "                           " ;
       result.appendSpacesUntilColumn (columnMarker) ;
@@ -4911,13 +4914,13 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << ") ;\n"
         "    p->mProperty_" ;
-      result << enumerator_11564.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 269)).stringValue () ;
+      result << enumerator_11610.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 269)).stringValue () ;
       result << " = inAttributeValue ;\n"
         "  }\n"
         "}\n"
         "\n" ;
-      index_11564_IDX.increment () ;
-      enumerator_11564.gotoNextObject () ;
+      index_11610_IDX.increment () ;
+      enumerator_11610.gotoNextObject () ;
     }
   }
   result << "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""*\n"
@@ -4980,14 +4983,14 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "  return GALGAS_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << "_2D_element (p->mProperty_lkey" ;
-  GALGAS_uint index_13994_ (0) ;
+  GALGAS_uint index_14040_ (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_13994 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_13994.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_14040 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_14040.hasCurrentObject ()) {
       result << ", p->mProperty_" ;
-      result << enumerator_13994.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 301)).stringValue () ;
-      index_13994_.increment () ;
-      enumerator_13994.gotoNextObject () ;
+      result << enumerator_14040.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 301)).stringValue () ;
+      index_14040_.increment () ;
+      enumerator_14040.gotoNextObject () ;
     }
   }
   result << ") ;\n"
@@ -5003,18 +5006,18 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
     "  return p->mProperty_lkey ;\n"
     "}\n"
     "\n" ;
-  GALGAS_uint index_14463_IDX (0) ;
+  GALGAS_uint index_14509_IDX (0) ;
   if (in_ATTRIBUTE_5F_LIST.isValid ()) {
-    cEnumerator_typedPropertyList enumerator_14463 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_14463.hasCurrentObject ()) {
+    cEnumerator_typedPropertyList enumerator_14509 (in_ATTRIBUTE_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_14509.hasCurrentObject ()) {
       result << "//\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""\xE2""\x80""\x94""*\n"
         "\n"
         "GALGAS_" ;
-      result << enumerator_14463.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 316)).stringValue () ;
+      result << enumerator_14509.current_mPropertyTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 316)).stringValue () ;
       result << " cEnumerator_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::current_" ;
-      result << enumerator_14463.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 316)).stringValue () ;
+      result << enumerator_14509.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 316)).stringValue () ;
       result << " (LOCATION_ARGS) const {\n"
         "  const cMapElement_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
@@ -5025,12 +5028,12 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_mapTypeSpecificImplemen
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << ") ;\n"
         "  return p->mProperty_" ;
-      result << enumerator_14463.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 319)).stringValue () ;
+      result << enumerator_14509.current_mPropertyName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_map.cpp.galgasTemplate", 319)).stringValue () ;
       result << " ;\n"
         "}\n"
         "\n" ;
-      index_14463_IDX.increment () ;
-      enumerator_14463.gotoNextObject () ;
+      index_14509_IDX.increment () ;
+      enumerator_14509.gotoNextObject () ;
     }
   }
   result << "\n"

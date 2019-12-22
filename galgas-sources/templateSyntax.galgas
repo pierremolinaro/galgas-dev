@@ -506,7 +506,7 @@ rule <primary> !@templateExpressionAST outExpression {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <output_expression_list> !@templateExpressionListAST outExpressionList {
-  outExpressionList = @templateExpressionListAST.emptyList
+  outExpressionList = {}
   repeat
   while
     $!$ ?let selector

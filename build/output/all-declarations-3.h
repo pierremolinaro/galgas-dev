@@ -25,7 +25,7 @@ class GALGAS_extensionMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_extensionMap (const GALGAS_extensionMap & inSource) ;
   public : GALGAS_extensionMap & operator = (const GALGAS_extensionMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1117,7 +1117,7 @@ class GALGAS_optionComponentMapForGeneration : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_optionComponentMapForGeneration (const GALGAS_optionComponentMapForGeneration & inSource) ;
   public : GALGAS_optionComponentMapForGeneration & operator = (const GALGAS_optionComponentMapForGeneration & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -4739,7 +4739,7 @@ class GALGAS_insertMethodMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_insertMethodMap (const GALGAS_insertMethodMap & inSource) ;
   public : GALGAS_insertMethodMap & operator = (const GALGAS_insertMethodMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -4913,7 +4913,7 @@ class GALGAS_searchMethodMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_searchMethodMap (const GALGAS_searchMethodMap & inSource) ;
   public : GALGAS_searchMethodMap & operator = (const GALGAS_searchMethodMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

@@ -52,7 +52,7 @@ override method @abstractExtensionSetterAST enterDeclarationInGraph
   if not [ioExtensionSetterMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioExtensionSetterMapForBuildingContext insertKey
       !mTypeName
-      !@extensionSetterMapForType. emptyMap
+      !{}
     ]
   end
   with mTypeName in !?ioExtensionSetterMapForBuildingContext error message searchKey  do

@@ -170,7 +170,7 @@ proc analyzeRoutineBody
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
   !@formalParameterListForGeneration outRoutineSignature
 {
-  var variableMap =@variableMap.emptyMap{}
+  var variableMap = @variableMap.emptyMap
 #--- Declare local constants
   for () in inLocalConstantList do
     if mNoWarningIfUnused then
@@ -349,8 +349,9 @@ proc analyzeFunctionBody
   !@formalInputParameterListForGeneration outSignatureForGeneration
   !@unifiedTypeMap-proxy outReturnedType
   !@string outResultVariableCppName
-  !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration {
-  var variableMap =@variableMap.emptyMap{}
+  !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
+{
+  var variableMap = @variableMap.emptyMap
 #--- Enter instance attributes
   for () in inTypedAttributeList do
     [!?variableMap insertNonMutableAttribute
@@ -975,7 +976,7 @@ override method @lexiqueComponentAST semanticAnalysis
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
-    var lexicalTokenListMap =@lexicalExplicitTokenListMap.emptyMap{}
+    @lexicalExplicitTokenListMap lexicalTokenListMap = {}
     var tokenSortedlist =@tokenSortedlist.emptySortedList{}
     for () in mEntryList do
       @string syntaxErrorMessage = [[mSyntaxErrorMessage string] stringByReplacingStringByString !"%K" ![mTerminalSpelling string]]
@@ -1697,8 +1698,9 @@ proc semanticAnalysisOfRuleLabel
   ?!@uint ioSelectMethodCount
   !@formalParameterListForGeneration outSignatureForGeneration
   !@formalParameterSignature outSignature
-  !@semanticInstructionListForGeneration outInstructionListForGeneration {
-  var variableMap =@variableMap.emptyMap{}
+  !@semanticInstructionListForGeneration outInstructionListForGeneration
+{
+  var variableMap = @variableMap.emptyMap
   buildLocalVariableMapAndSignature (
     !inAnalysisContext.mSemanticContext
     !inFormalArguments

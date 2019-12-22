@@ -2,7 +2,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2003, ..., 2015 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2003, ..., 2019 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -62,11 +62,7 @@ extern OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-@interface OC_GGS_ApplicationDelegate : NSObject
-#if MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_5
-  <NSWindowDelegate>
-#endif
-{
+@interface OC_GGS_ApplicationDelegate : NSObject <NSWindowDelegate> {
 //--- Text Macros Menu
   @private IBOutlet NSMenu * mTextMacroMenu ;
 
@@ -150,7 +146,9 @@ extern OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 - (NSArray *) toolNameArray ;
 
-- (NSString *) compilerToolPath ;
+- (NSInteger) selectedToolIndex ;
+
+- (NSString *) compilerToolPath: (NSInteger) inSelectedToolIndex ;
 
 - (BOOL) prefixByToolUtility ;
 

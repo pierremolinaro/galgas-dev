@@ -5,6 +5,11 @@
 //  Created by Pierre Molinaro on 14/07/2015.
 //  LS2N, Laboratoire des Sciences du Numérique de Nantes, ECN, École Centrale de Nantes (France)                      *
 //
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+// https://stackoverflow.com/questions/22981497/fseventstream-filter-events-generated-from-my-own-application
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 #import "OC_GGS_DocumentData.h"
 #import "OC_GGS_FileEventStream.h"
@@ -34,7 +39,7 @@ static NSMutableArray * gFileEventStreamArray = nil ;
            flag: (FSEventStreamEventFlags) inEventFlag {
     // NSLog (@"path '%@' flag:%X", inPath, inEventFlag) ;
     for (OC_GGS_DocumentData * document in mDocuments) {
-      if ([document.fileURL.path isEqualToString:inPath]) {
+      if ([document.fileURL.path isEqualToString: inPath]) {
         [document fileDidChangeInFileSystem] ;
       }
     }
@@ -43,7 +48,7 @@ static NSMutableArray * gFileEventStreamArray = nil ;
   //····················································································································
 
   static void mycallback (ConstFSEventStreamRef streamRef,
-                          void * clientCallBackInfo,
+                          void* clientCallBackInfo,
                           size_t numEvents,
                           void *eventPaths,
                           const FSEventStreamEventFlags eventFlags[],
@@ -65,7 +70,7 @@ static NSMutableArray * gFileEventStreamArray = nil ;
       mDocuments = [NSMutableArray new] ;
       [mDocuments addObject:inDocument] ;
       NSString * path = inDocument.fileURL.path ;
-      NSArray * pathsToWatch = [NSArray arrayWithObject:path] ;
+      NSArray * pathsToWatch = [NSArray arrayWithObject: path] ;
       const CFAbsoluteTime latency = 1.0 ; // Latency in seconds
       FSEventStreamContext context = {
         0,
@@ -85,9 +90,10 @@ static NSMutableArray * gFileEventStreamArray = nil ;
         | kFSEventStreamCreateFlagUseCFTypes
         | kFSEventStreamCreateFlagWatchRoot
         | kFSEventStreamCreateFlagFileEvents
+        | kFSEventStreamCreateFlagMarkSelf
         | kFSEventStreamCreateFlagIgnoreSelf // Do not report events from current application
       ) ;
-      FSEventStreamScheduleWithRunLoop (mFSEventStream, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
+      FSEventStreamScheduleWithRunLoop (mFSEventStream, CFRunLoopGetMain(), kCFRunLoopDefaultMode);
       FSEventStreamStart (mFSEventStream) ;
     }
     return self ;

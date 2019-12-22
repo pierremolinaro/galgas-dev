@@ -188,7 +188,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !localConstantList
-      !@localInitializedVariableList.emptyList
+      !{}
       !mInstructionList
       !mEndOfInstructions
       !?ioVariableMap
@@ -202,8 +202,8 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !@localConstantList.emptyList
-    !@localInitializedVariableList.emptyList
+    !{}
+    !{}
     !mElseInstructionList
     !mEndOfCastInstruction
     !?ioVariableMap

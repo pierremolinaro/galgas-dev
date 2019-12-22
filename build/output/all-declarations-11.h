@@ -1122,7 +1122,7 @@ class GALGAS_headerCompositionMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_headerCompositionMap (const GALGAS_headerCompositionMap & inSource) ;
   public : GALGAS_headerCompositionMap & operator = (const GALGAS_headerCompositionMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1346,7 +1346,7 @@ class GALGAS_headerRepartitionMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_headerRepartitionMap (const GALGAS_headerRepartitionMap & inSource) ;
   public : GALGAS_headerRepartitionMap & operator = (const GALGAS_headerRepartitionMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1549,7 +1549,7 @@ class GALGAS_projectQualifiedFeatureMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_projectQualifiedFeatureMap (const GALGAS_projectQualifiedFeatureMap & inSource) ;
   public : GALGAS_projectQualifiedFeatureMap & operator = (const GALGAS_projectQualifiedFeatureMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

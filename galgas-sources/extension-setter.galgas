@@ -67,7 +67,7 @@ override method @extensionSetterAST enterDeclarationInGraph
   if not [ioExtensionSetterMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioExtensionSetterMapForBuildingContext insertKey
       !mTypeName
-      !@extensionSetterMapForType. emptyMap
+      !{}
     ]
   end
   with mTypeName in !?ioExtensionSetterMapForBuildingContext error message searchKey  do
@@ -136,8 +136,8 @@ override method @extensionSetterAST semanticAnalysis
     !?ioUsefulEntitiesGraph
     !analysisContext
     !mExtensionSetterFormalParameterList
-    !@localConstantList.emptyList
-    !@typedPropertyList.emptyList
+    !{}
+    !{}
     ![selfType mAllTypedAttributeList]
     !selfObjectAccessor
     !mExtensionSetterInstructionList

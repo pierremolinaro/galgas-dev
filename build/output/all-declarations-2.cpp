@@ -2678,7 +2678,7 @@ typeComparisonResult cMapElement_terminalMap::compare (const cCollectionElement 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_terminalMap::GALGAS_terminalMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -2936,7 +2936,7 @@ typeComparisonResult cMapElement_lexicalTypeMap::compare (const cCollectionEleme
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_lexicalTypeMap::GALGAS_lexicalTypeMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -3194,7 +3194,7 @@ typeComparisonResult cMapElement_lexicalAttributeMap::compare (const cCollection
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_lexicalAttributeMap::GALGAS_lexicalAttributeMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -4173,7 +4173,7 @@ typeComparisonResult cMapElement_lexicalExplicitTokenListMap::compare (const cCo
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_lexicalExplicitTokenListMap::GALGAS_lexicalExplicitTokenListMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -4815,7 +4815,7 @@ typeComparisonResult cMapElement_lexicalExplicitTokenListMapMap::compare (const 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_lexicalExplicitTokenListMapMap::GALGAS_lexicalExplicitTokenListMapMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -5166,7 +5166,7 @@ typeComparisonResult cMapElement_lexicalMessageMap::compare (const cCollectionEl
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_lexicalMessageMap::GALGAS_lexicalMessageMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -6007,7 +6007,7 @@ typeComparisonResult cMapElement_lexicalRoutineMap::compare (const cCollectionEl
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_lexicalRoutineMap::GALGAS_lexicalRoutineMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -6836,7 +6836,7 @@ typeComparisonResult cMapElement_lexicalFunctionMap::compare (const cCollectionE
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_lexicalFunctionMap::GALGAS_lexicalFunctionMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -7752,7 +7752,7 @@ typeComparisonResult cMapElement_styleMap::compare (const cCollectionElement * i
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_styleMap::GALGAS_styleMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -8043,7 +8043,7 @@ typeComparisonResult cMapElement_lexicalTagMap::compare (const cCollectionElemen
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_lexicalTagMap::GALGAS_lexicalTagMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -11444,7 +11444,7 @@ typeComparisonResult cMapElement_commandLineOptionMap::compare (const cCollectio
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_commandLineOptionMap::GALGAS_commandLineOptionMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

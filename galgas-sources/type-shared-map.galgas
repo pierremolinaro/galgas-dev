@@ -539,7 +539,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     [!?setterMap insertKey
       !@lstring.new {!"openBranch" !@location.here}
       !@methodKind.definedAsMember
-      !@formalParameterSignature.emptyList
+      !{}
       !true
       !@methodQualifier. isInherited
       !"" # No error message
@@ -573,7 +573,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       [!?setterMap insertKey
         !@lstring.new {!"openOverrideFor" + [mOverrideBlockName stringByCapitalizingFirstCharacter] !@location.here}
         !@methodKind.definedAsMember
-        !@formalParameterSignature.emptyList
+        !{}
         !true
         !@methodQualifier.isBasic
         !"" # No error message
@@ -630,17 +630,17 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy.null
     !@typeKindEnum.uniqueMapType
     !false # Does not support collection value
-    !@typedPropertyList.emptyList
+    !{}
     !{}
     !typedAttributeList
     !constructorMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !@classMethodMap.emptyMap
+    !{}
     !enumerationDescriptor
     !.doNotGenererateObjectCompare | .supportWithAccessor
-    !@functionSignature.emptyList
+    !{}
     !{}
     !{}
     !mSearchMethodList

@@ -127,9 +127,9 @@ override method @classDeclarationAST enterInSemanticContext
   if [mSuperClassName string] == "" then
     superClassIndex = @unifiedTypeMap-proxy.null
     commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?getterMap )
-    setterMap = @setterMap. emptyMap
-    instanceMethodMap = @instanceMethodMap. emptyMap
-    inheritedTypedAttributeList = @typedPropertyList.emptyList
+    setterMap = {}
+    instanceMethodMap = {}
+    inheritedTypedAttributeList = {}
     attributeMap = {}
     generateHeaderInSeparateFile = false
     for () in mClassFeatureList do
@@ -189,7 +189,7 @@ override method @classDeclarationAST enterInSemanticContext
       ] 
     end
   #--- Mark all methods as inherited
-    instanceMethodMap = @instanceMethodMap. emptyMap
+    instanceMethodMap = {}
     for () in inheritedMethodMap do
       [!?instanceMethodMap insertKey
         !lkey
@@ -335,14 +335,14 @@ override method @classDeclarationAST enterInSemanticContext
     !getterMap
     !setterMap
     !instanceMethodMap
-    !@classMethodMap.emptyMap
-    !@enumerationDescriptorList.emptyList
+    !{}
+    !{}
     !.none
-    !@functionSignature.emptyList
     !{}
     !{}
-    !@mapSearchMethodListAST.emptyList
-    !@mapSearchMethodListAST.emptyList
+    !{}
+    !{}
+    !{}
     !generateHeaderInSeparateFile
     !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor

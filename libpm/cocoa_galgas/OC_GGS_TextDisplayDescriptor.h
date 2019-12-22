@@ -75,6 +75,10 @@
 
 - (void) setTextDisplayIssueArray: (NSArray *) inIssueArray ; 
 
+- (NSRange) selectedRange ;
+
+- (void) setSelectionRange: (NSRange) inRange ;
+
 - (void) setSelectionRangeAndMakeItVisible: (NSRange) inRange ;
 
 - (void) actionInsertTextMacro: (NSMenuItem *) inSender ;

@@ -29,7 +29,7 @@ class GALGAS_filewrapperTemplateMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_filewrapperTemplateMap (const GALGAS_filewrapperTemplateMap & inSource) ;
   public : GALGAS_filewrapperTemplateMap & operator = (const GALGAS_filewrapperTemplateMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -757,7 +757,7 @@ class GALGAS_extensionMethodMapForType : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_extensionMethodMapForType (const GALGAS_extensionMethodMapForType & inSource) ;
   public : GALGAS_extensionMethodMapForType & operator = (const GALGAS_extensionMethodMapForType & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -955,7 +955,7 @@ class GALGAS_extensionMethodMapForBuildingContext : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_extensionMethodMapForBuildingContext (const GALGAS_extensionMethodMapForBuildingContext & inSource) ;
   public : GALGAS_extensionMethodMapForBuildingContext & operator = (const GALGAS_extensionMethodMapForBuildingContext & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1154,7 +1154,7 @@ class GALGAS_extensionSetterMapForType : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_extensionSetterMapForType (const GALGAS_extensionSetterMapForType & inSource) ;
   public : GALGAS_extensionSetterMapForType & operator = (const GALGAS_extensionSetterMapForType & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1352,7 +1352,7 @@ class GALGAS_extensionSetterMapForBuildingContext : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_extensionSetterMapForBuildingContext (const GALGAS_extensionSetterMapForBuildingContext & inSource) ;
   public : GALGAS_extensionSetterMapForBuildingContext & operator = (const GALGAS_extensionSetterMapForBuildingContext & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1551,7 +1551,7 @@ class GALGAS_extensionGetterMapForType : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_extensionGetterMapForType (const GALGAS_extensionGetterMapForType & inSource) ;
   public : GALGAS_extensionGetterMapForType & operator = (const GALGAS_extensionGetterMapForType & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1769,7 +1769,7 @@ class GALGAS_extensionGetterMapForBuildingContext : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_extensionGetterMapForBuildingContext (const GALGAS_extensionGetterMapForBuildingContext & inSource) ;
   public : GALGAS_extensionGetterMapForBuildingContext & operator = (const GALGAS_extensionGetterMapForBuildingContext & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2028,7 +2028,7 @@ class GALGAS_wrapperExtensionMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_wrapperExtensionMap (const GALGAS_wrapperExtensionMap & inSource) ;
   public : GALGAS_wrapperExtensionMap & operator = (const GALGAS_wrapperExtensionMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -3786,7 +3786,7 @@ class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_GALGAS_map 
 //--------------------------------- Handle copy
   public : GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis (const GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis & inSource) ;
   public : GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis & operator = (const GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -3989,7 +3989,7 @@ class GALGAS_nonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_nonTerminalSymbolMapForGrammarAnalysis (const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inSource) ;
   public : GALGAS_nonTerminalSymbolMapForGrammarAnalysis & operator = (const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -6245,7 +6245,7 @@ class GALGAS_propertyIndexMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_propertyIndexMap (const GALGAS_propertyIndexMap & inSource) ;
   public : GALGAS_propertyIndexMap & operator = (const GALGAS_propertyIndexMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -6448,7 +6448,7 @@ class GALGAS_nonterminalLabelMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_nonterminalLabelMap (const GALGAS_nonterminalLabelMap & inSource) ;
   public : GALGAS_nonterminalLabelMap & operator = (const GALGAS_nonterminalLabelMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -6693,7 +6693,7 @@ class GALGAS_nonterminalMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_nonterminalMap (const GALGAS_nonterminalMap & inSource) ;
   public : GALGAS_nonterminalMap & operator = (const GALGAS_nonterminalMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

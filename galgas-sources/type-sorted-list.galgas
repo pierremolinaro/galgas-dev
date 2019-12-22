@@ -100,7 +100,7 @@ override method @sortedListDeclarationAST addAssociatedElement
       !mPropertyTypeName
       !mPropertyName
       !true
-      !@lstringlist.emptyList
+      !{}
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
     !mIsPredefined
@@ -140,7 +140,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     setterFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST.argumentOut !mPropertyName.string
   end
 #--- Constructors
-  var constructorMap = @constructorMap.emptyMap{}
+  @constructorMap constructorMap = {}
   enterConstructorWithoutArgument (
     !?constructorMap
     !?ioSemanticContext.mTypeMap
@@ -164,7 +164,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !hasCompilerArgument:false
   )
 #--- Modifiers
-  var setterMap =@setterMap.emptyMap{}
+  @setterMap setterMap = {}
   [!?setterMap insertOrReplace
     !@lstring.new {!"popGreatest" !@location.here}
     !@methodKind.definedAsMember
@@ -182,7 +182,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
 #--- Instance methods
-  var instanceMethodMap =@instanceMethodMap.emptyMap{}
+  @instanceMethodMap instanceMethodMap = {}
   [!?instanceMethodMap insertKey
     !@lstring.new {!"greatest" !@location.here}
     !@methodKind.definedAsMember
@@ -222,19 +222,19 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !true # Support collection value
     !typedAttributeList
     !{}
-    !@typedPropertyList.emptyList
+    !{}
     !constructorMap
     !getterMap
     !setterMap
     !instanceMethodMap
-    !@classMethodMap. emptyMap
+    !{}
     !enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithExpression
     !constructorAttributeTypeList
     !{}
     !{}
-    !@mapSearchMethodListAST.emptyList
-    !@mapSearchMethodListAST.emptyList
+    !{}
+    !{}
     !false # Do not generate header in separate file
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptySortedList" # Default constructor

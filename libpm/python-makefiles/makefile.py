@@ -24,8 +24,9 @@
 #             added test (job.mReturnCode != None) lines 727 and 739
 # 3.1: may 26th, 2018
 #        Added tolerance in secondary dependency file syntax:
-# 3.2: december 11th, 2019
+# 3.2: december 16th, 2019
 #             added test (job.mReturnCode != None) lines 771 and 779
+#             post command displayed is aligned
 #
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 # http://www.diveintopython3.net/porting-code-to-python-3-with-2to3.html
@@ -336,7 +337,7 @@ class Job:
     postCommand = self.mPostCommands [0]
     self.mCommand = postCommand.mCommand
     displayLock.acquire ()
-    print (BOLD_BLUE () + postCommand.mTitle + ENDC ())
+    print (BOLD_BLUE () + "       " + postCommand.mTitle + ENDC ())
     if showCommand:
       cmdAsString = ""
       for s in self.mCommand:

@@ -26,7 +26,7 @@ rule <expression> !@semanticExpressionAST outExpressionAST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList {
-  outFormalParameterList = @formalParameterListAST.emptyList
+  outFormalParameterList = {}
   repeat
   while
     @lstring selector
@@ -72,7 +72,7 @@ rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList {
 rule <actual_parameter_list>
   !@actualParameterListAST outActualParameterList
 {
-  outActualParameterList = @actualParameterListAST.emptyList
+  outActualParameterList = {}
   repeat
   while
     $?$ ?let selector

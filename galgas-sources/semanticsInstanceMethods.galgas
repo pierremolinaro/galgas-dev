@@ -2,7 +2,7 @@
 #                                                                                                                      *
 #  semantics definitions for semantics component                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2010, ..., 2015 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2010, ..., 2019 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@ls2n.fr                                                                                           *
 #                                                                                                                      *
@@ -23,7 +23,7 @@ private proc enterInstanceMethodWithoutArgument
   [!?ioInstanceMethodMap insertKey
     ![inInstanceMethodName nowhere]
     !@methodKind.definedAsMember
-    !@formalParameterSignature.emptyList
+    !{}
     !.nowhere
     !inHasCompilerArgument
     !@methodQualifier. isBasic

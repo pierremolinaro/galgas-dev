@@ -605,7 +605,7 @@ proc analyzeRoutineArguments
     + [[inActualParameterList length] string] + " argument(s)"
     : outActualParameterListForGeneration
   else
-    outActualParameterListForGeneration = @actualParameterListForGeneration.emptyList
+    outActualParameterListForGeneration = {}
     @stringset exclusiveVariableSet = {}
     for () in inRoutineSignature, () in inActualParameterList do
       [mActualParameter checkAgainstFormalArgument
@@ -679,7 +679,7 @@ proc checkExpressionIsBoolean
           !inExpression
           !{}
           !"bool"
-          !@semanticExpressionListForGeneration.emptyList
+          !{}
           !mHasCompilerArgument}
       end
     else

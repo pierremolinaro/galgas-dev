@@ -438,10 +438,8 @@ class @galgas3GrammarComponentAST : @semanticDeclarationAST {
 list @galgas3SyntaxComponentListAST {
   @lstring mSyntaxComponentName
   @lstring mImportedLexiqueFilePath 
-  @lstringlist mImportedComponentFileNameList
   @nonterminalDeclarationListAST mNonterminalDeclarationList
   @syntaxRuleListAST mRuleList
-  @semanticDeclarationListAST mSemanticDeclarationList
   @bool mHasTranslateFeature
 }
 

@@ -1349,7 +1349,7 @@ class GALGAS_terminalMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_terminalMap (const GALGAS_terminalMap & inSource) ;
   public : GALGAS_terminalMap & operator = (const GALGAS_terminalMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1552,7 +1552,7 @@ class GALGAS_lexicalTypeMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_lexicalTypeMap (const GALGAS_lexicalTypeMap & inSource) ;
   public : GALGAS_lexicalTypeMap & operator = (const GALGAS_lexicalTypeMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1752,7 +1752,7 @@ class GALGAS_lexicalAttributeMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_lexicalAttributeMap (const GALGAS_lexicalAttributeMap & inSource) ;
   public : GALGAS_lexicalAttributeMap & operator = (const GALGAS_lexicalAttributeMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2274,7 +2274,7 @@ class GALGAS_lexicalExplicitTokenListMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_lexicalExplicitTokenListMap (const GALGAS_lexicalExplicitTokenListMap & inSource) ;
   public : GALGAS_lexicalExplicitTokenListMap & operator = (const GALGAS_lexicalExplicitTokenListMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2673,7 +2673,7 @@ class GALGAS_lexicalExplicitTokenListMapMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_lexicalExplicitTokenListMapMap (const GALGAS_lexicalExplicitTokenListMapMap & inSource) ;
   public : GALGAS_lexicalExplicitTokenListMapMap & operator = (const GALGAS_lexicalExplicitTokenListMapMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2918,7 +2918,7 @@ class GALGAS_lexicalMessageMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_lexicalMessageMap (const GALGAS_lexicalMessageMap & inSource) ;
   public : GALGAS_lexicalMessageMap & operator = (const GALGAS_lexicalMessageMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -3386,7 +3386,7 @@ class GALGAS_lexicalRoutineMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_lexicalRoutineMap (const GALGAS_lexicalRoutineMap & inSource) ;
   public : GALGAS_lexicalRoutineMap & operator = (const GALGAS_lexicalRoutineMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -3850,7 +3850,7 @@ class GALGAS_lexicalFunctionMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_lexicalFunctionMap (const GALGAS_lexicalFunctionMap & inSource) ;
   public : GALGAS_lexicalFunctionMap & operator = (const GALGAS_lexicalFunctionMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -4360,7 +4360,7 @@ class GALGAS_styleMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_styleMap (const GALGAS_styleMap & inSource) ;
   public : GALGAS_styleMap & operator = (const GALGAS_styleMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -4584,7 +4584,7 @@ class GALGAS_lexicalTagMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_lexicalTagMap (const GALGAS_lexicalTagMap & inSource) ;
   public : GALGAS_lexicalTagMap & operator = (const GALGAS_lexicalTagMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -6022,7 +6022,7 @@ class GALGAS_commandLineOptionMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_commandLineOptionMap (const GALGAS_commandLineOptionMap & inSource) ;
   public : GALGAS_commandLineOptionMap & operator = (const GALGAS_commandLineOptionMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

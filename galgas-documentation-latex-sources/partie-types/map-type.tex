@@ -11,10 +11,10 @@ Un objet de type \ggs+map+ est une table de symboles, chaque symbole étant asso
 
 La déclaration d'un type \ggs+map+ nomme~:
 \begin{itemize}
-  \item les attributs qui sont associés à une clé~;
-  \item les \emph{setters} d'insertion~;
-  \item les \emph{méthodes} de recherche~;
-  \item les \emph{setters} de retrait~;
+  \item des attributs associés au type table (\refSectionPage{attributsTable})~;
+  \item les \emph{setters} d'insertion (\refSectionPage{setterInsertionTable})~;
+  \item les \emph{méthodes} de recherche (\refSectionPage{methodesRechercheTable})~;
+  \item les \emph{setters} de retrait (\refSectionPage{setterRetraitTable}).
 \end{itemize}
 
 Les clés sont déclarées implicitement et sont du type \refTypePredefini{lstring}.
@@ -108,7 +108,7 @@ Ce constructeur permet d'instancier une table vide, qui surcharge la table \ggs+
 
 
 
-\section{Setters d'insertion}
+\sectionLabel{Setters d'insertion}{setterInsertionTable}
 
 Une \ggs+map+ peut déclarer zéro, un ou plusieurs \emph{setters} d'insertion. Un \emph{setter} d'insertion permet d'insérer une nouvelle entrée à une table. Une erreur est déclenchée en cas de tentative d'une clé déjà existante.
 
@@ -151,7 +151,7 @@ Par exemple~:
 
 
 
-\section{Méthodes de recherche}
+\sectionLabel{Méthodes de recherche}{methodesRechercheTable}
 
 Une \ggs+map+ peut déclarer zéro, une ou plusieurs \emph{méthodes} de recherche. Une \emph{méthode} de recherche permet de rechercher une entrée d'une table, et retourne la valeur de ses attributs associés. Une erreur est déclenchée si la clé n'existe pas.
 
@@ -184,9 +184,9 @@ Par exemple~:
 \end{galgas}
 
 
-\subsection{Option \texttt{\%location}}
+\subsection{Attribut \texttt{\%location}}
 
-À partir de la version 3.2.13, la déclaration d'une méthode de recherche peut comporter l'option \ggs=%location=, placée juste après le nom de la méthode~:
+À partir de la version 3.2.13, la déclaration d'une méthode de recherche peut comporter l'attribut \ggs=%location=, placée juste après le nom de la méthode~:
 
 \begin{galgas}
 search nom %location error message "message_erreur"
@@ -209,7 +209,7 @@ La valeur retournée est la même que celle renvoyée par le getter \ggs=locatio
 
 
 
-\section{Setters de retrait}
+\sectionLabel{Setters de retrait}{setterRetraitTable}
 
 Une \ggs+map+ peut déclarer zéro, un ou plusieurs \emph{setters} de retrait. Un \emph{setter} de recherche permet de retirer une entrée d'une table, et retourne la valeur des attributs de la clé retirée. Une erreur est déclenchée si la clé n'existe pas.
 
@@ -240,7 +240,7 @@ Par exemple~:
 [!?uneTable removeKey !clef ?@string s ?@uint v]
 \end{galgas}
 
-\section{Getters}
+\sectionLabel{Getters}{gettersDeTable}
 
 %\subsection{Getter \texttt{allKeyList}}
 %
@@ -325,6 +325,60 @@ getter overriddenMap -> @T
 
 Le \emph{getter} \ggs+overriddenMap+ retourne la table obtenue en amputant de la valeur du récepteur la table de premier niveau. Si le récepteur n'a pas de table surchargée, une erreur d'exécution est déclenchée.
 
+
+
+
+
+
+
+
+
+\sectionLabel{Attributs d'une table}{attributsTable}
+
+Deux attributs peuvent être définis dans la déclaration d'une table : \ggs!%selectors! et \ggs!%noSuggestion!.
+
+L'attribut \ggs!%selectors! impose l'utilisation de sélecteurs dans l'appel des setters d'insertion (\refSectionPage{setterInsertionTable}), des méthodes de recherche(\refSectionPage{methodesRechercheTable}) et des \emph{setters} de retrait (\refSectionPage{setterRetraitTable}). Le sélecteur associé à la clé est \ggs=!lkey:=. Le sélecteur associé à une propriété porte le nom de cette propriété.
+
+
+\begin{galgas}
+map @MaTable %selectors {
+  @string mPremier
+  @uint mSecond
+  insert insertKey error message "the '%K' key is already declared in %L"
+  search searchKey error message "the '%K' key is not defined"
+  remove removeKey error message "the '%K' key is not defined"
+}
+\end{galgas}
+
+L'appel d'un \emph{setter} d'insertion :
+\begin{galgas}
+@MaTable uneTable = {}
+@lstring clef = ...
+@string s = ...
+@uint v = ...
+[!?uneTable insertKey !lkey: clef !mPremier: s !mSecond: v]
+\end{galgas}
+
+
+
+L'appel d'une méthode de recherche :
+\begin{galgas}
+@MaTable uneTable = {}
+...
+@lstring clef = ...
+[uneTable searchKey !lkey: clef ?mPremier: @string s ?mSecond: @uint v]
+\end{galgas}
+
+
+L'appel d'un \emph{setter} de retrait :
+\begin{galgas}
+@MaTable uneTable = {}
+...
+@lstring clef = ...
+[!?uneTable removeKey !lkey: clef ?mPremier: @string s ?mSecond: @uint v]
+\end{galgas}
+
+Lors de l'échec d'une recherche de clés, une méthode de recherche ou un setter de retrait affiche les clés voisines contenues dans la table. L'attribut \ggs!%noSuggestion! inhibe l'affichage de ces suggestions.
 
 
 

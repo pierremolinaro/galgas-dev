@@ -660,6 +660,28 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+- (void) setSelectionRange: (NSRange) inRange {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s [%lu, %lu], source length %lu", __PRETTY_FUNCTION__, inRange.location, inRange.length, mTextView.string.length) ;
+  #endif
+  NSRange range = inRange ;
+  if (NSMaxRange (inRange) >= mTextView.string.length) {
+    range = NSMakeRange (mTextView.string.length, 0) ;
+  }
+  [mTextView setSelectedRange: range] ;
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s:DONE", __PRETTY_FUNCTION__) ;
+  #endif
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+- (NSRange) selectedRange {
+  return mTextView.selectedRange ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
 #pragma mark Fix-it Replace selected range by string
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

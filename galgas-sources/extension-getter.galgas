@@ -80,7 +80,7 @@ override method @extensionGetterAST enterDeclarationInGraph
   if not [ioExtensionGetterMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioExtensionGetterMapForBuildingContext insertKey
       !mTypeName
-      !@extensionGetterMapForType.emptyMap
+      !{}
     ]
   end
   with mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do

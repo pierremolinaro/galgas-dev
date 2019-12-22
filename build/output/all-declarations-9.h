@@ -1827,7 +1827,7 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GALGAS_map
 //--------------------------------- Handle copy
   public : GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis (const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inSource) ;
   public : GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & operator = (const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2753,7 +2753,7 @@ class GALGAS_terminalSymbolsMapForGrammarAnalysis : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_terminalSymbolsMapForGrammarAnalysis (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inSource) ;
   public : GALGAS_terminalSymbolsMapForGrammarAnalysis & operator = (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -3789,7 +3789,7 @@ class GALGAS_extensionMethodMapForGlobalCheckings : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_extensionMethodMapForGlobalCheckings (const GALGAS_extensionMethodMapForGlobalCheckings & inSource) ;
   public : GALGAS_extensionMethodMapForGlobalCheckings & operator = (const GALGAS_extensionMethodMapForGlobalCheckings & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -3963,7 +3963,7 @@ class GALGAS_extensionSetterMapForGlobalCheckings : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_extensionSetterMapForGlobalCheckings (const GALGAS_extensionSetterMapForGlobalCheckings & inSource) ;
   public : GALGAS_extensionSetterMapForGlobalCheckings & operator = (const GALGAS_extensionSetterMapForGlobalCheckings & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -4137,7 +4137,7 @@ class GALGAS_extensionGetterMapForGlobalCheckings : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_extensionGetterMapForGlobalCheckings (const GALGAS_extensionGetterMapForGlobalCheckings & inSource) ;
   public : GALGAS_extensionGetterMapForGlobalCheckings & operator = (const GALGAS_extensionGetterMapForGlobalCheckings & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

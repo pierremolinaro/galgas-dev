@@ -129,8 +129,8 @@ override method @loopInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !@localConstantList.emptyList
-    !@localInitializedVariableList.emptyList
+    !{}
+    !{}
     !mFirstInstructions
     !mEndOfFirstInstructions
     !?ioVariableMap
@@ -142,8 +142,8 @@ override method @loopInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !@localConstantList.emptyList
-    !@localInitializedVariableList.emptyList
+    !{}
+    !{}
     !mSecondInstructions
     !mEndOfSecondInstructions
     !?ioVariableMap

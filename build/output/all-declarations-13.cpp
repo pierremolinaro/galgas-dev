@@ -8,834 +8,6 @@
 #include "all-declarations-13.h"
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-typeComparisonResult cPtr_lexiqueComponentAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-  if (kOperandEqual == result) {
-    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLexiqueComponentName.objectCompare (p->mProperty_mLexiqueComponentName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mIsTemplate.objectCompare (p->mProperty_mIsTemplate) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mTemplateDelimitorList.objectCompare (p->mProperty_mTemplateDelimitorList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mTemplateReplacementList.objectCompare (p->mProperty_mTemplateReplacementList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLexicalAttributeList.objectCompare (p->mProperty_mLexicalAttributeList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLexicalStyleList.objectCompare (p->mProperty_mLexicalStyleList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mTerminalDeclarationList.objectCompare (p->mProperty_mTerminalDeclarationList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLexicalMessageDeclarationList.objectCompare (p->mProperty_mLexicalMessageDeclarationList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLexicalListDeclarationList.objectCompare (p->mProperty_mLexicalListDeclarationList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLexicalRuleList.objectCompare (p->mProperty_mLexicalRuleList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mExternRoutineList.objectCompare (p->mProperty_mExternRoutineList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mExternFunctionList.objectCompare (p->mProperty_mExternFunctionList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mIndexingListAST.objectCompare (p->mProperty_mIndexingListAST) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mIndexingDirectory.objectCompare (p->mProperty_mIndexingDirectory) ;
-  }
-  if (kOperandEqual == result) {
-    result = mProperty_mLexicalFunctionListAST.objectCompare (p->mProperty_mLexicalFunctionListAST) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-
-typeComparisonResult GALGAS_lexiqueComponentAST::objectCompare (const GALGAS_lexiqueComponentAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexiqueComponentAST::GALGAS_lexiqueComponentAST (void) :
-GALGAS_semanticDeclarationAST () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexiqueComponentAST GALGAS_lexiqueComponentAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_lexiqueComponentAST::constructor_new (GALGAS_bool::constructor_default (HERE),
-                                                      GALGAS_lstring::constructor_default (HERE),
-                                                      GALGAS_bool::constructor_default (HERE),
-                                                      GALGAS_metamodelTemplateDelimitorListAST::constructor_emptyList (HERE),
-                                                      GALGAS_templateReplacementListAST::constructor_emptyList (HERE),
-                                                      GALGAS_lexicalAttributeListAST::constructor_emptyList (HERE),
-                                                      GALGAS_lexicalStyleListAST::constructor_emptyList (HERE),
-                                                      GALGAS_terminalDeclarationListAST::constructor_emptyList (HERE),
-                                                      GALGAS_lexicalMessageDeclarationListAST::constructor_emptyList (HERE),
-                                                      GALGAS_lexicalListDeclarationListAST::constructor_emptyList (HERE),
-                                                      GALGAS_lexicalRuleListAST::constructor_emptyList (HERE),
-                                                      GALGAS_externRoutineListAST::constructor_emptyList (HERE),
-                                                      GALGAS_externFunctionListAST::constructor_emptyList (HERE),
-                                                      GALGAS_indexingListAST::constructor_emptyList (HERE),
-                                                      GALGAS_lstring::constructor_default (HERE),
-                                                      GALGAS_lexicalFunctionListAST::constructor_emptyList (HERE)
-                                                      COMMA_THERE) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexiqueComponentAST::GALGAS_lexiqueComponentAST (const cPtr_lexiqueComponentAST * inSourcePtr) :
-GALGAS_semanticDeclarationAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexiqueComponentAST) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexiqueComponentAST GALGAS_lexiqueComponentAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
-                                                                        const GALGAS_lstring & inAttribute_mLexiqueComponentName,
-                                                                        const GALGAS_bool & inAttribute_mIsTemplate,
-                                                                        const GALGAS_metamodelTemplateDelimitorListAST & inAttribute_mTemplateDelimitorList,
-                                                                        const GALGAS_templateReplacementListAST & inAttribute_mTemplateReplacementList,
-                                                                        const GALGAS_lexicalAttributeListAST & inAttribute_mLexicalAttributeList,
-                                                                        const GALGAS_lexicalStyleListAST & inAttribute_mLexicalStyleList,
-                                                                        const GALGAS_terminalDeclarationListAST & inAttribute_mTerminalDeclarationList,
-                                                                        const GALGAS_lexicalMessageDeclarationListAST & inAttribute_mLexicalMessageDeclarationList,
-                                                                        const GALGAS_lexicalListDeclarationListAST & inAttribute_mLexicalListDeclarationList,
-                                                                        const GALGAS_lexicalRuleListAST & inAttribute_mLexicalRuleList,
-                                                                        const GALGAS_externRoutineListAST & inAttribute_mExternRoutineList,
-                                                                        const GALGAS_externFunctionListAST & inAttribute_mExternFunctionList,
-                                                                        const GALGAS_indexingListAST & inAttribute_mIndexingListAST,
-                                                                        const GALGAS_lstring & inAttribute_mIndexingDirectory,
-                                                                        const GALGAS_lexicalFunctionListAST & inAttribute_mLexicalFunctionListAST
-                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_lexiqueComponentAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mLexiqueComponentName.isValid () && inAttribute_mIsTemplate.isValid () && inAttribute_mTemplateDelimitorList.isValid () && inAttribute_mTemplateReplacementList.isValid () && inAttribute_mLexicalAttributeList.isValid () && inAttribute_mLexicalStyleList.isValid () && inAttribute_mTerminalDeclarationList.isValid () && inAttribute_mLexicalMessageDeclarationList.isValid () && inAttribute_mLexicalListDeclarationList.isValid () && inAttribute_mLexicalRuleList.isValid () && inAttribute_mExternRoutineList.isValid () && inAttribute_mExternFunctionList.isValid () && inAttribute_mIndexingListAST.isValid () && inAttribute_mIndexingDirectory.isValid () && inAttribute_mLexicalFunctionListAST.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_lexiqueComponentAST (inAttribute_mIsPredefined, inAttribute_mLexiqueComponentName, inAttribute_mIsTemplate, inAttribute_mTemplateDelimitorList, inAttribute_mTemplateReplacementList, inAttribute_mLexicalAttributeList, inAttribute_mLexicalStyleList, inAttribute_mTerminalDeclarationList, inAttribute_mLexicalMessageDeclarationList, inAttribute_mLexicalListDeclarationList, inAttribute_mLexicalRuleList, inAttribute_mExternRoutineList, inAttribute_mExternFunctionList, inAttribute_mIndexingListAST, inAttribute_mIndexingDirectory, inAttribute_mLexicalFunctionListAST COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lstring GALGAS_lexiqueComponentAST::getter_mLexiqueComponentName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    result = p->mProperty_mLexiqueComponentName ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lstring cPtr_lexiqueComponentAST::getter_mLexiqueComponentName (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mLexiqueComponentName ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_bool GALGAS_lexiqueComponentAST::getter_mIsTemplate (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    result = p->mProperty_mIsTemplate ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_bool cPtr_lexiqueComponentAST::getter_mIsTemplate (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mIsTemplate ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_metamodelTemplateDelimitorListAST GALGAS_lexiqueComponentAST::getter_mTemplateDelimitorList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_metamodelTemplateDelimitorListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    result = p->mProperty_mTemplateDelimitorList ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_metamodelTemplateDelimitorListAST cPtr_lexiqueComponentAST::getter_mTemplateDelimitorList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mTemplateDelimitorList ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_templateReplacementListAST GALGAS_lexiqueComponentAST::getter_mTemplateReplacementList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_templateReplacementListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    result = p->mProperty_mTemplateReplacementList ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_templateReplacementListAST cPtr_lexiqueComponentAST::getter_mTemplateReplacementList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mTemplateReplacementList ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalAttributeListAST GALGAS_lexiqueComponentAST::getter_mLexicalAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalAttributeListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    result = p->mProperty_mLexicalAttributeList ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalAttributeListAST cPtr_lexiqueComponentAST::getter_mLexicalAttributeList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mLexicalAttributeList ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalStyleListAST GALGAS_lexiqueComponentAST::getter_mLexicalStyleList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalStyleListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    result = p->mProperty_mLexicalStyleList ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalStyleListAST cPtr_lexiqueComponentAST::getter_mLexicalStyleList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mLexicalStyleList ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_terminalDeclarationListAST GALGAS_lexiqueComponentAST::getter_mTerminalDeclarationList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_terminalDeclarationListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    result = p->mProperty_mTerminalDeclarationList ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_terminalDeclarationListAST cPtr_lexiqueComponentAST::getter_mTerminalDeclarationList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mTerminalDeclarationList ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalMessageDeclarationListAST GALGAS_lexiqueComponentAST::getter_mLexicalMessageDeclarationList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalMessageDeclarationListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    result = p->mProperty_mLexicalMessageDeclarationList ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalMessageDeclarationListAST cPtr_lexiqueComponentAST::getter_mLexicalMessageDeclarationList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mLexicalMessageDeclarationList ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalListDeclarationListAST GALGAS_lexiqueComponentAST::getter_mLexicalListDeclarationList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalListDeclarationListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    result = p->mProperty_mLexicalListDeclarationList ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalListDeclarationListAST cPtr_lexiqueComponentAST::getter_mLexicalListDeclarationList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mLexicalListDeclarationList ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalRuleListAST GALGAS_lexiqueComponentAST::getter_mLexicalRuleList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalRuleListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    result = p->mProperty_mLexicalRuleList ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalRuleListAST cPtr_lexiqueComponentAST::getter_mLexicalRuleList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mLexicalRuleList ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_externRoutineListAST GALGAS_lexiqueComponentAST::getter_mExternRoutineList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_externRoutineListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    result = p->mProperty_mExternRoutineList ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_externRoutineListAST cPtr_lexiqueComponentAST::getter_mExternRoutineList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mExternRoutineList ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_externFunctionListAST GALGAS_lexiqueComponentAST::getter_mExternFunctionList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_externFunctionListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    result = p->mProperty_mExternFunctionList ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_externFunctionListAST cPtr_lexiqueComponentAST::getter_mExternFunctionList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mExternFunctionList ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_indexingListAST GALGAS_lexiqueComponentAST::getter_mIndexingListAST (UNUSED_LOCATION_ARGS) const {
-  GALGAS_indexingListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    result = p->mProperty_mIndexingListAST ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_indexingListAST cPtr_lexiqueComponentAST::getter_mIndexingListAST (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mIndexingListAST ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lstring GALGAS_lexiqueComponentAST::getter_mIndexingDirectory (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    result = p->mProperty_mIndexingDirectory ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lstring cPtr_lexiqueComponentAST::getter_mIndexingDirectory (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mIndexingDirectory ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalFunctionListAST GALGAS_lexiqueComponentAST::getter_mLexicalFunctionListAST (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalFunctionListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexiqueComponentAST * p = (const cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    result = p->mProperty_mLexicalFunctionListAST ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalFunctionListAST cPtr_lexiqueComponentAST::getter_mLexicalFunctionListAST (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mLexicalFunctionListAST ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexiqueComponentAST::setter_setMLexiqueComponentName (GALGAS_lstring inValue
-                                                                  COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    p->mProperty_mLexiqueComponentName = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lexiqueComponentAST::setter_setMLexiqueComponentName (GALGAS_lstring inValue
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mLexiqueComponentName = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexiqueComponentAST::setter_setMIsTemplate (GALGAS_bool inValue
-                                                        COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    p->mProperty_mIsTemplate = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lexiqueComponentAST::setter_setMIsTemplate (GALGAS_bool inValue
-                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mIsTemplate = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexiqueComponentAST::setter_setMTemplateDelimitorList (GALGAS_metamodelTemplateDelimitorListAST inValue
-                                                                   COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    p->mProperty_mTemplateDelimitorList = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lexiqueComponentAST::setter_setMTemplateDelimitorList (GALGAS_metamodelTemplateDelimitorListAST inValue
-                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mTemplateDelimitorList = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexiqueComponentAST::setter_setMTemplateReplacementList (GALGAS_templateReplacementListAST inValue
-                                                                     COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    p->mProperty_mTemplateReplacementList = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lexiqueComponentAST::setter_setMTemplateReplacementList (GALGAS_templateReplacementListAST inValue
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mTemplateReplacementList = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexiqueComponentAST::setter_setMLexicalAttributeList (GALGAS_lexicalAttributeListAST inValue
-                                                                  COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    p->mProperty_mLexicalAttributeList = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lexiqueComponentAST::setter_setMLexicalAttributeList (GALGAS_lexicalAttributeListAST inValue
-                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mLexicalAttributeList = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexiqueComponentAST::setter_setMLexicalStyleList (GALGAS_lexicalStyleListAST inValue
-                                                              COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    p->mProperty_mLexicalStyleList = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lexiqueComponentAST::setter_setMLexicalStyleList (GALGAS_lexicalStyleListAST inValue
-                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mLexicalStyleList = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexiqueComponentAST::setter_setMTerminalDeclarationList (GALGAS_terminalDeclarationListAST inValue
-                                                                     COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    p->mProperty_mTerminalDeclarationList = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lexiqueComponentAST::setter_setMTerminalDeclarationList (GALGAS_terminalDeclarationListAST inValue
-                                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mTerminalDeclarationList = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexiqueComponentAST::setter_setMLexicalMessageDeclarationList (GALGAS_lexicalMessageDeclarationListAST inValue
-                                                                           COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    p->mProperty_mLexicalMessageDeclarationList = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lexiqueComponentAST::setter_setMLexicalMessageDeclarationList (GALGAS_lexicalMessageDeclarationListAST inValue
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mLexicalMessageDeclarationList = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexiqueComponentAST::setter_setMLexicalListDeclarationList (GALGAS_lexicalListDeclarationListAST inValue
-                                                                        COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    p->mProperty_mLexicalListDeclarationList = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lexiqueComponentAST::setter_setMLexicalListDeclarationList (GALGAS_lexicalListDeclarationListAST inValue
-                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mLexicalListDeclarationList = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexiqueComponentAST::setter_setMLexicalRuleList (GALGAS_lexicalRuleListAST inValue
-                                                             COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    p->mProperty_mLexicalRuleList = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lexiqueComponentAST::setter_setMLexicalRuleList (GALGAS_lexicalRuleListAST inValue
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mLexicalRuleList = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexiqueComponentAST::setter_setMExternRoutineList (GALGAS_externRoutineListAST inValue
-                                                               COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    p->mProperty_mExternRoutineList = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lexiqueComponentAST::setter_setMExternRoutineList (GALGAS_externRoutineListAST inValue
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mExternRoutineList = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexiqueComponentAST::setter_setMExternFunctionList (GALGAS_externFunctionListAST inValue
-                                                                COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    p->mProperty_mExternFunctionList = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lexiqueComponentAST::setter_setMExternFunctionList (GALGAS_externFunctionListAST inValue
-                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mExternFunctionList = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexiqueComponentAST::setter_setMIndexingListAST (GALGAS_indexingListAST inValue
-                                                             COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    p->mProperty_mIndexingListAST = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lexiqueComponentAST::setter_setMIndexingListAST (GALGAS_indexingListAST inValue
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mIndexingListAST = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexiqueComponentAST::setter_setMIndexingDirectory (GALGAS_lstring inValue
-                                                               COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    p->mProperty_mIndexingDirectory = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lexiqueComponentAST::setter_setMIndexingDirectory (GALGAS_lstring inValue
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mIndexingDirectory = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexiqueComponentAST::setter_setMLexicalFunctionListAST (GALGAS_lexicalFunctionListAST inValue
-                                                                    COMMA_LOCATION_ARGS) {
-  if (NULL != mObjectPtr) {
-    insulate (THERE) ;
-    cPtr_lexiqueComponentAST * p = (cPtr_lexiqueComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexiqueComponentAST) ;
-    p->mProperty_mLexicalFunctionListAST = inValue ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cPtr_lexiqueComponentAST::setter_setMLexicalFunctionListAST (GALGAS_lexicalFunctionListAST inValue
-                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mLexicalFunctionListAST = inValue ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                    Pointer class for @lexiqueComponentAST class                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cPtr_lexiqueComponentAST::cPtr_lexiqueComponentAST (const GALGAS_bool & in_mIsPredefined,
-                                                    const GALGAS_lstring & in_mLexiqueComponentName,
-                                                    const GALGAS_bool & in_mIsTemplate,
-                                                    const GALGAS_metamodelTemplateDelimitorListAST & in_mTemplateDelimitorList,
-                                                    const GALGAS_templateReplacementListAST & in_mTemplateReplacementList,
-                                                    const GALGAS_lexicalAttributeListAST & in_mLexicalAttributeList,
-                                                    const GALGAS_lexicalStyleListAST & in_mLexicalStyleList,
-                                                    const GALGAS_terminalDeclarationListAST & in_mTerminalDeclarationList,
-                                                    const GALGAS_lexicalMessageDeclarationListAST & in_mLexicalMessageDeclarationList,
-                                                    const GALGAS_lexicalListDeclarationListAST & in_mLexicalListDeclarationList,
-                                                    const GALGAS_lexicalRuleListAST & in_mLexicalRuleList,
-                                                    const GALGAS_externRoutineListAST & in_mExternRoutineList,
-                                                    const GALGAS_externFunctionListAST & in_mExternFunctionList,
-                                                    const GALGAS_indexingListAST & in_mIndexingListAST,
-                                                    const GALGAS_lstring & in_mIndexingDirectory,
-                                                    const GALGAS_lexicalFunctionListAST & in_mLexicalFunctionListAST
-                                                    COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
-mProperty_mLexiqueComponentName (in_mLexiqueComponentName),
-mProperty_mIsTemplate (in_mIsTemplate),
-mProperty_mTemplateDelimitorList (in_mTemplateDelimitorList),
-mProperty_mTemplateReplacementList (in_mTemplateReplacementList),
-mProperty_mLexicalAttributeList (in_mLexicalAttributeList),
-mProperty_mLexicalStyleList (in_mLexicalStyleList),
-mProperty_mTerminalDeclarationList (in_mTerminalDeclarationList),
-mProperty_mLexicalMessageDeclarationList (in_mLexicalMessageDeclarationList),
-mProperty_mLexicalListDeclarationList (in_mLexicalListDeclarationList),
-mProperty_mLexicalRuleList (in_mLexicalRuleList),
-mProperty_mExternRoutineList (in_mExternRoutineList),
-mProperty_mExternFunctionList (in_mExternFunctionList),
-mProperty_mIndexingListAST (in_mIndexingListAST),
-mProperty_mIndexingDirectory (in_mIndexingDirectory),
-mProperty_mLexicalFunctionListAST (in_mLexicalFunctionListAST) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * cPtr_lexiqueComponentAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexiqueComponentAST ;
-}
-
-void cPtr_lexiqueComponentAST::description (C_String & ioString,
-                                            const int32_t inIndentation) const {
-  ioString << "[@lexiqueComponentAST:" ;
-  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLexiqueComponentName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mIsTemplate.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mTemplateDelimitorList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mTemplateReplacementList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLexicalAttributeList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLexicalStyleList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mTerminalDeclarationList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLexicalMessageDeclarationList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLexicalListDeclarationList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLexicalRuleList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mExternRoutineList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mExternFunctionList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mIndexingListAST.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mIndexingDirectory.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mProperty_mLexicalFunctionListAST.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-acPtr_class * cPtr_lexiqueComponentAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_lexiqueComponentAST (mProperty_mIsPredefined, mProperty_mLexiqueComponentName, mProperty_mIsTemplate, mProperty_mTemplateDelimitorList, mProperty_mTemplateReplacementList, mProperty_mLexicalAttributeList, mProperty_mLexicalStyleList, mProperty_mTerminalDeclarationList, mProperty_mLexicalMessageDeclarationList, mProperty_mLexicalListDeclarationList, mProperty_mLexicalRuleList, mProperty_mExternRoutineList, mProperty_mExternFunctionList, mProperty_mIndexingListAST, mProperty_mIndexingDirectory, mProperty_mLexicalFunctionListAST COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @lexiqueComponentAST type                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexiqueComponentAST ("lexiqueComponentAST",
-                                            & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_lexiqueComponentAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexiqueComponentAST ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_lexiqueComponentAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_lexiqueComponentAST (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexiqueComponentAST GALGAS_lexiqueComponentAST::extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_lexiqueComponentAST result ;
-  const GALGAS_lexiqueComponentAST * p = (const GALGAS_lexiqueComponentAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexiqueComponentAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexiqueComponentAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_lexiqueAnalysisContext::GALGAS_lexiqueAnalysisContext (void) :
 mProperty_mLexiqueName (),
@@ -7605,6 +6777,9 @@ typeComparisonResult cPtr_mapTypeForGeneration::dynamicObjectCompare (const acPt
   if (kOperandEqual == result) {
     result = mProperty_mHasInsertOrReplaceModifier.objectCompare (p->mProperty_mHasInsertOrReplaceModifier) ;
   }
+  if (kOperandEqual == result) {
+    result = mProperty_mActivateSuggestions.objectCompare (p->mProperty_mActivateSuggestions) ;
+  }
   return result ;
 }
 
@@ -7643,6 +6818,7 @@ GALGAS_mapTypeForGeneration GALGAS_mapTypeForGeneration::constructor_default (LO
                                                        GALGAS_insertMethodListAST::constructor_emptyList (HERE),
                                                        GALGAS_mapSearchMethodListAST::constructor_emptyList (HERE),
                                                        GALGAS_mapRemoveMethodListAST::constructor_emptyList (HERE),
+                                                       GALGAS_bool::constructor_default (HERE),
                                                        GALGAS_bool::constructor_default (HERE)
                                                        COMMA_THERE) ;
 }
@@ -7663,11 +6839,12 @@ GALGAS_mapTypeForGeneration GALGAS_mapTypeForGeneration::constructor_new (const 
                                                                           const GALGAS_insertMethodListAST & inAttribute_mInsertMethodList,
                                                                           const GALGAS_mapSearchMethodListAST & inAttribute_mSearchMethodList,
                                                                           const GALGAS_mapRemoveMethodListAST & inAttribute_mRemoveMethodList,
-                                                                          const GALGAS_bool & inAttribute_mHasInsertOrReplaceModifier
+                                                                          const GALGAS_bool & inAttribute_mHasInsertOrReplaceModifier,
+                                                                          const GALGAS_bool & inAttribute_mActivateSuggestions
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_mapTypeForGeneration result ;
-  if (inAttribute_mTypeProxy.isValid () && inAttribute_mElementTypeProxy.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mRemoveMethodList.isValid () && inAttribute_mHasInsertOrReplaceModifier.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_mapTypeForGeneration (inAttribute_mTypeProxy, inAttribute_mElementTypeProxy, inAttribute_mMapTypeName, inAttribute_mTypedAttributeList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mRemoveMethodList, inAttribute_mHasInsertOrReplaceModifier COMMA_THERE)) ;
+  if (inAttribute_mTypeProxy.isValid () && inAttribute_mElementTypeProxy.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mRemoveMethodList.isValid () && inAttribute_mHasInsertOrReplaceModifier.isValid () && inAttribute_mActivateSuggestions.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_mapTypeForGeneration (inAttribute_mTypeProxy, inAttribute_mElementTypeProxy, inAttribute_mMapTypeName, inAttribute_mTypedAttributeList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mRemoveMethodList, inAttribute_mHasInsertOrReplaceModifier, inAttribute_mActivateSuggestions COMMA_THERE)) ;
   }
   return result ;
 }
@@ -7796,6 +6973,24 @@ GALGAS_bool GALGAS_mapTypeForGeneration::getter_mHasInsertOrReplaceModifier (UNU
 
 GALGAS_bool cPtr_mapTypeForGeneration::getter_mHasInsertOrReplaceModifier (UNUSED_LOCATION_ARGS) const {
   return mProperty_mHasInsertOrReplaceModifier ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_bool GALGAS_mapTypeForGeneration::getter_mActivateSuggestions (UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_mapTypeForGeneration * p = (const cPtr_mapTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_mapTypeForGeneration) ;
+    result = p->mProperty_mActivateSuggestions ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_bool cPtr_mapTypeForGeneration::getter_mActivateSuggestions (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mActivateSuggestions ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -7932,6 +7127,25 @@ void cPtr_mapTypeForGeneration::setter_setMHasInsertOrReplaceModifier (GALGAS_bo
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_mapTypeForGeneration::setter_setMActivateSuggestions (GALGAS_bool inValue
+                                                                  COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_mapTypeForGeneration * p = (cPtr_mapTypeForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_mapTypeForGeneration) ;
+    p->mProperty_mActivateSuggestions = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_mapTypeForGeneration::setter_setMActivateSuggestions (GALGAS_bool inValue
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mActivateSuggestions = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                    Pointer class for @mapTypeForGeneration class                                    *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -7942,7 +7156,8 @@ cPtr_mapTypeForGeneration::cPtr_mapTypeForGeneration (const GALGAS_unifiedTypeMa
                                                       const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                                       const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
                                                       const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
-                                                      const GALGAS_bool & in_mHasInsertOrReplaceModifier
+                                                      const GALGAS_bool & in_mHasInsertOrReplaceModifier,
+                                                      const GALGAS_bool & in_mActivateSuggestions
                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mTypeProxy COMMA_THERE),
 mProperty_mElementTypeProxy (in_mElementTypeProxy),
@@ -7951,7 +7166,8 @@ mProperty_mTypedAttributeList (in_mTypedAttributeList),
 mProperty_mInsertMethodList (in_mInsertMethodList),
 mProperty_mSearchMethodList (in_mSearchMethodList),
 mProperty_mRemoveMethodList (in_mRemoveMethodList),
-mProperty_mHasInsertOrReplaceModifier (in_mHasInsertOrReplaceModifier) {
+mProperty_mHasInsertOrReplaceModifier (in_mHasInsertOrReplaceModifier),
+mProperty_mActivateSuggestions (in_mActivateSuggestions) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -7978,6 +7194,8 @@ void cPtr_mapTypeForGeneration::description (C_String & ioString,
   mProperty_mRemoveMethodList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mHasInsertOrReplaceModifier.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mActivateSuggestions.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -7985,7 +7203,7 @@ void cPtr_mapTypeForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_mapTypeForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_mapTypeForGeneration (mProperty_mTypeProxy, mProperty_mElementTypeProxy, mProperty_mMapTypeName, mProperty_mTypedAttributeList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mHasInsertOrReplaceModifier COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_mapTypeForGeneration (mProperty_mTypeProxy, mProperty_mElementTypeProxy, mProperty_mMapTypeName, mProperty_mTypedAttributeList, mProperty_mInsertMethodList, mProperty_mSearchMethodList, mProperty_mRemoveMethodList, mProperty_mHasInsertOrReplaceModifier, mProperty_mActivateSuggestions COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -14959,6 +14177,604 @@ GALGAS_extensionSetterForGeneration GALGAS_extensionSetterForGeneration::extract
       result = *p ;
     }else{
       inCompiler->castError ("extensionSetterForGeneration", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//   Object comparison                                                                                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typeComparisonResult cPtr_overridingAbstractExtensionGetterAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_overridingAbstractExtensionGetterAST * p = (const cPtr_overridingAbstractExtensionGetterAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_overridingAbstractExtensionGetterAST) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mTypeName.objectCompare (p->mProperty_mTypeName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mAbstractExtensionGetterName.objectCompare (p->mProperty_mAbstractExtensionGetterName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mAbstractExtensionGetterFormalInputParameterList.objectCompare (p->mProperty_mAbstractExtensionGetterFormalInputParameterList) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mAbstractExtensionGetterReturnedTypeName.objectCompare (p->mProperty_mAbstractExtensionGetterReturnedTypeName) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+typeComparisonResult GALGAS_overridingAbstractExtensionGetterAST::objectCompare (const GALGAS_overridingAbstractExtensionGetterAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_overridingAbstractExtensionGetterAST::GALGAS_overridingAbstractExtensionGetterAST (void) :
+GALGAS_semanticDeclarationAST () {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGetterAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_overridingAbstractExtensionGetterAST::constructor_new (GALGAS_bool::constructor_default (HERE),
+                                                                       GALGAS_lstring::constructor_default (HERE),
+                                                                       GALGAS_lstring::constructor_default (HERE),
+                                                                       GALGAS_formalInputParameterListAST::constructor_emptyList (HERE),
+                                                                       GALGAS_lstring::constructor_default (HERE)
+                                                                       COMMA_THERE) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_overridingAbstractExtensionGetterAST::GALGAS_overridingAbstractExtensionGetterAST (const cPtr_overridingAbstractExtensionGetterAST * inSourcePtr) :
+GALGAS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingAbstractExtensionGetterAST) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGetterAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
+                                                                                                          const GALGAS_lstring & inAttribute_mTypeName,
+                                                                                                          const GALGAS_lstring & inAttribute_mAbstractExtensionGetterName,
+                                                                                                          const GALGAS_formalInputParameterListAST & inAttribute_mAbstractExtensionGetterFormalInputParameterList,
+                                                                                                          const GALGAS_lstring & inAttribute_mAbstractExtensionGetterReturnedTypeName
+                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_overridingAbstractExtensionGetterAST result ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mAbstractExtensionGetterName.isValid () && inAttribute_mAbstractExtensionGetterFormalInputParameterList.isValid () && inAttribute_mAbstractExtensionGetterReturnedTypeName.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_overridingAbstractExtensionGetterAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mAbstractExtensionGetterName, inAttribute_mAbstractExtensionGetterFormalInputParameterList, inAttribute_mAbstractExtensionGetterReturnedTypeName COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_overridingAbstractExtensionGetterAST * p = (const cPtr_overridingAbstractExtensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionGetterAST) ;
+    result = p->mProperty_mTypeName ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_lstring cPtr_overridingAbstractExtensionGetterAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mTypeName ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::getter_mAbstractExtensionGetterName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_overridingAbstractExtensionGetterAST * p = (const cPtr_overridingAbstractExtensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionGetterAST) ;
+    result = p->mProperty_mAbstractExtensionGetterName ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_lstring cPtr_overridingAbstractExtensionGetterAST::getter_mAbstractExtensionGetterName (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mAbstractExtensionGetterName ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_formalInputParameterListAST GALGAS_overridingAbstractExtensionGetterAST::getter_mAbstractExtensionGetterFormalInputParameterList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_formalInputParameterListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_overridingAbstractExtensionGetterAST * p = (const cPtr_overridingAbstractExtensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionGetterAST) ;
+    result = p->mProperty_mAbstractExtensionGetterFormalInputParameterList ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_formalInputParameterListAST cPtr_overridingAbstractExtensionGetterAST::getter_mAbstractExtensionGetterFormalInputParameterList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mAbstractExtensionGetterFormalInputParameterList ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_lstring GALGAS_overridingAbstractExtensionGetterAST::getter_mAbstractExtensionGetterReturnedTypeName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_overridingAbstractExtensionGetterAST * p = (const cPtr_overridingAbstractExtensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionGetterAST) ;
+    result = p->mProperty_mAbstractExtensionGetterReturnedTypeName ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_lstring cPtr_overridingAbstractExtensionGetterAST::getter_mAbstractExtensionGetterReturnedTypeName (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mAbstractExtensionGetterReturnedTypeName ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_overridingAbstractExtensionGetterAST::setter_setMTypeName (GALGAS_lstring inValue
+                                                                       COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_overridingAbstractExtensionGetterAST * p = (cPtr_overridingAbstractExtensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionGetterAST) ;
+    p->mProperty_mTypeName = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_overridingAbstractExtensionGetterAST::setter_setMTypeName (GALGAS_lstring inValue
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mTypeName = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_overridingAbstractExtensionGetterAST::setter_setMAbstractExtensionGetterName (GALGAS_lstring inValue
+                                                                                          COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_overridingAbstractExtensionGetterAST * p = (cPtr_overridingAbstractExtensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionGetterAST) ;
+    p->mProperty_mAbstractExtensionGetterName = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_overridingAbstractExtensionGetterAST::setter_setMAbstractExtensionGetterName (GALGAS_lstring inValue
+                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mAbstractExtensionGetterName = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_overridingAbstractExtensionGetterAST::setter_setMAbstractExtensionGetterFormalInputParameterList (GALGAS_formalInputParameterListAST inValue
+                                                                                                              COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_overridingAbstractExtensionGetterAST * p = (cPtr_overridingAbstractExtensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionGetterAST) ;
+    p->mProperty_mAbstractExtensionGetterFormalInputParameterList = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_overridingAbstractExtensionGetterAST::setter_setMAbstractExtensionGetterFormalInputParameterList (GALGAS_formalInputParameterListAST inValue
+                                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mAbstractExtensionGetterFormalInputParameterList = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_overridingAbstractExtensionGetterAST::setter_setMAbstractExtensionGetterReturnedTypeName (GALGAS_lstring inValue
+                                                                                                      COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_overridingAbstractExtensionGetterAST * p = (cPtr_overridingAbstractExtensionGetterAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionGetterAST) ;
+    p->mProperty_mAbstractExtensionGetterReturnedTypeName = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_overridingAbstractExtensionGetterAST::setter_setMAbstractExtensionGetterReturnedTypeName (GALGAS_lstring inValue
+                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mAbstractExtensionGetterReturnedTypeName = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                            Pointer class for @overridingAbstractExtensionGetterAST class                            *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cPtr_overridingAbstractExtensionGetterAST::cPtr_overridingAbstractExtensionGetterAST (const GALGAS_bool & in_mIsPredefined,
+                                                                                      const GALGAS_lstring & in_mTypeName,
+                                                                                      const GALGAS_lstring & in_mAbstractExtensionGetterName,
+                                                                                      const GALGAS_formalInputParameterListAST & in_mAbstractExtensionGetterFormalInputParameterList,
+                                                                                      const GALGAS_lstring & in_mAbstractExtensionGetterReturnedTypeName
+                                                                                      COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
+mProperty_mTypeName (in_mTypeName),
+mProperty_mAbstractExtensionGetterName (in_mAbstractExtensionGetterName),
+mProperty_mAbstractExtensionGetterFormalInputParameterList (in_mAbstractExtensionGetterFormalInputParameterList),
+mProperty_mAbstractExtensionGetterReturnedTypeName (in_mAbstractExtensionGetterReturnedTypeName) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionGetterAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ;
+}
+
+void cPtr_overridingAbstractExtensionGetterAST::description (C_String & ioString,
+                                                             const int32_t inIndentation) const {
+  ioString << "[@overridingAbstractExtensionGetterAST:" ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mTypeName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mAbstractExtensionGetterName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mAbstractExtensionGetterFormalInputParameterList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mAbstractExtensionGetterReturnedTypeName.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+acPtr_class * cPtr_overridingAbstractExtensionGetterAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_overridingAbstractExtensionGetterAST (mProperty_mIsPredefined, mProperty_mTypeName, mProperty_mAbstractExtensionGetterName, mProperty_mAbstractExtensionGetterFormalInputParameterList, mProperty_mAbstractExtensionGetterReturnedTypeName COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                     @overridingAbstractExtensionGetterAST type                                      *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ("overridingAbstractExtensionGetterAST",
+                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * GALGAS_overridingAbstractExtensionGetterAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_overridingAbstractExtensionGetterAST ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+AC_GALGAS_root * GALGAS_overridingAbstractExtensionGetterAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_overridingAbstractExtensionGetterAST (*this)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_overridingAbstractExtensionGetterAST GALGAS_overridingAbstractExtensionGetterAST::extractObject (const GALGAS_object & inObject,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_overridingAbstractExtensionGetterAST result ;
+  const GALGAS_overridingAbstractExtensionGetterAST * p = (const GALGAS_overridingAbstractExtensionGetterAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_overridingAbstractExtensionGetterAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("overridingAbstractExtensionGetterAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//   Object comparison                                                                                                 *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+typeComparisonResult cPtr_overridingAbstractExtensionMethodAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_overridingAbstractExtensionMethodAST * p = (const cPtr_overridingAbstractExtensionMethodAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_overridingAbstractExtensionMethodAST) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mIsPredefined.objectCompare (p->mProperty_mIsPredefined) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mTypeName.objectCompare (p->mProperty_mTypeName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mOverridingExtensionMethodName.objectCompare (p->mProperty_mOverridingExtensionMethodName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mOverridingExtensionMethodFormalParameterList.objectCompare (p->mProperty_mOverridingExtensionMethodFormalParameterList) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+
+typeComparisonResult GALGAS_overridingAbstractExtensionMethodAST::objectCompare (const GALGAS_overridingAbstractExtensionMethodAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_overridingAbstractExtensionMethodAST::GALGAS_overridingAbstractExtensionMethodAST (void) :
+GALGAS_semanticDeclarationAST () {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMethodAST::constructor_default (LOCATION_ARGS) {
+  return GALGAS_overridingAbstractExtensionMethodAST::constructor_new (GALGAS_bool::constructor_default (HERE),
+                                                                       GALGAS_lstring::constructor_default (HERE),
+                                                                       GALGAS_lstring::constructor_default (HERE),
+                                                                       GALGAS_formalParameterListAST::constructor_emptyList (HERE)
+                                                                       COMMA_THERE) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_overridingAbstractExtensionMethodAST::GALGAS_overridingAbstractExtensionMethodAST (const cPtr_overridingAbstractExtensionMethodAST * inSourcePtr) :
+GALGAS_semanticDeclarationAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_overridingAbstractExtensionMethodAST) ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMethodAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
+                                                                                                          const GALGAS_lstring & inAttribute_mTypeName,
+                                                                                                          const GALGAS_lstring & inAttribute_mOverridingExtensionMethodName,
+                                                                                                          const GALGAS_formalParameterListAST & inAttribute_mOverridingExtensionMethodFormalParameterList
+                                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_overridingAbstractExtensionMethodAST result ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mOverridingExtensionMethodName.isValid () && inAttribute_mOverridingExtensionMethodFormalParameterList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_overridingAbstractExtensionMethodAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mOverridingExtensionMethodName, inAttribute_mOverridingExtensionMethodFormalParameterList COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_lstring GALGAS_overridingAbstractExtensionMethodAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_overridingAbstractExtensionMethodAST * p = (const cPtr_overridingAbstractExtensionMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionMethodAST) ;
+    result = p->mProperty_mTypeName ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_lstring cPtr_overridingAbstractExtensionMethodAST::getter_mTypeName (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mTypeName ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_lstring GALGAS_overridingAbstractExtensionMethodAST::getter_mOverridingExtensionMethodName (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstring result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_overridingAbstractExtensionMethodAST * p = (const cPtr_overridingAbstractExtensionMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionMethodAST) ;
+    result = p->mProperty_mOverridingExtensionMethodName ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_lstring cPtr_overridingAbstractExtensionMethodAST::getter_mOverridingExtensionMethodName (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mOverridingExtensionMethodName ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_formalParameterListAST GALGAS_overridingAbstractExtensionMethodAST::getter_mOverridingExtensionMethodFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_formalParameterListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_overridingAbstractExtensionMethodAST * p = (const cPtr_overridingAbstractExtensionMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionMethodAST) ;
+    result = p->mProperty_mOverridingExtensionMethodFormalParameterList ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_formalParameterListAST cPtr_overridingAbstractExtensionMethodAST::getter_mOverridingExtensionMethodFormalParameterList (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mOverridingExtensionMethodFormalParameterList ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_overridingAbstractExtensionMethodAST::setter_setMTypeName (GALGAS_lstring inValue
+                                                                       COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_overridingAbstractExtensionMethodAST * p = (cPtr_overridingAbstractExtensionMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionMethodAST) ;
+    p->mProperty_mTypeName = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_overridingAbstractExtensionMethodAST::setter_setMTypeName (GALGAS_lstring inValue
+                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mTypeName = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_overridingAbstractExtensionMethodAST::setter_setMOverridingExtensionMethodName (GALGAS_lstring inValue
+                                                                                            COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_overridingAbstractExtensionMethodAST * p = (cPtr_overridingAbstractExtensionMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionMethodAST) ;
+    p->mProperty_mOverridingExtensionMethodName = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_overridingAbstractExtensionMethodAST::setter_setMOverridingExtensionMethodName (GALGAS_lstring inValue
+                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mOverridingExtensionMethodName = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void GALGAS_overridingAbstractExtensionMethodAST::setter_setMOverridingExtensionMethodFormalParameterList (GALGAS_formalParameterListAST inValue
+                                                                                                           COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_overridingAbstractExtensionMethodAST * p = (cPtr_overridingAbstractExtensionMethodAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_overridingAbstractExtensionMethodAST) ;
+    p->mProperty_mOverridingExtensionMethodFormalParameterList = inValue ;
+  }
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+void cPtr_overridingAbstractExtensionMethodAST::setter_setMOverridingExtensionMethodFormalParameterList (GALGAS_formalParameterListAST inValue
+                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mOverridingExtensionMethodFormalParameterList = inValue ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                            Pointer class for @overridingAbstractExtensionMethodAST class                            *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+cPtr_overridingAbstractExtensionMethodAST::cPtr_overridingAbstractExtensionMethodAST (const GALGAS_bool & in_mIsPredefined,
+                                                                                      const GALGAS_lstring & in_mTypeName,
+                                                                                      const GALGAS_lstring & in_mOverridingExtensionMethodName,
+                                                                                      const GALGAS_formalParameterListAST & in_mOverridingExtensionMethodFormalParameterList
+                                                                                      COMMA_LOCATION_ARGS) :
+cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
+mProperty_mTypeName (in_mTypeName),
+mProperty_mOverridingExtensionMethodName (in_mOverridingExtensionMethodName),
+mProperty_mOverridingExtensionMethodFormalParameterList (in_mOverridingExtensionMethodFormalParameterList) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * cPtr_overridingAbstractExtensionMethodAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ;
+}
+
+void cPtr_overridingAbstractExtensionMethodAST::description (C_String & ioString,
+                                                             const int32_t inIndentation) const {
+  ioString << "[@overridingAbstractExtensionMethodAST:" ;
+  mProperty_mIsPredefined.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mTypeName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mOverridingExtensionMethodName.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mOverridingExtensionMethodFormalParameterList.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+acPtr_class * cPtr_overridingAbstractExtensionMethodAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_overridingAbstractExtensionMethodAST (mProperty_mIsPredefined, mProperty_mTypeName, mProperty_mOverridingExtensionMethodName, mProperty_mOverridingExtensionMethodFormalParameterList COMMA_THERE)) ;
+  return ptr ;
+}
+
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//                                                                                                                     *
+//                                     @overridingAbstractExtensionMethodAST type                                      *
+//                                                                                                                     *
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ("overridingAbstractExtensionMethodAST",
+                                                             & kTypeDescriptor_GALGAS_semanticDeclarationAST) ;
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const C_galgas_type_descriptor * GALGAS_overridingAbstractExtensionMethodAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_overridingAbstractExtensionMethodAST ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+AC_GALGAS_root * GALGAS_overridingAbstractExtensionMethodAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_overridingAbstractExtensionMethodAST (*this)) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_overridingAbstractExtensionMethodAST GALGAS_overridingAbstractExtensionMethodAST::extractObject (const GALGAS_object & inObject,
+                                                                                                        C_Compiler * inCompiler
+                                                                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_overridingAbstractExtensionMethodAST result ;
+  const GALGAS_overridingAbstractExtensionMethodAST * p = (const GALGAS_overridingAbstractExtensionMethodAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_overridingAbstractExtensionMethodAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("overridingAbstractExtensionMethodAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

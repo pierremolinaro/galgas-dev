@@ -62,7 +62,7 @@ typeComparisonResult cMapElement_filewrapperTemplateMap::compare (const cCollect
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_filewrapperTemplateMap::GALGAS_filewrapperTemplateMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -407,7 +407,7 @@ typeComparisonResult cMapElement_filewrapperMap::compare (const cCollectionEleme
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_filewrapperMap::GALGAS_filewrapperMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -911,7 +911,7 @@ typeComparisonResult cMapElement_optionComponentMapForSemanticAnalysis::compare 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_optionComponentMapForSemanticAnalysis::GALGAS_optionComponentMapForSemanticAnalysis (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -1355,7 +1355,7 @@ typeComparisonResult cMapElement_lexiqueComponentMapForSemanticAnalysis::compare
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_lexiqueComponentMapForSemanticAnalysis::GALGAS_lexiqueComponentMapForSemanticAnalysis (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -1724,7 +1724,7 @@ typeComparisonResult cMapElement_syntaxComponentMap::compare (const cCollectionE
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_syntaxComponentMap::GALGAS_syntaxComponentMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -2108,7 +2108,7 @@ typeComparisonResult cMapElement_extensionMethodMapForType::compare (const cColl
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_extensionMethodMapForType::GALGAS_extensionMethodMapForType (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -2344,7 +2344,7 @@ typeComparisonResult cMapElement_extensionMethodMapForBuildingContext::compare (
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_extensionMethodMapForBuildingContext::GALGAS_extensionMethodMapForBuildingContext (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -2602,7 +2602,7 @@ typeComparisonResult cMapElement_extensionSetterMapForType::compare (const cColl
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_extensionSetterMapForType::GALGAS_extensionSetterMapForType (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -2838,7 +2838,7 @@ typeComparisonResult cMapElement_extensionSetterMapForBuildingContext::compare (
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_extensionSetterMapForBuildingContext::GALGAS_extensionSetterMapForBuildingContext (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -3105,7 +3105,7 @@ typeComparisonResult cMapElement_extensionGetterMapForType::compare (const cColl
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_extensionGetterMapForType::GALGAS_extensionGetterMapForType (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -3380,7 +3380,7 @@ typeComparisonResult cMapElement_extensionGetterMapForBuildingContext::compare (
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_extensionGetterMapForBuildingContext::GALGAS_extensionGetterMapForBuildingContext (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -3841,7 +3841,7 @@ typeComparisonResult cMapElement_wrapperExtensionMap::compare (const cCollection
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_wrapperExtensionMap::GALGAS_wrapperExtensionMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -7326,7 +7326,7 @@ typeComparisonResult cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::co
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis::GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -7593,7 +7593,7 @@ typeComparisonResult cMapElement_nonTerminalSymbolMapForGrammarAnalysis::compare
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_nonTerminalSymbolMapForGrammarAnalysis::GALGAS_nonTerminalSymbolMapForGrammarAnalysis (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -11408,7 +11408,7 @@ typeComparisonResult cMapElement_propertyIndexMap::compare (const cCollectionEle
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_propertyIndexMap::GALGAS_propertyIndexMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -11684,7 +11684,7 @@ typeComparisonResult cMapElement_nonterminalLabelMap::compare (const cCollection
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_nonterminalLabelMap::GALGAS_nonterminalLabelMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -12026,7 +12026,7 @@ typeComparisonResult cMapElement_nonterminalMap::compare (const cCollectionEleme
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_nonterminalMap::GALGAS_nonterminalMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

@@ -68,7 +68,7 @@ override method @extensionMethodAST enterDeclarationInGraph
   if not [ioExtensionMethodMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioExtensionMethodMapForBuildingContext insertKey
       !mTypeName
-      !@extensionMethodMapForType. emptyMap
+      !{}
     ]
   end
   with mTypeName in !?ioExtensionMethodMapForBuildingContext error message searchKey  do
@@ -137,12 +137,12 @@ override method @extensionMethodAST semanticAnalysis
     !?ioUsefulEntitiesGraph
     !analysisContext
     !mExtensionMethodFormalParameterList
-    !@localConstantList.emptyList
+    !{}
     !if [[selfType mTypeKindEnum] isClassType] | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
        then [selfType mAllTypedAttributeList]
-       else @typedPropertyList.emptyList
+       else {}
      end
-    !@typedPropertyList.emptyList
+    !{}
     !selfObjectAccessor
     !mExtensionMethodInstructionList
     !mEndOfMethodLocation

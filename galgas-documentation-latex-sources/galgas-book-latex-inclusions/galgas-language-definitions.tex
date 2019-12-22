@@ -77,7 +77,7 @@
   \@esphack
   \endgroup
   \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}
-  {\medskip\begin{siderules}\ttfamily\input{temp.galgas.tex}\end{siderules}}
+  {\medskip\begin{siderules}\ttfamily\NoAutoSpacing\input{temp.galgas.tex}\end{siderules}}
 }
 \makeatother
 
@@ -110,7 +110,7 @@
   \@esphack
   \endgroup
   \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}
-  {\singlespacing\begin{boxrules}\ttfamily\input{temp.galgas.tex}\end{boxrules}}
+  {\singlespacing\begin{boxrules}\ttfamily\NoAutoSpacing\input{temp.galgas.tex}\end{boxrules}}
 }
 \makeatother
 
@@ -151,7 +151,7 @@
       \immediate\write\tempfile{##1}%
       \immediate\closeout\tempfile%
       \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}%
-      \colorbox{gray!6}{\ttfamily\input{temp.galgas.tex}\unskip}%
+      \colorbox{gray!6}{\ttfamily\NoAutoSpacing\input{temp.galgas.tex}\unskip}%
     }%
   }%
   \ifnum`#2=`\~\else\@makeother\~\fi%

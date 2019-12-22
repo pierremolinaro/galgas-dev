@@ -1231,7 +1231,7 @@ typeComparisonResult cMapElement_uselessEntityLocationMap::compare (const cColle
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_uselessEntityLocationMap::GALGAS_uselessEntityLocationMap (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

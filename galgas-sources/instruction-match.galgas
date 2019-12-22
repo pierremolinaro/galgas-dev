@@ -62,7 +62,7 @@ syntax extension galgas3InstructionsSyntax {
   
   rule <match_instruction_branch> ?!@matchInstructionBranchListAST ioMatchInstructionBranchList {
     $case$
-    var mMatchEntryList = @matchEntryListAST.emptyList
+    @matchEntryListAST mMatchEntryList = {}
     repeat
       <match_entry> !? mMatchEntryList
     while
@@ -227,7 +227,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
       !?ioUsefulEntitiesGraph
       !inAnalysisContext
       !localConstantList
-      !@localInitializedVariableList.emptyList
+      !{}
       !mMatchBranchInstructionList
       !mEndOf_instructionList
       !?ioVariableMap
@@ -242,8 +242,8 @@ override method @matchInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !@localConstantList.emptyList
-    !@localInitializedVariableList.emptyList
+    !{}
+    !{}
     !mElseInstructionList
     !mEndOf_match_instruction
     !?ioVariableMap

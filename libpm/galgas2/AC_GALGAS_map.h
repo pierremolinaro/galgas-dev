@@ -56,7 +56,7 @@ class cMapNode ;
 
 class AC_GALGAS_map : public AC_GALGAS_root {
 //--------------------------------- Constructor
-  protected : AC_GALGAS_map (void) ;
+  protected : AC_GALGAS_map (const bool inActivateReplacementSuggestions) ;
 
 //--------------------------------- Virtual destructor
   public : virtual ~ AC_GALGAS_map (void) ;
@@ -170,7 +170,8 @@ class AC_GALGAS_map : public AC_GALGAS_root {
   protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 
 //--------------------------------- Attributes
-  private : cSharedMapRoot * mSharedMap ;
+  private: cSharedMapRoot * mSharedMap ;
+  private: bool mActivateReplacementSuggestions ;
 } ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

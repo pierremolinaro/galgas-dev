@@ -12,7 +12,7 @@ message "a source text file with the .lbb extension"
   @programAST programAST
   grammar lbb_grammar in inSourceFile ?programAST
 #--- Build box type map
-  var boxTypeMap =@boxTypeMap.emptyMap{}
+  @boxTypeMap boxTypeMap = {}
   for () in  [programAST mBoxTypeListAST] do
     @stringset portStringSet = {}
     for () in  mPortNameList do
@@ -24,7 +24,7 @@ message "a source text file with the .lbb extension"
     [!?boxTypeMap insertKey !mBoxTypeName !mPortNameList]
   end
 #--- Build box map and connections
-  var boxInstanceMap =@boxInstanceMap.emptyMap{}
+  @boxInstanceMap boxInstanceMap = {}
   for () in  [programAST mBoxInstanceListAST] do
     @lstringlist portNameList
     [boxTypeMap searchKey !mBoxTypeName ?portNameList]
@@ -33,7 +33,7 @@ message "a source text file with the .lbb extension"
       + " connection(s), although the '" + mBoxTypeName + "' type declares "
       + [portNameList length] + " ports"
     end
-    var connectionMap =@connectionMap.emptyMap{}
+    @connectionMap connectionMap = {}
     for () in  portNameList, () in  mConnectionList do
       @boxInstanceMap-proxy connectedBoxProxy
       [@boxInstanceMap-proxy makeProxy !?boxInstanceMap !mConnectedBoxName ?connectedBoxProxy]

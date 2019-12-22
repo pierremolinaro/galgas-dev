@@ -1674,11 +1674,11 @@ static void extensionMethod_lexicalExplicitRuleAST_checkLexicalRule (const cPtr_
   const cPtr_lexicalExplicitRuleAST * object = (const cPtr_lexicalExplicitRuleAST *) inObject ;
   macroValidSharedObject (object, cPtr_lexicalExplicitRuleAST) ;
   callExtensionMethod_checkLexicalExpression ((const cPtr_lexicalExpressionAST *) object->mProperty_mLexicalRuleExpression.ptr (), ioArgument_ioLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 681)) ;
-  GALGAS_lexicalTagMap var_tagMap_31883 = GALGAS_lexicalTagMap::constructor_emptyMap (SOURCE_FILE ("lexiqueCompilation.galgas", 682)) ;
-  cEnumerator_lexicalInstructionListAST enumerator_31939 (object->mProperty_mInstructionList, kENUMERATION_UP) ;
-  while (enumerator_31939.hasCurrentObject ()) {
-    callExtensionMethod_checkLexicalInstruction ((const cPtr_lexicalInstructionAST *) enumerator_31939.current_mInstruction (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, var_tagMap_31883, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 684)) ;
-    enumerator_31939.gotoNextObject () ;
+  GALGAS_lexicalTagMap var_tagMap_31894 = GALGAS_lexicalTagMap::constructor_emptyMap (SOURCE_FILE ("lexiqueCompilation.galgas", 682)) ;
+  cEnumerator_lexicalInstructionListAST enumerator_31928 (object->mProperty_mInstructionList, kENUMERATION_UP) ;
+  while (enumerator_31928.hasCurrentObject ()) {
+    callExtensionMethod_checkLexicalInstruction ((const cPtr_lexicalInstructionAST *) enumerator_31928.current_mInstruction (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, var_tagMap_31894, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 684)) ;
+    enumerator_31928.gotoNextObject () ;
   }
 }
 
@@ -5680,13 +5680,13 @@ static void extensionMethod_arrayDeclarationAST_semanticAnalysis (const cPtr_sem
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_arrayDeclarationAST * object = (const cPtr_arrayDeclarationAST *) inObject ;
   macroValidSharedObject (object, cPtr_arrayDeclarationAST) ;
-  GALGAS_lstring var_nameForUsefulness_8670 = function_typeNameForUsefulEntitiesGraph (object->mProperty_mArrayTypeName, inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 231)) ;
+  GALGAS_lstring var_nameForUsefulness_8647 = function_typeNameForUsefulEntitiesGraph (object->mProperty_mArrayTypeName, inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 231)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_8670, var_nameForUsefulness_8670, inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 232)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addNode (var_nameForUsefulness_8647, var_nameForUsefulness_8647, inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 232)) ;
   }
-  GALGAS_lstring var_elementTypeNameForUsefulness_8830 = function_typeNameForUsefulEntitiesGraph (object->mProperty_mElementTypeName, inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 233)) ;
+  GALGAS_lstring var_elementTypeNameForUsefulness_8807 = function_typeNameForUsefulEntitiesGraph (object->mProperty_mElementTypeName, inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 233)) ;
   {
-  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_nameForUsefulness_8670, var_elementTypeNameForUsefulness_8830 COMMA_SOURCE_FILE ("type-array.galgas", 234)) ;
+  ioArgument_ioUsefulEntitiesGraph.setter_addEdge (var_nameForUsefulness_8647, var_elementTypeNameForUsefulness_8807 COMMA_SOURCE_FILE ("type-array.galgas", 234)) ;
   }
   ioArgument_ioSemanticDeclarationListForGeneration.addAssign_operation (GALGAS_string ("array ").add_operation (object->mProperty_mArrayTypeName.getter_string (SOURCE_FILE ("type-array.galgas", 237)), inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 237)), GALGAS_arrayTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.getter_mTypeMap (HERE), object->mProperty_mArrayTypeName, inCompiler  COMMA_SOURCE_FILE ("type-array.galgas", 239)), GALGAS_unifiedTypeMap_2D_proxy::constructor_searchKey (constinArgument_inSemanticContext.getter_mTypeMap (HERE), object->mProperty_mElementTypeName, inCompiler  COMMA_SOURCE_FILE ("type-array.galgas", 240)), object->mProperty_mDimension.getter_uint (SOURCE_FILE ("type-array.galgas", 241))  COMMA_SOURCE_FILE ("type-array.galgas", 238))  COMMA_SOURCE_FILE ("type-array.galgas", 236)) ;
 }
@@ -5746,28 +5746,28 @@ static void extensionMethod_arrayTypeForGeneration_appendSpecificImplementation 
   macroValidSharedObject (object, cPtr_arrayTypeForGeneration) ;
   extensionMethod_addHeaderFileName (object->mProperty_mTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 287)) ;
   extensionMethod_addHeaderFileName (object->mProperty_mElementTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 288)) ;
-  GALGAS_stringlist var_suffixList_11150 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("type-array.galgas", 290)) ;
-  GALGAS_uint var_idx_11178 = GALGAS_uint ((uint32_t) 0U) ;
+  GALGAS_stringlist var_suffixList_11127 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("type-array.galgas", 290)) ;
+  GALGAS_uint var_idx_11155 = GALGAS_uint ((uint32_t) 0U) ;
   if (object->mProperty_mDimension.isValid ()) {
-    uint32_t variant_11189 = object->mProperty_mDimension.uintValue () ;
-    bool loop_11189 = true ;
-    while (loop_11189) {
-      loop_11189 = GALGAS_bool (kIsStrictInf, var_idx_11178.objectCompare (object->mProperty_mDimension)).isValid () ;
-      if (loop_11189) {
-        loop_11189 = GALGAS_bool (kIsStrictInf, var_idx_11178.objectCompare (object->mProperty_mDimension)).boolValue () ;
+    uint32_t variant_11166 = object->mProperty_mDimension.uintValue () ;
+    bool loop_11166 = true ;
+    while (loop_11166) {
+      loop_11166 = GALGAS_bool (kIsStrictInf, var_idx_11155.objectCompare (object->mProperty_mDimension)).isValid () ;
+      if (loop_11166) {
+        loop_11166 = GALGAS_bool (kIsStrictInf, var_idx_11155.objectCompare (object->mProperty_mDimension)).boolValue () ;
       }
-      if (loop_11189 && (0 == variant_11189)) {
-        loop_11189 = false ;
+      if (loop_11166 && (0 == variant_11166)) {
+        loop_11166 = false ;
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("type-array.galgas", 292)) ;
       }
-      if (loop_11189) {
-        variant_11189 -- ;
-        var_suffixList_11150.addAssign_operation (var_idx_11178.getter_string (SOURCE_FILE ("type-array.galgas", 293))  COMMA_SOURCE_FILE ("type-array.galgas", 293)) ;
-        var_idx_11178.increment_operation (inCompiler  COMMA_SOURCE_FILE ("type-array.galgas", 294)) ;
+      if (loop_11166) {
+        variant_11166 -- ;
+        var_suffixList_11127.addAssign_operation (var_idx_11155.getter_string (SOURCE_FILE ("type-array.galgas", 293))  COMMA_SOURCE_FILE ("type-array.galgas", 293)) ;
+        var_idx_11155.increment_operation (inCompiler  COMMA_SOURCE_FILE ("type-array.galgas", 294)) ;
       }
     }
   }
-  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplementation (inCompiler, object->mProperty_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 297)), object->mProperty_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 298)), object->mProperty_mElementTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 299)), object->mProperty_mDimension, var_suffixList_11150 COMMA_SOURCE_FILE ("type-array.galgas", 296))) ;
+  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_typeGenerationTemplate_arrayTypeSpecificImplementation (inCompiler, object->mProperty_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 297)), object->mProperty_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 298)), object->mProperty_mElementTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-array.galgas", 299)), object->mProperty_mDimension, var_suffixList_11127 COMMA_SOURCE_FILE ("type-array.galgas", 296))) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

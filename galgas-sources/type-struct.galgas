@@ -170,7 +170,7 @@ override method @structDeclarationAST enterInSemanticContext
     !getterMap
     !setterMap
     !instanceMethodMap
-    !@classMethodMap. emptyMap
+    !{}
     !@enumerationDescriptorList.emptyList
     !.generateDescriptionGetterUtilityMethod
     !@functionSignature.emptyList

@@ -328,8 +328,9 @@ proc enterBaseFinalGetterWith3Arguments
 
 proc commonGetterMapForAllTypes
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@getterMap outMap {
-  outMap = @getterMap. emptyMap
+  !@getterMap outMap
+{
+  outMap = {}
   enterInheritedGetterWithoutArgument
 (
    !?outMap

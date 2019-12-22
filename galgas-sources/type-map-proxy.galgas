@@ -44,14 +44,14 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   ]
   if typeKindEnum != @typeKindEnum. uniqueMapType then
     error mAssociatedMapTypeName : "the @" + mAssociatedMapTypeName + " should be an unique map type"
-    mapTypedAttributeList = @typedPropertyList.emptyList
+    mapTypedAttributeList = {}
   end
 #---
-  var constructorMap =@constructorMap.emptyMap{}
+  @constructorMap constructorMap = {}
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
-  var setterMap =@setterMap.emptyMap{}
-  var instanceMethodMap =@instanceMethodMap.emptyMap{}
-  var classMethodMap =@classMethodMap.emptyMap{}
+  @setterMap setterMap = {}
+  @instanceMethodMap instanceMethodMap ={}
+  @classMethodMap classMethodMap = {}
 #--- Associated map type index
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAssociatedMapTypeName ?let associatedMapTypeIndex]
 #--- string type index
@@ -191,7 +191,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy.null
     !@typeKindEnum. mapProxyType
     !false # Does not support collection value
-    !mapTypedAttributeList #[@typedPropertyList emptyList]
+    !mapTypedAttributeList
     !{}
     !mapTypedAttributeList
     !constructorMap
@@ -199,12 +199,12 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !setterMap
     !instanceMethodMap
     !classMethodMap
-    !@enumerationDescriptorList.emptyList
+    !{}
     !.doNotGenererateObjectCompare
-    !@functionSignature.emptyList
     !{}
     !{}
-    !@mapSearchMethodListAST.emptyList
+    !{}
+    !{}
     !searchMethodList
     !false # Do not generate header in separate file
     !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction

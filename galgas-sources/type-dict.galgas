@@ -276,7 +276,7 @@ override method @dictDeclarationAST enterInSemanticContext
     !getterMap
     !setterMap
     !instanceMethodMap
-    !@classMethodMap.emptyMap
+    !{}
     !enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
     !argumentTypeListForAddAssignWithFieldExpressionList

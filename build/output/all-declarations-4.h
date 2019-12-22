@@ -227,7 +227,7 @@ class GALGAS_mapAutomatonStateMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_mapAutomatonStateMap (const GALGAS_mapAutomatonStateMap & inSource) ;
   public : GALGAS_mapAutomatonStateMap & operator = (const GALGAS_mapAutomatonStateMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -448,7 +448,7 @@ class GALGAS_mapAutomatonActionMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_mapAutomatonActionMap (const GALGAS_mapAutomatonActionMap & inSource) ;
   public : GALGAS_mapAutomatonActionMap & operator = (const GALGAS_mapAutomatonActionMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -6353,10 +6353,8 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_lstring & in_mSyntaxComponentName,
                                                   const class GALGAS_lstring & in_mImportedLexiqueFilePath,
-                                                  const class GALGAS_lstringlist & in_mImportedComponentFileNameList,
                                                   const class GALGAS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
                                                   const class GALGAS_syntaxRuleListAST & in_mRuleList,
-                                                  const class GALGAS_semanticDeclarationListAST & in_mSemanticDeclarationList,
                                                   const class GALGAS_bool & in_mHasTranslateFeature
                                                   COMMA_LOCATION_ARGS) ;
 
@@ -6375,11 +6373,9 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
 
   public : static class GALGAS_galgas_33_SyntaxComponentListAST constructor_listWithValue (const class GALGAS_lstring & inOperand0,
                                                                                            const class GALGAS_lstring & inOperand1,
-                                                                                           const class GALGAS_lstringlist & inOperand2,
-                                                                                           const class GALGAS_nonterminalDeclarationListAST & inOperand3,
-                                                                                           const class GALGAS_syntaxRuleListAST & inOperand4,
-                                                                                           const class GALGAS_semanticDeclarationListAST & inOperand5,
-                                                                                           const class GALGAS_bool & inOperand6
+                                                                                           const class GALGAS_nonterminalDeclarationListAST & inOperand2,
+                                                                                           const class GALGAS_syntaxRuleListAST & inOperand3,
+                                                                                           const class GALGAS_bool & inOperand4
                                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
@@ -6390,11 +6386,9 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
                                                       const class GALGAS_lstring & inOperand1,
-                                                      const class GALGAS_lstringlist & inOperand2,
-                                                      const class GALGAS_nonterminalDeclarationListAST & inOperand3,
-                                                      const class GALGAS_syntaxRuleListAST & inOperand4,
-                                                      const class GALGAS_semanticDeclarationListAST & inOperand5,
-                                                      const class GALGAS_bool & inOperand6
+                                                      const class GALGAS_nonterminalDeclarationListAST & inOperand2,
+                                                      const class GALGAS_syntaxRuleListAST & inOperand3,
+                                                      const class GALGAS_bool & inOperand4
                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- + operator
   public : VIRTUAL_IN_DEBUG GALGAS_galgas_33_SyntaxComponentListAST add_operation (const GALGAS_galgas_33_SyntaxComponentListAST & inOperand,
@@ -6409,43 +6403,35 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
 
   public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
                                                        class GALGAS_lstring constinArgument1,
-                                                       class GALGAS_lstringlist constinArgument2,
-                                                       class GALGAS_nonterminalDeclarationListAST constinArgument3,
-                                                       class GALGAS_syntaxRuleListAST constinArgument4,
-                                                       class GALGAS_semanticDeclarationListAST constinArgument5,
-                                                       class GALGAS_bool constinArgument6,
-                                                       class GALGAS_uint constinArgument7,
+                                                       class GALGAS_nonterminalDeclarationListAST constinArgument2,
+                                                       class GALGAS_syntaxRuleListAST constinArgument3,
+                                                       class GALGAS_bool constinArgument4,
+                                                       class GALGAS_uint constinArgument5,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
                                                   class GALGAS_lstring & outArgument1,
-                                                  class GALGAS_lstringlist & outArgument2,
-                                                  class GALGAS_nonterminalDeclarationListAST & outArgument3,
-                                                  class GALGAS_syntaxRuleListAST & outArgument4,
-                                                  class GALGAS_semanticDeclarationListAST & outArgument5,
-                                                  class GALGAS_bool & outArgument6,
+                                                  class GALGAS_nonterminalDeclarationListAST & outArgument2,
+                                                  class GALGAS_syntaxRuleListAST & outArgument3,
+                                                  class GALGAS_bool & outArgument4,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
                                                  class GALGAS_lstring & outArgument1,
-                                                 class GALGAS_lstringlist & outArgument2,
-                                                 class GALGAS_nonterminalDeclarationListAST & outArgument3,
-                                                 class GALGAS_syntaxRuleListAST & outArgument4,
-                                                 class GALGAS_semanticDeclarationListAST & outArgument5,
-                                                 class GALGAS_bool & outArgument6,
+                                                 class GALGAS_nonterminalDeclarationListAST & outArgument2,
+                                                 class GALGAS_syntaxRuleListAST & outArgument3,
+                                                 class GALGAS_bool & outArgument4,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
                                                        class GALGAS_lstring & outArgument1,
-                                                       class GALGAS_lstringlist & outArgument2,
-                                                       class GALGAS_nonterminalDeclarationListAST & outArgument3,
-                                                       class GALGAS_syntaxRuleListAST & outArgument4,
-                                                       class GALGAS_semanticDeclarationListAST & outArgument5,
-                                                       class GALGAS_bool & outArgument6,
-                                                       class GALGAS_uint constinArgument7,
+                                                       class GALGAS_nonterminalDeclarationListAST & outArgument2,
+                                                       class GALGAS_syntaxRuleListAST & outArgument3,
+                                                       class GALGAS_bool & outArgument4,
+                                                       class GALGAS_uint constinArgument5,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
 
@@ -6453,11 +6439,6 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
                                                                         class GALGAS_uint constinArgument1,
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMImportedComponentFileNameListAtIndex (class GALGAS_lstringlist constinArgument0,
-                                                                                  class GALGAS_uint constinArgument1,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_setMImportedLexiqueFilePathAtIndex (class GALGAS_lstring constinArgument0,
                                                                             class GALGAS_uint constinArgument1,
@@ -6474,11 +6455,6 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void setter_setMSemanticDeclarationListAtIndex (class GALGAS_semanticDeclarationListAST constinArgument0,
-                                                                            class GALGAS_uint constinArgument1,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
   public : VIRTUAL_IN_DEBUG void setter_setMSyntaxComponentNameAtIndex (class GALGAS_lstring constinArgument0,
                                                                         class GALGAS_uint constinArgument1,
                                                                         C_Compiler * inCompiler
@@ -6488,21 +6464,17 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
 //--------------------------------- Instance Methods
   public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
                                                class GALGAS_lstring & outArgument1,
-                                               class GALGAS_lstringlist & outArgument2,
-                                               class GALGAS_nonterminalDeclarationListAST & outArgument3,
-                                               class GALGAS_syntaxRuleListAST & outArgument4,
-                                               class GALGAS_semanticDeclarationListAST & outArgument5,
-                                               class GALGAS_bool & outArgument6,
+                                               class GALGAS_nonterminalDeclarationListAST & outArgument2,
+                                               class GALGAS_syntaxRuleListAST & outArgument3,
+                                               class GALGAS_bool & outArgument4,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
                                               class GALGAS_lstring & outArgument1,
-                                              class GALGAS_lstringlist & outArgument2,
-                                              class GALGAS_nonterminalDeclarationListAST & outArgument3,
-                                              class GALGAS_syntaxRuleListAST & outArgument4,
-                                              class GALGAS_semanticDeclarationListAST & outArgument5,
-                                              class GALGAS_bool & outArgument6,
+                                              class GALGAS_nonterminalDeclarationListAST & outArgument2,
+                                              class GALGAS_syntaxRuleListAST & outArgument3,
+                                              class GALGAS_bool & outArgument4,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
@@ -6512,10 +6484,6 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mHasTranslateFeatureAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                   C_Compiler * inCompiler
                                                                                   COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mImportedComponentFileNameListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                   C_Compiler * inCompiler
-                                                                                                   COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mImportedLexiqueFilePathAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                          C_Compiler * inCompiler
@@ -6528,10 +6496,6 @@ class GALGAS_galgas_33_SyntaxComponentListAST : public AC_GALGAS_list {
   public : VIRTUAL_IN_DEBUG class GALGAS_syntaxRuleListAST getter_mRuleListAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                     C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticDeclarationListAST getter_mSemanticDeclarationListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                            C_Compiler * inCompiler
-                                                                                                            COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mSyntaxComponentNameAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                      C_Compiler * inCompiler
@@ -6569,10 +6533,8 @@ class cEnumerator_galgas_33_SyntaxComponentListAST : public cGenericAbstractEnum
 //--- Current element access
   public : class GALGAS_lstring current_mSyntaxComponentName (LOCATION_ARGS) const ;
   public : class GALGAS_lstring current_mImportedLexiqueFilePath (LOCATION_ARGS) const ;
-  public : class GALGAS_lstringlist current_mImportedComponentFileNameList (LOCATION_ARGS) const ;
   public : class GALGAS_nonterminalDeclarationListAST current_mNonterminalDeclarationList (LOCATION_ARGS) const ;
   public : class GALGAS_syntaxRuleListAST current_mRuleList (LOCATION_ARGS) const ;
-  public : class GALGAS_semanticDeclarationListAST current_mSemanticDeclarationList (LOCATION_ARGS) const ;
   public : class GALGAS_bool current_mHasTranslateFeature (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_galgas_33_SyntaxComponentListAST_2D_element current (LOCATION_ARGS) const ;
@@ -6594,13 +6556,9 @@ class GALGAS_galgas_33_SyntaxComponentListAST_2D_element : public AC_GALGAS_root
 
   public : GALGAS_lstring mProperty_mImportedLexiqueFilePath ;
 
-  public : GALGAS_lstringlist mProperty_mImportedComponentFileNameList ;
-
   public : GALGAS_nonterminalDeclarationListAST mProperty_mNonterminalDeclarationList ;
 
   public : GALGAS_syntaxRuleListAST mProperty_mRuleList ;
-
-  public : GALGAS_semanticDeclarationListAST mProperty_mSemanticDeclarationList ;
 
   public : GALGAS_bool mProperty_mHasTranslateFeature ;
 
@@ -6620,10 +6578,8 @@ class GALGAS_galgas_33_SyntaxComponentListAST_2D_element : public AC_GALGAS_root
 //--------------------------------- Native constructor
   public : GALGAS_galgas_33_SyntaxComponentListAST_2D_element (const GALGAS_lstring & in_mSyntaxComponentName,
                                                                const GALGAS_lstring & in_mImportedLexiqueFilePath,
-                                                               const GALGAS_lstringlist & in_mImportedComponentFileNameList,
                                                                const GALGAS_nonterminalDeclarationListAST & in_mNonterminalDeclarationList,
                                                                const GALGAS_syntaxRuleListAST & in_mRuleList,
-                                                               const GALGAS_semanticDeclarationListAST & in_mSemanticDeclarationList,
                                                                const GALGAS_bool & in_mHasTranslateFeature) ;
 
 //-- Start of generic part --*
@@ -6639,11 +6595,9 @@ class GALGAS_galgas_33_SyntaxComponentListAST_2D_element : public AC_GALGAS_root
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_galgas_33_SyntaxComponentListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
                                                                                             const class GALGAS_lstring & inOperand1,
-                                                                                            const class GALGAS_lstringlist & inOperand2,
-                                                                                            const class GALGAS_nonterminalDeclarationListAST & inOperand3,
-                                                                                            const class GALGAS_syntaxRuleListAST & inOperand4,
-                                                                                            const class GALGAS_semanticDeclarationListAST & inOperand5,
-                                                                                            const class GALGAS_bool & inOperand6
+                                                                                            const class GALGAS_nonterminalDeclarationListAST & inOperand2,
+                                                                                            const class GALGAS_syntaxRuleListAST & inOperand3,
+                                                                                            const class GALGAS_bool & inOperand4
                                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -6660,15 +6614,11 @@ class GALGAS_galgas_33_SyntaxComponentListAST_2D_element : public AC_GALGAS_root
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mHasTranslateFeature (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mImportedComponentFileNameList (LOCATION_ARGS) const ;
-
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mImportedLexiqueFilePath (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_nonterminalDeclarationListAST getter_mNonterminalDeclarationList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_syntaxRuleListAST getter_mRuleList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticDeclarationListAST getter_mSemanticDeclarationList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mSyntaxComponentName (LOCATION_ARGS) const ;
 

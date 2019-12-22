@@ -29,7 +29,7 @@ class GALGAS_templateVariableMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_templateVariableMap (const GALGAS_templateVariableMap & inSource) ;
   public : GALGAS_templateVariableMap & operator = (const GALGAS_templateVariableMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -557,7 +557,7 @@ class GALGAS_filewrapperMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_filewrapperMap (const GALGAS_filewrapperMap & inSource) ;
   public : GALGAS_filewrapperMap & operator = (const GALGAS_filewrapperMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -726,7 +726,7 @@ class GALGAS_functionMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_functionMap (const GALGAS_functionMap & inSource) ;
   public : GALGAS_functionMap & operator = (const GALGAS_functionMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -856,7 +856,7 @@ class GALGAS_grammarMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_grammarMap (const GALGAS_grammarMap & inSource) ;
   public : GALGAS_grammarMap & operator = (const GALGAS_grammarMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -986,7 +986,7 @@ class GALGAS_lexiqueComponentMapForSemanticAnalysis : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_lexiqueComponentMapForSemanticAnalysis (const GALGAS_lexiqueComponentMapForSemanticAnalysis & inSource) ;
   public : GALGAS_lexiqueComponentMapForSemanticAnalysis & operator = (const GALGAS_lexiqueComponentMapForSemanticAnalysis & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1116,7 +1116,7 @@ class GALGAS_optionComponentMapForSemanticAnalysis : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_optionComponentMapForSemanticAnalysis (const GALGAS_optionComponentMapForSemanticAnalysis & inSource) ;
   public : GALGAS_optionComponentMapForSemanticAnalysis & operator = (const GALGAS_optionComponentMapForSemanticAnalysis & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1272,7 +1272,7 @@ class GALGAS_routineMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_routineMap (const GALGAS_routineMap & inSource) ;
   public : GALGAS_routineMap & operator = (const GALGAS_routineMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -1389,7 +1389,7 @@ class GALGAS_syntaxComponentMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_syntaxComponentMap (const GALGAS_syntaxComponentMap & inSource) ;
   public : GALGAS_syntaxComponentMap & operator = (const GALGAS_syntaxComponentMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2817,7 +2817,7 @@ class GALGAS_classMethodMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_classMethodMap (const GALGAS_classMethodMap & inSource) ;
   public : GALGAS_classMethodMap & operator = (const GALGAS_classMethodMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -2939,7 +2939,7 @@ class GALGAS_constantIndexMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_constantIndexMap (const GALGAS_constantIndexMap & inSource) ;
   public : GALGAS_constantIndexMap & operator = (const GALGAS_constantIndexMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -3056,7 +3056,7 @@ class GALGAS_constructorMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_constructorMap (const GALGAS_constructorMap & inSource) ;
   public : GALGAS_constructorMap & operator = (const GALGAS_constructorMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -3192,7 +3192,7 @@ class GALGAS_getterMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_getterMap (const GALGAS_getterMap & inSource) ;
   public : GALGAS_getterMap & operator = (const GALGAS_getterMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -3388,7 +3388,7 @@ class GALGAS_instanceMethodMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_instanceMethodMap (const GALGAS_instanceMethodMap & inSource) ;
   public : GALGAS_instanceMethodMap & operator = (const GALGAS_instanceMethodMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -3567,7 +3567,7 @@ class GALGAS_propertyMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_propertyMap (const GALGAS_propertyMap & inSource) ;
   public : GALGAS_propertyMap & operator = (const GALGAS_propertyMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -3684,7 +3684,7 @@ class GALGAS_setterMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_setterMap (const GALGAS_setterMap & inSource) ;
   public : GALGAS_setterMap & operator = (const GALGAS_setterMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

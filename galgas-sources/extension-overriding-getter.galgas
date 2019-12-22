@@ -176,7 +176,7 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !mOverridingExtensionGetterFormalInputParameterList
     !if [[selfType mTypeKindEnum] isClassType] | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
        then [selfType mAllTypedAttributeList]
-       else @typedPropertyList.emptyList
+       else {}
      end
     !"object->"
     !mOverridingExtensionGetterInstructionList

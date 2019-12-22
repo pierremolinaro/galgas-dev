@@ -467,7 +467,7 @@ class GALGAS_uselessEntityLocationMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_uselessEntityLocationMap (const GALGAS_uselessEntityLocationMap & inSource) ;
   public : GALGAS_uselessEntityLocationMap & operator = (const GALGAS_uselessEntityLocationMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

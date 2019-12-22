@@ -77,10 +77,8 @@ rule <declaration>
   ioDeclarations.mSyntaxComponentList +=
     !syntaxComponentName
     !importedLexiqueReference
-    !@lstringlist.emptyList  # inutile GALGAS 3
     !nonterminalDeclarationList
     !ruleList
-    !@semanticDeclarationListAST.emptyList # inutile GALGAS 3
     !hasTranslateFeature
 }
 
@@ -187,7 +185,7 @@ rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList {
-  outSyntaxInstructionList = @syntaxInstructionList.emptyList
+  outSyntaxInstructionList = {}
   repeat
   while 
     $;$

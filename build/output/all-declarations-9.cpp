@@ -4482,7 +4482,7 @@ typeComparisonResult cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis::c
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis::GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -6356,7 +6356,7 @@ typeComparisonResult cMapElement_terminalSymbolsMapForGrammarAnalysis::compare (
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_terminalSymbolsMapForGrammarAnalysis::GALGAS_terminalSymbolsMapForGrammarAnalysis (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -8021,7 +8021,7 @@ typeComparisonResult cMapElement_extensionMethodMapForGlobalCheckings::compare (
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_extensionMethodMapForGlobalCheckings::GALGAS_extensionMethodMapForGlobalCheckings (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -8209,7 +8209,7 @@ typeComparisonResult cMapElement_extensionSetterMapForGlobalCheckings::compare (
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_extensionSetterMapForGlobalCheckings::GALGAS_extensionSetterMapForGlobalCheckings (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -8397,7 +8397,7 @@ typeComparisonResult cMapElement_extensionGetterMapForGlobalCheckings::compare (
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 GALGAS_extensionGetterMapForGlobalCheckings::GALGAS_extensionGetterMapForGlobalCheckings (void) :
-AC_GALGAS_map () {
+AC_GALGAS_map (true) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

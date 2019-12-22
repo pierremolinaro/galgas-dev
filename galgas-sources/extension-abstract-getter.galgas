@@ -73,7 +73,7 @@ override method @abstractExtensionGetterAST enterDeclarationInGraph
   if not [ioExtensionGetterMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioExtensionGetterMapForBuildingContext insertKey
       !mTypeName
-      !@extensionGetterMapForType.emptyMap
+      !{}
     ]
   end
 #  if not [option galgas_cli_options.newExtensionGeneration value] then

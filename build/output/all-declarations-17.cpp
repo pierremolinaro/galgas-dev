@@ -12006,10 +12006,8 @@ GALGAS_syntaxRuleListAST_2D_element GALGAS_syntaxRuleListAST_2D_element::extract
 GALGAS_galgas_33_SyntaxComponentListAST_2D_element::GALGAS_galgas_33_SyntaxComponentListAST_2D_element (void) :
 mProperty_mSyntaxComponentName (),
 mProperty_mImportedLexiqueFilePath (),
-mProperty_mImportedComponentFileNameList (),
 mProperty_mNonterminalDeclarationList (),
 mProperty_mRuleList (),
-mProperty_mSemanticDeclarationList (),
 mProperty_mHasTranslateFeature () {
 }
 
@@ -12022,18 +12020,14 @@ GALGAS_galgas_33_SyntaxComponentListAST_2D_element::~ GALGAS_galgas_33_SyntaxCom
 
 GALGAS_galgas_33_SyntaxComponentListAST_2D_element::GALGAS_galgas_33_SyntaxComponentListAST_2D_element (const GALGAS_lstring & inOperand0,
                                                                                                         const GALGAS_lstring & inOperand1,
-                                                                                                        const GALGAS_lstringlist & inOperand2,
-                                                                                                        const GALGAS_nonterminalDeclarationListAST & inOperand3,
-                                                                                                        const GALGAS_syntaxRuleListAST & inOperand4,
-                                                                                                        const GALGAS_semanticDeclarationListAST & inOperand5,
-                                                                                                        const GALGAS_bool & inOperand6) :
+                                                                                                        const GALGAS_nonterminalDeclarationListAST & inOperand2,
+                                                                                                        const GALGAS_syntaxRuleListAST & inOperand3,
+                                                                                                        const GALGAS_bool & inOperand4) :
 mProperty_mSyntaxComponentName (inOperand0),
 mProperty_mImportedLexiqueFilePath (inOperand1),
-mProperty_mImportedComponentFileNameList (inOperand2),
-mProperty_mNonterminalDeclarationList (inOperand3),
-mProperty_mRuleList (inOperand4),
-mProperty_mSemanticDeclarationList (inOperand5),
-mProperty_mHasTranslateFeature (inOperand6) {
+mProperty_mNonterminalDeclarationList (inOperand2),
+mProperty_mRuleList (inOperand3),
+mProperty_mHasTranslateFeature (inOperand4) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -12041,10 +12035,8 @@ mProperty_mHasTranslateFeature (inOperand6) {
 GALGAS_galgas_33_SyntaxComponentListAST_2D_element GALGAS_galgas_33_SyntaxComponentListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_galgas_33_SyntaxComponentListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
                                                              GALGAS_lstring::constructor_default (HERE),
-                                                             GALGAS_lstringlist::constructor_emptyList (HERE),
                                                              GALGAS_nonterminalDeclarationListAST::constructor_emptyList (HERE),
                                                              GALGAS_syntaxRuleListAST::constructor_emptyList (HERE),
-                                                             GALGAS_semanticDeclarationListAST::constructor_emptyList (HERE),
                                                              GALGAS_bool::constructor_default (HERE)) ;
 }
 
@@ -12052,15 +12044,13 @@ GALGAS_galgas_33_SyntaxComponentListAST_2D_element GALGAS_galgas_33_SyntaxCompon
 
 GALGAS_galgas_33_SyntaxComponentListAST_2D_element GALGAS_galgas_33_SyntaxComponentListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
                                                                                                                         const GALGAS_lstring & inOperand1,
-                                                                                                                        const GALGAS_lstringlist & inOperand2,
-                                                                                                                        const GALGAS_nonterminalDeclarationListAST & inOperand3,
-                                                                                                                        const GALGAS_syntaxRuleListAST & inOperand4,
-                                                                                                                        const GALGAS_semanticDeclarationListAST & inOperand5,
-                                                                                                                        const GALGAS_bool & inOperand6 
+                                                                                                                        const GALGAS_nonterminalDeclarationListAST & inOperand2,
+                                                                                                                        const GALGAS_syntaxRuleListAST & inOperand3,
+                                                                                                                        const GALGAS_bool & inOperand4 
                                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_galgas_33_SyntaxComponentListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
-    result = GALGAS_galgas_33_SyntaxComponentListAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    result = GALGAS_galgas_33_SyntaxComponentListAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4) ;
   }
   return result ;
 }
@@ -12076,16 +12066,10 @@ typeComparisonResult GALGAS_galgas_33_SyntaxComponentListAST_2D_element::objectC
     result = mProperty_mImportedLexiqueFilePath.objectCompare (inOperand.mProperty_mImportedLexiqueFilePath) ;
   }
   if (result == kOperandEqual) {
-    result = mProperty_mImportedComponentFileNameList.objectCompare (inOperand.mProperty_mImportedComponentFileNameList) ;
-  }
-  if (result == kOperandEqual) {
     result = mProperty_mNonterminalDeclarationList.objectCompare (inOperand.mProperty_mNonterminalDeclarationList) ;
   }
   if (result == kOperandEqual) {
     result = mProperty_mRuleList.objectCompare (inOperand.mProperty_mRuleList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mProperty_mSemanticDeclarationList.objectCompare (inOperand.mProperty_mSemanticDeclarationList) ;
   }
   if (result == kOperandEqual) {
     result = mProperty_mHasTranslateFeature.objectCompare (inOperand.mProperty_mHasTranslateFeature) ;
@@ -12096,7 +12080,7 @@ typeComparisonResult GALGAS_galgas_33_SyntaxComponentListAST_2D_element::objectC
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 bool GALGAS_galgas_33_SyntaxComponentListAST_2D_element::isValid (void) const {
-  return mProperty_mSyntaxComponentName.isValid () && mProperty_mImportedLexiqueFilePath.isValid () && mProperty_mImportedComponentFileNameList.isValid () && mProperty_mNonterminalDeclarationList.isValid () && mProperty_mRuleList.isValid () && mProperty_mSemanticDeclarationList.isValid () && mProperty_mHasTranslateFeature.isValid () ;
+  return mProperty_mSyntaxComponentName.isValid () && mProperty_mImportedLexiqueFilePath.isValid () && mProperty_mNonterminalDeclarationList.isValid () && mProperty_mRuleList.isValid () && mProperty_mHasTranslateFeature.isValid () ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -12104,10 +12088,8 @@ bool GALGAS_galgas_33_SyntaxComponentListAST_2D_element::isValid (void) const {
 void GALGAS_galgas_33_SyntaxComponentListAST_2D_element::drop (void) {
   mProperty_mSyntaxComponentName.drop () ;
   mProperty_mImportedLexiqueFilePath.drop () ;
-  mProperty_mImportedComponentFileNameList.drop () ;
   mProperty_mNonterminalDeclarationList.drop () ;
   mProperty_mRuleList.drop () ;
-  mProperty_mSemanticDeclarationList.drop () ;
   mProperty_mHasTranslateFeature.drop () ;
 }
 
@@ -12123,13 +12105,9 @@ void GALGAS_galgas_33_SyntaxComponentListAST_2D_element::description (C_String &
     ioString << ", " ;
     mProperty_mImportedLexiqueFilePath.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mProperty_mImportedComponentFileNameList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
     mProperty_mNonterminalDeclarationList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mRuleList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mProperty_mSemanticDeclarationList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mHasTranslateFeature.description (ioString, inIndentation+1) ;
   }
@@ -12150,12 +12128,6 @@ GALGAS_lstring GALGAS_galgas_33_SyntaxComponentListAST_2D_element::getter_mImpor
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
-GALGAS_lstringlist GALGAS_galgas_33_SyntaxComponentListAST_2D_element::getter_mImportedComponentFileNameList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mImportedComponentFileNameList ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
 GALGAS_nonterminalDeclarationListAST GALGAS_galgas_33_SyntaxComponentListAST_2D_element::getter_mNonterminalDeclarationList (UNUSED_LOCATION_ARGS) const {
   return mProperty_mNonterminalDeclarationList ;
 }
@@ -12164,12 +12136,6 @@ GALGAS_nonterminalDeclarationListAST GALGAS_galgas_33_SyntaxComponentListAST_2D_
 
 GALGAS_syntaxRuleListAST GALGAS_galgas_33_SyntaxComponentListAST_2D_element::getter_mRuleList (UNUSED_LOCATION_ARGS) const {
   return mProperty_mRuleList ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_semanticDeclarationListAST GALGAS_galgas_33_SyntaxComponentListAST_2D_element::getter_mSemanticDeclarationList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mSemanticDeclarationList ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

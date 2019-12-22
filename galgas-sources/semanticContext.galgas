@@ -557,7 +557,7 @@ proc recursivelyEnumerateDirectories
   ioWrapperDirectoryIndex ++
 #--- Enumerates regular files
   @stringlist files = [inAbsoluteSourcePath regularFiles !false]
-  outWrapperFileMap = @wrapperFileMap. emptyMap
+  outWrapperFileMap = {}
   for () in files do
     if [inTextFileExtensionMap hasKey ![mValue pathExtension]] then
       @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
@@ -583,7 +583,7 @@ proc recursivelyEnumerateDirectories
   end
 #--- Enumerates regular directories
   @stringlist directories = [inAbsoluteSourcePath directories !false]
-  outWrapperDirectoryMap = @wrapperDirectoryMap. emptyMap
+  outWrapperDirectoryMap = {}
   for () in directories do
     @wrapperFileMap internalWrapperFileMap
     @wrapperDirectoryMap internalWrapperDirectoryMap
@@ -616,7 +616,7 @@ override method @filewrapperDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
 #--- Templates
-  var filewrapperTemplateMap =@filewrapperTemplateMap.emptyMap{}
+  @filewrapperTemplateMap filewrapperTemplateMap = {}
   for () in mFilewrapperTemplateList do
     @functionSignature templateSignature = {}
     for () in mFilewrapperTemplateFormalInputParameters do
@@ -630,12 +630,12 @@ override method @filewrapperDeclarationAST enterInSemanticContext
     ]
   end
 #--- Build text file extension map
-  var textExtensionMap =@wrapperExtensionMap.emptyMap{}
+  @wrapperExtensionMap textExtensionMap = {}
   for () in mFilewrapperTextFileExtensionList do
     [!?textExtensionMap insertKey !mValue]
   end
 #--- Build binary file extension map
-  var binaryFileExtensionMap =@wrapperExtensionMap.emptyMap{}
+  @wrapperExtensionMap binaryFileExtensionMap = {}
   for () in mFilewrapperBinaryFileExtensionList do
     if [textExtensionMap hasKey !mValue.string] then
       error mValue:"the '" + mValue + "' extension is already used for text files"
@@ -760,7 +760,7 @@ override method @onceFunctionDeclarationAST enterInSemanticContext
 #--- Result type
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?let @unifiedTypeMap-proxy resultTypeIndex]
 #--- Enter function in routine map
-  [!?ioSemanticContext.mFunctionMap insertKey !mFunctionName !@functionSignature.emptyList !resultTypeIndex !mIsInternal]
+  [!?ioSemanticContext.mFunctionMap insertKey !mFunctionName !{} !resultTypeIndex !mIsInternal]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

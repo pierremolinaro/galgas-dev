@@ -437,7 +437,7 @@ class @timerPredefinedTypeAST : @predefinedTypeAST {}
 method @predefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap unused ioUnifiedTypeMap
   !@constructorMap outConstructorMap {
-  outConstructorMap = @constructorMap. emptyMap
+  outConstructorMap = {}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -445,7 +445,7 @@ method @predefinedTypeAST getConstructorMap
 method @predefinedTypeAST getGetterMap
   ?!@unifiedTypeMap unused ioUnifiedTypeMap
   !@getterMap outGetterMap {
-  outGetterMap = @getterMap. emptyMap
+  outGetterMap = {}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -453,7 +453,7 @@ method @predefinedTypeAST getGetterMap
 method @predefinedTypeAST getSetterMap
   ?!@unifiedTypeMap unused ioUnifiedTypeMap
   !@setterMap outSetterMap {
-  outSetterMap = @setterMap. emptyMap
+  outSetterMap = {}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -461,7 +461,7 @@ method @predefinedTypeAST getSetterMap
 method @predefinedTypeAST getInstanceMethodMap
   ?!@unifiedTypeMap unused ioUnifiedTypeMap
   !@instanceMethodMap outInstanceMethodMap {
-  outInstanceMethodMap = @instanceMethodMap. emptyMap
+  outInstanceMethodMap = {}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -469,7 +469,7 @@ method @predefinedTypeAST getInstanceMethodMap
 method @predefinedTypeAST getClassMethodMap
   ?!@unifiedTypeMap unused ioUnifiedTypeMap
   !@classMethodMap outClassMethodMap {
-  outClassMethodMap = @classMethodMap. emptyMap
+  outClassMethodMap = {}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -497,7 +497,7 @@ method @predefinedTypeAST getEnumerationList
   !@enumerationDescriptorList outEnumerationList
   !@string outEnumeratedType
 {
-  outEnumerationList = @enumerationDescriptorList.emptyList # Enumeration is not supported
+  outEnumerationList = {} # Enumeration is not supported
   outEnumeratedType = "" # Enumeration is not supported
 }
 

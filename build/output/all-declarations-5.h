@@ -4412,7 +4412,7 @@ class GALGAS_grammarLabelMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_grammarLabelMap (const GALGAS_grammarLabelMap & inSource) ;
   public : GALGAS_grammarLabelMap & operator = (const GALGAS_grammarLabelMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -4952,7 +4952,7 @@ class GALGAS_wrapperFileMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_wrapperFileMap (const GALGAS_wrapperFileMap & inSource) ;
   public : GALGAS_wrapperFileMap & operator = (const GALGAS_wrapperFileMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
@@ -5218,7 +5218,7 @@ class GALGAS_wrapperDirectoryMap : public AC_GALGAS_map {
 //--------------------------------- Handle copy
   public : GALGAS_wrapperDirectoryMap (const GALGAS_wrapperDirectoryMap & inSource) ;
   public : GALGAS_wrapperDirectoryMap & operator = (const GALGAS_wrapperDirectoryMap & inSource) ;
-
+  
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
