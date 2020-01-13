@@ -7,6 +7,10 @@
 
 \newcommand\tpp[1]{\colorbox{gray!12}{\ttfamily #1}}
 
+\makeatletter
+\newcommand{\zeroEspaceAvantPonctuation}[1]{\nofrench@punctuation{#1}\french@punctuation}
+\makeatother
+
 %-----------------------------------------------------------------------------------------------------------------------*
 %   A F F I C H A G E    D U    C O D E    G A L G A S                                                                  *
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -77,7 +81,7 @@
   \@esphack
   \endgroup
   \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}
-  {\medskip\begin{siderules}\ttfamily\NoAutoSpacing\input{temp.galgas.tex}\end{siderules}}
+  {\medskip\begin{siderules}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas.tex}}}\end{siderules}}
 }
 \makeatother
 
@@ -110,7 +114,7 @@
   \@esphack
   \endgroup
   \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}
-  {\singlespacing\begin{boxrules}\ttfamily\NoAutoSpacing\input{temp.galgas.tex}\end{boxrules}}
+  {\singlespacing\begin{boxrules}\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas.tex}}}\end{boxrules}}
 }
 \makeatother
 
@@ -151,7 +155,7 @@
       \immediate\write\tempfile{##1}%
       \immediate\closeout\tempfile%
       \immediate\write18{galgas -q --mode=latex:Galgas temp.galgas}%
-      \colorbox{gray!6}{\ttfamily\NoAutoSpacing\input{temp.galgas.tex}\unskip}%
+      \colorbox{gray!6}{\zeroEspaceAvantPonctuation{\tt{\input{temp.galgas.tex}}}\unskip}%
     }%
   }%
   \ifnum`#2=`\~\else\@makeother\~\fi%
