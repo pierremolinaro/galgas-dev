@@ -391,6 +391,9 @@ struct @XcodeProjectDescriptor {
   @2stringlist mXIB_fileList
   @2stringlist mTIFF_fileList
   @2stringlist mICNS_fileList
+#--- Project
+  @string mApplicationBundleName
+  @string mProjectName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -419,6 +422,8 @@ private filewrapper xcodeProjectGenerationFilewrapper in "../generation_template
     ?@string DEFAULT_CONFIGURATION_REF
     ?@stringlist DEFAULT_CONFIGURATION_SETTING_LIST
     ?@string PROJECT_BUILD_DEFAULT_CONFIGURATION_REF
+    ?@string APPLICATION_BUNDLE_BASE
+    ?@string PROJECT_NAME
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -447,6 +452,8 @@ method @XcodeProjectDescriptor generateAtPath
     !mDefaultConfigurationRef
     !mDefaultConfigurationSettingList
     !mProjectBuildConfigurationRef
+    !mApplicationBundleName
+    !mProjectName
   ]
   let projectCoreFile = inPath + "/project.pbxproj"
   if (not [projectCoreFile fileExists]) || (not [inCacheFilePath fileExists]) || (@string. stringWithContentsOfFile {!inCacheFilePath} != contents) then 

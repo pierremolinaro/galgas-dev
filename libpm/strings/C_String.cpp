@@ -811,6 +811,21 @@ void C_String::lineAndColumnFromIndex (const int32_t inIndex,
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+int32_t C_String::indexFromLineAndColumn (const int32_t inLineNumber,
+                                          const int32_t inColumnNumber) const {
+  int32_t idx = 0 ;
+  int32_t line = 1 ;
+  while (line < inLineNumber) {
+    while ((idx < length ()) && (UNICODE_VALUE (this->operator () (idx COMMA_HERE)) != '\n')) {
+      idx += 1 ;
+    }
+    line += 1 ;
+  }
+  return idx + inColumnNumber ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
 //   C O N T A I N S   S T R I N G                                                                                     *
 //                                                                                                                     *
@@ -1467,6 +1482,30 @@ C_String C_String::assemblerRepresentation (void) const {
   }
   return s ;
 }
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_String C_String::utf8RepresentationEnclosedWithin (const utf32 inCharacter) const {
+    C_String s ;
+    const int32_t receiver_length = length () ;
+    s.setCapacity ((uint32_t) receiver_length) ;
+    const utf32 * ptr = utf32String (HERE) ;
+    s.appendUnicodeCharacter  (inCharacter COMMA_HERE) ;
+    for (int32_t i=0 ; i<receiver_length ; i++) {
+      const utf32 c = ptr [i] ;
+      if (UNICODE_VALUE (c) == '\\') {
+        s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+        s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+      }else if (c == inCharacter) {
+        s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+        s.appendUnicodeCharacter (inCharacter COMMA_HERE) ;
+      }else{
+        s.appendUnicodeCharacter (c COMMA_HERE) ;
+      }
+    }
+    s.appendUnicodeCharacter  (inCharacter COMMA_HERE) ;
+    return s ;
+  }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

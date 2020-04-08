@@ -353,7 +353,8 @@ for () in mBuildConfigurationSettingList do
 %      %!mValue% ;\n%
 end
 %      INFOPLIST_FILE = "Info.plist";\n%
-%      PRODUCT_NAME = %![mProductFileName utf8Representation]% ;\n%
+%      PRODUCT_NAME = %![mProductFileName utf8Representation]%;\n%
+%      PRODUCT_BUNDLE_IDENTIFIER = "%!APPLICATION_BUNDLE_BASE%.%!PROJECT_NAME%";\n%
 %    };\n%
 %    name = Default;\n%
 %  };\n\n%

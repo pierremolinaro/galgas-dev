@@ -36,6 +36,17 @@ mSourceText () {
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 C_LocationInSource::C_LocationInSource (const C_SourceTextInString & inSourceText,
+                                        const int32_t inLine,
+                                        const int32_t inColumn) :
+mIndex (inSourceText.sourceString ().indexFromLineAndColumn (inLine, inColumn)),
+mLineNumber (inLine),
+mColumnNumber (inColumn),
+mSourceText (inSourceText) {
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_LocationInSource::C_LocationInSource (const C_SourceTextInString & inSourceText,
                                         const int32_t inIndex,
                                         const int32_t inLine,
                                         const int32_t inColumn) :

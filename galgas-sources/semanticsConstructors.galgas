@@ -99,8 +99,8 @@ proc enterConstructorWith3Arguments
   ?resultTypeName:let @string inReturnedTypeName
   ?hasLexiqueArg:let @bool inHasLexiqueArgument
 {
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let @unifiedTypeMap-proxy returnedTypeIndex]
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?@unifiedTypeMap-proxy t]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?var t]
   @functionSignature argumentTypeList = {}
   argumentTypeList += !["" nowhere] !t !inArgument1Name
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
@@ -117,9 +117,49 @@ proc enterConstructorWith3Arguments
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+proc enterConstructorWith4Arguments
+  ?!@constructorMap ioConstructorMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ?name:let @string inConstructorName
+  ?argSelector1:let @string inArgument1SelectorName
+  ?argTypeName1:let @string inArgument1TypeName
+  ?argName1:let @string inArgument1Name
+  ?argSelector2:let @string inArgument2SelectorName
+  ?argTypeName2:let @string inArgument2TypeName
+  ?argName2:let @string inArgument2Name
+  ?argSelector3:let @string inArgument3SelectorName
+  ?argTypeName3:let @string inArgument3TypeName
+  ?argName3:let @string inArgument3Name
+  ?argSelector4:let @string inArgument4SelectorName
+  ?argTypeName4:let @string inArgument4TypeName
+  ?argName4:let @string inArgument4Name
+  ?resultTypeName:let @string inReturnedTypeName
+  ?hasLexiqueArg:let @bool inHasLexiqueArgument
+{
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?var t]
+  @functionSignature argumentTypeList = {}
+  argumentTypeList += ![inArgument1SelectorName nowhere] !t !inArgument1Name
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
+  argumentTypeList += ![inArgument2SelectorName nowhere] !t !inArgument2Name
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t]
+  argumentTypeList += ![inArgument3SelectorName nowhere] !t !inArgument3Name
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument4TypeName ?t]
+  argumentTypeList += ![inArgument4SelectorName nowhere] !t !inArgument4Name
+  [!?ioConstructorMap insertOrReplace
+    !@lstring.new {!inConstructorName !@location.here}
+    !argumentTypeList
+    !inHasLexiqueArgument
+    !returnedTypeIndex
+  ]
+}
+
+#——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
 override method @locationPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap {
+  !@constructorMap outMap
+{
   outMap = {}
   enterConstructorWithoutArgument (
     !?outMap
@@ -142,13 +182,33 @@ override method @locationPredefinedTypeAST getConstructorMap
     !resultTypeName:"location"
     !hasLexiqueArg:true
   )
+  enterConstructorWith4Arguments (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !name: "location"
+    !argSelector1: "fromFilePath"
+    !argTypeName1: "string"
+    !argName1: "inFile"
+    !argSelector2: "line"
+    !argTypeName2: "uint"
+    !argName2: "inLine"
+    !argSelector3: "startColumn"
+    !argTypeName3: "uint"
+    !argName3: "inStartColumn"
+    !argSelector4: "lastColumn"
+    !argTypeName4: "uint"
+    !argName4: "inLastColumn"
+    !resultTypeName:"location"
+    !hasLexiqueArg:true
+  )
 }
 
 #——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 override method @stringPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@constructorMap outMap {
+  !@constructorMap outMap
+{
   outMap = {}
   enterConstructorWithoutArgument (
     !?outMap

@@ -680,7 +680,8 @@ proc checkExpressionIsBoolean
           !{}
           !"bool"
           !{}
-          !mHasCompilerArgument}
+          !mHasCompilerArgument
+        }
       end
     else
       if [[expressionType mGetterMap] count] == 0 then

@@ -155,7 +155,8 @@ override method @templateGetterCallInExpressionAST templateExpressionAnalysis
       !fieldList
       ![mGetterName string]
       !constructorEffectiveParameterList
-      !hasCompilerArgument}
+      !hasCompilerArgument
+    }
   end
 }
  

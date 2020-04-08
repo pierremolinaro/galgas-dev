@@ -163,6 +163,11 @@ class C_String : public AC_OutputStream {
   public : C_String assemblerRepresentation (void) const ; // Preserves ASCII letters, digits, '_', '.' and '$'
   public : C_String decodedStringFromRepresentation (bool & outOk) const ; // Reverses the above representations
 
+//--- Get a representation enclosing by a given character
+//      - escaped by a back slash
+//      - back slash is also escaped by back slash
+  public : C_String utf8RepresentationEnclosedWithin (const utf32 inCharacter) const ;
+
 //--- Get an HTML representation (&, <, > and " are escaped using HTML escape sequence)
   public : C_String HTMLRepresentation (void) const ;
 
@@ -193,6 +198,10 @@ class C_String : public AC_OutputStream {
                                         int32_t & outLineNumber,
                                         int32_t & outColumnNumber,
                                         C_String & outLineContents) const ;
+
+//--- Get index from line number and column number
+  public : int32_t indexFromLineAndColumn (const int32_t inLineNumber,
+                                           const int32_t inColumnNumber) const ;
 
 //--- Subsitute 'inCharacter' by 'inString' ; if the character occurs twice, suppress one
   public : C_String stringByReplacingCharacterByString (const utf32 inCharacter,

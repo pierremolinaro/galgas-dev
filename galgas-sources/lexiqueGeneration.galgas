@@ -171,7 +171,6 @@ override getter @lexicalSendTerminalByDefaultAST generateDefaultSendCode
   ?let @string unused inScannerClassName
   -> @string outGeneratedCode
 {
-#  outGeneratedCode  = "token.mIsOptional = false ;\n"
   outGeneratedCode = "token.mTokenCode = kToken_" + mDefaultSentTerminal + " ;\n"
 }
 
@@ -180,8 +179,7 @@ override getter @lexicalSendTerminalByDefaultAST generateDefaultSendCode
 override getter @lexicalErrorByDefaultAST generateDefaultSendCode
   ?let @string inScannerClassName
   -> @string outGeneratedCode {
-  outGeneratedCode = "lexicalError (gLexicalMessage_" + [inScannerClassName identifierRepresentation]
-     + "_" + mDefaultErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
+  outGeneratedCode = "lexicalError (gLexicalMessage_" + inScannerClassName + "_" + mDefaultErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -519,7 +519,7 @@ La valeur du récepteur peut être testée en appelant le \refGetterPage{string}
 \subsectionGetter{decimalSigned64Number}{string}
 
 \begin{galgasbox}
-getter decimalSigned64Number -> @sint
+getter decimalSigned64Number -> @sint64
 \end{galgasbox}
 
 Retourne la valeur du récepteur convertie en entier signé 64 bits. La valeur du récepteur doit donc ne contenir que des chiffres décimaux, éventuellement précédés par un «~+~» ou un «~-~». Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
@@ -551,7 +551,7 @@ La valeur du récepteur peut être testée en appelant le \refGetterPage{string}
 \subsectionGetter{decimalUnsigned64Number}{string}
 
 \begin{galgasbox}
-getter decimalUnsignedNumber -> @uint
+getter decimalUnsigned64Number -> @uint64
 \end{galgasbox}
 
 Retourne la valeur du récepteur convertie en entier non signé 64 bits. La valeur du récepteur doit donc ne contenir que des chiffres décimaux. Si ce n'est pas le cas, une erreur d'exécution est déclenchée.
@@ -1540,6 +1540,28 @@ getter utf8Representation -> @string
 \end{galgasbox}
 
 Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, c'est-à-dire qu'un caractère « \texttt{"} » a été inséré au début et à la fin. Tous les 150 caractères, la séquence « \texttt{"\textbackslash n~~"} » est insérée.
+
+Le caractère « \texttt{"} » est échappé en « \texttt{\textbackslash"} », le caractère « \texttt{\textbackslash} » est échappé en « \texttt{\textbackslash\textbackslash} ».
+
+
+
+
+
+
+
+
+
+\subsectionGetter{utf8RepresentationEnclosedWithin}{string}
+
+\begin{galgasbox}
+getter utf8RepresentationEnclosedWithin ?@char inCharacter -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, entourée par le caractère indiqué en argument.
+
+Le caractère indiqué en argument est échappé en le préfixant par« \texttt{\textbackslash} ». Le caractère « \texttt{\textbackslash} » est échappé en « \texttt{\textbackslash\textbackslash} ».
+
+Appeler ce getter avec le caractère « \texttt{"} » en argument n'est pas équivalent à appeler le \refGetterPage{string}{utf8Representation} qui insère  « \texttt{"\textbackslash n~~"} » tous les 150 caractères.
 
 
 

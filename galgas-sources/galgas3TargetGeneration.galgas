@@ -587,6 +587,8 @@ proc updateGalgas3Targets
     ioAllProductFileSet += !"file-list-for-xcode-project.txt"
   #-------------------------------------------------------- New Xcode project generation
     var xcodeProject = @XcodeProjectDescriptor.default
+    xcodeProject.mApplicationBundleName = applicationBundleBase
+    xcodeProject.mProjectName = inTargetName
   #--- Default build configuration
     @stringlist xcodeSettingList = {
       !"ALWAYS_SEARCH_USER_PATHS = NO",

@@ -166,7 +166,8 @@ override method @lexicalSendTerminalByDefaultAST checkLexicalDefaultAction
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalErrorByDefaultAST checkLexicalDefaultAction
-  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+{
   [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mDefaultErrorMessageName.string]
 }
 

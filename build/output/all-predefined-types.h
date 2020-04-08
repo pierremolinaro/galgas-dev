@@ -100,6 +100,13 @@ class GALGAS_location : public AC_GALGAS_root {
   public : static class GALGAS_location constructor_here (C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
+  public : static class GALGAS_location constructor_location (const class GALGAS_string & inOperand0,
+                                                              const class GALGAS_uint & inOperand1,
+                                                              const class GALGAS_uint & inOperand2,
+                                                              const class GALGAS_uint & inOperand3,
+                                                              class C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
+
   public : static class GALGAS_location constructor_next (C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) ;
 
@@ -547,6 +554,9 @@ class GALGAS_string : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_utf_38_Length (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_utf_38_Representation (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_utf_38_RepresentationEnclosedWithin (const class GALGAS_char & constinOperand0
+                                                                                            COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_utf_38_RepresentationWithoutDelimiters (LOCATION_ARGS) const ;
 

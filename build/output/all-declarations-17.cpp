@@ -30,7 +30,9 @@ mProperty_mProjectBuildConfigurationRef (),
 mProperty_mInfoPlistFileList (),
 mProperty_mXIB_5F_fileList (),
 mProperty_mTIFF_5F_fileList (),
-mProperty_mICNS_5F_fileList () {
+mProperty_mICNS_5F_fileList (),
+mProperty_mApplicationBundleName (),
+mProperty_mProjectName () {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -60,7 +62,9 @@ GALGAS_XcodeProjectDescriptor::GALGAS_XcodeProjectDescriptor (const GALGAS_uint 
                                                               const GALGAS__32_stringlist & inOperand17,
                                                               const GALGAS__32_stringlist & inOperand18,
                                                               const GALGAS__32_stringlist & inOperand19,
-                                                              const GALGAS__32_stringlist & inOperand20) :
+                                                              const GALGAS__32_stringlist & inOperand20,
+                                                              const GALGAS_string & inOperand21,
+                                                              const GALGAS_string & inOperand22) :
 mProperty_mSequenceNumber (inOperand0),
 mProperty_mMainGroupReference (inOperand1),
 mProperty_mMainGroupChildrenRefs (inOperand2),
@@ -81,7 +85,9 @@ mProperty_mProjectBuildConfigurationRef (inOperand16),
 mProperty_mInfoPlistFileList (inOperand17),
 mProperty_mXIB_5F_fileList (inOperand18),
 mProperty_mTIFF_5F_fileList (inOperand19),
-mProperty_mICNS_5F_fileList (inOperand20) {
+mProperty_mICNS_5F_fileList (inOperand20),
+mProperty_mApplicationBundleName (inOperand21),
+mProperty_mProjectName (inOperand22) {
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -107,7 +113,9 @@ GALGAS_XcodeProjectDescriptor GALGAS_XcodeProjectDescriptor::constructor_default
                                         GALGAS__32_stringlist::constructor_emptyList (HERE),
                                         GALGAS__32_stringlist::constructor_emptyList (HERE),
                                         GALGAS__32_stringlist::constructor_emptyList (HERE),
-                                        GALGAS__32_stringlist::constructor_emptyList (HERE)) ;
+                                        GALGAS__32_stringlist::constructor_emptyList (HERE),
+                                        GALGAS_string::constructor_default (HERE),
+                                        GALGAS_string::constructor_default (HERE)) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -132,11 +140,13 @@ GALGAS_XcodeProjectDescriptor GALGAS_XcodeProjectDescriptor::constructor_new (co
                                                                               const GALGAS__32_stringlist & inOperand17,
                                                                               const GALGAS__32_stringlist & inOperand18,
                                                                               const GALGAS__32_stringlist & inOperand19,
-                                                                              const GALGAS__32_stringlist & inOperand20 
+                                                                              const GALGAS__32_stringlist & inOperand20,
+                                                                              const GALGAS_string & inOperand21,
+                                                                              const GALGAS_string & inOperand22 
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_XcodeProjectDescriptor result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid () && inOperand14.isValid () && inOperand15.isValid () && inOperand16.isValid () && inOperand17.isValid () && inOperand18.isValid () && inOperand19.isValid () && inOperand20.isValid ()) {
-    result = GALGAS_XcodeProjectDescriptor (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13, inOperand14, inOperand15, inOperand16, inOperand17, inOperand18, inOperand19, inOperand20) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid () && inOperand14.isValid () && inOperand15.isValid () && inOperand16.isValid () && inOperand17.isValid () && inOperand18.isValid () && inOperand19.isValid () && inOperand20.isValid () && inOperand21.isValid () && inOperand22.isValid ()) {
+    result = GALGAS_XcodeProjectDescriptor (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13, inOperand14, inOperand15, inOperand16, inOperand17, inOperand18, inOperand19, inOperand20, inOperand21, inOperand22) ;
   }
   return result ;
 }
@@ -208,13 +218,19 @@ typeComparisonResult GALGAS_XcodeProjectDescriptor::objectCompare (const GALGAS_
   if (result == kOperandEqual) {
     result = mProperty_mICNS_5F_fileList.objectCompare (inOperand.mProperty_mICNS_5F_fileList) ;
   }
+  if (result == kOperandEqual) {
+    result = mProperty_mApplicationBundleName.objectCompare (inOperand.mProperty_mApplicationBundleName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mProperty_mProjectName.objectCompare (inOperand.mProperty_mProjectName) ;
+  }
   return result ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 bool GALGAS_XcodeProjectDescriptor::isValid (void) const {
-  return mProperty_mSequenceNumber.isValid () && mProperty_mMainGroupReference.isValid () && mProperty_mMainGroupChildrenRefs.isValid () && mProperty_mProjectObjectReference.isValid () && mProperty_mGroupList.isValid () && mProperty_mToolTargetList.isValid () && mProperty_mAppTargetList.isValid () && mProperty_mCFileList.isValid () && mProperty_mCppFileList.isValid () && mProperty_m_5F_M_5F_FileList.isValid () && mProperty_m_5F_MM_5F_FileList.isValid () && mProperty_mFrameworkFileList.isValid () && mProperty_mHeaderFileList.isValid () && mProperty_mBuildFileList.isValid () && mProperty_mDefaultConfigurationRef.isValid () && mProperty_mDefaultConfigurationSettingList.isValid () && mProperty_mProjectBuildConfigurationRef.isValid () && mProperty_mInfoPlistFileList.isValid () && mProperty_mXIB_5F_fileList.isValid () && mProperty_mTIFF_5F_fileList.isValid () && mProperty_mICNS_5F_fileList.isValid () ;
+  return mProperty_mSequenceNumber.isValid () && mProperty_mMainGroupReference.isValid () && mProperty_mMainGroupChildrenRefs.isValid () && mProperty_mProjectObjectReference.isValid () && mProperty_mGroupList.isValid () && mProperty_mToolTargetList.isValid () && mProperty_mAppTargetList.isValid () && mProperty_mCFileList.isValid () && mProperty_mCppFileList.isValid () && mProperty_m_5F_M_5F_FileList.isValid () && mProperty_m_5F_MM_5F_FileList.isValid () && mProperty_mFrameworkFileList.isValid () && mProperty_mHeaderFileList.isValid () && mProperty_mBuildFileList.isValid () && mProperty_mDefaultConfigurationRef.isValid () && mProperty_mDefaultConfigurationSettingList.isValid () && mProperty_mProjectBuildConfigurationRef.isValid () && mProperty_mInfoPlistFileList.isValid () && mProperty_mXIB_5F_fileList.isValid () && mProperty_mTIFF_5F_fileList.isValid () && mProperty_mICNS_5F_fileList.isValid () && mProperty_mApplicationBundleName.isValid () && mProperty_mProjectName.isValid () ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -241,6 +257,8 @@ void GALGAS_XcodeProjectDescriptor::drop (void) {
   mProperty_mXIB_5F_fileList.drop () ;
   mProperty_mTIFF_5F_fileList.drop () ;
   mProperty_mICNS_5F_fileList.drop () ;
+  mProperty_mApplicationBundleName.drop () ;
+  mProperty_mProjectName.drop () ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -292,6 +310,10 @@ void GALGAS_XcodeProjectDescriptor::description (C_String & ioString,
     mProperty_mTIFF_5F_fileList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mProperty_mICNS_5F_fileList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mApplicationBundleName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mProperty_mProjectName.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -420,6 +442,18 @@ GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::getter_mTIFF_5F_fileList (U
 
 GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::getter_mICNS_5F_fileList (UNUSED_LOCATION_ARGS) const {
   return mProperty_mICNS_5F_fileList ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_string GALGAS_XcodeProjectDescriptor::getter_mApplicationBundleName (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mApplicationBundleName ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+GALGAS_string GALGAS_XcodeProjectDescriptor::getter_mProjectName (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mProjectName ;
 }
 
 
@@ -1114,23 +1148,23 @@ void extensionMethod_generateAtPath (const GALGAS_XcodeProjectDescriptor inObjec
                                      const GALGAS_string constinArgument_inCacheFilePath,
                                      C_Compiler * inCompiler
                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_contents_16877 = GALGAS_string (filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (inCompiler, inObject.mProperty_mProjectObjectReference, inObject.mProperty_mMainGroupReference, inObject.mProperty_mGroupList, inObject.mProperty_mMainGroupChildrenRefs, inObject.mProperty_mToolTargetList, inObject.mProperty_mAppTargetList, inObject.mProperty_mCFileList, inObject.mProperty_mCppFileList, inObject.mProperty_m_5F_M_5F_FileList, inObject.mProperty_m_5F_MM_5F_FileList, inObject.mProperty_mFrameworkFileList, inObject.mProperty_mHeaderFileList, inObject.mProperty_mInfoPlistFileList, inObject.mProperty_mTIFF_5F_fileList, inObject.mProperty_mICNS_5F_fileList, inObject.mProperty_mXIB_5F_fileList, inObject.mProperty_mBuildFileList, inObject.mProperty_mDefaultConfigurationRef, inObject.mProperty_mDefaultConfigurationSettingList, inObject.mProperty_mProjectBuildConfigurationRef COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 429))) ;
-  GALGAS_string var_projectCoreFile_17423 = constinArgument_inPath.add_operation (GALGAS_string ("/project.pbxproj"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 451)) ;
+  GALGAS_string var_contents_17009 = GALGAS_string (filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (inCompiler, inObject.mProperty_mProjectObjectReference, inObject.mProperty_mMainGroupReference, inObject.mProperty_mGroupList, inObject.mProperty_mMainGroupChildrenRefs, inObject.mProperty_mToolTargetList, inObject.mProperty_mAppTargetList, inObject.mProperty_mCFileList, inObject.mProperty_mCppFileList, inObject.mProperty_m_5F_M_5F_FileList, inObject.mProperty_m_5F_MM_5F_FileList, inObject.mProperty_mFrameworkFileList, inObject.mProperty_mHeaderFileList, inObject.mProperty_mInfoPlistFileList, inObject.mProperty_mTIFF_5F_fileList, inObject.mProperty_mICNS_5F_fileList, inObject.mProperty_mXIB_5F_fileList, inObject.mProperty_mBuildFileList, inObject.mProperty_mDefaultConfigurationRef, inObject.mProperty_mDefaultConfigurationSettingList, inObject.mProperty_mProjectBuildConfigurationRef, inObject.mProperty_mApplicationBundleName, inObject.mProperty_mProjectName COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 434))) ;
+  GALGAS_string var_projectCoreFile_17601 = constinArgument_inPath.add_operation (GALGAS_string ("/project.pbxproj"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 458)) ;
   enumGalgasBool test_0 = kBoolTrue ;
   if (kBoolTrue == test_0) {
-    GALGAS_bool test_1 = var_projectCoreFile_17423.getter_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 452)).operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 452)) ;
+    GALGAS_bool test_1 = var_projectCoreFile_17601.getter_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 459)).operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 459)) ;
     if (kBoolTrue != test_1.boolEnum ()) {
-      test_1 = constinArgument_inCacheFilePath.getter_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 452)).operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 452)) ;
+      test_1 = constinArgument_inCacheFilePath.getter_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 459)).operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 459)) ;
     }
     GALGAS_bool test_2 = test_1 ;
     if (kBoolTrue != test_2.boolEnum ()) {
-      test_2 = GALGAS_bool (kIsNotEqual, GALGAS_string::constructor_stringWithContentsOfFile (constinArgument_inCacheFilePath, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 452)).objectCompare (var_contents_16877)) ;
+      test_2 = GALGAS_bool (kIsNotEqual, GALGAS_string::constructor_stringWithContentsOfFile (constinArgument_inCacheFilePath, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 459)).objectCompare (var_contents_17009)) ;
     }
     test_0 = test_2.boolEnum () ;
     if (kBoolTrue == test_0) {
-      GALGAS_bool joker_17673 ; // Joker input parameter
-      var_contents_16877.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_17673, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 453)) ;
-      var_contents_16877.method_makeDirectoryAndWriteToFile (var_projectCoreFile_17423, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 454)) ;
+      GALGAS_bool joker_17851 ; // Joker input parameter
+      var_contents_17009.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_17851, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 460)) ;
+      var_contents_17009.method_makeDirectoryAndWriteToFile (var_projectCoreFile_17601, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 461)) ;
     }
   }
 }

@@ -25,12 +25,12 @@ proc enterBaseFinalGetterWithoutArgument
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?let returnedTypeIndex]
   [!?ioGetterMap insertOrReplace
     !@lstring.new {!inGetterName !@location.here}
-    !@methodKind. definedAsMember
+    !@methodKind.definedAsMember
     !@functionSignature {}
     !@location.here
     !inHasCompilerArgument
     !returnedTypeIndex
-    !@methodQualifier. isBasicFinal
+    !@methodQualifier.isBasicFinal
     !"" # No Error message
   ]
 }
@@ -760,6 +760,13 @@ override method @stringPredefinedTypeAST getGetterMap
     !"popen"
     !returnedTypeName:"string"
     !hasCompilerArgument:true
+  )
+  enterBaseGetterWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"utf8RepresentationEnclosedWithin" !"char" !"inCharacter"
+    !returnedTypeName: "string"
+    !hasCompilerArgument: false
   )
   enterBaseGetterWithArgument (
     !?outMap

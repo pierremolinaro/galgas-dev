@@ -25,6 +25,7 @@
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 #include "utilities/M_machine.h"
+#include "utilities/MF_Assert.h"
 #include "galgas2/C_SourceTextInString.h"
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -53,6 +54,10 @@ class C_LocationInSource {
 
   public : C_LocationInSource (const C_SourceTextInString & inSourceText,
                                const int32_t inIndex,
+                               const int32_t inLine,
+                               const int32_t inColumn) ;
+
+  public : C_LocationInSource (const C_SourceTextInString & inSourceText,
                                const int32_t inLine,
                                const int32_t inColumn) ;
 

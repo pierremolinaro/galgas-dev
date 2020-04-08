@@ -244,7 +244,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
       fileURL = inDocumentURL ;
       mFileEncoding = NSUTF8StringEncoding ;
       [self readDocumentFromFile] ;
-      addFileEventStreamForDocument (self) ;
+  //    addFileEventStreamForDocument (self) ;  // §§
     }
     return self ;
   }
@@ -367,9 +367,9 @@ static NSMutableDictionary * gDocumentDataDictionary ;
     NSString * string = mTextSyntaxColoring.sourceString ;
     NSError * error = nil ;
     const BOOL ok = [string
-      writeToURL:(inAbsoluteURL == nil) ? fileURL : inAbsoluteURL
-      atomically:YES
-      encoding:NSUTF8StringEncoding
+      writeToURL: (inAbsoluteURL == nil) ? fileURL : inAbsoluteURL
+      atomically: YES
+      encoding: NSUTF8StringEncoding
       error:& error
     ] ;
   //---
@@ -384,14 +384,14 @@ static NSMutableDictionary * gDocumentDataDictionary ;
   //····················································································································
 
   - (void) save {
-  //  NSLog (@"isDirty: %@", mTextSyntaxColoring.isDirty ? @"yes" : @"no") ;
     if (mTextSyntaxColoring.isDirty) {
-     // NSLog (@"document: %@", fileURL) ;
+      removeFileEventStreamForDocument (self) ;  // §§
       if (nil == self.document) {
         [self performSaveToURL:nil] ;
       }else{
         [self.document saveDocument:nil] ;
       }
+      addFileEventStreamForDocument (self) ;  // §§
     }
   }
 

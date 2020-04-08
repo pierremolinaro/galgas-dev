@@ -58,6 +58,10 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
 
   public : GALGAS__32_stringlist mProperty_mICNS_5F_fileList ;
 
+  public : GALGAS_string mProperty_mApplicationBundleName ;
+
+  public : GALGAS_string mProperty_mProjectName ;
+
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
   public : VIRTUAL_IN_DEBUG void drop (void) ;
@@ -92,7 +96,9 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                           const GALGAS__32_stringlist & in_mInfoPlistFileList,
                                           const GALGAS__32_stringlist & in_mXIB_5F_fileList,
                                           const GALGAS__32_stringlist & in_mTIFF_5F_fileList,
-                                          const GALGAS__32_stringlist & in_mICNS_5F_fileList) ;
+                                          const GALGAS__32_stringlist & in_mICNS_5F_fileList,
+                                          const GALGAS_string & in_mApplicationBundleName,
+                                          const GALGAS_string & in_mProjectName) ;
 
 //-- Start of generic part --*
 
@@ -125,7 +131,9 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                                                        const class GALGAS__32_stringlist & inOperand17,
                                                                        const class GALGAS__32_stringlist & inOperand18,
                                                                        const class GALGAS__32_stringlist & inOperand19,
-                                                                       const class GALGAS__32_stringlist & inOperand20
+                                                                       const class GALGAS__32_stringlist & inOperand20,
+                                                                       const class GALGAS_string & inOperand21,
+                                                                       const class GALGAS_string & inOperand22
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -141,6 +149,8 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_XCodeAppTargetList getter_mAppTargetList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mApplicationBundleName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_BuildFileList getter_mBuildFileList (LOCATION_ARGS) const ;
 
@@ -167,6 +177,8 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mMainGroupReference (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mProjectBuildConfigurationRef (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mProjectName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mProjectObjectReference (LOCATION_ARGS) const ;
 
@@ -485,6 +497,8 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (c
                                                                                const class GALGAS_BuildFileList & in_BUILD_5F_FILE_5F_LIST,
                                                                                const class GALGAS_string & in_DEFAULT_5F_CONFIGURATION_5F_REF,
                                                                                const class GALGAS_stringlist & in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST,
-                                                                               const class GALGAS_string & in_PROJECT_5F_BUILD_5F_DEFAULT_5F_CONFIGURATION_5F_REF
+                                                                               const class GALGAS_string & in_PROJECT_5F_BUILD_5F_DEFAULT_5F_CONFIGURATION_5F_REF,
+                                                                               const class GALGAS_string & in_APPLICATION_5F_BUNDLE_5F_BASE,
+                                                                               const class GALGAS_string & in_PROJECT_5F_NAME
                                                                                COMMA_LOCATION_ARGS) ;
 

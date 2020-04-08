@@ -542,9 +542,9 @@ proc checkDiadicOperator
         !inErrorLocation
         !kind
         !ioRightExpression
-        !@stringlist.emptyList
+        !{}
         ![inLeftType key]
-        !@semanticExpressionListForGeneration.emptyList
+        !{}
         !hasCompilerArgument
       }
       ioRightExpression = conversionExpression
