@@ -92,7 +92,7 @@ static NSMutableArray * gFileEventStreamArray = nil ;
         | kFSEventStreamCreateFlagWatchRoot
         | kFSEventStreamCreateFlagFileEvents
         | kFSEventStreamCreateFlagMarkSelf // §§
- //       | kFSEventStreamCreateFlagIgnoreSelf // Do not report events from current application
+        | kFSEventStreamCreateFlagIgnoreSelf // Do not report events from current application
       ) ;
       FSEventStreamScheduleWithRunLoop (mFSEventStream, CFRunLoopGetMain(), kCFRunLoopDefaultMode);
       FSEventStreamStart (mFSEventStream) ;

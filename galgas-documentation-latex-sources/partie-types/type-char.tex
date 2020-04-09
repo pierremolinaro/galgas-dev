@@ -360,6 +360,24 @@ Returns the uppercase character corresponding to the receiver's value: if the re
 
 
 
+\subsectionGetter{utf8Length}{char}
+
+\begin{galgas}
+getter utf8Length -> @uint
+\end{galgas}
+
+Returns the number of bytes of the UTF-8 representation of the receiver, that is:
+\begin{itemize}
+  \item 1 for code points lower than \texttt{0x80};
+  \item 2 for code points greater or equal than \texttt{0x80} and lower than \texttt{0x800};
+  \item 3 for code points greater or equal than \texttt{0x800} and lower than \texttt{0x10000};
+  \item 4 for code points greater or equal than \texttt{0x10000}.
+\end{itemize}
+
+
+
+
+
 
 \section{Comparison Operators}
 

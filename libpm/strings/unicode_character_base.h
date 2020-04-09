@@ -75,6 +75,9 @@ bool isUnicodePunctuation (const utf32 inUnicodeCharacter) ;
 //--- Returns true if unicode symbol
 bool isUnicodeSymbol (const utf32 inUnicodeCharacter) ;
 
+//--- Returns the number of bytes needed for encoding this character in UTF8
+uint32_t utf8Length (const utf32 inUnicodeCharacter) ;
+
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 extern const utf32 UNICODE_REPLACEMENT_CHARACTER ;

@@ -2,7 +2,7 @@
 #                                                                                                                      *
 #  semantics definitions for semantics component                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2009, ..., 2017 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2009, ..., 2020 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@ls2n.fr                                                                                           *
 #                                                                                                                      *
@@ -458,6 +458,13 @@ override method @stringPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !"range"
     !returnedTypeName:"range"
+    !hasCompilerArgument:false
+  )
+  enterBaseGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"utf8RepresentationWithUnicodeEscaping"
+    !returnedTypeName:"string"
     !hasCompilerArgument:false
   )
   enterBaseGetterWithoutArgument (
@@ -927,6 +934,13 @@ override method @charPredefinedTypeAST getGetterMap
     !?ioUnifiedTypeMap
     !getterName:"string"
     !returnedTypeName:"string"
+    !hasCompilerArgument:false
+  )
+  enterBaseFinalGetterWithoutArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !getterName:"utf8Length"
+    !returnedTypeName:"uint"
     !hasCompilerArgument:false
   )
   enterBaseFinalGetterWithoutArgument (

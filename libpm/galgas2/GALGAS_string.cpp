@@ -596,6 +596,16 @@ GALGAS_string GALGAS_string::getter_utf_38_RepresentationWithoutDelimiters (UNUS
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+GALGAS_string GALGAS_string::getter_utf_38_RepresentationWithUnicodeEscaping (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    result = GALGAS_string (mString.utf8RepresentationWithUnicodeEscaping ()) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
 GALGAS_string GALGAS_string::getter_identifierRepresentation (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid ()) {

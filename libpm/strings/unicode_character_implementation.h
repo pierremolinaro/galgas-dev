@@ -388,6 +388,20 @@ bool isUnicodeSymbol (const utf32 inUnicodeCharacter) {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+uint32_t utf8Length (const utf32 inUnicodeCharacter) {
+  uint32_t r = 1 ;
+  if (UNICODE_VALUE (inUnicodeCharacter) >= 0x10000) {
+    r = 4 ;
+  }else if (UNICODE_VALUE (inUnicodeCharacter) >= 0x800) {
+    r = 3 ;
+  }else if (UNICODE_VALUE (inUnicodeCharacter) >= 0x80) {
+    r = 2 ;
+  }
+  return r ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
 #ifdef __cplusplus
   utf32 unicodeCharacterFromHTMLSequence (const C_String & inString) {
     utf32 result = TO_UNICODE (0) ; // Means not found

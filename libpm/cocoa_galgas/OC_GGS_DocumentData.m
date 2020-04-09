@@ -385,13 +385,13 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 
   - (void) save {
     if (mTextSyntaxColoring.isDirty) {
-      removeFileEventStreamForDocument (self) ;  // §§
+  //    removeFileEventStreamForDocument (self) ;  // §§
       if (nil == self.document) {
         [self performSaveToURL:nil] ;
       }else{
         [self.document saveDocument:nil] ;
       }
-      addFileEventStreamForDocument (self) ;  // §§
+ //     addFileEventStreamForDocument (self) ;  // §§
     }
   }
 

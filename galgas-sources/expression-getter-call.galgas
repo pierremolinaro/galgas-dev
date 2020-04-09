@@ -76,9 +76,6 @@ override method @getterCallExpressionAST analyzeSemanticExpression
     hasCompilerArgument = mHasCompilerArgument
     returnedType = mReturnedType
     kind = mKind
-    if mGetterName.string == "slpTypeRepresentation" then # §§
-      log mKind
-    end
     if mErrorMessage != "" then
       error mGetterName : mErrorMessage
     end
@@ -106,9 +103,8 @@ override method @getterCallExpressionAST analyzeSemanticExpression
               !mGetterName.location
               !receiverExpression
               !mPropertyName.string
-            } # §§
+            }
             kind = mKind
-#         §§  fieldList += !mPropertyName.string
             if mErrorMessage != "" then
               error mGetterName : mErrorMessage
             end
@@ -226,7 +222,6 @@ override method @getterCallExpressionForGeneration generateExpression
   switch mKind
   case definedAsExtension :
     @unifiedTypeMap-proxy baseType = [mReceiverExpression mResultType]
-  # §§ [[[mReceiverExpression mResultType] baseType] addHeaderFileName !?ioInclusionSet]
    [baseType addHeaderFileName !?ioInclusionSet]
     @bool searching = true
     loop (@uint.max) while searching do
@@ -241,7 +236,6 @@ override method @getterCallExpressionForGeneration generateExpression
       end  
     end
     ioInclusionSet += !"getter-" + [[baseType key] fileNameRepresentation] + "-" + [mGetterName fileNameRepresentation]
-# §§    ioInclusionSet += !"getter-" + [[baseType key] fileNameRepresentation] + "-" + [mGetterName fileNameRepresentation]
     [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
     if [[[mReceiverExpression mResultType] mTypeKindEnum] isClassType] then
       outCppExpression = "callExtensionGetter_" + [mGetterName identifierRepresentation]

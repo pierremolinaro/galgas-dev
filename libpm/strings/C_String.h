@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1997, ..., 2016 Pierre Molinaro.                                                                     *
+//  Copyright (C) 1997, ..., 2020 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -161,6 +161,7 @@ class C_String : public AC_OutputStream {
   public : C_String nameRepresentation (void) const ; // Preserves ASCII letters, digits and '_'
   public : C_String fileNameRepresentation (void) const ; // Preserves ASCII lowercase letters, digits and '_'
   public : C_String assemblerRepresentation (void) const ; // Preserves ASCII letters, digits, '_', '.' and '$'
+  public : C_String utf8RepresentationWithUnicodeEscaping (void) const ; // \uXXXX, \UXXXXXXXX
   public : C_String decodedStringFromRepresentation (bool & outOk) const ; // Reverses the above representations
 
 //--- Get a representation enclosing by a given character

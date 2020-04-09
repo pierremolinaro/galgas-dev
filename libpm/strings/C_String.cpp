@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1997, ..., 2019 Pierre Molinaro.                                                                     *
+//  Copyright (C) 1997, ..., 2020 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -1486,26 +1486,83 @@ C_String C_String::assemblerRepresentation (void) const {
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
 C_String C_String::utf8RepresentationEnclosedWithin (const utf32 inCharacter) const {
-    C_String s ;
-    const int32_t receiver_length = length () ;
-    s.setCapacity ((uint32_t) receiver_length) ;
-    const utf32 * ptr = utf32String (HERE) ;
-    s.appendUnicodeCharacter  (inCharacter COMMA_HERE) ;
-    for (int32_t i=0 ; i<receiver_length ; i++) {
-      const utf32 c = ptr [i] ;
-      if (UNICODE_VALUE (c) == '\\') {
-        s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
-        s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
-      }else if (c == inCharacter) {
-        s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
-        s.appendUnicodeCharacter (inCharacter COMMA_HERE) ;
-      }else{
-        s.appendUnicodeCharacter (c COMMA_HERE) ;
-      }
+  C_String s ;
+  const int32_t receiver_length = length () ;
+  s.setCapacity ((uint32_t) receiver_length) ;
+  const utf32 * ptr = utf32String (HERE) ;
+  s.appendUnicodeCharacter  (inCharacter COMMA_HERE) ;
+  for (int32_t i=0 ; i<receiver_length ; i++) {
+    const utf32 c = ptr [i] ;
+    if (UNICODE_VALUE (c) == '\\') {
+      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+    }else if (c == inCharacter) {
+      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+      s.appendUnicodeCharacter (inCharacter COMMA_HERE) ;
+    }else{
+      s.appendUnicodeCharacter (c COMMA_HERE) ;
     }
-    s.appendUnicodeCharacter  (inCharacter COMMA_HERE) ;
-    return s ;
   }
+  s.appendUnicodeCharacter  (inCharacter COMMA_HERE) ;
+  return s ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static C_String hex4 (const uint32_t inValue) {
+  static const uint8_t digit [16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'} ;
+  C_String result = "" ;
+  result.appendUnicodeCharacter (TO_UNICODE (digit [(inValue >> 12) & 15]) COMMA_HERE) ;
+  result.appendUnicodeCharacter (TO_UNICODE (digit [(inValue >>  8) & 15]) COMMA_HERE) ;
+  result.appendUnicodeCharacter (TO_UNICODE (digit [(inValue >>  4) & 15]) COMMA_HERE) ;
+  result.appendUnicodeCharacter (TO_UNICODE (digit [(inValue >>  0) & 15]) COMMA_HERE) ;
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+static C_String hex8 (const uint32_t inValue) {
+  C_String result = "" ;
+  result << hex4 (inValue >> 16) ;
+  result << hex4 (inValue >>  0) ;
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+C_String C_String::utf8RepresentationWithUnicodeEscaping (void) const {
+  C_String s ;
+  const int32_t receiver_length = length () ;
+  s.setCapacity ((uint32_t) receiver_length) ;
+  const utf32 * ptr = utf32String (HERE) ;
+  s.appendUnicodeCharacter  ('\"' COMMA_HERE) ;
+  for (int32_t i=0 ; i<receiver_length ; i++) {
+    const utf32 c = ptr [i] ;
+    if (UNICODE_VALUE (c) == '\\') {
+      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+    }else if (c == '\"') {
+      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+      s.appendUnicodeCharacter ('\"' COMMA_HERE) ;
+    }else if (UNICODE_VALUE (c) < ' ') {
+      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+      s.appendUnicodeCharacter ('u' COMMA_HERE) ;
+      s << hex4 (UNICODE_VALUE (c)) ;
+    }else if (UNICODE_VALUE (c) < '~') {
+      s.appendUnicodeCharacter (c COMMA_HERE) ;
+    }else if (UNICODE_VALUE (c) < 0x800) {
+      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+      s.appendUnicodeCharacter ('u' COMMA_HERE) ;
+      s << hex4 (UNICODE_VALUE (c)) ;
+    }else{
+      s.appendUnicodeCharacter ('\\' COMMA_HERE) ;
+      s.appendUnicodeCharacter ('U' COMMA_HERE) ;
+      s << hex8 (UNICODE_VALUE (c)) ;
+    }
+  }
+  s.appendUnicodeCharacter  ('\"' COMMA_HERE) ;
+  return s ;
+}
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
