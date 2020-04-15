@@ -92,7 +92,7 @@ override method @enumDeclarationAST enterDeclarationInGraph
     for () in mConstantList do
       for () in mAssociatedValueDefinitionList do
         let propertyKey = @lstring.new {!"@" + mValue0 ![mValue0 location]}
-        if (propertyKey.string != key.string) || circularReference then
+        if (propertyKey.string != key.string) then # || circularReference then
           [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
         end
       end
@@ -169,7 +169,7 @@ override method @enumDeclarationAST enterInSemanticContext
       !hasCompilerArgument:false
     )
   end
-#--- Add Categories
+#--- Add Extensions
   addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext

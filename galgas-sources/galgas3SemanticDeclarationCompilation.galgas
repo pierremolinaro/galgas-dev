@@ -223,7 +223,6 @@ proc generateSemanticDeclarationsGalgas3
     elsif [option galgas_cli_options.generateOneHeader value] & not [option galgas_cli_options.generateManyFiles value] then
        generateOneBigHeader (
         !inProductDirectory
-#        !inCacheDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioAllProductFileSet
         !?ioToolHeaderFileList
@@ -231,7 +230,6 @@ proc generateSemanticDeclarationsGalgas3
       generateFewImplementationFiles (
         !inUnifiedTypeMap
         !inProductDirectory
-#        !inCacheDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioToolProductFileList
         !?ioAllProductFileSet
@@ -239,7 +237,6 @@ proc generateSemanticDeclarationsGalgas3
     elsif (not [option galgas_cli_options.generateOneHeader value]) & [option galgas_cli_options.generateManyFiles value] then
       generateManyHeaders (
         !inProductDirectory
-#        !inCacheDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioAllProductFileSet
         !?ioToolHeaderFileList
@@ -247,7 +244,6 @@ proc generateSemanticDeclarationsGalgas3
       generateManyImplementationFiles (
         !inUnifiedTypeMap
         !inProductDirectory
-#        !inCacheDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioToolProductFileList
         !?ioAllProductFileSet
@@ -256,7 +252,6 @@ proc generateSemanticDeclarationsGalgas3
       generateFewImplementationFilesWithFewHeaders (
         !inUnifiedTypeMap
         !inProductDirectory
-#        !inCacheDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioToolProductFileList
         !?ioAllProductFileSet
@@ -265,7 +260,6 @@ proc generateSemanticDeclarationsGalgas3
     else
       generateManyHeaders (
         !inProductDirectory
-#        !inCacheDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioAllProductFileSet
         !?ioToolHeaderFileList
@@ -273,7 +267,6 @@ proc generateSemanticDeclarationsGalgas3
       generateManyImplementationFiles (
         !inUnifiedTypeMap
         !inProductDirectory
-#        !inCacheDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioToolProductFileList
         !?ioAllProductFileSet
@@ -343,12 +336,12 @@ private proc generateManyHeaders
       if [mDeclaration headerKind] != @headerKind.noHeader then
         var headerString = "#ifndef " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_1_DEFINED\n"
         headerString += "#define " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_1_DEFINED\n\n"
-        headerString += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
+        headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
         headerString += "#include \"all-predefined-types.h\"\n\n"
-        headerString += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
+        headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
         headerString += headerIncludes1
         headerString += "\n"
-        headerString += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
+        headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
         headerString += "#endif\n\n"
         let headerFileName = [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == @headerKind.twoHeaders then "-1" else "" end
         headerInclusionList1 += !headerFileName
@@ -364,12 +357,12 @@ private proc generateManyHeaders
       if [mDeclaration headerKind] == @headerKind.twoHeaders then
         var headerString = "#ifndef " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_DEFINED\n"
         headerString += "#define " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_DEFINED\n\n"
-        headerString += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
+        headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
         headerString += "#include \"" + [mDeclaration implementationCppFileName] + "-1.h\"\n"
-        headerString += "\n//---------------------------------------------------------------------------------------------------------------------*\n\n"
+        headerString += "\n//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
         headerString += headerIncludes2
         headerString += "\n"
-        headerString += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
+        headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
         headerString += "#endif\n\n"
         headerInclusionList2 += ![mDeclaration implementationCppFileName]
         ioAllProductFileSet += ![mDeclaration implementationCppFileName] + ".h"
@@ -494,7 +487,6 @@ private func %once definitionGroupAmount -> @uint {
 private proc generateFewImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
-#  ?let @string unused inCacheDirectory
   ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
@@ -560,13 +552,11 @@ private proc generateFewImplementationFiles
 private proc generateFewImplementationFilesWithFewHeaders
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
-#  ?let @string unused inCacheDirectory
   ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
   ?!@stringlist ioToolHeaderFileList
 {
-  let useOneHugeHeader = [option galgas_cli_options.generateOneHeader value]
   @headerCompositionMap headerCompositionMap = {}
   for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
@@ -615,11 +605,7 @@ private proc generateFewImplementationFilesWithFewHeaders
       implementationString += code
       implementationString += [mDeclaration appendTypeGenericImplementation]
       if [implementationString length] > 786432 then # 1048576 then
-        if useOneHugeHeader then
-          inclusionSet = {!"all-declarations"}
-        else
-          inclusionSet = {!"all-declarations-" + fileIdx}
-        end
+        inclusionSet = {!"all-declarations-" + fileIdx}
         let cppHeader = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
           ![inclusionSet stringList]
         ]
@@ -654,9 +640,6 @@ private proc generateFewImplementationFilesWithFewHeaders
   end
 #--- Last file
   if implementationString != "" then
-    if useOneHugeHeader then
-      inclusionSet = {!"all-declarations"}
-    end
     let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
       !{!"all-declarations-" + fileIdx}
     ]
@@ -700,7 +683,6 @@ private proc generateFewImplementationFilesWithFewHeaders
 private proc generateManyImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
-#  ?let @string unused inCacheDirectory
   ?let @semanticDeclarationListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
