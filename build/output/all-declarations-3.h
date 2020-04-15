@@ -10,7 +10,7 @@
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                  @extensionMap map                                                  *
+//                                              Phase 1: @extensionMap map                                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -105,7 +105,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMap ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      Class for element of '@extensionMap' map                                       *
+//                                  Phase 2: class for element of '@extensionMap' map                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -133,7 +133,7 @@ class cMapElement_extensionMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @extensionMap_2D_element struct                                           *
+//                                       Phase 1: @extensionMap_2D_element struct                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -204,7 +204,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMap_2D_ele
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                 @textMacroList list                                                 *
+//                                             Phase 1: @textMacroList list                                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -355,7 +355,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_textMacroList ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @textMacroList_2D_element struct                                           *
+//                                      Phase 1: @textMacroList_2D_element struct                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -426,7 +426,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_textMacroList_2D_el
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                              @importedLexiqueList list                                              *
+//                                          Phase 1: @importedLexiqueList list                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -634,7 +634,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_importedLexiqueList
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @importedLexiqueList_2D_element struct                                        *
+//                                   Phase 1: @importedLexiqueList_2D_element struct                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -723,7 +723,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_importedLexiqueList
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @galgas3GUIComponentListAST list                                           *
+//                                      Phase 1: @galgas3GUIComponentListAST list                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -912,7 +912,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_GUICompon
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  @galgas_33_GUIComponentListAST_2D_element struct                                   *
+//                              Phase 1: @galgas_33_GUIComponentListAST_2D_element struct                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -995,7 +995,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_GUICompon
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                             @guiAnalysisContext struct                                              *
+//                                         Phase 1: @guiAnalysisContext struct                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1102,7 +1102,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_guiAnalysisContext 
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @optionComponentMapForGeneration map                                         *
+//                                    Phase 1: @optionComponentMapForGeneration map                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1197,7 +1197,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                             Class for element of '@optionComponentMapForGeneration' map                             *
+//                         Phase 2: class for element of '@optionComponentMapForGeneration' map                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1225,7 +1225,7 @@ class cMapElement_optionComponentMapForGeneration : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 @optionComponentMapForGeneration_2D_element struct                                  *
+//                             Phase 1: @optionComponentMapForGeneration_2D_element struct                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1296,7 +1296,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @propertyInCollectionListAST list                                          *
+//                                      Phase 1: @propertyInCollectionListAST list                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1485,7 +1485,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectio
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   @propertyInCollectionListAST_2D_element struct                                    *
+//                               Phase 1: @propertyInCollectionListAST_2D_element struct                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1568,7 +1568,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectio
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @typedPropertyList_2D_element struct                                         *
+//                                    Phase 1: @typedPropertyList_2D_element struct                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1657,7 +1657,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typedPropertyList_2
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @enumConstantList_2D_element struct                                         *
+//                                     Phase 1: @enumConstantList_2D_element struct                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1728,7 +1728,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantList_2D
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @enumConstantListForGeneration list                                         *
+//                                     Phase 1: @enumConstantListForGeneration list                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1879,7 +1879,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantListFor
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @unifiedTypeMapProxyList list                                            *
+//                                        Phase 1: @unifiedTypeMapProxyList list                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2011,7 +2011,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapProxy
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  @enumConstantListForGeneration_2D_element struct                                   *
+//                              Phase 1: @enumConstantListForGeneration_2D_element struct                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2082,7 +2082,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumConstantListFor
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @unifiedTypeMapProxyList_2D_element struct                                      *
+//                                 Phase 1: @unifiedTypeMapProxyList_2D_element struct                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2147,7 +2147,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapProxy
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @externTypeConstructorList list                                           *
+//                                       Phase 1: @externTypeConstructorList list                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2317,7 +2317,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstruct
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @typeNameFormalParameterNameList list                                        *
+//                                    Phase 1: @typeNameFormalParameterNameList list                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2487,7 +2487,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeNameFormalParam
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @externTypeConstructorList_2D_element struct                                     *
+//                                Phase 1: @externTypeConstructorList_2D_element struct                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2564,7 +2564,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeConstruct
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                             @externTypeGetterList list                                              *
+//                                         Phase 1: @externTypeGetterList list                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2734,7 +2734,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeGetterLis
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @externTypeGetterList_2D_element struct                                       *
+//                                   Phase 1: @externTypeGetterList_2D_element struct                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2811,7 +2811,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeGetterLis
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                             @externTypeSetterList list                                              *
+//                                         Phase 1: @externTypeSetterList list                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2962,7 +2962,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeSetterLis
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @formalParameterListAST list                                             *
+//                                        Phase 1: @formalParameterListAST list                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3170,7 +3170,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterList
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @externTypeSetterList_2D_element struct                                       *
+//                                   Phase 1: @externTypeSetterList_2D_element struct                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3241,7 +3241,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeSetterLis
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                             @externTypeMethodList list                                              *
+//                                         Phase 1: @externTypeMethodList list                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3411,7 +3411,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeMethodLis
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @externTypeMethodList_2D_element struct                                       *
+//                                   Phase 1: @externTypeMethodList_2D_element struct                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3488,7 +3488,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_externTypeMethodLis
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 @typeNameFormalParameterNameList_2D_element struct                                  *
+//                             Phase 1: @typeNameFormalParameterNameList_2D_element struct                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3565,7 +3565,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeNameFormalParam
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @formalArgumentPassingModeAST enum                                          *
+//                                     Phase 1: @formalArgumentPassingModeAST enum                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3642,7 +3642,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalArgumentPassi
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @formalParameterListAST_2D_element struct                                      *
+//                                  Phase 1: @formalParameterListAST_2D_element struct                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3728,7 +3728,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterList
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @graphInsertModifierList list                                            *
+//                                        Phase 1: @graphInsertModifierList list                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3879,7 +3879,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifier
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @graphInsertModifierList_2D_element struct                                      *
+//                                 Phase 1: @graphInsertModifierList_2D_element struct                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3950,7 +3950,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_graphInsertModifier
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                              @insertMethodListAST list                                              *
+//                                          Phase 1: @insertMethodListAST list                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4139,7 +4139,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodListAST
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @insertMethodListAST_2D_element struct                                        *
+//                                   Phase 1: @insertMethodListAST_2D_element struct                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4222,7 +4222,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodListAST
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @mapSearchMethodListAST_2D_element struct                                      *
+//                                  Phase 1: @mapSearchMethodListAST_2D_element struct                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4305,7 +4305,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapSearchMethodList
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @mapRemoveMethodListAST list                                             *
+//                                        Phase 1: @mapRemoveMethodListAST list                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4456,7 +4456,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapRemoveMethodList
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @mapRemoveMethodListAST_2D_element struct                                      *
+//                                  Phase 1: @mapRemoveMethodListAST_2D_element struct                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4527,7 +4527,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapRemoveMethodList
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @insertOrReplaceDeclarationListAST list                                       *
+//                                   Phase 1: @insertOrReplaceDeclarationListAST list                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4659,7 +4659,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertOrReplaceDecl
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                @insertOrReplaceDeclarationListAST_2D_element struct                                 *
+//                            Phase 1: @insertOrReplaceDeclarationListAST_2D_element struct                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4724,7 +4724,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertOrReplaceDecl
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                @insertMethodMap map                                                 *
+//                                            Phase 1: @insertMethodMap map                                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4807,7 +4807,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodMap ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Class for element of '@insertMethodMap' map                                     *
+//                                 Phase 2: class for element of '@insertMethodMap' map                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4833,7 +4833,7 @@ class cMapElement_insertMethodMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @insertMethodMap_2D_element struct                                          *
+//                                     Phase 1: @insertMethodMap_2D_element struct                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4898,7 +4898,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_insertMethodMap_2D_
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                @searchMethodMap map                                                 *
+//                                            Phase 1: @searchMethodMap map                                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4981,7 +4981,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_searchMethodMap ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Class for element of '@searchMethodMap' map                                     *
+//                                 Phase 2: class for element of '@searchMethodMap' map                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5007,7 +5007,7 @@ class cMapElement_searchMethodMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @searchMethodMap_2D_element struct                                          *
+//                                     Phase 1: @searchMethodMap_2D_element struct                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5072,7 +5072,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_searchMethodMap_2D_
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @mapAutomatonMessageKind enum                                            *
+//                                        Phase 1: @mapAutomatonMessageKind enum                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5144,7 +5144,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapAutomatonMessage
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @mapStateTransitionList list                                             *
+//                                        Phase 1: @mapStateTransitionList list                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5333,7 +5333,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateTransitionL
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @mapStateTransitionList_2D_element struct                                      *
+//                                  Phase 1: @mapStateTransitionList_2D_element struct                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5413,7 +5413,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateTransitionL
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                 @mapStateList list                                                  *
+//                                             Phase 1: @mapStateList list                                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5602,7 +5602,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateList ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @mapStateList_2D_element struct                                           *
+//                                       Phase 1: @mapStateList_2D_element struct                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5682,7 +5682,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateList_2D_ele
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @mapOverrideBlockDescriptorAST list                                         *
+//                                     Phase 1: @mapOverrideBlockDescriptorAST list                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5890,7 +5890,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideBlockDes
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  @mapOverrideBlockDescriptorAST_2D_element struct                                   *
+//                              Phase 1: @mapOverrideBlockDescriptorAST_2D_element struct                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5976,7 +5976,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideBlockDes
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @mapOverrideBlockListAST list                                            *
+//                                        Phase 1: @mapOverrideBlockListAST list                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6146,7 +6146,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideBlockLis
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @mapOverrideBlockListAST_2D_element struct                                      *
+//                                 Phase 1: @mapOverrideBlockListAST_2D_element struct                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6223,7 +6223,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapOverrideBlockLis
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @sharedMapAttributeListAST list                                           *
+//                                       Phase 1: @sharedMapAttributeListAST list                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6393,7 +6393,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sharedMapAttributeL
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @sharedMapAttributeListAST_2D_element struct                                     *
+//                                Phase 1: @sharedMapAttributeListAST_2D_element struct                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6470,7 +6470,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sharedMapAttributeL
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @mapStateTransitionSortedList sorted list                                      *
+//                                  Phase 1: @mapStateTransitionSortedList sorted list                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6589,7 +6589,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapStateTransitionS
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   @mapStateTransitionSortedList_2D_element struct                                   *
+//                               Phase 1: @mapStateTransitionSortedList_2D_element struct                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

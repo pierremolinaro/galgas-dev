@@ -10,7 +10,7 @@
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @templateInstructionStringAST class                                         *
+//                                     Phase 1: @templateInstructionStringAST class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -68,7 +68,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                Pointer class for @templateInstructionStringAST class                                *
+//                            Phase 2: pointer class for @templateInstructionStringAST class                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -288,7 +288,7 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @templateInstructionStringForGeneration class                                    *
+//                                Phase 1: @templateInstructionStringForGeneration class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -346,7 +346,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                           Pointer class for @templateInstructionStringForGeneration class                           *
+//                       Phase 2: pointer class for @templateInstructionStringForGeneration class                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

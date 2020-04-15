@@ -63,7 +63,7 @@ class cParser_galgas_33_OptionComponentSyntax {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @optionComponentDeclarationAST class                                         *
+//                                    Phase 1: @optionComponentDeclarationAST class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -128,7 +128,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentDecl
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               Pointer class for @optionComponentDeclarationAST class                                *
+//                           Phase 2: pointer class for @optionComponentDeclarationAST class                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -532,7 +532,7 @@ class cParser_galgas_33_SyntaxComponentSyntax {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @nonterminalCallInstruction class                                          *
+//                                      Phase 1: @nonterminalCallInstruction class                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -606,7 +606,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalCallInst
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 Pointer class for @nonterminalCallInstruction class                                 *
+//                             Phase 2: pointer class for @nonterminalCallInstruction class                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -649,7 +649,7 @@ class cPtr_nonterminalCallInstruction : public cPtr_syntaxInstructionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @terminalCheckInstruction class                                           *
+//                                       Phase 1: @terminalCheckInstruction class                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -729,7 +729,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstru
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @terminalCheckInstruction class                                  *
+//                              Phase 2: pointer class for @terminalCheckInstruction class                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -883,7 +883,7 @@ class cParser_galgas_33_GrammarComponentSyntax {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @galgas_33_GrammarComponentAST class                                         *
+//                                    Phase 1: @galgas_33_GrammarComponentAST class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -984,7 +984,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_GrammarCo
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 Pointer class for @galgas3GrammarComponentAST class                                 *
+//                             Phase 2: pointer class for @galgas3GrammarComponentAST class                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1103,7 +1103,7 @@ class cParser_galgas_33_ProgramDeclarations {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                              @headerCompositionMap map                                              *
+//                                          Phase 1: @headerCompositionMap map                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1220,7 +1220,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerCompositionMa
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Class for element of '@headerCompositionMap' map                                   *
+//                              Phase 2: class for element of '@headerCompositionMap' map                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1250,7 +1250,7 @@ class cMapElement_headerCompositionMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @headerCompositionMap_2D_element struct                                       *
+//                                   Phase 1: @headerCompositionMap_2D_element struct                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1327,7 +1327,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerCompositionMa
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                              @headerRepartitionMap map                                              *
+//                                          Phase 1: @headerRepartitionMap map                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1431,7 +1431,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerRepartitionMa
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Class for element of '@headerRepartitionMap' map                                   *
+//                              Phase 2: class for element of '@headerRepartitionMap' map                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1459,7 +1459,7 @@ class cMapElement_headerRepartitionMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @headerRepartitionMap_2D_element struct                                       *
+//                                   Phase 1: @headerRepartitionMap_2D_element struct                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1530,7 +1530,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_headerRepartitionMa
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @projectQualifiedFeatureMap map                                           *
+//                                       Phase 1: @projectQualifiedFeatureMap map                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1634,7 +1634,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectQualifiedFea
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               Class for element of '@projectQualifiedFeatureMap' map                                *
+//                           Phase 2: class for element of '@projectQualifiedFeatureMap' map                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1662,7 +1662,7 @@ class cMapElement_projectQualifiedFeatureMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @projectQualifiedFeatureMap_2D_element struct                                    *
+//                                Phase 1: @projectQualifiedFeatureMap_2D_element struct                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1733,7 +1733,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_projectQualifiedFea
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                @XCodeGroupList list                                                 *
+//                                            Phase 1: @XCodeGroupList list                                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1922,7 +1922,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeGroupList ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @XCodeGroupList_2D_element struct                                          *
+//                                      Phase 1: @XCodeGroupList_2D_element struct                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2005,7 +2005,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeGroupList_2D_e
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                              @XCodeToolTargetList list                                              *
+//                                          Phase 1: @XCodeToolTargetList list                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2327,7 +2327,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeToolTargetList
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @XCodeToolTargetList_2D_element struct                                        *
+//                                   Phase 1: @XCodeToolTargetList_2D_element struct                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2452,7 +2452,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeToolTargetList
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                              @XCodeAppTargetList list                                               *
+//                                          Phase 1: @XCodeAppTargetList list                                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2831,7 +2831,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeAppTargetList 
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @XCodeAppTargetList_2D_element struct                                        *
+//                                    Phase 1: @XCodeAppTargetList_2D_element struct                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2974,7 +2974,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XCodeAppTargetList_
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                 @BuildFileList list                                                 *
+//                                             Phase 1: @BuildFileList list                                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3144,7 +3144,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_BuildFileList ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @BuildFileList_2D_element struct                                           *
+//                                      Phase 1: @BuildFileList_2D_element struct                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

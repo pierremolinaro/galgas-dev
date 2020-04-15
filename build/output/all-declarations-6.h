@@ -10,7 +10,7 @@
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                             @filewrapperTemplateMap map                                             *
+//                                         Phase 1: @filewrapperTemplateMap map                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -127,7 +127,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplate
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 Class for element of '@filewrapperTemplateMap' map                                  *
+//                             Phase 2: class for element of '@filewrapperTemplateMap' map                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -157,7 +157,7 @@ class cMapElement_filewrapperTemplateMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @filewrapperTemplateMap_2D_element struct                                      *
+//                                  Phase 1: @filewrapperTemplateMap_2D_element struct                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -234,7 +234,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplate
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Class for element of '@filewrapperMap' map                                      *
+//                                 Phase 2: class for element of '@filewrapperMap' map                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -272,7 +272,7 @@ class cMapElement_filewrapperMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @filewrapperMap_2D_element struct                                          *
+//                                      Phase 1: @filewrapperMap_2D_element struct                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -373,7 +373,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperMap_2D_e
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                          Class for element of '@optionComponentMapForSemanticAnalysis' map                          *
+//                      Phase 2: class for element of '@optionComponentMapForSemanticAnalysis' map                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -409,7 +409,7 @@ class cMapElement_optionComponentMapForSemanticAnalysis : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              @optionComponentMapForSemanticAnalysis_2D_element struct                               *
+//                          Phase 1: @optionComponentMapForSemanticAnalysis_2D_element struct                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -504,7 +504,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionComponentMapF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                         Class for element of '@lexiqueComponentMapForSemanticAnalysis' map                          *
+//                     Phase 2: class for element of '@lexiqueComponentMapForSemanticAnalysis' map                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -536,7 +536,7 @@ class cMapElement_lexiqueComponentMapForSemanticAnalysis : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              @lexiqueComponentMapForSemanticAnalysis_2D_element struct                              *
+//                          Phase 1: @lexiqueComponentMapForSemanticAnalysis_2D_element struct                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -619,7 +619,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueComponentMap
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Class for element of '@syntaxComponentMap' map                                    *
+//                               Phase 2: class for element of '@syntaxComponentMap' map                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -653,7 +653,7 @@ class cMapElement_syntaxComponentMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @syntaxComponentMap_2D_element struct                                        *
+//                                    Phase 1: @syntaxComponentMap_2D_element struct                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -742,7 +742,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxComponentMap_
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @extensionMethodMapForType map                                            *
+//                                       Phase 1: @extensionMethodMapForType map                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -837,7 +837,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                Class for element of '@extensionMethodMapForType' map                                *
+//                            Phase 2: class for element of '@extensionMethodMapForType' map                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -865,7 +865,7 @@ class cMapElement_extensionMethodMapForType : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @extensionMethodMapForType_2D_element struct                                     *
+//                                Phase 1: @extensionMethodMapForType_2D_element struct                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -936,7 +936,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @extensionMethodMapForBuildingContext map                                      *
+//                                  Phase 1: @extensionMethodMapForBuildingContext map                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1040,7 +1040,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                          Class for element of '@extensionMethodMapForBuildingContext' map                           *
+//                      Phase 2: class for element of '@extensionMethodMapForBuildingContext' map                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1068,7 +1068,7 @@ class cMapElement_extensionMethodMapForBuildingContext : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               @extensionMethodMapForBuildingContext_2D_element struct                               *
+//                           Phase 1: @extensionMethodMapForBuildingContext_2D_element struct                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1139,7 +1139,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionMethodMapF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @extensionSetterMapForType map                                            *
+//                                       Phase 1: @extensionSetterMapForType map                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1234,7 +1234,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                Class for element of '@extensionSetterMapForType' map                                *
+//                            Phase 2: class for element of '@extensionSetterMapForType' map                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1262,7 +1262,7 @@ class cMapElement_extensionSetterMapForType : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @extensionSetterMapForType_2D_element struct                                     *
+//                                Phase 1: @extensionSetterMapForType_2D_element struct                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1333,7 +1333,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @extensionSetterMapForBuildingContext map                                      *
+//                                  Phase 1: @extensionSetterMapForBuildingContext map                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1437,7 +1437,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                          Class for element of '@extensionSetterMapForBuildingContext' map                           *
+//                      Phase 2: class for element of '@extensionSetterMapForBuildingContext' map                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1465,7 +1465,7 @@ class cMapElement_extensionSetterMapForBuildingContext : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               @extensionSetterMapForBuildingContext_2D_element struct                               *
+//                           Phase 1: @extensionSetterMapForBuildingContext_2D_element struct                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1536,7 +1536,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionSetterMapF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @extensionGetterMapForType map                                            *
+//                                       Phase 1: @extensionGetterMapForType map                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1643,7 +1643,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                Class for element of '@extensionGetterMapForType' map                                *
+//                            Phase 2: class for element of '@extensionGetterMapForType' map                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1673,7 +1673,7 @@ class cMapElement_extensionGetterMapForType : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @extensionGetterMapForType_2D_element struct                                     *
+//                                Phase 1: @extensionGetterMapForType_2D_element struct                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1750,7 +1750,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @extensionGetterMapForBuildingContext map                                      *
+//                                  Phase 1: @extensionGetterMapForBuildingContext map                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1854,7 +1854,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extensionGetterMapF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                          Class for element of '@extensionGetterMapForBuildingContext' map                           *
+//                      Phase 2: class for element of '@extensionGetterMapForBuildingContext' map                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1882,7 +1882,7 @@ class cMapElement_extensionGetterMapForBuildingContext : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               @extensionGetterMapForBuildingContext_2D_element struct                               *
+//                           Phase 1: @extensionGetterMapForBuildingContext_2D_element struct                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2013,7 +2013,7 @@ class GALGAS_string extensionGetter_defaultConstructorName (const class GALGAS_p
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                              @wrapperExtensionMap map                                               *
+//                                          Phase 1: @wrapperExtensionMap map                                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2096,7 +2096,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperExtensionMap
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Class for element of '@wrapperExtensionMap' map                                   *
+//                               Phase 2: class for element of '@wrapperExtensionMap' map                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2122,7 +2122,7 @@ class cMapElement_wrapperExtensionMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @wrapperExtensionMap_2D_element struct                                        *
+//                                   Phase 1: @wrapperExtensionMap_2D_element struct                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2187,7 +2187,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperExtensionMap
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @semanticTypePrecedenceGraph graph                                          *
+//                                     Phase 1: @semanticTypePrecedenceGraph graph                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2325,7 +2325,7 @@ void callExtensionMethod_addAssociatedElement (const class cPtr_semanticDeclarat
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @semanticExpressionListForGeneration list                                      *
+//                                  Phase 1: @semanticExpressionListForGeneration list                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2457,7 +2457,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionL
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               @semanticExpressionListForGeneration_2D_element struct                                *
+//                           Phase 1: @semanticExpressionListForGeneration_2D_element struct                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2519,7 +2519,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionL
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @actualParameterListForGeneration list                                        *
+//                                   Phase 1: @actualParameterListForGeneration list                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2651,7 +2651,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterList
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @actualParameterForGeneration class                                         *
+//                                     Phase 1: @actualParameterForGeneration class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2702,7 +2702,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualParameterForG
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                Pointer class for @actualParameterForGeneration class                                *
+//                            Phase 2: pointer class for @actualParameterForGeneration class                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2729,7 +2729,7 @@ class cPtr_actualParameterForGeneration : public acPtr_class {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 @actualParameterListForGeneration_2D_element struct                                 *
+//                             Phase 1: @actualParameterListForGeneration_2D_element struct                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2822,7 +2822,7 @@ void callExtensionMethod_generateInstruction (const class cPtr_semanticInstructi
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @semanticBlockInstructionForGeneration class                                     *
+//                                Phase 1: @semanticBlockInstructionForGeneration class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2880,7 +2880,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticBlockInstru
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                           Pointer class for @semanticBlockInstructionForGeneration class                            *
+//                       Phase 2: pointer class for @semanticBlockInstructionForGeneration class                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2910,7 +2910,7 @@ class cPtr_semanticBlockInstructionForGeneration : public cPtr_semanticInstructi
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  @listOfSemanticInstructionListForGeneration list                                   *
+//                              Phase 1: @listOfSemanticInstructionListForGeneration list                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3061,7 +3061,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listOfSemanticInstr
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                            @listOfSemanticInstructionListForGeneration_2D_element struct                            *
+//                        Phase 1: @listOfSemanticInstructionListForGeneration_2D_element struct                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3132,7 +3132,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listOfSemanticInstr
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @semanticDeclarationForGeneration class                                       *
+//                                   Phase 1: @semanticDeclarationForGeneration class                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3178,7 +3178,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclaration
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              Pointer class for @semanticDeclarationForGeneration class                              *
+//                          Phase 2: pointer class for @semanticDeclarationForGeneration class                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3329,7 +3329,7 @@ class GALGAS_headerKind callExtensionGetter_headerKind (const class cPtr_semanti
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @semanticDeclarationListForGeneration list                                      *
+//                                 Phase 1: @semanticDeclarationListForGeneration list                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3480,7 +3480,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclaration
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               @semanticDeclarationListForGeneration_2D_element struct                               *
+//                           Phase 1: @semanticDeclarationListForGeneration_2D_element struct                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3548,7 +3548,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticDeclaration
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @signatureForGrammarAnalysis list                                          *
+//                                      Phase 1: @signatureForGrammarAnalysis list                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3699,7 +3699,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_signatureForGrammar
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   @signatureForGrammarAnalysis_2D_element struct                                    *
+//                               Phase 1: @signatureForGrammarAnalysis_2D_element struct                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3767,7 +3767,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_signatureForGrammar
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  @nonterminalSymbolLabelMapForGrammarAnalysis map                                   *
+//                              Phase 1: @nonterminalSymbolLabelMapForGrammarAnalysis map                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3871,7 +3871,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalSymbolLa
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                       Class for element of '@nonterminalSymbolLabelMapForGrammarAnalysis' map                       *
+//                   Phase 2: class for element of '@nonterminalSymbolLabelMapForGrammarAnalysis' map                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3899,7 +3899,7 @@ class cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis : public cMapEleme
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                           @nonterminalSymbolLabelMapForGrammarAnalysis_2D_element struct                            *
+//                       Phase 1: @nonterminalSymbolLabelMapForGrammarAnalysis_2D_element struct                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3970,7 +3970,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalSymbolLa
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @nonTerminalSymbolMapForGrammarAnalysis map                                     *
+//                                 Phase 1: @nonTerminalSymbolMapForGrammarAnalysis map                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4087,7 +4087,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolMa
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                         Class for element of '@nonTerminalSymbolMapForGrammarAnalysis' map                          *
+//                     Phase 2: class for element of '@nonTerminalSymbolMapForGrammarAnalysis' map                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4117,7 +4117,7 @@ class cMapElement_nonTerminalSymbolMapForGrammarAnalysis : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              @nonTerminalSymbolMapForGrammarAnalysis_2D_element struct                              *
+//                          Phase 1: @nonTerminalSymbolMapForGrammarAnalysis_2D_element struct                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4194,7 +4194,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalSymbolMa
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                             @nonTerminalToAddList list                                              *
+//                                         Phase 1: @nonTerminalToAddList list                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4345,7 +4345,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalToAddLis
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @nonTerminalToAddList_2D_element struct                                       *
+//                                   Phase 1: @nonTerminalToAddList_2D_element struct                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4416,7 +4416,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonTerminalToAddLis
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @terminalCheckAssignementList list                                          *
+//                                     Phase 1: @terminalCheckAssignementList list                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4586,7 +4586,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckAssign
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   @terminalCheckAssignementList_2D_element struct                                   *
+//                               Phase 1: @terminalCheckAssignementList_2D_element struct                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4663,7 +4663,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckAssign
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @syntaxInstructionForGeneration class                                        *
+//                                    Phase 1: @syntaxInstructionForGeneration class                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4714,7 +4714,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxInstructionFo
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               Pointer class for @syntaxInstructionForGeneration class                               *
+//                           Phase 2: pointer class for @syntaxInstructionForGeneration class                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4741,7 +4741,7 @@ class cPtr_syntaxInstructionForGeneration : public cPtr_semanticInstructionForGe
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @filewrapperTemplateListForGeneration list                                      *
+//                                 Phase 1: @filewrapperTemplateListForGeneration list                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4911,7 +4911,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplate
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               @filewrapperTemplateListForGeneration_2D_element struct                               *
+//                           Phase 1: @filewrapperTemplateListForGeneration_2D_element struct                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5146,7 +5146,7 @@ void callExtensionMethod_analyzeSemanticInstruction (const class cPtr_semanticIn
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                               @variableMap unique map                                               *
+//                                           Phase 1: @variableMap unique map                                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5410,7 +5410,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_variableMap ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       Class for element of '@variableMap' map                                       *
+//                                   Phase 2: class for element of '@variableMap' map                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5442,7 +5442,7 @@ class cMapElement_variableMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                               @analysisContext struct                                               *
+//                                           Phase 1: @analysisContext struct                                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5531,7 +5531,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_analysisContext ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                               @localConstantList list                                               *
+//                                           Phase 1: @localConstantList list                                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5720,7 +5720,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localConstantList ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @localConstantList_2D_element struct                                         *
+//                                    Phase 1: @localConstantList_2D_element struct                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5803,7 +5803,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localConstantList_2
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @localInitializedVariableList list                                          *
+//                                     Phase 1: @localInitializedVariableList list                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5973,7 +5973,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localInitializedVar
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   @localInitializedVariableList_2D_element struct                                   *
+//                               Phase 1: @localInitializedVariableList_2D_element struct                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6124,7 +6124,7 @@ void callExtensionMethod_enterParameterInSemanticContext (const class cPtr_actua
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                          @abstractGrammarInstructionSyntaxDirectedTranslationResult class                           *
+//                      Phase 1: @abstractGrammarInstructionSyntaxDirectedTranslationResult class                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6170,7 +6170,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractGrammarInst
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                 Pointer class for @abstractGrammarInstructionSyntaxDirectedTranslationResult class                  *
+//             Phase 2: pointer class for @abstractGrammarInstructionSyntaxDirectedTranslationResult class             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6226,7 +6226,7 @@ void callExtensionMethod_semanticAnalysis (const class cPtr_semanticDeclarationA
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                @propertyIndexMap map                                                *
+//                                            Phase 1: @propertyIndexMap map                                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6330,7 +6330,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyIndexMap ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    Class for element of '@propertyIndexMap' map                                     *
+//                                Phase 2: class for element of '@propertyIndexMap' map                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6358,7 +6358,7 @@ class cMapElement_propertyIndexMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @propertyIndexMap_2D_element struct                                         *
+//                                     Phase 1: @propertyIndexMap_2D_element struct                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6429,7 +6429,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyIndexMap_2D
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                              @nonterminalLabelMap map                                               *
+//                                          Phase 1: @nonterminalLabelMap map                                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6559,7 +6559,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalLabelMap
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Class for element of '@nonterminalLabelMap' map                                   *
+//                               Phase 2: class for element of '@nonterminalLabelMap' map                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6591,7 +6591,7 @@ class cMapElement_nonterminalLabelMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @nonterminalLabelMap_2D_element struct                                        *
+//                                   Phase 1: @nonterminalLabelMap_2D_element struct                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6674,7 +6674,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalLabelMap
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                 @nonterminalMap map                                                 *
+//                                             Phase 1: @nonterminalMap map                                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6778,7 +6778,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalMap ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Class for element of '@nonterminalMap' map                                      *
+//                                 Phase 2: class for element of '@nonterminalMap' map                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6806,7 +6806,7 @@ class cMapElement_nonterminalMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @nonterminalMap_2D_element struct                                          *
+//                                      Phase 1: @nonterminalMap_2D_element struct                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6877,7 +6877,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalMap_2D_e
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @ruleLabelImplementationList list                                          *
+//                                      Phase 1: @ruleLabelImplementationList list                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -7085,7 +7085,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ruleLabelImplementa
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   @ruleLabelImplementationList_2D_element struct                                    *
+//                               Phase 1: @ruleLabelImplementationList_2D_element struct                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -7174,7 +7174,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ruleLabelImplementa
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                              @ruleDeclarationList list                                              *
+//                                          Phase 1: @ruleDeclarationList list                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -7344,7 +7344,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ruleDeclarationList
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @ruleDeclarationList_2D_element struct                                        *
+//                                   Phase 1: @ruleDeclarationList_2D_element struct                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

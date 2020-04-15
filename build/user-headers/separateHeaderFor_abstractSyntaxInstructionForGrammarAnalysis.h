@@ -7,7 +7,7 @@ class cVocabulary ;
 //--- END OF USER ZONE 1
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                        Pointer class for @abstractSyntaxInstructionForGrammarAnalysis class                         *
+//                    Phase 2: pointer class for @abstractSyntaxInstructionForGrammarAnalysis class                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

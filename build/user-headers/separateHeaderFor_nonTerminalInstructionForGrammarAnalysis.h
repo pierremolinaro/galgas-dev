@@ -4,7 +4,7 @@
 //--- END OF USER ZONE 1
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                          Pointer class for @nonTerminalInstructionForGrammarAnalysis class                          *
+//                      Phase 2: pointer class for @nonTerminalInstructionForGrammarAnalysis class                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

@@ -10,7 +10,7 @@
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @plusEqualnstructionForGeneration class                                       *
+//                                   Phase 1: @plusEqualnstructionForGeneration class                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -98,7 +98,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualnstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              Pointer class for @plusEqualnstructionForGeneration class                              *
+//                          Phase 2: pointer class for @plusEqualnstructionForGeneration class                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -148,7 +148,7 @@ class cPtr_plusEqualnstructionForGeneration : public cPtr_semanticInstructionFor
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @incDecInstructionForGeneration class                                        *
+//                                    Phase 1: @incDecInstructionForGeneration class                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -227,7 +227,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionFo
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               Pointer class for @incDecInstructionForGeneration class                               *
+//                           Phase 2: pointer class for @incDecInstructionForGeneration class                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -273,7 +273,7 @@ class cPtr_incDecInstructionForGeneration : public cPtr_semanticInstructionForGe
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @incDecNoOVFInstructionForGeneration class                                      *
+//                                 Phase 1: @incDecNoOVFInstructionForGeneration class                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -352,7 +352,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecNoOVFInstruct
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                            Pointer class for @incDecNoOVFInstructionForGeneration class                             *
+//                        Phase 2: pointer class for @incDecNoOVFInstructionForGeneration class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -398,7 +398,7 @@ class cPtr_incDecNoOVFInstructionForGeneration : public cPtr_semanticInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                @undefinedLocalConstantDeclarationForGeneration class                                *
+//                            Phase 1: @undefinedLocalConstantDeclarationForGeneration class                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -462,7 +462,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_undefinedLocalConst
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                       Pointer class for @undefinedLocalConstantDeclarationForGeneration class                       *
+//                   Phase 2: pointer class for @undefinedLocalConstantDeclarationForGeneration class                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -496,7 +496,7 @@ class cPtr_undefinedLocalConstantDeclarationForGeneration : public cPtr_semantic
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @procCallInstructionForGeneration class                                       *
+//                                   Phase 1: @procCallInstructionForGeneration class                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -560,7 +560,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_procCallInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              Pointer class for @procCallInstructionForGeneration class                              *
+//                          Phase 2: pointer class for @procCallInstructionForGeneration class                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -594,7 +594,7 @@ class cPtr_procCallInstructionForGeneration : public cPtr_semanticInstructionFor
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @setterCallInstructionForGeneration class                                      *
+//                                  Phase 1: @setterCallInstructionForGeneration class                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -709,7 +709,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterCallInstructi
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                             Pointer class for @setterCallInstructionForGeneration class                             *
+//                         Phase 2: pointer class for @setterCallInstructionForGeneration class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -779,7 +779,7 @@ class cPtr_setterCallInstructionForGeneration : public cPtr_semanticInstructionF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @selfSetterCallInstructionForGeneration class                                    *
+//                                Phase 1: @selfSetterCallInstructionForGeneration class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -864,7 +864,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfSetterCallInstr
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                           Pointer class for @selfSetterCallInstructionForGeneration class                           *
+//                       Phase 2: pointer class for @selfSetterCallInstructionForGeneration class                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -914,7 +914,7 @@ class cPtr_selfSetterCallInstructionForGeneration : public cPtr_semanticInstruct
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @typeMethodCallInstructionForGeneration class                                    *
+//                                Phase 1: @typeMethodCallInstructionForGeneration class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -990,7 +990,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typeMethodCallInstr
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                           Pointer class for @typeMethodCallInstructionForGeneration class                           *
+//                       Phase 2: pointer class for @typeMethodCallInstructionForGeneration class                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1032,7 +1032,7 @@ class cPtr_typeMethodCallInstructionForGeneration : public cPtr_semanticInstruct
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @localVariableDeclarationForGeneration class                                     *
+//                                Phase 1: @localVariableDeclarationForGeneration class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1096,7 +1096,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableDeclar
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                           Pointer class for @localVariableDeclarationForGeneration class                            *
+//                       Phase 2: pointer class for @localVariableDeclarationForGeneration class                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

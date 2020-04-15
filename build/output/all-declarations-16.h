@@ -10,7 +10,7 @@
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @terminalCheckInstructionForGeneration class                                     *
+//                                Phase 1: @terminalCheckInstructionForGeneration class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -96,7 +96,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalCheckInstru
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                           Pointer class for @terminalCheckInstructionForGeneration class                            *
+//                       Phase 2: pointer class for @terminalCheckInstructionForGeneration class                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -147,7 +147,7 @@ class cPtr_terminalCheckInstructionForGeneration : public cPtr_syntaxInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @terminalInstructionForGrammarAnalysis class                                     *
+//                                Phase 1: @terminalInstructionForGrammarAnalysis class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -214,7 +214,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_terminalInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   @nonTerminalInstructionForGrammarAnalysis class                                   *
+//                               Phase 1: @nonTerminalInstructionForGrammarAnalysis class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

@@ -10,7 +10,7 @@
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @switchInstructionForGeneration class                                        *
+//                                    Phase 1: @switchInstructionForGeneration class                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -77,7 +77,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchInstructionFo
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               Pointer class for @switchInstructionForGeneration class                               *
+//                           Phase 2: pointer class for @switchInstructionForGeneration class                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -115,7 +115,7 @@ class cPtr_switchInstructionForGeneration : public cPtr_semanticInstructionForGe
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @warningInstructionForGeneration class                                        *
+//                                   Phase 1: @warningInstructionForGeneration class                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -188,7 +188,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_warningInstructionF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              Pointer class for @warningInstructionForGeneration class                               *
+//                          Phase 2: pointer class for @warningInstructionForGeneration class                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -230,7 +230,7 @@ class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForG
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @readOnlyWithInstructionForGeneration class                                     *
+//                                 Phase 1: @readOnlyWithInstructionForGeneration class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -321,7 +321,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readOnlyWithInstruc
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                            Pointer class for @readOnlyWithInstructionForGeneration class                            *
+//                        Phase 2: pointer class for @readOnlyWithInstructionForGeneration class                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -375,7 +375,7 @@ class cPtr_readOnlyWithInstructionForGeneration : public cPtr_semanticInstructio
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @readWriteWithInstructionForGeneration class                                     *
+//                                Phase 1: @readWriteWithInstructionForGeneration class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -478,7 +478,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readWriteWithInstru
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                           Pointer class for @readWriteWithInstructionForGeneration class                            *
+//                       Phase 2: pointer class for @readWriteWithInstructionForGeneration class                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -540,7 +540,7 @@ class cPtr_readWriteWithInstructionForGeneration : public cPtr_semanticInstructi
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @parseLoopInstructionForGeneration class                                       *
+//                                  Phase 1: @parseLoopInstructionForGeneration class                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -608,7 +608,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseLoopInstructio
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                             Pointer class for @parseLoopInstructionForGeneration class                              *
+//                         Phase 2: pointer class for @parseLoopInstructionForGeneration class                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -647,7 +647,7 @@ class cPtr_parseLoopInstructionForGeneration : public cPtr_syntaxInstructionForG
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @parseWhenInstructionForGeneration class                                       *
+//                                  Phase 1: @parseWhenInstructionForGeneration class                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -715,7 +715,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_parseWhenInstructio
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                             Pointer class for @parseWhenInstructionForGeneration class                              *
+//                         Phase 2: pointer class for @parseWhenInstructionForGeneration class                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -754,7 +754,7 @@ class cPtr_parseWhenInstructionForGeneration : public cPtr_syntaxInstructionForG
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @syntaxSendInstructionForGeneration class                                      *
+//                                  Phase 1: @syntaxSendInstructionForGeneration class                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -810,7 +810,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxSendInstructi
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                             Pointer class for @syntaxSendInstructionForGeneration class                             *
+//                         Phase 2: pointer class for @syntaxSendInstructionForGeneration class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -853,7 +853,7 @@ void extensionMethod_displayRule (const class GALGAS_productionRuleListForGramma
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  @templateInstructionExpressionForGeneration class                                  *
+//                              Phase 1: @templateInstructionExpressionForGeneration class                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -908,7 +908,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                         Pointer class for @templateInstructionExpressionForGeneration class                         *
+//                     Phase 2: pointer class for @templateInstructionExpressionForGeneration class                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

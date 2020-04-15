@@ -280,7 +280,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @templateInstructionAST class                                            *
+//                                        Phase 1: @templateInstructionAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -326,7 +326,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Pointer class for @templateInstructionAST class                                   *
+//                               Phase 2: pointer class for @templateInstructionAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -349,7 +349,7 @@ class cPtr_templateInstructionAST : public acPtr_class {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @templateInstructionListAST list                                           *
+//                                      Phase 1: @templateInstructionListAST list                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -481,7 +481,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @templateInstructionListAST_2D_element struct                                    *
+//                                Phase 1: @templateInstructionListAST_2D_element struct                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -543,7 +543,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @templateExpressionAST class                                             *
+//                                        Phase 1: @templateExpressionAST class                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -589,7 +589,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExpressionA
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Pointer class for @templateExpressionAST class                                    *
+//                               Phase 2: pointer class for @templateExpressionAST class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -612,7 +612,7 @@ class cPtr_templateExpressionAST : public acPtr_class {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @templateExpressionListAST list                                           *
+//                                       Phase 1: @templateExpressionListAST list                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -782,7 +782,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExpressionL
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @templateExpressionListAST_2D_element struct                                     *
+//                                Phase 1: @templateExpressionListAST_2D_element struct                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -856,7 +856,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExpressionL
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @templateAndOperationAST class                                            *
+//                                       Phase 1: @templateAndOperationAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -923,7 +923,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateAndOperatio
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @templateAndOperationAST class                                   *
+//                              Phase 2: pointer class for @templateAndOperationAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -961,7 +961,7 @@ class cPtr_templateAndOperationAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @templateOrOperationAST class                                            *
+//                                        Phase 1: @templateOrOperationAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1028,7 +1028,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateOrOperation
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Pointer class for @templateOrOperationAST class                                   *
+//                               Phase 2: pointer class for @templateOrOperationAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1066,7 +1066,7 @@ class cPtr_templateOrOperationAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @templateXorOperationAST class                                            *
+//                                       Phase 1: @templateXorOperationAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1133,7 +1133,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateXorOperatio
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @templateXorOperationAST class                                   *
+//                              Phase 2: pointer class for @templateXorOperationAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1171,7 +1171,7 @@ class cPtr_templateXorOperationAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                             @templateTrueBoolAST class                                              *
+//                                         Phase 1: @templateTrueBoolAST class                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1229,7 +1229,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateTrueBoolAST
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    Pointer class for @templateTrueBoolAST class                                     *
+//                                Phase 2: pointer class for @templateTrueBoolAST class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1259,7 +1259,7 @@ class cPtr_templateTrueBoolAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                             @templateFalseBoolAST class                                             *
+//                                         Phase 1: @templateFalseBoolAST class                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1317,7 +1317,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateFalseBoolAS
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    Pointer class for @templateFalseBoolAST class                                    *
+//                                Phase 2: pointer class for @templateFalseBoolAST class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1347,7 +1347,7 @@ class cPtr_templateFalseBoolAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @templateNotOperatorAST class                                            *
+//                                        Phase 1: @templateNotOperatorAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1408,7 +1408,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateNotOperator
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Pointer class for @templateNotOperatorAST class                                   *
+//                               Phase 2: pointer class for @templateNotOperatorAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1442,7 +1442,7 @@ class cPtr_templateNotOperatorAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @templateLogicalNegateAST class                                           *
+//                                       Phase 1: @templateLogicalNegateAST class                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1503,7 +1503,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLogicalNega
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @templateLogicalNegateAST class                                  *
+//                              Phase 2: pointer class for @templateLogicalNegateAST class                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1537,7 +1537,7 @@ class cPtr_templateLogicalNegateAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @dynamicTypeComparisonKind enum                                           *
+//                                       Phase 1: @dynamicTypeComparisonKind enum                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1609,7 +1609,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dynamicTypeComparis
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @templateAddOperationAST class                                            *
+//                                       Phase 1: @templateAddOperationAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1676,7 +1676,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateAddOperatio
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @templateAddOperationAST class                                   *
+//                              Phase 2: pointer class for @templateAddOperationAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1714,7 +1714,7 @@ class cPtr_templateAddOperationAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @templateSubOperationAST class                                            *
+//                                       Phase 1: @templateSubOperationAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1781,7 +1781,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateSubOperatio
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @templateSubOperationAST class                                   *
+//                              Phase 2: pointer class for @templateSubOperationAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1819,7 +1819,7 @@ class cPtr_templateSubOperationAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @templateMultiplyOperationAST class                                         *
+//                                     Phase 1: @templateMultiplyOperationAST class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1886,7 +1886,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateMultiplyOpe
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                Pointer class for @templateMultiplyOperationAST class                                *
+//                            Phase 2: pointer class for @templateMultiplyOperationAST class                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1924,7 +1924,7 @@ class cPtr_templateMultiplyOperationAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @templateDivideOperationAST class                                          *
+//                                      Phase 1: @templateDivideOperationAST class                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1991,7 +1991,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateDivideOpera
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 Pointer class for @templateDivideOperationAST class                                 *
+//                             Phase 2: pointer class for @templateDivideOperationAST class                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2029,7 +2029,7 @@ class cPtr_templateDivideOperationAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @templateModuloOperationAST class                                          *
+//                                      Phase 1: @templateModuloOperationAST class                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2096,7 +2096,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateModuloOpera
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 Pointer class for @templateModuloOperationAST class                                 *
+//                             Phase 2: pointer class for @templateModuloOperationAST class                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2134,7 +2134,7 @@ class cPtr_templateModuloOperationAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @templateUnaryMinusOperationAST class                                        *
+//                                    Phase 1: @templateUnaryMinusOperationAST class                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2195,7 +2195,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateUnaryMinusO
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               Pointer class for @templateUnaryMinusOperationAST class                               *
+//                           Phase 2: pointer class for @templateUnaryMinusOperationAST class                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2229,7 +2229,7 @@ class cPtr_templateUnaryMinusOperationAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                             @templateEqualTestAST class                                             *
+//                                         Phase 1: @templateEqualTestAST class                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2296,7 +2296,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateEqualTestAS
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    Pointer class for @templateEqualTestAST class                                    *
+//                                Phase 2: pointer class for @templateEqualTestAST class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2334,7 +2334,7 @@ class cPtr_templateEqualTestAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @templateNonEqualTestAST class                                            *
+//                                       Phase 1: @templateNonEqualTestAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2401,7 +2401,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateNonEqualTes
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @templateNonEqualTestAST class                                   *
+//                              Phase 2: pointer class for @templateNonEqualTestAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2439,7 +2439,7 @@ class cPtr_templateNonEqualTestAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @templateStrictInfTestAST class                                           *
+//                                       Phase 1: @templateStrictInfTestAST class                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2506,7 +2506,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateStrictInfTe
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @templateStrictInfTestAST class                                  *
+//                              Phase 2: pointer class for @templateStrictInfTestAST class                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2544,7 +2544,7 @@ class cPtr_templateStrictInfTestAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @templateInfOrEqualTestAST class                                           *
+//                                      Phase 1: @templateInfOrEqualTestAST class                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2611,7 +2611,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInfOrEqualT
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 Pointer class for @templateInfOrEqualTestAST class                                  *
+//                             Phase 2: pointer class for @templateInfOrEqualTestAST class                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2649,7 +2649,7 @@ class cPtr_templateInfOrEqualTestAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @templateStrictSupTestAST class                                           *
+//                                       Phase 1: @templateStrictSupTestAST class                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2716,7 +2716,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateStrictSupTe
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @templateStrictSupTestAST class                                  *
+//                              Phase 2: pointer class for @templateStrictSupTestAST class                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2754,7 +2754,7 @@ class cPtr_templateStrictSupTestAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @templateSupOrEqualTestAST class                                           *
+//                                      Phase 1: @templateSupOrEqualTestAST class                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2821,7 +2821,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateSupOrEqualT
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 Pointer class for @templateSupOrEqualTestAST class                                  *
+//                             Phase 2: pointer class for @templateSupOrEqualTestAST class                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2859,7 +2859,7 @@ class cPtr_templateSupOrEqualTestAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @templateLeftShiftOperationAST class                                         *
+//                                    Phase 1: @templateLeftShiftOperationAST class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2926,7 +2926,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLeftShiftOp
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               Pointer class for @templateLeftShiftOperationAST class                                *
+//                           Phase 2: pointer class for @templateLeftShiftOperationAST class                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2964,7 +2964,7 @@ class cPtr_templateLeftShiftOperationAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @templateRightShiftOperationAST class                                        *
+//                                    Phase 1: @templateRightShiftOperationAST class                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3031,7 +3031,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateRightShiftO
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               Pointer class for @templateRightShiftOperationAST class                               *
+//                           Phase 2: pointer class for @templateRightShiftOperationAST class                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3069,7 +3069,7 @@ class cPtr_templateRightShiftOperationAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @templateInstructionExpressionAST class                                       *
+//                                   Phase 1: @templateInstructionExpressionAST class                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3130,7 +3130,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              Pointer class for @templateInstructionExpressionAST class                              *
+//                          Phase 2: pointer class for @templateInstructionExpressionAST class                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3164,7 +3164,7 @@ class cPtr_templateInstructionExpressionAST : public cPtr_templateInstructionAST
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @templateBlockInstructionAST class                                          *
+//                                     Phase 1: @templateBlockInstructionAST class                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3231,7 +3231,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateBlockInstru
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                Pointer class for @templateBlockInstructionAST class                                 *
+//                            Phase 2: pointer class for @templateBlockInstructionAST class                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3269,7 +3269,7 @@ class cPtr_templateBlockInstructionAST : public cPtr_templateInstructionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   @templateInstructionGetColumnLocationAST class                                    *
+//                               Phase 1: @templateInstructionGetColumnLocationAST class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3321,7 +3321,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                          Pointer class for @templateInstructionGetColumnLocationAST class                           *
+//                      Phase 2: pointer class for @templateInstructionGetColumnLocationAST class                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3347,7 +3347,7 @@ class cPtr_templateInstructionGetColumnLocationAST : public cPtr_templateInstruc
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   @templateInstructionGotoColumnLocationAST class                                   *
+//                               Phase 1: @templateInstructionGotoColumnLocationAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3399,7 +3399,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                          Pointer class for @templateInstructionGotoColumnLocationAST class                          *
+//                      Phase 2: pointer class for @templateInstructionGotoColumnLocationAST class                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3425,7 +3425,7 @@ class cPtr_templateInstructionGotoColumnLocationAST : public cPtr_templateInstru
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @templateInstructionIfBranchListAST list                                       *
+//                                  Phase 1: @templateInstructionIfBranchListAST list                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3576,7 +3576,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                @templateInstructionIfBranchListAST_2D_element struct                                *
+//                            Phase 1: @templateInstructionIfBranchListAST_2D_element struct                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3644,7 +3644,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @templateInstructionIfAST class                                           *
+//                                       Phase 1: @templateInstructionIfAST class                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3708,7 +3708,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @templateInstructionIfAST class                                  *
+//                              Phase 2: pointer class for @templateInstructionIfAST class                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4053,7 +4053,7 @@ class cParser_templateSyntax {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @structFieldAccessTemplateExpressionAST class                                    *
+//                                Phase 1: @structFieldAccessTemplateExpressionAST class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4120,7 +4120,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structFieldAccessTe
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                           Pointer class for @structFieldAccessTemplateExpressionAST class                           *
+//                       Phase 2: pointer class for @structFieldAccessTemplateExpressionAST class                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4158,7 +4158,7 @@ class cPtr_structFieldAccessTemplateExpressionAST : public cPtr_templateExpressi
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @templateConstructorAST class                                            *
+//                                        Phase 1: @templateConstructorAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4228,7 +4228,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateConstructor
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Pointer class for @templateConstructorAST class                                   *
+//                               Phase 2: pointer class for @templateConstructorAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4266,7 +4266,7 @@ class cPtr_templateConstructorAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @templateExtensionTemplateCallAST class                                       *
+//                                   Phase 1: @templateExtensionTemplateCallAST class                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4333,7 +4333,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateExtensionTe
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              Pointer class for @templateExtensionTemplateCallAST class                              *
+//                          Phase 2: pointer class for @templateExtensionTemplateCallAST class                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4371,7 +4371,7 @@ class cPtr_templateExtensionTemplateCallAST : public cPtr_templateExpressionAST 
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @templateFileWrapperTemplateCallAST class                                      *
+//                                  Phase 1: @templateFileWrapperTemplateCallAST class                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4441,7 +4441,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateFileWrapper
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                             Pointer class for @templateFileWrapperTemplateCallAST class                             *
+//                         Phase 2: pointer class for @templateFileWrapperTemplateCallAST class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4479,7 +4479,7 @@ class cPtr_templateFileWrapperTemplateCallAST : public cPtr_templateExpressionAS
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @templateFunctionCallAST class                                            *
+//                                       Phase 1: @templateFunctionCallAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4543,7 +4543,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateFunctionCal
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @templateFunctionCallAST class                                   *
+//                              Phase 2: pointer class for @templateFunctionCallAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4577,7 +4577,7 @@ class cPtr_templateFunctionCallAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @templateGetterCallInExpressionAST class                                       *
+//                                  Phase 1: @templateGetterCallInExpressionAST class                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4644,7 +4644,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateGetterCallI
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                             Pointer class for @templateGetterCallInExpressionAST class                              *
+//                         Phase 2: pointer class for @templateGetterCallInExpressionAST class                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4682,7 +4682,7 @@ class cPtr_templateGetterCallInExpressionAST : public cPtr_templateExpressionAST
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @templateInstructionForeachAST class                                         *
+//                                    Phase 1: @templateInstructionForeachAST class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4779,7 +4779,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               Pointer class for @templateInstructionForeachAST class                                *
+//                           Phase 2: pointer class for @templateInstructionForeachAST class                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4837,7 +4837,7 @@ class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @templateInstructionSwitchAST class                                         *
+//                                     Phase 1: @templateInstructionSwitchAST class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4904,7 +4904,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @templateInstructionSwitchBranchListAST list                                     *
+//                                Phase 1: @templateInstructionSwitchBranchListAST list                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5093,7 +5093,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                Pointer class for @templateInstructionSwitchAST class                                *
+//                            Phase 2: pointer class for @templateInstructionSwitchAST class                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5131,7 +5131,7 @@ class cPtr_templateInstructionSwitchAST : public cPtr_templateInstructionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @templateLiteralCharExpressionAST class                                       *
+//                                   Phase 1: @templateLiteralCharExpressionAST class                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5189,7 +5189,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralChar
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              Pointer class for @templateLiteralCharExpressionAST class                              *
+//                          Phase 2: pointer class for @templateLiteralCharExpressionAST class                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5219,7 +5219,7 @@ class cPtr_templateLiteralCharExpressionAST : public cPtr_templateExpressionAST 
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @templateLiteralDoubleExpressionAST class                                      *
+//                                  Phase 1: @templateLiteralDoubleExpressionAST class                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5277,7 +5277,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralDoub
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                             Pointer class for @templateLiteralDoubleExpressionAST class                             *
+//                         Phase 2: pointer class for @templateLiteralDoubleExpressionAST class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5307,7 +5307,7 @@ class cPtr_templateLiteralDoubleExpressionAST : public cPtr_templateExpressionAS
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @templateLiteralSIntExpressionAST class                                       *
+//                                   Phase 1: @templateLiteralSIntExpressionAST class                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5365,7 +5365,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralSInt
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              Pointer class for @templateLiteralSIntExpressionAST class                              *
+//                          Phase 2: pointer class for @templateLiteralSIntExpressionAST class                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5395,7 +5395,7 @@ class cPtr_templateLiteralSIntExpressionAST : public cPtr_templateExpressionAST 
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   @templateLiteralSInt_36__34_ExpressionAST class                                   *
+//                               Phase 1: @templateLiteralSInt_36__34_ExpressionAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5453,7 +5453,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralSInt
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                             Pointer class for @templateLiteralSInt64ExpressionAST class                             *
+//                         Phase 2: pointer class for @templateLiteralSInt64ExpressionAST class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5483,7 +5483,7 @@ class cPtr_templateLiteralSInt_36__34_ExpressionAST : public cPtr_templateExpres
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @templateLiteralStringExpressionAST class                                      *
+//                                  Phase 1: @templateLiteralStringExpressionAST class                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5547,7 +5547,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralStri
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                             Pointer class for @templateLiteralStringExpressionAST class                             *
+//                         Phase 2: pointer class for @templateLiteralStringExpressionAST class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5581,7 +5581,7 @@ class cPtr_templateLiteralStringExpressionAST : public cPtr_templateExpressionAS
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @templateLiteralUIntExpressionAST class                                       *
+//                                   Phase 1: @templateLiteralUIntExpressionAST class                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5639,7 +5639,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralUInt
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              Pointer class for @templateLiteralUIntExpressionAST class                              *
+//                          Phase 2: pointer class for @templateLiteralUIntExpressionAST class                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5669,7 +5669,7 @@ class cPtr_templateLiteralUIntExpressionAST : public cPtr_templateExpressionAST 
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   @templateLiteralUInt_36__34_ExpressionAST class                                   *
+//                               Phase 1: @templateLiteralUInt_36__34_ExpressionAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5727,7 +5727,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateLiteralUInt
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                             Pointer class for @templateLiteralUInt64ExpressionAST class                             *
+//                         Phase 2: pointer class for @templateLiteralUInt64ExpressionAST class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5757,7 +5757,7 @@ class cPtr_templateLiteralUInt_36__34_ExpressionAST : public cPtr_templateExpres
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @templateOptionAccessAST class                                            *
+//                                       Phase 1: @templateOptionAccessAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5827,7 +5827,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateOptionAcces
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @templateOptionAccessAST class                                   *
+//                              Phase 2: pointer class for @templateOptionAccessAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5865,7 +5865,7 @@ class cPtr_templateOptionAccessAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @templateTestDynamicClassAST class                                          *
+//                                     Phase 1: @templateTestDynamicClassAST class                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5938,7 +5938,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateTestDynamic
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                Pointer class for @templateTestDynamicClassAST class                                 *
+//                            Phase 2: pointer class for @templateTestDynamicClassAST class                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5980,7 +5980,7 @@ class cPtr_templateTestDynamicClassAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @templateVarInExpressionAST class                                          *
+//                                      Phase 1: @templateVarInExpressionAST class                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6038,7 +6038,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateVarInExpres
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 Pointer class for @templateVarInExpressionAST class                                 *
+//                             Phase 2: pointer class for @templateVarInExpressionAST class                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6068,7 +6068,7 @@ class cPtr_templateVarInExpressionAST : public cPtr_templateExpressionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @switchExtractedValuesListAST list                                          *
+//                                     Phase 1: @switchExtractedValuesListAST list                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6248,7 +6248,7 @@ void routine_enterTemplateString (class GALGAS_templateInstructionListAST & ioAr
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @templateInstructionForGeneration class                                       *
+//                                   Phase 1: @templateInstructionForGeneration class                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6294,7 +6294,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              Pointer class for @templateInstructionForGeneration class                              *
+//                          Phase 2: pointer class for @templateInstructionForGeneration class                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6317,7 +6317,7 @@ class cPtr_templateInstructionForGeneration : public acPtr_class {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @templateInstructionListForGeneration list                                      *
+//                                 Phase 1: @templateInstructionListForGeneration list                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6449,7 +6449,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               @templateInstructionListForGeneration_2D_element struct                               *
+//                           Phase 1: @templateInstructionListForGeneration_2D_element struct                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6511,7 +6511,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              @templateInstructionGetColumnLocationForGeneration class                               *
+//                          Phase 1: @templateInstructionGetColumnLocationForGeneration class                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6563,7 +6563,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                     Pointer class for @templateInstructionGetColumnLocationForGeneration class                      *
+//                 Phase 2: pointer class for @templateInstructionGetColumnLocationForGeneration class                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6589,7 +6589,7 @@ class cPtr_templateInstructionGetColumnLocationForGeneration : public cPtr_templ
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              @templateInstructionGotoColumnLocationForGeneration class                              *
+//                          Phase 1: @templateInstructionGotoColumnLocationForGeneration class                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6641,7 +6641,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                     Pointer class for @templateInstructionGotoColumnLocationForGeneration class                     *
+//                 Phase 2: pointer class for @templateInstructionGotoColumnLocationForGeneration class                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6667,7 +6667,7 @@ class cPtr_templateInstructionGotoColumnLocationForGeneration : public cPtr_temp
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 @templateInstructionIfBranchListForGeneration list                                  *
+//                             Phase 1: @templateInstructionIfBranchListForGeneration list                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6818,7 +6818,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @semanticExpressionForGeneration class                                        *
+//                                   Phase 1: @semanticExpressionForGeneration class                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6874,7 +6874,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @unifiedTypeMap_2D_proxy map proxy                                          *
+//                                     Phase 1: @unifiedTypeMap_2D_proxy map proxy                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -7010,7 +7010,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap_2D_p
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              Pointer class for @semanticExpressionForGeneration class                               *
+//                          Phase 2: pointer class for @semanticExpressionForGeneration class                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -7041,7 +7041,7 @@ class cPtr_semanticExpressionForGeneration : public acPtr_class {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                           @templateInstructionIfBranchListForGeneration_2D_element struct                           *
+//                       Phase 1: @templateInstructionIfBranchListForGeneration_2D_element struct                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -7109,7 +7109,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @templateInstructionIfForGeneration class                                      *
+//                                  Phase 1: @templateInstructionIfForGeneration class                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -7173,7 +7173,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                             Pointer class for @templateInstructionIfForGeneration class                             *
+//                         Phase 2: pointer class for @templateInstructionIfForGeneration class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

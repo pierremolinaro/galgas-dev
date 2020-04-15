@@ -10,7 +10,7 @@
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                             @syntaxExtensions list map                                              *
+//                                         Phase 1: @syntaxExtensions list map                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -77,7 +77,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensions ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @syntaxExtensions_2D_element struct                                         *
+//                                     Phase 1: @syntaxExtensions_2D_element struct                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -148,7 +148,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxExtensions_2D
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                             @prologueEpilogueList list                                              *
+//                                         Phase 1: @prologueEpilogueList list                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -299,7 +299,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_prologueEpilogueLis
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @prologueEpilogueList_2D_element struct                                       *
+//                                   Phase 1: @prologueEpilogueList_2D_element struct                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -370,7 +370,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_prologueEpilogueLis
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                @programRuleList list                                                *
+//                                            Phase 1: @programRuleList list                                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -616,7 +616,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programRuleList ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @programRuleList_2D_element struct                                          *
+//                                     Phase 1: @programRuleList_2D_element struct                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -717,7 +717,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programRuleList_2D_
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @galgas_33_DeclarationAST struct                                           *
+//                                      Phase 1: @galgas_33_DeclarationAST struct                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -818,7 +818,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_Declarati
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @functionSignature_2D_element struct                                         *
+//                                    Phase 1: @functionSignature_2D_element struct                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -895,7 +895,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionSignature_2
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Class for element of '@constructorMap' map                                      *
+//                                 Phase 2: class for element of '@constructorMap' map                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -927,7 +927,7 @@ class cMapElement_constructorMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @constructorMap_2D_element struct                                          *
+//                                      Phase 1: @constructorMap_2D_element struct                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1010,7 +1010,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constructorMap_2D_e
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                @methodQualifier enum                                                *
+//                                            Phase 1: @methodQualifier enum                                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1097,7 +1097,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_methodQualifier ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                  @methodKind enum                                                   *
+//                                              Phase 1: @methodKind enum                                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1164,7 +1164,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_methodKind ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        Class for element of '@getterMap' map                                        *
+//                                    Phase 2: class for element of '@getterMap' map                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1204,7 +1204,7 @@ class cMapElement_getterMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @getterMap_2D_element struct                                             *
+//                                        Phase 1: @getterMap_2D_element struct                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1308,7 +1308,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterMap_2D_elemen
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @formalParameterSignature list                                            *
+//                                       Phase 1: @formalParameterSignature list                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1497,7 +1497,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterSign
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @formalParameterSignature_2D_element struct                                     *
+//                                 Phase 1: @formalParameterSignature_2D_element struct                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1577,7 +1577,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_formalParameterSign
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        Class for element of '@setterMap' map                                        *
+//                                    Phase 2: class for element of '@setterMap' map                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1613,7 +1613,7 @@ class cMapElement_setterMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @setterMap_2D_element struct                                             *
+//                                        Phase 1: @setterMap_2D_element struct                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1705,7 +1705,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterMap_2D_elemen
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    Class for element of '@instanceMethodMap' map                                    *
+//                                Phase 2: class for element of '@instanceMethodMap' map                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1743,7 +1743,7 @@ class cMapElement_instanceMethodMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @instanceMethodMap_2D_element struct                                         *
+//                                    Phase 1: @instanceMethodMap_2D_element struct                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1841,7 +1841,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_instanceMethodMap_2
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Class for element of '@classMethodMap' map                                      *
+//                                 Phase 2: class for element of '@classMethodMap' map                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1871,7 +1871,7 @@ class cMapElement_classMethodMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @classMethodMap_2D_element struct                                          *
+//                                      Phase 1: @classMethodMap_2D_element struct                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1948,7 +1948,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_classMethodMap_2D_e
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @enumerationDescriptorList_2D_element struct                                     *
+//                                Phase 1: @enumerationDescriptorList_2D_element struct                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2019,7 +2019,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumerationDescript
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @predefinedTypeKindEnum enum                                             *
+//                                        Phase 1: @predefinedTypeKindEnum enum                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2171,7 +2171,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeKindE
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @typeKindEnum enum, associated values                                        *
+//                                    Phase 2: @typeKindEnum enum, associated values                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2201,7 +2201,7 @@ class GALGAS_string extensionGetter_kind (const class GALGAS_typeKindEnum & inOb
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       Class for element of '@propertyMap' map                                       *
+//                                   Phase 2: class for element of '@propertyMap' map                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2231,7 +2231,7 @@ class cMapElement_propertyMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @propertyMap_2D_element struct                                            *
+//                                       Phase 1: @propertyMap_2D_element struct                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2308,7 +2308,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyMap_2D_elem
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    Class for element of '@constantIndexMap' map                                     *
+//                                Phase 2: class for element of '@constantIndexMap' map                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2338,7 +2338,7 @@ class cMapElement_constantIndexMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @constantIndexMap_2D_element struct                                         *
+//                                     Phase 1: @constantIndexMap_2D_element struct                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2415,7 +2415,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constantIndexMap_2D
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Class for element of '@unifiedTypeMap' map                                      *
+//                                 Phase 2: class for element of '@unifiedTypeMap' map                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2491,7 +2491,7 @@ class cMapElement_unifiedTypeMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                              @predefinedTypeAST class                                               *
+//                                          Phase 1: @predefinedTypeAST class                                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2547,7 +2547,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_predefinedTypeAST ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Pointer class for @predefinedTypeAST class                                      *
+//                                 Phase 2: pointer class for @predefinedTypeAST class                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2579,7 +2579,7 @@ class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @applicationPredefinedTypeAST class                                         *
+//                                     Phase 1: @applicationPredefinedTypeAST class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2631,7 +2631,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_applicationPredefin
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                Pointer class for @applicationPredefinedTypeAST class                                *
+//                            Phase 2: pointer class for @applicationPredefinedTypeAST class                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2660,7 +2660,7 @@ class cPtr_applicationPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @bigintPredefinedTypeAST class                                            *
+//                                       Phase 1: @bigintPredefinedTypeAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2712,7 +2712,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bigintPredefinedTyp
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @bigintPredefinedTypeAST class                                   *
+//                              Phase 2: pointer class for @bigintPredefinedTypeAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2741,7 +2741,7 @@ class cPtr_bigintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @objectPredefinedTypeAST class                                            *
+//                                       Phase 1: @objectPredefinedTypeAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2793,7 +2793,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectPredefinedTyp
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @objectPredefinedTypeAST class                                   *
+//                              Phase 2: pointer class for @objectPredefinedTypeAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2822,7 +2822,7 @@ class cPtr_objectPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @filewrapperPredefinedTypeAST class                                         *
+//                                     Phase 1: @filewrapperPredefinedTypeAST class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2874,7 +2874,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperPredefin
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                Pointer class for @filewrapperPredefinedTypeAST class                                *
+//                            Phase 2: pointer class for @filewrapperPredefinedTypeAST class                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2903,7 +2903,7 @@ class cPtr_filewrapperPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @binarysetPredefinedTypeAST class                                          *
+//                                      Phase 1: @binarysetPredefinedTypeAST class                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2955,7 +2955,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binarysetPredefined
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 Pointer class for @binarysetPredefinedTypeAST class                                 *
+//                             Phase 2: pointer class for @binarysetPredefinedTypeAST class                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2984,7 +2984,7 @@ class cPtr_binarysetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @boolPredefinedTypeAST class                                             *
+//                                        Phase 1: @boolPredefinedTypeAST class                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3036,7 +3036,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_boolPredefinedTypeA
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Pointer class for @boolPredefinedTypeAST class                                    *
+//                               Phase 2: pointer class for @boolPredefinedTypeAST class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3065,7 +3065,7 @@ class cPtr_boolPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @uintPredefinedTypeAST class                                             *
+//                                        Phase 1: @uintPredefinedTypeAST class                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3117,7 +3117,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintPredefinedTypeA
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Pointer class for @uintPredefinedTypeAST class                                    *
+//                               Phase 2: pointer class for @uintPredefinedTypeAST class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3146,7 +3146,7 @@ class cPtr_uintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @uint_36__34_PredefinedTypeAST class                                         *
+//                                    Phase 1: @uint_36__34_PredefinedTypeAST class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3198,7 +3198,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_Predefi
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @uint64PredefinedTypeAST class                                   *
+//                              Phase 2: pointer class for @uint64PredefinedTypeAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3227,7 +3227,7 @@ class cPtr_uint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @sintPredefinedTypeAST class                                             *
+//                                        Phase 1: @sintPredefinedTypeAST class                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3279,7 +3279,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sintPredefinedTypeA
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Pointer class for @sintPredefinedTypeAST class                                    *
+//                               Phase 2: pointer class for @sintPredefinedTypeAST class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3308,7 +3308,7 @@ class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @sint_36__34_PredefinedTypeAST class                                         *
+//                                    Phase 1: @sint_36__34_PredefinedTypeAST class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3360,7 +3360,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint_36__34_Predefi
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @sint64PredefinedTypeAST class                                   *
+//                              Phase 2: pointer class for @sint64PredefinedTypeAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3389,7 +3389,7 @@ class cPtr_sint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @charPredefinedTypeAST class                                             *
+//                                        Phase 1: @charPredefinedTypeAST class                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3441,7 +3441,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_charPredefinedTypeA
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Pointer class for @charPredefinedTypeAST class                                    *
+//                               Phase 2: pointer class for @charPredefinedTypeAST class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3470,7 +3470,7 @@ class cPtr_charPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @doublePredefinedTypeAST class                                            *
+//                                       Phase 1: @doublePredefinedTypeAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3522,7 +3522,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_doublePredefinedTyp
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @doublePredefinedTypeAST class                                   *
+//                              Phase 2: pointer class for @doublePredefinedTypeAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3551,7 +3551,7 @@ class cPtr_doublePredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @stringPredefinedTypeAST class                                            *
+//                                       Phase 1: @stringPredefinedTypeAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3603,7 +3603,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringPredefinedTyp
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @stringPredefinedTypeAST class                                   *
+//                              Phase 2: pointer class for @stringPredefinedTypeAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3632,7 +3632,7 @@ class cPtr_stringPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @locationPredefinedTypeAST class                                           *
+//                                      Phase 1: @locationPredefinedTypeAST class                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3684,7 +3684,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_locationPredefinedT
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 Pointer class for @locationPredefinedTypeAST class                                  *
+//                             Phase 2: pointer class for @locationPredefinedTypeAST class                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3713,7 +3713,7 @@ class cPtr_locationPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @stringsetPredefinedTypeAST class                                          *
+//                                      Phase 1: @stringsetPredefinedTypeAST class                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3765,7 +3765,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringsetPredefined
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 Pointer class for @stringsetPredefinedTypeAST class                                 *
+//                             Phase 2: pointer class for @stringsetPredefinedTypeAST class                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3794,7 +3794,7 @@ class cPtr_stringsetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @functionPredefinedTypeAST class                                           *
+//                                      Phase 1: @functionPredefinedTypeAST class                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3846,7 +3846,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionPredefinedT
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 Pointer class for @functionPredefinedTypeAST class                                  *
+//                             Phase 2: pointer class for @functionPredefinedTypeAST class                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3875,7 +3875,7 @@ class cPtr_functionPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @typePredefinedTypeAST class                                             *
+//                                        Phase 1: @typePredefinedTypeAST class                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3927,7 +3927,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typePredefinedTypeA
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Pointer class for @typePredefinedTypeAST class                                    *
+//                               Phase 2: pointer class for @typePredefinedTypeAST class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3956,7 +3956,7 @@ class cPtr_typePredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @dataPredefinedTypeAST class                                             *
+//                                        Phase 1: @dataPredefinedTypeAST class                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4008,7 +4008,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dataPredefinedTypeA
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Pointer class for @dataPredefinedTypeAST class                                    *
+//                               Phase 2: pointer class for @dataPredefinedTypeAST class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4037,7 +4037,7 @@ class cPtr_dataPredefinedTypeAST : public cPtr_predefinedTypeAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @timerPredefinedTypeAST class                                            *
+//                                        Phase 1: @timerPredefinedTypeAST class                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4089,7 +4089,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_timerPredefinedType
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Pointer class for @timerPredefinedTypeAST class                                   *
+//                               Phase 2: pointer class for @timerPredefinedTypeAST class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4393,7 +4393,7 @@ void extensionMethod_enterInstructionListInSemanticContext (const class GALGAS_s
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                @grammarLabelMap map                                                 *
+//                                            Phase 1: @grammarLabelMap map                                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4497,7 +4497,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarLabelMap ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Class for element of '@grammarLabelMap' map                                     *
+//                                 Phase 2: class for element of '@grammarLabelMap' map                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4525,7 +4525,7 @@ class cMapElement_grammarLabelMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @grammarLabelMap_2D_element struct                                          *
+//                                     Phase 1: @grammarLabelMap_2D_element struct                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4596,7 +4596,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarLabelMap_2D_
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       Class for element of '@grammarMap' map                                        *
+//                                   Phase 2: class for element of '@grammarMap' map                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4628,7 +4628,7 @@ class cMapElement_grammarMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @grammarMap_2D_element struct                                            *
+//                                        Phase 1: @grammarMap_2D_element struct                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4711,7 +4711,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarMap_2D_eleme
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       Class for element of '@routineMap' map                                        *
+//                                   Phase 2: class for element of '@routineMap' map                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4741,7 +4741,7 @@ class cMapElement_routineMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @routineMap_2D_element struct                                            *
+//                                        Phase 1: @routineMap_2D_element struct                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4818,7 +4818,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineMap_2D_eleme
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       Class for element of '@functionMap' map                                       *
+//                                   Phase 2: class for element of '@functionMap' map                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4850,7 +4850,7 @@ class cMapElement_functionMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @functionMap_2D_element struct                                            *
+//                                       Phase 1: @functionMap_2D_element struct                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4933,7 +4933,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionMap_2D_elem
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                 @wrapperFileMap map                                                 *
+//                                             Phase 1: @wrapperFileMap map                                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5076,7 +5076,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperFileMap ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Class for element of '@wrapperFileMap' map                                      *
+//                                 Phase 2: class for element of '@wrapperFileMap' map                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5110,7 +5110,7 @@ class cMapElement_wrapperFileMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @wrapperFileMap_2D_element struct                                          *
+//                                      Phase 1: @wrapperFileMap_2D_element struct                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5199,7 +5199,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperFileMap_2D_e
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                              @wrapperDirectoryMap map                                               *
+//                                          Phase 1: @wrapperDirectoryMap map                                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5329,7 +5329,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_wrapperDirectoryMap
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Class for element of '@wrapperDirectoryMap' map                                   *
+//                               Phase 2: class for element of '@wrapperDirectoryMap' map                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5361,7 +5361,7 @@ class cMapElement_wrapperDirectoryMap : public cMapElement {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @wrapperDirectoryMap_2D_element struct                                        *
+//                                   Phase 1: @wrapperDirectoryMap_2D_element struct                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

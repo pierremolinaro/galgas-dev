@@ -10,7 +10,7 @@
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @overrideExtensionGetterForGeneration class                                     *
+//                                 Phase 1: @overrideExtensionGetterForGeneration class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -112,7 +112,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overrideExtensionGe
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                            Pointer class for @overrideExtensionGetterForGeneration class                            *
+//                        Phase 2: pointer class for @overrideExtensionGetterForGeneration class                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -172,7 +172,7 @@ class cPtr_overrideExtensionGetterForGeneration : public cPtr_semanticDeclaratio
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @overridingExtensionMethodForGeneration class                                    *
+//                                Phase 1: @overridingExtensionMethodForGeneration class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -262,7 +262,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                           Pointer class for @overridingExtensionMethodForGeneration class                           *
+//                       Phase 2: pointer class for @overridingExtensionMethodForGeneration class                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -314,7 +314,7 @@ class cPtr_overridingExtensionMethodForGeneration : public cPtr_semanticDeclarat
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @overridingExtensionSetterForGeneration class                                    *
+//                                Phase 1: @overridingExtensionSetterForGeneration class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -404,7 +404,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_overridingExtension
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                           Pointer class for @overridingExtensionSetterForGeneration class                           *
+//                       Phase 2: pointer class for @overridingExtensionSetterForGeneration class                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -456,7 +456,7 @@ class cPtr_overridingExtensionSetterForGeneration : public cPtr_semanticDeclarat
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @galgas_33_SyntaxComponentAST class                                         *
+//                                     Phase 1: @galgas_33_SyntaxComponentAST class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -539,7 +539,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_galgas_33_SyntaxCom
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 Pointer class for @galgas3SyntaxComponentAST class                                  *
+//                             Phase 2: pointer class for @galgas3SyntaxComponentAST class                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -653,7 +653,7 @@ void callExtensionMethod_generateActualParameter (const class cPtr_actualParamet
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   @outputInputActualParameterForGeneration class                                    *
+//                               Phase 1: @outputInputActualParameterForGeneration class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -724,7 +724,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputActualPa
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                          Pointer class for @outputInputActualParameterForGeneration class                           *
+//                      Phase 2: pointer class for @outputInputActualParameterForGeneration class                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -763,7 +763,7 @@ class cPtr_outputInputActualParameterForGeneration : public cPtr_actualParameter
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @inputActualParameterForGeneration class                                       *
+//                                  Phase 1: @inputActualParameterForGeneration class                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -822,7 +822,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualParamete
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                             Pointer class for @inputActualParameterForGeneration class                              *
+//                         Phase 2: pointer class for @inputActualParameterForGeneration class                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -853,7 +853,7 @@ class cPtr_inputActualParameterForGeneration : public cPtr_actualParameterForGen
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @inputJokerParameterForGeneration class                                       *
+//                                   Phase 1: @inputJokerParameterForGeneration class                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -912,7 +912,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerParameter
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              Pointer class for @inputJokerParameterForGeneration class                              *
+//                          Phase 2: pointer class for @inputJokerParameterForGeneration class                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -943,7 +943,7 @@ class cPtr_inputJokerParameterForGeneration : public cPtr_actualParameterForGene
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @lexiqueDeclarationForGeneration class                                        *
+//                                   Phase 1: @lexiqueDeclarationForGeneration class                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1027,7 +1027,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueDeclarationF
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              Pointer class for @lexiqueDeclarationForGeneration class                               *
+//                          Phase 2: pointer class for @lexiqueDeclarationForGeneration class                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1075,7 +1075,7 @@ class cPtr_lexiqueDeclarationForGeneration : public cPtr_semanticDeclarationWith
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                             @grammarForGeneration class                                             *
+//                                         Phase 1: @grammarForGeneration class                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1183,7 +1183,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarForGeneratio
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    Pointer class for @grammarForGeneration class                                    *
+//                                Phase 2: pointer class for @grammarForGeneration class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1247,7 +1247,7 @@ class cPtr_grammarForGeneration : public cPtr_semanticDeclarationWithHeaderForGe
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   @routinePrototypeDeclarationForGeneration class                                   *
+//                               Phase 1: @routinePrototypeDeclarationForGeneration class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1313,7 +1313,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routinePrototypeDec
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                          Pointer class for @routinePrototypeDeclarationForGeneration class                          *
+//                      Phase 2: pointer class for @routinePrototypeDeclarationForGeneration class                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1349,7 +1349,7 @@ class cPtr_routinePrototypeDeclarationForGeneration : public cPtr_semanticDeclar
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @routineImplementationForGeneration class                                      *
+//                                  Phase 1: @routineImplementationForGeneration class                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1417,7 +1417,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_routineImplementati
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                             Pointer class for @routineImplementationForGeneration class                             *
+//                         Phase 2: pointer class for @routineImplementationForGeneration class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1455,7 +1455,7 @@ class cPtr_routineImplementationForGeneration : public cPtr_routinePrototypeDecl
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  @functionPrototypeDeclarationForGeneration class                                   *
+//                              Phase 1: @functionPrototypeDeclarationForGeneration class                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1527,7 +1527,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionPrototypeDe
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                         Pointer class for @functionPrototypeDeclarationForGeneration class                          *
+//                     Phase 2: pointer class for @functionPrototypeDeclarationForGeneration class                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1567,7 +1567,7 @@ class cPtr_functionPrototypeDeclarationForGeneration : public cPtr_semanticDecla
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @functionImplementationForGeneration class                                      *
+//                                 Phase 1: @functionImplementationForGeneration class                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1636,7 +1636,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionImplementat
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                            Pointer class for @functionImplementationForGeneration class                             *
+//                        Phase 2: pointer class for @functionImplementationForGeneration class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1675,7 +1675,7 @@ class cPtr_functionImplementationForGeneration : public cPtr_functionPrototypeDe
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @onceFunctionDeclarationForGeneration class                                     *
+//                                 Phase 1: @onceFunctionDeclarationForGeneration class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1753,7 +1753,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_onceFunctionDeclara
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                            Pointer class for @onceFunctionDeclarationForGeneration class                            *
+//                        Phase 2: pointer class for @onceFunctionDeclarationForGeneration class                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1797,7 +1797,7 @@ class cPtr_onceFunctionDeclarationForGeneration : public cPtr_semanticDeclaratio
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @primitiveTypeForGeneration class                                          *
+//                                      Phase 1: @primitiveTypeForGeneration class                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1859,7 +1859,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_primitiveTypeForGen
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 Pointer class for @primitiveTypeForGeneration class                                 *
+//                             Phase 2: pointer class for @primitiveTypeForGeneration class                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1894,7 +1894,7 @@ class cPtr_primitiveTypeForGeneration : public cPtr_semanticTypeForGeneration {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @filewrapperDeclarationForGeneration class                                      *
+//                                 Phase 1: @filewrapperDeclarationForGeneration class                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1978,7 +1978,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperDeclarat
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                            Pointer class for @filewrapperDeclarationForGeneration class                             *
+//                        Phase 2: pointer class for @filewrapperDeclarationForGeneration class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2026,7 +2026,7 @@ class cPtr_filewrapperDeclarationForGeneration : public cPtr_semanticDeclaration
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @programComponentForGeneration class                                         *
+//                                    Phase 1: @programComponentForGeneration class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2092,7 +2092,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_programComponentFor
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               Pointer class for @programComponentForGeneration class                                *
+//                           Phase 2: pointer class for @programComponentForGeneration class                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

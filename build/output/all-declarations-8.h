@@ -10,7 +10,7 @@
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @structuredCastInstructionAST class                                         *
+//                                     Phase 1: @structuredCastInstructionAST class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -84,7 +84,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstr
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                Pointer class for @structuredCastInstructionAST class                                *
+//                            Phase 2: pointer class for @structuredCastInstructionAST class                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -127,7 +127,7 @@ class cPtr_structuredCastInstructionAST : public cPtr_semanticInstructionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @castInstructionBranchListForGeneration list                                     *
+//                                Phase 1: @castInstructionBranchListForGeneration list                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -316,7 +316,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBran
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              @castInstructionBranchListForGeneration_2D_element struct                              *
+//                          Phase 1: @castInstructionBranchListForGeneration_2D_element struct                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -396,7 +396,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBran
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                              @dropInstructionAST class                                              *
+//                                          Phase 1: @dropInstructionAST class                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -455,7 +455,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_dropInstructionAST 
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Pointer class for @dropInstructionAST class                                     *
+//                                 Phase 2: pointer class for @dropInstructionAST class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -486,7 +486,7 @@ class cPtr_dropInstructionAST : public cPtr_semanticInstructionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                @fixitElementAST enum                                                *
+//                                            Phase 1: @fixitElementAST enum                                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -589,7 +589,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementAST ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @fixitElementAST enum, associated values                                       *
+//                                  Phase 2: @fixitElementAST enum, associated values                                  *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -647,7 +647,7 @@ class cEnumAssociatedValues_fixitElementAST_fixItInsertBefore : public cEnumAsso
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                 @fixitListAST list                                                  *
+//                                             Phase 1: @fixitListAST list                                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -779,7 +779,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitListAST ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @fixitListAST_2D_element struct                                           *
+//                                       Phase 1: @fixitListAST_2D_element struct                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -841,7 +841,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitListAST_2D_ele
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                             @errorInstructionAST class                                              *
+//                                         Phase 1: @errorInstructionAST class                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -915,7 +915,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_errorInstructionAST
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    Pointer class for @errorInstructionAST class                                     *
+//                                Phase 2: pointer class for @errorInstructionAST class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -969,7 +969,7 @@ void extensionMethod_enterFixItListInSemanticContext (const class GALGAS_fixitLi
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @fixitElementForGeneration enum                                           *
+//                                       Phase 1: @fixitElementForGeneration enum                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1066,7 +1066,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitElementForGene
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 @fixitElementForGeneration enum, associated values                                  *
+//                             Phase 2: @fixitElementForGeneration enum, associated values                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1118,7 +1118,7 @@ class cEnumAssociatedValues_fixitElementForGeneration_fixItInsertAfter : public 
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @fixitListForGeneration list                                             *
+//                                        Phase 1: @fixitListForGeneration list                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1250,7 +1250,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_fixitListForGenerat
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @fixitListForGeneration_2D_element struct                                      *
+//                                  Phase 1: @fixitListForGeneration_2D_element struct                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1359,7 +1359,7 @@ void callExtensionMethod_generateExpression (const class cPtr_semanticExpression
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 @forInstructionEnumeratedObjectElementListAST list                                  *
+//                             Phase 1: @forInstructionEnumeratedObjectElementListAST list                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1510,7 +1510,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnume
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                           @forInstructionEnumeratedObjectElementListAST_2D_element struct                           *
+//                       Phase 1: @forInstructionEnumeratedObjectElementListAST_2D_element struct                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1581,7 +1581,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnume
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                       @abstractEnumeratedCollectionAST class                                        *
+//                                   Phase 1: @abstractEnumeratedCollectionAST class                                   *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1627,7 +1627,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractEnumeratedC
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              Pointer class for @abstractEnumeratedCollectionAST class                               *
+//                          Phase 2: pointer class for @abstractEnumeratedCollectionAST class                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1650,7 +1650,7 @@ class cPtr_abstractEnumeratedCollectionAST : public acPtr_class {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @enumeratedCollectionCstListInExpAST class                                      *
+//                                 Phase 1: @enumeratedCollectionCstListInExpAST class                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1723,7 +1723,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectio
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                            Pointer class for @enumeratedCollectionCstListInExpAST class                             *
+//                        Phase 2: pointer class for @enumeratedCollectionCstListInExpAST class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1765,7 +1765,7 @@ class cPtr_enumeratedCollectionCstListInExpAST : public cPtr_abstractEnumeratedC
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @forInstructionEnumeratedObjectListAST list                                     *
+//                                 Phase 1: @forInstructionEnumeratedObjectListAST list                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -1916,7 +1916,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnume
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                              @forInstructionEnumeratedObjectListAST_2D_element struct                               *
+//                          Phase 1: @forInstructionEnumeratedObjectListAST_2D_element struct                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2042,7 +2042,7 @@ void callExtensionMethod_analyzeEnumeration (const class cPtr_abstractEnumerated
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                @forInstructionEnumeratedObjectListForGeneration list                                *
+//                            Phase 1: @forInstructionEnumeratedObjectListForGeneration list                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2212,7 +2212,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnume
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                         @forInstructionEnumeratedObjectListForGeneration_2D_element struct                          *
+//                     Phase 1: @forInstructionEnumeratedObjectListForGeneration_2D_element struct                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2286,7 +2286,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionEnume
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                            @grammarInstructionSyntaxDirectedTranslationResultNone class                             *
+//                        Phase 1: @grammarInstructionSyntaxDirectedTranslationResultNone class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2338,7 +2338,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionS
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                   Pointer class for @grammarInstructionSyntaxDirectedTranslationResultNone class                    *
+//               Phase 2: pointer class for @grammarInstructionSyntaxDirectedTranslationResultNone class               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2364,7 +2364,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationResultNone : public cPtr_a
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                            @grammarInstructionSyntaxDirectedTranslationDropResult class                             *
+//                        Phase 1: @grammarInstructionSyntaxDirectedTranslationDropResult class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2422,7 +2422,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionS
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                   Pointer class for @grammarInstructionSyntaxDirectedTranslationDropResult class                    *
+//               Phase 2: pointer class for @grammarInstructionSyntaxDirectedTranslationDropResult class               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2452,7 +2452,7 @@ class cPtr_grammarInstructionSyntaxDirectedTranslationDropResult : public cPtr_a
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                  @incDecKind enum                                                   *
+//                                              Phase 1: @incDecKind enum                                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2519,7 +2519,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecKind ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                           @selfIncDecInstructionAST class                                           *
+//                                       Phase 1: @selfIncDecInstructionAST class                                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2575,7 +2575,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecInstructi
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  Pointer class for @selfIncDecInstructionAST class                                  *
+//                              Phase 2: pointer class for @selfIncDecInstructionAST class                             *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2606,7 +2606,7 @@ class cPtr_selfIncDecInstructionAST : public cPtr_semanticInstructionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @selfIncDecNoOVFInstructionAST class                                         *
+//                                    Phase 1: @selfIncDecNoOVFInstructionAST class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2662,7 +2662,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfIncDecNoOVFInst
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               Pointer class for @selfIncDecNoOVFInstructionAST class                                *
+//                           Phase 2: pointer class for @selfIncDecNoOVFInstructionAST class                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2693,7 +2693,7 @@ class cPtr_selfIncDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                               @ifExpressionKind enum                                                *
+//                                           Phase 1: @ifExpressionKind enum                                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2781,7 +2781,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionKind ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @ifExpressionKind enum, associated values                                      *
+//                                  Phase 2: @ifExpressionKind enum, associated values                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2823,7 +2823,7 @@ class cEnumAssociatedValues_ifExpressionKind_letExp : public cEnumAssociatedValu
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                               @ifExpressionList list                                                *
+//                                           Phase 1: @ifExpressionList list                                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -2955,7 +2955,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionList ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @ifExpressionList_2D_element struct                                         *
+//                                     Phase 1: @ifExpressionList_2D_element struct                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3017,7 +3017,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionList_2D
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                               @ifInstructionAST class                                               *
+//                                           Phase 1: @ifInstructionAST class                                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3100,7 +3100,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifInstructionAST ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      Pointer class for @ifInstructionAST class                                      *
+//                                  Phase 2: pointer class for @ifInstructionAST class                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3147,7 +3147,7 @@ class cPtr_ifInstructionAST : public cPtr_semanticInstructionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                              @ifTestForGeneration enum                                              *
+//                                          Phase 1: @ifTestForGeneration enum                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3233,7 +3233,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestForGeneration
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @ifTestForGeneration enum, associated values                                     *
+//                                Phase 2: @ifTestForGeneration enum, associated values                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3273,7 +3273,7 @@ class cEnumAssociatedValues_ifTestForGeneration_letExp : public cEnumAssociatedV
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @ifTestListForGeneration list                                            *
+//                                        Phase 1: @ifTestListForGeneration list                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3405,7 +3405,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestListForGenera
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @ifTestListForGeneration_2D_element struct                                      *
+//                                 Phase 1: @ifTestListForGeneration_2D_element struct                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3467,7 +3467,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifTestListForGenera
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @ifInstructionForGeneration class                                          *
+//                                      Phase 1: @ifInstructionForGeneration class                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3543,7 +3543,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifInstructionForGen
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                 Pointer class for @ifInstructionForGeneration class                                 *
+//                             Phase 2: pointer class for @ifInstructionForGeneration class                            *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3585,7 +3585,7 @@ class cPtr_ifInstructionForGeneration : public cPtr_semanticInstructionForGenera
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                                  @logListAST list                                                   *
+//                                              Phase 1: @logListAST list                                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3736,7 +3736,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logListAST ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @logListAST_2D_element struct                                            *
+//                                        Phase 1: @logListAST_2D_element struct                                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3804,7 +3804,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logListAST_2D_eleme
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                              @logInstructionAST class                                               *
+//                                          Phase 1: @logInstructionAST class                                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3863,7 +3863,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logInstructionAST ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Pointer class for @logInstructionAST class                                      *
+//                                 Phase 2: pointer class for @logInstructionAST class                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3894,7 +3894,7 @@ class cPtr_logInstructionAST : public cPtr_semanticInstructionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                              @loopInstructionAST class                                              *
+//                                          Phase 1: @loopInstructionAST class                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -3998,7 +3998,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionAST 
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     Pointer class for @loopInstructionAST class                                     *
+//                                 Phase 2: pointer class for @loopInstructionAST class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4061,7 +4061,7 @@ class cPtr_loopInstructionAST : public cPtr_semanticInstructionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                               @matchEntryListAST list                                               *
+//                                           Phase 1: @matchEntryListAST list                                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4231,7 +4231,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchEntryListAST ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @matchEntryListAST_2D_element struct                                         *
+//                                    Phase 1: @matchEntryListAST_2D_element struct                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4308,7 +4308,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchEntryListAST_2
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @matchInstructionBranchListAST list                                         *
+//                                     Phase 1: @matchInstructionBranchListAST list                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4497,7 +4497,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchInstructionBra
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                  @matchInstructionBranchListAST_2D_element struct                                   *
+//                              Phase 1: @matchInstructionBranchListAST_2D_element struct                              *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4580,7 +4580,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchInstructionBra
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                             @matchInstructionAST class                                              *
+//                                         Phase 1: @matchInstructionAST class                                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4657,7 +4657,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchInstructionAST
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    Pointer class for @matchInstructionAST class                                     *
+//                                Phase 2: pointer class for @matchInstructionAST class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4700,7 +4700,7 @@ class cPtr_matchInstructionAST : public cPtr_semanticInstructionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @matchListForGeneration list                                             *
+//                                        Phase 1: @matchListForGeneration list                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4870,7 +4870,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchListForGenerat
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                      @matchListForGeneration_2D_element struct                                      *
+//                                  Phase 1: @matchListForGeneration_2D_element struct                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -4947,7 +4947,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchListForGenerat
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @matchInstructionBranchListForGeneration list                                    *
+//                                Phase 1: @matchInstructionBranchListForGeneration list                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5098,7 +5098,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchInstructionBra
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                             @matchInstructionBranchListForGeneration_2D_element struct                              *
+//                         Phase 1: @matchInstructionBranchListForGeneration_2D_element struct                         *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5169,7 +5169,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchInstructionBra
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @matchInstructionForGeneration class                                         *
+//                                    Phase 1: @matchInstructionForGeneration class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5239,7 +5239,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_matchInstructionFor
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                               Pointer class for @matchInstructionForGeneration class                                *
+//                           Phase 2: pointer class for @matchInstructionForGeneration class                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5277,7 +5277,7 @@ class cPtr_matchInstructionForGeneration : public cPtr_semanticInstructionForGen
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                            @messageInstructionAST class                                             *
+//                                        Phase 1: @messageInstructionAST class                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5333,7 +5333,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_messageInstructionA
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   Pointer class for @messageInstructionAST class                                    *
+//                               Phase 2: pointer class for @messageInstructionAST class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5364,7 +5364,7 @@ class cPtr_messageInstructionAST : public cPtr_semanticInstructionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                         @selfAssignmentInstructionAST class                                         *
+//                                     Phase 1: @selfAssignmentInstructionAST class                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5420,7 +5420,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfAssignmentInstr
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                Pointer class for @selfAssignmentInstructionAST class                                *
+//                            Phase 2: pointer class for @selfAssignmentInstructionAST class                           *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5451,7 +5451,7 @@ class cPtr_selfAssignmentInstructionAST : public cPtr_semanticInstructionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @selfPlusEqualElementsInstructionAST class                                      *
+//                                 Phase 1: @selfPlusEqualElementsInstructionAST class                                 *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5510,7 +5510,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPlusEqualElemen
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                            Pointer class for @selfPlusEqualElementsInstructionAST class                             *
+//                        Phase 2: pointer class for @selfPlusEqualElementsInstructionAST class                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5541,7 +5541,7 @@ class cPtr_selfPlusEqualElementsInstructionAST : public cPtr_semanticInstruction
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @selfPlusEqualExpressionInstructionAST class                                     *
+//                                Phase 1: @selfPlusEqualExpressionInstructionAST class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5597,7 +5597,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPlusEqualExpres
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                           Pointer class for @selfPlusEqualExpressionInstructionAST class                            *
+//                       Phase 2: pointer class for @selfPlusEqualExpressionInstructionAST class                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5628,7 +5628,7 @@ class cPtr_selfPlusEqualExpressionInstructionAST : public cPtr_semanticInstructi
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    @selfMinusEqualExpressionInstructionAST class                                    *
+//                                Phase 1: @selfMinusEqualExpressionInstructionAST class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5684,7 +5684,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfMinusEqualExpre
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                           Pointer class for @selfMinusEqualExpressionInstructionAST class                           *
+//                       Phase 2: pointer class for @selfMinusEqualExpressionInstructionAST class                      *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5715,7 +5715,7 @@ class cPtr_selfMinusEqualExpressionInstructionAST : public cPtr_semanticInstruct
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @selfMulEqualExpressionInstructionAST class                                     *
+//                                 Phase 1: @selfMulEqualExpressionInstructionAST class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5771,7 +5771,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfMulEqualExpress
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                            Pointer class for @selfMulEqualExpressionInstructionAST class                            *
+//                        Phase 2: pointer class for @selfMulEqualExpressionInstructionAST class                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5802,7 +5802,7 @@ class cPtr_selfMulEqualExpressionInstructionAST : public cPtr_semanticInstructio
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                     @selfDivEqualExpressionInstructionAST class                                     *
+//                                 Phase 1: @selfDivEqualExpressionInstructionAST class                                *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5858,7 +5858,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfDivEqualExpress
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                            Pointer class for @selfDivEqualExpressionInstructionAST class                            *
+//                        Phase 2: pointer class for @selfDivEqualExpressionInstructionAST class                       *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -5889,7 +5889,7 @@ class cPtr_selfDivEqualExpressionInstructionAST : public cPtr_semanticInstructio
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                               @switchBranchesAST list                                               *
+//                                           Phase 1: @switchBranchesAST list                                          *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6078,7 +6078,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchBranchesAST ;
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                        @switchBranchesAST_2D_element struct                                         *
+//                                    Phase 1: @switchBranchesAST_2D_element struct                                    *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6161,7 +6161,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchBranchesAST_2
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                             @switchInstructionAST class                                             *
+//                                         Phase 1: @switchInstructionAST class                                        *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6235,7 +6235,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchInstructionAS
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                    Pointer class for @switchInstructionAST class                                    *
+//                                Phase 2: pointer class for @switchInstructionAST class                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6278,7 +6278,7 @@ class cPtr_switchInstructionAST : public cPtr_semanticInstructionAST {
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                          @switchBranchesForGeneration list                                          *
+//                                      Phase 1: @switchBranchesForGeneration list                                     *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
@@ -6467,7 +6467,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchBranchesForGe
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//                                   @switchBranchesForGeneration_2D_element struct                                    *
+//                               Phase 1: @switchBranchesForGeneration_2D_element struct                               *
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

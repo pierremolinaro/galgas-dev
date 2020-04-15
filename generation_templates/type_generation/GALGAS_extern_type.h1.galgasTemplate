@@ -1,6 +1,6 @@
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *
-//%!["@" + TYPE_NAME + " extern type" stringByLeftAndRightPadding !117 !' ']%*
+//%![" Phase 1: @" + TYPE_NAME + " extern type" stringByLeftAndRightPadding !117 !' ']%*
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //  Predeclarations (from GALGAS extern type declaration                     *
