@@ -2,7 +2,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2011, ..., 2015 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2011, ..., 2020 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -28,6 +28,7 @@
 #import "PMDebug.h"
 #import "PMUndoManager.h"
 #import "OC_GGS_Document.h"
+#import "OC_GGS_TextView.h"
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 

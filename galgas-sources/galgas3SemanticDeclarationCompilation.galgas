@@ -1,6 +1,6 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
-#  Copyright (C) 2016, ..., 2016 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2016, ..., 2020 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@ls2n.fr                                                                                           *
 #                                                                                                                      *
@@ -543,15 +543,6 @@ private proc generateFewImplementationFiles
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-#list @generationCompositionList {
-#  @stringset mInclusionSet1
-#  @string mHeaderString1
-#  @stringset mInclusionSet2
-#  @string mHeaderString2
-#  @stringset mImplementationInclusionSet
-#  @string mImplementationString
-#}
-
 private proc generateFewImplementationFilesWithFewHeaders
   ?let @unifiedTypeMap inUnifiedTypeMap
   ?let @string inProductDirectory
@@ -561,18 +552,12 @@ private proc generateFewImplementationFilesWithFewHeaders
   ?!@stringlist ioToolHeaderFileList
 {
   @headerCompositionMap headerCompositionMap = {}
-#  @generationCompositionList generationCompositionList = {}
   for () in inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
       @stringset inclusionSet1 = {}
       [mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerString1]
       @stringset inclusionSet2 = {}
       [mDeclaration appendDeclaration2 !inProductDirectory !?inclusionSet2 ?let @string headerString2]
-#      @stringset inclusionSet = {}
-#      [mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?var implementationString]
-#      implementationString += [mDeclaration appendTypeGenericImplementation]
-#      generationCompositionList += !inclusionSet1 !headerString1 !inclusionSet2 !headerString2 !inclusionSet !implementationString
-
       if [mDeclaration headerKind] != .noHeader then
         let headerFileName = [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == .twoHeaders then "-1" else "" end
         [!?headerCompositionMap insertKey
@@ -590,85 +575,6 @@ private proc generateFewImplementationFilesWithFewHeaders
       end
     end
   end
-#------------- all-declarations.cpp
-#  var fileIdx = 0
-#  var implementationAccumulatedString = ""
-#  var headerAccumulatedString1 = ""
-#  var headerAccumulatedString2 = ""
-#  var headerFileName = "all-declarations-" + fileIdx
-#  for (* headerString1 * headerString2 * implementationString) in generationCompositionList do
-#    headerAccumulatedString1 += headerString1
-#    headerAccumulatedString2 += headerString2
-#    implementationAccumulatedString += implementationString
-#    if [implementationAccumulatedString length] > 786432 then
-#    #--- Generate header file
-#      var header = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
-#        !headerFileName
-#        !if fileIdx == 0 then {} else {!"all-declarations-" + (fileIdx-1)} end
-#      ]
-#      header += headerAccumulatedString1
-#      header += headerAccumulatedString2
-#      [@string generateFile
-#        !inProductDirectory
-#        !headerFileName + ".h"
-#        !header
-#      ]
-#      ioAllProductFileSet += !headerFileName + ".h"
-#      ioToolHeaderFileList += !headerFileName + ".h"
-#    #--- Generate implementation file
-#      var cppContents = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-#        !{!"all-declarations-" + fileIdx}
-#      ]
-#      cppContents += implementationAccumulatedString
-#      let cppFileName = "all-declarations-" + fileIdx + ".cpp"
-#      [@string generateFile
-#        !inProductDirectory
-#        !cppFileName
-#        !cppContents
-#      ]
-#      ioToolProductFileList += !cppFileName
-#      ioAllProductFileSet += !cppFileName
-#     #--- Prepare for next generation
-#      fileIdx ++
-#      headerFileName = "all-declarations-" + fileIdx
-#      implementationAccumulatedString = ""
-#      headerAccumulatedString1 = ""
-#      headerAccumulatedString2 = ""
-#    end
-#  end
-##--- Last file ?
-#  if implementationAccumulatedString != "" then
-#    let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-#      !{!"all-declarations-" + fileIdx}
-#    ]
-#    let fileName = "all-declarations-" + fileIdx + ".cpp"
-#    ioToolProductFileList +=!fileName
-#    ioAllProductFileSet += !fileName
-#    [@string generateFile
-#      !inProductDirectory
-#      !fileName
-#      !header + implementationAccumulatedString
-#    ]
-#  #---
-#    ioAllProductFileSet += !headerFileName + ".h"
-#    ioToolHeaderFileList += !headerFileName + ".h"
-#    let startOfHeader = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
-#      !headerFileName
-#      !if fileIdx == 0 then {} else {!"all-declarations-" + (fileIdx-1)} end
-#    ]
-#    [@string generateFile
-#      !inProductDirectory
-#      !headerFileName + ".h"
-#      !startOfHeader + headerAccumulatedString1 + headerAccumulatedString2
-#    ]
-#  end
-
-
-
-
-
-
-
   @headerRepartitionMap headerRepartitionMap = {}
   var fileIdx = 0
   var implementationString = ""

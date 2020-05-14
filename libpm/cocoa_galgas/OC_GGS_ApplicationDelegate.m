@@ -2,7 +2,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2003, ..., 2015 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2003, ..., 2020 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -18,6 +18,7 @@
 //                                                                                                                     *
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+#import "OC_GGS_TextDisplayDescriptor.h"
 #import "OC_GGS_ApplicationDelegate.h"
 #import "OC_GGS_Document.h"
 #import "PMFontButton.h"

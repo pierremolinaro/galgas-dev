@@ -2,7 +2,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2011, ..., 2014 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2011, ..., 2020 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
 //                                                                                                                     *
@@ -40,6 +40,10 @@
 - (void) detachTextView ;
 
 - (void) setIssueArray: (NSArray *) inIssueArray ;
+
+- (void) indexingMenuAction: (id) inSender ;
+
+- (void) selectAllTokenCharacters: (id) inSender  ;
 @end
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*

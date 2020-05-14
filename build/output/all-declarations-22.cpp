@@ -1711,18 +1711,18 @@ static void extensionMethod_enumTypeForGeneration_appendDeclaration_31_ (const c
   macroValidSharedObject (object, cPtr_enumTypeForGeneration) ;
   GALGAS_bool var_hasAssociatedValues_12465 = GALGAS_bool (false) ;
   cEnumerator_enumConstantListForGeneration enumerator_12499 (object->mProperty_mConstantList, kENUMERATION_UP) ;
-  bool bool_0 = var_hasAssociatedValues_12465.operator_not (SOURCE_FILE ("type-enum.galgas", 316)).isValidAndTrue () ;
+  bool bool_0 = var_hasAssociatedValues_12465.operator_not (SOURCE_FILE ("type-enum.galgas", 317)).isValidAndTrue () ;
   if (enumerator_12499.hasCurrentObject () && bool_0) {
     while (enumerator_12499.hasCurrentObject () && bool_0) {
-      var_hasAssociatedValues_12465 = GALGAS_bool (kIsStrictSup, enumerator_12499.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("type-enum.galgas", 317)).objectCompare (GALGAS_uint ((uint32_t) 0U))) ;
+      var_hasAssociatedValues_12465 = GALGAS_bool (kIsStrictSup, enumerator_12499.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("type-enum.galgas", 318)).objectCompare (GALGAS_uint ((uint32_t) 0U))) ;
       enumerator_12499.gotoNextObject () ;
       if (enumerator_12499.hasCurrentObject ()) {
-        bool_0 = var_hasAssociatedValues_12465.operator_not (SOURCE_FILE ("type-enum.galgas", 316)).isValidAndTrue () ;
+        bool_0 = var_hasAssociatedValues_12465.operator_not (SOURCE_FILE ("type-enum.galgas", 317)).isValidAndTrue () ;
       }
     }
   }
-  outArgument_outHeader = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (inCompiler, object->mProperty_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 320)), object->mProperty_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 321)), object->mProperty_mConstantList, var_hasAssociatedValues_12465 COMMA_SOURCE_FILE ("type-enum.galgas", 319))) ;
-  outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, object->mProperty_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 326)), object->mProperty_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 327)), object->mProperty_mTypeProxy.getter_mIsConcrete (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 328)), object->mProperty_mTypeProxy.getter_mConstructorMap (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 329)), object->mProperty_mTypeProxy.getter_mGetterMap (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 330)), object->mProperty_mTypeProxy.getter_mSetterMap (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 331)), object->mProperty_mTypeProxy.getter_mInstanceMethodMap (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 332)), object->mProperty_mTypeProxy.getter_mClassMethodMap (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 333)), object->mProperty_mTypeProxy.getter_mEnumerationDescriptor (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 334)), object->mProperty_mTypeProxy.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 335)), object->mProperty_mTypeProxy.getter_mAddAssignOperatorArguments (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 336)), object->mProperty_mTypeProxy.getter_mTypeForEnumeratedElement (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 337)) COMMA_SOURCE_FILE ("type-enum.galgas", 325))), inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 325)) ;
+  outArgument_outHeader = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_31_ (inCompiler, object->mProperty_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 321)), object->mProperty_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 322)), object->mProperty_mConstantList, var_hasAssociatedValues_12465 COMMA_SOURCE_FILE ("type-enum.galgas", 320))) ;
+  outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, object->mProperty_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 327)), object->mProperty_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 328)), object->mProperty_mTypeProxy.getter_mIsConcrete (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 329)), object->mProperty_mTypeProxy.getter_mConstructorMap (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 330)), object->mProperty_mTypeProxy.getter_mGetterMap (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 331)), object->mProperty_mTypeProxy.getter_mSetterMap (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 332)), object->mProperty_mTypeProxy.getter_mInstanceMethodMap (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 333)), object->mProperty_mTypeProxy.getter_mClassMethodMap (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 334)), object->mProperty_mTypeProxy.getter_mEnumerationDescriptor (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 335)), object->mProperty_mTypeProxy.getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 336)), object->mProperty_mTypeProxy.getter_mAddAssignOperatorArguments (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 337)), object->mProperty_mTypeProxy.getter_mTypeForEnumeratedElement (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 338)) COMMA_SOURCE_FILE ("type-enum.galgas", 326))), inCompiler  COMMA_SOURCE_FILE ("type-enum.galgas", 326)) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -1752,13 +1752,13 @@ static void extensionMethod_enumTypeForGeneration_appendDeclaration_32_ (const c
   macroValidSharedObject (object, cPtr_enumTypeForGeneration) ;
   GALGAS_bool var_hasAssociatedValues_13594 = GALGAS_bool (false) ;
   cEnumerator_enumConstantListForGeneration enumerator_13628 (object->mProperty_mConstantList, kENUMERATION_UP) ;
-  bool bool_0 = var_hasAssociatedValues_13594.operator_not (SOURCE_FILE ("type-enum.galgas", 348)).isValidAndTrue () ;
+  bool bool_0 = var_hasAssociatedValues_13594.operator_not (SOURCE_FILE ("type-enum.galgas", 350)).isValidAndTrue () ;
   if (enumerator_13628.hasCurrentObject () && bool_0) {
     while (enumerator_13628.hasCurrentObject () && bool_0) {
-      var_hasAssociatedValues_13594 = GALGAS_bool (kIsStrictSup, enumerator_13628.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("type-enum.galgas", 349)).objectCompare (GALGAS_uint ((uint32_t) 0U))) ;
+      var_hasAssociatedValues_13594 = GALGAS_bool (kIsStrictSup, enumerator_13628.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("type-enum.galgas", 351)).objectCompare (GALGAS_uint ((uint32_t) 0U))) ;
       enumerator_13628.gotoNextObject () ;
       if (enumerator_13628.hasCurrentObject ()) {
-        bool_0 = var_hasAssociatedValues_13594.operator_not (SOURCE_FILE ("type-enum.galgas", 348)).isValidAndTrue () ;
+        bool_0 = var_hasAssociatedValues_13594.operator_not (SOURCE_FILE ("type-enum.galgas", 350)).isValidAndTrue () ;
       }
     }
   }
@@ -1766,12 +1766,12 @@ static void extensionMethod_enumTypeForGeneration_appendDeclaration_32_ (const c
   while (enumerator_13757.hasCurrentObject ()) {
     cEnumerator_unifiedTypeMapProxyList enumerator_13799 (enumerator_13757.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
     while (enumerator_13799.hasCurrentObject ()) {
-      extensionMethod_addHeaderFileName (enumerator_13799.current_mType (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 353)) ;
+      extensionMethod_addHeaderFileName_31_ (enumerator_13799.current_mType (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 355)) ;
       enumerator_13799.gotoNextObject () ;
     }
     enumerator_13757.gotoNextObject () ;
   }
-  outArgument_outHeader = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (inCompiler, object->mProperty_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 357)), object->mProperty_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 358)), object->mProperty_mConstantList, var_hasAssociatedValues_13594 COMMA_SOURCE_FILE ("type-enum.galgas", 356))) ;
+  outArgument_outHeader = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeHeader_32_ (inCompiler, object->mProperty_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 359)), object->mProperty_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 360)), object->mProperty_mConstantList, var_hasAssociatedValues_13594 COMMA_SOURCE_FILE ("type-enum.galgas", 358))) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
@@ -1799,20 +1799,20 @@ static void extensionMethod_enumTypeForGeneration_appendSpecificImplementation (
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   const cPtr_enumTypeForGeneration * object = (const cPtr_enumTypeForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_enumTypeForGeneration) ;
-  GALGAS_bool var_hasAssociatedValues_14367 = GALGAS_bool (false) ;
-  cEnumerator_enumConstantListForGeneration enumerator_14401 (object->mProperty_mConstantList, kENUMERATION_UP) ;
-  bool bool_0 = var_hasAssociatedValues_14367.operator_not (SOURCE_FILE ("type-enum.galgas", 371)).isValidAndTrue () ;
-  if (enumerator_14401.hasCurrentObject () && bool_0) {
-    while (enumerator_14401.hasCurrentObject () && bool_0) {
-      var_hasAssociatedValues_14367 = GALGAS_bool (kIsStrictSup, enumerator_14401.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("type-enum.galgas", 372)).objectCompare (GALGAS_uint ((uint32_t) 0U))) ;
-      enumerator_14401.gotoNextObject () ;
-      if (enumerator_14401.hasCurrentObject ()) {
-        bool_0 = var_hasAssociatedValues_14367.operator_not (SOURCE_FILE ("type-enum.galgas", 371)).isValidAndTrue () ;
+  GALGAS_bool var_hasAssociatedValues_14368 = GALGAS_bool (false) ;
+  cEnumerator_enumConstantListForGeneration enumerator_14402 (object->mProperty_mConstantList, kENUMERATION_UP) ;
+  bool bool_0 = var_hasAssociatedValues_14368.operator_not (SOURCE_FILE ("type-enum.galgas", 374)).isValidAndTrue () ;
+  if (enumerator_14402.hasCurrentObject () && bool_0) {
+    while (enumerator_14402.hasCurrentObject () && bool_0) {
+      var_hasAssociatedValues_14368 = GALGAS_bool (kIsStrictSup, enumerator_14402.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("type-enum.galgas", 375)).objectCompare (GALGAS_uint ((uint32_t) 0U))) ;
+      enumerator_14402.gotoNextObject () ;
+      if (enumerator_14402.hasCurrentObject ()) {
+        bool_0 = var_hasAssociatedValues_14368.operator_not (SOURCE_FILE ("type-enum.galgas", 374)).isValidAndTrue () ;
       }
     }
   }
-  extensionMethod_addHeaderFileName (object->mProperty_mTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 374)) ;
-  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementation (inCompiler, object->mProperty_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 376)), object->mProperty_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 377)), object->mProperty_mConstantList, var_hasAssociatedValues_14367 COMMA_SOURCE_FILE ("type-enum.galgas", 375))) ;
+  extensionMethod_addHeaderFileName (object->mProperty_mTypeProxy, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 377)) ;
+  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImplementation (inCompiler, object->mProperty_mTypeProxy.getter_key (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 379)), object->mProperty_mTypeProxy.getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-enum.galgas", 380)), object->mProperty_mConstantList, var_hasAssociatedValues_14368 COMMA_SOURCE_FILE ("type-enum.galgas", 378))) ;
 }
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
