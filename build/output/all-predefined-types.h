@@ -385,6 +385,8 @@ class GALGAS_string : public AC_GALGAS_root {
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_assemblerRepresentation (LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_cStringRepresentation (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_capacity (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_char getter_characterAtIndex (const class GALGAS_uint & constinOperand0,

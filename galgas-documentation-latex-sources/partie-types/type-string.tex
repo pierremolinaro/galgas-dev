@@ -466,6 +466,24 @@ let c = ["abcdef" containsCharacterInRange !'x' !'z'] # false
 
 
 
+
+
+
+\subsectionGetter{cStringRepresentation}{string}
+\begin{galgasbox}
+getter cStringRepresentation -> @string
+\end{galgasbox}
+
+Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, c'est-à-dire qu'un caractère « \texttt{"} » a été inséré au début et à la fin.
+
+Le caractère « \texttt{"} » est échappé en « \texttt{\textbackslash"} », le caractère « \texttt{\textbackslash} » est échappé en « \texttt{\textbackslash\textbackslash} ».
+
+
+
+
+
+
+
 \subsectionGetter{currentColumn}{string}
 
 \begin{galgasbox}
@@ -1540,6 +1558,8 @@ getter utf8Representation -> @string
 \end{galgasbox}
 
 Retourne la valeur du récepteur sous la forme d'une chaîne UTF-8, c'est-à-dire qu'un caractère « \texttt{"} » a été inséré au début et à la fin. Tous les 150 caractères, la séquence « \texttt{"\textbackslash n~~"} » est insérée.
+
+Les caractères non-ASCII sont échappés
 
 Le caractère « \texttt{"} » est échappé en « \texttt{\textbackslash"} », le caractère « \texttt{\textbackslash} » est échappé en « \texttt{\textbackslash\textbackslash} ».
 

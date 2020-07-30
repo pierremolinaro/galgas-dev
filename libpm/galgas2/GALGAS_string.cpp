@@ -560,6 +560,17 @@ GALGAS_string GALGAS_string::getter_utf_38_Representation (UNUSED_LOCATION_ARGS)
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+GALGAS_string GALGAS_string::getter_cStringRepresentation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    const C_String s = mString.utf8RepresentationEnclosedWithin ('"') ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
 GALGAS_string GALGAS_string::getter_utf_38_RepresentationEnclosedWithin (const GALGAS_char & inCharacter COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid () && inCharacter.isValid ()) {

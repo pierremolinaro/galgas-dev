@@ -308,24 +308,30 @@ private proc generateManyHeaders
       switch [mDeclaration headerKind]
       case noHeader :
         if headerIncludes1 != "" then
-          error ["" nowhere] : "'noHeader' setting for the '" + mMessage + "' declaration, and 'headerIncludes1' string is not empty"
+          error ["" nowhere]
+          : "'noHeader' setting for the '" + mMessage + "' declaration, and 'headerIncludes1' string is not empty"
         end
         if headerIncludes2 != "" then
-          error ["" nowhere] : "'noHeader' setting for the '" + mMessage + "' declaration, and 'headerIncludes2' string is not empty"
+          error ["" nowhere]
+          : "'noHeader' setting for the '" + mMessage + "' declaration, and 'headerIncludes2' string is not empty"
         end
       case oneHeader :
         if headerIncludes1 == "" then
-          error ["" nowhere] : "'oneHeader' setting for the '" + mMessage + "' declaration, and 'headerIncludes1' string is empty"
+          error ["" nowhere]
+          : "'oneHeader' setting for the '" + mMessage + "' declaration, and 'headerIncludes1' string is empty"
         end
         if headerIncludes2 != "" then
-          warning ["" nowhere] : "'oneHeader' setting for the '" + mMessage + "' declaration, and 'headerIncludes2' string is not empty"
+          warning ["" nowhere]
+          : "'oneHeader' setting for the '" + mMessage + "' declaration, and 'headerIncludes2' string is not empty"
         end
       case twoHeaders :
         if headerIncludes1 == "" then
-          warning ["" nowhere] : "'twoHeaders' setting for the '" + mMessage + "' declaration, and 'headerIncludes1' string is empty"
+          warning ["" nowhere]
+          : "'twoHeaders' setting for the '" + mMessage + "' declaration, and 'headerIncludes1' string is empty"
         end
         if headerIncludes2 == "" then
-          warning ["" nowhere] : "'twoHeaders' setting for the '" + mMessage + "' declaration, and 'headerIncludes2' string is empty"
+          warning ["" nowhere]
+          : "'twoHeaders' setting for the '" + mMessage + "' declaration, and 'headerIncludes2' string is empty"
         end
       end
     #--- Header 1
@@ -339,7 +345,8 @@ private proc generateManyHeaders
         headerString += "\n"
         headerString += "//" + @string.stringByRepeatingString {!"-" !118} + "\n\n"
         headerString += "#endif\n\n"
-        let headerFileName = [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == @headerKind.twoHeaders then "-1" else "" end
+        let headerFileName = [mDeclaration implementationCppFileName]
+           + if [mDeclaration headerKind] == @headerKind.twoHeaders then "-1" else "" end
         headerInclusionList1 += !headerFileName
         ioAllProductFileSet += !headerFileName + ".h"
         ioToolHeaderFileList += !headerFileName + ".h"

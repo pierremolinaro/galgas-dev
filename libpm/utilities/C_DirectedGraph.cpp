@@ -144,13 +144,19 @@ uint32_t C_DirectedGraph::unusedNodeIndex (void) const {
 C_String C_DirectedGraph::graphvizString (const TC_UniqueArray <C_String> & inNodeNameArray) const {
   C_String s = "digraph G {\n" ;
   for (int32_t i=0 ; i<mEdges.count () ; i++) {
-    if (isNodeDefined ((uint32_t) i)) {
-      s << "  \"" << inNodeNameArray (i COMMA_HERE) << "\" [shape=rectangle] ;\n" ;
+    if (isNodeDefined (uint32_t (i))) {
+      s << "  "
+        << inNodeNameArray (i COMMA_HERE).utf8RepresentationEnclosedWithin ('"')
+        << " [shape=rectangle] ;\n" ;
       const C_UIntSet targetSet = mEdges (i COMMA_HERE) ;
       TC_UniqueArray <uint32_t> targetList ; targetSet.getValueArray (targetList) ;
       for (int32_t j=0 ; j<targetList.count () ; j++) {
         const uint32_t targetIndex = targetList (j COMMA_HERE) ;
-        s << "  \"" << inNodeNameArray (i COMMA_HERE) << "\" -> \"" << inNodeNameArray ((int32_t) targetIndex COMMA_HERE) << "\" ;\n" ;
+        s << "  "
+          << inNodeNameArray (i COMMA_HERE).utf8RepresentationEnclosedWithin ('"')
+          << " -> "
+          << inNodeNameArray (int32_t (targetIndex) COMMA_HERE).utf8RepresentationEnclosedWithin ('"')
+          << " ;\n" ;
       }
     }
   }
