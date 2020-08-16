@@ -97,7 +97,7 @@ end
   %//                                                                                                                     *\n%
   %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   for () in mLabels do
-    %static const UInt16 gPopUpData_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation locationIndex] string]% [%![ 2 * [mTerminalList length] + 2 string]%] = {\n%
+    %static const UInt16 gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation locationIndex] string]% [%![ 2 * [mTerminalList length] + 2 string]%] = {\n%
     %  %![mLeadingCharacterStrippedCount string]%, // Leading character count to strip\n%
       for () in mTerminalList do
         %  %!mLexiqueClassName%_1_%![mTerminal identifierRepresentation]%, %![mDisplayFlags string]%,\n%
@@ -105,9 +105,9 @@ end
     %  0\n%
     %} ;\n\n%
   end
-  %static const UInt16 * gPopUpData_%![mLexiqueClassName identifierRepresentation]% [%![[mLabels length] + 1 string]%] = {\n%
+  %static const UInt16 * gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]% [%![[mLabels length] + 1 string]%] = {\n%
   for () in mLabels do
-    %  gPopUpData_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation locationIndex] string]%,\n%
+    %  gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation locationIndex] string]%,\n%
   end
     %  NULL\n%
     %} ;\n\n%
@@ -116,7 +116,7 @@ end
   %//                            Lexique interface                                                                        *\n%
   %//                                                                                                                     *\n%
   %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
-  %@interface OC_Tokenizer_%!mLexiqueClassName% : OC_Lexique_%!mLexiqueClassName% {\n\n%
+  %@interface OC_Tokenizer_%![mIndex string]%_%!mLexiqueClassName% : OC_Lexique_%!mLexiqueClassName% {\n\n%
   %}\n\n%
   %- (NSString *) blockComment ;\n\n%
   %- (const UInt16 * *) popupListData ;\n\n%
@@ -126,14 +126,14 @@ end
   %- (NSString *) tabItemTitle ;\n\n%
   %@end\n\n%
   %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
-  %@implementation OC_Tokenizer_%!mLexiqueClassName%\n\n%
+  %@implementation OC_Tokenizer_%![mIndex string]%_%!mLexiqueClassName%\n\n%
   %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %- (NSString *) blockComment {\n%
   %  return @%![mBlockComment utf8Representation]% ;\n%
   %}\n\n%
   %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %- (const UInt16 * *) popupListData {\n%
-  %  return gPopUpData_%![mLexiqueClassName identifierRepresentation]% ;\n%
+  %  return gPopUpData_%![mIndex string]%_%![mLexiqueClassName identifierRepresentation]% ;\n%
   %}\n\n%
   %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
   %- (NSUInteger) textMacroCount {\n%
@@ -175,7 +175,7 @@ OC_Lexique * tokenizerForExtension (const NSString * inExtension) {
 for () in [GUI_CONTEXT mExtensionMap]
   before %  if%
   do % ([inExtension isEqualToString:@%![lkey utf8Representation]%]) {\n%
-     %    result = [OC_Tokenizer_%!mLexiqueName% new] ;\n%
+     %    result = [OC_Tokenizer_%![mIndex string]%_%!mLexiqueName% new] ;\n%
   between %  }else if%
   after %  }\n%
 end
@@ -187,7 +187,7 @@ end
 NSArray * tokenizers (void) {
   return [NSArray arrayWithObjects:
 %for () in [GUI_CONTEXT mWithLexiqueList] do
-  %    [OC_Tokenizer_%!mLexiqueClassName% new],\n%
+  %    [OC_Tokenizer_%![mIndex string]%_%!mLexiqueClassName% new],\n%
 end
 %    nil
   ] ;

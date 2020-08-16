@@ -95,6 +95,8 @@ class cSharedMapRoot : public C_SharedObject {
                                                          const char * inSearchErrorMessage
                                                          COMMA_LOCATION_ARGS) const ;
 
+  protected : VIRTUAL_IN_DEBUG const cMapElement * searchForKey (const GALGAS_string & inKey) const ;
+
   protected : VIRTUAL_IN_DEBUG const cMapElement * searchForReadingAttribute (const GALGAS_string & inKey,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const ;
@@ -1153,6 +1155,37 @@ const cCollectionElement * AC_GALGAS_map::performSearch (const GALGAS_lstring & 
     if (NULL != node) {
       result = node->mAttributes.ptr () ;
     }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark searchForKey
+#endif
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const cMapElement * cSharedMapRoot::searchForKey (const GALGAS_string & inKey) const {
+  const cMapElement * result = NULL ;
+  if (inKey.isValid ()) {
+    const C_String key = inKey.stringValue () ;
+    cMapNode * node = findEntryInMap (key, this) ;
+    if (NULL != node) {
+      result = (const cMapElement *) node->mAttributes.ptr () ;
+      macroValidSharedObject (result, cMapElement) ;
+    }
+  }
+  return result ;
+}
+
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+
+const cMapElement * AC_GALGAS_map::searchForKey (const GALGAS_string & inKey) const {
+  const cMapElement * result = NULL ;
+  if (isValid ()) {
+    result = mSharedMap->searchForKey (inKey) ;
   }
   return result ;
 }

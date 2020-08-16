@@ -30,7 +30,8 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext {
+  ?!@semanticContext ioSemanticContext
+{
 #--- Check associated map is really a map
   [ioSemanticContext.mTypeMap searchKey
     !mAssociatedMapTypeName
@@ -38,7 +39,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ?var @typeKindEnum typeKindEnum
     ?3*
     ?var @typedPropertyList mapTypedAttributeList
-    ?10*
+    ?11*
     ?var @mapSearchMethodListAST searchMethodList
     ?6*
   ]
@@ -47,6 +48,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     mapTypedAttributeList = {}
   end
 #---
+  let optionalMethodMap = @optionalMethodMap {}
   @constructorMap constructorMap = {}
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
   @setterMap setterMap = {}
@@ -199,6 +201,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !setterMap
     !instanceMethodMap
     !classMethodMap
+    !optionalMethodMap
     !{}
     !.doNotGenererateObjectCompare
     !{}
@@ -234,7 +237,7 @@ override method @mapProxyDeclarationAST semanticAnalysis
     !mAssociatedMapTypeName
     ?7*
     ?let @typedPropertyList listTypeAttributeList
-    ?10*
+    ?11*
     ?let @mapSearchMethodListAST searchMethodList
     ?6*
   ]
@@ -296,6 +299,7 @@ override method @mapProxyTypeForGeneration appendDeclaration1
     ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mOptionalMethodMap]
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]

@@ -208,13 +208,12 @@ override method @getterCallExpressionForGeneration generateExpression
 #--- Reader operands
   @stringlist getterArgumentCppNameList = {}
   for () in mExpressions do
-    @string argumentCppName
     [mExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
-      ?argumentCppName
+      ?let argumentCppName
     ]
     getterArgumentCppNameList += !argumentCppName
   end

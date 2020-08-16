@@ -352,6 +352,24 @@ for () in GETTER_MAP do
 end
 
 %
+//--------------------------------- Optional Methods
+%
+for () in OPTIONAL_METHOD_MAP do
+   %  public : VIRTUAL_IN_DEBUG bool optional_% ![[lkey string] identifierRepresentation] % (%?^
+  for () in mArgumentTypeList
+    do index IDX
+      if mInputArgument then
+        %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]
+      else
+        %class GALGAS_%![mFormalArgumentType identifierRepresentation]% & outOperand% ![IDX string]
+      end
+    between
+      %,\n% !^
+  end
+  %) const ;\n\n%
+end
+
+%
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 %

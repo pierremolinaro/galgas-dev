@@ -160,6 +160,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
     !setterMap
     !instanceMethodMap
     !{}
+    !@optionalMethodMap {}
     !{}
     !operators
     !{}
@@ -249,6 +250,7 @@ override method @boolsetTypeForGeneration appendDeclaration1
     ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mOptionalMethodMap]
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]

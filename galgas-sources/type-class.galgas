@@ -154,7 +154,7 @@ override method @classDeclarationAST enterInSemanticContext
       ?inheritedGetterMap
       ?inheritedSetterMap
       ?inheritedMethodMap
-      ?8*
+      ?9*
       ?generateHeaderInSeparateFile
       ?4*
     ]
@@ -336,6 +336,7 @@ override method @classDeclarationAST enterInSemanticContext
     !setterMap
     !instanceMethodMap
     !{}
+    !@optionalMethodMap {}
     !{}
     !.none
     !{}
@@ -517,6 +518,7 @@ override method @classTypeForGeneration appendDeclaration1
     ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mOptionalMethodMap]
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]

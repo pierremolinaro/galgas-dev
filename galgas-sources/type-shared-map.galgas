@@ -342,6 +342,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 {
+  let optionalMethodMap = @optionalMethodMap {}
 #--- string type index
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
 #--- lstring type index
@@ -638,6 +639,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !setterMap
     !instanceMethodMap
     !{}
+    !optionalMethodMap
     !enumerationDescriptor
     !.doNotGenererateObjectCompare | .supportWithAccessor
     !{}
@@ -1183,6 +1185,7 @@ override method @sharedMapTypeForGeneration appendDeclaration1
     ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mOptionalMethodMap]
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]

@@ -784,6 +784,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@setterMap MODIFIER_MAP
     ?@instanceMethodMap INSTANCE_METHOD_MAP
     ?@classMethodMap CLASS_METHOD_MAP
+    ?@optionalMethodMap OPTIONAL_METHOD_MAP
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
     ?@operators SUPPORTED_OPERATORS
     ?@functionSignature ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
@@ -1635,6 +1636,7 @@ override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
     ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mOptionalMethodMap]
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]

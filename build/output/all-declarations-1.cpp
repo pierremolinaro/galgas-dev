@@ -271,7 +271,23 @@ GALGAS_string cEnumerator_templateVariableMap::current_mCppName (LOCATION_ARGS) 
   return p->mProperty_mCppName ;
 }
 
+//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 
+bool GALGAS_templateVariableMap::optional_searchKey (const GALGAS_string & inKey,
+                                                     GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                                     GALGAS_string & outArgument1) const {
+  const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) searchForKey (inKey) ;
+  const bool result = NULL != p ;
+  if (result) {
+    macroValidSharedObject (p, cMapElement_templateVariableMap) ;
+    outArgument0 = p->mProperty_mTypeProxy ;
+    outArgument1 = p->mProperty_mCppName ;
+  }else{
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+  }
+  return result ;
+}
 
 //—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
 //                                                                                                                     *

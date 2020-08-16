@@ -242,6 +242,7 @@ override method @predefinedTypeAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 {
+  let optionalMethodMap = @optionalMethodMap {}
   [self getConstructorMap !?ioSemanticContext.mTypeMap ?var @constructorMap constructorMap]
   [self getGetterMap !?ioSemanticContext.mTypeMap ?var @getterMap getterMap]
   [self getSetterMap !?ioSemanticContext.mTypeMap ?var @setterMap setterMap]
@@ -292,6 +293,7 @@ override method @predefinedTypeAST enterInSemanticContext
     !setterMap
     !instanceMethodMap
     !classMethodMap
+    !optionalMethodMap
     !enumerationList
     ![self getSupportedOperatorFlags]
     !addAssignArgumentList

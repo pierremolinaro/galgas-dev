@@ -304,6 +304,7 @@ override method @listDeclarationAST enterInSemanticContext
     !setterMap
     !instanceMethodMap
     !{}
+    !@optionalMethodMap {}
     !enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithExpression | .infixAddOperator
     !constructorAttributeTypeList
@@ -457,6 +458,7 @@ override method @listTypeForGeneration appendDeclaration1
     ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mOptionalMethodMap]
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]

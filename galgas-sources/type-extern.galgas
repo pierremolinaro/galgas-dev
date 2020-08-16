@@ -304,6 +304,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     !setterMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
+    !@optionalMethodMap {}
     !{}
     !.none
     !{}
@@ -375,6 +376,7 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
     ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mOptionalMethodMap]
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]

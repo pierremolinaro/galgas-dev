@@ -52,6 +52,7 @@ list @guiCommandLineOptionList {
 
 map @extensionMap {
   @string mLexiqueName
+  @uint mIndex
   insert insertKey error message "the '%K' extension is already declared in %L"
 }
 
@@ -66,6 +67,7 @@ list @textMacroList {
 
 list @importedLexiqueList {
   @string mLexiqueClassName
+  @uint mIndex
   @string mBlockComment
   @string mTitle
   @textMacroList mTextMacroList
@@ -289,7 +291,7 @@ private proc guiComponentSemanticAnalysis
     end
   end
 #--- 'with lexique' construct analysis
-  for () in inGUIComponentAST.mWithLexiqueList do
+  for () in inGUIComponentAST.mWithLexiqueList do (idx)
   #--- Check lexique
     [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
       !mLexiqueFileName
@@ -327,7 +329,7 @@ private proc guiComponentSemanticAnalysis
     @string blockComment = ""
     for () in mSimpleAttributes do
       if [mKey string] == "fileExtension" then
-        [!?context.mExtensionMap insertKey !mValue !mLexiqueFileName.string]
+        [!?context.mExtensionMap insertKey !mValue !mLexiqueFileName.string !idx]
         hasAssociatedExtension = true
       elsif [mKey string] == "title" then
         if hasTabViewTitle then
@@ -356,6 +358,7 @@ private proc guiComponentSemanticAnalysis
   #---
     context.mWithLexiqueList +=
       !mLexiqueFileName.string
+      !idx
       !blockComment
       !tabViewTitle
       !textMacroList

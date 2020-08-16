@@ -166,6 +166,12 @@ override method @dictDeclarationAST enterInSemanticContext
     !keyTypeIndex
     !@formalArgumentPassingModeAST.argumentConstantIn
     !"inKey"
+  @optionalMethodSignature optionalMethodSignature = {}
+  optionalMethodSignature +=
+    !true
+    ![if usesSelectorsInInsertAndSearch then "key" else "" end nowhere]
+    !keyTypeIndex
+    !"inKey"
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapProxyList.emptyList
   for () in mPropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
@@ -185,6 +191,11 @@ override method @dictDeclarationAST enterInSemanticContext
       !if usesSelectorsInInsertAndSearch then mPropertyName else ["" nowhere] end
       !attributeTypeIndex
       !@formalArgumentPassingModeAST.argumentOut
+      !mPropertyName.string
+    optionalMethodSignature +=
+      !false
+      !if usesSelectorsInInsertAndSearch || hasSelector then mPropertyName else ["" nowhere] end
+      !attributeTypeIndex
       !mPropertyName.string
   end
 #--- Handle remove setter
@@ -261,6 +272,9 @@ override method @dictDeclarationAST enterInSemanticContext
     !@lstring.new {!mDictTypeName.string + elementTypeNameSuffix () !mDictTypeName.location}
     ?let @unifiedTypeMap-proxy elementTypeProxy
   ]
+#--- Add Optional method
+  var optionalMethodMap = @optionalMethodMap {}
+  [!?optionalMethodMap insertKey !["searchKey" nowhere] !optionalMethodSignature]
 #--- Enter in type map
   [!?ioSemanticContext.mTypeMap insertKey
     !mDictTypeName
@@ -277,6 +291,7 @@ override method @dictDeclarationAST enterInSemanticContext
     !setterMap
     !instanceMethodMap
     !{}
+    !optionalMethodMap
     !enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithFieldListNeedsCompilerArg
     !argumentTypeListForAddAssignWithFieldExpressionList
@@ -421,6 +436,7 @@ override method @dictTypeForGeneration appendDeclaration1
     ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mOptionalMethodMap]
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
@@ -428,24 +444,6 @@ override method @dictTypeForGeneration appendDeclaration1
   ]
 }
 
-##———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#
-#override method @dictTypeForGeneration appendDeclaration2
-#  ?let @string unused inOutputDirectory
-#  ?!@stringset ioInclusionSet
-#  !@string outHeader {
-#  for (t ...) in mTypedAttributeList do
-#    [t addHeaderFileName1 !?ioInclusionSet]
-#  end
-#
-#  outHeader = [filewrapper typeGenerationTemplate.dictTypeHeader2
-#    ![mTypeProxy key]
-#    ![mTypeProxy identifierRepresentation]
-#    !mTypedAttributeList
-#    ![mKeyTypeName identifierRepresentation]
-#  ]
-#}
-#
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @dictTypeForGeneration appendSpecificImplementation

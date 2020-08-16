@@ -67,6 +67,28 @@ enum @methodKind {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#
+#  OPTIONAL METHOD MAP
+#
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+list @optionalMethodSignature {
+  @bool mInputArgument # true -> input, false -> output
+  @lstring mFormalSelector
+  @unifiedTypeMap-proxy mFormalArgumentType
+  @string mFormalArgumentName
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+map @optionalMethodMap {
+  @optionalMethodSignature mArgumentTypeList
+ 
+  insert insertKey error message "the '%K' optional method is already declared"
+  search searchKey error message "the '%K' optional method is not declared"
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #                                                                                                                      *
 #  R E A D E R    M A P                                                                                                *
 #                                                                                                                      *
@@ -333,6 +355,7 @@ shared map @unifiedTypeMap {
   @setterMap mSetterMap
   @instanceMethodMap mInstanceMethodMap
   @classMethodMap mClassMethodMap
+  @optionalMethodMap mOptionalMethodMap
   @enumerationDescriptorList mEnumerationDescriptor # Empty List if cannot be enumerated
   @operators mHandledOperatorFlags
   @functionSignature mAddAssignOperatorArguments # Empty list if += operator is not supported

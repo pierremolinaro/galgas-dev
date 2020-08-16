@@ -200,6 +200,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !setterMap
     !instanceMethodMap
     !{}
+    !@optionalMethodMap {}
     !@enumerationDescriptorList.emptyList
     !.none
     !@functionSignature.emptyList # addAssignOperatorDescription
@@ -271,6 +272,7 @@ override method @arrayTypeForGeneration appendDeclaration1
     ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mOptionalMethodMap]
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]

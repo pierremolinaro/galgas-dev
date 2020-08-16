@@ -77,7 +77,9 @@ override method @structDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext {
+  ?!@semanticContext ioSemanticContext
+{
+  let optionalMethodMap = @optionalMethodMap {}
 #--- Struct type index
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mStructTypeName ?let structTypeIndex]
 #--- Constructors and property map
@@ -171,6 +173,7 @@ override method @structDeclarationAST enterInSemanticContext
     !setterMap
     !instanceMethodMap
     !{}
+    !optionalMethodMap
     !@enumerationDescriptorList.emptyList
     !.generateDescriptionGetterUtilityMethod
     !@functionSignature.emptyList
@@ -307,6 +310,7 @@ override method @structTypeForGeneration appendDeclaration1
     ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mOptionalMethodMap]
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]

@@ -749,5 +749,26 @@ GALGAS_%!KEY_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCAT
   %  return p->mElement.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   %}\n\n%
 end 
-%
-
+%//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
+%bool GALGAS_%!TYPE_IDENTIFIER%::optional_searchKey (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey%
+for () in ATTRIBUTE_LIST
+  do index IDX %,\n%!^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outArgument%![IDX string]
+end
+%) const {\n%
+%  const cNode_%!TYPE_IDENTIFIER% * p = NULL ;\n%
+%  if ((mSharedDict != NULL) && inKey.isValid ()) {\n%
+%    p = (const cNode_%!TYPE_IDENTIFIER% *) mSharedDict->findEntryInDict (inKey) ;\n%
+%  }\n%
+%  const bool result = NULL != p ;\n%
+%  if (result) {\n%
+%    macroValidSharedObject (p, cNode_%!TYPE_IDENTIFIER%) ;\n%
+for () in ATTRIBUTE_LIST do index IDX
+  %    outArgument%![IDX string]% = p->mProperty_%![mPropertyName identifierRepresentation]% ;\n%
+end
+%  }else{\n%
+for () in ATTRIBUTE_LIST do index IDX
+  %    outArgument%![IDX string]%.drop () ;\n%
+end
+%  }\n%
+%  return result ;\n%
+%}\n\n%

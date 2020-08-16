@@ -403,6 +403,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !setterMap
     !instanceMethodMap
     !@classMethodMap. emptyMap
+    !@optionalMethodMap {}
     !@enumerationDescriptorList.emptyList
     !. doNotGenererateObjectCompare
     !@functionSignature.emptyList
@@ -491,6 +492,7 @@ override method @graphDeclarationForGeneration appendDeclaration1
     ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mOptionalMethodMap]
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]

@@ -115,7 +115,9 @@ override method @sortedListDeclarationAST enterInSemanticContext
   ?let @extensionMethodMapForBuildingContext inExtensionMethodMapForBuildingContext
   ?let @extensionGetterMapForBuildingContext inExtensionGetterMapForBuildingContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
-  ?!@semanticContext ioSemanticContext {
+  ?!@semanticContext ioSemanticContext
+{
+  let optionalMethodMap = @optionalMethodMap {}
 #--- Type index
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mSortedListTypeName ?let listTypeIndex]
 #--- Element type index
@@ -228,6 +230,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !setterMap
     !instanceMethodMap
     !{}
+    !optionalMethodMap
     !enumerationDescriptor
     !.doNotGenererateObjectCompare | .plusEqualOperatorWithExpression
     !constructorAttributeTypeList
@@ -353,6 +356,7 @@ override method @sortedListTypeForGeneration appendDeclaration1
     ![mTypeProxy mSetterMap]
     ![mTypeProxy mInstanceMethodMap]
     ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mOptionalMethodMap]
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
