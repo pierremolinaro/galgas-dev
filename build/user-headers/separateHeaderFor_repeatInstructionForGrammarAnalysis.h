@@ -2,11 +2,11 @@
 
 
 //--- END OF USER ZONE 1
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                        Phase 2: pointer class for @repeatInstructionForGrammarAnalysis class                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @repeatInstructionForGrammarAnalysis class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstructionForGrammarAnalysis {
 //--- START OF USER ZONE 2

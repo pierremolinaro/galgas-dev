@@ -2,11 +2,11 @@
 
 
 //--- END OF USER ZONE 1
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                      Phase 2: pointer class for @nonTerminalInstructionForGrammarAnalysis class                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @nonTerminalInstructionForGrammarAnalysis class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_nonTerminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstructionForGrammarAnalysis {
 //--- START OF USER ZONE 2

@@ -1,37 +1,35 @@
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//  Pure BNF production rules list                                                                                     *
-//                                                                                                                     *
-//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                                                                     *
-//                                                                                                                     *
-//  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
-//                                                                                                                     *
-//  LS2N, Laboratoire des Sciences du Numérique de Nantes, ECN, École Centrale de Nantes (France)                      *
-//                                                                                                                     *
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  Pure BNF production rules list                                                               
+//
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.
+//
+//  e-mail : pcmolinaro@free.fr
+//
 //  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
-//  License as published by the Free Software Foundation.                                                              *
-//                                                                                                                     *
-//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
-//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
-//  more details.                                                                                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//  License as published by the Free Software Foundation.                                        
+//
+//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+//  more details.
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 #pragma once
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "collections/TC_FIFO.h"
 #include "bdd/C_Relation.h"
 #include "strings/C_String.h"
 #include "utilities/TF_Swap.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cVocabulary ;
 class C_TextFileWrite ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cProduction {
   private : C_String mSourceFileName ;
@@ -84,7 +82,7 @@ class cProduction {
 } ;
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPureBNFproductionsList : public TC_FIFO <cProduction> {
   public : TC_UniqueArray <int32_t> tableauIndicePremiereProduction ;
@@ -100,4 +98,4 @@ class cPureBNFproductionsList : public TC_FIFO <cProduction> {
   public : cPureBNFproductionsList (void) ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------

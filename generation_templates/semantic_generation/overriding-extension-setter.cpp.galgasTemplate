@@ -1,18 +1,18 @@
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//%!["Overriding extension setter '@" + CLASS_NAME + " " + MODIFIER_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//%!"Overriding extension setter '@" + CLASS_NAME + " " + MODIFIER_NAME + "'"%
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 %!MODIFIER_IMPLEMENTATION%
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (void) {
   enterExtensionSetter_%![MODIFIER_NAME identifierRepresentation]% (%?^%kTypeDescriptor_GALGAS_%![CLASS_NAME identifierRepresentation]%.mSlotID,
         %!^%extensionSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (defineExtensionSetter_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%, NULL) ;
 

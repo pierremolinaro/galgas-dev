@@ -1,24 +1,22 @@
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//  Copyright (C) 2017, ..., 2018 Pierre Molinaro.                                                                     *
-//                                                                                                                     *
-//  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
-//                                                                                                                     *
-//  LS2N, Laboratoire des Sciences du Numérique de Nantes, ECN, École Centrale de Nantes (France)                      *
-//                                                                                                                     *
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  Copyright (C) 2017, ..., 2018 Pierre Molinaro.
+//
+//  e-mail : pcmolinaro@free.fr
+//
 //  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
-//  License as published by the Free Software Foundation.                                                              *
-//                                                                                                                     *
-//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
-//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
-//  more details.                                                                                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//  License as published by the Free Software Foundation.                                        
+//
+//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+//  more details.
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "all-declarations.h"
 #include "strings/unicode_character_base.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 
 static void displayUnicodeCharacterRange (bool (*inFunction) (const utf32 inUnicodeCharacter),
@@ -59,7 +57,7 @@ static void displayUnicodeCharacterRange (bool (*inFunction) (const utf32 inUnic
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void routine_displayUnicodeLexicalTestFunctions (C_Compiler * COMMA_UNUSED_LOCATION_ARGS) {
   displayUnicodeCharacterRange (isUnicodeLetter, "isUnicodeLetter") ;
@@ -77,4 +75,4 @@ void routine_displayUnicodeLexicalTestFunctions (C_Compiler * COMMA_UNUSED_LOCAT
   displayUnicodeCharacterRange (isUnicodeCommand, "isUnicodeCommand") ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------

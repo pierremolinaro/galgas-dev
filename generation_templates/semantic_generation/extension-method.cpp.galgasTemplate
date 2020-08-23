@@ -1,19 +1,19 @@
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//%!["Extension method '@" + CLASS_NAME + " " + METHOD_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//%!"Extension method '@" + CLASS_NAME + " " + METHOD_NAME + "'"%
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <extensionMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%> gExtensionMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
                %!^%extensionMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% inMethod) {
   gExtensionMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   for () in FORMAL_ARGUMENT_LIST do
@@ -75,23 +75,23 @@ void callExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cP
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 %!METHOD_IMPLEMENTATION%
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void defineExtensionMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (void) {
   enterExtensionMethod_%![METHOD_NAME identifierRepresentation]% (%?^%kTypeDescriptor_GALGAS_%![CLASS_NAME identifierRepresentation]%.mSlotID,
         %!^%extensionMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (void) {
   gExtensionMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (%?^%defineExtensionMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%,
        %!^%freeExtensionMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%) ;

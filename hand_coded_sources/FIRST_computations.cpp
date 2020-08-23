@@ -1,33 +1,31 @@
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//  Perform FIRST computations for pure BNF grammar.                                                                   *
-//                                                                                                                     *
-//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                                                                     *
-//                                                                                                                     *
-//  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
-//                                                                                                                     *
-//  LS2N, Laboratoire des Sciences du Numérique de Nantes, ECN, École Centrale de Nantes (France)                      *
-//                                                                                                                     *
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  Perform FIRST computations for pure BNF grammar.                                             
+//
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.
+//
+//  e-mail : pcmolinaro@free.fr
+//
 //  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
-//  License as published by the Free Software Foundation.                                                              *
-//                                                                                                                     *
-//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
-//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
-//  more details.                                                                                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//  License as published by the Free Software Foundation.                                        
+//
+//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+//  more details.
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "strings/C_HTMLString.h"
 #include "bdd/C_Relation.h"
 #include "collections/TC_Array2.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "FIRST_computations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static C_Relation
 computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
@@ -69,7 +67,7 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
   return FIRST ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static bool
 displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
@@ -184,7 +182,7 @@ displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
   return ntInErrorCount == 0 ; 
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
@@ -230,5 +228,5 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                                    inVerboseOptionOn) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 

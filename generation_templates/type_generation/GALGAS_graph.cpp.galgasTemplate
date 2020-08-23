@@ -1,14 +1,14 @@
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//%!["'@" + TYPE_IDENTIFIER + "' graph" stringByLeftAndRightPadding !117 !' ']%*
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//%!"'@" + TYPE_IDENTIFIER + "' graph"%
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_graph () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyGraph (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
@@ -17,7 +17,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyGraph (LOC
 }
 
 %for () in INSERT_MODIFIER_LIST do
-%//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+%//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::setter_%![mInsertModifierName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
   for () in [ASSOCIATED_LIST_TYPE mAddAssignOperatorArguments] do index IDX
@@ -38,7 +38,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::setter_%![mInsertModifierName identifierRepresen
 %
 end
 %
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_topologicalSort (%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,
                        %!^%GALGAS_lstringlist & outSortedKeyList,
@@ -53,7 +53,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_topologicalSort (%?^%GALGAS_%![ASSOCIATED
   outUnsortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (unsortedList) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_depthFirstTopologicalSort (%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,
                        %!^%GALGAS_lstringlist & outSortedKeyList,
@@ -69,7 +69,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_depthFirstTopologicalSort (%?^%GALGAS_%![
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_reversedGraph (LOCATION_ARGS) const {
   GALGAS_%!TYPE_IDENTIFIER% result ;
@@ -77,7 +77,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_reversedGraph (LOCAT
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_circularities (%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
                        %!^%GALGAS_lstringlist & outKeyList
@@ -87,7 +87,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_circularities (%?^%GALGAS_%![ASSOCIATED_L
   outInfoList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_nodesWithNoSuccessor (%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
                        %!^%GALGAS_lstringlist & outKeyList
@@ -97,7 +97,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_nodesWithNoSuccessor (%?^%GALGAS_%![ASSOC
   outInfoList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_nodesWithNoPredecessor (%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
                        %!^%GALGAS_lstringlist & outKeyList
@@ -107,7 +107,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_nodesWithNoPredecessor (%?^%GALGAS_%![ASS
   outInfoList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subgraphFromNodes (%?^%const GALGAS_lstringlist & inStartKeyList,
                                         %!^%const GALGAS_stringset & inKeysToExclude,
@@ -118,7 +118,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::getter_subgraphFromNodes (%
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist GALGAS_%!TYPE_IDENTIFIER%::getter_accessibleNodesFrom (%?^%const GALGAS_lstringlist & inStartKeyList,
                                         %!^%const GALGAS_stringset & inNodesToExclude,

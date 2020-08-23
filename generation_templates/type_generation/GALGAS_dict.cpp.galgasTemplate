@@ -1,4 +1,4 @@
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cNode_%!TYPE_IDENTIFIER% : public GALGAS_%!TYPE_IDENTIFIER%_2D_element {
   public : cNode_%!TYPE_IDENTIFIER% * mInfPtr ;
@@ -28,7 +28,7 @@ end
   }
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cSharedDictRoot_%!TYPE_IDENTIFIER% : public C_SharedObject {
 //--------------------------------- Attributes
@@ -344,20 +344,20 @@ end
 } ;
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_root (),
 mSharedDict (NULL) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
   macroDetachSharedObject (mSharedDict) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) :
 AC_GALGAS_root (),
@@ -365,20 +365,20 @@ mSharedDict (NULL) {
   macroAssignSharedObject (mSharedDict, inSource.mSharedDict) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) {
   macroAssignSharedObject (mSharedDict, inSource.mSharedDict) ;
   return * this ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
   macroDetachSharedObject (mSharedDict) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyDict (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
@@ -386,13 +386,13 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyDict (LOCA
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Description
 #endif
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void internalDescription_%!TYPE_IDENTIFIER% (const cNode_%!TYPE_IDENTIFIER% * inNode,
                                  C_String & ioString,
@@ -405,7 +405,7 @@ static void internalDescription_%!TYPE_IDENTIFIER% (const cNode_%!TYPE_IDENTIFIE
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (C_String & ioString,
                                              const int32_t inIndentation) const {
@@ -418,13 +418,13 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (C_String & ioString,
   ioString << ">" ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Insulate
 #endif
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cNode_%!TYPE_IDENTIFIER%::cNode_%!TYPE_IDENTIFIER% (cNode_%!TYPE_IDENTIFIER% * inNode) :
 GALGAS_%!TYPE_IDENTIFIER%_2D_element (inNode->mProperty_key%
@@ -443,7 +443,7 @@ mBalance (inNode->mBalance) {
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cSharedDictRoot_%!TYPE_IDENTIFIER%::copyFrom (const cSharedDictRoot_%!TYPE_IDENTIFIER% * inSource) {
   macroUniqueSharedObject (this) ;
@@ -460,7 +460,7 @@ void cSharedDictRoot_%!TYPE_IDENTIFIER%::copyFrom (const cSharedDictRoot_%!TYPE_
   #endif
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
   if ((NULL != mSharedDict) && !mSharedDict->isUniquelyReferenced ()) {
@@ -472,13 +472,13 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Insert
 #endif
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey%
 for () in ATTRIBUTE_LIST
@@ -498,7 +498,7 @@ end
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_hasKey (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey%
 %\n %!^%COMMA_UNUSED_LOCATION_ARGS) const {
@@ -510,7 +510,7 @@ GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_hasKey (%?^%const GALGAS_%!KEY_TYP
    return result ;
  }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_searchKey (%?^%GALGAS_%!KEY_TYPE_IDENTIFIER% inKey%
 for () in ATTRIBUTE_LIST
@@ -543,7 +543,7 @@ end
 %  }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
+//----------------------------------------------------------------------------------------------------------------------\n\n%
 %void GALGAS_%!TYPE_IDENTIFIER%::setter_removeKey (%?^%GALGAS_%!KEY_TYPE_IDENTIFIER% inKey%
 for () in ATTRIBUTE_LIST
   do index IDX %,\n%!^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outArgument%![IDX string]
@@ -578,7 +578,7 @@ end
 }
 
 %for () in ATTRIBUTE_LIST do
-  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
+  %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::getter_%![mPropertyName identifierRepresentation]%ForKey (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey,\n%
   %                                               %!^%C_Compiler * inCompiler\n%
   %                                               %!^%COMMA_LOCATION_ARGS) const {\n%
@@ -601,7 +601,7 @@ end
 end 
 
 for () in ATTRIBUTE_LIST do
-  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
+  %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% inPropertyValue,\n%
   %                           %!^%GALGAS_%!KEY_TYPE_IDENTIFIER% inKey,\n%
   %                           %!^%C_Compiler * inCompiler\n%
@@ -623,13 +623,13 @@ for () in ATTRIBUTE_LIST do
   %}\n\n%
 end 
 
-%//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+%//----------------------------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Object compare
 #endif
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -639,13 +639,13 @@ typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TY
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark map Enumeration
 #endif
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
   public : GALGAS_%!TYPE_IDENTIFIER%_2D_element mElement ;
@@ -682,7 +682,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
   }
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void enterAscendingEnumeration_%!TYPE_IDENTIFIER% (cNode_%!TYPE_IDENTIFIER% * inNode,
                                                        capCollectionElementArray & ioEnumerationArray) {
@@ -698,7 +698,7 @@ static void enterAscendingEnumeration_%!TYPE_IDENTIFIER% (cNode_%!TYPE_IDENTIFIE
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cSharedDictRoot_%!TYPE_IDENTIFIER%::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -709,7 +709,7 @@ void cSharedDictRoot_%!TYPE_IDENTIFIER%::populateEnumerationArray (capCollection
   MF_Assert (mCount == ioEnumerationArray.count (), "mCount (\%lld) != ioEnumerationArray.count () (\%lld)", mCount, ioEnumerationArray.count ()) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const {
   if (NULL != mSharedDict) {
@@ -717,7 +717,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::populateEnumerationArray (capCollectionElementAr
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                                                         const typeEnumerationOrder inOrder) :
@@ -725,7 +725,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;
@@ -733,7 +733,7 @@ GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LO
   return GALGAS_%!TYPE_IDENTIFIER%_2D_element (p->mElement) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!KEY_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCATION_ARGS) const {
   const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;
@@ -742,14 +742,14 @@ GALGAS_%!KEY_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCAT
 }
 
 %for () in ATTRIBUTE_LIST do index IDX
-  %//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
+  %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_%![mPropertyTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mPropertyName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cCollectionElement_%!TYPE_IDENTIFIER%* p = dynamic_cast  <const cCollectionElement_%!TYPE_IDENTIFIER%*> (currentObjectPtr (THERE)) ;\n%
   %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mElement.mProperty_%![mPropertyName identifierRepresentation]% ;\n%
   %}\n\n%
 end 
-%//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*\n\n%
+%//----------------------------------------------------------------------------------------------------------------------\n\n%
 %bool GALGAS_%!TYPE_IDENTIFIER%::optional_searchKey (%?^%const GALGAS_%!KEY_TYPE_IDENTIFIER% & inKey%
 for () in ATTRIBUTE_LIST
   do index IDX %,\n%!^%GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & outArgument%![IDX string]

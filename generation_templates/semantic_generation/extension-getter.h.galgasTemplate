@@ -1,8 +1,8 @@
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//%!["Extension getter '@" + CLASS_NAME + " " + GETTER_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//%!"Extension getter '@" + CLASS_NAME + " " + GETTER_NAME + "'"%
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 typedef class GALGAS_%![RETURN_TYPE identifierRepresentation]% (*enterExtensionGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]%) (%?^
 %const class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
@@ -17,12 +17,12 @@ typedef class GALGAS_%![RETURN_TYPE identifierRepresentation]% (*enterExtensionG
   %,\n%!^%C_Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
                %!^%enterExtensionGetter_%![CLASS_NAME identifierRepresentation]%_%![GETTER_NAME identifierRepresentation]% inGetter) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_%![RETURN_TYPE identifierRepresentation]% callExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   for () in FORMAL_ARGUMENT_LIST do

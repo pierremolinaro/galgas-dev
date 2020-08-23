@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_root (),
@@ -6,7 +6,7 @@ mFlags (0),
 mIsValid (false) {
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const uint64_t inFlags) :
 AC_GALGAS_root (),
@@ -14,27 +14,27 @@ mFlags (inFlags),
 mIsValid (true) {
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_none (UNUSED_LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER% (0) ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_all (UNUSED_LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER% ((uint64_t) %![FULL_SET hexString]%) ;
 }
 
 %for () in SLOT_LIST do index idx
-%//---------------------------------------------------------------------------------------------------------------------*
+%//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_%![mValue identifierRepresentation]% (UNUSED_LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER% (((uint64_t) 1) << %![idx string]%) ;
 }
 
 %end
-%//---------------------------------------------------------------------------------------------------------------------*
+%//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
    typeComparisonResult result = kOperandNotValid ;
@@ -49,19 +49,19 @@ typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TY
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
   return mIsValid ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
   mIsValid = false ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_or (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand
                                       %!^%COMMA_UNUSED_LOCATION_ARGS) const {
@@ -72,7 +72,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_or (%?^%const GALG
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_and (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand
                                       %!^%COMMA_UNUSED_LOCATION_ARGS) const {
@@ -83,7 +83,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_and (%?^%const GAL
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_xor (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand
                                       %!^%COMMA_UNUSED_LOCATION_ARGS) const {
@@ -94,7 +94,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_xor (%?^%const GAL
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::substract_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,
                  %!^%C_Compiler * /* inCompiler */
@@ -106,7 +106,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::substract_operation (%?^%co
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_tilde (UNUSED_LOCATION_ARGS) const {
   GALGAS_%!TYPE_IDENTIFIER% result ;
@@ -116,7 +116,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_tilde (UNUSED_LOCA
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
                               %!^%const int32_t /* inIndentation */) const {
@@ -134,7 +134,7 @@ end
   ioString << ">" ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_none (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -144,7 +144,7 @@ GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_none (UNUSED_LOCATION_ARGS) const 
   return result ;
 }
 
-//---------------------------------------------------------------------------------------------------------------------*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_all (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
@@ -155,7 +155,7 @@ GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_all (UNUSED_LOCATION_ARGS) const {
 }
 
 %for () in SLOT_LIST do index idx
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  %//----------------------------------------------------------------------------------------------------------------------\n\n%
   %GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::getter_%![mValue identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
   %  GALGAS_bool result ;\n%
   %  if (mIsValid) {\n%

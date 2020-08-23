@@ -1,523 +1,18 @@
 #pragma once
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "all-declarations-18.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Phase 1: @greaterOrEqualExpressionForGeneration class                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_greaterOrEqualExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
-//--- Constructor
-  public : GALGAS_greaterOrEqualExpressionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_greaterOrEqualExpressionForGeneration * ptr (void) const { return (const cPtr_greaterOrEqualExpressionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_greaterOrEqualExpressionForGeneration (const cPtr_greaterOrEqualExpressionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_greaterOrEqualExpressionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_greaterOrEqualExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                                      const class GALGAS_location & inOperand1,
-                                                                                      const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                      const class GALGAS_semanticExpressionForGeneration & inOperand3
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_greaterOrEqualExpressionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_semanticExpressionForGeneration inArgument0
-                                                            COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (class GALGAS_semanticExpressionForGeneration inArgument0
-                                                             COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mLeftExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mRightExpression (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_greaterOrEqualExpressionForGeneration class
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_greaterOrEqualExpressionForGeneration ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Phase 2: pointer class for @greaterOrEqualExpressionForGeneration class                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class cPtr_greaterOrEqualExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
-
-//--- Constructor
-  public : cPtr_greaterOrEqualExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                       const GALGAS_location & in_mLocation,
-                                                       const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
-                                                       const GALGAS_semanticExpressionForGeneration & in_mRightExpression
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mLeftExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mRightExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Phase 1: @strictGreaterExpressionForGeneration class                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_strictGreaterExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
-//--- Constructor
-  public : GALGAS_strictGreaterExpressionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_strictGreaterExpressionForGeneration * ptr (void) const { return (const cPtr_strictGreaterExpressionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_strictGreaterExpressionForGeneration (const cPtr_strictGreaterExpressionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_strictGreaterExpressionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                             C_Compiler * inCompiler
-                                                                             COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_strictGreaterExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                                     const class GALGAS_location & inOperand1,
-                                                                                     const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                     const class GALGAS_semanticExpressionForGeneration & inOperand3
-                                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_strictGreaterExpressionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_semanticExpressionForGeneration inArgument0
-                                                            COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (class GALGAS_semanticExpressionForGeneration inArgument0
-                                                             COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mLeftExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mRightExpression (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_strictGreaterExpressionForGeneration class
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_strictGreaterExpressionForGeneration ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                        Phase 2: pointer class for @strictGreaterExpressionForGeneration class                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class cPtr_strictGreaterExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
-
-//--- Constructor
-  public : cPtr_strictGreaterExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                      const GALGAS_location & in_mLocation,
-                                                      const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
-                                                      const GALGAS_semanticExpressionForGeneration & in_mRightExpression
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mLeftExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mRightExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 1: @strictLowerExpressionForGeneration class                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_strictLowerExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
-//--- Constructor
-  public : GALGAS_strictLowerExpressionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_strictLowerExpressionForGeneration * ptr (void) const { return (const cPtr_strictLowerExpressionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_strictLowerExpressionForGeneration (const cPtr_strictLowerExpressionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_strictLowerExpressionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_strictLowerExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                                   const class GALGAS_location & inOperand1,
-                                                                                   const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                   const class GALGAS_semanticExpressionForGeneration & inOperand3
-                                                                                   COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_strictLowerExpressionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_semanticExpressionForGeneration inArgument0
-                                                            COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (class GALGAS_semanticExpressionForGeneration inArgument0
-                                                             COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mLeftExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mRightExpression (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_strictLowerExpressionForGeneration class
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_strictLowerExpressionForGeneration ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Phase 2: pointer class for @strictLowerExpressionForGeneration class                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class cPtr_strictLowerExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
-
-//--- Constructor
-  public : cPtr_strictLowerExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                    const GALGAS_location & in_mLocation,
-                                                    const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
-                                                    const GALGAS_semanticExpressionForGeneration & in_mRightExpression
-                                                    COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mLeftExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mRightExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 1: @rightShiftExpressionForGeneration class                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_rightShiftExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
-//--- Constructor
-  public : GALGAS_rightShiftExpressionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_rightShiftExpressionForGeneration * ptr (void) const { return (const cPtr_rightShiftExpressionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_rightShiftExpressionForGeneration (const cPtr_rightShiftExpressionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_rightShiftExpressionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_rightShiftExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                                  const class GALGAS_location & inOperand1,
-                                                                                  const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                  const class GALGAS_semanticExpressionForGeneration & inOperand3
-                                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_rightShiftExpressionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_semanticExpressionForGeneration inArgument0
-                                                            COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (class GALGAS_semanticExpressionForGeneration inArgument0
-                                                             COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mLeftExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mRightExpression (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_rightShiftExpressionForGeneration class
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rightShiftExpressionForGeneration ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Phase 2: pointer class for @rightShiftExpressionForGeneration class                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class cPtr_rightShiftExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
-
-//--- Constructor
-  public : cPtr_rightShiftExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                   const GALGAS_location & in_mLocation,
-                                                   const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
-                                                   const GALGAS_semanticExpressionForGeneration & in_mRightExpression
-                                                   COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mLeftExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mRightExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                   Phase 1: @leftShiftExpressionForGeneration class                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_leftShiftExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
-//--- Constructor
-  public : GALGAS_leftShiftExpressionForGeneration (void) ;
-
-//---
-  public : inline const class cPtr_leftShiftExpressionForGeneration * ptr (void) const { return (const cPtr_leftShiftExpressionForGeneration *) mObjectPtr ; }
-
-//--------------------------------- Constructor from pointer
-  public : GALGAS_leftShiftExpressionForGeneration (const cPtr_leftShiftExpressionForGeneration * inSourcePtr) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_leftShiftExpressionForGeneration extractObject (const GALGAS_object & inObject,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_leftShiftExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                                 const class GALGAS_location & inOperand1,
-                                                                                 const class GALGAS_semanticExpressionForGeneration & inOperand2,
-                                                                                 const class GALGAS_semanticExpressionForGeneration & inOperand3
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_leftShiftExpressionForGeneration & inOperand) const ;
-
-//--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (class GALGAS_semanticExpressionForGeneration inArgument0
-                                                            COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (class GALGAS_semanticExpressionForGeneration inArgument0
-                                                             COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mLeftExpression (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mRightExpression (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_leftShiftExpressionForGeneration class
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_leftShiftExpressionForGeneration ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                          Phase 2: pointer class for @leftShiftExpressionForGeneration class                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class cPtr_leftShiftExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
-//--- Attributes
-  public : GALGAS_semanticExpressionForGeneration mProperty_mLeftExpression ;
-  public : GALGAS_semanticExpressionForGeneration mProperty_mRightExpression ;
-
-//--- Constructor
-  public : cPtr_leftShiftExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
-                                                  const GALGAS_location & in_mLocation,
-                                                  const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
-                                                  const GALGAS_semanticExpressionForGeneration & in_mRightExpression
-                                                  COMMA_LOCATION_ARGS) ;
-
-//--- Duplication
-  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
-
-//--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mLeftExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG void setter_setMLeftExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
-  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mRightExpression (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG void setter_setMRightExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
-//--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const ;
-
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
-
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
-
-} ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @addExpressionForGeneration class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @addExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_addExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -574,15 +69,15 @@ class GALGAS_addExpressionForGeneration : public GALGAS_semanticExpressionForGen
 } ; // End of GALGAS_addExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Phase 2: pointer class for @addExpressionForGeneration class                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @addExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_addExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -614,11 +109,11 @@ class cPtr_addExpressionForGeneration : public cPtr_semanticExpressionForGenerat
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Phase 1: @addExpressionNoOverflowForGeneration class                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @addExpressionNoOverflowForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_addExpressionNoOverflowForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -675,15 +170,15 @@ class GALGAS_addExpressionNoOverflowForGeneration : public GALGAS_semanticExpres
 } ; // End of GALGAS_addExpressionNoOverflowForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionNoOverflowForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                        Phase 2: pointer class for @addExpressionNoOverflowForGeneration class                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @addExpressionNoOverflowForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_addExpressionNoOverflowForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -715,11 +210,11 @@ class cPtr_addExpressionNoOverflowForGeneration : public cPtr_semanticExpression
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @subExpressionForGeneration class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @subExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_subExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -776,15 +271,15 @@ class GALGAS_subExpressionForGeneration : public GALGAS_semanticExpressionForGen
 } ; // End of GALGAS_subExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Phase 2: pointer class for @subExpressionForGeneration class                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @subExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_subExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -816,11 +311,11 @@ class cPtr_subExpressionForGeneration : public cPtr_semanticExpressionForGenerat
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Phase 1: @subExpressionNoOverflowForGeneration class                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @subExpressionNoOverflowForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_subExpressionNoOverflowForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -877,15 +372,15 @@ class GALGAS_subExpressionNoOverflowForGeneration : public GALGAS_semanticExpres
 } ; // End of GALGAS_subExpressionNoOverflowForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionNoOverflowForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                        Phase 2: pointer class for @subExpressionNoOverflowForGeneration class                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @subExpressionNoOverflowForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_subExpressionNoOverflowForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -917,11 +412,11 @@ class cPtr_subExpressionNoOverflowForGeneration : public cPtr_semanticExpression
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              Phase 1: @testDynamicClassInExpressionForGeneration class                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @testDynamicClassInExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_testDynamicClassInExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -984,15 +479,15 @@ class GALGAS_testDynamicClassInExpressionForGeneration : public GALGAS_semanticE
 } ; // End of GALGAS_testDynamicClassInExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_testDynamicClassInExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                     Phase 2: pointer class for @testDynamicClassInExpressionForGeneration class                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @testDynamicClassInExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_testDynamicClassInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -1028,11 +523,11 @@ class cPtr_testDynamicClassInExpressionForGeneration : public cPtr_semanticExpre
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Phase 1: @extractObjectInExpressionForGeneration class                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @extractObjectInExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_extractObjectInExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -1089,15 +584,15 @@ class GALGAS_extractObjectInExpressionForGeneration : public GALGAS_semanticExpr
 } ; // End of GALGAS_extractObjectInExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_extractObjectInExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Phase 2: pointer class for @extractObjectInExpressionForGeneration class                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @extractObjectInExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_extractObjectInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -1129,11 +624,11 @@ class cPtr_extractObjectInExpressionForGeneration : public cPtr_semanticExpressi
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 1: @optionValueExpressionForGeneration class                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @optionValueExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_optionValueExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -1199,15 +694,15 @@ class GALGAS_optionValueExpressionForGeneration : public GALGAS_semanticExpressi
 } ; // End of GALGAS_optionValueExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionValueExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Phase 2: pointer class for @optionValueExpressionForGeneration class                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @optionValueExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_optionValueExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -1243,11 +738,11 @@ class cPtr_optionValueExpressionForGeneration : public cPtr_semanticExpressionFo
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 1: @optionCharExpressionForGeneration class                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @optionCharExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_optionCharExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -1313,15 +808,15 @@ class GALGAS_optionCharExpressionForGeneration : public GALGAS_semanticExpressio
 } ; // End of GALGAS_optionCharExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionCharExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Phase 2: pointer class for @optionCharExpressionForGeneration class                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @optionCharExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_optionCharExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -1357,11 +852,11 @@ class cPtr_optionCharExpressionForGeneration : public cPtr_semanticExpressionFor
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Phase 1: @optionStringExpressionForGeneration class                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @optionStringExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_optionStringExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -1427,15 +922,15 @@ class GALGAS_optionStringExpressionForGeneration : public GALGAS_semanticExpress
 } ; // End of GALGAS_optionStringExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionStringExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                        Phase 2: pointer class for @optionStringExpressionForGeneration class                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @optionStringExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_optionStringExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -1471,11 +966,11 @@ class cPtr_optionStringExpressionForGeneration : public cPtr_semanticExpressionF
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Phase 1: @optionCommentExpressionForGeneration class                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @optionCommentExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_optionCommentExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -1541,15 +1036,15 @@ class GALGAS_optionCommentExpressionForGeneration : public GALGAS_semanticExpres
 } ; // End of GALGAS_optionCommentExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_optionCommentExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                        Phase 2: pointer class for @optionCommentExpressionForGeneration class                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @optionCommentExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_optionCommentExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -1585,11 +1080,11 @@ class cPtr_optionCommentExpressionForGeneration : public cPtr_semanticExpression
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 1: @lexiqueIntrospectionForGeneration class                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @lexiqueIntrospectionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lexiqueIntrospectionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -1649,15 +1144,15 @@ class GALGAS_lexiqueIntrospectionForGeneration : public GALGAS_semanticExpressio
 } ; // End of GALGAS_lexiqueIntrospectionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lexiqueIntrospectionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Phase 2: pointer class for @lexiqueIntrospectionForGeneration class                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @lexiqueIntrospectionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lexiqueIntrospectionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -1689,11 +1184,11 @@ class cPtr_lexiqueIntrospectionForGeneration : public cPtr_semanticExpressionFor
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Phase 1: @filewrapperInExpressionForGeneration class                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @filewrapperInExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_filewrapperInExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -1753,15 +1248,15 @@ class GALGAS_filewrapperInExpressionForGeneration : public GALGAS_semanticExpres
 } ; // End of GALGAS_filewrapperInExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperInExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                        Phase 2: pointer class for @filewrapperInExpressionForGeneration class                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @filewrapperInExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_filewrapperInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -1793,11 +1288,11 @@ class cPtr_filewrapperInExpressionForGeneration : public cPtr_semanticExpression
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Phase 1: @filewrapperTemplateInExpressionForGeneration class                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @filewrapperTemplateInExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_filewrapperTemplateInExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -1863,15 +1358,15 @@ class GALGAS_filewrapperTemplateInExpressionForGeneration : public GALGAS_semant
 } ; // End of GALGAS_filewrapperTemplateInExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperTemplateInExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                    Phase 2: pointer class for @filewrapperTemplateInExpressionForGeneration class                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @filewrapperTemplateInExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_filewrapperTemplateInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -1907,11 +1402,11 @@ class cPtr_filewrapperTemplateInExpressionForGeneration : public cPtr_semanticEx
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                            Phase 1: @filewrapperStaticPathInExpressionForGeneration class                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @filewrapperStaticPathInExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_filewrapperStaticPathInExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -1977,15 +1472,15 @@ class GALGAS_filewrapperStaticPathInExpressionForGeneration : public GALGAS_sema
 } ; // End of GALGAS_filewrapperStaticPathInExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_filewrapperStaticPathInExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                   Phase 2: pointer class for @filewrapperStaticPathInExpressionForGeneration class                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @filewrapperStaticPathInExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_filewrapperStaticPathInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -2021,11 +1516,11 @@ class cPtr_filewrapperStaticPathInExpressionForGeneration : public cPtr_semantic
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 1: @getterCallExpressionForGeneration class                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @getterCallExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_getterCallExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -2106,15 +1601,15 @@ class GALGAS_getterCallExpressionForGeneration : public GALGAS_semanticExpressio
 } ; // End of GALGAS_getterCallExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_getterCallExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Phase 2: pointer class for @getterCallExpressionForGeneration class                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @getterCallExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_getterCallExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -2162,11 +1657,11 @@ class cPtr_getterCallExpressionForGeneration : public cPtr_semanticExpressionFor
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 1: @constructorExpressionForGeneration class                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @constructorExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_constructorExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -2238,15 +1733,15 @@ class GALGAS_constructorExpressionForGeneration : public GALGAS_semanticExpressi
 } ; // End of GALGAS_constructorExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_constructorExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Phase 2: pointer class for @constructorExpressionForGeneration class                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @constructorExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_constructorExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -2286,11 +1781,11 @@ class cPtr_constructorExpressionForGeneration : public cPtr_semanticExpressionFo
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              Phase 1: @defaultConstructorExpressionForGeneration class                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @defaultConstructorExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_defaultConstructorExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -2338,15 +1833,15 @@ class GALGAS_defaultConstructorExpressionForGeneration : public GALGAS_semanticE
 } ; // End of GALGAS_defaultConstructorExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_defaultConstructorExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                     Phase 2: pointer class for @defaultConstructorExpressionForGeneration class                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @defaultConstructorExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_defaultConstructorExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -2370,11 +1865,11 @@ class cPtr_defaultConstructorExpressionForGeneration : public cPtr_semanticExpre
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Phase 1: @functionCallExpressionForGeneration class                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @functionCallExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_functionCallExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -2434,15 +1929,15 @@ class GALGAS_functionCallExpressionForGeneration : public GALGAS_semanticExpress
 } ; // End of GALGAS_functionCallExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionCallExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                        Phase 2: pointer class for @functionCallExpressionForGeneration class                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @functionCallExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_functionCallExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -2474,11 +1969,11 @@ class cPtr_functionCallExpressionForGeneration : public cPtr_semanticExpressionF
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Phase 1: @literalTypeInExpressionForGeneration class                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @literalTypeInExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_literalTypeInExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -2532,15 +2027,15 @@ class GALGAS_literalTypeInExpressionForGeneration : public GALGAS_semanticExpres
 } ; // End of GALGAS_literalTypeInExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalTypeInExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                        Phase 2: pointer class for @literalTypeInExpressionForGeneration class                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @literalTypeInExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalTypeInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -2568,11 +2063,11 @@ class cPtr_literalTypeInExpressionForGeneration : public cPtr_semanticExpression
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Phase 1: @expressionCollectionValueForGeneration class                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @expressionCollectionValueForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_expressionCollectionValueForGeneration : public GALGAS_abstractCollectionValueElementForGeneration {
 //--- Constructor
@@ -2622,15 +2117,15 @@ class GALGAS_expressionCollectionValueForGeneration : public GALGAS_abstractColl
 } ; // End of GALGAS_expressionCollectionValueForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectionValueForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Phase 2: pointer class for @expressionCollectionValueForGeneration class                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @expressionCollectionValueForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_expressionCollectionValueForGeneration : public cPtr_abstractCollectionValueElementForGeneration {
 //--- Attributes
@@ -2657,11 +2152,11 @@ class cPtr_expressionCollectionValueForGeneration : public cPtr_abstractCollecti
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 1: @expressionCollectionForGeneration class                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @expressionCollectionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_expressionCollectionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -2715,15 +2210,15 @@ class GALGAS_expressionCollectionForGeneration : public GALGAS_semanticExpressio
 } ; // End of GALGAS_expressionCollectionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Phase 2: pointer class for @expressionCollectionForGeneration class                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @expressionCollectionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_expressionCollectionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -2751,11 +2246,11 @@ class cPtr_expressionCollectionForGeneration : public cPtr_semanticExpressionFor
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                    Phase 1: @selfInExpressionForGeneration class                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @selfInExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_selfInExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -2809,15 +2304,15 @@ class GALGAS_selfInExpressionForGeneration : public GALGAS_semanticExpressionFor
 } ; // End of GALGAS_selfInExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfInExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                           Phase 2: pointer class for @selfInExpressionForGeneration class                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @selfInExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_selfInExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -2845,11 +2340,11 @@ class cPtr_selfInExpressionForGeneration : public cPtr_semanticExpressionForGene
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Phase 1: @structPropertyAccessExpressionForGeneration class                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @structPropertyAccessExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_structPropertyAccessExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -2906,15 +2401,15 @@ class GALGAS_structPropertyAccessExpressionForGeneration : public GALGAS_semanti
 } ; // End of GALGAS_structPropertyAccessExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structPropertyAccessExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                    Phase 2: pointer class for @structPropertyAccessExpressionForGeneration class                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @structPropertyAccessExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_structPropertyAccessExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -2946,11 +2441,11 @@ class cPtr_structPropertyAccessExpressionForGeneration : public cPtr_semanticExp
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @notExpressionForGeneration class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @notExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_notExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -3001,15 +2496,15 @@ class GALGAS_notExpressionForGeneration : public GALGAS_semanticExpressionForGen
 } ; // End of GALGAS_notExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Phase 2: pointer class for @notExpressionForGeneration class                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @notExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_notExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -3037,11 +2532,11 @@ class cPtr_notExpressionForGeneration : public cPtr_semanticExpressionForGenerat
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Phase 1: @tildeExpressionForGeneration class                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @tildeExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_tildeExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -3092,15 +2587,15 @@ class GALGAS_tildeExpressionForGeneration : public GALGAS_semanticExpressionForG
 } ; // End of GALGAS_tildeExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tildeExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                            Phase 2: pointer class for @tildeExpressionForGeneration class                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @tildeExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_tildeExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -3128,11 +2623,11 @@ class cPtr_tildeExpressionForGeneration : public cPtr_semanticExpressionForGener
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              Phase 1: @unaryWrappingMinusExpressionForGeneration class                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @unaryWrappingMinusExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_unaryWrappingMinusExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -3183,15 +2678,15 @@ class GALGAS_unaryWrappingMinusExpressionForGeneration : public GALGAS_semanticE
 } ; // End of GALGAS_unaryWrappingMinusExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                     Phase 2: pointer class for @unaryWrappingMinusExpressionForGeneration class                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @unaryWrappingMinusExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_unaryWrappingMinusExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -3219,11 +2714,11 @@ class cPtr_unaryWrappingMinusExpressionForGeneration : public cPtr_semanticExpre
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                    Phase 1: @orShortExpressionForGeneration class                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @orShortExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_orShortExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -3280,15 +2775,15 @@ class GALGAS_orShortExpressionForGeneration : public GALGAS_semanticExpressionFo
 } ; // End of GALGAS_orShortExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orShortExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                           Phase 2: pointer class for @orShortExpressionForGeneration class                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @orShortExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_orShortExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -3320,11 +2815,11 @@ class cPtr_orShortExpressionForGeneration : public cPtr_semanticExpressionForGen
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @orExpressionForGeneration class                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @orExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_orExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -3381,15 +2876,15 @@ class GALGAS_orExpressionForGeneration : public GALGAS_semanticExpressionForGene
 } ; // End of GALGAS_orExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Phase 2: pointer class for @orExpressionForGeneration class                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @orExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_orExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -3421,11 +2916,11 @@ class cPtr_orExpressionForGeneration : public cPtr_semanticExpressionForGenerati
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @xorExpressionForGeneration class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @xorExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_xorExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -3482,15 +2977,15 @@ class GALGAS_xorExpressionForGeneration : public GALGAS_semanticExpressionForGen
 } ; // End of GALGAS_xorExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_xorExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Phase 2: pointer class for @xorExpressionForGeneration class                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @xorExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_xorExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -3522,11 +3017,11 @@ class cPtr_xorExpressionForGeneration : public cPtr_semanticExpressionForGenerat
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 1: @openedSliceExpressionForGeneration class                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @openedSliceExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_openedSliceExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -3583,15 +3078,15 @@ class GALGAS_openedSliceExpressionForGeneration : public GALGAS_semanticExpressi
 } ; // End of GALGAS_openedSliceExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_openedSliceExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Phase 2: pointer class for @openedSliceExpressionForGeneration class                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @openedSliceExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_openedSliceExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -3623,11 +3118,11 @@ class cPtr_openedSliceExpressionForGeneration : public cPtr_semanticExpressionFo
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 1: @closedSliceExpressionForGeneration class                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @closedSliceExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_closedSliceExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -3684,15 +3179,15 @@ class GALGAS_closedSliceExpressionForGeneration : public GALGAS_semanticExpressi
 } ; // End of GALGAS_closedSliceExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_closedSliceExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Phase 2: pointer class for @closedSliceExpressionForGeneration class                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @closedSliceExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_closedSliceExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -3724,11 +3219,11 @@ class cPtr_closedSliceExpressionForGeneration : public cPtr_semanticExpressionFo
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @andExpressionForGeneration class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @andExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_andExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -3785,15 +3280,15 @@ class GALGAS_andExpressionForGeneration : public GALGAS_semanticExpressionForGen
 } ; // End of GALGAS_andExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Phase 2: pointer class for @andExpressionForGeneration class                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @andExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_andExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -3825,11 +3320,11 @@ class cPtr_andExpressionForGeneration : public cPtr_semanticExpressionForGenerat
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                   Phase 1: @andShortExpressionForGeneration class                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @andShortExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_andShortExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -3886,15 +3381,15 @@ class GALGAS_andShortExpressionForGeneration : public GALGAS_semanticExpressionF
 } ; // End of GALGAS_andShortExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                          Phase 2: pointer class for @andShortExpressionForGeneration class                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @andShortExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_andShortExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -3926,11 +3421,11 @@ class cPtr_andShortExpressionForGeneration : public cPtr_semanticExpressionForGe
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Phase 1: @multiplicationExpressionForGeneration class                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @multiplicationExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_multiplicationExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -3987,15 +3482,15 @@ class GALGAS_multiplicationExpressionForGeneration : public GALGAS_semanticExpre
 } ; // End of GALGAS_multiplicationExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Phase 2: pointer class for @multiplicationExpressionForGeneration class                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @multiplicationExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_multiplicationExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -4027,11 +3522,11 @@ class cPtr_multiplicationExpressionForGeneration : public cPtr_semanticExpressio
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                           Phase 1: @multiplicationExpressionNoOverflowForGeneration class                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @multiplicationExpressionNoOverflowForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_multiplicationExpressionNoOverflowForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -4088,15 +3583,15 @@ class GALGAS_multiplicationExpressionNoOverflowForGeneration : public GALGAS_sem
 } ; // End of GALGAS_multiplicationExpressionNoOverflowForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                  Phase 2: pointer class for @multiplicationExpressionNoOverflowForGeneration class                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @multiplicationExpressionNoOverflowForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_multiplicationExpressionNoOverflowForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -4128,11 +3623,11 @@ class cPtr_multiplicationExpressionNoOverflowForGeneration : public cPtr_semanti
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                   Phase 1: @divisionExpressionForGeneration class                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @divisionExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_divisionExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -4189,15 +3684,15 @@ class GALGAS_divisionExpressionForGeneration : public GALGAS_semanticExpressionF
 } ; // End of GALGAS_divisionExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                          Phase 2: pointer class for @divisionExpressionForGeneration class                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @divisionExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_divisionExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -4229,11 +3724,11 @@ class cPtr_divisionExpressionForGeneration : public cPtr_semanticExpressionForGe
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              Phase 1: @divisionExpressionNoOverflowForGeneration class                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @divisionExpressionNoOverflowForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_divisionExpressionNoOverflowForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -4290,15 +3785,15 @@ class GALGAS_divisionExpressionNoOverflowForGeneration : public GALGAS_semanticE
 } ; // End of GALGAS_divisionExpressionNoOverflowForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionNoOverflowForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                     Phase 2: pointer class for @divisionExpressionNoOverflowForGeneration class                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @divisionExpressionNoOverflowForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_divisionExpressionNoOverflowForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -4330,11 +3825,11 @@ class cPtr_divisionExpressionNoOverflowForGeneration : public cPtr_semanticExpre
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                    Phase 1: @moduloExpressionForGeneration class                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @moduloExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_moduloExpressionForGeneration : public GALGAS_semanticExpressionForGeneration {
 //--- Constructor
@@ -4391,15 +3886,15 @@ class GALGAS_moduloExpressionForGeneration : public GALGAS_semanticExpressionFor
 } ; // End of GALGAS_moduloExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_moduloExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                           Phase 2: pointer class for @moduloExpressionForGeneration class                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @moduloExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_moduloExpressionForGeneration : public cPtr_semanticExpressionForGeneration {
 //--- Attributes
@@ -4431,11 +3926,11 @@ class cPtr_moduloExpressionForGeneration : public cPtr_semanticExpressionForGene
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 1: @assignmentInstructionForGeneration class                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @assignmentInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_assignmentInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -4508,15 +4003,15 @@ class GALGAS_assignmentInstructionForGeneration : public GALGAS_semanticInstruct
 } ; // End of GALGAS_assignmentInstructionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_assignmentInstructionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Phase 2: pointer class for @assignmentInstructionForGeneration class                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @assignmentInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_assignmentInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -4558,11 +4053,11 @@ class cPtr_assignmentInstructionForGeneration : public cPtr_semanticInstructionF
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Phase 1: @structuredCastInstructionForGeneration class                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @structuredCastInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_structuredCastInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -4623,15 +4118,15 @@ class GALGAS_structuredCastInstructionForGeneration : public GALGAS_semanticInst
 } ; // End of GALGAS_structuredCastInstructionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstructionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Phase 2: pointer class for @structuredCastInstructionForGeneration class                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @structuredCastInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_structuredCastInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -4665,11 +4160,11 @@ class cPtr_structuredCastInstructionForGeneration : public cPtr_semanticInstruct
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                   Phase 1: @opEqualInstructionForGeneration class                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @opEqualInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_opEqualInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -4754,15 +4249,15 @@ class GALGAS_opEqualInstructionForGeneration : public GALGAS_semanticInstruction
 } ; // End of GALGAS_opEqualInstructionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_opEqualInstructionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                          Phase 2: pointer class for @opEqualInstructionForGeneration class                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @opEqualInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_opEqualInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -4812,11 +4307,11 @@ class cPtr_opEqualInstructionForGeneration : public cPtr_semanticInstructionForG
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                    Phase 1: @errorInstructionForGeneration class                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @errorInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_errorInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -4889,15 +4384,15 @@ class GALGAS_errorInstructionForGeneration : public GALGAS_semanticInstructionFo
 } ; // End of GALGAS_errorInstructionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_errorInstructionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                           Phase 2: pointer class for @errorInstructionForGeneration class                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @errorInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -4939,11 +4434,11 @@ class cPtr_errorInstructionForGeneration : public cPtr_semanticInstructionForGen
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Phase 1: @forInstructionForGeneration class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @forInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_forInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -5034,15 +4529,15 @@ class GALGAS_forInstructionForGeneration : public GALGAS_semanticInstructionForG
 } ; // End of GALGAS_forInstructionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_forInstructionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                            Phase 2: pointer class for @forInstructionForGeneration class                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @forInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_forInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -5096,11 +4591,11 @@ class cPtr_forInstructionForGeneration : public cPtr_semanticInstructionForGener
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                            Phase 1: @grammarInstructionWithSourceFileForGeneration class                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @grammarInstructionWithSourceFileForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_grammarInstructionWithSourceFileForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -5191,15 +4686,15 @@ class GALGAS_grammarInstructionWithSourceFileForGeneration : public GALGAS_seman
 } ; // End of GALGAS_grammarInstructionWithSourceFileForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceFileForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                   Phase 2: pointer class for @grammarInstructionWithSourceFileForGeneration class                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @grammarInstructionWithSourceFileForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInstructionWithSourceFileForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -5253,11 +4748,11 @@ class cPtr_grammarInstructionWithSourceFileForGeneration : public cPtr_semanticI
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Phase 1: @grammarInstructionWithSourceExpressionForGeneration class                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @grammarInstructionWithSourceExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_grammarInstructionWithSourceExpressionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -5354,15 +4849,15 @@ class GALGAS_grammarInstructionWithSourceExpressionForGeneration : public GALGAS
 } ; // End of GALGAS_grammarInstructionWithSourceExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_grammarInstructionWithSourceExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                Phase 2: pointer class for @grammarInstructionWithSourceExpressionForGeneration class                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @grammarInstructionWithSourceExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_grammarInstructionWithSourceExpressionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -5420,11 +4915,11 @@ class cPtr_grammarInstructionWithSourceExpressionForGeneration : public cPtr_sem
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                 Phase 1: @localVariableOrConstantDeclarationWithSourceExpressionForGeneration class                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @localVariableOrConstantDeclarationWithSourceExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -5491,15 +4986,15 @@ class GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration
 } ; // End of GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//        Phase 2: pointer class for @localVariableOrConstantDeclarationWithSourceExpressionForGeneration class        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @localVariableOrConstantDeclarationWithSourceExpressionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -5537,11 +5032,11 @@ class cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration :
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Phase 1: @logInstructionForGeneration class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @logInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_logInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -5596,15 +5091,15 @@ class GALGAS_logInstructionForGeneration : public GALGAS_semanticInstructionForG
 } ; // End of GALGAS_logInstructionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_logInstructionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                            Phase 2: pointer class for @logInstructionForGeneration class                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @logInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_logInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -5634,11 +5129,11 @@ class cPtr_logInstructionForGeneration : public cPtr_semanticInstructionForGener
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Phase 1: @loopInstructionForGeneration class                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @loopInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_loopInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
 //--- Constructor
@@ -5711,15 +5206,15 @@ class GALGAS_loopInstructionForGeneration : public GALGAS_semanticInstructionFor
 } ; // End of GALGAS_loopInstructionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_loopInstructionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                            Phase 2: pointer class for @loopInstructionForGeneration class                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @loopInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_loopInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
 //--- Attributes
@@ -5751,6 +5246,631 @@ class cPtr_loopInstructionForGeneration : public cPtr_semanticInstructionForGene
   public : VIRTUAL_IN_DEBUG void setter_setMLoopExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration getter_mSecondInstructions (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG void setter_setMSecondInstructions (GALGAS_semanticInstructionListForGeneration inValue COMMA_LOCATION_ARGS) ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @messageInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_messageInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
+//--- Constructor
+  public : GALGAS_messageInstructionForGeneration (void) ;
+
+//---
+  public : inline const class cPtr_messageInstructionForGeneration * ptr (void) const { return (const cPtr_messageInstructionForGeneration *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_messageInstructionForGeneration (const cPtr_messageInstructionForGeneration * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_messageInstructionForGeneration extractObject (const GALGAS_object & inObject,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_messageInstructionForGeneration constructor_new (const class GALGAS_semanticExpressionForGeneration & inOperand0,
+                                                                                const class GALGAS_location & inOperand1
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_messageInstructionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMExpression (class GALGAS_semanticExpressionForGeneration inArgument0
+                                                        COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMInstructionLocation (class GALGAS_location inArgument0
+                                                                 COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mInstructionLocation (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_messageInstructionForGeneration class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_messageInstructionForGeneration ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @messageInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_messageInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+//--- Attributes
+  public : GALGAS_semanticExpressionForGeneration mProperty_mExpression ;
+  public : GALGAS_location mProperty_mInstructionLocation ;
+
+//--- Constructor
+  public : cPtr_messageInstructionForGeneration (const GALGAS_semanticExpressionForGeneration & in_mExpression,
+                                                 const GALGAS_location & in_mInstructionLocation
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mInstructionLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMInstructionLocation (GALGAS_location inValue COMMA_LOCATION_ARGS) ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @methodCallInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_methodCallInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
+//--- Constructor
+  public : GALGAS_methodCallInstructionForGeneration (void) ;
+
+//---
+  public : inline const class cPtr_methodCallInstructionForGeneration * ptr (void) const { return (const cPtr_methodCallInstructionForGeneration *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_methodCallInstructionForGeneration (const cPtr_methodCallInstructionForGeneration * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_methodCallInstructionForGeneration extractObject (const GALGAS_object & inObject,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_methodCallInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
+                                                                                   const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                                                   const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                                   const class GALGAS_string & inOperand3,
+                                                                                   const class GALGAS_methodKind & inOperand4,
+                                                                                   const class GALGAS_actualParameterListForGeneration & inOperand5,
+                                                                                   const class GALGAS_bool & inOperand6,
+                                                                                   const class GALGAS_unifiedTypeMap_2D_proxy & inOperand7
+                                                                                   COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_methodCallInstructionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMActualParameterList (class GALGAS_actualParameterListForGeneration inArgument0
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMHasCompilerArgument (class GALGAS_bool inArgument0
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMInstructionLocation (class GALGAS_location inArgument0
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMKind (class GALGAS_methodKind inArgument0
+                                                  COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMMethodBaseType (class GALGAS_unifiedTypeMap_2D_proxy inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMMethodName (class GALGAS_string inArgument0
+                                                        COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMReceiverExpression (class GALGAS_semanticExpressionForGeneration inArgument0
+                                                                COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMReceiverType (class GALGAS_unifiedTypeMap_2D_proxy inArgument0
+                                                          COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_actualParameterListForGeneration getter_mActualParameterList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mHasCompilerArgument (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mInstructionLocation (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_methodKind getter_mKind (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mMethodBaseType (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mMethodName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mReceiverExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mReceiverType (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_methodCallInstructionForGeneration class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_methodCallInstructionForGeneration ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @methodCallInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_methodCallInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+//--- Attributes
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mReceiverType ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
+  public : GALGAS_string mProperty_mMethodName ;
+  public : GALGAS_methodKind mProperty_mKind ;
+  public : GALGAS_actualParameterListForGeneration mProperty_mActualParameterList ;
+  public : GALGAS_bool mProperty_mHasCompilerArgument ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mMethodBaseType ;
+
+//--- Constructor
+  public : cPtr_methodCallInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
+                                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
+                                                    const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
+                                                    const GALGAS_string & in_mMethodName,
+                                                    const GALGAS_methodKind & in_mKind,
+                                                    const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
+                                                    const GALGAS_bool & in_mHasCompilerArgument,
+                                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mMethodBaseType
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mInstructionLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMInstructionLocation (GALGAS_location inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy getter_mReceiverType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMReceiverType (GALGAS_unifiedTypeMap_2D_proxy inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mReceiverExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMReceiverExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_string getter_mMethodName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMMethodName (GALGAS_string inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_methodKind getter_mKind (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMKind (GALGAS_methodKind inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListForGeneration getter_mActualParameterList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMActualParameterList (GALGAS_actualParameterListForGeneration inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mHasCompilerArgument (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMHasCompilerArgument (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy getter_mMethodBaseType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMMethodBaseType (GALGAS_unifiedTypeMap_2D_proxy inValue COMMA_LOCATION_ARGS) ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @switchInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_switchInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
+//--- Constructor
+  public : GALGAS_switchInstructionForGeneration (void) ;
+
+//---
+  public : inline const class cPtr_switchInstructionForGeneration * ptr (void) const { return (const cPtr_switchInstructionForGeneration *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_switchInstructionForGeneration (const cPtr_switchInstructionForGeneration * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_switchInstructionForGeneration extractObject (const GALGAS_object & inObject,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_switchInstructionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                               const class GALGAS_semanticExpressionForGeneration & inOperand1,
+                                                                               const class GALGAS_switchBranchesForGeneration & inOperand2
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_switchInstructionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMBranches (class GALGAS_switchBranchesForGeneration inArgument0
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMEnumType (class GALGAS_unifiedTypeMap_2D_proxy inArgument0
+                                                      COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMSwitchExpression (class GALGAS_semanticExpressionForGeneration inArgument0
+                                                              COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_switchBranchesForGeneration getter_mBranches (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mEnumType (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mSwitchExpression (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_switchInstructionForGeneration class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchInstructionForGeneration ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @switchInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_switchInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+//--- Attributes
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mEnumType ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mSwitchExpression ;
+  public : GALGAS_switchBranchesForGeneration mProperty_mBranches ;
+
+//--- Constructor
+  public : cPtr_switchInstructionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mEnumType,
+                                                const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
+                                                const GALGAS_switchBranchesForGeneration & in_mBranches
+                                                COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy getter_mEnumType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMEnumType (GALGAS_unifiedTypeMap_2D_proxy inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mSwitchExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMSwitchExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_switchBranchesForGeneration getter_mBranches (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMBranches (GALGAS_switchBranchesForGeneration inValue COMMA_LOCATION_ARGS) ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @warningInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_warningInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
+//--- Constructor
+  public : GALGAS_warningInstructionForGeneration (void) ;
+
+//---
+  public : inline const class cPtr_warningInstructionForGeneration * ptr (void) const { return (const cPtr_warningInstructionForGeneration *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_warningInstructionForGeneration (const cPtr_warningInstructionForGeneration * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_warningInstructionForGeneration extractObject (const GALGAS_object & inObject,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_warningInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
+                                                                                const class GALGAS_semanticExpressionForGeneration & inOperand1,
+                                                                                const class GALGAS_semanticExpressionForGeneration & inOperand2,
+                                                                                const class GALGAS_fixitListForGeneration & inOperand3
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_warningInstructionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMFixitListForGeneration (class GALGAS_fixitListForGeneration inArgument0
+                                                                    COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMInstructionLocation (class GALGAS_location inArgument0
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMReceiverExpression (class GALGAS_semanticExpressionForGeneration inArgument0
+                                                                COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMWarningExpression (class GALGAS_semanticExpressionForGeneration inArgument0
+                                                               COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_fixitListForGeneration getter_mFixitListForGeneration (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mInstructionLocation (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mReceiverExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mWarningExpression (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_warningInstructionForGeneration class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_warningInstructionForGeneration ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @warningInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_warningInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+//--- Attributes
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mWarningExpression ;
+  public : GALGAS_fixitListForGeneration mProperty_mFixitListForGeneration ;
+
+//--- Constructor
+  public : cPtr_warningInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
+                                                 const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
+                                                 const GALGAS_semanticExpressionForGeneration & in_mWarningExpression,
+                                                 const GALGAS_fixitListForGeneration & in_mFixitListForGeneration
+                                                 COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mInstructionLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMInstructionLocation (GALGAS_location inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mReceiverExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMReceiverExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mWarningExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMWarningExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_fixitListForGeneration getter_mFixitListForGeneration (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMFixitListForGeneration (GALGAS_fixitListForGeneration inValue COMMA_LOCATION_ARGS) ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @readOnlyWithInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_readOnlyWithInstructionForGeneration : public GALGAS_semanticInstructionForGeneration {
+//--- Constructor
+  public : GALGAS_readOnlyWithInstructionForGeneration (void) ;
+
+//---
+  public : inline const class cPtr_readOnlyWithInstructionForGeneration * ptr (void) const { return (const cPtr_readOnlyWithInstructionForGeneration *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_readOnlyWithInstructionForGeneration (const cPtr_readOnlyWithInstructionForGeneration * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_readOnlyWithInstructionForGeneration extractObject (const GALGAS_object & inObject,
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_readOnlyWithInstructionForGeneration constructor_new (const class GALGAS_location & inOperand0,
+                                                                                     const class GALGAS_semanticExpressionForGeneration & inOperand1,
+                                                                                     const class GALGAS_string & inOperand2,
+                                                                                     const class GALGAS_semanticExpressionForGeneration & inOperand3,
+                                                                                     const class GALGAS_string & inOperand4,
+                                                                                     const class GALGAS_semanticInstructionListForGeneration & inOperand5,
+                                                                                     const class GALGAS_semanticInstructionListForGeneration & inOperand6
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_readOnlyWithInstructionForGeneration & inOperand) const ;
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMDoBranchInstructions (class GALGAS_semanticInstructionListForGeneration inArgument0
+                                                                  COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMElseBranchInstructions (class GALGAS_semanticInstructionListForGeneration inArgument0
+                                                                    COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMInstructionLocation (class GALGAS_location inArgument0
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMKeyExpression (class GALGAS_semanticExpressionForGeneration inArgument0
+                                                           COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMObjectArrayCppName (class GALGAS_string inArgument0
+                                                                COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMReceiverExpression (class GALGAS_semanticExpressionForGeneration inArgument0
+                                                                COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMSearchMethodNameForErrorSignaling (class GALGAS_string inArgument0
+                                                                               COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration getter_mDoBranchInstructions (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration getter_mElseBranchInstructions (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mInstructionLocation (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mKeyExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mObjectArrayCppName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration getter_mReceiverExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mSearchMethodNameForErrorSignaling (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_readOnlyWithInstructionForGeneration class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_readOnlyWithInstructionForGeneration ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @readOnlyWithInstructionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_readOnlyWithInstructionForGeneration : public cPtr_semanticInstructionForGeneration {
+//--- Attributes
+  public : GALGAS_location mProperty_mInstructionLocation ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mReceiverExpression ;
+  public : GALGAS_string mProperty_mObjectArrayCppName ;
+  public : GALGAS_semanticExpressionForGeneration mProperty_mKeyExpression ;
+  public : GALGAS_string mProperty_mSearchMethodNameForErrorSignaling ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mDoBranchInstructions ;
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mElseBranchInstructions ;
+
+//--- Constructor
+  public : cPtr_readOnlyWithInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
+                                                      const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
+                                                      const GALGAS_string & in_mObjectArrayCppName,
+                                                      const GALGAS_semanticExpressionForGeneration & in_mKeyExpression,
+                                                      const GALGAS_string & in_mSearchMethodNameForErrorSignaling,
+                                                      const GALGAS_semanticInstructionListForGeneration & in_mDoBranchInstructions,
+                                                      const GALGAS_semanticInstructionListForGeneration & in_mElseBranchInstructions
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mInstructionLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMInstructionLocation (GALGAS_location inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mReceiverExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMReceiverExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_string getter_mObjectArrayCppName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMObjectArrayCppName (GALGAS_string inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionForGeneration getter_mKeyExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMKeyExpression (GALGAS_semanticExpressionForGeneration inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_string getter_mSearchMethodNameForErrorSignaling (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMSearchMethodNameForErrorSignaling (GALGAS_string inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration getter_mDoBranchInstructions (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMDoBranchInstructions (GALGAS_semanticInstructionListForGeneration inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration getter_mElseBranchInstructions (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMElseBranchInstructions (GALGAS_semanticInstructionListForGeneration inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

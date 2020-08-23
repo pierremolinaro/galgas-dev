@@ -1,36 +1,34 @@
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-// Routines for computing FOLLOWS                                                                                      *
-//                                                                                                                     *
-//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                                                                     *
-//                                                                                                                     *
-//  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
-//                                                                                                                     *
-//  LS2N, Laboratoire des Sciences du Numérique de Nantes, ECN, École Centrale de Nantes (France)                      *
-//                                                                                                                     *
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Routines for computing FOLLOWS                                                                
+//
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.
+//
+//  e-mail : pcmolinaro@free.fr
+//
 //  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
-//  License as published by the Free Software Foundation.                                                              *
-//                                                                                                                     *
-//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
-//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
-//  more details.                                                                                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//  License as published by the Free Software Foundation.                                        
+//
+//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+//  more details.
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "strings/C_HTMLString.h"
 #include "bdd/C_Relation.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "FOLLOW_computations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//    C O M P U T E    F O L L O W    S E T S                                                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//    C O M P U T E    F O L L O W    S E T S                                                    
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static void computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
                                const C_Relation & inNonterminalSymbolsFollowedByEmpty,
@@ -115,7 +113,7 @@ static void computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules
   outFOLLOWsets.getArray (outFOLLOWarray COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void
 printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,
@@ -153,7 +151,7 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarr
   inHTMLfile.outputRawData ("</table>") ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static bool
 checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
@@ -231,7 +229,7 @@ checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
   return n == 0 ; 
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                           C_HTMLString & ioHTMLFileContents,
@@ -286,4 +284,4 @@ void FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                            inVerboseOptionOn) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------

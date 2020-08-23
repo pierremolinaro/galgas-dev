@@ -3,475 +3,15 @@
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "utilities/C_PrologueEpilogue.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "all-declarations-2.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Class for element of '@lexicalExternFunctionFormalArgumentListAST' list                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class cCollectionElement_lexicalExternFunctionFormalArgumentListAST : public cCollectionElement {
-  public : GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element mObject ;
-
-//--- Constructors
-  public : cCollectionElement_lexicalExternFunctionFormalArgumentListAST (const GALGAS_lstring & in_mLexicalTypeName,
-                                                                          const GALGAS_lstring & in_mFormalArgumentName
-                                                                          COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_lexicalExternFunctionFormalArgumentListAST (const GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element & inElement COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
-
-//--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cCollectionElement_lexicalExternFunctionFormalArgumentListAST::cCollectionElement_lexicalExternFunctionFormalArgumentListAST (const GALGAS_lstring & in_mLexicalTypeName,
-                                                                                                                              const GALGAS_lstring & in_mFormalArgumentName
-                                                                                                                              COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (in_mLexicalTypeName, in_mFormalArgumentName) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cCollectionElement_lexicalExternFunctionFormalArgumentListAST::cCollectionElement_lexicalExternFunctionFormalArgumentListAST (const GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE),
-mObject (inElement.mProperty_mLexicalTypeName, inElement.mProperty_mFormalArgumentName) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-bool cCollectionElement_lexicalExternFunctionFormalArgumentListAST::isValid (void) const {
-  return mObject.isValid () ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cCollectionElement * cCollectionElement_lexicalExternFunctionFormalArgumentListAST::copy (void) {
-  cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_lexicalExternFunctionFormalArgumentListAST (mObject.mProperty_mLexicalTypeName, mObject.mProperty_mFormalArgumentName COMMA_HERE)) ;
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void cCollectionElement_lexicalExternFunctionFormalArgumentListAST::description (C_String & ioString, const int32_t inIndentation) const {
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mLexicalTypeName" ":" ;
-  mObject.mProperty_mLexicalTypeName.description (ioString, inIndentation) ;
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mFormalArgumentName" ":" ;
-  mObject.mProperty_mFormalArgumentName.description (ioString, inIndentation) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-typeComparisonResult cCollectionElement_lexicalExternFunctionFormalArgumentListAST::compare (const cCollectionElement * inOperand) const {
-  cCollectionElement_lexicalExternFunctionFormalArgumentListAST * operand = (cCollectionElement_lexicalExternFunctionFormalArgumentListAST *) inOperand ;
-  macroValidSharedObject (operand, cCollectionElement_lexicalExternFunctionFormalArgumentListAST) ;
-  return mObject.objectCompare (operand->mObject) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalExternFunctionFormalArgumentListAST::GALGAS_lexicalExternFunctionFormalArgumentListAST (void) :
-AC_GALGAS_list () {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalExternFunctionFormalArgumentListAST::GALGAS_lexicalExternFunctionFormalArgumentListAST (const capCollectionElementArray & inSharedArray) :
-AC_GALGAS_list (inSharedArray) {
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalExternFunctionFormalArgumentListAST GALGAS_lexicalExternFunctionFormalArgumentListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
-  return GALGAS_lexicalExternFunctionFormalArgumentListAST  (capCollectionElementArray ()) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalExternFunctionFormalArgumentListAST GALGAS_lexicalExternFunctionFormalArgumentListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
-                                                                                                                                const GALGAS_lstring & inOperand1
-                                                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalExternFunctionFormalArgumentListAST result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_lexicalExternFunctionFormalArgumentListAST (capCollectionElementArray ()) ;
-    capCollectionElement attributes ;
-    GALGAS_lexicalExternFunctionFormalArgumentListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
-    result.appendObject (attributes) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexicalExternFunctionFormalArgumentListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                                                   const GALGAS_lstring & in_mLexicalTypeName,
-                                                                                   const GALGAS_lstring & in_mFormalArgumentName
-                                                                                   COMMA_LOCATION_ARGS) {
-  cCollectionElement_lexicalExternFunctionFormalArgumentListAST * p = NULL ;
-  macroMyNew (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST (in_mLexicalTypeName,
-                                                                                in_mFormalArgumentName COMMA_THERE)) ;
-  outAttributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexicalExternFunctionFormalArgumentListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
-                                                                             const GALGAS_lstring & inOperand1
-                                                                             COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST (inOperand0, inOperand1 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexicalExternFunctionFormalArgumentListAST::setter_append (GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element inElement,
-                                                                       C_Compiler * /* inCompiler */
-                                                                       COMMA_LOCATION_ARGS) {
-  if (isValid () && inElement.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST (inElement COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    appendObject (attributes) ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexicalExternFunctionFormalArgumentListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
-                                                                              const GALGAS_lstring inOperand1,
-                                                                              const GALGAS_uint inInsertionIndex,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST (inOperand0, inOperand1 COMMA_THERE)) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexicalExternFunctionFormalArgumentListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
-                                                                              GALGAS_lstring & outOperand1,
-                                                                              const GALGAS_uint inRemoveIndex,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) {
-  if (isValid () && inRemoveIndex.isValid ()) {
-    capCollectionElement attributes ;
-    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
-    cCollectionElement_lexicalExternFunctionFormalArgumentListAST * p = (cCollectionElement_lexicalExternFunctionFormalArgumentListAST *) attributes.ptr () ;
-    if (NULL == p) {
-      outOperand0.drop () ;
-      outOperand1.drop () ;
-    }else{
-      macroValidSharedObject (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST) ;
-      outOperand0 = p->mObject.mProperty_mLexicalTypeName ;
-      outOperand1 = p->mObject.mProperty_mFormalArgumentName ;
-    }
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexicalExternFunctionFormalArgumentListAST::setter_popFirst (GALGAS_lstring & outOperand0,
-                                                                         GALGAS_lstring & outOperand1,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lexicalExternFunctionFormalArgumentListAST * p = (cCollectionElement_lexicalExternFunctionFormalArgumentListAST *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST) ;
-    outOperand0 = p->mObject.mProperty_mLexicalTypeName ;
-    outOperand1 = p->mObject.mProperty_mFormalArgumentName ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexicalExternFunctionFormalArgumentListAST::setter_popLast (GALGAS_lstring & outOperand0,
-                                                                        GALGAS_lstring & outOperand1,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
-  capCollectionElement attributes ;
-  removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lexicalExternFunctionFormalArgumentListAST * p = (cCollectionElement_lexicalExternFunctionFormalArgumentListAST *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST) ;
-    outOperand0 = p->mObject.mProperty_mLexicalTypeName ;
-    outOperand1 = p->mObject.mProperty_mFormalArgumentName ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexicalExternFunctionFormalArgumentListAST::method_first (GALGAS_lstring & outOperand0,
-                                                                      GALGAS_lstring & outOperand1,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lexicalExternFunctionFormalArgumentListAST * p = (cCollectionElement_lexicalExternFunctionFormalArgumentListAST *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST) ;
-    outOperand0 = p->mObject.mProperty_mLexicalTypeName ;
-    outOperand1 = p->mObject.mProperty_mFormalArgumentName ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexicalExternFunctionFormalArgumentListAST::method_last (GALGAS_lstring & outOperand0,
-                                                                     GALGAS_lstring & outOperand1,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes ;
-  readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_lexicalExternFunctionFormalArgumentListAST * p = (cCollectionElement_lexicalExternFunctionFormalArgumentListAST *) attributes.ptr () ;
-  if (NULL == p) {
-    outOperand0.drop () ;
-    outOperand1.drop () ;
-  }else{
-    macroValidSharedObject (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST) ;
-    outOperand0 = p->mObject.mProperty_mLexicalTypeName ;
-    outOperand1 = p->mObject.mProperty_mFormalArgumentName ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalExternFunctionFormalArgumentListAST GALGAS_lexicalExternFunctionFormalArgumentListAST::add_operation (const GALGAS_lexicalExternFunctionFormalArgumentListAST & inOperand,
-                                                                                                                    C_Compiler * /* inCompiler */
-                                                                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
-  GALGAS_lexicalExternFunctionFormalArgumentListAST result ;
-  if (isValid () && inOperand.isValid ()) {
-    result = *this ;
-    result.appendList (inOperand) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalExternFunctionFormalArgumentListAST GALGAS_lexicalExternFunctionFormalArgumentListAST::getter_subListWithRange (const GALGAS_range & inRange,
-                                                                                                                              C_Compiler * inCompiler
-                                                                                                                              COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalExternFunctionFormalArgumentListAST result = GALGAS_lexicalExternFunctionFormalArgumentListAST::constructor_emptyList (THERE) ;
-  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalExternFunctionFormalArgumentListAST GALGAS_lexicalExternFunctionFormalArgumentListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
-                                                                                                                              C_Compiler * inCompiler
-                                                                                                                              COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalExternFunctionFormalArgumentListAST result = GALGAS_lexicalExternFunctionFormalArgumentListAST::constructor_emptyList (THERE) ;
-  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalExternFunctionFormalArgumentListAST GALGAS_lexicalExternFunctionFormalArgumentListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
-                                                                                                                            C_Compiler * inCompiler
-                                                                                                                            COMMA_LOCATION_ARGS) const {
-  GALGAS_lexicalExternFunctionFormalArgumentListAST result = GALGAS_lexicalExternFunctionFormalArgumentListAST::constructor_emptyList (THERE) ;
-  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexicalExternFunctionFormalArgumentListAST::plusAssign_operation (const GALGAS_lexicalExternFunctionFormalArgumentListAST inOperand,
-                                                                              C_Compiler * /* inCompiler */
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  appendList (inOperand) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexicalExternFunctionFormalArgumentListAST::setter_setMLexicalTypeNameAtIndex (GALGAS_lstring inOperand,
-                                                                                           GALGAS_uint inIndex,
-                                                                                           C_Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) {
-  cCollectionElement_lexicalExternFunctionFormalArgumentListAST * p = (cCollectionElement_lexicalExternFunctionFormalArgumentListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mLexicalTypeName = inOperand ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lstring GALGAS_lexicalExternFunctionFormalArgumentListAST::getter_mLexicalTypeNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                                  C_Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_lexicalExternFunctionFormalArgumentListAST * p = (cCollectionElement_lexicalExternFunctionFormalArgumentListAST *) attributes.ptr () ;
-  GALGAS_lstring result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST) ;
-    result = p->mObject.mProperty_mLexicalTypeName ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-void GALGAS_lexicalExternFunctionFormalArgumentListAST::setter_setMFormalArgumentNameAtIndex (GALGAS_lstring inOperand,
-                                                                                              GALGAS_uint inIndex,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  cCollectionElement_lexicalExternFunctionFormalArgumentListAST * p = (cCollectionElement_lexicalExternFunctionFormalArgumentListAST *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST) ;
-    macroUniqueSharedObject (p) ;
-    p->mObject.mProperty_mFormalArgumentName = inOperand ;
-  }
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lstring GALGAS_lexicalExternFunctionFormalArgumentListAST::getter_mFormalArgumentNameAtIndex (const GALGAS_uint & inIndex,
-                                                                                                     C_Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_lexicalExternFunctionFormalArgumentListAST * p = (cCollectionElement_lexicalExternFunctionFormalArgumentListAST *) attributes.ptr () ;
-  GALGAS_lstring result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST) ;
-    result = p->mObject.mProperty_mFormalArgumentName ;
-  }
-  return result ;
-}
-
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-cEnumerator_lexicalExternFunctionFormalArgumentListAST::cEnumerator_lexicalExternFunctionFormalArgumentListAST (const GALGAS_lexicalExternFunctionFormalArgumentListAST & inEnumeratedObject,
-                                                                                                                const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator (inOrder) {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalExternFunctionFormalArgumentListAST_2D_element cEnumerator_lexicalExternFunctionFormalArgumentListAST::current (LOCATION_ARGS) const {
-  const cCollectionElement_lexicalExternFunctionFormalArgumentListAST * p = (const cCollectionElement_lexicalExternFunctionFormalArgumentListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST) ;
-  return p->mObject ;
-}
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lstring cEnumerator_lexicalExternFunctionFormalArgumentListAST::current_mLexicalTypeName (LOCATION_ARGS) const {
-  const cCollectionElement_lexicalExternFunctionFormalArgumentListAST * p = (const cCollectionElement_lexicalExternFunctionFormalArgumentListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST) ;
-  return p->mObject.mProperty_mLexicalTypeName ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lstring cEnumerator_lexicalExternFunctionFormalArgumentListAST::current_mFormalArgumentName (LOCATION_ARGS) const {
-  const cCollectionElement_lexicalExternFunctionFormalArgumentListAST * p = (const cCollectionElement_lexicalExternFunctionFormalArgumentListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_lexicalExternFunctionFormalArgumentListAST) ;
-  return p->mObject.mProperty_mFormalArgumentName ;
-}
-
-
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  @lexicalExternFunctionFormalArgumentListAST type                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalExternFunctionFormalArgumentListAST ("lexicalExternFunctionFormalArgumentListAST",
-                                                                   NULL) ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-const C_galgas_type_descriptor * GALGAS_lexicalExternFunctionFormalArgumentListAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalExternFunctionFormalArgumentListAST ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-AC_GALGAS_root * GALGAS_lexicalExternFunctionFormalArgumentListAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalExternFunctionFormalArgumentListAST (*this)) ;
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-GALGAS_lexicalExternFunctionFormalArgumentListAST GALGAS_lexicalExternFunctionFormalArgumentListAST::extractObject (const GALGAS_object & inObject,
-                                                                                                                    C_Compiler * inCompiler
-                                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalExternFunctionFormalArgumentListAST result ;
-  const GALGAS_lexicalExternFunctionFormalArgumentListAST * p = (const GALGAS_lexicalExternFunctionFormalArgumentListAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalExternFunctionFormalArgumentListAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalExternFunctionFormalArgumentListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Class for element of '@externFunctionListAST' list                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@externFunctionListAST' list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_externFunctionListAST : public cCollectionElement {
   public : GALGAS_externFunctionListAST_2D_element mObject ;
@@ -496,7 +36,7 @@ class cCollectionElement_externFunctionListAST : public cCollectionElement {
   public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_externFunctionListAST::cCollectionElement_externFunctionListAST (const GALGAS_lstring & in_mFunctionName,
                                                                                     const GALGAS_lexicalExternFunctionFormalArgumentListAST & in_mLexicalFunctionFormalArgumentList,
@@ -506,20 +46,20 @@ cCollectionElement (THERE),
 mObject (in_mFunctionName, in_mLexicalFunctionFormalArgumentList, in_mReturnedTypeName) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_externFunctionListAST::cCollectionElement_externFunctionListAST (const GALGAS_externFunctionListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mFunctionName, inElement.mProperty_mLexicalFunctionFormalArgumentList, inElement.mProperty_mReturnedTypeName) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_externFunctionListAST::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_externFunctionListAST::copy (void) {
   cCollectionElement * result = NULL ;
@@ -527,7 +67,7 @@ cCollectionElement * cCollectionElement_externFunctionListAST::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cCollectionElement_externFunctionListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -544,7 +84,7 @@ void cCollectionElement_externFunctionListAST::description (C_String & ioString,
   mObject.mProperty_mReturnedTypeName.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cCollectionElement_externFunctionListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_externFunctionListAST * operand = (cCollectionElement_externFunctionListAST *) inOperand ;
@@ -552,25 +92,25 @@ typeComparisonResult cCollectionElement_externFunctionListAST::compare (const cC
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionListAST::GALGAS_externFunctionListAST (void) :
 AC_GALGAS_list () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionListAST::GALGAS_externFunctionListAST (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionListAST GALGAS_externFunctionListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_externFunctionListAST  (capCollectionElementArray ()) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionListAST GALGAS_externFunctionListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                       const GALGAS_lexicalExternFunctionFormalArgumentListAST & inOperand1,
@@ -586,7 +126,7 @@ GALGAS_externFunctionListAST GALGAS_externFunctionListAST::constructor_listWithV
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_externFunctionListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                               const GALGAS_lstring & in_mFunctionName,
@@ -601,7 +141,7 @@ void GALGAS_externFunctionListAST::makeAttributesFromObjects (capCollectionEleme
   macroDetachSharedObject (p) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_externFunctionListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                         const GALGAS_lexicalExternFunctionFormalArgumentListAST & inOperand1,
@@ -617,7 +157,7 @@ void GALGAS_externFunctionListAST::addAssign_operation (const GALGAS_lstring & i
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_externFunctionListAST::setter_append (GALGAS_externFunctionListAST_2D_element inElement,
                                                   C_Compiler * /* inCompiler */
@@ -632,7 +172,7 @@ void GALGAS_externFunctionListAST::setter_append (GALGAS_externFunctionListAST_2
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_externFunctionListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                          const GALGAS_lexicalExternFunctionFormalArgumentListAST inOperand1,
@@ -650,7 +190,7 @@ void GALGAS_externFunctionListAST::setter_insertAtIndex (const GALGAS_lstring in
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_externFunctionListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                          GALGAS_lexicalExternFunctionFormalArgumentListAST & outOperand1,
@@ -675,7 +215,7 @@ void GALGAS_externFunctionListAST::setter_removeAtIndex (GALGAS_lstring & outOpe
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_externFunctionListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                     GALGAS_lexicalExternFunctionFormalArgumentListAST & outOperand1,
@@ -697,7 +237,7 @@ void GALGAS_externFunctionListAST::setter_popFirst (GALGAS_lstring & outOperand0
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_externFunctionListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                    GALGAS_lexicalExternFunctionFormalArgumentListAST & outOperand1,
@@ -719,7 +259,7 @@ void GALGAS_externFunctionListAST::setter_popLast (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_externFunctionListAST::method_first (GALGAS_lstring & outOperand0,
                                                  GALGAS_lexicalExternFunctionFormalArgumentListAST & outOperand1,
@@ -741,7 +281,7 @@ void GALGAS_externFunctionListAST::method_first (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_externFunctionListAST::method_last (GALGAS_lstring & outOperand0,
                                                 GALGAS_lexicalExternFunctionFormalArgumentListAST & outOperand1,
@@ -763,7 +303,7 @@ void GALGAS_externFunctionListAST::method_last (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionListAST GALGAS_externFunctionListAST::add_operation (const GALGAS_externFunctionListAST & inOperand,
                                                                           C_Compiler * /* inCompiler */
@@ -776,7 +316,7 @@ GALGAS_externFunctionListAST GALGAS_externFunctionListAST::add_operation (const 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionListAST GALGAS_externFunctionListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                     C_Compiler * inCompiler
@@ -786,7 +326,7 @@ GALGAS_externFunctionListAST GALGAS_externFunctionListAST::getter_subListWithRan
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionListAST GALGAS_externFunctionListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                     C_Compiler * inCompiler
@@ -796,7 +336,7 @@ GALGAS_externFunctionListAST GALGAS_externFunctionListAST::getter_subListFromInd
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionListAST GALGAS_externFunctionListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                   C_Compiler * inCompiler
@@ -806,7 +346,7 @@ GALGAS_externFunctionListAST GALGAS_externFunctionListAST::getter_subListToIndex
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_externFunctionListAST::plusAssign_operation (const GALGAS_externFunctionListAST inOperand,
                                                          C_Compiler * /* inCompiler */
@@ -814,7 +354,7 @@ void GALGAS_externFunctionListAST::plusAssign_operation (const GALGAS_externFunc
   appendList (inOperand) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_externFunctionListAST::setter_setMFunctionNameAtIndex (GALGAS_lstring inOperand,
                                                                    GALGAS_uint inIndex,
@@ -828,7 +368,7 @@ void GALGAS_externFunctionListAST::setter_setMFunctionNameAtIndex (GALGAS_lstrin
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_externFunctionListAST::getter_mFunctionNameAtIndex (const GALGAS_uint & inIndex,
                                                                           C_Compiler * inCompiler
@@ -843,7 +383,7 @@ GALGAS_lstring GALGAS_externFunctionListAST::getter_mFunctionNameAtIndex (const 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_externFunctionListAST::setter_setMLexicalFunctionFormalArgumentListAtIndex (GALGAS_lexicalExternFunctionFormalArgumentListAST inOperand,
                                                                                         GALGAS_uint inIndex,
@@ -857,7 +397,7 @@ void GALGAS_externFunctionListAST::setter_setMLexicalFunctionFormalArgumentListA
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExternFunctionFormalArgumentListAST GALGAS_externFunctionListAST::getter_mLexicalFunctionFormalArgumentListAtIndex (const GALGAS_uint & inIndex,
                                                                                                                                   C_Compiler * inCompiler
@@ -872,7 +412,7 @@ GALGAS_lexicalExternFunctionFormalArgumentListAST GALGAS_externFunctionListAST::
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_externFunctionListAST::setter_setMReturnedTypeNameAtIndex (GALGAS_lstring inOperand,
                                                                        GALGAS_uint inIndex,
@@ -886,7 +426,7 @@ void GALGAS_externFunctionListAST::setter_setMReturnedTypeNameAtIndex (GALGAS_ls
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_externFunctionListAST::getter_mReturnedTypeNameAtIndex (const GALGAS_uint & inIndex,
                                                                               C_Compiler * inCompiler
@@ -903,7 +443,7 @@ GALGAS_lstring GALGAS_externFunctionListAST::getter_mReturnedTypeNameAtIndex (co
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_externFunctionListAST::cEnumerator_externFunctionListAST (const GALGAS_externFunctionListAST & inEnumeratedObject,
                                                                       const typeEnumerationOrder inOrder) :
@@ -911,7 +451,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionListAST_2D_element cEnumerator_externFunctionListAST::current (LOCATION_ARGS) const {
   const cCollectionElement_externFunctionListAST * p = (const cCollectionElement_externFunctionListAST *) currentObjectPtr (THERE) ;
@@ -920,7 +460,7 @@ GALGAS_externFunctionListAST_2D_element cEnumerator_externFunctionListAST::curre
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_externFunctionListAST::current_mFunctionName (LOCATION_ARGS) const {
   const cCollectionElement_externFunctionListAST * p = (const cCollectionElement_externFunctionListAST *) currentObjectPtr (THERE) ;
@@ -928,7 +468,7 @@ GALGAS_lstring cEnumerator_externFunctionListAST::current_mFunctionName (LOCATIO
   return p->mObject.mProperty_mFunctionName ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExternFunctionFormalArgumentListAST cEnumerator_externFunctionListAST::current_mLexicalFunctionFormalArgumentList (LOCATION_ARGS) const {
   const cCollectionElement_externFunctionListAST * p = (const cCollectionElement_externFunctionListAST *) currentObjectPtr (THERE) ;
@@ -936,7 +476,7 @@ GALGAS_lexicalExternFunctionFormalArgumentListAST cEnumerator_externFunctionList
   return p->mObject.mProperty_mLexicalFunctionFormalArgumentList ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_externFunctionListAST::current_mReturnedTypeName (LOCATION_ARGS) const {
   const cCollectionElement_externFunctionListAST * p = (const cCollectionElement_externFunctionListAST *) currentObjectPtr (THERE) ;
@@ -947,23 +487,23 @@ GALGAS_lstring cEnumerator_externFunctionListAST::current_mReturnedTypeName (LOC
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @externFunctionListAST type                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@externFunctionListAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_externFunctionListAST ("externFunctionListAST",
                                               NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_externFunctionListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_externFunctionListAST ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_externFunctionListAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -973,7 +513,7 @@ AC_GALGAS_root * GALGAS_externFunctionListAST::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_externFunctionListAST GALGAS_externFunctionListAST::extractObject (const GALGAS_object & inObject,
                                                                           C_Compiler * inCompiler
@@ -990,11 +530,11 @@ GALGAS_externFunctionListAST GALGAS_externFunctionListAST::extractObject (const 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                    Class for element of '@indexingListAST' list                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@indexingListAST' list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_indexingListAST : public cCollectionElement {
   public : GALGAS_indexingListAST_2D_element mObject ;
@@ -1018,7 +558,7 @@ class cCollectionElement_indexingListAST : public cCollectionElement {
   public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_indexingListAST::cCollectionElement_indexingListAST (const GALGAS_lstring & in_mIndexName,
                                                                         const GALGAS_lstring & in_mIndexComment
@@ -1027,20 +567,20 @@ cCollectionElement (THERE),
 mObject (in_mIndexName, in_mIndexComment) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_indexingListAST::cCollectionElement_indexingListAST (const GALGAS_indexingListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mIndexName, inElement.mProperty_mIndexComment) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_indexingListAST::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_indexingListAST::copy (void) {
   cCollectionElement * result = NULL ;
@@ -1048,7 +588,7 @@ cCollectionElement * cCollectionElement_indexingListAST::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cCollectionElement_indexingListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -1061,7 +601,7 @@ void cCollectionElement_indexingListAST::description (C_String & ioString, const
   mObject.mProperty_mIndexComment.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cCollectionElement_indexingListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_indexingListAST * operand = (cCollectionElement_indexingListAST *) inOperand ;
@@ -1069,25 +609,25 @@ typeComparisonResult cCollectionElement_indexingListAST::compare (const cCollect
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_indexingListAST::GALGAS_indexingListAST (void) :
 AC_GALGAS_list () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_indexingListAST::GALGAS_indexingListAST (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_indexingListAST GALGAS_indexingListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_indexingListAST  (capCollectionElementArray ()) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_indexingListAST GALGAS_indexingListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                           const GALGAS_lstring & inOperand1
@@ -1102,7 +642,7 @@ GALGAS_indexingListAST GALGAS_indexingListAST::constructor_listWithValue (const 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_indexingListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                         const GALGAS_lstring & in_mIndexName,
@@ -1115,7 +655,7 @@ void GALGAS_indexingListAST::makeAttributesFromObjects (capCollectionElement & o
   macroDetachSharedObject (p) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_indexingListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                   const GALGAS_lstring & inOperand1
@@ -1130,7 +670,7 @@ void GALGAS_indexingListAST::addAssign_operation (const GALGAS_lstring & inOpera
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_indexingListAST::setter_append (GALGAS_indexingListAST_2D_element inElement,
                                             C_Compiler * /* inCompiler */
@@ -1145,7 +685,7 @@ void GALGAS_indexingListAST::setter_append (GALGAS_indexingListAST_2D_element in
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_indexingListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                    const GALGAS_lstring inOperand1,
@@ -1162,7 +702,7 @@ void GALGAS_indexingListAST::setter_insertAtIndex (const GALGAS_lstring inOperan
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_indexingListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                    GALGAS_lstring & outOperand1,
@@ -1184,7 +724,7 @@ void GALGAS_indexingListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_indexingListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                               GALGAS_lstring & outOperand1,
@@ -1203,7 +743,7 @@ void GALGAS_indexingListAST::setter_popFirst (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_indexingListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                              GALGAS_lstring & outOperand1,
@@ -1222,7 +762,7 @@ void GALGAS_indexingListAST::setter_popLast (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_indexingListAST::method_first (GALGAS_lstring & outOperand0,
                                            GALGAS_lstring & outOperand1,
@@ -1241,7 +781,7 @@ void GALGAS_indexingListAST::method_first (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_indexingListAST::method_last (GALGAS_lstring & outOperand0,
                                           GALGAS_lstring & outOperand1,
@@ -1260,7 +800,7 @@ void GALGAS_indexingListAST::method_last (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_indexingListAST GALGAS_indexingListAST::add_operation (const GALGAS_indexingListAST & inOperand,
                                                               C_Compiler * /* inCompiler */
@@ -1273,7 +813,7 @@ GALGAS_indexingListAST GALGAS_indexingListAST::add_operation (const GALGAS_index
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_indexingListAST GALGAS_indexingListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                         C_Compiler * inCompiler
@@ -1283,7 +823,7 @@ GALGAS_indexingListAST GALGAS_indexingListAST::getter_subListWithRange (const GA
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_indexingListAST GALGAS_indexingListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                         C_Compiler * inCompiler
@@ -1293,7 +833,7 @@ GALGAS_indexingListAST GALGAS_indexingListAST::getter_subListFromIndex (const GA
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_indexingListAST GALGAS_indexingListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                       C_Compiler * inCompiler
@@ -1303,7 +843,7 @@ GALGAS_indexingListAST GALGAS_indexingListAST::getter_subListToIndex (const GALG
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_indexingListAST::plusAssign_operation (const GALGAS_indexingListAST inOperand,
                                                    C_Compiler * /* inCompiler */
@@ -1311,7 +851,7 @@ void GALGAS_indexingListAST::plusAssign_operation (const GALGAS_indexingListAST 
   appendList (inOperand) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_indexingListAST::setter_setMIndexNameAtIndex (GALGAS_lstring inOperand,
                                                           GALGAS_uint inIndex,
@@ -1325,7 +865,7 @@ void GALGAS_indexingListAST::setter_setMIndexNameAtIndex (GALGAS_lstring inOpera
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_indexingListAST::getter_mIndexNameAtIndex (const GALGAS_uint & inIndex,
                                                                  C_Compiler * inCompiler
@@ -1340,7 +880,7 @@ GALGAS_lstring GALGAS_indexingListAST::getter_mIndexNameAtIndex (const GALGAS_ui
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_indexingListAST::setter_setMIndexCommentAtIndex (GALGAS_lstring inOperand,
                                                              GALGAS_uint inIndex,
@@ -1354,7 +894,7 @@ void GALGAS_indexingListAST::setter_setMIndexCommentAtIndex (GALGAS_lstring inOp
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_indexingListAST::getter_mIndexCommentAtIndex (const GALGAS_uint & inIndex,
                                                                     C_Compiler * inCompiler
@@ -1371,7 +911,7 @@ GALGAS_lstring GALGAS_indexingListAST::getter_mIndexCommentAtIndex (const GALGAS
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_indexingListAST::cEnumerator_indexingListAST (const GALGAS_indexingListAST & inEnumeratedObject,
                                                           const typeEnumerationOrder inOrder) :
@@ -1379,7 +919,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_indexingListAST_2D_element cEnumerator_indexingListAST::current (LOCATION_ARGS) const {
   const cCollectionElement_indexingListAST * p = (const cCollectionElement_indexingListAST *) currentObjectPtr (THERE) ;
@@ -1388,7 +928,7 @@ GALGAS_indexingListAST_2D_element cEnumerator_indexingListAST::current (LOCATION
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_indexingListAST::current_mIndexName (LOCATION_ARGS) const {
   const cCollectionElement_indexingListAST * p = (const cCollectionElement_indexingListAST *) currentObjectPtr (THERE) ;
@@ -1396,7 +936,7 @@ GALGAS_lstring cEnumerator_indexingListAST::current_mIndexName (LOCATION_ARGS) c
   return p->mObject.mProperty_mIndexName ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_indexingListAST::current_mIndexComment (LOCATION_ARGS) const {
   const cCollectionElement_indexingListAST * p = (const cCollectionElement_indexingListAST *) currentObjectPtr (THERE) ;
@@ -1407,23 +947,23 @@ GALGAS_lstring cEnumerator_indexingListAST::current_mIndexComment (LOCATION_ARGS
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                @indexingListAST type                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@indexingListAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_indexingListAST ("indexingListAST",
                                         NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_indexingListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_indexingListAST ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_indexingListAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -1433,7 +973,7 @@ AC_GALGAS_root * GALGAS_indexingListAST::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_indexingListAST GALGAS_indexingListAST::extractObject (const GALGAS_object & inObject,
                                                               C_Compiler * inCompiler
@@ -1450,11 +990,11 @@ GALGAS_indexingListAST GALGAS_indexingListAST::extractObject (const GALGAS_objec
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Class for element of '@lexicalFunctionListAST' list                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@lexicalFunctionListAST' list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalFunctionListAST : public cCollectionElement {
   public : GALGAS_lexicalFunctionListAST_2D_element mObject ;
@@ -1478,7 +1018,7 @@ class cCollectionElement_lexicalFunctionListAST : public cCollectionElement {
   public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_lexicalFunctionListAST::cCollectionElement_lexicalFunctionListAST (const GALGAS_lstring & in_mFunctionName,
                                                                                       const GALGAS_lexicalFunctionExpressionAST & in_mLexicalExpression
@@ -1487,20 +1027,20 @@ cCollectionElement (THERE),
 mObject (in_mFunctionName, in_mLexicalExpression) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_lexicalFunctionListAST::cCollectionElement_lexicalFunctionListAST (const GALGAS_lexicalFunctionListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mFunctionName, inElement.mProperty_mLexicalExpression) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalFunctionListAST::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_lexicalFunctionListAST::copy (void) {
   cCollectionElement * result = NULL ;
@@ -1508,7 +1048,7 @@ cCollectionElement * cCollectionElement_lexicalFunctionListAST::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cCollectionElement_lexicalFunctionListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -1521,7 +1061,7 @@ void cCollectionElement_lexicalFunctionListAST::description (C_String & ioString
   mObject.mProperty_mLexicalExpression.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cCollectionElement_lexicalFunctionListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalFunctionListAST * operand = (cCollectionElement_lexicalFunctionListAST *) inOperand ;
@@ -1529,25 +1069,25 @@ typeComparisonResult cCollectionElement_lexicalFunctionListAST::compare (const c
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionListAST::GALGAS_lexicalFunctionListAST (void) :
 AC_GALGAS_list () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionListAST::GALGAS_lexicalFunctionListAST (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionListAST GALGAS_lexicalFunctionListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalFunctionListAST  (capCollectionElementArray ()) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionListAST GALGAS_lexicalFunctionListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                         const GALGAS_lexicalFunctionExpressionAST & inOperand1
@@ -1562,7 +1102,7 @@ GALGAS_lexicalFunctionListAST GALGAS_lexicalFunctionListAST::constructor_listWit
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                const GALGAS_lstring & in_mFunctionName,
@@ -1575,7 +1115,7 @@ void GALGAS_lexicalFunctionListAST::makeAttributesFromObjects (capCollectionElem
   macroDetachSharedObject (p) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                          const GALGAS_lexicalFunctionExpressionAST & inOperand1
@@ -1590,7 +1130,7 @@ void GALGAS_lexicalFunctionListAST::addAssign_operation (const GALGAS_lstring & 
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionListAST::setter_append (GALGAS_lexicalFunctionListAST_2D_element inElement,
                                                    C_Compiler * /* inCompiler */
@@ -1605,7 +1145,7 @@ void GALGAS_lexicalFunctionListAST::setter_append (GALGAS_lexicalFunctionListAST
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                           const GALGAS_lexicalFunctionExpressionAST inOperand1,
@@ -1622,7 +1162,7 @@ void GALGAS_lexicalFunctionListAST::setter_insertAtIndex (const GALGAS_lstring i
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                           GALGAS_lexicalFunctionExpressionAST & outOperand1,
@@ -1644,7 +1184,7 @@ void GALGAS_lexicalFunctionListAST::setter_removeAtIndex (GALGAS_lstring & outOp
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                      GALGAS_lexicalFunctionExpressionAST & outOperand1,
@@ -1663,7 +1203,7 @@ void GALGAS_lexicalFunctionListAST::setter_popFirst (GALGAS_lstring & outOperand
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                     GALGAS_lexicalFunctionExpressionAST & outOperand1,
@@ -1682,7 +1222,7 @@ void GALGAS_lexicalFunctionListAST::setter_popLast (GALGAS_lstring & outOperand0
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionListAST::method_first (GALGAS_lstring & outOperand0,
                                                   GALGAS_lexicalFunctionExpressionAST & outOperand1,
@@ -1701,7 +1241,7 @@ void GALGAS_lexicalFunctionListAST::method_first (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionListAST::method_last (GALGAS_lstring & outOperand0,
                                                  GALGAS_lexicalFunctionExpressionAST & outOperand1,
@@ -1720,7 +1260,7 @@ void GALGAS_lexicalFunctionListAST::method_last (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionListAST GALGAS_lexicalFunctionListAST::add_operation (const GALGAS_lexicalFunctionListAST & inOperand,
                                                                             C_Compiler * /* inCompiler */
@@ -1733,7 +1273,7 @@ GALGAS_lexicalFunctionListAST GALGAS_lexicalFunctionListAST::add_operation (cons
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionListAST GALGAS_lexicalFunctionListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                       C_Compiler * inCompiler
@@ -1743,7 +1283,7 @@ GALGAS_lexicalFunctionListAST GALGAS_lexicalFunctionListAST::getter_subListWithR
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionListAST GALGAS_lexicalFunctionListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                       C_Compiler * inCompiler
@@ -1753,7 +1293,7 @@ GALGAS_lexicalFunctionListAST GALGAS_lexicalFunctionListAST::getter_subListFromI
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionListAST GALGAS_lexicalFunctionListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                     C_Compiler * inCompiler
@@ -1763,7 +1303,7 @@ GALGAS_lexicalFunctionListAST GALGAS_lexicalFunctionListAST::getter_subListToInd
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionListAST::plusAssign_operation (const GALGAS_lexicalFunctionListAST inOperand,
                                                           C_Compiler * /* inCompiler */
@@ -1771,7 +1311,7 @@ void GALGAS_lexicalFunctionListAST::plusAssign_operation (const GALGAS_lexicalFu
   appendList (inOperand) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionListAST::setter_setMFunctionNameAtIndex (GALGAS_lstring inOperand,
                                                                     GALGAS_uint inIndex,
@@ -1785,7 +1325,7 @@ void GALGAS_lexicalFunctionListAST::setter_setMFunctionNameAtIndex (GALGAS_lstri
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_lexicalFunctionListAST::getter_mFunctionNameAtIndex (const GALGAS_uint & inIndex,
                                                                            C_Compiler * inCompiler
@@ -1800,7 +1340,7 @@ GALGAS_lstring GALGAS_lexicalFunctionListAST::getter_mFunctionNameAtIndex (const
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionListAST::setter_setMLexicalExpressionAtIndex (GALGAS_lexicalFunctionExpressionAST inOperand,
                                                                          GALGAS_uint inIndex,
@@ -1814,7 +1354,7 @@ void GALGAS_lexicalFunctionListAST::setter_setMLexicalExpressionAtIndex (GALGAS_
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionExpressionAST GALGAS_lexicalFunctionListAST::getter_mLexicalExpressionAtIndex (const GALGAS_uint & inIndex,
                                                                                                      C_Compiler * inCompiler
@@ -1831,7 +1371,7 @@ GALGAS_lexicalFunctionExpressionAST GALGAS_lexicalFunctionListAST::getter_mLexic
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_lexicalFunctionListAST::cEnumerator_lexicalFunctionListAST (const GALGAS_lexicalFunctionListAST & inEnumeratedObject,
                                                                         const typeEnumerationOrder inOrder) :
@@ -1839,7 +1379,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionListAST_2D_element cEnumerator_lexicalFunctionListAST::current (LOCATION_ARGS) const {
   const cCollectionElement_lexicalFunctionListAST * p = (const cCollectionElement_lexicalFunctionListAST *) currentObjectPtr (THERE) ;
@@ -1848,7 +1388,7 @@ GALGAS_lexicalFunctionListAST_2D_element cEnumerator_lexicalFunctionListAST::cur
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_lexicalFunctionListAST::current_mFunctionName (LOCATION_ARGS) const {
   const cCollectionElement_lexicalFunctionListAST * p = (const cCollectionElement_lexicalFunctionListAST *) currentObjectPtr (THERE) ;
@@ -1856,7 +1396,7 @@ GALGAS_lstring cEnumerator_lexicalFunctionListAST::current_mFunctionName (LOCATI
   return p->mObject.mProperty_mFunctionName ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionExpressionAST cEnumerator_lexicalFunctionListAST::current_mLexicalExpression (LOCATION_ARGS) const {
   const cCollectionElement_lexicalFunctionListAST * p = (const cCollectionElement_lexicalFunctionListAST *) currentObjectPtr (THERE) ;
@@ -1867,23 +1407,23 @@ GALGAS_lexicalFunctionExpressionAST cEnumerator_lexicalFunctionListAST::current_
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                            @lexicalFunctionListAST type                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalFunctionListAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalFunctionListAST ("lexicalFunctionListAST",
                                                NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexicalFunctionListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalFunctionListAST ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalFunctionListAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -1893,7 +1433,7 @@ AC_GALGAS_root * GALGAS_lexicalFunctionListAST::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionListAST GALGAS_lexicalFunctionListAST::extractObject (const GALGAS_object & inObject,
                                                                             C_Compiler * inCompiler
@@ -1910,13 +1450,13 @@ GALGAS_lexicalFunctionListAST GALGAS_lexicalFunctionListAST::extractObject (cons
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum::GALGAS_lexicalTypeEnum (void) :
 mEnum (kNotBuilt) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_string (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
@@ -1924,7 +1464,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_string
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_char (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
@@ -1932,7 +1472,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_char (
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_uint (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
@@ -1940,7 +1480,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_uint (
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_uint_36__34_ (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
@@ -1948,7 +1488,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_uint_3
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_sint (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
@@ -1956,7 +1496,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_sint (
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_sint_36__34_ (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
@@ -1964,7 +1504,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_sint_3
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_double (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
@@ -1972,7 +1512,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_double
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_bigint (UNUSED_LOCATION_ARGS) {
   GALGAS_lexicalTypeEnum result ;
@@ -1980,7 +1520,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_bigint
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static const char * gEnumNameArrayFor_lexicalTypeEnum [9] = {
   "(not built)",
@@ -1994,55 +1534,55 @@ static const char * gEnumNameArrayFor_lexicalTypeEnum [9] = {
   "lexicalType_bigint"
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_string (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_string == mEnum) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_char (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_char == mEnum) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_uint (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_uint == mEnum) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_uint_36__34_ == mEnum) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_sint (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_sint == mEnum) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_sint_36__34_ == mEnum) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_double (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_double == mEnum) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalTypeEnum::getter_isLexicalType_5F_bigint (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_bigint == mEnum) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalTypeEnum::description (C_String & ioString,
                                           const int32_t /* inIndentation */) const {
@@ -2050,7 +1590,7 @@ void GALGAS_lexicalTypeEnum::description (C_String & ioString,
   ioString << ">" ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_lexicalTypeEnum::objectCompare (const GALGAS_lexicalTypeEnum & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -2066,23 +1606,23 @@ typeComparisonResult GALGAS_lexicalTypeEnum::objectCompare (const GALGAS_lexical
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                @lexicalTypeEnum type                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalTypeEnum type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalTypeEnum ("lexicalTypeEnum",
                                         NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexicalTypeEnum::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalTypeEnum ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalTypeEnum::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -2092,7 +1632,7 @@ AC_GALGAS_root * GALGAS_lexicalTypeEnum::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::extractObject (const GALGAS_object & inObject,
                                                               C_Compiler * inCompiler
@@ -2109,11 +1649,11 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::extractObject (const GALGAS_objec
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Class for element of '@lexicalSentValueList' list                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@lexicalSentValueList' list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalSentValueList : public cCollectionElement {
   public : GALGAS_lexicalSentValueList_2D_element mObject ;
@@ -2138,7 +1678,7 @@ class cCollectionElement_lexicalSentValueList : public cCollectionElement {
   public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_lexicalSentValueList::cCollectionElement_lexicalSentValueList (const GALGAS_lstring & in_mLexicalFormalSelector,
                                                                                   const GALGAS_string & in_mLexicalAttributeName,
@@ -2148,20 +1688,20 @@ cCollectionElement (THERE),
 mObject (in_mLexicalFormalSelector, in_mLexicalAttributeName, in_mLexicalType) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_lexicalSentValueList::cCollectionElement_lexicalSentValueList (const GALGAS_lexicalSentValueList_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mLexicalFormalSelector, inElement.mProperty_mLexicalAttributeName, inElement.mProperty_mLexicalType) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalSentValueList::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_lexicalSentValueList::copy (void) {
   cCollectionElement * result = NULL ;
@@ -2169,7 +1709,7 @@ cCollectionElement * cCollectionElement_lexicalSentValueList::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cCollectionElement_lexicalSentValueList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -2186,7 +1726,7 @@ void cCollectionElement_lexicalSentValueList::description (C_String & ioString, 
   mObject.mProperty_mLexicalType.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cCollectionElement_lexicalSentValueList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalSentValueList * operand = (cCollectionElement_lexicalSentValueList *) inOperand ;
@@ -2194,25 +1734,25 @@ typeComparisonResult cCollectionElement_lexicalSentValueList::compare (const cCo
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSentValueList::GALGAS_lexicalSentValueList (void) :
 AC_GALGAS_list () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSentValueList::GALGAS_lexicalSentValueList (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalSentValueList  (capCollectionElementArray ()) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                     const GALGAS_string & inOperand1,
@@ -2228,7 +1768,7 @@ GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::constructor_listWithVal
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalSentValueList::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                              const GALGAS_lstring & in_mLexicalFormalSelector,
@@ -2243,7 +1783,7 @@ void GALGAS_lexicalSentValueList::makeAttributesFromObjects (capCollectionElemen
   macroDetachSharedObject (p) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalSentValueList::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                        const GALGAS_string & inOperand1,
@@ -2259,7 +1799,7 @@ void GALGAS_lexicalSentValueList::addAssign_operation (const GALGAS_lstring & in
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalSentValueList::setter_append (GALGAS_lexicalSentValueList_2D_element inElement,
                                                  C_Compiler * /* inCompiler */
@@ -2274,7 +1814,7 @@ void GALGAS_lexicalSentValueList::setter_append (GALGAS_lexicalSentValueList_2D_
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalSentValueList::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                         const GALGAS_string inOperand1,
@@ -2292,7 +1832,7 @@ void GALGAS_lexicalSentValueList::setter_insertAtIndex (const GALGAS_lstring inO
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalSentValueList::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                         GALGAS_string & outOperand1,
@@ -2317,7 +1857,7 @@ void GALGAS_lexicalSentValueList::setter_removeAtIndex (GALGAS_lstring & outOper
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalSentValueList::setter_popFirst (GALGAS_lstring & outOperand0,
                                                    GALGAS_string & outOperand1,
@@ -2339,7 +1879,7 @@ void GALGAS_lexicalSentValueList::setter_popFirst (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalSentValueList::setter_popLast (GALGAS_lstring & outOperand0,
                                                   GALGAS_string & outOperand1,
@@ -2361,7 +1901,7 @@ void GALGAS_lexicalSentValueList::setter_popLast (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalSentValueList::method_first (GALGAS_lstring & outOperand0,
                                                 GALGAS_string & outOperand1,
@@ -2383,7 +1923,7 @@ void GALGAS_lexicalSentValueList::method_first (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalSentValueList::method_last (GALGAS_lstring & outOperand0,
                                                GALGAS_string & outOperand1,
@@ -2405,7 +1945,7 @@ void GALGAS_lexicalSentValueList::method_last (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::add_operation (const GALGAS_lexicalSentValueList & inOperand,
                                                                         C_Compiler * /* inCompiler */
@@ -2418,7 +1958,7 @@ GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::add_operation (const GA
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                   C_Compiler * inCompiler
@@ -2428,7 +1968,7 @@ GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::getter_subListWithRange
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                   C_Compiler * inCompiler
@@ -2438,7 +1978,7 @@ GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::getter_subListFromIndex
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                 C_Compiler * inCompiler
@@ -2448,7 +1988,7 @@ GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::getter_subListToIndex (
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalSentValueList::plusAssign_operation (const GALGAS_lexicalSentValueList inOperand,
                                                         C_Compiler * /* inCompiler */
@@ -2456,7 +1996,7 @@ void GALGAS_lexicalSentValueList::plusAssign_operation (const GALGAS_lexicalSent
   appendList (inOperand) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalSentValueList::setter_setMLexicalFormalSelectorAtIndex (GALGAS_lstring inOperand,
                                                                            GALGAS_uint inIndex,
@@ -2470,7 +2010,7 @@ void GALGAS_lexicalSentValueList::setter_setMLexicalFormalSelectorAtIndex (GALGA
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_lexicalSentValueList::getter_mLexicalFormalSelectorAtIndex (const GALGAS_uint & inIndex,
                                                                                   C_Compiler * inCompiler
@@ -2485,7 +2025,7 @@ GALGAS_lstring GALGAS_lexicalSentValueList::getter_mLexicalFormalSelectorAtIndex
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalSentValueList::setter_setMLexicalAttributeNameAtIndex (GALGAS_string inOperand,
                                                                           GALGAS_uint inIndex,
@@ -2499,7 +2039,7 @@ void GALGAS_lexicalSentValueList::setter_setMLexicalAttributeNameAtIndex (GALGAS
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_lexicalSentValueList::getter_mLexicalAttributeNameAtIndex (const GALGAS_uint & inIndex,
                                                                                 C_Compiler * inCompiler
@@ -2514,7 +2054,7 @@ GALGAS_string GALGAS_lexicalSentValueList::getter_mLexicalAttributeNameAtIndex (
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalSentValueList::setter_setMLexicalTypeAtIndex (GALGAS_lexicalTypeEnum inOperand,
                                                                  GALGAS_uint inIndex,
@@ -2528,7 +2068,7 @@ void GALGAS_lexicalSentValueList::setter_setMLexicalTypeAtIndex (GALGAS_lexicalT
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalSentValueList::getter_mLexicalTypeAtIndex (const GALGAS_uint & inIndex,
                                                                                 C_Compiler * inCompiler
@@ -2545,7 +2085,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalSentValueList::getter_mLexicalTypeAtIndex (
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_lexicalSentValueList::cEnumerator_lexicalSentValueList (const GALGAS_lexicalSentValueList & inEnumeratedObject,
                                                                     const typeEnumerationOrder inOrder) :
@@ -2553,7 +2093,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSentValueList_2D_element cEnumerator_lexicalSentValueList::current (LOCATION_ARGS) const {
   const cCollectionElement_lexicalSentValueList * p = (const cCollectionElement_lexicalSentValueList *) currentObjectPtr (THERE) ;
@@ -2562,7 +2102,7 @@ GALGAS_lexicalSentValueList_2D_element cEnumerator_lexicalSentValueList::current
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_lexicalSentValueList::current_mLexicalFormalSelector (LOCATION_ARGS) const {
   const cCollectionElement_lexicalSentValueList * p = (const cCollectionElement_lexicalSentValueList *) currentObjectPtr (THERE) ;
@@ -2570,7 +2110,7 @@ GALGAS_lstring cEnumerator_lexicalSentValueList::current_mLexicalFormalSelector 
   return p->mObject.mProperty_mLexicalFormalSelector ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string cEnumerator_lexicalSentValueList::current_mLexicalAttributeName (LOCATION_ARGS) const {
   const cCollectionElement_lexicalSentValueList * p = (const cCollectionElement_lexicalSentValueList *) currentObjectPtr (THERE) ;
@@ -2578,7 +2118,7 @@ GALGAS_string cEnumerator_lexicalSentValueList::current_mLexicalAttributeName (L
   return p->mObject.mProperty_mLexicalAttributeName ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum cEnumerator_lexicalSentValueList::current_mLexicalType (LOCATION_ARGS) const {
   const cCollectionElement_lexicalSentValueList * p = (const cCollectionElement_lexicalSentValueList *) currentObjectPtr (THERE) ;
@@ -2589,23 +2129,23 @@ GALGAS_lexicalTypeEnum cEnumerator_lexicalSentValueList::current_mLexicalType (L
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @lexicalSentValueList type                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalSentValueList type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalSentValueList ("lexicalSentValueList",
                                              NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexicalSentValueList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalSentValueList ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalSentValueList::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -2615,7 +2155,7 @@ AC_GALGAS_root * GALGAS_lexicalSentValueList::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::extractObject (const GALGAS_object & inObject,
                                                                         C_Compiler * inCompiler
@@ -2632,7 +2172,7 @@ GALGAS_lexicalSentValueList GALGAS_lexicalSentValueList::extractObject (const GA
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_terminalMap::cMapElement_terminalMap (const GALGAS_lstring & inKey,
                                                   const GALGAS_lexicalSentValueList & in_mSentAttributeList
@@ -2641,13 +2181,13 @@ cMapElement (inKey COMMA_THERE),
 mProperty_mSentAttributeList (in_mSentAttributeList) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_terminalMap::isValid (void) const {
   return mProperty_lkey.isValid () && mProperty_mSentAttributeList.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_terminalMap::copy (void) {
   cMapElement * result = NULL ;
@@ -2655,7 +2195,7 @@ cMapElement * cMapElement_terminalMap::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cMapElement_terminalMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -2664,7 +2204,7 @@ void cMapElement_terminalMap::description (C_String & ioString, const int32_t in
   mProperty_mSentAttributeList.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cMapElement_terminalMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_terminalMap * operand = (cMapElement_terminalMap *) inOperand ;
@@ -2675,26 +2215,26 @@ typeComparisonResult cMapElement_terminalMap::compare (const cCollectionElement 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalMap::GALGAS_terminalMap (void) :
 AC_GALGAS_map (true) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalMap::GALGAS_terminalMap (const GALGAS_terminalMap & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalMap & GALGAS_terminalMap::operator = (const GALGAS_terminalMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalMap GALGAS_terminalMap::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_terminalMap result ;
@@ -2702,7 +2242,7 @@ GALGAS_terminalMap GALGAS_terminalMap::constructor_emptyMap (LOCATION_ARGS) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalMap GALGAS_terminalMap::constructor_mapWithMapToOverride (const GALGAS_terminalMap & inMapToOverride
                                                                          COMMA_LOCATION_ARGS) {
@@ -2711,7 +2251,7 @@ GALGAS_terminalMap GALGAS_terminalMap::constructor_mapWithMapToOverride (const G
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalMap GALGAS_terminalMap::getter_overriddenMap (C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
@@ -2720,7 +2260,7 @@ GALGAS_terminalMap GALGAS_terminalMap::getter_overriddenMap (C_Compiler * inComp
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalMap::addAssign_operation (const GALGAS_lstring & inKey,
                                               const GALGAS_lexicalSentValueList & inArgument0,
@@ -2736,7 +2276,7 @@ void GALGAS_terminalMap::addAssign_operation (const GALGAS_lstring & inKey,
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalMap::setter_insertKey (GALGAS_lstring inKey,
                                            GALGAS_lexicalSentValueList inArgument0,
@@ -2752,11 +2292,11 @@ void GALGAS_terminalMap::setter_insertKey (GALGAS_lstring inKey,
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const char * kSearchErrorMessage_terminalMap_searchKey = "the '%K' terminal is not declared" ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalMap::method_searchKey (GALGAS_lstring inKey,
                                            GALGAS_lexicalSentValueList & outArgument0,
@@ -2774,7 +2314,7 @@ void GALGAS_terminalMap::method_searchKey (GALGAS_lstring inKey,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSentValueList GALGAS_terminalMap::getter_mSentAttributeListForKey (const GALGAS_string & inKey,
                                                                                  C_Compiler * inCompiler
@@ -2789,7 +2329,7 @@ GALGAS_lexicalSentValueList GALGAS_terminalMap::getter_mSentAttributeListForKey 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalMap::setter_setMSentAttributeListForKey (GALGAS_lexicalSentValueList inAttributeValue,
                                                              GALGAS_string inKey,
@@ -2803,7 +2343,7 @@ void GALGAS_terminalMap::setter_setMSentAttributeListForKey (GALGAS_lexicalSentV
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_terminalMap * GALGAS_terminalMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                  const GALGAS_string & inKey
@@ -2813,7 +2353,7 @@ cMapElement_terminalMap * GALGAS_terminalMap::readWriteAccessForWithInstruction 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_terminalMap::cEnumerator_terminalMap (const GALGAS_terminalMap & inEnumeratedObject,
                                                   const typeEnumerationOrder inOrder) :
@@ -2821,7 +2361,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalMap_2D_element cEnumerator_terminalMap::current (LOCATION_ARGS) const {
   const cMapElement_terminalMap * p = (const cMapElement_terminalMap *) currentObjectPtr (THERE) ;
@@ -2829,7 +2369,7 @@ GALGAS_terminalMap_2D_element cEnumerator_terminalMap::current (LOCATION_ARGS) c
   return GALGAS_terminalMap_2D_element (p->mProperty_lkey, p->mProperty_mSentAttributeList) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_terminalMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
@@ -2837,7 +2377,7 @@ GALGAS_lstring cEnumerator_terminalMap::current_lkey (LOCATION_ARGS) const {
   return p->mProperty_lkey ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSentValueList cEnumerator_terminalMap::current_mSentAttributeList (LOCATION_ARGS) const {
   const cMapElement_terminalMap * p = (const cMapElement_terminalMap *) currentObjectPtr (THERE) ;
@@ -2845,7 +2385,7 @@ GALGAS_lexicalSentValueList cEnumerator_terminalMap::current_mSentAttributeList 
   return p->mProperty_mSentAttributeList ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_terminalMap::optional_searchKey (const GALGAS_string & inKey,
                                              GALGAS_lexicalSentValueList & outArgument0) const {
@@ -2860,23 +2400,23 @@ bool GALGAS_terminalMap::optional_searchKey (const GALGAS_string & inKey,
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                  @terminalMap type                                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@terminalMap type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_terminalMap ("terminalMap",
                                     NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_terminalMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_terminalMap ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_terminalMap::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -2886,7 +2426,7 @@ AC_GALGAS_root * GALGAS_terminalMap::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalMap GALGAS_terminalMap::extractObject (const GALGAS_object & inObject,
                                                       C_Compiler * inCompiler
@@ -2903,7 +2443,7 @@ GALGAS_terminalMap GALGAS_terminalMap::extractObject (const GALGAS_object & inOb
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalTypeMap::cMapElement_lexicalTypeMap (const GALGAS_lstring & inKey,
                                                         const GALGAS_lexicalTypeEnum & in_mLexicalType
@@ -2912,13 +2452,13 @@ cMapElement (inKey COMMA_THERE),
 mProperty_mLexicalType (in_mLexicalType) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalTypeMap::isValid (void) const {
   return mProperty_lkey.isValid () && mProperty_mLexicalType.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_lexicalTypeMap::copy (void) {
   cMapElement * result = NULL ;
@@ -2926,7 +2466,7 @@ cMapElement * cMapElement_lexicalTypeMap::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cMapElement_lexicalTypeMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -2935,7 +2475,7 @@ void cMapElement_lexicalTypeMap::description (C_String & ioString, const int32_t
   mProperty_mLexicalType.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cMapElement_lexicalTypeMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalTypeMap * operand = (cMapElement_lexicalTypeMap *) inOperand ;
@@ -2946,26 +2486,26 @@ typeComparisonResult cMapElement_lexicalTypeMap::compare (const cCollectionEleme
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeMap::GALGAS_lexicalTypeMap (void) :
 AC_GALGAS_map (true) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeMap::GALGAS_lexicalTypeMap (const GALGAS_lexicalTypeMap & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeMap & GALGAS_lexicalTypeMap::operator = (const GALGAS_lexicalTypeMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalTypeMap result ;
@@ -2973,7 +2513,7 @@ GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::constructor_emptyMap (LOCATION_ARGS
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::constructor_mapWithMapToOverride (const GALGAS_lexicalTypeMap & inMapToOverride
                                                                                COMMA_LOCATION_ARGS) {
@@ -2982,7 +2522,7 @@ GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::constructor_mapWithMapToOverride (c
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::getter_overriddenMap (C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
@@ -2991,7 +2531,7 @@ GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::getter_overriddenMap (C_Compiler * 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalTypeMap::addAssign_operation (const GALGAS_lstring & inKey,
                                                  const GALGAS_lexicalTypeEnum & inArgument0,
@@ -3007,7 +2547,7 @@ void GALGAS_lexicalTypeMap::addAssign_operation (const GALGAS_lstring & inKey,
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalTypeMap::setter_insertKey (GALGAS_lstring inKey,
                                               GALGAS_lexicalTypeEnum inArgument0,
@@ -3023,11 +2563,11 @@ void GALGAS_lexicalTypeMap::setter_insertKey (GALGAS_lstring inKey,
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const char * kSearchErrorMessage_lexicalTypeMap_searchKey = "there is no '@%K' lexical type" ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalTypeMap::method_searchKey (GALGAS_lstring inKey,
                                               GALGAS_lexicalTypeEnum & outArgument0,
@@ -3045,7 +2585,7 @@ void GALGAS_lexicalTypeMap::method_searchKey (GALGAS_lstring inKey,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalTypeMap::getter_mLexicalTypeForKey (const GALGAS_string & inKey,
                                                                          C_Compiler * inCompiler
@@ -3060,7 +2600,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeMap::getter_mLexicalTypeForKey (const G
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalTypeMap::setter_setMLexicalTypeForKey (GALGAS_lexicalTypeEnum inAttributeValue,
                                                           GALGAS_string inKey,
@@ -3074,7 +2614,7 @@ void GALGAS_lexicalTypeMap::setter_setMLexicalTypeForKey (GALGAS_lexicalTypeEnum
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalTypeMap * GALGAS_lexicalTypeMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                        const GALGAS_string & inKey
@@ -3084,7 +2624,7 @@ cMapElement_lexicalTypeMap * GALGAS_lexicalTypeMap::readWriteAccessForWithInstru
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_lexicalTypeMap::cEnumerator_lexicalTypeMap (const GALGAS_lexicalTypeMap & inEnumeratedObject,
                                                         const typeEnumerationOrder inOrder) :
@@ -3092,7 +2632,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeMap_2D_element cEnumerator_lexicalTypeMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalTypeMap * p = (const cMapElement_lexicalTypeMap *) currentObjectPtr (THERE) ;
@@ -3100,7 +2640,7 @@ GALGAS_lexicalTypeMap_2D_element cEnumerator_lexicalTypeMap::current (LOCATION_A
   return GALGAS_lexicalTypeMap_2D_element (p->mProperty_lkey, p->mProperty_mLexicalType) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_lexicalTypeMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
@@ -3108,7 +2648,7 @@ GALGAS_lstring cEnumerator_lexicalTypeMap::current_lkey (LOCATION_ARGS) const {
   return p->mProperty_lkey ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum cEnumerator_lexicalTypeMap::current_mLexicalType (LOCATION_ARGS) const {
   const cMapElement_lexicalTypeMap * p = (const cMapElement_lexicalTypeMap *) currentObjectPtr (THERE) ;
@@ -3116,7 +2656,7 @@ GALGAS_lexicalTypeEnum cEnumerator_lexicalTypeMap::current_mLexicalType (LOCATIO
   return p->mProperty_mLexicalType ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalTypeMap::optional_searchKey (const GALGAS_string & inKey,
                                                 GALGAS_lexicalTypeEnum & outArgument0) const {
@@ -3131,23 +2671,23 @@ bool GALGAS_lexicalTypeMap::optional_searchKey (const GALGAS_string & inKey,
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                @lexicalTypeMap type                                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalTypeMap type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalTypeMap ("lexicalTypeMap",
                                        NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexicalTypeMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalTypeMap ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalTypeMap::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -3157,7 +2697,7 @@ AC_GALGAS_root * GALGAS_lexicalTypeMap::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::extractObject (const GALGAS_object & inObject,
                                                             C_Compiler * inCompiler
@@ -3174,7 +2714,7 @@ GALGAS_lexicalTypeMap GALGAS_lexicalTypeMap::extractObject (const GALGAS_object 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalAttributeMap::cMapElement_lexicalAttributeMap (const GALGAS_lstring & inKey,
                                                                   const GALGAS_lexicalTypeEnum & in_mLexicalType
@@ -3183,13 +2723,13 @@ cMapElement (inKey COMMA_THERE),
 mProperty_mLexicalType (in_mLexicalType) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalAttributeMap::isValid (void) const {
   return mProperty_lkey.isValid () && mProperty_mLexicalType.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_lexicalAttributeMap::copy (void) {
   cMapElement * result = NULL ;
@@ -3197,7 +2737,7 @@ cMapElement * cMapElement_lexicalAttributeMap::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cMapElement_lexicalAttributeMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -3206,7 +2746,7 @@ void cMapElement_lexicalAttributeMap::description (C_String & ioString, const in
   mProperty_mLexicalType.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cMapElement_lexicalAttributeMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalAttributeMap * operand = (cMapElement_lexicalAttributeMap *) inOperand ;
@@ -3217,26 +2757,26 @@ typeComparisonResult cMapElement_lexicalAttributeMap::compare (const cCollection
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalAttributeMap::GALGAS_lexicalAttributeMap (void) :
 AC_GALGAS_map (true) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalAttributeMap::GALGAS_lexicalAttributeMap (const GALGAS_lexicalAttributeMap & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalAttributeMap & GALGAS_lexicalAttributeMap::operator = (const GALGAS_lexicalAttributeMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalAttributeMap result ;
@@ -3244,7 +2784,7 @@ GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::constructor_emptyMap (LOC
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::constructor_mapWithMapToOverride (const GALGAS_lexicalAttributeMap & inMapToOverride
                                                                                          COMMA_LOCATION_ARGS) {
@@ -3253,7 +2793,7 @@ GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::constructor_mapWithMapToO
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::getter_overriddenMap (C_Compiler * inCompiler
                                                                              COMMA_LOCATION_ARGS) const {
@@ -3262,7 +2802,7 @@ GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::getter_overriddenMap (C_C
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalAttributeMap::addAssign_operation (const GALGAS_lstring & inKey,
                                                       const GALGAS_lexicalTypeEnum & inArgument0,
@@ -3278,7 +2818,7 @@ void GALGAS_lexicalAttributeMap::addAssign_operation (const GALGAS_lstring & inK
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalAttributeMap::setter_insertKey (GALGAS_lstring inKey,
                                                    GALGAS_lexicalTypeEnum inArgument0,
@@ -3294,11 +2834,11 @@ void GALGAS_lexicalAttributeMap::setter_insertKey (GALGAS_lstring inKey,
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const char * kSearchErrorMessage_lexicalAttributeMap_searchKey = "the '%K' lexical attribute is not declared" ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalAttributeMap::method_searchKey (GALGAS_lstring inKey,
                                                    GALGAS_lexicalTypeEnum & outArgument0,
@@ -3316,7 +2856,7 @@ void GALGAS_lexicalAttributeMap::method_searchKey (GALGAS_lstring inKey,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalAttributeMap::getter_mLexicalTypeForKey (const GALGAS_string & inKey,
                                                                               C_Compiler * inCompiler
@@ -3331,7 +2871,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalAttributeMap::getter_mLexicalTypeForKey (co
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalAttributeMap::setter_setMLexicalTypeForKey (GALGAS_lexicalTypeEnum inAttributeValue,
                                                                GALGAS_string inKey,
@@ -3345,7 +2885,7 @@ void GALGAS_lexicalAttributeMap::setter_setMLexicalTypeForKey (GALGAS_lexicalTyp
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalAttributeMap * GALGAS_lexicalAttributeMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                                  const GALGAS_string & inKey
@@ -3355,7 +2895,7 @@ cMapElement_lexicalAttributeMap * GALGAS_lexicalAttributeMap::readWriteAccessFor
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_lexicalAttributeMap::cEnumerator_lexicalAttributeMap (const GALGAS_lexicalAttributeMap & inEnumeratedObject,
                                                                   const typeEnumerationOrder inOrder) :
@@ -3363,7 +2903,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalAttributeMap_2D_element cEnumerator_lexicalAttributeMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalAttributeMap * p = (const cMapElement_lexicalAttributeMap *) currentObjectPtr (THERE) ;
@@ -3371,7 +2911,7 @@ GALGAS_lexicalAttributeMap_2D_element cEnumerator_lexicalAttributeMap::current (
   return GALGAS_lexicalAttributeMap_2D_element (p->mProperty_lkey, p->mProperty_mLexicalType) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_lexicalAttributeMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
@@ -3379,7 +2919,7 @@ GALGAS_lstring cEnumerator_lexicalAttributeMap::current_lkey (LOCATION_ARGS) con
   return p->mProperty_lkey ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum cEnumerator_lexicalAttributeMap::current_mLexicalType (LOCATION_ARGS) const {
   const cMapElement_lexicalAttributeMap * p = (const cMapElement_lexicalAttributeMap *) currentObjectPtr (THERE) ;
@@ -3387,7 +2927,7 @@ GALGAS_lexicalTypeEnum cEnumerator_lexicalAttributeMap::current_mLexicalType (LO
   return p->mProperty_mLexicalType ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalAttributeMap::optional_searchKey (const GALGAS_string & inKey,
                                                      GALGAS_lexicalTypeEnum & outArgument0) const {
@@ -3402,23 +2942,23 @@ bool GALGAS_lexicalAttributeMap::optional_searchKey (const GALGAS_string & inKey
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @lexicalAttributeMap type                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalAttributeMap type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalAttributeMap ("lexicalAttributeMap",
                                             NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexicalAttributeMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalAttributeMap ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalAttributeMap::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -3428,7 +2968,7 @@ AC_GALGAS_root * GALGAS_lexicalAttributeMap::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::extractObject (const GALGAS_object & inObject,
                                                                       C_Compiler * inCompiler
@@ -3445,11 +2985,11 @@ GALGAS_lexicalAttributeMap GALGAS_lexicalAttributeMap::extractObject (const GALG
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Class for element of '@terminalList' list                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@terminalList' list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_terminalList : public cCollectionElement {
   public : GALGAS_terminalList_2D_element mObject ;
@@ -3477,7 +3017,7 @@ class cCollectionElement_terminalList : public cCollectionElement {
   public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_terminalList::cCollectionElement_terminalList (const GALGAS_lstring & in_mTerminalName,
                                                                   const GALGAS_lexicalSentValueList & in_mSentAttributeList,
@@ -3490,20 +3030,20 @@ cCollectionElement (THERE),
 mObject (in_mTerminalName, in_mSentAttributeList, in_mSyntaxErrorMessage, in_mIsEndOfTemplateMark, in_mAtomicSelection, in_mStyleIndex) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_terminalList::cCollectionElement_terminalList (const GALGAS_terminalList_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mTerminalName, inElement.mProperty_mSentAttributeList, inElement.mProperty_mSyntaxErrorMessage, inElement.mProperty_mIsEndOfTemplateMark, inElement.mProperty_mAtomicSelection, inElement.mProperty_mStyleIndex) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_terminalList::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_terminalList::copy (void) {
   cCollectionElement * result = NULL ;
@@ -3511,7 +3051,7 @@ cCollectionElement * cCollectionElement_terminalList::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cCollectionElement_terminalList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -3540,7 +3080,7 @@ void cCollectionElement_terminalList::description (C_String & ioString, const in
   mObject.mProperty_mStyleIndex.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cCollectionElement_terminalList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_terminalList * operand = (cCollectionElement_terminalList *) inOperand ;
@@ -3548,25 +3088,25 @@ typeComparisonResult cCollectionElement_terminalList::compare (const cCollection
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalList::GALGAS_terminalList (void) :
 AC_GALGAS_list () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalList::GALGAS_terminalList (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalList GALGAS_terminalList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_terminalList  (capCollectionElementArray ()) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalList GALGAS_terminalList::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                     const GALGAS_lexicalSentValueList & inOperand1,
@@ -3585,7 +3125,7 @@ GALGAS_terminalList GALGAS_terminalList::constructor_listWithValue (const GALGAS
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                      const GALGAS_lstring & in_mTerminalName,
@@ -3606,7 +3146,7 @@ void GALGAS_terminalList::makeAttributesFromObjects (capCollectionElement & outA
   macroDetachSharedObject (p) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                const GALGAS_lexicalSentValueList & inOperand1,
@@ -3625,7 +3165,7 @@ void GALGAS_terminalList::addAssign_operation (const GALGAS_lstring & inOperand0
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::setter_append (GALGAS_terminalList_2D_element inElement,
                                          C_Compiler * /* inCompiler */
@@ -3640,7 +3180,7 @@ void GALGAS_terminalList::setter_append (GALGAS_terminalList_2D_element inElemen
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                 const GALGAS_lexicalSentValueList inOperand1,
@@ -3661,7 +3201,7 @@ void GALGAS_terminalList::setter_insertAtIndex (const GALGAS_lstring inOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                 GALGAS_lexicalSentValueList & outOperand1,
@@ -3695,7 +3235,7 @@ void GALGAS_terminalList::setter_removeAtIndex (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::setter_popFirst (GALGAS_lstring & outOperand0,
                                            GALGAS_lexicalSentValueList & outOperand1,
@@ -3726,7 +3266,7 @@ void GALGAS_terminalList::setter_popFirst (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::setter_popLast (GALGAS_lstring & outOperand0,
                                           GALGAS_lexicalSentValueList & outOperand1,
@@ -3757,7 +3297,7 @@ void GALGAS_terminalList::setter_popLast (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::method_first (GALGAS_lstring & outOperand0,
                                         GALGAS_lexicalSentValueList & outOperand1,
@@ -3788,7 +3328,7 @@ void GALGAS_terminalList::method_first (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::method_last (GALGAS_lstring & outOperand0,
                                        GALGAS_lexicalSentValueList & outOperand1,
@@ -3819,7 +3359,7 @@ void GALGAS_terminalList::method_last (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalList GALGAS_terminalList::add_operation (const GALGAS_terminalList & inOperand,
                                                         C_Compiler * /* inCompiler */
@@ -3832,7 +3372,7 @@ GALGAS_terminalList GALGAS_terminalList::add_operation (const GALGAS_terminalLis
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalList GALGAS_terminalList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                   C_Compiler * inCompiler
@@ -3842,7 +3382,7 @@ GALGAS_terminalList GALGAS_terminalList::getter_subListWithRange (const GALGAS_r
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalList GALGAS_terminalList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                   C_Compiler * inCompiler
@@ -3852,7 +3392,7 @@ GALGAS_terminalList GALGAS_terminalList::getter_subListFromIndex (const GALGAS_u
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalList GALGAS_terminalList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                 C_Compiler * inCompiler
@@ -3862,7 +3402,7 @@ GALGAS_terminalList GALGAS_terminalList::getter_subListToIndex (const GALGAS_uin
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::plusAssign_operation (const GALGAS_terminalList inOperand,
                                                 C_Compiler * /* inCompiler */
@@ -3870,7 +3410,7 @@ void GALGAS_terminalList::plusAssign_operation (const GALGAS_terminalList inOper
   appendList (inOperand) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::setter_setMTerminalNameAtIndex (GALGAS_lstring inOperand,
                                                           GALGAS_uint inIndex,
@@ -3884,7 +3424,7 @@ void GALGAS_terminalList::setter_setMTerminalNameAtIndex (GALGAS_lstring inOpera
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_terminalList::getter_mTerminalNameAtIndex (const GALGAS_uint & inIndex,
                                                                  C_Compiler * inCompiler
@@ -3899,7 +3439,7 @@ GALGAS_lstring GALGAS_terminalList::getter_mTerminalNameAtIndex (const GALGAS_ui
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::setter_setMSentAttributeListAtIndex (GALGAS_lexicalSentValueList inOperand,
                                                                GALGAS_uint inIndex,
@@ -3913,7 +3453,7 @@ void GALGAS_terminalList::setter_setMSentAttributeListAtIndex (GALGAS_lexicalSen
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSentValueList GALGAS_terminalList::getter_mSentAttributeListAtIndex (const GALGAS_uint & inIndex,
                                                                                    C_Compiler * inCompiler
@@ -3928,7 +3468,7 @@ GALGAS_lexicalSentValueList GALGAS_terminalList::getter_mSentAttributeListAtInde
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::setter_setMSyntaxErrorMessageAtIndex (GALGAS_string inOperand,
                                                                 GALGAS_uint inIndex,
@@ -3942,7 +3482,7 @@ void GALGAS_terminalList::setter_setMSyntaxErrorMessageAtIndex (GALGAS_string in
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_terminalList::getter_mSyntaxErrorMessageAtIndex (const GALGAS_uint & inIndex,
                                                                       C_Compiler * inCompiler
@@ -3957,7 +3497,7 @@ GALGAS_string GALGAS_terminalList::getter_mSyntaxErrorMessageAtIndex (const GALG
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::setter_setMIsEndOfTemplateMarkAtIndex (GALGAS_bool inOperand,
                                                                  GALGAS_uint inIndex,
@@ -3971,7 +3511,7 @@ void GALGAS_terminalList::setter_setMIsEndOfTemplateMarkAtIndex (GALGAS_bool inO
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_terminalList::getter_mIsEndOfTemplateMarkAtIndex (const GALGAS_uint & inIndex,
                                                                      C_Compiler * inCompiler
@@ -3986,7 +3526,7 @@ GALGAS_bool GALGAS_terminalList::getter_mIsEndOfTemplateMarkAtIndex (const GALGA
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::setter_setMAtomicSelectionAtIndex (GALGAS_bool inOperand,
                                                              GALGAS_uint inIndex,
@@ -4000,7 +3540,7 @@ void GALGAS_terminalList::setter_setMAtomicSelectionAtIndex (GALGAS_bool inOpera
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_terminalList::getter_mAtomicSelectionAtIndex (const GALGAS_uint & inIndex,
                                                                  C_Compiler * inCompiler
@@ -4015,7 +3555,7 @@ GALGAS_bool GALGAS_terminalList::getter_mAtomicSelectionAtIndex (const GALGAS_ui
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalList::setter_setMStyleIndexAtIndex (GALGAS_uint inOperand,
                                                         GALGAS_uint inIndex,
@@ -4029,7 +3569,7 @@ void GALGAS_terminalList::setter_setMStyleIndexAtIndex (GALGAS_uint inOperand,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_terminalList::getter_mStyleIndexAtIndex (const GALGAS_uint & inIndex,
                                                             C_Compiler * inCompiler
@@ -4046,7 +3586,7 @@ GALGAS_uint GALGAS_terminalList::getter_mStyleIndexAtIndex (const GALGAS_uint & 
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_terminalList::cEnumerator_terminalList (const GALGAS_terminalList & inEnumeratedObject,
                                                     const typeEnumerationOrder inOrder) :
@@ -4054,7 +3594,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalList_2D_element cEnumerator_terminalList::current (LOCATION_ARGS) const {
   const cCollectionElement_terminalList * p = (const cCollectionElement_terminalList *) currentObjectPtr (THERE) ;
@@ -4063,7 +3603,7 @@ GALGAS_terminalList_2D_element cEnumerator_terminalList::current (LOCATION_ARGS)
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_terminalList::current_mTerminalName (LOCATION_ARGS) const {
   const cCollectionElement_terminalList * p = (const cCollectionElement_terminalList *) currentObjectPtr (THERE) ;
@@ -4071,7 +3611,7 @@ GALGAS_lstring cEnumerator_terminalList::current_mTerminalName (LOCATION_ARGS) c
   return p->mObject.mProperty_mTerminalName ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalSentValueList cEnumerator_terminalList::current_mSentAttributeList (LOCATION_ARGS) const {
   const cCollectionElement_terminalList * p = (const cCollectionElement_terminalList *) currentObjectPtr (THERE) ;
@@ -4079,7 +3619,7 @@ GALGAS_lexicalSentValueList cEnumerator_terminalList::current_mSentAttributeList
   return p->mObject.mProperty_mSentAttributeList ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string cEnumerator_terminalList::current_mSyntaxErrorMessage (LOCATION_ARGS) const {
   const cCollectionElement_terminalList * p = (const cCollectionElement_terminalList *) currentObjectPtr (THERE) ;
@@ -4087,7 +3627,7 @@ GALGAS_string cEnumerator_terminalList::current_mSyntaxErrorMessage (LOCATION_AR
   return p->mObject.mProperty_mSyntaxErrorMessage ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool cEnumerator_terminalList::current_mIsEndOfTemplateMark (LOCATION_ARGS) const {
   const cCollectionElement_terminalList * p = (const cCollectionElement_terminalList *) currentObjectPtr (THERE) ;
@@ -4095,7 +3635,7 @@ GALGAS_bool cEnumerator_terminalList::current_mIsEndOfTemplateMark (LOCATION_ARG
   return p->mObject.mProperty_mIsEndOfTemplateMark ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool cEnumerator_terminalList::current_mAtomicSelection (LOCATION_ARGS) const {
   const cCollectionElement_terminalList * p = (const cCollectionElement_terminalList *) currentObjectPtr (THERE) ;
@@ -4103,7 +3643,7 @@ GALGAS_bool cEnumerator_terminalList::current_mAtomicSelection (LOCATION_ARGS) c
   return p->mObject.mProperty_mAtomicSelection ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint cEnumerator_terminalList::current_mStyleIndex (LOCATION_ARGS) const {
   const cCollectionElement_terminalList * p = (const cCollectionElement_terminalList *) currentObjectPtr (THERE) ;
@@ -4114,23 +3654,23 @@ GALGAS_uint cEnumerator_terminalList::current_mStyleIndex (LOCATION_ARGS) const 
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                 @terminalList type                                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@terminalList type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_terminalList ("terminalList",
                                      NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_terminalList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_terminalList ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_terminalList::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -4140,7 +3680,7 @@ AC_GALGAS_root * GALGAS_terminalList::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalList GALGAS_terminalList::extractObject (const GALGAS_object & inObject,
                                                         C_Compiler * inCompiler
@@ -4157,7 +3697,7 @@ GALGAS_terminalList GALGAS_terminalList::extractObject (const GALGAS_object & in
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalExplicitTokenListMap::cMapElement_lexicalExplicitTokenListMap (const GALGAS_lstring & inKey,
                                                                                   const GALGAS_lstring & in_mTerminal,
@@ -4168,13 +3708,13 @@ mProperty_mTerminal (in_mTerminal),
 mProperty_mAttributeList (in_mAttributeList) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalExplicitTokenListMap::isValid (void) const {
   return mProperty_lkey.isValid () && mProperty_mTerminal.isValid () && mProperty_mAttributeList.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_lexicalExplicitTokenListMap::copy (void) {
   cMapElement * result = NULL ;
@@ -4182,7 +3722,7 @@ cMapElement * cMapElement_lexicalExplicitTokenListMap::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cMapElement_lexicalExplicitTokenListMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -4195,7 +3735,7 @@ void cMapElement_lexicalExplicitTokenListMap::description (C_String & ioString, 
   mProperty_mAttributeList.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cMapElement_lexicalExplicitTokenListMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalExplicitTokenListMap * operand = (cMapElement_lexicalExplicitTokenListMap *) inOperand ;
@@ -4209,26 +3749,26 @@ typeComparisonResult cMapElement_lexicalExplicitTokenListMap::compare (const cCo
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMap::GALGAS_lexicalExplicitTokenListMap (void) :
 AC_GALGAS_map (true) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMap::GALGAS_lexicalExplicitTokenListMap (const GALGAS_lexicalExplicitTokenListMap & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMap & GALGAS_lexicalExplicitTokenListMap::operator = (const GALGAS_lexicalExplicitTokenListMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalExplicitTokenListMap result ;
@@ -4236,7 +3776,7 @@ GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::construct
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::constructor_mapWithMapToOverride (const GALGAS_lexicalExplicitTokenListMap & inMapToOverride
                                                                                                          COMMA_LOCATION_ARGS) {
@@ -4245,7 +3785,7 @@ GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::construct
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::getter_overriddenMap (C_Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) const {
@@ -4254,7 +3794,7 @@ GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::getter_ov
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalExplicitTokenListMap::addAssign_operation (const GALGAS_lstring & inKey,
                                                               const GALGAS_lstring & inArgument0,
@@ -4271,7 +3811,7 @@ void GALGAS_lexicalExplicitTokenListMap::addAssign_operation (const GALGAS_lstri
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalExplicitTokenListMap::setter_insertKey (GALGAS_lstring inKey,
                                                            GALGAS_lstring inArgument0,
@@ -4288,11 +3828,11 @@ void GALGAS_lexicalExplicitTokenListMap::setter_insertKey (GALGAS_lstring inKey,
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const char * kSearchErrorMessage_lexicalExplicitTokenListMap_searchKey = "the '%K' terminal is not declared" ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalExplicitTokenListMap::method_searchKey (GALGAS_lstring inKey,
                                                            GALGAS_lstring & outArgument0,
@@ -4313,7 +3853,7 @@ void GALGAS_lexicalExplicitTokenListMap::method_searchKey (GALGAS_lstring inKey,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_lexicalExplicitTokenListMap::getter_mTerminalForKey (const GALGAS_string & inKey,
                                                                            C_Compiler * inCompiler
@@ -4328,7 +3868,7 @@ GALGAS_lstring GALGAS_lexicalExplicitTokenListMap::getter_mTerminalForKey (const
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist GALGAS_lexicalExplicitTokenListMap::getter_mAttributeListForKey (const GALGAS_string & inKey,
                                                                                     C_Compiler * inCompiler
@@ -4343,7 +3883,7 @@ GALGAS_lstringlist GALGAS_lexicalExplicitTokenListMap::getter_mAttributeListForK
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalExplicitTokenListMap::setter_setMTerminalForKey (GALGAS_lstring inAttributeValue,
                                                                     GALGAS_string inKey,
@@ -4357,7 +3897,7 @@ void GALGAS_lexicalExplicitTokenListMap::setter_setMTerminalForKey (GALGAS_lstri
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalExplicitTokenListMap::setter_setMAttributeListForKey (GALGAS_lstringlist inAttributeValue,
                                                                          GALGAS_string inKey,
@@ -4371,7 +3911,7 @@ void GALGAS_lexicalExplicitTokenListMap::setter_setMAttributeListForKey (GALGAS_
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalExplicitTokenListMap * GALGAS_lexicalExplicitTokenListMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                                                  const GALGAS_string & inKey
@@ -4381,7 +3921,7 @@ cMapElement_lexicalExplicitTokenListMap * GALGAS_lexicalExplicitTokenListMap::re
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_lexicalExplicitTokenListMap::cEnumerator_lexicalExplicitTokenListMap (const GALGAS_lexicalExplicitTokenListMap & inEnumeratedObject,
                                                                                   const typeEnumerationOrder inOrder) :
@@ -4389,7 +3929,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMap_2D_element cEnumerator_lexicalExplicitTokenListMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) currentObjectPtr (THERE) ;
@@ -4397,7 +3937,7 @@ GALGAS_lexicalExplicitTokenListMap_2D_element cEnumerator_lexicalExplicitTokenLi
   return GALGAS_lexicalExplicitTokenListMap_2D_element (p->mProperty_lkey, p->mProperty_mTerminal, p->mProperty_mAttributeList) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_lexicalExplicitTokenListMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
@@ -4405,7 +3945,7 @@ GALGAS_lstring cEnumerator_lexicalExplicitTokenListMap::current_lkey (LOCATION_A
   return p->mProperty_lkey ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_lexicalExplicitTokenListMap::current_mTerminal (LOCATION_ARGS) const {
   const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) currentObjectPtr (THERE) ;
@@ -4413,7 +3953,7 @@ GALGAS_lstring cEnumerator_lexicalExplicitTokenListMap::current_mTerminal (LOCAT
   return p->mProperty_mTerminal ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstringlist cEnumerator_lexicalExplicitTokenListMap::current_mAttributeList (LOCATION_ARGS) const {
   const cMapElement_lexicalExplicitTokenListMap * p = (const cMapElement_lexicalExplicitTokenListMap *) currentObjectPtr (THERE) ;
@@ -4421,7 +3961,7 @@ GALGAS_lstringlist cEnumerator_lexicalExplicitTokenListMap::current_mAttributeLi
   return p->mProperty_mAttributeList ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalExplicitTokenListMap::optional_searchKey (const GALGAS_string & inKey,
                                                              GALGAS_lstring & outArgument0,
@@ -4439,23 +3979,23 @@ bool GALGAS_lexicalExplicitTokenListMap::optional_searchKey (const GALGAS_string
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          @lexicalExplicitTokenListMap type                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalExplicitTokenListMap type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap ("lexicalExplicitTokenListMap",
                                                     NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexicalExplicitTokenListMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalExplicitTokenListMap ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalExplicitTokenListMap::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -4465,7 +4005,7 @@ AC_GALGAS_root * GALGAS_lexicalExplicitTokenListMap::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::extractObject (const GALGAS_object & inObject,
                                                                                       C_Compiler * inCompiler
@@ -4482,11 +4022,11 @@ GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMap::extractOb
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Class for element of '@tokenSortedlist' sorted list                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@tokenSortedlist' sorted list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cSortedListElement_tokenSortedlist : public cSortedListElement {
   public : GALGAS_tokenSortedlist_2D_element mObject ;
@@ -4513,7 +4053,7 @@ class cSortedListElement_tokenSortedlist : public cSortedListElement {
   public : virtual typeComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cSortedListElement_tokenSortedlist::cSortedListElement_tokenSortedlist (const GALGAS_uint & in_mLength,
                                                                         const GALGAS_string & in_mName,
@@ -4523,13 +4063,13 @@ cSortedListElement (THERE),
 mObject (in_mLength, in_mName, in_mTerminalName) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cSortedListElement_tokenSortedlist::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cSortedListElement * cSortedListElement_tokenSortedlist::copy (void) {
   cSortedListElement * result = NULL ;
@@ -4537,7 +4077,7 @@ cSortedListElement * cSortedListElement_tokenSortedlist::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cSortedListElement_tokenSortedlist::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -4554,7 +4094,7 @@ void cSortedListElement_tokenSortedlist::description (C_String & ioString, const
   mObject.mProperty_mTerminalName.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cSortedListElement_tokenSortedlist::compare (const cCollectionElement * inOperand) const {
   cSortedListElement_tokenSortedlist * operand = (cSortedListElement_tokenSortedlist *) inOperand ;
@@ -4562,13 +4102,13 @@ typeComparisonResult cSortedListElement_tokenSortedlist::compare (const cCollect
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_tokenSortedlist::GALGAS_tokenSortedlist (void) :
 AC_GALGAS_sortedlist () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cSortedListElement_tokenSortedlist::compareForSorting (const cSortedListElement * inOperand) const {
   typeComparisonResult result = kOperandEqual ;
@@ -4583,7 +4123,7 @@ typeComparisonResult cSortedListElement_tokenSortedlist::compareForSorting (cons
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_tokenSortedlist GALGAS_tokenSortedlist::constructor_emptySortedList (LOCATION_ARGS) {
   GALGAS_tokenSortedlist result ;
@@ -4591,7 +4131,7 @@ GALGAS_tokenSortedlist GALGAS_tokenSortedlist::constructor_emptySortedList (LOCA
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_tokenSortedlist GALGAS_tokenSortedlist::constructor_sortedListWithValue (const GALGAS_uint & inOperand0,
                                                                                 const GALGAS_string & inOperand1,
@@ -4607,7 +4147,7 @@ GALGAS_tokenSortedlist GALGAS_tokenSortedlist::constructor_sortedListWithValue (
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_tokenSortedlist::addAssign_operation (const GALGAS_uint & inOperand0,
                                                   const GALGAS_string & inOperand1,
@@ -4623,7 +4163,7 @@ void GALGAS_tokenSortedlist::addAssign_operation (const GALGAS_uint & inOperand0
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_tokenSortedlist::plusAssign_operation (const GALGAS_tokenSortedlist inOperand,
                                                    C_Compiler * /* inCompiler */
@@ -4633,7 +4173,7 @@ void GALGAS_tokenSortedlist::plusAssign_operation (const GALGAS_tokenSortedlist 
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_tokenSortedlist::setter_popSmallest (GALGAS_uint & outOperand0,
                                                  GALGAS_string & outOperand1,
@@ -4655,7 +4195,7 @@ void GALGAS_tokenSortedlist::setter_popSmallest (GALGAS_uint & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_tokenSortedlist::setter_popGreatest (GALGAS_uint & outOperand0,
                                                  GALGAS_string & outOperand1,
@@ -4677,7 +4217,7 @@ void GALGAS_tokenSortedlist::setter_popGreatest (GALGAS_uint & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_tokenSortedlist::method_smallest (GALGAS_uint & outOperand0,
                                               GALGAS_string & outOperand1,
@@ -4699,7 +4239,7 @@ void GALGAS_tokenSortedlist::method_smallest (GALGAS_uint & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_tokenSortedlist::method_greatest (GALGAS_uint & outOperand0,
                                               GALGAS_string & outOperand1,
@@ -4721,7 +4261,7 @@ void GALGAS_tokenSortedlist::method_greatest (GALGAS_uint & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_tokenSortedlist::cEnumerator_tokenSortedlist (const GALGAS_tokenSortedlist & inEnumeratedObject,
                                                           const typeEnumerationOrder inOrder) :
@@ -4729,7 +4269,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_tokenSortedlist_2D_element cEnumerator_tokenSortedlist::current (LOCATION_ARGS) const {
   const cSortedListElement_tokenSortedlist * p = (const cSortedListElement_tokenSortedlist *) currentObjectPtr (THERE) ;
@@ -4737,7 +4277,7 @@ GALGAS_tokenSortedlist_2D_element cEnumerator_tokenSortedlist::current (LOCATION
   return p->mObject ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint cEnumerator_tokenSortedlist::current_mLength (LOCATION_ARGS) const {
   const cSortedListElement_tokenSortedlist * p = (const cSortedListElement_tokenSortedlist *) currentObjectPtr (THERE) ;
@@ -4745,7 +4285,7 @@ GALGAS_uint cEnumerator_tokenSortedlist::current_mLength (LOCATION_ARGS) const {
   return p->mObject.mProperty_mLength ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string cEnumerator_tokenSortedlist::current_mName (LOCATION_ARGS) const {
   const cSortedListElement_tokenSortedlist * p = (const cSortedListElement_tokenSortedlist *) currentObjectPtr (THERE) ;
@@ -4753,7 +4293,7 @@ GALGAS_string cEnumerator_tokenSortedlist::current_mName (LOCATION_ARGS) const {
   return p->mObject.mProperty_mName ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string cEnumerator_tokenSortedlist::current_mTerminalName (LOCATION_ARGS) const {
   const cSortedListElement_tokenSortedlist * p = (const cSortedListElement_tokenSortedlist *) currentObjectPtr (THERE) ;
@@ -4763,23 +4303,23 @@ GALGAS_string cEnumerator_tokenSortedlist::current_mTerminalName (LOCATION_ARGS)
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                @tokenSortedlist type                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@tokenSortedlist type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_tokenSortedlist ("tokenSortedlist",
                                         NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_tokenSortedlist::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_tokenSortedlist ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_tokenSortedlist::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -4789,7 +4329,7 @@ AC_GALGAS_root * GALGAS_tokenSortedlist::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_tokenSortedlist GALGAS_tokenSortedlist::extractObject (const GALGAS_object & inObject,
                                                               C_Compiler * inCompiler
@@ -4806,7 +4346,7 @@ GALGAS_tokenSortedlist GALGAS_tokenSortedlist::extractObject (const GALGAS_objec
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalExplicitTokenListMapMap::cMapElement_lexicalExplicitTokenListMapMap (const GALGAS_lstring & inKey,
                                                                                         const GALGAS_lexicalExplicitTokenListMap & in_mExplicitTokenListMap,
@@ -4819,13 +4359,13 @@ mProperty_mTokenSortedList (in_mTokenSortedList),
 mProperty_mShouldBeGenerated (in_mShouldBeGenerated) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalExplicitTokenListMapMap::isValid (void) const {
   return mProperty_lkey.isValid () && mProperty_mExplicitTokenListMap.isValid () && mProperty_mTokenSortedList.isValid () && mProperty_mShouldBeGenerated.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_lexicalExplicitTokenListMapMap::copy (void) {
   cMapElement * result = NULL ;
@@ -4833,7 +4373,7 @@ cMapElement * cMapElement_lexicalExplicitTokenListMapMap::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cMapElement_lexicalExplicitTokenListMapMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -4850,7 +4390,7 @@ void cMapElement_lexicalExplicitTokenListMapMap::description (C_String & ioStrin
   mProperty_mShouldBeGenerated.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cMapElement_lexicalExplicitTokenListMapMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalExplicitTokenListMapMap * operand = (cMapElement_lexicalExplicitTokenListMapMap *) inOperand ;
@@ -4867,26 +4407,26 @@ typeComparisonResult cMapElement_lexicalExplicitTokenListMapMap::compare (const 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMapMap::GALGAS_lexicalExplicitTokenListMapMap (void) :
 AC_GALGAS_map (true) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMapMap::GALGAS_lexicalExplicitTokenListMapMap (const GALGAS_lexicalExplicitTokenListMapMap & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMapMap & GALGAS_lexicalExplicitTokenListMapMap::operator = (const GALGAS_lexicalExplicitTokenListMapMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalExplicitTokenListMapMap result ;
@@ -4894,7 +4434,7 @@ GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::con
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::constructor_mapWithMapToOverride (const GALGAS_lexicalExplicitTokenListMapMap & inMapToOverride
                                                                                                                COMMA_LOCATION_ARGS) {
@@ -4903,7 +4443,7 @@ GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::con
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::getter_overriddenMap (C_Compiler * inCompiler
                                                                                                    COMMA_LOCATION_ARGS) const {
@@ -4912,7 +4452,7 @@ GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::get
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalExplicitTokenListMapMap::addAssign_operation (const GALGAS_lstring & inKey,
                                                                  const GALGAS_lexicalExplicitTokenListMap & inArgument0,
@@ -4930,7 +4470,7 @@ void GALGAS_lexicalExplicitTokenListMapMap::addAssign_operation (const GALGAS_ls
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalExplicitTokenListMapMap::setter_insertKey (GALGAS_lstring inKey,
                                                               GALGAS_lexicalExplicitTokenListMap inArgument0,
@@ -4948,11 +4488,11 @@ void GALGAS_lexicalExplicitTokenListMapMap::setter_insertKey (GALGAS_lstring inK
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const char * kSearchErrorMessage_lexicalExplicitTokenListMapMap_searchKey = "the '%K' token list is not declared" ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalExplicitTokenListMapMap::method_searchKey (GALGAS_lstring inKey,
                                                               GALGAS_lexicalExplicitTokenListMap & outArgument0,
@@ -4976,7 +4516,7 @@ void GALGAS_lexicalExplicitTokenListMapMap::method_searchKey (GALGAS_lstring inK
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMapMap::getter_mExplicitTokenListMapForKey (const GALGAS_string & inKey,
                                                                                                               C_Compiler * inCompiler
@@ -4991,7 +4531,7 @@ GALGAS_lexicalExplicitTokenListMap GALGAS_lexicalExplicitTokenListMapMap::getter
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_tokenSortedlist GALGAS_lexicalExplicitTokenListMapMap::getter_mTokenSortedListForKey (const GALGAS_string & inKey,
                                                                                              C_Compiler * inCompiler
@@ -5006,7 +4546,7 @@ GALGAS_tokenSortedlist GALGAS_lexicalExplicitTokenListMapMap::getter_mTokenSorte
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalExplicitTokenListMapMap::getter_mShouldBeGeneratedForKey (const GALGAS_string & inKey,
                                                                                     C_Compiler * inCompiler
@@ -5021,7 +4561,7 @@ GALGAS_bool GALGAS_lexicalExplicitTokenListMapMap::getter_mShouldBeGeneratedForK
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalExplicitTokenListMapMap::setter_setMExplicitTokenListMapForKey (GALGAS_lexicalExplicitTokenListMap inAttributeValue,
                                                                                    GALGAS_string inKey,
@@ -5035,7 +4575,7 @@ void GALGAS_lexicalExplicitTokenListMapMap::setter_setMExplicitTokenListMapForKe
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalExplicitTokenListMapMap::setter_setMTokenSortedListForKey (GALGAS_tokenSortedlist inAttributeValue,
                                                                               GALGAS_string inKey,
@@ -5049,7 +4589,7 @@ void GALGAS_lexicalExplicitTokenListMapMap::setter_setMTokenSortedListForKey (GA
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalExplicitTokenListMapMap::setter_setMShouldBeGeneratedForKey (GALGAS_bool inAttributeValue,
                                                                                 GALGAS_string inKey,
@@ -5063,7 +4603,7 @@ void GALGAS_lexicalExplicitTokenListMapMap::setter_setMShouldBeGeneratedForKey (
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalExplicitTokenListMapMap * GALGAS_lexicalExplicitTokenListMapMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                                                        const GALGAS_string & inKey
@@ -5073,7 +4613,7 @@ cMapElement_lexicalExplicitTokenListMapMap * GALGAS_lexicalExplicitTokenListMapM
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_lexicalExplicitTokenListMapMap::cEnumerator_lexicalExplicitTokenListMapMap (const GALGAS_lexicalExplicitTokenListMapMap & inEnumeratedObject,
                                                                                         const typeEnumerationOrder inOrder) :
@@ -5081,7 +4621,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMapMap_2D_element cEnumerator_lexicalExplicitTokenListMapMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) currentObjectPtr (THERE) ;
@@ -5089,7 +4629,7 @@ GALGAS_lexicalExplicitTokenListMapMap_2D_element cEnumerator_lexicalExplicitToke
   return GALGAS_lexicalExplicitTokenListMapMap_2D_element (p->mProperty_lkey, p->mProperty_mExplicitTokenListMap, p->mProperty_mTokenSortedList, p->mProperty_mShouldBeGenerated) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_lexicalExplicitTokenListMapMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
@@ -5097,7 +4637,7 @@ GALGAS_lstring cEnumerator_lexicalExplicitTokenListMapMap::current_lkey (LOCATIO
   return p->mProperty_lkey ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMap cEnumerator_lexicalExplicitTokenListMapMap::current_mExplicitTokenListMap (LOCATION_ARGS) const {
   const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) currentObjectPtr (THERE) ;
@@ -5105,7 +4645,7 @@ GALGAS_lexicalExplicitTokenListMap cEnumerator_lexicalExplicitTokenListMapMap::c
   return p->mProperty_mExplicitTokenListMap ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_tokenSortedlist cEnumerator_lexicalExplicitTokenListMapMap::current_mTokenSortedList (LOCATION_ARGS) const {
   const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) currentObjectPtr (THERE) ;
@@ -5113,7 +4653,7 @@ GALGAS_tokenSortedlist cEnumerator_lexicalExplicitTokenListMapMap::current_mToke
   return p->mProperty_mTokenSortedList ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool cEnumerator_lexicalExplicitTokenListMapMap::current_mShouldBeGenerated (LOCATION_ARGS) const {
   const cMapElement_lexicalExplicitTokenListMapMap * p = (const cMapElement_lexicalExplicitTokenListMapMap *) currentObjectPtr (THERE) ;
@@ -5121,7 +4661,7 @@ GALGAS_bool cEnumerator_lexicalExplicitTokenListMapMap::current_mShouldBeGenerat
   return p->mProperty_mShouldBeGenerated ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalExplicitTokenListMapMap::optional_searchKey (const GALGAS_string & inKey,
                                                                 GALGAS_lexicalExplicitTokenListMap & outArgument0,
@@ -5142,23 +4682,23 @@ bool GALGAS_lexicalExplicitTokenListMapMap::optional_searchKey (const GALGAS_str
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        @lexicalExplicitTokenListMapMap type                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalExplicitTokenListMapMap type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap ("lexicalExplicitTokenListMapMap",
                                                        NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexicalExplicitTokenListMapMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalExplicitTokenListMapMap ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalExplicitTokenListMapMap::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -5168,7 +4708,7 @@ AC_GALGAS_root * GALGAS_lexicalExplicitTokenListMapMap::clonedObject (void) cons
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::extractObject (const GALGAS_object & inObject,
                                                                                             C_Compiler * inCompiler
@@ -5185,7 +4725,7 @@ GALGAS_lexicalExplicitTokenListMapMap GALGAS_lexicalExplicitTokenListMapMap::ext
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalMessageMap::cMapElement_lexicalMessageMap (const GALGAS_lstring & inKey,
                                                               const GALGAS_lstring & in_mLexicalMessage,
@@ -5196,13 +4736,13 @@ mProperty_mLexicalMessage (in_mLexicalMessage),
 mProperty_mMessageIsUsed (in_mMessageIsUsed) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalMessageMap::isValid (void) const {
   return mProperty_lkey.isValid () && mProperty_mLexicalMessage.isValid () && mProperty_mMessageIsUsed.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_lexicalMessageMap::copy (void) {
   cMapElement * result = NULL ;
@@ -5210,7 +4750,7 @@ cMapElement * cMapElement_lexicalMessageMap::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cMapElement_lexicalMessageMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -5223,7 +4763,7 @@ void cMapElement_lexicalMessageMap::description (C_String & ioString, const int3
   mProperty_mMessageIsUsed.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cMapElement_lexicalMessageMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalMessageMap * operand = (cMapElement_lexicalMessageMap *) inOperand ;
@@ -5237,26 +4777,26 @@ typeComparisonResult cMapElement_lexicalMessageMap::compare (const cCollectionEl
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalMessageMap::GALGAS_lexicalMessageMap (void) :
 AC_GALGAS_map (true) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalMessageMap::GALGAS_lexicalMessageMap (const GALGAS_lexicalMessageMap & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalMessageMap & GALGAS_lexicalMessageMap::operator = (const GALGAS_lexicalMessageMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalMessageMap result ;
@@ -5264,7 +4804,7 @@ GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::constructor_emptyMap (LOCATIO
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::constructor_mapWithMapToOverride (const GALGAS_lexicalMessageMap & inMapToOverride
                                                                                      COMMA_LOCATION_ARGS) {
@@ -5273,7 +4813,7 @@ GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::constructor_mapWithMapToOverr
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::getter_overriddenMap (C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
@@ -5282,7 +4822,7 @@ GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::getter_overriddenMap (C_Compi
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalMessageMap::addAssign_operation (const GALGAS_lstring & inKey,
                                                     const GALGAS_lstring & inArgument0,
@@ -5299,7 +4839,7 @@ void GALGAS_lexicalMessageMap::addAssign_operation (const GALGAS_lstring & inKey
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalMessageMap::setter_insertKey (GALGAS_lstring inKey,
                                                  GALGAS_lstring inArgument0,
@@ -5316,11 +4856,11 @@ void GALGAS_lexicalMessageMap::setter_insertKey (GALGAS_lstring inKey,
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const char * kSearchErrorMessage_lexicalMessageMap_searchKey = "the '%K' message is not declared" ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalMessageMap::method_searchKey (GALGAS_lstring inKey,
                                                  GALGAS_lstring & outArgument0,
@@ -5341,7 +4881,7 @@ void GALGAS_lexicalMessageMap::method_searchKey (GALGAS_lstring inKey,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_lexicalMessageMap::getter_mLexicalMessageForKey (const GALGAS_string & inKey,
                                                                        C_Compiler * inCompiler
@@ -5356,7 +4896,7 @@ GALGAS_lstring GALGAS_lexicalMessageMap::getter_mLexicalMessageForKey (const GAL
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalMessageMap::getter_mMessageIsUsedForKey (const GALGAS_string & inKey,
                                                                    C_Compiler * inCompiler
@@ -5371,7 +4911,7 @@ GALGAS_bool GALGAS_lexicalMessageMap::getter_mMessageIsUsedForKey (const GALGAS_
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalMessageMap::setter_setMLexicalMessageForKey (GALGAS_lstring inAttributeValue,
                                                                 GALGAS_string inKey,
@@ -5385,7 +4925,7 @@ void GALGAS_lexicalMessageMap::setter_setMLexicalMessageForKey (GALGAS_lstring i
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalMessageMap::setter_setMMessageIsUsedForKey (GALGAS_bool inAttributeValue,
                                                                GALGAS_string inKey,
@@ -5399,7 +4939,7 @@ void GALGAS_lexicalMessageMap::setter_setMMessageIsUsedForKey (GALGAS_bool inAtt
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalMessageMap * GALGAS_lexicalMessageMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                              const GALGAS_string & inKey
@@ -5409,7 +4949,7 @@ cMapElement_lexicalMessageMap * GALGAS_lexicalMessageMap::readWriteAccessForWith
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_lexicalMessageMap::cEnumerator_lexicalMessageMap (const GALGAS_lexicalMessageMap & inEnumeratedObject,
                                                               const typeEnumerationOrder inOrder) :
@@ -5417,7 +4957,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalMessageMap_2D_element cEnumerator_lexicalMessageMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) currentObjectPtr (THERE) ;
@@ -5425,7 +4965,7 @@ GALGAS_lexicalMessageMap_2D_element cEnumerator_lexicalMessageMap::current (LOCA
   return GALGAS_lexicalMessageMap_2D_element (p->mProperty_lkey, p->mProperty_mLexicalMessage, p->mProperty_mMessageIsUsed) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_lexicalMessageMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
@@ -5433,7 +4973,7 @@ GALGAS_lstring cEnumerator_lexicalMessageMap::current_lkey (LOCATION_ARGS) const
   return p->mProperty_lkey ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_lexicalMessageMap::current_mLexicalMessage (LOCATION_ARGS) const {
   const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) currentObjectPtr (THERE) ;
@@ -5441,7 +4981,7 @@ GALGAS_lstring cEnumerator_lexicalMessageMap::current_mLexicalMessage (LOCATION_
   return p->mProperty_mLexicalMessage ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool cEnumerator_lexicalMessageMap::current_mMessageIsUsed (LOCATION_ARGS) const {
   const cMapElement_lexicalMessageMap * p = (const cMapElement_lexicalMessageMap *) currentObjectPtr (THERE) ;
@@ -5449,7 +4989,7 @@ GALGAS_bool cEnumerator_lexicalMessageMap::current_mMessageIsUsed (LOCATION_ARGS
   return p->mProperty_mMessageIsUsed ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalMessageMap::optional_searchKey (const GALGAS_string & inKey,
                                                    GALGAS_lstring & outArgument0,
@@ -5467,23 +5007,23 @@ bool GALGAS_lexicalMessageMap::optional_searchKey (const GALGAS_string & inKey,
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               @lexicalMessageMap type                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalMessageMap type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalMessageMap ("lexicalMessageMap",
                                           NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexicalMessageMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalMessageMap ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalMessageMap::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -5493,7 +5033,7 @@ AC_GALGAS_root * GALGAS_lexicalMessageMap::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::extractObject (const GALGAS_object & inObject,
                                                                   C_Compiler * inCompiler
@@ -5510,11 +5050,11 @@ GALGAS_lexicalMessageMap GALGAS_lexicalMessageMap::extractObject (const GALGAS_o
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                            Class for element of '@lexicalRoutineFormalArgumentList' list                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@lexicalRoutineFormalArgumentList' list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalRoutineFormalArgumentList : public cCollectionElement {
   public : GALGAS_lexicalRoutineFormalArgumentList_2D_element mObject ;
@@ -5539,7 +5079,7 @@ class cCollectionElement_lexicalRoutineFormalArgumentList : public cCollectionEl
   public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_lexicalRoutineFormalArgumentList::cCollectionElement_lexicalRoutineFormalArgumentList (const GALGAS_lexicalArgumentModeAST & in_mLexicalFormalArgumentMode,
                                                                                                           const GALGAS_lexicalTypeEnum & in_mLexicalFormalArgumentType,
@@ -5549,20 +5089,20 @@ cCollectionElement (THERE),
 mObject (in_mLexicalFormalArgumentMode, in_mLexicalFormalArgumentType, in_mArgumentNameForComment) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_lexicalRoutineFormalArgumentList::cCollectionElement_lexicalRoutineFormalArgumentList (const GALGAS_lexicalRoutineFormalArgumentList_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mLexicalFormalArgumentMode, inElement.mProperty_mLexicalFormalArgumentType, inElement.mProperty_mArgumentNameForComment) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalRoutineFormalArgumentList::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_lexicalRoutineFormalArgumentList::copy (void) {
   cCollectionElement * result = NULL ;
@@ -5570,7 +5110,7 @@ cCollectionElement * cCollectionElement_lexicalRoutineFormalArgumentList::copy (
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cCollectionElement_lexicalRoutineFormalArgumentList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -5587,7 +5127,7 @@ void cCollectionElement_lexicalRoutineFormalArgumentList::description (C_String 
   mObject.mProperty_mArgumentNameForComment.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cCollectionElement_lexicalRoutineFormalArgumentList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalRoutineFormalArgumentList * operand = (cCollectionElement_lexicalRoutineFormalArgumentList *) inOperand ;
@@ -5595,25 +5135,25 @@ typeComparisonResult cCollectionElement_lexicalRoutineFormalArgumentList::compar
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineFormalArgumentList::GALGAS_lexicalRoutineFormalArgumentList (void) :
 AC_GALGAS_list () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineFormalArgumentList::GALGAS_lexicalRoutineFormalArgumentList (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalRoutineFormalArgumentList  (capCollectionElementArray ()) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::constructor_listWithValue (const GALGAS_lexicalArgumentModeAST & inOperand0,
                                                                                                             const GALGAS_lexicalTypeEnum & inOperand1,
@@ -5629,7 +5169,7 @@ GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList:
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineFormalArgumentList::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                          const GALGAS_lexicalArgumentModeAST & in_mLexicalFormalArgumentMode,
@@ -5644,7 +5184,7 @@ void GALGAS_lexicalRoutineFormalArgumentList::makeAttributesFromObjects (capColl
   macroDetachSharedObject (p) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineFormalArgumentList::addAssign_operation (const GALGAS_lexicalArgumentModeAST & inOperand0,
                                                                    const GALGAS_lexicalTypeEnum & inOperand1,
@@ -5660,7 +5200,7 @@ void GALGAS_lexicalRoutineFormalArgumentList::addAssign_operation (const GALGAS_
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineFormalArgumentList::setter_append (GALGAS_lexicalRoutineFormalArgumentList_2D_element inElement,
                                                              C_Compiler * /* inCompiler */
@@ -5675,7 +5215,7 @@ void GALGAS_lexicalRoutineFormalArgumentList::setter_append (GALGAS_lexicalRouti
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineFormalArgumentList::setter_insertAtIndex (const GALGAS_lexicalArgumentModeAST inOperand0,
                                                                     const GALGAS_lexicalTypeEnum inOperand1,
@@ -5693,7 +5233,7 @@ void GALGAS_lexicalRoutineFormalArgumentList::setter_insertAtIndex (const GALGAS
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineFormalArgumentList::setter_removeAtIndex (GALGAS_lexicalArgumentModeAST & outOperand0,
                                                                     GALGAS_lexicalTypeEnum & outOperand1,
@@ -5718,7 +5258,7 @@ void GALGAS_lexicalRoutineFormalArgumentList::setter_removeAtIndex (GALGAS_lexic
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineFormalArgumentList::setter_popFirst (GALGAS_lexicalArgumentModeAST & outOperand0,
                                                                GALGAS_lexicalTypeEnum & outOperand1,
@@ -5740,7 +5280,7 @@ void GALGAS_lexicalRoutineFormalArgumentList::setter_popFirst (GALGAS_lexicalArg
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineFormalArgumentList::setter_popLast (GALGAS_lexicalArgumentModeAST & outOperand0,
                                                               GALGAS_lexicalTypeEnum & outOperand1,
@@ -5762,7 +5302,7 @@ void GALGAS_lexicalRoutineFormalArgumentList::setter_popLast (GALGAS_lexicalArgu
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineFormalArgumentList::method_first (GALGAS_lexicalArgumentModeAST & outOperand0,
                                                             GALGAS_lexicalTypeEnum & outOperand1,
@@ -5784,7 +5324,7 @@ void GALGAS_lexicalRoutineFormalArgumentList::method_first (GALGAS_lexicalArgume
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineFormalArgumentList::method_last (GALGAS_lexicalArgumentModeAST & outOperand0,
                                                            GALGAS_lexicalTypeEnum & outOperand1,
@@ -5806,7 +5346,7 @@ void GALGAS_lexicalRoutineFormalArgumentList::method_last (GALGAS_lexicalArgumen
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::add_operation (const GALGAS_lexicalRoutineFormalArgumentList & inOperand,
                                                                                                 C_Compiler * /* inCompiler */
@@ -5819,7 +5359,7 @@ GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList:
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                           C_Compiler * inCompiler
@@ -5829,7 +5369,7 @@ GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList:
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                           C_Compiler * inCompiler
@@ -5839,7 +5379,7 @@ GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList:
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                         C_Compiler * inCompiler
@@ -5849,7 +5389,7 @@ GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList:
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineFormalArgumentList::plusAssign_operation (const GALGAS_lexicalRoutineFormalArgumentList inOperand,
                                                                     C_Compiler * /* inCompiler */
@@ -5857,7 +5397,7 @@ void GALGAS_lexicalRoutineFormalArgumentList::plusAssign_operation (const GALGAS
   appendList (inOperand) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineFormalArgumentList::setter_setMLexicalFormalArgumentModeAtIndex (GALGAS_lexicalArgumentModeAST inOperand,
                                                                                            GALGAS_uint inIndex,
@@ -5871,7 +5411,7 @@ void GALGAS_lexicalRoutineFormalArgumentList::setter_setMLexicalFormalArgumentMo
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalArgumentModeAST GALGAS_lexicalRoutineFormalArgumentList::getter_mLexicalFormalArgumentModeAtIndex (const GALGAS_uint & inIndex,
                                                                                                                  C_Compiler * inCompiler
@@ -5886,7 +5426,7 @@ GALGAS_lexicalArgumentModeAST GALGAS_lexicalRoutineFormalArgumentList::getter_mL
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineFormalArgumentList::setter_setMLexicalFormalArgumentTypeAtIndex (GALGAS_lexicalTypeEnum inOperand,
                                                                                            GALGAS_uint inIndex,
@@ -5900,7 +5440,7 @@ void GALGAS_lexicalRoutineFormalArgumentList::setter_setMLexicalFormalArgumentTy
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalRoutineFormalArgumentList::getter_mLexicalFormalArgumentTypeAtIndex (const GALGAS_uint & inIndex,
                                                                                                           C_Compiler * inCompiler
@@ -5915,7 +5455,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalRoutineFormalArgumentList::getter_mLexicalF
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineFormalArgumentList::setter_setMArgumentNameForCommentAtIndex (GALGAS_string inOperand,
                                                                                         GALGAS_uint inIndex,
@@ -5929,7 +5469,7 @@ void GALGAS_lexicalRoutineFormalArgumentList::setter_setMArgumentNameForCommentA
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_lexicalRoutineFormalArgumentList::getter_mArgumentNameForCommentAtIndex (const GALGAS_uint & inIndex,
                                                                                               C_Compiler * inCompiler
@@ -5946,7 +5486,7 @@ GALGAS_string GALGAS_lexicalRoutineFormalArgumentList::getter_mArgumentNameForCo
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_lexicalRoutineFormalArgumentList::cEnumerator_lexicalRoutineFormalArgumentList (const GALGAS_lexicalRoutineFormalArgumentList & inEnumeratedObject,
                                                                                             const typeEnumerationOrder inOrder) :
@@ -5954,7 +5494,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineFormalArgumentList_2D_element cEnumerator_lexicalRoutineFormalArgumentList::current (LOCATION_ARGS) const {
   const cCollectionElement_lexicalRoutineFormalArgumentList * p = (const cCollectionElement_lexicalRoutineFormalArgumentList *) currentObjectPtr (THERE) ;
@@ -5963,7 +5503,7 @@ GALGAS_lexicalRoutineFormalArgumentList_2D_element cEnumerator_lexicalRoutineFor
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalArgumentModeAST cEnumerator_lexicalRoutineFormalArgumentList::current_mLexicalFormalArgumentMode (LOCATION_ARGS) const {
   const cCollectionElement_lexicalRoutineFormalArgumentList * p = (const cCollectionElement_lexicalRoutineFormalArgumentList *) currentObjectPtr (THERE) ;
@@ -5971,7 +5511,7 @@ GALGAS_lexicalArgumentModeAST cEnumerator_lexicalRoutineFormalArgumentList::curr
   return p->mObject.mProperty_mLexicalFormalArgumentMode ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum cEnumerator_lexicalRoutineFormalArgumentList::current_mLexicalFormalArgumentType (LOCATION_ARGS) const {
   const cCollectionElement_lexicalRoutineFormalArgumentList * p = (const cCollectionElement_lexicalRoutineFormalArgumentList *) currentObjectPtr (THERE) ;
@@ -5979,7 +5519,7 @@ GALGAS_lexicalTypeEnum cEnumerator_lexicalRoutineFormalArgumentList::current_mLe
   return p->mObject.mProperty_mLexicalFormalArgumentType ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string cEnumerator_lexicalRoutineFormalArgumentList::current_mArgumentNameForComment (LOCATION_ARGS) const {
   const cCollectionElement_lexicalRoutineFormalArgumentList * p = (const cCollectionElement_lexicalRoutineFormalArgumentList *) currentObjectPtr (THERE) ;
@@ -5990,23 +5530,23 @@ GALGAS_string cEnumerator_lexicalRoutineFormalArgumentList::current_mArgumentNam
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       @lexicalRoutineFormalArgumentList type                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalRoutineFormalArgumentList type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalRoutineFormalArgumentList ("lexicalRoutineFormalArgumentList",
                                                          NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexicalRoutineFormalArgumentList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalRoutineFormalArgumentList ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalRoutineFormalArgumentList::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -6016,7 +5556,7 @@ AC_GALGAS_root * GALGAS_lexicalRoutineFormalArgumentList::clonedObject (void) co
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList::extractObject (const GALGAS_object & inObject,
                                                                                                 C_Compiler * inCompiler
@@ -6033,7 +5573,7 @@ GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineFormalArgumentList:
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalRoutineMap::cMapElement_lexicalRoutineMap (const GALGAS_lstring & inKey,
                                                               const GALGAS_lexicalRoutineFormalArgumentList & in_mLexicalRoutineFormalArgumentList,
@@ -6046,13 +5586,13 @@ mProperty_mErrorMessageList (in_mErrorMessageList),
 mProperty_mIsExtern (in_mIsExtern) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalRoutineMap::isValid (void) const {
   return mProperty_lkey.isValid () && mProperty_mLexicalRoutineFormalArgumentList.isValid () && mProperty_mErrorMessageList.isValid () && mProperty_mIsExtern.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_lexicalRoutineMap::copy (void) {
   cMapElement * result = NULL ;
@@ -6060,7 +5600,7 @@ cMapElement * cMapElement_lexicalRoutineMap::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cMapElement_lexicalRoutineMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -6077,7 +5617,7 @@ void cMapElement_lexicalRoutineMap::description (C_String & ioString, const int3
   mProperty_mIsExtern.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cMapElement_lexicalRoutineMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalRoutineMap * operand = (cMapElement_lexicalRoutineMap *) inOperand ;
@@ -6094,26 +5634,26 @@ typeComparisonResult cMapElement_lexicalRoutineMap::compare (const cCollectionEl
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineMap::GALGAS_lexicalRoutineMap (void) :
 AC_GALGAS_map (true) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineMap::GALGAS_lexicalRoutineMap (const GALGAS_lexicalRoutineMap & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineMap & GALGAS_lexicalRoutineMap::operator = (const GALGAS_lexicalRoutineMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalRoutineMap result ;
@@ -6121,7 +5661,7 @@ GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::constructor_emptyMap (LOCATIO
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::constructor_mapWithMapToOverride (const GALGAS_lexicalRoutineMap & inMapToOverride
                                                                                      COMMA_LOCATION_ARGS) {
@@ -6130,7 +5670,7 @@ GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::constructor_mapWithMapToOverr
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::getter_overriddenMap (C_Compiler * inCompiler
                                                                          COMMA_LOCATION_ARGS) const {
@@ -6139,7 +5679,7 @@ GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::getter_overriddenMap (C_Compi
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineMap::addAssign_operation (const GALGAS_lstring & inKey,
                                                     const GALGAS_lexicalRoutineFormalArgumentList & inArgument0,
@@ -6157,7 +5697,7 @@ void GALGAS_lexicalRoutineMap::addAssign_operation (const GALGAS_lstring & inKey
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineMap::setter_insertKey (GALGAS_lstring inKey,
                                                  GALGAS_lexicalRoutineFormalArgumentList inArgument0,
@@ -6175,11 +5715,11 @@ void GALGAS_lexicalRoutineMap::setter_insertKey (GALGAS_lstring inKey,
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const char * kSearchErrorMessage_lexicalRoutineMap_searchKey = "the '%K' lexical routine is not declared" ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineMap::method_searchKey (GALGAS_lstring inKey,
                                                  GALGAS_lexicalRoutineFormalArgumentList & outArgument0,
@@ -6203,7 +5743,7 @@ void GALGAS_lexicalRoutineMap::method_searchKey (GALGAS_lstring inKey,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineMap::getter_mLexicalRoutineFormalArgumentListForKey (const GALGAS_string & inKey,
                                                                                                                   C_Compiler * inCompiler
@@ -6218,7 +5758,7 @@ GALGAS_lexicalRoutineFormalArgumentList GALGAS_lexicalRoutineMap::getter_mLexica
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_stringlist GALGAS_lexicalRoutineMap::getter_mErrorMessageListForKey (const GALGAS_string & inKey,
                                                                             C_Compiler * inCompiler
@@ -6233,7 +5773,7 @@ GALGAS_stringlist GALGAS_lexicalRoutineMap::getter_mErrorMessageListForKey (cons
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalRoutineMap::getter_mIsExternForKey (const GALGAS_string & inKey,
                                                               C_Compiler * inCompiler
@@ -6248,7 +5788,7 @@ GALGAS_bool GALGAS_lexicalRoutineMap::getter_mIsExternForKey (const GALGAS_strin
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineMap::setter_setMLexicalRoutineFormalArgumentListForKey (GALGAS_lexicalRoutineFormalArgumentList inAttributeValue,
                                                                                   GALGAS_string inKey,
@@ -6262,7 +5802,7 @@ void GALGAS_lexicalRoutineMap::setter_setMLexicalRoutineFormalArgumentListForKey
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineMap::setter_setMErrorMessageListForKey (GALGAS_stringlist inAttributeValue,
                                                                   GALGAS_string inKey,
@@ -6276,7 +5816,7 @@ void GALGAS_lexicalRoutineMap::setter_setMErrorMessageListForKey (GALGAS_stringl
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalRoutineMap::setter_setMIsExternForKey (GALGAS_bool inAttributeValue,
                                                           GALGAS_string inKey,
@@ -6290,7 +5830,7 @@ void GALGAS_lexicalRoutineMap::setter_setMIsExternForKey (GALGAS_bool inAttribut
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalRoutineMap * GALGAS_lexicalRoutineMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                              const GALGAS_string & inKey
@@ -6300,7 +5840,7 @@ cMapElement_lexicalRoutineMap * GALGAS_lexicalRoutineMap::readWriteAccessForWith
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_lexicalRoutineMap::cEnumerator_lexicalRoutineMap (const GALGAS_lexicalRoutineMap & inEnumeratedObject,
                                                               const typeEnumerationOrder inOrder) :
@@ -6308,7 +5848,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineMap_2D_element cEnumerator_lexicalRoutineMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) currentObjectPtr (THERE) ;
@@ -6316,7 +5856,7 @@ GALGAS_lexicalRoutineMap_2D_element cEnumerator_lexicalRoutineMap::current (LOCA
   return GALGAS_lexicalRoutineMap_2D_element (p->mProperty_lkey, p->mProperty_mLexicalRoutineFormalArgumentList, p->mProperty_mErrorMessageList, p->mProperty_mIsExtern) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_lexicalRoutineMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
@@ -6324,7 +5864,7 @@ GALGAS_lstring cEnumerator_lexicalRoutineMap::current_lkey (LOCATION_ARGS) const
   return p->mProperty_lkey ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineFormalArgumentList cEnumerator_lexicalRoutineMap::current_mLexicalRoutineFormalArgumentList (LOCATION_ARGS) const {
   const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) currentObjectPtr (THERE) ;
@@ -6332,7 +5872,7 @@ GALGAS_lexicalRoutineFormalArgumentList cEnumerator_lexicalRoutineMap::current_m
   return p->mProperty_mLexicalRoutineFormalArgumentList ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_stringlist cEnumerator_lexicalRoutineMap::current_mErrorMessageList (LOCATION_ARGS) const {
   const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) currentObjectPtr (THERE) ;
@@ -6340,7 +5880,7 @@ GALGAS_stringlist cEnumerator_lexicalRoutineMap::current_mErrorMessageList (LOCA
   return p->mProperty_mErrorMessageList ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool cEnumerator_lexicalRoutineMap::current_mIsExtern (LOCATION_ARGS) const {
   const cMapElement_lexicalRoutineMap * p = (const cMapElement_lexicalRoutineMap *) currentObjectPtr (THERE) ;
@@ -6348,7 +5888,7 @@ GALGAS_bool cEnumerator_lexicalRoutineMap::current_mIsExtern (LOCATION_ARGS) con
   return p->mProperty_mIsExtern ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalRoutineMap::optional_searchKey (const GALGAS_string & inKey,
                                                    GALGAS_lexicalRoutineFormalArgumentList & outArgument0,
@@ -6369,23 +5909,23 @@ bool GALGAS_lexicalRoutineMap::optional_searchKey (const GALGAS_string & inKey,
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                               @lexicalRoutineMap type                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalRoutineMap type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalRoutineMap ("lexicalRoutineMap",
                                           NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexicalRoutineMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalRoutineMap ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalRoutineMap::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -6395,7 +5935,7 @@ AC_GALGAS_root * GALGAS_lexicalRoutineMap::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::extractObject (const GALGAS_object & inObject,
                                                                   C_Compiler * inCompiler
@@ -6412,11 +5952,11 @@ GALGAS_lexicalRoutineMap GALGAS_lexicalRoutineMap::extractObject (const GALGAS_o
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                           Class for element of '@lexicalFunctionFormalArgumentList' list                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@lexicalFunctionFormalArgumentList' list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_lexicalFunctionFormalArgumentList : public cCollectionElement {
   public : GALGAS_lexicalFunctionFormalArgumentList_2D_element mObject ;
@@ -6440,7 +5980,7 @@ class cCollectionElement_lexicalFunctionFormalArgumentList : public cCollectionE
   public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_lexicalFunctionFormalArgumentList::cCollectionElement_lexicalFunctionFormalArgumentList (const GALGAS_lexicalTypeEnum & in_mLexicalType,
                                                                                                             const GALGAS_string & in_mArgumentNameForComment
@@ -6449,20 +5989,20 @@ cCollectionElement (THERE),
 mObject (in_mLexicalType, in_mArgumentNameForComment) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_lexicalFunctionFormalArgumentList::cCollectionElement_lexicalFunctionFormalArgumentList (const GALGAS_lexicalFunctionFormalArgumentList_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mLexicalType, inElement.mProperty_mArgumentNameForComment) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_lexicalFunctionFormalArgumentList::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_lexicalFunctionFormalArgumentList::copy (void) {
   cCollectionElement * result = NULL ;
@@ -6470,7 +6010,7 @@ cCollectionElement * cCollectionElement_lexicalFunctionFormalArgumentList::copy 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cCollectionElement_lexicalFunctionFormalArgumentList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -6483,7 +6023,7 @@ void cCollectionElement_lexicalFunctionFormalArgumentList::description (C_String
   mObject.mProperty_mArgumentNameForComment.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cCollectionElement_lexicalFunctionFormalArgumentList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalFunctionFormalArgumentList * operand = (cCollectionElement_lexicalFunctionFormalArgumentList *) inOperand ;
@@ -6491,25 +6031,25 @@ typeComparisonResult cCollectionElement_lexicalFunctionFormalArgumentList::compa
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionFormalArgumentList::GALGAS_lexicalFunctionFormalArgumentList (void) :
 AC_GALGAS_list () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionFormalArgumentList::GALGAS_lexicalFunctionFormalArgumentList (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_lexicalFunctionFormalArgumentList  (capCollectionElementArray ()) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::constructor_listWithValue (const GALGAS_lexicalTypeEnum & inOperand0,
                                                                                                               const GALGAS_string & inOperand1
@@ -6524,7 +6064,7 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentLis
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionFormalArgumentList::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                           const GALGAS_lexicalTypeEnum & in_mLexicalType,
@@ -6537,7 +6077,7 @@ void GALGAS_lexicalFunctionFormalArgumentList::makeAttributesFromObjects (capCol
   macroDetachSharedObject (p) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionFormalArgumentList::addAssign_operation (const GALGAS_lexicalTypeEnum & inOperand0,
                                                                     const GALGAS_string & inOperand1
@@ -6552,7 +6092,7 @@ void GALGAS_lexicalFunctionFormalArgumentList::addAssign_operation (const GALGAS
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionFormalArgumentList::setter_append (GALGAS_lexicalFunctionFormalArgumentList_2D_element inElement,
                                                               C_Compiler * /* inCompiler */
@@ -6567,7 +6107,7 @@ void GALGAS_lexicalFunctionFormalArgumentList::setter_append (GALGAS_lexicalFunc
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionFormalArgumentList::setter_insertAtIndex (const GALGAS_lexicalTypeEnum inOperand0,
                                                                      const GALGAS_string inOperand1,
@@ -6584,7 +6124,7 @@ void GALGAS_lexicalFunctionFormalArgumentList::setter_insertAtIndex (const GALGA
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionFormalArgumentList::setter_removeAtIndex (GALGAS_lexicalTypeEnum & outOperand0,
                                                                      GALGAS_string & outOperand1,
@@ -6606,7 +6146,7 @@ void GALGAS_lexicalFunctionFormalArgumentList::setter_removeAtIndex (GALGAS_lexi
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionFormalArgumentList::setter_popFirst (GALGAS_lexicalTypeEnum & outOperand0,
                                                                 GALGAS_string & outOperand1,
@@ -6625,7 +6165,7 @@ void GALGAS_lexicalFunctionFormalArgumentList::setter_popFirst (GALGAS_lexicalTy
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionFormalArgumentList::setter_popLast (GALGAS_lexicalTypeEnum & outOperand0,
                                                                GALGAS_string & outOperand1,
@@ -6644,7 +6184,7 @@ void GALGAS_lexicalFunctionFormalArgumentList::setter_popLast (GALGAS_lexicalTyp
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionFormalArgumentList::method_first (GALGAS_lexicalTypeEnum & outOperand0,
                                                              GALGAS_string & outOperand1,
@@ -6663,7 +6203,7 @@ void GALGAS_lexicalFunctionFormalArgumentList::method_first (GALGAS_lexicalTypeE
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionFormalArgumentList::method_last (GALGAS_lexicalTypeEnum & outOperand0,
                                                             GALGAS_string & outOperand1,
@@ -6682,7 +6222,7 @@ void GALGAS_lexicalFunctionFormalArgumentList::method_last (GALGAS_lexicalTypeEn
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::add_operation (const GALGAS_lexicalFunctionFormalArgumentList & inOperand,
                                                                                                   C_Compiler * /* inCompiler */
@@ -6695,7 +6235,7 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentLis
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                             C_Compiler * inCompiler
@@ -6705,7 +6245,7 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentLis
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                             C_Compiler * inCompiler
@@ -6715,7 +6255,7 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentLis
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                                           C_Compiler * inCompiler
@@ -6725,7 +6265,7 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentLis
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionFormalArgumentList::plusAssign_operation (const GALGAS_lexicalFunctionFormalArgumentList inOperand,
                                                                      C_Compiler * /* inCompiler */
@@ -6733,7 +6273,7 @@ void GALGAS_lexicalFunctionFormalArgumentList::plusAssign_operation (const GALGA
   appendList (inOperand) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionFormalArgumentList::setter_setMLexicalTypeAtIndex (GALGAS_lexicalTypeEnum inOperand,
                                                                               GALGAS_uint inIndex,
@@ -6747,7 +6287,7 @@ void GALGAS_lexicalFunctionFormalArgumentList::setter_setMLexicalTypeAtIndex (GA
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalFunctionFormalArgumentList::getter_mLexicalTypeAtIndex (const GALGAS_uint & inIndex,
                                                                                              C_Compiler * inCompiler
@@ -6762,7 +6302,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalFunctionFormalArgumentList::getter_mLexical
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionFormalArgumentList::setter_setMArgumentNameForCommentAtIndex (GALGAS_string inOperand,
                                                                                          GALGAS_uint inIndex,
@@ -6776,7 +6316,7 @@ void GALGAS_lexicalFunctionFormalArgumentList::setter_setMArgumentNameForComment
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_lexicalFunctionFormalArgumentList::getter_mArgumentNameForCommentAtIndex (const GALGAS_uint & inIndex,
                                                                                                C_Compiler * inCompiler
@@ -6793,7 +6333,7 @@ GALGAS_string GALGAS_lexicalFunctionFormalArgumentList::getter_mArgumentNameForC
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_lexicalFunctionFormalArgumentList::cEnumerator_lexicalFunctionFormalArgumentList (const GALGAS_lexicalFunctionFormalArgumentList & inEnumeratedObject,
                                                                                               const typeEnumerationOrder inOrder) :
@@ -6801,7 +6341,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionFormalArgumentList_2D_element cEnumerator_lexicalFunctionFormalArgumentList::current (LOCATION_ARGS) const {
   const cCollectionElement_lexicalFunctionFormalArgumentList * p = (const cCollectionElement_lexicalFunctionFormalArgumentList *) currentObjectPtr (THERE) ;
@@ -6810,7 +6350,7 @@ GALGAS_lexicalFunctionFormalArgumentList_2D_element cEnumerator_lexicalFunctionF
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum cEnumerator_lexicalFunctionFormalArgumentList::current_mLexicalType (LOCATION_ARGS) const {
   const cCollectionElement_lexicalFunctionFormalArgumentList * p = (const cCollectionElement_lexicalFunctionFormalArgumentList *) currentObjectPtr (THERE) ;
@@ -6818,7 +6358,7 @@ GALGAS_lexicalTypeEnum cEnumerator_lexicalFunctionFormalArgumentList::current_mL
   return p->mObject.mProperty_mLexicalType ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string cEnumerator_lexicalFunctionFormalArgumentList::current_mArgumentNameForComment (LOCATION_ARGS) const {
   const cCollectionElement_lexicalFunctionFormalArgumentList * p = (const cCollectionElement_lexicalFunctionFormalArgumentList *) currentObjectPtr (THERE) ;
@@ -6829,23 +6369,23 @@ GALGAS_string cEnumerator_lexicalFunctionFormalArgumentList::current_mArgumentNa
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       @lexicalFunctionFormalArgumentList type                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalFunctionFormalArgumentList type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalFunctionFormalArgumentList ("lexicalFunctionFormalArgumentList",
                                                           NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexicalFunctionFormalArgumentList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalFunctionFormalArgumentList ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalFunctionFormalArgumentList::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -6855,7 +6395,7 @@ AC_GALGAS_root * GALGAS_lexicalFunctionFormalArgumentList::clonedObject (void) c
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentList::extractObject (const GALGAS_object & inObject,
                                                                                                   C_Compiler * inCompiler
@@ -6872,7 +6412,7 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionFormalArgumentLis
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalFunctionMap::cMapElement_lexicalFunctionMap (const GALGAS_lstring & inKey,
                                                                 const GALGAS_lexicalFunctionFormalArgumentList & in_mLexicalTypeList,
@@ -6887,13 +6427,13 @@ mProperty_mReplacementFunctionName (in_mReplacementFunctionName),
 mProperty_mIsExtern (in_mIsExtern) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalFunctionMap::isValid (void) const {
   return mProperty_lkey.isValid () && mProperty_mLexicalTypeList.isValid () && mProperty_mReturnedLexicalType.isValid () && mProperty_mReplacementFunctionName.isValid () && mProperty_mIsExtern.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_lexicalFunctionMap::copy (void) {
   cMapElement * result = NULL ;
@@ -6901,7 +6441,7 @@ cMapElement * cMapElement_lexicalFunctionMap::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cMapElement_lexicalFunctionMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -6922,7 +6462,7 @@ void cMapElement_lexicalFunctionMap::description (C_String & ioString, const int
   mProperty_mIsExtern.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cMapElement_lexicalFunctionMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalFunctionMap * operand = (cMapElement_lexicalFunctionMap *) inOperand ;
@@ -6942,26 +6482,26 @@ typeComparisonResult cMapElement_lexicalFunctionMap::compare (const cCollectionE
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionMap::GALGAS_lexicalFunctionMap (void) :
 AC_GALGAS_map (true) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionMap::GALGAS_lexicalFunctionMap (const GALGAS_lexicalFunctionMap & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionMap & GALGAS_lexicalFunctionMap::operator = (const GALGAS_lexicalFunctionMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalFunctionMap result ;
@@ -6969,7 +6509,7 @@ GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::constructor_emptyMap (LOCAT
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::constructor_mapWithMapToOverride (const GALGAS_lexicalFunctionMap & inMapToOverride
                                                                                        COMMA_LOCATION_ARGS) {
@@ -6978,7 +6518,7 @@ GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::constructor_mapWithMapToOve
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::getter_overriddenMap (C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) const {
@@ -6987,7 +6527,7 @@ GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::getter_overriddenMap (C_Com
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionMap::addAssign_operation (const GALGAS_lstring & inKey,
                                                      const GALGAS_lexicalFunctionFormalArgumentList & inArgument0,
@@ -7006,7 +6546,7 @@ void GALGAS_lexicalFunctionMap::addAssign_operation (const GALGAS_lstring & inKe
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionMap::setter_insertKey (GALGAS_lstring inKey,
                                                   GALGAS_lexicalFunctionFormalArgumentList inArgument0,
@@ -7025,11 +6565,11 @@ void GALGAS_lexicalFunctionMap::setter_insertKey (GALGAS_lstring inKey,
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const char * kSearchErrorMessage_lexicalFunctionMap_searchKey = "the '%K' lexical function is not declared" ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionMap::method_searchKey (GALGAS_lstring inKey,
                                                   GALGAS_lexicalFunctionFormalArgumentList & outArgument0,
@@ -7056,7 +6596,7 @@ void GALGAS_lexicalFunctionMap::method_searchKey (GALGAS_lstring inKey,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionMap::getter_mLexicalTypeListForKey (const GALGAS_string & inKey,
                                                                                                    C_Compiler * inCompiler
@@ -7071,7 +6611,7 @@ GALGAS_lexicalFunctionFormalArgumentList GALGAS_lexicalFunctionMap::getter_mLexi
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum GALGAS_lexicalFunctionMap::getter_mReturnedLexicalTypeForKey (const GALGAS_string & inKey,
                                                                                      C_Compiler * inCompiler
@@ -7086,7 +6626,7 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalFunctionMap::getter_mReturnedLexicalTypeFor
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_lexicalFunctionMap::getter_mReplacementFunctionNameForKey (const GALGAS_string & inKey,
                                                                                 C_Compiler * inCompiler
@@ -7101,7 +6641,7 @@ GALGAS_string GALGAS_lexicalFunctionMap::getter_mReplacementFunctionNameForKey (
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_lexicalFunctionMap::getter_mIsExternForKey (const GALGAS_string & inKey,
                                                                C_Compiler * inCompiler
@@ -7116,7 +6656,7 @@ GALGAS_bool GALGAS_lexicalFunctionMap::getter_mIsExternForKey (const GALGAS_stri
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionMap::setter_setMLexicalTypeListForKey (GALGAS_lexicalFunctionFormalArgumentList inAttributeValue,
                                                                   GALGAS_string inKey,
@@ -7130,7 +6670,7 @@ void GALGAS_lexicalFunctionMap::setter_setMLexicalTypeListForKey (GALGAS_lexical
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionMap::setter_setMReturnedLexicalTypeForKey (GALGAS_lexicalTypeEnum inAttributeValue,
                                                                       GALGAS_string inKey,
@@ -7144,7 +6684,7 @@ void GALGAS_lexicalFunctionMap::setter_setMReturnedLexicalTypeForKey (GALGAS_lex
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionMap::setter_setMReplacementFunctionNameForKey (GALGAS_string inAttributeValue,
                                                                           GALGAS_string inKey,
@@ -7158,7 +6698,7 @@ void GALGAS_lexicalFunctionMap::setter_setMReplacementFunctionNameForKey (GALGAS
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionMap::setter_setMIsExternForKey (GALGAS_bool inAttributeValue,
                                                            GALGAS_string inKey,
@@ -7172,7 +6712,7 @@ void GALGAS_lexicalFunctionMap::setter_setMIsExternForKey (GALGAS_bool inAttribu
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalFunctionMap * GALGAS_lexicalFunctionMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                                const GALGAS_string & inKey
@@ -7182,7 +6722,7 @@ cMapElement_lexicalFunctionMap * GALGAS_lexicalFunctionMap::readWriteAccessForWi
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_lexicalFunctionMap::cEnumerator_lexicalFunctionMap (const GALGAS_lexicalFunctionMap & inEnumeratedObject,
                                                                 const typeEnumerationOrder inOrder) :
@@ -7190,7 +6730,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionMap_2D_element cEnumerator_lexicalFunctionMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
@@ -7198,7 +6738,7 @@ GALGAS_lexicalFunctionMap_2D_element cEnumerator_lexicalFunctionMap::current (LO
   return GALGAS_lexicalFunctionMap_2D_element (p->mProperty_lkey, p->mProperty_mLexicalTypeList, p->mProperty_mReturnedLexicalType, p->mProperty_mReplacementFunctionName, p->mProperty_mIsExtern) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_lexicalFunctionMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
@@ -7206,7 +6746,7 @@ GALGAS_lstring cEnumerator_lexicalFunctionMap::current_lkey (LOCATION_ARGS) cons
   return p->mProperty_lkey ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionFormalArgumentList cEnumerator_lexicalFunctionMap::current_mLexicalTypeList (LOCATION_ARGS) const {
   const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
@@ -7214,7 +6754,7 @@ GALGAS_lexicalFunctionFormalArgumentList cEnumerator_lexicalFunctionMap::current
   return p->mProperty_mLexicalTypeList ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTypeEnum cEnumerator_lexicalFunctionMap::current_mReturnedLexicalType (LOCATION_ARGS) const {
   const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
@@ -7222,7 +6762,7 @@ GALGAS_lexicalTypeEnum cEnumerator_lexicalFunctionMap::current_mReturnedLexicalT
   return p->mProperty_mReturnedLexicalType ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string cEnumerator_lexicalFunctionMap::current_mReplacementFunctionName (LOCATION_ARGS) const {
   const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
@@ -7230,7 +6770,7 @@ GALGAS_string cEnumerator_lexicalFunctionMap::current_mReplacementFunctionName (
   return p->mProperty_mReplacementFunctionName ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool cEnumerator_lexicalFunctionMap::current_mIsExtern (LOCATION_ARGS) const {
   const cMapElement_lexicalFunctionMap * p = (const cMapElement_lexicalFunctionMap *) currentObjectPtr (THERE) ;
@@ -7238,7 +6778,7 @@ GALGAS_bool cEnumerator_lexicalFunctionMap::current_mIsExtern (LOCATION_ARGS) co
   return p->mProperty_mIsExtern ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalFunctionMap::optional_searchKey (const GALGAS_string & inKey,
                                                     GALGAS_lexicalFunctionFormalArgumentList & outArgument0,
@@ -7262,23 +6802,23 @@ bool GALGAS_lexicalFunctionMap::optional_searchKey (const GALGAS_string & inKey,
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @lexicalFunctionMap type                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalFunctionMap type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalFunctionMap ("lexicalFunctionMap",
                                            NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexicalFunctionMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalFunctionMap ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalFunctionMap::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -7288,7 +6828,7 @@ AC_GALGAS_root * GALGAS_lexicalFunctionMap::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::extractObject (const GALGAS_object & inObject,
                                                                     C_Compiler * inCompiler
@@ -7305,11 +6845,11 @@ GALGAS_lexicalFunctionMap GALGAS_lexicalFunctionMap::extractObject (const GALGAS
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Class for element of '@templateDelimitorList' list                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@templateDelimitorList' list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_templateDelimitorList : public cCollectionElement {
   public : GALGAS_templateDelimitorList_2D_element mObject ;
@@ -7334,7 +6874,7 @@ class cCollectionElement_templateDelimitorList : public cCollectionElement {
   public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_templateDelimitorList::cCollectionElement_templateDelimitorList (const GALGAS_lstring & in_mStartString,
                                                                                     const GALGAS_lstring & in_mEndString,
@@ -7344,20 +6884,20 @@ cCollectionElement (THERE),
 mObject (in_mStartString, in_mEndString, in_mPreservesStartDelimiter) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_templateDelimitorList::cCollectionElement_templateDelimitorList (const GALGAS_templateDelimitorList_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mStartString, inElement.mProperty_mEndString, inElement.mProperty_mPreservesStartDelimiter) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_templateDelimitorList::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_templateDelimitorList::copy (void) {
   cCollectionElement * result = NULL ;
@@ -7365,7 +6905,7 @@ cCollectionElement * cCollectionElement_templateDelimitorList::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cCollectionElement_templateDelimitorList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -7382,7 +6922,7 @@ void cCollectionElement_templateDelimitorList::description (C_String & ioString,
   mObject.mProperty_mPreservesStartDelimiter.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cCollectionElement_templateDelimitorList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_templateDelimitorList * operand = (cCollectionElement_templateDelimitorList *) inOperand ;
@@ -7390,25 +6930,25 @@ typeComparisonResult cCollectionElement_templateDelimitorList::compare (const cC
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateDelimitorList::GALGAS_templateDelimitorList (void) :
 AC_GALGAS_list () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateDelimitorList::GALGAS_templateDelimitorList (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateDelimitorList GALGAS_templateDelimitorList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_templateDelimitorList  (capCollectionElementArray ()) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateDelimitorList GALGAS_templateDelimitorList::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                       const GALGAS_lstring & inOperand1,
@@ -7424,7 +6964,7 @@ GALGAS_templateDelimitorList GALGAS_templateDelimitorList::constructor_listWithV
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateDelimitorList::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                               const GALGAS_lstring & in_mStartString,
@@ -7439,7 +6979,7 @@ void GALGAS_templateDelimitorList::makeAttributesFromObjects (capCollectionEleme
   macroDetachSharedObject (p) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateDelimitorList::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                         const GALGAS_lstring & inOperand1,
@@ -7455,7 +6995,7 @@ void GALGAS_templateDelimitorList::addAssign_operation (const GALGAS_lstring & i
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateDelimitorList::setter_append (GALGAS_templateDelimitorList_2D_element inElement,
                                                   C_Compiler * /* inCompiler */
@@ -7470,7 +7010,7 @@ void GALGAS_templateDelimitorList::setter_append (GALGAS_templateDelimitorList_2
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateDelimitorList::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                          const GALGAS_lstring inOperand1,
@@ -7488,7 +7028,7 @@ void GALGAS_templateDelimitorList::setter_insertAtIndex (const GALGAS_lstring in
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateDelimitorList::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                          GALGAS_lstring & outOperand1,
@@ -7513,7 +7053,7 @@ void GALGAS_templateDelimitorList::setter_removeAtIndex (GALGAS_lstring & outOpe
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateDelimitorList::setter_popFirst (GALGAS_lstring & outOperand0,
                                                     GALGAS_lstring & outOperand1,
@@ -7535,7 +7075,7 @@ void GALGAS_templateDelimitorList::setter_popFirst (GALGAS_lstring & outOperand0
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateDelimitorList::setter_popLast (GALGAS_lstring & outOperand0,
                                                    GALGAS_lstring & outOperand1,
@@ -7557,7 +7097,7 @@ void GALGAS_templateDelimitorList::setter_popLast (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateDelimitorList::method_first (GALGAS_lstring & outOperand0,
                                                  GALGAS_lstring & outOperand1,
@@ -7579,7 +7119,7 @@ void GALGAS_templateDelimitorList::method_first (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateDelimitorList::method_last (GALGAS_lstring & outOperand0,
                                                 GALGAS_lstring & outOperand1,
@@ -7601,7 +7141,7 @@ void GALGAS_templateDelimitorList::method_last (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateDelimitorList GALGAS_templateDelimitorList::add_operation (const GALGAS_templateDelimitorList & inOperand,
                                                                           C_Compiler * /* inCompiler */
@@ -7614,7 +7154,7 @@ GALGAS_templateDelimitorList GALGAS_templateDelimitorList::add_operation (const 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateDelimitorList GALGAS_templateDelimitorList::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                     C_Compiler * inCompiler
@@ -7624,7 +7164,7 @@ GALGAS_templateDelimitorList GALGAS_templateDelimitorList::getter_subListWithRan
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateDelimitorList GALGAS_templateDelimitorList::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                     C_Compiler * inCompiler
@@ -7634,7 +7174,7 @@ GALGAS_templateDelimitorList GALGAS_templateDelimitorList::getter_subListFromInd
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateDelimitorList GALGAS_templateDelimitorList::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                   C_Compiler * inCompiler
@@ -7644,7 +7184,7 @@ GALGAS_templateDelimitorList GALGAS_templateDelimitorList::getter_subListToIndex
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateDelimitorList::plusAssign_operation (const GALGAS_templateDelimitorList inOperand,
                                                          C_Compiler * /* inCompiler */
@@ -7652,7 +7192,7 @@ void GALGAS_templateDelimitorList::plusAssign_operation (const GALGAS_templateDe
   appendList (inOperand) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateDelimitorList::setter_setMStartStringAtIndex (GALGAS_lstring inOperand,
                                                                   GALGAS_uint inIndex,
@@ -7666,7 +7206,7 @@ void GALGAS_templateDelimitorList::setter_setMStartStringAtIndex (GALGAS_lstring
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_templateDelimitorList::getter_mStartStringAtIndex (const GALGAS_uint & inIndex,
                                                                          C_Compiler * inCompiler
@@ -7681,7 +7221,7 @@ GALGAS_lstring GALGAS_templateDelimitorList::getter_mStartStringAtIndex (const G
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateDelimitorList::setter_setMEndStringAtIndex (GALGAS_lstring inOperand,
                                                                 GALGAS_uint inIndex,
@@ -7695,7 +7235,7 @@ void GALGAS_templateDelimitorList::setter_setMEndStringAtIndex (GALGAS_lstring i
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_templateDelimitorList::getter_mEndStringAtIndex (const GALGAS_uint & inIndex,
                                                                        C_Compiler * inCompiler
@@ -7710,7 +7250,7 @@ GALGAS_lstring GALGAS_templateDelimitorList::getter_mEndStringAtIndex (const GAL
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_templateDelimitorList::setter_setMPreservesStartDelimiterAtIndex (GALGAS_bool inOperand,
                                                                               GALGAS_uint inIndex,
@@ -7724,7 +7264,7 @@ void GALGAS_templateDelimitorList::setter_setMPreservesStartDelimiterAtIndex (GA
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_templateDelimitorList::getter_mPreservesStartDelimiterAtIndex (const GALGAS_uint & inIndex,
                                                                                   C_Compiler * inCompiler
@@ -7741,7 +7281,7 @@ GALGAS_bool GALGAS_templateDelimitorList::getter_mPreservesStartDelimiterAtIndex
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_templateDelimitorList::cEnumerator_templateDelimitorList (const GALGAS_templateDelimitorList & inEnumeratedObject,
                                                                       const typeEnumerationOrder inOrder) :
@@ -7749,7 +7289,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateDelimitorList_2D_element cEnumerator_templateDelimitorList::current (LOCATION_ARGS) const {
   const cCollectionElement_templateDelimitorList * p = (const cCollectionElement_templateDelimitorList *) currentObjectPtr (THERE) ;
@@ -7758,7 +7298,7 @@ GALGAS_templateDelimitorList_2D_element cEnumerator_templateDelimitorList::curre
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_templateDelimitorList::current_mStartString (LOCATION_ARGS) const {
   const cCollectionElement_templateDelimitorList * p = (const cCollectionElement_templateDelimitorList *) currentObjectPtr (THERE) ;
@@ -7766,7 +7306,7 @@ GALGAS_lstring cEnumerator_templateDelimitorList::current_mStartString (LOCATION
   return p->mObject.mProperty_mStartString ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_templateDelimitorList::current_mEndString (LOCATION_ARGS) const {
   const cCollectionElement_templateDelimitorList * p = (const cCollectionElement_templateDelimitorList *) currentObjectPtr (THERE) ;
@@ -7774,7 +7314,7 @@ GALGAS_lstring cEnumerator_templateDelimitorList::current_mEndString (LOCATION_A
   return p->mObject.mProperty_mEndString ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool cEnumerator_templateDelimitorList::current_mPreservesStartDelimiter (LOCATION_ARGS) const {
   const cCollectionElement_templateDelimitorList * p = (const cCollectionElement_templateDelimitorList *) currentObjectPtr (THERE) ;
@@ -7785,23 +7325,23 @@ GALGAS_bool cEnumerator_templateDelimitorList::current_mPreservesStartDelimiter 
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @templateDelimitorList type                                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@templateDelimitorList type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_templateDelimitorList ("templateDelimitorList",
                                               NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_templateDelimitorList::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_templateDelimitorList ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_templateDelimitorList::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -7811,7 +7351,7 @@ AC_GALGAS_root * GALGAS_templateDelimitorList::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_templateDelimitorList GALGAS_templateDelimitorList::extractObject (const GALGAS_object & inObject,
                                                                           C_Compiler * inCompiler
@@ -7828,7 +7368,7 @@ GALGAS_templateDelimitorList GALGAS_templateDelimitorList::extractObject (const 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_styleMap::cMapElement_styleMap (const GALGAS_lstring & inKey,
                                             const GALGAS_lstring & in_mComment,
@@ -7839,13 +7379,13 @@ mProperty_mComment (in_mComment),
 mProperty_mStyleIndex (in_mStyleIndex) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_styleMap::isValid (void) const {
   return mProperty_lkey.isValid () && mProperty_mComment.isValid () && mProperty_mStyleIndex.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_styleMap::copy (void) {
   cMapElement * result = NULL ;
@@ -7853,7 +7393,7 @@ cMapElement * cMapElement_styleMap::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cMapElement_styleMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -7866,7 +7406,7 @@ void cMapElement_styleMap::description (C_String & ioString, const int32_t inInd
   mProperty_mStyleIndex.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cMapElement_styleMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_styleMap * operand = (cMapElement_styleMap *) inOperand ;
@@ -7880,26 +7420,26 @@ typeComparisonResult cMapElement_styleMap::compare (const cCollectionElement * i
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_styleMap::GALGAS_styleMap (void) :
 AC_GALGAS_map (true) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_styleMap::GALGAS_styleMap (const GALGAS_styleMap & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_styleMap & GALGAS_styleMap::operator = (const GALGAS_styleMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_styleMap GALGAS_styleMap::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_styleMap result ;
@@ -7907,7 +7447,7 @@ GALGAS_styleMap GALGAS_styleMap::constructor_emptyMap (LOCATION_ARGS) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_styleMap GALGAS_styleMap::constructor_mapWithMapToOverride (const GALGAS_styleMap & inMapToOverride
                                                                    COMMA_LOCATION_ARGS) {
@@ -7916,7 +7456,7 @@ GALGAS_styleMap GALGAS_styleMap::constructor_mapWithMapToOverride (const GALGAS_
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_styleMap GALGAS_styleMap::getter_overriddenMap (C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
@@ -7925,7 +7465,7 @@ GALGAS_styleMap GALGAS_styleMap::getter_overriddenMap (C_Compiler * inCompiler
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_styleMap::addAssign_operation (const GALGAS_lstring & inKey,
                                            const GALGAS_lstring & inArgument0,
@@ -7942,7 +7482,7 @@ void GALGAS_styleMap::addAssign_operation (const GALGAS_lstring & inKey,
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_styleMap::setter_insertKey (GALGAS_lstring inKey,
                                         GALGAS_lstring inArgument0,
@@ -7959,11 +7499,11 @@ void GALGAS_styleMap::setter_insertKey (GALGAS_lstring inKey,
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const char * kSearchErrorMessage_styleMap_searchKey = "the '%K' style is not declared" ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_styleMap::method_searchKey (GALGAS_lstring inKey,
                                         GALGAS_lstring & outArgument0,
@@ -7984,7 +7524,7 @@ void GALGAS_styleMap::method_searchKey (GALGAS_lstring inKey,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_styleMap::getter_mCommentForKey (const GALGAS_string & inKey,
                                                        C_Compiler * inCompiler
@@ -7999,7 +7539,7 @@ GALGAS_lstring GALGAS_styleMap::getter_mCommentForKey (const GALGAS_string & inK
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_styleMap::getter_mStyleIndexForKey (const GALGAS_string & inKey,
                                                        C_Compiler * inCompiler
@@ -8014,7 +7554,7 @@ GALGAS_uint GALGAS_styleMap::getter_mStyleIndexForKey (const GALGAS_string & inK
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_styleMap::setter_setMCommentForKey (GALGAS_lstring inAttributeValue,
                                                 GALGAS_string inKey,
@@ -8028,7 +7568,7 @@ void GALGAS_styleMap::setter_setMCommentForKey (GALGAS_lstring inAttributeValue,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_styleMap::setter_setMStyleIndexForKey (GALGAS_uint inAttributeValue,
                                                    GALGAS_string inKey,
@@ -8042,7 +7582,7 @@ void GALGAS_styleMap::setter_setMStyleIndexForKey (GALGAS_uint inAttributeValue,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_styleMap * GALGAS_styleMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                            const GALGAS_string & inKey
@@ -8052,7 +7592,7 @@ cMapElement_styleMap * GALGAS_styleMap::readWriteAccessForWithInstruction (C_Com
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_styleMap::cEnumerator_styleMap (const GALGAS_styleMap & inEnumeratedObject,
                                             const typeEnumerationOrder inOrder) :
@@ -8060,7 +7600,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_styleMap_2D_element cEnumerator_styleMap::current (LOCATION_ARGS) const {
   const cMapElement_styleMap * p = (const cMapElement_styleMap *) currentObjectPtr (THERE) ;
@@ -8068,7 +7608,7 @@ GALGAS_styleMap_2D_element cEnumerator_styleMap::current (LOCATION_ARGS) const {
   return GALGAS_styleMap_2D_element (p->mProperty_lkey, p->mProperty_mComment, p->mProperty_mStyleIndex) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_styleMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
@@ -8076,7 +7616,7 @@ GALGAS_lstring cEnumerator_styleMap::current_lkey (LOCATION_ARGS) const {
   return p->mProperty_lkey ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_styleMap::current_mComment (LOCATION_ARGS) const {
   const cMapElement_styleMap * p = (const cMapElement_styleMap *) currentObjectPtr (THERE) ;
@@ -8084,7 +7624,7 @@ GALGAS_lstring cEnumerator_styleMap::current_mComment (LOCATION_ARGS) const {
   return p->mProperty_mComment ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint cEnumerator_styleMap::current_mStyleIndex (LOCATION_ARGS) const {
   const cMapElement_styleMap * p = (const cMapElement_styleMap *) currentObjectPtr (THERE) ;
@@ -8092,7 +7632,7 @@ GALGAS_uint cEnumerator_styleMap::current_mStyleIndex (LOCATION_ARGS) const {
   return p->mProperty_mStyleIndex ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_styleMap::optional_searchKey (const GALGAS_string & inKey,
                                           GALGAS_lstring & outArgument0,
@@ -8110,23 +7650,23 @@ bool GALGAS_styleMap::optional_searchKey (const GALGAS_string & inKey,
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                   @styleMap type                                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@styleMap type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_styleMap ("styleMap",
                                  NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_styleMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_styleMap ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_styleMap::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -8136,7 +7676,7 @@ AC_GALGAS_root * GALGAS_styleMap::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_styleMap GALGAS_styleMap::extractObject (const GALGAS_object & inObject,
                                                 C_Compiler * inCompiler
@@ -8153,20 +7693,20 @@ GALGAS_styleMap GALGAS_styleMap::extractObject (const GALGAS_object & inObject,
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalTagMap::cMapElement_lexicalTagMap (const GALGAS_lstring & inKey
                                                       COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_lexicalTagMap::isValid (void) const {
   return mProperty_lkey.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_lexicalTagMap::copy (void) {
   cMapElement * result = NULL ;
@@ -8174,12 +7714,12 @@ cMapElement * cMapElement_lexicalTagMap::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cMapElement_lexicalTagMap::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cMapElement_lexicalTagMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalTagMap * operand = (cMapElement_lexicalTagMap *) inOperand ;
@@ -8187,26 +7727,26 @@ typeComparisonResult cMapElement_lexicalTagMap::compare (const cCollectionElemen
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTagMap::GALGAS_lexicalTagMap (void) :
 AC_GALGAS_map (true) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTagMap::GALGAS_lexicalTagMap (const GALGAS_lexicalTagMap & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTagMap & GALGAS_lexicalTagMap::operator = (const GALGAS_lexicalTagMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTagMap GALGAS_lexicalTagMap::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_lexicalTagMap result ;
@@ -8214,7 +7754,7 @@ GALGAS_lexicalTagMap GALGAS_lexicalTagMap::constructor_emptyMap (LOCATION_ARGS) 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTagMap GALGAS_lexicalTagMap::constructor_mapWithMapToOverride (const GALGAS_lexicalTagMap & inMapToOverride
                                                                              COMMA_LOCATION_ARGS) {
@@ -8223,7 +7763,7 @@ GALGAS_lexicalTagMap GALGAS_lexicalTagMap::constructor_mapWithMapToOverride (con
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTagMap GALGAS_lexicalTagMap::getter_overriddenMap (C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
@@ -8232,7 +7772,7 @@ GALGAS_lexicalTagMap GALGAS_lexicalTagMap::getter_overriddenMap (C_Compiler * in
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalTagMap::addAssign_operation (const GALGAS_lstring & inKey,
                                                 C_Compiler * inCompiler
@@ -8247,7 +7787,7 @@ void GALGAS_lexicalTagMap::addAssign_operation (const GALGAS_lstring & inKey,
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalTagMap::setter_insertKey (GALGAS_lstring inKey,
                                              C_Compiler * inCompiler
@@ -8262,11 +7802,11 @@ void GALGAS_lexicalTagMap::setter_insertKey (GALGAS_lstring inKey,
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const char * kSearchErrorMessage_lexicalTagMap_searchKey = "the '%K' tag is not declared" ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalTagMap::method_searchKey (GALGAS_lstring inKey,
                                              C_Compiler * inCompiler
@@ -8281,7 +7821,7 @@ void GALGAS_lexicalTagMap::method_searchKey (GALGAS_lstring inKey,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_lexicalTagMap * GALGAS_lexicalTagMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                      const GALGAS_string & inKey
@@ -8291,7 +7831,7 @@ cMapElement_lexicalTagMap * GALGAS_lexicalTagMap::readWriteAccessForWithInstruct
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_lexicalTagMap::cEnumerator_lexicalTagMap (const GALGAS_lexicalTagMap & inEnumeratedObject,
                                                       const typeEnumerationOrder inOrder) :
@@ -8299,7 +7839,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTagMap_2D_element cEnumerator_lexicalTagMap::current (LOCATION_ARGS) const {
   const cMapElement_lexicalTagMap * p = (const cMapElement_lexicalTagMap *) currentObjectPtr (THERE) ;
@@ -8307,7 +7847,7 @@ GALGAS_lexicalTagMap_2D_element cEnumerator_lexicalTagMap::current (LOCATION_ARG
   return GALGAS_lexicalTagMap_2D_element (p->mProperty_lkey) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_lexicalTagMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
@@ -8315,7 +7855,7 @@ GALGAS_lstring cEnumerator_lexicalTagMap::current_lkey (LOCATION_ARGS) const {
   return p->mProperty_lkey ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_lexicalTagMap::optional_searchKey (const GALGAS_string & inKey) const {
   const cMapElement_lexicalTagMap * p = (const cMapElement_lexicalTagMap *) searchForKey (inKey) ;
@@ -8327,23 +7867,23 @@ bool GALGAS_lexicalTagMap::optional_searchKey (const GALGAS_string & inKey) cons
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                 @lexicalTagMap type                                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalTagMap type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalTagMap ("lexicalTagMap",
                                       NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexicalTagMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalTagMap ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalTagMap::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -8353,7 +7893,7 @@ AC_GALGAS_root * GALGAS_lexicalTagMap::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalTagMap GALGAS_lexicalTagMap::extractObject (const GALGAS_object & inObject,
                                                           C_Compiler * inCompiler
@@ -8370,9 +7910,9 @@ GALGAS_lexicalTagMap GALGAS_lexicalTagMap::extractObject (const GALGAS_object & 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Object comparison                                                                           
+//----------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -8392,45 +7932,45 @@ typeComparisonResult GALGAS_lexicalFunctionExpressionAST::objectCompare (const G
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionExpressionAST::GALGAS_lexicalFunctionExpressionAST (void) :
 AC_GALGAS_class (false) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionExpressionAST::GALGAS_lexicalFunctionExpressionAST (const cPtr_lexicalFunctionExpressionAST * inSourcePtr) :
 AC_GALGAS_class (inSourcePtr, false) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalFunctionExpressionAST) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                Pointer class for @lexicalFunctionExpressionAST class                                *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//Pointer class for @lexicalFunctionExpressionAST class
+//----------------------------------------------------------------------------------------------------------------------
 
 cPtr_lexicalFunctionExpressionAST::cPtr_lexicalFunctionExpressionAST (LOCATION_ARGS) :
 acPtr_class (THERE) {
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                         @lexicalFunctionExpressionAST type                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalFunctionExpressionAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalFunctionExpressionAST ("lexicalFunctionExpressionAST",
                                                      NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexicalFunctionExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalFunctionExpressionAST ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalFunctionExpressionAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -8440,7 +7980,7 @@ AC_GALGAS_root * GALGAS_lexicalFunctionExpressionAST::clonedObject (void) const 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionExpressionAST GALGAS_lexicalFunctionExpressionAST::extractObject (const GALGAS_object & inObject,
                                                                                         C_Compiler * inCompiler
@@ -8457,9 +7997,9 @@ GALGAS_lexicalFunctionExpressionAST GALGAS_lexicalFunctionExpressionAST::extract
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Object comparison                                                                                                 *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Object comparison                                                                           
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cPtr_lexicalFunctionOrExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
   typeComparisonResult result = kOperandEqual ;
@@ -8474,7 +8014,7 @@ typeComparisonResult cPtr_lexicalFunctionOrExpressionAST::dynamicObjectCompare (
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 
 typeComparisonResult GALGAS_lexicalFunctionOrExpressionAST::objectCompare (const GALGAS_lexicalFunctionOrExpressionAST & inOperand) const {
@@ -8493,20 +8033,20 @@ typeComparisonResult GALGAS_lexicalFunctionOrExpressionAST::objectCompare (const
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionOrExpressionAST::GALGAS_lexicalFunctionOrExpressionAST (void) :
 GALGAS_lexicalFunctionExpressionAST () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionOrExpressionAST::GALGAS_lexicalFunctionOrExpressionAST (const cPtr_lexicalFunctionOrExpressionAST * inSourcePtr) :
 GALGAS_lexicalFunctionExpressionAST (inSourcePtr) {
   macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalFunctionOrExpressionAST) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionOrExpressionAST GALGAS_lexicalFunctionOrExpressionAST::constructor_new (const GALGAS_lexicalFunctionExpressionAST & inAttribute_mLeftOperand,
                                                                                               const GALGAS_lexicalFunctionExpressionAST & inAttribute_mRightOperand
@@ -8518,7 +8058,7 @@ GALGAS_lexicalFunctionOrExpressionAST GALGAS_lexicalFunctionOrExpressionAST::con
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionExpressionAST GALGAS_lexicalFunctionOrExpressionAST::getter_mLeftOperand (UNUSED_LOCATION_ARGS) const {
   GALGAS_lexicalFunctionExpressionAST result ;
@@ -8530,13 +8070,13 @@ GALGAS_lexicalFunctionExpressionAST GALGAS_lexicalFunctionOrExpressionAST::gette
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionExpressionAST cPtr_lexicalFunctionOrExpressionAST::getter_mLeftOperand (UNUSED_LOCATION_ARGS) const {
   return mProperty_mLeftOperand ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionExpressionAST GALGAS_lexicalFunctionOrExpressionAST::getter_mRightOperand (UNUSED_LOCATION_ARGS) const {
   GALGAS_lexicalFunctionExpressionAST result ;
@@ -8548,13 +8088,13 @@ GALGAS_lexicalFunctionExpressionAST GALGAS_lexicalFunctionOrExpressionAST::gette
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionExpressionAST cPtr_lexicalFunctionOrExpressionAST::getter_mRightOperand (UNUSED_LOCATION_ARGS) const {
   return mProperty_mRightOperand ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionOrExpressionAST::setter_setMLeftOperand (GALGAS_lexicalFunctionExpressionAST inValue
                                                                     COMMA_LOCATION_ARGS) {
@@ -8566,14 +8106,14 @@ void GALGAS_lexicalFunctionOrExpressionAST::setter_setMLeftOperand (GALGAS_lexic
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalFunctionOrExpressionAST::setter_setMLeftOperand (GALGAS_lexicalFunctionExpressionAST inValue
                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   mProperty_mLeftOperand = inValue ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_lexicalFunctionOrExpressionAST::setter_setMRightOperand (GALGAS_lexicalFunctionExpressionAST inValue
                                                                      COMMA_LOCATION_ARGS) {
@@ -8585,16 +8125,16 @@ void GALGAS_lexicalFunctionOrExpressionAST::setter_setMRightOperand (GALGAS_lexi
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cPtr_lexicalFunctionOrExpressionAST::setter_setMRightOperand (GALGAS_lexicalFunctionExpressionAST inValue
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
   mProperty_mRightOperand = inValue ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                               Pointer class for @lexicalFunctionOrExpressionAST class                               *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//Pointer class for @lexicalFunctionOrExpressionAST class
+//----------------------------------------------------------------------------------------------------------------------
 
 cPtr_lexicalFunctionOrExpressionAST::cPtr_lexicalFunctionOrExpressionAST (const GALGAS_lexicalFunctionExpressionAST & in_mLeftOperand,
                                                                           const GALGAS_lexicalFunctionExpressionAST & in_mRightOperand
@@ -8604,7 +8144,7 @@ mProperty_mLeftOperand (in_mLeftOperand),
 mProperty_mRightOperand (in_mRightOperand) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * cPtr_lexicalFunctionOrExpressionAST::classDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalFunctionOrExpressionAST ;
@@ -8619,7 +8159,7 @@ void cPtr_lexicalFunctionOrExpressionAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 acPtr_class * cPtr_lexicalFunctionOrExpressionAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
@@ -8628,23 +8168,23 @@ acPtr_class * cPtr_lexicalFunctionOrExpressionAST::duplicate (LOCATION_ARGS) con
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        @lexicalFunctionOrExpressionAST type                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@lexicalFunctionOrExpressionAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_lexicalFunctionOrExpressionAST ("lexicalFunctionOrExpressionAST",
                                                        & kTypeDescriptor_GALGAS_lexicalFunctionExpressionAST) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_lexicalFunctionOrExpressionAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_lexicalFunctionOrExpressionAST ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_lexicalFunctionOrExpressionAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -8654,7 +8194,7 @@ AC_GALGAS_root * GALGAS_lexicalFunctionOrExpressionAST::clonedObject (void) cons
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lexicalFunctionOrExpressionAST GALGAS_lexicalFunctionOrExpressionAST::extractObject (const GALGAS_object & inObject,
                                                                                             C_Compiler * inCompiler
@@ -8671,33 +8211,33 @@ GALGAS_lexicalFunctionOrExpressionAST GALGAS_lexicalFunctionOrExpressionAST::ext
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                   Abstract extension method '@lexicalFunctionExpressionAST checkUnicodeConstants'                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@lexicalFunctionExpressionAST checkUnicodeConstants'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <extensionMethodSignature_lexicalFunctionExpressionAST_checkUnicodeConstants> gExtensionMethodTable_lexicalFunctionExpressionAST_checkUnicodeConstants ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_checkUnicodeConstants (const int32_t inClassIndex,
                                                  extensionMethodSignature_lexicalFunctionExpressionAST_checkUnicodeConstants inMethod) {
   gExtensionMethodTable_lexicalFunctionExpressionAST_checkUnicodeConstants.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionMethod_lexicalFunctionExpressionAST_checkUnicodeConstants (void) {
   gExtensionMethodTable_lexicalFunctionExpressionAST_checkUnicodeConstants.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_lexicalFunctionExpressionAST_checkUnicodeConstants (NULL,
                                                                                freeExtensionMethod_lexicalFunctionExpressionAST_checkUnicodeConstants) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkUnicodeConstants (const cPtr_lexicalFunctionExpressionAST * inObject,
                                                 C_Compiler * inCompiler
@@ -8730,33 +8270,33 @@ void callExtensionMethod_checkUnicodeConstants (const cPtr_lexicalFunctionExpres
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//             Abstract extension getter '@lexicalFunctionExpressionAST callsDefinedUnicodeTestFunctions'              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalFunctionExpressionAST callsDefinedUnicodeTestFunctions'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <enterExtensionGetter_lexicalFunctionExpressionAST_callsDefinedUnicodeTestFunctions> gExtensionGetterTable_lexicalFunctionExpressionAST_callsDefinedUnicodeTestFunctions ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_callsDefinedUnicodeTestFunctions (const int32_t inClassIndex,
                                                             enterExtensionGetter_lexicalFunctionExpressionAST_callsDefinedUnicodeTestFunctions inGetter) {
   gExtensionGetterTable_lexicalFunctionExpressionAST_callsDefinedUnicodeTestFunctions.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionGetter_lexicalFunctionExpressionAST_callsDefinedUnicodeTestFunctions (void) {
   gExtensionGetterTable_lexicalFunctionExpressionAST_callsDefinedUnicodeTestFunctions.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_lexicalFunctionExpressionAST_callsDefinedUnicodeTestFunctions (NULL,
                                                                                           freeExtensionGetter_lexicalFunctionExpressionAST_callsDefinedUnicodeTestFunctions) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool callExtensionGetter_callsDefinedUnicodeTestFunctions (const cPtr_lexicalFunctionExpressionAST * inObject,
                                                                   const GALGAS_stringset in_inDefinedUnicodeFunctionSet,
@@ -8791,33 +8331,33 @@ GALGAS_bool callExtensionGetter_callsDefinedUnicodeTestFunctions (const cPtr_lex
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//              Abstract extension getter '@lexicalFunctionExpressionAST generateForUnicodeTestFunctions'              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalFunctionExpressionAST generateForUnicodeTestFunctions'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <enterExtensionGetter_lexicalFunctionExpressionAST_generateForUnicodeTestFunctions> gExtensionGetterTable_lexicalFunctionExpressionAST_generateForUnicodeTestFunctions ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_generateForUnicodeTestFunctions (const int32_t inClassIndex,
                                                            enterExtensionGetter_lexicalFunctionExpressionAST_generateForUnicodeTestFunctions inGetter) {
   gExtensionGetterTable_lexicalFunctionExpressionAST_generateForUnicodeTestFunctions.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionGetter_lexicalFunctionExpressionAST_generateForUnicodeTestFunctions (void) {
   gExtensionGetterTable_lexicalFunctionExpressionAST_generateForUnicodeTestFunctions.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_lexicalFunctionExpressionAST_generateForUnicodeTestFunctions (NULL,
                                                                                          freeExtensionGetter_lexicalFunctionExpressionAST_generateForUnicodeTestFunctions) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string callExtensionGetter_generateForUnicodeTestFunctions (const cPtr_lexicalFunctionExpressionAST * inObject,
                                                                    C_Compiler * inCompiler
@@ -8851,11 +8391,11 @@ GALGAS_string callExtensionGetter_generateForUnicodeTestFunctions (const cPtr_le
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                               Extension Getter '@lexicalTypeEnum lexicalTypeBaseName'                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@lexicalTypeEnum lexicalTypeBaseName'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string extensionGetter_lexicalTypeBaseName (const GALGAS_lexicalTypeEnum & inObject,
                                                    C_Compiler * /* inCompiler */
@@ -8913,33 +8453,33 @@ GALGAS_string extensionGetter_lexicalTypeBaseName (const GALGAS_lexicalTypeEnum 
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Abstract extension getter '@lexicalExpressionAST generateConditionCode'                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalExpressionAST generateConditionCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <enterExtensionGetter_lexicalExpressionAST_generateConditionCode> gExtensionGetterTable_lexicalExpressionAST_generateConditionCode ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_generateConditionCode (const int32_t inClassIndex,
                                                  enterExtensionGetter_lexicalExpressionAST_generateConditionCode inGetter) {
   gExtensionGetterTable_lexicalExpressionAST_generateConditionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionGetter_lexicalExpressionAST_generateConditionCode (void) {
   gExtensionGetterTable_lexicalExpressionAST_generateConditionCode.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_lexicalExpressionAST_generateConditionCode (NULL,
                                                                        freeExtensionGetter_lexicalExpressionAST_generateConditionCode) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string callExtensionGetter_generateConditionCode (const cPtr_lexicalExpressionAST * inObject,
                                                          const GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
@@ -8974,33 +8514,33 @@ GALGAS_string callExtensionGetter_generateConditionCode (const cPtr_lexicalExpre
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//    Abstract extension getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineOrFunctionArgument'    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineOrFunctionArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <enterExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument> gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_generateRoutineOrFunctionArgument (const int32_t inClassIndex,
                                                              enterExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument inGetter) {
   gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (void) {
   gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument (NULL,
                                                                                                              freeExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string callExtensionGetter_generateRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                                      C_Compiler * inCompiler
@@ -9034,33 +8574,33 @@ GALGAS_string callExtensionGetter_generateRoutineOrFunctionArgument (const cPtr_
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//            Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateRoutineArgument'             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateRoutineArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <enterExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument> gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_generateRoutineArgument (const int32_t inClassIndex,
                                                    enterExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument inGetter) {
   gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (void) {
   gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument (NULL,
                                                                                             freeExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string callExtensionGetter_generateRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
                                                            C_Compiler * inCompiler
@@ -9094,33 +8634,33 @@ GALGAS_string callExtensionGetter_generateRoutineArgument (const cPtr_abstractLe
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                  Abstract extension getter '@lexicalSendDefaultActionAST generateDefaultSendCode'                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalSendDefaultActionAST generateDefaultSendCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <enterExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode> gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_generateDefaultSendCode (const int32_t inClassIndex,
                                                    enterExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode inGetter) {
   gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode (void) {
   gExtensionGetterTable_lexicalSendDefaultActionAST_generateDefaultSendCode.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_lexicalSendDefaultActionAST_generateDefaultSendCode (NULL,
                                                                                 freeExtensionGetter_lexicalSendDefaultActionAST_generateDefaultSendCode) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string callExtensionGetter_generateDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
                                                            const GALGAS_string in_inScannerClassName,
@@ -9155,33 +8695,33 @@ GALGAS_string callExtensionGetter_generateDefaultSendCode (const cPtr_lexicalSen
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                     Abstract extension getter '@lexicalInstructionAST generateInstructionCode'                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalInstructionAST generateInstructionCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <enterExtensionGetter_lexicalInstructionAST_generateInstructionCode> gExtensionGetterTable_lexicalInstructionAST_generateInstructionCode ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_generateInstructionCode (const int32_t inClassIndex,
                                                    enterExtensionGetter_lexicalInstructionAST_generateInstructionCode inGetter) {
   gExtensionGetterTable_lexicalInstructionAST_generateInstructionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionGetter_lexicalInstructionAST_generateInstructionCode (void) {
   gExtensionGetterTable_lexicalInstructionAST_generateInstructionCode.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_lexicalInstructionAST_generateInstructionCode (NULL,
                                                                           freeExtensionGetter_lexicalInstructionAST_generateInstructionCode) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string callExtensionGetter_generateInstructionCode (const cPtr_lexicalInstructionAST * inObject,
                                                            const GALGAS_string in_inScannerClassName,
@@ -9217,33 +8757,33 @@ GALGAS_string callExtensionGetter_generateInstructionCode (const cPtr_lexicalIns
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                          Abstract extension getter '@abstractLexicalRuleAST generateCode'                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@abstractLexicalRuleAST generateCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <enterExtensionGetter_abstractLexicalRuleAST_generateCode> gExtensionGetterTable_abstractLexicalRuleAST_generateCode ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_generateCode (const int32_t inClassIndex,
                                         enterExtensionGetter_abstractLexicalRuleAST_generateCode inGetter) {
   gExtensionGetterTable_abstractLexicalRuleAST_generateCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionGetter_abstractLexicalRuleAST_generateCode (void) {
   gExtensionGetterTable_abstractLexicalRuleAST_generateCode.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_abstractLexicalRuleAST_generateCode (NULL,
                                                                 freeExtensionGetter_abstractLexicalRuleAST_generateCode) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string callExtensionGetter_generateCode (const cPtr_abstractLexicalRuleAST * inObject,
                                                 const GALGAS_string in_inScannerClassName,
@@ -9279,33 +8819,33 @@ GALGAS_string callExtensionGetter_generateCode (const cPtr_abstractLexicalRuleAS
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                    Abstract extension getter '@lexicalExpressionAST generateCocoaConditionCode'                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalExpressionAST generateCocoaConditionCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <enterExtensionGetter_lexicalExpressionAST_generateCocoaConditionCode> gExtensionGetterTable_lexicalExpressionAST_generateCocoaConditionCode ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_generateCocoaConditionCode (const int32_t inClassIndex,
                                                       enterExtensionGetter_lexicalExpressionAST_generateCocoaConditionCode inGetter) {
   gExtensionGetterTable_lexicalExpressionAST_generateCocoaConditionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionGetter_lexicalExpressionAST_generateCocoaConditionCode (void) {
   gExtensionGetterTable_lexicalExpressionAST_generateCocoaConditionCode.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_lexicalExpressionAST_generateCocoaConditionCode (NULL,
                                                                             freeExtensionGetter_lexicalExpressionAST_generateCocoaConditionCode) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string callExtensionGetter_generateCocoaConditionCode (const cPtr_lexicalExpressionAST * inObject,
                                                               const GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
@@ -9340,33 +8880,33 @@ GALGAS_string callExtensionGetter_generateCocoaConditionCode (const cPtr_lexical
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-// Abstract extension getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateCocoaRoutineOrFunctionArgument'  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalRoutineOrFunctionFormalInputArgumentAST generateCocoaRoutineOrFunctionArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <enterExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument> gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_generateCocoaRoutineOrFunctionArgument (const int32_t inClassIndex,
                                                                   enterExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument inGetter) {
   gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (void) {
   gExtensionGetterTable_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument (NULL,
                                                                                                                   freeExtensionGetter_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string callExtensionGetter_generateCocoaRoutineOrFunctionArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                                           C_Compiler * inCompiler
@@ -9400,33 +8940,33 @@ GALGAS_string callExtensionGetter_generateCocoaRoutineOrFunctionArgument (const 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//          Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateCocoaRoutineArgument'          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@abstractLexicalRoutineActualArgumentAST generateCocoaRoutineArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <enterExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument> gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_generateCocoaRoutineArgument (const int32_t inClassIndex,
                                                         enterExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument inGetter) {
   gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (void) {
   gExtensionGetterTable_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument (NULL,
                                                                                                  freeExtensionGetter_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string callExtensionGetter_generateCocoaRoutineArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
                                                                 const GALGAS_lexiqueAnalysisContext in_inLexiqueAnalysisContext,
@@ -9461,33 +9001,33 @@ GALGAS_string callExtensionGetter_generateCocoaRoutineArgument (const cPtr_abstr
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                Abstract extension getter '@lexicalSendDefaultActionAST generateCocoaDefaultSendCode'                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalSendDefaultActionAST generateCocoaDefaultSendCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <enterExtensionGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode> gExtensionGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_generateCocoaDefaultSendCode (const int32_t inClassIndex,
                                                         enterExtensionGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode inGetter) {
   gExtensionGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (void) {
   gExtensionGetterTable_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode (NULL,
                                                                                      freeExtensionGetter_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string callExtensionGetter_generateCocoaDefaultSendCode (const cPtr_lexicalSendDefaultActionAST * inObject,
                                                                 const GALGAS_string in_inScannerClassName,
@@ -9522,33 +9062,33 @@ GALGAS_string callExtensionGetter_generateCocoaDefaultSendCode (const cPtr_lexic
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                   Abstract extension getter '@lexicalInstructionAST generateCocoaInstructionCode'                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@lexicalInstructionAST generateCocoaInstructionCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <enterExtensionGetter_lexicalInstructionAST_generateCocoaInstructionCode> gExtensionGetterTable_lexicalInstructionAST_generateCocoaInstructionCode ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_generateCocoaInstructionCode (const int32_t inClassIndex,
                                                         enterExtensionGetter_lexicalInstructionAST_generateCocoaInstructionCode inGetter) {
   gExtensionGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionGetter_lexicalInstructionAST_generateCocoaInstructionCode (void) {
   gExtensionGetterTable_lexicalInstructionAST_generateCocoaInstructionCode.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_lexicalInstructionAST_generateCocoaInstructionCode (NULL,
                                                                                freeExtensionGetter_lexicalInstructionAST_generateCocoaInstructionCode) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string callExtensionGetter_generateCocoaInstructionCode (const cPtr_lexicalInstructionAST * inObject,
                                                                 const GALGAS_string in_inScannerClassName,
@@ -9584,33 +9124,33 @@ GALGAS_string callExtensionGetter_generateCocoaInstructionCode (const cPtr_lexic
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                        Abstract extension getter '@abstractLexicalRuleAST generateCocoaCode'                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension getter '@abstractLexicalRuleAST generateCocoaCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <enterExtensionGetter_abstractLexicalRuleAST_generateCocoaCode> gExtensionGetterTable_abstractLexicalRuleAST_generateCocoaCode ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_generateCocoaCode (const int32_t inClassIndex,
                                              enterExtensionGetter_abstractLexicalRuleAST_generateCocoaCode inGetter) {
   gExtensionGetterTable_abstractLexicalRuleAST_generateCocoaCode.forceObjectAtIndex (inClassIndex, inGetter, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionGetter_abstractLexicalRuleAST_generateCocoaCode (void) {
   gExtensionGetterTable_abstractLexicalRuleAST_generateCocoaCode.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gGetter_abstractLexicalRuleAST_generateCocoaCode (NULL,
                                                                      freeExtensionGetter_abstractLexicalRuleAST_generateCocoaCode) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string callExtensionGetter_generateCocoaCode (const cPtr_abstractLexicalRuleAST * inObject,
                                                      const GALGAS_string in_inScannerClassName,
@@ -9646,11 +9186,11 @@ GALGAS_string callExtensionGetter_generateCocoaCode (const cPtr_abstractLexicalR
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                   Extension Getter '@lexicalTypeEnum cppTypeName'                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@lexicalTypeEnum cppTypeName'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string extensionGetter_cppTypeName (const GALGAS_lexicalTypeEnum & inObject,
                                            C_Compiler * /* inCompiler */
@@ -9708,11 +9248,11 @@ GALGAS_string extensionGetter_cppTypeName (const GALGAS_lexicalTypeEnum & inObje
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Extension Getter '@lexicalTypeEnum appendMethodName'                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@lexicalTypeEnum appendMethodName'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string extensionGetter_appendMethodName (const GALGAS_lexicalTypeEnum & inObject,
                                                 C_Compiler * /* inCompiler */
@@ -9770,11 +9310,11 @@ GALGAS_string extensionGetter_appendMethodName (const GALGAS_lexicalTypeEnum & i
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Extension Getter '@lexicalTypeEnum appendArgumentOfMethod'                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@lexicalTypeEnum appendArgumentOfMethod'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string extensionGetter_appendArgumentOfMethod (const GALGAS_lexicalTypeEnum & inObject,
                                                       C_Compiler * /* inCompiler */
@@ -9832,11 +9372,11 @@ GALGAS_string extensionGetter_appendArgumentOfMethod (const GALGAS_lexicalTypeEn
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Extension Getter '@lexicalTypeEnum initialization'                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@lexicalTypeEnum initialization'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string extensionGetter_initialization (const GALGAS_lexicalTypeEnum & inObject,
                                               C_Compiler * /* inCompiler */
@@ -9894,11 +9434,11 @@ GALGAS_string extensionGetter_initialization (const GALGAS_lexicalTypeEnum & inO
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Extension Getter '@lexicalTypeEnum cocoaTypeName'                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@lexicalTypeEnum cocoaTypeName'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string extensionGetter_cocoaTypeName (const GALGAS_lexicalTypeEnum & inObject,
                                              C_Compiler * /* inCompiler */
@@ -9956,11 +9496,11 @@ GALGAS_string extensionGetter_cocoaTypeName (const GALGAS_lexicalTypeEnum & inOb
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Extension Getter '@lexicalTypeEnum needsReferenceInInputOutputInCocoa'                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@lexicalTypeEnum needsReferenceInInputOutputInCocoa'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const GALGAS_lexicalTypeEnum & inObject,
                                                                 C_Compiler * /* inCompiler */
@@ -10018,11 +9558,11 @@ GALGAS_bool extensionGetter_needsReferenceInInputOutputInCocoa (const GALGAS_lex
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Extension Getter '@lexicalTypeEnum cocoaInitializationCode'                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@lexicalTypeEnum cocoaInitializationCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string extensionGetter_cocoaInitializationCode (const GALGAS_lexicalTypeEnum & inObject,
                                                        C_Compiler * /* inCompiler */
@@ -10080,11 +9620,11 @@ GALGAS_string extensionGetter_cocoaInitializationCode (const GALGAS_lexicalTypeE
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Extension Getter '@lexicalTypeEnum cocoaResetPrefix'                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@lexicalTypeEnum cocoaResetPrefix'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string extensionGetter_cocoaResetPrefix (const GALGAS_lexicalTypeEnum & inObject,
                                                 C_Compiler * /* inCompiler */
@@ -10142,11 +9682,11 @@ GALGAS_string extensionGetter_cocoaResetPrefix (const GALGAS_lexicalTypeEnum & i
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                   Extension Getter '@lexicalTypeEnum cocoaReset'                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension Getter '@lexicalTypeEnum cocoaReset'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string extensionGetter_cocoaReset (const GALGAS_lexicalTypeEnum & inObject,
                                           C_Compiler * /* inCompiler */
@@ -10204,33 +9744,33 @@ GALGAS_string extensionGetter_cocoaReset (const GALGAS_lexicalTypeEnum & inObjec
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                 Abstract extension method '@lexicalSendDefaultActionAST checkLexicalDefaultAction'                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@lexicalSendDefaultActionAST checkLexicalDefaultAction'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <extensionMethodSignature_lexicalSendDefaultActionAST_checkLexicalDefaultAction> gExtensionMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_checkLexicalDefaultAction (const int32_t inClassIndex,
                                                      extensionMethodSignature_lexicalSendDefaultActionAST_checkLexicalDefaultAction inMethod) {
   gExtensionMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionMethod_lexicalSendDefaultActionAST_checkLexicalDefaultAction (void) {
   gExtensionMethodTable_lexicalSendDefaultActionAST_checkLexicalDefaultAction.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_lexicalSendDefaultActionAST_checkLexicalDefaultAction (NULL,
                                                                                   freeExtensionMethod_lexicalSendDefaultActionAST_checkLexicalDefaultAction) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalDefaultAction (const cPtr_lexicalSendDefaultActionAST * inObject,
                                                     GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
@@ -10264,33 +9804,33 @@ void callExtensionMethod_checkLexicalDefaultAction (const cPtr_lexicalSendDefaul
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                      Abstract extension method '@lexicalExpressionAST checkLexicalExpression'                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@lexicalExpressionAST checkLexicalExpression'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <extensionMethodSignature_lexicalExpressionAST_checkLexicalExpression> gExtensionMethodTable_lexicalExpressionAST_checkLexicalExpression ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_checkLexicalExpression (const int32_t inClassIndex,
                                                   extensionMethodSignature_lexicalExpressionAST_checkLexicalExpression inMethod) {
   gExtensionMethodTable_lexicalExpressionAST_checkLexicalExpression.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionMethod_lexicalExpressionAST_checkLexicalExpression (void) {
   gExtensionMethodTable_lexicalExpressionAST_checkLexicalExpression.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_lexicalExpressionAST_checkLexicalExpression (NULL,
                                                                         freeExtensionMethod_lexicalExpressionAST_checkLexicalExpression) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalExpression (const cPtr_lexicalExpressionAST * inObject,
                                                  GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
@@ -10324,33 +9864,33 @@ void callExtensionMethod_checkLexicalExpression (const cPtr_lexicalExpressionAST
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//    Abstract extension method '@lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalFunctionCallArgument'     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalFunctionCallArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <extensionMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument> gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_checkLexicalFunctionCallArgument (const int32_t inClassIndex,
                                                             extensionMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument inMethod) {
   gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument (void) {
   gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument (NULL,
                                                                                                             freeExtensionMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalFunctionCallArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                            GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
@@ -10385,33 +9925,33 @@ void callExtensionMethod_checkLexicalFunctionCallArgument (const cPtr_lexicalRou
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//     Abstract extension method '@lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalRoutineCallArgument'     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalRoutineCallArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <extensionMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument> gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_checkLexicalRoutineCallArgument (const int32_t inClassIndex,
                                                            extensionMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument inMethod) {
   gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument (void) {
   gExtensionMethodTable_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument (NULL,
                                                                                                            freeExtensionMethod_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalRoutineCallArgument (const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObject,
                                                           GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
@@ -10446,33 +9986,33 @@ void callExtensionMethod_checkLexicalRoutineCallArgument (const cPtr_lexicalRout
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//        Abstract extension method '@abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument'         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <extensionMethodSignature_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument> gExtensionMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_checkLexicalRoutineCallArgument (const int32_t inClassIndex,
                                                            extensionMethodSignature_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument inMethod) {
   gExtensionMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionMethod_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument (void) {
   gExtensionMethodTable_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument (NULL,
                                                                                                     freeExtensionMethod_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalRoutineCallArgument (const cPtr_abstractLexicalRoutineActualArgumentAST * inObject,
                                                           GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
@@ -10508,33 +10048,33 @@ void callExtensionMethod_checkLexicalRoutineCallArgument (const cPtr_abstractLex
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                     Abstract extension method '@lexicalInstructionAST checkLexicalInstruction'                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@lexicalInstructionAST checkLexicalInstruction'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <extensionMethodSignature_lexicalInstructionAST_checkLexicalInstruction> gExtensionMethodTable_lexicalInstructionAST_checkLexicalInstruction ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_checkLexicalInstruction (const int32_t inClassIndex,
                                                    extensionMethodSignature_lexicalInstructionAST_checkLexicalInstruction inMethod) {
   gExtensionMethodTable_lexicalInstructionAST_checkLexicalInstruction.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionMethod_lexicalInstructionAST_checkLexicalInstruction (void) {
   gExtensionMethodTable_lexicalInstructionAST_checkLexicalInstruction.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_lexicalInstructionAST_checkLexicalInstruction (NULL,
                                                                           freeExtensionMethod_lexicalInstructionAST_checkLexicalInstruction) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalInstruction (const cPtr_lexicalInstructionAST * inObject,
                                                   GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
@@ -10569,33 +10109,33 @@ void callExtensionMethod_checkLexicalInstruction (const cPtr_lexicalInstructionA
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                        Abstract extension method '@abstractLexicalRuleAST checkLexicalRule'                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractLexicalRuleAST checkLexicalRule'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 static TC_UniqueArray <extensionMethodSignature_abstractLexicalRuleAST_checkLexicalRule> gExtensionMethodTable_abstractLexicalRuleAST_checkLexicalRule ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_checkLexicalRule (const int32_t inClassIndex,
                                             extensionMethodSignature_abstractLexicalRuleAST_checkLexicalRule inMethod) {
   gExtensionMethodTable_abstractLexicalRuleAST_checkLexicalRule.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static void freeExtensionMethod_abstractLexicalRuleAST_checkLexicalRule (void) {
   gExtensionMethodTable_abstractLexicalRuleAST_checkLexicalRule.free () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_abstractLexicalRuleAST_checkLexicalRule (NULL,
                                                                     freeExtensionMethod_abstractLexicalRuleAST_checkLexicalRule) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_checkLexicalRule (const cPtr_abstractLexicalRuleAST * inObject,
                                            GALGAS_lexiqueAnalysisContext & io_ioLexiqueAnalysisContext,
@@ -10629,13 +10169,13 @@ void callExtensionMethod_checkLexicalRule (const cPtr_abstractLexicalRuleAST * i
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_optionDefaultValueEnumAST::GALGAS_optionDefaultValueEnumAST (void) :
 mEnum (kNotBuilt) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::constructor_noDefaultValue (UNUSED_LOCATION_ARGS) {
   GALGAS_optionDefaultValueEnumAST result ;
@@ -10643,7 +10183,7 @@ GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::constructor_n
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::constructor_unsignedDefaultValue (UNUSED_LOCATION_ARGS) {
   GALGAS_optionDefaultValueEnumAST result ;
@@ -10651,7 +10191,7 @@ GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::constructor_u
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::constructor_stringDefaultValue (UNUSED_LOCATION_ARGS) {
   GALGAS_optionDefaultValueEnumAST result ;
@@ -10659,7 +10199,7 @@ GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::constructor_s
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 static const char * gEnumNameArrayFor_optionDefaultValueEnumAST [4] = {
   "(not built)",
@@ -10668,25 +10208,25 @@ static const char * gEnumNameArrayFor_optionDefaultValueEnumAST [4] = {
   "stringDefaultValue"
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_optionDefaultValueEnumAST::getter_isNoDefaultValue (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_noDefaultValue == mEnum) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_optionDefaultValueEnumAST::getter_isUnsignedDefaultValue (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_unsignedDefaultValue == mEnum) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_bool GALGAS_optionDefaultValueEnumAST::getter_isStringDefaultValue (UNUSED_LOCATION_ARGS) const {
   return GALGAS_bool (kNotBuilt != mEnum, kEnum_stringDefaultValue == mEnum) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_optionDefaultValueEnumAST::description (C_String & ioString,
                                                     const int32_t /* inIndentation */) const {
@@ -10694,7 +10234,7 @@ void GALGAS_optionDefaultValueEnumAST::description (C_String & ioString,
   ioString << ">" ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult GALGAS_optionDefaultValueEnumAST::objectCompare (const GALGAS_optionDefaultValueEnumAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
@@ -10710,23 +10250,23 @@ typeComparisonResult GALGAS_optionDefaultValueEnumAST::objectCompare (const GALG
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           @optionDefaultValueEnumAST type                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@optionDefaultValueEnumAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_optionDefaultValueEnumAST ("optionDefaultValueEnumAST",
                                                   NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_optionDefaultValueEnumAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_optionDefaultValueEnumAST ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_optionDefaultValueEnumAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -10736,7 +10276,7 @@ AC_GALGAS_root * GALGAS_optionDefaultValueEnumAST::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::extractObject (const GALGAS_object & inObject,
                                                                                   C_Compiler * inCompiler
@@ -10753,11 +10293,11 @@ GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::extractObject
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Class for element of '@commandLineOptionListAST' list                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@commandLineOptionListAST' list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_commandLineOptionListAST : public cCollectionElement {
   public : GALGAS_commandLineOptionListAST_2D_element mObject ;
@@ -10786,7 +10326,7 @@ class cCollectionElement_commandLineOptionListAST : public cCollectionElement {
   public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_commandLineOptionListAST::cCollectionElement_commandLineOptionListAST (const GALGAS_lstring & in_mOptionTypeName,
                                                                                           const GALGAS_lstring & in_mOptionInternalName,
@@ -10800,20 +10340,20 @@ cCollectionElement (THERE),
 mObject (in_mOptionTypeName, in_mOptionInternalName, in_mOptionInvocationLetter, in_mOptionInvocationString, in_mOptionComment, in_mOptionDefaultValue, in_mOptionDefaultValueKind) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_commandLineOptionListAST::cCollectionElement_commandLineOptionListAST (const GALGAS_commandLineOptionListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mOptionTypeName, inElement.mProperty_mOptionInternalName, inElement.mProperty_mOptionInvocationLetter, inElement.mProperty_mOptionInvocationString, inElement.mProperty_mOptionComment, inElement.mProperty_mOptionDefaultValue, inElement.mProperty_mOptionDefaultValueKind) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_commandLineOptionListAST::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_commandLineOptionListAST::copy (void) {
   cCollectionElement * result = NULL ;
@@ -10821,7 +10361,7 @@ cCollectionElement * cCollectionElement_commandLineOptionListAST::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cCollectionElement_commandLineOptionListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -10854,7 +10394,7 @@ void cCollectionElement_commandLineOptionListAST::description (C_String & ioStri
   mObject.mProperty_mOptionDefaultValueKind.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cCollectionElement_commandLineOptionListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_commandLineOptionListAST * operand = (cCollectionElement_commandLineOptionListAST *) inOperand ;
@@ -10862,25 +10402,25 @@ typeComparisonResult cCollectionElement_commandLineOptionListAST::compare (const
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionListAST::GALGAS_commandLineOptionListAST (void) :
 AC_GALGAS_list () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionListAST::GALGAS_commandLineOptionListAST (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_commandLineOptionListAST  (capCollectionElementArray ()) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                             const GALGAS_lstring & inOperand1,
@@ -10900,7 +10440,7 @@ GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::constructor_lis
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                  const GALGAS_lstring & in_mOptionTypeName,
@@ -10923,7 +10463,7 @@ void GALGAS_commandLineOptionListAST::makeAttributesFromObjects (capCollectionEl
   macroDetachSharedObject (p) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                            const GALGAS_lstring & inOperand1,
@@ -10943,7 +10483,7 @@ void GALGAS_commandLineOptionListAST::addAssign_operation (const GALGAS_lstring 
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::setter_append (GALGAS_commandLineOptionListAST_2D_element inElement,
                                                      C_Compiler * /* inCompiler */
@@ -10958,7 +10498,7 @@ void GALGAS_commandLineOptionListAST::setter_append (GALGAS_commandLineOptionLis
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                             const GALGAS_lstring inOperand1,
@@ -10980,7 +10520,7 @@ void GALGAS_commandLineOptionListAST::setter_insertAtIndex (const GALGAS_lstring
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                             GALGAS_lstring & outOperand1,
@@ -11017,7 +10557,7 @@ void GALGAS_commandLineOptionListAST::setter_removeAtIndex (GALGAS_lstring & out
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                        GALGAS_lstring & outOperand1,
@@ -11051,7 +10591,7 @@ void GALGAS_commandLineOptionListAST::setter_popFirst (GALGAS_lstring & outOpera
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                       GALGAS_lstring & outOperand1,
@@ -11085,7 +10625,7 @@ void GALGAS_commandLineOptionListAST::setter_popLast (GALGAS_lstring & outOperan
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::method_first (GALGAS_lstring & outOperand0,
                                                     GALGAS_lstring & outOperand1,
@@ -11119,7 +10659,7 @@ void GALGAS_commandLineOptionListAST::method_first (GALGAS_lstring & outOperand0
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::method_last (GALGAS_lstring & outOperand0,
                                                    GALGAS_lstring & outOperand1,
@@ -11153,7 +10693,7 @@ void GALGAS_commandLineOptionListAST::method_last (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::add_operation (const GALGAS_commandLineOptionListAST & inOperand,
                                                                                 C_Compiler * /* inCompiler */
@@ -11166,7 +10706,7 @@ GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::add_operation (
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                           C_Compiler * inCompiler
@@ -11176,7 +10716,7 @@ GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::getter_subListW
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                           C_Compiler * inCompiler
@@ -11186,7 +10726,7 @@ GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::getter_subListF
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                         C_Compiler * inCompiler
@@ -11196,7 +10736,7 @@ GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::getter_subListT
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::plusAssign_operation (const GALGAS_commandLineOptionListAST inOperand,
                                                             C_Compiler * /* inCompiler */
@@ -11204,7 +10744,7 @@ void GALGAS_commandLineOptionListAST::plusAssign_operation (const GALGAS_command
   appendList (inOperand) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::setter_setMOptionTypeNameAtIndex (GALGAS_lstring inOperand,
                                                                         GALGAS_uint inIndex,
@@ -11218,7 +10758,7 @@ void GALGAS_commandLineOptionListAST::setter_setMOptionTypeNameAtIndex (GALGAS_l
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_commandLineOptionListAST::getter_mOptionTypeNameAtIndex (const GALGAS_uint & inIndex,
                                                                                C_Compiler * inCompiler
@@ -11233,7 +10773,7 @@ GALGAS_lstring GALGAS_commandLineOptionListAST::getter_mOptionTypeNameAtIndex (c
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::setter_setMOptionInternalNameAtIndex (GALGAS_lstring inOperand,
                                                                             GALGAS_uint inIndex,
@@ -11247,7 +10787,7 @@ void GALGAS_commandLineOptionListAST::setter_setMOptionInternalNameAtIndex (GALG
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_commandLineOptionListAST::getter_mOptionInternalNameAtIndex (const GALGAS_uint & inIndex,
                                                                                    C_Compiler * inCompiler
@@ -11262,7 +10802,7 @@ GALGAS_lstring GALGAS_commandLineOptionListAST::getter_mOptionInternalNameAtInde
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::setter_setMOptionInvocationLetterAtIndex (GALGAS_lchar inOperand,
                                                                                 GALGAS_uint inIndex,
@@ -11276,7 +10816,7 @@ void GALGAS_commandLineOptionListAST::setter_setMOptionInvocationLetterAtIndex (
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lchar GALGAS_commandLineOptionListAST::getter_mOptionInvocationLetterAtIndex (const GALGAS_uint & inIndex,
                                                                                      C_Compiler * inCompiler
@@ -11291,7 +10831,7 @@ GALGAS_lchar GALGAS_commandLineOptionListAST::getter_mOptionInvocationLetterAtIn
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::setter_setMOptionInvocationStringAtIndex (GALGAS_lstring inOperand,
                                                                                 GALGAS_uint inIndex,
@@ -11305,7 +10845,7 @@ void GALGAS_commandLineOptionListAST::setter_setMOptionInvocationStringAtIndex (
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_commandLineOptionListAST::getter_mOptionInvocationStringAtIndex (const GALGAS_uint & inIndex,
                                                                                        C_Compiler * inCompiler
@@ -11320,7 +10860,7 @@ GALGAS_lstring GALGAS_commandLineOptionListAST::getter_mOptionInvocationStringAt
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::setter_setMOptionCommentAtIndex (GALGAS_lstring inOperand,
                                                                        GALGAS_uint inIndex,
@@ -11334,7 +10874,7 @@ void GALGAS_commandLineOptionListAST::setter_setMOptionCommentAtIndex (GALGAS_ls
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_commandLineOptionListAST::getter_mOptionCommentAtIndex (const GALGAS_uint & inIndex,
                                                                               C_Compiler * inCompiler
@@ -11349,7 +10889,7 @@ GALGAS_lstring GALGAS_commandLineOptionListAST::getter_mOptionCommentAtIndex (co
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::setter_setMOptionDefaultValueAtIndex (GALGAS_lstring inOperand,
                                                                             GALGAS_uint inIndex,
@@ -11363,7 +10903,7 @@ void GALGAS_commandLineOptionListAST::setter_setMOptionDefaultValueAtIndex (GALG
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_commandLineOptionListAST::getter_mOptionDefaultValueAtIndex (const GALGAS_uint & inIndex,
                                                                                    C_Compiler * inCompiler
@@ -11378,7 +10918,7 @@ GALGAS_lstring GALGAS_commandLineOptionListAST::getter_mOptionDefaultValueAtInde
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionListAST::setter_setMOptionDefaultValueKindAtIndex (GALGAS_optionDefaultValueEnumAST inOperand,
                                                                                 GALGAS_uint inIndex,
@@ -11392,7 +10932,7 @@ void GALGAS_commandLineOptionListAST::setter_setMOptionDefaultValueKindAtIndex (
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_optionDefaultValueEnumAST GALGAS_commandLineOptionListAST::getter_mOptionDefaultValueKindAtIndex (const GALGAS_uint & inIndex,
                                                                                                          C_Compiler * inCompiler
@@ -11409,7 +10949,7 @@ GALGAS_optionDefaultValueEnumAST GALGAS_commandLineOptionListAST::getter_mOption
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_commandLineOptionListAST::cEnumerator_commandLineOptionListAST (const GALGAS_commandLineOptionListAST & inEnumeratedObject,
                                                                             const typeEnumerationOrder inOrder) :
@@ -11417,7 +10957,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionListAST_2D_element cEnumerator_commandLineOptionListAST::current (LOCATION_ARGS) const {
   const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
@@ -11426,7 +10966,7 @@ GALGAS_commandLineOptionListAST_2D_element cEnumerator_commandLineOptionListAST:
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_commandLineOptionListAST::current_mOptionTypeName (LOCATION_ARGS) const {
   const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
@@ -11434,7 +10974,7 @@ GALGAS_lstring cEnumerator_commandLineOptionListAST::current_mOptionTypeName (LO
   return p->mObject.mProperty_mOptionTypeName ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_commandLineOptionListAST::current_mOptionInternalName (LOCATION_ARGS) const {
   const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
@@ -11442,7 +10982,7 @@ GALGAS_lstring cEnumerator_commandLineOptionListAST::current_mOptionInternalName
   return p->mObject.mProperty_mOptionInternalName ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lchar cEnumerator_commandLineOptionListAST::current_mOptionInvocationLetter (LOCATION_ARGS) const {
   const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
@@ -11450,7 +10990,7 @@ GALGAS_lchar cEnumerator_commandLineOptionListAST::current_mOptionInvocationLett
   return p->mObject.mProperty_mOptionInvocationLetter ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_commandLineOptionListAST::current_mOptionInvocationString (LOCATION_ARGS) const {
   const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
@@ -11458,7 +10998,7 @@ GALGAS_lstring cEnumerator_commandLineOptionListAST::current_mOptionInvocationSt
   return p->mObject.mProperty_mOptionInvocationString ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_commandLineOptionListAST::current_mOptionComment (LOCATION_ARGS) const {
   const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
@@ -11466,7 +11006,7 @@ GALGAS_lstring cEnumerator_commandLineOptionListAST::current_mOptionComment (LOC
   return p->mObject.mProperty_mOptionComment ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_commandLineOptionListAST::current_mOptionDefaultValue (LOCATION_ARGS) const {
   const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
@@ -11474,7 +11014,7 @@ GALGAS_lstring cEnumerator_commandLineOptionListAST::current_mOptionDefaultValue
   return p->mObject.mProperty_mOptionDefaultValue ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_optionDefaultValueEnumAST cEnumerator_commandLineOptionListAST::current_mOptionDefaultValueKind (LOCATION_ARGS) const {
   const cCollectionElement_commandLineOptionListAST * p = (const cCollectionElement_commandLineOptionListAST *) currentObjectPtr (THERE) ;
@@ -11485,23 +11025,23 @@ GALGAS_optionDefaultValueEnumAST cEnumerator_commandLineOptionListAST::current_m
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           @commandLineOptionListAST type                                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@commandLineOptionListAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_commandLineOptionListAST ("commandLineOptionListAST",
                                                  NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_commandLineOptionListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_commandLineOptionListAST ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_commandLineOptionListAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -11511,7 +11051,7 @@ AC_GALGAS_root * GALGAS_commandLineOptionListAST::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::extractObject (const GALGAS_object & inObject,
                                                                                 C_Compiler * inCompiler
@@ -11528,7 +11068,7 @@ GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::extractObject (
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_commandLineOptionMap::cMapElement_commandLineOptionMap (const GALGAS_lstring & inKey,
                                                                     const GALGAS_char & in_mOptionChar,
@@ -11543,13 +11083,13 @@ mProperty_mComment (in_mComment),
 mProperty_mDefaultValue (in_mDefaultValue) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cMapElement_commandLineOptionMap::isValid (void) const {
   return mProperty_lkey.isValid () && mProperty_mOptionChar.isValid () && mProperty_mOptionString.isValid () && mProperty_mComment.isValid () && mProperty_mDefaultValue.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement * cMapElement_commandLineOptionMap::copy (void) {
   cMapElement * result = NULL ;
@@ -11557,7 +11097,7 @@ cMapElement * cMapElement_commandLineOptionMap::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cMapElement_commandLineOptionMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -11578,7 +11118,7 @@ void cMapElement_commandLineOptionMap::description (C_String & ioString, const i
   mProperty_mDefaultValue.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cMapElement_commandLineOptionMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_commandLineOptionMap * operand = (cMapElement_commandLineOptionMap *) inOperand ;
@@ -11598,26 +11138,26 @@ typeComparisonResult cMapElement_commandLineOptionMap::compare (const cCollectio
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionMap::GALGAS_commandLineOptionMap (void) :
 AC_GALGAS_map (true) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionMap::GALGAS_commandLineOptionMap (const GALGAS_commandLineOptionMap & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionMap & GALGAS_commandLineOptionMap::operator = (const GALGAS_commandLineOptionMap & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionMap GALGAS_commandLineOptionMap::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_commandLineOptionMap result ;
@@ -11625,7 +11165,7 @@ GALGAS_commandLineOptionMap GALGAS_commandLineOptionMap::constructor_emptyMap (L
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionMap GALGAS_commandLineOptionMap::constructor_mapWithMapToOverride (const GALGAS_commandLineOptionMap & inMapToOverride
                                                                                            COMMA_LOCATION_ARGS) {
@@ -11634,7 +11174,7 @@ GALGAS_commandLineOptionMap GALGAS_commandLineOptionMap::constructor_mapWithMapT
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionMap GALGAS_commandLineOptionMap::getter_overriddenMap (C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) const {
@@ -11643,7 +11183,7 @@ GALGAS_commandLineOptionMap GALGAS_commandLineOptionMap::getter_overriddenMap (C
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionMap::addAssign_operation (const GALGAS_lstring & inKey,
                                                        const GALGAS_char & inArgument0,
@@ -11662,7 +11202,7 @@ void GALGAS_commandLineOptionMap::addAssign_operation (const GALGAS_lstring & in
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionMap::setter_insertKey (GALGAS_lstring inKey,
                                                     GALGAS_char inArgument0,
@@ -11681,11 +11221,11 @@ void GALGAS_commandLineOptionMap::setter_insertKey (GALGAS_lstring inKey,
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const char * kSearchErrorMessage_commandLineOptionMap_searchKey = "the '%K' command line option is not declared" ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionMap::method_searchKey (GALGAS_lstring inKey,
                                                     GALGAS_char & outArgument0,
@@ -11712,7 +11252,7 @@ void GALGAS_commandLineOptionMap::method_searchKey (GALGAS_lstring inKey,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_char GALGAS_commandLineOptionMap::getter_mOptionCharForKey (const GALGAS_string & inKey,
                                                                    C_Compiler * inCompiler
@@ -11727,7 +11267,7 @@ GALGAS_char GALGAS_commandLineOptionMap::getter_mOptionCharForKey (const GALGAS_
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_commandLineOptionMap::getter_mOptionStringForKey (const GALGAS_string & inKey,
                                                                        C_Compiler * inCompiler
@@ -11742,7 +11282,7 @@ GALGAS_string GALGAS_commandLineOptionMap::getter_mOptionStringForKey (const GAL
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_commandLineOptionMap::getter_mCommentForKey (const GALGAS_string & inKey,
                                                                   C_Compiler * inCompiler
@@ -11757,7 +11297,7 @@ GALGAS_string GALGAS_commandLineOptionMap::getter_mCommentForKey (const GALGAS_s
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string GALGAS_commandLineOptionMap::getter_mDefaultValueForKey (const GALGAS_string & inKey,
                                                                        C_Compiler * inCompiler
@@ -11772,7 +11312,7 @@ GALGAS_string GALGAS_commandLineOptionMap::getter_mDefaultValueForKey (const GAL
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionMap::setter_setMOptionCharForKey (GALGAS_char inAttributeValue,
                                                                GALGAS_string inKey,
@@ -11786,7 +11326,7 @@ void GALGAS_commandLineOptionMap::setter_setMOptionCharForKey (GALGAS_char inAtt
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionMap::setter_setMOptionStringForKey (GALGAS_string inAttributeValue,
                                                                  GALGAS_string inKey,
@@ -11800,7 +11340,7 @@ void GALGAS_commandLineOptionMap::setter_setMOptionStringForKey (GALGAS_string i
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionMap::setter_setMCommentForKey (GALGAS_string inAttributeValue,
                                                             GALGAS_string inKey,
@@ -11814,7 +11354,7 @@ void GALGAS_commandLineOptionMap::setter_setMCommentForKey (GALGAS_string inAttr
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_commandLineOptionMap::setter_setMDefaultValueForKey (GALGAS_string inAttributeValue,
                                                                  GALGAS_string inKey,
@@ -11828,7 +11368,7 @@ void GALGAS_commandLineOptionMap::setter_setMDefaultValueForKey (GALGAS_string i
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cMapElement_commandLineOptionMap * GALGAS_commandLineOptionMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
                                                                                                    const GALGAS_string & inKey
@@ -11838,7 +11378,7 @@ cMapElement_commandLineOptionMap * GALGAS_commandLineOptionMap::readWriteAccessF
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_commandLineOptionMap::cEnumerator_commandLineOptionMap (const GALGAS_commandLineOptionMap & inEnumeratedObject,
                                                                     const typeEnumerationOrder inOrder) :
@@ -11846,7 +11386,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionMap_2D_element cEnumerator_commandLineOptionMap::current (LOCATION_ARGS) const {
   const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
@@ -11854,7 +11394,7 @@ GALGAS_commandLineOptionMap_2D_element cEnumerator_commandLineOptionMap::current
   return GALGAS_commandLineOptionMap_2D_element (p->mProperty_lkey, p->mProperty_mOptionChar, p->mProperty_mOptionString, p->mProperty_mComment, p->mProperty_mDefaultValue) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_commandLineOptionMap::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
@@ -11862,7 +11402,7 @@ GALGAS_lstring cEnumerator_commandLineOptionMap::current_lkey (LOCATION_ARGS) co
   return p->mProperty_lkey ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_char cEnumerator_commandLineOptionMap::current_mOptionChar (LOCATION_ARGS) const {
   const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
@@ -11870,7 +11410,7 @@ GALGAS_char cEnumerator_commandLineOptionMap::current_mOptionChar (LOCATION_ARGS
   return p->mProperty_mOptionChar ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string cEnumerator_commandLineOptionMap::current_mOptionString (LOCATION_ARGS) const {
   const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
@@ -11878,7 +11418,7 @@ GALGAS_string cEnumerator_commandLineOptionMap::current_mOptionString (LOCATION_
   return p->mProperty_mOptionString ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string cEnumerator_commandLineOptionMap::current_mComment (LOCATION_ARGS) const {
   const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
@@ -11886,7 +11426,7 @@ GALGAS_string cEnumerator_commandLineOptionMap::current_mComment (LOCATION_ARGS)
   return p->mProperty_mComment ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_string cEnumerator_commandLineOptionMap::current_mDefaultValue (LOCATION_ARGS) const {
   const cMapElement_commandLineOptionMap * p = (const cMapElement_commandLineOptionMap *) currentObjectPtr (THERE) ;
@@ -11894,7 +11434,7 @@ GALGAS_string cEnumerator_commandLineOptionMap::current_mDefaultValue (LOCATION_
   return p->mProperty_mDefaultValue ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_commandLineOptionMap::optional_searchKey (const GALGAS_string & inKey,
                                                       GALGAS_char & outArgument0,
@@ -11918,23 +11458,23 @@ bool GALGAS_commandLineOptionMap::optional_searchKey (const GALGAS_string & inKe
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @commandLineOptionMap type                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@commandLineOptionMap type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_commandLineOptionMap ("commandLineOptionMap",
                                              NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_commandLineOptionMap::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_commandLineOptionMap ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_commandLineOptionMap::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -11944,7 +11484,7 @@ AC_GALGAS_root * GALGAS_commandLineOptionMap::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_commandLineOptionMap GALGAS_commandLineOptionMap::extractObject (const GALGAS_object & inObject,
                                                                         C_Compiler * inCompiler
@@ -11961,11 +11501,11 @@ GALGAS_commandLineOptionMap GALGAS_commandLineOptionMap::extractObject (const GA
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                               Class for element of '@guiSimpleAttributeListAST' list                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@guiSimpleAttributeListAST' list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_guiSimpleAttributeListAST : public cCollectionElement {
   public : GALGAS_guiSimpleAttributeListAST_2D_element mObject ;
@@ -11989,7 +11529,7 @@ class cCollectionElement_guiSimpleAttributeListAST : public cCollectionElement {
   public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_guiSimpleAttributeListAST::cCollectionElement_guiSimpleAttributeListAST (const GALGAS_lstring & in_mKey,
                                                                                             const GALGAS_lstring & in_mValue
@@ -11998,20 +11538,20 @@ cCollectionElement (THERE),
 mObject (in_mKey, in_mValue) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_guiSimpleAttributeListAST::cCollectionElement_guiSimpleAttributeListAST (const GALGAS_guiSimpleAttributeListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mKey, inElement.mProperty_mValue) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_guiSimpleAttributeListAST::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_guiSimpleAttributeListAST::copy (void) {
   cCollectionElement * result = NULL ;
@@ -12019,7 +11559,7 @@ cCollectionElement * cCollectionElement_guiSimpleAttributeListAST::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cCollectionElement_guiSimpleAttributeListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -12032,7 +11572,7 @@ void cCollectionElement_guiSimpleAttributeListAST::description (C_String & ioStr
   mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cCollectionElement_guiSimpleAttributeListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_guiSimpleAttributeListAST * operand = (cCollectionElement_guiSimpleAttributeListAST *) inOperand ;
@@ -12040,25 +11580,25 @@ typeComparisonResult cCollectionElement_guiSimpleAttributeListAST::compare (cons
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiSimpleAttributeListAST::GALGAS_guiSimpleAttributeListAST (void) :
 AC_GALGAS_list () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiSimpleAttributeListAST::GALGAS_guiSimpleAttributeListAST (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_guiSimpleAttributeListAST  (capCollectionElementArray ()) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                               const GALGAS_lstring & inOperand1
@@ -12073,7 +11613,7 @@ GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::constructor_l
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiSimpleAttributeListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                   const GALGAS_lstring & in_mKey,
@@ -12086,7 +11626,7 @@ void GALGAS_guiSimpleAttributeListAST::makeAttributesFromObjects (capCollectionE
   macroDetachSharedObject (p) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiSimpleAttributeListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                             const GALGAS_lstring & inOperand1
@@ -12101,7 +11641,7 @@ void GALGAS_guiSimpleAttributeListAST::addAssign_operation (const GALGAS_lstring
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiSimpleAttributeListAST::setter_append (GALGAS_guiSimpleAttributeListAST_2D_element inElement,
                                                       C_Compiler * /* inCompiler */
@@ -12116,7 +11656,7 @@ void GALGAS_guiSimpleAttributeListAST::setter_append (GALGAS_guiSimpleAttributeL
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiSimpleAttributeListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                              const GALGAS_lstring inOperand1,
@@ -12133,7 +11673,7 @@ void GALGAS_guiSimpleAttributeListAST::setter_insertAtIndex (const GALGAS_lstrin
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiSimpleAttributeListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                              GALGAS_lstring & outOperand1,
@@ -12155,7 +11695,7 @@ void GALGAS_guiSimpleAttributeListAST::setter_removeAtIndex (GALGAS_lstring & ou
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiSimpleAttributeListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                         GALGAS_lstring & outOperand1,
@@ -12174,7 +11714,7 @@ void GALGAS_guiSimpleAttributeListAST::setter_popFirst (GALGAS_lstring & outOper
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiSimpleAttributeListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                        GALGAS_lstring & outOperand1,
@@ -12193,7 +11733,7 @@ void GALGAS_guiSimpleAttributeListAST::setter_popLast (GALGAS_lstring & outOpera
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiSimpleAttributeListAST::method_first (GALGAS_lstring & outOperand0,
                                                      GALGAS_lstring & outOperand1,
@@ -12212,7 +11752,7 @@ void GALGAS_guiSimpleAttributeListAST::method_first (GALGAS_lstring & outOperand
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiSimpleAttributeListAST::method_last (GALGAS_lstring & outOperand0,
                                                     GALGAS_lstring & outOperand1,
@@ -12231,7 +11771,7 @@ void GALGAS_guiSimpleAttributeListAST::method_last (GALGAS_lstring & outOperand0
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::add_operation (const GALGAS_guiSimpleAttributeListAST & inOperand,
                                                                                   C_Compiler * /* inCompiler */
@@ -12244,7 +11784,7 @@ GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::add_operation
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                             C_Compiler * inCompiler
@@ -12254,7 +11794,7 @@ GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::getter_subLis
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                             C_Compiler * inCompiler
@@ -12264,7 +11804,7 @@ GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::getter_subLis
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                           C_Compiler * inCompiler
@@ -12274,7 +11814,7 @@ GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::getter_subLis
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiSimpleAttributeListAST::plusAssign_operation (const GALGAS_guiSimpleAttributeListAST inOperand,
                                                              C_Compiler * /* inCompiler */
@@ -12282,7 +11822,7 @@ void GALGAS_guiSimpleAttributeListAST::plusAssign_operation (const GALGAS_guiSim
   appendList (inOperand) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiSimpleAttributeListAST::setter_setMKeyAtIndex (GALGAS_lstring inOperand,
                                                               GALGAS_uint inIndex,
@@ -12296,7 +11836,7 @@ void GALGAS_guiSimpleAttributeListAST::setter_setMKeyAtIndex (GALGAS_lstring inO
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_guiSimpleAttributeListAST::getter_mKeyAtIndex (const GALGAS_uint & inIndex,
                                                                      C_Compiler * inCompiler
@@ -12311,7 +11851,7 @@ GALGAS_lstring GALGAS_guiSimpleAttributeListAST::getter_mKeyAtIndex (const GALGA
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiSimpleAttributeListAST::setter_setMValueAtIndex (GALGAS_lstring inOperand,
                                                                 GALGAS_uint inIndex,
@@ -12325,7 +11865,7 @@ void GALGAS_guiSimpleAttributeListAST::setter_setMValueAtIndex (GALGAS_lstring i
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_guiSimpleAttributeListAST::getter_mValueAtIndex (const GALGAS_uint & inIndex,
                                                                        C_Compiler * inCompiler
@@ -12342,7 +11882,7 @@ GALGAS_lstring GALGAS_guiSimpleAttributeListAST::getter_mValueAtIndex (const GAL
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_guiSimpleAttributeListAST::cEnumerator_guiSimpleAttributeListAST (const GALGAS_guiSimpleAttributeListAST & inEnumeratedObject,
                                                                               const typeEnumerationOrder inOrder) :
@@ -12350,7 +11890,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiSimpleAttributeListAST_2D_element cEnumerator_guiSimpleAttributeListAST::current (LOCATION_ARGS) const {
   const cCollectionElement_guiSimpleAttributeListAST * p = (const cCollectionElement_guiSimpleAttributeListAST *) currentObjectPtr (THERE) ;
@@ -12359,7 +11899,7 @@ GALGAS_guiSimpleAttributeListAST_2D_element cEnumerator_guiSimpleAttributeListAS
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_guiSimpleAttributeListAST::current_mKey (LOCATION_ARGS) const {
   const cCollectionElement_guiSimpleAttributeListAST * p = (const cCollectionElement_guiSimpleAttributeListAST *) currentObjectPtr (THERE) ;
@@ -12367,7 +11907,7 @@ GALGAS_lstring cEnumerator_guiSimpleAttributeListAST::current_mKey (LOCATION_ARG
   return p->mObject.mProperty_mKey ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_guiSimpleAttributeListAST::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_guiSimpleAttributeListAST * p = (const cCollectionElement_guiSimpleAttributeListAST *) currentObjectPtr (THERE) ;
@@ -12378,23 +11918,23 @@ GALGAS_lstring cEnumerator_guiSimpleAttributeListAST::current_mValue (LOCATION_A
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           @guiSimpleAttributeListAST type                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@guiSimpleAttributeListAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_guiSimpleAttributeListAST ("guiSimpleAttributeListAST",
                                                   NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_guiSimpleAttributeListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_guiSimpleAttributeListAST ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_guiSimpleAttributeListAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -12404,7 +11944,7 @@ AC_GALGAS_root * GALGAS_guiSimpleAttributeListAST::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::extractObject (const GALGAS_object & inObject,
                                                                                   C_Compiler * inCompiler
@@ -12421,11 +11961,11 @@ GALGAS_guiSimpleAttributeListAST GALGAS_guiSimpleAttributeListAST::extractObject
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              Class for element of '@guiCompoundAttributeListAST' list                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@guiCompoundAttributeListAST' list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_guiCompoundAttributeListAST : public cCollectionElement {
   public : GALGAS_guiCompoundAttributeListAST_2D_element mObject ;
@@ -12450,7 +11990,7 @@ class cCollectionElement_guiCompoundAttributeListAST : public cCollectionElement
   public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_guiCompoundAttributeListAST::cCollectionElement_guiCompoundAttributeListAST (const GALGAS_lstring & in_mKey,
                                                                                                 const GALGAS_lstring & in_mAttributeName,
@@ -12460,20 +12000,20 @@ cCollectionElement (THERE),
 mObject (in_mKey, in_mAttributeName, in_mValue) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_guiCompoundAttributeListAST::cCollectionElement_guiCompoundAttributeListAST (const GALGAS_guiCompoundAttributeListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mKey, inElement.mProperty_mAttributeName, inElement.mProperty_mValue) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_guiCompoundAttributeListAST::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_guiCompoundAttributeListAST::copy (void) {
   cCollectionElement * result = NULL ;
@@ -12481,7 +12021,7 @@ cCollectionElement * cCollectionElement_guiCompoundAttributeListAST::copy (void)
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cCollectionElement_guiCompoundAttributeListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -12498,7 +12038,7 @@ void cCollectionElement_guiCompoundAttributeListAST::description (C_String & ioS
   mObject.mProperty_mValue.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cCollectionElement_guiCompoundAttributeListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_guiCompoundAttributeListAST * operand = (cCollectionElement_guiCompoundAttributeListAST *) inOperand ;
@@ -12506,25 +12046,25 @@ typeComparisonResult cCollectionElement_guiCompoundAttributeListAST::compare (co
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiCompoundAttributeListAST::GALGAS_guiCompoundAttributeListAST (void) :
 AC_GALGAS_list () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiCompoundAttributeListAST::GALGAS_guiCompoundAttributeListAST (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_guiCompoundAttributeListAST  (capCollectionElementArray ()) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                                   const GALGAS_lstring & inOperand1,
@@ -12540,7 +12080,7 @@ GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::construct
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiCompoundAttributeListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                     const GALGAS_lstring & in_mKey,
@@ -12555,7 +12095,7 @@ void GALGAS_guiCompoundAttributeListAST::makeAttributesFromObjects (capCollectio
   macroDetachSharedObject (p) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiCompoundAttributeListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                               const GALGAS_lstring & inOperand1,
@@ -12571,7 +12111,7 @@ void GALGAS_guiCompoundAttributeListAST::addAssign_operation (const GALGAS_lstri
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiCompoundAttributeListAST::setter_append (GALGAS_guiCompoundAttributeListAST_2D_element inElement,
                                                         C_Compiler * /* inCompiler */
@@ -12586,7 +12126,7 @@ void GALGAS_guiCompoundAttributeListAST::setter_append (GALGAS_guiCompoundAttrib
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiCompoundAttributeListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                                const GALGAS_lstring inOperand1,
@@ -12604,7 +12144,7 @@ void GALGAS_guiCompoundAttributeListAST::setter_insertAtIndex (const GALGAS_lstr
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiCompoundAttributeListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                                GALGAS_lstring & outOperand1,
@@ -12629,7 +12169,7 @@ void GALGAS_guiCompoundAttributeListAST::setter_removeAtIndex (GALGAS_lstring & 
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiCompoundAttributeListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                           GALGAS_lstring & outOperand1,
@@ -12651,7 +12191,7 @@ void GALGAS_guiCompoundAttributeListAST::setter_popFirst (GALGAS_lstring & outOp
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiCompoundAttributeListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                          GALGAS_lstring & outOperand1,
@@ -12673,7 +12213,7 @@ void GALGAS_guiCompoundAttributeListAST::setter_popLast (GALGAS_lstring & outOpe
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiCompoundAttributeListAST::method_first (GALGAS_lstring & outOperand0,
                                                        GALGAS_lstring & outOperand1,
@@ -12695,7 +12235,7 @@ void GALGAS_guiCompoundAttributeListAST::method_first (GALGAS_lstring & outOpera
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiCompoundAttributeListAST::method_last (GALGAS_lstring & outOperand0,
                                                       GALGAS_lstring & outOperand1,
@@ -12717,7 +12257,7 @@ void GALGAS_guiCompoundAttributeListAST::method_last (GALGAS_lstring & outOperan
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::add_operation (const GALGAS_guiCompoundAttributeListAST & inOperand,
                                                                                       C_Compiler * /* inCompiler */
@@ -12730,7 +12270,7 @@ GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::add_opera
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                                 C_Compiler * inCompiler
@@ -12740,7 +12280,7 @@ GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::getter_su
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                                 C_Compiler * inCompiler
@@ -12750,7 +12290,7 @@ GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::getter_su
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                               C_Compiler * inCompiler
@@ -12760,7 +12300,7 @@ GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::getter_su
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiCompoundAttributeListAST::plusAssign_operation (const GALGAS_guiCompoundAttributeListAST inOperand,
                                                                C_Compiler * /* inCompiler */
@@ -12768,7 +12308,7 @@ void GALGAS_guiCompoundAttributeListAST::plusAssign_operation (const GALGAS_guiC
   appendList (inOperand) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiCompoundAttributeListAST::setter_setMKeyAtIndex (GALGAS_lstring inOperand,
                                                                 GALGAS_uint inIndex,
@@ -12782,7 +12322,7 @@ void GALGAS_guiCompoundAttributeListAST::setter_setMKeyAtIndex (GALGAS_lstring i
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_guiCompoundAttributeListAST::getter_mKeyAtIndex (const GALGAS_uint & inIndex,
                                                                        C_Compiler * inCompiler
@@ -12797,7 +12337,7 @@ GALGAS_lstring GALGAS_guiCompoundAttributeListAST::getter_mKeyAtIndex (const GAL
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiCompoundAttributeListAST::setter_setMAttributeNameAtIndex (GALGAS_lstring inOperand,
                                                                           GALGAS_uint inIndex,
@@ -12811,7 +12351,7 @@ void GALGAS_guiCompoundAttributeListAST::setter_setMAttributeNameAtIndex (GALGAS
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_guiCompoundAttributeListAST::getter_mAttributeNameAtIndex (const GALGAS_uint & inIndex,
                                                                                  C_Compiler * inCompiler
@@ -12826,7 +12366,7 @@ GALGAS_lstring GALGAS_guiCompoundAttributeListAST::getter_mAttributeNameAtIndex 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiCompoundAttributeListAST::setter_setMValueAtIndex (GALGAS_lstring inOperand,
                                                                   GALGAS_uint inIndex,
@@ -12840,7 +12380,7 @@ void GALGAS_guiCompoundAttributeListAST::setter_setMValueAtIndex (GALGAS_lstring
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_guiCompoundAttributeListAST::getter_mValueAtIndex (const GALGAS_uint & inIndex,
                                                                          C_Compiler * inCompiler
@@ -12857,7 +12397,7 @@ GALGAS_lstring GALGAS_guiCompoundAttributeListAST::getter_mValueAtIndex (const G
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_guiCompoundAttributeListAST::cEnumerator_guiCompoundAttributeListAST (const GALGAS_guiCompoundAttributeListAST & inEnumeratedObject,
                                                                                   const typeEnumerationOrder inOrder) :
@@ -12865,7 +12405,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiCompoundAttributeListAST_2D_element cEnumerator_guiCompoundAttributeListAST::current (LOCATION_ARGS) const {
   const cCollectionElement_guiCompoundAttributeListAST * p = (const cCollectionElement_guiCompoundAttributeListAST *) currentObjectPtr (THERE) ;
@@ -12874,7 +12414,7 @@ GALGAS_guiCompoundAttributeListAST_2D_element cEnumerator_guiCompoundAttributeLi
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_guiCompoundAttributeListAST::current_mKey (LOCATION_ARGS) const {
   const cCollectionElement_guiCompoundAttributeListAST * p = (const cCollectionElement_guiCompoundAttributeListAST *) currentObjectPtr (THERE) ;
@@ -12882,7 +12422,7 @@ GALGAS_lstring cEnumerator_guiCompoundAttributeListAST::current_mKey (LOCATION_A
   return p->mObject.mProperty_mKey ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_guiCompoundAttributeListAST::current_mAttributeName (LOCATION_ARGS) const {
   const cCollectionElement_guiCompoundAttributeListAST * p = (const cCollectionElement_guiCompoundAttributeListAST *) currentObjectPtr (THERE) ;
@@ -12890,7 +12430,7 @@ GALGAS_lstring cEnumerator_guiCompoundAttributeListAST::current_mAttributeName (
   return p->mObject.mProperty_mAttributeName ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_guiCompoundAttributeListAST::current_mValue (LOCATION_ARGS) const {
   const cCollectionElement_guiCompoundAttributeListAST * p = (const cCollectionElement_guiCompoundAttributeListAST *) currentObjectPtr (THERE) ;
@@ -12901,23 +12441,23 @@ GALGAS_lstring cEnumerator_guiCompoundAttributeListAST::current_mValue (LOCATION
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          @guiCompoundAttributeListAST type                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@guiCompoundAttributeListAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_guiCompoundAttributeListAST ("guiCompoundAttributeListAST",
                                                     NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_guiCompoundAttributeListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_guiCompoundAttributeListAST ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_guiCompoundAttributeListAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -12927,7 +12467,7 @@ AC_GALGAS_root * GALGAS_guiCompoundAttributeListAST::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::extractObject (const GALGAS_object & inObject,
                                                                                       C_Compiler * inCompiler
@@ -12944,11 +12484,11 @@ GALGAS_guiCompoundAttributeListAST GALGAS_guiCompoundAttributeListAST::extractOb
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Class for element of '@terminalLabelListAST' list                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@terminalLabelListAST' list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_terminalLabelListAST : public cCollectionElement {
   public : GALGAS_terminalLabelListAST_2D_element mObject ;
@@ -12972,7 +12512,7 @@ class cCollectionElement_terminalLabelListAST : public cCollectionElement {
   public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_terminalLabelListAST::cCollectionElement_terminalLabelListAST (const GALGAS_lstring & in_mTerminal,
                                                                                   const GALGAS_uint & in_mDisplayFlags
@@ -12981,20 +12521,20 @@ cCollectionElement (THERE),
 mObject (in_mTerminal, in_mDisplayFlags) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_terminalLabelListAST::cCollectionElement_terminalLabelListAST (const GALGAS_terminalLabelListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mTerminal, inElement.mProperty_mDisplayFlags) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_terminalLabelListAST::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_terminalLabelListAST::copy (void) {
   cCollectionElement * result = NULL ;
@@ -13002,7 +12542,7 @@ cCollectionElement * cCollectionElement_terminalLabelListAST::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cCollectionElement_terminalLabelListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -13015,7 +12555,7 @@ void cCollectionElement_terminalLabelListAST::description (C_String & ioString, 
   mObject.mProperty_mDisplayFlags.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cCollectionElement_terminalLabelListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_terminalLabelListAST * operand = (cCollectionElement_terminalLabelListAST *) inOperand ;
@@ -13023,25 +12563,25 @@ typeComparisonResult cCollectionElement_terminalLabelListAST::compare (const cCo
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalLabelListAST::GALGAS_terminalLabelListAST (void) :
 AC_GALGAS_list () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalLabelListAST::GALGAS_terminalLabelListAST (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_terminalLabelListAST  (capCollectionElementArray ()) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                     const GALGAS_uint & inOperand1
@@ -13056,7 +12596,7 @@ GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::constructor_listWithVal
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalLabelListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                              const GALGAS_lstring & in_mTerminal,
@@ -13069,7 +12609,7 @@ void GALGAS_terminalLabelListAST::makeAttributesFromObjects (capCollectionElemen
   macroDetachSharedObject (p) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalLabelListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                        const GALGAS_uint & inOperand1
@@ -13084,7 +12624,7 @@ void GALGAS_terminalLabelListAST::addAssign_operation (const GALGAS_lstring & in
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalLabelListAST::setter_append (GALGAS_terminalLabelListAST_2D_element inElement,
                                                  C_Compiler * /* inCompiler */
@@ -13099,7 +12639,7 @@ void GALGAS_terminalLabelListAST::setter_append (GALGAS_terminalLabelListAST_2D_
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalLabelListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                         const GALGAS_uint inOperand1,
@@ -13116,7 +12656,7 @@ void GALGAS_terminalLabelListAST::setter_insertAtIndex (const GALGAS_lstring inO
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalLabelListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                         GALGAS_uint & outOperand1,
@@ -13138,7 +12678,7 @@ void GALGAS_terminalLabelListAST::setter_removeAtIndex (GALGAS_lstring & outOper
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalLabelListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                    GALGAS_uint & outOperand1,
@@ -13157,7 +12697,7 @@ void GALGAS_terminalLabelListAST::setter_popFirst (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalLabelListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                   GALGAS_uint & outOperand1,
@@ -13176,7 +12716,7 @@ void GALGAS_terminalLabelListAST::setter_popLast (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalLabelListAST::method_first (GALGAS_lstring & outOperand0,
                                                 GALGAS_uint & outOperand1,
@@ -13195,7 +12735,7 @@ void GALGAS_terminalLabelListAST::method_first (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalLabelListAST::method_last (GALGAS_lstring & outOperand0,
                                                GALGAS_uint & outOperand1,
@@ -13214,7 +12754,7 @@ void GALGAS_terminalLabelListAST::method_last (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::add_operation (const GALGAS_terminalLabelListAST & inOperand,
                                                                         C_Compiler * /* inCompiler */
@@ -13227,7 +12767,7 @@ GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::add_operation (const GA
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                                   C_Compiler * inCompiler
@@ -13237,7 +12777,7 @@ GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::getter_subListWithRange
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                                   C_Compiler * inCompiler
@@ -13247,7 +12787,7 @@ GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::getter_subListFromIndex
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                                 C_Compiler * inCompiler
@@ -13257,7 +12797,7 @@ GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::getter_subListToIndex (
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalLabelListAST::plusAssign_operation (const GALGAS_terminalLabelListAST inOperand,
                                                         C_Compiler * /* inCompiler */
@@ -13265,7 +12805,7 @@ void GALGAS_terminalLabelListAST::plusAssign_operation (const GALGAS_terminalLab
   appendList (inOperand) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalLabelListAST::setter_setMTerminalAtIndex (GALGAS_lstring inOperand,
                                                               GALGAS_uint inIndex,
@@ -13279,7 +12819,7 @@ void GALGAS_terminalLabelListAST::setter_setMTerminalAtIndex (GALGAS_lstring inO
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_terminalLabelListAST::getter_mTerminalAtIndex (const GALGAS_uint & inIndex,
                                                                      C_Compiler * inCompiler
@@ -13294,7 +12834,7 @@ GALGAS_lstring GALGAS_terminalLabelListAST::getter_mTerminalAtIndex (const GALGA
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_terminalLabelListAST::setter_setMDisplayFlagsAtIndex (GALGAS_uint inOperand,
                                                                   GALGAS_uint inIndex,
@@ -13308,7 +12848,7 @@ void GALGAS_terminalLabelListAST::setter_setMDisplayFlagsAtIndex (GALGAS_uint in
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_terminalLabelListAST::getter_mDisplayFlagsAtIndex (const GALGAS_uint & inIndex,
                                                                       C_Compiler * inCompiler
@@ -13325,7 +12865,7 @@ GALGAS_uint GALGAS_terminalLabelListAST::getter_mDisplayFlagsAtIndex (const GALG
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_terminalLabelListAST::cEnumerator_terminalLabelListAST (const GALGAS_terminalLabelListAST & inEnumeratedObject,
                                                                     const typeEnumerationOrder inOrder) :
@@ -13333,7 +12873,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalLabelListAST_2D_element cEnumerator_terminalLabelListAST::current (LOCATION_ARGS) const {
   const cCollectionElement_terminalLabelListAST * p = (const cCollectionElement_terminalLabelListAST *) currentObjectPtr (THERE) ;
@@ -13342,7 +12882,7 @@ GALGAS_terminalLabelListAST_2D_element cEnumerator_terminalLabelListAST::current
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_terminalLabelListAST::current_mTerminal (LOCATION_ARGS) const {
   const cCollectionElement_terminalLabelListAST * p = (const cCollectionElement_terminalLabelListAST *) currentObjectPtr (THERE) ;
@@ -13350,7 +12890,7 @@ GALGAS_lstring cEnumerator_terminalLabelListAST::current_mTerminal (LOCATION_ARG
   return p->mObject.mProperty_mTerminal ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint cEnumerator_terminalLabelListAST::current_mDisplayFlags (LOCATION_ARGS) const {
   const cCollectionElement_terminalLabelListAST * p = (const cCollectionElement_terminalLabelListAST *) currentObjectPtr (THERE) ;
@@ -13361,23 +12901,23 @@ GALGAS_uint cEnumerator_terminalLabelListAST::current_mDisplayFlags (LOCATION_AR
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             @terminalLabelListAST type                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@terminalLabelListAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_terminalLabelListAST ("terminalLabelListAST",
                                              NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_terminalLabelListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_terminalLabelListAST ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_terminalLabelListAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -13387,7 +12927,7 @@ AC_GALGAS_root * GALGAS_terminalLabelListAST::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::extractObject (const GALGAS_object & inObject,
                                                                         C_Compiler * inCompiler
@@ -13404,11 +12944,11 @@ GALGAS_terminalLabelListAST GALGAS_terminalLabelListAST::extractObject (const GA
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                    Class for element of '@guiLabelListAST' list                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@guiLabelListAST' list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_guiLabelListAST : public cCollectionElement {
   public : GALGAS_guiLabelListAST_2D_element mObject ;
@@ -13433,7 +12973,7 @@ class cCollectionElement_guiLabelListAST : public cCollectionElement {
   public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_guiLabelListAST::cCollectionElement_guiLabelListAST (const GALGAS_uint & in_mLeadingCharacterStrippedCount,
                                                                         const GALGAS_terminalLabelListAST & in_mTerminalList,
@@ -13443,20 +12983,20 @@ cCollectionElement (THERE),
 mObject (in_mLeadingCharacterStrippedCount, in_mTerminalList, in_mLocation) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_guiLabelListAST::cCollectionElement_guiLabelListAST (const GALGAS_guiLabelListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mLeadingCharacterStrippedCount, inElement.mProperty_mTerminalList, inElement.mProperty_mLocation) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_guiLabelListAST::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_guiLabelListAST::copy (void) {
   cCollectionElement * result = NULL ;
@@ -13464,7 +13004,7 @@ cCollectionElement * cCollectionElement_guiLabelListAST::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cCollectionElement_guiLabelListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -13481,7 +13021,7 @@ void cCollectionElement_guiLabelListAST::description (C_String & ioString, const
   mObject.mProperty_mLocation.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cCollectionElement_guiLabelListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_guiLabelListAST * operand = (cCollectionElement_guiLabelListAST *) inOperand ;
@@ -13489,25 +13029,25 @@ typeComparisonResult cCollectionElement_guiLabelListAST::compare (const cCollect
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiLabelListAST::GALGAS_guiLabelListAST (void) :
 AC_GALGAS_list () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiLabelListAST::GALGAS_guiLabelListAST (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiLabelListAST GALGAS_guiLabelListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_guiLabelListAST  (capCollectionElementArray ()) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiLabelListAST GALGAS_guiLabelListAST::constructor_listWithValue (const GALGAS_uint & inOperand0,
                                                                           const GALGAS_terminalLabelListAST & inOperand1,
@@ -13523,7 +13063,7 @@ GALGAS_guiLabelListAST GALGAS_guiLabelListAST::constructor_listWithValue (const 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiLabelListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                         const GALGAS_uint & in_mLeadingCharacterStrippedCount,
@@ -13538,7 +13078,7 @@ void GALGAS_guiLabelListAST::makeAttributesFromObjects (capCollectionElement & o
   macroDetachSharedObject (p) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiLabelListAST::addAssign_operation (const GALGAS_uint & inOperand0,
                                                   const GALGAS_terminalLabelListAST & inOperand1,
@@ -13554,7 +13094,7 @@ void GALGAS_guiLabelListAST::addAssign_operation (const GALGAS_uint & inOperand0
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiLabelListAST::setter_append (GALGAS_guiLabelListAST_2D_element inElement,
                                             C_Compiler * /* inCompiler */
@@ -13569,7 +13109,7 @@ void GALGAS_guiLabelListAST::setter_append (GALGAS_guiLabelListAST_2D_element in
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiLabelListAST::setter_insertAtIndex (const GALGAS_uint inOperand0,
                                                    const GALGAS_terminalLabelListAST inOperand1,
@@ -13587,7 +13127,7 @@ void GALGAS_guiLabelListAST::setter_insertAtIndex (const GALGAS_uint inOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiLabelListAST::setter_removeAtIndex (GALGAS_uint & outOperand0,
                                                    GALGAS_terminalLabelListAST & outOperand1,
@@ -13612,7 +13152,7 @@ void GALGAS_guiLabelListAST::setter_removeAtIndex (GALGAS_uint & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiLabelListAST::setter_popFirst (GALGAS_uint & outOperand0,
                                               GALGAS_terminalLabelListAST & outOperand1,
@@ -13634,7 +13174,7 @@ void GALGAS_guiLabelListAST::setter_popFirst (GALGAS_uint & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiLabelListAST::setter_popLast (GALGAS_uint & outOperand0,
                                              GALGAS_terminalLabelListAST & outOperand1,
@@ -13656,7 +13196,7 @@ void GALGAS_guiLabelListAST::setter_popLast (GALGAS_uint & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiLabelListAST::method_first (GALGAS_uint & outOperand0,
                                            GALGAS_terminalLabelListAST & outOperand1,
@@ -13678,7 +13218,7 @@ void GALGAS_guiLabelListAST::method_first (GALGAS_uint & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiLabelListAST::method_last (GALGAS_uint & outOperand0,
                                           GALGAS_terminalLabelListAST & outOperand1,
@@ -13700,7 +13240,7 @@ void GALGAS_guiLabelListAST::method_last (GALGAS_uint & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiLabelListAST GALGAS_guiLabelListAST::add_operation (const GALGAS_guiLabelListAST & inOperand,
                                                               C_Compiler * /* inCompiler */
@@ -13713,7 +13253,7 @@ GALGAS_guiLabelListAST GALGAS_guiLabelListAST::add_operation (const GALGAS_guiLa
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiLabelListAST GALGAS_guiLabelListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                         C_Compiler * inCompiler
@@ -13723,7 +13263,7 @@ GALGAS_guiLabelListAST GALGAS_guiLabelListAST::getter_subListWithRange (const GA
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiLabelListAST GALGAS_guiLabelListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                         C_Compiler * inCompiler
@@ -13733,7 +13273,7 @@ GALGAS_guiLabelListAST GALGAS_guiLabelListAST::getter_subListFromIndex (const GA
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiLabelListAST GALGAS_guiLabelListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                       C_Compiler * inCompiler
@@ -13743,7 +13283,7 @@ GALGAS_guiLabelListAST GALGAS_guiLabelListAST::getter_subListToIndex (const GALG
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiLabelListAST::plusAssign_operation (const GALGAS_guiLabelListAST inOperand,
                                                    C_Compiler * /* inCompiler */
@@ -13751,7 +13291,7 @@ void GALGAS_guiLabelListAST::plusAssign_operation (const GALGAS_guiLabelListAST 
   appendList (inOperand) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiLabelListAST::setter_setMLeadingCharacterStrippedCountAtIndex (GALGAS_uint inOperand,
                                                                               GALGAS_uint inIndex,
@@ -13765,7 +13305,7 @@ void GALGAS_guiLabelListAST::setter_setMLeadingCharacterStrippedCountAtIndex (GA
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint GALGAS_guiLabelListAST::getter_mLeadingCharacterStrippedCountAtIndex (const GALGAS_uint & inIndex,
                                                                                   C_Compiler * inCompiler
@@ -13780,7 +13320,7 @@ GALGAS_uint GALGAS_guiLabelListAST::getter_mLeadingCharacterStrippedCountAtIndex
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiLabelListAST::setter_setMTerminalListAtIndex (GALGAS_terminalLabelListAST inOperand,
                                                              GALGAS_uint inIndex,
@@ -13794,7 +13334,7 @@ void GALGAS_guiLabelListAST::setter_setMTerminalListAtIndex (GALGAS_terminalLabe
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalLabelListAST GALGAS_guiLabelListAST::getter_mTerminalListAtIndex (const GALGAS_uint & inIndex,
                                                                                  C_Compiler * inCompiler
@@ -13809,7 +13349,7 @@ GALGAS_terminalLabelListAST GALGAS_guiLabelListAST::getter_mTerminalListAtIndex 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_guiLabelListAST::setter_setMLocationAtIndex (GALGAS_location inOperand,
                                                          GALGAS_uint inIndex,
@@ -13823,7 +13363,7 @@ void GALGAS_guiLabelListAST::setter_setMLocationAtIndex (GALGAS_location inOpera
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_location GALGAS_guiLabelListAST::getter_mLocationAtIndex (const GALGAS_uint & inIndex,
                                                                  C_Compiler * inCompiler
@@ -13840,7 +13380,7 @@ GALGAS_location GALGAS_guiLabelListAST::getter_mLocationAtIndex (const GALGAS_ui
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_guiLabelListAST::cEnumerator_guiLabelListAST (const GALGAS_guiLabelListAST & inEnumeratedObject,
                                                           const typeEnumerationOrder inOrder) :
@@ -13848,7 +13388,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiLabelListAST_2D_element cEnumerator_guiLabelListAST::current (LOCATION_ARGS) const {
   const cCollectionElement_guiLabelListAST * p = (const cCollectionElement_guiLabelListAST *) currentObjectPtr (THERE) ;
@@ -13857,7 +13397,7 @@ GALGAS_guiLabelListAST_2D_element cEnumerator_guiLabelListAST::current (LOCATION
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_uint cEnumerator_guiLabelListAST::current_mLeadingCharacterStrippedCount (LOCATION_ARGS) const {
   const cCollectionElement_guiLabelListAST * p = (const cCollectionElement_guiLabelListAST *) currentObjectPtr (THERE) ;
@@ -13865,7 +13405,7 @@ GALGAS_uint cEnumerator_guiLabelListAST::current_mLeadingCharacterStrippedCount 
   return p->mObject.mProperty_mLeadingCharacterStrippedCount ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_terminalLabelListAST cEnumerator_guiLabelListAST::current_mTerminalList (LOCATION_ARGS) const {
   const cCollectionElement_guiLabelListAST * p = (const cCollectionElement_guiLabelListAST *) currentObjectPtr (THERE) ;
@@ -13873,7 +13413,7 @@ GALGAS_terminalLabelListAST cEnumerator_guiLabelListAST::current_mTerminalList (
   return p->mObject.mProperty_mTerminalList ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_location cEnumerator_guiLabelListAST::current_mLocation (LOCATION_ARGS) const {
   const cCollectionElement_guiLabelListAST * p = (const cCollectionElement_guiLabelListAST *) currentObjectPtr (THERE) ;
@@ -13884,23 +13424,23 @@ GALGAS_location cEnumerator_guiLabelListAST::current_mLocation (LOCATION_ARGS) c
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                                @guiLabelListAST type                                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@guiLabelListAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_guiLabelListAST ("guiLabelListAST",
                                         NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_guiLabelListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_guiLabelListAST ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_guiLabelListAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -13910,7 +13450,7 @@ AC_GALGAS_root * GALGAS_guiLabelListAST::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiLabelListAST GALGAS_guiLabelListAST::extractObject (const GALGAS_object & inObject,
                                                               C_Compiler * inCompiler
@@ -13927,11 +13467,11 @@ GALGAS_guiLabelListAST GALGAS_guiLabelListAST::extractObject (const GALGAS_objec
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                   Class for element of '@withLexiqueListAST' list                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@withLexiqueListAST' list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_withLexiqueListAST : public cCollectionElement {
   public : GALGAS_withLexiqueListAST_2D_element mObject ;
@@ -13957,7 +13497,7 @@ class cCollectionElement_withLexiqueListAST : public cCollectionElement {
   public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_withLexiqueListAST::cCollectionElement_withLexiqueListAST (const GALGAS_lstring & in_mLexiqueFileName,
                                                                               const GALGAS_guiLabelListAST & in_mLabels,
@@ -13968,20 +13508,20 @@ cCollectionElement (THERE),
 mObject (in_mLexiqueFileName, in_mLabels, in_mSimpleAttributes, in_mCompoundAttributes) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement_withLexiqueListAST::cCollectionElement_withLexiqueListAST (const GALGAS_withLexiqueListAST_2D_element & inElement COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
 mObject (inElement.mProperty_mLexiqueFileName, inElement.mProperty_mLabels, inElement.mProperty_mSimpleAttributes, inElement.mProperty_mCompoundAttributes) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 bool cCollectionElement_withLexiqueListAST::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cCollectionElement * cCollectionElement_withLexiqueListAST::copy (void) {
   cCollectionElement * result = NULL ;
@@ -13989,7 +13529,7 @@ cCollectionElement * cCollectionElement_withLexiqueListAST::copy (void) {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void cCollectionElement_withLexiqueListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
@@ -14010,7 +13550,7 @@ void cCollectionElement_withLexiqueListAST::description (C_String & ioString, co
   mObject.mProperty_mCompoundAttributes.description (ioString, inIndentation) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 typeComparisonResult cCollectionElement_withLexiqueListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_withLexiqueListAST * operand = (cCollectionElement_withLexiqueListAST *) inOperand ;
@@ -14018,25 +13558,25 @@ typeComparisonResult cCollectionElement_withLexiqueListAST::compare (const cColl
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_withLexiqueListAST::GALGAS_withLexiqueListAST (void) :
 AC_GALGAS_list () {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_withLexiqueListAST::GALGAS_withLexiqueListAST (const capCollectionElementArray & inSharedArray) :
 AC_GALGAS_list (inSharedArray) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::constructor_emptyList (UNUSED_LOCATION_ARGS) {
   return GALGAS_withLexiqueListAST  (capCollectionElementArray ()) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                 const GALGAS_guiLabelListAST & inOperand1,
@@ -14053,7 +13593,7 @@ GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::constructor_listWithValue (
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_withLexiqueListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                            const GALGAS_lstring & in_mLexiqueFileName,
@@ -14070,7 +13610,7 @@ void GALGAS_withLexiqueListAST::makeAttributesFromObjects (capCollectionElement 
   macroDetachSharedObject (p) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_withLexiqueListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                      const GALGAS_guiLabelListAST & inOperand1,
@@ -14087,7 +13627,7 @@ void GALGAS_withLexiqueListAST::addAssign_operation (const GALGAS_lstring & inOp
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_withLexiqueListAST::setter_append (GALGAS_withLexiqueListAST_2D_element inElement,
                                                C_Compiler * /* inCompiler */
@@ -14102,7 +13642,7 @@ void GALGAS_withLexiqueListAST::setter_append (GALGAS_withLexiqueListAST_2D_elem
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_withLexiqueListAST::setter_insertAtIndex (const GALGAS_lstring inOperand0,
                                                       const GALGAS_guiLabelListAST inOperand1,
@@ -14121,7 +13661,7 @@ void GALGAS_withLexiqueListAST::setter_insertAtIndex (const GALGAS_lstring inOpe
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_withLexiqueListAST::setter_removeAtIndex (GALGAS_lstring & outOperand0,
                                                       GALGAS_guiLabelListAST & outOperand1,
@@ -14149,7 +13689,7 @@ void GALGAS_withLexiqueListAST::setter_removeAtIndex (GALGAS_lstring & outOperan
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_withLexiqueListAST::setter_popFirst (GALGAS_lstring & outOperand0,
                                                  GALGAS_guiLabelListAST & outOperand1,
@@ -14174,7 +13714,7 @@ void GALGAS_withLexiqueListAST::setter_popFirst (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_withLexiqueListAST::setter_popLast (GALGAS_lstring & outOperand0,
                                                 GALGAS_guiLabelListAST & outOperand1,
@@ -14199,7 +13739,7 @@ void GALGAS_withLexiqueListAST::setter_popLast (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_withLexiqueListAST::method_first (GALGAS_lstring & outOperand0,
                                               GALGAS_guiLabelListAST & outOperand1,
@@ -14224,7 +13764,7 @@ void GALGAS_withLexiqueListAST::method_first (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_withLexiqueListAST::method_last (GALGAS_lstring & outOperand0,
                                              GALGAS_guiLabelListAST & outOperand1,
@@ -14249,7 +13789,7 @@ void GALGAS_withLexiqueListAST::method_last (GALGAS_lstring & outOperand0,
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::add_operation (const GALGAS_withLexiqueListAST & inOperand,
                                                                     C_Compiler * /* inCompiler */
@@ -14262,7 +13802,7 @@ GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::add_operation (const GALGAS
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::getter_subListWithRange (const GALGAS_range & inRange,
                                                                               C_Compiler * inCompiler
@@ -14272,7 +13812,7 @@ GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::getter_subListWithRange (co
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::getter_subListFromIndex (const GALGAS_uint & inIndex,
                                                                               C_Compiler * inCompiler
@@ -14282,7 +13822,7 @@ GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::getter_subListFromIndex (co
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::getter_subListToIndex (const GALGAS_uint & inIndex,
                                                                             C_Compiler * inCompiler
@@ -14292,7 +13832,7 @@ GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::getter_subListToIndex (cons
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_withLexiqueListAST::plusAssign_operation (const GALGAS_withLexiqueListAST inOperand,
                                                       C_Compiler * /* inCompiler */
@@ -14300,7 +13840,7 @@ void GALGAS_withLexiqueListAST::plusAssign_operation (const GALGAS_withLexiqueLi
   appendList (inOperand) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_withLexiqueListAST::setter_setMLexiqueFileNameAtIndex (GALGAS_lstring inOperand,
                                                                    GALGAS_uint inIndex,
@@ -14314,7 +13854,7 @@ void GALGAS_withLexiqueListAST::setter_setMLexiqueFileNameAtIndex (GALGAS_lstrin
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring GALGAS_withLexiqueListAST::getter_mLexiqueFileNameAtIndex (const GALGAS_uint & inIndex,
                                                                           C_Compiler * inCompiler
@@ -14329,7 +13869,7 @@ GALGAS_lstring GALGAS_withLexiqueListAST::getter_mLexiqueFileNameAtIndex (const 
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_withLexiqueListAST::setter_setMLabelsAtIndex (GALGAS_guiLabelListAST inOperand,
                                                           GALGAS_uint inIndex,
@@ -14343,7 +13883,7 @@ void GALGAS_withLexiqueListAST::setter_setMLabelsAtIndex (GALGAS_guiLabelListAST
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiLabelListAST GALGAS_withLexiqueListAST::getter_mLabelsAtIndex (const GALGAS_uint & inIndex,
                                                                          C_Compiler * inCompiler
@@ -14358,7 +13898,7 @@ GALGAS_guiLabelListAST GALGAS_withLexiqueListAST::getter_mLabelsAtIndex (const G
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_withLexiqueListAST::setter_setMSimpleAttributesAtIndex (GALGAS_guiSimpleAttributeListAST inOperand,
                                                                     GALGAS_uint inIndex,
@@ -14372,7 +13912,7 @@ void GALGAS_withLexiqueListAST::setter_setMSimpleAttributesAtIndex (GALGAS_guiSi
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiSimpleAttributeListAST GALGAS_withLexiqueListAST::getter_mSimpleAttributesAtIndex (const GALGAS_uint & inIndex,
                                                                                              C_Compiler * inCompiler
@@ -14387,7 +13927,7 @@ GALGAS_guiSimpleAttributeListAST GALGAS_withLexiqueListAST::getter_mSimpleAttrib
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void GALGAS_withLexiqueListAST::setter_setMCompoundAttributesAtIndex (GALGAS_guiCompoundAttributeListAST inOperand,
                                                                       GALGAS_uint inIndex,
@@ -14401,7 +13941,7 @@ void GALGAS_withLexiqueListAST::setter_setMCompoundAttributesAtIndex (GALGAS_gui
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiCompoundAttributeListAST GALGAS_withLexiqueListAST::getter_mCompoundAttributesAtIndex (const GALGAS_uint & inIndex,
                                                                                                  C_Compiler * inCompiler
@@ -14418,7 +13958,7 @@ GALGAS_guiCompoundAttributeListAST GALGAS_withLexiqueListAST::getter_mCompoundAt
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 cEnumerator_withLexiqueListAST::cEnumerator_withLexiqueListAST (const GALGAS_withLexiqueListAST & inEnumeratedObject,
                                                                 const typeEnumerationOrder inOrder) :
@@ -14426,7 +13966,7 @@ cGenericAbstractEnumerator (inOrder) {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_withLexiqueListAST_2D_element cEnumerator_withLexiqueListAST::current (LOCATION_ARGS) const {
   const cCollectionElement_withLexiqueListAST * p = (const cCollectionElement_withLexiqueListAST *) currentObjectPtr (THERE) ;
@@ -14435,7 +13975,7 @@ GALGAS_withLexiqueListAST_2D_element cEnumerator_withLexiqueListAST::current (LO
 }
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_lstring cEnumerator_withLexiqueListAST::current_mLexiqueFileName (LOCATION_ARGS) const {
   const cCollectionElement_withLexiqueListAST * p = (const cCollectionElement_withLexiqueListAST *) currentObjectPtr (THERE) ;
@@ -14443,7 +13983,7 @@ GALGAS_lstring cEnumerator_withLexiqueListAST::current_mLexiqueFileName (LOCATIO
   return p->mObject.mProperty_mLexiqueFileName ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiLabelListAST cEnumerator_withLexiqueListAST::current_mLabels (LOCATION_ARGS) const {
   const cCollectionElement_withLexiqueListAST * p = (const cCollectionElement_withLexiqueListAST *) currentObjectPtr (THERE) ;
@@ -14451,7 +13991,7 @@ GALGAS_guiLabelListAST cEnumerator_withLexiqueListAST::current_mLabels (LOCATION
   return p->mObject.mProperty_mLabels ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiSimpleAttributeListAST cEnumerator_withLexiqueListAST::current_mSimpleAttributes (LOCATION_ARGS) const {
   const cCollectionElement_withLexiqueListAST * p = (const cCollectionElement_withLexiqueListAST *) currentObjectPtr (THERE) ;
@@ -14459,7 +13999,7 @@ GALGAS_guiSimpleAttributeListAST cEnumerator_withLexiqueListAST::current_mSimple
   return p->mObject.mProperty_mSimpleAttributes ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_guiCompoundAttributeListAST cEnumerator_withLexiqueListAST::current_mCompoundAttributes (LOCATION_ARGS) const {
   const cCollectionElement_withLexiqueListAST * p = (const cCollectionElement_withLexiqueListAST *) currentObjectPtr (THERE) ;
@@ -14470,23 +14010,23 @@ GALGAS_guiCompoundAttributeListAST cEnumerator_withLexiqueListAST::current_mComp
 
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                              @withLexiqueListAST type                                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@withLexiqueListAST type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_withLexiqueListAST ("withLexiqueListAST",
                                            NULL) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 const C_galgas_type_descriptor * GALGAS_withLexiqueListAST::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_withLexiqueListAST ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 AC_GALGAS_root * GALGAS_withLexiqueListAST::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -14496,7 +14036,7 @@ AC_GALGAS_root * GALGAS_withLexiqueListAST::clonedObject (void) const {
   return result ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::extractObject (const GALGAS_object & inObject,
                                                                     C_Compiler * inCompiler
@@ -14508,6 +14048,955 @@ GALGAS_withLexiqueListAST GALGAS_withLexiqueListAST::extractObject (const GALGAS
       result = *p ;
     }else{
       inCompiler->castError ("withLexiqueListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Class for element of '@guiCommandLineOptionList' list
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cCollectionElement_guiCommandLineOptionList : public cCollectionElement {
+  public : GALGAS_guiCommandLineOptionList_2D_element mObject ;
+
+//--- Constructors
+  public : cCollectionElement_guiCommandLineOptionList (const GALGAS_string & in_mOptionComponent,
+                                                        const GALGAS_string & in_mOptionIdentifier,
+                                                        const GALGAS_char & in_mOptionChar,
+                                                        const GALGAS_string & in_mOptionString,
+                                                        const GALGAS_string & in_mComment
+                                                        COMMA_LOCATION_ARGS) ;
+  public : cCollectionElement_guiCommandLineOptionList (const GALGAS_guiCommandLineOptionList_2D_element & inElement COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cCollectionElement_guiCommandLineOptionList::cCollectionElement_guiCommandLineOptionList (const GALGAS_string & in_mOptionComponent,
+                                                                                          const GALGAS_string & in_mOptionIdentifier,
+                                                                                          const GALGAS_char & in_mOptionChar,
+                                                                                          const GALGAS_string & in_mOptionString,
+                                                                                          const GALGAS_string & in_mComment
+                                                                                          COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mOptionComponent, in_mOptionIdentifier, in_mOptionChar, in_mOptionString, in_mComment) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cCollectionElement_guiCommandLineOptionList::cCollectionElement_guiCommandLineOptionList (const GALGAS_guiCommandLineOptionList_2D_element & inElement COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (inElement.mProperty_mOptionComponent, inElement.mProperty_mOptionIdentifier, inElement.mProperty_mOptionChar, inElement.mProperty_mOptionString, inElement.mProperty_mComment) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool cCollectionElement_guiCommandLineOptionList::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cCollectionElement * cCollectionElement_guiCommandLineOptionList::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_guiCommandLineOptionList (mObject.mProperty_mOptionComponent, mObject.mProperty_mOptionIdentifier, mObject.mProperty_mOptionChar, mObject.mProperty_mOptionString, mObject.mProperty_mComment COMMA_HERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cCollectionElement_guiCommandLineOptionList::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mOptionComponent" ":" ;
+  mObject.mProperty_mOptionComponent.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mOptionIdentifier" ":" ;
+  mObject.mProperty_mOptionIdentifier.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mOptionChar" ":" ;
+  mObject.mProperty_mOptionChar.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mOptionString" ":" ;
+  mObject.mProperty_mOptionString.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mComment" ":" ;
+  mObject.mProperty_mComment.description (ioString, inIndentation) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cCollectionElement_guiCommandLineOptionList::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_guiCommandLineOptionList * operand = (cCollectionElement_guiCommandLineOptionList *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_guiCommandLineOptionList) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_guiCommandLineOptionList::GALGAS_guiCommandLineOptionList (void) :
+AC_GALGAS_list () {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_guiCommandLineOptionList::GALGAS_guiCommandLineOptionList (const capCollectionElementArray & inSharedArray) :
+AC_GALGAS_list (inSharedArray) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_guiCommandLineOptionList GALGAS_guiCommandLineOptionList::constructor_emptyList (UNUSED_LOCATION_ARGS) {
+  return GALGAS_guiCommandLineOptionList  (capCollectionElementArray ()) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_guiCommandLineOptionList GALGAS_guiCommandLineOptionList::constructor_listWithValue (const GALGAS_string & inOperand0,
+                                                                                            const GALGAS_string & inOperand1,
+                                                                                            const GALGAS_char & inOperand2,
+                                                                                            const GALGAS_string & inOperand3,
+                                                                                            const GALGAS_string & inOperand4
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_guiCommandLineOptionList result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    result = GALGAS_guiCommandLineOptionList (capCollectionElementArray ()) ;
+    capCollectionElement attributes ;
+    GALGAS_guiCommandLineOptionList::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
+    result.appendObject (attributes) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_guiCommandLineOptionList::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                 const GALGAS_string & in_mOptionComponent,
+                                                                 const GALGAS_string & in_mOptionIdentifier,
+                                                                 const GALGAS_char & in_mOptionChar,
+                                                                 const GALGAS_string & in_mOptionString,
+                                                                 const GALGAS_string & in_mComment
+                                                                 COMMA_LOCATION_ARGS) {
+  cCollectionElement_guiCommandLineOptionList * p = NULL ;
+  macroMyNew (p, cCollectionElement_guiCommandLineOptionList (in_mOptionComponent,
+                                                              in_mOptionIdentifier,
+                                                              in_mOptionChar,
+                                                              in_mOptionString,
+                                                              in_mComment COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_guiCommandLineOptionList::addAssign_operation (const GALGAS_string & inOperand0,
+                                                           const GALGAS_string & inOperand1,
+                                                           const GALGAS_char & inOperand2,
+                                                           const GALGAS_string & inOperand3,
+                                                           const GALGAS_string & inOperand4
+                                                           COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_guiCommandLineOptionList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_guiCommandLineOptionList::setter_append (GALGAS_guiCommandLineOptionList_2D_element inElement,
+                                                     C_Compiler * /* inCompiler */
+                                                     COMMA_LOCATION_ARGS) {
+  if (isValid () && inElement.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_guiCommandLineOptionList (inElement COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    appendObject (attributes) ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_guiCommandLineOptionList::setter_insertAtIndex (const GALGAS_string inOperand0,
+                                                            const GALGAS_string inOperand1,
+                                                            const GALGAS_char inOperand2,
+                                                            const GALGAS_string inOperand3,
+                                                            const GALGAS_string inOperand4,
+                                                            const GALGAS_uint inInsertionIndex,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_guiCommandLineOptionList (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    insertObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_guiCommandLineOptionList::setter_removeAtIndex (GALGAS_string & outOperand0,
+                                                            GALGAS_string & outOperand1,
+                                                            GALGAS_char & outOperand2,
+                                                            GALGAS_string & outOperand3,
+                                                            GALGAS_string & outOperand4,
+                                                            const GALGAS_uint inRemoveIndex,
+                                                            C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_guiCommandLineOptionList * p = (cCollectionElement_guiCommandLineOptionList *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
+      outOperand3.drop () ;
+      outOperand4.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+      outOperand0 = p->mObject.mProperty_mOptionComponent ;
+      outOperand1 = p->mObject.mProperty_mOptionIdentifier ;
+      outOperand2 = p->mObject.mProperty_mOptionChar ;
+      outOperand3 = p->mObject.mProperty_mOptionString ;
+      outOperand4 = p->mObject.mProperty_mComment ;
+    }
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_guiCommandLineOptionList::setter_popFirst (GALGAS_string & outOperand0,
+                                                       GALGAS_string & outOperand1,
+                                                       GALGAS_char & outOperand2,
+                                                       GALGAS_string & outOperand3,
+                                                       GALGAS_string & outOperand4,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_guiCommandLineOptionList * p = (cCollectionElement_guiCommandLineOptionList *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+    outOperand0 = p->mObject.mProperty_mOptionComponent ;
+    outOperand1 = p->mObject.mProperty_mOptionIdentifier ;
+    outOperand2 = p->mObject.mProperty_mOptionChar ;
+    outOperand3 = p->mObject.mProperty_mOptionString ;
+    outOperand4 = p->mObject.mProperty_mComment ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_guiCommandLineOptionList::setter_popLast (GALGAS_string & outOperand0,
+                                                      GALGAS_string & outOperand1,
+                                                      GALGAS_char & outOperand2,
+                                                      GALGAS_string & outOperand3,
+                                                      GALGAS_string & outOperand4,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_guiCommandLineOptionList * p = (cCollectionElement_guiCommandLineOptionList *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+    outOperand0 = p->mObject.mProperty_mOptionComponent ;
+    outOperand1 = p->mObject.mProperty_mOptionIdentifier ;
+    outOperand2 = p->mObject.mProperty_mOptionChar ;
+    outOperand3 = p->mObject.mProperty_mOptionString ;
+    outOperand4 = p->mObject.mProperty_mComment ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_guiCommandLineOptionList::method_first (GALGAS_string & outOperand0,
+                                                    GALGAS_string & outOperand1,
+                                                    GALGAS_char & outOperand2,
+                                                    GALGAS_string & outOperand3,
+                                                    GALGAS_string & outOperand4,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_guiCommandLineOptionList * p = (cCollectionElement_guiCommandLineOptionList *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+    outOperand0 = p->mObject.mProperty_mOptionComponent ;
+    outOperand1 = p->mObject.mProperty_mOptionIdentifier ;
+    outOperand2 = p->mObject.mProperty_mOptionChar ;
+    outOperand3 = p->mObject.mProperty_mOptionString ;
+    outOperand4 = p->mObject.mProperty_mComment ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_guiCommandLineOptionList::method_last (GALGAS_string & outOperand0,
+                                                   GALGAS_string & outOperand1,
+                                                   GALGAS_char & outOperand2,
+                                                   GALGAS_string & outOperand3,
+                                                   GALGAS_string & outOperand4,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_guiCommandLineOptionList * p = (cCollectionElement_guiCommandLineOptionList *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+    outOperand0 = p->mObject.mProperty_mOptionComponent ;
+    outOperand1 = p->mObject.mProperty_mOptionIdentifier ;
+    outOperand2 = p->mObject.mProperty_mOptionChar ;
+    outOperand3 = p->mObject.mProperty_mOptionString ;
+    outOperand4 = p->mObject.mProperty_mComment ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_guiCommandLineOptionList GALGAS_guiCommandLineOptionList::add_operation (const GALGAS_guiCommandLineOptionList & inOperand,
+                                                                                C_Compiler * /* inCompiler */
+                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_guiCommandLineOptionList result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_guiCommandLineOptionList GALGAS_guiCommandLineOptionList::getter_subListWithRange (const GALGAS_range & inRange,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_guiCommandLineOptionList result = GALGAS_guiCommandLineOptionList::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_guiCommandLineOptionList GALGAS_guiCommandLineOptionList::getter_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_guiCommandLineOptionList result = GALGAS_guiCommandLineOptionList::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_guiCommandLineOptionList GALGAS_guiCommandLineOptionList::getter_subListToIndex (const GALGAS_uint & inIndex,
+                                                                                        C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_guiCommandLineOptionList result = GALGAS_guiCommandLineOptionList::constructor_emptyList (THERE) ;
+  subListToIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_guiCommandLineOptionList::plusAssign_operation (const GALGAS_guiCommandLineOptionList inOperand,
+                                                            C_Compiler * /* inCompiler */
+                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_guiCommandLineOptionList::setter_setMOptionComponentAtIndex (GALGAS_string inOperand,
+                                                                         GALGAS_uint inIndex,
+                                                                         C_Compiler * inCompiler
+                                                                         COMMA_LOCATION_ARGS) {
+  cCollectionElement_guiCommandLineOptionList * p = (cCollectionElement_guiCommandLineOptionList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mOptionComponent = inOperand ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_guiCommandLineOptionList::getter_mOptionComponentAtIndex (const GALGAS_uint & inIndex,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_guiCommandLineOptionList * p = (cCollectionElement_guiCommandLineOptionList *) attributes.ptr () ;
+  GALGAS_string result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+    result = p->mObject.mProperty_mOptionComponent ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_guiCommandLineOptionList::setter_setMOptionIdentifierAtIndex (GALGAS_string inOperand,
+                                                                          GALGAS_uint inIndex,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  cCollectionElement_guiCommandLineOptionList * p = (cCollectionElement_guiCommandLineOptionList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mOptionIdentifier = inOperand ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_guiCommandLineOptionList::getter_mOptionIdentifierAtIndex (const GALGAS_uint & inIndex,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_guiCommandLineOptionList * p = (cCollectionElement_guiCommandLineOptionList *) attributes.ptr () ;
+  GALGAS_string result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+    result = p->mObject.mProperty_mOptionIdentifier ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_guiCommandLineOptionList::setter_setMOptionCharAtIndex (GALGAS_char inOperand,
+                                                                    GALGAS_uint inIndex,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) {
+  cCollectionElement_guiCommandLineOptionList * p = (cCollectionElement_guiCommandLineOptionList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mOptionChar = inOperand ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_char GALGAS_guiCommandLineOptionList::getter_mOptionCharAtIndex (const GALGAS_uint & inIndex,
+                                                                        C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_guiCommandLineOptionList * p = (cCollectionElement_guiCommandLineOptionList *) attributes.ptr () ;
+  GALGAS_char result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+    result = p->mObject.mProperty_mOptionChar ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_guiCommandLineOptionList::setter_setMOptionStringAtIndex (GALGAS_string inOperand,
+                                                                      GALGAS_uint inIndex,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) {
+  cCollectionElement_guiCommandLineOptionList * p = (cCollectionElement_guiCommandLineOptionList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mOptionString = inOperand ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_guiCommandLineOptionList::getter_mOptionStringAtIndex (const GALGAS_uint & inIndex,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_guiCommandLineOptionList * p = (cCollectionElement_guiCommandLineOptionList *) attributes.ptr () ;
+  GALGAS_string result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+    result = p->mObject.mProperty_mOptionString ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_guiCommandLineOptionList::setter_setMCommentAtIndex (GALGAS_string inOperand,
+                                                                 GALGAS_uint inIndex,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) {
+  cCollectionElement_guiCommandLineOptionList * p = (cCollectionElement_guiCommandLineOptionList *) uniquelyReferencedPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+    macroUniqueSharedObject (p) ;
+    p->mObject.mProperty_mComment = inOperand ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_guiCommandLineOptionList::getter_mCommentAtIndex (const GALGAS_uint & inIndex,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_guiCommandLineOptionList * p = (cCollectionElement_guiCommandLineOptionList *) attributes.ptr () ;
+  GALGAS_string result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+    result = p->mObject.mProperty_mComment ;
+  }
+  return result ;
+}
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cEnumerator_guiCommandLineOptionList::cEnumerator_guiCommandLineOptionList (const GALGAS_guiCommandLineOptionList & inEnumeratedObject,
+                                                                            const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_guiCommandLineOptionList_2D_element cEnumerator_guiCommandLineOptionList::current (LOCATION_ARGS) const {
+  const cCollectionElement_guiCommandLineOptionList * p = (const cCollectionElement_guiCommandLineOptionList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+  return p->mObject ;
+}
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string cEnumerator_guiCommandLineOptionList::current_mOptionComponent (LOCATION_ARGS) const {
+  const cCollectionElement_guiCommandLineOptionList * p = (const cCollectionElement_guiCommandLineOptionList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+  return p->mObject.mProperty_mOptionComponent ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string cEnumerator_guiCommandLineOptionList::current_mOptionIdentifier (LOCATION_ARGS) const {
+  const cCollectionElement_guiCommandLineOptionList * p = (const cCollectionElement_guiCommandLineOptionList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+  return p->mObject.mProperty_mOptionIdentifier ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_char cEnumerator_guiCommandLineOptionList::current_mOptionChar (LOCATION_ARGS) const {
+  const cCollectionElement_guiCommandLineOptionList * p = (const cCollectionElement_guiCommandLineOptionList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+  return p->mObject.mProperty_mOptionChar ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string cEnumerator_guiCommandLineOptionList::current_mOptionString (LOCATION_ARGS) const {
+  const cCollectionElement_guiCommandLineOptionList * p = (const cCollectionElement_guiCommandLineOptionList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+  return p->mObject.mProperty_mOptionString ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string cEnumerator_guiCommandLineOptionList::current_mComment (LOCATION_ARGS) const {
+  const cCollectionElement_guiCommandLineOptionList * p = (const cCollectionElement_guiCommandLineOptionList *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_guiCommandLineOptionList) ;
+  return p->mObject.mProperty_mComment ;
+}
+
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@guiCommandLineOptionList type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_guiCommandLineOptionList ("guiCommandLineOptionList",
+                                                 NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_guiCommandLineOptionList::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_guiCommandLineOptionList ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_guiCommandLineOptionList::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_guiCommandLineOptionList (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_guiCommandLineOptionList GALGAS_guiCommandLineOptionList::extractObject (const GALGAS_object & inObject,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_guiCommandLineOptionList result ;
+  const GALGAS_guiCommandLineOptionList * p = (const GALGAS_guiCommandLineOptionList *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_guiCommandLineOptionList *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("guiCommandLineOptionList", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cMapElement_extensionMap::cMapElement_extensionMap (const GALGAS_lstring & inKey,
+                                                    const GALGAS_string & in_mLexiqueName,
+                                                    const GALGAS_uint & in_mIndex
+                                                    COMMA_LOCATION_ARGS) :
+cMapElement (inKey COMMA_THERE),
+mProperty_mLexiqueName (in_mLexiqueName),
+mProperty_mIndex (in_mIndex) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool cMapElement_extensionMap::isValid (void) const {
+  return mProperty_lkey.isValid () && mProperty_mLexiqueName.isValid () && mProperty_mIndex.isValid () ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cMapElement * cMapElement_extensionMap::copy (void) {
+  cMapElement * result = NULL ;
+  macroMyNew (result, cMapElement_extensionMap (mProperty_lkey, mProperty_mLexiqueName, mProperty_mIndex COMMA_HERE)) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cMapElement_extensionMap::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mLexiqueName" ":" ;
+  mProperty_mLexiqueName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mIndex" ":" ;
+  mProperty_mIndex.description (ioString, inIndentation) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+typeComparisonResult cMapElement_extensionMap::compare (const cCollectionElement * inOperand) const {
+  cMapElement_extensionMap * operand = (cMapElement_extensionMap *) inOperand ;
+  typeComparisonResult result = mProperty_lkey.objectCompare (operand->mProperty_lkey) ;
+  if (kOperandEqual == result) {
+    result = mProperty_mLexiqueName.objectCompare (operand->mProperty_mLexiqueName) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mIndex.objectCompare (operand->mProperty_mIndex) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMap::GALGAS_extensionMap (void) :
+AC_GALGAS_map (true) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMap::GALGAS_extensionMap (const GALGAS_extensionMap & inSource) :
+AC_GALGAS_map (inSource) {
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMap & GALGAS_extensionMap::operator = (const GALGAS_extensionMap & inSource) {
+  * ((AC_GALGAS_map *) this) = inSource ;
+  return * this ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMap GALGAS_extensionMap::constructor_emptyMap (LOCATION_ARGS) {
+  GALGAS_extensionMap result ;
+  result.makeNewEmptyMap (THERE) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMap GALGAS_extensionMap::constructor_mapWithMapToOverride (const GALGAS_extensionMap & inMapToOverride
+                                                                           COMMA_LOCATION_ARGS) {
+  GALGAS_extensionMap result ;
+  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMap GALGAS_extensionMap::getter_overriddenMap (C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const {
+  GALGAS_extensionMap result ;
+  getOverridenMap (result, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionMap::addAssign_operation (const GALGAS_lstring & inKey,
+                                               const GALGAS_string & inArgument0,
+                                               const GALGAS_uint & inArgument1,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) {
+  cMapElement_extensionMap * p = NULL ;
+  macroMyNew (p, cMapElement_extensionMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "@extensionMap insert error: '%K' already in map" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionMap::setter_insertKey (GALGAS_lstring inKey,
+                                            GALGAS_string inArgument0,
+                                            GALGAS_uint inArgument1,
+                                            C_Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) {
+  cMapElement_extensionMap * p = NULL ;
+  macroMyNew (p, cMapElement_extensionMap (inKey, inArgument0, inArgument1 COMMA_HERE)) ;
+  capCollectionElement attributes ;
+  attributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+  const char * kInsertErrorMessage = "the '%K' extension is already declared in %L" ;
+  const char * kShadowErrorMessage = "" ;
+  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string GALGAS_extensionMap::getter_mLexiqueNameForKey (const GALGAS_string & inKey,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_extensionMap * p = (const cMapElement_extensionMap *) attributes ;
+  GALGAS_string result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_extensionMap) ;
+    result = p->mProperty_mLexiqueName ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_uint GALGAS_extensionMap::getter_mIndexForKey (const GALGAS_string & inKey,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
+  const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
+  const cMapElement_extensionMap * p = (const cMapElement_extensionMap *) attributes ;
+  GALGAS_uint result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_extensionMap) ;
+    result = p->mProperty_mIndex ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionMap::setter_setMLexiqueNameForKey (GALGAS_string inAttributeValue,
+                                                        GALGAS_string inKey,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
+  cMapElement_extensionMap * p = (cMapElement_extensionMap *) attributes ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_extensionMap) ;
+    p->mProperty_mLexiqueName = inAttributeValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_extensionMap::setter_setMIndexForKey (GALGAS_uint inAttributeValue,
+                                                  GALGAS_string inKey,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, true, inCompiler COMMA_THERE) ;
+  cMapElement_extensionMap * p = (cMapElement_extensionMap *) attributes ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cMapElement_extensionMap) ;
+    p->mProperty_mIndex = inAttributeValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cMapElement_extensionMap * GALGAS_extensionMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
+                                                                                   const GALGAS_string & inKey
+                                                                                   COMMA_LOCATION_ARGS) {
+  cMapElement_extensionMap * result = (cMapElement_extensionMap *) searchForReadWriteAttribute (inKey, false, inCompiler COMMA_THERE) ;
+  macroNullOrValidSharedObject (result, cMapElement_extensionMap) ;
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+cEnumerator_extensionMap::cEnumerator_extensionMap (const GALGAS_extensionMap & inEnumeratedObject,
+                                                    const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator (inOrder) {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMap_2D_element cEnumerator_extensionMap::current (LOCATION_ARGS) const {
+  const cMapElement_extensionMap * p = (const cMapElement_extensionMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_extensionMap) ;
+  return GALGAS_extensionMap_2D_element (p->mProperty_lkey, p->mProperty_mLexiqueName, p->mProperty_mIndex) ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_lstring cEnumerator_extensionMap::current_lkey (LOCATION_ARGS) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement) ;
+  return p->mProperty_lkey ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string cEnumerator_extensionMap::current_mLexiqueName (LOCATION_ARGS) const {
+  const cMapElement_extensionMap * p = (const cMapElement_extensionMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_extensionMap) ;
+  return p->mProperty_mLexiqueName ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_uint cEnumerator_extensionMap::current_mIndex (LOCATION_ARGS) const {
+  const cMapElement_extensionMap * p = (const cMapElement_extensionMap *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cMapElement_extensionMap) ;
+  return p->mProperty_mIndex ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_extensionMap::optional_searchKey (const GALGAS_string & inKey,
+                                              GALGAS_string & outArgument0,
+                                              GALGAS_uint & outArgument1) const {
+  const cMapElement_extensionMap * p = (const cMapElement_extensionMap *) searchForKey (inKey) ;
+  const bool result = NULL != p ;
+  if (result) {
+    macroValidSharedObject (p, cMapElement_extensionMap) ;
+    outArgument0 = p->mProperty_mLexiqueName ;
+    outArgument1 = p->mProperty_mIndex ;
+  }else{
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//@extensionMap type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_extensionMap ("extensionMap",
+                                     NULL) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+const C_galgas_type_descriptor * GALGAS_extensionMap::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_extensionMap ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+AC_GALGAS_root * GALGAS_extensionMap::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_extensionMap (*this)) ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_extensionMap GALGAS_extensionMap::extractObject (const GALGAS_object & inObject,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  GALGAS_extensionMap result ;
+  const GALGAS_extensionMap * p = (const GALGAS_extensionMap *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_extensionMap *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("extensionMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -1,42 +1,40 @@
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//  Declaration of the template class 'TC_FIFO'.                                                                       *
-//                                                                                                                     *
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  Declaration of the template class 'TC_FIFO'.                                                 
+//
 //  COPY OF ITS INSTANCES IS FORBIDDEN BY REDEFINITION OF COPY CONSTRUCTOR AND ASSIGNMENT OPERATOR.                    *
-//                                                                                                                     *
-//  This file is part of libpm library                                                                                 *
-//                                                                                                                     *
-//  Copyright (C) 2001, ..., 2019 Pierre Molinaro.                                                                     *
-//  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
-//  LS2N, Laboratoire des Sciences du Numérique de Nantes, ECN, École Centrale de Nantes (France)                      *
-//                                                                                                                     *
-//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General  *
-//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)  *
-//  any later version.                                                                                                 *
-//                                                                                                                     *
-//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
-//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
-//  more details.                                                                                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//
+//  This file is part of libpm library                                                           
+//
+//  Copyright (C) 2001, ..., 2019 Pierre Molinaro.
+//  e-mail : pcmolinaro@free.fr
+//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General
+//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)
+//  any later version.
+//
+//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+//  more details.
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 #pragma once
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include <stdio.h>
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "utilities/M_SourceLocation.h"
 #include "utilities/TF_Swap.h"
 #include "utilities/MF_Assert.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//           FIFO template class declaration                                                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//           FIFO template class declaration                                                     
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> class TC_FIFO {
 //--- Constructor and destructor
@@ -93,25 +91,25 @@ template <typename TYPE> class TC_FIFO {
   private : mutable TC_FIFO_element * * mItemsArray ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//           FIFO template class implementation                                                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//           FIFO template class implementation                                                  
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> TC_FIFO <TYPE>::TC_FIFO_element::TC_FIFO_element (void) :
 mInfo (),
 mNextItem (NULL) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> TC_FIFO <TYPE>::TC_FIFO_element::TC_FIFO_element (const TYPE & inSource) :
 mInfo (inSource),
 mNextItem (NULL) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> TC_FIFO <TYPE>::TC_FIFO (void) :
 mFirstItem (NULL),
@@ -120,7 +118,7 @@ mListLength (0),
 mItemsArray (NULL) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> TC_FIFO<TYPE>::~TC_FIFO (void) {
   macroMyDeleteArray (mItemsArray) ;
@@ -132,7 +130,7 @@ template <typename TYPE> TC_FIFO<TYPE>::~TC_FIFO (void) {
   mListLength = 0 ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_FIFO<TYPE>::insertByCopy (const TYPE & inInfo) {
   TC_FIFO_element * p = NULL ;
@@ -147,7 +145,7 @@ template <typename TYPE> void TC_FIFO<TYPE>::insertByCopy (const TYPE & inInfo) 
   macroMyDeleteArray (mItemsArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_FIFO<TYPE>::insertByExchange (TYPE & ioInfo) {
   TC_FIFO_element * p = NULL ;
@@ -163,7 +161,7 @@ template <typename TYPE> void TC_FIFO<TYPE>::insertByExchange (TYPE & ioInfo) {
   macroMyDeleteArray (mItemsArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_FIFO<TYPE>::deleteLastItem (void) {
   if (mFirstItem != NULL) {
@@ -178,7 +176,7 @@ template <typename TYPE> void TC_FIFO<TYPE>::deleteLastItem (void) {
   macroMyDeleteArray (mItemsArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_FIFO <TYPE>::getByCopyAndSuppressLastItem (TYPE & outInfo) {
   if (mFirstItem != NULL) {
@@ -193,7 +191,7 @@ template <typename TYPE> void TC_FIFO <TYPE>::getByCopyAndSuppressLastItem (TYPE
   macroMyDeleteArray (mItemsArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_FIFO<TYPE>::getByExchangeAndSuppressLastItem (TYPE & outInfo) {
   if (mFirstItem != NULL) {
@@ -209,7 +207,7 @@ template <typename TYPE> void TC_FIFO<TYPE>::getByExchangeAndSuppressLastItem (T
   macroMyDeleteArray (mItemsArray) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE>TYPE & TC_FIFO<TYPE>::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) {
    MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
@@ -233,7 +231,7 @@ template <typename TYPE>TYPE & TC_FIFO<TYPE>::operator () (const int32_t inIndex
    return p->mInfo ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> TYPE & TC_FIFO <TYPE>::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
    MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
@@ -257,4 +255,4 @@ template <typename TYPE> TYPE & TC_FIFO <TYPE>::operator () (const int32_t inInd
    return p->mInfo ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------

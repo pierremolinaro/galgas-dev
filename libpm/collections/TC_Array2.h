@@ -1,48 +1,46 @@
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//  Declaration and implementation of the template class 'TC_Array2'                                                   *
-//                                                                                                                     *
-//  It implements a generic two dimensions dynamic sized array.                                                        *
-//                                                                                                                     *
-//  COPY OF ITS INSTANCES IS ALLOWED AND FULLY IMPLEMENTED BY DUPLICATION.                                             *
-//                                                                                                                     *
-//  This file is part of libpm library                                                                                 *
-//                                                                                                                     *
-//  Copyright (C) 1997 Pierre Molinaro.                                                                                *
-//                                                                                                                     *
-//  e-mail : pierre.molinaro@ec-nantes.fr                                                                              *
-//                                                                                                                     *
-//  LS2N, Laboratoire des Sciences du Numérique de Nantes, ECN, École Centrale de Nantes (France)                      *
-//                                                                                                                     *
-//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General  *
-//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)  *
-//  any later version.                                                                                                 *
-//                                                                                                                     *
-//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
-//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
-//  more details.                                                                                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  Declaration and implementation of the template class 'TC_Array2'                             
+//
+//  It implements a generic two dimensions dynamic sized array.                                  
+//
+//  COPY OF ITS INSTANCES IS ALLOWED AND FULLY IMPLEMENTED BY DUPLICATION.                       
+//
+//  This file is part of libpm library                                                           
+//
+//  Copyright (C) 1997 Pierre Molinaro.                                                          
+//
+//  e-mail : pcmolinaro@free.fr
+//
+//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General
+//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)
+//  any later version.
+//
+//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+//  more details.
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 #pragma once
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "utilities/MF_MemoryControl.h"
 #include "utilities/TF_Swap.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include <stddef.h>
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> class TC_Array2 ;
 
 template <typename TYPE> void swap (TC_Array2 <TYPE> & ioOperand1,
                                     TC_Array2 <TYPE> & ioOperand2) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> class TC_Array2 {
   protected : TYPE * mArray ;
@@ -112,11 +110,11 @@ template <typename TYPE> class TC_Array2 {
                               const int32_t inColumnCount COMMA_LOCATION_ARGS) ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Implementation                                                                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//                         Implementation                                                        
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> TC_Array2 <TYPE>::TC_Array2 (void) :
 mArray (NULL),
@@ -125,7 +123,7 @@ mCurrentColumnCount (0),
 mCapacity (0) {
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> TC_Array2 <TYPE>::TC_Array2 (TC_Array2 <TYPE> & inSource) :
 mArray (NULL),
@@ -135,7 +133,7 @@ mCapacity (0) {
   *this = inSource ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> TC_Array2 <TYPE>::TC_Array2 (const int32_t inRowCount,
                                                       const int32_t inColumnCount
@@ -147,7 +145,7 @@ mCapacity (0){
   reallocArray (inRowCount, inColumnCount COMMA_THERE) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> TC_Array2 <TYPE> & TC_Array2 <TYPE>::operator = (TC_Array2 <TYPE> & inSource) {
   removeAll () ;
@@ -171,13 +169,13 @@ template <typename TYPE> TC_Array2 <TYPE> & TC_Array2 <TYPE>::operator = (TC_Arr
   return * this ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> TC_Array2 <TYPE>::~TC_Array2 (void) {
   removeAll () ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_Array2<TYPE>::removeAll (void) {
   macroMyDeleteArray (mArray) ;
@@ -186,7 +184,7 @@ template <typename TYPE> void TC_Array2<TYPE>::removeAll (void) {
   mCapacity = 0 ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void TC_Array2<TYPE>::reallocArray (const int32_t inRowCount,
                                                              const int32_t inColumnCount COMMA_LOCATION_ARGS) {
@@ -215,7 +213,7 @@ template <typename TYPE> void TC_Array2<TYPE>::reallocArray (const int32_t inRow
   }
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   template <typename TYPE> TYPE & TC_Array2 <TYPE>::operator () (const int32_t inRowIndex,
@@ -225,7 +223,7 @@ template <typename TYPE> void TC_Array2<TYPE>::reallocArray (const int32_t inRow
   }
 #endif
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   template <typename TYPE> const TYPE TC_Array2 <TYPE>::operator () (const int32_t inRowIndex,
@@ -235,7 +233,7 @@ template <typename TYPE> void TC_Array2<TYPE>::reallocArray (const int32_t inRow
   }
 #endif
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   template <typename TYPE> void TC_Array2 <TYPE>::setObjectAtIndexes (const TYPE & inObject,
@@ -246,7 +244,7 @@ template <typename TYPE> void TC_Array2<TYPE>::reallocArray (const int32_t inRow
   }
 #endif
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 template <typename TYPE> void swap (TC_Array2 <TYPE> & ioOperand1,
                                     TC_Array2 <TYPE> & ioOperand2) {
@@ -256,4 +254,4 @@ template <typename TYPE> void swap (TC_Array2 <TYPE> & ioOperand1,
   swap (ioOperand1.mCapacity, ioOperand2.mCapacity) ;
 }
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------

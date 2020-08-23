@@ -1,1034 +1,18 @@
 #pragma once
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "all-predefined-types.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 #include "all-declarations-6.h"
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          Phase 1: @nonterminalLabelMap map                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class cMapElement_nonterminalLabelMap ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const char * kSearchErrorMessage_nonterminalLabelMap_searchKey ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_nonterminalLabelMap : public AC_GALGAS_map {
-//--------------------------------- Default constructor
-  public : GALGAS_nonterminalLabelMap (void) ;
-
-//--------------------------------- Handle copy
-  public : GALGAS_nonterminalLabelMap (const GALGAS_nonterminalLabelMap & inSource) ;
-  public : GALGAS_nonterminalLabelMap & operator = (const GALGAS_nonterminalLabelMap & inSource) ;
-  
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_nonterminalLabelMap extractObject (const GALGAS_object & inObject,
-                                                            C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_nonterminalLabelMap constructor_emptyMap (LOCATION_ARGS) ;
-
-  public : static class GALGAS_nonterminalLabelMap constructor_mapWithMapToOverride (const class GALGAS_nonterminalLabelMap & inOperand0
-                                                                                     COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                      const class GALGAS_formalParameterListForGeneration & inOperand1,
-                                                      const class GALGAS_formalParameterSignature & inOperand2,
-                                                      const class GALGAS_location & inOperand3,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
-                                                   class GALGAS_formalParameterListForGeneration constinArgument1,
-                                                   class GALGAS_formalParameterSignature constinArgument2,
-                                                   class GALGAS_location constinArgument3,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMEndOfArgumentLocationForKey (class GALGAS_location constinArgument0,
-                                                                         class GALGAS_string constinArgument1,
-                                                                         C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMSignatureForGenerationForKey (class GALGAS_formalParameterListForGeneration constinArgument0,
-                                                                          class GALGAS_string constinArgument1,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMSignatureForKey (class GALGAS_formalParameterSignature constinArgument0,
-                                                             class GALGAS_string constinArgument1,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public : VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_lstring constinArgument0,
-                                                   class GALGAS_formalParameterListForGeneration & outArgument1,
-                                                   class GALGAS_formalParameterSignature & outArgument2,
-                                                   class GALGAS_location & outArgument3,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfArgumentLocationForKey (const class GALGAS_string & constinOperand0,
-                                                                                       C_Compiler * inCompiler
-                                                                                       COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListForGeneration getter_mSignatureForGenerationForKey (const class GALGAS_string & constinOperand0,
-                                                                                                                C_Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterSignature getter_mSignatureForKey (const class GALGAS_string & constinOperand0,
-                                                                                           C_Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_nonterminalLabelMap getter_overriddenMap (C_Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public : VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                     class GALGAS_formalParameterListForGeneration & outOperand1,
-                                                     class GALGAS_formalParameterSignature & outOperand2,
-                                                     class GALGAS_location & outOperand3) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-  public : VIRTUAL_IN_DEBUG cMapElement_nonterminalLabelMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
-                                                                                                 const GALGAS_string & inKey
-                                                                                                 COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Friend
-
-  friend class cEnumerator_nonterminalLabelMap ;
- 
-} ; // End of GALGAS_nonterminalLabelMap class
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class cEnumerator_nonterminalLabelMap : public cGenericAbstractEnumerator {
-  public : cEnumerator_nonterminalLabelMap (const GALGAS_nonterminalLabelMap & inEnumeratedObject,
-                                            const typeEnumerationOrder inOrder) ;
-
-//--- Current element access
-  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
-  public : class GALGAS_formalParameterListForGeneration current_mSignatureForGeneration (LOCATION_ARGS) const ;
-  public : class GALGAS_formalParameterSignature current_mSignature (LOCATION_ARGS) const ;
-  public : class GALGAS_location current_mEndOfArgumentLocation (LOCATION_ARGS) const ;
-//--- Current element access
-  public : class GALGAS_nonterminalLabelMap_2D_element current (LOCATION_ARGS) const ;
-} ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalLabelMap ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                               Phase 2: class for element of '@nonterminalLabelMap' map                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class cMapElement_nonterminalLabelMap : public cMapElement {
-//--- Map attributes
-  public : GALGAS_formalParameterListForGeneration mProperty_mSignatureForGeneration ;
-  public : GALGAS_formalParameterSignature mProperty_mSignature ;
-  public : GALGAS_location mProperty_mEndOfArgumentLocation ;
-
-//--- Constructor
-  public : cMapElement_nonterminalLabelMap (const GALGAS_lstring & inKey,
-                                            const GALGAS_formalParameterListForGeneration & in_mSignatureForGeneration,
-                                            const GALGAS_formalParameterSignature & in_mSignature,
-                                            const GALGAS_location & in_mEndOfArgumentLocation
-                                            COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public : virtual cMapElement * copy (void) ;
-
-//--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                   Phase 1: @nonterminalLabelMap_2D_element struct                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_nonterminalLabelMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public : GALGAS_lstring mProperty_lkey ;
-
-  public : GALGAS_formalParameterListForGeneration mProperty_mSignatureForGeneration ;
-
-  public : GALGAS_formalParameterSignature mProperty_mSignature ;
-
-  public : GALGAS_location mProperty_mEndOfArgumentLocation ;
-
-//--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public : VIRTUAL_IN_DEBUG void drop (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_nonterminalLabelMap_2D_element constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Default constructor
-  public : GALGAS_nonterminalLabelMap_2D_element (void) ;
-
-//--------------------------------- Virtual destructor (in debug mode)
-  public : virtual ~ GALGAS_nonterminalLabelMap_2D_element (void) ;
-
-//--------------------------------- Native constructor
-  public : GALGAS_nonterminalLabelMap_2D_element (const GALGAS_lstring & in_lkey,
-                                                  const GALGAS_formalParameterListForGeneration & in_mSignatureForGeneration,
-                                                  const GALGAS_formalParameterSignature & in_mSignature,
-                                                  const GALGAS_location & in_mEndOfArgumentLocation) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_nonterminalLabelMap_2D_element extractObject (const GALGAS_object & inObject,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_nonterminalLabelMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                               const class GALGAS_formalParameterListForGeneration & inOperand1,
-                                                                               const class GALGAS_formalParameterSignature & inOperand2,
-                                                                               const class GALGAS_location & inOperand3
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_nonterminalLabelMap_2D_element & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_lkey (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfArgumentLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterSignature getter_mSignature (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListForGeneration getter_mSignatureForGeneration (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_nonterminalLabelMap_2D_element class
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalLabelMap_2D_element ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                             Phase 1: @nonterminalMap map                                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class cMapElement_nonterminalMap ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const char * kSearchErrorMessage_nonterminalMap_searchKey ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_nonterminalMap : public AC_GALGAS_map {
-//--------------------------------- Default constructor
-  public : GALGAS_nonterminalMap (void) ;
-
-//--------------------------------- Handle copy
-  public : GALGAS_nonterminalMap (const GALGAS_nonterminalMap & inSource) ;
-  public : GALGAS_nonterminalMap & operator = (const GALGAS_nonterminalMap & inSource) ;
-  
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_nonterminalMap extractObject (const GALGAS_object & inObject,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_nonterminalMap constructor_emptyMap (LOCATION_ARGS) ;
-
-  public : static class GALGAS_nonterminalMap constructor_mapWithMapToOverride (const class GALGAS_nonterminalMap & inOperand0
-                                                                                COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                      const class GALGAS_nonterminalLabelMap & inOperand1,
-                                                      C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void setter_insertKey (class GALGAS_lstring constinArgument0,
-                                                   class GALGAS_nonterminalLabelMap constinArgument1,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMLabelMapForKey (class GALGAS_nonterminalLabelMap constinArgument0,
-                                                            class GALGAS_string constinArgument1,
-                                                            C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public : VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_lstring constinArgument0,
-                                                   class GALGAS_nonterminalLabelMap & outArgument1,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_nonterminalLabelMap getter_mLabelMapForKey (const class GALGAS_string & constinOperand0,
-                                                                                     C_Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_nonterminalMap getter_overriddenMap (C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-  public : VIRTUAL_IN_DEBUG bool optional_searchKey (const class GALGAS_string & constinOperand0,
-                                                     class GALGAS_nonterminalLabelMap & outOperand1) const ;
-
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-  public : VIRTUAL_IN_DEBUG cMapElement_nonterminalMap * readWriteAccessForWithInstruction (C_Compiler * inCompiler,
-                                                                                            const GALGAS_string & inKey
-                                                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Friend
-
-  friend class cEnumerator_nonterminalMap ;
- 
-} ; // End of GALGAS_nonterminalMap class
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class cEnumerator_nonterminalMap : public cGenericAbstractEnumerator {
-  public : cEnumerator_nonterminalMap (const GALGAS_nonterminalMap & inEnumeratedObject,
-                                       const typeEnumerationOrder inOrder) ;
-
-//--- Current element access
-  public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
-  public : class GALGAS_nonterminalLabelMap current_mLabelMap (LOCATION_ARGS) const ;
-//--- Current element access
-  public : class GALGAS_nonterminalMap_2D_element current (LOCATION_ARGS) const ;
-} ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalMap ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Phase 2: class for element of '@nonterminalMap' map                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class cMapElement_nonterminalMap : public cMapElement {
-//--- Map attributes
-  public : GALGAS_nonterminalLabelMap mProperty_mLabelMap ;
-
-//--- Constructor
-  public : cMapElement_nonterminalMap (const GALGAS_lstring & inKey,
-                                       const GALGAS_nonterminalLabelMap & in_mLabelMap
-                                       COMMA_LOCATION_ARGS) ;
-
-//--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
-
-//--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
-
-//--- Virtual method that returns a copy of current object
-  public : virtual cMapElement * copy (void) ;
-
-//--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
-} ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @nonterminalMap_2D_element struct                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_nonterminalMap_2D_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public : GALGAS_lstring mProperty_lkey ;
-
-  public : GALGAS_nonterminalLabelMap mProperty_mLabelMap ;
-
-//--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public : VIRTUAL_IN_DEBUG void drop (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_nonterminalMap_2D_element constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Default constructor
-  public : GALGAS_nonterminalMap_2D_element (void) ;
-
-//--------------------------------- Virtual destructor (in debug mode)
-  public : virtual ~ GALGAS_nonterminalMap_2D_element (void) ;
-
-//--------------------------------- Native constructor
-  public : GALGAS_nonterminalMap_2D_element (const GALGAS_lstring & in_lkey,
-                                             const GALGAS_nonterminalLabelMap & in_mLabelMap) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_nonterminalMap_2D_element extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_nonterminalMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                          const class GALGAS_nonterminalLabelMap & inOperand1
-                                                                          COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_nonterminalMap_2D_element & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_lkey (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_nonterminalLabelMap getter_mLabelMap (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_nonterminalMap_2D_element class
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_nonterminalMap_2D_element ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @ruleLabelImplementationList list                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_ruleLabelImplementationList : public AC_GALGAS_list {
-//--------------------------------- Default constructor
-  public : GALGAS_ruleLabelImplementationList (void) ;
-
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_ruleLabelImplementationList (const capCollectionElementArray & inSharedArray) ;
-
-//--------------------------------- Element constructor
-  public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                  const class GALGAS_lstring & in_mLabelName,
-                                                  const class GALGAS_formalParameterListForGeneration & in_mSignatureForGeneration,
-                                                  const class GALGAS_formalParameterSignature & in_mSignature,
-                                                  const class GALGAS_location & in_mEndOfArgumentLocation,
-                                                  const class GALGAS_semanticInstructionListForGeneration & in_mInstructionListForGeneration
-                                                  COMMA_LOCATION_ARGS) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_ruleLabelImplementationList extractObject (const GALGAS_object & inObject,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_ruleLabelImplementationList constructor_emptyList (LOCATION_ARGS) ;
-
-  public : static class GALGAS_ruleLabelImplementationList constructor_listWithValue (const class GALGAS_lstring & inOperand0,
-                                                                                      const class GALGAS_formalParameterListForGeneration & inOperand1,
-                                                                                      const class GALGAS_formalParameterSignature & inOperand2,
-                                                                                      const class GALGAS_location & inOperand3,
-                                                                                      const class GALGAS_semanticInstructionListForGeneration & inOperand4
-                                                                                      COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_ruleLabelImplementationList inOperand,
-                                                       class C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                      const class GALGAS_formalParameterListForGeneration & inOperand1,
-                                                      const class GALGAS_formalParameterSignature & inOperand2,
-                                                      const class GALGAS_location & inOperand3,
-                                                      const class GALGAS_semanticInstructionListForGeneration & inOperand4
-                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public : VIRTUAL_IN_DEBUG GALGAS_ruleLabelImplementationList add_operation (const GALGAS_ruleLabelImplementationList & inOperand,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_ruleLabelImplementationList_2D_element inArgument0,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
-                                                       class GALGAS_formalParameterListForGeneration constinArgument1,
-                                                       class GALGAS_formalParameterSignature constinArgument2,
-                                                       class GALGAS_location constinArgument3,
-                                                       class GALGAS_semanticInstructionListForGeneration constinArgument4,
-                                                       class GALGAS_uint constinArgument5,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
-                                                  class GALGAS_formalParameterListForGeneration & outArgument1,
-                                                  class GALGAS_formalParameterSignature & outArgument2,
-                                                  class GALGAS_location & outArgument3,
-                                                  class GALGAS_semanticInstructionListForGeneration & outArgument4,
-                                                  C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
-                                                 class GALGAS_formalParameterListForGeneration & outArgument1,
-                                                 class GALGAS_formalParameterSignature & outArgument2,
-                                                 class GALGAS_location & outArgument3,
-                                                 class GALGAS_semanticInstructionListForGeneration & outArgument4,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
-                                                       class GALGAS_formalParameterListForGeneration & outArgument1,
-                                                       class GALGAS_formalParameterSignature & outArgument2,
-                                                       class GALGAS_location & outArgument3,
-                                                       class GALGAS_semanticInstructionListForGeneration & outArgument4,
-                                                       class GALGAS_uint constinArgument5,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMEndOfArgumentLocationAtIndex (class GALGAS_location constinArgument0,
-                                                                          class GALGAS_uint constinArgument1,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMInstructionListForGenerationAtIndex (class GALGAS_semanticInstructionListForGeneration constinArgument0,
-                                                                                 class GALGAS_uint constinArgument1,
-                                                                                 C_Compiler * inCompiler
-                                                                                 COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMLabelNameAtIndex (class GALGAS_lstring constinArgument0,
-                                                              class GALGAS_uint constinArgument1,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMSignatureAtIndex (class GALGAS_formalParameterSignature constinArgument0,
-                                                              class GALGAS_uint constinArgument1,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMSignatureForGenerationAtIndex (class GALGAS_formalParameterListForGeneration constinArgument0,
-                                                                           class GALGAS_uint constinArgument1,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
-                                               class GALGAS_formalParameterListForGeneration & outArgument1,
-                                               class GALGAS_formalParameterSignature & outArgument2,
-                                               class GALGAS_location & outArgument3,
-                                               class GALGAS_semanticInstructionListForGeneration & outArgument4,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
-                                              class GALGAS_formalParameterListForGeneration & outArgument1,
-                                              class GALGAS_formalParameterSignature & outArgument2,
-                                              class GALGAS_location & outArgument3,
-                                              class GALGAS_semanticInstructionListForGeneration & outArgument4,
-                                              C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfArgumentLocationAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                        C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration getter_mInstructionListForGenerationAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                                           C_Compiler * inCompiler
-                                                                                                                           COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mLabelNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterSignature getter_mSignatureAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                            C_Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListForGeneration getter_mSignatureForGenerationAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                                 C_Compiler * inCompiler
-                                                                                                                 COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_ruleLabelImplementationList getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_ruleLabelImplementationList getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                            C_Compiler * inCompiler
-                                                                                            COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_ruleLabelImplementationList getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-//--------------------------------- Friend
-
-  friend class cEnumerator_ruleLabelImplementationList ;
- 
-} ; // End of GALGAS_ruleLabelImplementationList class
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class cEnumerator_ruleLabelImplementationList : public cGenericAbstractEnumerator {
-  public : cEnumerator_ruleLabelImplementationList (const GALGAS_ruleLabelImplementationList & inEnumeratedObject,
-                                                    const typeEnumerationOrder inOrder) ;
-
-//--- Current element access
-  public : class GALGAS_lstring current_mLabelName (LOCATION_ARGS) const ;
-  public : class GALGAS_formalParameterListForGeneration current_mSignatureForGeneration (LOCATION_ARGS) const ;
-  public : class GALGAS_formalParameterSignature current_mSignature (LOCATION_ARGS) const ;
-  public : class GALGAS_location current_mEndOfArgumentLocation (LOCATION_ARGS) const ;
-  public : class GALGAS_semanticInstructionListForGeneration current_mInstructionListForGeneration (LOCATION_ARGS) const ;
-//--- Current element access
-  public : class GALGAS_ruleLabelImplementationList_2D_element current (LOCATION_ARGS) const ;
-} ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ruleLabelImplementationList ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                               Phase 1: @ruleLabelImplementationList_2D_element struct                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_ruleLabelImplementationList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public : GALGAS_lstring mProperty_mLabelName ;
-
-  public : GALGAS_formalParameterListForGeneration mProperty_mSignatureForGeneration ;
-
-  public : GALGAS_formalParameterSignature mProperty_mSignature ;
-
-  public : GALGAS_location mProperty_mEndOfArgumentLocation ;
-
-  public : GALGAS_semanticInstructionListForGeneration mProperty_mInstructionListForGeneration ;
-
-//--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public : VIRTUAL_IN_DEBUG void drop (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_ruleLabelImplementationList_2D_element constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Default constructor
-  public : GALGAS_ruleLabelImplementationList_2D_element (void) ;
-
-//--------------------------------- Virtual destructor (in debug mode)
-  public : virtual ~ GALGAS_ruleLabelImplementationList_2D_element (void) ;
-
-//--------------------------------- Native constructor
-  public : GALGAS_ruleLabelImplementationList_2D_element (const GALGAS_lstring & in_mLabelName,
-                                                          const GALGAS_formalParameterListForGeneration & in_mSignatureForGeneration,
-                                                          const GALGAS_formalParameterSignature & in_mSignature,
-                                                          const GALGAS_location & in_mEndOfArgumentLocation,
-                                                          const GALGAS_semanticInstructionListForGeneration & in_mInstructionListForGeneration) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_ruleLabelImplementationList_2D_element extractObject (const GALGAS_object & inObject,
-                                                                               C_Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_ruleLabelImplementationList_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                       const class GALGAS_formalParameterListForGeneration & inOperand1,
-                                                                                       const class GALGAS_formalParameterSignature & inOperand2,
-                                                                                       const class GALGAS_location & inOperand3,
-                                                                                       const class GALGAS_semanticInstructionListForGeneration & inOperand4
-                                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_ruleLabelImplementationList_2D_element & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfArgumentLocation (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration getter_mInstructionListForGeneration (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mLabelName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterSignature getter_mSignature (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_formalParameterListForGeneration getter_mSignatureForGeneration (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_ruleLabelImplementationList_2D_element class
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ruleLabelImplementationList_2D_element ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          Phase 1: @ruleDeclarationList list                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_ruleDeclarationList : public AC_GALGAS_list {
-//--------------------------------- Default constructor
-  public : GALGAS_ruleDeclarationList (void) ;
-
-//--------------------------------- List constructor used by listmap
-  public : GALGAS_ruleDeclarationList (const capCollectionElementArray & inSharedArray) ;
-
-//--------------------------------- Element constructor
-  public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                  const class GALGAS_string & in_mNonterminalName,
-                                                  const class GALGAS_uint & in_mRuleIndex,
-                                                  const class GALGAS_ruleLabelImplementationList & in_mLabelImplementationList
-                                                  COMMA_LOCATION_ARGS) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_ruleDeclarationList extractObject (const GALGAS_object & inObject,
-                                                            C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_ruleDeclarationList constructor_emptyList (LOCATION_ARGS) ;
-
-  public : static class GALGAS_ruleDeclarationList constructor_listWithValue (const class GALGAS_string & inOperand0,
-                                                                              const class GALGAS_uint & inOperand1,
-                                                                              const class GALGAS_ruleLabelImplementationList & inOperand2
-                                                                              COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with expression)
-  public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_ruleDeclarationList inOperand,
-                                                       class C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- += operator (with list of field expressions)
-  public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_string & inOperand0,
-                                                      const class GALGAS_uint & inOperand1,
-                                                      const class GALGAS_ruleLabelImplementationList & inOperand2
-                                                      COMMA_LOCATION_ARGS) ;
-//--------------------------------- + operator
-  public : VIRTUAL_IN_DEBUG GALGAS_ruleDeclarationList add_operation (const GALGAS_ruleDeclarationList & inOperand,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Setters
-  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_ruleDeclarationList_2D_element inArgument0,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_string constinArgument0,
-                                                       class GALGAS_uint constinArgument1,
-                                                       class GALGAS_ruleLabelImplementationList constinArgument2,
-                                                       class GALGAS_uint constinArgument3,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_string & outArgument0,
-                                                  class GALGAS_uint & outArgument1,
-                                                  class GALGAS_ruleLabelImplementationList & outArgument2,
-                                                  C_Compiler * inCompiler
-                                                  COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_string & outArgument0,
-                                                 class GALGAS_uint & outArgument1,
-                                                 class GALGAS_ruleLabelImplementationList & outArgument2,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_string & outArgument0,
-                                                       class GALGAS_uint & outArgument1,
-                                                       class GALGAS_ruleLabelImplementationList & outArgument2,
-                                                       class GALGAS_uint constinArgument3,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMLabelImplementationListAtIndex (class GALGAS_ruleLabelImplementationList constinArgument0,
-                                                                            class GALGAS_uint constinArgument1,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMNonterminalNameAtIndex (class GALGAS_string constinArgument0,
-                                                                    class GALGAS_uint constinArgument1,
-                                                                    C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
-
-  public : VIRTUAL_IN_DEBUG void setter_setMRuleIndexAtIndex (class GALGAS_uint constinArgument0,
-                                                              class GALGAS_uint constinArgument1,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) ;
-
-
-//--------------------------------- Instance Methods
-  public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_string & outArgument0,
-                                               class GALGAS_uint & outArgument1,
-                                               class GALGAS_ruleLabelImplementationList & outArgument2,
-                                               C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG void method_last (class GALGAS_string & outArgument0,
-                                              class GALGAS_uint & outArgument1,
-                                              class GALGAS_ruleLabelImplementationList & outArgument2,
-                                              C_Compiler * inCompiler
-                                              COMMA_LOCATION_ARGS) const ;
-
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_ruleLabelImplementationList getter_mLabelImplementationListAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                             C_Compiler * inCompiler
-                                                                                                             COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mNonterminalNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mRuleIndexAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_ruleDeclarationList getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_ruleDeclarationList getter_subListToIndex (const class GALGAS_uint & constinOperand0,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_ruleDeclarationList getter_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
-//--------------------------------- Friend
-
-  friend class cEnumerator_ruleDeclarationList ;
- 
-} ; // End of GALGAS_ruleDeclarationList class
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class cEnumerator_ruleDeclarationList : public cGenericAbstractEnumerator {
-  public : cEnumerator_ruleDeclarationList (const GALGAS_ruleDeclarationList & inEnumeratedObject,
-                                            const typeEnumerationOrder inOrder) ;
-
-//--- Current element access
-  public : class GALGAS_string current_mNonterminalName (LOCATION_ARGS) const ;
-  public : class GALGAS_uint current_mRuleIndex (LOCATION_ARGS) const ;
-  public : class GALGAS_ruleLabelImplementationList current_mLabelImplementationList (LOCATION_ARGS) const ;
-//--- Current element access
-  public : class GALGAS_ruleDeclarationList_2D_element current (LOCATION_ARGS) const ;
-} ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ruleDeclarationList ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                   Phase 1: @ruleDeclarationList_2D_element struct                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-class GALGAS_ruleDeclarationList_2D_element : public AC_GALGAS_root {
-//--------------------------------- Properties
-  public : GALGAS_string mProperty_mNonterminalName ;
-
-  public : GALGAS_uint mProperty_mRuleIndex ;
-
-  public : GALGAS_ruleLabelImplementationList mProperty_mLabelImplementationList ;
-
-//--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public : VIRTUAL_IN_DEBUG void drop (void) ;
-
-//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_ruleDeclarationList_2D_element constructor_default (LOCATION_ARGS) ;
-
-//--------------------------------- Default constructor
-  public : GALGAS_ruleDeclarationList_2D_element (void) ;
-
-//--------------------------------- Virtual destructor (in debug mode)
-  public : virtual ~ GALGAS_ruleDeclarationList_2D_element (void) ;
-
-//--------------------------------- Native constructor
-  public : GALGAS_ruleDeclarationList_2D_element (const GALGAS_string & in_mNonterminalName,
-                                                  const GALGAS_uint & in_mRuleIndex,
-                                                  const GALGAS_ruleLabelImplementationList & in_mLabelImplementationList) ;
-
-//-- Start of generic part --*
-
-//--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
-
-//--------------------------------- Object extraction
-  public : static GALGAS_ruleDeclarationList_2D_element extractObject (const GALGAS_object & inObject,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- GALGAS constructors
-  public : static class GALGAS_ruleDeclarationList_2D_element constructor_new (const class GALGAS_string & inOperand0,
-                                                                               const class GALGAS_uint & inOperand1,
-                                                                               const class GALGAS_ruleLabelImplementationList & inOperand2
-                                                                               COMMA_LOCATION_ARGS) ;
-
-//--------------------------------- Implementation of getter 'description'
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const int32_t inIndentation) const ;
-//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_ruleDeclarationList_2D_element & inOperand) const ;
-
-//--------------------------------- Setters
-
-//--------------------------------- Instance Methods
-//--------------------------------- Class Methods
-
-//--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_ruleLabelImplementationList getter_mLabelImplementationList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mNonterminalName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_uint getter_mRuleIndex (LOCATION_ARGS) const ;
-
-
-//--------------------------------- Optional Methods
-
-//--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
- 
-} ; // End of GALGAS_ruleDeclarationList_2D_element class
-
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ruleDeclarationList_2D_element ;
-
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                    Phase 1: @syntaxDeclarationForGeneration class                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @syntaxDeclarationForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_syntaxDeclarationForGeneration : public GALGAS_semanticDeclarationForGeneration {
 //--- Constructor
@@ -1116,15 +100,15 @@ class GALGAS_syntaxDeclarationForGeneration : public GALGAS_semanticDeclarationF
 } ; // End of GALGAS_syntaxDeclarationForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_syntaxDeclarationForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                           Phase 2: pointer class for @syntaxDeclarationForGeneration class                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @syntaxDeclarationForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGeneration {
 //--- Attributes
@@ -1174,11 +158,11 @@ class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGe
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                     Abstract extension method '@syntaxInstructionAST analyzeSyntaxInstruction'                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@syntaxInstructionAST analyzeSyntaxInstruction'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 typedef void (*extensionMethodSignature_syntaxInstructionAST_analyzeSyntaxInstruction) (const class cPtr_syntaxInstructionAST * inObject,
                                                                                         const class GALGAS_lstring constinArgument0,
@@ -1196,12 +180,12 @@ typedef void (*extensionMethodSignature_syntaxInstructionAST_analyzeSyntaxInstru
                                                                                         class C_Compiler * inCompiler
                                                                                         COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_analyzeSyntaxInstruction (const int32_t inClassIndex,
                                                     extensionMethodSignature_syntaxInstructionAST_analyzeSyntaxInstruction inMethod) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyzeSyntaxInstruction (const class cPtr_syntaxInstructionAST * inObject,
                                                    const GALGAS_lstring constin_inUsefulnessCallerEntityName,
@@ -1219,11 +203,11 @@ void callExtensionMethod_analyzeSyntaxInstruction (const class cPtr_syntaxInstru
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                      Abstract extension method '@abstractInputParameter analyzeInputParameter'                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractInputParameter analyzeInputParameter'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 typedef void (*extensionMethodSignature_abstractInputParameter_analyzeInputParameter) (const class cPtr_abstractInputParameter * inObject,
                                                                                        const class GALGAS_analysisContext constinArgument0,
@@ -1234,12 +218,12 @@ typedef void (*extensionMethodSignature_abstractInputParameter_analyzeInputParam
                                                                                        class C_Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_analyzeInputParameter (const int32_t inClassIndex,
                                                  extensionMethodSignature_abstractInputParameter_analyzeInputParameter inMethod) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyzeInputParameter (const class cPtr_abstractInputParameter * inObject,
                                                 const GALGAS_analysisContext constin_inAnalysisContext,
@@ -1250,11 +234,11 @@ void callExtensionMethod_analyzeInputParameter (const class cPtr_abstractInputPa
                                                 C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//          Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT'          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 typedef void (*extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT) (const class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
                                                                                                                const class GALGAS_analysisContext constinArgument0,
@@ -1263,12 +247,12 @@ typedef void (*extensionMethodSignature_abstractGrammarInstructionSyntaxDirected
                                                                                                                class C_Compiler * inCompiler
                                                                                                                COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_analyzeSDT (const int32_t inClassIndex,
                                       extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_analyzeSDT inMethod) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyzeSDT (const class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
                                      const GALGAS_analysisContext constin_inAnalysisContext,
@@ -1277,11 +261,11 @@ void callExtensionMethod_analyzeSDT (const class cPtr_abstractGrammarInstruction
                                      C_Compiler * inCompiler
                                      COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//         Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode'         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 typedef void (*extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode) (const class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
                                                                                                                  const class GALGAS_bool constinArgument0,
@@ -1291,12 +275,12 @@ typedef void (*extensionMethodSignature_abstractGrammarInstructionSyntaxDirected
                                                                                                                  class C_Compiler * inCompiler
                                                                                                                  COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_generateCode (const int32_t inClassIndex,
                                         extensionMethodSignature_abstractGrammarInstructionSyntaxDirectedTranslationResult_generateCode inMethod) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_generateCode (const class cPtr_abstractGrammarInstructionSyntaxDirectedTranslationResult * inObject,
                                        const GALGAS_bool constin_inGenerateSyntaxDirectedTranslationString,
@@ -1306,11 +290,11 @@ void callExtensionMethod_generateCode (const class cPtr_abstractGrammarInstructi
                                        C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                         Phase 1: @keySortedList sorted list                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @keySortedList sorted list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_keySortedList : public AC_GALGAS_sortedlist {
 //--------------------------------- Default constructor
@@ -1380,9 +364,9 @@ class GALGAS_keySortedList : public AC_GALGAS_sortedlist {
  
 } ; // End of GALGAS_keySortedList class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_keySortedList : public cGenericAbstractEnumerator {
   public : cEnumerator_keySortedList (const GALGAS_keySortedList & inEnumeratedObject,
@@ -1395,15 +379,15 @@ class cEnumerator_keySortedList : public cGenericAbstractEnumerator {
   public : class GALGAS_keySortedList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_keySortedList ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @keySortedList_2D_element struct                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @keySortedList_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_keySortedList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -1468,19 +452,19 @@ class GALGAS_keySortedList_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_keySortedList_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_keySortedList_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        Phase 1: @uselessEntityLocationMap map                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @uselessEntityLocationMap map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_uselessEntityLocationMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_uselessEntityLocationMap : public AC_GALGAS_map {
 //--------------------------------- Default constructor
@@ -1553,9 +537,9 @@ class GALGAS_uselessEntityLocationMap : public AC_GALGAS_map {
  
 } ; // End of GALGAS_uselessEntityLocationMap class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_uselessEntityLocationMap : public cGenericAbstractEnumerator {
   public : cEnumerator_uselessEntityLocationMap (const GALGAS_uselessEntityLocationMap & inEnumeratedObject,
@@ -1568,15 +552,15 @@ class cEnumerator_uselessEntityLocationMap : public cGenericAbstractEnumerator {
   public : class GALGAS_uselessEntityLocationMap_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uselessEntityLocationMap ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                            Phase 2: class for element of '@uselessEntityLocationMap' map                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: class for element of '@uselessEntityLocationMap' map
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cMapElement_uselessEntityLocationMap : public cMapElement {
 //--- Map attributes
@@ -1600,11 +584,11 @@ class cMapElement_uselessEntityLocationMap : public cMapElement {
  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Phase 1: @uselessEntityLocationMap_2D_element struct                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @uselessEntityLocationMap_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_uselessEntityLocationMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -1669,15 +653,15 @@ class GALGAS_uselessEntityLocationMap_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_uselessEntityLocationMap_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uselessEntityLocationMap_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           Phase 1: @ifExpressionAST class                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @ifExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_ifExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -1744,15 +728,15 @@ class GALGAS_ifExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_ifExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_ifExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 2: pointer class for @ifExpressionAST class                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @ifExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_ifExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -1790,11 +774,11 @@ class cPtr_ifExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        Phase 1: @unaryPlusExpressionAST class                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @unaryPlusExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_unaryPlusExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -1849,15 +833,15 @@ class GALGAS_unaryPlusExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_unaryPlusExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryPlusExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                               Phase 2: pointer class for @unaryPlusExpressionAST class                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @unaryPlusExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_unaryPlusExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -1887,11 +871,11 @@ class cPtr_unaryPlusExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Phase 1: @unaryMinusExpressionAST class                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @unaryMinusExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_unaryMinusExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -1946,15 +930,15 @@ class GALGAS_unaryMinusExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_unaryMinusExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryMinusExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              Phase 2: pointer class for @unaryMinusExpressionAST class                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @unaryMinusExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_unaryMinusExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -1984,11 +968,11 @@ class cPtr_unaryMinusExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @actualOutputExpressionList list                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @actualOutputExpressionList list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_actualOutputExpressionList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -2136,9 +1120,9 @@ class GALGAS_actualOutputExpressionList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_actualOutputExpressionList class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_actualOutputExpressionList : public cGenericAbstractEnumerator {
   public : cEnumerator_actualOutputExpressionList (const GALGAS_actualOutputExpressionList & inEnumeratedObject,
@@ -2152,15 +1136,15 @@ class cEnumerator_actualOutputExpressionList : public cGenericAbstractEnumerator
   public : class GALGAS_actualOutputExpressionList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualOutputExpressionList ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Phase 1: @actualOutputExpressionList_2D_element struct                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @actualOutputExpressionList_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_actualOutputExpressionList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -2228,26 +1212,26 @@ class GALGAS_actualOutputExpressionList_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_actualOutputExpressionList_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_actualOutputExpressionList_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                        Extension method '@actualOutputExpressionList enterInSemanticContext'                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Extension method '@actualOutputExpressionList enterInSemanticContext'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 void extensionMethod_enterInSemanticContext (const class GALGAS_actualOutputExpressionList inObject,
                                              class GALGAS_unifiedTypeMap & io_ioTypeMap,
                                              class C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          Phase 1: @trueExpressionAST class                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @trueExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_trueExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -2299,15 +1283,15 @@ class GALGAS_trueExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_trueExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_trueExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Phase 2: pointer class for @trueExpressionAST class                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @trueExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_trueExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -2333,11 +1317,11 @@ class cPtr_trueExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          Phase 1: @falseExpressionAST class                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @falseExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_falseExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -2389,15 +1373,15 @@ class GALGAS_falseExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_falseExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_falseExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Phase 2: pointer class for @falseExpressionAST class                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @falseExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_falseExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -2423,11 +1407,11 @@ class cPtr_falseExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @literalStringExpressionAST class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @literalStringExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_literalStringExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -2485,15 +1469,15 @@ class GALGAS_literalStringExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_literalStringExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_literalStringExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Phase 2: pointer class for @literalStringExpressionAST class                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @literalStringExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_literalStringExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -2523,11 +1507,11 @@ class cPtr_literalStringExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          Phase 1: @equalExpressionAST class                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @equalExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_equalExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -2588,15 +1572,15 @@ class GALGAS_equalExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_equalExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_equalExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Phase 2: pointer class for @equalExpressionAST class                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @equalExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_equalExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -2630,11 +1614,11 @@ class cPtr_equalExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        Phase 1: @notEqualExpressionAST class                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @notEqualExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_notEqualExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -2695,15 +1679,15 @@ class GALGAS_notEqualExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_notEqualExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notEqualExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                               Phase 2: pointer class for @notEqualExpressionAST class                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @notEqualExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_notEqualExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -2737,11 +1721,11 @@ class cPtr_notEqualExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @lowerOrEqualExpressionAST class                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @lowerOrEqualExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_lowerOrEqualExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -2802,15 +1786,15 @@ class GALGAS_lowerOrEqualExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_lowerOrEqualExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lowerOrEqualExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Phase 2: pointer class for @lowerOrEqualExpressionAST class                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @lowerOrEqualExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_lowerOrEqualExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -2844,11 +1828,11 @@ class cPtr_lowerOrEqualExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Phase 1: @greaterOrEqualExpressionAST class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @greaterOrEqualExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_greaterOrEqualExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -2909,15 +1893,15 @@ class GALGAS_greaterOrEqualExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_greaterOrEqualExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_greaterOrEqualExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                            Phase 2: pointer class for @greaterOrEqualExpressionAST class                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @greaterOrEqualExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_greaterOrEqualExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -2951,11 +1935,11 @@ class cPtr_greaterOrEqualExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @strictGreaterExpressionAST class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @strictGreaterExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_strictGreaterExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -3016,15 +2000,15 @@ class GALGAS_strictGreaterExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_strictGreaterExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_strictGreaterExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Phase 2: pointer class for @strictGreaterExpressionAST class                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @strictGreaterExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_strictGreaterExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -3058,11 +2042,11 @@ class cPtr_strictGreaterExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Phase 1: @strictLowerExpressionAST class                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @strictLowerExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_strictLowerExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -3123,15 +2107,15 @@ class GALGAS_strictLowerExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_strictLowerExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_strictLowerExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              Phase 2: pointer class for @strictLowerExpressionAST class                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @strictLowerExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_strictLowerExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -3165,11 +2149,11 @@ class cPtr_strictLowerExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Phase 1: @rightShiftExpressionAST class                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @rightShiftExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_rightShiftExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -3230,15 +2214,15 @@ class GALGAS_rightShiftExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_rightShiftExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_rightShiftExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              Phase 2: pointer class for @rightShiftExpressionAST class                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @rightShiftExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_rightShiftExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -3272,11 +2256,11 @@ class cPtr_rightShiftExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        Phase 1: @leftShiftExpressionAST class                                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @leftShiftExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_leftShiftExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -3337,15 +2321,15 @@ class GALGAS_leftShiftExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_leftShiftExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_leftShiftExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                               Phase 2: pointer class for @leftShiftExpressionAST class                              *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @leftShiftExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_leftShiftExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -3379,11 +2363,11 @@ class cPtr_leftShiftExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           Phase 1: @addExpressionAST class                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @addExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_addExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -3444,15 +2428,15 @@ class GALGAS_addExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_addExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 2: pointer class for @addExpressionAST class                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @addExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_addExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -3486,11 +2470,11 @@ class cPtr_addExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @addExpressionNoOverflowAST class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @addExpressionNoOverflowAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_addExpressionNoOverflowAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -3551,15 +2535,15 @@ class GALGAS_addExpressionNoOverflowAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_addExpressionNoOverflowAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_addExpressionNoOverflowAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Phase 2: pointer class for @addExpressionNoOverflowAST class                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @addExpressionNoOverflowAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_addExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -3593,11 +2577,11 @@ class cPtr_addExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           Phase 1: @subExpressionAST class                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @subExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_subExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -3658,15 +2642,15 @@ class GALGAS_subExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_subExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 2: pointer class for @subExpressionAST class                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @subExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_subExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -3700,11 +2684,11 @@ class cPtr_subExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @subExpressionNoOverflowAST class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @subExpressionNoOverflowAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_subExpressionNoOverflowAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -3765,15 +2749,15 @@ class GALGAS_subExpressionNoOverflowAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_subExpressionNoOverflowAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_subExpressionNoOverflowAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Phase 2: pointer class for @subExpressionNoOverflowAST class                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @subExpressionNoOverflowAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_subExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -3807,11 +2791,11 @@ class cPtr_subExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @collectionValueElementList list                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @collectionValueElementList list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_collectionValueElementList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -3923,9 +2907,9 @@ class GALGAS_collectionValueElementList : public AC_GALGAS_list {
  
 } ; // End of GALGAS_collectionValueElementList class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_collectionValueElementList : public cGenericAbstractEnumerator {
   public : cEnumerator_collectionValueElementList (const GALGAS_collectionValueElementList & inEnumeratedObject,
@@ -3937,15 +2921,15 @@ class cEnumerator_collectionValueElementList : public cGenericAbstractEnumerator
   public : class GALGAS_collectionValueElementList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueElementList ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                    Phase 1: @abstractCollectionValueElement class                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @abstractCollectionValueElement class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_abstractCollectionValueElement : public AC_GALGAS_class {
 //--- Constructor
@@ -3985,15 +2969,15 @@ class GALGAS_abstractCollectionValueElement : public AC_GALGAS_class {
 } ; // End of GALGAS_abstractCollectionValueElement class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractCollectionValueElement ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                           Phase 2: pointer class for @abstractCollectionValueElement class                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @abstractCollectionValueElement class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_abstractCollectionValueElement : public acPtr_class {
 //--- Attributes
@@ -4012,11 +2996,11 @@ class cPtr_abstractCollectionValueElement : public acPtr_class {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Phase 1: @collectionValueElementList_2D_element struct                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @collectionValueElementList_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_collectionValueElementList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -4072,15 +3056,15 @@ class GALGAS_collectionValueElementList_2D_element : public AC_GALGAS_root {
 } ; // End of GALGAS_collectionValueElementList_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueElementList_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                      Phase 1: @expressionCollectionValue class                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @expressionCollectionValue class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_expressionCollectionValue : public GALGAS_abstractCollectionValueElement {
 //--- Constructor
@@ -4135,15 +3119,15 @@ class GALGAS_expressionCollectionValue : public GALGAS_abstractCollectionValueEl
 } ; // End of GALGAS_expressionCollectionValue class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionCollectionValue ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Phase 2: pointer class for @expressionCollectionValue class                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @expressionCollectionValue class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_expressionCollectionValue : public cPtr_abstractCollectionValueElement {
 //--- Attributes
@@ -4173,11 +3157,11 @@ class cPtr_expressionCollectionValue : public cPtr_abstractCollectionValueElemen
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                    Phase 1: @expressionListCollectionValue class                                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @expressionListCollectionValue class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_expressionListCollectionValue : public GALGAS_abstractCollectionValueElement {
 //--- Constructor
@@ -4235,15 +3219,15 @@ class GALGAS_expressionListCollectionValue : public GALGAS_abstractCollectionVal
 } ; // End of GALGAS_expressionListCollectionValue class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionListCollectionValue ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                           Phase 2: pointer class for @expressionListCollectionValue class                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @expressionListCollectionValue class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_expressionListCollectionValue : public cPtr_abstractCollectionValueElement {
 //--- Attributes
@@ -4273,34 +3257,34 @@ class cPtr_expressionListCollectionValue : public cPtr_abstractCollectionValueEl
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                 Abstract extension method '@abstractCollectionValueElement enterInSemanticContext'                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractCollectionValueElement enterInSemanticContext'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 typedef void (*extensionMethodSignature_abstractCollectionValueElement_enterInSemanticContext) (const class cPtr_abstractCollectionValueElement * inObject,
                                                                                                 class GALGAS_unifiedTypeMap & ioArgument0,
                                                                                                 class C_Compiler * inCompiler
                                                                                                 COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_enterInSemanticContext (const int32_t inClassIndex,
                                                   extensionMethodSignature_abstractCollectionValueElement_enterInSemanticContext inMethod) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_enterInSemanticContext (const class cPtr_abstractCollectionValueElement * inObject,
                                                  GALGAS_unifiedTypeMap & io_ioTypeMap,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Abstract extension method '@abstractCollectionValueElement analyze'                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractCollectionValueElement analyze'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 typedef void (*extensionMethodSignature_abstractCollectionValueElement_analyze) (const class cPtr_abstractCollectionValueElement * inObject,
                                                                                  const class GALGAS_lstring constinArgument0,
@@ -4312,12 +3296,12 @@ typedef void (*extensionMethodSignature_abstractCollectionValueElement_analyze) 
                                                                                  class C_Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_analyze (const int32_t inClassIndex,
                                    extensionMethodSignature_abstractCollectionValueElement_analyze inMethod) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_analyze (const class cPtr_abstractCollectionValueElement * inObject,
                                   const GALGAS_lstring constin_inUsefulnessCallerEntityName,
@@ -4329,11 +3313,11 @@ void callExtensionMethod_analyze (const class cPtr_abstractCollectionValueElemen
                                   C_Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Phase 1: @collectionValueElementListForGeneration list                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @collectionValueElementListForGeneration list
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_collectionValueElementListForGeneration : public AC_GALGAS_list {
 //--------------------------------- Default constructor
@@ -4445,9 +3429,9 @@ class GALGAS_collectionValueElementListForGeneration : public AC_GALGAS_list {
  
 } ; // End of GALGAS_collectionValueElementListForGeneration class
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//   Enumerator declaration                                                                                            *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_collectionValueElementListForGeneration : public cGenericAbstractEnumerator {
   public : cEnumerator_collectionValueElementListForGeneration (const GALGAS_collectionValueElementListForGeneration & inEnumeratedObject,
@@ -4459,15 +3443,15 @@ class cEnumerator_collectionValueElementListForGeneration : public cGenericAbstr
   public : class GALGAS_collectionValueElementListForGeneration_2D_element current (LOCATION_ARGS) const ;
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueElementListForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                             Phase 1: @abstractCollectionValueElementForGeneration class                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @abstractCollectionValueElementForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_abstractCollectionValueElementForGeneration : public AC_GALGAS_class {
 //--- Constructor
@@ -4512,15 +3496,15 @@ class GALGAS_abstractCollectionValueElementForGeneration : public AC_GALGAS_clas
 } ; // End of GALGAS_abstractCollectionValueElementForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_abstractCollectionValueElementForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                    Phase 2: pointer class for @abstractCollectionValueElementForGeneration class                    *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @abstractCollectionValueElementForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_abstractCollectionValueElementForGeneration : public acPtr_class {
 //--- Attributes
@@ -4543,11 +3527,11 @@ class cPtr_abstractCollectionValueElementForGeneration : public acPtr_class {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                         Phase 1: @collectionValueElementListForGeneration_2D_element struct                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @collectionValueElementListForGeneration_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_collectionValueElementListForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Properties
@@ -4603,15 +3587,15 @@ class GALGAS_collectionValueElementListForGeneration_2D_element : public AC_GALG
 } ; // End of GALGAS_collectionValueElementListForGeneration_2D_element class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_collectionValueElementListForGeneration_2D_element ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//       Abstract extension method '@abstractCollectionValueElementForGeneration generateCollectionElementCode'        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@abstractCollectionValueElementForGeneration generateCollectionElementCode'
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 typedef void (*extensionMethodSignature_abstractCollectionValueElementForGeneration_generateCollectionElementCode) (const class cPtr_abstractCollectionValueElementForGeneration * inObject,
                                                                                                                     const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
@@ -4623,12 +3607,12 @@ typedef void (*extensionMethodSignature_abstractCollectionValueElementForGenerat
                                                                                                                     class C_Compiler * inCompiler
                                                                                                                     COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionMethod_generateCollectionElementCode (const int32_t inClassIndex,
                                                          extensionMethodSignature_abstractCollectionValueElementForGeneration_generateCollectionElementCode inMethod) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 void callExtensionMethod_generateCollectionElementCode (const class cPtr_abstractCollectionValueElementForGeneration * inObject,
                                                         const GALGAS_unifiedTypeMap_2D_proxy constin_inTargetType,
@@ -4640,11 +3624,11 @@ void callExtensionMethod_generateCollectionElementCode (const class cPtr_abstrac
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Phase 1: @expressionListCollectionForGeneration class                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @expressionListCollectionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_expressionListCollectionForGeneration : public GALGAS_abstractCollectionValueElementForGeneration {
 //--- Constructor
@@ -4697,15 +3681,15 @@ class GALGAS_expressionListCollectionForGeneration : public GALGAS_abstractColle
 } ; // End of GALGAS_expressionListCollectionForGeneration class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_expressionListCollectionForGeneration ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Phase 2: pointer class for @expressionListCollectionForGeneration class                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @expressionListCollectionForGeneration class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_expressionListCollectionForGeneration : public cPtr_abstractCollectionValueElementForGeneration {
 //--- Attributes
@@ -4732,11 +3716,11 @@ class cPtr_expressionListCollectionForGeneration : public cPtr_abstractCollectio
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                         Phase 1: @selfInExpressionAST class                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @selfInExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_selfInExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -4788,15 +3772,15 @@ class GALGAS_selfInExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_selfInExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfInExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Phase 2: pointer class for @selfInExpressionAST class                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @selfInExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_selfInExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -4822,11 +3806,11 @@ class cPtr_selfInExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           Phase 1: @notExpressionAST class                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @notExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_notExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -4881,15 +3865,15 @@ class GALGAS_notExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_notExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_notExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 2: pointer class for @notExpressionAST class                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @notExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_notExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -4919,11 +3903,11 @@ class cPtr_notExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                          Phase 1: @tildeExpressionAST class                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @tildeExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_tildeExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -4978,15 +3962,15 @@ class GALGAS_tildeExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_tildeExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_tildeExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                 Phase 2: pointer class for @tildeExpressionAST class                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @tildeExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_tildeExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -5016,11 +4000,11 @@ class cPtr_tildeExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                   Phase 1: @unaryWrappingMinusExpressionAST class                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @unaryWrappingMinusExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_unaryWrappingMinusExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -5075,15 +4059,15 @@ class GALGAS_unaryWrappingMinusExpressionAST : public GALGAS_semanticExpressionA
 } ; // End of GALGAS_unaryWrappingMinusExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unaryWrappingMinusExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                          Phase 2: pointer class for @unaryWrappingMinusExpressionAST class                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @unaryWrappingMinusExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_unaryWrappingMinusExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -5113,11 +4097,11 @@ class cPtr_unaryWrappingMinusExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           Phase 1: @orExpressionAST class                                           *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @orExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_orExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -5178,15 +4162,15 @@ class GALGAS_orExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_orExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 2: pointer class for @orExpressionAST class                                  *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @orExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_orExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -5220,11 +4204,11 @@ class cPtr_orExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                         Phase 1: @orShortExpressionAST class                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @orShortExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_orShortExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -5285,15 +4269,15 @@ class GALGAS_orShortExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_orShortExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_orShortExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Phase 2: pointer class for @orShortExpressionAST class                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @orShortExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_orShortExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -5327,11 +4311,11 @@ class cPtr_orShortExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           Phase 1: @xorExpressionAST class                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @xorExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_xorExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -5392,15 +4376,15 @@ class GALGAS_xorExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_xorExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_xorExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 2: pointer class for @xorExpressionAST class                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @xorExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_xorExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -5434,11 +4418,11 @@ class cPtr_xorExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Phase 1: @closedSliceExpressionAST class                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @closedSliceExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_closedSliceExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -5499,15 +4483,15 @@ class GALGAS_closedSliceExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_closedSliceExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_closedSliceExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              Phase 2: pointer class for @closedSliceExpressionAST class                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @closedSliceExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_closedSliceExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -5541,11 +4525,11 @@ class cPtr_closedSliceExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                       Phase 1: @openedSliceExpressionAST class                                      *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @openedSliceExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_openedSliceExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -5606,15 +4590,15 @@ class GALGAS_openedSliceExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_openedSliceExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_openedSliceExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                              Phase 2: pointer class for @openedSliceExpressionAST class                             *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @openedSliceExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_openedSliceExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -5648,11 +4632,11 @@ class cPtr_openedSliceExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        Phase 1: @andShortExpressionAST class                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @andShortExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_andShortExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -5713,15 +4697,15 @@ class GALGAS_andShortExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_andShortExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andShortExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                               Phase 2: pointer class for @andShortExpressionAST class                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @andShortExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_andShortExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -5755,11 +4739,11 @@ class cPtr_andShortExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                           Phase 1: @andExpressionAST class                                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @andExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_andExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -5820,15 +4804,15 @@ class GALGAS_andExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_andExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_andExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                  Phase 2: pointer class for @andExpressionAST class                                 *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @andExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_andExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -5862,11 +4846,11 @@ class cPtr_andExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                     Phase 1: @multiplicationExpressionAST class                                     *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @multiplicationExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_multiplicationExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -5927,15 +4911,15 @@ class GALGAS_multiplicationExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_multiplicationExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                            Phase 2: pointer class for @multiplicationExpressionAST class                            *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @multiplicationExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_multiplicationExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -5969,11 +4953,11 @@ class cPtr_multiplicationExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Phase 1: @multiplicationExpressionNoOverflowAST class                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @multiplicationExpressionNoOverflowAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_multiplicationExpressionNoOverflowAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -6034,15 +5018,15 @@ class GALGAS_multiplicationExpressionNoOverflowAST : public GALGAS_semanticExpre
 } ; // End of GALGAS_multiplicationExpressionNoOverflowAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_multiplicationExpressionNoOverflowAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                       Phase 2: pointer class for @multiplicationExpressionNoOverflowAST class                       *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @multiplicationExpressionNoOverflowAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_multiplicationExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -6076,11 +5060,11 @@ class cPtr_multiplicationExpressionNoOverflowAST : public cPtr_semanticExpressio
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                        Phase 1: @divisionExpressionAST class                                        *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @divisionExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_divisionExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -6141,15 +5125,15 @@ class GALGAS_divisionExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_divisionExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                               Phase 2: pointer class for @divisionExpressionAST class                               *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @divisionExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_divisionExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -6183,11 +5167,11 @@ class cPtr_divisionExpressionAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                   Phase 1: @divisionExpressionNoOverflowAST class                                   *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @divisionExpressionNoOverflowAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_divisionExpressionNoOverflowAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -6248,15 +5232,15 @@ class GALGAS_divisionExpressionNoOverflowAST : public GALGAS_semanticExpressionA
 } ; // End of GALGAS_divisionExpressionNoOverflowAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divisionExpressionNoOverflowAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                          Phase 2: pointer class for @divisionExpressionNoOverflowAST class                          *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @divisionExpressionNoOverflowAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_divisionExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -6290,11 +5274,11 @@ class cPtr_divisionExpressionNoOverflowAST : public cPtr_semanticExpressionAST {
 
 } ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                         Phase 1: @moduloExpressionAST class                                         *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @moduloExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class GALGAS_moduloExpressionAST : public GALGAS_semanticExpressionAST {
 //--- Constructor
@@ -6355,15 +5339,15 @@ class GALGAS_moduloExpressionAST : public GALGAS_semanticExpressionAST {
 } ; // End of GALGAS_moduloExpressionAST class
 
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_moduloExpressionAST ;
 
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
-//                                                                                                                     *
-//                                Phase 2: pointer class for @moduloExpressionAST class                                *
-//                                                                                                                     *
-//—————————————————————————————————————————————————————————————————————————————————————————————————————————————————————*
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @moduloExpressionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_moduloExpressionAST : public cPtr_semanticExpressionAST {
 //--- Attributes
@@ -6396,4 +5380,819 @@ class cPtr_moduloExpressionAST : public cPtr_semanticExpressionAST {
   public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
 
 } ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @variableMap_2D_proxy map proxy
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_variableMap_2D_proxy : public AC_GALGAS_uniqueMapProxy {
+//--------------------------------- Default constructor
+  public : GALGAS_variableMap_2D_proxy (void) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_variableMap_2D_proxy extractObject (const GALGAS_object & inObject,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_variableMap_2D_proxy constructor_neutralAccess (const class GALGAS_variableMap & inOperand0,
+                                                                               const class GALGAS_lstring & inOperand1,
+                                                                               class C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
+
+  public : static class GALGAS_variableMap_2D_proxy constructor_null (LOCATION_ARGS) ;
+
+  public : static class GALGAS_variableMap_2D_proxy constructor_searchForDropAccess (const class GALGAS_variableMap & inOperand0,
+                                                                                     const class GALGAS_lstring & inOperand1,
+                                                                                     class C_Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+  public : static class GALGAS_variableMap_2D_proxy constructor_searchForReadAccess (const class GALGAS_variableMap & inOperand0,
+                                                                                     const class GALGAS_lstring & inOperand1,
+                                                                                     class C_Compiler * inCompiler
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+  public : static class GALGAS_variableMap_2D_proxy constructor_searchForReadWriteAccess (const class GALGAS_variableMap & inOperand0,
+                                                                                          const class GALGAS_lstring & inOperand1,
+                                                                                          class C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+  public : static class GALGAS_variableMap_2D_proxy constructor_searchForWriteAccess (const class GALGAS_variableMap & inOperand0,
+                                                                                      const class GALGAS_lstring & inOperand1,
+                                                                                      class C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+  public : static void class_method_makeOptionalProxy (class GALGAS_variableMap & ioArgument0,
+                                                       class GALGAS_lstring constinArgument1,
+                                                       class GALGAS_variableMap_2D_proxy & outArgument2
+                                                       COMMA_LOCATION_ARGS) ;
+
+  public : static void class_method_makeProxy (class GALGAS_variableMap & ioArgument0,
+                                               class GALGAS_lstring constinArgument1,
+                                               class GALGAS_variableMap_2D_proxy & outArgument2
+                                               COMMA_LOCATION_ARGS) ;
+
+  public : static void class_method_makeProxyFromString (class GALGAS_variableMap & ioArgument0,
+                                                         class GALGAS_string constinArgument1,
+                                                         class GALGAS_variableMap_2D_proxy & outArgument2
+                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mCppName (C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mNameForCheckingFormalParameterUsing (C_Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mTypeProxy (C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_variableMap_2D_proxy class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_variableMap_2D_proxy ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Abstract extension method '@semanticExpressionAST analyzeSemanticExpression'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+typedef void (*extensionMethodSignature_semanticExpressionAST_analyzeSemanticExpression) (const class cPtr_semanticExpressionAST * inObject,
+                                                                                          const class GALGAS_lstring constinArgument0,
+                                                                                          class GALGAS_usefulEntitiesGraph & ioArgument1,
+                                                                                          const class GALGAS_unifiedTypeMap_2D_proxy constinArgument2,
+                                                                                          const class GALGAS_analysisContext constinArgument3,
+                                                                                          class GALGAS_variableMap & ioArgument4,
+                                                                                          class GALGAS_semanticExpressionForGeneration & outArgument5,
+                                                                                          class C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void enterExtensionMethod_analyzeSemanticExpression (const int32_t inClassIndex,
+                                                     extensionMethodSignature_semanticExpressionAST_analyzeSemanticExpression inMethod) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void callExtensionMethod_analyzeSemanticExpression (const class cPtr_semanticExpressionAST * inObject,
+                                                    const GALGAS_lstring constin_inUsefulnessCallerEntityName,
+                                                    GALGAS_usefulEntitiesGraph & io_ioUsefulEntitiesGraph,
+                                                    const GALGAS_unifiedTypeMap_2D_proxy constin_inType,
+                                                    const GALGAS_analysisContext constin_inAnalysisContext,
+                                                    GALGAS_variableMap & io_ioVariableMap,
+                                                    GALGAS_semanticExpressionForGeneration & out_outExpression,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @castInstructionBranchListAST list
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_castInstructionBranchListAST : public AC_GALGAS_list {
+//--------------------------------- Default constructor
+  public : GALGAS_castInstructionBranchListAST (void) ;
+
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_castInstructionBranchListAST (const capCollectionElementArray & inSharedArray) ;
+
+//--------------------------------- Element constructor
+  public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                  const class GALGAS_lstring & in_mTypeName,
+                                                  const class GALGAS_lstring & in_mConstantVarName,
+                                                  const class GALGAS_semanticInstructionListAST & in_mInstructionList,
+                                                  const class GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
+                                                  const class GALGAS_location & in_mEndOfInstructions
+                                                  COMMA_LOCATION_ARGS) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_castInstructionBranchListAST extractObject (const GALGAS_object & inObject,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_castInstructionBranchListAST constructor_emptyList (LOCATION_ARGS) ;
+
+  public : static class GALGAS_castInstructionBranchListAST constructor_listWithValue (const class GALGAS_lstring & inOperand0,
+                                                                                       const class GALGAS_lstring & inOperand1,
+                                                                                       const class GALGAS_semanticInstructionListAST & inOperand2,
+                                                                                       const class GALGAS_dynamicTypeComparisonKind & inOperand3,
+                                                                                       const class GALGAS_location & inOperand4
+                                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_castInstructionBranchListAST inOperand,
+                                                       class C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
+                                                      const class GALGAS_lstring & inOperand1,
+                                                      const class GALGAS_semanticInstructionListAST & inOperand2,
+                                                      const class GALGAS_dynamicTypeComparisonKind & inOperand3,
+                                                      const class GALGAS_location & inOperand4
+                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public : VIRTUAL_IN_DEBUG GALGAS_castInstructionBranchListAST add_operation (const GALGAS_castInstructionBranchListAST & inOperand,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_castInstructionBranchListAST_2D_element inArgument0,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_lstring constinArgument0,
+                                                       class GALGAS_lstring constinArgument1,
+                                                       class GALGAS_semanticInstructionListAST constinArgument2,
+                                                       class GALGAS_dynamicTypeComparisonKind constinArgument3,
+                                                       class GALGAS_location constinArgument4,
+                                                       class GALGAS_uint constinArgument5,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_lstring & outArgument0,
+                                                  class GALGAS_lstring & outArgument1,
+                                                  class GALGAS_semanticInstructionListAST & outArgument2,
+                                                  class GALGAS_dynamicTypeComparisonKind & outArgument3,
+                                                  class GALGAS_location & outArgument4,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_lstring & outArgument0,
+                                                 class GALGAS_lstring & outArgument1,
+                                                 class GALGAS_semanticInstructionListAST & outArgument2,
+                                                 class GALGAS_dynamicTypeComparisonKind & outArgument3,
+                                                 class GALGAS_location & outArgument4,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_lstring & outArgument0,
+                                                       class GALGAS_lstring & outArgument1,
+                                                       class GALGAS_semanticInstructionListAST & outArgument2,
+                                                       class GALGAS_dynamicTypeComparisonKind & outArgument3,
+                                                       class GALGAS_location & outArgument4,
+                                                       class GALGAS_uint constinArgument5,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMConstantVarNameAtIndex (class GALGAS_lstring constinArgument0,
+                                                                    class GALGAS_uint constinArgument1,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMEndOfInstructionsAtIndex (class GALGAS_location constinArgument0,
+                                                                      class GALGAS_uint constinArgument1,
+                                                                      C_Compiler * inCompiler
+                                                                      COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMInstructionListAtIndex (class GALGAS_semanticInstructionListAST constinArgument0,
+                                                                    class GALGAS_uint constinArgument1,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMTypeComparisonKindAtIndex (class GALGAS_dynamicTypeComparisonKind constinArgument0,
+                                                                       class GALGAS_uint constinArgument1,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMTypeNameAtIndex (class GALGAS_lstring constinArgument0,
+                                                             class GALGAS_uint constinArgument1,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstring & outArgument0,
+                                               class GALGAS_lstring & outArgument1,
+                                               class GALGAS_semanticInstructionListAST & outArgument2,
+                                               class GALGAS_dynamicTypeComparisonKind & outArgument3,
+                                               class GALGAS_location & outArgument4,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstring & outArgument0,
+                                              class GALGAS_lstring & outArgument1,
+                                              class GALGAS_semanticInstructionListAST & outArgument2,
+                                              class GALGAS_dynamicTypeComparisonKind & outArgument3,
+                                              class GALGAS_location & outArgument4,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mConstantVarNameAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                 C_Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfInstructionsAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST getter_mInstructionListAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_dynamicTypeComparisonKind getter_mTypeComparisonKindAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                      C_Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mTypeNameAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_castInstructionBranchListAST getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
+                                                                                               C_Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_castInstructionBranchListAST getter_subListToIndex (const class GALGAS_uint & constinOperand0,
+                                                                                             C_Compiler * inCompiler
+                                                                                             COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_castInstructionBranchListAST getter_subListWithRange (const class GALGAS_range & constinOperand0,
+                                                                                               C_Compiler * inCompiler
+                                                                                               COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+//--------------------------------- Friend
+
+  friend class cEnumerator_castInstructionBranchListAST ;
+ 
+} ; // End of GALGAS_castInstructionBranchListAST class
+
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
+
+class cEnumerator_castInstructionBranchListAST : public cGenericAbstractEnumerator {
+  public : cEnumerator_castInstructionBranchListAST (const GALGAS_castInstructionBranchListAST & inEnumeratedObject,
+                                                     const typeEnumerationOrder inOrder) ;
+
+//--- Current element access
+  public : class GALGAS_lstring current_mTypeName (LOCATION_ARGS) const ;
+  public : class GALGAS_lstring current_mConstantVarName (LOCATION_ARGS) const ;
+  public : class GALGAS_semanticInstructionListAST current_mInstructionList (LOCATION_ARGS) const ;
+  public : class GALGAS_dynamicTypeComparisonKind current_mTypeComparisonKind (LOCATION_ARGS) const ;
+  public : class GALGAS_location current_mEndOfInstructions (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_castInstructionBranchListAST_2D_element current (LOCATION_ARGS) const ;
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBranchListAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @castInstructionBranchListAST_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_castInstructionBranchListAST_2D_element : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public : GALGAS_lstring mProperty_mTypeName ;
+
+  public : GALGAS_lstring mProperty_mConstantVarName ;
+
+  public : GALGAS_semanticInstructionListAST mProperty_mInstructionList ;
+
+  public : GALGAS_dynamicTypeComparisonKind mProperty_mTypeComparisonKind ;
+
+  public : GALGAS_location mProperty_mEndOfInstructions ;
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_castInstructionBranchListAST_2D_element (void) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public : virtual ~ GALGAS_castInstructionBranchListAST_2D_element (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_castInstructionBranchListAST_2D_element (const GALGAS_lstring & in_mTypeName,
+                                                           const GALGAS_lstring & in_mConstantVarName,
+                                                           const GALGAS_semanticInstructionListAST & in_mInstructionList,
+                                                           const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
+                                                           const GALGAS_location & in_mEndOfInstructions) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_castInstructionBranchListAST_2D_element extractObject (const GALGAS_object & inObject,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_castInstructionBranchListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                        const class GALGAS_lstring & inOperand1,
+                                                                                        const class GALGAS_semanticInstructionListAST & inOperand2,
+                                                                                        const class GALGAS_dynamicTypeComparisonKind & inOperand3,
+                                                                                        const class GALGAS_location & inOperand4
+                                                                                        COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_castInstructionBranchListAST_2D_element & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mConstantVarName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfInstructions (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST getter_mInstructionList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_dynamicTypeComparisonKind getter_mTypeComparisonKind (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mTypeName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_castInstructionBranchListAST_2D_element class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBranchListAST_2D_element ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @structuredCastInstructionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_structuredCastInstructionAST : public GALGAS_semanticInstructionAST {
+//--- Constructor
+  public : GALGAS_structuredCastInstructionAST (void) ;
+
+//---
+  public : inline const class cPtr_structuredCastInstructionAST * ptr (void) const { return (const cPtr_structuredCastInstructionAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_structuredCastInstructionAST (const cPtr_structuredCastInstructionAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_structuredCastInstructionAST extractObject (const GALGAS_object & inObject,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_structuredCastInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                             const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                             const class GALGAS_castInstructionBranchListAST & inOperand2,
+                                                                             const class GALGAS_semanticInstructionListAST & inOperand3,
+                                                                             const class GALGAS_location & inOperand4
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_structuredCastInstructionAST & inOperand) const ;
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMCastExpression (class GALGAS_semanticExpressionAST inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMCastInstructionBranchList (class GALGAS_castInstructionBranchListAST inArgument0
+                                                                       COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMElseInstructionList (class GALGAS_semanticInstructionListAST inArgument0
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMEndOfCastInstruction (class GALGAS_location inArgument0
+                                                                  COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mCastExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_castInstructionBranchListAST getter_mCastInstructionBranchList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListAST getter_mElseInstructionList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location getter_mEndOfCastInstruction (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_structuredCastInstructionAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structuredCastInstructionAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @structuredCastInstructionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_structuredCastInstructionAST : public cPtr_semanticInstructionAST {
+//--- Attributes
+  public : GALGAS_semanticExpressionAST mProperty_mCastExpression ;
+  public : GALGAS_castInstructionBranchListAST mProperty_mCastInstructionBranchList ;
+  public : GALGAS_semanticInstructionListAST mProperty_mElseInstructionList ;
+  public : GALGAS_location mProperty_mEndOfCastInstruction ;
+
+//--- Constructor
+  public : cPtr_structuredCastInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                              const GALGAS_semanticExpressionAST & in_mCastExpression,
+                                              const GALGAS_castInstructionBranchListAST & in_mCastInstructionBranchList,
+                                              const GALGAS_semanticInstructionListAST & in_mElseInstructionList,
+                                              const GALGAS_location & in_mEndOfCastInstruction
+                                              COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST getter_mCastExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMCastExpression (GALGAS_semanticExpressionAST inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_castInstructionBranchListAST getter_mCastInstructionBranchList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMCastInstructionBranchList (GALGAS_castInstructionBranchListAST inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListAST getter_mElseInstructionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMElseInstructionList (GALGAS_semanticInstructionListAST inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mEndOfCastInstruction (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMEndOfCastInstruction (GALGAS_location inValue COMMA_LOCATION_ARGS) ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @castInstructionBranchListForGeneration list
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_castInstructionBranchListForGeneration : public AC_GALGAS_list {
+//--------------------------------- Default constructor
+  public : GALGAS_castInstructionBranchListForGeneration (void) ;
+
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_castInstructionBranchListForGeneration (const capCollectionElementArray & inSharedArray) ;
+
+//--------------------------------- Element constructor
+  public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                  const class GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
+                                                  const class GALGAS_unifiedTypeMap_2D_proxy & in_mType,
+                                                  const class GALGAS_string & in_mCastedVarCppName,
+                                                  const class GALGAS_semanticInstructionListForGeneration & in_mInstructionList
+                                                  COMMA_LOCATION_ARGS) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_castInstructionBranchListForGeneration extractObject (const GALGAS_object & inObject,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_castInstructionBranchListForGeneration constructor_emptyList (LOCATION_ARGS) ;
+
+  public : static class GALGAS_castInstructionBranchListForGeneration constructor_listWithValue (const class GALGAS_dynamicTypeComparisonKind & inOperand0,
+                                                                                                 const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                                                                 const class GALGAS_string & inOperand2,
+                                                                                                 const class GALGAS_semanticInstructionListForGeneration & inOperand3
+                                                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with expression)
+  public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_castInstructionBranchListForGeneration inOperand,
+                                                       class C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- += operator (with list of field expressions)
+  public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_dynamicTypeComparisonKind & inOperand0,
+                                                      const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                      const class GALGAS_string & inOperand2,
+                                                      const class GALGAS_semanticInstructionListForGeneration & inOperand3
+                                                      COMMA_LOCATION_ARGS) ;
+//--------------------------------- + operator
+  public : VIRTUAL_IN_DEBUG GALGAS_castInstructionBranchListForGeneration add_operation (const GALGAS_castInstructionBranchListForGeneration & inOperand,
+                                                                                         C_Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_append (class GALGAS_castInstructionBranchListForGeneration_2D_element inArgument0,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_insertAtIndex (class GALGAS_dynamicTypeComparisonKind constinArgument0,
+                                                       class GALGAS_unifiedTypeMap_2D_proxy constinArgument1,
+                                                       class GALGAS_string constinArgument2,
+                                                       class GALGAS_semanticInstructionListForGeneration constinArgument3,
+                                                       class GALGAS_uint constinArgument4,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_popFirst (class GALGAS_dynamicTypeComparisonKind & outArgument0,
+                                                  class GALGAS_unifiedTypeMap_2D_proxy & outArgument1,
+                                                  class GALGAS_string & outArgument2,
+                                                  class GALGAS_semanticInstructionListForGeneration & outArgument3,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_popLast (class GALGAS_dynamicTypeComparisonKind & outArgument0,
+                                                 class GALGAS_unifiedTypeMap_2D_proxy & outArgument1,
+                                                 class GALGAS_string & outArgument2,
+                                                 class GALGAS_semanticInstructionListForGeneration & outArgument3,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_removeAtIndex (class GALGAS_dynamicTypeComparisonKind & outArgument0,
+                                                       class GALGAS_unifiedTypeMap_2D_proxy & outArgument1,
+                                                       class GALGAS_string & outArgument2,
+                                                       class GALGAS_semanticInstructionListForGeneration & outArgument3,
+                                                       class GALGAS_uint constinArgument4,
+                                                       C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMCastedVarCppNameAtIndex (class GALGAS_string constinArgument0,
+                                                                     class GALGAS_uint constinArgument1,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMInstructionListAtIndex (class GALGAS_semanticInstructionListForGeneration constinArgument0,
+                                                                    class GALGAS_uint constinArgument1,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMTypeAtIndex (class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
+                                                         class GALGAS_uint constinArgument1,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMTypeComparisonKindAtIndex (class GALGAS_dynamicTypeComparisonKind constinArgument0,
+                                                                       class GALGAS_uint constinArgument1,
+                                                                       C_Compiler * inCompiler
+                                                                       COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+  public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_dynamicTypeComparisonKind & outArgument0,
+                                               class GALGAS_unifiedTypeMap_2D_proxy & outArgument1,
+                                               class GALGAS_string & outArgument2,
+                                               class GALGAS_semanticInstructionListForGeneration & outArgument3,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG void method_last (class GALGAS_dynamicTypeComparisonKind & outArgument0,
+                                              class GALGAS_unifiedTypeMap_2D_proxy & outArgument1,
+                                              class GALGAS_string & outArgument2,
+                                              class GALGAS_semanticInstructionListForGeneration & outArgument3,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
+
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mCastedVarCppNameAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                 C_Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration getter_mInstructionListAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                              C_Compiler * inCompiler
+                                                                                                              COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mTypeAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_dynamicTypeComparisonKind getter_mTypeComparisonKindAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                      C_Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_castInstructionBranchListForGeneration getter_subListFromIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                         C_Compiler * inCompiler
+                                                                                                         COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_castInstructionBranchListForGeneration getter_subListToIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                       C_Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_castInstructionBranchListForGeneration getter_subListWithRange (const class GALGAS_range & constinOperand0,
+                                                                                                         C_Compiler * inCompiler
+                                                                                                         COMMA_LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+//--------------------------------- Friend
+
+  friend class cEnumerator_castInstructionBranchListForGeneration ;
+ 
+} ; // End of GALGAS_castInstructionBranchListForGeneration class
+
+//----------------------------------------------------------------------------------------------------------------------
+//   Enumerator declaration                                                                      
+//----------------------------------------------------------------------------------------------------------------------
+
+class cEnumerator_castInstructionBranchListForGeneration : public cGenericAbstractEnumerator {
+  public : cEnumerator_castInstructionBranchListForGeneration (const GALGAS_castInstructionBranchListForGeneration & inEnumeratedObject,
+                                                               const typeEnumerationOrder inOrder) ;
+
+//--- Current element access
+  public : class GALGAS_dynamicTypeComparisonKind current_mTypeComparisonKind (LOCATION_ARGS) const ;
+  public : class GALGAS_unifiedTypeMap_2D_proxy current_mType (LOCATION_ARGS) const ;
+  public : class GALGAS_string current_mCastedVarCppName (LOCATION_ARGS) const ;
+  public : class GALGAS_semanticInstructionListForGeneration current_mInstructionList (LOCATION_ARGS) const ;
+//--- Current element access
+  public : class GALGAS_castInstructionBranchListForGeneration_2D_element current (LOCATION_ARGS) const ;
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBranchListForGeneration ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @castInstructionBranchListForGeneration_2D_element struct
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_castInstructionBranchListForGeneration_2D_element : public AC_GALGAS_root {
+//--------------------------------- Properties
+  public : GALGAS_dynamicTypeComparisonKind mProperty_mTypeComparisonKind ;
+
+  public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mType ;
+
+  public : GALGAS_string mProperty_mCastedVarCppName ;
+
+  public : GALGAS_semanticInstructionListForGeneration mProperty_mInstructionList ;
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_castInstructionBranchListForGeneration_2D_element (void) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public : virtual ~ GALGAS_castInstructionBranchListForGeneration_2D_element (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_castInstructionBranchListForGeneration_2D_element (const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
+                                                                     const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
+                                                                     const GALGAS_string & in_mCastedVarCppName,
+                                                                     const GALGAS_semanticInstructionListForGeneration & in_mInstructionList) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_castInstructionBranchListForGeneration_2D_element extractObject (const GALGAS_object & inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_castInstructionBranchListForGeneration_2D_element constructor_new (const class GALGAS_dynamicTypeComparisonKind & inOperand0,
+                                                                                                  const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                                                                  const class GALGAS_string & inOperand2,
+                                                                                                  const class GALGAS_semanticInstructionListForGeneration & inOperand3
+                                                                                                  COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of getter 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_castInstructionBranchListForGeneration_2D_element & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mCastedVarCppName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration getter_mInstructionList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mType (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_dynamicTypeComparisonKind getter_mTypeComparisonKind (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_castInstructionBranchListForGeneration_2D_element class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_castInstructionBranchListForGeneration_2D_element ;
 
