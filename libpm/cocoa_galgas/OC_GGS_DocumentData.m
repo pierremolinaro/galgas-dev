@@ -2,9 +2,9 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2012, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 2012, ..., 2020 Pierre Molinaro.
 //
-//  e-mail : pcmolinaro@free.fr
+//  e-mail : pierre@pcmolinaro.name
 //
 //  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General
 //  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)
@@ -181,9 +181,9 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 - (void) readDocumentFromFile {
 //--- Try UTF8
   NSString * source = [[NSString alloc]
-    initWithContentsOfURL:fileURL
-    encoding:mFileEncoding
-    error:nil
+    initWithContentsOfURL: fileURL
+    encoding: mFileEncoding
+    error: nil
   ] ;
 //--- If not UTF8, try any encoding
   if (source == nil) {
@@ -216,10 +216,10 @@ static NSMutableDictionary * gDocumentDataDictionary ;
   }
 //--- Delegate for syntax coloring
   mTextSyntaxColoring = [[OC_GGS_TextSyntaxColoring alloc]
-    initWithSourceString:source
-    tokenizer:tokenizerForExtension (fileURL.absoluteString.pathExtension)
-    documentData:self
-    issueArray:nil // mIssueArrayController.arrangedObjects
+    initWithSourceString:  source
+    tokenizer: tokenizerForExtension (fileURL.absoluteString.pathExtension)
+    documentData: self
+    issueArray: nil // mIssueArrayController.arrangedObjects
   ] ;
 //---
   if (source != nil) {
@@ -242,7 +242,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
       fileURL = inDocumentURL ;
       mFileEncoding = NSUTF8StringEncoding ;
       [self readDocumentFromFile] ;
-  //    addFileEventStreamForDocument (self) ;  // §§
+      addFileEventStreamForDocument (self) ;  // §§
     }
     return self ;
   }
@@ -326,8 +326,8 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 
   - (OC_GGS_TextDisplayDescriptor *) newSourceDisplayDescriptorForDocument: (OC_GGS_Document *) inDocumentUsedForDisplaying {
     OC_GGS_TextDisplayDescriptor * tdd = [[OC_GGS_TextDisplayDescriptor alloc]
-      initWithDocumentData:self
-      displayDocument:inDocumentUsedForDisplaying
+      initWithDocumentData: self
+      displayDocument: inDocumentUsedForDisplaying
     ] ;
     return tdd ;
   }
@@ -383,11 +383,11 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 
   - (void) save {
     if (mTextSyntaxColoring.isDirty) {
-  //    removeFileEventStreamForDocument (self) ;  // §§
+ //     removeFileEventStreamForDocument (self) ;  // §§
       if (nil == self.document) {
-        [self performSaveToURL:nil] ;
+        [self performSaveToURL: nil] ;
       }else{
-        [self.document saveDocument:nil] ;
+        [self.document saveDocument: nil] ;
       }
  //     addFileEventStreamForDocument (self) ;  // §§
     }
@@ -411,12 +411,14 @@ static NSMutableDictionary * gDocumentDataDictionary ;
     NSString * filePath = self.fileURL.path ;
     NSError * error = nil ;
     NSString * newContents = [NSString
-      stringWithContentsOfFile:filePath
-      encoding:NSUTF8StringEncoding
-      error:& error
+      stringWithContentsOfFile: filePath
+      encoding: NSUTF8StringEncoding
+      error: & error
     ] ;
     if (error == nil) {
-      [self replaceSourceStringWithString:newContents] ;
+    // https://stackoverflow.com/questions/25810749/how-can-i-suppress-the-autosave-the-file-has-been-changed-by-another-applicatio
+      [self.document revertDocumentToSaved: self.document] ;
+      [self replaceSourceStringWithString: newContents] ;
     }else{
       [NSApp presentError:error] ;
     }

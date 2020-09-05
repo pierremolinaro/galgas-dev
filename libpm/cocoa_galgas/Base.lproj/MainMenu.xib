@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="101003" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.3"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -343,7 +343,7 @@
             <rect key="contentRect" x="316" y="243" width="600" height="560"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="500" height="500"/>
-            <view key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="210">
+            <view key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="210">
                 <rect key="frame" x="0.0" y="0.0" width="600" height="560"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -392,26 +392,27 @@
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                     </button>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1500">
+                                                    <button ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1500">
                                                         <rect key="frame" x="16" y="38" width="141" height="18"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <buttonCell key="cell" type="check" title="Enable Completion" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="1501">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                     </button>
-                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1553">
+                                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1553">
                                                         <rect key="frame" x="15" y="15" width="100" height="17"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="17" id="COJ-hs-2XN"/>
+                                                            <constraint firstAttribute="width" constant="96" id="ufP-NL-d1d"/>
+                                                        </constraints>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Tab key inserts" id="1554">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1555">
+                                                    <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1555">
                                                         <rect key="frame" x="120" y="12" width="42" height="22"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" drawsBackground="YES" id="1556">
                                                             <numberFormatter key="formatter" formatterBehavior="custom10_4" allowsFloats="NO" usesGroupingSeparator="NO" lenient="YES" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="1559">
                                                                 <real key="minimum" value="1"/>
@@ -421,9 +422,8 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1557">
+                                                    <textField verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1557">
                                                         <rect key="frame" x="167" y="15" width="56" height="17"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Space(s)" id="1558">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -431,6 +431,15 @@
                                                         </textFieldCell>
                                                     </textField>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="1553" firstAttribute="leading" secondItem="9GW-nZ-qB7" secondAttribute="leading" constant="17" id="8ij-qg-ayb"/>
+                                                    <constraint firstItem="1555" firstAttribute="leading" secondItem="1553" secondAttribute="trailing" constant="7" id="E5P-K9-Izk"/>
+                                                    <constraint firstAttribute="bottom" secondItem="1553" secondAttribute="bottom" constant="15" id="Ede-L1-NvS"/>
+                                                    <constraint firstItem="1553" firstAttribute="baseline" secondItem="1557" secondAttribute="baseline" id="Hih-ks-KbU"/>
+                                                    <constraint firstItem="1553" firstAttribute="baseline" secondItem="1555" secondAttribute="firstBaseline" id="KGF-ar-pdC"/>
+                                                    <constraint firstItem="1553" firstAttribute="firstBaseline" secondItem="1557" secondAttribute="firstBaseline" id="agq-Fe-v8O"/>
+                                                    <constraint firstItem="1553" firstAttribute="top" secondItem="1500" secondAttribute="bottom" constant="8" symbolic="YES" id="lw2-ph-74r"/>
+                                                </constraints>
                                             </view>
                                         </box>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1538">
@@ -448,23 +457,27 @@
                                                 <rect key="frame" x="3" y="3" width="515" height="67"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1007">
-                                                        <rect key="frame" x="16" y="39" width="352" height="18"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="1007">
+                                                        <rect key="frame" x="16" y="39" width="328" height="18"/>
                                                         <buttonCell key="cell" type="check" title="Convert CRLF and CR Characters to LF Characters" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="1205">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                     </button>
-                                                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1010">
-                                                        <rect key="frame" x="16" y="8" width="332" height="18"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="1010">
+                                                        <rect key="frame" x="16" y="8" width="305" height="18"/>
                                                         <buttonCell key="cell" type="check" title="Convert HTAB Characters to Space Characters" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="1206">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="1007" firstAttribute="top" secondItem="OLQ-EY-qea" secondAttribute="top" constant="12" id="D6T-tf-06p"/>
+                                                    <constraint firstItem="1007" firstAttribute="leading" secondItem="OLQ-EY-qea" secondAttribute="leading" constant="18" id="Fqm-cF-fFl"/>
+                                                    <constraint firstItem="1007" firstAttribute="leading" secondItem="1010" secondAttribute="leading" id="MVo-1r-KYj"/>
+                                                    <constraint firstItem="1010" firstAttribute="top" secondItem="1007" secondAttribute="bottom" constant="17" id="UNN-il-h3k"/>
+                                                </constraints>
                                             </view>
                                         </box>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1545">
@@ -536,7 +549,7 @@
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <buttonCell key="cell" type="square" title="Set Font…" bezelStyle="shadowlessSquare" imagePosition="overlaps" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1230">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                    <font key="font" metaFont="message" size="11"/>
                                                                 </buttonCell>
                                                             </button>
                                                         </subviews>
@@ -552,7 +565,7 @@
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" controlSize="small" borderStyle="border" inset="2" id="1209">
                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                    <font key="font" metaFont="smallSystem"/>
+                                                                    <font key="font" metaFont="message" size="11"/>
                                                                 </buttonCell>
                                                             </button>
                                                         </subviews>
@@ -573,7 +586,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="push" title="Item1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="407" id="1210">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
+                                                <font key="font" metaFont="system"/>
                                                 <menu key="menu" title="OtherViews" id="405">
                                                     <items>
                                                         <menuItem title="Item1" state="on" id="407"/>
@@ -601,7 +614,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                     <clipView key="contentView" ambiguous="YES" id="QVp-fc-D8P">
                                                         <rect key="frame" x="1" y="1" width="518" height="343"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <customView ambiguous="YES" id="742">
                                                                 <rect key="frame" x="0.0" y="0.0" width="518" height="343"/>
@@ -624,7 +637,7 @@
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" ambiguous="YES" id="vGG-jh-i3A">
                                                         <rect key="frame" x="1" y="1" width="503" height="82"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <textView ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" id="746">
                                                                 <rect key="frame" x="0.0" y="0.0" width="503" height="84"/>
@@ -1463,7 +1476,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1098" id="1217">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="menu"/>
+                                <font key="font" metaFont="system"/>
                                 <menu key="menu" title="OtherViews" id="1097">
                                     <items>
                                         <menuItem title="Item 1" state="on" id="1098"/>
@@ -1487,7 +1500,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1194" id="1219">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
+                        <font key="font" metaFont="system"/>
                         <menu key="menu" title="OtherViews" id="1193">
                             <items>
                                 <menuItem title="Item 1" state="on" id="1194"/>

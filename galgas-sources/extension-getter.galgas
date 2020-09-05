@@ -312,14 +312,14 @@ override method @extensionGetterForGeneration appendSpecificImplementation
       !"C_Compiler"
       ![mResultType key]
       !mResultVarCppName
-      ?let @string extensionReaderCode
+      ?let @string extensionGetterCode
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionGetterImplementation
       ![mReceiverType key]
       !mExtensionGetterName
       !mExtensionGetterFormalParameterList
       !mResultType
-      !extensionReaderCode
+      !extensionGetterCode
     ]
   end
 }

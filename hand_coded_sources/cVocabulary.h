@@ -4,7 +4,7 @@
 //
 //  Copyright (C) 1999, ..., 2014 Pierre Molinaro                                                
 //
-//  e-mail : pcmolinaro@free.fr
+//  e-mail : pierre@pcmolinaro.name
 //
 //  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public  *
 //  License as published by the Free Software Foundation.                                        

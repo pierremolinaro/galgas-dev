@@ -47,8 +47,7 @@ syntax extension galgas3DeclarationsSyntax {
 #   KEY REPRESENTATION                                                                                                 *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override getter @abstractExtensionGetterAST keyRepresentation
-  ->@string outString {
+override getter @abstractExtensionGetterAST keyRepresentation ->@string outString {
   outString = "abstract extension getter @" + mTypeName + " " + mAbstractExtensionGetterName
 }
 
@@ -76,15 +75,13 @@ override method @abstractExtensionGetterAST enterDeclarationInGraph
       !{}
     ]
   end
-#  if not [option galgas_cli_options.newExtensionGeneration value] then
-    with mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
-      [!?mExtensionGetterMapForType insertKey
-        !mAbstractExtensionGetterName
-        !mAbstractExtensionGetterReturnedTypeName
-        !mAbstractExtensionGetterFormalInputParameterList
-      ]
-    end
-#  end
+  with mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
+    [!?mExtensionGetterMapForType insertKey
+      !mAbstractExtensionGetterName
+      !mAbstractExtensionGetterReturnedTypeName
+      !mAbstractExtensionGetterFormalInputParameterList
+    ]
+  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -140,7 +137,6 @@ override method @abstractExtensionGetterAST semanticAnalysis
       !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
       !formalParameterListForGeneration
     }
-#    !"~"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -161,9 +157,7 @@ override method @abstractExtensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
 {
-  ioAbstractExtensionGetterListMap +=
-    ![mTypeName string]
-    !mAbstractExtensionGetterName
+  ioAbstractExtensionGetterListMap += !mTypeName.string !mAbstractExtensionGetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

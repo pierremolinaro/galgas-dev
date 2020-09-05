@@ -326,7 +326,28 @@ end
 //--------------------------------- Getters
 %
 for () in GETTER_MAP do
-  if mKind == [@methodKind definedAsMember] then
+  switch mKind 
+  case definedAsExtension :
+#      %  /* EXTENSION public: virtual class GALGAS_% ![mReturnedType identifierRepresentation] % getter_% ![[lkey string] identifierRepresentation] % (%?^
+#      for () in mArgumentTypeList
+#        do index IDX %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]
+#        between %,\n% !^
+#      end
+#      if [mArgumentTypeList length] == 0 then
+#        if mHasCompilerArgument then
+#          %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+#        else
+#          %LOCATION_ARGS%
+#        end
+#      else
+#        if mHasCompilerArgument then
+#          %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
+#        else
+#          %\n% !^ %COMMA_LOCATION_ARGS%
+#        end
+#      end
+#      %) const ; */\n\n%
+  case definedAsMember :
     if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
       %  public : VIRTUAL_IN_DEBUG class GALGAS_% ![mReturnedType identifierRepresentation] % getter_% ![[lkey string] identifierRepresentation] % (%?^
       for () in mArgumentTypeList
