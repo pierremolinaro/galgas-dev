@@ -149,8 +149,6 @@ NSInteger searchStringInTable (NSString * inSearchedString,
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-//--- Predefined scanner actions: see http://galgas.rts-software.org/doku.php?id=lex#predefined_lexical_actions
-
 void scanner_cocoa_routine_multiplyUInt (BOOL * ioNoLexicalError,
                                          const UInt32 inFactor,
                                          UInt32 * ioValue) ;
@@ -310,7 +308,6 @@ void scanner_cocoa_routine_convertBinaryStringIntoBigInt (BOOL * ioScanningOk,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-//--- Predefined scanner functions: see http://galgas.rts-software.org/doku.php?id=lex#predefined_lexical_functions
 utf32 scanner_cocoa_function_toLower (const utf32 inCharacter) ;
 
 utf32 scanner_cocoa_function_toUpper (const utf32 inCharacter) ;

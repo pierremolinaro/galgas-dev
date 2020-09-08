@@ -40,8 +40,6 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-//--- Predefined scanner actions: see http://galgas.rts-software.org/doku.php?id=lex#predefined_lexical_actions
-
 void scanner_routine_multiplyUInt (C_Lexique & inLexique,
                                   const uint32_t inFactor,
                                   uint32_t & ioValue,
@@ -253,7 +251,6 @@ void scanner_routine_convertBinaryStringIntoBigInt (C_Lexique & inLexique,
 
 //----------------------------------------------------------------------------------------------------------------------
 
-//--- Predefined scanner functions: see http://galgas.rts-software.org/doku.php?id=lex#predefined_lexical_functions
 utf32 scanner_function_toLower (C_Lexique & inLexique, const utf32 inCharacter) ;
 
 utf32 scanner_function_toUpper (C_Lexique & inLexique, const utf32 inCharacter) ;
