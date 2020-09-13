@@ -504,6 +504,8 @@
 		CFC1042D161DFE2000253307 /* PMUInt128.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC1042A161DFE2000253307 /* PMUInt128.cpp */; };
 		CFC89AB11BAF10D6002AF9C2 /* check-gmp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC89AB01BAF10D6002AF9C2 /* check-gmp.cpp */; };
 		CFC89AB21BAF10D6002AF9C2 /* check-gmp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC89AB01BAF10D6002AF9C2 /* check-gmp.cpp */; };
+		CFC8D409250E78E100F2CA09 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC8D408250E78E100F2CA09 /* Sparkle.framework */; };
+		CFC8D40C250E794D00F2CA09 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CFC8D40B250E794D00F2CA09 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFC8FE1618637C510035BBBE /* closeSourceFile.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CFC8FE1518637C510035BBBE /* closeSourceFile.tiff */; };
 		CFCA2EA11C331E8500AB04B8 /* C_galgas_quiet_option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAC1A091C3318B800465212 /* C_galgas_quiet_option.cpp */; };
 		CFCA2EA51C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCA2EA21C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp */; };
@@ -590,6 +592,19 @@
 			remoteInfo = "GALGAS tool LL1 (ppc)";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CFC8D40A250E792300F2CA09 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CFC8D40C250E794D00F2CA09 /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -722,8 +737,6 @@
 		CF3FDDFB14E66BD40040331C /* C_FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_FileManager.h; sourceTree = "<group>"; };
 		CF3FDE2014E6CD4E0040331C /* C_Data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_Data.cpp; sourceTree = "<group>"; };
 		CF3FDE2314E6D3CD0040331C /* C_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_Data.h; sourceTree = "<group>"; };
-		CF43498E1B9E041600B90CAC /* libgmp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libgmp.a; path = "../libpm/gmp/Darwin-i386/libgmp.a"; sourceTree = "<group>"; };
-		CF4349921B9E157700B90CAC /* libgmp-Darwin-Intel.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libgmp-Darwin-Intel.a"; path = "../libpm/gmp/libgmp-Darwin-Intel.a"; sourceTree = "<group>"; };
 		CF4398030ADFE1900085F47C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		CF443912144E144600E38AA4 /* TC_prime_cache2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TC_prime_cache2.h; sourceTree = "<group>"; };
 		CF45B175239AF1FD00F16511 /* all-declarations-28.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-28.cpp"; sourceTree = "<group>"; };
@@ -1025,6 +1038,8 @@
 		CFC1042B161DFE2000253307 /* PMUInt128.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMUInt128.h; sourceTree = "<group>"; };
 		CFC51EEE10D3BBB4008BF80F /* GALGAS_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_type.cpp; sourceTree = "<group>"; };
 		CFC89AB01BAF10D6002AF9C2 /* check-gmp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "check-gmp.cpp"; sourceTree = "<group>"; };
+		CFC8D408250E78E100F2CA09 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = "sparkle-framework/Sparkle.framework"; sourceTree = "<group>"; };
+		CFC8D40B250E794D00F2CA09 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = "sparkle-framework/Sparkle.framework"; sourceTree = "<group>"; };
 		CFC8FE1518637C510035BBBE /* closeSourceFile.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = closeSourceFile.tiff; sourceTree = "<group>"; };
 		CFC92D7C11181F6300ACA25F /* GALGAS_binaryset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_binaryset.cpp; sourceTree = "<group>"; };
 		CFCA2EA21C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GALGAS_enumAssociatedValues.cpp; sourceTree = "<group>"; };
@@ -1115,6 +1130,7 @@
 				CF6DF25209E3F3A700506859 /* Cocoa.framework in Frameworks */,
 				CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */,
 				CF04216E0B0B51AA00BB53E5 /* Security.framework in Frameworks */,
+				CFC8D409250E78E100F2CA09 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1154,6 +1170,7 @@
 		2A37F4AAFDCFA73011CA2CEA /* essai_cocoa */ = {
 			isa = PBXGroup;
 			children = (
+				CFC8D40B250E794D00F2CA09 /* Sparkle.framework */,
 				CF1150611CAA986E00E08852 /* generation_templates */,
 				CF23743319967BE20061D2D8 /* Generated by GALGAS */,
 				CFF53737057A4E9400854C83 /* Hand Coded Sources */,
@@ -1194,8 +1211,7 @@
 		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CF4349921B9E157700B90CAC /* libgmp-Darwin-Intel.a */,
-				CF43498E1B9E041600B90CAC /* libgmp.a */,
+				CFC8D408250E78E100F2CA09 /* Sparkle.framework */,
 				1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */,
 				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
 			);
@@ -1908,6 +1924,7 @@
 				CF6DF22809E3F3A700506859 /* Resources */,
 				CF6DF23A09E3F3A700506859 /* Sources */,
 				CF6DF25109E3F3A700506859 /* Frameworks */,
+				CFC8D40A250E792300F2CA09 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1927,7 +1944,6 @@
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = IRCCyN;
 				TargetAttributes = {
@@ -2760,6 +2776,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEPLOYMENT_LOCATION = NO;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/sparkle-framework",
+				);
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 1;
@@ -2775,6 +2795,7 @@
 				);
 				INFOPLIST_FILE = "Info-developer.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(LD_RUNPATH_SEARCH_PATHS_$(IS_MACCATALYST)) @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.ec-nantes.irccyn.molinaro.cocoaGalgas";
 				PRODUCT_NAME = cocoaGalgas;
 				WRAPPER_EXTENSION = app;

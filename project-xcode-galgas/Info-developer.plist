@@ -216,5 +216,9 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUFeedURL</key>
+	<string>https://raw.githubusercontent.com/pierremolinaro/galgas-distribution/master/rss.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>sPAH6SHKXy7urzL1MEmQrY+fgETb6YSh70iV7UuYr9A=</string>
 </dict>
 </plist>

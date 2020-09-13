@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="101003" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.3"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="16097.3"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,18 +23,20 @@
                 <outlet property="mNewVersionTextField" destination="49" id="58"/>
                 <outlet property="mPerformUpdateButton" destination="53" id="60"/>
                 <outlet property="mResultTextView" destination="183" id="187"/>
+                <outlet property="mSparkleUpdater" destination="xaS-5W-O3r" id="2EF-07-JFL"/>
+                <outlet property="mSparkleVersionTextField" destination="dnb-Lh-EKK" id="aXh-z9-JTE"/>
                 <outlet property="mUpdateView" destination="5" id="11"/>
                 <outlet property="mViewForChangeLogInPreferencePane" destination="109" id="111"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="5" userLabel="updateView">
-            <rect key="frame" x="0.0" y="0.0" width="384" height="134"/>
+            <rect key="frame" x="0.0" y="0.0" width="384" height="156"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="34" translatesAutoresizingMaskIntoConstraints="NO" id="75">
-                    <rect key="frame" x="170" y="23" width="38" height="14"/>
+                    <rect key="frame" x="170" y="25" width="38" height="14"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="from:" id="94">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -43,18 +45,18 @@
                     </textFieldCell>
                 </textField>
                 <button toolTip="Installs the embedded Command Line Interface (CLI) tools in the given directory." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73">
-                    <rect key="frame" x="18" y="15" width="152" height="28"/>
+                    <rect key="frame" x="18" y="17" width="152" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Remove CLI Tools…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="93">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
+                        <font key="font" metaFont="message" size="11"/>
                     </buttonCell>
                     <connections>
                         <action selector="performCLIToolRemove:" target="-2" id="76"/>
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="34" translatesAutoresizingMaskIntoConstraints="NO" id="68">
-                    <rect key="frame" x="170" y="50" width="38" height="14"/>
+                    <rect key="frame" x="170" y="52" width="38" height="14"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="in:" id="92">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -63,7 +65,7 @@
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="67">
-                    <rect key="frame" x="213" y="20" width="159" height="46"/>
+                    <rect key="frame" x="213" y="22" width="159" height="46"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="91">
                         <font key="font" metaFont="smallSystemBold"/>
@@ -74,41 +76,50 @@
                     </textFieldCell>
                 </textField>
                 <button toolTip="Installs the embedded Command Line Interface (CLI) tools in the given directory." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66">
-                    <rect key="frame" x="18" y="42" width="152" height="28"/>
+                    <rect key="frame" x="18" y="44" width="152" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Install CLI Tools…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="90">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
+                        <font key="font" metaFont="message" size="11"/>
                     </buttonCell>
                     <connections>
                         <action selector="performCLIToolInstallation:" target="-2" id="70"/>
                     </connections>
                 </button>
                 <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="64">
-                    <rect key="frame" x="20" y="72" width="352" height="5"/>
+                    <rect key="frame" x="20" y="74" width="352" height="5"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                 </box>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18">
-                    <rect key="frame" x="256" y="90" width="121" height="28"/>
+                    <rect key="frame" x="256" y="82" width="121" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Check Now…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="87">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
+                        <font key="font" metaFont="message" size="11"/>
                     </buttonCell>
                     <connections>
-                        <action selector="checkForNewVersion:" target="-2" id="71"/>
+                        <action selector="checkForUpdates:" target="xaS-5W-O3r" id="i2c-e4-KBl"/>
                     </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="17">
-                    <rect key="frame" x="20" y="96" width="233" height="18"/>
+                    <rect key="frame" x="20" y="88" width="233" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Check for new version at start up" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="86">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="smallSystem"/>
+                        <font key="font" metaFont="message" size="11"/>
                     </buttonCell>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dnb-Lh-EKK">
+                    <rect key="frame" x="21" y="120" width="353" height="16"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Sparkle Version message" id="I1J-7i-M1e">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
-            <point key="canvasLocation" x="140" y="154"/>
+            <point key="canvasLocation" x="140" y="165"/>
         </customView>
         <window title="GALGAS Update" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="30" userLabel="Panel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES"/>
@@ -171,14 +182,16 @@
                     <box fixedFrame="YES" boxType="oldStyle" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="62">
                         <rect key="frame" x="19" y="59" width="742" height="252"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <view key="contentView" ambiguous="YES" id="yZf-yk-udz">
+                        <view key="contentView" id="yZf-yk-udz">
                             <rect key="frame" x="1" y="1" width="740" height="250"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <webView fixedFrame="YES" maintainsBackForwardList="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50">
                                     <rect key="frame" x="1" y="1" width="738" height="248"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12"/>
+                                    <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
+                                        <nil key="identifier"/>
+                                    </webPreferences>
                                 </webView>
                             </subviews>
                         </view>
@@ -201,7 +214,7 @@
                         <rect key="frame" x="141" y="334" width="622" height="48"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="New version text…" id="102">
-                            <font key="font" metaFont="smallSystem"/>
+                            <font key="font" metaFont="message" size="11"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
@@ -249,7 +262,9 @@
                 <webView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="110">
                     <rect key="frame" x="0.0" y="0.0" width="611" height="552"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12"/>
+                    <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
+                        <nil key="identifier"/>
+                    </webPreferences>
                 </webView>
                 <button toolTip="Make text Larger" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="116">
                     <rect key="frame" x="20" y="560" width="30" height="30"/>
@@ -268,7 +283,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="square" title="A" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" inset="2" id="119">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="miniSystem"/>
+                        <font key="font" metaFont="menu" size="9"/>
                     </buttonCell>
                     <connections>
                         <action selector="makeTextSmaller:" target="110" id="121"/>
@@ -379,17 +394,17 @@
                     <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="182">
                         <rect key="frame" x="-1" y="-1" width="816" height="156"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <clipView key="contentView" ambiguous="YES" id="yX8-eN-WVy">
+                        <clipView key="contentView" id="yX8-eN-WVy">
                             <rect key="frame" x="1" y="1" width="799" height="154"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <textView focusRingType="none" ambiguous="YES" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" spellingCorrection="YES" id="183">
+                                <textView focusRingType="none" editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" spellingCorrection="YES" id="183">
                                     <rect key="frame" x="0.0" y="0.0" width="799" height="154"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="799" height="154"/>
-                                    <size key="maxSize" width="799" height="10000000"/>
+                                    <size key="maxSize" width="816" height="10000000"/>
                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
@@ -407,6 +422,7 @@
                 </subviews>
             </view>
         </window>
+        <customObject id="xaS-5W-O3r" customClass="SUUpdater"/>
     </objects>
     <resources>
         <image name="NSApplicationIcon" width="32" height="32"/>

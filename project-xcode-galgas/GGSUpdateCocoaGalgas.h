@@ -19,7 +19,14 @@
 
 @interface GGSUpdateCocoaGalgas : NSObject <PMDownloadDelegate> {
 //--- In New Available Panel
-//  @private IBOutlet NSPanel * mNewAvailableVersionPanel ;
+  @private IBOutlet NSObject * mSparkleUpdater ;
+  @private IBOutlet NSTextField * mSparkleVersionTextField ;
+  @private IBOutlet NSButton * mCheckUpdateAtStartUpCheckBox ;
+
+
+
+
+  @private IBOutlet NSButton * mCheckNowButton ;
   @private IBOutlet NSButton * mCheckUpdateAtStartUpCheckBox2 ;
   @private IBOutlet NSButton * mPerformUpdateButton ;
   @private IBOutlet NSTextField * mNewVersionTextField ;
@@ -29,10 +36,7 @@
   
   @private IBOutlet NSView * mUpdateView ;
   
-  @private IBOutlet NSButton * mCheckUpdateAtStartUpCheckBox ;
-  
-  @private IBOutlet NSButton * mCheckNowButton ;
-  
+
   @private IBOutlet NSTextField * mDownloadTitle ;
   @private IBOutlet NSProgressIndicator * mDownloadProgressIndicator ;
   @private IBOutlet NSTextField * mDownloadSubTitle ;
@@ -57,7 +61,7 @@
 
 @property(atomic) IBOutlet NSPanel * mNewAvailableVersionPanel ;
 
-- (IBAction) checkForNewVersion: (id) inSender ;
+//- (IBAction) checkForNewVersion: (id) inSender ;
 
 - (IBAction) performCLIToolInstallation: (id) inSender ;
 

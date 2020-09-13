@@ -34,7 +34,55 @@
 
 @implementation GGSUpdateCocoaGalgas
 
-@synthesize mNewAvailableVersionPanel ;
+  //····················································································································
+
+  @synthesize mNewAvailableVersionPanel ;
+
+  //····················································································································
+
+  - (void) awakeFromNib {
+  //--- Add Update Tab view
+    NSTabView * prefsTabView = [gCocoaApplicationDelegate preferencesTabView] ;
+    NSTabViewItem * tabViewItem = [NSTabViewItem new] ;
+    [tabViewItem setView:mUpdateView] ;
+    [tabViewItem setLabel:@"Update"] ;
+    [prefsTabView addTabViewItem:tabViewItem] ;
+  //--- Add 'ChangeLog' tab item
+    tabViewItem = [NSTabViewItem new] ;
+    [tabViewItem setView:mViewForChangeLogInPreferencePane] ;
+    [tabViewItem setLabel:@"Change Log"] ;
+    [prefsTabView addTabViewItem: tabViewItem] ;
+  //--- Print Sparkle version
+    NSURL * frameworkURL = NSBundle.mainBundle.privateFrameworksURL ;
+    NSURL * infoPlistURL = [frameworkURL URLByAppendingPathComponent: @"Sparkle.framework/Versions/Current/Resources/Info.plist"] ;
+    NSData * data = [NSData dataWithContentsOfURL: infoPlistURL] ;
+    NSDictionary * plist = [NSPropertyListSerialization propertyListWithData: data options: NSPropertyListImmutable format: nil error: nil] ;
+    NSString * sparkleVersionString = [plist objectForKey: @"CFBundleShortVersionString"] ;
+    if (sparkleVersionString != nil) {
+      mSparkleVersionTextField.stringValue = [@"Using Sparkle " stringByAppendingString: sparkleVersionString] ;
+    }else{
+      mSparkleVersionTextField.stringValue = @"Unable to find Sparkle" ;
+    }
+  //--- Installation Path
+    NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
+    if ([ud objectForKey:@"GGS_cli_installation_path"] == nil) {
+      [ud setObject:@"/usr/local/bin/" forKey:@"GGS_cli_installation_path"] ;
+    }
+    [mCLIToolInstallationPath
+      bind: @"value"
+      toObject: ud
+      withKeyPath: @"GGS_cli_installation_path"
+      options: nil
+    ] ;
+  //--- Check ar startup checkbox
+    [mCheckUpdateAtStartUpCheckBox bind: @"value" toObject: mSparkleUpdater withKeyPath: @"automaticallyChecksForUpdates" options: nil] ;
+  }
+
+  //····················································································································
+
+
+
+
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -123,65 +171,65 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (void) awakeFromNib {
-  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
-//--- Remove temporary dir, if it exists
-  NSFileManager * fm = [NSFileManager defaultManager] ;
-  if ([fm fileExistsAtPath:[self temporaryDir]]) {
-    [fm removeItemAtPath:[self temporaryDir] error:nil] ;
-  }
-//--- Add Update Tab view
-  NSTabView * prefsTabView = [gCocoaApplicationDelegate preferencesTabView] ;
-  NSTabViewItem * tabViewItem = [[NSTabViewItem alloc] init] ;
-  [tabViewItem setView:mUpdateView] ;
-  [tabViewItem setLabel:@"Update"] ;
-  [prefsTabView addTabViewItem:tabViewItem] ;
-//--- Add bindings
-  [mCheckUpdateAtStartUpCheckBox
-    bind:@"value"
-    toObject:ud
-    withKeyPath:@"GGS_check_update_at_start_up"
-    options:nil
-  ] ;
-  [mCheckUpdateAtStartUpCheckBox2
-    bind:@"value"
-    toObject:ud
-    withKeyPath:@"GGS_check_update_at_start_up"
-    options:nil
-  ] ;
-//--- Installation Path
-  if ([ud objectForKey:@"GGS_cli_installation_path"] == nil) {
-    [ud setObject:@"/usr/local/bin/" forKey:@"GGS_cli_installation_path"] ;
-  }
-  [mCLIToolInstallationPath
-    bind:@"value"
-    toObject:ud
-    withKeyPath:@"GGS_cli_installation_path"
-    options:nil
-  ] ;
-//----------------------------------------- Change Log Tab Item
-//--- Add 'ChangeLog' tab item
-  tabViewItem = [[NSTabViewItem alloc] init] ;
-  [tabViewItem setView:mViewForChangeLogInPreferencePane] ;
-  [tabViewItem setLabel:@"Change Log"] ;
-  [prefsTabView addTabViewItem:tabViewItem] ;
-  NSURL * url = [NSURL URLWithString:@"http://galgas.rts-software.org/download/changeLog.html"] ;
-  [[mChangeLogInPreferencePaneWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
-//----------------------------------------- Add "Create new project" menu item
-  NSMenuItem * mi = [[NSMenuItem alloc]
-    initWithTitle:@"New Project…"
-    action:@selector (createNewProjectAction:)
-    keyEquivalent:@""
-  ] ;
-  mi.target = self ;
-  NSMenu * menubar = [NSApplication sharedApplication].mainMenu ;
-  NSMenu * fileMenu = [menubar itemWithTitle:@"File"].submenu ;
-  [fileMenu insertItem:mi atIndex:0] ;
-//----------------------------------------- Check for new version
-  if ([ud boolForKey:@"GGS_check_update_at_start_up"]) {
-    [self checkForNewVersion:nil] ;
-  }
-}
+//- (void) awakeFromNib {
+//  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
+////--- Remove temporary dir, if it exists
+//  NSFileManager * fm = [NSFileManager defaultManager] ;
+//  if ([fm fileExistsAtPath:[self temporaryDir]]) {
+//    [fm removeItemAtPath:[self temporaryDir] error:nil] ;
+//  }
+////--- Add Update Tab view
+//  NSTabView * prefsTabView = [gCocoaApplicationDelegate preferencesTabView] ;
+//  NSTabViewItem * tabViewItem = [[NSTabViewItem alloc] init] ;
+//  [tabViewItem setView:mUpdateView] ;
+//  [tabViewItem setLabel:@"Update"] ;
+//  [prefsTabView addTabViewItem:tabViewItem] ;
+////--- Add bindings
+//  [mCheckUpdateAtStartUpCheckBox
+//    bind:@"value"
+//    toObject:ud
+//    withKeyPath:@"GGS_check_update_at_start_up"
+//    options:nil
+//  ] ;
+//  [mCheckUpdateAtStartUpCheckBox2
+//    bind:@"value"
+//    toObject:ud
+//    withKeyPath:@"GGS_check_update_at_start_up"
+//    options:nil
+//  ] ;
+////--- Installation Path
+//  if ([ud objectForKey:@"GGS_cli_installation_path"] == nil) {
+//    [ud setObject:@"/usr/local/bin/" forKey:@"GGS_cli_installation_path"] ;
+//  }
+//  [mCLIToolInstallationPath
+//    bind:@"value"
+//    toObject:ud
+//    withKeyPath:@"GGS_cli_installation_path"
+//    options:nil
+//  ] ;
+////----------------------------------------- Change Log Tab Item
+////--- Add 'ChangeLog' tab item
+//  tabViewItem = [[NSTabViewItem alloc] init] ;
+//  [tabViewItem setView:mViewForChangeLogInPreferencePane] ;
+//  [tabViewItem setLabel:@"Change Log"] ;
+//  [prefsTabView addTabViewItem:tabViewItem] ;
+//  NSURL * url = [NSURL URLWithString:@"http://galgas.rts-software.org/download/changeLog.html"] ;
+//  [[mChangeLogInPreferencePaneWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
+////----------------------------------------- Add "Create new project" menu item
+//  NSMenuItem * mi = [[NSMenuItem alloc]
+//    initWithTitle:@"New Project…"
+//    action:@selector (createNewProjectAction:)
+//    keyEquivalent:@""
+//  ] ;
+//  mi.target = self ;
+//  NSMenu * menubar = [NSApplication sharedApplication].mainMenu ;
+//  NSMenu * fileMenu = [menubar itemWithTitle:@"File"].submenu ;
+//  [fileMenu insertItem:mi atIndex:0] ;
+////----------------------------------------- Check for new version
+//  if ([ud boolForKey:@"GGS_check_update_at_start_up"]) {
+//    [self checkForNewVersion:nil] ;
+//  }
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -193,16 +241,16 @@
 //                                                                                                                     *
 //----------------------------------------------------------------------------------------------------------------------
 
-- (IBAction) checkForNewVersion: (id) inSender {
-  mSearchForUpdatesInBackground = inSender == nil ;
-  [mCheckNowButton setEnabled:NO] ;
-  mDownloadData = [[PMDownloadData alloc]
-    initDownloadWithURLString:[self lastReleaseHTTPPath]
-    delegate:self
-    downloadDidEndSelector:@selector (downloadAllAvailableGalgasVersion:)
-    userInfo:nil
-  ] ;
-}
+//- (IBAction) checkForNewVersion: (id) inSender {
+//  mSearchForUpdatesInBackground = inSender == nil ;
+//  [mCheckNowButton setEnabled:NO] ;
+//  mDownloadData = [[PMDownloadData alloc]
+//    initDownloadWithURLString:[self lastReleaseHTTPPath]
+//    delegate:self
+//    downloadDidEndSelector:@selector (downloadAllAvailableGalgasVersion:)
+//    userInfo:nil
+//  ] ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 
