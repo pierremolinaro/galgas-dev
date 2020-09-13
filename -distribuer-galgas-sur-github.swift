@@ -124,10 +124,23 @@ struct VersionDescriptor : Codable {
 }
 
 //--------------------------------------------------------------------------------------------------
+//   remplacerAnneeEtVersionGALGAS
+//--------------------------------------------------------------------------------------------------
+
+func remplacerAnneeEtVersionGALGAS (_ annee : Int, _ versionGALGAS : String, _ filePath : String) {
+  let url = URL (fileURLWithPath: filePath)
+  var contents = try! String (contentsOf: url, encoding: .utf8)
+  contents = contents.replacingOccurrences (of: "!AN!", with: "\(annee)")
+  contents = contents.replacingOccurrences (of: "GALGASBETAVERSION", with: versionGALGAS)
+  let data = contents.data (using: .utf8, allowLossyConversion:false)!
+  try! data.write (to: url)
+}
+
+//--------------------------------------------------------------------------------------------------
 
 let fm = FileManager ()
 //-------------------- Get script absolute path
-let scriptDir = URL (fileURLWithPath:CommandLine.arguments [0]).deletingLastPathComponent ().path
+let scriptDir = URL (fileURLWithPath: CommandLine.arguments [0]).deletingLastPathComponent ().path
 print ("scriptDir \(scriptDir)")
 //-------------------- Supprimer une distribution existante
 let DISTRIBUTION_DIR = scriptDir + "/../DISTRIBUTION_GALGAS_" + VERSION_GALGAS
@@ -171,15 +184,27 @@ do{
   plistDictionary ["CFBundleShortVersionString"] = VERSION_GALGAS
   let plistNewData = try PropertyListSerialization.data (fromPropertyList: plistDictionary, format: .binary, options: 0)
   try plistNewData.write (to: URL (fileURLWithPath: plistFileFullPath), options: .atomic)
+//-------------------- Mettre a jour les numéros de version
+ // writeFile (versionGALGAS, DIR + "/version-galgas.txt")
+
+  remplacerAnneeEtVersionGALGAS (ANNEE, VERSION_GALGAS, DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/en.lproj/InfoPlist.strings")
+  remplacerAnneeEtVersionGALGAS (ANNEE, VERSION_GALGAS, DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/Info-developer.plist")
+//for root, dirs, files in os.walk (DIR + "/galgas/galgas-sources"):
+//  for filename in files:
+//    (base, extension) = os.path.splitext (filename)
+//    if (extension == ".galgas") or (extension == ".galgasProject") or (extension == ".h") or (extension == ".cpp") or (extension == ".m") or (extension == ".pbxproj") :
+//      remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, root + "/" + filename)
+//for root, dirs, files in os.walk (DIR + "/galgas/build"):
+//  for filename in files:
+//    (base, extension) = os.path.splitext (filename)
+//    if (extension == ".galgas") or (extension == ".galgasProject") or (extension == ".h") or (extension == ".cpp") or (extension == ".m") or (extension == ".pbxproj") :
+//      remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, root + "/" + filename)
 //-------------------- Compiler le projet Xcode
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas")
-  let debutCompilation = Date ()
+  let débutCompilation = Date ()
   runCommand ("/bin/rm", ["-fr", "build"])
-  runCommand ("/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild",
-              ["-target", "GALGAS Cocoa"
-           //    "-configuration", BUILD_KIND.string
-              ])
-  let DureeCompilation = Date ().timeIntervalSince (debutCompilation)
+  runCommand ("/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild", ["-target", "GALGAS Cocoa"])
+  let duréeCompilation = Date ().timeIntervalSince (débutCompilation)
   let PRODUCT_NAME : String
   switch BUILD_KIND {
   case .debug :
@@ -241,14 +266,14 @@ do{
   let nomJSON = DISTRIBUTION_DIR + "/" + PRODUCT_NAME + "-" + VERSION_GALGAS + ".json"
   try jsonData.write (to: URL (fileURLWithPath: nomJSON), options: .atomic)
 //--- Vérifier la signature
-  runCommand ("/usr/bin/codesign", ["-dv", "--verbose=4", DISTRIBUTION_DIR + "/galgas-dev-master/build/" + BUILD_KIND.string + "/" + PRODUCT_NAME + ".app"])
+  runCommand ("/usr/bin/codesign", ["-dv", "--verbose=4", DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/build-developer-v3/Default/cocoaGalgas.app"])
 //--- Supprimer les répertoires intermédiaires
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
   while fm.fileExists (atPath: DISTRIBUTION_DIR + "/galgas-dev-master") {
     runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR + "/galgas-dev-master"])
   }
   //---
-  let durée = Int (DureeCompilation)
+  let durée = Int (duréeCompilation)
   print ("Durée de compilation : \(durée / 60) min \(durée % 60) s")
 }catch (let error) {
   print ("Exception \(error)")
