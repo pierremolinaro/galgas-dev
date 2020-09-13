@@ -4,4 +4,4 @@ CFBundleName = "CocoaGalgas";
 CFBundleShortVersionString = "GALGASBETAVERSION";
 CFBundleGetInfoString = "CocoaGalgas version GALGASBETAVERSION, Copyright 2005, !AN! Pierre Molinaro.";
 NSHumanReadableCopyright = "Copyright 2005, !AN! Pierre Molinaro.";
-LSMinimumSystemVersion = "10.6.8";
+LSMinimumSystemVersion = "10.11";

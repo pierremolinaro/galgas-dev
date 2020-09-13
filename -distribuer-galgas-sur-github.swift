@@ -28,8 +28,8 @@ let BUILD_KIND = ProductKind.release
 // Version GALGAS
 //--------------------------------------------------------------------------------------------------
 
-let VERSION_GALGAS = "1.3.0"
-let NOTES : [String] = []
+let VERSION_GALGAS = "3.4.1"
+let NOTES : [String] = ["First release hosted by GITHUB"]
 let BUGFIXES : [String] = []
 let CHANGES : [String] = []
 let NEWS : [String] = []
@@ -127,13 +127,32 @@ struct VersionDescriptor : Codable {
 //   remplacerAnneeEtVersionGALGAS
 //--------------------------------------------------------------------------------------------------
 
-func remplacerAnneeEtVersionGALGAS (_ annee : Int, _ versionGALGAS : String, _ filePath : String) {
+func remplacerAnneeEtVersionGALGAS (_ annee : Int, _ versionGALGAS : String, file filePath : String) {
   let url = URL (fileURLWithPath: filePath)
   var contents = try! String (contentsOf: url, encoding: .utf8)
   contents = contents.replacingOccurrences (of: "!AN!", with: "\(annee)")
   contents = contents.replacingOccurrences (of: "GALGASBETAVERSION", with: versionGALGAS)
-  let data = contents.data (using: .utf8, allowLossyConversion:false)!
+  let data = contents.data (using: .utf8, allowLossyConversion: false)!
   try! data.write (to: url)
+}
+
+//--------------------------------------------------------------------------------------------------
+
+func remplacerAnneeEtVersionGALGAS (_ annee : Int, _ versionGALGAS : String, directory inPath : String) {
+  let directoryEnumerator = fm.enumerator (atPath: inPath)
+  let extensions = [".galgas", ".galgasProject", ".h", ".cpp", ".m", ".pbxproj"]
+  while let filename = directoryEnumerator?.nextObject () as? String {
+    var suffixFound = false
+    for ext in extensions {
+      suffixFound = filename.hasSuffix (ext)
+      if suffixFound {
+        break
+      }
+    }
+    if suffixFound {
+      remplacerAnneeEtVersionGALGAS (annee, versionGALGAS, file: inPath + "/" + filename)
+    }
+  }
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -158,8 +177,8 @@ runCommand ("/usr/bin/unzip", ["archive.zip"])
 runCommand ("/bin/rm", ["archive.zip"])
 fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev-master")
 //-------------------- Obtenir l'année
-let ANNEE = Calendar.current.component (.year, from: Date ())
-print ("ANNÉE : \(ANNEE)")
+let ANNÉE = Calendar.current.component (.year, from: Date ())
+print ("ANNÉE : \(ANNÉE)")
 do{
 //-------------------- Obtenir le numéro de build
   let plistFileFullPath = DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/Info-developer.plist"
@@ -171,34 +190,15 @@ do{
     print (RED + "line \(#line) : object is not a dictionary" + ENDC)
     exit (1)
   }
-//  let buildString : String
-//  if let s = plistDictionary ["PMBuildString"] as? String {
-//    buildString = s
-//  }else{
-//    print (RED + "Error line \(#line)" + ENDC)
-//    exit (1)
-//  }
-//  print ("Build String '\(buildString)'")
 //--- Mettre à jour les numéros de version dans la plist
   plistDictionary ["CFBundleVersion"] = VERSION_GALGAS // + ", build " + buildString
   plistDictionary ["CFBundleShortVersionString"] = VERSION_GALGAS
   let plistNewData = try PropertyListSerialization.data (fromPropertyList: plistDictionary, format: .binary, options: 0)
   try plistNewData.write (to: URL (fileURLWithPath: plistFileFullPath), options: .atomic)
 //-------------------- Mettre a jour les numéros de version
- // writeFile (versionGALGAS, DIR + "/version-galgas.txt")
-
-  remplacerAnneeEtVersionGALGAS (ANNEE, VERSION_GALGAS, DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/en.lproj/InfoPlist.strings")
-  remplacerAnneeEtVersionGALGAS (ANNEE, VERSION_GALGAS, DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/Info-developer.plist")
-//for root, dirs, files in os.walk (DIR + "/galgas/galgas-sources"):
-//  for filename in files:
-//    (base, extension) = os.path.splitext (filename)
-//    if (extension == ".galgas") or (extension == ".galgasProject") or (extension == ".h") or (extension == ".cpp") or (extension == ".m") or (extension == ".pbxproj") :
-//      remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, root + "/" + filename)
-//for root, dirs, files in os.walk (DIR + "/galgas/build"):
-//  for filename in files:
-//    (base, extension) = os.path.splitext (filename)
-//    if (extension == ".galgas") or (extension == ".galgasProject") or (extension == ".h") or (extension == ".cpp") or (extension == ".m") or (extension == ".pbxproj") :
-//      remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, root + "/" + filename)
+  remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, file: DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/en.lproj/InfoPlist.strings")
+  remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev-master/galgas-sources")
+  remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev-master/build")
 //-------------------- Compiler le projet Xcode
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas")
   let débutCompilation = Date ()
