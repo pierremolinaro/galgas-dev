@@ -775,10 +775,10 @@ proc updateGalgas3Targets
         !"main.m",
         !"PMCancelButtonForPanel.h",
         !"PMCancelButtonForPanel.m",
-        !"PMDownloadData.h",
-        !"PMDownloadData.m",
-        !"PMDownloadFile.h",
-        !"PMDownloadFile.m",
+#        !"PMDownloadData.h",
+#        !"PMDownloadData.m",
+#        !"PMDownloadFile.h",
+#        !"PMDownloadFile.m",
         !"PMOkButtonForPanel.h",
         !"PMOkButtonForPanel.m"
       }
