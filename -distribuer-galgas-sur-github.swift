@@ -30,7 +30,7 @@ let BUILD_KIND = ProductKind.release
 
 let NOTES : [String] = ["First release hosted by GITHUB"]
 let BUGFIXES : [String] = []
-let CHANGES : [String] = []
+let CHANGES : [String] = ["Cross compilation tools on www.pcmolinaro.name"]
 let NEWS : [String] = []
 
 //--------------------------------------------------------------------------------------------------
@@ -190,7 +190,8 @@ print ("ANNÉE : \(ANNÉE)")
   while fm.fileExists (atPath: DISTRIBUTION_DIR) {
     runCommand ("/bin/rm", ["-fr", DISTRIBUTION_DIR])
   }
-    runCommand ("/bin/mv", [DISTRIBUTION_DIR_TEMPORARY, DISTRIBUTION_DIR])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR_TEMPORARY, DISTRIBUTION_DIR])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
 //-------------------- Fixer le numéro de version
   let plistFileFullPath = DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/Info-developer.plist"
   let data : Data = try Data (contentsOf: URL (fileURLWithPath: plistFileFullPath))
@@ -223,29 +224,23 @@ print ("ANNÉE : \(ANNÉE)")
   let directoryEnumerator = fm.enumerator (atPath: latexDir)
   while let filename = directoryEnumerator?.nextObject () as? String {
     if filename.hasSuffix (".tex") {
-      remplacerAnneeEtVersionGALGAS (ANNEE, VERSION_GALGAS, file: latexDir + "/" + filename)
+      remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, file: latexDir + "/" + filename)
     }
   }
-  runHiddenCommand (latexDir + "/-build.command", [])
-  runCommand ("/bin/cp", [latexDir + "/galgas-book.pdf", "galgas-book.pdf"])
-  runCommand (["/bin/rm", "-fr", latexDir])
-
-//for root, dirs, files in os.walk (DISTRIBUTION_DIR + "/galgas-dev-master/galgas-documentation-latex-sources"):
-//  for filename in files:
-//    (base, extension) = os.path.splitext (filename)
-//    if extension == ".tex" :
-//      remplacerAnneeEtVersionGALGAS (ANNEE, versionGALGAS, root + "/" + filename)
-//runHiddenCommand ([DISTRIBUTION_DIR + "/galgas-dev-master/galgas-documentation-latex-sources/-build.command"])
-//runCommand (["cp", "galgas-dev-master/galgas-documentation-latex-sources/galgas-book.pdf", "galgas-book.pdf"])
-//runCommand (["/bin/rm", "-fr", "galgas-dev-master/galgas-documentation-latex-sources"])
-//-------------------- Creer l'archive de l'executable windows (release et debug)
+  runCommand (latexDir + "/-build.command", [])
+  runCommand ("/bin/cp", [latexDir + "/galgas-book.pdf", "galgas-\(VERSION_GALGAS).pdf"])
+  runCommand ("/bin/rm", ["-fr", latexDir])
+//-------------------- Créer le répertoire rtecevant les outils ligne de commande
+  let cliToolsDir = DISTRIBUTION_DIR + "/galgas-\(VERSION_GALGAS)-tools"
+  runCommand ("/bin/mkdir", [cliToolsDir])
+//-------------------- Créer l'archive de l'executable osx (release et debug)
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev-master/makefile-macosx")
   runCommand ("/usr/local/bin/python", ["build.py"])
   runCommand ("/usr/bin/bzip2", ["-9", "galgas"])
   runCommand ("/usr/bin/bzip2", ["-9", "galgas-debug"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-macosx/galgas.exe.bz2", "galgas.osx.bz2"])
-  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-macosx/galgas-debug.exe.bz2", "galgas-debug.osx.bz2"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-macosx/galgas.bz2", cliToolsDir + "/galgas.osx.bz2"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-macosx/galgas-debug.bz2", cliToolsDir + "/galgas-debug.osx.bz2"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev-master/makefile-macosx"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev-master/build/cli-objects"])
 //-------------------- Creer l'archive de l'executable windows (release et debug)
@@ -254,8 +249,8 @@ print ("ANNÉE : \(ANNÉE)")
   runCommand ("/usr/bin/bzip2", ["-9", "galgas.exe"])
   runCommand ("/usr/bin/bzip2", ["-9", "galgas-debug.exe"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-win32-on-macosx/galgas.exe.bz2", "galgas.exe.bz2"])
-  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-win32-on-macosx/galgas-debug.exe.bz2", "galgas-debug.exe.bz2"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-win32-on-macosx/galgas.exe.bz2", cliToolsDir + "/galgas.exe.bz2"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-win32-on-macosx/galgas-debug.exe.bz2", cliToolsDir + "/galgas-debug.exe.bz2"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev-master/makefile-win32-on-macosx"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev-master/build/cli-objects"])
 //-------------------- Creer l'archive de l'executable x86 linux 32 (release et debug)
@@ -264,8 +259,8 @@ print ("ANNÉE : \(ANNÉE)")
   runCommand ("/usr/bin/zip", ["-9", "galgas.zip", "galgas"])
   runCommand ("/usr/bin/zip", ["-9", "galgas-debug.zip", "galgas-debug"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-x86linux32-on-macosx/galgas.zip", "galgas-x86-linux32.zip"])
-  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-x86linux32-on-macosx/galgas-debug.zip", "galgas-debug-x86-linux32.zip"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-x86linux32-on-macosx/galgas.zip", cliToolsDir + "/galgas-x86-linux32.zip"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-x86linux32-on-macosx/galgas-debug.zip", cliToolsDir + "/galgas-debug-x86-linux32.zip"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev-master/makefile-x86linux32-on-macosx"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev-master/build/cli-objects"])
 //-------------------- Creer l'archive de l'executable x86 linux 64 (release et debug)
@@ -274,8 +269,8 @@ print ("ANNÉE : \(ANNÉE)")
   runCommand ("/usr/bin/zip", ["-9", "galgas.zip", "galgas"])
   runCommand ("/usr/bin/zip", ["-9", "galgas-debug.zip", "galgas-debug"])
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
-  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-x86linux64-on-macosx/galgas.zip", "galgas-x86-linux64.zip"])
-  runCommand ("/bin/mv", [ DISTRIBUTION_DIR + "/galgas-dev-master/makefile-x86linux64-on-macosx/galgas-debug.zip", "galgas-debug-x86-linux64.zip"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-x86linux64-on-macosx/galgas.zip", cliToolsDir + "/galgas-x86-linux64.zip"])
+  runCommand ("/bin/mv", [ DISTRIBUTION_DIR + "/galgas-dev-master/makefile-x86linux64-on-macosx/galgas-debug.zip", cliToolsDir + "/galgas-debug-x86-linux64.zip"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev-master/makefile-x86linux64-on-macosx"])
   runCommand ("/bin/rm", ["-fr", "galgas-dev-master/build/cli-objects"])
 //-------------------- Compiler le projet Xcode
