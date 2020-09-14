@@ -952,24 +952,18 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     options:nil
   ] ;
 //--- Add observer to user defaults changes
-  [nc addObserver:self selector:@selector(preferencesDidChange:) name:NSUserDefaultsDidChangeNotification object:ud] ;
+  [nc addObserver: self selector: @selector(preferencesDidChange:) name: NSUserDefaultsDidChangeNotification object: ud] ;
 //--- Load tool nibs ?
   NSArray * nibArray = nibsAndClasses () ;
-  #ifdef MAC_OS_X_VERSION_10_8
-    mArrayOfNibTopObjects = [NSArray array] ;
-  #endif
+  mArrayOfNibTopObjects = [NSArray array] ;
   for (NSUInteger i=0 ; i<[nibArray count] ; i++) {
     NSArray * entry = [nibArray objectAtIndex:i] ;
     NSString * nibName = [entry objectAtIndex:0] ;
     Class mainClass = [entry objectAtIndex:1] ;
     id owner = [mainClass new] ;
-    #ifdef MAC_OS_X_VERSION_10_8
-      NSArray * objects = nil ;
-      [[NSBundle mainBundle] loadNibNamed:nibName owner:owner topLevelObjects:& objects] ;
-      mArrayOfNibTopObjects = [mArrayOfNibTopObjects arrayByAddingObjectsFromArray:objects] ;
-    #else
-      [NSBundle loadNibNamed:nibName owner:owner] ;
-    #endif
+    NSArray * objects = nil ;
+    [[NSBundle mainBundle] loadNibNamed:nibName owner:owner topLevelObjects:& objects] ;
+    mArrayOfNibTopObjects = [mArrayOfNibTopObjects arrayByAddingObjectsFromArray:objects] ;
   }
 //--- Get default settings
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
@@ -1024,7 +1018,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   NSString * keyForVerboseOption = [NSString stringWithFormat:@"%@_%s", GGS_bool_build_option, "verbose"] ;
   NSNumber * verboseOption = [defaults objectForKey:keyForVerboseOption] ;
   if (verboseOption == nil) {
-    [defaults setBool:YES forKey:keyForVerboseOption] ;
+    [defaults setBool:YES forKey: keyForVerboseOption] ;
   }
 //---------- OPTIONS TAB ----------
   NSRect enclosingRect = {{0.0, 0.0}, {5.0, 5.0}} ;

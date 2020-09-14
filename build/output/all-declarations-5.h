@@ -4343,7 +4343,7 @@ void callExtensionMethod_getClassMethodMap (const class cPtr_predefinedTypeAST *
 typedef class GALGAS_operators (*enterExtensionGetter_predefinedTypeAST_getSupportedOperatorFlags) (const class cPtr_predefinedTypeAST * inObject,
                                                                                                     C_Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) ;
-
+ 
 //----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_getSupportedOperatorFlags (const int32_t inClassIndex,

@@ -55,7 +55,7 @@ syntax extension galgas3DeclarationsSyntax {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#   KEY RE¨RESENTATION                                                                                                 *
+#   KEY REPRESENTATION                                                                                                 *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @extensionGetterAST keyRepresentation -> @string outString {

@@ -121,9 +121,7 @@ extern OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   @private IBOutlet NSPopUpButton * mNewDocumentTypePopUpButton ;
   @private IBOutlet NSView * mNewDocumentAccessoryView ;
 
-  #ifdef MAC_OS_X_VERSION_10_8
-    @private NSArray * mArrayOfNibTopObjects ;
-  #endif
+  @private NSArray * mArrayOfNibTopObjects ;
 
 //--- Page guide
   @private IBOutlet NSButton * mPageGuideCheckbox ;

@@ -1308,7 +1308,7 @@ class cPtr_falseExpressionForGeneration : public cPtr_semanticExpressionForGener
 typedef class GALGAS_bool (*enterExtensionGetter_semanticExpressionForGeneration_isTrueExpression) (const class cPtr_semanticExpressionForGeneration * inObject,
                                                                                                     C_Compiler * inCompiler
                                                                                                     COMMA_LOCATION_ARGS) ;
-
+ 
 //----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_isTrueExpression (const int32_t inClassIndex,

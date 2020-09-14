@@ -8684,7 +8684,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
     " " ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "COMMA_LOCATION_ARGS) ;\n"
-    "\n"
+    " \n"
     "//----------------------------------------------------------------------------------------------------------------------\n"
     "\n"
     "void enterExtensionGetter_" ;
@@ -8711,26 +8711,26 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_extensionG
   result << "const cPtr_" ;
   result << in_CLASS_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("extension-getter.h.galgasTemplate", 27)).stringValue () ;
   result << " * inObject" ;
-  GALGAS_uint index_1643_ (0) ;
+  GALGAS_uint index_1644_ (0) ;
   if (in_FORMAL_5F_ARGUMENT_5F_LIST.isValid ()) {
-    cEnumerator_formalInputParameterListForGeneration enumerator_1643 (in_FORMAL_5F_ARGUMENT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_1643.hasCurrentObject ()) {
+    cEnumerator_formalInputParameterListForGeneration enumerator_1644 (in_FORMAL_5F_ARGUMENT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_1644.hasCurrentObject ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      const enumGalgasBool test_1 = enumerator_1643.current_mIsConstant (HERE).boolEnum () ;
+      const enumGalgasBool test_1 = enumerator_1644.current_mIsConstant (HERE).boolEnum () ;
       if (kBoolTrue == test_1) {
         result << "const GALGAS_" ;
-        result << enumerator_1643.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("extension-getter.h.galgasTemplate", 31)).stringValue () ;
+        result << enumerator_1644.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("extension-getter.h.galgasTemplate", 31)).stringValue () ;
         result << " constin_" ;
-        result << enumerator_1643.current_mFormalArgumentName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("extension-getter.h.galgasTemplate", 31)).stringValue () ;
+        result << enumerator_1644.current_mFormalArgumentName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("extension-getter.h.galgasTemplate", 31)).stringValue () ;
       }else if (kBoolFalse == test_1) {
         result << "GALGAS_" ;
-        result << enumerator_1643.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("extension-getter.h.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_1644.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("extension-getter.h.galgasTemplate", 33)).stringValue () ;
         result << " in_" ;
-        result << enumerator_1643.current_mFormalArgumentName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("extension-getter.h.galgasTemplate", 33)).stringValue () ;
+        result << enumerator_1644.current_mFormalArgumentName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("extension-getter.h.galgasTemplate", 33)).stringValue () ;
       }
-      index_1643_.increment () ;
-      enumerator_1643.gotoNextObject () ;
+      index_1644_.increment () ;
+      enumerator_1644.gotoNextObject () ;
     }
   }
   result << ",\n" ;

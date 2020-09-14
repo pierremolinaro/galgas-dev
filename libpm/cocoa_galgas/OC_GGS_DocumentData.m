@@ -242,7 +242,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
       fileURL = inDocumentURL ;
       mFileEncoding = NSUTF8StringEncoding ;
       [self readDocumentFromFile] ;
-      addFileEventStreamForDocument (self) ;  // §§
+      // addFileEventStreamForDocument (self) ;  // §§
     }
     return self ;
   }
@@ -279,7 +279,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
   + (void) cocoaDocumentWillClose: (OC_GGS_DocumentData *) inDocumentData {
     [OC_GGS_DocumentData saveAllDocuments] ;
     [inDocumentData detachFromCocoaDocument] ;
-    removeFileEventStreamForDocument (inDocumentData) ;
+    // removeFileEventStreamForDocument (inDocumentData) ; // §§
     for (OC_GGS_DocumentData * documentData in gDocumentDataDictionary.allValues.copy) {
       // NSLog (@"%lu for %@", documentData.textSyntaxColoring.displayDescriptorCount, documentData.fileURL) ;
       if (documentData.textSyntaxColoring.displayDescriptorCount == 0) {
@@ -373,8 +373,8 @@ static NSMutableDictionary * gDocumentDataDictionary ;
   //---
     if (ok) {
       [mTextSyntaxColoring documentHasBeenSaved] ;
-    }else{
-      [NSApp presentError:error] ;
+    }else if (error != nil) {
+      [NSApp presentError: error] ;
     }
     return ok ;
   }

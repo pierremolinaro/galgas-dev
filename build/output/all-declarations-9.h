@@ -1300,7 +1300,7 @@ typedef class GALGAS_bool (*enterExtensionGetter_semanticInstructionForGeneratio
                                                                                                                       const class GALGAS_semanticInstructionForGeneration constinArgument0,
                                                                                                                       C_Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) ;
-
+ 
 //----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_compareInstructionSyntaxSignature (const int32_t inClassIndex,

@@ -3547,7 +3547,7 @@ class cPtr_semanticDeclarationForGeneration : public acPtr_class {
 typedef class GALGAS_string (*enterExtensionGetter_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration) (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                                                                                      C_Compiler * inCompiler
                                                                                                                      COMMA_LOCATION_ARGS) ;
-
+ 
 //----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_appendPrimitiveTypeDeclaration (const int32_t inClassIndex,
@@ -5423,7 +5423,7 @@ void callExtensionMethod_appendDeclaration_32_ (const class cPtr_semanticDeclara
 typedef class GALGAS_string (*enterExtensionGetter_semanticDeclarationForGeneration_appendTypeGenericImplementation) (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                                                                                       C_Compiler * inCompiler
                                                                                                                       COMMA_LOCATION_ARGS) ;
-
+ 
 //----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_appendTypeGenericImplementation (const int32_t inClassIndex,

@@ -10,18 +10,8 @@
         <customObject id="-2" userLabel="File's Owner" customClass="GGSUpdateCocoaGalgas">
             <connections>
                 <outlet property="mCLIToolInstallationPath" destination="67" id="69"/>
-                <outlet property="mCancelButton" destination="36" id="37"/>
                 <outlet property="mChangeLogInPreferencePaneWebView" destination="110" id="113"/>
-                <outlet property="mChangeLogWebView" destination="50" id="56"/>
-                <outlet property="mCheckNowButton" destination="18" id="41"/>
                 <outlet property="mCheckUpdateAtStartUpCheckBox" destination="17" id="22"/>
-                <outlet property="mCheckUpdateAtStartUpCheckBox2" destination="51" id="57"/>
-                <outlet property="mDownloadProgressIndicator" destination="34" id="38"/>
-                <outlet property="mDownloadSubTitle" destination="33" id="39"/>
-                <outlet property="mDownloadTitle" destination="32" id="40"/>
-                <outlet property="mNewAvailableVersionPanel" destination="44" id="59"/>
-                <outlet property="mNewVersionTextField" destination="49" id="58"/>
-                <outlet property="mPerformUpdateButton" destination="53" id="60"/>
                 <outlet property="mResultTextView" destination="183" id="187"/>
                 <outlet property="mSparkleUpdater" destination="xaS-5W-O3r" id="2EF-07-JFL"/>
                 <outlet property="mSparkleVersionTextField" destination="dnb-Lh-EKK" id="aXh-z9-JTE"/>
@@ -49,7 +39,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Remove CLI Tools…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="93">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="message" size="11"/>
+                        <font key="font" metaFont="label" size="11"/>
                     </buttonCell>
                     <connections>
                         <action selector="performCLIToolRemove:" target="-2" id="76"/>
@@ -80,7 +70,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Install CLI Tools…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="90">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="message" size="11"/>
+                        <font key="font" metaFont="label" size="11"/>
                     </buttonCell>
                     <connections>
                         <action selector="performCLIToolInstallation:" target="-2" id="70"/>
@@ -95,7 +85,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Check Now…" bezelStyle="rounded" alignment="center" controlSize="small" borderStyle="border" inset="2" id="87">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="message" size="11"/>
+                        <font key="font" metaFont="label" size="11"/>
                     </buttonCell>
                     <connections>
                         <action selector="checkForUpdates:" target="xaS-5W-O3r" id="i2c-e4-KBl"/>
@@ -106,7 +96,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Check for new version at start up" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="86">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="message" size="11"/>
+                        <font key="font" metaFont="label" size="11"/>
                     </buttonCell>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dnb-Lh-EKK">
@@ -121,140 +111,6 @@
             </subviews>
             <point key="canvasLocation" x="140" y="165"/>
         </customView>
-        <window title="GALGAS Update" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="30" userLabel="Panel" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="409" y="459" width="467" height="151"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" id="31">
-                <rect key="frame" x="0.0" y="0.0" width="467" height="151"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="341" translatesAutoresizingMaskIntoConstraints="NO" id="32">
-                        <rect key="frame" x="105" y="113" width="345" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Title…" id="95">
-                            <font key="font" metaFont="systemBold"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="341" translatesAutoresizingMaskIntoConstraints="NO" id="33">
-                        <rect key="frame" x="105" y="63" width="345" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Subtitle…" id="96">
-                            <font key="font" metaFont="systemBold"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <progressIndicator wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="34">
-                        <rect key="frame" x="106" y="85" width="343" height="20"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </progressIndicator>
-                    <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35">
-                        <rect key="frame" x="20" y="66" width="62" height="62"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="97"/>
-                    </imageView>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36">
-                        <rect key="frame" x="371" y="15" width="82" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="98">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                </subviews>
-            </view>
-        </window>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="44" userLabel="AppliUpdateDialog" customClass="NSPanel">
-            <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="214" y="371" width="780" height="439"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" id="45">
-                <rect key="frame" x="0.0" y="0.0" width="780" height="439"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <box fixedFrame="YES" boxType="oldStyle" borderType="line" title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="62">
-                        <rect key="frame" x="19" y="59" width="742" height="252"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <view key="contentView" id="yZf-yk-udz">
-                            <rect key="frame" x="1" y="1" width="740" height="250"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <webView fixedFrame="YES" maintainsBackForwardList="NO" translatesAutoresizingMaskIntoConstraints="NO" id="50">
-                                    <rect key="frame" x="1" y="1" width="738" height="248"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
-                                        <nil key="identifier"/>
-                                    </webPreferences>
-                                </webView>
-                            </subviews>
-                        </view>
-                    </box>
-                    <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="47">
-                        <rect key="frame" x="20" y="329" width="89" height="90"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <imageCell key="cell" enabled="NO" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="NSApplicationIcon" id="100"/>
-                    </imageView>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="272" translatesAutoresizingMaskIntoConstraints="NO" id="48">
-                        <rect key="frame" x="141" y="402" width="276" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="A New GALGAS Version is available." id="101">
-                            <font key="font" metaFont="systemBold"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="618" translatesAutoresizingMaskIntoConstraints="NO" id="49">
-                        <rect key="frame" x="141" y="334" width="622" height="48"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="New version text…" id="102">
-                            <font key="font" metaFont="message" size="11"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="51">
-                        <rect key="frame" x="18" y="21" width="244" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="check" title="Check For New Version At Start-Up" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="103">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <button toolTip="Download new version, quit canari, install new version, and launch new version." verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="53" customClass="PMOkButtonForPanel">
-                        <rect key="frame" x="522" y="12" width="244" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="Install and Launch Version 7.8.9" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="104">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="46" customClass="PMCancelButtonForPanel">
-                        <rect key="frame" x="400" y="12" width="82" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="99">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" preferredMaxLayoutWidth="108" translatesAutoresizingMaskIntoConstraints="NO" id="61">
-                        <rect key="frame" x="141" y="318" width="112" height="14"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" title="Change Log:" id="105">
-                            <font key="font" metaFont="smallSystemBold"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                </subviews>
-            </view>
-        </window>
         <customView id="109" userLabel="View for ChangeLog in Preferences">
             <rect key="frame" x="0.0" y="0.0" width="611" height="608"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -367,6 +223,7 @@
                     </connections>
                 </textField>
             </subviews>
+            <point key="canvasLocation" x="139" y="-282"/>
         </customView>
         <objectController id="146" userLabel="Web View Object Controller">
             <declaredKeys>
@@ -421,11 +278,11 @@
                     </scrollView>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="138" y="-746"/>
         </window>
         <customObject id="xaS-5W-O3r" customClass="SUUpdater"/>
     </objects>
     <resources>
-        <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="NSGoLeftTemplate" width="9" height="12"/>
         <image name="NSGoRightTemplate" width="9" height="12"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>

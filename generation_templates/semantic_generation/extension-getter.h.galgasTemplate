@@ -16,7 +16,7 @@ typedef class GALGAS_%![RETURN_TYPE identifierRepresentation]% (*enterExtensionG
   end
   %,\n%!^%C_Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) ;
-
+ 
 //----------------------------------------------------------------------------------------------------------------------
 
 void enterExtensionGetter_%![GETTER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,

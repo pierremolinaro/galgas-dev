@@ -33,15 +33,11 @@
 
   //····················································································································
 
-  @synthesize mNewAvailableVersionPanel ;
-
-  //····················································································································
-
   - (void) awakeFromNib {
   //--- Add Update Tab view
     NSTabView * prefsTabView = [gCocoaApplicationDelegate preferencesTabView] ;
     NSTabViewItem * tabViewItem = [NSTabViewItem new] ;
-    [tabViewItem setView:mUpdateView] ;
+    [tabViewItem setView: mUpdateView] ;
     [tabViewItem setLabel:@"Update"] ;
     [prefsTabView addTabViewItem:tabViewItem] ;
   //--- Add 'ChangeLog' tab item
@@ -62,8 +58,8 @@
     }
   //--- Installation Path
     NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
-    if ([ud objectForKey:@"GGS_cli_installation_path"] == nil) {
-      [ud setObject:@"/usr/local/bin/" forKey:@"GGS_cli_installation_path"] ;
+    if ([ud objectForKey: @"GGS_cli_installation_path"] == nil) {
+      [ud setObject: @"/usr/local/bin/" forKey: @"GGS_cli_installation_path"] ;
     }
     [mCLIToolInstallationPath
       bind: @"value"
@@ -71,8 +67,11 @@
       withKeyPath: @"GGS_cli_installation_path"
       options: nil
     ] ;
-  //--- Check ar startup checkbox
+  //--- Check at startup checkbox
     [mCheckUpdateAtStartUpCheckBox bind: @"value" toObject: mSparkleUpdater withKeyPath: @"automaticallyChecksForUpdates" options: nil] ;
+  //--- Populate WebView
+    NSURL * url = [NSURL URLWithString: @"https://pierremolinaro.github.io/galgas-distribution/release-notes.html"] ;
+    [[mChangeLogInPreferencePaneWebView mainFrame] loadRequest: [NSURLRequest requestWithURL: url]] ;
   }
 
   //····················································································································
