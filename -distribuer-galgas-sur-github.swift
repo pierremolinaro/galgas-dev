@@ -25,10 +25,9 @@ enum ProductKind {
 let BUILD_KIND = ProductKind.release
 
 //--------------------------------------------------------------------------------------------------
-// Version GALGAS
+// Infos de version
 //--------------------------------------------------------------------------------------------------
 
-// let VERSION_GALGAS = "3.4.0"
 let NOTES : [String] = ["First release hosted by GITHUB"]
 let BUGFIXES : [String] = []
 let CHANGES : [String] = []
@@ -220,6 +219,17 @@ print ("ANNÉE : \(ANNÉE)")
 //-------------------- Vérifier la création de projet
   runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/-verifier-create-galgas.command", [])
 //-------------------- Construire la documentation Latex
+  let latexDir = DISTRIBUTION_DIR + "/galgas-dev-master/galgas-documentation-latex-sources"
+  let directoryEnumerator = fm.enumerator (atPath: latexDir)
+  while let filename = directoryEnumerator?.nextObject () as? String {
+    if filename.hasSuffix (".tex") {
+      remplacerAnneeEtVersionGALGAS (ANNEE, VERSION_GALGAS, file: latexDir + "/" + filename)
+    }
+  }
+  runHiddenCommand (latexDir + "/-build.command", [])
+  runCommand ("/bin/cp", [latexDir + "/galgas-book.pdf", "galgas-book.pdf"])
+  runCommand (["/bin/rm", "-fr", latexDir])
+
 //for root, dirs, files in os.walk (DISTRIBUTION_DIR + "/galgas-dev-master/galgas-documentation-latex-sources"):
 //  for filename in files:
 //    (base, extension) = os.path.splitext (filename)
@@ -228,6 +238,16 @@ print ("ANNÉE : \(ANNÉE)")
 //runHiddenCommand ([DISTRIBUTION_DIR + "/galgas-dev-master/galgas-documentation-latex-sources/-build.command"])
 //runCommand (["cp", "galgas-dev-master/galgas-documentation-latex-sources/galgas-book.pdf", "galgas-book.pdf"])
 //runCommand (["/bin/rm", "-fr", "galgas-dev-master/galgas-documentation-latex-sources"])
+//-------------------- Creer l'archive de l'executable windows (release et debug)
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev-master/makefile-macosx")
+  runCommand ("/usr/local/bin/python", ["build.py"])
+  runCommand ("/usr/bin/bzip2", ["-9", "galgas"])
+  runCommand ("/usr/bin/bzip2", ["-9", "galgas-debug"])
+  fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR)
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-macosx/galgas.exe.bz2", "galgas.osx.bz2"])
+  runCommand ("/bin/mv", [DISTRIBUTION_DIR + "/galgas-dev-master/makefile-macosx/galgas-debug.exe.bz2", "galgas-debug.osx.bz2"])
+  runCommand ("/bin/rm", ["-fr", "galgas-dev-master/makefile-macosx"])
+  runCommand ("/bin/rm", ["-fr", "galgas-dev-master/build/cli-objects"])
 //-------------------- Creer l'archive de l'executable windows (release et debug)
   fm.changeCurrentDirectoryPath (DISTRIBUTION_DIR + "/galgas-dev-master/makefile-win32-on-macosx")
   runCommand ("/usr/local/bin/python", ["build.py"])
