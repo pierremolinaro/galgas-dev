@@ -2,7 +2,7 @@ project (1:0:0) -> "class_sample_language" {
 #--- Targets
   %makefile-macosx
   %makefile-unix
-  %SnowLeopard
+  %LatestMacOS
   %applicationBundleBase : "fr.what"
 #--- Sources
   "galgas-sources/class_sample_language_lexique.galgas"

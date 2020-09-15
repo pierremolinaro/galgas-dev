@@ -4,7 +4,7 @@ project (1:0:0) -> "asl"{
   %makefile-unix
   %makefile-x86linux32-on-macosx
   %makefile-win32-on-macosx
-  %SnowLeopard
+  %LatestMacOS
   %applicationBundleBase : "fr.what"
 
 #--- Source files (relative path from 'galgas_sources' directory)

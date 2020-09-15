@@ -2,7 +2,7 @@ project (1:0:0) -> "all_dangling_else_solution" {
 #--- Targets
   %makefile-macosx
   %makefile-unix
-  %SnowLeopard
+  %LatestMacOS
   %applicationBundleBase : "fr.what"
 #--- Sources
   "galgas-sources/dangling_else_solution_lexique.galgas"

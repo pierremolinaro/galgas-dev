@@ -1,8 +1,8 @@
 project (1:0:0) -> "testsuite" {
   %makefile-macosx
   %makefile-win32-on-macosx
-  %LatestMacOS
-  %applicationBundleBase : "fr.what"
+#  %LatestMacOS
+#  %applicationBundleBase : "fr.what"
   "galgas-sources/testsuite_lexique.galgas"
   "galgas-sources/testsuite_syntax.galgas"
   "galgas-sources/testsuite_grammar.galgas"
@@ -28,7 +28,8 @@ project (1:0:0) -> "testsuite" {
   "galgas-sources/testsuite_bugMap.galgas"
 
   "galgas-sources/testsuite_extern_type.galgas"
-  %tool-source : "hand_coded_sources/extern_type_implementation.cpp"
+
+   %tool-source : "hand_coded_sources/extern_type_implementation.cpp"
 
   "galgas-sources/testsuite_program.galgas"
 

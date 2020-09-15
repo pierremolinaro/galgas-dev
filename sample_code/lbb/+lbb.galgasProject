@@ -2,7 +2,7 @@ project (1:0:0) -> "lbb"{
 #--- Targets
   %makefile-macosx
   %makefile-unix
-  %SnowLeopard
+  %LatestMacOS
   %applicationBundleBase : "fr.what"
 
 #--- Source files (relative path from 'galgas_sources' directory)
