@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
@@ -54,134 +54,6 @@
 			<key>NSDocumentClass</key>
 			<string>OC_GGS_Document</string>
 		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>gSemantics</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>galgasDocuments.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>GALGAS semantics Component</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSTypeIsPackage</key>
-			<false/>
-			<key>NSDocumentClass</key>
-			<string>OC_GGS_Document</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>gLexique</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>galgasDocuments.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>GALGAS lexique Component</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSTypeIsPackage</key>
-			<false/>
-			<key>NSDocumentClass</key>
-			<string>OC_GGS_Document</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>gOption</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>galgasDocuments.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>GALGAS option Component</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSTypeIsPackage</key>
-			<false/>
-			<key>NSDocumentClass</key>
-			<string>OC_GGS_Document</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>gSyntax</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>galgasDocuments.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>GALGAS syntax Component</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSTypeIsPackage</key>
-			<false/>
-			<key>NSDocumentClass</key>
-			<string>OC_GGS_Document</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>gGrammar</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>galgasDocuments.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>GALGAS grammar Component</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSTypeIsPackage</key>
-			<false/>
-			<key>NSDocumentClass</key>
-			<string>OC_GGS_Document</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>gGui</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>galgasDocuments.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>GALGAS GUI Component</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSTypeIsPackage</key>
-			<false/>
-			<key>NSDocumentClass</key>
-			<string>OC_GGS_Document</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>gProgram</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>galgasDocuments.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>GALGAS program Component</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSTypeIsPackage</key>
-			<false/>
-			<key>NSDocumentClass</key>
-			<string>OC_GGS_Document</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>gProject</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>galgasDocuments.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>GALGAS project Component</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSTypeIsPackage</key>
-			<false/>
-			<key>NSDocumentClass</key>
-			<string>OC_GGS_Document</string>
-		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>cocoaGalgas</string>
@@ -199,19 +71,6 @@
 	<string>GGSX</string>
 	<key>CFBundleVersion</key>
 	<string>GALGASBETAVERSION</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>galgas.rts-software.org</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-			</dict>
-		</dict>
-	</dict>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
