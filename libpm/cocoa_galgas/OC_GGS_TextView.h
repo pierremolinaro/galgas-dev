@@ -21,18 +21,18 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 @class OC_GGS_TextDisplayDescriptor ;
-@class OC_GGS_Document ;
+@class OC_GGS_UserInterface ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
 @interface OC_GGS_TextView : NSTextView {
-   @private OC_GGS_Document * mDocumentUsedForDisplaying ;
+   @private OC_GGS_UserInterface * mDocumentUsedForDisplaying ;
    @private OC_GGS_TextDisplayDescriptor * mDisplayDescriptor ;
    @private NSArray * mIssueArray ; // Of PMIssueDescriptor
 }
 
 - (id) initWithFrame:(NSRect)frameRect
-       documentUsedForDisplaying: (OC_GGS_Document *) inDocumentUsedForDisplaying
+       documentUsedForDisplaying: (OC_GGS_UserInterface *) inDocumentUsedForDisplaying
        displayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor ;
 
 - (void) detachTextView ;

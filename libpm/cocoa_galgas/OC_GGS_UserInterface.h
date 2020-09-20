@@ -2,7 +2,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2003, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2003, ..., 2020 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -34,10 +34,13 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@interface OC_GGS_Document : NSDocument <NSTextViewDelegate,
-                                         NSSplitViewDelegate,
-                                         NSWindowDelegate,
-                                         NSTableViewDataSource> {
+@interface OC_GGS_UserInterface : NSObject <NSTextViewDelegate,
+                                            NSSplitViewDelegate,
+                                            NSWindowDelegate,
+                                            NSTableViewDataSource> {
+//--- Outlets
+  @private IBOutlet NSWindow * mWindow ;
+
   @private IBOutlet NSSplitView * mFirstSplitView ;
   @private IBOutlet NSSplitView * mSecondSplitView ;
 
@@ -48,6 +51,9 @@
   @private NSFont * mBuildTextFont ;
 
   @private IBOutlet NSPanel * mUpdateFromFileSystemPanel ;
+
+//--- Retained Objects
+  @private NSArray * mTopLevelObjects ;
 
   @private OC_GGS_BuildTask * mBuildTask ;
   @private BOOL mBuildTaskHasBeenAborted ;
@@ -154,6 +160,10 @@
 
 - (void) appendBuildOutputData: (NSData *) inData ;
 - (void) buildCompleted ;
+- (NSWindow *) window ;
+
++ (NSArray *) allUserInterfaces ; // Array of OC_GGS_UserInterface
+
 @end
 
 //----------------------------------------------------------------------------------------------------------------------

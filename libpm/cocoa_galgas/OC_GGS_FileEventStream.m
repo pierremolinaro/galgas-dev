@@ -37,7 +37,7 @@ static NSMutableArray * gFileEventStreamArray = nil ;
            flag: (FSEventStreamEventFlags) inEventFlag {
    // NSLog (@"path '%@' flag:%X", inPath, inEventFlag) ; // §
     for (OC_GGS_DocumentData * document in mDocuments) {
-      if ([document.fileURL.path isEqualToString: inPath]) {
+      if ([document.mFileURL.path isEqualToString: inPath]) {
         [document fileDidChangeInFileSystem] ;
       }
     }
@@ -67,7 +67,7 @@ static NSMutableArray * gFileEventStreamArray = nil ;
     if (self) {
       mDocuments = [NSMutableArray new] ;
       [mDocuments addObject:inDocument] ;
-      NSString * path = inDocument.fileURL.path ;
+      NSString * path = inDocument.mFileURL.path ;
       NSArray * pathsToWatch = [NSArray arrayWithObject: path] ;
     //  NSLog (@"pathsToWatch %@", pathsToWatch) ;
       const CFAbsoluteTime latency = 1.0 ; // Latency in seconds
@@ -105,9 +105,9 @@ static NSMutableArray * gFileEventStreamArray = nil ;
   //····················································································································
 
   - (BOOL) tryToAddDocument: (OC_GGS_DocumentData *) inDocument {
-    NSString * path = inDocument.fileURL.path.stringByDeletingLastPathComponent ;
+    NSString * path = inDocument.mFileURL.path.stringByDeletingLastPathComponent ;
     OC_GGS_DocumentData * firstDocument = [mDocuments objectAtIndex: 0] ;
-    NSString * referencePath = firstDocument.fileURL.path.stringByDeletingLastPathComponent ;
+    NSString * referencePath = firstDocument.mFileURL.path.stringByDeletingLastPathComponent ;
     const BOOL result = [path isEqualToString: referencePath] ;
     if (result) {
       [mDocuments addObject: inDocument] ;

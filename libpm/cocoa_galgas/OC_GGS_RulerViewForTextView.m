@@ -2,7 +2,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2001, ..., 2013 Pierre Molinaro.
+//  Copyright (C) 2001, ..., 2020 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -20,7 +20,7 @@
 #import "OC_GGS_TextView.h"
 #import "PMIssueDescriptor.h"
 #import "PMIssueInRuler.h"
-#import "OC_GGS_Document.h"
+#import "OC_GGS_UserInterface.h"
 #import "PMDebug.h"
 
 //----------------------------------------------------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2012, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 2012, ..., 2020 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -22,7 +22,7 @@
 
 @class OC_GGS_TextSyntaxColoring ;
 @class OC_GGS_TextDisplayDescriptor ;
-@class OC_GGS_Document ;
+@class OC_GGS_UserInterface ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -33,19 +33,19 @@
   @private NSStringEncoding mFileEncoding ;
 }
 
-@property (assign, readonly, atomic) OC_GGS_Document * document ; // May be nil
-@property (copy, readonly, atomic) NSURL * fileURL ;
+//@property (assign, readonly, atomic) OC_GGS_UserInterface * mDocument ; // May be nil
+@property (copy, readonly, atomic) NSURL * mFileURL ;
 
 + (void) saveAllDocuments ;
 
 + (void) cocoaDocumentWillClose: (OC_GGS_DocumentData *) inDocumentData ;
 
 + (OC_GGS_DocumentData *) findOrAddDataForDocumentURL: (NSURL *) inDocumentURL
-                          forCocoaDocument: (OC_GGS_Document *) inDocument ;
+                          forCocoaDocument: (OC_GGS_UserInterface *) inDocument ;
 
 + (OC_GGS_DocumentData *) findDocumentDataForFilePath: (NSString *) inFilePath ;
 
-- (OC_GGS_TextDisplayDescriptor *) newSourceDisplayDescriptorForDocument: (OC_GGS_Document *) inDocumentUsedForDisplaying ;
+- (OC_GGS_TextDisplayDescriptor *) newSourceDisplayDescriptorForDocument: (OC_GGS_UserInterface *) inDocumentUsedForDisplaying ;
 
 - (NSString *) sourceString ;
 
@@ -53,7 +53,7 @@
 
 - (void) replaceCharactersInRange: (NSRange) inRange withString: (NSString *) inReplaceString ;
 
-- (BOOL) performSaveToURL: (NSURL *) inAbsoluteURL ;
+//- (BOOL) performSaveToURL: (NSURL *) inAbsoluteURL ;
 
 - (NSUInteger) locationForLineInSource: (NSUInteger) inLine ;
 

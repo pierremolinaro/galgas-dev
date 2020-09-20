@@ -17,7 +17,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 #import "OC_GGS_DocumentData.h"
-#import "OC_GGS_Document.h"
+#import "OC_GGS_UserInterface.h"
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "F_CocoaWrapperForGalgas.h"
@@ -39,8 +39,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 
   //····················································································································
 
-  @synthesize document ;
-  @synthesize fileURL ;
+  @synthesize mFileURL ;
 
   //····················································································································
   //    -locationForLineInSource:
@@ -72,7 +71,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
     mIssueArray = [NSMutableArray new] ;
     for (PMIssueDescriptor * issue in inIssueArray) {
       // NSLog (@"issue.issueURL %@, fileURL %@", issue.issueStandardizedURL, fileURL) ;
-      if ([issue.issueStandardizedURL isEqualTo:fileURL.standardizedURL]) {
+      if ([issue.issueStandardizedURL isEqualTo: mFileURL.standardizedURL]) {
         [issue
           setStartLocationInSourceString:[self locationForLineInSource:issue.issueLine] + issue.issueStartColumn - 1
           endLocation:[self locationForLineInSource:issue.issueLine] + issue.issueEndColumn - 1
@@ -180,16 +179,18 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 
 - (void) readDocumentFromFile {
 //--- Try UTF8
+  NSLog (@"mFileURL %@", mFileURL) ;
+  NSError * error = nil ;
   NSString * source = [[NSString alloc]
-    initWithContentsOfURL: fileURL
+    initWithContentsOfURL: mFileURL
     encoding: mFileEncoding
-    error: nil
+    error: & error
   ] ;
 //--- If not UTF8, try any encoding
   if (source == nil) {
     NSLog (@"Try any encoding") ;
     source = [[NSString alloc]
-      initWithContentsOfURL:fileURL
+      initWithContentsOfURL: mFileURL
       usedEncoding:& mFileEncoding
       error:nil
     ] ;
@@ -198,7 +199,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
   if (source == nil) {
     NSLog (@"Try lossy encoding") ;
     mFileEncoding = NSUTF8StringEncoding ;
-    NSData * data = [NSData dataWithContentsOfURL:fileURL options:NSDataReadingMapped error:nil] ;
+    NSData * data = [NSData dataWithContentsOfURL: mFileURL options:NSDataReadingMapped error:nil] ;
     if (nil != data) {
       const NSUInteger dataLength = [data length] ;
       const unsigned char * bytes = [data bytes] ;
@@ -217,7 +218,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 //--- Delegate for syntax coloring
   mTextSyntaxColoring = [[OC_GGS_TextSyntaxColoring alloc]
     initWithSourceString:  source
-    tokenizer: tokenizerForExtension (fileURL.absoluteString.pathExtension)
+    tokenizer: tokenizerForExtension (mFileURL.absoluteString.pathExtension)
     documentData: self
     issueArray: nil // mIssueArrayController.arrangedObjects
   ] ;
@@ -239,7 +240,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
     self = [super init] ;
     if (self) {
       noteObjectAllocation (self) ;
-      fileURL = inDocumentURL ;
+      mFileURL = inDocumentURL.standardizedURL ;
       mFileEncoding = NSUTF8StringEncoding ;
       [self readDocumentFromFile] ;
       // addFileEventStreamForDocument (self) ;  // §§
@@ -255,11 +256,11 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 
   //····················································································································
 
-  - (void) setCocoaDocument: (OC_GGS_Document *) inDocument {
-    if (nil != inDocument) {
-      document = inDocument ;
-    }
-  }
+//  - (void) setCocoaDocument: (OC_GGS_UserInterface *) inDocument {
+//    if (nil != inDocument) {
+//      mDocument = inDocument ;
+//    }
+//  }
 
   //····················································································································
 
@@ -270,21 +271,21 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 
   //····················································································································
 
-  - (void) detachFromCocoaDocument {
-    document = nil ;
-  }
+//  - (void) detachFromCocoaDocument {
+//    mDocument = nil ;
+//  }
 
   //····················································································································
 
   + (void) cocoaDocumentWillClose: (OC_GGS_DocumentData *) inDocumentData {
     [OC_GGS_DocumentData saveAllDocuments] ;
-    [inDocumentData detachFromCocoaDocument] ;
+//    [inDocumentData detachFromCocoaDocument] ;
     // removeFileEventStreamForDocument (inDocumentData) ; // §§
     for (OC_GGS_DocumentData * documentData in gDocumentDataDictionary.allValues.copy) {
       // NSLog (@"%lu for %@", documentData.textSyntaxColoring.displayDescriptorCount, documentData.fileURL) ;
       if (documentData.textSyntaxColoring.displayDescriptorCount == 0) {
         [documentData detach] ;
-        [gDocumentDataDictionary removeObjectForKey:documentData.fileURL.path.stringByStandardizingPath] ;
+        [gDocumentDataDictionary removeObjectForKey:documentData.mFileURL.path.stringByStandardizingPath] ;
       }
     }
     if (gDocumentDataDictionary.count == 0) {
@@ -296,23 +297,21 @@ static NSMutableDictionary * gDocumentDataDictionary ;
   //····················································································································
 
   + (OC_GGS_DocumentData *) findOrAddDataForDocumentURL: (NSURL *) inDocumentURL
-                            forCocoaDocument: (OC_GGS_Document *) inDocument {
+                            forCocoaDocument: (OC_GGS_UserInterface *) inDocument {
     if (nil == gDocumentDataDictionary) {
       gDocumentDataDictionary = [NSMutableDictionary new] ;
     }
     NSString * standardizedPath = inDocumentURL.path.stringByStandardizingPath ;
-    OC_GGS_DocumentData * documentData = [gDocumentDataDictionary objectForKey:standardizedPath] ;
+    OC_GGS_DocumentData * documentData = [gDocumentDataDictionary objectForKey: standardizedPath] ;
     if (nil == documentData) {
       NSFileManager * fm = [NSFileManager new] ;
       if ([fm isReadableFileAtPath:inDocumentURL.path]) {
-        documentData = [[OC_GGS_DocumentData alloc]
-          initWithDataFromURL:inDocumentURL
-        ] ;
+        documentData = [[OC_GGS_DocumentData alloc] initWithDataFromURL: inDocumentURL] ;
         [documentData setIssueArray:gIssueArray] ;
         [gDocumentDataDictionary setObject:documentData forKey:standardizedPath] ;
       }
     }
-    [documentData setCocoaDocument:inDocument] ;
+//    [documentData setCocoaDocument:inDocument] ;
     return documentData ;
   }
 
@@ -324,7 +323,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 
   //····················································································································
 
-  - (OC_GGS_TextDisplayDescriptor *) newSourceDisplayDescriptorForDocument: (OC_GGS_Document *) inDocumentUsedForDisplaying {
+  - (OC_GGS_TextDisplayDescriptor *) newSourceDisplayDescriptorForDocument: (OC_GGS_UserInterface *) inDocumentUsedForDisplaying {
     OC_GGS_TextDisplayDescriptor * tdd = [[OC_GGS_TextDisplayDescriptor alloc]
       initWithDocumentData: self
       displayDocument: inDocumentUsedForDisplaying
@@ -359,39 +358,61 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 
   //····················································································································
 
-  - (BOOL) performSaveToURL: (NSURL *) inAbsoluteURL {
-  //  NSLog (@"performSaveToURL %@, fileURL %@", inAbsoluteURL, fileURL) ;
-    [mTextSyntaxColoring breakUndoCoalescing] ;
-    NSString * string = mTextSyntaxColoring.sourceString ;
-    NSError * error = nil ;
-    const BOOL ok = [string
-      writeToURL: (inAbsoluteURL == nil) ? fileURL : inAbsoluteURL
-      atomically: YES
-      encoding: NSUTF8StringEncoding
-      error:& error
-    ] ;
-  //---
-    if (ok) {
-      [mTextSyntaxColoring documentHasBeenSaved] ;
-    }else if (error != nil) {
-      [NSApp presentError: error] ;
-    }
-    return ok ;
-  }
+//  - (BOOL) performSaveToURL: (NSURL *) inAbsoluteURL {
+//  //  NSLog (@"performSaveToURL %@, fileURL %@", inAbsoluteURL, fileURL) ;
+//    [mTextSyntaxColoring breakUndoCoalescing] ;
+//    NSString * string = mTextSyntaxColoring.sourceString ;
+//    NSError * error = nil ;
+//    const BOOL ok = [string
+//      writeToURL: (inAbsoluteURL == nil) ? fileURL : inAbsoluteURL
+//      atomically: YES
+//      encoding: NSUTF8StringEncoding
+//      error:& error
+//    ] ;
+//  //---
+//    if (ok) {
+//      [mTextSyntaxColoring documentHasBeenSaved] ;
+//    }else if (error != nil) {
+//      [NSApp presentError: error] ;
+//    }
+//    return ok ;
+//  }
 
   //····················································································································
 
   - (void) save {
     if (mTextSyntaxColoring.isDirty) {
- //     removeFileEventStreamForDocument (self) ;  // §§
-      if (nil == self.document) {
-        [self performSaveToURL: nil] ;
-      }else{
-        [self.document saveDocument: nil] ;
+      [mTextSyntaxColoring breakUndoCoalescing] ;
+      NSString * string = mTextSyntaxColoring.sourceString ;
+      NSError * error = nil ;
+      const BOOL ok = [string
+        writeToURL: mFileURL
+        atomically: YES
+        encoding: NSUTF8StringEncoding
+        error:& error
+      ] ;
+    //---
+      if (ok) {
+        [mTextSyntaxColoring documentHasBeenSaved] ;
+      }else if (error != nil) {
+        [NSApp presentError: error] ;
       }
- //     addFileEventStreamForDocument (self) ;  // §§
     }
   }
+
+  //····················································································································
+
+//  - (void) save {
+//    if (mTextSyntaxColoring.isDirty) {
+// //     removeFileEventStreamForDocument (self) ;  // §§
+//      if (nil == self.mDocument) {
+//        [self performSaveToURL: nil] ;
+//      }else{
+//        [self.mDocument saveDocument: nil] ;
+//      }
+// //     addFileEventStreamForDocument (self) ;  // §§
+//    }
+//  }
 
   //····················································································································
 
@@ -408,7 +429,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
   //····················································································································
 
   - (void) fileDidChangeInFileSystem {
-    NSString * filePath = self.fileURL.path ;
+    NSString * filePath = self.mFileURL.path ;
     NSError * error = nil ;
     NSString * newContents = [NSString
       stringWithContentsOfFile: filePath
@@ -417,13 +438,12 @@ static NSMutableDictionary * gDocumentDataDictionary ;
     ] ;
     if (error == nil) {
     // https://stackoverflow.com/questions/25810749/how-can-i-suppress-the-autosave-the-file-has-been-changed-by-another-applicatio
-      [self.document revertDocumentToSaved: self.document] ;
+//      [self.mDocument revertDocumentToSaved: self.mDocument] ;
       [self replaceSourceStringWithString: newContents] ;
     }else{
       [NSApp presentError:error] ;
     }
   }
-
 
   //····················································································································
 

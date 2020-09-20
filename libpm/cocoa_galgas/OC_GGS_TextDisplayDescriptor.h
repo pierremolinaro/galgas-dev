@@ -2,7 +2,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2011, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 2011, ..., 2020 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -22,7 +22,7 @@
 
 @class OC_GGS_TextSyntaxColoring ;
 @class OC_GGS_DocumentData ;
-@class OC_GGS_Document ;
+@class OC_GGS_UserInterface ;
 @class OC_GGS_TextView ;
 @class PMIssueDescriptor ;
 @class OC_GGS_RulerViewForTextView ;
@@ -37,14 +37,14 @@
   @private NSScrollView * mScrollView ;
   @private NSView * mEnclosingView ;
   @private NSUInteger mTextSelectionStart ;
-  @private OC_GGS_Document * mDocumentUsedForDisplaying ;
+  @private OC_GGS_UserInterface * mDocumentUsedForDisplaying ;
 }
 
 @property (assign, readonly, atomic) OC_GGS_DocumentData * documentData ;
 @property (atomic) BOOL isDirty ;
 
 - (OC_GGS_TextDisplayDescriptor *) initWithDocumentData: (OC_GGS_DocumentData *) inDocumentData
-                                   displayDocument: (OC_GGS_Document *) inDocumentUsedForDisplaying ;
+                                   displayDocument: (OC_GGS_UserInterface *) inDocumentUsedForDisplaying ;
 
 - (void) detachTextDisplayDescriptor ;
 

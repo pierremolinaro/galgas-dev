@@ -2,7 +2,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2011, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 2011, ..., 2020 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -20,7 +20,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@class OC_GGS_Document ;
+@class OC_GGS_UserInterface ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -32,10 +32,10 @@
 
   @private BOOL mTaskCompleted ;
   
-  @private OC_GGS_Document * mDocument ;
+  @private OC_GGS_UserInterface * mUserInterface ;
 }
 
-- (id) initWithDocument: (OC_GGS_Document *) inDocument
+- (id) initWithDocument: (OC_GGS_UserInterface *) inUserInterface
        filePath: (NSString *) inFilePath
        isBuildRun: (BOOL) inIsBuildRun ;
 

@@ -2,7 +2,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2011, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 2011, ..., 2020 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -18,7 +18,7 @@
 
 #import "OC_GGS_BuildTask.h"
 #import "PMIssueDescriptor.h"
-#import "OC_GGS_Document.h"
+#import "OC_GGS_UserInterface.h"
 #import "OC_GGS_ApplicationDelegate.h"
 #import "F_CocoaWrapperForGalgas.h"
 #import "PMDebug.h"
@@ -38,7 +38,7 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (OC_GGS_BuildTask *) initWithDocument: (OC_GGS_Document *) inDocument
+- (OC_GGS_BuildTask *) initWithDocument: (OC_GGS_UserInterface *) inUserInterface
                        filePath: (NSString *) inFilePath
                        isBuildRun: (BOOL) inIsBuildRun {
   #ifdef DEBUG_MESSAGES
@@ -48,7 +48,7 @@
   if (self) {
     noteObjectAllocation (self) ;
   //---
-    mDocument = inDocument ;
+    mUserInterface = inUserInterface ;
   //---
     NSArray * commandLineArray = [gCocoaApplicationDelegate commandLineItemArray] ;
   //--- Command line tool does actually exist ? (First argument is not "?")
@@ -60,7 +60,7 @@
         informativeTextWithFormat:@"Compilation must be performed by an embedded Command line Tool; no command line Tool are currently embedded by application."
       ] ;
       [alert
-        beginSheetModalForWindow:inDocument.windowForSheet
+        beginSheetModalForWindow: [mUserInterface window]
         modalDelegate:nil
         didEndSelector:0
         contextInfo:NULL
@@ -127,7 +127,7 @@
   #endif
   NSData * data = [inNotification.userInfo objectForKey:NSFileHandleNotificationDataItem];
   if (data.length > 0) {
-    [mDocument appendBuildOutputData:data] ;
+    [mUserInterface appendBuildOutputData: data] ;
     [inNotification.object readInBackgroundAndNotify] ;
   }else{
     [[NSNotificationCenter defaultCenter]
@@ -144,7 +144,7 @@
     mOutputBufferedDataHasBeenTransmitted = YES ;
     mTask = nil ;
     mTaskOutputPipe = nil ;
-    [mDocument buildCompleted] ;
+    [mUserInterface buildCompleted] ;
   }
 }
 

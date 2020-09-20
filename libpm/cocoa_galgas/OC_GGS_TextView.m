@@ -2,7 +2,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2011, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2011, ..., 2020 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -23,7 +23,7 @@
 #import "PMIssueDescriptor.h"
 #import "OC_Token.h"
 #import "OC_GGS_DocumentData.h"
-#import "OC_GGS_Document.h"
+#import "OC_GGS_UserInterface.h"
 #import "OC_GGS_ApplicationDelegate.h"
 #import "OC_GGS_Scroller.h"
 #import "PMDebug.h"
@@ -43,7 +43,7 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 - (id) initWithFrame: (NSRect) inFrame
-       documentUsedForDisplaying: (OC_GGS_Document *) inDocumentUsedForDisplaying
+       documentUsedForDisplaying: (OC_GGS_UserInterface *) inDocumentUsedForDisplaying
        displayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor {
   self = [super initWithFrame:inFrame] ;
   if (self) {

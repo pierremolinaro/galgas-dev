@@ -2,7 +2,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2011, ..., 2016 Pierre Molinaro.
+//  Copyright (C) 2011, ..., 2020 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -20,7 +20,7 @@
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_Lexique.h"
 #import "OC_GGS_DocumentData.h"
-#import "OC_GGS_Document.h"
+#import "OC_GGS_UserInterface.h"
 #import "OC_GGS_TextView.h"
 #import "OC_GGS_RulerViewForTextView.h"
 #import "OC_GGS_ApplicationDelegate.h"
@@ -55,7 +55,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSString *) description {
-  return documentData.fileURL.path ;
+  return documentData.mFileURL.path ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -84,7 +84,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 //----------------------------------------------------------------------------------------------------------------------
 
 - (OC_GGS_TextDisplayDescriptor *) initWithDocumentData: (OC_GGS_DocumentData *) inDocumentData
-                                   displayDocument: (OC_GGS_Document *) inDocumentUsedForDisplaying  {
+                                   displayDocument: (OC_GGS_UserInterface *) inDocumentUsedForDisplaying  {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -95,7 +95,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     mDocumentUsedForDisplaying = inDocumentUsedForDisplaying ;
     mTextView = [[OC_GGS_TextView alloc]
       initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)
-      documentUsedForDisplaying:inDocumentUsedForDisplaying
+      documentUsedForDisplaying: inDocumentUsedForDisplaying
       displayDescriptor:self
     ] ;
     mTextView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
@@ -175,14 +175,14 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocumentUsedForDisplaying.fileURL.path, documentData.fileURL.path] ;
-  NSString * selectionRangeString = [[NSUserDefaults standardUserDefaults] objectForKey:key] ;
-  // NSLog (@"READ '%@' -> %@", key, selectionRangeString) ;
-  const NSRange selectionRange = NSRangeFromString (selectionRangeString) ;
-  const NSUInteger sourceTextLength = documentData.sourceString.length ;
-  if (NSMaxRange (selectionRange) <= sourceTextLength) {
-    [self setSelectionRangeAndMakeItVisible:selectionRange] ;
-  } 
+//  NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocumentUsedForDisplaying.mFileURL.path, documentData.fileURL.path] ;
+//  NSString * selectionRangeString = [[NSUserDefaults standardUserDefaults] objectForKey:key] ;
+//  // NSLog (@"READ '%@' -> %@", key, selectionRangeString) ;
+//  const NSRange selectionRange = NSRangeFromString (selectionRangeString) ;
+//  const NSUInteger sourceTextLength = documentData.sourceString.length ;
+//  if (NSMaxRange (selectionRange) <= sourceTextLength) {
+//    [self setSelectionRangeAndMakeItVisible:selectionRange] ;
+//  }
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s:DONE", __PRETTY_FUNCTION__) ;
   #endif
@@ -232,13 +232,13 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSURL *) sourceURL {
-  return documentData.fileURL ;
+  return documentData.mFileURL ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 - (NSString *) title {
-  return documentData.fileURL.lastPathComponent ;
+  return documentData.mFileURL.lastPathComponent ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -580,11 +580,11 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   [self  didChangeValueForKey:@"textSelectionStart"] ;
   [mRulerView setNeedsDisplay:YES] ;
 //---
-  NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocumentUsedForDisplaying.fileURL.path, documentData.fileURL.path] ;
-  [[NSUserDefaults standardUserDefaults]
-    setObject:NSStringFromRange (mTextView.selectedRange)
-    forKey:key
-  ] ;
+//  NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocumentUsedForDisplaying.mFileURL.path, documentData.mFileURL.path] ;
+//  [[NSUserDefaults standardUserDefaults]
+//    setObject:NSStringFromRange (mTextView.selectedRange)
+//    forKey:key
+//  ] ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

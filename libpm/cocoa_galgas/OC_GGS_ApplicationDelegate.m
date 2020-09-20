@@ -18,7 +18,8 @@
 
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "OC_GGS_ApplicationDelegate.h"
-#import "OC_GGS_Document.h"
+#import "OC_GGS_DocumentData.h"
+#import "OC_GGS_UserInterface.h"
 #import "PMFontButton.h"
 #import "OC_GGS_CommandLineOption.h"
 #import "enterDefaultCommandLineOptions.h"
@@ -1274,7 +1275,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   BOOL canTerminateApplication = YES ;
-  for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
+  for (OC_GGS_UserInterface * doc in [OC_GGS_UserInterface allUserInterfaces]) {
     if (doc.mBuildTaskIsRunning) {
       canTerminateApplication = NO ;
     }
@@ -1347,6 +1348,22 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   }
   [ud synchronize] ;
   [self updateSourceTextPreferenceCount] ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+- (BOOL) application: (NSApplication *) inSender openFile: (NSString *) inFilePath {
+  OC_GGS_UserInterface * newUserInterface = [OC_GGS_UserInterface new] ;
+  OC_GGS_DocumentData * documentData = [OC_GGS_DocumentData
+    findOrAddDataForDocumentURL: [NSURL URLWithString: inFilePath]
+    forCocoaDocument: newUserInterface
+  ] ;
+//  OC_GGS_DocumentData * documentData =  [OC_GGS_DocumentData findDocumentDataForFilePath: inFilePath] ;
+//  if (documentData == nil) {
+//
+//
+//  }
+  return documentData != nil ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

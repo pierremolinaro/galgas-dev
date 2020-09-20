@@ -2,7 +2,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2012, ..., 2014 Pierre Molinaro.
+//  Copyright (C) 2012, ..., 2020 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -20,16 +20,16 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@class OC_GGS_Document ;
+@class OC_GGS_UserInterface ;
 
 //----------------------------------------------------------------------------------------------------------------------
 
 @interface OC_GGS_RulerViewForBuildOutput : NSRulerView {
   @private NSArray * mIssueArray ;
-  @private OC_GGS_Document * mDocument ;
+  @private OC_GGS_UserInterface * mDocument ;
 }
 
-- (id) initWithDocument: (OC_GGS_Document *) inDocument ;
+- (id) initWithDocument: (OC_GGS_UserInterface *) inDocument ;
 
 - (void) setIssueArray: (NSArray *) inIssueArray ;
 

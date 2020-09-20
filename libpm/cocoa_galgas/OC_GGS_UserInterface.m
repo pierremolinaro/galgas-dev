@@ -2,7 +2,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 2003, ..., 2019 Pierre Molinaro.
+//  Copyright (C) 2003, ..., 2020 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -16,7 +16,7 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-#import "OC_GGS_Document.h"
+#import "OC_GGS_UserInterface.h"
 #import "OC_GGS_ApplicationDelegate.h"
 #import "OC_GGS_RulerViewForTextView.h"
 #import "OC_Lexique.h"
@@ -39,7 +39,11 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-@implementation OC_GGS_Document
+static NSMutableArray * gAllUserInterfaces = nil ;
+
+//----------------------------------------------------------------------------------------------------------------------
+
+@implementation OC_GGS_UserInterface
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -60,8 +64,20 @@
     noteObjectAllocation (self) ;
     mSourceDisplayArrayControllerHigh = [NSArrayController new] ;
     mDisplayDescriptorArrayHigh = [NSMutableArray new] ;
-    self.undoManager = nil ;
-    self.hasUndoManager = NO ;
+  //---
+    if (gAllUserInterfaces == nil) {
+      gAllUserInterfaces = [NSMutableArray new] ;
+    }
+    [gAllUserInterfaces addObject: self] ;
+  //--- Load NIB
+    NSArray * objects = nil ;
+    const BOOL ok = [NSBundle.mainBundle loadNibNamed: @"OC_GGS_UserInterface" owner: self topLevelObjects: &objects] ;
+    mTopLevelObjects = [mTopLevelObjects arrayByAddingObjectsFromArray:objects] ;
+    if (!ok) {
+      NSAlert * alert = [NSAlert new] ;
+      [alert setMessageText: @"Cannot load nib OC_GGS_UserInterface"] ;
+      [alert runModal] ;
+    }
   //---
     NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
     NSData * data = [ud objectForKey:GGS_build_text_font] ;
@@ -107,12 +123,12 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-- (NSString *) windowNibName {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  return @"OC_GGS_Document" ;
-}
+//- (NSString *) windowNibName {
+//  #ifdef DEBUG_MESSAGES
+//    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+//  #endif
+//  return @"OC_GGS_Document" ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -120,16 +136,18 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-- (void) windowControllerDidLoadNib: (NSWindowController *) inWindowController {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  [super windowControllerDidLoadNib: inWindowController];
+- (void) awakeFromNib {
+//- (void) windowControllerDidLoadNib: (NSWindowController *) inWindowController {
+//  #ifdef DEBUG_MESSAGES
+//    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+//  #endif
+//  [super windowControllerDidLoadNib: inWindowController];
 //--- Tell to window controller that closing the source text window closes the document
-  [inWindowController setShouldCloseDocument: YES] ;
+//  [inWindowController setShouldCloseDocument: YES] ;
 //--- Set up windows location
   NSString * key = [NSString stringWithFormat: @"frame_for_source:%@", mBaseFilePreferenceKey] ;
-  [self.windowForSheet setFrameAutosaveName:key] ;
+  [mWindow setFrameAutosaveName:key] ;
+//  [mWindow setFrameAutosaveName:key] ;
 
 //--- Add Split view binding
 // Note : use [self lastComponentOfFileName] instead of [window title], because window title may not set at this point
@@ -286,7 +304,7 @@
     [mSourceDisplayArrayControllerHigh addObject:textDisplayDescriptor] ;
     [mSourceDisplayArrayControllerHigh setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
   //---
-    mRulerViewForBuildOutput = [[OC_GGS_RulerViewForBuildOutput alloc] initWithDocument:self] ;
+    mRulerViewForBuildOutput = [[OC_GGS_RulerViewForBuildOutput alloc] initWithDocument: self] ;
     [mOutputScrollView setVerticalRulerView:mRulerViewForBuildOutput] ;
     [mOutputScrollView setHasVerticalRuler:YES] ;
     [mOutputScrollView.verticalRulerView setRuleThickness:8.0] ;
@@ -523,7 +541,7 @@
 //--- Last call
   [OC_GGS_DocumentData cocoaDocumentWillClose:mDocumentData] ;
 //---
-  [super removeWindowController:inWindowController] ;
+//  [super removeWindowController:inWindowController] ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -563,7 +581,7 @@
   #endif
   [NSApp
     beginSheet:mGotoWindow
-    modalForWindow:self.windowForSheet
+    modalForWindow: mWindow
     modalDelegate: self
     didEndSelector: @selector (sheetDidEnd:returnCode:contextInfo:)
     contextInfo: nil
@@ -754,46 +772,46 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (NSDate *) sourceFileModificationDateInFileSystem {
-  NSURL * fileURL = [self fileURL] ;
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  NSDate * date = [NSDate date] ;
-  if ([fileURL isFileURL]) {
-    NSFileManager * fm = [NSFileManager new] ;
-    NSDictionary * fileAttributes = [fm attributesOfItemAtPath:[fileURL path] error:NULL] ;
-    date = [fileAttributes objectForKey:NSFileModificationDate] ;
-  }
-  return date ;
-}
+//- (NSDate *) sourceFileModificationDateInFileSystem {
+//  NSURL * fileURL = [self fileURL] ;
+//  #ifdef DEBUG_MESSAGES
+//    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+//  #endif
+//  NSDate * date = [NSDate date] ;
+//  if ([fileURL isFileURL]) {
+//    NSFileManager * fm = [NSFileManager new] ;
+//    NSDictionary * fileAttributes = [fm attributesOfItemAtPath:[fileURL path] error:NULL] ;
+//    date = [fileAttributes objectForKey:NSFileModificationDate] ;
+//  }
+//  return date ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 
-- (void) updateFromFileSystem: (id) inUnusedArgument {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  [NSApp
-    beginSheet:mUpdateFromFileSystemPanel
-    modalForWindow:[self windowForSheet]
-    modalDelegate:nil
-    didEndSelector:NULL
-    contextInfo:NULL
-  ] ;
-//--- Read new content
-  NSString * source = [[NSString alloc]
-    initWithContentsOfURL:[self fileURL]
-    encoding:NSUTF8StringEncoding
-    error:nil
-  ] ;
-  if (source != nil) {
-//    [mDelegateForSyntaxColoring setSourceString:source] ;
-  }
-//---
-  [mUpdateFromFileSystemPanel orderOut:self] ;
-  [NSApp endSheet:mUpdateFromFileSystemPanel] ;   
-}
+//- (void) updateFromFileSystem: (id) inUnusedArgument {
+//  #ifdef DEBUG_MESSAGES
+//    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+//  #endif
+//  [NSApp
+//    beginSheet: mUpdateFromFileSystemPanel
+//    modalForWindow: mWindow
+//    modalDelegate:nil
+//    didEndSelector:NULL
+//    contextInfo:NULL
+//  ] ;
+////--- Read new content
+//  NSString * source = [[NSString alloc]
+//    initWithContentsOfURL:[self fileURL]
+//    encoding:NSUTF8StringEncoding
+//    error:nil
+//  ] ;
+//  if (source != nil) {
+////    [mDelegateForSyntaxColoring setSourceString:source] ;
+//  }
+////---
+//  [mUpdateFromFileSystemPanel orderOut:self] ;
+//  [NSApp endSheet:mUpdateFromFileSystemPanel] ;
+//}
 //----------------------------------------------------------------------------------------------------------------------
 
 #pragma mark Document Save
@@ -804,16 +822,16 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-- (void) saveDocument:(id) inSender {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-//---
-  NSURL * url = [self fileURL] ;
-  [self setFileURL:mDocumentData.fileURL] ;
-  [super saveDocument:inSender] ;
-  [self setFileURL:url] ;
-}
+//- (void) saveDocument:(id) inSender {
+//  #ifdef DEBUG_MESSAGES
+//    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+//  #endif
+////---
+//  NSURL * url = [self fileURL] ;
+//  [self setFileURL:mDocumentData.fileURL] ;
+//  [super saveDocument:inSender] ;
+//  [self setFileURL:url] ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -821,15 +839,15 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-- (BOOL) writeToURL: (NSURL *) inAbsoluteURL
-         ofType: (NSString *) inTypeName
-         error: (NSError * __autoreleasing *) outError {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s, URL %@", __PRETTY_FUNCTION__, inAbsoluteURL) ;
-  #endif
-//---
-  return [mDocumentData performSaveToURL: inAbsoluteURL] ;
-}
+//- (BOOL) writeToURL: (NSURL *) inAbsoluteURL
+//         ofType: (NSString *) inTypeName
+//         error: (NSError * __autoreleasing *) outError {
+//  #ifdef DEBUG_MESSAGES
+//    NSLog (@"%s, URL %@", __PRETTY_FUNCTION__, inAbsoluteURL) ;
+//  #endif
+////---
+//  return [mDocumentData performSaveToURL: inAbsoluteURL] ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -933,21 +951,21 @@
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-- (BOOL) readFromURL:(NSURL *) inAbsoluteURL
-         ofType:(NSString *) inTypeName
-         error:(NSError * __autoreleasing *) outError {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s, URL '%@'", __PRETTY_FUNCTION__, inAbsoluteURL) ;
-  #endif
-  mBaseFilePreferenceKey = [inAbsoluteURL.path identifierRepresentation] ;
-//---
-  mDocumentData = [OC_GGS_DocumentData
-    findOrAddDataForDocumentURL:inAbsoluteURL
-    forCocoaDocument:self
- ] ;
-//---
-  return mDocumentData != nil ;
-}
+//- (BOOL) readFromURL:(NSURL *) inAbsoluteURL
+//         ofType:(NSString *) inTypeName
+//         error:(NSError * __autoreleasing *) outError {
+//  #ifdef DEBUG_MESSAGES
+//    NSLog (@"%s, URL '%@'", __PRETTY_FUNCTION__, inAbsoluteURL) ;
+//  #endif
+//  mBaseFilePreferenceKey = [inAbsoluteURL.path identifierRepresentation] ;
+////---
+//  mDocumentData = [OC_GGS_DocumentData
+//    findOrAddDataForDocumentURL:inAbsoluteURL
+//    forCocoaDocument:self
+// ] ;
+////---
+//  return mDocumentData != nil ;
+//}
 
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -1270,7 +1288,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     OC_GGS_TextSyntaxColoring * textSyntaxColoring = textDisplay.documentData.textSyntaxColoring ;
     isEdited = textSyntaxColoring.isDirty ;
   }
-  [self updateChangeCount:isEdited ? NSChangeDone : NSChangeCleared] ;
+//  [self updateChangeCount:isEdited ? NSChangeDone : NSChangeCleared] ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1292,34 +1310,34 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 //----------------------------------------------------------------------------------------------------------------------
 
 - (IBAction) openSourceInNewWindowAction: (id) inSender {
-  NSError * error = nil ;
-  OC_GGS_Document * newDocument = [[NSDocumentController sharedDocumentController]
-    openUntitledDocumentAndDisplay:YES
-    error:& error
-  ] ;
-  if (nil == error) {
-    OC_GGS_TextDisplayDescriptor * d = [mSourceDisplayArrayControllerHigh.selectedObjects objectAtIndex:0] ;
-    [newDocument findOrAddNewTabForFile:d.sourceURL.path] ;
-  }else{
-    [self.windowForSheet presentError:error] ;
-  }
+//  NSError * error = nil ;
+//  OC_GGS_Document * newDocument = [[NSDocumentController sharedDocumentController]
+//    openUntitledDocumentAndDisplay:YES
+//    error:& error
+//  ] ;
+//  if (nil == error) {
+//    OC_GGS_TextDisplayDescriptor * d = [mSourceDisplayArrayControllerHigh.selectedObjects objectAtIndex:0] ;
+//    [newDocument findOrAddNewTabForFile:d.sourceURL.path] ;
+//  }else{
+//    [mWindow presentError:error] ;
+//  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
 - (IBAction) moveSourceInNewWindowAction: (id) inSender {
-  NSError * error = nil ;
-  OC_GGS_Document * newDocument = [[NSDocumentController sharedDocumentController]
-    openUntitledDocumentAndDisplay:YES
-    error:& error
-  ] ;
-  if (nil == error) {
-    OC_GGS_TextDisplayDescriptor * d = [mSourceDisplayArrayControllerHigh.selectedObjects objectAtIndex:0] ;
-    [newDocument findOrAddNewTabForFile:d.sourceURL.path] ;
-    [self removeSelectedTabAction:d] ;
-  }else{
-    [self.windowForSheet presentError:error] ;
-  }
+//  NSError * error = nil ;
+//  OC_GGS_UserInterface * newDocument = [[NSDocumentController sharedDocumentController]
+//    openUntitledDocumentAndDisplay:YES
+//    error:& error
+//  ] ;
+//  if (nil == error) {
+//    OC_GGS_TextDisplayDescriptor * d = [mSourceDisplayArrayControllerHigh.selectedObjects objectAtIndex:0] ;
+//    [newDocument findOrAddNewTabForFile:d.sourceURL.path] ;
+//    [self removeSelectedTabAction:d] ;
+//  }else{
+//    [mWindow presentError:error] ;
+//  }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1369,13 +1387,13 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSString * requestedAbsolutePath = inPath.isAbsolutePath
-    ? inPath.copy
-    : [self.fileURL.path.stringByDeletingLastPathComponent stringByAppendingPathComponent:inPath]
-  ;
-  NSURL * url = [NSURL fileURLWithPath:requestedAbsolutePath.stringByStandardizingPath] ;
+//  NSString * requestedAbsolutePath = inPath.isAbsolutePath
+//    ? inPath.copy
+//    : [self.fileURL.path.stringByDeletingLastPathComponent stringByAppendingPathComponent:inPath]
+//  ;
+  NSURL * url = [NSURL fileURLWithPath: inPath.stringByStandardizingPath] ;
   return [OC_GGS_DocumentData
-    findOrAddDataForDocumentURL:url
+    findOrAddDataForDocumentURL: url
     forCocoaDocument:nil
   ] ;
 }
@@ -1440,7 +1458,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   [inTextDisplayDescriptor detachTextDisplayDescriptor] ;
   [OC_GGS_DocumentData cocoaDocumentWillClose:nil] ;
   if (lastSourceWillBeRemoved) {
-    [self.windowForSheet performClose:nil] ;
+    [mWindow performClose:nil] ;
   }else{
     [self registerConfigurationInPreferences] ;
   }
@@ -1485,7 +1503,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
       NSString * key = [NSString stringWithFormat:@"SELECTED-TAB:%@", mBaseFilePreferenceKey] ;
       [ud setInteger:(NSInteger) selectedTab forKey:key] ;
       OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:selectedTab] ;
-      [self setFileURL:object.sourceURL] ;
+ //     [self setFileURL:object.sourceURL] ;
       object.enclosingView.frame = mSourceHostView.bounds ;
       [mSourceHostView addSubview:object.enclosingView] ;
       [mSourceHostView.window makeFirstResponder:object.textView] ;
@@ -1559,8 +1577,9 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     }
   }
 //---
-  NSString * relativePath = [sourceString substringWithRange:selection] ;
-  return [self.fileURL.path.stringByDeletingLastPathComponent stringByAppendingPathComponent:relativePath] ;
+//  NSString * relativePath = [sourceString substringWithRange: selection] ;
+//  return [self.fileURL.path.stringByDeletingLastPathComponent stringByAppendingPathComponent:relativePath] ;
+  return @"" ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1578,7 +1597,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     error:& error
   ] ;
   if (nil == doc) {
-    [self.windowForSheet presentError:error] ;
+    [mWindow presentError:error] ;
   }
 }
 
@@ -2109,7 +2128,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     beginSheetForDirectory:nil
     file:nil
     types:[NSArray array]
-    modalForWindow:self.windowForSheet
+    modalForWindow: mWindow
     modalDelegate:self
     didEndSelector:@selector (addSearchDirectoryPanelDidEnd:returnCode:contextInfo:)
     contextInfo:nil
@@ -2143,7 +2162,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     beginSheetForDirectory:nil
     file:nil
     types:[NSArray array]
-    modalForWindow:self.windowForSheet
+    modalForWindow:mWindow
     modalDelegate:self
     didEndSelector:@selector (addExcludedDirectoryPanelDidEnd:returnCode:contextInfo:)
     contextInfo:nil
@@ -2231,6 +2250,18 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     }
   }
   return YES ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+- (NSWindow *) window {
+  return mWindow ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
++ (NSArray *) allUserInterfaces { // Array of OC_GGS_UserInterface
+  return (gAllUserInterfaces == nil) ? [NSArray new] : gAllUserInterfaces.copy ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

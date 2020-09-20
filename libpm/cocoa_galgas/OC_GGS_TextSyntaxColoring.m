@@ -25,7 +25,7 @@
 #import "OC_GGS_DocumentData.h"
 #import "PMDebug.h"
 #import "PMUndoManager.h"
-#import "OC_GGS_Document.h"
+#import "OC_GGS_UserInterface.h"
 #import "OC_GGS_TextView.h"
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -575,9 +575,9 @@
   }
 //--- mIssueArray is nil on init, so this prevent search result to be changed by insertion of file contents
   if (nil != mIssueArray) {
-    for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
+    for (OC_GGS_UserInterface * doc in [OC_GGS_UserInterface allUserInterfaces]) {
       [doc
-        updateSearchResultForFile:self.documentData.fileURL.path
+        updateSearchResultForFile: self.documentData.mFileURL.path
         previousRange:previousRange
         changeInLength:inChangeInLength
       ] ; 
@@ -1113,7 +1113,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 //--- Save all sources
   [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
 //--- Source directory
-  NSString * sourceDirectory = documentData.fileURL.path.stringByDeletingLastPathComponent ;
+  NSString * sourceDirectory = documentData.mFileURL.path.stringByDeletingLastPathComponent ;
 //--- index directory
   NSString * indexingDirectory = [mTokenizer indexingDirectory] ;
   if (indexingDirectory.length > 0) {
