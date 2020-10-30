@@ -1835,20 +1835,22 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
       result << enumerator_9437.current_mBuildConfigurationRef (HERE).stringValue () ;
       result << " /* Default */ = {\n"
         "      isa = XCBuildConfiguration;\n"
-        "      buildSettings = {\n" ;
-      GALGAS_uint index_9599_ (0) ;
+        "      buildSettings = {\n"
+        "        ARCHS = \"$(NATIVE_ARCH_ACTUAL)\";\n"
+        "        ONLY_ACTIVE_ARCH = YES;\n" ;
+      GALGAS_uint index_9680_ (0) ;
       if (enumerator_9437.current_mBuildConfigurationSettingList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_9599 (enumerator_9437.current_mBuildConfigurationSettingList (HERE), kENUMERATION_UP) ;
-        while (enumerator_9599.hasCurrentObject ()) {
+        cEnumerator_stringlist enumerator_9680 (enumerator_9437.current_mBuildConfigurationSettingList (HERE), kENUMERATION_UP) ;
+        while (enumerator_9680.hasCurrentObject ()) {
           result << "      " ;
-          result << enumerator_9599.current_mValue (HERE).stringValue () ;
+          result << enumerator_9680.current_mValue (HERE).stringValue () ;
           result << " ;\n" ;
-          index_9599_.increment () ;
-          enumerator_9599.gotoNextObject () ;
+          index_9680_.increment () ;
+          enumerator_9680.gotoNextObject () ;
         }
       }
       result << "      PRODUCT_NAME = " ;
-      result << enumerator_9437.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 343)).stringValue () ;
+      result << enumerator_9437.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 345)).stringValue () ;
       result << " ;\n"
         "    };\n"
         "    name = Default;\n"
@@ -1858,29 +1860,29 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
       enumerator_9437.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_9772_ (0) ;
+  GALGAS_uint index_9853_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_9772 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_9772.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_9853 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_9853.hasCurrentObject ()) {
       result << "    " ;
-      result << enumerator_9772.current_mBuildConfigurationRef (HERE).stringValue () ;
+      result << enumerator_9853.current_mBuildConfigurationRef (HERE).stringValue () ;
       result << " /* Default */ = {\n"
         "      isa = XCBuildConfiguration;\n"
         "      buildSettings = {\n" ;
-      GALGAS_uint index_9934_ (0) ;
-      if (enumerator_9772.current_mBuildConfigurationSettingList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_9934 (enumerator_9772.current_mBuildConfigurationSettingList (HERE), kENUMERATION_UP) ;
-        while (enumerator_9934.hasCurrentObject ()) {
+      GALGAS_uint index_10015_ (0) ;
+      if (enumerator_9853.current_mBuildConfigurationSettingList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_10015 (enumerator_9853.current_mBuildConfigurationSettingList (HERE), kENUMERATION_UP) ;
+        while (enumerator_10015.hasCurrentObject ()) {
           result << "      " ;
-          result << enumerator_9934.current_mValue (HERE).stringValue () ;
+          result << enumerator_10015.current_mValue (HERE).stringValue () ;
           result << " ;\n" ;
-          index_9934_.increment () ;
-          enumerator_9934.gotoNextObject () ;
+          index_10015_.increment () ;
+          enumerator_10015.gotoNextObject () ;
         }
       }
       result << "      INFOPLIST_FILE = \"Info.plist\";\n"
         "      PRODUCT_NAME = " ;
-      result << enumerator_9772.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 356)).stringValue () ;
+      result << enumerator_9853.current_mProductFileName (HERE).getter_utf_38_Representation (SOURCE_FILE ("project.pbxproj.galgasTemplate", 358)).stringValue () ;
       result << ";\n"
         "      PRODUCT_BUNDLE_IDENTIFIER = \"" ;
       result << in_APPLICATION_5F_BUNDLE_5F_BASE.stringValue () ;
@@ -1891,8 +1893,8 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "    name = Default;\n"
         "  };\n"
         "\n" ;
-      index_9772_.increment () ;
-      enumerator_9772.gotoNextObject () ;
+      index_9853_.increment () ;
+      enumerator_9853.gotoNextObject () ;
     }
   }
   result << "  /*------------------------------------------------------------------ XCConfigurationList section */\n"
@@ -1910,46 +1912,46 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "      defaultConfigurationName = Default;\n"
     "    };\n"
     "\n" ;
-  GALGAS_uint index_10650_ (0) ;
+  GALGAS_uint index_10731_ (0) ;
   if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeToolTargetList enumerator_10650 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_10650.hasCurrentObject ()) {
+    cEnumerator_XCodeToolTargetList enumerator_10731 (in_TOOL_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_10731.hasCurrentObject ()) {
       result << "    " ;
-      result << enumerator_10650.current_mBuildConfigurationListRef (HERE).stringValue () ;
+      result << enumerator_10731.current_mBuildConfigurationListRef (HERE).stringValue () ;
       result << " /* Default */ = {\n"
         "      isa = XCConfigurationList;\n"
         "      buildConfigurations = (\n"
         "        " ;
-      result << enumerator_10650.current_mBuildConfigurationRef (HERE).stringValue () ;
+      result << enumerator_10731.current_mBuildConfigurationRef (HERE).stringValue () ;
       result << " /* Default */,\n"
         "      );\n"
         "      defaultConfigurationIsVisible = 0;\n"
         "      defaultConfigurationName = Default;\n"
         "    };\n"
         "\n" ;
-      index_10650_.increment () ;
-      enumerator_10650.gotoNextObject () ;
+      index_10731_.increment () ;
+      enumerator_10731.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_10950_ (0) ;
+  GALGAS_uint index_11031_ (0) ;
   if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeAppTargetList enumerator_10950 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_10950.hasCurrentObject ()) {
+    cEnumerator_XCodeAppTargetList enumerator_11031 (in_APP_5F_TARGET_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_11031.hasCurrentObject ()) {
       result << "    " ;
-      result << enumerator_10950.current_mBuildConfigurationListRef (HERE).stringValue () ;
+      result << enumerator_11031.current_mBuildConfigurationListRef (HERE).stringValue () ;
       result << " /* Default */ = {\n"
         "      isa = XCConfigurationList;\n"
         "      buildConfigurations = (\n"
         "        " ;
-      result << enumerator_10950.current_mBuildConfigurationRef (HERE).stringValue () ;
+      result << enumerator_11031.current_mBuildConfigurationRef (HERE).stringValue () ;
       result << " /* Default */,\n"
         "      );\n"
         "      defaultConfigurationIsVisible = 0;\n"
         "      defaultConfigurationName = Default;\n"
         "    };\n"
         "\n" ;
-      index_10950_.increment () ;
-      enumerator_10950.gotoNextObject () ;
+      index_11031_.increment () ;
+      enumerator_11031.gotoNextObject () ;
     }
   }
   result << "/*------------------------------------------------------------------ End */\n"
@@ -4100,7 +4102,7 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     " <key>CFBundleSignature</key>\n"
     " <string>\?\?\?\?</string>\n"
     " <key>LSMinimumSystemVersion</key>\n"
-    " <string>10.6</string>\n"
+    " <string>10.10</string>\n"
     " <key>CFBundleShortVersionString</key>\n"
     " <string>" ;
   result << in_VERSION_5F_STRING.stringValue () ;
@@ -4111,19 +4113,19 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
     " <string>NSApplication</string>\n"
     " <key>CFBundleDocumentTypes</key>\n"
     " <array>\n" ;
-  GALGAS_uint index_1014_ (0) ;
+  GALGAS_uint index_1015_ (0) ;
   if (in_HANDLED_5F_EXTENSION_5F_SET.isValid ()) {
-    cEnumerator_stringset enumerator_1014 (in_HANDLED_5F_EXTENSION_5F_SET, kENUMERATION_UP) ;
-    while (enumerator_1014.hasCurrentObject ()) {
+    cEnumerator_stringset enumerator_1015 (in_HANDLED_5F_EXTENSION_5F_SET, kENUMERATION_UP) ;
+    while (enumerator_1015.hasCurrentObject ()) {
       result << "  <dict>\n"
         "   <key>CFBundleTypeIconFile</key>\n"
         "   <string>" ;
-      result << enumerator_1014.current_key (HERE).stringValue () ;
+      result << enumerator_1015.current_key (HERE).stringValue () ;
       result << "_icns</string>\n"
         "   <key>CFBundleTypeExtensions</key>\n"
         "   <array>\n"
         "    <string>" ;
-      result << enumerator_1014.current_key (HERE).stringValue () ;
+      result << enumerator_1015.current_key (HERE).stringValue () ;
       result << "</string>\n"
         "   </array>\n"
         "   <key>CFBundleTypeName</key>\n"
@@ -4141,8 +4143,8 @@ GALGAS_string filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile
         "   <key>NSDocumentClass</key>\n"
         "   <string>OC_GGS_Document</string>\n"
         "  </dict>\n" ;
-      index_1014_.increment () ;
-      enumerator_1014.gotoNextObject () ;
+      index_1015_.increment () ;
+      enumerator_1015.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -5919,7 +5921,7 @@ static const char * kSourceFileHelpMessages [] = {
 //----------------------------------------------------------------------------------------------------------------------
 
 const char * projectVersionString (void) {
-  return "3.4.1" ;
+  return "3.4.2" ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

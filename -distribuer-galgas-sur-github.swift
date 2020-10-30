@@ -28,9 +28,11 @@ let BUILD_KIND = ProductKind.release
 // Infos de version
 //--------------------------------------------------------------------------------------------------
 
-let NOTES : [String] = ["First release hosted by GITHUB"]
-let BUGFIXES : [String] = []
-let CHANGES : [String] = ["Cross compilation tools on www.pcmolinaro.name"]
+let NOTES : [String] = []
+let BUGFIXES : [String] = [
+  "'GALGASBETAVERSION' placeholder fixed with actual GALGAS version"
+]
+let CHANGES : [String] = []
 let NEWS : [String] = []
 
 //--------------------------------------------------------------------------------------------------
@@ -210,6 +212,7 @@ print ("ANNÉE : \(ANNÉE)")
 //-------------------- Mettre a jour les numéros de version
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, file: DISTRIBUTION_DIR + "/galgas-dev-master/project-xcode-galgas/en.lproj/InfoPlist.strings")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev-master/galgas-sources")
+  remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev-master/libpm/command_line_interface")
   remplacerAnneeEtVersionGALGAS (ANNÉE, VERSION_GALGAS, directory: DISTRIBUTION_DIR + "/galgas-dev-master/build")
 //-------------------- Vérifier les programmes d'exemple
   runCommand (DISTRIBUTION_DIR + "/galgas-dev-master/sample_code/-build-all-macosx.command", [])

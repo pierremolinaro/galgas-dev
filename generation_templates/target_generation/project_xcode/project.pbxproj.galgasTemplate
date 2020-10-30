@@ -337,6 +337,8 @@ for () in TOOL_TARGET_LIST do
 %    %!mBuildConfigurationRef% /* Default */ = {\n%
 %      isa = XCBuildConfiguration;\n%
 %      buildSettings = {\n%
+%        ARCHS = "$(NATIVE_ARCH_ACTUAL)";\n%
+%        ONLY_ACTIVE_ARCH = YES;\n%
 for () in mBuildConfigurationSettingList do
 %      %!mValue% ;\n%
 end
