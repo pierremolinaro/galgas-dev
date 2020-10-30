@@ -32,7 +32,7 @@ let NOTES : [String] = []
 let BUGFIXES : [String] = [
   "'GALGASBETAVERSION' placeholder fixed with actual GALGAS version"
 ]
-let CHANGES : [String] = []
+let CHANGES : [String] = ["Cross compilation for Linux64 on OSX now uses GCC 10.2"]
 let NEWS : [String] = []
 
 //--------------------------------------------------------------------------------------------------
