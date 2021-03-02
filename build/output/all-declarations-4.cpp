@@ -5901,6 +5901,34 @@ GALGAS_formalArgumentPassingModeAST GALGAS_formalArgumentPassingModeAST::constru
 
 //----------------------------------------------------------------------------------------------------------------------
 
+bool GALGAS_formalArgumentPassingModeAST::optional_argumentIn () const {
+  const bool ok = mEnum == kEnum_argumentIn ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_formalArgumentPassingModeAST::optional_argumentOut () const {
+  const bool ok = mEnum == kEnum_argumentOut ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_formalArgumentPassingModeAST::optional_argumentInOut () const {
+  const bool ok = mEnum == kEnum_argumentInOut ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_formalArgumentPassingModeAST::optional_argumentConstantIn () const {
+  const bool ok = mEnum == kEnum_argumentConstantIn ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 static const char * gEnumNameArrayFor_formalArgumentPassingModeAST [5] = {
   "(not built)",
   "argumentIn",

@@ -114,6 +114,7 @@ override method @enumDeclarationAST enterInSemanticContext
   @setterMap setterMap = {}
   @instanceMethodMap instanceMethodMap = {}
   @classMethodMap classMethodMap = {}
+  @optionalMethodMap optionalMethodMap = {}
 #--- currentType type index
   [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mEnumTypeName ?let enumTypeProxy]
 #--- Constructors
@@ -137,6 +138,28 @@ override method @enumDeclarationAST enterInSemanticContext
     ]
   end
 #--- Methods
+  for () in mConstantList do
+#    if [mAssociatedValueDefinitionList length] > 0 then
+#      @unifiedTypeMapProxyList associatedTypeList = {}
+      @optionalMethodSignature argumentTypeList = {}
+      for (typeName selectorName) in mAssociatedValueDefinitionList do
+        [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !typeName ?let associatedTypeProxy]
+        argumentTypeList += !false !selectorName !associatedTypeProxy !typeName.string
+#        associatedTypeList += !associatedTypeProxy
+#        hasAssociatedValues = true
+      end
+      [!?optionalMethodMap insertKey
+        !mConstantName
+#        !.definedAsMember
+        !argumentTypeList
+#        !mConstantName.location
+#        !true
+#        !.isBasicFinal
+#        !""
+      ]
+#    end
+  end
+#--- Optional methods
   for () in mConstantList do
     if [mAssociatedValueDefinitionList length] > 0 then
       @unifiedTypeMapProxyList associatedTypeList = {}
@@ -206,7 +229,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !setterMap
     !instanceMethodMap
     !{}
-    !@optionalMethodMap {}
+    !optionalMethodMap
     !{}
     !.generateDescriptionGetterUtilityMethod | .isComparable
     !{}

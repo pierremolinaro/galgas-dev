@@ -867,6 +867,22 @@ class GALGAS_lexicalTypeEnum : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_bigint () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_char () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_double () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_sint () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_sint_36__34_ () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_string () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_uint () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_lexicalType_5F_uint_36__34_ () const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
@@ -5549,6 +5565,12 @@ class GALGAS_optionDefaultValueEnumAST : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_noDefaultValue () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_stringDefaultValue () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_unsignedDefaultValue () const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;

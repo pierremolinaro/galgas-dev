@@ -1624,6 +1624,12 @@ class GALGAS_dynamicTypeComparisonKind : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_equal () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_inherited () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_strictlyInherited () const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;

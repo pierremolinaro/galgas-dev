@@ -1522,6 +1522,62 @@ GALGAS_lexicalTypeEnum GALGAS_lexicalTypeEnum::constructor_lexicalType_5F_bigint
 
 //----------------------------------------------------------------------------------------------------------------------
 
+bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_string () const {
+  const bool ok = mEnum == kEnum_lexicalType_5F_string ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_char () const {
+  const bool ok = mEnum == kEnum_lexicalType_5F_char ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_uint () const {
+  const bool ok = mEnum == kEnum_lexicalType_5F_uint ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_uint_36__34_ () const {
+  const bool ok = mEnum == kEnum_lexicalType_5F_uint_36__34_ ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_sint () const {
+  const bool ok = mEnum == kEnum_lexicalType_5F_sint ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_sint_36__34_ () const {
+  const bool ok = mEnum == kEnum_lexicalType_5F_sint_36__34_ ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_double () const {
+  const bool ok = mEnum == kEnum_lexicalType_5F_double ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_lexicalTypeEnum::optional_lexicalType_5F_bigint () const {
+  const bool ok = mEnum == kEnum_lexicalType_5F_bigint ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 static const char * gEnumNameArrayFor_lexicalTypeEnum [9] = {
   "(not built)",
   "lexicalType_string",
@@ -10197,6 +10253,27 @@ GALGAS_optionDefaultValueEnumAST GALGAS_optionDefaultValueEnumAST::constructor_s
   GALGAS_optionDefaultValueEnumAST result ;
   result.mEnum = kEnum_stringDefaultValue ;
   return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_optionDefaultValueEnumAST::optional_noDefaultValue () const {
+  const bool ok = mEnum == kEnum_noDefaultValue ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_optionDefaultValueEnumAST::optional_unsignedDefaultValue () const {
+  const bool ok = mEnum == kEnum_unsignedDefaultValue ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_optionDefaultValueEnumAST::optional_stringDefaultValue () const {
+  const bool ok = mEnum == kEnum_stringDefaultValue ;
+  return ok ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

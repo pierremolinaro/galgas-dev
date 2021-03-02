@@ -1617,6 +1617,12 @@ class GALGAS_headerKind : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_noHeader () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_oneHeader () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_twoHeaders () const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
@@ -1756,6 +1762,34 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_arrayType () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_boolsetType () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_classType (class GALGAS_bool & outOperand0) const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_enumType () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_externType () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_graphType () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_listMapType () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_listType () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_mapProxyType () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_mapType () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefinedType () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_sortedListType () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_structType () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_uniqueMapType () const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
@@ -10219,6 +10253,10 @@ class GALGAS_lexicalArgumentModeAST : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_lexicalInputMode () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_lexicalInputOutputMode () const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;

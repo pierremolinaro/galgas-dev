@@ -10923,6 +10923,27 @@ GALGAS_mapAutomatonMessageKind GALGAS_mapAutomatonMessageKind::constructor_error
 
 //----------------------------------------------------------------------------------------------------------------------
 
+bool GALGAS_mapAutomatonMessageKind::optional_noMessage () const {
+  const bool ok = mEnum == kEnum_noMessage ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_mapAutomatonMessageKind::optional_warningMessage () const {
+  const bool ok = mEnum == kEnum_warningMessage ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_mapAutomatonMessageKind::optional_errorMessage () const {
+  const bool ok = mEnum == kEnum_errorMessage ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 static const char * gEnumNameArrayFor_mapAutomatonMessageKind [4] = {
   "(not built)",
   "noMessage",

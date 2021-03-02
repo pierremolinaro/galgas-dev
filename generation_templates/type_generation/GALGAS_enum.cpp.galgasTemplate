@@ -114,6 +114,30 @@ for () in CONSTANT_LIST do
   end
 end
 
+
+for () in CONSTANT_LIST do
+    %//----------------------------------------------------------------------------------------------------------------------\n\n%
+    %bool GALGAS_%!TYPE_IDENTIFIER%::optional_%![mConstantName identifierRepresentation]% (%?^
+    for () in mAssociatedValueTypeList
+    do index idx
+      %GALGAS_%![mType identifierRepresentation]% & outAssociatedValue%![idx string]
+    between
+      %,\n%!^
+    end
+    %) const {\n%
+    %  const bool ok = mEnum == kEnum_%![mConstantName identifierRepresentation]% ;\n%
+    if [mAssociatedValueTypeList length] > 0 then
+      %  if (ok) {\n%
+      %    const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
+      for () in mAssociatedValueTypeList do index idx
+         %    outAssociatedValue%![idx string]% = ptr->mAssociatedValue%![idx string]% ;\n%
+       end
+       %  }\n%
+     end
+     %  return ok ;\n%
+     %}\n\n%
+end
+
 %//----------------------------------------------------------------------------------------------------------------------
 
 static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER% [%![[CONSTANT_LIST length] + 1 string]%] = {

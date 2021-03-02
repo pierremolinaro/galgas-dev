@@ -3521,6 +3521,14 @@ class GALGAS_formalArgumentPassingModeAST : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_argumentConstantIn () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_argumentIn () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_argumentInOut () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_argumentOut () const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
@@ -5057,6 +5065,12 @@ class GALGAS_mapAutomatonMessageKind : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_errorMessage () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_noMessage () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_warningMessage () const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;

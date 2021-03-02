@@ -1977,6 +1977,48 @@ GALGAS_methodQualifier GALGAS_methodQualifier::constructor_isOverridingAbstract 
 
 //----------------------------------------------------------------------------------------------------------------------
 
+bool GALGAS_methodQualifier::optional_isAbstract () const {
+  const bool ok = mEnum == kEnum_isAbstract ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_methodQualifier::optional_isBasic () const {
+  const bool ok = mEnum == kEnum_isBasic ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_methodQualifier::optional_isBasicFinal () const {
+  const bool ok = mEnum == kEnum_isBasicFinal ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_methodQualifier::optional_isInherited () const {
+  const bool ok = mEnum == kEnum_isInherited ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_methodQualifier::optional_isOverriding () const {
+  const bool ok = mEnum == kEnum_isOverriding ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_methodQualifier::optional_isOverridingAbstract () const {
+  const bool ok = mEnum == kEnum_isOverridingAbstract ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 static const char * gEnumNameArrayFor_methodQualifier [7] = {
   "(not built)",
   "isAbstract",
@@ -2110,6 +2152,20 @@ GALGAS_methodKind GALGAS_methodKind::constructor_definedAsExtension (UNUSED_LOCA
   GALGAS_methodKind result ;
   result.mEnum = kEnum_definedAsExtension ;
   return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_methodKind::optional_definedAsMember () const {
+  const bool ok = mEnum == kEnum_definedAsMember ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_methodKind::optional_definedAsExtension () const {
+  const bool ok = mEnum == kEnum_definedAsExtension ;
+  return ok ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -6297,6 +6353,139 @@ GALGAS_predefinedTypeKindEnum GALGAS_predefinedTypeKindEnum::constructor_predefi
 
 //----------------------------------------------------------------------------------------------------------------------
 
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_uint () const {
+  const bool ok = mEnum == kEnum_predefined_5F_uint ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_uint_36__34_ () const {
+  const bool ok = mEnum == kEnum_predefined_5F_uint_36__34_ ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_sint () const {
+  const bool ok = mEnum == kEnum_predefined_5F_sint ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_sint_36__34_ () const {
+  const bool ok = mEnum == kEnum_predefined_5F_sint_36__34_ ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_char () const {
+  const bool ok = mEnum == kEnum_predefined_5F_char ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_double () const {
+  const bool ok = mEnum == kEnum_predefined_5F_double ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_string () const {
+  const bool ok = mEnum == kEnum_predefined_5F_string ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_stringset () const {
+  const bool ok = mEnum == kEnum_predefined_5F_stringset ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_bool () const {
+  const bool ok = mEnum == kEnum_predefined_5F_bool ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_binaryset () const {
+  const bool ok = mEnum == kEnum_predefined_5F_binaryset ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_function () const {
+  const bool ok = mEnum == kEnum_predefined_5F_function ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_location () const {
+  const bool ok = mEnum == kEnum_predefined_5F_location ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_type () const {
+  const bool ok = mEnum == kEnum_predefined_5F_type ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_object () const {
+  const bool ok = mEnum == kEnum_predefined_5F_object ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_data () const {
+  const bool ok = mEnum == kEnum_predefined_5F_data ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_filewrapper () const {
+  const bool ok = mEnum == kEnum_predefined_5F_filewrapper ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_application () const {
+  const bool ok = mEnum == kEnum_predefined_5F_application ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_bigint () const {
+  const bool ok = mEnum == kEnum_predefined_5F_bigint ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_predefinedTypeKindEnum::optional_predefined_5F_timer () const {
+  const bool ok = mEnum == kEnum_predefined_5F_timer ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 static const char * gEnumNameArrayFor_predefinedTypeKindEnum [20] = {
   "(not built)",
   "predefined_uint",
@@ -6670,6 +6859,108 @@ void GALGAS_typeKindEnum::method_classType (GALGAS_bool & outAssociatedValue0,
     const cEnumAssociatedValues_typeKindEnum_classType * ptr = (const cEnumAssociatedValues_typeKindEnum_classType *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeKindEnum::optional_classType (GALGAS_bool & outAssociatedValue0) const {
+  const bool ok = mEnum == kEnum_classType ;
+  if (ok) {
+    const cEnumAssociatedValues_typeKindEnum_classType * ptr = (const cEnumAssociatedValues_typeKindEnum_classType *) unsafePointer () ;
+    outAssociatedValue0 = ptr->mAssociatedValue0 ;
+  }
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeKindEnum::optional_enumType () const {
+  const bool ok = mEnum == kEnum_enumType ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeKindEnum::optional_listType () const {
+  const bool ok = mEnum == kEnum_listType ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeKindEnum::optional_sortedListType () const {
+  const bool ok = mEnum == kEnum_sortedListType ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeKindEnum::optional_mapType () const {
+  const bool ok = mEnum == kEnum_mapType ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeKindEnum::optional_uniqueMapType () const {
+  const bool ok = mEnum == kEnum_uniqueMapType ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeKindEnum::optional_mapProxyType () const {
+  const bool ok = mEnum == kEnum_mapProxyType ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeKindEnum::optional_listMapType () const {
+  const bool ok = mEnum == kEnum_listMapType ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeKindEnum::optional_boolsetType () const {
+  const bool ok = mEnum == kEnum_boolsetType ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeKindEnum::optional_structType () const {
+  const bool ok = mEnum == kEnum_structType ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeKindEnum::optional_graphType () const {
+  const bool ok = mEnum == kEnum_graphType ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeKindEnum::optional_externType () const {
+  const bool ok = mEnum == kEnum_externType ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeKindEnum::optional_arrayType () const {
+  const bool ok = mEnum == kEnum_arrayType ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_typeKindEnum::optional_predefinedType () const {
+  const bool ok = mEnum == kEnum_predefinedType ;
+  return ok ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -8063,6 +8354,27 @@ GALGAS_headerKind GALGAS_headerKind::constructor_twoHeaders (UNUSED_LOCATION_ARG
   GALGAS_headerKind result ;
   result.mEnum = kEnum_twoHeaders ;
   return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_headerKind::optional_noHeader () const {
+  const bool ok = mEnum == kEnum_noHeader ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_headerKind::optional_oneHeader () const {
+  const bool ok = mEnum == kEnum_oneHeader ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_headerKind::optional_twoHeaders () const {
+  const bool ok = mEnum == kEnum_twoHeaders ;
+  return ok ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

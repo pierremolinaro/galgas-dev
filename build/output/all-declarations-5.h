@@ -736,6 +736,18 @@ class GALGAS_methodQualifier : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_isAbstract () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_isBasic () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_isBasicFinal () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_isInherited () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_isOverriding () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_isOverridingAbstract () const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
@@ -805,6 +817,10 @@ class GALGAS_methodKind : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_definedAsExtension () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_definedAsMember () const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
@@ -2205,6 +2221,44 @@ class GALGAS_predefinedTypeKindEnum : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_application () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_bigint () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_binaryset () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_bool () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_char () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_data () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_double () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_filewrapper () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_function () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_location () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_object () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_sint () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_sint_36__34_ () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_string () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_stringset () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_timer () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_type () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_uint () const ;
+
+  public : VIRTUAL_IN_DEBUG bool optional_predefined_5F_uint_36__34_ () const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;

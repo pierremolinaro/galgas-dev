@@ -12624,6 +12624,20 @@ GALGAS_lexicalArgumentModeAST GALGAS_lexicalArgumentModeAST::constructor_lexical
 
 //----------------------------------------------------------------------------------------------------------------------
 
+bool GALGAS_lexicalArgumentModeAST::optional_lexicalInputMode () const {
+  const bool ok = mEnum == kEnum_lexicalInputMode ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+bool GALGAS_lexicalArgumentModeAST::optional_lexicalInputOutputMode () const {
+  const bool ok = mEnum == kEnum_lexicalInputOutputMode ;
+  return ok ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
 static const char * gEnumNameArrayFor_lexicalArgumentModeAST [3] = {
   "(not built)",
   "lexicalInputMode",
