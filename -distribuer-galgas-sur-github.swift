@@ -29,11 +29,11 @@ let BUILD_KIND = ProductKind.release
 //--------------------------------------------------------------------------------------------------
 
 let NOTES : [String] = []
-let BUGFIXES : [String] = [
-  "'GALGASBETAVERSION' placeholder fixed with actual GALGAS version"
+let BUGFIXES : [String] = []
+let CHANGES : [String] = ["GCC compile option is from now C++11"]
+let NEWS : [String] = [
+  "Added optional methods to enumerations"
 ]
-let CHANGES : [String] = ["Cross compilation for Linux64 on OSX now uses GCC 10.2"]
-let NEWS : [String] = []
 
 //--------------------------------------------------------------------------------------------------
 //   FOR PRINTING IN COLOR

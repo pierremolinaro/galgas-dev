@@ -2743,17 +2743,20 @@ class GALGAS_optionalMethodActualArgument : public AC_GALGAS_root {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static class GALGAS_optionalMethodActualArgument constructor_actualInputJoker (const class GALGAS_location & inOperand0
+  public : static class GALGAS_optionalMethodActualArgument constructor_actualInputJoker (const class GALGAS_bool & inOperand0,
+                                                                                          const class GALGAS_location & inOperand1
                                                                                           COMMA_LOCATION_ARGS) ;
 
-  public : static class GALGAS_optionalMethodActualArgument constructor_actualLetInput (const class GALGAS_lstring & inOperand0
+  public : static class GALGAS_optionalMethodActualArgument constructor_actualLetInput (const class GALGAS_lstring & inOperand0,
+                                                                                        const class GALGAS_lstring & inOperand1
                                                                                         COMMA_LOCATION_ARGS) ;
 
   public : static class GALGAS_optionalMethodActualArgument constructor_actualOutput (const class GALGAS_semanticExpressionAST & inOperand0,
                                                                                       const class GALGAS_location & inOperand1
                                                                                       COMMA_LOCATION_ARGS) ;
 
-  public : static class GALGAS_optionalMethodActualArgument constructor_actualVarInput (const class GALGAS_lstring & inOperand0
+  public : static class GALGAS_optionalMethodActualArgument constructor_actualVarInput (const class GALGAS_lstring & inOperand0,
+                                                                                        const class GALGAS_lstring & inOperand1
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -2765,11 +2768,13 @@ class GALGAS_optionalMethodActualArgument : public AC_GALGAS_root {
 //--------------------------------- Setters
 
 //--------------------------------- Instance Methods
-  public : VIRTUAL_IN_DEBUG void method_actualInputJoker (class GALGAS_location & outArgument0,
+  public : VIRTUAL_IN_DEBUG void method_actualInputJoker (class GALGAS_bool & outArgument0,
+                                                          class GALGAS_location & outArgument1,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG void method_actualLetInput (class GALGAS_lstring & outArgument0,
+                                                        class GALGAS_lstring & outArgument1,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const ;
 
@@ -2779,6 +2784,7 @@ class GALGAS_optionalMethodActualArgument : public AC_GALGAS_root {
                                                       COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG void method_actualVarInput (class GALGAS_lstring & outArgument0,
+                                                        class GALGAS_lstring & outArgument1,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const ;
 
@@ -2795,14 +2801,17 @@ class GALGAS_optionalMethodActualArgument : public AC_GALGAS_root {
 
 
 //--------------------------------- Optional Methods
-  public : VIRTUAL_IN_DEBUG bool optional_actualInputJoker (class GALGAS_location & outOperand0) const ;
+  public : VIRTUAL_IN_DEBUG bool optional_actualInputJoker (class GALGAS_bool & outOperand0,
+                                                            class GALGAS_location & outOperand1) const ;
 
-  public : VIRTUAL_IN_DEBUG bool optional_actualLetInput (class GALGAS_lstring & outOperand0) const ;
+  public : VIRTUAL_IN_DEBUG bool optional_actualLetInput (class GALGAS_lstring & outOperand0,
+                                                          class GALGAS_lstring & outOperand1) const ;
 
   public : VIRTUAL_IN_DEBUG bool optional_actualOutput (class GALGAS_semanticExpressionAST & outOperand0,
                                                         class GALGAS_location & outOperand1) const ;
 
-  public : VIRTUAL_IN_DEBUG bool optional_actualVarInput (class GALGAS_lstring & outOperand0) const ;
+  public : VIRTUAL_IN_DEBUG bool optional_actualVarInput (class GALGAS_lstring & outOperand0,
+                                                          class GALGAS_lstring & outOperand1) const ;
 
 
 //--------------------------------- Introspection
@@ -2841,9 +2850,11 @@ class cEnumAssociatedValues_optionalMethodActualArgument_actualOutput : public c
 
 class cEnumAssociatedValues_optionalMethodActualArgument_actualLetInput : public cEnumAssociatedValues {
   public : const GALGAS_lstring mAssociatedValue0 ;
+  public : const GALGAS_lstring mAssociatedValue1 ;
 
 //--- Constructor
-  public : cEnumAssociatedValues_optionalMethodActualArgument_actualLetInput (const GALGAS_lstring & inAssociatedValue0
+  public : cEnumAssociatedValues_optionalMethodActualArgument_actualLetInput (const GALGAS_lstring & inAssociatedValue0,
+                                                                              const GALGAS_lstring & inAssociatedValue1
                                                                               COMMA_LOCATION_ARGS) ;
 
   public : virtual void description (C_String & ioString,
@@ -2857,9 +2868,11 @@ class cEnumAssociatedValues_optionalMethodActualArgument_actualLetInput : public
 
 class cEnumAssociatedValues_optionalMethodActualArgument_actualVarInput : public cEnumAssociatedValues {
   public : const GALGAS_lstring mAssociatedValue0 ;
+  public : const GALGAS_lstring mAssociatedValue1 ;
 
 //--- Constructor
-  public : cEnumAssociatedValues_optionalMethodActualArgument_actualVarInput (const GALGAS_lstring & inAssociatedValue0
+  public : cEnumAssociatedValues_optionalMethodActualArgument_actualVarInput (const GALGAS_lstring & inAssociatedValue0,
+                                                                              const GALGAS_lstring & inAssociatedValue1
                                                                               COMMA_LOCATION_ARGS) ;
 
   public : virtual void description (C_String & ioString,
@@ -2872,10 +2885,12 @@ class cEnumAssociatedValues_optionalMethodActualArgument_actualVarInput : public
 //----------------------------------------------------------------------------------------------------------------------
 
 class cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker : public cEnumAssociatedValues {
-  public : const GALGAS_location mAssociatedValue0 ;
+  public : const GALGAS_bool mAssociatedValue0 ;
+  public : const GALGAS_location mAssociatedValue1 ;
 
 //--- Constructor
-  public : cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker (const GALGAS_location & inAssociatedValue0
+  public : cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker (const GALGAS_bool & inAssociatedValue0,
+                                                                                const GALGAS_location & inAssociatedValue1
                                                                                 COMMA_LOCATION_ARGS) ;
 
   public : virtual void description (C_String & ioString,

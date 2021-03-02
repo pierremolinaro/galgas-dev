@@ -6866,7 +6866,8 @@ void GALGAS_typeKindEnum::method_classType (GALGAS_bool & outAssociatedValue0,
 bool GALGAS_typeKindEnum::optional_classType (GALGAS_bool & outAssociatedValue0) const {
   const bool ok = mEnum == kEnum_classType ;
   if (ok) {
-    const cEnumAssociatedValues_typeKindEnum_classType * ptr = (const cEnumAssociatedValues_typeKindEnum_classType *) unsafePointer () ;
+    const auto * ptr = (const cEnumAssociatedValues_typeKindEnum_classType *) unsafePointer () ;
+    // const cEnumAssociatedValues_typeKindEnum_classType * ptr = (const cEnumAssociatedValues_typeKindEnum_classType *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
   }
   return ok ;

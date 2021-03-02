@@ -6785,7 +6785,12 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
       const enumGalgasBool test_5 = GALGAS_bool (kIsStrictSup, enumerator_5079.current_mAssociatedValueTypeList (HERE).getter_length (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 129)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
       if (kBoolTrue == test_5) {
         result << "  if (ok) {\n"
-          "    const cEnumAssociatedValues_" ;
+          "    const auto * ptr = (const cEnumAssociatedValues_" ;
+        result << in_TYPE_5F_IDENTIFIER.stringValue () ;
+        result << "_" ;
+        result << enumerator_5079.current_mConstantName (HERE).stringValue () ;
+        result << " *) unsafePointer () ;\n"
+          "    // const cEnumAssociatedValues_" ;
         result << in_TYPE_5F_IDENTIFIER.stringValue () ;
         result << "_" ;
         result << enumerator_5079.current_mConstantName (HERE).stringValue () ;
@@ -6794,17 +6799,17 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
         result << "_" ;
         result << enumerator_5079.current_mConstantName (HERE).stringValue () ;
         result << " *) unsafePointer () ;\n" ;
-        GALGAS_uint index_5888_idx (0) ;
+        GALGAS_uint index_6015_idx (0) ;
         if (enumerator_5079.current_mAssociatedValueTypeList (HERE).isValid ()) {
-          cEnumerator_unifiedTypeMapProxyList enumerator_5888 (enumerator_5079.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
-          while (enumerator_5888.hasCurrentObject ()) {
+          cEnumerator_unifiedTypeMapProxyList enumerator_6015 (enumerator_5079.current_mAssociatedValueTypeList (HERE), kENUMERATION_UP) ;
+          while (enumerator_6015.hasCurrentObject ()) {
             result << "    outAssociatedValue" ;
-            result << index_5888_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 133)).stringValue () ;
+            result << index_6015_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 134)).stringValue () ;
             result << " = ptr->mAssociatedValue" ;
-            result << index_5888_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 133)).stringValue () ;
+            result << index_6015_idx.getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 134)).stringValue () ;
             result << " ;\n" ;
-            index_5888_idx.increment () ;
-            enumerator_5888.gotoNextObject () ;
+            index_6015_idx.increment () ;
+            enumerator_6015.gotoNextObject () ;
           }
         }
         result << "  }\n" ;
@@ -6822,41 +6827,41 @@ GALGAS_string filewrapperTemplate_enumGenerationTemplate_enumTypeSpecificImpleme
     "static const char * gEnumNameArrayFor_" ;
   result << in_TYPE_5F_IDENTIFIER.stringValue () ;
   result << " [" ;
-  result << in_CONSTANT_5F_LIST.getter_length (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 143)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 143)).getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 143)).stringValue () ;
+  result << in_CONSTANT_5F_LIST.getter_length (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 144)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 144)).getter_string (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 144)).stringValue () ;
   result << "] = {\n"
     "  \"(not built)\"" ;
-  GALGAS_uint index_6328_ (0) ;
+  GALGAS_uint index_6455_ (0) ;
   if (in_CONSTANT_5F_LIST.isValid ()) {
-    cEnumerator_enumConstantListForGeneration enumerator_6328 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_6328.hasCurrentObject ()) {
+    cEnumerator_enumConstantListForGeneration enumerator_6455 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_6455.hasCurrentObject ()) {
       result << ",\n"
         "  " ;
-      result << enumerator_6328.current_mConstantName (HERE).getter_utf_38_Representation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 146)).stringValue () ;
-      index_6328_.increment () ;
-      enumerator_6328.gotoNextObject () ;
+      result << enumerator_6455.current_mConstantName (HERE).getter_utf_38_Representation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 147)).stringValue () ;
+      index_6455_.increment () ;
+      enumerator_6455.gotoNextObject () ;
     }
   }
   result << "\n"
     "} ;\n"
     "\n" ;
-  GALGAS_uint index_6410_ (0) ;
+  GALGAS_uint index_6537_ (0) ;
   if (in_CONSTANT_5F_LIST.isValid ()) {
-    cEnumerator_enumConstantListForGeneration enumerator_6410 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_6410.hasCurrentObject ()) {
+    cEnumerator_enumConstantListForGeneration enumerator_6537 (in_CONSTANT_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_6537.hasCurrentObject ()) {
       result << "//----------------------------------------------------------------------------------------------------------------------\n"
         "\n"
         "GALGAS_bool GALGAS_" ;
       result << in_TYPE_5F_IDENTIFIER.stringValue () ;
       result << "::getter_is" ;
-      result << enumerator_6410.current_mConstantName (HERE).getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 154)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 154)).stringValue () ;
+      result << enumerator_6537.current_mConstantName (HERE).getter_stringByCapitalizingFirstCharacter (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 155)).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 155)).stringValue () ;
       result << " (UNUSED_LOCATION_ARGS) const {\n"
         "  return GALGAS_bool (kNotBuilt != mEnum, kEnum_" ;
-      result << enumerator_6410.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 155)).stringValue () ;
+      result << enumerator_6537.current_mConstantName (HERE).getter_identifierRepresentation (SOURCE_FILE ("GALGAS_enum.cpp.galgasTemplate", 156)).stringValue () ;
       result << " == mEnum) ;\n"
         "}\n"
         "\n" ;
-      index_6410_.increment () ;
-      enumerator_6410.gotoNextObject () ;
+      index_6537_.increment () ;
+      enumerator_6537.gotoNextObject () ;
     }
   }
   result << "//----------------------------------------------------------------------------------------------------------------------\n"

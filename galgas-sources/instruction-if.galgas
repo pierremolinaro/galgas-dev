@@ -16,9 +16,9 @@ enum @ifExpressionKind {
 
 enum @optionalMethodActualArgument {
   case actualOutput (@semanticExpressionAST expression @location location)
-  case actualLetInput (@lstring constantName)
-  case actualVarInput (@lstring variableName)
-  case actualInputJoker (@location location)
+  case actualLetInput (@lstring typeName @lstring constantName)
+  case actualVarInput (@lstring typeName @lstring variableName)
+  case actualInputJoker (@bool checkSelector @location location)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -132,15 +132,39 @@ syntax extension galgas3InstructionsSyntax {
           $?$ ?let selector
           select
             $let$
+            @lstring typeName 
+            select
+              typeName = ["" nowhere]
+            or
+              $@type$ ?typeName  
+            end
             $identifier$ ?let constantName
-            optionalMethodActualArgumentList += !selector !.actualLetInput {!constantName: constantName}
+            optionalMethodActualArgumentList += !selector !.actualLetInput {!typeName: typeName !constantName: constantName}
           or
             $var$
-            $identifier$ ?let variableName
-            optionalMethodActualArgumentList += !selector !.actualVarInput {!variableName: variableName}
+            @lstring typeName 
+            select
+              typeName = ["" nowhere]
+            or
+              $@type$ ?typeName  
+            end
+           $identifier$ ?let variableName
+            optionalMethodActualArgumentList += !selector !.actualVarInput {!typeName: typeName !variableName: variableName}
           or
             $*$
-            optionalMethodActualArgumentList += !selector !.actualInputJoker {!location: .here}
+            optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: true !location: .here}
+          or
+            $uint32$ ?let repetitionCount
+            $*$
+            if selector.string != "" then
+              error selector : "the selector should be '?'"
+            end
+            if repetitionCount.uint == 0 then
+              error repetitionCount : "the repetition count should be > 0"
+            end
+            for i in 0 ..< repetitionCount.uint do
+              optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: false !location: .here}
+            end
           end
         end
         $]$
@@ -180,9 +204,9 @@ override method @ifInstructionAST enterInstructionInSemanticContext ?!@unifiedTy
         switch parameter
         case actualOutput (expression *) :
           [expression enterExpressionInSemanticContext !?ioTypeMap]
-        case actualLetInput (*) :
-        case actualVarInput (*) :
-        case actualInputJoker (*) :
+        case actualLetInput (2*) :
+        case actualVarInput (2*) :
+        case actualInputJoker (2*) :
         end
       end
     end
@@ -374,73 +398,6 @@ private proc analyzeOptionalMethodCall
   let @optionalMethodMap optionalMethodMap = [receiverType mOptionalMethodMap]
 #--- Search optional method
   [optionalMethodMap searchKey !inOptionalMethodName ?let @optionalMethodSignature optionalMethodSignature]
-#  with inOptionalMethodName.string in optionalMethodMap  do
-#    getterFormalArgumentTypeList = mArgumentTypeList
-#    hasCompilerArgument = mHasCompilerArgument
-#    returnedType = mReturnedType
-#    kind = mKind
-#    if mErrorMessage != "" then
-#      error inOptionalMethodName : mErrorMessage
-#    end
-#  else
-#    @uint matchingReaderCount = 0
-#    if [receiverType mTypeKindEnum] == @typeKindEnum.structType then
-#      getterFormalArgumentTypeList = {}
-#      hasCompilerArgument = true
-#      returnedType = @unifiedTypeMap-proxy.null
-#      kind = @methodKind. definedAsExtension
-#      for () in [receiverType mCurrentTypedAttributeList] do
-#        let attributeType = @unifiedTypeMap-proxy.searchKey {
-#          !inAnalysisContext.mSemanticContext.mTypeMap
-#          !@lstring.new {![mPropertyTypeProxy key] !@location.here}
-#        }
-#        let aMap = [attributeType mGetterMap]
-#        with inOptionalMethodName.string in aMap  do
-#          if [attributeType key] == mPropertyName.string then
-#            matchingReaderCount ++
-#            getterFormalArgumentTypeList = mArgumentTypeList
-#            hasCompilerArgument = mHasCompilerArgument
-#            returnedType = mReturnedType
-#            receiverExpression = @structPropertyAccessExpressionForGeneration.new {
-#              !returnedType
-#              !inOptionalMethodName.location
-#              !receiverExpression
-#              !mPropertyName.string
-#            }
-#            kind = mKind
-#            if mErrorMessage != "" then
-#              error inOptionalMethodName : mErrorMessage
-#            end
-#          end
-#        end
-#      end
-#      if matchingReaderCount == 0 then
-#        error inOptionalMethodName
-#        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [inOptionalMethodName string]
-#        + "' getter, and none of its fields defines it"
-#        : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
-#      elsif matchingReaderCount > 1 then
-#        @string s = ""
-#        for () in fieldList
-#          do s += mValue
-#          between s += ", "
-#        end
-#        error inOptionalMethodName
-#        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [inOptionalMethodName string]
-#        + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
-#        : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
-#      end
-#    elsif [getterMap count] == 0 then
-#      error inOptionalMethodName
-#      : "the '@"+ [receiverType key] + "' type does not define any getter"
-#      : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
-#    else
-#      error inOptionalMethodName
-#      : "the '@"+ [receiverType key] + "' type does not define the '" + inOptionalMethodName + "' getter "
-#      : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
-#      fixit { replace [getterMap keyList] }
-#    end
-#  end
 #--- Analysis actual parameters, test for matching formam arguments
   if [inActualParameters length] != [optionalMethodSignature length] then
     error inOptionalMethodName
@@ -467,7 +424,12 @@ private proc analyzeOptionalMethodCall
         end
         checkAssignmentTypeWithImplicitGetterCall (!formalType ![exp mResultType] !location !?exp)
         actualParameterList += !.actualOutput {!expression: exp}
-      case actualLetInput (@lstring constantName) :
+      case actualLetInput (@lstring actualTypeName @lstring constantName) :
+        if (actualTypeName.string != "") && ([formalType key] != actualTypeName.string) then
+          error actualTypeName
+           : "the '@" + [formalType key] + "' type name is required here"
+           fixit { replace "@" + [formalType key] }
+        end
         let targetVariableCppName = "var_" + [constantName identifierRepresentation]
          + "_" + [constantName.location locationIndex]
         [!?ioVariableMap insertLocalConstant
@@ -481,8 +443,13 @@ private proc analyzeOptionalMethodCall
           error actualSelector :
           "the selector should be '?" + formalSelector + if formalSelector.string != "" then ":" else "" end + "'"
         end
-      case actualVarInput (@lstring variableName) :
-         let targetVariableCppName = "var_" + [variableName identifierRepresentation]
+      case actualVarInput (@lstring actualTypeName @lstring variableName) :
+         if (actualTypeName.string != "") && ([formalType key] != actualTypeName.string) then
+          error actualTypeName
+           : "the '@" + [formalType key] + "' type name is required here"
+           fixit { replace "@" + [formalType key] }
+        end
+        let targetVariableCppName = "var_" + [variableName identifierRepresentation]
          + "_" + [variableName.location locationIndex]
         [!?ioVariableMap insertDefinedLocalVariable
           !variableName
@@ -495,10 +462,10 @@ private proc analyzeOptionalMethodCall
           error actualSelector :
           "the selector should be '?" + formalSelector + if formalSelector.string != "" then ":" else "" end + "'"
         end
-      case actualInputJoker (location) :
+      case actualInputJoker (checkSelector location) :
         let targetVariableCppName = "var_unused_" + [location locationIndex]
         actualParameterList += !.actualVarInput {!typeName: [formalType key] !variableName: targetVariableCppName}
-        if formalSelector.string != actualSelector.string then
+        if checkSelector && (formalSelector.string != actualSelector.string) then
           error actualSelector :
           "the selector should be '?" + formalSelector + if formalSelector.string != "" then ":" else "" end + "'"
         end

@@ -128,7 +128,8 @@ for () in CONSTANT_LIST do
     %  const bool ok = mEnum == kEnum_%![mConstantName identifierRepresentation]% ;\n%
     if [mAssociatedValueTypeList length] > 0 then
       %  if (ok) {\n%
-      %    const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
+      %    const auto * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
+      %    // const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% * ptr = (const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% *) unsafePointer () ;\n%    
       for () in mAssociatedValueTypeList do index idx
          %    outAssociatedValue%![idx string]% = ptr->mAssociatedValue%![idx string]% ;\n%
        end
