@@ -18,7 +18,7 @@ enum @optionalMethodActualArgument {
   case actualOutput (@semanticExpressionAST expression @location location)
   case actualLetInput (@lstring typeName @lstring constantName)
   case actualVarInput (@lstring typeName @lstring variableName)
-  case actualInputJoker (@bool checkSelector @location location)
+  case actualInputJoker (@bool checkSelector @location location @uint idx)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -152,7 +152,7 @@ syntax extension galgas3InstructionsSyntax {
             optionalMethodActualArgumentList += !selector !.actualVarInput {!typeName: typeName !variableName: variableName}
           or
             $*$
-            optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: true !location: .here}
+            optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: true !location: .here !idx: 0}
           or
             $uint32$ ?let repetitionCount
             $*$
@@ -163,7 +163,7 @@ syntax extension galgas3InstructionsSyntax {
               error repetitionCount : "the repetition count should be > 0"
             end
             for i in 0 ..< repetitionCount.uint do
-              optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: false !location: .here}
+              optionalMethodActualArgumentList += !selector !.actualInputJoker {!checkSelector: false !location: .here !idx: i}
             end
           end
         end
@@ -206,7 +206,7 @@ override method @ifInstructionAST enterInstructionInSemanticContext ?!@unifiedTy
           [expression enterExpressionInSemanticContext !?ioTypeMap]
         case actualLetInput (2*) :
         case actualVarInput (2*) :
-        case actualInputJoker (2*) :
+        case actualInputJoker (3*) :
         end
       end
     end
@@ -462,8 +462,8 @@ private proc analyzeOptionalMethodCall
           error actualSelector :
           "the selector should be '?" + formalSelector + if formalSelector.string != "" then ":" else "" end + "'"
         end
-      case actualInputJoker (checkSelector location) :
-        let targetVariableCppName = "var_unused_" + [location locationIndex]
+      case actualInputJoker (checkSelector location idx) :
+        let targetVariableCppName = "var_unused_" + idx + "_" + [location locationIndex]
         actualParameterList += !.actualVarInput {!typeName: [formalType key] !variableName: targetVariableCppName}
         if checkSelector && (formalSelector.string != actualSelector.string) then
           error actualSelector :

@@ -58,14 +58,18 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration expression
   ]
 #--- Check field access availability
-  @unifiedTypeMap-proxy type = [expression mResultType]
-  if (not [[type mTypeKindEnum] isStructType]) & (not [[type mTypeKindEnum] isClassType]) then
+  let @unifiedTypeMap-proxy expressionType = [expression mResultType]
+  if (not [[expressionType mTypeKindEnum] isStructType]) & (not [[expressionType mTypeKindEnum] isClassType]) then
     error mStructFieldName: "the '.' operator requires the receiver to be a struct or a class"
   end
-  let propertyMap = [type mPropertyMap]
-  [propertyMap searchKey !mStructFieldName ?let isPublic  ?type]
-  if not isPublic then
-    error mStructFieldName : " inaccessible property (due to its 'private' qualifier)"
+  let propertyMap = [expressionType mPropertyMap]
+  [propertyMap searchKey !mStructFieldName ?let isPublic ?let type]
+  if isPublic then
+    # Ok
+  elsif [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+    error mStructFieldName : "inaccessible property (due to its 'private' qualifier)"
+  elsif expressionType != inAnalysisContext.mSelfCopyTypeProxy then
+    error mStructFieldName : "inaccessible property (due to its 'private' qualifier)2"
   end
 #--- Generate expression
   outExpression = @structPropertyAccessExpressionForGeneration.new {

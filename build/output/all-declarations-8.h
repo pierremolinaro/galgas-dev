@@ -2744,7 +2744,8 @@ class GALGAS_optionalMethodActualArgument : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_optionalMethodActualArgument constructor_actualInputJoker (const class GALGAS_bool & inOperand0,
-                                                                                          const class GALGAS_location & inOperand1
+                                                                                          const class GALGAS_location & inOperand1,
+                                                                                          const class GALGAS_uint & inOperand2
                                                                                           COMMA_LOCATION_ARGS) ;
 
   public : static class GALGAS_optionalMethodActualArgument constructor_actualLetInput (const class GALGAS_lstring & inOperand0,
@@ -2770,6 +2771,7 @@ class GALGAS_optionalMethodActualArgument : public AC_GALGAS_root {
 //--------------------------------- Instance Methods
   public : VIRTUAL_IN_DEBUG void method_actualInputJoker (class GALGAS_bool & outArgument0,
                                                           class GALGAS_location & outArgument1,
+                                                          class GALGAS_uint & outArgument2,
                                                           C_Compiler * inCompiler
                                                           COMMA_LOCATION_ARGS) const ;
 
@@ -2802,7 +2804,8 @@ class GALGAS_optionalMethodActualArgument : public AC_GALGAS_root {
 
 //--------------------------------- Optional Methods
   public : VIRTUAL_IN_DEBUG bool optional_actualInputJoker (class GALGAS_bool & outOperand0,
-                                                            class GALGAS_location & outOperand1) const ;
+                                                            class GALGAS_location & outOperand1,
+                                                            class GALGAS_uint & outOperand2) const ;
 
   public : VIRTUAL_IN_DEBUG bool optional_actualLetInput (class GALGAS_lstring & outOperand0,
                                                           class GALGAS_lstring & outOperand1) const ;
@@ -2887,10 +2890,12 @@ class cEnumAssociatedValues_optionalMethodActualArgument_actualVarInput : public
 class cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker : public cEnumAssociatedValues {
   public : const GALGAS_bool mAssociatedValue0 ;
   public : const GALGAS_location mAssociatedValue1 ;
+  public : const GALGAS_uint mAssociatedValue2 ;
 
 //--- Constructor
   public : cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker (const GALGAS_bool & inAssociatedValue0,
-                                                                                const GALGAS_location & inAssociatedValue1
+                                                                                const GALGAS_location & inAssociatedValue1,
+                                                                                const GALGAS_uint & inAssociatedValue2
                                                                                 COMMA_LOCATION_ARGS) ;
 
   public : virtual void description (C_String & ioString,

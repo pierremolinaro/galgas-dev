@@ -255,8 +255,8 @@ override method @classDeclarationAST enterInSemanticContext
   @typedPropertyList allTypedAttributeList = inheritedTypedAttributeList
   for () in mPropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
-    let hasSetter = mIsPublic
-    let hasGetter = mIsPublic
+    let hasSetter = true # mIsPublic
+    let hasGetter = true # mIsPublic
     var hasSelector = false
     for () in mAttributeList do
       if [mValue string] == "setter" then
@@ -423,8 +423,8 @@ override method @classDeclarationAST semanticAnalysis
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !classTypeNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
-    let hasSetter = mIsPublic
-    let hasGetter = mIsPublic
+    let hasSetter = true # mIsPublic
+    let hasGetter = true # mIsPublic
     var hasSelector = false
     for () in mAttributeList do
       if [mValue string] == "setter" then

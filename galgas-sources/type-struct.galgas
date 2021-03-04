@@ -98,8 +98,8 @@ override method @structDeclarationAST enterInSemanticContext
     end
     constructorPropertyTypeList += !selector !propertyTypeProxy !mPropertyName.string
     typesToIncludeInHeaderCompilation += !propertyTypeProxy
-    let hasSetter = mIsPublic
-    let hasGetter = mIsPublic
+    let hasSetter = true # mIsPublic
+    let hasGetter = true # mIsPublic
     let hasSelector = false
     typedPropertyList += !propertyTypeProxy !mPropertyName !hasSetter !hasGetter !hasSelector
     [!?propertyMap insertKey !mPropertyName !mIsPublic !propertyTypeProxy]
@@ -233,8 +233,8 @@ override method @structDeclarationAST semanticAnalysis
         hasSelector = true
       end
     end
-    let hasSetter = mIsPublic
-    let hasGetter = mIsPublic
+    let hasSetter = true # mIsPublic
+    let hasGetter = true # mIsPublic
     typedPropertyList +=
       !t
       !mPropertyName

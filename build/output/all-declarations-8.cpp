@@ -5346,11 +5346,13 @@ typeComparisonResult cEnumAssociatedValues_optionalMethodActualArgument_actualVa
 //----------------------------------------------------------------------------------------------------------------------
 
 cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker::cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker (const GALGAS_bool & inAssociatedValue0,
-                                                                                                                                          const GALGAS_location & inAssociatedValue1
+                                                                                                                                          const GALGAS_location & inAssociatedValue1,
+                                                                                                                                          const GALGAS_uint & inAssociatedValue2
                                                                                                                                           COMMA_LOCATION_ARGS) :
 cEnumAssociatedValues (THERE),
 mAssociatedValue0 (inAssociatedValue0),
-mAssociatedValue1 (inAssociatedValue1) {
+mAssociatedValue1 (inAssociatedValue1),
+mAssociatedValue2 (inAssociatedValue2) {
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5360,6 +5362,7 @@ void cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker::descri
   ioString << "(\n" ;
   mAssociatedValue0.description (ioString, inIndentation) ;
   mAssociatedValue1.description (ioString, inIndentation) ;
+  mAssociatedValue2.description (ioString, inIndentation) ;
   ioString << ")" ;
 }
 
@@ -5374,6 +5377,9 @@ typeComparisonResult cEnumAssociatedValues_optionalMethodActualArgument_actualIn
   }
   if (result == kOperandEqual) {
     result = mAssociatedValue1.objectCompare (ptr->mAssociatedValue1) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAssociatedValue2.objectCompare (ptr->mAssociatedValue2) ;
   }
   return result ;
 }
@@ -5436,13 +5442,14 @@ GALGAS_optionalMethodActualArgument GALGAS_optionalMethodActualArgument::constru
 //----------------------------------------------------------------------------------------------------------------------
 
 GALGAS_optionalMethodActualArgument GALGAS_optionalMethodActualArgument::constructor_actualInputJoker (const GALGAS_bool & inAssociatedValue0,
-                                                                                                       const GALGAS_location & inAssociatedValue1
+                                                                                                       const GALGAS_location & inAssociatedValue1,
+                                                                                                       const GALGAS_uint & inAssociatedValue2
                                                                                                        COMMA_LOCATION_ARGS) {
   GALGAS_optionalMethodActualArgument result ;
-  if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid ()) {
+  if (inAssociatedValue0.isValid () && inAssociatedValue1.isValid () && inAssociatedValue2.isValid ()) {
     result.mEnum = kEnum_actualInputJoker ;
     cEnumAssociatedValues * ptr = NULL ;
-    macroMyNew (ptr, cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker (inAssociatedValue0, inAssociatedValue1 COMMA_THERE)) ;
+    macroMyNew (ptr, cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker (inAssociatedValue0, inAssociatedValue1, inAssociatedValue2 COMMA_THERE)) ;
     result.mAssociatedValues.setPointer (ptr) ;
     macroDetachSharedObject (ptr) ;
   }
@@ -5510,11 +5517,13 @@ void GALGAS_optionalMethodActualArgument::method_actualVarInput (GALGAS_lstring 
 
 void GALGAS_optionalMethodActualArgument::method_actualInputJoker (GALGAS_bool & outAssociatedValue0,
                                                                    GALGAS_location & outAssociatedValue1,
+                                                                   GALGAS_uint & outAssociatedValue2,
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) const {
   if (mEnum != kEnum_actualInputJoker) {
     outAssociatedValue0.drop () ;
     outAssociatedValue1.drop () ;
+    outAssociatedValue2.drop () ;
     C_String s ;
     s << "method @optionalMethodActualArgument actualInputJoker invoked with an invalid enum value" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
@@ -5522,6 +5531,7 @@ void GALGAS_optionalMethodActualArgument::method_actualInputJoker (GALGAS_bool &
     const cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker * ptr = (const cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
+    outAssociatedValue2 = ptr->mAssociatedValue2 ;
   }
 }
 
@@ -5570,13 +5580,15 @@ bool GALGAS_optionalMethodActualArgument::optional_actualVarInput (GALGAS_lstrin
 //----------------------------------------------------------------------------------------------------------------------
 
 bool GALGAS_optionalMethodActualArgument::optional_actualInputJoker (GALGAS_bool & outAssociatedValue0,
-                                                                     GALGAS_location & outAssociatedValue1) const {
+                                                                     GALGAS_location & outAssociatedValue1,
+                                                                     GALGAS_uint & outAssociatedValue2) const {
   const bool ok = mEnum == kEnum_actualInputJoker ;
   if (ok) {
     const auto * ptr = (const cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker *) unsafePointer () ;
     // const cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker * ptr = (const cEnumAssociatedValues_optionalMethodActualArgument_actualInputJoker *) unsafePointer () ;
     outAssociatedValue0 = ptr->mAssociatedValue0 ;
     outAssociatedValue1 = ptr->mAssociatedValue1 ;
+    outAssociatedValue2 = ptr->mAssociatedValue2 ;
   }
   return ok ;
 }
