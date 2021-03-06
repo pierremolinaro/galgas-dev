@@ -39,8 +39,8 @@ syntax extension galgas3ExpressionSyntax {
 override method @getterCallExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mReceiver enterExpressionInSemanticContext !?ioTypeMap]
-  [mExpressions enterInSemanticContext !?ioTypeMap]
+  [self.mReceiver enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mExpressions enterInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -54,7 +54,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
 #--- Expression analysis
-  [mReceiver analyzeSemanticExpression
+  [self.mReceiver analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -71,13 +71,13 @@ override method @getterCallExpressionAST analyzeSemanticExpression
   @bool hasCompilerArgument
   @unifiedTypeMap-proxy returnedType
   @stringlist fieldList = {}
-  with [mGetterName string] in getterMap  do
+  with [self.mGetterName string] in getterMap  do
     getterFormalArgumentTypeList = mArgumentTypeList
     hasCompilerArgument = mHasCompilerArgument
     returnedType = mReturnedType
     kind = mKind
     if mErrorMessage != "" then
-      error mGetterName : mErrorMessage
+      error self.mGetterName : mErrorMessage
     end
   else
     @uint matchingReaderCount = 0
@@ -92,7 +92,7 @@ override method @getterCallExpressionAST analyzeSemanticExpression
           !@lstring.new {![mPropertyTypeProxy key] !@location.here}
         }
         let aMap = [attributeType mGetterMap]
-        with mGetterName.string in aMap  do
+        with self.mGetterName.string in aMap  do
           if [attributeType key] == mPropertyName.string then
             matchingReaderCount ++
             getterFormalArgumentTypeList = mArgumentTypeList
@@ -100,20 +100,20 @@ override method @getterCallExpressionAST analyzeSemanticExpression
             returnedType = mReturnedType
             receiverExpression = @structPropertyAccessExpressionForGeneration.new {
               !returnedType
-              !mGetterName.location
+              !self.mGetterName.location
               !receiverExpression
               !mPropertyName.string
             }
             kind = mKind
             if mErrorMessage != "" then
-              error mGetterName : mErrorMessage
+              error self.mGetterName : mErrorMessage
             end
           end
         end
       end
       if matchingReaderCount == 0 then
-        error mGetterName
-        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mGetterName string]
+        error self.mGetterName
+        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [self.mGetterName string]
         + "' getter, and none of its fields defines it"
         : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       elsif matchingReaderCount > 1 then
@@ -122,30 +122,30 @@ override method @getterCallExpressionAST analyzeSemanticExpression
           do s += mValue
           between s += ", "
         end
-        error mGetterName
-        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mGetterName string]
+        error self.mGetterName
+        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [self.mGetterName string]
         + "' getter, and several of its fields defines it:" + s + " (exactly one field should define it)"
         : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       end
     elsif [getterMap count] == 0 then
-      error mGetterName
+      error self.mGetterName
       : "the '@"+ [receiverType key] + "' type does not define any getter"
       : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
     else
-      error mGetterName
-      : "the '@"+ [receiverType key] + "' type does not define the '" + mGetterName + "' getter "
+      error self.mGetterName
+      : "the '@"+ [receiverType key] + "' type does not define the '" + self.mGetterName + "' getter "
       : getterFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       fixit { replace [getterMap keyList] }
     end
   end
 #--- Analysis arguments
-  if [mExpressions length] != [getterFormalArgumentTypeList length] then
-    error mGetterName: "calling the '" + mGetterName + "' getter of '@" + [receiverType key] + "' requires "
+  if [self.mExpressions length] != [getterFormalArgumentTypeList length] then
+    error self.mGetterName: "calling the '" + self.mGetterName + "' getter of '@" + [receiverType key] + "' requires "
     + [[getterFormalArgumentTypeList length] string] + " parameter(s), while this call has "
-    + [[mExpressions length] string] + " parameter(s)" : outExpression
+    + [[self.mExpressions length] string] + " parameter(s)" : outExpression
   else
     @semanticExpressionListForGeneration constructorEffectiveParameterList = {}
-    for () in mExpressions, () in getterFormalArgumentTypeList do
+    for () in self.mExpressions, () in getterFormalArgumentTypeList do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -162,11 +162,11 @@ override method @getterCallExpressionAST analyzeSemanticExpression
     end
     outExpression = @getterCallExpressionForGeneration.new {
       !returnedType
-      ![mGetterName location]
+      ![self.mGetterName location]
       !kind
       !receiverExpression
       !fieldList
-      ![mGetterName string]
+      ![self.mGetterName string]
       !constructorEffectiveParameterList
       !hasCompilerArgument
     }
@@ -196,9 +196,9 @@ override method @getterCallExpressionForGeneration generateExpression
   !@string outCppExpression
 {
 #--- Add return type header
-  [mResultType addHeaderFileName !?ioInclusionSet]
+  [self.mResultType addHeaderFileName !?ioInclusionSet]
 #--- Receiver expression
-  [mReceiverExpression generateExpression
+  [self.mReceiverExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -207,7 +207,7 @@ override method @getterCallExpressionForGeneration generateExpression
   ]
 #--- Reader operands
   @stringlist getterArgumentCppNameList = {}
-  for () in mExpressions do
+  for () in self.mExpressions do
     [mExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -218,14 +218,14 @@ override method @getterCallExpressionForGeneration generateExpression
     getterArgumentCppNameList += !argumentCppName
   end
 #--- Generate Reader call
-  switch mKind
+  switch self.mKind
   case definedAsExtension :
-    @unifiedTypeMap-proxy baseType = [mReceiverExpression mResultType]
+    @unifiedTypeMap-proxy baseType = [self.mReceiverExpression mResultType]
    [baseType addHeaderFileName !?ioInclusionSet]
     @bool searching = true
     loop (@uint.max) while searching do
       if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mGetterMap] hasKey !mGetterName] then
+        if [[[baseType mSuperType] mGetterMap] hasKey !self.mGetterName] then
           baseType = [baseType mSuperType]
         else
           searching = false
@@ -234,39 +234,39 @@ override method @getterCallExpressionForGeneration generateExpression
         searching = false
       end  
     end
-    ioInclusionSet += !"getter-" + [[baseType key] fileNameRepresentation] + "-" + [mGetterName fileNameRepresentation]
+    ioInclusionSet += !"getter-" + [[baseType key] fileNameRepresentation] + "-" + [self.mGetterName fileNameRepresentation]
     [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
-    if [[[mReceiverExpression mResultType] mTypeKindEnum] isClassType] then
-      outCppExpression = "callExtensionGetter_" + [mGetterName identifierRepresentation]
-         + " ((const cPtr_" + [[mReceiverExpression mResultType] identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
+    if [[[self.mReceiverExpression mResultType] mTypeKindEnum] isClassType] then
+      outCppExpression = "callExtensionGetter_" + [self.mGetterName identifierRepresentation]
+         + " ((const cPtr_" + [[self.mReceiverExpression mResultType] identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
     else
-      [[mReceiverExpression mResultType] addHeaderFileName !?ioInclusionSet]
-      outCppExpression = "extensionGetter_" + [mGetterName identifierRepresentation] + " (" + receiverCppName + ", "
+      [[self.mReceiverExpression mResultType] addHeaderFileName !?ioInclusionSet]
+      outCppExpression = "extensionGetter_" + [self.mGetterName identifierRepresentation] + " (" + receiverCppName + ", "
     end
   case definedAsMember :
     outCppExpression = receiverCppName
-    for () in mFieldList do
+    for () in self.mFieldList do
       outCppExpression += ".getter_" + [mValue identifierRepresentation] + " (HERE)"
     end
-    [mResultType addHeaderFileName !?ioInclusionSet]
-    outCppExpression +=  ".getter_" + [mGetterName identifierRepresentation] + " ("
+    [self.mResultType addHeaderFileName !?ioInclusionSet]
+    outCppExpression +=  ".getter_" + [self.mGetterName identifierRepresentation] + " ("
   end
   for () in getterArgumentCppNameList
     do outCppExpression += mValue
     between outCppExpression += ", "
   end
   if [getterArgumentCppNameList length] == 0 then
-    if mHasCompilerArgument then
+    if self.mHasCompilerArgument then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
       outCppExpression += compilerCppName () + " COMMA_"
     end
-  elsif mHasCompilerArgument then
+  elsif self.mHasCompilerArgument then
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
     outCppExpression += ", " + compilerCppName () + " COMMA_"
   else
     outCppExpression += " COMMA_"
   end
-  outCppExpression += [mLocation sourceFile] + ")"
+  outCppExpression += [self.mLocation sourceFile] + ")"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

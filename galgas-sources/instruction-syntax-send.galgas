@@ -57,10 +57,10 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount {
   if not inHasTranslateFeature then
-    error mInstructionLocation : "'send' instruction is only allowed when syntax componant has 'translate' feature"
+    error self.mInstructionLocation : "'send' instruction is only allowed when syntax componant has 'translate' feature"
   end
 #--- Analyze source expression
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -70,11 +70,11 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
   ]
 #--- Check expression type
   if [expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType  then
-    error mInstructionLocation: "'send' expresion should be an @string expression"
+    error self.mInstructionLocation: "'send' expresion should be an @string expression"
   end
 #---
   ioInstructionListForGeneration += !@syntaxSendInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !expression
   }
 }
@@ -98,7 +98,7 @@ override method @syntaxSendInstructionForGeneration generateInstruction
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
-  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string sourceVar]
+  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string sourceVar]
 #---
   [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName ()]
   ioGeneratedCode += "if (" + sourceVar + ".isValid ()) {\n"

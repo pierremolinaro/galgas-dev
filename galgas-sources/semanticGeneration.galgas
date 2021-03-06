@@ -20,18 +20,18 @@
 override method @grammarForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader {
-  for (s) in mSyntaxComponents do
+  for (s) in self.mSyntaxComponents do
     ioInclusionSet += !"syntax-" + [s fileNameRepresentation]
   end
   outHeader = [filewrapper grammarGenerationTemplate.grammarZone3HeaderGalgas3
-    ![mLexiqueName identifierRepresentation]
-    !mNonTerminalMapForGrammarAnalysis
-    !mNonTerminalToAddList
-    !mHasIndexing
-    !mStartSymbolName
-    !mHasTranslateFeature
-    !mGrammarName
-    !mSyntaxComponents
+    ![self.mLexiqueName identifierRepresentation]
+    !self.mNonTerminalMapForGrammarAnalysis
+    !self.mNonTerminalToAddList
+    !self.mHasIndexing
+    !self.mStartSymbolName
+    !self.mHasTranslateFeature
+    !self.mGrammarName
+    !self.mSyntaxComponents
    ]
 }
 
@@ -42,8 +42,8 @@ override method @grammarForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  ioInclusionSet += !"grammar-" + [mGrammarName fileNameRepresentation]
-  for nonTerminal in mNonTerminalMapForGrammarAnalysis do
+  ioInclusionSet += !"grammar-" + [self.mGrammarName fileNameRepresentation]
+  for nonTerminal in self.mNonTerminalMapForGrammarAnalysis do
     for () in nonTerminal.mNonterminalSymbolParametersMap do
       for () in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
@@ -55,13 +55,13 @@ override method @grammarForGeneration appendSpecificImplementation
       end
     end
   end
-  outImplementation = mCppFileContents
+  outImplementation = self.mCppFileContents
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @grammarForGeneration implementationCppFileName -> @string outName {
-  outName = "grammar-" + [mGrammarName fileNameRepresentation]
+  outName = "grammar-" + [self.mGrammarName fileNameRepresentation]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -87,7 +87,7 @@ override getter @grammarForGeneration isPredefined -> @bool {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @syntaxDeclarationForGeneration implementationCppFileName -> @string outName {
-  outName = "syntax-" + [mSyntaxComponentName fileNameRepresentation]
+  outName = "syntax-" + [self.mSyntaxComponentName fileNameRepresentation]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -113,22 +113,22 @@ override getter @syntaxDeclarationForGeneration isPredefined -> @bool {
 override method @syntaxDeclarationForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader {
-  ioInclusionSet += !"lexique-" + [mLexiqueName fileNameRepresentation]
+  ioInclusionSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation]
   var selectMethodList =@uintlist {}
   @uint idx = 0
-  loop( mSelectMethodCount + 1)
-  while idx < mSelectMethodCount do
+  loop (self.mSelectMethodCount + 1)
+  while idx < self.mSelectMethodCount do
     selectMethodList += !idx
     idx ++
   end
   outHeader = [filewrapper syntaxFileGenerationTemplate.syntaxAnalyserClassDeclaration
-    !mSyntaxComponentName
-    ![mLexiqueName identifierRepresentation]
-    !mNonterminalDeclarationMap
-    !mRuleDeclarationList
+    !self.mSyntaxComponentName
+    ![self.mLexiqueName identifierRepresentation]
+    !self.mNonterminalDeclarationMap
+    !self.mRuleDeclarationList
     !selectMethodList
-    !mHasIndexing
-    !mHasTranslateFeature
+    !self.mHasIndexing
+    !self.mHasTranslateFeature
   ] 
 }
 
@@ -139,17 +139,17 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  ioInclusionSet += !"syntax-" + [mSyntaxComponentName fileNameRepresentation]
+  ioInclusionSet += !"syntax-" + [self.mSyntaxComponentName fileNameRepresentation]
   outImplementation = [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3
     !{}
   ]
 #---
-  let lexiqueCppName = "C_Lexique_" + [mLexiqueName identifierRepresentation]
-  for () in mRuleDeclarationList do
+  let lexiqueCppName = "C_Lexique_" + [self.mLexiqueName identifierRepresentation]
+  for () in self.mRuleDeclarationList do
   #--- Generate rule label implementation
     for () in mLabelImplementationList do
-      let @string ruleName = "cParser_" + [mSyntaxComponentName identifierRepresentation]
-        + "::rule_" + [mSyntaxComponentName identifierRepresentation] + "_"
+      let @string ruleName = "cParser_" + [self.mSyntaxComponentName identifierRepresentation]
+        + "::rule_" + [self.mSyntaxComponentName identifierRepresentation] + "_"
         + [mNonterminalName identifierRepresentation]
         + "_i" + [mRuleIndex string] + "_" + [mLabelName identifierRepresentation]
       outImplementation += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
@@ -163,15 +163,15 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
         !lexiqueCppName
         !false # Do not generate location Argument
         !false # Do not generate 'resetTemplateString'
-        !mHasTranslateFeature
+        !self.mHasTranslateFeature
         ?let @string code
       )
       outImplementation += code
     end
   #--- Generate "parse" label
     [mLabelImplementationList first ?* ?* ?* ?* ?let parseInstructionList]
-    let @string parseRuleName = "cParser_" + [mSyntaxComponentName identifierRepresentation]
-    + "::rule_" + [mSyntaxComponentName identifierRepresentation] + "_"
+    let @string parseRuleName = "cParser_" + [self.mSyntaxComponentName identifierRepresentation]
+    + "::rule_" + [self.mSyntaxComponentName identifierRepresentation] + "_"
     + [mNonterminalName identifierRepresentation]
     + "_i" + [mRuleIndex string] + "_parse"
     outImplementation += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
@@ -185,16 +185,16 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
       !lexiqueCppName
       !false # Do not generate location Argument
       !true # Generate 'resetTemplateString'
-      !mHasTranslateFeature
+      !self.mHasTranslateFeature
       ?let @string parseCode
     )
     outImplementation += parseCode
   #--- Generate indexing code
-    if mHasIndexing then
+    if self.mHasIndexing then
       @semanticInstructionListForGeneration instructionList
       [mLabelImplementationList first ?* ?* ?* ?* ?instructionList]
-      let @string ruleName = "cParser_" + [mSyntaxComponentName identifierRepresentation]
-      + "::rule_" + [mSyntaxComponentName identifierRepresentation] + "_"
+      let @string ruleName = "cParser_" + [self.mSyntaxComponentName identifierRepresentation]
+      + "::rule_" + [self.mSyntaxComponentName identifierRepresentation] + "_"
       + [mNonterminalName identifierRepresentation]
       + "_i" + [mRuleIndex string] + "_indexing"
       outImplementation += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
@@ -1099,8 +1099,8 @@ override method @routinePrototypeDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   outHeader = [filewrapper semanticComponentGenerationTemplate.routineDeclaration
-    !mRoutineName
-    !mFormalArgumentList
+    !self.mRoutineName
+    !self.mFormalArgumentList
   ] 
 }
 
@@ -1118,9 +1118,9 @@ override method @functionPrototypeDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   outHeader = [filewrapper semanticComponentGenerationTemplate.functionDeclaration
-    !mFunctionName
-    !mFormalArgumentList
-    ![mReturnType identifierRepresentation]
+    !self.mFunctionName
+    !self.mFormalArgumentList
+    ![self.mReturnType identifierRepresentation]
   ] 
 }
 
@@ -1136,9 +1136,9 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   outHeader = [filewrapper semanticComponentGenerationTemplate.functionDeclaration
-    !mFunctionName
+    !self.mFunctionName
     !@formalInputParameterListForGeneration.emptyList
-    ![mReturnType identifierRepresentation]
+    ![self.mReturnType identifierRepresentation]
   ] 
 }
 
@@ -1148,10 +1148,10 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
 
 override getter @semanticTypeForGeneration appendTypeGenericImplementation -> @string outImplementation {
   outImplementation = [filewrapper typeGenerationTemplate.genericTypeImplementation
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mSuperType]
-    ![mTypeProxy mHandledOperatorFlags]
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    ![self.mTypeProxy mSuperType]
+    ![self.mTypeProxy mHandledOperatorFlags]
   ]
 }
 
@@ -1164,15 +1164,15 @@ override method @routineImplementationForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  if mHasHeader then
-    ioInclusionSet += !"proc-" + [mRoutineName fileNameRepresentation]
+  if self.mHasHeader then
+    ioInclusionSet += !"proc-" + [self.mRoutineName fileNameRepresentation]
   end
   generateProcedure (
-    !static:mGenerateStatic
-    !"routine_" + [mRoutineName identifierRepresentation]
+    !static: self.mGenerateStatic
+    !"routine_" + [self.mRoutineName identifierRepresentation]
     !?ioInclusionSet
-    !mFormalArgumentList
-    !mRoutineInstructionList
+    !self.mFormalArgumentList
+    !self.mRoutineInstructionList
     !false # Do not generate 'const' qualifier
     !"C_Compiler"
     !true # Generate location Argument
@@ -1181,7 +1181,7 @@ override method @routineImplementationForGeneration appendSpecificImplementation
     ?let @string code
   )
   outImplementation = [filewrapper semanticComponentGenerationTemplate.routineImplementation
-    !mRoutineName
+    !self.mRoutineName
     !code
   ] 
 }
@@ -1192,23 +1192,23 @@ override method @functionImplementationForGeneration appendSpecificImplementatio
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  ioInclusionSet += !"func-" + [mFunctionName fileNameRepresentation]
+  ioInclusionSet += !"func-" + [self.mFunctionName fileNameRepresentation]
   generateFunction (
-    !"function_" + [mFunctionName identifierRepresentation]
+    !"function_" + [self.mFunctionName identifierRepresentation]
     !?ioInclusionSet
-    !mFormalArgumentList
-    !mFunctionInstructionList
+    !self.mFormalArgumentList
+    !self.mFunctionInstructionList
     !"C_Compiler"
-    !mReturnType
-    !mResultVariableCppName
+    !self.mReturnType
+    !self.mResultVariableCppName
     !false # is not static
     ?let @string code
   )
   outImplementation = [filewrapper semanticComponentGenerationTemplate.functionImplementation
-    !mFunctionName
+    !self.mFunctionName
     !code
-    !mFormalArgumentList
-    ![mReturnType identifierRepresentation]
+    !self.mFormalArgumentList
+    ![self.mReturnType identifierRepresentation]
   ] 
 }
 
@@ -1219,23 +1219,23 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  ioInclusionSet += !"func-" + [mFunctionName fileNameRepresentation]
+  ioInclusionSet += !"func-" + [self.mFunctionName fileNameRepresentation]
   generateFunction (
-    !"onceFunction_" + [mFunctionName identifierRepresentation]
+    !"onceFunction_" + [self.mFunctionName identifierRepresentation]
     !?ioInclusionSet
     !@formalInputParameterListForGeneration.emptyList
-    !mFunctionInstructionList
+    !self.mFunctionInstructionList
     !"C_Compiler"
-    !mReturnType
-    !mResultVariableCppName
+    !self.mReturnType
+    !self.mResultVariableCppName
     !true # is static
     ?let @string code
   )
   outImplementation = [filewrapper semanticComponentGenerationTemplate.onceFunctionImplementation
-    !mFunctionName
+    !self.mFunctionName
     !code
     !@formalInputParameterListForGeneration.emptyList
-    ![mReturnType identifierRepresentation]
+    ![self.mReturnType identifierRepresentation]
   ] 
 }
 
@@ -1252,7 +1252,7 @@ override getter @lexiqueDeclarationForGeneration headerKind ->@headerKind {
 override method @lexiqueDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
-  outHeader = mHeaderContents
+  outHeader = self.mHeaderContents
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1261,8 +1261,8 @@ override method @lexiqueDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outHeader {
-  ioInclusionSet += !"lexique-" + [mLexiqueName fileNameRepresentation]
-  outHeader = mCppContents
+  ioInclusionSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation]
+  outHeader = self.mCppContents
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1273,28 +1273,28 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ?!@stringlist ioCocoaProductFileList
 {
 #--- Generate cocoa header file
-  ioAllProductFileSet += !"lexique-" + [mLexiqueName fileNameRepresentation] + "-cocoa.h"
+  ioAllProductFileSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.h"
   [@string generateFileWithPattern
     !startPath:inProductDirectory
-    !fileName:"lexique-" + [mLexiqueName fileNameRepresentation] + "-cocoa.h"
+    !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.h"
     !lineComment:"//"
     !header:"" # Header
     !defaultUserZone1:"\n\n" # Defaut user zone1
-    !generatedZone2:mCocoaHeader
+    !generatedZone2: self.mCocoaHeader
     !defaultUserZone2:"\n\n" # Defaut user zone2
     !generatedZone3:"\n"
     !makeExecutable:false
   ]
 #--- Generate Cocoa implementation file
-  ioAllProductFileSet += !"lexique-" + [mLexiqueName fileNameRepresentation] + "-cocoa.m"
-  ioCocoaProductFileList += !"lexique-" + [mLexiqueName fileNameRepresentation] + "-cocoa.m"
+  ioAllProductFileSet += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
+  ioCocoaProductFileList += !"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
   [@string generateFileWithPattern
     !startPath:inProductDirectory
-    !fileName:"lexique-" + [mLexiqueName fileNameRepresentation] + "-cocoa.m"
+    !fileName:"lexique-" + [self.mLexiqueName fileNameRepresentation] + "-cocoa.m"
     !lineComment:"//"
     !header:"" # Header
     !defaultUserZone1:"\n\n" # Defaut user zone1
-    !generatedZone2:mCocoaImplementation
+    !generatedZone2:self.mCocoaImplementation
     !defaultUserZone2:"\n\n" # Defaut user zone2
     !generatedZone3:"\n\n" # Zone 3
     !makeExecutable:false
@@ -1315,8 +1315,8 @@ override method @programComponentForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  ioInclusionSet += mInclusionSet
-  outImplementation = mImplementationString
+  ioInclusionSet +=self. mInclusionSet
+  outImplementation = self.mImplementationString
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1369,8 +1369,8 @@ override method @filewrapperDeclarationForGeneration appendDeclaration1
   var regularTextContentIndexStringList =@stringlist {}
   var directoryIndexStringList =@stringlist {}
   recursivlyEnumerateRegularFile (
-    !mFilewrapperFileMap
-    !mFilewrapperDirectoryMap
+    !self.mFilewrapperFileMap
+    !self.mFilewrapperDirectoryMap
     !?regularFileIndexStringList
     !?directoryIndexStringList
     !?regularTextContentIndexStringList
@@ -1381,12 +1381,12 @@ override method @filewrapperDeclarationForGeneration appendDeclaration1
     !directoryIndexStringList
     !regularTextContentIndexStringList
     !regularBinaryContentIndexStringList
-    !mFilewrapperName
+    !self.mFilewrapperName
   ] 
 #--- template generation
-  for () in mFilewrapperTemplateListForGeneration do
+  for () in self.mFilewrapperTemplateListForGeneration do
     outHeader += [filewrapper semanticComponentGenerationTemplate.filewrapperTemplateDeclaration
-      !mFilewrapperName
+      !self.mFilewrapperName
       !mFilewrapperTemplateName
       !mFilewrapperTemplateFormalInputParameters
     ]
@@ -1485,22 +1485,22 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  ioInclusionSet += !"filewrapper-" + mFilewrapperName
+  ioInclusionSet += !"filewrapper-" + self.mFilewrapperName
   @string filewrapperImplementation = ""
   generateWrapperContents (
-    !mFilewrapperName
+    !self.mFilewrapperName
     !""
     !0
-    !mFilewrapperFileMap
-    !mFilewrapperDirectoryMap
+    !self.mFilewrapperFileMap
+    !self.mFilewrapperDirectoryMap
     !?filewrapperImplementation
   )
   outImplementation = [filewrapper semanticComponentGenerationTemplate.filewrapperImplementation
-    !mFilewrapperName
+    !self.mFilewrapperName
     !filewrapperImplementation
   ]
 #--- template generation
-  for () in mFilewrapperTemplateListForGeneration do
+  for () in self.mFilewrapperTemplateListForGeneration do
   #--- Build generated code for instruction list
     @string generatedCodeForInstructionList = ""
     @uint temporaryVariableIndex = 0
@@ -1520,7 +1520,7 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
     )
   #---
     outImplementation += [filewrapper semanticComponentGenerationTemplate.filewrapperTemplateImplementation
-      !mFilewrapperName
+      !self.mFilewrapperName
       !mFilewrapperTemplateName
       !mFilewrapperTemplateFormalInputParameters
       !unusedVariableCppNameSet
@@ -1587,7 +1587,7 @@ filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_ge
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @string outHeader {
-  switch mKind
+  switch self.mKind
   case predefined_object :
     outHeader = [filewrapper predefinedTypeGenerationTemplate.object_type]
   case predefined_uint :
@@ -1628,19 +1628,19 @@ override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
     outHeader = [filewrapper predefinedTypeGenerationTemplate.timer_type]
   end
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mSetterMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mOptionalMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    ![self.mTypeProxy mIsConcrete]
+    ![self.mTypeProxy mConstructorMap]
+    ![self.mTypeProxy mGetterMap]
+    ![self.mTypeProxy mSetterMap]
+    ![self.mTypeProxy mInstanceMethodMap]
+    ![self.mTypeProxy mClassMethodMap]
+    ![self.mTypeProxy mOptionalMethodMap]
+    ![self.mTypeProxy mEnumerationDescriptor]
+    ![self.mTypeProxy mHandledOperatorFlags]
+    ![self.mTypeProxy mAddAssignOperatorArguments]
+    ![self.mTypeProxy mTypeForEnumeratedElement]
   ]
 }
 
@@ -1648,7 +1648,7 @@ override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
 
 override method @primitiveTypeForGeneration appendPrimitiveTypePreDeclaration ?!@string ioHeader {
 #  message "PREDEFINED @" + mPredefinedTypeName + "\n"
-  ioHeader += "class GALGAS_" + mPredefinedTypeName + " ;\n"
+  ioHeader += "class GALGAS_" + self.mPredefinedTypeName + " ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

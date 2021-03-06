@@ -48,23 +48,23 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
- let usefulnessName = lexiqueNameForUsefulEntitiesGraph (!mLexiqueComponentName)
+ let usefulnessName = lexiqueNameForUsefulEntitiesGraph (!self.mLexiqueComponentName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Check  lexique is declared
   [inAnalysisContext.mSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
-    !mLexiqueComponentName
+    !self.mLexiqueComponentName
     ?3*
   ]
 #--- Check getter name
-  if mLexiqueGetterName.string != "symbols" then
-    error mLexiqueGetterName:"unknown getter"
+  if self.mLexiqueGetterName.string != "symbols" then
+    error self.mLexiqueGetterName:"unknown getter"
   end
 #---
   outExpression = @lexiqueIntrospectionForGeneration.new {
     !@unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !["stringlist" nowhere]}
-    !mLexiqueComponentName.location
-    !mLexiqueComponentName.string
-    !mLexiqueGetterName.string}
+    !self.mLexiqueComponentName.location
+    !self.mLexiqueComponentName.string
+    !self.mLexiqueGetterName.string}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -85,10 +85,10 @@ override method @lexiqueIntrospectionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
 #---
-  ioInclusionSet += !"lexique-" + [mLexiqueComponentName fileNameRepresentation]
-  outCppExpression = "C_Lexique_" + [mLexiqueComponentName identifierRepresentation] + "::"
-  + [mLexiqueGetterName identifierRepresentation]
-  + "(" + [mLocation sourceFile] + ")"
+  ioInclusionSet += !"lexique-" + [self.mLexiqueComponentName fileNameRepresentation]
+  outCppExpression = "C_Lexique_" + [self.mLexiqueComponentName identifierRepresentation] + "::"
+  + [self.mLexiqueGetterName identifierRepresentation]
+  + "(" + [self.mLocation sourceFile] + ")"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

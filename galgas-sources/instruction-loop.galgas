@@ -75,10 +75,10 @@ syntax extension galgas3InstructionsSyntax {
 override method @loopInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mVariantExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mLoopExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mFirstInstructions enterInstructionListInSemanticContext !?ioTypeMap]
-  [mSecondInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+  [self.mVariantExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mLoopExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mFirstInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+  [self.mSecondInstructions enterInstructionListInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -93,7 +93,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap {
 #--- Variant expression
   @semanticExpressionForGeneration variantExpression
-  [mVariantExpression analyzeSemanticExpression
+  [self.mVariantExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -103,12 +103,12 @@ override method @loopInstructionAST analyzeSemanticInstruction
   ]
 #--- Check variant expression type is @uint
   if [variantExpression mResultType] != inAnalysisContext.mPredefinedTypes.mUIntType then
-    error mEndOfVariantExpression
+    error self.mEndOfVariantExpression
     : "the variant expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mUIntType key] + "', but it has '@" + [[variantExpression mResultType] key] + "' type"
   end
 #--- Loop expression
   @semanticExpressionForGeneration loopExpression
-  [mLoopExpression analyzeSemanticExpression
+  [self.mLoopExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -118,7 +118,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
   ]
 #--- Check loop expression type is @bool
   if [loopExpression mResultType] != inAnalysisContext.mPredefinedTypes.mBoolType then
-    error mEndOfLoopExpression
+    error self.mEndOfLoopExpression
     : "the loop expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mBoolType key] + "', but it has '@" + [[loopExpression mResultType] key] + "' type"
   end
 #--- Begin override for analyze loop instruction list
@@ -131,8 +131,8 @@ override method @loopInstructionAST analyzeSemanticInstruction
     !inAnalysisContext
     !{}
     !{}
-    !mFirstInstructions
-    !mEndOfFirstInstructions
+    !self.mFirstInstructions
+    !self.mEndOfFirstInstructions
     !?ioVariableMap
     ?first_instructionList
   )
@@ -144,16 +144,16 @@ override method @loopInstructionAST analyzeSemanticInstruction
     !inAnalysisContext
     !{}
     !{}
-    !mSecondInstructions
-    !mEndOfSecondInstructions
+    !self.mSecondInstructions
+    !self.mEndOfSecondInstructions
     !?ioVariableMap
     ?second_instructionList
   )
 #--- End override
-  [!?ioVariableMap closeOverride !mEndOfLoopInstruction]
+  [!?ioVariableMap closeOverride !self.mEndOfLoopInstruction]
 #--- Generate instruction
   ioInstructionListForGeneration += !@loopInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !variantExpression
     !first_instructionList
     !loopExpression
@@ -182,7 +182,7 @@ override method @loopInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 {
 #--- Variant expression
-  [mVariantExpression generateExpression
+  [self.mVariantExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -191,22 +191,22 @@ override method @loopInstructionForGeneration generateInstruction
   ]
   ioGeneratedCode += "if (" + variantCppVarName + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
-  let @string variantVar = "variant_" + [[mInstructionLocation locationIndex] string]
+  let @string variantVar = "variant_" + [[self.mInstructionLocation locationIndex] string]
   ioGeneratedCode += "uint32_t " + variantVar + " = " + variantCppVarName + ".uintValue () ;\n"
-  let @string loopVar = "loop_" + [[mInstructionLocation locationIndex] string]
+  let @string loopVar = "loop_" + [[self.mInstructionLocation locationIndex] string]
   ioGeneratedCode += "bool " + loopVar + " = true ;\n"
                   + "while (" + loopVar + ") {\n"
   [!?ioGeneratedCode incIndentation !2]
   generateInstructionList (
     !?ioInclusionSet
-    !mFirstInstructions
+    !self.mFirstInstructions
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   )
   @string loopExpressionVar
-  [mLoopExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?loopExpressionVar]
+  [self.mLoopExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?loopExpressionVar]
   ioGeneratedCode += loopVar + " = " + loopExpressionVar + ".isValid () ;\n"
                    + "if (" + loopVar + ") {\n"
                    + "  " + loopVar + " = " + loopExpressionVar + ".boolValue () ;\n"
@@ -214,13 +214,13 @@ override method @loopInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   ioGeneratedCode += "if (" + loopVar + " && (0 == " + variantVar + ")) {\n"
                      "  " + loopVar + " = false ;\n"
-                     "  " + compilerCppName () + "->loopRunTimeVariantError (" + [mInstructionLocation sourceFile] + ") ;\n"
+                     "  " + compilerCppName () + "->loopRunTimeVariantError (" + [self.mInstructionLocation sourceFile] + ") ;\n"
                      "}\n"
                    + "if (" + loopVar + ") {\n"
   ioGeneratedCode += "  " + variantVar + " -- ;\n"
   generateInstructionList (
     !?ioInclusionSet
-    !mSecondInstructions
+    !self.mSecondInstructions
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !inGenerateSyntaxDirectedTranslationString

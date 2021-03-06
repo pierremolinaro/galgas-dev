@@ -73,8 +73,8 @@ syntax extension galgas3ExpressionSyntax {
 override method @constructorExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [@unifiedTypeMap-proxy makeOptionalProxy !?ioTypeMap !mTypeName ?*]
-  [mExpressions enterInSemanticContext !?ioTypeMap]
+  [@unifiedTypeMap-proxy makeOptionalProxy !?ioTypeMap !self.mTypeName ?*]
+  [self.mExpressions enterInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -165,24 +165,24 @@ override method @constructorExpressionAST analyzeSemanticExpression
     !inType
     !inAnalysisContext
     !?ioVariableMap
-    !mTypeName
-    !mConstructorName
-    !mExpressions
+    !self.mTypeName
+    !self.mConstructorName
+    !self.mExpressions
     ?let @unifiedTypeMap-proxy returnedType
     ?let @unifiedTypeMap-proxy constructorType
     ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
     ?let @bool hasCompilerArgument
   )
-  let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![constructorType key] !mTypeName})
+  let constructorTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![constructorType key] !self.mTypeName})
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !constructorTypeUsefulnessName]
-  let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![returnedType key] !mTypeName})
+  let returnedTypeUsefulnessName = typeNameForUsefulEntitiesGraph (!.new{![returnedType key] !self.mTypeName})
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !returnedTypeUsefulnessName]
 #---
   outExpression = @constructorExpressionForGeneration.new {
     !returnedType
-    ![mConstructorName location]
+    ![self.mConstructorName location]
     !constructorType
-    ![mConstructorName string]
+    ![self.mConstructorName string]
     !constructorEffectiveParameterList
     !hasCompilerArgument
   }
@@ -193,8 +193,8 @@ override method @constructorExpressionAST analyzeSemanticExpression
 override method @defaultConstructorExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  if mTypeName.string != "" then
-    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
+  if self.mTypeName.string != "" then
+    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !self.mTypeName ?*]
   end
 }
 
@@ -209,25 +209,25 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
   var type = inType
-  if mTypeName.string != "" then
-    type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  if self.mTypeName.string != "" then
+    type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
   end
   if [type isNull] then
-    error mTypeName : "cannot infer type" : outExpression
+    error self.mTypeName : "cannot infer type" : outExpression
   else
   #--- Check type accepts default constructor
     if not [type mIsConcrete] then
-      error mTypeName: "an abstract class does not support the default constructor"
+      error self.mTypeName: "an abstract class does not support the default constructor"
     elsif [type mDefaultConstructorName] == "" then
-      error mTypeName: "this class does not support the default constructor"
+      error self.mTypeName: "this class does not support the default constructor"
     end
   #---
-    let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![type key] !mTypeName})
+    let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![type key] !self.mTypeName})
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
   #---
     outExpression = @defaultConstructorExpressionForGeneration.new {
       !type
-      !mTypeName.location
+      !self.mTypeName.location
     }
   end
 }
@@ -252,9 +252,9 @@ override method @constructorExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 {
-  [mResultType addHeaderFileName !?ioInclusionSet]
+  [self.mResultType addHeaderFileName !?ioInclusionSet]
   @stringlist parameterList = {}
-  for () in mEffectiveParameterList do
+  for () in self.mEffectiveParameterList do
     [mExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -264,15 +264,15 @@ override method @constructorExpressionForGeneration generateExpression
     ]
     parameterList += !parameter  
   end
-  outCppExpression = "GALGAS_"  + [mConstructorType identifierRepresentation]
-                   + "::constructor_" + [mConstructorName identifierRepresentation]
+  outCppExpression = "GALGAS_"  + [self.mConstructorType identifierRepresentation]
+                   + "::constructor_" + [self.mConstructorName identifierRepresentation]
                    + " ("
   for () in parameterList
     do outCppExpression += mValue
     between outCppExpression += ", "
   end
   @bool needsComma = [parameterList length] > 0
-  if mHasCompilerArgument then
+  if self.mHasCompilerArgument then
     if needsComma then
       outCppExpression += ", "
     end
@@ -281,9 +281,9 @@ override method @constructorExpressionForGeneration generateExpression
     needsComma = true
   end
   if needsComma then
-    outCppExpression += " " + [mLocation commaSourceFile] + ")"
+    outCppExpression += " " + [self.mLocation commaSourceFile] + ")"
   else
-    outCppExpression += [mLocation sourceFile] + ")"
+    outCppExpression += [self.mLocation sourceFile] + ")"
   end
 }
 
@@ -301,12 +301,12 @@ override method @defaultConstructorExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression
 {
-  [mResultType addHeaderFileName !?ioInclusionSet]
+  [self.mResultType addHeaderFileName !?ioInclusionSet]
   outCppExpression =
-    "GALGAS_"  + [mResultType identifierRepresentation]
+    "GALGAS_"  + [self.mResultType identifierRepresentation]
   + "::constructor_"
-  + [[mResultType mDefaultConstructorName] identifierRepresentation]
-  + " (" + [mLocation sourceFile] + ")"
+  + [[self.mResultType mDefaultConstructorName] identifierRepresentation]
+  + " (" + [self.mLocation sourceFile] + ")"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

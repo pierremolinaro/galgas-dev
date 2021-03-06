@@ -44,8 +44,8 @@ override method @literalDoubleExpressionAST analyzeSemanticExpression
 {
   outExpression = @literalDoubleExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mDoubleType
-    ![mValue location]
-    ![mValue double]
+    ![self.mValue location]
+    ![self.mValue double]
   }
 }
 
@@ -66,7 +66,7 @@ override method @literalDoubleExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "GALGAS_double (" + [mValue string]+ ")"
+  outCppExpression = "GALGAS_double (" + [self.mValue string]+ ")"
 }
 
 

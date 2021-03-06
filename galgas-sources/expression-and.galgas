@@ -46,8 +46,8 @@ syntax extension galgas3ExpressionSyntax {
 override method @andExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -60,7 +60,7 @@ override method @andExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  [mLeftExpression analyzeSemanticExpression
+  [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inInferenceType
@@ -69,7 +69,7 @@ override method @andExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
-  [mRightExpression analyzeSemanticExpression
+  [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     ![leftExpression mResultType]
@@ -84,13 +84,13 @@ override method @andExpressionAST analyzeSemanticExpression
     ![rightExpression mResultType]
     ![[leftType mHandledOperatorFlags] infixAndOperator]
     !"&"
-    !mOperatorLocation
+    !self.mOperatorLocation
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @andExpressionForGeneration.new {
     !leftType
-    !mOperatorLocation
+    !self.mOperatorLocation
     !leftExpression
     !rightExpression}
 }
@@ -100,8 +100,8 @@ override method @andExpressionAST analyzeSemanticExpression
 override method @andShortExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -114,7 +114,7 @@ override method @andShortExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  [mLeftExpression analyzeSemanticExpression
+  [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inInferenceType
@@ -123,7 +123,7 @@ override method @andShortExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
-  [mRightExpression analyzeSemanticExpression
+  [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     ![leftExpression mResultType]
@@ -138,13 +138,13 @@ override method @andShortExpressionAST analyzeSemanticExpression
     ![rightExpression mResultType]
     ![[leftType mHandledOperatorFlags] infixAndOperator]
     !"&"
-    !mOperatorLocation
+    !self.mOperatorLocation
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @andShortExpressionForGeneration.new {
     !leftType
-    !mOperatorLocation
+    !self.mOperatorLocation
     !leftExpression
     !rightExpression}
 }
@@ -167,9 +167,9 @@ override method @andExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
-  [mLeftExpression generateExpression
+  [self.mLeftExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -177,7 +177,7 @@ override method @andExpressionForGeneration generateExpression
     ?let @string leftTemporaryOperand
   ]
 #--- Right operand
-  [mRightExpression generateExpression
+  [self.mRightExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -186,7 +186,7 @@ override method @andExpressionForGeneration generateExpression
   ]
 #--- Generate Comparison
   outCppExpression = leftTemporaryOperand + ".operator_and ("
-                  + rightTemporaryOperand + [mLocation commaSourceFile] + ")"
+                  + rightTemporaryOperand + [self.mLocation commaSourceFile] + ")"
 }
 
 #·····················································································································
@@ -197,9 +197,9 @@ override method @andShortExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
-  [mLeftExpression generateExpression
+  [self.mLeftExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -212,7 +212,7 @@ override method @andShortExpressionForGeneration generateExpression
   ioGeneratedCode += "if (kBoolTrue == " + testVar + ".boolEnum ()) {\n"
 #--- Right operand
   [!?ioGeneratedCode incIndentation !2]
-  [mRightExpression generateExpression
+  [self.mRightExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex

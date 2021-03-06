@@ -110,31 +110,31 @@ syntax extension galgas3InstructionsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @selfPlusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @selfMinusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @selfMulEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @selfDivEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································*
 
 override method @selfPlusEqualElementsInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [mExpressions enterInSemanticContext !?ioTypeMap]
+  [self.mExpressions enterInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -151,7 +151,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
+    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
@@ -159,17 +159,17 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
 #--- Check target variable type support '+=' operator
   let addAssignOperatorArguments= [selfTypeProxy mAddAssignOperatorArguments] # Empty list if += operator is not supported
   if [addAssignOperatorArguments length] == 0 then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '+=' operator"
 #--- Analyze source expressions
-  elsif [mExpressions length] != [addAssignOperatorArguments length] then
-    error mInstructionLocation
+  elsif [self.mExpressions length] != [addAssignOperatorArguments length] then
+    error self.mInstructionLocation
     : "calling the '+=' operator on an '@" + [selfTypeProxy key] + "' object requires "
     + [[addAssignOperatorArguments length] string] + " parameter(s), while this invocation has "
-    + [[mExpressions length] string] + " parameter(s)"
+    + [[self.mExpressions length] string] + " parameter(s)"
   else
     var effectiveParameterList =@semanticExpressionListForGeneration {}
-    for () in mExpressions, () in addAssignOperatorArguments do
+    for () in self.mExpressions, () in addAssignOperatorArguments do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -190,7 +190,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
       !selfObjectCppName
       !selfTypeProxy
       !""
-      !mInstructionLocation
+      !self.mInstructionLocation
       !@lstringlist.emptyList
       !effectiveParameterList}
   end
@@ -208,18 +208,18 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
+    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
   end
 #--- Check target variable type support '+= exp' operator
   if not [[selfTypeProxy mHandledOperatorFlags] plusEqualOperatorWithExpression] then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '+=' operator"
   end
 #--- Analyze source expression
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !selfTypeProxy
@@ -228,10 +228,10 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!selfTypeProxy ![expression mResultType] !mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!selfTypeProxy ![expression mResultType] !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !selfTypeProxy
     !selfObjectCppName
     !""
@@ -253,18 +253,18 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
+    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
   end
 #--- Check target variable type support '-= exp' operator
   if not [[selfTypeProxy mHandledOperatorFlags] minusEqualOperatorWithExpression] then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '-=' operator"
   end
 #--- Analyze source expression
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !selfTypeProxy
@@ -273,10 +273,10 @@ override method @selfMinusEqualExpressionInstructionAST analyzeSemanticInstructi
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!selfTypeProxy ![expression mResultType] !mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!selfTypeProxy ![expression mResultType] !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !selfTypeProxy
     !selfObjectCppName
     !""
@@ -298,18 +298,18 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
+    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
   end
 #--- Check target variable type support '*= exp' operator
   if [[selfTypeProxy mHandledOperatorFlags] mulEqualOperatorWithExpression] then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '*=' operator"
   end
 #--- Analyze source expression
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !selfTypeProxy
@@ -318,10 +318,10 @@ override method @selfMulEqualExpressionInstructionAST analyzeSemanticInstruction
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!selfTypeProxy ![expression mResultType] !mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!selfTypeProxy ![expression mResultType] !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !selfTypeProxy
     !selfObjectCppName
     !""
@@ -343,18 +343,18 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
+    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
   end
 #--- Check target variable type support '/= exp' operator
   if [[selfTypeProxy mHandledOperatorFlags] divEqualOperatorWithExpression] then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '/=' operator"
   end
 #--- Analyze source expression
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !selfTypeProxy
@@ -363,10 +363,10 @@ override method @selfDivEqualExpressionInstructionAST analyzeSemanticInstruction
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!selfTypeProxy ![expression mResultType] !mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!selfTypeProxy ![expression mResultType] !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !selfTypeProxy
     !selfObjectCppName
     !""

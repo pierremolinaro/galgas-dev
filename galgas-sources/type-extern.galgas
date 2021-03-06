@@ -187,7 +187,7 @@ override method @externTypeDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + mExternTypeName ![mExternTypeName location]}
+  let key = @lstring.new {!"@" + self.mExternTypeName ![self.mExternTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 }
 
@@ -207,7 +207,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
   @instanceMethodMap instanceMethodMap = {}
   @classMethodMap classMethodMap = {}
 #--- Constructors
-  for () in mExternTypeConstructorList do
+  for () in self.mExternTypeConstructorList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedTypeProxy]
   #---
     @functionSignature arguments = {}
@@ -224,7 +224,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     ]
   end
 #--- Getters
-  for () in mExternTypeGetterList do
+  for () in self.mExternTypeGetterList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?let returnedTypeProxy]
   #---
     @functionSignature arguments = {}
@@ -245,7 +245,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     ]
   end
 #--- Modifiers
-  for () in mExternTypeSetterList do
+  for () in self.mExternTypeSetterList do
     @formalParameterSignature routineSignature = {}
     for () in mFormalParameterList do
       [@unifiedTypeMap-proxy makeProxy
@@ -266,7 +266,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     ]
   end
 #--- Methods
-  for () in mExternTypeMethodList do
+  for () in self.mExternTypeMethodList do
     var routineSignature =@formalParameterSignature {}
     for () in mFormalParameterList do
       @unifiedTypeMap-proxy parameterTypeIndex
@@ -290,8 +290,8 @@ override method @externTypeDeclarationAST enterInSemanticContext
   end
 #--- Enter type in type map
   [!?ioSemanticContext.mTypeMap insertKey
-    !mExternTypeName
-    !mIsPredefined
+    !self.mExternTypeName
+    !self.mIsPredefined
     !true # Concrete Type
     !@unifiedTypeMap-proxy.null
     !@typeKindEnum. externType
@@ -315,7 +315,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     !false # Do not generate header in separate file
     !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
     !"default" # Default constructor
-    !"externtype-" + [mExternTypeName fileNameRepresentation]
+    !"externtype-" + [self.mExternTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   ]
 }
@@ -333,16 +333,16 @@ override method @externTypeDeclarationAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mExternTypeName)
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mExternTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"extern type " + mExternTypeName
+    !"extern type " + self.mExternTypeName
     !@externTypeDeclarationForGeneration.new {
-      !.searchKey {!inSemanticContext.mTypeMap !mExternTypeName}
-      !mExternTypeName.string
-      !mCppPreDeclarationCode
-      !mCppClassCode
+      !.searchKey {!inSemanticContext.mTypeMap !self.mExternTypeName}
+      !self.mExternTypeName.string
+      !self.mCppPreDeclarationCode
+      !self.mCppClassCode
     }
 }
 
@@ -362,25 +362,25 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   outHeader = [filewrapper typeGenerationTemplate.externTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mCppPreDeclarationCode
-    !mCppClassCode
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    !self.mCppPreDeclarationCode
+    !self.mCppClassCode
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mSetterMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mOptionalMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    ![self.mTypeProxy mIsConcrete]
+    ![self.mTypeProxy mConstructorMap]
+    ![self.mTypeProxy mGetterMap]
+    ![self.mTypeProxy mSetterMap]
+    ![self.mTypeProxy mInstanceMethodMap]
+    ![self.mTypeProxy mClassMethodMap]
+    ![self.mTypeProxy mOptionalMethodMap]
+    ![self.mTypeProxy mEnumerationDescriptor]
+    ![self.mTypeProxy mHandledOperatorFlags]
+    ![self.mTypeProxy mAddAssignOperatorArguments]
+    ![self.mTypeProxy mTypeForEnumeratedElement]
   ]
 }
 

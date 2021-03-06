@@ -40,7 +40,7 @@ syntax extension galgas3DeclarationsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @localVariableDeclarationAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
+  [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !self.mTypeName ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -55,12 +55,12 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 {
 #--- Check target variable
-  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
-  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation] + "_" + [mVariableName.location locationIndex]
-  if mIsUndefinedConstant then
-    [!?ioVariableMap insertUndefinedLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
+  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location locationIndex]
+  if self.mIsUndefinedConstant then
+    [!?ioVariableMap insertUndefinedLocalConstant !self.mVariableName !targetType !targetVariableCppName !targetVariableCppName]
   else
-    [!?ioVariableMap insertUndefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+    [!?ioVariableMap insertUndefinedLocalVariable !self.mVariableName !targetType !targetVariableCppName !targetVariableCppName]
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@localVariableDeclarationForGeneration.new {
@@ -87,8 +87,8 @@ override method @localVariableDeclarationForGeneration generateInstruction
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
-  [mVariableType addHeaderFileName !?ioInclusionSet]
-  ioGeneratedCode += "GALGAS_" + [mVariableType identifierRepresentation] + " " + mCppVariableName + " ;\n"
+  [self.mVariableType addHeaderFileName !?ioInclusionSet]
+  ioGeneratedCode += "GALGAS_" + [self.mVariableType identifierRepresentation] + " " + self.mCppVariableName + " ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

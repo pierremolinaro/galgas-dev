@@ -43,8 +43,8 @@ syntax extension galgas3InstructionsSyntax {
 override method @methodCallInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
-  for () in mActualParameterList do
+  [self.mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
+  for () in self.mActualParameterList do
     [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
   end
 }
@@ -60,7 +60,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
 #--- Analyze receiver expression
-  [mReceiverExpression analyzeSemanticExpression
+  [self.mReceiverExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -73,19 +73,19 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   @bool hasCompilerArgument
   @methodKind kind
   @string errorMessage
-  [[[receiverExpression mResultType] mInstanceMethodMap] searchKey !mMethodName ?kind ?routineSignature ?* ?hasCompilerArgument ?* ?errorMessage]
+  [[[receiverExpression mResultType] mInstanceMethodMap] searchKey !self.mMethodName ?kind ?routineSignature ?* ?hasCompilerArgument ?* ?errorMessage]
   if errorMessage != "" then
-    error mMethodName : errorMessage
+    error self.mMethodName : errorMessage
   end
 #--- Check effective parameters
   analyzeRoutineArguments (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !mMethodName
-    !"'" + mMethodName + "' instance method header"
+    !self.mMethodName
+    !"'" + self.mMethodName + "' instance method header"
     !routineSignature
-    !mActualParameterList
+    !self.mActualParameterList
     !?ioVariableMap
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
@@ -98,7 +98,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
       if [[baseType mSuperType] isNull] then
         searching = false
       else
-        if [[[baseType mSuperType] mInstanceMethodMap] hasKey !mMethodName.string] then
+        if [[[baseType mSuperType] mInstanceMethodMap] hasKey !self.mMethodName.string] then
           baseType = [baseType mSuperType]
         else
           searching = false
@@ -108,10 +108,10 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   end
 #--- Generate instructions
   ioInstructionListForGeneration += !@methodCallInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     ![receiverExpression mResultType]
     !receiverExpression
-    ![mMethodName string]
+    ![self.mMethodName string]
     !kind
     !actualParameterListForGeneration
     !hasCompilerArgument
@@ -143,48 +143,48 @@ override method @methodCallInstructionForGeneration generateInstruction
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
 #--- Receiver expression
-  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverCppName]
+  [self.mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverCppName]
   [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
 #---
   var parameterCppNameList =@stringlist {}
   var jokerParametersToReleaseList =@stringlist {}
   var inputVariableList =@stringlist {}
-  for () in mActualParameterList do
+  for () in self.mActualParameterList do
     @string parameterCppName
     [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName]
     parameterCppNameList += !parameterCppName
   end
 #--- Generate method call
-  switch mKind
+  switch self.mKind
   case definedAsExtension :
-    ioInclusionSet += !"method-" + [[mMethodBaseType key] fileNameRepresentation] + "-" + [mMethodName fileNameRepresentation]
-    if [[mReceiverType mTypeKindEnum] isClassType] then
-      ioGeneratedCode += "callExtensionMethod_" + [mMethodName identifierRepresentation]
-                      + " ((const cPtr_" + [[mReceiverExpression mResultType] identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
+    ioInclusionSet += !"method-" + [[self.mMethodBaseType key] fileNameRepresentation] + "-" + [self.mMethodName fileNameRepresentation]
+    if [[self.mReceiverType mTypeKindEnum] isClassType] then
+      ioGeneratedCode += "callExtensionMethod_" + [self.mMethodName identifierRepresentation]
+                      + " ((const cPtr_" + [[self.mReceiverExpression mResultType] identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
     else
-      ioGeneratedCode += "extensionMethod_" + [mMethodName identifierRepresentation] + " (" + receiverCppName + ", "
+      ioGeneratedCode += "extensionMethod_" + [self.mMethodName identifierRepresentation] + " (" + receiverCppName + ", "
     end
   case definedAsMember :
-    ioGeneratedCode += receiverCppName + ".method_" + [mMethodName identifierRepresentation] + " ("
+    ioGeneratedCode += receiverCppName + ".method_" + [self.mMethodName identifierRepresentation] + " ("
   end
   for () in parameterCppNameList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
   if [parameterCppNameList length] == 0 then
-    if mHasCompilerArgument then
+    if self.mHasCompilerArgument then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
       ioGeneratedCode += compilerCppName ()
       ioGeneratedCode += " COMMA_"
     end
-  elsif mHasCompilerArgument then
+  elsif self.mHasCompilerArgument then
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
     ioGeneratedCode += ", " + compilerCppName ()
     ioGeneratedCode += " COMMA_"
   else
     ioGeneratedCode += " COMMA_"
   end
-  ioGeneratedCode += [mInstructionLocation sourceFile] + ") ;\n"
+  ioGeneratedCode += [self.mInstructionLocation sourceFile] + ") ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

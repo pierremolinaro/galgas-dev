@@ -90,7 +90,7 @@ override method @undefinedLocalConstantDeclarationAST enterInstructionInSemantic
 override method @localConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #······················································································································*
@@ -98,10 +98,10 @@ override method @localConstantDeclarationWithAssignmentAST enterInstructionInSem
 override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  if mOptionalTypeName.string != "" then
-    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mOptionalTypeName ?*]
+  if self.mOptionalTypeName.string != "" then
+    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !self.mOptionalTypeName ?*]
   end
-  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -115,10 +115,10 @@ override method @undefinedLocalConstantDeclarationAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 {
-  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mConstantTypeName}
-  let targetVariableCppName = "var_" + [mConstantName identifierRepresentation] + "_" + [mConstantName.location locationIndex]
+  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mConstantTypeName}
+  let targetVariableCppName = "var_" + [self.mConstantName identifierRepresentation] + "_" + [self.mConstantName.location locationIndex]
   [!?ioVariableMap insertUndefinedLocalConstant
-    !mConstantName
+    !self.mConstantName
     !targetType
     !targetVariableCppName
     !targetVariableCppName
@@ -139,7 +139,7 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
 #--- Analyze source expression
-  [mSourceExpression analyzeSemanticExpression
+  [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -148,8 +148,8 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
     ?var @semanticExpressionForGeneration expression
   ]
 #--- Enter target variable
-  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation] + "_" + [mVariableName.location locationIndex]
-  [!?ioVariableMap insertLocalConstant !mVariableName ![expression mResultType] !targetVariableCppName !targetVariableCppName]
+  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location locationIndex]
+  [!?ioVariableMap insertLocalConstant !self.mVariableName ![expression mResultType] !targetVariableCppName !targetVariableCppName]
 #--- Generate instruction
   ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
     ![expression mResultType]
@@ -167,9 +167,9 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 {
-  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mOptionalTypeName}
+  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mOptionalTypeName}
 #--- Analyze source expression
-  [mSourceExpression analyzeSemanticExpression
+  [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !targetType
@@ -178,18 +178,18 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check target variable
-  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation] + "_" + [mVariableName.location locationIndex]
-  if mIsConstant then
-    [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location locationIndex]
+  if self.mIsConstant then
+    [!?ioVariableMap insertLocalConstant !self.mVariableName !targetType !targetVariableCppName !targetVariableCppName]
   else
-    [!?ioVariableMap insertDefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+    [!?ioVariableMap insertDefinedLocalVariable !self.mVariableName !targetType !targetVariableCppName !targetVariableCppName]
   end
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
     !targetType
-    !mIsConstant
+    !self.mIsConstant
     !targetVariableCppName
     !expression
   }
@@ -222,8 +222,8 @@ override method @undefinedLocalConstantDeclarationForGeneration generateInstruct
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
-  [mTargetType addHeaderFileName !?ioInclusionSet]
-  ioGeneratedCode += "GALGAS_" + [mTargetType identifierRepresentation] + " " + mCppVariableName + " ;\n"
+  [self.mTargetType addHeaderFileName !?ioInclusionSet]
+  ioGeneratedCode += "GALGAS_" + [self.mTargetType identifierRepresentation] + " " + self.mCppVariableName + " ;\n"
 }
 
 #······················································································································*
@@ -235,15 +235,15 @@ override method @localVariableOrConstantDeclarationWithSourceExpressionForGenera
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
-  [mTargetType addHeaderFileName !?ioInclusionSet]
-  [mSourceExpression generateExpression
+  [self.mTargetType addHeaderFileName !?ioInclusionSet]
+  [self.mSourceExpression generateExpression
      !?ioGeneratedCode
      !?ioInclusionSet
      !?ioTemporaryVariableIndex
      !?ioUnusedVariableCppNameSet
      ?let @string sourceVar
   ]
-  ioGeneratedCode += "GALGAS_" + [mTargetType identifierRepresentation] + " " + mCppVariableName + " = " + sourceVar + " ;\n"
+  ioGeneratedCode += "GALGAS_" + [self.mTargetType identifierRepresentation] + " " + self.mCppVariableName + " = " + sourceVar + " ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

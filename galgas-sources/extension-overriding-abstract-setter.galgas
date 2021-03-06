@@ -40,7 +40,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 override getter @overridingAbstractExtensionSetterAST keyRepresentation
   ->@string outString {
-  outString = "overriding extension setter @" + mTypeName + " " + mOverridingExtensionSetterName
+  outString = "overriding extension setter @" + self.mTypeName + " " + self.mOverridingExtensionSetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -82,15 +82,15 @@ override method @overridingAbstractExtensionSetterAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-#  let nameForUsefulness = setterNameForUsefulEntitiesGraph (!mTypeName !mOverridingExtensionSetterName)
+#  let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName !mOverridingExtensionSetterName)
 #  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
 #--- Check type is an abstract class
   if not [[selfType mTypeKindEnum] isClassType] then
-    error mOverridingExtensionSetterName: "cannot declare a extension setter: '@" + [selfType key] + "' is not a class"
+    error self.mOverridingExtensionSetterName: "cannot declare a extension setter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mOverridingExtensionSetterName: "cannot declare an abstract extension setter: '@" + [selfType key] + "' is not an abstract class"
+    error self.mOverridingExtensionSetterName: "cannot declare an abstract extension setter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -99,9 +99,9 @@ override method @overridingAbstractExtensionSetterAST semanticAnalysis
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mSetterMap] hasKey ![mOverridingExtensionSetterName string]] then
+    if [[superType mSetterMap] hasKey ![self.mOverridingExtensionSetterName string]] then
       @methodQualifier qualifier
-      [[superType mSetterMap] searchKey !mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?qualifier ?*]
+      [[superType mSetterMap] searchKey !self.mOverridingExtensionSetterName ?* ?inheritedSignature ?* ?qualifier ?*]
       if qualifier <= @methodQualifier. isBasicFinal then
         baseTypeName = [superType key]
       end
@@ -109,14 +109,14 @@ override method @overridingAbstractExtensionSetterAST semanticAnalysis
     superType = [superType mSuperType]
   end
   if baseTypeName == "" then
-    error mOverridingExtensionSetterName:"this setter is not declared by a super class"
+    error self.mOverridingExtensionSetterName:"this setter is not declared by a super class"
   end
 #--- Analyze formal argument list
   var variableMap = @variableMap.emptyMap
   @formalParameterListForGeneration formalParameterListForGeneration
   buildLocalVariableMapAndSignature (
     !inSemanticContext
-    !mOverridingExtensionSetterFormalParameterList
+    !self.mOverridingExtensionSetterFormalParameterList
     !?variableMap
     ?formalParameterListForGeneration
   )
@@ -124,7 +124,7 @@ override method @overridingAbstractExtensionSetterAST semanticAnalysis
   if baseTypeName != "" then
     checkMethodSignatures (
       !formalParameterListForGeneration
-      ![mOverridingExtensionSetterName location]
+      ![self.mOverridingExtensionSetterName location]
       !inheritedSignature
       !inheritedDeclarationLocation
     )
@@ -149,8 +149,8 @@ override method @overridingAbstractExtensionSetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
   ioOverridingAbstractExtensionSetterListMap +=
-    ![mTypeName string]
-    !mOverridingExtensionSetterName
+    ![self.mTypeName string]
+    !self.mOverridingExtensionSetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

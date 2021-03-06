@@ -50,7 +50,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 override getter @overridingAbstractExtensionGetterAST keyRepresentation
   ->@string outString {
-  outString = "overriding extension getter @" + mTypeName + " " + mAbstractExtensionGetterName
+  outString = "overriding extension getter @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -76,28 +76,6 @@ override method @overridingAbstractExtensionGetterAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext
 {
-#  if [option galgas_cli_options.newExtensionGeneration value] then
-#  #--- Compute method signature
-#    @functionSignature functionSignature = {}
-#    for () in mAbstractExtensionGetterFormalInputParameterList do
-#      functionSignature +=
-#        !mFormalSelector
-#        !.searchKey {!ioSemanticContext.mTypeMap !mFormalArgumentTypeName}
-#        ![mFormalArgumentName string]
-#    end
-#    var getterMap = [ioSemanticContext.mTypeMap mGetterMapForKey !mTypeName.string]
-#    [!?getterMap insertKey
-#      !mAbstractExtensionGetterName
-#      !.definedAsMember
-#      !functionSignature
-#      !mAbstractExtensionGetterName.location
-#      !true
-#      !.searchKey {!ioSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
-#      !.isOverridingAbstract
-#      !"" # If not empty, calling the method raises an error with this message
-#    ]
-#    [!?ioSemanticContext.mTypeMap setMGetterMapForKey !getterMap !mTypeName.string]
-#  end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -113,17 +91,17 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-#  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!mTypeName !mAbstractExtensionGetterReturnedTypeName)
+#  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!self.mTypeName !mAbstractExtensionGetterReturnedTypeName)
 #  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
 #--- Return type
-  let returnType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
+  let returnType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mAbstractExtensionGetterReturnedTypeName}
 #--- Check type is an abstract class
   if not [[selfType mTypeKindEnum] isClassType] then
-    error mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
+    error self.mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType key] + "' is not an abstract class"
+    error self.mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -133,9 +111,9 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
   @location inheritedDeclarationLocation = @location.here
   loop ([inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mGetterMap] hasKey ![mAbstractExtensionGetterName string]] then
+    if [[superType mGetterMap] hasKey ![self.mAbstractExtensionGetterName string]] then
       [[superType mGetterMap] searchKey
-        !mAbstractExtensionGetterName
+        !self.mAbstractExtensionGetterName
         ?*
         ?inheritedSignature
         ?inheritedDeclarationLocation
@@ -151,12 +129,12 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
     superType = [superType mSuperType]
   end
   if baseTypeName == "" then
-    error mAbstractExtensionGetterName:"this getter is not declared by a super class"
+    error self.mAbstractExtensionGetterName:"this getter is not declared by a super class"
   end
 #--- Check Signature
   if baseTypeName != "" then
     var formalParameterListForGeneration =@formalInputParameterListForGeneration {}
-    for () in mAbstractExtensionGetterFormalInputParameterList do
+    for () in self.mAbstractExtensionGetterFormalInputParameterList do
       formalParameterListForGeneration +=
         !mFormalSelector
         !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
@@ -167,7 +145,7 @@ override method @overridingAbstractExtensionGetterAST semanticAnalysis
     checkGetterSignatures (
       !formalParameterListForGeneration
       !returnType
-      ![mAbstractExtensionGetterName location]
+      ![self.mAbstractExtensionGetterName location]
       !inheritedSignature
       !inheritedReturnType
       !inheritedDeclarationLocation
@@ -193,8 +171,8 @@ override method @overridingAbstractExtensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap ioOverridingAbstractExtensionGetterListMap {
   ioOverridingAbstractExtensionGetterListMap +=
-    ![mTypeName string]
-    !mAbstractExtensionGetterName
+    ![self.mTypeName string]
+    !self.mAbstractExtensionGetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

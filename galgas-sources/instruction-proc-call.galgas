@@ -35,7 +35,7 @@ syntax extension galgas3InstructionsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @procCallInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  for () in mActualParameterList do
+  for () in self.mActualParameterList do
     [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
   end
 }
@@ -51,19 +51,19 @@ override method @procCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 {
-  let usefulnessName = procedureNameForUsefulEntitiesGraph (!mRoutineName)
+  let usefulnessName = procedureNameForUsefulEntitiesGraph (!self.mRoutineName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Get routine signature
   [inAnalysisContext.mSemanticContext.mRoutineMap searchKey
-     !mRoutineName
+     !self.mRoutineName
      ?let @formalParameterSignature routineSignature
      ?let @bool isInternal
    ]
 #--- Check internal
   if isInternal then
-    let procDeclarationLocation = [inAnalysisContext.mSemanticContext.mRoutineMap locationForKey !mRoutineName.string]
-    if [mRoutineName.location file] != [procDeclarationLocation file] then
-      error mRoutineName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
+    let procDeclarationLocation = [inAnalysisContext.mSemanticContext.mRoutineMap locationForKey !self.mRoutineName.string]
+    if [self.mRoutineName.location file] != [procDeclarationLocation file] then
+      error self.mRoutineName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
     end
   end
 #--- Check effective parameters
@@ -71,17 +71,17 @@ override method @procCallInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !mRoutineName
-    !"'" + mRoutineName + "' routine header"
+    !self.mRoutineName
+    !"'" + self.mRoutineName + "' routine header"
     !routineSignature
-    !mActualParameterList
+    !self.mActualParameterList
     !?ioVariableMap
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   )
 #--- Generate instruction
   ioInstructionListForGeneration += !@procCallInstructionForGeneration.new {
-    !mRoutineName
+    !self.mRoutineName
     !actualParameterListForGeneration}
 }
 
@@ -103,13 +103,13 @@ override method @procCallInstructionForGeneration generateInstruction
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
-  ioInclusionSet += !"proc-" + [mRoutineName fileNameRepresentation]
+  ioInclusionSet += !"proc-" + [self.mRoutineName fileNameRepresentation]
   ioGeneratedCode += "{\n"
 #--- Parameters
   @stringlist parameterCppNameList = {}
   @stringlist jokerParametersToReleaseList = {}
   @stringlist inputVariableList = {}
-  for () in mActualParameterList do
+  for () in self.mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -122,12 +122,12 @@ override method @procCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName
   end
 #--- Generate method call
-  ioGeneratedCode += "routine_" + [[mRoutineName string] identifierRepresentation] + " ("
+  ioGeneratedCode += "routine_" + [[self.mRoutineName string] identifierRepresentation] + " ("
   for () in parameterCppNameList do
     ioGeneratedCode += mValue + ", "
   end
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  ioGeneratedCode +=  compilerCppName () + " " + [[mRoutineName location] commaSourceFile] + ") ;\n"
+  ioGeneratedCode +=  compilerCppName () + " " + [[self.mRoutineName location] commaSourceFile] + ") ;\n"
   ioGeneratedCode += "}\n"
 }
 

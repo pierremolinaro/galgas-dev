@@ -245,7 +245,7 @@ abstract class @semanticTypeForGeneration : @semanticDeclarationForGeneration {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration implementationCppFileName -> @string outName {
-  outName = [mTypeProxy mHeaderFileName]
+  outName = [self.mTypeProxy mHeaderFileName]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -257,13 +257,13 @@ override getter @semanticTypeForGeneration hasCppHeaderFile -> @bool outHasHeade
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration isPredefined -> @bool {
-  result = [mTypeProxy mIsPredefined]
+  result = [self.mTypeProxy mIsPredefined]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticTypeForGeneration headerKind -> @headerKind outHeaderKind {
-  outHeaderKind = [mTypeProxy mHeaderKind]
+  outHeaderKind = [self.mTypeProxy mHeaderKind]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -280,13 +280,13 @@ abstract class @semanticDeclarationWithHeaderForGeneration : @semanticDeclaratio
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticDeclarationWithHeaderForGeneration implementationCppFileName -> @string outName {
-  outName = mImplementationCppFileName
+  outName = self.mImplementationCppFileName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @semanticDeclarationWithHeaderForGeneration hasCppHeaderFile -> @bool outHasHeader {
-  outHasHeader = mHasHeader
+  outHasHeader = self.mHasHeader
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

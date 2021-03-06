@@ -142,10 +142,10 @@ override method @additionAST expSemanticAnalysis
   !@expressionForGeneration outExpression {
 #--- Left expression
   @expressionForGeneration leftExpression
-  [mLeftExpression expSemanticAnalysis !?ioVariableMap ?leftExpression]
+  [self.mLeftExpression expSemanticAnalysis !?ioVariableMap ?leftExpression]
 #--- Right expression
   @expressionForGeneration rightExpression
-  [mRightExpression expSemanticAnalysis !?ioVariableMap ?rightExpression]
+  [self.mRightExpression expSemanticAnalysis !?ioVariableMap ?rightExpression]
 #---
   outExpression = @diadicForGeneration.new {
     !leftExpression
@@ -160,10 +160,10 @@ override method @multiplicationAST expSemanticAnalysis
   !@expressionForGeneration outExpression {
 #--- Left expression
   @expressionForGeneration leftExpression
-  [mLeftExpression expSemanticAnalysis !?ioVariableMap ?leftExpression]
+  [self.mLeftExpression expSemanticAnalysis !?ioVariableMap ?leftExpression]
 #--- Right expression
   @expressionForGeneration rightExpression
-  [mRightExpression expSemanticAnalysis !?ioVariableMap ?rightExpression]
+  [self.mRightExpression expSemanticAnalysis !?ioVariableMap ?rightExpression]
 #---
   outExpression = @diadicForGeneration.new {
     !leftExpression

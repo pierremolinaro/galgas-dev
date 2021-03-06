@@ -41,14 +41,14 @@ override method @listmapDeclarationAST addAssociatedElement
     !true
     !{}
   structAttributeList +=
-    !mAssociatedListTypeName
+    !self.mAssociatedListTypeName
     !["mList" nowhere]
     !true
     !{}
 #---
   ioSemanticDeclarationList += !@structDeclarationAST.new {
-    !mIsPredefined
-    !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}
+    !self.mIsPredefined
+    !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}
     !structAttributeList
     !""
   }
@@ -64,9 +64,9 @@ override method @listmapDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + mListmapTypeName ![mListmapTypeName location]}
+  let key = @lstring.new {!"@" + self.mListmapTypeName ![self.mListmapTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mAssociatedListTypeName ![mAssociatedListTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mAssociatedListTypeName ![self.mAssociatedListTypeName location]}]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -80,7 +80,7 @@ override method @listmapDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext {
 #--- Check associated map is really a list
   [ioSemanticContext.mTypeMap searchKey
-    !mAssociatedListTypeName
+    !self.mAssociatedListTypeName
     ?3*
     ?var @typeKindEnum typeKindEnum
     ?*
@@ -88,7 +88,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     ?20*
   ]
   if typeKindEnum != @typeKindEnum. listType then
-    error mAssociatedListTypeName : "the '@" + mAssociatedListTypeName + "' type should be a list type"
+    error self.mAssociatedListTypeName : "the '@" + self.mAssociatedListTypeName + "' type should be a list type"
     listTypedAttributeList = @typedPropertyList.emptyList
   end
 #---
@@ -97,7 +97,7 @@ override method @listmapDeclarationAST enterInSemanticContext
   @setterMap setterMap = {}
   @instanceMethodMap instanceMethodMap = {}
 #--- Associated map type index
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAssociatedListTypeName ?let associatedListTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mAssociatedListTypeName ?let associatedListTypeIndex]
 #--- currentType type index
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
 #--- Getters
@@ -128,7 +128,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !"listForKey"
     !"string"
     !"inKey"
-    !returnedTypeName:[mAssociatedListTypeName string]
+    !returnedTypeName:[self.mAssociatedListTypeName string]
     !hasCompilerArgument:false
   )
 #--- Constructors
@@ -136,7 +136,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !?constructorMap
     !?ioSemanticContext.mTypeMap
     !name:"emptyMap"
-    !resultTypeName:[mListmapTypeName string]
+    !resultTypeName:[self.mListmapTypeName string]
     !hasLexiqueArg:false
   )
 #--- Enumerator description
@@ -155,7 +155,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
-    !mListmapTypeName
+    !self.mListmapTypeName
     !?getterMap
     !?setterMap
     !?instanceMethodMap
@@ -163,13 +163,13 @@ override method @listmapDeclarationAST enterInSemanticContext
 #--- Element type index
   [@unifiedTypeMap-proxy makeProxy
     !?ioSemanticContext.mTypeMap
-    !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}
+    !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}
     ?let @unifiedTypeMap-proxy listElementTypeIndex
   ]
 #--- Enter type in type map
   [!?ioSemanticContext.mTypeMap insertKey
-    !mListmapTypeName
-    !mIsPredefined
+    !self.mListmapTypeName
+    !self.mIsPredefined
     !true # Concrete Type
     !@unifiedTypeMap-proxy.null
     !@typeKindEnum. arrayType
@@ -193,7 +193,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !false # Do not generate header in separate file
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptyMap" # Default constructor
-    !"listmap-" + [mListmapTypeName fileNameRepresentation]
+    !"listmap-" + [self.mListmapTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   ]
 }
@@ -211,15 +211,15 @@ override method @listmapDeclarationAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mListmapTypeName)
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mListmapTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let associatedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mAssociatedListTypeName)
+  let associatedTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mAssociatedListTypeName)
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !associatedTypeNameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!mListmapTypeName.string + "-element" !mListmapTypeName})
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mListmapTypeName.string + "-element" !self.mListmapTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #--- Check associated list is actually a list
   [inSemanticContext.mTypeMap searchKey
-    !mAssociatedListTypeName
+    !self.mAssociatedListTypeName
     ?3*
     ?let @typeKindEnum typeKindEnum
     ?*
@@ -228,16 +228,16 @@ override method @listmapDeclarationAST semanticAnalysis
   ]
 #---
   if typeKindEnum != .listType then
-    error mAssociatedListTypeName : "associated type should be a list type"
+    error self.mAssociatedListTypeName : "associated type should be a list type"
   end
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"list map " + mListmapTypeName
+    !"list map " + self.mListmapTypeName
     !@listmapTypeForGeneration.new {
-      !.searchKey {!inSemanticContext.mTypeMap !mListmapTypeName}
-      !.searchKey {!inSemanticContext.mTypeMap !mAssociatedListTypeName}
+      !.searchKey {!inSemanticContext.mTypeMap !self.mListmapTypeName}
+      !.searchKey {!inSemanticContext.mTypeMap !self.mAssociatedListTypeName}
       !listTypeAttributeList
-      !.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}}
+      !.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!self.mListmapTypeName.string + elementTypeNameSuffix () !self.mListmapTypeName.location}}
     }
 }
 
@@ -256,29 +256,28 @@ class @listmapTypeForGeneration : @semanticTypeForGeneration {
 override method @listmapTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader {
-#  ioInclusionSet += !"galgas2/AC_GALGAS_map" ;
-  for (t ...) in mAssociatedListTypedAttributeList do
+  for (t ...) in self.mAssociatedListTypedAttributeList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
 
   outHeader = [filewrapper typeGenerationTemplate.listmapTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mSetterMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mOptionalMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    ![self.mTypeProxy mIsConcrete]
+    ![self.mTypeProxy mConstructorMap]
+    ![self.mTypeProxy mGetterMap]
+    ![self.mTypeProxy mSetterMap]
+    ![self.mTypeProxy mInstanceMethodMap]
+    ![self.mTypeProxy mClassMethodMap]
+    ![self.mTypeProxy mOptionalMethodMap]
+    ![self.mTypeProxy mEnumerationDescriptor]
+    ![self.mTypeProxy mHandledOperatorFlags]
+    ![self.mTypeProxy mAddAssignOperatorArguments]
+    ![self.mTypeProxy mTypeForEnumeratedElement]
   ]
  }
 
@@ -288,12 +287,12 @@ override method @listmapTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
-  [mAssociatedListMapElementTypeIndex addHeaderFileName !?ioInclusionSet]
+  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mAssociatedListMapElementTypeIndex addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper typeGenerationTemplate.listmapTypeSpecificImplementation
-    ![mTypeProxy identifierRepresentation]
-    ![mAssociatedListTypeIndex identifierRepresentation]
-    !mAssociatedListTypedAttributeList
+    ![self.mTypeProxy identifierRepresentation]
+    ![self.mAssociatedListTypeIndex identifierRepresentation]
+    !self.mAssociatedListTypedAttributeList
   ]
  }
 

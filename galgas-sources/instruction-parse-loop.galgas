@@ -64,7 +64,7 @@ override method @parseLoopInstruction transformInstruction
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
   transformInstructionList (
-    !mDoInstructionList
+    !self.mDoInstructionList
     !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
     !nonTerminalSymbolMap:inNonTerminalSymbolMap
     !?addedTerminalIndex:ioAddedNonTerminalIndex
@@ -91,7 +91,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   ?!@uint ioSelectMethodCount {
 #--- Variant expression
   @semanticExpressionForGeneration variant_expression
-  [mVariantExpression analyzeSemanticExpression
+  [self.mVariantExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -100,13 +100,13 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     ?variant_expression
   ]
   if [variant_expression mResultType] != inAnalysisContext.mPredefinedTypes.mUIntType then
-    error mEndOfVariantExpression
+    error self.mEndOfVariantExpression
     :"the variant expression type is '@" + [[variant_expression mResultType] key]
     + "', but it should be '@" + [inAnalysisContext.mPredefinedTypes.mUIntType key] + "' type"
   end
 #--- While expression
   @semanticExpressionForGeneration while_expression
-  [mWhileExpression analyzeSemanticExpression
+  [self.mWhileExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -115,7 +115,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     ?while_expression
   ]
   if [while_expression mResultType] != inAnalysisContext.mPredefinedTypes.mBoolType then
-    error mEndOfWhileExpression
+    error self.mEndOfWhileExpression
     :"the variant expression type is '@" + [[variant_expression mResultType] key]
     + "', but it should be '@" + [inAnalysisContext.mPredefinedTypes.mBoolType key] + "' type"
   end
@@ -133,18 +133,18 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     !inLexiqueName
     !inNonterminalMap
     !inComponentName
-    !mDoInstructionList
-    !mEndOfInstructionList
+    !self.mDoInstructionList
+    !self.mEndOfInstructionList
     !inIndexNameSet
     !?ioVariableMap
     !?ioSelectMethodCount
     ?instructionList
   )
 #--- End block
-  [!?ioVariableMap closeOverride !mEndOfInstructionList]
+  [!?ioVariableMap closeOverride !self.mEndOfInstructionList]
 #--- Generate instruction
   ioInstructionListForGeneration += !@parseLoopInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !variant_expression
     !while_expression
     !instructionList
@@ -168,7 +168,7 @@ class @parseLoopInstructionForGeneration : @syntaxInstructionForGeneration {
 override method @parseLoopInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
-  ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
+  ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !self.mInstructionList)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -185,7 +185,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 #--- Variant
   @string variantVarCppName
-  [mVariantExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?variantVarCppName]
+  [self.mVariantExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?variantVarCppName]
 #--- Loop variable
   ioGeneratedCode += "if (" + variantVarCppName + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
@@ -198,7 +198,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
   [!?ioGeneratedCode incIndentation !2]
   ioGeneratedCode += loopVar + " = false ;\n"
   @string whileVarCppName
-  [mWhileExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVarCppName]
+  [self.mWhileExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVarCppName]
   ioGeneratedCode += "if (" + whileVarCppName + ".isValidAndTrue ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
   ioGeneratedCode += loopVar + " = true ;\n"
@@ -206,7 +206,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ioGeneratedCode += "const C_parsingContext parsingContext = " + compilerCppName () + "->parsingContext () ;\n"
   generateInstructionList (
     !?ioInclusionSet
-    !mInstructionList
+    !self.mInstructionList
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !inGenerateSyntaxDirectedTranslationString
@@ -223,7 +223,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ioGeneratedCode += "//--- 'parse'\n"
   generateInstructionList (
     !?ioInclusionSet
-    !syntaxSignatureOfInstructionList (!"parse" !mInstructionList)
+    !syntaxSignatureOfInstructionList (!"parse" !self.mInstructionList)
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !inGenerateSyntaxDirectedTranslationString

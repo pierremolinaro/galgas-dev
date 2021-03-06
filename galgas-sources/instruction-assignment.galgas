@@ -46,7 +46,7 @@ syntax extension galgas3InstructionsSyntax {
 override method @assignmentInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -62,21 +62,21 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
 {
 #--- Get target variable type
   @unifiedTypeMap-proxy targetType
-  if [mStructAttributeList length] == 0 then
+  if [self.mStructAttributeList length] == 0 then
     [!?ioVariableMap neutralAccess
-      !mTargetVariableName
+      !self.mTargetVariableName
       ?targetType
       ?*
       ?*
     ]
   else
     [!?ioVariableMap neutralAccess
-      !mTargetVariableName
+      !self.mTargetVariableName
       ?targetType
       ?*
       ?*
     ]
-    for () in mStructAttributeList do
+    for () in self.mStructAttributeList do
       let propertyMap = [targetType mPropertyMap]
       [propertyMap searchKey !mValue ?let isPublic  ?targetType]
       if not isPublic then
@@ -85,7 +85,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     end
   end
 #--- Analyze source expression
-  [mSourceExpression analyzeSemanticExpression
+  [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !targetType
@@ -94,20 +94,20 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !self.mInstructionLocation !?expression)
 #--- Get target variable
   @string targetVariableCppName
   @string nameForCheckingFormalParameterUsing
-  if [mStructAttributeList length] == 0 then
+  if [self.mStructAttributeList length] == 0 then
     [!?ioVariableMap searchForWriteAccess
-      !mTargetVariableName
+      !self.mTargetVariableName
       ?*
       ?targetVariableCppName
       ?nameForCheckingFormalParameterUsing
     ]
   else
     [!?ioVariableMap searchForReadWriteAccess
-      !mTargetVariableName
+      !self.mTargetVariableName
       ?*
       ?targetVariableCppName
       ?nameForCheckingFormalParameterUsing
@@ -118,7 +118,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     !targetType
     !targetVariableCppName
     !nameForCheckingFormalParameterUsing
-    !mStructAttributeList
+    !self.mStructAttributeList
     !expression
   }
 }
@@ -146,22 +146,22 @@ override method @assignmentInstructionForGeneration generateInstruction
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 {
-  [mSourceExpression generateExpression
+  [self.mSourceExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let sourceVar
   ]
-  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
+  [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
 #---
-  [mTargetType addHeaderFileName !?ioInclusionSet]
-  @string receiverCppName = mTargetCppName
-  for () in mStructAttributeList do
+  [self.mTargetType addHeaderFileName !?ioInclusionSet]
+  @string receiverCppName = self.mTargetCppName
+  for () in self.mStructAttributeList do
     receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
   ioGeneratedCode += receiverCppName + " = " + sourceVar + " ;\n"
-  [!?ioUnusedVariableCppNameSet removeKey !mTargetCppName]
+  [!?ioUnusedVariableCppNameSet removeKey !self.mTargetCppName]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

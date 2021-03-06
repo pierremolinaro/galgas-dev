@@ -44,8 +44,8 @@ override method @literalCharExpressionAST analyzeSemanticExpression
 {
   outExpression = @literalCharExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mCharType
-    ![mCharacter location]
-    ![mCharacter char]
+    ![self.mCharacter location]
+    ![self.mCharacter char]
   }
 }
 
@@ -65,7 +65,7 @@ override method @literalCharExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "GALGAS_char (TO_UNICODE (" + [[mCharacter uint] string] + "))"
+  outCppExpression = "GALGAS_char (TO_UNICODE (" + [[self.mCharacter uint] string] + "))"
 }
 
 

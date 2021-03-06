@@ -3,6 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @plusEqualElementsInstructionAST : @semanticInstructionAST {
+#  @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
   @actualOutputExpressionList mExpressions
@@ -11,6 +12,7 @@ class @plusEqualElementsInstructionAST : @semanticInstructionAST {
 #······················································································································*
 
 class @plusEqualExpressionInstructionAST : @semanticInstructionAST {
+#  @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
   @semanticExpressionAST mExpression
@@ -19,6 +21,7 @@ class @plusEqualExpressionInstructionAST : @semanticInstructionAST {
 #······················································································································*
 
 class @minusEqualExpressionInstructionAST : @semanticInstructionAST {
+#  @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
   @semanticExpressionAST mExpression
@@ -27,6 +30,7 @@ class @minusEqualExpressionInstructionAST : @semanticInstructionAST {
 #······················································································································*
 
 class @mulEqualExpressionInstructionAST : @semanticInstructionAST {
+#  @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
   @semanticExpressionAST mExpression
@@ -35,6 +39,7 @@ class @mulEqualExpressionInstructionAST : @semanticInstructionAST {
 #······················································································································*
 
 class @divEqualExpressionInstructionAST : @semanticInstructionAST {
+#  @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
   @semanticExpressionAST mExpression
@@ -49,7 +54,23 @@ syntax extension galgas3InstructionsSyntax {
   #·····················································································································
 
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-    $identifier$ ?let @lstring mReceiverName
+    <semantic_instruction_beginning_with_identifier> !prefixedBySelf: false ?outInstruction
+  }
+  #·····················································································································
+
+#  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+#    $self$
+#    $.$
+#    <semantic_instruction_beginning_with_identifier> !prefixedBySelf: true ?outInstruction
+#  }
+
+  #·····················································································································
+
+  rule <semantic_instruction_beginning_with_identifier>
+        ?prefixedBySelf: let @bool unused inHasSelfPrefix
+        !@semanticInstructionAST outInstruction
+  {
+    $identifier$ ?let @lstring receiverName
     let instructionLocation = @location.here
     @lstringlist mStructAttributeList = {}
     repeat
@@ -63,7 +84,8 @@ syntax extension galgas3InstructionsSyntax {
       <expression> ?let @semanticExpressionAST expression
       outInstruction = @minusEqualExpressionInstructionAST.new {
         !instructionLocation
-        !mReceiverName
+#        !inHasSelfPrefix
+        !receiverName
         !mStructAttributeList
         !expression
       }
@@ -73,7 +95,8 @@ syntax extension galgas3InstructionsSyntax {
         <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
         outInstruction = @plusEqualElementsInstructionAST.new {
           !instructionLocation
-          !mReceiverName
+#          !inHasSelfPrefix
+          !receiverName
           !mStructAttributeList
           !expressionList
         }
@@ -81,7 +104,8 @@ syntax extension galgas3InstructionsSyntax {
         <expression> ?let @semanticExpressionAST expression
         outInstruction = @plusEqualExpressionInstructionAST.new {
           !instructionLocation
-          !mReceiverName
+#          !inHasSelfPrefix
+          !receiverName
           !mStructAttributeList
           !expression
         }
@@ -91,7 +115,8 @@ syntax extension galgas3InstructionsSyntax {
       <expression> ?let @semanticExpressionAST expression
       outInstruction = @mulEqualExpressionInstructionAST.new {
         !instructionLocation
-        !mReceiverName
+#        !inHasSelfPrefix
+        !receiverName
         !mStructAttributeList
         !expression
       }
@@ -100,7 +125,8 @@ syntax extension galgas3InstructionsSyntax {
       <expression> ?let @semanticExpressionAST expression
       outInstruction = @divEqualExpressionInstructionAST.new {
         !instructionLocation
-        !mReceiverName
+#        !inHasSelfPrefix
+        !receiverName
         !mStructAttributeList
         !expression
       }
@@ -126,31 +152,31 @@ syntax extension galgas3InstructionsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @plusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @minusEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @mulEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @divEqualExpressionInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································*
 
 override method @plusEqualElementsInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [mExpressions enterInSemanticContext !?ioTypeMap]
+  [self.mExpressions enterInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -166,12 +192,12 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
 {
 #--- Check target variable
   [!?ioVariableMap searchForReadWriteAccess
-    !mReceiverName 
+    !self.mReceiverName 
     ?@unifiedTypeMap-proxy targetType
     ?@string targetVariableCppName
     ?@string nameForCheckingFormalParameterUsing
   ]
-  for () in mStructAttributeList do
+  for () in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
     if not isPublic then
@@ -180,11 +206,11 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   end
 #--- Check target variable type support '+= exp' operator
   if not [[targetType mHandledOperatorFlags] plusEqualOperatorWithExpression] then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '+=' operator"
   end
 #--- Analyze source expression
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !targetType
@@ -193,14 +219,14 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !targetType
     !targetVariableCppName
     !nameForCheckingFormalParameterUsing
-    !mStructAttributeList
+    !self.mStructAttributeList
     !expression
     !"plusAssign_operation"
   }
@@ -217,12 +243,12 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
 {
 #--- Check target variable
   [!?ioVariableMap searchForReadWriteAccess
-    !mReceiverName 
+    !self.mReceiverName 
     ?@unifiedTypeMap-proxy targetType
     ?@string targetVariableCppName
     ?@string nameForCheckingFormalParameterUsing
   ]
-  for () in mStructAttributeList do
+  for () in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
     if not isPublic then
@@ -231,11 +257,11 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   end
 #--- Check target variable type support '-= exp' operator
   if not [[targetType mHandledOperatorFlags] minusEqualOperatorWithExpression] then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '-=' operator"
   end
 #--- Analyze source expression
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !targetType
@@ -244,14 +270,14 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !targetType
     !targetVariableCppName
     !nameForCheckingFormalParameterUsing
-    !mStructAttributeList
+    !self.mStructAttributeList
     !expression
     !"minusAssign_operation"
   }
@@ -268,12 +294,12 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
 {
 #--- Check target variable
   [!?ioVariableMap searchForReadWriteAccess
-    !mReceiverName 
+    !self.mReceiverName 
     ?@unifiedTypeMap-proxy targetType
     ?@string targetVariableCppName
     ?@string nameForCheckingFormalParameterUsing
   ]
-  for () in mStructAttributeList do
+  for () in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
     if not isPublic then
@@ -282,11 +308,11 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   end
 #--- Check target variable type support '*= exp' operator
   if [[targetType mHandledOperatorFlags] mulEqualOperatorWithExpression] then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '*=' operator"
   end
 #--- Analyze source expression
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !targetType
@@ -295,14 +321,14 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !targetType
     !targetVariableCppName
     !nameForCheckingFormalParameterUsing
-    !mStructAttributeList
+    !self.mStructAttributeList
     !expression
     !"mulAssign_operation"
   }
@@ -319,12 +345,12 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
 {
 #--- Check target variable
   [!?ioVariableMap searchForReadWriteAccess
-    !mReceiverName 
+    !self.mReceiverName 
     ?@unifiedTypeMap-proxy targetType
     ?@string targetVariableCppName
     ?@string nameForCheckingFormalParameterUsing
   ]
-  for () in mStructAttributeList do
+  for () in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
     if not isPublic then
@@ -333,11 +359,11 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   end
 #--- Check target variable type support '/= exp' operator
   if [[targetType mHandledOperatorFlags] divEqualOperatorWithExpression] then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '/=' operator"
   end
 #--- Analyze source expression
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !targetType
@@ -346,14 +372,14 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@opEqualInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !targetType
     !targetVariableCppName
     !nameForCheckingFormalParameterUsing
-    !mStructAttributeList
+    !self.mStructAttributeList
     !expression
     !"divAssign_operation"
   }
@@ -369,12 +395,12 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   ?!@variableMap ioVariableMap {
 #--- Check target variable
   [!?ioVariableMap searchForReadWriteAccess
-    !mReceiverName
+    !self.mReceiverName
     ?var targetType
     ?let targetVariableCppName
     ?let nameForCheckingFormalParameterUsing
   ]
-  for () in mStructAttributeList do
+  for () in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
     if not isPublic then
@@ -384,17 +410,17 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
 #--- Check target variable type support '+=' operator
   let addAssignOperatorArguments= [targetType mAddAssignOperatorArguments] # Empty list if += operator is not supported
   if [addAssignOperatorArguments length] == 0 then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '+=' operator"
 #--- Analyze source expressions
-  elsif [mExpressions length] != [addAssignOperatorArguments length] then
-    error mInstructionLocation
+  elsif [self.mExpressions length] != [addAssignOperatorArguments length] then
+    error self.mInstructionLocation
     : "calling the '+=' operator on an '@" + [targetType key] + "' object requires "
     + [[addAssignOperatorArguments length] string] + " parameter(s), while this invocation has "
-    + [[mExpressions length] string] + " parameter(s)"
+    + [[self.mExpressions length] string] + " parameter(s)"
   else
     @semanticExpressionListForGeneration effectiveParameterList = {}
-    for () in mExpressions, () in addAssignOperatorArguments do
+    for () in self.mExpressions, () in addAssignOperatorArguments do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -415,8 +441,8 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
       !targetVariableCppName
       !targetType
       !nameForCheckingFormalParameterUsing
-      !mInstructionLocation
-      !mStructAttributeList
+      !self.mInstructionLocation
+      !self.mStructAttributeList
       !effectiveParameterList}
   end
 }
@@ -443,9 +469,9 @@ override method @plusEqualnstructionForGeneration generateInstruction
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
 #--- Parameters
-  [mTargetType addHeaderFileName !?ioInclusionSet]
+  [self.mTargetType addHeaderFileName !?ioInclusionSet]
   var parameterList =@stringlist {}
-  for () in mExpressionList do
+  for () in self.mExpressionList do
     [mExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -456,23 +482,23 @@ override method @plusEqualnstructionForGeneration generateInstruction
     parameterList += !parameter  
   end
 #--- Receiver
-  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
-  ioGeneratedCode += mReceiverCppName
-  for () in mStructAttributeList do
+  [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
+  ioGeneratedCode += self.mReceiverCppName
+  for () in self.mStructAttributeList do
     ioGeneratedCode += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
 #--- Call add assign (+=) operator
   ioGeneratedCode += ".addAssign_operation ("
-  [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
+  [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverCppName]
   for () in parameterList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
-  if [[mTargetType mHandledOperatorFlags] plusEqualOperatorWithFieldListNeedsCompilerArg] then
+  if [[self.mTargetType mHandledOperatorFlags] plusEqualOperatorWithFieldListNeedsCompilerArg] then
     ioGeneratedCode  += ", " + compilerCppName ()
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   end
-  ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+  ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
 }
 
 #·····················································································································*
@@ -495,24 +521,24 @@ override method @opEqualInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
-  [mTargetType addHeaderFileName !?ioInclusionSet]
-  [mSourceExpression generateExpression
+  [self.mTargetType addHeaderFileName !?ioInclusionSet]
+  [self.mSourceExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     ?let @string sourceVar
   ]
-  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
-  ioGeneratedCode += mTargetVariableCppName
-  for () in mStructAttributeList do
+  [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
+  ioGeneratedCode += self.mTargetVariableCppName
+  for () in self.mStructAttributeList do
     ioGeneratedCode += ".mProperty_" + mValue
   end
-  ioGeneratedCode += "." + mGeneratedMethod + "(" + sourceVar
+  ioGeneratedCode += "." + self.mGeneratedMethod + "(" + sourceVar
   ioGeneratedCode += ", " + compilerCppName ()
-  ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+  ioGeneratedCode += " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  [!?ioUnusedVariableCppNameSet removeKey !mTargetVariableCppName]
+  [!?ioUnusedVariableCppNameSet removeKey !self.mTargetVariableCppName]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

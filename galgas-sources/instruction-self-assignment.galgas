@@ -37,7 +37,7 @@ syntax extension galgas3InstructionsSyntax {
 override method @selfAssignmentInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -52,7 +52,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 {
 #--- Analyze source expression
-  [mSourceExpression analyzeSemanticExpression
+  [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext.mSelfTypeProxy
@@ -62,12 +62,12 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
   ]
 #--- Analyze "self", as receiver expression
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in extension setters"
+    error self.mInstructionLocation: "'self' can be used only in extension setters"
   elsif [[inAnalysisContext.mSelfTypeProxy mTypeKindEnum] isClassType] then
-    error mInstructionLocation: "'self' assignment is not allowed for class instances"
+    error self.mInstructionLocation: "'self' assignment is not allowed for class instances"
   end
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!inAnalysisContext.mSelfTypeProxy ![expression mResultType] !mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!inAnalysisContext.mSelfTypeProxy ![expression mResultType] !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
     !inAnalysisContext.mSelfTypeProxy

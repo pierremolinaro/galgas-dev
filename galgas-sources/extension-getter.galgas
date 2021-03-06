@@ -59,7 +59,7 @@ syntax extension galgas3DeclarationsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @extensionGetterAST keyRepresentation -> @string outString {
-  outString = "extension getter @" + mTypeName + " " + mExtensionGetterName
+  outString = "extension getter @" + self.mTypeName + " " + self.mExtensionGetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -73,21 +73,21 @@ override method @extensionGetterAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
-  let key = @lstring.new {!"extension getter @" + mTypeName + " " + mExtensionGetterName ![mExtensionGetterName location]}
+  let key = @lstring.new {!"extension getter @" + self.mTypeName + " " + self.mExtensionGetterName ![self.mExtensionGetterName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName ![self.mTypeName location]}]
 #---
-  if not [ioExtensionGetterMapForBuildingContext hasKey ![mTypeName string]] then
+  if not [ioExtensionGetterMapForBuildingContext hasKey ![self.mTypeName string]] then
     [!?ioExtensionGetterMapForBuildingContext insertKey
-      !mTypeName
+      !self.mTypeName
       !{}
     ]
   end
-  with mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
+  with self.mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
     [!?mExtensionGetterMapForType insertKey
-      !mExtensionGetterName
-      !mExtensionGetterReturnedTypeName
-      !mExtensionGetterFormalInputParameterList
+      !self.mExtensionGetterName
+      !self.mExtensionGetterReturnedTypeName
+      !self.mExtensionGetterFormalInputParameterList
     ]
   end
 }
@@ -117,12 +117,12 @@ override method @extensionGetterAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!mTypeName !mExtensionGetterName)
+  let nameForUsefulness = getterNameForUsefulEntitiesGraph (!self.mTypeName !self.mExtensionGetterName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mTypeName)
+  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
   @string selfObjectName
   @string selfObjectAccessor
   @bool implementedAsFunction
@@ -142,7 +142,8 @@ override method @extensionGetterAST semanticAnalysis
     !inPredefinedTypes
     !selfType
     !selfObjectName
-    !@unifiedTypeMap-proxy.null}
+    !@unifiedTypeMap-proxy.null
+  }
   @unifiedTypeMap-proxy returnType
   @string returnVariableCppName
   @formalInputParameterListForGeneration formalParameterListForGeneration
@@ -151,16 +152,16 @@ override method @extensionGetterAST semanticAnalysis
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
-    !mExtensionGetterFormalInputParameterList
+    !self.mExtensionGetterFormalInputParameterList
     !if [[selfType mTypeKindEnum] isClassType] | ([selfType mTypeKindEnum] == .structType) | ([selfType mTypeKindEnum] == .mapProxyType)
        then [selfType mAllTypedAttributeList]
        else @typedPropertyList.emptyList
      end
     !selfObjectAccessor
-    !mExtensionGetterInstructionList
-    !mExtensionGetterReturnedVariableName
-    !mExtensionGetterReturnedTypeName
-    !mEndOfReaderLocation
+    !self.mExtensionGetterInstructionList
+    !self.mExtensionGetterReturnedVariableName
+    !self.mExtensionGetterReturnedTypeName
+    !self.mEndOfReaderLocation
     ?formalParameterListForGeneration
     ?returnType
     ?returnVariableCppName
@@ -168,12 +169,12 @@ override method @extensionGetterAST semanticAnalysis
   )
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"extension getter " + mExtensionGetterName
+    !"extension getter " + self.mExtensionGetterName
     !@extensionGetterForGeneration.new {
       !true # Generate Cpp header file
-      !"getter-" + [[selfType key] fileNameRepresentation] + "-" + [mExtensionGetterName fileNameRepresentation]
+      !"getter-" + [[selfType key] fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
       !selfType
-      ![mExtensionGetterName string]
+      ![self.mExtensionGetterName string]
       !implementedAsFunction
       !returnType
       !returnVariableCppName
@@ -201,8 +202,8 @@ override method @extensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap {
   ioExtensionGetterListMap +=
-    ![mTypeName string]
-    !mExtensionGetterName
+    ![self.mTypeName string]
+    !self.mExtensionGetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -231,19 +232,19 @@ override getter @extensionGetterForGeneration headerKind ->@headerKind {
 override method @extensionGetterForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
-  if mImplementedAsFunction then
+  if self.mImplementedAsFunction then
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionGetterAsFunctionDeclaration
-      ![mReceiverType key]
-      !mExtensionGetterName
-      !mExtensionGetterFormalParameterList
-      ![mResultType identifierRepresentation]
+      ![self.mReceiverType key]
+      !self.mExtensionGetterName
+      !self.mExtensionGetterFormalParameterList
+      ![self.mResultType identifierRepresentation]
     ] 
   else
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionGetterDeclaration
-      ![mReceiverType key]
-      !mExtensionGetterName
-      !mExtensionGetterFormalParameterList
-      !mResultType
+      ![self.mReceiverType key]
+      !self.mExtensionGetterName
+      !self.mExtensionGetterFormalParameterList
+      !self.mResultType
     ]
   end 
 }
@@ -255,44 +256,44 @@ override method @extensionGetterForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  for () in mExtensionGetterFormalParameterList do
+  for () in self.mExtensionGetterFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
-  [mResultType addHeaderFileName !?ioInclusionSet] 
-  if mImplementedAsFunction then
-    var extensionReaderFormalParameterList = mExtensionGetterFormalParameterList
+  [self.mResultType addHeaderFileName !?ioInclusionSet] 
+  if self.mImplementedAsFunction then
+    var extensionReaderFormalParameterList = self.mExtensionGetterFormalParameterList
     [!?extensionReaderFormalParameterList insertAtIndex
       !["" nowhere]
-      !mReceiverType
+      !self.mReceiverType
       !"inObject"
       !@lstring.new {!"self" !@location.here}
       !true  
       !0    
     ]
-    ioInclusionSet += !"getter-" + [[mReceiverType key] fileNameRepresentation] + "-" + [mExtensionGetterName fileNameRepresentation]
+    ioInclusionSet += !"getter-" + [[self.mReceiverType key] fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
     generateFunction (
-      !"extensionGetter_" + [mExtensionGetterName identifierRepresentation]
+      !"extensionGetter_" + [self.mExtensionGetterName identifierRepresentation]
       !?ioInclusionSet
       !extensionReaderFormalParameterList
-      !mSemanticInstructionListForGeneration
+      !self.mSemanticInstructionListForGeneration
       !"C_Compiler"
-      !mResultType
-      !mResultVarCppName
+      !self.mResultType
+      !self.mResultVarCppName
       !false # is not static
       ?let @string code
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionGetterAsFunctionImplementation
-      ![mReceiverType key]
-      !mExtensionGetterName
+      ![self.mReceiverType key]
+      !self.mExtensionGetterName
       !code
     ] 
   else
-    [mReceiverType addHeaderFileName !?ioInclusionSet]
-    @unifiedTypeMap-proxy baseType = mReceiverType
+    [self.mReceiverType addHeaderFileName !?ioInclusionSet]
+    @unifiedTypeMap-proxy baseType = self.mReceiverType
     @bool searching = true
     loop( @uint. max) while searching do
       if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mGetterMap] hasKey !mExtensionGetterName] then
+        if [[[baseType mSuperType] mGetterMap] hasKey !self.mExtensionGetterName] then
           baseType = [baseType mSuperType]
         else
           searching = false
@@ -301,24 +302,24 @@ override method @extensionGetterForGeneration appendSpecificImplementation
         searching = false
       end  
     end
-    ioInclusionSet += !"getter-" + [[baseType key] fileNameRepresentation] + "-" + [mExtensionGetterName fileNameRepresentation]
+    ioInclusionSet += !"getter-" + [[baseType key] fileNameRepresentation] + "-" + [self.mExtensionGetterName fileNameRepresentation]
     generateExtensionGetter (
-      !mReceiverType
+      !self.mReceiverType
       !""
       !?ioInclusionSet
-      !mExtensionGetterName
-      !mExtensionGetterFormalParameterList
-      !mSemanticInstructionListForGeneration
+      !self.mExtensionGetterName
+      !self.mExtensionGetterFormalParameterList
+      !self.mSemanticInstructionListForGeneration
       !"C_Compiler"
-      ![mResultType key]
-      !mResultVarCppName
+      ![self.mResultType key]
+      !self.mResultVarCppName
       ?let @string extensionGetterCode
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionGetterImplementation
-      ![mReceiverType key]
-      !mExtensionGetterName
-      !mExtensionGetterFormalParameterList
-      !mResultType
+      ![self.mReceiverType key]
+      !self.mExtensionGetterName
+      !self.mExtensionGetterFormalParameterList
+      !self.mResultType
       !extensionGetterCode
     ]
   end

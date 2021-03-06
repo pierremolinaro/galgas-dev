@@ -47,9 +47,9 @@ override method @structDeclarationAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
-  let key = @lstring.new {!"@" + mStructTypeName ![mStructTypeName location]}
+  let key = @lstring.new {!"@" + self.mStructTypeName ![self.mStructTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for () in mStructurePropertyList do
+  for () in self.mStructurePropertyList do
     let propertyKey = @lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}
     [!?ioSemanticTypePrecedenceGraph addEdge !key !propertyKey]
   end
@@ -60,7 +60,7 @@ override method @structDeclarationAST enterDeclarationInGraph
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @structDeclarationAST keyRepresentation ->@string outString {
-  outString = "struct @" + mStructTypeName
+  outString = "struct @" + self.mStructTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -81,14 +81,14 @@ override method @structDeclarationAST enterInSemanticContext
 {
   let optionalMethodMap = @optionalMethodMap {}
 #--- Struct type index
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mStructTypeName ?let structTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mStructTypeName ?let structTypeIndex]
 #--- Constructors and property map
   @propertyMap propertyMap = {}
   @constructorMap constructorMap = {}
   @functionSignature constructorPropertyTypeList = {}
   @typedPropertyList typedPropertyList = {}
   @unifiedTypeMapProxyList typesToIncludeInHeaderCompilation = {}
-  for () in mStructurePropertyList do
+  for () in self.mStructurePropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let propertyTypeProxy]
     @lstring selector = ["" nowhere]
     for () in mAttributeList do
@@ -134,19 +134,19 @@ override method @structDeclarationAST enterInSemanticContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
-    !mStructTypeName
+    !self.mStructTypeName
     !?getterMap
     !?setterMap
     !?instanceMethodMap
   )
 #--- Enumeration by "for" instruction
   @unifiedTypeMap-proxy enumeratedType
-  if mEnumeratedElementTypeName == "" then
+  if self.mEnumeratedElementTypeName == "" then
     enumeratedType = @unifiedTypeMap-proxy.null
   else
    [@unifiedTypeMap-proxy makeProxyFromString
      !?ioSemanticContext.mTypeMap
-     !mEnumeratedElementTypeName
+     !self.mEnumeratedElementTypeName
      ?enumeratedType
     ]
   end
@@ -159,8 +159,8 @@ override method @structDeclarationAST enterInSemanticContext
   end  
 #--- Enter in type map
   [!?ioSemanticContext.mTypeMap insertKey
-    !mStructTypeName
-    !mIsPredefined
+    !self.mStructTypeName
+    !self.mIsPredefined
     !true # Concrete Type
     !@unifiedTypeMap-proxy.null
     !@typeKindEnum.structType
@@ -184,7 +184,7 @@ override method @structDeclarationAST enterInSemanticContext
     !false # Do not generate header in separate file
     !enumeratedType # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor
-    !"struct-" + [mStructTypeName fileNameRepresentation]
+    !"struct-" + [self.mStructTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   ]
 }
@@ -211,15 +211,15 @@ override method @structDeclarationAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let structNameForUsefulness = typeNameForUsefulEntitiesGraph (!mStructTypeName)
+  let structNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mStructTypeName)
   [!?ioUsefulEntitiesGraph addNode !structNameForUsefulness !structNameForUsefulness]
 #---
-  if [mStructurePropertyList length] == 0 then
-    error mStructTypeName: "a structure cannot be empty: it must have at least one property" 
+  if [self.mStructurePropertyList length] == 0 then
+    error self.mStructTypeName: "a structure cannot be empty: it must have at least one property" 
   end
   @typedPropertyList typedPropertyList = {}
   @propertyIndexMap propertyMap = {}
-  for () in mStructurePropertyList do
+  for () in self.mStructurePropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !structNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
@@ -252,9 +252,9 @@ override method @structDeclarationAST semanticAnalysis
     [!?propertyMap insertKey !mPropertyName !t]
   end
   ioSemanticDeclarationListForGeneration +=
-    !"struct " + mStructTypeName
+    !"struct " + self.mStructTypeName
     !@structTypeForGeneration.new {
-      !.searchKey {!inSemanticContext.mTypeMap !mStructTypeName}
+      !.searchKey {!inSemanticContext.mTypeMap !self.mStructTypeName}
       !typedPropertyList
     }
 }
@@ -291,30 +291,30 @@ override method @structTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader
 {
-  for (t ...) in mTypedPropertyList do
+  for (t ...) in self.mTypedPropertyList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
 
   outHeader = [filewrapper boolsetGenerationTemplate.structTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedPropertyList
-    ![mTypeProxy mDefaultConstructorName] != ""
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    !self.mTypedPropertyList
+    ![self.mTypeProxy mDefaultConstructorName] != ""
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mSetterMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mOptionalMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    ![self.mTypeProxy mIsConcrete]
+    ![self.mTypeProxy mConstructorMap]
+    ![self.mTypeProxy mGetterMap]
+    ![self.mTypeProxy mSetterMap]
+    ![self.mTypeProxy mInstanceMethodMap]
+    ![self.mTypeProxy mClassMethodMap]
+    ![self.mTypeProxy mOptionalMethodMap]
+    ![self.mTypeProxy mEnumerationDescriptor]
+    ![self.mTypeProxy mHandledOperatorFlags]
+    ![self.mTypeProxy mAddAssignOperatorArguments]
+    ![self.mTypeProxy mTypeForEnumeratedElement]
   ]
  }
 
@@ -325,12 +325,12 @@ override method @structTypeForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper boolsetGenerationTemplate.structTypeSpecificImplementation
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedPropertyList
-    ![mTypeProxy mDefaultConstructorName] != ""
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    !self.mTypedPropertyList
+    ![self.mTypeProxy mDefaultConstructorName] != ""
   ]
  }
 

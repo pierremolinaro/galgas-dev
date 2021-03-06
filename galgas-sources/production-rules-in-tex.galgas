@@ -317,7 +317,7 @@ override method @terminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstruct
   ?debug:let @bool unused inDebug
 {
   [!?ioRowList appendRow
-    !nodeDefinition:"[terminal] {" + escapeForTex (!mTerminalSymbolName) + "}"
+    !nodeDefinition:"[terminal] {" + escapeForTex (!self.mTerminalSymbolName) + "}"
     !row:inRow
     !column:ioColumn
     ?nodeName:let nodeName
@@ -340,8 +340,8 @@ override method @nonTerminalInstructionForGrammarAnalysis tikzNodeForSyntaxInstr
   ?!@uint unused ioMaxUsedRowIndex
   ?debug:let @bool unused inDebug
 {
-  let nodeDefinition = "[nonterminal] {\\nonTerminalSymbol{" + escapeForTex (!mNonterminalSymbolName)
-    + "}{" + mNonterminalSymbolIndex + "}}"
+  let nodeDefinition = "[nonterminal] {\\nonTerminalSymbol{" + escapeForTex (!self.mNonterminalSymbolName)
+    + "}{" + self.mNonterminalSymbolIndex + "}}"
   [!?ioRowList appendRow
     !nodeDefinition:nodeDefinition
     !row:inRow
@@ -369,7 +369,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 #--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {SS" + [mSelectBranchList length] + "}"
+      !nodeDefinition:"[nonterminal] {SS" + [self.mSelectBranchList length] + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerStartNodeName
@@ -383,7 +383,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   [!?ioRowList appendRow !nodeDefinition:"[point] {}" !row:inRow !column:ioColumn ?nodeName:let startNodeName]
   ioColumn ++
 #--- Enter branch zero
-  var branches = mSelectBranchList
+  var branches = self.mSelectBranchList
   [!?branches popFirst ?let @syntaxInstructionListForGrammarAnalysis brancheZero]
   var branchZeroColumn = ioColumn
   var maxUsedRowIndex = inRow
@@ -437,7 +437,7 @@ override method @selectInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 #--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {SE" + [mSelectBranchList length] + "}"
+      !nodeDefinition:"[nonterminal] {SE" + [self.mSelectBranchList length] + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerEndNodeName
@@ -463,7 +463,7 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 #--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {RS" + [mRepeatBranchList length] + "}"
+      !nodeDefinition:"[nonterminal] {RS" + [self.mRepeatBranchList length] + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerStartNodeName
@@ -477,7 +477,7 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
   [!?ioRowList appendRow !nodeDefinition:"[point] {}" !row:inRow !column:ioColumn ?nodeName:let returnNodeName]
   ioColumn ++
 #--- Enter branch zero
-  var branches = mRepeatBranchList
+  var branches = self.mRepeatBranchList
   [!?branches popFirst ?let @syntaxInstructionListForGrammarAnalysis brancheZero]
   var maxUsedRowIndex = inRow
   [brancheZero tikzNodeForSyntaxInstruction
@@ -545,7 +545,7 @@ override method @repeatInstructionForGrammarAnalysis tikzNodeForSyntaxInstructio
 #--- Trace ?
   if inDebug then
     [!?ioRowList appendRow
-      !nodeDefinition:"[nonterminal] {RE" + [mRepeatBranchList length] + "}"
+      !nodeDefinition:"[nonterminal] {RE" + [self.mRepeatBranchList length] + "}"
       !row:inRow
       !column:ioColumn
       ?nodeName:let markerEndNodeName

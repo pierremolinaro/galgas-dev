@@ -48,7 +48,7 @@ syntax extension galgas3DeclarationsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @abstractExtensionGetterAST keyRepresentation ->@string outString {
-  outString = "abstract extension getter @" + mTypeName + " " + mAbstractExtensionGetterName
+  outString = "abstract extension getter @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -63,23 +63,23 @@ override method @abstractExtensionGetterAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
   let key = @lstring.new {
-    !"extension getter @" + mTypeName + " " + mAbstractExtensionGetterName
-    ![mAbstractExtensionGetterName location]
+    !"extension getter @" + self.mTypeName + " " + self.mAbstractExtensionGetterName
+    ![self.mAbstractExtensionGetterName location]
   }
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName ![self.mTypeName location]}]
 #---
-  if not [ioExtensionGetterMapForBuildingContext hasKey ![mTypeName string]] then
+  if not [ioExtensionGetterMapForBuildingContext hasKey ![self.mTypeName string]] then
     [!?ioExtensionGetterMapForBuildingContext insertKey
-      !mTypeName
+      !self.mTypeName
       !{}
     ]
   end
-  with mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
+  with self.mTypeName in !?ioExtensionGetterMapForBuildingContext error message searchKey  do
     [!?mExtensionGetterMapForType insertKey
-      !mAbstractExtensionGetterName
-      !mAbstractExtensionGetterReturnedTypeName
-      !mAbstractExtensionGetterFormalInputParameterList
+      !self.mAbstractExtensionGetterName
+      !self.mAbstractExtensionGetterReturnedTypeName
+      !self.mAbstractExtensionGetterFormalInputParameterList
     ]
   end
 }
@@ -109,16 +109,16 @@ override method @abstractExtensionGetterAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
 #--- Check self type is an abstract class
   if not [[selfType mTypeKindEnum] isClassType] then
-    error mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
+    error self.mAbstractExtensionGetterName: "cannot declare a extension getter: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType key] + "' is not an abstract class"
+    error self.mAbstractExtensionGetterName: "cannot declare an abstract extension getter: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Compute method signature
   @formalInputParameterListForGeneration formalParameterListForGeneration = {}
-  for () in mAbstractExtensionGetterFormalInputParameterList do
+  for () in self.mAbstractExtensionGetterFormalInputParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
       !.searchKey {!inSemanticContext.mTypeMap !mFormalArgumentTypeName}
@@ -128,13 +128,13 @@ override method @abstractExtensionGetterAST semanticAnalysis
   end
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"abstract extension getter " + mAbstractExtensionGetterName
+    !"abstract extension getter " + self.mAbstractExtensionGetterName
     !@abstractExtensionGetterForGeneration.new {
       !true # Generate Cpp header file
-      !"getter-" + [mTypeName fileNameRepresentation] + "-" + [mAbstractExtensionGetterName fileNameRepresentation]
+      !"getter-" + [self.mTypeName fileNameRepresentation] + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
       !selfType
-      ![mAbstractExtensionGetterName string]
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAbstractExtensionGetterReturnedTypeName}
+      ![self.mAbstractExtensionGetterName string]
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mAbstractExtensionGetterReturnedTypeName}
       !formalParameterListForGeneration
     }
 }
@@ -157,7 +157,7 @@ override method @abstractExtensionGetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingExtensionGetterListMap
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
 {
-  ioAbstractExtensionGetterListMap += !mTypeName.string !mAbstractExtensionGetterName
+  ioAbstractExtensionGetterListMap += !self.mTypeName.string !self.mAbstractExtensionGetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -184,10 +184,10 @@ override method @abstractExtensionGetterForGeneration appendDeclaration1
   !@string outHeader
 {
   outHeader = [filewrapper semanticComponentGenerationTemplate.abstractExtensionGetterDeclaration
-    ![mReceiverType key]
-    !mAbstractExtensionGetterName
-    !mAbstractExtensionGetterFormalParameterList
-    !mResultType
+    ![self.mReceiverType key]
+    !self.mAbstractExtensionGetterName
+    !self.mAbstractExtensionGetterFormalParameterList
+    !self.mResultType
   ] 
 }
 
@@ -198,17 +198,17 @@ override method @abstractExtensionGetterForGeneration appendSpecificImplementati
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  ioInclusionSet += !"getter-" + [[mReceiverType key] fileNameRepresentation] + "-" + [mAbstractExtensionGetterName fileNameRepresentation]
-  [mResultType addHeaderFileName !?ioInclusionSet]
-  [mReceiverType addHeaderFileName !?ioInclusionSet]
-  for () in mAbstractExtensionGetterFormalParameterList do
+  ioInclusionSet += !"getter-" + [[self.mReceiverType key] fileNameRepresentation] + "-" + [self.mAbstractExtensionGetterName fileNameRepresentation]
+  [self.mResultType addHeaderFileName !?ioInclusionSet]
+  [self.mReceiverType addHeaderFileName !?ioInclusionSet]
+  for () in self.mAbstractExtensionGetterFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
   outImplementation = [filewrapper semanticComponentGenerationTemplate.abstractExtensionGetterImplementation
-    ![mReceiverType key]
-    !mAbstractExtensionGetterName
-    !mAbstractExtensionGetterFormalParameterList
-    !mResultType
+    ![self.mReceiverType key]
+    !self.mAbstractExtensionGetterName
+    !self.mAbstractExtensionGetterFormalParameterList
+    !self.mResultType
   ] 
 }
 

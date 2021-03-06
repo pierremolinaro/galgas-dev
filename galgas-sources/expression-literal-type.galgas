@@ -31,7 +31,7 @@ syntax extension galgas3ExpressionSyntax {
 override method @literalTypeInExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mLiteralTypeName ?*]
+  [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !self.mLiteralTypeName ?*]
 }
 
 #·····················································································································
@@ -44,15 +44,15 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  let usefulnessName = typeNameForUsefulEntitiesGraph (!mLiteralTypeName)
+  let usefulnessName = typeNameForUsefulEntitiesGraph (!self.mLiteralTypeName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Get constructor map from type map
-  [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mLiteralTypeName ?26*]
+  [inAnalysisContext.mSemanticContext.mTypeMap searchKey !self.mLiteralTypeName ?26*]
 #---
-  let type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mLiteralTypeName}
+  let type = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mLiteralTypeName}
   outExpression = @literalTypeInExpressionForGeneration.new {
     !@unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !.new {!"type" !.here}}
-    ![mLiteralTypeName location]
+    ![self.mLiteralTypeName location]
     !type
   }
 }
@@ -74,9 +74,9 @@ override method @literalTypeInExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression
 {
-  [mLiteralType addHeaderFileName !?ioInclusionSet]
+  [self.mLiteralType addHeaderFileName !?ioInclusionSet]
   outCppExpression = "GALGAS_type (& kTypeDescriptor_GALGAS_"
-                  + [[mLiteralType key] identifierRepresentation] + ")"
+                  + [[self.mLiteralType key] identifierRepresentation] + ")"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

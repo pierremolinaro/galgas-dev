@@ -62,62 +62,62 @@ override method @optionExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  let usefulnessName = optionNameForUsefulEntitiesGraph (!mOptionComponentName)
+  let usefulnessName = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #---
   [inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
-    !mOptionComponentName
+    !self.mOptionComponentName
     ?let @bool optionComponentIsPredefined
     ?let @commandLineOptionMap boolOptionMap
     ?let @commandLineOptionMap uintOptionMap
     ?let @commandLineOptionMap stringOptionMap
     ?let @commandLineOptionMap stringListOptionMap
   ]
-  @bool found = [boolOptionMap hasKey ![mOptionEntryName string]]
+  @bool found = [boolOptionMap hasKey ![self.mOptionEntryName string]]
   @unifiedTypeMap-proxy returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
   if not found then
-    found = [uintOptionMap hasKey ![mOptionEntryName string]]
+    found = [uintOptionMap hasKey ![self.mOptionEntryName string]]
     returnedType = inAnalysisContext.mPredefinedTypes.mUIntType
   end
   if not found then
-    found = [stringOptionMap hasKey ![mOptionEntryName string]]
+    found = [stringOptionMap hasKey ![self.mOptionEntryName string]]
     returnedType = inAnalysisContext.mPredefinedTypes.mStringType
   end
   if not found then
-    found = [stringListOptionMap hasKey ![mOptionEntryName string]]
+    found = [stringListOptionMap hasKey ![self.mOptionEntryName string]]
     returnedType = inAnalysisContext.mPredefinedTypes.mStringListType
   end
   if found then
-    if [mOptionGetterName string] == "value" then
+    if [self.mOptionGetterName string] == "value" then
       outExpression = @optionValueExpressionForGeneration.new {
         !returnedType
-        ![mOptionComponentName location]
+        ![self.mOptionComponentName location]
         !optionComponentIsPredefined
-        ![mOptionComponentName string]
-        ![mOptionEntryName string]}
-    elsif [mOptionGetterName string] == "char" then
+        ![self.mOptionComponentName string]
+        ![self.mOptionEntryName string]}
+    elsif [self.mOptionGetterName string] == "char" then
       outExpression = @optionCharExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mCharType
-        ![mOptionComponentName location]
+        ![self.mOptionComponentName location]
         !optionComponentIsPredefined
-        ![mOptionComponentName string]
-        ![mOptionEntryName string]}
-    elsif [mOptionGetterName string] == "string" then
+        ![self.mOptionComponentName string]
+        ![self.mOptionEntryName string]}
+    elsif [self.mOptionGetterName string] == "string" then
       outExpression = @optionStringExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mStringType
-        ![mOptionComponentName location]
+        ![self.mOptionComponentName location]
         !optionComponentIsPredefined
-        ![mOptionComponentName string]
-        ![mOptionEntryName string]}
-    elsif [mOptionGetterName string] == "comment" then
+        ![self.mOptionComponentName string]
+        ![self.mOptionEntryName string]}
+    elsif [self.mOptionGetterName string] == "comment" then
       outExpression = @optionCommentExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mStringType
-        ![mOptionComponentName location]
+        ![self.mOptionComponentName location]
         !optionComponentIsPredefined
-        ![mOptionComponentName string]
-        ![mOptionEntryName string]}
+        ![self.mOptionComponentName string]
+        ![self.mOptionEntryName string]}
     else
-      error mOptionGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
+      error self.mOptionGetterName:"only the 'value', 'char', 'string' and 'comment' getters are defined for an option" :outExpression
     end
   else
     @stringlist s = {}
@@ -130,8 +130,8 @@ override method @optionExpressionAST analyzeSemanticExpression
     for () in stringOptionMap do
       s += !lkey
     end
-    error mOptionEntryName
-    : "the '" + mOptionComponentName + "' option component does not define the '" + mOptionEntryName + "' option"
+    error self.mOptionEntryName
+    : "the '" + self.mOptionComponentName + "' option component does not define the '" + self.mOptionEntryName + "' option"
     : outExpression
     fixit { replace s }
   end
@@ -155,11 +155,11 @@ override method @optionValueExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  if not mOptionComponentIsPredefined then
-    ioInclusionSet += !"option-" + [mOptionComponentName fileNameRepresentation]
+  if not self.mOptionComponentIsPredefined then
+    ioInclusionSet += !"option-" + [self.mOptionComponentName fileNameRepresentation]
   end
-  outCppExpression = "GALGAS_" + [mResultType identifierRepresentation] + " (gOption_" + [mOptionComponentName identifierRepresentation]
-                   + "_" + [mOptionEntryName identifierRepresentation] + ".getter_value ())"
+  outCppExpression = "GALGAS_" + [self.mResultType identifierRepresentation] + " (gOption_" + [self.mOptionComponentName identifierRepresentation]
+                   + "_" + [self.mOptionEntryName identifierRepresentation] + ".getter_value ())"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -178,11 +178,11 @@ override method @optionCharExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  if not mOptionComponentIsPredefined then
-    ioInclusionSet += !"option-" + [mOptionComponentName fileNameRepresentation]
+  if not self.mOptionComponentIsPredefined then
+    ioInclusionSet += !"option-" + [self.mOptionComponentName fileNameRepresentation]
   end
-  outCppExpression = "GALGAS_char (gOption_" + [mOptionComponentName identifierRepresentation]
-                  + "_" + [mOptionEntryName identifierRepresentation] + ".getter_char ())"
+  outCppExpression = "GALGAS_char (gOption_" + [self.mOptionComponentName identifierRepresentation]
+                  + "_" + [self.mOptionEntryName identifierRepresentation] + ".getter_char ())"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -201,11 +201,11 @@ override method @optionStringExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  if not mOptionComponentIsPredefined then
-    ioInclusionSet += !"option-" + [mOptionComponentName fileNameRepresentation]
+  if not self.mOptionComponentIsPredefined then
+    ioInclusionSet += !"option-" + [self.mOptionComponentName fileNameRepresentation]
   end
-  outCppExpression = "GALGAS_string (gOption_" + [mOptionComponentName identifierRepresentation]
-                  + "_" + [mOptionEntryName identifierRepresentation] + ".getter_string ())"
+  outCppExpression = "GALGAS_string (gOption_" + [self.mOptionComponentName identifierRepresentation]
+                  + "_" + [self.mOptionEntryName identifierRepresentation] + ".getter_string ())"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -216,11 +216,11 @@ override method @optionCommentExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  if not mOptionComponentIsPredefined then
-    ioInclusionSet += !"option-" + [mOptionComponentName fileNameRepresentation]
+  if not self.mOptionComponentIsPredefined then
+    ioInclusionSet += !"option-" + [self.mOptionComponentName fileNameRepresentation]
   end
-  outCppExpression = "gOption_" + [mOptionComponentName identifierRepresentation]
-                  + "_" + [mOptionEntryName identifierRepresentation] + ".getter_comment ()"
+  outCppExpression = "gOption_" + [self.mOptionComponentName identifierRepresentation]
+                  + "_" + [self.mOptionEntryName identifierRepresentation] + ".getter_comment ()"
 }
 
 #·······················································································································

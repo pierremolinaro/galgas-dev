@@ -47,7 +47,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 override getter @extensionSetterAST keyRepresentation
   ->@string outString {
-  outString = "extension setter @" + mTypeName + " " + mExtensionSetterName
+  outString = "extension setter @" + self.mTypeName + " " + self.mExtensionSetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -60,20 +60,20 @@ override method @extensionSetterAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"extension setter @" + mTypeName + " " + mExtensionSetterName ![mExtensionSetterName location]}
+  let key = @lstring.new {!"extension setter @" + self.mTypeName + " " + self.mExtensionSetterName ![self.mExtensionSetterName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mTypeName ![self.mTypeName location]}]
 #---
-  if not [ioExtensionSetterMapForBuildingContext hasKey ![mTypeName string]] then
+  if not [ioExtensionSetterMapForBuildingContext hasKey ![self.mTypeName string]] then
     [!?ioExtensionSetterMapForBuildingContext insertKey
-      !mTypeName
+      !self.mTypeName
       !{}
     ]
   end
-  with mTypeName in !?ioExtensionSetterMapForBuildingContext error message searchKey  do
+  with self.mTypeName in !?ioExtensionSetterMapForBuildingContext error message searchKey  do
     [!?mExtensionSetterMapForType insertKey
-      !mExtensionSetterName
-      !mExtensionSetterFormalParameterList
+      !self.mExtensionSetterName
+      !self.mExtensionSetterFormalParameterList
     ]
   end
 }
@@ -103,12 +103,12 @@ override method @extensionSetterAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefulness = setterNameForUsefulEntitiesGraph (!mTypeName !mExtensionSetterName)
+  let nameForUsefulness = setterNameForUsefulEntitiesGraph (!self.mTypeName !self.mExtensionSetterName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mTypeName)
+  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mTypeName)
   [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
   @string selfObjectName
   @string selfObjectAccessor
   @bool implementedAsFunction
@@ -130,29 +130,30 @@ override method @extensionSetterAST semanticAnalysis
     !inPredefinedTypes
     !selfType
     !selfObjectName
-    !selfType}
+    !selfType
+  }
   analyzeRoutineBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
     !analysisContext
-    !mExtensionSetterFormalParameterList
+    !self.mExtensionSetterFormalParameterList
     !{}
     !{}
-    ![selfType mAllTypedAttributeList]
+    !mutablePropertyList:[selfType mAllTypedAttributeList]
     !selfObjectAccessor
-    !mExtensionSetterInstructionList
-    !mEndOfSetterDeclarationLocation
+    !self.mExtensionSetterInstructionList
+    !self.mEndOfSetterDeclarationLocation
     ?semanticInstructionListForGeneration
     ?formalParameterListForGeneration
   )
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"extension setter " + mExtensionSetterName
+    !"extension setter " + self.mExtensionSetterName
     !@extensionSetterForGeneration.new {
       !true # Generate Cpp header file
-      !"setter-" + [[selfType key] fileNameRepresentation] + "-" + [mExtensionSetterName fileNameRepresentation]
+      !"setter-" + [[selfType key] fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
       !selfType
-      ![mExtensionSetterName string]
+      ![self.mExtensionSetterName string]
       !implementedAsFunction
       !formalParameterListForGeneration
       ![selfType mAllTypedAttributeList]
@@ -178,8 +179,8 @@ override method @extensionSetterAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
 {
   ioExtensionSettierListMap +=
-    ![mTypeName string]
-    !mExtensionSetterName
+    ![self.mTypeName string]
+    !self.mExtensionSetterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -206,17 +207,17 @@ override getter @extensionSetterForGeneration headerKind ->@headerKind {
 override method @extensionSetterForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
-  if mImplementedAsFunction then
+  if self.mImplementedAsFunction then
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionSetterAsFunctionDeclaration
-      ![mReceiverType key]
-      !mExtensionSetterName
-      !mExtensionSetterFormalParameterList
+      ![self.mReceiverType key]
+      !self.mExtensionSetterName
+      !self.mExtensionSetterFormalParameterList
     ] 
   else
     outHeader = [filewrapper semanticComponentGenerationTemplate.extensionSetterDeclaration
-      ![mReceiverType key]
-      !mExtensionSetterName
-      !mExtensionSetterFormalParameterList
+      ![self.mReceiverType key]
+      !self.mExtensionSetterName
+      !self.mExtensionSetterFormalParameterList
     ]
   end
 }
@@ -228,26 +229,26 @@ override method @extensionSetterForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  for () in mExtensionSetterFormalParameterList do
+  for () in self.mExtensionSetterFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
-  if mImplementedAsFunction then
-    var extensionSetterFormalParameterList = mExtensionSetterFormalParameterList
+  if self.mImplementedAsFunction then
+    var extensionSetterFormalParameterList = self.mExtensionSetterFormalParameterList
     [!?extensionSetterFormalParameterList insertAtIndex
       !["" nowhere]
       !@formalArgumentPassingModeAST. argumentInOut
-      !mReceiverType
+      !self.mReceiverType
       !@lstring.new {!"self" !@location.here}
       !"ioObject"
       !0
     ]
-    ioInclusionSet += !"setter-" + [[mReceiverType key] fileNameRepresentation] + "-" + [mExtensionSetterName fileNameRepresentation]
+    ioInclusionSet += !"setter-" + [[self.mReceiverType key] fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
     generateProcedure (
       !static:false
-      !"extensionSetter_" + [mExtensionSetterName identifierRepresentation]
+      !"extensionSetter_" + [self.mExtensionSetterName identifierRepresentation]
       !?ioInclusionSet
       !extensionSetterFormalParameterList
-      !mSemanticInstructionListForGeneration
+      !self.mSemanticInstructionListForGeneration
       !false # is not const
       !"C_Compiler"
       !true # Generate location Argument
@@ -256,16 +257,16 @@ override method @extensionSetterForGeneration appendSpecificImplementation
       ?let @string code
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionMethodAsFunctionImplementation
-      ![mReceiverType key]
-      !mExtensionSetterName
+      ![self.mReceiverType key]
+      !self.mExtensionSetterName
       !code
     ] 
   else
-    @unifiedTypeMap-proxy baseType = mReceiverType
+    @unifiedTypeMap-proxy baseType = self.mReceiverType
     @bool searching = true
     loop( @uint. max) while searching do
       if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mSetterMap] hasKey !mExtensionSetterName] then
+        if [[[baseType mSuperType] mSetterMap] hasKey !self.mExtensionSetterName] then
           baseType = [baseType mSuperType]
         else
           searching = false
@@ -274,21 +275,21 @@ override method @extensionSetterForGeneration appendSpecificImplementation
         searching = false
       end  
     end
-    ioInclusionSet += !"setter-" + [[baseType key] fileNameRepresentation] + "-" + [mExtensionSetterName fileNameRepresentation]
+    ioInclusionSet += !"setter-" + [[baseType key] fileNameRepresentation] + "-" + [self.mExtensionSetterName fileNameRepresentation]
     [baseType addHeaderFileName !?ioInclusionSet]
     generateExtensionSetter (
-      ![mReceiverType key]
+      ![self.mReceiverType key]
       !""
-      !mExtensionSetterName
+      !self.mExtensionSetterName
       !?ioInclusionSet
-      !mExtensionSetterFormalParameterList
-      !mSemanticInstructionListForGeneration
+      !self.mExtensionSetterFormalParameterList
+      !self.mSemanticInstructionListForGeneration
       ?let @string setterImplementation
     )
     outImplementation = [filewrapper semanticComponentGenerationTemplate.extensionsetterImplementation
-      ![mReceiverType key]
-      !mExtensionSetterName
-      !mExtensionSetterFormalParameterList
+      ![self.mReceiverType key]
+      !self.mExtensionSetterName
+      !self.mExtensionSetterFormalParameterList
       !setterImplementation
     ]
   end

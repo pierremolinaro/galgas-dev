@@ -106,9 +106,9 @@ syntax extension galgas3InstructionsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @errorInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mMessageExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
+  [self.mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mMessageExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -303,10 +303,10 @@ override method @errorInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !mLocationExpression
-    !mMessageExpression
-    !mFixitListAST
-    !mInstructionLocation
+    !self.mLocationExpression
+    !self.mMessageExpression
+    !self.mFixitListAST
+    !self.mInstructionLocation
     !"error"
     !?ioVariableMap
     ?let locationExpression
@@ -315,13 +315,13 @@ override method @errorInstructionAST analyzeSemanticInstruction
   )
 #--- Handle dropped variables
   var builtVariableCppNameList = @stringlist {}
-  for () in mBuiltVariableList do
+  for () in self.mBuiltVariableList do
     [!?ioVariableMap searchForWriteAccess !mValue ?* ?let varCppName ?*]
     builtVariableCppNameList += !varCppName
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@errorInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !locationExpression
     !messageExpression
     !builtVariableCppNameList
@@ -399,7 +399,7 @@ override method @errorInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 {
 #--- Receiver expression
-  [mReceiverExpression generateExpression
+  [self.mReceiverExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -407,7 +407,7 @@ override method @errorInstructionForGeneration generateInstruction
     ?let receiverCppVarName
   ]
 #--- Receiver expression
-  [mErrorExpression generateExpression
+  [self.mErrorExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -415,7 +415,7 @@ override method @errorInstructionForGeneration generateInstruction
     ?let messageCppVarName
   ]
 #--- Fix It array
-  [mFixitListForGeneration generateFixIt
+  [self.mFixitListForGeneration generateFixIt
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
@@ -429,9 +429,9 @@ override method @errorInstructionForGeneration generateInstruction
     + receiverCppVarName + ", "
     + messageCppVarName + ", "
     + fixItArrayCppName + " "
-    + [mInstructionLocation commaSourceFile] + ") ;\n"
+    + [self.mInstructionLocation commaSourceFile] + ") ;\n"
 #--- Release dropped variables
-  for () in mBuiltVariableCppNameList do
+  for () in self.mBuiltVariableCppNameList do
     [!?ioUnusedVariableCppNameSet removeKey !mValue]
     ioGeneratedCode += mValue + ".drop () ; // Release error dropped variable\n"
   end

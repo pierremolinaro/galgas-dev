@@ -56,7 +56,7 @@ syntax extension galgas3InstructionsSyntax {
 override method @logInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  for () in mLogList do
+  for () in self.mLogList do
     [mLogExpression enterExpressionInSemanticContext !?ioTypeMap]
   end 
 }
@@ -71,7 +71,7 @@ override method @logInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
-  for () in mLogList do
+  for () in self.mLogList do
   #--- Analyze source expression
     @semanticExpressionForGeneration expression
     [mLogExpression analyzeSemanticExpression
@@ -106,9 +106,9 @@ override method @logInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
-  [mLogExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string logVar]
-  ioGeneratedCode += logVar + ".log (" + [mLogMessage utf8Representation]
-  + " " + [[mLogMessage location] commaSourceFile] + ") ;\n"
+  [self.mLogExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string logVar]
+  ioGeneratedCode += logVar + ".log (" + [self.mLogMessage utf8Representation]
+  + " " + [[self.mLogMessage location] commaSourceFile] + ") ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

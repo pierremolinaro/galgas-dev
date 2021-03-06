@@ -41,9 +41,9 @@ syntax extension galgas3InstructionsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @warningInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mMessageExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
+  [self.mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mMessageExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mFixitListAST enterFixItListInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -61,10 +61,10 @@ override method @warningInstructionAST analyzeSemanticInstruction
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !mLocationExpression
-    !mMessageExpression
-    !mFixitListAST
-    !mInstructionLocation
+    !self.mLocationExpression
+    !self.mMessageExpression
+    !self.mFixitListAST
+    !self.mInstructionLocation
     !"warning"
     !?ioVariableMap
     ?let locationExpression
@@ -73,7 +73,7 @@ override method @warningInstructionAST analyzeSemanticInstruction
   )
 #--- Generate instruction
   ioInstructionListForGeneration += !@warningInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !locationExpression
     !messageExpression
     !fixitListForGeneration
@@ -102,9 +102,9 @@ override method @warningInstructionForGeneration generateInstruction
  {
 #--- Receiver expression
   @string receiverCppVarName
-  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppVarName]
+  [self.mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppVarName]
 #--- Receiver expression
-  [mWarningExpression generateExpression
+  [self.mWarningExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -112,7 +112,7 @@ override method @warningInstructionForGeneration generateInstruction
     ?let messageCppVarName
   ]
 #--- Fix It array
-  [mFixitListForGeneration generateFixIt
+  [self.mFixitListForGeneration generateFixIt
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
@@ -126,7 +126,7 @@ override method @warningInstructionForGeneration generateInstruction
     + receiverCppVarName + ", "
     + messageCppVarName + ", "
     + fixItArrayCppName + " "
-    + [mInstructionLocation commaSourceFile] + ") ;\n"
+    + [self.mInstructionLocation commaSourceFile] + ") ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

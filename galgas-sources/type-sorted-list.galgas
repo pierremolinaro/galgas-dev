@@ -81,9 +81,9 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + mSortedListTypeName ![mSortedListTypeName location]}
+  let key = @lstring.new {!"@" + self.mSortedListTypeName ![self.mSortedListTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for () in mPropertyList do
+  for () in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
   end
 }
@@ -95,7 +95,7 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
 override method @sortedListDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   @propertyInCollectionListAST structAttributeList = {}
-  for () in mPropertyList do
+  for () in self.mPropertyList do
     structAttributeList +=
       !mPropertyTypeName
       !mPropertyName
@@ -103,8 +103,8 @@ override method @sortedListDeclarationAST addAssociatedElement
       !{}
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
-    !mIsPredefined
-    !@lstring.new {!mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName.location}
+    !self.mIsPredefined
+    !@lstring.new {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName.location}
     !structAttributeList
     !""}
 }
@@ -119,11 +119,11 @@ override method @sortedListDeclarationAST enterInSemanticContext
 {
   let optionalMethodMap = @optionalMethodMap {}
 #--- Type index
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mSortedListTypeName ?let listTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mSortedListTypeName ?let listTypeIndex]
 #--- Element type index
   [@unifiedTypeMap-proxy makeProxy
     !?ioSemanticContext.mTypeMap
-    !@lstring.new {!mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName.location}
+    !@lstring.new {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName.location}
     ?let @unifiedTypeMap-proxy listElementTypeIndex
   ]
 #--- Enumeration description
@@ -131,7 +131,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
   @functionSignature constructorAttributeTypeList = {}
   @formalParameterSignature setterFormalArgumentList = {}
   @typedPropertyList typedAttributeList = {}
-  for () in mPropertyList do
+  for () in self.mPropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasGetter = true
     let hasSetter = true
@@ -147,7 +147,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !?constructorMap
     !?ioSemanticContext.mTypeMap
     !name:"emptySortedList"
-    !resultTypeName:[mSortedListTypeName string]
+    !resultTypeName:[self.mSortedListTypeName string]
     !hasLexiqueArg:false
   )
   [!?constructorMap insertKey
@@ -209,15 +209,15 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
-    !mSortedListTypeName
+    !self.mSortedListTypeName
     !?getterMap
     !?setterMap
     !?instanceMethodMap
   )
 #--- Enter in type map
   [!?ioSemanticContext.mTypeMap insertKey
-    !mSortedListTypeName
-    !mIsPredefined
+    !self.mSortedListTypeName
+    !self.mIsPredefined
     !true # Concrete Type
     !@unifiedTypeMap-proxy.null
     !@typeKindEnum. sortedListType
@@ -241,7 +241,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !false # Do not generate header in separate file
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptySortedList" # Default constructor
-    !"-sortedlist-" + [mSortedListTypeName fileNameRepresentation]
+    !"-sortedlist-" + [self.mSortedListTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   ]
 }
@@ -259,14 +259,14 @@ override method @sortedListDeclarationAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let sortedListNameForUsefulness = typeNameForUsefulEntitiesGraph (!mSortedListTypeName)
+  let sortedListNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mSortedListTypeName)
   [!?ioUsefulEntitiesGraph addNode !sortedListNameForUsefulness !sortedListNameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!mSortedListTypeName.string + "-element" !mSortedListTypeName})
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mSortedListTypeName.string + "-element" !self.mSortedListTypeName})
   [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !elementTypeNameForUsefulness]
 #--- Attribute
   var typedAttributeList =@typedPropertyList {}
   @propertyIndexMap attributeMap = {}
-  for () in mPropertyList do
+  for () in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !sortedListNameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
@@ -284,7 +284,7 @@ override method @sortedListDeclarationAST semanticAnalysis
 #--- Sort descriptor
   @stringset attributesUsedForSorting = {}
   @sortDescriptorListForGeneration sortDescriptorList = {}
-  for () in mSortDescriptorList do
+  for () in self.mSortDescriptorList do
     [attributeMap searchKey !mSortedAttributeName ?let @unifiedTypeMap-proxy type]
     sortDescriptorList += !type ![mSortedAttributeName string] !mAscending
     if [attributesUsedForSorting hasKey ![mSortedAttributeName string]] then
@@ -294,10 +294,10 @@ override method @sortedListDeclarationAST semanticAnalysis
   end
 #--- Generate type
   ioSemanticDeclarationListForGeneration +=
-    !"sorted list " + mSortedListTypeName
+    !"sorted list " + self.mSortedListTypeName
     !@sortedListTypeForGeneration.new {
-      !.searchKey {!inSemanticContext.mTypeMap !mSortedListTypeName}
-      !.searchKey {!inSemanticContext.mTypeMap !.new {!mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName}}
+      !.searchKey {!inSemanticContext.mTypeMap !self.mSortedListTypeName}
+      !.searchKey {!inSemanticContext.mTypeMap !.new {!self.mSortedListTypeName.string + elementTypeNameSuffix () !self.mSortedListTypeName}}
       !typedAttributeList
       !sortDescriptorList
     }
@@ -343,24 +343,24 @@ override method @sortedListTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   outHeader = [filewrapper sortedListGenerationTemplate.sortedlistTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    !self.mTypedAttributeList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mSetterMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mOptionalMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    ![self.mTypeProxy mIsConcrete]
+    ![self.mTypeProxy mConstructorMap]
+    ![self.mTypeProxy mGetterMap]
+    ![self.mTypeProxy mSetterMap]
+    ![self.mTypeProxy mInstanceMethodMap]
+    ![self.mTypeProxy mClassMethodMap]
+    ![self.mTypeProxy mOptionalMethodMap]
+    ![self.mTypeProxy mEnumerationDescriptor]
+    ![self.mTypeProxy mHandledOperatorFlags]
+    ![self.mTypeProxy mAddAssignOperatorArguments]
+    ![self.mTypeProxy mTypeForEnumeratedElement]
   ]
  }
 
@@ -370,15 +370,15 @@ override method @sortedListTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  for (t ...) in mTypedAttributeList do
+  for (t ...) in self.mTypedAttributeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
-  [mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mListElementTypeIndex addHeaderFileName !?ioInclusionSet]
+  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper sortedListGenerationTemplate.sortedlistTypeSpecificImplementation
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-    !mSortDescriptorList
+    ![self.mTypeProxy identifierRepresentation]
+    !self.mTypedAttributeList
+    !self.mSortDescriptorList
   ]
  }
 

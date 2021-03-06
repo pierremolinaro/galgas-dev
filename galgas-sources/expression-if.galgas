@@ -45,9 +45,9 @@ syntax extension galgas3ExpressionSyntax {
 override method @ifExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mIfExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mThenExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mElseExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mIfExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mThenExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mElseExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·······················································································································
@@ -61,7 +61,7 @@ override method @ifExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
 #--- 'if' expression analysis
-  [mIfExpression analyzeSemanticExpression
+  [self.mIfExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext.mPredefinedTypes.mBoolType
@@ -71,7 +71,7 @@ override method @ifExpressionAST analyzeSemanticExpression
   ]
 #--- 'then' expression analysis
   @semanticExpressionForGeneration then_expression
-  [mThenExpression analyzeSemanticExpression
+  [self.mThenExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inType
@@ -81,7 +81,7 @@ override method @ifExpressionAST analyzeSemanticExpression
   ]
 #--- 'else' expression analysis
   @semanticExpressionForGeneration else_expression
-  [mElseExpression analyzeSemanticExpression
+  [self.mElseExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inType
@@ -91,18 +91,18 @@ override method @ifExpressionAST analyzeSemanticExpression
   ]
 #--- Check 'if' expression is boolean
   if [[if_expression mResultType] key] != "bool" then
-    error mOperatorLocation
+    error self.mOperatorLocation
     :"the test expression type is '@" + [[if_expression mResultType] key] + "', it should be '@bool'"
     :outExpression
   elsif [then_expression mResultType] != [else_expression mResultType] then
-    error mOperatorLocation
+    error self.mOperatorLocation
     :"operand expression types are '@" + [[then_expression mResultType] key] + "' and '@"+ [[else_expression mResultType] key] + "': they should be the same"
     :outExpression
   else
   #--- Generate expression
     outExpression = @ifExpressionForGeneration.new {
       ![then_expression mResultType]
-      !mOperatorLocation
+      !self.mOperatorLocation
       !if_expression
       !then_expression
       !else_expression
@@ -130,7 +130,7 @@ override method @ifExpressionForGeneration generateExpression
   !@string outCppExpression
 {
 #--- 'if' expression
-  [mIfExpression generateExpression
+  [self.mIfExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -139,13 +139,13 @@ override method @ifExpressionForGeneration generateExpression
   ]
 #--- Result variable
   outCppExpression = "temp_" + [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++
-  ioGeneratedCode += "GALGAS_" + [[mThenExpression mResultType] identifierRepresentation] + " " + outCppExpression + " ;\n"
+  ioGeneratedCode += "GALGAS_" + [[self.mThenExpression mResultType] identifierRepresentation] + " " + outCppExpression + " ;\n"
   let testVar = "test_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
   ioGeneratedCode += "const enumGalgasBool " + testVar + " = " + ifExpression + ".boolEnum () ;\n"
   ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
 #--- 'then' expression
   [!?ioGeneratedCode incIndentation !2]
-  [mThenExpression generateExpression
+  [self.mThenExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -157,7 +157,7 @@ override method @ifExpressionForGeneration generateExpression
 #--- 'else' expression
   ioGeneratedCode += "}else if (kBoolFalse == " + testVar + ") {\n"
   [!?ioGeneratedCode incIndentation !2]
-  [mElseExpression generateExpression
+  [self.mElseExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex

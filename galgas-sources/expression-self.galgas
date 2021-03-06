@@ -43,10 +43,10 @@ override method @selfInExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
   if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
-    error mSelfLocation: "'self' cannot be used in this context" : outExpression
+    error self.mSelfLocation: "'self' cannot be used in this context" : outExpression
   else
     let @string selfCppName = inAnalysisContext.mSelfObjectCppName
-    outExpression = @selfInExpressionForGeneration.new {!inAnalysisContext.mSelfCopyTypeProxy !mSelfLocation !selfCppName}
+    outExpression = @selfInExpressionForGeneration.new {!inAnalysisContext.mSelfCopyTypeProxy !self.mSelfLocation !selfCppName}
   end
 }
 
@@ -67,8 +67,8 @@ override method @selfInExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
   outCppExpression = "temp_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
-  ioGeneratedCode += "const GALGAS_" + [mResultType identifierRepresentation] + " " + outCppExpression + " = " + mSelfCppName + " ;\n"
-  [!?ioUnusedVariableCppNameSet removeKey !mSelfCppName]
+  ioGeneratedCode += "const GALGAS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression + " = " + self.mSelfCppName + " ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !self.mSelfCppName]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

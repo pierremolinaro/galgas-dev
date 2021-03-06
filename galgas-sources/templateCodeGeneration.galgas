@@ -51,7 +51,7 @@ override method @templateInstructionStringForGeneration templateCodeGeneration
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@bool unused ioUseColumnMarker {
-  ioGeneratedCode += "result << " + [mTemplateString utf8Representation] + " ;\n"
+  ioGeneratedCode += "result << " + [self.mTemplateString utf8Representation] + " ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -64,7 +64,7 @@ override method @templateInstructionExpressionForGeneration templateCodeGenerati
   ?!@bool unused ioUseColumnMarker {
 #--- Expression
   @string cppName
-  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?cppName]
+  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?cppName]
   ioGeneratedCode += "result << " + cppName + ".stringValue () ;\n"
 }
 
@@ -78,12 +78,12 @@ override method @templateBlockInstructionForGeneration templateCodeGeneration
   ?!@bool ioUseColumnMarker {
 #--- Expression
   @string indendationVarCppName
-  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?indendationVarCppName]
+  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?indendationVarCppName]
   ioGeneratedCode += "if (" + indendationVarCppName + ".isValid ()) {\n"
   ioGeneratedCode += "  result.incIndentation ((int32_t) " + indendationVarCppName + ".uintValue ()) ;\n"
   ioGeneratedCode += "}\n"
   templateCodeGenerationForListInstruction (
-    !mBlockInstructionList
+    !self.mBlockInstructionList
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -129,25 +129,25 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
   ?!@bool ioUseColumnMarker {
 #---
   @string foreachVarCppName
-  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?foreachVarCppName]
+  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?foreachVarCppName]
 #--- Index
-  if [mIndexCppName length] > 0 then
-    ioGeneratedCode += "GALGAS_uint " + mIndexCppName + " (0) ;\n"
+  if [self.mIndexCppName length] > 0 then
+    ioGeneratedCode += "GALGAS_uint " + self.mIndexCppName + " (0) ;\n"
   end
 #---
   ioGeneratedCode += "if (" + foreachVarCppName + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
-  ioGeneratedCode += "cEnumerator_" + [[mExpression mResultType] identifierRepresentation] + " " + mEnumeratorCppName + " (" + foreachVarCppName + ", "
-                  + if mIsAscending then "kENUMERATION_UP" else "kENUMERATION_DOWN" end + ") ;\n"
+  ioGeneratedCode += "cEnumerator_" + [[self.mExpression mResultType] identifierRepresentation] + " " + self.mEnumeratorCppName + " (" + foreachVarCppName + ", "
+                  + if self.mIsAscending then "kENUMERATION_UP" else "kENUMERATION_DOWN" end + ") ;\n"
 #--- Before
-  if ([mBeforeInstructionList length] + [mAfterInstructionList length]) > 0 then
-    ioGeneratedCode += "const bool nonEmpty_" + mEnumeratorCppName + " = " + mEnumeratorCppName + ".hasCurrentObject () ;\n"
+  if ([self.mBeforeInstructionList length] + [self.mAfterInstructionList length]) > 0 then
+    ioGeneratedCode += "const bool nonEmpty_" + self.mEnumeratorCppName + " = " + self.mEnumeratorCppName + ".hasCurrentObject () ;\n"
   end
-  if [mBeforeInstructionList length] > 0 then
-    ioGeneratedCode += "if (nonEmpty_" + mEnumeratorCppName + ") {\n"
+  if [self.mBeforeInstructionList length] > 0 then
+    ioGeneratedCode += "if (nonEmpty_" + self.mEnumeratorCppName + ") {\n"
     [!?ioGeneratedCode incIndentation !2]
     templateCodeGenerationForListInstruction (
-      !mBeforeInstructionList
+      !self.mBeforeInstructionList
       !?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -157,11 +157,11 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
     [!?ioGeneratedCode decIndentation !2]
     ioGeneratedCode += "}\n"
   end
-  ioGeneratedCode += "while (" + mEnumeratorCppName + ".hasCurrentObject ()) {\n"
+  ioGeneratedCode += "while (" + self.mEnumeratorCppName + ".hasCurrentObject ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
 #--- Do
   templateCodeGenerationForListInstruction (
-    !mDoInstructionList
+    !self.mDoInstructionList
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -169,11 +169,11 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
     !?ioUseColumnMarker
   )
 #--- Between
-  if [mBetweenInstructionList length] > 0 then
-    ioGeneratedCode += "if (" + mEnumeratorCppName + ".hasNextObject ()) {\n"
+  if [self.mBetweenInstructionList length] > 0 then
+    ioGeneratedCode += "if (" + self.mEnumeratorCppName + ".hasNextObject ()) {\n"
     [!?ioGeneratedCode incIndentation !2]
     templateCodeGenerationForListInstruction (
-      !mBetweenInstructionList
+      !self.mBetweenInstructionList
       !?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -184,19 +184,19 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
     ioGeneratedCode += "}\n"
   end
 #--- Index
-  if [mIndexCppName length] > 0 then
-    ioGeneratedCode += mIndexCppName + ".increment () ;\n"
+  if [self.mIndexCppName length] > 0 then
+    ioGeneratedCode += self.mIndexCppName + ".increment () ;\n"
   end
 #---
-  ioGeneratedCode += mEnumeratorCppName + ".gotoNextObject () ;\n"
+  ioGeneratedCode += self.mEnumeratorCppName + ".gotoNextObject () ;\n"
   [!?ioGeneratedCode decIndentation !2]
   ioGeneratedCode += "}\n"
 #--- After
-  if [mAfterInstructionList length] > 0 then
-    ioGeneratedCode += "if (nonEmpty_" + mEnumeratorCppName + ") {\n"
+  if [self.mAfterInstructionList length] > 0 then
+    ioGeneratedCode += "if (nonEmpty_" + self.mEnumeratorCppName + ") {\n"
     [!?ioGeneratedCode incIndentation !2]
     templateCodeGenerationForListInstruction (
-      !mAfterInstructionList
+      !self.mAfterInstructionList
       !?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -219,7 +219,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker {
-  for () in mTemplateInstructionIfBranchList do
+  for () in self.mTemplateInstructionIfBranchList do
   #--- IF expression
     @string ifVarCppName
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?ifVarCppName]
@@ -241,14 +241,14 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
   end
 #--- else instructions
   templateCodeGenerationForListInstruction (
-    !mElseInstructionList
+    !self.mElseInstructionList
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !?ioUseColumnMarker
   )
-  for () in mTemplateInstructionIfBranchList do
+  for () in self.mTemplateInstructionIfBranchList do
     [!?ioGeneratedCode decIndentation !2]
     ioGeneratedCode += "}\n"
   end

@@ -26,9 +26,9 @@ abstract getter @lexicalExpressionAST generateConditionCode
 override getter @lexicalOrExpressionAST generateConditionCode
   ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
-  outGeneratedCode = [mLeftOperand generateConditionCode !context:inLexiqueAnalysisContext]
+  outGeneratedCode = [self.mLeftOperand generateConditionCode !context:inLexiqueAnalysisContext]
   outGeneratedCode += " || "
-  outGeneratedCode += [mRightOperand generateConditionCode !context:inLexiqueAnalysisContext]
+  outGeneratedCode += [self.mRightOperand generateConditionCode !context:inLexiqueAnalysisContext]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -38,9 +38,9 @@ override getter @lexicalCharacterIntervalMatchAST generateConditionCode
   -> @string outGeneratedCode {
   outGeneratedCode = ""
   outGeneratedCode = "testForInputUTF32CharRange ("
-  outGeneratedCode += [[mLowerBound char] utf32CharConstantRepresentation]
+  outGeneratedCode += [[self.mLowerBound char] utf32CharConstantRepresentation]
   outGeneratedCode += ", "
-  outGeneratedCode += [[mUpperBound char] utf32CharConstantRepresentation]
+  outGeneratedCode += [[self.mUpperBound char] utf32CharConstantRepresentation]
   outGeneratedCode += ")"
 }
 
@@ -49,9 +49,9 @@ override getter @lexicalCharacterIntervalMatchAST generateConditionCode
 override getter @lexicalStringMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
-  outGeneratedCode = "testForInputUTF32String (kUnicodeString_" + [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_" + [mString identifierRepresentation]
+  outGeneratedCode = "testForInputUTF32String (kUnicodeString_" + [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_" + [self.mString identifierRepresentation]
   outGeneratedCode += ", "
-  outGeneratedCode += [[mString length] string]
+  outGeneratedCode += [[self.mString length] string]
   outGeneratedCode += ", true)"
 }
 
@@ -61,12 +61,12 @@ override getter @lexicalStringNotMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "notTestForInputUTF32String (kUnicodeString_" + [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_"
-  outGeneratedCode += [mString identifierRepresentation]
+  outGeneratedCode += [self.mString identifierRepresentation]
   outGeneratedCode += ", "
-  outGeneratedCode += [[mString length] string]
+  outGeneratedCode += [[self.mString length] string]
   outGeneratedCode += ", gLexicalMessage_"
   outGeneratedCode += [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_"
-  outGeneratedCode += [mErrorMessage string]
+  outGeneratedCode += [self.mErrorMessage string]
   outGeneratedCode += " COMMA_LINE_AND_SOURCE_FILE)"
 }
 
@@ -76,7 +76,7 @@ override getter @lexicalCharacterMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "testForInputUTF32Char ("
-  outGeneratedCode += [[mCharacter char] utf32CharConstantRepresentation]
+  outGeneratedCode += [[self.mCharacter char] utf32CharConstantRepresentation]
   outGeneratedCode += ")"
 }
 
@@ -86,7 +86,7 @@ override getter @lexicalCharacterSetMatchAST generateConditionCode
   ?context:let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "testForCharWithFunction ("
-  outGeneratedCode += [mCharacterSetName string]
+  outGeneratedCode += [self.mCharacterSetName string]
   outGeneratedCode += ")"
 }
 
@@ -101,21 +101,21 @@ abstract getter @lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineO
 
 override getter @lexicalAttributeInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode {
-  outGeneratedCode = "token.mLexicalAttribute_" + [mAttributeName identifierRepresentation]
+  outGeneratedCode = "token.mLexicalAttribute_" + [self.mAttributeName identifierRepresentation]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalCharacterInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode {
-  outGeneratedCode = [[mCharacter char] utf32CharConstantRepresentation]
+  outGeneratedCode = [[self.mCharacter char] utf32CharConstantRepresentation]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalUnsignedInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode {
-  outGeneratedCode = [[mUnsigned uint] string]
+  outGeneratedCode = [[self.mUnsigned uint] string]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -129,8 +129,8 @@ override getter @lexicalCurrentCharacterInputArgumentAST generateRoutineOrFuncti
 
 override getter @lexicalFunctionInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode {
-  outGeneratedCode = "::scanner_function_" + mFunctionName + " (*this"
-  for () in mFunctionActualArgumentList do
+  outGeneratedCode = "::scanner_function_" + self.mFunctionName + " (*this"
+  for () in self.mFunctionActualArgumentList do
     outGeneratedCode += ", " + [mLexicalActualInputArgument generateRoutineOrFunctionArgument]
   end
   outGeneratedCode += ")"
@@ -147,14 +147,14 @@ abstract getter @abstractLexicalRoutineActualArgumentAST generateRoutineArgument
 
 override getter @lexicalAttributeInputOutputArgumentAST generateRoutineArgument
   -> @string outGeneratedCode {
-  outGeneratedCode = "token.mLexicalAttribute_" + [mAttributeName identifierRepresentation]
+  outGeneratedCode = "token.mLexicalAttribute_" + [self.mAttributeName identifierRepresentation]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalFormalInputArgumentAST generateRoutineArgument
   -> @string outGeneratedCode {
-  outGeneratedCode = [mRoutineOrFunctionFormalInputArgument generateRoutineOrFunctionArgument]
+  outGeneratedCode = [self.mRoutineOrFunctionFormalInputArgument generateRoutineOrFunctionArgument]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -171,7 +171,7 @@ override getter @lexicalSendTerminalByDefaultAST generateDefaultSendCode
   ?let @string unused inScannerClassName
   -> @string outGeneratedCode
 {
-  outGeneratedCode = "token.mTokenCode = kToken_" + mDefaultSentTerminal + " ;\n"
+  outGeneratedCode = "token.mTokenCode = kToken_" + self.mDefaultSentTerminal + " ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -179,7 +179,7 @@ override getter @lexicalSendTerminalByDefaultAST generateDefaultSendCode
 override getter @lexicalErrorByDefaultAST generateDefaultSendCode
   ?let @string inScannerClassName
   -> @string outGeneratedCode {
-  outGeneratedCode = "lexicalError (gLexicalMessage_" + inScannerClassName + "_" + mDefaultErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
+  outGeneratedCode = "lexicalError (gLexicalMessage_" + inScannerClassName + "_" + self.mDefaultErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -198,14 +198,14 @@ override getter @lexicalStructuredSendInstructionAST generateInstructionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = ""
-  for () in mLexicalSendSearchList do
+  for () in self.mLexicalSendSearchList do
     outGeneratedCode += "if (token.mTokenCode == -1) {\n"
 #    outGeneratedCode += "  token.mIsOptional = false ;\n"
     outGeneratedCode += "  token.mTokenCode = search_into_" + mSearchListName + " (token.mLexicalAttribute_" + [mAttributeName identifierRepresentation] + ") ;\n"
     outGeneratedCode += "}\n"
   end
   outGeneratedCode += "if (token.mTokenCode == -1) {\n"
-  outGeneratedCode += "  " + [mLexicalSendDefaultAction generateDefaultSendCode !inScannerClassName]
+  outGeneratedCode += "  " + [self.mLexicalSendDefaultAction generateDefaultSendCode !inScannerClassName]
   outGeneratedCode += "}\n"
   outGeneratedCode += "enterToken (token) ;\n"
 }
@@ -217,20 +217,8 @@ override getter @lexicalDropInstructionAST generateInstructionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 {
-  outGeneratedCode = "enterDroppedTerminal (kToken_" + [mTerminalName identifierRepresentation] + ") ;\n"
+  outGeneratedCode = "enterDroppedTerminal (kToken_" + [self.mTerminalName identifierRepresentation] + ") ;\n"
 }
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-#override getter @lexicalOptionInstructionAST generateInstructionCode
-#  ?let @string unused inScannerClassName
-#  ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
-#  -> @string outGeneratedCode
-#{
-#  outGeneratedCode  = "token.mTokenCode = kToken_" + [mTerminalName identifierRepresentation] + " ;\n"
-##  outGeneratedCode += "token.mIsOptional = true ;\n"
-#  outGeneratedCode += "enterToken (token) ;\n"
-#}
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -239,7 +227,7 @@ override getter @lexicalSimpleSendInstructionAST generateInstructionCode
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 {
-  outGeneratedCode  = "token.mTokenCode = kToken_" + [mSentTerminal identifierRepresentation] + " ;\n"
+  outGeneratedCode  = "token.mTokenCode = kToken_" + [self.mSentTerminal identifierRepresentation] + " ;\n"
 #  outGeneratedCode += "token.mIsOptional = false ;\n"
   outGeneratedCode += "enterToken (token) ;\n"
 }
@@ -253,11 +241,11 @@ override getter @lexicalRepeatInstructionAST generateInstructionCode
   outGeneratedCode = "do {\n"
   [!?outGeneratedCode incIndentation !2]
 #--- Repeated instruction
-  for () in mRepeatedInstructionList do
+  for () in self.mRepeatedInstructionList do
     outGeneratedCode += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
   end
 #---
-  for () in mLexicalWhileBranchList
+  for () in self.mLexicalWhileBranchList
   do
     outGeneratedCode += "if ("
     outGeneratedCode += [mWhileExpression generateConditionCode !context:inLexiqueAnalysisContext]
@@ -286,7 +274,7 @@ override getter @lexicalSelectInstructionAST generateInstructionCode
   -> @string outGeneratedCode {
   outGeneratedCode = ""
 #---
-  for () in mLexicalSelectBranchList
+  for () in self.mLexicalSelectBranchList
   do
     outGeneratedCode += "if ("
     outGeneratedCode += [mSelectExpression generateConditionCode !context:inLexiqueAnalysisContext]
@@ -300,10 +288,10 @@ override getter @lexicalSelectInstructionAST generateInstructionCode
     outGeneratedCode += "}else "
   end
 #--- Default branch
-  if [mDefaultInstructionList length] > 0 then
+  if [self.mDefaultInstructionList length] > 0 then
     outGeneratedCode += "}else{\n"
     [!?outGeneratedCode incIndentation !2]
-    for () in mDefaultInstructionList do
+    for () in self.mDefaultInstructionList do
       outGeneratedCode += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
     end
     [!?outGeneratedCode decIndentation !2]
@@ -317,11 +305,11 @@ override getter @lexicalRoutineInstructionAST generateInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
-  outGeneratedCode = "::scanner_routine_" + mRoutineName + " (*this"
-  for () in mActualArgumentList do
+  outGeneratedCode = "::scanner_routine_" + self.mRoutineName + " (*this"
+  for () in self.mActualArgumentList do
     outGeneratedCode += ", " + [mLexicalRoutineActualArgument generateRoutineArgument]
   end
-  for () in mErrorMessageList do
+  for () in self.mErrorMessageList do
     outGeneratedCode += ", gLexicalMessage_" + inScannerClassName + "_" + mValue
   end
   outGeneratedCode += ") ;\n"
@@ -333,7 +321,7 @@ override getter @lexicalErrorInstructionAST generateInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
-  outGeneratedCode = "lexicalError (gLexicalMessage_" + inScannerClassName + "_" + mErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
+  outGeneratedCode = "lexicalError (gLexicalMessage_" + inScannerClassName + "_" + self.mErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -342,7 +330,7 @@ override getter @lexicalWarningInstructionAST generateInstructionCode
   ?let @string inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
-  outGeneratedCode = "lexicalWarning (gLexicalMessage_" + inScannerClassName + "_" + mWarningMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
+  outGeneratedCode = "lexicalWarning (gLexicalMessage_" + inScannerClassName + "_" + self.mWarningMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -351,9 +339,9 @@ override getter @lexicalTagInstructionAST generateInstructionCode
   ?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
-  outGeneratedCode = "const C_LocationInSource currentLocationForTag_" + mLexicalTagName + " = mCurrentLocation ;\n"
-                    + "const C_LocationInSource endLocationForTag_" + mLexicalTagName + " = mTokenEndLocation ;\n"
-                    + "const utf32 currentCharForTag_" + mLexicalTagName + " = mCurrentChar ;\n"
+  outGeneratedCode = "const C_LocationInSource currentLocationForTag_" + self.mLexicalTagName + " = mCurrentLocation ;\n"
+                    + "const C_LocationInSource endLocationForTag_" + self.mLexicalTagName + " = mTokenEndLocation ;\n"
+                    + "const utf32 currentCharForTag_" + self.mLexicalTagName + " = mCurrentChar ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -362,10 +350,10 @@ override getter @lexicalRewindInstructionAST generateInstructionCode
   ?let @string unused inScannerClassName
   ?let @lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
-  outGeneratedCode = "mCurrentLocation = currentLocationForTag_" + mLexicalTagName + " ;\n"
-                    + "mTokenEndLocation = endLocationForTag_" + mLexicalTagName + " ;\n"
-                    + "mCurrentChar = currentCharForTag_" + mLexicalTagName + " ;\n"
-                    + "token.mTokenCode = kToken_" + [mTerminalName identifierRepresentation] + " ;\n"
+  outGeneratedCode = "mCurrentLocation = currentLocationForTag_" + self.mLexicalTagName + " ;\n"
+                    + "mTokenEndLocation = endLocationForTag_" + self.mLexicalTagName + " ;\n"
+                    + "mCurrentChar = currentCharForTag_" + self.mLexicalTagName + " ;\n"
+                    + "token.mTokenCode = kToken_" + [self.mTerminalName identifierRepresentation] + " ;\n"
 #                    + "token.mIsOptional = false ;\n"
                     + "enterToken (token) ;\n"
 }
@@ -395,7 +383,7 @@ override getter @lexicalImplicitRuleAST generateCode
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   @tokenSortedlist tokenSortedList
-  [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?tokenSortedList ?*]
+  [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !self.mListName ?* ?tokenSortedList ?*]
   outGeneratedCode = ""
   for > () in tokenSortedList do
     outGeneratedCode += "if (testForInputUTF32String (kUnicodeString_" + inScannerClassName + "_"
@@ -417,10 +405,10 @@ override getter @lexicalExplicitRuleAST generateCode
   ?let @lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "if ("
-  outGeneratedCode += [mLexicalRuleExpression generateConditionCode !context:inLexiqueAnalysisContext]
+  outGeneratedCode += [self.mLexicalRuleExpression generateConditionCode !context:inLexiqueAnalysisContext]
   outGeneratedCode += ") {\n"
   [!?outGeneratedCode incIndentation !2]
-  for () in mInstructionList do
+  for () in self.mInstructionList do
     outGeneratedCode += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
   end
   [!?outGeneratedCode decIndentation !2]

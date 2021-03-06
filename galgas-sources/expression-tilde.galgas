@@ -33,7 +33,7 @@ syntax extension galgas3ExpressionSyntax {
 override method @tildeExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -47,7 +47,7 @@ override method @tildeExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
 #--- Expression analysis
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -64,14 +64,14 @@ override method @tildeExpressionAST analyzeSemanticExpression
       !~ [exp mValue]
     }
   elsif not [[type mHandledOperatorFlags] prefixTildeOperator] then
-    error mOperatorLocation
+    error self.mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the '~' operator"
     :outExpression
   else
   #--- Generate expression
     outExpression = @tildeExpressionForGeneration.new {
       !type
-      !mOperatorLocation
+      !self.mOperatorLocation
       !expression
     }
   end
@@ -93,12 +93,12 @@ override method @tildeExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[mExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Operand
   @string operand
-  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?operand]
+  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?operand]
 #--- Generate
-  outCppExpression = operand + ".operator_tilde (" + [mLocation sourceFile] + ")"
+  outCppExpression = operand + ".operator_tilde (" + [self.mLocation sourceFile] + ")"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

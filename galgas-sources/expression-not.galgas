@@ -33,7 +33,7 @@ syntax extension galgas3ExpressionSyntax {
 override method @notExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -47,7 +47,7 @@ override method @notExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
   @semanticExpressionForGeneration expression
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -58,18 +58,18 @@ override method @notExpressionAST analyzeSemanticExpression
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
   if expression is == @trueExpressionForGeneration then
-    outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mOperatorLocation}
+    outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mOperatorLocation}
   elsif expression is == @falseExpressionForGeneration then
-    outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mOperatorLocation}
+    outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !self.mOperatorLocation}
   elsif not [[type mHandledOperatorFlags] prefixNotOperator] then
-    error mOperatorLocation
+    error self.mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the 'not' operator"
     :outExpression
   else
   #--- Generate expression
     outExpression = @notExpressionForGeneration.new {
       !type
-      !mOperatorLocation
+      !self.mOperatorLocation
       !expression
     }
   end
@@ -91,12 +91,12 @@ override method @notExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[mExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Operand
   @string operand
-  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?operand]
+  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?operand]
 #--- Generate
-  outCppExpression = operand + ".operator_not (" + [mLocation sourceFile] + ")"
+  outCppExpression = operand + ".operator_not (" + [self.mLocation sourceFile] + ")"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

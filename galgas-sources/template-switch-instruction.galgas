@@ -122,7 +122,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
 {
 #---
   @semanticExpressionForGeneration switchExpression
-  [mSwitchExpression templateExpressionAnalysis 
+  [self.mSwitchExpression templateExpressionAnalysis 
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
@@ -137,7 +137,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
 #--- Analyze branches
 #  @switchBranchesForGeneration switchBranchesForGeneration = {}
   @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList = {}
-  for () in mTemplateInstructionSwitchBranchList do
+  for () in self.mTemplateInstructionSwitchBranchList do
     @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}
     @bool firstConstant = true
     var analysisContext = inAnalysisContext 
@@ -202,7 +202,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     for () in forgottenConstants do
       s += "\n  - " + key
     end
-    error mSwitchExpressionEndLocation
+    error self.mSwitchExpressionEndLocation
     : "the switch instruction should name all enumeration constants; missing constants are:" + s
   end
 
@@ -286,7 +286,7 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
   ?!@bool ioUseColumnMarker
 {
 #--- Expression
-  [mSwitchExpression generateExpression
+  [self.mSwitchExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -295,18 +295,18 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
   ]
 #---
   ioGeneratedCode += "switch (" + switchVarCppName + ".enumValue ()) {\n"
-  ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kNotBuilt :\n"
+  ioGeneratedCode += "case GALGAS_" + [[self.mSwitchExpression mResultType] identifierRepresentation] + "::kNotBuilt :\n"
   ioGeneratedCode += "  break ;\n"
 #---
-  for () in mTemplateInstructionSwitchBranchList do
+  for () in self.mTemplateInstructionSwitchBranchList do
     for () in mConstantList do
-      ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation]
+      ioGeneratedCode += "case GALGAS_" + [[self.mSwitchExpression mResultType] identifierRepresentation]
                       + "::kEnum_" + [[mValue string] identifierRepresentation] + " :\n"
     end
     [!?ioGeneratedCode incIndentation !2]
     ioGeneratedCode += "{\n"
     if [mExtractedAssociatedValuesForGeneration length] > 0 then
-      let type = "const cEnumAssociatedValues_" + [mEnumType identifierRepresentation]
+      let type = "const cEnumAssociatedValues_" + [self.mEnumType identifierRepresentation]
         + "_" + [mConstantList mValueAtIndex!0].string + " *"
       let varPtr = "extractPtr_" + mEndOfBranchLocationIndex
       ioGeneratedCode += "  " + type + " " + varPtr + " = (" + type + ") (" + switchVarCppName + ".unsafePointer ()) ;\n"

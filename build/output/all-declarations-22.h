@@ -10,6 +10,49 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Function 'forbiddenKeysForMapAndDict'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_stringset function_forbiddenKeysForMapAndDict (class C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterConstructorWithArgument'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterConstructorWithArgument (class GALGAS_constructorMap & ioArgument0,
+                                           class GALGAS_unifiedTypeMap & ioArgument1,
+                                           const class GALGAS_string constinArgument2,
+                                           const class GALGAS_string constinArgument3,
+                                           const class GALGAS_string constinArgument4,
+                                           const class GALGAS_string constinArgument5,
+                                           const class GALGAS_bool constinArgument6,
+                                           class C_Compiler * inCompiler
+                                           COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterInheritedGetterWith2Arguments'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterInheritedGetterWith_32_Arguments (class GALGAS_getterMap & ioArgument0,
+                                                    class GALGAS_unifiedTypeMap & ioArgument1,
+                                                    const class GALGAS_string constinArgument2,
+                                                    const class GALGAS_string constinArgument3,
+                                                    const class GALGAS_string constinArgument4,
+                                                    const class GALGAS_string constinArgument5,
+                                                    const class GALGAS_string constinArgument6,
+                                                    const class GALGAS_string constinArgument7,
+                                                    const class GALGAS_bool constinArgument8,
+                                                    class C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Filewrapper 'mapProxyGenerationTemplate'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -798,13 +841,4 @@ void routine_checkMethodSignatures (const class GALGAS_formalParameterListForGen
                                     const class GALGAS_location constinArgument3,
                                     class C_Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Function 'generateFewHeaderFiles'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-class GALGAS_bool function_generateFewHeaderFiles (class C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) ;
 

@@ -12,7 +12,7 @@ class @dictDeclarationAST : @semanticDeclarationAST {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @dictDeclarationAST keyRepresentation ->@string outString {
-  outString = "dict @" + mDictTypeName
+  outString = "dict @" + self.mDictTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -66,13 +66,13 @@ syntax extension galgas3DeclarationsSyntax {
 
 override method @dictDeclarationAST addAssociatedElement ?!@semanticDeclarationListAST ioSemanticDeclarationList {
   @propertyInCollectionListAST structAttributeList = {}
-  structAttributeList += !mKeyTypeName !["key" nowhere] !true !{}
-  for () in mPropertyList do
+  structAttributeList += !self.mKeyTypeName !["key" nowhere] !true !{}
+  for () in self.mPropertyList do
     structAttributeList += !mPropertyTypeName !mPropertyName !true !{}
   end
   ioSemanticDeclarationList += !@structDeclarationAST.new {
-    !mIsPredefined
-    !.new {!mDictTypeName.string + elementTypeNameSuffix () !mDictTypeName.location}
+    !self.mIsPredefined
+    !.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}
     !structAttributeList
     !""
   }
@@ -89,10 +89,10 @@ override method @dictDeclarationAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
  {
-  let dictionary = @lstring.new {!"@" + mDictTypeName ![mDictTypeName location]}
+  let dictionary = @lstring.new {!"@" + self.mDictTypeName ![self.mDictTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !dictionary !self]
-  [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mKeyTypeName !mKeyTypeName}]
-  for () in mPropertyList do
+  [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + self.mKeyTypeName !self.mKeyTypeName}]
+  for () in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName !mPropertyTypeName}]
   end
 }
@@ -107,12 +107,12 @@ override method @dictDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- key type index
-  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !mKeyTypeName ?let keyTypeIndex]
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !self.mKeyTypeName ?let keyTypeIndex]
 #--- Enumeration description
   var enumerationDescriptor = @enumerationDescriptorList.listWithValue {!keyTypeIndex !"key"}
 #--- Attributes
   @bool usesSelectorsInInsertAndSearch = false
-  for (s) in mAttributeList do
+  for (s) in self.mAttributeList do
     if s.string == "selectors" then
       if usesSelectorsInInsertAndSearch then
         error s : "duplicated attribute"
@@ -132,14 +132,14 @@ override method @dictDeclarationAST enterInSemanticContext
     !?constructorMap
     !?ioSemanticContext.mTypeMap
     !name:"emptyDict"
-    !resultTypeName:mDictTypeName.string
+    !resultTypeName:self.mDictTypeName.string
     !hasLexiqueArg:false
   )
 #--- Getters
   enterBaseGetterWithArgument (
     !?getterMap
     !?ioSemanticContext.mTypeMap
-    !"hasKey" !mKeyTypeName.string !"inKey"
+    !"hasKey" !self.mKeyTypeName.string !"inKey"
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
@@ -173,7 +173,7 @@ override method @dictDeclarationAST enterInSemanticContext
     !keyTypeIndex
     !"inKey"
   var typesToIncludeInHeaderCompilation = @unifiedTypeMapProxyList.emptyList
-  for () in mPropertyList do
+  for () in self.mPropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasGetter = true
     let hasSetter = true
@@ -200,7 +200,7 @@ override method @dictDeclarationAST enterInSemanticContext
   end
 #--- Handle remove setter
   [!?setterMap insertOrReplace
-    !.new {!"removeKey" !mDictTypeName.location}
+    !.new {!"removeKey" !self.mDictTypeName.location}
     !@methodKind.definedAsMember
     !removeMethodFormalArgumentList
     !true
@@ -209,16 +209,16 @@ override method @dictDeclarationAST enterInSemanticContext
   ]
 #--- Handle search methods (methods if no state, setters if states)
   [!?instanceMethodMap insertKey
-    !.new {!"searchKey" !mDictTypeName}
+    !.new {!"searchKey" !self.mDictTypeName}
     !@methodKind.definedAsMember
     !removeMethodFormalArgumentList
-    !mDictTypeName.location
+    !self.mDictTypeName.location
     !true
     !@methodQualifier.isBasic
     !"" # No error message
   ]
 #--- Enter "attributeForKey" getters
-  for () in mPropertyList do
+  for () in self.mPropertyList do
     let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
@@ -233,7 +233,7 @@ override method @dictDeclarationAST enterInSemanticContext
     ]
   end
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor
-  for () in mPropertyList do
+  for () in self.mPropertyList do
     let accessorName = @lstring.new {
       !"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey"
       ![mPropertyName location]
@@ -261,7 +261,7 @@ override method @dictDeclarationAST enterInSemanticContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
-    !mDictTypeName
+    !self.mDictTypeName
     !?getterMap
     !?setterMap
     !?instanceMethodMap
@@ -269,7 +269,7 @@ override method @dictDeclarationAST enterInSemanticContext
 #--- Element type index
   [@unifiedTypeMap-proxy makeProxy
     !?ioSemanticContext.mTypeMap
-    !@lstring.new {!mDictTypeName.string + elementTypeNameSuffix () !mDictTypeName.location}
+    !@lstring.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}
     ?let @unifiedTypeMap-proxy elementTypeProxy
   ]
 #--- Add Optional method
@@ -277,8 +277,8 @@ override method @dictDeclarationAST enterInSemanticContext
   [!?optionalMethodMap insertKey !["searchKey" nowhere] !optionalMethodSignature]
 #--- Enter in type map
   [!?ioSemanticContext.mTypeMap insertKey
-    !mDictTypeName
-    !mIsPredefined
+    !self.mDictTypeName
+    !self.mIsPredefined
     !true # Concrete Type
     !@unifiedTypeMap-proxy.null
     !@typeKindEnum.mapType
@@ -302,7 +302,7 @@ override method @dictDeclarationAST enterInSemanticContext
     !false # Do not generate header in separate file
     !elementTypeProxy # Type for enumerated element for "for" instruction
     !"emptyDict"
-    !"dict-" + [mDictTypeName fileNameRepresentation]
+    !"dict-" + [self.mDictTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   ]
 }
@@ -363,14 +363,14 @@ override method @dictDeclarationAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mDictTypeName)
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mDictTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!mDictTypeName.string + "-element" !mDictTypeName})
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mDictTypeName.string + "-element" !self.mDictTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #------ Enter attributes
   @typedPropertyList typedAttributeList = {}
   @propertyIndexMap attributeMap = {}
-  for () in mPropertyList do
+  for () in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     @unifiedTypeMap-proxy t = .searchKey{!inSemanticContext.mTypeMap !mPropertyTypeName}
@@ -395,13 +395,13 @@ override method @dictDeclarationAST semanticAnalysis
   end
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
-    !"dict " + mDictTypeName
+    !"dict " + self.mDictTypeName
     !@dictTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mDictTypeName}
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!mDictTypeName.string + elementTypeNameSuffix () !mDictTypeName.location}}
-      !mDictTypeName
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mDictTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !@lstring.new {!self.mDictTypeName.string + elementTypeNameSuffix () !self.mDictTypeName.location}}
+      !self.mDictTypeName
       !typedAttributeList
-      !mKeyTypeName
+      !self.mKeyTypeName
     }
 }
   
@@ -423,24 +423,24 @@ override method @dictTypeForGeneration appendDeclaration1
   !@string outHeader
 {
   outHeader = [filewrapper typeGenerationTemplate.dictTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    !self.mTypedAttributeList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mSetterMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mOptionalMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    ![self.mTypeProxy mIsConcrete]
+    ![self.mTypeProxy mConstructorMap]
+    ![self.mTypeProxy mGetterMap]
+    ![self.mTypeProxy mSetterMap]
+    ![self.mTypeProxy mInstanceMethodMap]
+    ![self.mTypeProxy mClassMethodMap]
+    ![self.mTypeProxy mOptionalMethodMap]
+    ![self.mTypeProxy mEnumerationDescriptor]
+    ![self.mTypeProxy mHandledOperatorFlags]
+    ![self.mTypeProxy mAddAssignOperatorArguments]
+    ![self.mTypeProxy mTypeForEnumeratedElement]
   ]
 }
 
@@ -450,12 +450,12 @@ override method @dictTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  [mElementTypeProxy addHeaderFileName !?ioInclusionSet]
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mElementTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper typeGenerationTemplate.dictTypeSpecificImplementation
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-    ![mKeyTypeName identifierRepresentation]
+    ![self.mTypeProxy identifierRepresentation]
+    !self.mTypedAttributeList
+    ![self.mKeyTypeName identifierRepresentation]
   ]
 }
 

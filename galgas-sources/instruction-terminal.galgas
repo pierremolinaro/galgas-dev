@@ -79,15 +79,15 @@ override method @terminalCheckInstruction transformInstruction
   ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
   @uint terminalSymbolIndex
-  with [mTerminalName string] in ioActuallyUsedTerminalSymbolMap  do
+  with [self.mTerminalName string] in ioActuallyUsedTerminalSymbolMap  do
     terminalSymbolIndex = mTerminalIndex
   else
     terminalSymbolIndex = [ioActuallyUsedTerminalSymbolMap count]
-    [!?ioActuallyUsedTerminalSymbolMap insertKey !mTerminalName !terminalSymbolIndex]
+    [!?ioActuallyUsedTerminalSymbolMap insertKey !self.mTerminalName !terminalSymbolIndex]
   end
   ioSyntaxInstructionList += !@terminalInstructionForGrammarAnalysis.new {
-    !mInstructionLocation
-    !mTerminalName
+    !self.mInstructionLocation
+    !self.mTerminalName
     !terminalSymbolIndex
   }
 }
@@ -109,19 +109,19 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount {
-  [inTerminalMap searchKey !mTerminalName ?let @lexicalSentValueList sentAttributeList]
+  [inTerminalMap searchKey !self.mTerminalName ?let @lexicalSentValueList sentAttributeList]
 #---
-  if [mActualInputParameterList length] != [sentAttributeList length] then
-    error mTerminalName
-    : "naming the '$" + mTerminalName + "$' terminal requires " + [[sentAttributeList length] string]
+  if [self.mActualInputParameterList length] != [sentAttributeList length] then
+    error self.mTerminalName
+    : "naming the '$" + self.mTerminalName + "$' terminal requires " + [[sentAttributeList length] string]
     + " input parameter" + if [sentAttributeList length] > 1 then "s" else "" end
     + ", but this instruction names "
-    + [[mActualInputParameterList length] string] + " input parameter" 
-    + if [mActualInputParameterList length] > 1 then "s" else "" end
+    + [[self.mActualInputParameterList length] string] + " input parameter" 
+    + if [self.mActualInputParameterList length] > 1 then "s" else "" end
   end
 #---
   var terminalCheckAssignementList =@terminalCheckAssignementList {}
-  for () in mActualInputParameterList, () in sentAttributeList do
+  for () in self.mActualInputParameterList, () in sentAttributeList do
     [mInputParameter analyzeInputParameter
       !inAnalysisContext
       !mLexicalType
@@ -135,31 +135,31 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
     end
   end
 #---
-  for () in mIndexingKeyList do
+  for () in self.mIndexingKeyList do
     if not [inIndexNameSet hasKey ![mValue0 string]] then
       error mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique" fixit { replace inIndexNameSet }
     end
   end
 #--- Check syntax directed translation destination variable
-  [mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor analyzeSDT
+  [self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor analyzeSDT
     !inAnalysisContext
     !inHasTranslateFeature
     !?ioVariableMap
   ]
-  [mGrammarInstructionSyntaxDirectedTranslationToken analyzeSDT
+  [self.mGrammarInstructionSyntaxDirectedTranslationToken analyzeSDT
     !inAnalysisContext
     !inHasTranslateFeature
     !?ioVariableMap
   ]
 #---
   ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration.new {
-    !mInstructionLocation
-    !mTerminalName
+    !self.mInstructionLocation
+    !self.mTerminalName
     !inLexiqueName
     !terminalCheckAssignementList
-    !mIndexingKeyList
-    !mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
-    !mGrammarInstructionSyntaxDirectedTranslationToken
+    !self.mIndexingKeyList
+    !self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+    !self.mGrammarInstructionSyntaxDirectedTranslationToken
   }
 }
 
@@ -185,11 +185,11 @@ override method @terminalCheckInstructionForGeneration appendSyntaxSignature
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
  {
   ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration.new {
-    !mInstructionLocation
-    !mTerminalName
-    !mLexiqueIdentifier
+    !self.mInstructionLocation
+    !self.mTerminalName
+    !self.mLexiqueIdentifier
     !@terminalCheckAssignementList.emptyList
-    !mIndexingKeyList
+    !self.mIndexingKeyList
     !@grammarInstructionSyntaxDirectedTranslationResultNone.new
     !@grammarInstructionSyntaxDirectedTranslationResultNone.new
   }
@@ -205,21 +205,21 @@ override getter @terminalCheckInstructionForGeneration compareInstructionSyntaxS
 {
   cast inTestedInstruction
   case >= @terminalCheckInstructionForGeneration si :
-    outOk = [mTerminalName string] == [[si mTerminalName] string]
+    outOk = [self.mTerminalName string] == [[si mTerminalName] string]
     if not outOk then
       error [si mInstructionLocation]
-      :"syntax signature error; the expected syntax instruction here is the '$" + mTerminalName + "$' terminal check"
+      :"syntax signature error; the expected syntax instruction here is the '$" + self.mTerminalName + "$' terminal check"
     end
   case >= @syntaxInstructionForGeneration si :
     error [si mInstructionLocation]
-      :"syntax signature error; the expected syntax instruction here is the '$" + mTerminalName + "$' terminal check"
+      :"syntax signature error; the expected syntax instruction here is the '$" + self.mTerminalName + "$' terminal check"
     outOk = false
   else
-    error mInstructionLocation : "internal error"
+    error self.mInstructionLocation : "internal error"
     outOk = false
   end
   if not outOk then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"reference syntax instruction is here"
   end  
 }
@@ -235,7 +235,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
 #--- Get synthetized attributes
-  for () in mTerminalCheckAssignementList do
+  for () in self.mTerminalCheckAssignementList do
     if mTypeName != "" then
       ioGeneratedCode += "GALGAS_" + [mTypeName identifierRepresentation] + " "
     else
@@ -245,20 +245,20 @@ override method @terminalCheckInstructionForGeneration generateInstruction
                     + " () ;\n"
   end
 #--- Indexing
-  for () in mIndexingKeyList do
+  for () in self.mIndexingKeyList do
     ioGeneratedCode += compilerCppName ()
-    ioGeneratedCode += "->enterIndexing (C_Lexique_" + mLexiqueIdentifier + "::kIndexing_"
+    ioGeneratedCode += "->enterIndexing (C_Lexique_" + self.mLexiqueIdentifier + "::kIndexing_"
     ioGeneratedCode += [mValue0 identifierRepresentation]
     ioGeneratedCode += ", " + [mValue1 utf8Representation] + ") ;\n"
   end
 #--- Syntax directed translation
-  [mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor generateCode
+  [self.mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor generateCode
     !inGenerateSyntaxDirectedTranslationString
     !"inCompiler->separatorString ()"
     !?ioUnusedVariableCppNameSet
     !?ioGeneratedCode
   ]
-  [mGrammarInstructionSyntaxDirectedTranslationToken generateCode
+  [self.mGrammarInstructionSyntaxDirectedTranslationToken generateCode
     !inGenerateSyntaxDirectedTranslationString
     !"inCompiler->tokenString ()"
     !?ioUnusedVariableCppNameSet
@@ -267,8 +267,8 @@ override method @terminalCheckInstructionForGeneration generateInstruction
 #--- Check terminal symbol
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   ioGeneratedCode += compilerCppName () + "->acceptTerminal (C_Lexique_"
-                  + mLexiqueIdentifier + "::kToken_" + [mTerminalName identifierRepresentation]
-                  + [mInstructionLocation commaSourceFile] + ") ;\n"
+                  + self.mLexiqueIdentifier + "::kToken_" + [self.mTerminalName identifierRepresentation]
+                  + [self.mInstructionLocation commaSourceFile] + ") ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -22,9 +22,10 @@ override method @outputActualParameterForGeneration generateActualParameter
   ?!@stringlist unused ioJokerParametersToReleaseList
   ?!@stringlist unused ioOutputVariableList
   ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppName {
-  [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
-  [mOutputActualParameterExpression generateExpression !?ioImplementation !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?outCppName]
+  !@string outCppName
+{
+  [self.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+  [self.mOutputActualParameterExpression generateExpression !?ioImplementation !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?outCppName]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -37,14 +38,14 @@ override method @outputInputActualParameterForGeneration generateActualParameter
   ?!@stringlist unused ioOutputVariableList
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName {
-  for (t) in mTypeList do
+  for (t) in self.mTypeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
-  outCppName = mOutputInputVariableCppName
-  for () in mStructAttributeList do
+  outCppName = self.mOutputInputVariableCppName
+  for () in self.mStructAttributeList do
     outCppName += ".mProperty_" + [mValue identifierRepresentation]
   end
-  [!?ioUnusedVariableCppNameSet removeKey !mOutputInputVariableCppName]
+  [!?ioUnusedVariableCppNameSet removeKey !self.mOutputInputVariableCppName]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -57,8 +58,8 @@ override method @inputActualParameterForGeneration generateActualParameter
   ?!@stringlist ioOutputVariableList
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName {
-  outCppName = mInputActualCppName
-  ioOutputVariableList += !mInputActualCppName
+  outCppName = self.mInputActualCppName
+  ioOutputVariableList += !self.mInputActualCppName
   [!?ioUnusedVariableCppNameSet removeKey !outCppName]
 }
 
@@ -72,11 +73,11 @@ override method @inputJokerParameterForGeneration generateActualParameter
   ?!@stringlist ioOutputVariableList
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName {
-  [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
-  outCppName = mInputActualCppName
-  ioImplementation += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " " + outCppName + " ; // Joker input parameter\n"
-  ioJokerParametersToReleaseList += !mInputActualCppName
-  ioOutputVariableList += !mInputActualCppName
+  [self.mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+  outCppName = self.mInputActualCppName
+  ioImplementation += "GALGAS_" + [self.mFormalArgumentType identifierRepresentation] + " " + outCppName + " ; // Joker input parameter\n"
+  ioJokerParametersToReleaseList += !self.mInputActualCppName
+  ioOutputVariableList += !self.mInputActualCppName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -90,7 +91,7 @@ override method @semanticBlockInstructionForGeneration generateInstruction
   ioGeneratedCode += "{\n"
   generateInstructionList (
     !?ioInclusionSet
-    !mInstructionList
+    !self.mInstructionList
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !inGenerateSyntaxDirectedTranslationString

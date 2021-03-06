@@ -122,9 +122,9 @@ syntax extension galgas3InstructionsSyntax {
 override method @structuredCastInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mCastExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mElseInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
-  for () in mCastInstructionBranchList do
+  [self.mCastExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mElseInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  for () in self.mCastInstructionBranchList do
     [mInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
   end
 }
@@ -141,7 +141,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap {
 #--- Expression
   @semanticExpressionForGeneration castExpression
-  [mCastExpression analyzeSemanticExpression
+  [self.mCastExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -153,7 +153,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- Branches
   var castBranchList =@castInstructionBranchListForGeneration {}
-  for () in mCastInstructionBranchList do
+  for () in self.mCastInstructionBranchList do
   #--- Get named type
     let type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
   #--- Check named type is a descendant of receiver type
@@ -204,13 +204,13 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     !inAnalysisContext
     !{}
     !{}
-    !mElseInstructionList
-    !mEndOfCastInstruction
+    !self.mElseInstructionList
+    !self.mEndOfCastInstruction
     !?ioVariableMap
     ?else_instructionList
   )
 #--- End override
-  [!?ioVariableMap closeOverride !mEndOfCastInstruction]
+  [!?ioVariableMap closeOverride !self.mEndOfCastInstruction]
 #--- Generate instruction
   ioInstructionListForGeneration += !@structuredCastInstructionForGeneration.new {
     !castExpression
@@ -248,7 +248,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
 #--- Cast expression
-  [mExpression generateExpression
+  [self.mExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -258,7 +258,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
 #---
   ioGeneratedCode += "if (" + castCppVarName + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
-  for () in mCastBranchList do
+  for () in self.mCastBranchList do
    [mType addHeaderFileName !?ioInclusionSet]
     switch mTypeComparisonKind
     case equal :
@@ -293,11 +293,11 @@ override method @structuredCastInstructionForGeneration generateInstruction
   between ioGeneratedCode += "}else "
   end
 #--- 'else' branch
-  if [mElseInstructionList length] > 0 then
+  if [self.mElseInstructionList length] > 0 then
     ioGeneratedCode += "}else{\n"
     generateInstructionList (
       !?ioInclusionSet
-      !mElseInstructionList
+      !self.mElseInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !inGenerateSyntaxDirectedTranslationString

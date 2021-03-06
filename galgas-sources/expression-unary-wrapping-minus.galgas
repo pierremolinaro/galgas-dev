@@ -33,7 +33,7 @@ syntax extension galgas3ExpressionSyntax {
 override method @unaryWrappingMinusExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -47,7 +47,7 @@ override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
   @semanticExpressionForGeneration expression
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -58,14 +58,14 @@ override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [expression mResultType]
   if not [[type mHandledOperatorFlags] prefixMinusOperatorNoOVF] then
-    error mOperatorLocation
+    error self.mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the prefix minus operator"
     :outExpression
   else
   #--- Generate expression
     outExpression = @unaryWrappingMinusExpressionForGeneration.new {
       !type
-      !mOperatorLocation
+      !self.mOperatorLocation
       !expression}
   end
 }
@@ -86,9 +86,9 @@ override method @unaryWrappingMinusExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[mExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
-  [mExpression generateExpression
+  [self.mExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex

@@ -160,8 +160,8 @@ override method @incDecInstructionAST analyzeSemanticInstruction
 #--- Check target variable
   @unifiedTypeMap-proxy targetType
   @string targetVariableCppName
-  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*]
-  for () in mStructAttributeList do
+  [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?targetVariableCppName ?*]
+  for () in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
     if not isPublic then
@@ -170,16 +170,16 @@ override method @incDecInstructionAST analyzeSemanticInstruction
   end
 #--- Check target type accepts incrementation
   if not [[targetType mHandledOperatorFlags] incDecOperator] then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '++', '--' operators"
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !targetVariableCppName
     !targetType
-    !mStructAttributeList
-    !mKind
+    !self.mStructAttributeList
+    !self.mKind
   }
 }
 
@@ -195,8 +195,8 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
 #--- Check target variable
   @unifiedTypeMap-proxy targetType
   @string targetVariableCppName
-  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*]
-  for () in mStructAttributeList do
+  [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?targetVariableCppName ?*]
+  for () in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
     if not isPublic then
@@ -205,16 +205,16 @@ override method @incDecNoOVFInstructionAST analyzeSemanticInstruction
   end
 #--- Check target type accepts incrementation
   if not [[targetType mHandledOperatorFlags] incDecOperator] then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '&++', '&--' operators"
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !targetVariableCppName
     !targetType
-    !mStructAttributeList
-    !mKind
+    !self.mStructAttributeList
+    !self.mKind
   }
 }
 
@@ -231,23 +231,23 @@ override method @selfIncDecNoOVFInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
+    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
   end
 #--- Check target type accepts incrementation
   if not [[selfTypeProxy mHandledOperatorFlags] incDecOperator] then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '&++' and  '&--' operators"
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@incDecNoOVFInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !selfObjectCppName
     !selfTypeProxy
     !{}
-    !mKind
+    !self.mKind
    }
 }
 
@@ -264,23 +264,23 @@ override method @selfIncDecInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
+    error self.mInstructionLocation: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
   end
 #--- Check target type accepts incrementation
   if not [[selfTypeProxy mHandledOperatorFlags] incDecOperator] then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '++' and  '--' operators"
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@incDecInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !selfObjectCppName
     !selfTypeProxy
     !{}
-    !mKind
+    !self.mKind
    }
 }
 
@@ -316,20 +316,20 @@ override method @incDecInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 {
 #--- Receiver
-  [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
-  @string receiverCppName = mReceiverCppName
-  for () in mStructAttributeList do
+  [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverCppName]
+  @string receiverCppName = self.mReceiverCppName
+  for () in self.mStructAttributeList do
     receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
 #--- Invoke incrementation
-  switch mKind
+  switch self.mKind
   case increment :
     ioGeneratedCode += receiverCppName + ".increment_operation (" + compilerCppName ()
-                    + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+                    + " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   case decrement :
     ioGeneratedCode += receiverCppName + ".decrement_operation (" + compilerCppName ()
-                    + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+                    + " " + [self.mInstructionLocation commaSourceFile] + ") ;\n"
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   end
 }
@@ -344,13 +344,13 @@ override method @incDecNoOVFInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 {
 #--- Receiver
-  [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
-  @string receiverCppName = mReceiverCppName
-  for () in mStructAttributeList do
+  [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverCppName]
+  @string receiverCppName = self.mReceiverCppName
+  for () in self.mStructAttributeList do
     receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
 #--- Invoke incrementation
-  switch mKind
+  switch self.mKind
   case increment :
     ioGeneratedCode += receiverCppName + ".increment_operation_no_overflow () ;\n"
   case decrement :

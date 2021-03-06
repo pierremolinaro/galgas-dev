@@ -10,6 +10,83 @@
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//Function 'buildPredefinedTypes'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_predefinedTypes function_buildPredefinedTypes (const class GALGAS_semanticContext & constinArgument0,
+                                                            class C_Compiler * inCompiler
+                                                            COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper 'syntaxFileGenerationTemplate'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const cDirectoryWrapper gWrapperDirectory_0_syntaxFileGenerationTemplate ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'syntaxFileGenerationTemplate syntaxFileImplementationGalgas3'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxFileImplementationGalgas_33_ (class C_Compiler * inCompiler,
+                                                                                                   const class GALGAS_stringset & in_INCLUSION_5F_SET
+                                                                                                   COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Filewrapper template 'syntaxFileGenerationTemplate syntaxAnalyserClassDeclaration'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserClassDeclaration (class C_Compiler * inCompiler,
+                                                                                               const class GALGAS_string & in_COMPONENT_5F_NAME,
+                                                                                               const class GALGAS_string & in_LEXIQUE_5F_NAME,
+                                                                                               const class GALGAS_nonterminalMap & in_NONTERMINAL_5F_MAP,
+                                                                                               const class GALGAS_ruleDeclarationList & in_RULE_5F_DECLARATION_5F_LIST,
+                                                                                               const class GALGAS_uintlist & in_SELECT_5F_METHOD_5F_LIST,
+                                                                                               const class GALGAS_bool & in_HAS_5F_INDEXING,
+                                                                                               const class GALGAS_bool & in_HAS_5F_TRANSLATE_5F_FEATURE
+                                                                                               COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'enterNonterminalNonTerminalInMapAndCheck'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_enterNonterminalNonTerminalInMapAndCheck (const class GALGAS_lstring constinArgument0,
+                                                       const class GALGAS_nonterminalLabelMap constinArgument1,
+                                                       class GALGAS_nonterminalMap & ioArgument2,
+                                                       class C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//Routine 'buildNonterminalDeclarationsMap'
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+void routine_buildNonterminalDeclarationsMap (const class GALGAS_nonterminalDeclarationListAST constinArgument0,
+                                              const class GALGAS_semanticContext constinArgument1,
+                                              class GALGAS_nonterminalMap & outArgument2,
+                                              class C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //Routine 'analyzeSyntaxInstructionList'
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -100,19 +177,4 @@ class GALGAS_semanticInstructionListForGeneration function_syntaxSignatureOfInst
                                                                                              const class GALGAS_semanticInstructionListForGeneration & constinArgument1,
                                                                                              class C_Compiler * inCompiler
                                                                                              COMMA_LOCATION_ARGS) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Routine 'recursivlyEnumerateRegularFile'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-void routine_recursivlyEnumerateRegularFile (const class GALGAS_wrapperFileMap constinArgument0,
-                                             const class GALGAS_wrapperDirectoryMap constinArgument1,
-                                             class GALGAS_stringlist & ioArgument2,
-                                             class GALGAS_stringlist & ioArgument3,
-                                             class GALGAS_stringlist & ioArgument4,
-                                             class GALGAS_stringlist & ioArgument5,
-                                             class C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) ;
 

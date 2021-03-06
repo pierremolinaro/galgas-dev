@@ -90,7 +90,7 @@ syntax extension galgas3ExpressionSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @collectionValueAST enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  for () in mElementList do
+  for () in self.mElementList do
     [mElement enterInSemanticContext !?ioTypeMap]
   end
 }
@@ -107,27 +107,27 @@ override method @collectionValueAST analyzeSemanticExpression
 {
 #--- Type
   @unifiedTypeMap-proxy targetType
-  if mTypeName.string == "" then
+  if self.mTypeName.string == "" then
     targetType = inType
   else
-    targetType = .searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+    targetType = .searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
   end
 #---
   if targetType == .null then
-    error mTypeName : "Cannot infer type" : outExpression
+    error self.mTypeName : "Cannot infer type" : outExpression
   elsif not [targetType mSupportCollectionValue] then
-    error mTypeName : "the @" + [targetType key] + " type does not support collection value" : outExpression
+    error self.mTypeName : "the @" + [targetType key] + " type does not support collection value" : outExpression
   else
-    let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![targetType key] !mEndOfCollectionValue})
+    let usefulnessName = typeNameForUsefulEntitiesGraph (!.new {![targetType key] !self.mEndOfCollectionValue})
     [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
-    if [mElementList length] == 0 then
+    if [self.mElementList length] == 0 then
       outExpression = @defaultConstructorExpressionForGeneration.new {
         !targetType
-        !mTypeName.location
+        !self.mTypeName.location
       }
     else
       @collectionValueElementListForGeneration collectionValueElementListForGeneration = {}
-      for () in mElementList do
+      for () in self.mElementList do
         [mElement analyze
           !inUsefulnessCallerEntityName
           !?ioUsefulEntitiesGraph
@@ -139,7 +139,7 @@ override method @collectionValueAST analyzeSemanticExpression
       end
       outExpression = @expressionCollectionForGeneration.new {
         !targetType
-        !mEndOfCollectionValue
+        !self.mEndOfCollectionValue
         !collectionValueElementListForGeneration
       }
     end
@@ -154,13 +154,13 @@ abstract method @abstractCollectionValueElement enterInSemanticContext ?!@unifie
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @expressionCollectionValue enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @expressionListCollectionValue enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  [mExpressionList enterInSemanticContext !?ioTypeMap]
+  [self.mExpressionList enterInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -183,7 +183,7 @@ override method @expressionCollectionValue analyze
   ?!@variableMap ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
 {
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inElementType
@@ -192,9 +192,9 @@ override method @expressionCollectionValue analyze
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!inElementType ![expression mResultType] !mExpressionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (!inElementType ![expression mResultType] !self.mExpressionLocation !?expression)
 #---
-  ioCollectionValueElementListForGeneration += !@expressionCollectionValueForGeneration.new {!mExpressionLocation !expression}
+  ioCollectionValueElementListForGeneration += !@expressionCollectionValueForGeneration.new {!self.mExpressionLocation !expression}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -208,13 +208,13 @@ override method @expressionListCollectionValue analyze
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration {
   let @functionSignature formalParameterTypeList = [inElementType mAddAssignOperatorArguments]
   @semanticExpressionListForGeneration semanticExpressionListForGeneration
-  if [formalParameterTypeList length] != [mExpressionList length] then
-    error mEndOfExpressionLocation: "element of of '@" + [inElementType key] + "' requires "
+  if [formalParameterTypeList length] != [self.mExpressionList length] then
+    error self.mEndOfExpressionLocation: "element of of '@" + [inElementType key] + "' requires "
     + [formalParameterTypeList length] + " parameter(s), while this list has "
-    + [mExpressionList length] + " element(s)" : semanticExpressionListForGeneration
+    + [self.mExpressionList length] + " element(s)" : semanticExpressionListForGeneration
   else
     semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
-    for expression in mExpressionList, () in formalParameterTypeList do
+    for expression in self.mExpressionList, () in formalParameterTypeList do
       [expression.mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -227,11 +227,11 @@ override method @expressionListCollectionValue analyze
         error expression.mActualSelector
           : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
-      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation !?exp)
+      checkAssignmentTypeWithImplicitGetterCall (!mFormalArgumentType ![exp mResultType] !self.mEndOfExpressionLocation !?exp)
       semanticExpressionListForGeneration += !exp
     end
     ioCollectionValueElementListForGeneration += !@expressionListCollectionForGeneration.new {
-      !mEndOfExpressionLocation
+      !self.mEndOfExpressionLocation
       !semanticExpressionListForGeneration}
   end
 }
@@ -275,7 +275,7 @@ override method @expressionCollectionValueForGeneration generateCollectionElemen
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @string inCppTargetVar {
-  [mExpression generateExpression
+  [self.mExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -285,7 +285,7 @@ override method @expressionCollectionValueForGeneration generateCollectionElemen
   ioGeneratedCode += inCppTargetVar
   ioGeneratedCode += ".plusAssign_operation (" + sourceVar
   ioGeneratedCode += ", " + compilerCppName ()
-  ioGeneratedCode += " " + [mExpressionLocation commaSourceFile] + ") ;\n"
+  ioGeneratedCode += " " + [self.mExpressionLocation commaSourceFile] + ") ;\n"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
@@ -306,7 +306,7 @@ override method @expressionListCollectionForGeneration generateCollectionElement
   ?let @string inCppTargetVar {
 #--- Parameters
   var parameterList = @stringlist {}
-  for () in mExpressionList do
+  for () in self.mExpressionList do
     [mExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -328,7 +328,7 @@ override method @expressionListCollectionForGeneration generateCollectionElement
     ioGeneratedCode  += ", " + compilerCppName ()
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   end
-  ioGeneratedCode += " " + [mExpressionLocation commaSourceFile] + ") ;\n"
+  ioGeneratedCode += " " + [self.mExpressionLocation commaSourceFile] + ") ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -346,16 +346,16 @@ override method @expressionCollectionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
 #---
-  [mResultType addHeaderFileName !?ioInclusionSet]
+  [self.mResultType addHeaderFileName !?ioInclusionSet]
 #--- Create temporary variable variable
   outCppExpression = "temp_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
 #--- Declare variable and apply default constructor
-  ioGeneratedCode += "GALGAS_" + [mResultType identifierRepresentation] + " " + outCppExpression
-     + " = GALGAS_" +  [mResultType identifierRepresentation] + "::constructor_" + [[mResultType mDefaultConstructorName] identifierRepresentation] + " (" + [mLocation sourceFile] + ") ;\n"
+  ioGeneratedCode += "GALGAS_" + [self.mResultType identifierRepresentation] + " " + outCppExpression
+     + " = GALGAS_" +  [self.mResultType identifierRepresentation] + "::constructor_" + [[self.mResultType mDefaultConstructorName] identifierRepresentation] + " (" + [self.mLocation sourceFile] + ") ;\n"
 #--- Add Elements
-  for () in mElementList do
+  for () in self.mElementList do
     [mElement generateCollectionElementCode
-      !mResultType
+      !self.mResultType
       !?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex

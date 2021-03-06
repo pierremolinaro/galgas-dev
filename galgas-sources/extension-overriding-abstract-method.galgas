@@ -41,7 +41,7 @@ syntax extension galgas3DeclarationsSyntax {
 
 override getter @overridingAbstractExtensionMethodAST keyRepresentation
   ->@string outString {
-  outString = "overriding extension method @" + mTypeName + " " + mOverridingExtensionMethodName
+  outString = "overriding extension method @" + self.mTypeName + " " + self.mOverridingExtensionMethodName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -82,17 +82,17 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration unused ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-#  let nameForUsefulness = methodNameForUsefulEntitiesGraph (!mTypeName !mOverridingExtensionMethodName)
+#  let nameForUsefulness = methodNameForUsefulEntitiesGraph (!self.mTypeName !mOverridingExtensionMethodName)
 #  [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #  let typeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mTypeName)
 #  [!?ioUsefulEntitiesGraph addEdge !typeNameForUsefulness !nameForUsefulness]
 #--- Self type
-  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mTypeName}
+  let @unifiedTypeMap-proxy selfType = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mTypeName}
 #--- Check type is an abstract class
   if not [[selfType mTypeKindEnum] isClassType] then
-    error mOverridingExtensionMethodName: "cannot declare a extension method: '@" + [selfType key] + "' is not a class"
+    error self.mOverridingExtensionMethodName: "cannot declare a extension method: '@" + [selfType key] + "' is not a class"
   elsif [selfType mIsConcrete] then
-    error mOverridingExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType key] + "' is not an abstract class"
+    error self.mOverridingExtensionMethodName: "cannot declare an abstract extension method: '@" + [selfType key] + "' is not an abstract class"
   end
 #--- Find base type name
   @string baseTypeName = ""
@@ -101,9 +101,9 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
   @location inheritedDeclarationLocation = @location.here
   loop( [inSemanticContext.mTypeMap count] + 1)
   while (not [superType isNull]) & (baseTypeName == "") do
-    if [[superType mInstanceMethodMap] hasKey ![mOverridingExtensionMethodName string]] then
+    if [[superType mInstanceMethodMap] hasKey ![self.mOverridingExtensionMethodName string]] then
       @methodQualifier qualifier
-      [[superType mInstanceMethodMap] searchKey !mOverridingExtensionMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier ?*]
+      [[superType mInstanceMethodMap] searchKey !self.mOverridingExtensionMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier ?*]
       if qualifier <= @methodQualifier. isBasicFinal then
         baseTypeName = [superType key]
       end
@@ -111,14 +111,14 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
     superType = [superType mSuperType]
   end
   if baseTypeName == "" then
-    error mOverridingExtensionMethodName:"this getter is not declared by a super class"
+    error self.mOverridingExtensionMethodName:"this getter is not declared by a super class"
   end
 #--- Analyze formal argument list
   var variableMap = @variableMap.emptyMap
   @formalParameterListForGeneration formalParameterListForGeneration
   buildLocalVariableMapAndSignature (
     !inSemanticContext
-    !mOverridingExtensionMethodFormalParameterList
+    !self.mOverridingExtensionMethodFormalParameterList
     !?variableMap
     ?formalParameterListForGeneration
   )
@@ -126,7 +126,7 @@ override method @overridingAbstractExtensionMethodAST semanticAnalysis
   if baseTypeName != "" then
     checkMethodSignatures (
       !formalParameterListForGeneration
-      ![mOverridingExtensionMethodName location]
+      ![self.mOverridingExtensionMethodName location]
       !inheritedSignature
       !inheritedDeclarationLocation
     )
@@ -152,8 +152,8 @@ override method @overridingAbstractExtensionMethodAST buildExtensionListMaps
   ?!@genericExtensionMethodListMap unused ioOverridingAbstractExtensionGetterListMap
 {
   ioOverridingAbstractExtensionMethodListMap +=
-    ![mTypeName string]
-    !mOverridingExtensionMethodName
+    ![self.mTypeName string]
+    !self.mOverridingExtensionMethodName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -33,7 +33,7 @@ syntax extension galgas3ExpressionSyntax {
 override method @unaryPlusExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·······················································································································
@@ -46,7 +46,7 @@ override method @unaryPlusExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !.null
@@ -57,7 +57,7 @@ override method @unaryPlusExpressionAST analyzeSemanticExpression
 #--- Check operator availability
   let @unifiedTypeMap-proxy type = [outExpression mResultType]
   if not [[type mHandledOperatorFlags] prefixPlusOperator] then
-    error mOperatorLocation
+    error self.mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the prefix '+' operator"
     :outExpression
   end

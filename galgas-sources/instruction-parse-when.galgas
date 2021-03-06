@@ -97,7 +97,7 @@ override method @parseWhenInstruction transformInstruction
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 {
   transformInstructionList (
-    !mElseInstructionList
+    !self.mElseInstructionList
     !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
     !nonTerminalSymbolMap:inNonTerminalSymbolMap
     !?addedTerminalIndex:ioAddedNonTerminalIndex
@@ -124,7 +124,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   ?!@uint ioSelectMethodCount {
 #--- When expression
   @semanticExpressionForGeneration when_expression
-  [mWhenExpression analyzeSemanticExpression
+  [self.mWhenExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -146,8 +146,8 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
     !inLexiqueName
     !inNonterminalMap
     !inComponentName
-    !mWhenInstructionList
-    !mEndOfWhenInstructionList
+    !self.mWhenInstructionList
+    !self.mEndOfWhenInstructionList
     !inIndexNameSet
     !?ioVariableMap
     !?localSelectMethodCount
@@ -164,25 +164,25 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
     !inLexiqueName
     !inNonterminalMap
     !inComponentName
-    !mElseInstructionList
-    !mEndOfElseInstructionList
+    !self.mElseInstructionList
+    !self.mEndOfElseInstructionList
     !inIndexNameSet
     !?ioVariableMap
     !?ioSelectMethodCount
     ?else_instructionListForGeneration
   )
 #--- End block
-  [!?ioVariableMap closeOverride !mEndOfElseInstructionList]
+  [!?ioVariableMap closeOverride !self.mEndOfElseInstructionList]
 #--- Check syntax signature
   let @bool ok = compareSyntaxSignature (
     !syntaxSignatureOfInstructionList (!"parse" !when_instructionListForGeneration)
     !syntaxSignatureOfInstructionList (!"parse" !else_instructionListForGeneration)
-    !mEndOfElseInstructionList
+    !self.mEndOfElseInstructionList
   )
 #--- Generate instruction
   if ok then
     ioInstructionListForGeneration += !@parseWhenInstructionForGeneration.new {
-      !mInstructionLocation
+      !self.mInstructionLocation
       !when_expression
       !when_instructionListForGeneration
       !else_instructionListForGeneration}
@@ -206,7 +206,7 @@ class @parseWhenInstructionForGeneration : @syntaxInstructionForGeneration {
 override method @parseWhenInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
-  ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
+  ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !self.mInstructionList)
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -221,11 +221,11 @@ override method @parseWhenInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 {
   @string sourceVar
-  [mWhenExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar]
+  [self.mWhenExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar]
   ioGeneratedCode += "if (" + sourceVar + ".isValidAndTrue ()) {\n"
   generateInstructionList (
     !?ioInclusionSet
-    !mInstructionList
+    !self.mInstructionList
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !inGenerateSyntaxDirectedTranslationString
@@ -234,7 +234,7 @@ override method @parseWhenInstructionForGeneration generateInstruction
   ioGeneratedCode += "}else{\n"
   generateInstructionList (
     !?ioInclusionSet
-    !mElseInstructionList
+    !self.mElseInstructionList
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !inGenerateSyntaxDirectedTranslationString

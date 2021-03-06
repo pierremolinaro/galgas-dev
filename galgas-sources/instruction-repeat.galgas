@@ -66,7 +66,7 @@ override method @repeatInstruction transformInstruction
 
   var repeatedInstructionList =@syntaxInstructionListForGrammarAnalysis {}
   transformInstructionList (
-    !mRepeatedInstructionList
+    !self.mRepeatedInstructionList
     !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
     !nonTerminalSymbolMap:inNonTerminalSymbolMap
     !?addedTerminalIndex:ioAddedNonTerminalIndex
@@ -74,7 +74,7 @@ override method @repeatInstruction transformInstruction
   )
   var repeatBranchList =@branchListForGrammarAnalysis.listWithValue{!repeatedInstructionList}
 
-  for () in mRepeatBranchList do
+  for () in self.mRepeatBranchList do
     var syntaxInstructionList =@syntaxInstructionListForGrammarAnalysis {}
     transformInstructionList (
       !mSyntaxInstructionList
@@ -87,7 +87,7 @@ override method @repeatInstruction transformInstruction
   end
 
   ioSyntaxInstructionList += !@repeatInstructionForGrammarAnalysis.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !repeatBranchList
     !addedNonTerminalIndex
   }
@@ -126,8 +126,8 @@ override method @repeatInstruction analyzeSyntaxInstruction
     !inLexiqueName
     !inNonterminalMap
     !inComponentName
-    !mRepeatedInstructionList
-    !mEndOf_repeated_instructions_branch
+    !self.mRepeatedInstructionList
+    !self.mEndOf_repeated_instructions_branch
     !inIndexNameSet
     !?ioVariableMap
     !?ioSelectMethodCount
@@ -135,7 +135,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
   )
 #--- 'while' blocks
   @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration = {}
-  for () in mRepeatBranchList do
+  for () in self.mRepeatBranchList do
     analyzeSyntaxInstructionList (
       !inUsefulnessCallerEntityName
       !?ioUsefulEntitiesGraph
@@ -155,14 +155,14 @@ override method @repeatInstruction analyzeSyntaxInstruction
     listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions
   end
 #--- End block
-  [!?ioVariableMap closeOverride !mEndOf_repeat_instruction]
+  [!?ioVariableMap closeOverride !self.mEndOf_repeat_instruction]
 #---
   ioInstructionListForGeneration += !@repeatInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !inComponentName
     !choiceIndex
     !repeated_instructionList
-    !mEndOf_repeat_instruction
+    !self.mEndOf_repeat_instruction
     !listOfSemanticInstructionListForGeneration
   }
 }
@@ -187,20 +187,20 @@ override method @repeatInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration 
 {
-  let repeated_instructionList = syntaxSignatureOfInstructionList (!inPosfix !m_repeated_instructionList)
+  let repeated_instructionList = syntaxSignatureOfInstructionList (!inPosfix !self.m_repeated_instructionList)
   var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration {}
-  for () in mListOfSemanticInstructionListForGeneration do
+  for () in self.mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=
       !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
       !mEndOfInstructionList
   end
 #---
   ioInstructionListForGeneration += !@repeatInstructionForGeneration.new {
-    !mInstructionLocation
-    !mSyntaxComponentName
-    !mChoiceIndex
+    !self.mInstructionLocation
+    !self.mSyntaxComponentName
+    !self.mChoiceIndex
     !repeated_instructionList
-    !mEndOfRepeatedInstructions
+    !self.mEndOfRepeatedInstructions
     !listOfSemanticInstructionListForGeneration
   }
 }
@@ -215,16 +215,16 @@ override getter @repeatInstructionForGeneration compareInstructionSyntaxSignatur
 {
   cast inTestedInstruction
   case >= @repeatInstructionForGeneration si :
-    outOk = compareSyntaxSignature (!m_repeated_instructionList ![si m_repeated_instructionList] ![si mEndOfRepeatedInstructions])
-    if outOk & ([mListOfSemanticInstructionListForGeneration length] != [[si mListOfSemanticInstructionListForGeneration] length]) then
+    outOk = compareSyntaxSignature (!self.m_repeated_instructionList ![si m_repeated_instructionList] ![si mEndOfRepeatedInstructions])
+    if outOk & ([self.mListOfSemanticInstructionListForGeneration length] != [[si mListOfSemanticInstructionListForGeneration] length]) then
       error [si mInstructionLocation]
         :"syntax signature error; the reference 'repeat' instruction has "
-        + [[mListOfSemanticInstructionListForGeneration length] string]
+        + [[self.mListOfSemanticInstructionListForGeneration length] string]
         + " 'while' branche(s), but this instruction has "
         + [[[si mListOfSemanticInstructionListForGeneration] length] string]
       outOk = false
     end
-    for () ref_ in mListOfSemanticInstructionListForGeneration, () test_ in [si mListOfSemanticInstructionListForGeneration] while outOk do
+    for () ref_ in self.mListOfSemanticInstructionListForGeneration, () test_ in [si mListOfSemanticInstructionListForGeneration] while outOk do
       outOk = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)    
     end
   case >= @syntaxInstructionForGeneration si :
@@ -232,11 +232,11 @@ override getter @repeatInstructionForGeneration compareInstructionSyntaxSignatur
       :"syntax signature error; the expected syntax instruction here is a 'repeat' instruction"
     outOk = false
   else
-    error mInstructionLocation : "internal error"
+    error self.mInstructionLocation : "internal error"
     outOk = false
   end
   if not outOk then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"reference syntax instruction is here"
   end  
 }
@@ -258,15 +258,15 @@ override method @repeatInstructionForGeneration generateInstruction
   ioGeneratedCode += "while (" + repeatFlagCppName + ") {\n"
   generateInstructionList (
     !?ioInclusionSet
-    !m_repeated_instructionList
+    !self.m_repeated_instructionList
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   )
   [!?ioGeneratedCode incIndentation !2]
-  ioGeneratedCode += "switch (select_" + [mSyntaxComponentName identifierRepresentation] + "_" + [mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
-  for () in mListOfSemanticInstructionListForGeneration do(IDX)
+  ioGeneratedCode += "switch (select_" + [self.mSyntaxComponentName identifierRepresentation] + "_" + [self.mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
+  for () in self.mListOfSemanticInstructionListForGeneration do(IDX)
     ioGeneratedCode += "case " + [IDX + 2 string] + ": {\n"
     generateInstructionList (
       !?ioInclusionSet

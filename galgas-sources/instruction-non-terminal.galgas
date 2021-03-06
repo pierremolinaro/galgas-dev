@@ -61,10 +61,10 @@ override method @nonterminalCallInstruction transformInstruction
   ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
   @uint nonTerminalSymbolIndex
-  [inNonTerminalSymbolMap searchKey !mNonterminalName ?nonTerminalSymbolIndex ?*]
+  [inNonTerminalSymbolMap searchKey !self.mNonterminalName ?nonTerminalSymbolIndex ?*]
   ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis.new {
-    !mInstructionLocation
-    !mNonterminalName
+    !self.mInstructionLocation
+    !self.mNonterminalName
     !nonTerminalSymbolIndex
   }
 }
@@ -87,39 +87,39 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount
 {
-  [inNonterminalMap searchKey !mNonterminalName ?let @nonterminalLabelMap labelMap]
+  [inNonterminalMap searchKey !self.mNonterminalName ?let @nonterminalLabelMap labelMap]
   @formalParameterSignature signature
-  if [mLabelName string] == "parse" then
+  if [self.mLabelName string] == "parse" then
     signature = {}
   else
-    [labelMap searchKey !mLabelName ?* ?signature ?*]
+    [labelMap searchKey !self.mLabelName ?* ?signature ?*]
   end
 #--- call arguments
   analyzeRoutineArguments (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !mNonterminalName
-    !"'<" + mNonterminalName + ">' nonterminal declaration"
+    !self.mNonterminalName
+    !"'<" + self.mNonterminalName + ">' nonterminal declaration"
     !signature
-    !mActualParameterList
+    !self.mActualParameterList
     !?ioVariableMap
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   )
 #--- Check syntax directed translation destination variable
-  [mGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
+  [self.mGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
     !inAnalysisContext
     !inHasTranslateFeature
     !?ioVariableMap
   ]
 #--- Generate instructions
   ioInstructionListForGeneration += !@nonterminalInstructionForGeneration.new {
-    !mInstructionLocation
-    ![mNonterminalName string]
-    ![mLabelName string]
+    !self.mInstructionLocation
+    ![self.mNonterminalName string]
+    ![self.mLabelName string]
     !actualParameterListForGeneration
-    !mGrammarInstructionSyntaxDirectedTranslationResult
+    !self.mGrammarInstructionSyntaxDirectedTranslationResult
   }
 }
 
@@ -143,8 +143,8 @@ override method @nonterminalInstructionForGeneration appendSyntaxSignature
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 {
   ioInstructionListForGeneration += !@nonterminalInstructionForGeneration.new {
-    !mInstructionLocation
-    !mNonterminalName
+    !self.mInstructionLocation
+    !self.mNonterminalName
     !inPosfix
     !@actualParameterListForGeneration.emptyList
     !@grammarInstructionSyntaxDirectedTranslationResultNone.new
@@ -160,21 +160,21 @@ override getter @nonterminalInstructionForGeneration compareInstructionSyntaxSig
   ->@bool outOk {
   cast inTestedInstruction
   case >= @nonterminalInstructionForGeneration si :
-    outOk = mNonterminalName == [si mNonterminalName]
+    outOk = self.mNonterminalName == [si mNonterminalName]
     if not outOk then
       error [si mInstructionLocation]
-      :"syntax signature error; the expected syntax instruction here is the '<" + mNonterminalName + ">' nonterminal invocation"
+      :"syntax signature error; the expected syntax instruction here is the '<" + self.mNonterminalName + ">' nonterminal invocation"
     end
   case >= @syntaxInstructionForGeneration si :
     error [si mInstructionLocation]
-      :"syntax signature error; the expected syntax instruction here is the '<" + mNonterminalName + ">' nonterminal invocation"
+      :"syntax signature error; the expected syntax instruction here is the '<" + self.mNonterminalName + ">' nonterminal invocation"
     outOk = false
   else
-    error mInstructionLocation : "internal error"
+    error self.mInstructionLocation : "internal error"
     outOk = false
   end
   if not outOk then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"reference syntax instruction is here"
   end  
 }
@@ -194,7 +194,7 @@ override method @nonterminalInstructionForGeneration generateInstruction
   var parameterCppNameList =@stringlist {}
   var jokerParametersToReleaseList =@stringlist {}
   var inputVariableList =@stringlist {}
-  for () in mActualParameterList do
+  for () in self.mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -207,11 +207,11 @@ override method @nonterminalInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName
   end
 #--- Generate method call
-  let sdtResultVarName = "syntaxDirectedTranslationResult_" + [mInstructionLocation locationIndex]
+  let sdtResultVarName = "syntaxDirectedTranslationResult_" + [self.mInstructionLocation locationIndex]
   if inGenerateSyntaxDirectedTranslationString then
     ioGeneratedCode += "C_String " + sdtResultVarName + " ;\n"
   end
-  ioGeneratedCode += "nt_" + [mNonterminalName identifierRepresentation] + "_" + [mLabelName identifierRepresentation] + " ("
+  ioGeneratedCode += "nt_" + [self.mNonterminalName identifierRepresentation] + "_" + [self.mLabelName identifierRepresentation] + " ("
   for () in parameterCppNameList do
     ioGeneratedCode += mValue + ", "
   end
@@ -220,7 +220,7 @@ override method @nonterminalInstructionForGeneration generateInstruction
   end
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   ioGeneratedCode +=  compilerCppName () + ") ;\n"
-  [mGrammarInstructionSyntaxDirectedTranslationResult generateCode
+  [self.mGrammarInstructionSyntaxDirectedTranslationResult generateCode
     !inGenerateSyntaxDirectedTranslationString
     !sdtResultVarName
     !?ioUnusedVariableCppNameSet

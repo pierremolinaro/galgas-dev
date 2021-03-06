@@ -94,7 +94,7 @@ override method @setterCallInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
 #  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
-  for () in mActualParameterList do
+  for () in self.mActualParameterList do
     [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
   end
 }
@@ -105,7 +105,7 @@ override method @selfSetterCallInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
 #  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
-  for () in mActualParameterList do
+  for () in self.mActualParameterList do
     [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
   end
 }
@@ -123,12 +123,12 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
 {
 #--- Check receiver object
   [!?ioVariableMap searchForReadWriteAccess
-     !mReceiverName
+     !self.mReceiverName
      ?@unifiedTypeMap-proxy receiverType
      ?let @string receiverVariableCppName
      ?let @string receiverVariableBaseName
   ]
-  for () in mReceiverStructAttributes do
+  for () in self.mReceiverStructAttributes do
     let propertyMap = [receiverType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic ?receiverType]
     if not isPublic then
@@ -137,15 +137,15 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   end
 #--- Type cast ?
   @unifiedTypeMap-proxy castType
-  if mTypeNameForCasting.string != "" then
-    castType = .searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeNameForCasting}
-    checkAssignmentTypes (!receiverType !castType !mTypeNameForCasting.location)
+  if self.mTypeNameForCasting.string != "" then
+    castType = .searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeNameForCasting}
+    checkAssignmentTypes (!receiverType !castType !self.mTypeNameForCasting.location)
   else 
     castType = receiverType
   end
 #--- Get setter signature
   [[castType mSetterMap] searchKey
-    !mSetterName
+    !self.mSetterName
     ?let kind
     ?let routineSignature
     ?let hasCompilerArgument
@@ -153,17 +153,17 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
     ?let setterErrorMessage
   ]
   if setterErrorMessage != "" then
-    error mSetterName : setterErrorMessage
+    error self.mSetterName : setterErrorMessage
   end
 #--- Check effective parameters
   analyzeRoutineArguments (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !mSetterName
-    !"'" + mSetterName + "' setter header"
+    !self.mSetterName
+    !"'" + self.mSetterName + "' setter header"
     !routineSignature
-    !mActualParameterList
+    !self.mActualParameterList
     !?ioVariableMap
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
@@ -176,7 +176,7 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
       if [[baseType mSuperType] isNull] then
         searching = false
       else
-        if [[[baseType mSuperType] mSetterMap] hasKey !mSetterName.string] then
+        if [[[baseType mSuperType] mSetterMap] hasKey !self.mSetterName.string] then
           baseType = [baseType mSuperType]
         else
           searching = false
@@ -186,13 +186,13 @@ override method @setterCallInstructionAST analyzeSemanticInstruction
   end
 #--- Generate instructions
   ioInstructionListForGeneration += !@setterCallInstructionForGeneration.new {
-    !mReceiverName.location
+    !self.mReceiverName.location
     !receiverVariableCppName
     !receiverVariableBaseName
-    !mReceiverStructAttributes
+    !self.mReceiverStructAttributes
     !castType
     !receiverType
-    !mSetterName
+    !self.mSetterName
     !kind
     !actualParameterListForGeneration
     !hasCompilerArgument
@@ -212,7 +212,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy selfTypeProxy
   @string selfObjectCppName
   if [inAnalysisContext.mSelfTypeProxy isNull] then
-    error mSetterName: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
+    error self.mSetterName: "'self' can be used only in extension setters" : selfObjectCppName, selfTypeProxy
   else
     selfObjectCppName = inAnalysisContext.mSelfObjectCppName
     selfTypeProxy = inAnalysisContext.mSelfTypeProxy
@@ -221,16 +221,16 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   @formalParameterSignature routineSignature
   @bool hasCompilerArgument
   @methodKind kind
-  [[selfTypeProxy mSetterMap] searchKey !mSetterName ?kind ?routineSignature ?hasCompilerArgument ?* ?*]
+  [[selfTypeProxy mSetterMap] searchKey !self.mSetterName ?kind ?routineSignature ?hasCompilerArgument ?* ?*]
 #--- Check effective parameters
   analyzeRoutineArguments (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !mSetterName
-    !"'" + mSetterName + "' setter header"
+    !self.mSetterName
+    !"'" + self.mSetterName + "' setter header"
     !routineSignature
-    !mActualParameterList
+    !self.mActualParameterList
     !?ioVariableMap
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
@@ -239,7 +239,7 @@ override method @selfSetterCallInstructionAST analyzeSemanticInstruction
   ioInstructionListForGeneration += !@selfSetterCallInstructionForGeneration.new {
     !selfObjectCppName
     !selfTypeProxy
-    !mSetterName
+    !self.mSetterName
     !kind
     !actualParameterListForGeneration
     !hasCompilerArgument}
@@ -284,16 +284,16 @@ override method @setterCallInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 {
   ioGeneratedCode += "{\n"
-  var receiverCppName = mReceiverCppName
-  for () in mReceiverStructAttributes do
+  var receiverCppName = self.mReceiverCppName
+  for () in self.mReceiverStructAttributes do
     receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
   end
-  [!?ioUnusedVariableCppNameSet removeKey !mReceiverBaseName]
+  [!?ioUnusedVariableCppNameSet removeKey !self.mReceiverBaseName]
 #--- Parameters
   @stringlist parameterCppNameList = {}
   @stringlist jokerParametersToReleaseList = {}
   @stringlist inputVariableList = {}
-  for () in mActualParameterList do
+  for () in self.mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -306,41 +306,41 @@ override method @setterCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName
   end
 #--- Generate method call
-  switch mKind
+  switch self.mKind
   case definedAsExtension :
-    ioInclusionSet += !"setter-" + [[mMethodBaseType key] fileNameRepresentation] + "-" + [mSetterName fileNameRepresentation]
-    if [[mReceiverType mTypeKindEnum] isClassType] then
-      if ([[mReceiverType mAllTypedAttributeList] length] > 0) then #  & [mReceiverType mIsConcrete] then
+    ioInclusionSet += !"setter-" + [[self.mMethodBaseType key] fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
+    if [[self.mReceiverType mTypeKindEnum] isClassType] then
+      if ([[self.mReceiverType mAllTypedAttributeList] length] > 0) then #  & [mReceiverType mIsConcrete] then
         ioGeneratedCode += receiverCppName + ".insulate (HERE) ;\n"
       end
-      let pointerUniqueName = "ptr_" + [mInstructionLocation locationIndex]
-      ioGeneratedCode += "cPtr_" + [mReceiverType identifierRepresentation] + " * " + pointerUniqueName
-      ioGeneratedCode += " = (cPtr_" + [mReceiverType identifierRepresentation] + " *) " + receiverCppName + ".ptr () ;\n"
-      if [mCastType key] != [mReceiverType key] then
-        ioInclusionSet += !"class-" + [[mCastType key] fileNameRepresentation]
+      let pointerUniqueName = "ptr_" + [self.mInstructionLocation locationIndex]
+      ioGeneratedCode += "cPtr_" + [self.mReceiverType identifierRepresentation] + " * " + pointerUniqueName
+      ioGeneratedCode += " = (cPtr_" + [self.mReceiverType identifierRepresentation] + " *) " + receiverCppName + ".ptr () ;\n"
+      if [self.mCastType key] != [self.mReceiverType key] then
+        ioInclusionSet += !"class-" + [[self.mCastType key] fileNameRepresentation]
         ioGeneratedCode += "if ((NULL != " + pointerUniqueName
-                        + ") && (dynamic_cast <cPtr_" + [mCastType identifierRepresentation] + " *> ("
+                        + ") && (dynamic_cast <cPtr_" + [self.mCastType identifierRepresentation] + " *> ("
                         + pointerUniqueName + ") == NULL)) {\n"
         [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
         ioGeneratedCode += "  " + compilerCppName () + "->onTheFlyRunTimeError (\"cannot cast to '@" 
-                        + [mCastType key] + "'\"" + [mInstructionLocation commaSourceFile] + ") ;\n"
+                        + [self.mCastType key] + "'\"" + [self.mInstructionLocation commaSourceFile] + ") ;\n"
         ioGeneratedCode += "  " + pointerUniqueName + " = NULL ;\n"
         ioGeneratedCode += "}\n"
       end
-      ioGeneratedCode += "callExtensionSetter_" + [mSetterName identifierRepresentation]
-                      +  " ((cPtr_" + [mCastType identifierRepresentation] + " *) " + pointerUniqueName + ", "
+      ioGeneratedCode += "callExtensionSetter_" + [self.mSetterName identifierRepresentation]
+                      +  " ((cPtr_" + [self.mCastType identifierRepresentation] + " *) " + pointerUniqueName + ", "
     else
-      ioGeneratedCode += "extensionSetter_" + [mSetterName identifierRepresentation] + " (" + receiverCppName + ", "
+      ioGeneratedCode += "extensionSetter_" + [self.mSetterName identifierRepresentation] + " (" + receiverCppName + ", "
     end
   case definedAsMember :
-    [mReceiverType addHeaderFileName !?ioInclusionSet]
-    ioGeneratedCode += receiverCppName + ".setter_" + [[mSetterName string] identifierRepresentation] + " ("
+    [self.mReceiverType addHeaderFileName !?ioInclusionSet]
+    ioGeneratedCode += receiverCppName + ".setter_" + [[self.mSetterName string] identifierRepresentation] + " ("
   end
   for () in parameterCppNameList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
-  if mHasCompilerArgument then
+  if self.mHasCompilerArgument then
     if [parameterCppNameList length] != 0 then
       ioGeneratedCode +=  ", "
     end
@@ -350,7 +350,7 @@ override method @setterCallInstructionForGeneration generateInstruction
   elsif [parameterCppNameList length] != 0 then
     ioGeneratedCode += " COMMA_"
   end
-  ioGeneratedCode += [[mSetterName location] sourceFile] + ") ;\n"
+  ioGeneratedCode += [[self.mSetterName location] sourceFile] + ") ;\n"
   ioGeneratedCode += "}\n"
 }
 
@@ -363,12 +363,12 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
   ioGeneratedCode += "{\n"
-  [!?ioUnusedVariableCppNameSet removeKey !mSelfCppName]
+  [!?ioUnusedVariableCppNameSet removeKey !self.mSelfCppName]
 #--- Parameters
   var parameterCppNameList =@stringlist {}
   var jokerParametersToReleaseList =@stringlist {}
   var inputVariableList =@stringlist {}
-  for () in mActualParameterList do
+  for () in self.mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -380,26 +380,26 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName
   end
 #--- Generate setter call
-  switch mKind
+  switch self.mKind
   case definedAsExtension :
-    ioInclusionSet += !"setter-" + [[mReceiverType key] fileNameRepresentation] + "-" + [mSetterName fileNameRepresentation]
-    if [[mReceiverType mTypeKindEnum] isClassType] then
-      ioGeneratedCode += "callExtensionSetter_" + [mSetterName identifierRepresentation] + " (" + mSelfCppName + ", "
+    ioInclusionSet += !"setter-" + [[self.mReceiverType key] fileNameRepresentation] + "-" + [self.mSetterName fileNameRepresentation]
+    if [[self.mReceiverType mTypeKindEnum] isClassType] then
+      ioGeneratedCode += "callExtensionSetter_" + [self.mSetterName identifierRepresentation] + " (" + self.mSelfCppName + ", "
     else
-      ioGeneratedCode += "extensionSetter_" + [mSetterName identifierRepresentation] + " (" + mSelfCppName + ", "
+      ioGeneratedCode += "extensionSetter_" + [self.mSetterName identifierRepresentation] + " (" + self.mSelfCppName + ", "
     end
   case definedAsMember :
-    if [[mReceiverType mTypeKindEnum]isClassType] then
-      ioGeneratedCode += mSelfCppName + "->setter_" + [mSetterName identifierRepresentation] + " ("
+    if [[self.mReceiverType mTypeKindEnum]isClassType] then
+      ioGeneratedCode += self.mSelfCppName + "->setter_" + [self.mSetterName identifierRepresentation] + " ("
     else
-      ioGeneratedCode += mSelfCppName + ".setter_" + [mSetterName identifierRepresentation] + " ("
+      ioGeneratedCode += self.mSelfCppName + ".setter_" + [self.mSetterName identifierRepresentation] + " ("
     end
   end
   for () in parameterCppNameList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
-  if mHasCompilerArgument then
+  if self.mHasCompilerArgument then
     if [parameterCppNameList length] != 0 then
       ioGeneratedCode +=  ", "
     end
@@ -409,7 +409,7 @@ override method @selfSetterCallInstructionForGeneration generateInstruction
   elsif [parameterCppNameList length] != 0 then
     ioGeneratedCode += " COMMA_"
   end
-  ioGeneratedCode += [[mSetterName location] sourceFile] + ") ;\n"
+  ioGeneratedCode += [[self.mSetterName location] sourceFile] + ") ;\n"
   ioGeneratedCode += "}\n"
 }
 

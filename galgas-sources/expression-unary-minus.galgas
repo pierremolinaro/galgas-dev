@@ -33,7 +33,7 @@ syntax extension galgas3ExpressionSyntax {
 override method @unaryMinusExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·······················································································································
@@ -47,7 +47,7 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
 #--- Expression analysis
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -64,14 +64,14 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
       !- [exp mValue]
     }
   elsif not [[type mHandledOperatorFlags] prefixMinusOperator] then
-    error mOperatorLocation
+    error self.mOperatorLocation
     : "operand type is '@" + [type key] + "' and does not support the prefix minus operator"
     :outExpression
   else
   #--- Generate expression
     outExpression = @unaryMinusExpressionForGeneration.new {
       !type
-      !mOperatorLocation
+      !self.mOperatorLocation
       !expression
     }
   end
@@ -94,9 +94,9 @@ override method @unaryMinusExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 {
-  [[mExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
-  [mExpression generateExpression
+  [self.mExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -104,7 +104,7 @@ override method @unaryMinusExpressionForGeneration generateExpression
     ?let operand
    ]
 #--- Generate Comparison
-  outCppExpression = operand + ".operator_unary_minus (" + compilerCppName () + [mLocation commaSourceFile] + ")"
+  outCppExpression = operand + ".operator_unary_minus (" + compilerCppName () + [self.mLocation commaSourceFile] + ")"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 

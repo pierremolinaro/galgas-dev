@@ -58,7 +58,7 @@ override method @parseRewindInstruction transformInstruction
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 {
-  [mParseRewindBranchList first ?let syntaxInstructionList ?*]
+  [self.mParseRewindBranchList first ?let syntaxInstructionList ?*]
 
   transformInstructionList (
     !syntaxInstructionList
@@ -90,7 +90,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
 #--- 'Rewind' blocks
   var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration {}
   let @uint referenceSelectMethodCount = ioSelectMethodCount
-  for () in mParseRewindBranchList do
+  for () in self.mParseRewindBranchList do
     ioSelectMethodCount = referenceSelectMethodCount
     var instructionList =@semanticInstructionListForGeneration {}
     for () in mSyntaxInstructionList do
@@ -126,7 +126,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
   end
 #--- Generate instruction
   ioInstructionListForGeneration += !@parseRewindInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !listOfSemanticInstructionListForGeneration
   }
 }
@@ -147,7 +147,7 @@ override method @parseRewindInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 {
-  [mListOfSemanticInstructionListForGeneration first ?let instructionList ?*]
+  [self.mListOfSemanticInstructionListForGeneration first ?let instructionList ?*]
   ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !instructionList)
 }
 
@@ -165,7 +165,7 @@ override method @parseRewindInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   let @string parsingContextVar = "parsingContext_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
   ioGeneratedCode += "const C_parsingContext " + parsingContextVar + " = " + compilerCppName () + "->parsingContext () ;\n"
-  for () in mListOfSemanticInstructionListForGeneration
+  for () in self.mListOfSemanticInstructionListForGeneration
   do
     generateInstructionList (
       !?ioInclusionSet

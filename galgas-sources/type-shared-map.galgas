@@ -319,9 +319,9 @@ override method @sharedMapDeclarationAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
-  let key = @lstring.new {!"@" + mMapTypeName ![mMapTypeName location]}
+  let key = @lstring.new {!"@" + self.mMapTypeName ![self.mMapTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for () in mPropertyList do
+  for () in self.mPropertyList do
     [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mPropertyTypeName ![mPropertyTypeName location]}]
   end
 }
@@ -329,7 +329,7 @@ override method @sharedMapDeclarationAST enterDeclarationInGraph
 #·······················································································································
 
 override getter @sharedMapDeclarationAST keyRepresentation -> @string outString {
-  outString = "shared map @" + mMapTypeName
+  outString = "shared map @" + self.mMapTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -353,7 +353,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
   @enumerationDescriptorList enumerationDescriptor = {!lstringTypeIndex !"lkey"}
 #--- Attributes
   @bool usesSelectorsInInsertAndSearch = false
-  for (s) in mAttributeList do
+  for (s) in self.mAttributeList do
     if s.string == "selectors" then
       if usesSelectorsInInsertAndSearch then
         error s : "duplicated attribute"
@@ -373,7 +373,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !?constructorMap
     !?ioSemanticContext.mTypeMap
     !name:"emptyMap"
-    !resultTypeName:[mMapTypeName string]
+    !resultTypeName:[self.mMapTypeName string]
     !hasLexiqueArg:false
   )
 #--- Readers
@@ -451,7 +451,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !lstringTypeIndex
     !.argumentConstantIn
     !"inLKey"
-  for () in mPropertyList do
+  for () in self.mPropertyList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     let hasGetter = true
     let hasSetter = true
@@ -470,7 +470,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       !mPropertyName.string
   end
 #-------------------------- Insert Modifiers
-  for () in mInsertMethodList do
+  for () in self.mInsertMethodList do
     if [setterMap hasKey ![mInsertMethodName string]] then
       error mInsertMethodName:"the '" + mInsertMethodName + "' insert method is already declared"
     else
@@ -510,8 +510,8 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
 #--- Handle search methods (methods if no state, setters if states)
-  if [mMapStateList length] == 0 then
-    for () in mSearchMethodList do
+  if [self.mMapStateList length] == 0 then
+    for () in self.mSearchMethodList do
       [!?instanceMethodMap insertKey
         !mSearchMethodName
         !@methodKind.definedAsMember
@@ -523,7 +523,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       ]
     end
   else
-    for () in mSearchMethodList do
+    for () in self.mSearchMethodList do
       [!?setterMap insertKey
         !mSearchMethodName
         !@methodKind.definedAsMember
@@ -535,7 +535,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     end
   end
 #--- Enter "enterBranch" and "exitBranch" setters (only if there are states)
-  if [mMapStateList length] > 0 then
+  if [self.mMapStateList length] > 0 then
     [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"location" ?let locationTypeIndex]
     [!?setterMap insertKey
       !@lstring.new {!"openBranch" !@location.here}
@@ -570,7 +570,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
       !@methodQualifier.isBasic
       !"" # No error message
     ]
-    for () in mMapOverrideBlockListAST do
+    for () in self.mMapOverrideBlockListAST do
       [!?setterMap insertKey
         !@lstring.new {!"openOverrideFor" + [mOverrideBlockName stringByCapitalizingFirstCharacter] !@location.here}
         !@methodKind.definedAsMember
@@ -582,7 +582,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     end
   end
 #--- Enter "attributeForKey" getters
-  for () in mPropertyList do
+  for () in self.mPropertyList do
     let accessorName = @lstring.new {![mPropertyName string] + "ForKey" ![mPropertyName location]}
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     [!?getterMap insertOrReplace
@@ -597,7 +597,7 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     ]
   end
 #---------- Enter "set...Attribute...forKey" setters, and 'with' accessor parameter
-  for () in mPropertyList do
+  for () in self.mPropertyList do
     let accessorName = @lstring.new {!"set" + [[mPropertyName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mPropertyName location]}
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mPropertyTypeName ?let attributeTypeIndex]
     @formalParameterSignature accessorFormalArgumentList = {}
@@ -618,15 +618,15 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
-    !mMapTypeName
+    !self.mMapTypeName
     !?getterMap
     !?setterMap
     !?instanceMethodMap
   )
 #--- Enter in type map
   [!?ioSemanticContext.mTypeMap insertKey
-    !mMapTypeName
-    !mIsPredefined
+    !self.mMapTypeName
+    !self.mIsPredefined
     !true # Concrete Type
     !@unifiedTypeMap-proxy.null
     !@typeKindEnum.uniqueMapType
@@ -645,12 +645,12 @@ override method @sharedMapDeclarationAST enterInSemanticContext
     !{}
     !{}
     !{}
-    !mSearchMethodList
+    !self.mSearchMethodList
     !{}
     !false # Do not generate header in separate file
     !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
     !"emptyMap"
-    !"sharedmap-" + [mMapTypeName fileNameRepresentation]
+    !"sharedmap-" + [self.mMapTypeName fileNameRepresentation]
     !@headerKind.twoHeaders
   ]
 }
@@ -733,14 +733,14 @@ override method @sharedMapDeclarationAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mMapTypeName)
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mMapTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!mMapTypeName.string + "-proxy" !mMapTypeName})
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!.new{!self.mMapTypeName.string + "-proxy" !self.mMapTypeName})
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #---
   @mapAutomatonMessageKind shadowBehaviour = .noMessage
   var shadowMessage = ""
-  for (attributeName isError messageText) in mSharedMapAttributeListAST do
+  for (attributeName isError messageText) in self.mSharedMapAttributeListAST do
     if attributeName.string != "shadow" then
       error attributeName : "only %shadow attribute is allowed here"
     elsif shadowBehaviour != .noMessage then
@@ -753,8 +753,8 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #--- Compute initial state set
   @stringset initialStateSet = {}
-  for () in mInsertMethodList do
-    if [mMapStateList length] > 0 then
+  for () in self.mInsertMethodList do
+    if [self.mMapStateList length] > 0 then
       if [mInitialStateName string] == "" then
         error mInsertMethodName: "the '" + mInsertMethodName + "' insert method should name an automaton state"
       else
@@ -766,8 +766,8 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #--- Analyze map automation actions
   @mapAutomatonActionMap mapAutomatonActionMap = {}
-  for () in mSearchMethodList do
-    if [mMapStateList length] > 0 then
+  for () in self.mSearchMethodList do
+    if [self.mMapStateList length] > 0 then
       if [mActionName string] == "" then
         error mSearchMethodName: "the '" + mSearchMethodName + "' search method should name an automaton action"
       elsif not [mapAutomatonActionMap hasKey ![mActionName string]] then
@@ -779,10 +779,10 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #--- Analyze map automaton
   @mapAutomatonStateMap mapAutomatonStateMap = {}
-  for () in mMapStateList do
+  for () in self.mMapStateList do
     [!?mapAutomatonStateMap insertKey !mStateName ![mapAutomatonStateMap count] !mStateMessageKind]
   end
-  for () in mMapStateList do
+  for () in self.mMapStateList do
     for () in mTransitionList do
       [mapAutomatonStateMap searchKey !mTargetStateName ?2*]
     end
@@ -790,7 +790,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
 #--- Check automaton actions are all defined
   let @stringset allActions = [mapAutomatonActionMap keySet]
   @mapStateSortedList mapStateSortedList = {}
-  for () in mMapStateList do
+  for () in self.mMapStateList do
     @stringset actionsForCurrentState = {}
     @mapStateTransitionSortedList mapStateTransitionSortedList = {}
     for () in mTransitionList do
@@ -828,9 +828,9 @@ override method @sharedMapDeclarationAST semanticAnalysis
 #--- Check for useful automaton states
   var accessibleStates = initialStateSet
   @bool progress = true
-  loop( [mMapStateList length] + 1) while progress do
+  loop ([self.mMapStateList length] + 1) while progress do
     progress = false
-    for () in mMapStateList do
+    for () in self.mMapStateList do
       if [accessibleStates hasKey ![mStateName string]] then
         for () in mTransitionList do
           if not [accessibleStates hasKey ![mTargetStateName string]] then
@@ -860,7 +860,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
     progress = true
     loop ([mapAutomatonStateMap count] + 1) while progress do
       progress = false
-      for () in mMapStateList do
+      for () in self.mMapStateList do
         if [reachableStates hasKey ![mStateName string]] then
           for () in mTransitionList do
             if not [reachableStates hasKey ![mTargetStateName string]] then
@@ -880,7 +880,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #---
   @mapOverrideList mapOverrideList = {}
-  for () in mMapOverrideBlockListAST do
+  for () in self.mMapOverrideBlockListAST do
     @stringset handledAssociations = {}
     @stringset neededCombinaisons = {}
     @branchBehaviourSortedListForMapOverride branchBehaviourSortedListForMapOverride1 = {}
@@ -987,7 +987,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
 #------ Enter attributes
   @typedPropertyList typedAttributeList = {}
   @propertyIndexMap attributeMap = {}
-  for () in mPropertyList do
+  for () in self.mPropertyList do
     let propertyTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mPropertyTypeName)
     [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !propertyTypeNameForUsefulness]
     let t = @unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mPropertyTypeName}
@@ -1004,7 +1004,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #--- Enter insert setters
   @insertMethodMap insertMethodMap = {}
-  for insertMethod in mInsertMethodList do
+  for insertMethod in self.mInsertMethodList do
     [!?insertMethodMap insertKey !insertMethod.mInsertMethodName]
   #--- Check error message escape sequences : only %K, %L or %%
     for messageComponent in [[insertMethod.mErrorMessage string] componentsSeparatedByString !"%%"] do
@@ -1035,8 +1035,8 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #--- Enter search methods
   @searchMethodMap searchMethodMap = {}
-  for searchMethod in mSearchMethodList do
-    if [mMapStateList length] == 0 then
+  for searchMethod in self.mSearchMethodList do
+    if [self.mMapStateList length] == 0 then
       [!?searchMethodMap insertKey !searchMethod.mSearchMethodName]
     else
       [!?searchMethodMap insertKey !searchMethod.mSearchMethodName]
@@ -1057,13 +1057,13 @@ override method @sharedMapDeclarationAST semanticAnalysis
   end
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
-    !"shared map " + mMapTypeName
+    !"shared map " + self.mMapTypeName
     !@sharedMapTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mMapTypeName}
-      !mMapTypeName
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mMapTypeName}
+      !self.mMapTypeName
       !typedAttributeList
-      !mInsertMethodList
-      !mSearchMethodList
+      !self.mInsertMethodList
+      !self.mSearchMethodList
       !mapAutomatonStateMap
       !mapAutomatonActionMap
       !mapStateSortedList
@@ -1072,7 +1072,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
       !shadowMessage
     }
 #--- Build graph for graphviz 
-  let graphFile = inProductDirectory + "/../helpers/shared-map-" + mMapTypeName + ".dot"
+  let graphFile = inProductDirectory + "/../helpers/shared-map-" + self.mMapTypeName + ".dot"
   if [option galgas_cli_options.generateSharedMapAutomatonDotFiles value] then
     var theGraph = "digraph G {\n"
     for () in mapAutomatonStateMap do
@@ -1091,7 +1091,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
       end
       theGraph += "];\n"
     end
-    for () in mMapStateList do
+    for () in self.mMapStateList do
       for () in mTransitionList do
         theGraph += "\"" + mStateName + "\" -> \"" + mTargetStateName + "\" [label=\"" + mActionName + "\""
         switch mTransitionMessageKind 
@@ -1166,30 +1166,30 @@ override method @sharedMapTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader
 {
-  for (t ...) in mTypedAttributeList do
+  for (t ...) in self.mTypedAttributeList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
 
   outHeader = [filewrapper sharedMapGenerationTemplate.uniqueMapTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-    !mSearchMethodList
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    !self.mTypedAttributeList
+    !self.mSearchMethodList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mSetterMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mOptionalMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    ![self.mTypeProxy mIsConcrete]
+    ![self.mTypeProxy mConstructorMap]
+    ![self.mTypeProxy mGetterMap]
+    ![self.mTypeProxy mSetterMap]
+    ![self.mTypeProxy mInstanceMethodMap]
+    ![self.mTypeProxy mClassMethodMap]
+    ![self.mTypeProxy mOptionalMethodMap]
+    ![self.mTypeProxy mEnumerationDescriptor]
+    ![self.mTypeProxy mHandledOperatorFlags]
+    ![self.mTypeProxy mAddAssignOperatorArguments]
+    ![self.mTypeProxy mTypeForEnumeratedElement]
   ]
  }
 
@@ -1201,9 +1201,9 @@ override method @sharedMapTypeForGeneration appendDeclaration2
   !@string outHeader
 {
   outHeader = [filewrapper sharedMapGenerationTemplate.uniqueMapTypeHeader2
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    !self.mTypedAttributeList
   ]
  }
 
@@ -1213,23 +1213,23 @@ override method @sharedMapTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
   var keySortedList =@keySortedList.emptySortedList{}
-  for () in mMapAutomatonStateMap do
+  for () in self.mMapAutomatonStateMap do
     keySortedList += !lkey.string !mStateIndex
   end
   outImplementation = [filewrapper sharedMapGenerationTemplate.uniqueMapTypeSpecificImplementation
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-    !mInsertMethodList
-    !mSearchMethodList
-    !mMapAutomatonStateMap
-    !mMapAutomatonActionMap
-    !mMapStateSortedList
-    !mMapOverrideList
+    ![self.mTypeProxy identifierRepresentation]
+    !self.mTypedAttributeList
+    !self.mInsertMethodList
+    !self.mSearchMethodList
+    !self.mMapAutomatonStateMap
+    !self.mMapAutomatonActionMap
+    !self.mMapStateSortedList
+    !self.mMapOverrideList
     !keySortedList
-    !mShadowBehaviour
-    !mShadowMessage
+    !self.mShadowBehaviour
+    !self.mShadowMessage
   ]
  }
 

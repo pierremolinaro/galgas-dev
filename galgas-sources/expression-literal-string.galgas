@@ -49,10 +49,10 @@ override method @literalStringExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
   @string s = ""
-  for () in mStringSequence do
+  for () in self.mStringSequence do
     s += mValue
   end
-  outExpression = @literalStringExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mStringType !mLocation !s}
+  outExpression = @literalStringExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mStringType !self.mLocation !s}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -71,10 +71,10 @@ override method @literalStringExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  if mString == "" then
+  if self.mString == "" then
     outCppExpression = "GALGAS_string::makeEmptyString ()"
   else
-    outCppExpression = "GALGAS_string (" + [mString utf8Representation] + ")"
+    outCppExpression = "GALGAS_string (" + [self.mString utf8Representation] + ")"
   end
 }
 

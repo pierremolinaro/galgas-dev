@@ -17,9 +17,9 @@ override method @mapProxyDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + mMapProxyTypeName ![mMapProxyTypeName location]}
+  let key = @lstring.new {!"@" + self.mMapProxyTypeName ![self.mMapProxyTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mAssociatedMapTypeName ![mAssociatedMapTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mAssociatedMapTypeName ![self.mAssociatedMapTypeName location]}]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -34,7 +34,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
 {
 #--- Check associated map is really a map
   [ioSemanticContext.mTypeMap searchKey
-    !mAssociatedMapTypeName
+    !self.mAssociatedMapTypeName
     ?3*
     ?var @typeKindEnum typeKindEnum
     ?3*
@@ -44,7 +44,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ?6*
   ]
   if typeKindEnum != @typeKindEnum. uniqueMapType then
-    error mAssociatedMapTypeName : "the @" + mAssociatedMapTypeName + " should be an unique map type"
+    error self.mAssociatedMapTypeName : "the @" + self.mAssociatedMapTypeName + " should be an unique map type"
     mapTypedAttributeList = {}
   end
 #---
@@ -55,13 +55,13 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   @instanceMethodMap instanceMethodMap ={}
   @classMethodMap classMethodMap = {}
 #--- Associated map type index
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAssociatedMapTypeName ?let associatedMapTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mAssociatedMapTypeName ?let associatedMapTypeIndex]
 #--- string type index
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"string" ?let stringTypeIndex]
 #--- lstring type index
   [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"lstring" ?let lstringTypeIndex]
 #--- Handle map type name
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mMapProxyTypeName ?let mapProxyTypeProxy]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mMapProxyTypeName ?let mapProxyTypeProxy]
 #--- class methods : makeProxy, makeOptionalProxy
   @formalParameterSignature argList = {}
   argList += !["" nowhere] !associatedMapTypeIndex !@formalArgumentPassingModeAST.argumentInOut !"ioMap"
@@ -92,7 +92,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !?constructorMap
     !?ioSemanticContext.mTypeMap
     !name:"null"
-    !resultTypeName:[mMapProxyTypeName string]
+    !resultTypeName:[self.mMapProxyTypeName string]
     !hasLexiqueArg:false
   )
 #--- Search methods of associated map as constructors
@@ -180,15 +180,15 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
-    !mMapProxyTypeName
+    !self.mMapProxyTypeName
     !?getterMap
     !?setterMap
     !?instanceMethodMap
   )
 #--- Enter type in type map
   [!?ioSemanticContext.mTypeMap insertKey
-    !mMapProxyTypeName
-    !mIsPredefined
+    !self.mMapProxyTypeName
+    !self.mIsPredefined
     !true # Concrete Type
     !@unifiedTypeMap-proxy.null
     !@typeKindEnum. mapProxyType
@@ -212,7 +212,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !false # Do not generate header in separate file
     !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
     !"null" # Default constructor
-    !"mapproxy-" + [mMapProxyTypeName fileNameRepresentation]
+    !"mapproxy-" + [self.mMapProxyTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   ]
 }
@@ -230,11 +230,11 @@ override method @mapProxyDeclarationAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mMapProxyTypeName)
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mMapProxyTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #--- Get attribute list of associated map
   [inSemanticContext.mTypeMap searchKey
-    !mAssociatedMapTypeName
+    !self.mAssociatedMapTypeName
     ?7*
     ?let @typedPropertyList listTypeAttributeList
     ?11*
@@ -243,10 +243,10 @@ override method @mapProxyDeclarationAST semanticAnalysis
   ]
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"map proxy " + mMapProxyTypeName
+    !"map proxy " + self.mMapProxyTypeName
     !@mapProxyTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mMapProxyTypeName}
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mAssociatedMapTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mMapProxyTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mAssociatedMapTypeName}
       !listTypeAttributeList
       !searchMethodList
     }
@@ -287,23 +287,23 @@ override method @mapProxyTypeForGeneration appendDeclaration1
   !@string outHeader
 {
   outHeader = [filewrapper mapProxyGenerationTemplate.mapProxyTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
   ] 
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mSetterMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mOptionalMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    ![self.mTypeProxy mIsConcrete]
+    ![self.mTypeProxy mConstructorMap]
+    ![self.mTypeProxy mGetterMap]
+    ![self.mTypeProxy mSetterMap]
+    ![self.mTypeProxy mInstanceMethodMap]
+    ![self.mTypeProxy mClassMethodMap]
+    ![self.mTypeProxy mOptionalMethodMap]
+    ![self.mTypeProxy mEnumerationDescriptor]
+    ![self.mTypeProxy mHandledOperatorFlags]
+    ![self.mTypeProxy mAddAssignOperatorArguments]
+    ![self.mTypeProxy mTypeForEnumeratedElement]
   ]
 }
 
@@ -313,14 +313,14 @@ override method @mapProxyTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
-  [mAssociatedMapTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mAssociatedMapTypeProxy addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper mapProxyGenerationTemplate.mapProxyTypeSpecificImplementation
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mAssociatedMapTypeProxy identifierRepresentation]
-    !mAssociatedMapTypedAttributeList
-    !mSearchMethodList
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    ![self.mAssociatedMapTypeProxy identifierRepresentation]
+    !self.mAssociatedMapTypedAttributeList
+    !self.mSearchMethodList
   ]
 }
 

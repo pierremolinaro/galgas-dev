@@ -191,7 +191,7 @@ syntax extension galgas3InstructionsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @ifInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  for (expression) in mExpressions do
+  for (expression) in self.mExpressions do
     switch expression
     case regularExp (exp) :
       [exp enterExpressionInSemanticContext !?ioTypeMap]
@@ -211,8 +211,8 @@ override method @ifInstructionAST enterInstructionInSemanticContext ?!@unifiedTy
       end
     end
   end
-  [m_then_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
-  [m_else_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  [self.m_then_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  [self.m_else_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -250,7 +250,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
 {
 #--- Test expression
   @ifTestListForGeneration testListForGeneration = {}
-  for (expression) in mExpressions do
+  for (expression) in self.mExpressions do
     switch expression
     case regularExp (exp) :
       [exp analyzeSemanticExpression
@@ -263,7 +263,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
       ]
       checkExpressionIsBoolean (
         !inAnalysisContext
-        !mEndOf_if_instruction
+        !self.mEndOf_if_instruction
         !analyzed_if_expression
         ?let if_expression
       )
@@ -335,17 +335,17 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !inAnalysisContext
     !@localConstantList.emptyList
     !@localInitializedVariableList.emptyList
-    !m_then_instructionList
+    !self.m_then_instructionList
     !?ioVariableMap
     ?let then_instructionList
   )
-  var expressions = mExpressions
+  var expressions = self.mExpressions
   [!?expressions popLast ?*]
   for (expression) in expressions do
-    [!?ioVariableMap closeBranch !mEndOf_then_branch]
-    [!?ioVariableMap closeOverride !mEndOf_then_branch]
+    [!?ioVariableMap closeBranch !self.mEndOf_then_branch]
+    [!?ioVariableMap closeOverride !self.mEndOf_then_branch]
   end
-  [!?ioVariableMap closeBranch !mEndOf_then_branch]
+  [!?ioVariableMap closeBranch !self.mEndOf_then_branch]
 #--- else branch
   analyzeSemanticInstructionList (
     !inUsefulnessCallerEntityName
@@ -353,15 +353,15 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !inAnalysisContext
     !@localConstantList.emptyList
     !@localInitializedVariableList.emptyList
-    !m_else_instructionList
-    !mEndOf_if_instruction
+    !self.m_else_instructionList
+    !self.mEndOf_if_instruction
     !?ioVariableMap
     ?let else_instructionList
   )
-  [!?ioVariableMap closeOverride !mEndOf_if_instruction]
+  [!?ioVariableMap closeOverride !self.mEndOf_if_instruction]
 #--- Generate instruction
   ioInstructionListForGeneration += !@ifInstructionForGeneration.new {
-    !mEndOf_then_branch
+    !self.mEndOf_then_branch
     !testListForGeneration
     !then_instructionList
     !else_instructionList
@@ -551,7 +551,7 @@ override method @ifInstructionForGeneration generateInstruction
   let testVar = "test_" + [ioTemporaryVariableIndex string]
   ioTemporaryVariableIndex ++
   ioGeneratedCode += "enumGalgasBool " + testVar + " = kBoolTrue ;\n"
-  for (expression) in mExpressions do
+  for (expression) in self.mExpressions do
     ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
     [!?ioGeneratedCode incIndentation !2]
     switch expression
@@ -625,23 +625,23 @@ override method @ifInstructionForGeneration generateInstruction
   ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
   generateInstructionList (
     !?ioInclusionSet
-    !m_then_instructionList
+    !self.m_then_instructionList
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   )
   ioGeneratedCode += "}\n"
-  for () in mExpressions do
+  for () in self.mExpressions do
     [!?ioGeneratedCode decIndentation !2]
     ioGeneratedCode += "}\n"
   end
 #--- else branch
-  if [m_else_instructionList length] > 0 then
+  if [self.m_else_instructionList length] > 0 then
     ioGeneratedCode += "if (kBoolFalse == " + testVar + ") {\n"
     generateInstructionList (
       !?ioInclusionSet
-      !m_else_instructionList
+      !self.m_else_instructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !inGenerateSyntaxDirectedTranslationString

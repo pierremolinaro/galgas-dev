@@ -45,7 +45,7 @@ override method @boolsetDeclarationAST enterDeclarationInGraph
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList
 {
-  let key = @lstring.new {!"@" + mBoolsetTypeName ![mBoolsetTypeName location]}
+  let key = @lstring.new {!"@" + self.mBoolsetTypeName ![self.mBoolsetTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 }
 
@@ -54,7 +54,7 @@ override method @boolsetDeclarationAST enterDeclarationInGraph
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @boolsetDeclarationAST keyRepresentation -> @string {
-  result = "boolset @" + mBoolsetTypeName
+  result = "boolset @" + self.mBoolsetTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -80,7 +80,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
 {
 #--- Check unicity of slot names
   @stringset slotNameSet = {}
-  for (slotName) in mFlagList do
+  for (slotName) in self.mFlagList do
     if [forbiddenKeysForBoolset () hasKey !slotName.string] then
       @string m = "a slot cannot be named:"
       for s in forbiddenKeysForBoolset () do
@@ -94,7 +94,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
     slotNameSet += !slotName
   end  
 #--- boolset type index
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mBoolsetTypeName ?let boolsetTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mBoolsetTypeName ?let boolsetTypeIndex]
 #--- Constructors and attribute map
   commonGetterMapForAllTypes (!?ioSemanticContext.mTypeMap ?@getterMap getterMap)
   @constructorMap constructorMap = {}
@@ -114,7 +114,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
     !returnedTypeName:"bool"
     !hasCompilerArgument:false
   )
-  for (slotName) in mFlagList do
+  for (slotName) in self.mFlagList do
     if not [constructorMap hasKey !slotName] then
       [!?constructorMap insertKey !slotName !{} !false !boolsetTypeIndex] 
       enterBaseFinalGetterWithoutArgument (
@@ -136,7 +136,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
     !inExtensionGetterMapForBuildingContext
     !inExtensionSetterMapForBuildingContext
     !?ioSemanticContext
-    !mBoolsetTypeName
+    !self.mBoolsetTypeName
     !?getterMap
     !?setterMap
     !?instanceMethodMap
@@ -146,8 +146,8 @@ override method @boolsetDeclarationAST enterInSemanticContext
     | .generateDescriptionGetterUtilityMethod | .infixSubOperator
 #--- Enter in type map
   [!?ioSemanticContext.mTypeMap insertKey
-    !mBoolsetTypeName
-    !mIsPredefined
+    !self.mBoolsetTypeName
+    !self.mIsPredefined
     !true # Concrete Type
     !.null
     !.boolsetType
@@ -171,7 +171,7 @@ override method @boolsetDeclarationAST enterInSemanticContext
     !false # Do not generate header in separate file
     !.null # No type for enumerated element for "for" instruction
     !"none" # Default constructor name
-    !"boolset-" + [mBoolsetTypeName fileNameRepresentation]
+    !"boolset-" + [self.mBoolsetTypeName fileNameRepresentation]
     !.oneHeader
   ]
 }
@@ -190,18 +190,18 @@ override method @boolsetDeclarationAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Check flags count
-  if [mFlagList length] > 64 then
-    let s = [mFlagList mValueAtIndex !64]
-    error s : "max flags count is 64 (here: " + [mFlagList length] + ")"
+  if [self.mFlagList length] > 64 then
+    let s = [self.mFlagList mValueAtIndex !64]
+    error s : "max flags count is 64 (here: " + [self.mFlagList length] + ")"
   end
 #--- Useful entities graph
-  let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (!mBoolsetTypeName)
+  let boolsetNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mBoolsetTypeName)
   [!?ioUsefulEntitiesGraph addNode !boolsetNameForUsefulness !boolsetNameForUsefulness]
   ioSemanticDeclarationListForGeneration +=
-    !"boolset " + mBoolsetTypeName
+    !"boolset " + self.mBoolsetTypeName
     !@boolsetTypeForGeneration.new {
-      !.searchKey {!inSemanticContext.mTypeMap !mBoolsetTypeName}
-      !mFlagList
+      !.searchKey {!inSemanticContext.mTypeMap !self.mBoolsetTypeName}
+      !self.mFlagList
     }
 }
 
@@ -237,24 +237,24 @@ override method @boolsetTypeForGeneration appendDeclaration1
   !@string outHeader
 {
   outHeader = [filewrapper structGenerationTemplate.boolsetTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mFlagList
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    !self.mFlagList
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mSetterMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mOptionalMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    ![self.mTypeProxy mIsConcrete]
+    ![self.mTypeProxy mConstructorMap]
+    ![self.mTypeProxy mGetterMap]
+    ![self.mTypeProxy mSetterMap]
+    ![self.mTypeProxy mInstanceMethodMap]
+    ![self.mTypeProxy mClassMethodMap]
+    ![self.mTypeProxy mOptionalMethodMap]
+    ![self.mTypeProxy mEnumerationDescriptor]
+    ![self.mTypeProxy mHandledOperatorFlags]
+    ![self.mTypeProxy mAddAssignOperatorArguments]
+    ![self.mTypeProxy mTypeForEnumeratedElement]
   ]
  }
 
@@ -265,12 +265,12 @@ override method @boolsetTypeForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
   outImplementation = [filewrapper structGenerationTemplate.boolsetTypeSpecificImplementation
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mFlagList
-    !(1G << [mFlagList length]) - 1G
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    !self.mFlagList
+    !(1G << [self.mFlagList length]) - 1G
   ]
  }
 

@@ -96,8 +96,8 @@ override method @literalUIntExpressionAST analyzeSemanticExpression
 {
   outExpression = @literalUIntExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mUIntType
-    !mValue # [mValue location]
-    !mValue # [mValue uint]
+    !self.mValue # [mValue location]
+    !self.mValue # [mValue uint]
   }
 }
 
@@ -120,8 +120,8 @@ override method @literalUInt64ExpressionAST analyzeSemanticExpression
 {
   outExpression = @literalUInt64ExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mUInt64Type
-    ![mValue location]
-    ![mValue uint64]
+    ![self.mValue location]
+    ![self.mValue uint64]
   }
 }
 
@@ -142,7 +142,7 @@ override method @literalSIntExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSIntType ![mValue location] ![mValue sint]}
+  outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSIntType ![self.mValue location] ![self.mValue sint]}
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -164,8 +164,8 @@ override method @literalSInt64ExpressionAST analyzeSemanticExpression
 {
   outExpression = @literalSInt64ExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mSInt64Type
-    ![mValue location]
-    ![mValue sint64]
+    ![self.mValue location]
+    ![self.mValue sint64]
   }
 }
 
@@ -188,8 +188,8 @@ override method @literalBigIntExpressionAST analyzeSemanticExpression
 {
   outExpression = @literalBigIntExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mBigIntType
-    ![mValue location]
-    ![mValue bigint]
+    ![self.mValue location]
+    ![self.mValue bigint]
   }
 }
 
@@ -209,7 +209,7 @@ override method @literalUIntExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "GALGAS_uint ((uint32_t) " + [mValue string]+ "U)"
+  outCppExpression = "GALGAS_uint ((uint32_t) " + [self.mValue string]+ "U)"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -226,7 +226,7 @@ override method @literalUInt64ExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "GALGAS_uint_36__34_ ((uint64_t) " + [mValue string]+ "ULL)"
+  outCppExpression = "GALGAS_uint_36__34_ ((uint64_t) " + [self.mValue string]+ "ULL)"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -243,7 +243,7 @@ override method @literalSIntExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "GALGAS_sint ((int32_t) " + [mValue string]+ "L)"
+  outCppExpression = "GALGAS_sint ((int32_t) " + [self.mValue string]+ "L)"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -260,7 +260,7 @@ override method @literalSInt64ExpressionForGeneration generateExpression
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  outCppExpression = "GALGAS_sint_36__34_ ((int64_t) " + [mValue string]+ "LL)"
+  outCppExpression = "GALGAS_sint_36__34_ ((int64_t) " + [self.mValue string]+ "LL)"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -278,10 +278,10 @@ override method @literalBigIntExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 {
-  outCppExpression = "GALGAS_bigint (\"" + [mValue string]+ "\", "
+  outCppExpression = "GALGAS_bigint (\"" + [self.mValue string]+ "\", "
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   outCppExpression += compilerCppName ()
-  outCppExpression += " " + [mLocation commaSourceFile] + ")"
+  outCppExpression += " " + [self.mLocation commaSourceFile] + ")"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

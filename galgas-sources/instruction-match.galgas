@@ -131,10 +131,10 @@ syntax extension galgas3InstructionsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @matchInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  for () in mMatchedExpressionList do
+  for () in self.mMatchedExpressionList do
     [mExpression enterExpressionInSemanticContext !?ioTypeMap]
   end
-  for () in mMatchInstructionBranchList do
+  for () in self.mMatchInstructionBranchList do
     [mMatchBranchInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
   end
 }
@@ -150,7 +150,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
   var expressionList =@semanticExpressionListForGeneration {}
-  for () in mMatchedExpressionList do
+  for () in self.mMatchedExpressionList do
   #--- Analyze expression
     [mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
@@ -171,7 +171,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
 #--- Analyze branches
   [!?ioVariableMap openOverrideForSelectBlock]
   var matchInstructionBranchList =@matchInstructionBranchListForGeneration {}
-  for () in mMatchInstructionBranchList do
+  for () in self.mMatchInstructionBranchList do
   #--- Match list
     var localConstantList =@localConstantList {}
     var matchListForGeneration = @matchListForGeneration {}
@@ -244,13 +244,13 @@ override method @matchInstructionAST analyzeSemanticInstruction
     !inAnalysisContext
     !{}
     !{}
-    !mElseInstructionList
-    !mEndOf_match_instruction
+    !self.mElseInstructionList
+    !self.mEndOf_match_instruction
     !?ioVariableMap
     ?elseInstructionList
   )
 #---
-  [!?ioVariableMap closeOverride !mEndOf_match_instruction]
+  [!?ioVariableMap closeOverride !self.mEndOf_match_instruction]
 #--- Generate instruction
   ioInstructionListForGeneration += !@matchInstructionForGeneration.new {
     !expressionList
@@ -294,7 +294,7 @@ override method @matchInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
   var receiverList =@stringlist {}
-  for () in mMatchedExpressionList do
+  for () in self.mMatchedExpressionList do
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string variable]
     receiverList += !variable
   end
@@ -305,7 +305,7 @@ override method @matchInstructionForGeneration generateInstruction
   end
   ioGeneratedCode += ") {\n"
   [!?ioGeneratedCode incIndentation !2]
-  for () in mMatchInstructionBranchList do
+  for () in self.mMatchInstructionBranchList do
     ioGeneratedCode += "if ("
     for () in mMatchListForGeneration, () in receiverList do
       if mIsType then
@@ -332,7 +332,7 @@ override method @matchInstructionForGeneration generateInstruction
   ioGeneratedCode += "}else{\n"
   generateInstructionList (
     !?ioInclusionSet
-    !mElseInstructionList
+    !self.mElseInstructionList
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !inGenerateSyntaxDirectedTranslationString

@@ -160,7 +160,7 @@ abstract method @lexicalSendDefaultActionAST checkLexicalDefaultAction
 
 override method @lexicalSendTerminalByDefaultAST checkLexicalDefaultAction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
-  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mDefaultSentTerminal ?*]
+  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !self.mDefaultSentTerminal ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -168,7 +168,7 @@ override method @lexicalSendTerminalByDefaultAST checkLexicalDefaultAction
 override method @lexicalErrorByDefaultAST checkLexicalDefaultAction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 {
-  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mDefaultErrorMessageName.string]
+  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !self.mDefaultErrorMessageName.string]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -182,8 +182,8 @@ abstract method @lexicalExpressionAST checkLexicalExpression
 
 override method @lexicalOrExpressionAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
-  [mLeftOperand checkLexicalExpression !? ioLexiqueAnalysisContext]
-  [mRightOperand checkLexicalExpression !? ioLexiqueAnalysisContext]
+  [self.mLeftOperand checkLexicalExpression !? ioLexiqueAnalysisContext]
+  [self.mRightOperand checkLexicalExpression !? ioLexiqueAnalysisContext]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -197,8 +197,8 @@ override method @lexicalCharacterMatchAST checkLexicalExpression
 override method @lexicalCharacterSetMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 {
-  if not [ioLexiqueAnalysisContext.mExternUnicodeTestFunctions hasKey ![mCharacterSetName string]] then
-    error mCharacterSetName : "undefined test function" fixit { replace ioLexiqueAnalysisContext.mExternUnicodeTestFunctions }
+  if not [ioLexiqueAnalysisContext.mExternUnicodeTestFunctions hasKey ![self.mCharacterSetName string]] then
+    error self.mCharacterSetName : "undefined test function" fixit { replace ioLexiqueAnalysisContext.mExternUnicodeTestFunctions }
   end
 }
 
@@ -212,15 +212,15 @@ override method @lexicalCharacterIntervalMatchAST checkLexicalExpression
 
 override method @lexicalStringMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
-  ioLexiqueAnalysisContext.mUnicodeStringToGenerate += ![mString string]
+  ioLexiqueAnalysisContext.mUnicodeStringToGenerate += ![self.mString string]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalStringNotMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
-  ioLexiqueAnalysisContext.mUnicodeStringToGenerate += ![mString string]
-  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mErrorMessage.string]
+  ioLexiqueAnalysisContext.mUnicodeStringToGenerate += ![self.mString string]
+  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !self.mErrorMessage.string]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -239,12 +239,12 @@ override method @lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgume
 #--- Check attribute definition
   @lexicalTypeEnum attributeLexicalType
   [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey
-    !mAttributeName
+    !self.mAttributeName
     ?attributeLexicalType
   ]
 #--- Type check
   if attributeLexicalType != inLexicalRoutineFormalArgumentType then
-    error mAttributeName:"type error, attribute type is @"
+    error self.mAttributeName:"type error, attribute type is @"
     + [attributeLexicalType lexicalTypeBaseName]
     + " type, but lexical routine prototype requires @"
     + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
@@ -259,7 +259,7 @@ override method @lexicalCharacterInputArgumentAST checkLexicalFunctionCallArgume
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Type check
   if @lexicalTypeEnum. lexicalType_char != inLexicalRoutineFormalArgumentType then
-    error mCharacter:"type error, a literal character has @char"
+    error self.mCharacter:"type error, a literal character has @char"
     + " type, but lexical routine prototype requires an @"
     + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
     + " type value"
@@ -273,7 +273,7 @@ override method @lexicalUnsignedInputArgumentAST checkLexicalFunctionCallArgumen
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Type check
   if @lexicalTypeEnum.lexicalType_uint != inLexicalRoutineFormalArgumentType then
-    error mUnsigned:"type error, a literal character has @uint"
+    error self.mUnsigned:"type error, a literal character has @uint"
     + " type, but lexical routine prototype requires an @"
     + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
     + " type value"
@@ -286,8 +286,8 @@ override method @lexicalCurrentCharacterInputArgumentAST checkLexicalFunctionCal
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Type check
-  if @lexicalTypeEnum. lexicalType_char != inLexicalRoutineFormalArgumentType then
-    error mLocation:"type error, current character value has @char"
+  if @lexicalTypeEnum.lexicalType_char != inLexicalRoutineFormalArgumentType then
+    error self.mLocation:"type error, current character value has @char"
     + " type, but lexical routine prototype requires an @"
     + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
     + " type value"
@@ -304,7 +304,7 @@ override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgumen
   @lexicalTypeEnum returnedLexicalFormalType
   @string replacementFunctionName
   [[ioLexiqueAnalysisContext mLexicalFunctionMap] searchKey
-    !mFunctionName
+    !self.mFunctionName
     ?lexicalFormalTypeList
     ?returnedLexicalFormalType
     ?replacementFunctionName
@@ -312,25 +312,25 @@ override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgumen
   ]
 #--- Obsolete function ?
   if replacementFunctionName != "" then
-    warning mFunctionName:"obsolete lexical function, replaced by '" + replacementFunctionName + "'"
+    warning self.mFunctionName:"obsolete lexical function, replaced by '" + replacementFunctionName + "'"
   end
 #--- Returned type check
   if returnedLexicalFormalType != inLexicalRoutineFormalArgumentType then
-    error mFunctionName:"type error, the function returns an @"
+    error self.mFunctionName:"type error, the function returns an @"
     + [returnedLexicalFormalType lexicalTypeBaseName]
     + " value, but lexical routine prototype requires an @"
     + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
     + " value"
   end
 #--- Check actual argument count
-  if [lexicalFormalTypeList length] != [mFunctionActualArgumentList length] then
-    error mFunctionName: "this lexical function names "
-    + [[mFunctionActualArgumentList length] string]
+  if [lexicalFormalTypeList length] != [self.mFunctionActualArgumentList length] then
+    error self.mFunctionName: "this lexical function names "
+    + [[self.mFunctionActualArgumentList length] string]
     + " actual argument(s), but the prototype requires "
     + [[lexicalFormalTypeList length] string] + " actual argument(s)"
   end
 #--- Check actual argument against formal parameters
-  for () in lexicalFormalTypeList, () in mFunctionActualArgumentList do
+  for () in lexicalFormalTypeList, () in self.mFunctionActualArgumentList do
     [mLexicalActualInputArgument checkLexicalFunctionCallArgument
       !?ioLexiqueAnalysisContext
       !mLexicalType
@@ -354,12 +354,12 @@ override method @lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgumen
 #--- Check attribute definition
   @lexicalTypeEnum attributeLexicalType
   [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey
-    !mAttributeName
+    !self.mAttributeName
     ?attributeLexicalType
   ]
 #--- Type check
   if attributeLexicalType != inLexicalRoutineFormalArgumentType then
-    error mAttributeName:"type error, attribute type is @"
+    error self.mAttributeName:"type error, attribute type is @"
     + [attributeLexicalType lexicalTypeBaseName]
     + " type, but lexical routine prototype requires @"
     + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
@@ -374,7 +374,7 @@ override method @lexicalCharacterInputArgumentAST checkLexicalRoutineCallArgumen
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Type check
   if @lexicalTypeEnum. lexicalType_char != inLexicalRoutineFormalArgumentType then
-    error mCharacter:"type error, a literal character has @char"
+    error self.mCharacter:"type error, a literal character has @char"
     + " type, but lexical routine prototype requires an @"
     + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
     + " type value"
@@ -388,7 +388,7 @@ override method @lexicalUnsignedInputArgumentAST checkLexicalRoutineCallArgument
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Type check
   if @lexicalTypeEnum. lexicalType_uint != inLexicalRoutineFormalArgumentType then
-    error mUnsigned:"type error, a literal unsigned value has @uint"
+    error self.mUnsigned:"type error, a literal unsigned value has @uint"
     + " type, but lexical routine prototype requires an @"
     + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
     + " type value"
@@ -402,7 +402,7 @@ override method @lexicalCurrentCharacterInputArgumentAST checkLexicalRoutineCall
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Type check
   if @lexicalTypeEnum. lexicalType_char != inLexicalRoutineFormalArgumentType then
-    error mLocation:"type error, current character value has @char"
+    error self.mLocation:"type error, current character value has @char"
     + " type, but lexical routine prototype requires an @"
     + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
     + " type value"
@@ -419,7 +419,7 @@ override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
   @lexicalTypeEnum returnedLexicalFormalType
   @string replacementFunctionName
   [[ioLexiqueAnalysisContext mLexicalFunctionMap] searchKey
-    !mFunctionName
+    !self.mFunctionName
     ?lexicalFormalTypeList
     ?returnedLexicalFormalType
     ?replacementFunctionName
@@ -427,25 +427,25 @@ override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
   ]
 #--- Obsolete function ?
   if replacementFunctionName != "" then
-    warning mFunctionName:"obsolete lexical function, replaced by '" + replacementFunctionName + "'"
+    warning self.mFunctionName:"obsolete lexical function, replaced by '" + replacementFunctionName + "'"
   end
 #--- Returned type check
   if returnedLexicalFormalType != inLexicalRoutineFormalArgumentType then
-    error mFunctionName:"type error, the function returns an @"
+    error self.mFunctionName:"type error, the function returns an @"
     + [returnedLexicalFormalType lexicalTypeBaseName]
     + " value, but lexical routine prototype requires an @"
     + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
     + " value"
   end
 #--- Check actual argument count
-  if [lexicalFormalTypeList length] != [mFunctionActualArgumentList length] then
-    error mFunctionName: "this lexical function names "
-    + [[mFunctionActualArgumentList length] string]
+  if [lexicalFormalTypeList length] != [self.mFunctionActualArgumentList length] then
+    error self.mFunctionName: "this lexical function names "
+    + [[self.mFunctionActualArgumentList length] string]
     + " actual argument(s), but the prototype requires "
     + [[lexicalFormalTypeList length] string] + " actual argument(s)"
   end
 #--- Check actual argument against formal parameters
-  for () in lexicalFormalTypeList, () in mFunctionActualArgumentList do
+  for () in lexicalFormalTypeList, () in self.mFunctionActualArgumentList do
     [mLexicalActualInputArgument checkLexicalFunctionCallArgument
       !?ioLexiqueAnalysisContext
       !mLexicalType
@@ -471,12 +471,12 @@ override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallA
 #--- Check attribute definition
   @lexicalTypeEnum attributeLexicalType
   [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey
-    !mAttributeName
+    !self.mAttributeName
     ?attributeLexicalType
   ]
 #--- Type check
   if attributeLexicalType != inLexicalRoutineFormalArgumentType then
-    error mAttributeName:"type error, attribute type is @"
+    error self.mAttributeName:"type error, attribute type is @"
     + [attributeLexicalType lexicalTypeBaseName]
     + " type, but lexical routine prototype requires @"
     + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
@@ -484,7 +484,7 @@ override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallA
   end
 #--- Passing mode check
   if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST. lexicalInputOutputMode then
-    error mActualPassingModeLocation:"the output mode (!) is required here, not an output/input mode"
+    error self.mActualPassingModeLocation:"the output mode (!) is required here, not an output/input mode"
   end
 }
 
@@ -495,13 +495,13 @@ override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument
   ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
 #--- Check attribute definition
-  [mRoutineOrFunctionFormalInputArgument checkLexicalRoutineCallArgument
+  [self.mRoutineOrFunctionFormalInputArgument checkLexicalRoutineCallArgument
     !?ioLexiqueAnalysisContext
     !inLexicalRoutineFormalArgumentType
   ]
 #--- Passing mode check
   if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST. lexicalInputMode then
-    error mActualPassingModeLocation:"the output/input mode (!?) is required here, not an input mode"
+    error self.mActualPassingModeLocation:"the output/input mode (!?) is required here, not an input mode"
   end
 }
 
@@ -518,11 +518,11 @@ abstract method @lexicalInstructionAST checkLexicalInstruction
 override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap {
-  for () in mLexicalSendSearchList do
+  for () in self.mLexicalSendSearchList do
     [!?ioLexiqueAnalysisContext.mLexicalTokenListMap setMShouldBeGeneratedForKey !true !mSearchListName.string]
     [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey !mAttributeName ?*]
   end
-  [mLexicalSendDefaultAction checkLexicalDefaultAction !?ioLexiqueAnalysisContext]
+  [self.mLexicalSendDefaultAction checkLexicalDefaultAction !?ioLexiqueAnalysisContext]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -530,7 +530,7 @@ override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
 override method @lexicalSimpleSendInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap {
-  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mSentTerminal ?*]
+  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !self.mSentTerminal ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -538,7 +538,7 @@ override method @lexicalSimpleSendInstructionAST checkLexicalInstruction
 override method @lexicalRepeatInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap ioTagMap {
-  for () in mLexicalWhileBranchList do
+  for () in self.mLexicalWhileBranchList do
     [mWhileExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
     var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
     for () in mWhileInstructionList do
@@ -546,7 +546,7 @@ override method @lexicalRepeatInstructionAST checkLexicalInstruction
     end
   end
   var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
-  for () in mRepeatedInstructionList do
+  for () in self.mRepeatedInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end
 }
@@ -556,7 +556,7 @@ override method @lexicalRepeatInstructionAST checkLexicalInstruction
 override method @lexicalSelectInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap  ioTagMap {
-  for () in mLexicalSelectBranchList do
+  for () in self.mLexicalSelectBranchList do
     [mSelectExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
     var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
     for () in mSelectInstructionList do
@@ -564,7 +564,7 @@ override method @lexicalSelectInstructionAST checkLexicalInstruction
     end
   end
   var tagMap =@lexicalTagMap.mapWithMapToOverride{!ioTagMap}
-  for () in mDefaultInstructionList do
+  for () in self.mDefaultInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end
 }
@@ -577,20 +577,20 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
   @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList
   @stringlist routineErrorMessageList
   [[ioLexiqueAnalysisContext mLexicalRoutineMessageMap] searchKey
-    !mRoutineName
+    !self.mRoutineName
     ?lexicalRoutineFormalArgumentList
     ?routineErrorMessageList
     ?*
   ]
 #--- Check actual argument count
-  if [lexicalRoutineFormalArgumentList length] != [mActualArgumentList length] then
-    error mRoutineName: "this lexical routine call names "
-    + [[mActualArgumentList length] string]
+  if [lexicalRoutineFormalArgumentList length] != [self.mActualArgumentList length] then
+    error self.mRoutineName: "this lexical routine call names "
+    + [[self.mActualArgumentList length] string]
     + " actual argument(s), but the lexical routine prototype requires "
     + [lexicalRoutineFormalArgumentList length] + " actual argument(s)"
   end
 #--- Check actual argument against formal parameters
-  for () in lexicalRoutineFormalArgumentList, () in mActualArgumentList do
+  for () in lexicalRoutineFormalArgumentList, () in self.mActualArgumentList do
     [mLexicalRoutineActualArgument checkLexicalRoutineCallArgument
       !?ioLexiqueAnalysisContext
       !mLexicalFormalArgumentMode
@@ -598,14 +598,14 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
     ]
   end
 #--- Check error message count
-  if [routineErrorMessageList length] != [mErrorMessageList length] then
-    error mRoutineName: "this lexical routine call names "
-    + [[mErrorMessageList length] string]
+  if [routineErrorMessageList length] != [self.mErrorMessageList length] then
+    error self.mRoutineName: "this lexical routine call names "
+    + [[self.mErrorMessageList length] string]
     + " error message(s), but the lexical routine prototype requires "
     + [[routineErrorMessageList length] string] + " error message(s)"
   end
 #--- Check error messages are actually defined
-  for () in mErrorMessageList do
+  for () in self.mErrorMessageList do
     with mValue in !?ioLexiqueAnalysisContext.mLexicalMessageMap error message searchKey  do
       mMessageIsUsed = true
     end
@@ -624,8 +624,8 @@ override method @lexicalLogInstructionAST checkLexicalInstruction
 override method @lexicalRewindInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap ioTagMap {
-  [ioTagMap searchKey !mLexicalTagName]
-  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mTerminalName ?*]
+  [ioTagMap searchKey !self.mLexicalTagName]
+  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !self.mTerminalName ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -633,7 +633,7 @@ override method @lexicalRewindInstructionAST checkLexicalInstruction
 override method @lexicalDropInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext  ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap {
-  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mTerminalName ?*]
+  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !self.mTerminalName ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -641,7 +641,7 @@ override method @lexicalDropInstructionAST checkLexicalInstruction
 override method @lexicalTagInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
   ?!@lexicalTagMap ioTagMap {
-  [!?ioTagMap insertKey !mLexicalTagName]
+  [!?ioTagMap insertKey !self.mLexicalTagName]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -650,7 +650,7 @@ override method @lexicalErrorInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 {
-  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mErrorMessageName.string]
+  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !self.mErrorMessageName.string]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -658,7 +658,7 @@ override method @lexicalErrorInstructionAST checkLexicalInstruction
 override method @lexicalWarningInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap {
-  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mWarningMessageName.string]
+  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !self.mWarningMessageName.string]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -672,16 +672,16 @@ abstract method @abstractLexicalRuleAST checkLexicalRule
 
 override method @lexicalImplicitRuleAST checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
-  [[ioLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?* ?*]
+  [[ioLexiqueAnalysisContext mLexicalTokenListMap] searchKey !self.mListName ?* ?* ?*]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalExplicitRuleAST checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
-  [mLexicalRuleExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
+  [self.mLexicalRuleExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
   @lexicalTagMap tagMap = {}
-  for () in mInstructionList do
+  for () in self.mInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end
 }

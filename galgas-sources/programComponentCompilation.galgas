@@ -61,7 +61,7 @@ proc compileBeforeClauseGalgas3
       !@formalParameterListAST.emptyList # Routine signature : no argument
       !@localConstantList.emptyList # No local constant
       !@typedPropertyList.emptyList # No attribute (not a method)
-      !@typedPropertyList.emptyList # No attribute (not a method)
+      !mutablePropertyList: @typedPropertyList.emptyList # No attribute (not a method)
       !""
       !mInstructionList
       !mEndOfInstructionList
@@ -117,7 +117,7 @@ private proc compileProgramRulesGalgas3
       !argumentList
       !@localConstantList.emptyList # No local constant
       !@typedPropertyList.emptyList # No attribute (not a method)
-      !@typedPropertyList.emptyList # No attribute (not a method)
+      !mutablePropertyList: @typedPropertyList.emptyList # No attribute (not a method)
       !""
       !mInstructionList
       !mEndOfInstructionList
@@ -162,7 +162,7 @@ proc compileAfterClauseGalgas3
       !@formalParameterListAST.emptyList # Routine signature : no argument
       !@localConstantList.emptyList # No local constant
       !@typedPropertyList.emptyList # No attribute (not a method)
-      !@typedPropertyList.emptyList # No attribute (not a method)
+      !mutablePropertyList: @typedPropertyList.emptyList # No attribute (not a method)
       !""
       !mInstructionList
       !mEndOfInstructionList

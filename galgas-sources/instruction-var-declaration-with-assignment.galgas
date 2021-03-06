@@ -38,7 +38,7 @@ syntax extension galgas3InstructionsSyntax {
 override method @localVariableDeclarationWithAssignmentAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -53,7 +53,7 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
   ?!@variableMap ioVariableMap
 {
 #--- Analyze source expression
-  [mSourceExpression analyzeSemanticExpression
+  [self.mSourceExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -62,9 +62,9 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
     ?var @semanticExpressionForGeneration expression
   ]
 #--- Check target variable
-  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation] + "_" + [mVariableName.location locationIndex]
+  let targetVariableCppName = "var_" + [self.mVariableName identifierRepresentation] + "_" + [self.mVariableName.location locationIndex]
   [!?ioVariableMap insertDefinedLocalVariable
-    !mVariableName
+    !self.mVariableName
     ![expression mResultType]
     !targetVariableCppName
     !targetVariableCppName

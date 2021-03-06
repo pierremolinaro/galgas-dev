@@ -61,7 +61,7 @@ override method @selectInstruction transformInstruction
   ioAddedNonTerminalIndex ++
 
   var selectBranchList =@branchListForGrammarAnalysis {}
-  for () in mSelectBranchList do
+  for () in self.mSelectBranchList do
     var syntaxInstructionList =@syntaxInstructionListForGrammarAnalysis {}
     transformInstructionList (
       !mSyntaxInstructionList
@@ -74,7 +74,7 @@ override method @selectInstruction transformInstruction
   end
 
   ioSyntaxInstructionList += !@selectInstructionForGrammarAnalysis.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !selectBranchList
     !addedNonTerminalIndex
   }
@@ -103,7 +103,7 @@ override method @selectInstruction analyzeSyntaxInstruction
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'or' blocks
   var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration {}
-  for () in mSelectBranchList do
+  for () in self.mSelectBranchList do
     @semanticInstructionListForGeneration instructionList
     analyzeSyntaxInstructionList (
       !inUsefulnessCallerEntityName
@@ -124,9 +124,9 @@ override method @selectInstruction analyzeSyntaxInstruction
     listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions
   end
 #--- End block
-  [!?ioVariableMap closeOverride !mEndOf_select_instruction]
+  [!?ioVariableMap closeOverride !self.mEndOf_select_instruction]
   ioInstructionListForGeneration += !@selectInstructionForGeneration.new {
-    !mInstructionLocation
+    !self.mInstructionLocation
     !inComponentName
     !choiceIndex
     !listOfSemanticInstructionListForGeneration
@@ -151,15 +151,15 @@ override method @selectInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
   var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration {}
-  for () in mListOfSemanticInstructionListForGeneration do
+  for () in self.mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=
       !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
       !mEndOfInstructionList
   end
   ioInstructionListForGeneration += !@selectInstructionForGeneration.new {
-    !mInstructionLocation
-    !mSyntaxComponentName
-    !mChoiceIndex
+    !self.mInstructionLocation
+    !self.mSyntaxComponentName
+    !self.mChoiceIndex
     !listOfSemanticInstructionListForGeneration
   }
 }
@@ -175,15 +175,15 @@ override getter @selectInstructionForGeneration compareInstructionSyntaxSignatur
   cast inTestedInstruction
   case >= @selectInstructionForGeneration si :
     outOk = true
-    if outOk & ([mListOfSemanticInstructionListForGeneration length] != [[si mListOfSemanticInstructionListForGeneration] length]) then
+    if outOk & ([self.mListOfSemanticInstructionListForGeneration length] != [[si mListOfSemanticInstructionListForGeneration] length]) then
       error [si mInstructionLocation]
         :"syntax signature error; the reference 'select' instruction has "
-        + [[mListOfSemanticInstructionListForGeneration length] string]
+        + [[self.mListOfSemanticInstructionListForGeneration length] string]
         + " 'while' branche(s), but this instruction has "
         + [[[si mListOfSemanticInstructionListForGeneration] length] string]
       outOk = false
     end
-    for () ref_ in mListOfSemanticInstructionListForGeneration, () test_ in [si mListOfSemanticInstructionListForGeneration] while outOk do
+    for () ref_ in self.mListOfSemanticInstructionListForGeneration, () test_ in [si mListOfSemanticInstructionListForGeneration] while outOk do
       outOk = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)    
     end
   case >= @syntaxInstructionForGeneration si :
@@ -191,11 +191,11 @@ override getter @selectInstructionForGeneration compareInstructionSyntaxSignatur
       :"syntax signature error; the expected syntax instruction here is a 'select' instruction"
     outOk = false
   else
-    error mInstructionLocation : "internal error"
+    error self.mInstructionLocation : "internal error"
     outOk = false
   end
   if not outOk then
-    error mInstructionLocation
+    error self.mInstructionLocation
     :"reference syntax instruction is here"
   end  
 }
@@ -212,8 +212,8 @@ override method @selectInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode {
 #  ioGeneratedCode .= "//-------- @selectInstructionForGeneration\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-  ioGeneratedCode += "switch (select_" + [mSyntaxComponentName identifierRepresentation] + "_" + [mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
-  for () in mListOfSemanticInstructionListForGeneration do(IDX)
+  ioGeneratedCode += "switch (select_" + [self.mSyntaxComponentName identifierRepresentation] + "_" + [self.mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
+  for () in self.mListOfSemanticInstructionListForGeneration do(IDX)
     ioGeneratedCode += "case " + [IDX + 1 string] + ": {\n"
     generateInstructionList (
       !?ioInclusionSet

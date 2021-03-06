@@ -68,12 +68,12 @@ override getter @cstInExpressionForGeneration generateExpCode
 
 override getter @diadicForGeneration generateExpCode
   -> @string outGeneratedCode {
-  outGeneratedCode = "(" + [mLeftExpression generateExpCode] + ")"
+  outGeneratedCode = "(" + [self.mLeftExpression generateExpCode] + ")"
   switch mOperation
   case addition : outGeneratedCode += " + "
   case multiplication : outGeneratedCode += " * "
   end
-  outGeneratedCode += "(" + [mRightExpression generateExpCode] + ")"
+  outGeneratedCode += "(" + [self.mRightExpression generateExpCode] + ")"
 }
 
 #---------------------------------------------------------------------------*

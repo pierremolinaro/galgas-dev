@@ -16,7 +16,8 @@ map @projectQualifiedFeatureMap {
 
 setter @XcodeProjectDescriptor addICNS_file
   ?fileName:let @string inFileName
-  !fileRef:@string outFileRef {
+  !fileRef:@string outFileRef
+{
   [!?self getReferenceKey ?ref:outFileRef]
   mICNS_fileList += !outFileRef !inFileName
 }
@@ -432,28 +433,28 @@ method @XcodeProjectDescriptor generateAtPath
   ?xcodeprojPath:let @string inPath
   ?cacheFilePath:let @string inCacheFilePath {
   let contents = [filewrapper xcodeProjectGenerationFilewrapper.xcodeproj
-    !mProjectObjectReference
-    !mMainGroupReference
-    !mGroupList
-    !mMainGroupChildrenRefs
-    !mToolTargetList
-    !mAppTargetList
-    !mCFileList
-    !mCppFileList
-    !m_M_FileList
-    !m_MM_FileList
-    !mFrameworkFileList
-    !mHeaderFileList
-    !mInfoPlistFileList
-    !mTIFF_fileList
-    !mICNS_fileList
-    !mXIB_fileList
-    !mBuildFileList
-    !mDefaultConfigurationRef
-    !mDefaultConfigurationSettingList
-    !mProjectBuildConfigurationRef
-    !mApplicationBundleName
-    !mProjectName
+    !self.mProjectObjectReference
+    !self.mMainGroupReference
+    !self.mGroupList
+    !self.mMainGroupChildrenRefs
+    !self.mToolTargetList
+    !self.mAppTargetList
+    !self.mCFileList
+    !self.mCppFileList
+    !self.m_M_FileList
+    !self.m_MM_FileList
+    !self.mFrameworkFileList
+    !self.mHeaderFileList
+    !self.mInfoPlistFileList
+    !self.mTIFF_fileList
+    !self.mICNS_fileList
+    !self.mXIB_fileList
+    !self.mBuildFileList
+    !self.mDefaultConfigurationRef
+    !self.mDefaultConfigurationSettingList
+    !self.mProjectBuildConfigurationRef
+    !self.mApplicationBundleName
+    !self.mProjectName
   ]
   let projectCoreFile = inPath + "/project.pbxproj"
   if (not [projectCoreFile fileExists]) || (not [inCacheFilePath fileExists]) || (@string. stringWithContentsOfFile {!inCacheFilePath} != contents) then 

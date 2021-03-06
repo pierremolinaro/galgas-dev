@@ -287,126 +287,126 @@ abstract getter @semanticDeclarationAST keyRepresentation -> @string
 
 override getter @galgas3GrammarComponentAST keyRepresentation
   ->@string outString {
-  outString = "grammar " + mGrammarComponentName
+  outString = "grammar " + self.mGrammarComponentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @galgas3SyntaxComponentAST keyRepresentation
   ->@string outString {
-  outString = "syntax " + mSyntaxComponentName
+  outString = "syntax " + self.mSyntaxComponentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexiqueComponentAST keyRepresentation
   ->@string outString {
-  outString = "lexique " + mLexiqueComponentName
+  outString = "lexique " + self.mLexiqueComponentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @predefinedTypeAST keyRepresentation
   ->@string outString {
-  outString = "predefined type @" + mPredefinedTypeName
+  outString = "predefined type @" + self.mPredefinedTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @mapProxyDeclarationAST keyRepresentation
   ->@string outString {
-  outString = "map proxy @" + mMapProxyTypeName
+  outString = "map proxy @" + self.mMapProxyTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @enumDeclarationAST keyRepresentation
   ->@string outString {
-  outString = "enum @" + mEnumTypeName
+  outString = "enum @" + self.mEnumTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @sortedListDeclarationAST keyRepresentation
   ->@string outString {
-  outString = "sorted list @" + mSortedListTypeName
+  outString = "sorted list @" + self.mSortedListTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @listDeclarationAST keyRepresentation
   ->@string outString {
-  outString = "list @" + mListTypeName
+  outString = "list @" + self.mListTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @classDeclarationAST keyRepresentation
   ->@string outString {
-  outString = "class @" + mClassTypeName
+  outString = "class @" + self.mClassTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @arrayDeclarationAST keyRepresentation
   ->@string outString {
-  outString = "array @" + mArrayTypeName
+  outString = "array @" + self.mArrayTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @listmapDeclarationAST keyRepresentation
   ->@string outString {
-  outString = "listmap @" + mListmapTypeName
+  outString = "listmap @" + self.mListmapTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @filewrapperDeclarationAST keyRepresentation
   ->@string outString {
-  outString = "filewrapper @" + mFilewrapperName
+  outString = "filewrapper @" + self.mFilewrapperName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @optionComponentDeclarationAST keyRepresentation
   ->@string outString {
-  outString = "option " + mOptionComponentName
+  outString = "option " + self.mOptionComponentName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @graphDeclarationAST keyRepresentation
   ->@string outString {
-  outString = "graph @" + mGraphTypeName
+  outString = "graph @" + self.mGraphTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @externTypeDeclarationAST keyRepresentation
   ->@string outString {
-  outString = "extern @" + mExternTypeName
+  outString = "extern @" + self.mExternTypeName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @onceFunctionDeclarationAST keyRepresentation
   ->@string outString {
-  outString = "once function " + mFunctionName
+  outString = "once function " + self.mFunctionName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @externFunctionDeclarationAST keyRepresentation
   ->@string outString {
-  outString = "extern function " + mFunctionName
+  outString = "extern function " + self.mFunctionName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @externRoutineDeclarationAST keyRepresentation
   ->@string outString {
-  outString = "extern routine " + mRoutineName
+  outString = "extern routine " + self.mRoutineName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -617,7 +617,7 @@ override method @filewrapperDeclarationAST enterInSemanticContext
 {
 #--- Templates
   @filewrapperTemplateMap filewrapperTemplateMap = {}
-  for () in mFilewrapperTemplateList do
+  for () in self.mFilewrapperTemplateList do
     @functionSignature templateSignature = {}
     for () in mFilewrapperTemplateFormalInputParameters do
       [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
@@ -631,12 +631,12 @@ override method @filewrapperDeclarationAST enterInSemanticContext
   end
 #--- Build text file extension map
   @wrapperExtensionMap textExtensionMap = {}
-  for () in mFilewrapperTextFileExtensionList do
+  for () in self.mFilewrapperTextFileExtensionList do
     [!?textExtensionMap insertKey !mValue]
   end
 #--- Build binary file extension map
   @wrapperExtensionMap binaryFileExtensionMap = {}
-  for () in mFilewrapperBinaryFileExtensionList do
+  for () in self.mFilewrapperBinaryFileExtensionList do
     if [textExtensionMap hasKey !mValue.string] then
       error mValue:"the '" + mValue + "' extension is already used for text files"
     else
@@ -647,13 +647,13 @@ override method @filewrapperDeclarationAST enterInSemanticContext
   @wrapperFileMap regularRootFileMap
   @wrapperDirectoryMap wrapperDirectoryMap
   @string absoluteSourcePath
-  if [[mFilewrapperPath string] firstCharacterOrNul] == '/' then
-    absoluteSourcePath = [mFilewrapperPath string]
+  if [[self.mFilewrapperPath string] firstCharacterOrNul] == '/' then
+    absoluteSourcePath = [self.mFilewrapperPath string]
   else
-    absoluteSourcePath = [mSourceFileAbsolutePath stringByDeletingLastPathComponent] + "/" + [mFilewrapperPath string]
+    absoluteSourcePath = [self.mSourceFileAbsolutePath stringByDeletingLastPathComponent] + "/" + [self.mFilewrapperPath string]
   end
   if not [absoluteSourcePath directoryExists] then
-    error mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist" 
+    error self.mFilewrapperPath: "The '" + absoluteSourcePath + "' directory does not exist" 
     : regularRootFileMap, wrapperDirectoryMap
   else
   #--- Enumerate pathes
@@ -672,13 +672,13 @@ override method @filewrapperDeclarationAST enterInSemanticContext
   end
 #--- Insert filewrapper
   [!?ioSemanticContext.mFilewrapperMap insertKey
-    !mFilewrapperName
-    !mFilewrapperPath
-    !mFilewrapperTextFileExtensionList
+    !self.mFilewrapperName
+    !self.mFilewrapperPath
+    !self.mFilewrapperTextFileExtensionList
     !regularRootFileMap
     !wrapperDirectoryMap
     !filewrapperTemplateMap
-    !mIsInternal
+    !self.mIsInternal
   ]
 }
 
@@ -691,15 +691,15 @@ override method @externRoutineDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
   var routineSignature =@formalParameterSignature {}
-  for () in mFormalArgumentList do
+  for () in self.mFormalArgumentList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
   end
 #--- Enter routine in routine map
   [!?ioSemanticContext.mRoutineMap insertKey
-    !mRoutineName
+    !self.mRoutineName
     !routineSignature
-    !mIsInternal
+    !self.mIsInternal
   ]
 }
 
@@ -712,17 +712,17 @@ override method @procDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
   var routineSignature =@formalParameterSignature {}
-  for () in mFormalArgumentList do
+  for () in self.mFormalArgumentList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
   end
 #--- Enter types for instruction list
-  [mRoutineInstructionList enterInstructionListInSemanticContext !?ioSemanticContext.mTypeMap]
+  [self.mRoutineInstructionList enterInstructionListInSemanticContext !?ioSemanticContext.mTypeMap]
 #--- Enter routine in routine map
   [!?ioSemanticContext.mRoutineMap insertKey
-    !mRoutineName
+    !self.mRoutineName
     !routineSignature
-    !mIsInternal
+    !self.mIsInternal
   ]
 }
 
@@ -735,15 +735,15 @@ override method @externFunctionDeclarationAST enterInSemanticContext # Handles a
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
   var functionSignature =@functionSignature {}
-  for () in mFormalArgumentList do
+  for () in self.mFormalArgumentList do
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     functionSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentTypeName.string
   end
 #--- Result type
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?let resultTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mResultTypeName ?let resultTypeIndex]
 #--- Enter function in routine map
   [!?ioSemanticContext.mFunctionMap insertKey
-    !mFunctionName
+    !self.mFunctionName
     !functionSignature
     !resultTypeIndex
     !false # Is not internal
@@ -758,9 +758,9 @@ override method @onceFunctionDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Result type
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mResultTypeName ?let @unifiedTypeMap-proxy resultTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mResultTypeName ?let @unifiedTypeMap-proxy resultTypeIndex]
 #--- Enter function in routine map
-  [!?ioSemanticContext.mFunctionMap insertKey !mFunctionName !{} !resultTypeIndex !mIsInternal]
+  [!?ioSemanticContext.mFunctionMap insertKey !self.mFunctionName !{} !resultTypeIndex !self.mIsInternal]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -772,11 +772,11 @@ override method @galgas3SyntaxComponentAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext
 {
   [!?ioSemanticContext.mSyntaxComponentMapForSemanticAnalysis insertKey
-    !mSyntaxComponentName
-    !mLexiqueName
-    !mNonterminalDeclarationList
-    !mRuleList
-    !mHasTranslateFeature
+    !self.mSyntaxComponentName
+    !self.mLexiqueName
+    !self.mNonterminalDeclarationList
+    !self.mRuleList
+    !self.mHasTranslateFeature
   ]
 }
 
@@ -790,7 +790,7 @@ override method @galgas3GrammarComponentAST enterInSemanticContext
 {
 #--- Analyze start symbol labels
   @grammarLabelMap grammarLabelMap = {}
-  for () in mStartSymbolLabelList do
+  for () in self.mStartSymbolLabelList do
   #--- Analyze signature
     @formalParameterSignature formalArgumentList = {}
     for () in mFormalArgumentList do
@@ -808,10 +808,10 @@ override method @galgas3GrammarComponentAST enterInSemanticContext
   end
 #--- Insert grammar in grammar map
   [!?ioSemanticContext.mGrammarMap insertGrammar
-    !mGrammarComponentName
+    !self.mGrammarComponentName
     !grammarLabelMap
-    !mHasIndexing.bool
-    !mHasTranslateFeature
+    !self.mHasIndexing.bool
+    !self.mHasTranslateFeature
   ]
 }
 
@@ -827,12 +827,12 @@ override method @lexiqueComponentAST enterInSemanticContext
   @lexicalAttributeMap lexicalAttributeMap = {}
   buildLexicalAttributeMap (
    !lexicalTypeMap
-   !mLexicalAttributeList
+   !self.mLexicalAttributeList
    !?lexicalAttributeMap
   )
 #--------------------------------------- 
   @terminalMap terminalMap = {}
-  for () in mTerminalDeclarationList do
+  for () in self.mTerminalDeclarationList do
     var argumentTypeList =@lexicalSentValueList {}
     for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
@@ -842,7 +842,7 @@ override method @lexiqueComponentAST enterInSemanticContext
     [!?terminalMap insertKey !mName !argumentTypeList]
   end
 #---
-  for () in mLexicalListDeclarationList do
+  for () in self.mLexicalListDeclarationList do
     var argumentTypeList =@lexicalSentValueList {}
     for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
@@ -855,10 +855,10 @@ override method @lexiqueComponentAST enterInSemanticContext
   end
 #---
   [!?ioSemanticContext.mLexiqueComponentMapForSemanticAnalysis insertKey
-     !mLexiqueComponentName
+     !self.mLexiqueComponentName
      !terminalMap
-     !mIndexingListAST
-     !mIndexingDirectory
+     !self.mIndexingListAST
+     !self.mIndexingDirectory
   ]
 }
 
@@ -893,9 +893,9 @@ override method @galgas3GrammarComponentAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"grammar " + mGrammarComponentName !mGrammarComponentName.location}
+  let key = @lstring.new {!"grammar " + self.mGrammarComponentName !self.mGrammarComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  for (s) in mSyntaxComponents do
+  for (s) in self.mSyntaxComponents do
     [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"syntax " + s !s.location}]
   end
 }
@@ -908,10 +908,10 @@ override method @galgas3SyntaxComponentAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"syntax " + mSyntaxComponentName !mSyntaxComponentName.location}
+  let key = @lstring.new {!"syntax " + self.mSyntaxComponentName !self.mSyntaxComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"lexique " + mLexiqueName !mLexiqueName.location}]
-  for () in mRuleList do
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"lexique " + self.mLexiqueName !self.mLexiqueName.location}]
+  for () in self.mRuleList do
     for () in mLabelList do
       for () in mFormalArguments do
         switch mFormalArgumentPassingMode
@@ -931,7 +931,7 @@ override method @lexiqueComponentAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"lexique " + mLexiqueComponentName !mLexiqueComponentName.location}
+  let key = @lstring.new {!"lexique " + self.mLexiqueComponentName !self.mLexiqueComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 }
 

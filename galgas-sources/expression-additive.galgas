@@ -74,8 +74,8 @@ syntax extension galgas3ExpressionSyntax {
 override method @rightShiftExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -89,7 +89,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
 #--- Left expression analysis
-  [mLeftExpression analyzeSemanticExpression
+  [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inInferenceType
@@ -98,7 +98,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
-  [mRightExpression analyzeSemanticExpression
+  [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext.mPredefinedTypes.mBigIntType
@@ -112,29 +112,29 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
      let right = rightExpression as @literalUIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
        !inAnalysisContext.mPredefinedTypes.mBigIntType
-       !mOperatorLocation
+       !self.mOperatorLocation
        ![left mValue] >> [right mValue]
      }
   elsif let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalBigIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
        !inAnalysisContext.mPredefinedTypes.mBigIntType
-       !mOperatorLocation
+       !self.mOperatorLocation
        ![left mValue] >> [[right mValue] uint]
      }
   elsif not [[leftType mHandledOperatorFlags] infixShiftOperator] then
-    error mOperatorLocation
+    error self.mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
     :outExpression
 #  elsif [rightType key] != "uint" then
-#    error mOperatorLocation
+#    error self.mOperatorLocation
 #    : "for a shift operator, right operand type should be '@uint': it is '@" + [rightType key] + "'"
 #    :outExpression
   else
   #--- Generate expression
     outExpression = @rightShiftExpressionForGeneration.new {
       !leftType
-      !mOperatorLocation
+      !self.mOperatorLocation
       !leftExpression
       !rightExpression
     }
@@ -146,8 +146,8 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
 override method @leftShiftExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -161,7 +161,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
 #--- Left expression analysis
-  [mLeftExpression analyzeSemanticExpression
+  [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inInferenceType
@@ -170,7 +170,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
-  [mRightExpression analyzeSemanticExpression
+  [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext.mPredefinedTypes.mBigIntType
@@ -184,25 +184,25 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
      let right = rightExpression as @literalUIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
        !inAnalysisContext.mPredefinedTypes.mBigIntType
-       !mOperatorLocation
+       !self.mOperatorLocation
        ![left mValue] << [right mValue]
      }
   elsif let left = leftExpression as @literalBigIntExpressionForGeneration,
      let right = rightExpression as @literalBigIntExpressionForGeneration then
      outExpression = @literalBigIntExpressionForGeneration.new {
        !inAnalysisContext.mPredefinedTypes.mBigIntType
-       !mOperatorLocation
+       !self.mOperatorLocation
        ![left mValue] << [[right mValue] uint]
      }
   elsif not [[leftType mHandledOperatorFlags] infixShiftOperator] then
-    error mOperatorLocation
+    error self.mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
     :outExpression
   else
   #--- Generate expression
     outExpression = @leftShiftExpressionForGeneration.new {
       !leftType
-      !mOperatorLocation
+      !self.mOperatorLocation
       !leftExpression
       !rightExpression
     }
@@ -214,8 +214,8 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
 override method @addExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -229,7 +229,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
 #--- Left expression analysis
-  [mLeftExpression analyzeSemanticExpression
+  [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inInferenceType
@@ -238,7 +238,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
-  [mRightExpression analyzeSemanticExpression
+  [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     ![leftExpression mResultType]
@@ -253,7 +253,7 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
     ![rightExpression mResultType]
     ![[leftType mHandledOperatorFlags] infixAddOperatorNoOVF]
     !"&+"
-    !mOperatorLocation
+    !self.mOperatorLocation
     !?rightExpression
   )  
 #--- Generate expression
@@ -261,13 +261,13 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBigIntType
-      !mOperatorLocation
+      !self.mOperatorLocation
       !leftBigint.mValue + rightBigint.mValue
     }
   else
     outExpression = @addExpressionNoOverflowForGeneration.new {
       !leftType
-      !mOperatorLocation
+      !self.mOperatorLocation
       !leftExpression
       !rightExpression
     }
@@ -279,8 +279,8 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
 override method @addExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -293,7 +293,7 @@ override method @addExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  [mLeftExpression analyzeSemanticExpression
+  [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inInferenceType
@@ -302,7 +302,7 @@ override method @addExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
-  [mRightExpression analyzeSemanticExpression
+  [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     ![leftExpression mResultType]
@@ -317,7 +317,7 @@ override method @addExpressionAST analyzeSemanticExpression
     ![rightExpression mResultType]
     ![[leftType mHandledOperatorFlags] infixAddOperator]
     !"+"
-    !mOperatorLocation
+    !self.mOperatorLocation
     !?rightExpression
   )  
 #--- Generate expression
@@ -325,13 +325,13 @@ override method @addExpressionAST analyzeSemanticExpression
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBigIntType
-      !mOperatorLocation
+      !self.mOperatorLocation
       !leftBigint.mValue + rightBigint.mValue
     }
   else
     outExpression = @addExpressionForGeneration.new {
       !leftType
-      !mOperatorLocation
+      !self.mOperatorLocation
       !leftExpression
       !rightExpression
     }
@@ -343,8 +343,8 @@ override method @addExpressionAST analyzeSemanticExpression
 override method @subExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -358,7 +358,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
 #--- Left expression analysis
-  [mLeftExpression analyzeSemanticExpression
+  [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inInferenceType
@@ -367,7 +367,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
-  [mRightExpression analyzeSemanticExpression
+  [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     ![leftExpression mResultType]
@@ -382,7 +382,7 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
     ![rightExpression mResultType]
     ![[leftType mHandledOperatorFlags] infixSubOperatorNoOVF]
     !"&-"
-    !mOperatorLocation
+    !self.mOperatorLocation
     !?rightExpression
   )  
 #--- Generate expression
@@ -390,13 +390,13 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBigIntType
-      !mOperatorLocation
+      !self.mOperatorLocation
       !leftBigint.mValue - rightBigint.mValue
     }
   else
     outExpression = @subExpressionNoOverflowForGeneration.new {
       !leftType
-      !mOperatorLocation
+      !self.mOperatorLocation
       !leftExpression
       !rightExpression
     }
@@ -408,8 +408,8 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
 override method @subExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -422,7 +422,7 @@ override method @subExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  [mLeftExpression analyzeSemanticExpression
+  [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inInferenceType
@@ -431,7 +431,7 @@ override method @subExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
-  [mRightExpression analyzeSemanticExpression
+  [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     ![leftExpression mResultType]
@@ -446,7 +446,7 @@ override method @subExpressionAST analyzeSemanticExpression
     ![rightExpression mResultType]
     ![[leftType mHandledOperatorFlags] infixSubOperator]
     !"-"
-    !mOperatorLocation
+    !self.mOperatorLocation
     !?rightExpression
   )  
 #--- Generate expression
@@ -454,13 +454,13 @@ override method @subExpressionAST analyzeSemanticExpression
      let rightBigint = rightExpression as @literalBigIntExpressionForGeneration then
     outExpression = @literalBigIntExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBigIntType
-      !mOperatorLocation
+      !self.mOperatorLocation
       !leftBigint.mValue - rightBigint.mValue
     }
   else
     outExpression = @subExpressionForGeneration.new {
       !leftType
-      !mOperatorLocation
+      !self.mOperatorLocation
       !leftExpression
       !rightExpression
     }
@@ -489,16 +489,16 @@ override method @rightShiftExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   @string leftTemporaryOperand
-  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
 #--- Right operand
   @string rightTemporaryOperand
-  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
 #--- Generate Comparison
   outCppExpression = leftTemporaryOperand + ".right_shift_operation ("
-                   + rightTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + ")"
+                   + rightTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ")"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
@@ -510,16 +510,16 @@ override method @leftShiftExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   @string leftTemporaryOperand
-  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
 #--- Right operand
   @string rightTemporaryOperand
-  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
 #--- Generate Comparison
   outCppExpression = leftTemporaryOperand + ".left_shift_operation ("
-                   +  rightTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + ")"
+                   +  rightTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ")"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
@@ -532,9 +532,9 @@ override method @addExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 {
-  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
-  [mLeftExpression generateExpression
+  [self.mLeftExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -542,7 +542,7 @@ override method @addExpressionForGeneration generateExpression
     ?let @string leftTemporaryOperand
   ]
 #--- Right operand
-  [mRightExpression generateExpression
+  [self.mRightExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -551,7 +551,7 @@ override method @addExpressionForGeneration generateExpression
   ]
 #--- Generate Comparison
   outCppExpression = leftTemporaryOperand + ".add_operation ("
-                   + rightTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + ")"
+                   + rightTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ")"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
@@ -564,9 +564,9 @@ override method @addExpressionNoOverflowForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 {
-  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
-  [mLeftExpression generateExpression
+  [self.mLeftExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -574,7 +574,7 @@ override method @addExpressionNoOverflowForGeneration generateExpression
     ?let @string leftTemporaryOperand
   ]
 #--- Right operand
-  [mRightExpression generateExpression
+  [self.mRightExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -593,16 +593,16 @@ override method @subExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   @string leftTemporaryOperand
-  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
 #--- Right operand
   @string rightTemporaryOperand
-  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
 #--- Generate Comparison
   outCppExpression = leftTemporaryOperand + ".substract_operation ("
-                  + rightTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + ")"
+                  + rightTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ")"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
@@ -614,13 +614,13 @@ override method @subExpressionNoOverflowForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   @string leftTemporaryOperand
-  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
 #--- Right operand
   @string rightTemporaryOperand
-  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
 #--- Generate Comparison
   outCppExpression = leftTemporaryOperand + ".substract_operation_no_ovf (" + rightTemporaryOperand + ")"
 }

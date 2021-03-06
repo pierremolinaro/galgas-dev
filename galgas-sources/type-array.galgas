@@ -43,9 +43,9 @@ override method @arrayDeclarationAST enterDeclarationInGraph
   ?!@extensionGetterMapForBuildingContext unused ioExtensionGetterMapForBuildingContext
   ?!@extensionSetterMapForBuildingContext unused ioExtensionSetterMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioExtensionOverrideDefinitionList {
-  let key = @lstring.new {!"@" + mArrayTypeName ![mArrayTypeName location]}
+  let key = @lstring.new {!"@" + self.mArrayTypeName ![self.mArrayTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mElementTypeName ![mElementTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + self.mElementTypeName ![self.mElementTypeName location]}]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -58,13 +58,13 @@ override method @arrayDeclarationAST enterInSemanticContext
   ?let @extensionSetterMapForBuildingContext unused inExtensionSetterMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #---
-  if [mDimension uint] == 0 then
-    error mDimension: "the dimension of an array should be > 0"
+  if [self.mDimension uint] == 0 then
+    error self.mDimension: "the dimension of an array should be > 0"
   end
 #--- array type
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mArrayTypeName ?let arrayTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mArrayTypeName ?let arrayTypeIndex]
 #--- element type
-  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mElementTypeName ?let elementTypeIndex]
+  [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !self.mElementTypeName ?let elementTypeIndex]
 #---
   @constructorMap constructorMap = {}
   commonGetterMapForAllTypes ( !?ioSemanticContext.mTypeMap ?var @getterMap getterMap )
@@ -77,7 +77,7 @@ override method @arrayDeclarationAST enterInSemanticContext
 #---
   @functionSignature uintArgs = {}
   @uint idx = 0
-  loop ([mDimension uint]) while idx < [mDimension uint] do
+  loop ([self.mDimension uint]) while idx < [self.mDimension uint] do
     uintArgs += !["" nowhere] !uintType !"inSize" + idx
     idx ++
   end
@@ -136,7 +136,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   var setterFormalArgumentList =@formalParameterSignature {}
   setterFormalArgumentList += !["" nowhere] !elementTypeIndex !@formalArgumentPassingModeAST.argumentConstantIn !"InValue"
   idx = 0
-  loop( [mDimension uint]) while idx < [mDimension uint] do
+  loop ([self.mDimension uint]) while idx < [self.mDimension uint] do
     setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST.argumentConstantIn !"inIndex" + idx
     idx ++
   end
@@ -186,8 +186,8 @@ override method @arrayDeclarationAST enterInSemanticContext
   ]
 #--- Enter in semantic context
   [!?ioSemanticContext.mTypeMap insertKey
-    !mArrayTypeName
-    !mIsPredefined
+    !self.mArrayTypeName
+    !self.mIsPredefined
     !true # Concrete Type
     !@unifiedTypeMap-proxy.null
     !@typeKindEnum. listMapType
@@ -211,7 +211,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !false # Do not generate header in separate file
     !@unifiedTypeMap-proxy.null # Type for enumerated element for "for" instruction
     !"" # No default constructor
-    !"array-" + [mArrayTypeName fileNameRepresentation]
+    !"array-" + [self.mArrayTypeName fileNameRepresentation]
     !@headerKind.oneHeader
   ]
 }
@@ -229,17 +229,17 @@ override method @arrayDeclarationAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!mArrayTypeName)
+  let nameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mArrayTypeName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!mElementTypeName)
+  let elementTypeNameForUsefulness = typeNameForUsefulEntitiesGraph (!self.mElementTypeName)
   [!?ioUsefulEntitiesGraph addEdge !nameForUsefulness !elementTypeNameForUsefulness]
 #---
   ioSemanticDeclarationListForGeneration +=
-    !"array " + mArrayTypeName
+    !"array " + self.mArrayTypeName
     !@arrayTypeForGeneration.new {
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mArrayTypeName}
-      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !mElementTypeName}
-      ![mDimension uint]
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mArrayTypeName}
+      !@unifiedTypeMap-proxy.searchKey {!inSemanticContext.mTypeMap !self.mElementTypeName}
+      ![self.mDimension uint]
     }
 }
 
@@ -258,25 +258,25 @@ override method @arrayTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader {
   outHeader = [filewrapper typeGenerationTemplate.arrayTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mElementTypeProxy identifierRepresentation]
-    !mDimension
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    ![self.mElementTypeProxy identifierRepresentation]
+    !self.mDimension
   ]
   outHeader += [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mGetterMap]
-    ![mTypeProxy mSetterMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mOptionalMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mTypeForEnumeratedElement]
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    ![self.mTypeProxy mIsConcrete]
+    ![self.mTypeProxy mConstructorMap]
+    ![self.mTypeProxy mGetterMap]
+    ![self.mTypeProxy mSetterMap]
+    ![self.mTypeProxy mInstanceMethodMap]
+    ![self.mTypeProxy mClassMethodMap]
+    ![self.mTypeProxy mOptionalMethodMap]
+    ![self.mTypeProxy mEnumerationDescriptor]
+    ![self.mTypeProxy mHandledOperatorFlags]
+    ![self.mTypeProxy mAddAssignOperatorArguments]
+    ![self.mTypeProxy mTypeForEnumeratedElement]
   ]
  }
 
@@ -286,20 +286,20 @@ override method @arrayTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation {
-  [mTypeProxy addHeaderFileName !?ioInclusionSet]
-  [mElementTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mTypeProxy addHeaderFileName !?ioInclusionSet]
+  [self.mElementTypeProxy addHeaderFileName !?ioInclusionSet]
 
   var suffixList =@stringlist {}
   @uint idx = 0
-  loop( mDimension) while idx < mDimension do
+  loop (self.mDimension) while idx < self.mDimension do
     suffixList += ![idx string]
     idx ++
   end
   outImplementation = [filewrapper typeGenerationTemplate.arrayTypeSpecificImplementation
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mElementTypeProxy identifierRepresentation]
-    !mDimension
+    ![self.mTypeProxy key]
+    ![self.mTypeProxy identifierRepresentation]
+    ![self.mElementTypeProxy identifierRepresentation]
+    !self.mDimension
     !suffixList
   ]
  }

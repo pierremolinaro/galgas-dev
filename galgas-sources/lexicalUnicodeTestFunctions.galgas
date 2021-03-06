@@ -169,8 +169,8 @@ abstract method @lexicalFunctionExpressionAST checkUnicodeConstants
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalFunctionOrExpressionAST checkUnicodeConstants {
-  [mLeftOperand checkUnicodeConstants]
-  [mRightOperand checkUnicodeConstants]
+  [self.mLeftOperand checkUnicodeConstants]
+  [self.mRightOperand checkUnicodeConstants]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -186,8 +186,8 @@ override method @lexicalFunctionCharacterMatchAST checkUnicodeConstants {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @lexicalFunctionCharacterIntervalMatchAST checkUnicodeConstants {
-  if [mUpperBound.char uint] < [mLowerBound.char uint] then
-    error mUpperBound : "Upper bound code point should be greater or equal to lower bound code point"
+  if [self.mUpperBound.char uint] < [self.mLowerBound.char uint] then
+    error self.mUpperBound : "Upper bound code point should be greater or equal to lower bound code point"
   end
 }
 
@@ -202,8 +202,8 @@ abstract getter @lexicalFunctionExpressionAST callsDefinedUnicodeTestFunctions ?
 override getter @lexicalFunctionOrExpressionAST callsDefinedUnicodeTestFunctions
   ?let @stringset inDefinedUnicodeFunctionSet -> @bool
 {
-  result = [mLeftOperand callsDefinedUnicodeTestFunctions !inDefinedUnicodeFunctionSet] &
-           [mRightOperand callsDefinedUnicodeTestFunctions !inDefinedUnicodeFunctionSet]
+  result = [self.mLeftOperand callsDefinedUnicodeTestFunctions !inDefinedUnicodeFunctionSet] &
+           [self.mRightOperand callsDefinedUnicodeTestFunctions !inDefinedUnicodeFunctionSet]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -211,7 +211,7 @@ override getter @lexicalFunctionOrExpressionAST callsDefinedUnicodeTestFunctions
 override getter @lexicalFunctionCallAST callsDefinedUnicodeTestFunctions
   ?let @stringset inDefinedUnicodeFunctionSet -> @bool
 {
-  result = [inDefinedUnicodeFunctionSet hasKey !mCalledFunctionName]
+  result = [inDefinedUnicodeFunctionSet hasKey !self.mCalledFunctionName]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -239,29 +239,29 @@ abstract getter @lexicalFunctionExpressionAST generateForUnicodeTestFunctions ->
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalFunctionOrExpressionAST generateForUnicodeTestFunctions -> @string {
-  result = [mLeftOperand generateForUnicodeTestFunctions]
+  result = [self.mLeftOperand generateForUnicodeTestFunctions]
   result += " ||\n         "
-  result += [mRightOperand generateForUnicodeTestFunctions]
+  result += [self.mRightOperand generateForUnicodeTestFunctions]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalFunctionCallAST generateForUnicodeTestFunctions -> @string {
-  result = mCalledFunctionName.string + " (inUnicodeCharacter)"
+  result = self.mCalledFunctionName.string + " (inUnicodeCharacter)"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalFunctionCharacterMatchAST generateForUnicodeTestFunctions -> @string {
-  result = "(" + [[mCharacter.char uint] hexString] + " == UNICODE_VALUE (inUnicodeCharacter))"
+  result = "(" + [[self.mCharacter.char uint] hexString] + " == UNICODE_VALUE (inUnicodeCharacter))"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @lexicalFunctionCharacterIntervalMatchAST generateForUnicodeTestFunctions -> @string {
-  result = "((" + [[mLowerBound.char uint] hexString]
+  result = "((" + [[self.mLowerBound.char uint] hexString]
     + " <= UNICODE_VALUE (inUnicodeCharacter)) && (UNICODE_VALUE (inUnicodeCharacter) <= "
-    + [[mUpperBound.char uint] hexString] + "))"
+    + [[self.mUpperBound.char uint] hexString] + "))"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -129,8 +129,8 @@ syntax extension galgas3InstructionsSyntax {
 override method @switchInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mSwitchExpression enterExpressionInSemanticContext !?ioTypeMap]
-  for () in mBranches do
+  [self.mSwitchExpression enterExpressionInSemanticContext !?ioTypeMap]
+  for () in self.mBranches do
     [mInstructions enterInstructionListInSemanticContext !?ioTypeMap]
   end
 }
@@ -148,7 +148,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
 {
 #--- Analyze switch expression
   @semanticExpressionForGeneration switchExpression
-  [mSwitchExpression analyzeSemanticExpression
+  [self.mSwitchExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -158,7 +158,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   ]
 #--- Check switch expression type is and enum instance
   if [[switchExpression mResultType] mTypeKindEnum] != @typeKindEnum. enumType then
-    error mEndOfSwitchExpression
+    error self.mEndOfSwitchExpression
     : "the switch expression type should be an instance of an enumeration type (the '@"
       + [[switchExpression mResultType] key] + "' type is not an enumeration type)"
   end
@@ -168,7 +168,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
 #--- Analyze branches
   [!?ioVariableMap openOverrideForSelectBlock]
   @switchBranchesForGeneration switchBranchesForGeneration = {}
-  for () in mBranches do
+  for () in self.mBranches do
     @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}
     @bool firstConstant = true
     for () in mSwitchConstantList do
@@ -228,7 +228,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
     )
     switchBranchesForGeneration += !mSwitchConstantList !extractedAssociatedValuesForGeneration ![mEndOfBranch locationIndex] !instructionList
   end
-  [!?ioVariableMap closeOverride !mEndOf_switch_instruction]
+  [!?ioVariableMap closeOverride !self.mEndOf_switch_instruction]
 #--- Check all constants have been named
   let forgottenConstants = [enumConstantMap keySet] - constantsNamedInSwitchInstruction
   if [forgottenConstants count] > 0 then
@@ -236,7 +236,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
     for () in forgottenConstants do
       s += "\n  - " + key
     end
-    error mEndOf_switch_instruction
+    error self.mEndOf_switch_instruction
     : "the switch instruction should name all enumeration constants; missing constants are:" + s
   end
 #--- Generate instruction
@@ -283,7 +283,7 @@ override method @switchInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 {
 #--- Switch expression
-  [mSwitchExpression generateExpression
+  [self.mSwitchExpression generateExpression
     !?ioGeneratedCode
     !?ioInclusionSet
     !?ioTemporaryVariableIndex
@@ -291,16 +291,16 @@ override method @switchInstructionForGeneration generateInstruction
     ?let @string switchVar
   ]
   ioGeneratedCode += "switch (" + switchVar + ".enumValue ()) {\n"
-  ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kNotBuilt:\n"
+  ioGeneratedCode += "case GALGAS_" + [[self.mSwitchExpression mResultType] identifierRepresentation] + "::kNotBuilt:\n"
   ioGeneratedCode += "  break ;\n"
-  for () in mBranches do
+  for () in self.mBranches do
     for () in mSwitchConstantList do
-      ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kEnum_" + [[mValue string] identifierRepresentation] + ":\n"
+      ioGeneratedCode += "case GALGAS_" + [[self.mSwitchExpression mResultType] identifierRepresentation] + "::kEnum_" + [[mValue string] identifierRepresentation] + ":\n"
     end
     [!?ioGeneratedCode incIndentation !2]
     ioGeneratedCode += "{\n"
     if [mExtractedAssociatedValuesForGeneration length] > 0 then
-      let type = "const cEnumAssociatedValues_" + [mEnumType identifierRepresentation]
+      let type = "const cEnumAssociatedValues_" + [self.mEnumType identifierRepresentation]
         + "_" + [mSwitchConstantList mValueAtIndex!0].string + " *"
       let varPtr = "extractPtr_" + mEndOfBranchLocationIndex
       ioGeneratedCode += "  " + type + " " + varPtr + " = (" + type + ") (" + switchVar + ".unsafePointer ()) ;\n"

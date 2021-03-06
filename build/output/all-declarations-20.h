@@ -608,6 +608,8 @@ extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_outputHTMLgramma
 
 extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalActions ;
 
+extern C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf ;
+
 //----------------------------------------------------------------------------------------------------------------------
 //
 //                               UInt options                                                    

@@ -37,7 +37,7 @@ syntax extension galgas3ExpressionSyntax {
 override method @functionCallExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  for () in mExpressionList do
+  for () in self.mExpressionList do
     [mExpression enterExpressionInSemanticContext !?ioTypeMap]
   end
 }
@@ -52,32 +52,32 @@ override method @functionCallExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 {
-  let usefulnessName = functionNameForUsefulEntitiesGraph (!mFunctionName)
+  let usefulnessName = functionNameForUsefulEntitiesGraph (!self.mFunctionName)
   [!?ioUsefulEntitiesGraph addEdge !inUsefulnessCallerEntityName !usefulnessName]
 #--- Retrieve function features
   [inAnalysisContext.mSemanticContext.mFunctionMap searchKey
-    !mFunctionName
+    !self.mFunctionName
     ?let @functionSignature functionSignature
     ?let @unifiedTypeMap-proxy resultType
     ?let @bool isInternal
   ]
 #--- Check internal
   if isInternal then
-    let procDeclarationLocation = [inAnalysisContext.mSemanticContext.mFunctionMap locationForKey !mFunctionName.string]
-    if [mFunctionName.location file] != [procDeclarationLocation file] then
-      error mFunctionName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
+    let procDeclarationLocation = [inAnalysisContext.mSemanticContext.mFunctionMap locationForKey !self.mFunctionName.string]
+    if [self.mFunctionName.location file] != [procDeclarationLocation file] then
+      error self.mFunctionName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
     end
   end
 #--- Analyze effective parameters
-  if [functionSignature length] != [mExpressionList length] then
-    error mFunctionName
-    :"the '" + mFunctionName + "' function header declares " + [[functionSignature length] string]
-      + " formal parameter(s), but this function call names " + [[mExpressionList length] string]
+  if [functionSignature length] != [self.mExpressionList length] then
+    error self.mFunctionName
+    :"the '" + self.mFunctionName + "' function header declares " + [[functionSignature length] string]
+      + " formal parameter(s), but this function call names " + [[self.mExpressionList length] string]
       + " effective argument(s)"
     : outExpression
   else
     var semanticExpressionListForGeneration =@semanticExpressionListForGeneration {}
-    for () in functionSignature, () in mExpressionList do
+    for () in functionSignature, () in self.mExpressionList do
       [mExpression analyzeSemanticExpression
         !inUsefulnessCallerEntityName
         !?ioUsefulEntitiesGraph
@@ -94,8 +94,8 @@ override method @functionCallExpressionAST analyzeSemanticExpression
     end
     outExpression = @functionCallExpressionForGeneration.new {
       !resultType
-      ![mFunctionName location]
-      ![mFunctionName string]
+      ![self.mFunctionName location]
+      ![self.mFunctionName string]
       !semanticExpressionListForGeneration}
   end
 }
@@ -118,23 +118,23 @@ override method @functionCallExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
 #--- Add return type header
-  [mResultType addHeaderFileName !?ioInclusionSet]
+  [self.mResultType addHeaderFileName !?ioInclusionSet]
 #--- Add function header
-  ioInclusionSet += !"func-" + [mFunctionName fileNameRepresentation]
+  ioInclusionSet += !"func-" + [self.mFunctionName fileNameRepresentation]
 #---
   var parameterList =@stringlist {}
-  for () in mExpressions do
+  for () in self.mExpressions do
     @string parameter
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?parameter]
     parameterList += !parameter  
   end
-  outCppExpression = "function_" + [mFunctionName identifierRepresentation] + " ("
+  outCppExpression = "function_" + [self.mFunctionName identifierRepresentation] + " ("
   for () in parameterList
     do outCppExpression += mValue + ", "
   end
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   outCppExpression += compilerCppName ()
-  outCppExpression += [mLocation commaSourceFile] + ")"
+  outCppExpression += [self.mLocation commaSourceFile] + ")"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

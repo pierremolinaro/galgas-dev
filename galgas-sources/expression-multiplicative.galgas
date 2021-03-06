@@ -67,8 +67,8 @@ syntax extension galgas3ExpressionSyntax {
 override method @multiplicationExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -81,7 +81,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  [mLeftExpression analyzeSemanticExpression
+  [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inInferenceType
@@ -90,7 +90,7 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
-  [mRightExpression analyzeSemanticExpression
+  [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     ![leftExpression mResultType]
@@ -105,13 +105,13 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
     ![rightExpression mResultType]
     ![[leftType mHandledOperatorFlags] infixMulOperatorNoOVF]
     !"&*"
-    !mOperatorLocation
+    !self.mOperatorLocation
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @multiplicationExpressionNoOverflowForGeneration.new {
     !leftType
-    !mOperatorLocation
+    !self.mOperatorLocation
     !leftExpression
     !rightExpression}
 }
@@ -122,8 +122,8 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
 override method @multiplicationExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -136,7 +136,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  [mLeftExpression analyzeSemanticExpression
+  [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inInferenceType
@@ -145,7 +145,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
-  [mRightExpression analyzeSemanticExpression
+  [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     ![leftExpression mResultType]
@@ -160,13 +160,13 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     ![rightExpression mResultType]
     ![[leftType mHandledOperatorFlags] infixMulOperator]
     !"*"
-    !mOperatorLocation
+    !self.mOperatorLocation
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @multiplicationExpressionForGeneration.new {
     !leftType
-    !mOperatorLocation
+    !self.mOperatorLocation
     !leftExpression
     !rightExpression}
 }
@@ -176,8 +176,8 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
 override method @divisionExpressionNoOverflowAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -190,7 +190,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  [mLeftExpression analyzeSemanticExpression
+  [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inInferenceType
@@ -199,7 +199,7 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
-  [mRightExpression analyzeSemanticExpression
+  [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     ![leftExpression mResultType]
@@ -214,13 +214,13 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
     ![rightExpression mResultType]
     ![[leftType mHandledOperatorFlags] infixDivOperatorNoOVF]
     !"&/"
-    !mOperatorLocation
+    !self.mOperatorLocation
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @divisionExpressionNoOverflowForGeneration.new {
     !leftType
-    !mOperatorLocation
+    !self.mOperatorLocation
     !leftExpression
     !rightExpression
   }
@@ -231,8 +231,8 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
 override method @divisionExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -245,7 +245,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  [mLeftExpression analyzeSemanticExpression
+  [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inInferenceType
@@ -254,7 +254,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
-  [mRightExpression analyzeSemanticExpression
+  [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     ![leftExpression mResultType]
@@ -269,13 +269,13 @@ override method @divisionExpressionAST analyzeSemanticExpression
     ![rightExpression mResultType]
     ![[leftType mHandledOperatorFlags] infixDivOperator]
     !"/"
-    !mOperatorLocation
+    !self.mOperatorLocation
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @divisionExpressionForGeneration.new {
     !leftType
-    !mOperatorLocation
+    !self.mOperatorLocation
     !leftExpression
     !rightExpression}
 }
@@ -285,8 +285,8 @@ override method @divisionExpressionAST analyzeSemanticExpression
 override method @moduloExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #·····················································································································
@@ -299,7 +299,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  [mLeftExpression analyzeSemanticExpression
+  [self.mLeftExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inInferenceType
@@ -308,7 +308,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
     ?let @semanticExpressionForGeneration leftExpression
   ]
 #--- Right expression analysis
-  [mRightExpression analyzeSemanticExpression
+  [self.mRightExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     ![leftExpression mResultType]
@@ -323,13 +323,13 @@ override method @moduloExpressionAST analyzeSemanticExpression
     ![rightExpression mResultType]
     ![[leftType mHandledOperatorFlags] infixModOperator]
     !"mod"
-    !mOperatorLocation
+    !self.mOperatorLocation
     !?rightExpression
   )  
 #--- Generate expression
   outExpression = @moduloExpressionForGeneration.new {
     !leftType
-    !mOperatorLocation
+    !self.mOperatorLocation
     !leftExpression
     !rightExpression}
 }
@@ -355,16 +355,16 @@ override method @multiplicationExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   @string leftTemporaryOperand
-  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
 #--- Right operand
   @string rightTemporaryOperand
-  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
 #--- Generate Comparison
   outCppExpression = leftTemporaryOperand + ".multiply_operation ("
-                  + rightTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + ")"
+                  + rightTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ")"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
@@ -376,13 +376,13 @@ override method @multiplicationExpressionNoOverflowForGeneration generateExpress
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   @string leftTemporaryOperand
-  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
 #--- Right operand
   @string rightTemporaryOperand
-  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
 #--- Generate Comparison
   outCppExpression = leftTemporaryOperand + ".multiply_operation_no_ovf (" + rightTemporaryOperand + ")"
 }
@@ -395,16 +395,16 @@ override method @divisionExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   @string leftTemporaryOperand
-  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
 #--- Right operand
   @string rightTemporaryOperand
-  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
 #--- Generate Comparison
   outCppExpression = leftTemporaryOperand + ".divide_operation ("
-                  + rightTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + ")"
+                  + rightTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ")"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
@@ -416,13 +416,13 @@ override method @divisionExpressionNoOverflowForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   @string leftTemporaryOperand
-  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
 #--- Right operand
   @string rightTemporaryOperand
-  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
 #--- Generate Comparison
   outCppExpression = leftTemporaryOperand + ".divide_operation_no_ovf (" + rightTemporaryOperand + ")"
 }
@@ -435,16 +435,16 @@ override method @moduloExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
+  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
 #--- Left operand
   @string leftTemporaryOperand
-  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
+  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
 #--- Right operand
   @string rightTemporaryOperand
-  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
 #--- Generate Comparison
   outCppExpression = leftTemporaryOperand + ".modulo_operation ("
-                  + rightTemporaryOperand + ", " + compilerCppName () + [mLocation commaSourceFile] + ")"
+                  + rightTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ")"
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 

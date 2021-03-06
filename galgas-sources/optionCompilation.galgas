@@ -119,7 +119,7 @@ override method @optionComponentDeclarationAST enterInSemanticContext
   @commandLineOptionMap stringOptionMap = {}
   @commandLineOptionMap stringListOptionMap = {}
   var optionNameSet = @stringset.emptySet
-  for () in mOptions do
+  for () in self.mOptions do
     if [optionNameSet hasKey ![mOptionInternalName string]] then
       error mOptionInternalName: "the '" + [mOptionInternalName string] + "' command line option has been already declared"
     elsif [mOptionTypeName string] == "bool" then
@@ -173,8 +173,8 @@ override method @optionComponentDeclarationAST enterInSemanticContext
   end
 #--- Insert option
   [!?ioSemanticContext.mOptionComponentMapForSemanticAnalysis insertKey
-    !mOptionComponentName
-    !mIsPredefined
+    !self.mOptionComponentName
+    !self.mIsPredefined
     !boolOptionMap
     !uintOptionMap
     !stringOptionMap
@@ -195,11 +195,11 @@ override method @optionComponentDeclarationAST semanticAnalysis
   ?!@semanticDeclarationListForGeneration ioSemanticDeclarationListForGeneration
 {
 #--- Useful entities graph
-  let nameForUsefulness = optionNameForUsefulEntitiesGraph (!mOptionComponentName)
+  let nameForUsefulness = optionNameForUsefulEntitiesGraph (!self.mOptionComponentName)
   [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
 #---
   [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
-    !mOptionComponentName
+    !self.mOptionComponentName
     ?let @bool isPredefined
     ?let @commandLineOptionMap boolOptionMap
     ?let @commandLineOptionMap uintOptionMap
@@ -208,12 +208,12 @@ override method @optionComponentDeclarationAST semanticAnalysis
   ] 
 #---- Enter filewrapper in generated list
   ioSemanticDeclarationListForGeneration +=
-    !"option " + mOptionComponentName
+    !"option " + self.mOptionComponentName
     !@optionComponentForGeneration.new {
       !true # Generate Cpp header file
-      !"option-" + [mOptionComponentName fileNameRepresentation]
+      !"option-" + [self.mOptionComponentName fileNameRepresentation]
       !isPredefined
-      !mOptionComponentName.string
+      !self.mOptionComponentName.string
       !boolOptionMap
       !uintOptionMap
       !stringOptionMap
@@ -237,13 +237,13 @@ class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneratio
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @optionComponentForGeneration isPredefined -> @bool {
-  result = mIsPredefined
+  result = self.mIsPredefined
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override getter @optionComponentForGeneration headerKind -> @headerKind {
-  result = if mIsPredefined then .noHeader else .oneHeader end
+  result = if self.mIsPredefined then .noHeader else .oneHeader end
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -252,15 +252,15 @@ override method @optionComponentForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 {
-  if mIsPredefined then
+  if self.mIsPredefined then
     outHeader = ""
   else
     outHeader = [filewrapper optionGenerationTemplates.optionHeaderZone3
-      !mOptionComponentName
-      !mBoolOptionMap
-      !mUIntOptionMap
-      !mStringOptionMap
-      !mStringListOptionMap
+      !self.mOptionComponentName
+      !self.mBoolOptionMap
+      !self.mUIntOptionMap
+      !self.mStringOptionMap
+      !self.mStringListOptionMap
     ]
   end
 }
@@ -272,16 +272,16 @@ override method @optionComponentForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 {
-  if mIsPredefined then
+  if self.mIsPredefined then
     outImplementation = ""
   else
-    ioInclusionSet += !"option-" + [mOptionComponentName fileNameRepresentation]
+    ioInclusionSet += !"option-" + [self.mOptionComponentName fileNameRepresentation]
     outImplementation = [filewrapper optionGenerationTemplates.optionImplementationGalgas3
-      !mOptionComponentName
-      !mBoolOptionMap
-      !mUIntOptionMap
-      !mStringOptionMap
-      !mStringListOptionMap
+      !self.mOptionComponentName
+      !self.mBoolOptionMap
+      !self.mUIntOptionMap
+      !self.mStringOptionMap
+      !self.mStringListOptionMap
     ]
   end
 }
@@ -294,39 +294,39 @@ override method @optionComponentForGeneration appendSpecificFiles
   ?!@stringlist ioCocoaProductFileList
 {
 #--- Generate Cocoa header
-  if @uint.errorCount == 0 && not mIsPredefined then
-    ioAllProductFileSet += !"option-" + [mOptionComponentName fileNameRepresentation] + "-cocoa.h"
+  if @uint.errorCount == 0 && not self.mIsPredefined then
+    ioAllProductFileSet += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.h"
     [@string generateFileWithPattern
       !startPath:inProductDirectory
-      !fileName:"option-" + [mOptionComponentName fileNameRepresentation] + "-cocoa.h"
+      !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.h"
       !lineComment:"//"
       !header:"" # Header
       !defaultUserZone1:"\n\n" # Defaut user zone1
       !generatedZone2:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
-        !mOptionComponentName
+        !self.mOptionComponentName
       ]
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:[filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
-        !mOptionComponentName
+        !self.mOptionComponentName
       ]
       !makeExecutable:false
     ]
   #--- Generate Cocoa Implementation
-    ioAllProductFileSet += !"option-" + [mOptionComponentName fileNameRepresentation] + "-cocoa.m"
-    ioCocoaProductFileList += !"option-" + [mOptionComponentName fileNameRepresentation] + "-cocoa.m"
+    ioAllProductFileSet += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
+    ioCocoaProductFileList += !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
     [@string generateFileWithPattern
       !startPath:inProductDirectory
-      !fileName:"option-" + [mOptionComponentName fileNameRepresentation] + "-cocoa.m"
+      !fileName:"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa.m"
       !lineComment:"//"
       !header:"" # Header
       !defaultUserZone1:"\n\n" # Defaut user zone1
       !generatedZone2:[filewrapper optionGenerationTemplates.optionImplementationCocoa
-        !"option-" + [mOptionComponentName fileNameRepresentation] + "-cocoa"
-        !mOptionComponentName
-        !mBoolOptionMap
-        !mUIntOptionMap
-        !mStringOptionMap
-        !mStringListOptionMap
+        !"option-" + [self.mOptionComponentName fileNameRepresentation] + "-cocoa"
+        !self.mOptionComponentName
+        !self.mBoolOptionMap
+        !self.mUIntOptionMap
+        !self.mStringOptionMap
+        !self.mStringListOptionMap
       ]
       !defaultUserZone2:"\n\n" # Defaut user zone2
       !generatedZone3:"\n\n" # User Zone 3

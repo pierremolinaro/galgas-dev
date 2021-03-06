@@ -39,7 +39,7 @@ syntax extension galgas3InstructionsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @typeMethodCallInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap {
-  for () in mActualParameterList do
+  for () in self.mActualParameterList do
     [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
   end
 }
@@ -55,28 +55,28 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
 #--- Get type method map for the named type
-  let type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  let type = @unifiedTypeMap-proxy. searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !self.mTypeName}
 #--- Get type method signature
   @formalParameterSignature routineSignature
   @bool hasCompilerArgument
-  [[type mClassMethodMap] searchKey !mMethodName ?routineSignature ?hasCompilerArgument]
+  [[type mClassMethodMap] searchKey !self.mMethodName ?routineSignature ?hasCompilerArgument]
 #--- Check effective parameters
   analyzeRoutineArguments (
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !inAnalysisContext
-    !mMethodName
-    !"'" + mMethodName + "' type proc header"
+    !self.mMethodName
+    !"'" + self.mMethodName + "' type proc header"
     !routineSignature
-    !mActualParameterList
+    !self.mActualParameterList
     !?ioVariableMap
     !?ioInstructionListForGeneration
     ?let  @actualParameterListForGeneration actualParameterListForGeneration
   )
 #--- Generate instructions
   ioInstructionListForGeneration += !@typeMethodCallInstructionForGeneration.new {
-    !mTypeName
-    !mMethodName
+    !self.mTypeName
+    !self.mMethodName
     !actualParameterListForGeneration
     !hasCompilerArgument}
 }
@@ -105,7 +105,7 @@ override method @typeMethodCallInstructionForGeneration generateInstruction
   var parameterCppNameList =@stringlist {}
   var jokerParametersToReleaseList =@stringlist {}
   var inputVariableList =@stringlist {}
-  for () in mActualParameterList do
+  for () in self.mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -117,23 +117,23 @@ override method @typeMethodCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName
   end
 #--- Generate method call
-  ioGeneratedCode += "GALGAS_" + [[mTypeName string] identifierRepresentation]
-                  + "::class_method_" + [[mMethodName string] identifierRepresentation] + " ("
+  ioGeneratedCode += "GALGAS_" + [[self.mTypeName string] identifierRepresentation]
+                  + "::class_method_" + [[self.mMethodName string] identifierRepresentation] + " ("
   for () in parameterCppNameList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
-  if mHasCompilerArgument then
+  if self.mHasCompilerArgument then
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
     if [parameterCppNameList length] > 0 then
       ioGeneratedCode += ", "
     end
     ioGeneratedCode +=  compilerCppName ()
   end
-  if mHasCompilerArgument | ([parameterCppNameList length] > 0) then
+  if self.mHasCompilerArgument | ([parameterCppNameList length] > 0) then
     ioGeneratedCode += " COMMA_"
   end
-  ioGeneratedCode += [[mMethodName location] sourceFile] + ") ;\n"
+  ioGeneratedCode += [[self.mMethodName location] sourceFile] + ") ;\n"
   ioGeneratedCode += "}\n"
 }
 

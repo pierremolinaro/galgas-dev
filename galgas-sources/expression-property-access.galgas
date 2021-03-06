@@ -49,7 +49,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Expression analysis
-  [mExpression analyzeSemanticExpression
+  [self.mExpression analyzeSemanticExpression
     !inUsefulnessCallerEntityName
     !?ioUsefulEntitiesGraph
     !@unifiedTypeMap-proxy.null
@@ -60,23 +60,23 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #--- Check field access availability
   let @unifiedTypeMap-proxy expressionType = [expression mResultType]
   if (not [[expressionType mTypeKindEnum] isStructType]) & (not [[expressionType mTypeKindEnum] isClassType]) then
-    error mStructFieldName: "the '.' operator requires the receiver to be a struct or a class"
+    error self.mStructFieldName: "the '.' operator requires the receiver to be a struct or a class"
   end
   let propertyMap = [expressionType mPropertyMap]
-  [propertyMap searchKey !mStructFieldName ?let isPublic ?let type]
+  [propertyMap searchKey !self.mStructFieldName ?let isPublic ?let type]
   if isPublic then
     # Ok
   elsif [inAnalysisContext.mSelfCopyTypeProxy isNull] then
-    error mStructFieldName : "inaccessible property (due to its 'private' qualifier)"
+    error self.mStructFieldName : "inaccessible property (due to its 'private' qualifier)"
   elsif expressionType != inAnalysisContext.mSelfCopyTypeProxy then
-    error mStructFieldName : "inaccessible property (due to its 'private' qualifier)2"
+    error self.mStructFieldName : "inaccessible property (due to its 'private' qualifier)2"
   end
 #--- Generate expression
   outExpression = @structPropertyAccessExpressionForGeneration.new {
     !type
-    !mOperatorLocation
+    !self.mOperatorLocation
     !expression
-    !mStructFieldName.string
+    !self.mStructFieldName.string
   }
 }
 
@@ -97,11 +97,11 @@ override method @structPropertyAccessExpressionForGeneration generateExpression
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression {
-  [mResultType addHeaderFileName !?ioInclusionSet]
+  [self.mResultType addHeaderFileName !?ioInclusionSet]
 #--- Operand
-  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string operand]
+  [self.mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string operand]
 #--- Generate
-  outCppExpression = operand + ".getter_" + [mStructFieldName identifierRepresentation] + " (HERE)"
+  outCppExpression = operand + ".getter_" + [self.mStructFieldName identifierRepresentation] + " (HERE)"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

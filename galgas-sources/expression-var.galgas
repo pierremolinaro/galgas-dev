@@ -43,14 +43,14 @@ override method @varInExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 {
   [!?ioVariableMap searchForReadAccess
-    !mVarName
+    !self.mVarName
     ?let @unifiedTypeMap-proxy type
     ?let @string sourceVariableCppName
     ?let @string nameForCheckingFormalParameterUsing
   ]
   outExpression = @varInExpressionForGeneration.new {
     !type
-    ![mVarName location]
+    ![self.mVarName location]
     !sourceVariableCppName
     !nameForCheckingFormalParameterUsing
   }
@@ -74,9 +74,9 @@ override method @varInExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 {
-  [mResultType addHeaderFileName !?ioInclusionSet]
-  outCppExpression = mCppVarName
-  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
+  [self.mResultType addHeaderFileName !?ioInclusionSet]
+  outCppExpression = self.mCppVarName
+  [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
