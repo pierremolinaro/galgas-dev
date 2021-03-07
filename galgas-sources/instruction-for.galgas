@@ -71,16 +71,14 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
   
-  rule <for_instruction_element>
-    ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
+  rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
     $*$
     ioElementList += !["" nowhere] !["" nowhere]
   }
   
   #·····················································································································
   
-  rule <for_instruction_element>
-    ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
+  rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
     $uint32$ ?let @luint count
     $*$
     var n = [count uint]
@@ -95,8 +93,7 @@ syntax extension galgas3InstructionsSyntax {
   
   #·····················································································································
   
-  rule <for_instruction_element>
-    ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
+  rule <for_instruction_element> ?!@forInstructionEnumeratedObjectElementListAST ioElementList {
     @lstring typeName
     select
       typeName = ["" nowhere]
@@ -109,13 +106,13 @@ syntax extension galgas3InstructionsSyntax {
   
   #·····················································································································
   
-  rule <for_instruction_enumerated_object>
-    !@abstractEnumeratedCollectionAST outEnumeratedObject {
+  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
-    var elementList =@forInstructionEnumeratedObjectElementListAST {}
+    var elementList = @forInstructionEnumeratedObjectElementListAST {}
     @bool endsWithEllipsis
     select
       $...$
+#      error .here : "deprecated"
       endsWithEllipsis = true
     or
       repeat
@@ -126,6 +123,7 @@ syntax extension galgas3InstructionsSyntax {
         endsWithEllipsis = false
       or
         $...$
+#        error .here : "deprecated"
         endsWithEllipsis = true
       end
     end
@@ -141,8 +139,7 @@ syntax extension galgas3InstructionsSyntax {
   
   #·····················································································································
   
-  rule <for_instruction_enumerated_object>
-    !@abstractEnumeratedCollectionAST outEnumeratedObject {
+  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
     @lstring typeName
     select
       typeName = ["" nowhere]
@@ -161,9 +158,11 @@ syntax extension galgas3InstructionsSyntax {
   
   #·····················································································································
   
-  rule <for_instruction_enumerated_object>
-    !@abstractEnumeratedCollectionAST outEnumeratedObject {
+  rule <for_instruction_enumerated_object> !@abstractEnumeratedCollectionAST outEnumeratedObject {
     $($
+    if [option galgas_cli_options.warnsAnomynousForInstructionEnumeratedObject value] then
+      warning .here : "anonymous 'for' enumerated object (due to '--warns-anonymous-for-instruction' option)"
+    end
     $)$
     @lstring prefix
     select
@@ -181,8 +180,7 @@ syntax extension galgas3InstructionsSyntax {
   
   #·····················································································································
   
-  rule <semantic_instruction>
-    !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $for$
     let instructionLocation = @location.here
     var mEnumeratedObjectList =@forInstructionEnumeratedObjectListAST {}

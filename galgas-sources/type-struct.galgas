@@ -291,7 +291,7 @@ override method @structTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader
 {
-  for (t ...) in self.mTypedPropertyList do
+  for (t 4*) in self.mTypedPropertyList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
 

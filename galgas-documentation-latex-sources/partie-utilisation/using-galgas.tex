@@ -75,6 +75,41 @@ Ces deux options s'excluent, c'est-à-dire qu'un exécutable définit soit l'opt
 \optionGGS{-{-}check-usefulness} Calcul de l'utilité des constructions. L'utilisation de cette option est décrite dans le \refChapterPage{chapitreCalculEntitesUtiles}.
 
 
+
+\optionGGS{-{-}property-access-requires-self} Quand cette option est activée, \ggs!self! est requis pour accéder aux propriétés de l'objet courant dans les \emph{méthodes}, \emph{getter} et \emph{setter}. Par exemple, étant donné la classe \ggs!@maClasse!~:
+
+\begin{galgas}
+class @maClasse {
+  @uint maPropriété
+}
+\end{galgas}
+
+Si on écrit~:
+\begin{galgas}
+setter @maClasse incrémenter {
+  maPropriété ++
+}
+\end{galgas}
+
+Cette écriture du \ggs!setter! n'est acceptée que si l'option \texttt{-{-}property-access-requires-self} est désactivée. Si elle est activée, il faut écrire~:
+\begin{galgas}
+setter @maClasse incrémenter {
+  self.maPropriété ++
+}
+\end{galgas}
+
+À noter que cette dernière écriture est toujours acceptée, que l'option \texttt{-{-}property-access-requires-self} soit activée ou non.
+
+
+
+\optionGGS{-{-}warns-anonymous-for-instruction} Quand cette option est activée, un warning est émis pour chaque instruction \ggs!for! dont la variable énumérée est anonyme (construction \ggs!for () in ... !, voir \refSubsectionPage{enumerationImplicite}).
+
+
+
+
+
+
+
 \sectionLabel{Options contrôlant la génération de fichiers}{optionsGeneration}
 
 

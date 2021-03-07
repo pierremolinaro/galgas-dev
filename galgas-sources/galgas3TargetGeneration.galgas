@@ -355,92 +355,92 @@ proc updateGalgas3Targets
 #--- Check xcode target architectures
   @string SDK = ""
   @string MACOSX_DEPLOYMENT_TARGET = ""
-  for () in inTargetFeatureList do
-    if [availableGenerationFeatures hasKey !mValue.string] then
-      if [generationFeatures hasKey !mValue.string] then
-        error mValue: "duplicate '" + mValue + "' feature"
+  for (value) in inTargetFeatureList do
+    if [availableGenerationFeatures hasKey !value.string] then
+      if [generationFeatures hasKey !value.string] then
+        error value: "duplicate '" + value + "' feature"
       end
       let macOsDuplicateMessage = "the \"%SnowLeopard\", \"%Lion\", \"%MountainLion\", \"%Mavericks\","
           " \"%Yosemite\", \"%ElCapitanYosemite\", \"%ElCapitan\", \"%ElCapitanSierra\", \"%Sierra\", \"%LatestMacOS\" are exclusive"
     #--- SnowLeopard
-      if mValue.string == "SnowLeopard" then
+      if value.string == "SnowLeopard" then
         if (SDK != "") then
-          error mValue: macOsDuplicateMessage
+          error value: macOsDuplicateMessage
         end
         SDK = "macosx10.6"
         MACOSX_DEPLOYMENT_TARGET = "10.6"
     #--- Lion
-      elsif mValue.string == "Lion" then
+      elsif value.string == "Lion" then
         if (SDK != "") then
-          error mValue: macOsDuplicateMessage
+          error value: macOsDuplicateMessage
         end
         SDK = "macosx10.7"
         MACOSX_DEPLOYMENT_TARGET = "10.7"
     #--- Mountain Lion
-      elsif mValue.string == "MountainLion" then
+      elsif value.string == "MountainLion" then
         if (SDK != "") then
-          error mValue: macOsDuplicateMessage
+          error value: macOsDuplicateMessage
         end
         SDK = "macosx10.8"
         MACOSX_DEPLOYMENT_TARGET = "10.8"
     #--- Mavericks
-      elsif mValue.string == "Mavericks" then
+      elsif value.string == "Mavericks" then
         if (SDK != "") then
-          error mValue: macOsDuplicateMessage
+          error value: macOsDuplicateMessage
         end
         SDK = "macosx10.9"
         MACOSX_DEPLOYMENT_TARGET = "10.9"
     #--- Yosemite
-      elsif mValue.string == "Yosemite" then
+      elsif value.string == "Yosemite" then
         if (SDK != "") then
-          error mValue: macOsDuplicateMessage
+          error value: macOsDuplicateMessage
         end
         SDK = "macosx10.10"
         MACOSX_DEPLOYMENT_TARGET = "10.10"
     #--- ElCapitanYosemite
-      elsif mValue.string == "ElCapitanYosemite" then
+      elsif value.string == "ElCapitanYosemite" then
         if (SDK != "") then
-          error mValue: macOsDuplicateMessage
+          error value: macOsDuplicateMessage
         end
         SDK = "macosx10.11"
         MACOSX_DEPLOYMENT_TARGET = "10.10"
     #--- ElCapitan
-      elsif mValue.string == "ElCapitan" then
+      elsif value.string == "ElCapitan" then
         if (SDK != "") then
-          error mValue: macOsDuplicateMessage
+          error value: macOsDuplicateMessage
         end
         SDK = "macosx10.11"
         MACOSX_DEPLOYMENT_TARGET = "10.11"
     #--- ElCapitan Sierra
-      elsif mValue.string == "SierraElCapitan" then
+      elsif value.string == "SierraElCapitan" then
         if (SDK != "") then
-          error mValue: macOsDuplicateMessage
+          error value: macOsDuplicateMessage
         end
         SDK = "macosx10.12"
         MACOSX_DEPLOYMENT_TARGET = "10.11"
     #--- Sierra
-      elsif mValue.string == "Sierra" then
+      elsif value.string == "Sierra" then
         if (SDK != "") then
-          error mValue: macOsDuplicateMessage
+          error value: macOsDuplicateMessage
         end
         SDK = "macosx10.12"
         MACOSX_DEPLOYMENT_TARGET = "10.12"
     #--- Lastest MacOS
-      elsif mValue.string == "LatestMacOS" then
+      elsif value.string == "LatestMacOS" then
         if (SDK != "") then
-          error mValue: macOsDuplicateMessage
+          error value: macOsDuplicateMessage
         end
         SDK = "macosx"
         MACOSX_DEPLOYMENT_TARGET = "10.10"
       else
-        generationFeatures += !mValue.string
+        generationFeatures += !value.string
       end
     else
       @stringlist s = {}
-      for () in availableGenerationFeatures do
+      for (key) in availableGenerationFeatures do
         s += !"%" + key
       end
-      error mValue: "unknown '" + mValue + "' feature" fixit { replace s }
+      error value: "unknown '" + value + "' feature" fixit { replace s }
     end
   end
 #--- Codesign without selecting OSX ?

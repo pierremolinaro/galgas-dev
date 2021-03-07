@@ -1957,6 +1957,12 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresS
                                          "property-access-requires-self",
                                          "'self' is required for accessing properties in getter, setter and methods") ;
 
+C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_warnsAnomynousForInstructionEnumeratedObject ("galgas_cli_options",
+                                         "warnsAnomynousForInstructionEnumeratedObject",
+                                         0,
+                                         "warns-anonymous-for-instruction",
+                                         "warns on anonymous 'for' instruction enumerated object ('for () in ...')") ;
+
 //----------------------------------------------------------------------------------------------------------------------
 //
 //                               UInt options                                                    

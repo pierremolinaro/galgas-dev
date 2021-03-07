@@ -115,6 +115,15 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   [ioBoolOptionArray addObject:option] ;
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
+    identifier:@"warnsAnomynousForInstructionEnumeratedObject"
+    commandChar:0
+    commandString:@"warns-anonymous-for-instruction"
+    comment:@"warns on anonymous 'for' instruction enumerated object ('for () in ...')"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
     identifier:@"macosxSDK"
     commandChar:0
     commandString:@"macosx"

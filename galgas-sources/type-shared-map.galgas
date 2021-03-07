@@ -1166,7 +1166,7 @@ override method @sharedMapTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader
 {
-  for (t ...) in self.mTypedAttributeList do
+  for (t 4*) in self.mTypedAttributeList do
     [t addHeaderFileName1 !?ioInclusionSet]
   end
 
