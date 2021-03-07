@@ -23,7 +23,8 @@ syntax extension galgas3InstructionsSyntax {
     outInstruction = @procCallInstructionAST.new {
       ![mRoutineName location]
       !mRoutineName
-      !actualParameterList}
+      !actualParameterList
+    }
   }
 
   #·····················································································································

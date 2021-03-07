@@ -28,21 +28,21 @@ abstract getter @instructionForGeneration generateCcode -> @string
 
 override getter @assignmentForGeneration generateCcode
   -> @string outGeneratedCode {
-  outGeneratedCode = mTargetVarCppName + " = " + [mSourceExpression generateExpCode]
+  outGeneratedCode = self.mTargetVarCppName + " = " + [self.mSourceExpression generateExpCode]
 }
 
 #---------------------------------------------------------------------------*
 
 override getter @varDeclarationForGeneration generateCcode
   -> @string outGeneratedCode {
-  outGeneratedCode = "int " + mVarCppName
+  outGeneratedCode = "int " + self.mVarCppName
 }
 
 #---------------------------------------------------------------------------*
 
 override getter @printVariableForGeneration generateCcode
   -> @string outGeneratedCode {
-  outGeneratedCode = "printf (\"" + mSourceName + ": %d\\n\", " + mVarCppName + ")"
+  outGeneratedCode = "printf (\"" + self.mSourceName + ": %d\\n\", " + self.mVarCppName + ")"
 }
 
 #---------------------------------------------------------------------------*
@@ -54,14 +54,14 @@ abstract getter @expressionForGeneration generateExpCode
 
 override getter @varInExpressionForGeneration generateExpCode
   -> @string outGeneratedCode {
-  outGeneratedCode = mVarCppName
+  outGeneratedCode = self.mVarCppName
 }
 
 #---------------------------------------------------------------------------*
 
 override getter @cstInExpressionForGeneration generateExpCode
   -> @string outGeneratedCode {
-  outGeneratedCode = [mConstantValue string]
+  outGeneratedCode = [self.mConstantValue string]
 }
 
 #---------------------------------------------------------------------------*
@@ -69,7 +69,7 @@ override getter @cstInExpressionForGeneration generateExpCode
 override getter @diadicForGeneration generateExpCode
   -> @string outGeneratedCode {
   outGeneratedCode = "(" + [self.mLeftExpression generateExpCode] + ")"
-  switch mOperation
+  switch self.mOperation
   case addition : outGeneratedCode += " + "
   case multiplication : outGeneratedCode += " * "
   end

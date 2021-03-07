@@ -3402,6 +3402,106 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+// Phase 1: @inputActualSelfPropertyParameterAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_inputActualSelfPropertyParameterAST : public GALGAS_actualParameterAST {
+//--- Constructor
+  public : GALGAS_inputActualSelfPropertyParameterAST (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_inputActualSelfPropertyParameterAST constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_inputActualSelfPropertyParameterAST * ptr (void) const { return (const cPtr_inputActualSelfPropertyParameterAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_inputActualSelfPropertyParameterAST (const cPtr_inputActualSelfPropertyParameterAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_inputActualSelfPropertyParameterAST extractObject (const GALGAS_object & inObject,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_inputActualSelfPropertyParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                    const class GALGAS_lstring & inOperand1
+                                                                                    COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_inputActualSelfPropertyParameterAST & inOperand) const ;
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMActualSelector (class GALGAS_lstring inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMInputActualSelfPropertyName (class GALGAS_lstring inArgument0
+                                                                         COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mActualSelector (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mInputActualSelfPropertyName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_inputActualSelfPropertyParameterAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualSelfPropertyParameterAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @inputActualSelfPropertyParameterAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_inputActualSelfPropertyParameterAST : public cPtr_actualParameterAST {
+//--- Attributes
+  public : GALGAS_lstring mProperty_mActualSelector ;
+  public : GALGAS_lstring mProperty_mInputActualSelfPropertyName ;
+
+//--- Constructor
+  public : cPtr_inputActualSelfPropertyParameterAST (const GALGAS_lstring & in_mActualSelector,
+                                                     const GALGAS_lstring & in_mInputActualSelfPropertyName
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mActualSelector (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMActualSelector (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mInputActualSelfPropertyName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMInputActualSelfPropertyName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 // Phase 1: @inputSingleJokerActualParameterAST class
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -3960,6 +4060,14 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : virtual void nt_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
+  protected : virtual void nt_semantic_5F_instruction_5F_inc_5F_dec_ (const class GALGAS_bool constinArgument0,
+                                                                      class GALGAS_semanticInstructionAST & outArgument1,
+                                                                      class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected : virtual void nt_semantic_5F_instruction_5F_inc_5F_dec_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
+  protected : virtual void nt_semantic_5F_instruction_5F_inc_5F_dec_indexing (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
+
   protected : virtual void nt_semantic_5F_instruction_5F_list_ (class GALGAS_semanticInstructionListAST & outArgument0,
                                                                 class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
@@ -4074,26 +4182,26 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i10_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_instruction_5F_branch_i11_ (GALGAS_castInstructionBranchListAST & ioArgument0,
-                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_instruction_5F_branch_i11_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_instruction_5F_branch_i11_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i12_ (GALGAS_semanticInstructionListAST & outArgument0,
-                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i12_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i12_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i13_ (GALGAS_semanticInstructionAST & outArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i11_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i13_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i11_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i13_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i11_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_instruction_5F_branch_i12_ (GALGAS_castInstructionBranchListAST & ioArgument0,
+                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_instruction_5F_branch_i12_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_instruction_5F_branch_i12_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i13_ (GALGAS_semanticInstructionListAST & outArgument0,
+                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i13_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_cast_5F_else_5F_or_5F_default_i13_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i14_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -4102,34 +4210,34 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i14_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i15_ (const GALGAS_bool constinArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i15_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i15_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i15_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i16_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i16_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i16_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i17_ (const GALGAS_bool constinArgument0,
                                                                                                                       GALGAS_semanticInstructionAST & outArgument1,
                                                                                                                       C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i15_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i17_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i15_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_beginning_5F_with_5F_identifier_i17_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_i16_ (GALGAS_actualOutputExpressionList & outArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_i18_ (GALGAS_actualOutputExpressionList & outArgument0,
                                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_i16_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_i18_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_i16_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i17_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i17_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i17_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i18_ (GALGAS_fixitListAST & outArgument0,
-                                                                          C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i18_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i18_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_non_5F_empty_5F_output_5F_expression_5F_list_i18_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i19_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -4138,19 +4246,19 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i19_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i20_ (GALGAS_forInstructionEnumeratedObjectElementListAST & ioArgument0,
-                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i20_ (GALGAS_fixitListAST & outArgument0,
+                                                                          C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i20_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i20_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i20_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_issue_5F_fixit_i20_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i21_ (GALGAS_forInstructionEnumeratedObjectElementListAST & ioArgument0,
-                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i21_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i21_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i21_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i21_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i21_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i22_ (GALGAS_forInstructionEnumeratedObjectElementListAST & ioArgument0,
                                                                                          C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -4159,19 +4267,19 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i22_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i23_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
-                                                                                                      C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i23_ (GALGAS_forInstructionEnumeratedObjectElementListAST & ioArgument0,
+                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i23_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i23_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i23_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i23_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i24_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
-                                                                                                      C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i24_ (GALGAS_forInstructionEnumeratedObjectElementListAST & ioArgument0,
+                                                                                         C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i24_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i24_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i24_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_element_i24_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i25_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
                                                                                                       C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -4180,60 +4288,60 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i25_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i26_ (GALGAS_semanticInstructionAST & outArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i26_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
+                                                                                                      C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i26_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i26_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i27_ (GALGAS_abstractEnumeratedCollectionAST & outArgument0,
+                                                                                                      C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i27_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_for_5F_instruction_5F_enumerated_5F_object_i27_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i28_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i26_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i28_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i26_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i28_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i27_ (GALGAS_semanticInstructionAST & outArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i29_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i27_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i29_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i27_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i29_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i28_ (const GALGAS_location constinArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i30_ (const GALGAS_location constinArgument0,
                                                                                           const GALGAS_lstring constinArgument1,
                                                                                           const GALGAS_lstring constinArgument2,
                                                                                           GALGAS_semanticInstructionAST & outArgument3,
                                                                                           C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i28_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i30_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i28_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i30_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i29_ (const GALGAS_location constinArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i31_ (const GALGAS_location constinArgument0,
                                                                                           const GALGAS_lstring constinArgument1,
                                                                                           const GALGAS_lstring constinArgument2,
                                                                                           GALGAS_semanticInstructionAST & outArgument3,
                                                                                           C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i29_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i31_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i29_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_grammar_5F_instruction_5F_core_i31_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i30_ (GALGAS_semanticInstructionAST & outArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i32_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i30_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i32_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i30_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i31_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i31_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i31_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i32_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                     C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i32_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
-
-  protected : void rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i32_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i32_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i33_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -4242,12 +4350,13 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i33_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_if_5F_expression_i34_ (GALGAS_ifExpressionList & outArgument0,
-                                                                            C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_inc_5F_dec_i34_ (const GALGAS_bool constinArgument0,
+                                                                                                 GALGAS_semanticInstructionAST & outArgument1,
+                                                                                                 C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_if_5F_expression_i34_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_inc_5F_dec_i34_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_if_5F_expression_i34_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_5F_inc_5F_dec_i34_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i35_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -4256,12 +4365,12 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i35_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i36_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i36_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                     C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i36_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i36_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i36_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_if_5F_instruction_5F_core_i36_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i37_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -4270,12 +4379,12 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i37_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i38_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_if_5F_expression_i38_ (GALGAS_ifExpressionList & outArgument0,
+                                                                            C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i38_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_if_5F_expression_i38_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i38_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_if_5F_expression_i38_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i39_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -4284,26 +4393,26 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i39_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i40_ (GALGAS_matchEntryListAST & ioArgument0,
-                                                                          C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i40_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i40_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i40_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i40_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i40_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i41_ (GALGAS_matchEntryListAST & ioArgument0,
-                                                                          C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i41_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i41_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i41_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i41_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i41_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_instruction_5F_branch_i42_ (GALGAS_matchInstructionBranchListAST & ioArgument0,
-                                                                                          C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i42_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_instruction_5F_branch_i42_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i42_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_match_5F_instruction_5F_branch_i42_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i42_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i43_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -4312,26 +4421,26 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i43_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i44_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i44_ (GALGAS_matchEntryListAST & ioArgument0,
+                                                                          C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i44_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i44_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i44_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i44_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i45_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i45_ (GALGAS_matchEntryListAST & ioArgument0,
+                                                                          C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i45_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i45_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i45_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_entry_i45_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i46_ (GALGAS_semanticInstructionAST & outArgument0,
-                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_instruction_5F_branch_i46_ (GALGAS_matchInstructionBranchListAST & ioArgument0,
+                                                                                          C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i46_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_instruction_5F_branch_i46_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i46_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_match_5F_instruction_5F_branch_i46_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i47_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -4396,13 +4505,12 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i55_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_switch_5F_case_i56_ (GALGAS_lstringlist & outArgument0,
-                                                                          GALGAS_switchExtractedValuesListAST & outArgument1,
-                                                                          C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i56_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_switch_5F_case_i56_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i56_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_switch_5F_case_i56_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i56_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i57_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -4425,34 +4533,63 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i59_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i60_ (GALGAS_semanticInstructionAST & outArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_switch_5F_case_i60_ (GALGAS_lstringlist & outArgument0,
+                                                                          GALGAS_switchExtractedValuesListAST & outArgument1,
+                                                                          C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_switch_5F_case_i60_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_switch_5F_case_i60_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i61_ (GALGAS_semanticInstructionAST & outArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i60_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i61_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i60_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i61_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_with_5F_instruction_5F_core_i61_ (const GALGAS_location constinArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i62_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i62_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i62_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i63_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i63_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i63_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i64_ (GALGAS_semanticInstructionAST & outArgument0,
+                                                                                   C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i64_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_semantic_5F_instruction_i64_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+
+  protected : void rule_galgas_33_InstructionsSyntax_with_5F_instruction_5F_core_i65_ (const GALGAS_location constinArgument0,
                                                                                        const GALGAS_semanticExpressionAST constinArgument1,
                                                                                        const GALGAS_location constinArgument2,
                                                                                        const GALGAS_lstring constinArgument3,
                                                                                        GALGAS_semanticInstructionAST & outArgument4,
                                                                                        C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_with_5F_instruction_5F_core_i61_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_with_5F_instruction_5F_core_i65_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_with_5F_instruction_5F_core_i61_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_with_5F_instruction_5F_core_i65_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_with_5F_instruction_5F_core_i62_ (const GALGAS_location constinArgument0,
+  protected : void rule_galgas_33_InstructionsSyntax_with_5F_instruction_5F_core_i66_ (const GALGAS_location constinArgument0,
                                                                                        const GALGAS_semanticExpressionAST constinArgument1,
                                                                                        const GALGAS_location constinArgument2,
                                                                                        const GALGAS_lstring constinArgument3,
                                                                                        GALGAS_semanticInstructionAST & outArgument4,
                                                                                        C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_with_5F_instruction_5F_core_i62_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_with_5F_instruction_5F_core_i66_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_InstructionsSyntax_with_5F_instruction_5F_core_i62_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
+  protected : void rule_galgas_33_InstructionsSyntax_with_5F_instruction_5F_core_i66_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
 
 
@@ -4613,6 +4750,12 @@ class cParser_galgas_33_InstructionsSyntax {
 
   protected : virtual int32_t select_galgas_33_InstructionsSyntax_77 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
+  protected : virtual int32_t select_galgas_33_InstructionsSyntax_78 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected : virtual int32_t select_galgas_33_InstructionsSyntax_79 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected : virtual int32_t select_galgas_33_InstructionsSyntax_80 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
 
 } ;
 
@@ -4753,9 +4896,10 @@ class GALGAS_divEqualExpressionInstructionAST : public GALGAS_semanticInstructio
 
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_divEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                                 const class GALGAS_lstring & inOperand1,
-                                                                                 const class GALGAS_lstringlist & inOperand2,
-                                                                                 const class GALGAS_semanticExpressionAST & inOperand3
+                                                                                 const class GALGAS_bool & inOperand1,
+                                                                                 const class GALGAS_lstring & inOperand2,
+                                                                                 const class GALGAS_lstringlist & inOperand3,
+                                                                                 const class GALGAS_semanticExpressionAST & inOperand4
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -4764,6 +4908,9 @@ class GALGAS_divEqualExpressionInstructionAST : public GALGAS_semanticInstructio
 //--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void setter_setMExpression (class GALGAS_semanticExpressionAST inArgument0
                                                         COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (class GALGAS_bool inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (class GALGAS_lstring inArgument0
                                                           COMMA_LOCATION_ARGS) ;
@@ -4777,6 +4924,8 @@ class GALGAS_divEqualExpressionInstructionAST : public GALGAS_semanticInstructio
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
 
@@ -4803,12 +4952,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_divEqualExpressionI
 
 class cPtr_divEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
+  public : GALGAS_bool mProperty_mPrefixedBySelf ;
   public : GALGAS_lstring mProperty_mReceiverName ;
   public : GALGAS_lstringlist mProperty_mStructAttributeList ;
   public : GALGAS_semanticExpressionAST mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_divEqualExpressionInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                                  const GALGAS_bool & in_mPrefixedBySelf,
                                                   const GALGAS_lstring & in_mReceiverName,
                                                   const GALGAS_lstringlist & in_mStructAttributeList,
                                                   const GALGAS_semanticExpressionAST & in_mExpression
@@ -4818,6 +4969,8 @@ class cPtr_divEqualExpressionInstructionAST : public cPtr_semanticInstructionAST
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mStructAttributeList (LOCATION_ARGS) const ;
@@ -6245,9 +6398,10 @@ class GALGAS_incDecInstructionAST : public GALGAS_semanticInstructionAST {
 
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_incDecInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                     const class GALGAS_lstring & inOperand1,
-                                                                     const class GALGAS_lstringlist & inOperand2,
-                                                                     const class GALGAS_incDecKind & inOperand3
+                                                                     const class GALGAS_bool & inOperand1,
+                                                                     const class GALGAS_lstring & inOperand2,
+                                                                     const class GALGAS_lstringlist & inOperand3,
+                                                                     const class GALGAS_incDecKind & inOperand4
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6256,6 +6410,9 @@ class GALGAS_incDecInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void setter_setMKind (class GALGAS_incDecKind inArgument0
                                                   COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (class GALGAS_bool inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (class GALGAS_lstring inArgument0
                                                           COMMA_LOCATION_ARGS) ;
@@ -6269,6 +6426,8 @@ class GALGAS_incDecInstructionAST : public GALGAS_semanticInstructionAST {
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_incDecKind getter_mKind (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
 
@@ -6295,12 +6454,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecInstructionAS
 
 class cPtr_incDecInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
+  public : GALGAS_bool mProperty_mPrefixedBySelf ;
   public : GALGAS_lstring mProperty_mReceiverName ;
   public : GALGAS_lstringlist mProperty_mStructAttributeList ;
   public : GALGAS_incDecKind mProperty_mKind ;
 
 //--- Constructor
   public : cPtr_incDecInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                      const GALGAS_bool & in_mPrefixedBySelf,
                                       const GALGAS_lstring & in_mReceiverName,
                                       const GALGAS_lstringlist & in_mStructAttributeList,
                                       const GALGAS_incDecKind & in_mKind
@@ -6310,6 +6471,8 @@ class cPtr_incDecInstructionAST : public cPtr_semanticInstructionAST {
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mStructAttributeList (LOCATION_ARGS) const ;
@@ -6354,9 +6517,10 @@ class GALGAS_incDecNoOVFInstructionAST : public GALGAS_semanticInstructionAST {
 
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_incDecNoOVFInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                          const class GALGAS_lstring & inOperand1,
-                                                                          const class GALGAS_lstringlist & inOperand2,
-                                                                          const class GALGAS_incDecKind & inOperand3
+                                                                          const class GALGAS_bool & inOperand1,
+                                                                          const class GALGAS_lstring & inOperand2,
+                                                                          const class GALGAS_lstringlist & inOperand3,
+                                                                          const class GALGAS_incDecKind & inOperand4
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -6365,6 +6529,9 @@ class GALGAS_incDecNoOVFInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void setter_setMKind (class GALGAS_incDecKind inArgument0
                                                   COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (class GALGAS_bool inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (class GALGAS_lstring inArgument0
                                                           COMMA_LOCATION_ARGS) ;
@@ -6378,6 +6545,8 @@ class GALGAS_incDecNoOVFInstructionAST : public GALGAS_semanticInstructionAST {
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_incDecKind getter_mKind (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
 
@@ -6404,12 +6573,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_incDecNoOVFInstruct
 
 class cPtr_incDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
+  public : GALGAS_bool mProperty_mPrefixedBySelf ;
   public : GALGAS_lstring mProperty_mReceiverName ;
   public : GALGAS_lstringlist mProperty_mStructAttributeList ;
   public : GALGAS_incDecKind mProperty_mKind ;
 
 //--- Constructor
   public : cPtr_incDecNoOVFInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                           const GALGAS_bool & in_mPrefixedBySelf,
                                            const GALGAS_lstring & in_mReceiverName,
                                            const GALGAS_lstringlist & in_mStructAttributeList,
                                            const GALGAS_incDecKind & in_mKind
@@ -6419,6 +6590,8 @@ class cPtr_incDecNoOVFInstructionAST : public cPtr_semanticInstructionAST {
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mStructAttributeList (LOCATION_ARGS) const ;
@@ -7179,9 +7352,10 @@ class GALGAS_minusEqualExpressionInstructionAST : public GALGAS_semanticInstruct
 
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_minusEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                                   const class GALGAS_lstring & inOperand1,
-                                                                                   const class GALGAS_lstringlist & inOperand2,
-                                                                                   const class GALGAS_semanticExpressionAST & inOperand3
+                                                                                   const class GALGAS_bool & inOperand1,
+                                                                                   const class GALGAS_lstring & inOperand2,
+                                                                                   const class GALGAS_lstringlist & inOperand3,
+                                                                                   const class GALGAS_semanticExpressionAST & inOperand4
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7190,6 +7364,9 @@ class GALGAS_minusEqualExpressionInstructionAST : public GALGAS_semanticInstruct
 //--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void setter_setMExpression (class GALGAS_semanticExpressionAST inArgument0
                                                         COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (class GALGAS_bool inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (class GALGAS_lstring inArgument0
                                                           COMMA_LOCATION_ARGS) ;
@@ -7203,6 +7380,8 @@ class GALGAS_minusEqualExpressionInstructionAST : public GALGAS_semanticInstruct
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
 
@@ -7229,12 +7408,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_minusEqualExpressio
 
 class cPtr_minusEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
+  public : GALGAS_bool mProperty_mPrefixedBySelf ;
   public : GALGAS_lstring mProperty_mReceiverName ;
   public : GALGAS_lstringlist mProperty_mStructAttributeList ;
   public : GALGAS_semanticExpressionAST mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_minusEqualExpressionInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                                    const GALGAS_bool & in_mPrefixedBySelf,
                                                     const GALGAS_lstring & in_mReceiverName,
                                                     const GALGAS_lstringlist & in_mStructAttributeList,
                                                     const GALGAS_semanticExpressionAST & in_mExpression
@@ -7244,6 +7425,8 @@ class cPtr_minusEqualExpressionInstructionAST : public cPtr_semanticInstructionA
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mStructAttributeList (LOCATION_ARGS) const ;
@@ -7288,9 +7471,10 @@ class GALGAS_mulEqualExpressionInstructionAST : public GALGAS_semanticInstructio
 
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_mulEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                                 const class GALGAS_lstring & inOperand1,
-                                                                                 const class GALGAS_lstringlist & inOperand2,
-                                                                                 const class GALGAS_semanticExpressionAST & inOperand3
+                                                                                 const class GALGAS_bool & inOperand1,
+                                                                                 const class GALGAS_lstring & inOperand2,
+                                                                                 const class GALGAS_lstringlist & inOperand3,
+                                                                                 const class GALGAS_semanticExpressionAST & inOperand4
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7299,6 +7483,9 @@ class GALGAS_mulEqualExpressionInstructionAST : public GALGAS_semanticInstructio
 //--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void setter_setMExpression (class GALGAS_semanticExpressionAST inArgument0
                                                         COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (class GALGAS_bool inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (class GALGAS_lstring inArgument0
                                                           COMMA_LOCATION_ARGS) ;
@@ -7312,6 +7499,8 @@ class GALGAS_mulEqualExpressionInstructionAST : public GALGAS_semanticInstructio
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
 
@@ -7338,12 +7527,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mulEqualExpressionI
 
 class cPtr_mulEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
+  public : GALGAS_bool mProperty_mPrefixedBySelf ;
   public : GALGAS_lstring mProperty_mReceiverName ;
   public : GALGAS_lstringlist mProperty_mStructAttributeList ;
   public : GALGAS_semanticExpressionAST mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_mulEqualExpressionInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                                  const GALGAS_bool & in_mPrefixedBySelf,
                                                   const GALGAS_lstring & in_mReceiverName,
                                                   const GALGAS_lstringlist & in_mStructAttributeList,
                                                   const GALGAS_semanticExpressionAST & in_mExpression
@@ -7353,6 +7544,8 @@ class cPtr_mulEqualExpressionInstructionAST : public cPtr_semanticInstructionAST
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mStructAttributeList (LOCATION_ARGS) const ;
@@ -7552,9 +7745,10 @@ class GALGAS_plusEqualElementsInstructionAST : public GALGAS_semanticInstruction
 
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_plusEqualElementsInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                                const class GALGAS_lstring & inOperand1,
-                                                                                const class GALGAS_lstringlist & inOperand2,
-                                                                                const class GALGAS_actualOutputExpressionList & inOperand3
+                                                                                const class GALGAS_bool & inOperand1,
+                                                                                const class GALGAS_lstring & inOperand2,
+                                                                                const class GALGAS_lstringlist & inOperand3,
+                                                                                const class GALGAS_actualOutputExpressionList & inOperand4
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7563,6 +7757,9 @@ class GALGAS_plusEqualElementsInstructionAST : public GALGAS_semanticInstruction
 //--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void setter_setMExpressions (class GALGAS_actualOutputExpressionList inArgument0
                                                          COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (class GALGAS_bool inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (class GALGAS_lstring inArgument0
                                                           COMMA_LOCATION_ARGS) ;
@@ -7576,6 +7773,8 @@ class GALGAS_plusEqualElementsInstructionAST : public GALGAS_semanticInstruction
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_actualOutputExpressionList getter_mExpressions (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
 
@@ -7602,12 +7801,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualElementsIn
 
 class cPtr_plusEqualElementsInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
+  public : GALGAS_bool mProperty_mPrefixedBySelf ;
   public : GALGAS_lstring mProperty_mReceiverName ;
   public : GALGAS_lstringlist mProperty_mStructAttributeList ;
   public : GALGAS_actualOutputExpressionList mProperty_mExpressions ;
 
 //--- Constructor
   public : cPtr_plusEqualElementsInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                                 const GALGAS_bool & in_mPrefixedBySelf,
                                                  const GALGAS_lstring & in_mReceiverName,
                                                  const GALGAS_lstringlist & in_mStructAttributeList,
                                                  const GALGAS_actualOutputExpressionList & in_mExpressions
@@ -7617,6 +7818,8 @@ class cPtr_plusEqualElementsInstructionAST : public cPtr_semanticInstructionAST 
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mStructAttributeList (LOCATION_ARGS) const ;
@@ -7661,9 +7864,10 @@ class GALGAS_plusEqualExpressionInstructionAST : public GALGAS_semanticInstructi
 
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_plusEqualExpressionInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                                  const class GALGAS_lstring & inOperand1,
-                                                                                  const class GALGAS_lstringlist & inOperand2,
-                                                                                  const class GALGAS_semanticExpressionAST & inOperand3
+                                                                                  const class GALGAS_bool & inOperand1,
+                                                                                  const class GALGAS_lstring & inOperand2,
+                                                                                  const class GALGAS_lstringlist & inOperand3,
+                                                                                  const class GALGAS_semanticExpressionAST & inOperand4
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -7672,6 +7876,9 @@ class GALGAS_plusEqualExpressionInstructionAST : public GALGAS_semanticInstructi
 //--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void setter_setMExpression (class GALGAS_semanticExpressionAST inArgument0
                                                         COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (class GALGAS_bool inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (class GALGAS_lstring inArgument0
                                                           COMMA_LOCATION_ARGS) ;
@@ -7685,6 +7892,8 @@ class GALGAS_plusEqualExpressionInstructionAST : public GALGAS_semanticInstructi
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
 
@@ -7711,12 +7920,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_plusEqualExpression
 
 class cPtr_plusEqualExpressionInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
+  public : GALGAS_bool mProperty_mPrefixedBySelf ;
   public : GALGAS_lstring mProperty_mReceiverName ;
   public : GALGAS_lstringlist mProperty_mStructAttributeList ;
   public : GALGAS_semanticExpressionAST mProperty_mExpression ;
 
 //--- Constructor
   public : cPtr_plusEqualExpressionInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                                   const GALGAS_bool & in_mPrefixedBySelf,
                                                    const GALGAS_lstring & in_mReceiverName,
                                                    const GALGAS_lstringlist & in_mStructAttributeList,
                                                    const GALGAS_semanticExpressionAST & in_mExpression
@@ -7726,6 +7937,8 @@ class cPtr_plusEqualExpressionInstructionAST : public cPtr_semanticInstructionAS
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mStructAttributeList (LOCATION_ARGS) const ;
@@ -8161,15 +8374,16 @@ class GALGAS_readWriteAccessWithInstructionAST : public GALGAS_semanticInstructi
   public : static class GALGAS_readWriteAccessWithInstructionAST constructor_new (const class GALGAS_location & inOperand0,
                                                                                   const class GALGAS_lstring & inOperand1,
                                                                                   const class GALGAS_lstring & inOperand2,
-                                                                                  const class GALGAS_lstringlist & inOperand3,
-                                                                                  const class GALGAS_location & inOperand4,
-                                                                                  const class GALGAS_semanticExpressionAST & inOperand5,
-                                                                                  const class GALGAS_location & inOperand6,
-                                                                                  const class GALGAS_lstring & inOperand7,
-                                                                                  const class GALGAS_semanticInstructionListAST & inOperand8,
-                                                                                  const class GALGAS_location & inOperand9,
-                                                                                  const class GALGAS_semanticInstructionListAST & inOperand10,
-                                                                                  const class GALGAS_location & inOperand11
+                                                                                  const class GALGAS_bool & inOperand3,
+                                                                                  const class GALGAS_lstringlist & inOperand4,
+                                                                                  const class GALGAS_location & inOperand5,
+                                                                                  const class GALGAS_semanticExpressionAST & inOperand6,
+                                                                                  const class GALGAS_location & inOperand7,
+                                                                                  const class GALGAS_lstring & inOperand8,
+                                                                                  const class GALGAS_semanticInstructionListAST & inOperand9,
+                                                                                  const class GALGAS_location & inOperand10,
+                                                                                  const class GALGAS_semanticInstructionListAST & inOperand11,
+                                                                                  const class GALGAS_location & inOperand12
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8196,6 +8410,9 @@ class GALGAS_readWriteAccessWithInstructionAST : public GALGAS_semanticInstructi
 
   public : VIRTUAL_IN_DEBUG void setter_setMPrefix (class GALGAS_lstring inArgument0
                                                     COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMReceiverIsPrefixedBySelf (class GALGAS_bool inArgument0
+                                                                      COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (class GALGAS_lstring inArgument0
                                                           COMMA_LOCATION_ARGS) ;
@@ -8228,6 +8445,8 @@ class GALGAS_readWriteAccessWithInstructionAST : public GALGAS_semanticInstructi
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mPrefix (LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mReceiverIsPrefixedBySelf (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mSearchMethodNameForErrorSignaling (LOCATION_ARGS) const ;
@@ -8259,6 +8478,7 @@ class cPtr_readWriteAccessWithInstructionAST : public cPtr_semanticInstructionAS
 //--- Attributes
   public : GALGAS_lstring mProperty_mPrefix ;
   public : GALGAS_lstring mProperty_mReceiverName ;
+  public : GALGAS_bool mProperty_mReceiverIsPrefixedBySelf ;
   public : GALGAS_lstringlist mProperty_mFieldList ;
   public : GALGAS_location mProperty_mEndOfReceiverExpression ;
   public : GALGAS_semanticExpressionAST mProperty_mKeyExpression ;
@@ -8273,6 +8493,7 @@ class cPtr_readWriteAccessWithInstructionAST : public cPtr_semanticInstructionAS
   public : cPtr_readWriteAccessWithInstructionAST (const GALGAS_location & in_mInstructionLocation,
                                                    const GALGAS_lstring & in_mPrefix,
                                                    const GALGAS_lstring & in_mReceiverName,
+                                                   const GALGAS_bool & in_mReceiverIsPrefixedBySelf,
                                                    const GALGAS_lstringlist & in_mFieldList,
                                                    const GALGAS_location & in_mEndOfReceiverExpression,
                                                    const GALGAS_semanticExpressionAST & in_mKeyExpression,
@@ -8292,6 +8513,8 @@ class cPtr_readWriteAccessWithInstructionAST : public cPtr_semanticInstructionAS
   public : VIRTUAL_IN_DEBUG void setter_setMPrefix (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mReceiverIsPrefixedBySelf (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMReceiverIsPrefixedBySelf (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mFieldList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG void setter_setMFieldList (GALGAS_lstringlist inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_location getter_mEndOfReceiverExpression (LOCATION_ARGS) const ;
@@ -8310,6 +8533,115 @@ class cPtr_readWriteAccessWithInstructionAST : public cPtr_semanticInstructionAS
   public : VIRTUAL_IN_DEBUG void setter_setM_5F_else_5F_Instructions (GALGAS_semanticInstructionListAST inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_location getter_mEndOf_5F_else_5F_instructions (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG void setter_setMEndOf_5F_else_5F_instructions (GALGAS_location inValue COMMA_LOCATION_ARGS) ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 1: @selfPropertyAssignmentInstructionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class GALGAS_selfPropertyAssignmentInstructionAST : public GALGAS_semanticInstructionAST {
+//--- Constructor
+  public : GALGAS_selfPropertyAssignmentInstructionAST (void) ;
+
+//---
+  public : inline const class cPtr_selfPropertyAssignmentInstructionAST * ptr (void) const { return (const cPtr_selfPropertyAssignmentInstructionAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_selfPropertyAssignmentInstructionAST (const cPtr_selfPropertyAssignmentInstructionAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_selfPropertyAssignmentInstructionAST extractObject (const GALGAS_object & inObject,
+                                                                             C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static class GALGAS_selfPropertyAssignmentInstructionAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                                     const class GALGAS_lstring & inOperand1,
+                                                                                     const class GALGAS_lstringlist & inOperand2,
+                                                                                     const class GALGAS_semanticExpressionAST & inOperand3
+                                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_selfPropertyAssignmentInstructionAST & inOperand) const ;
+
+//--------------------------------- Setters
+  public : VIRTUAL_IN_DEBUG void setter_setMSourceExpression (class GALGAS_semanticExpressionAST inArgument0
+                                                              COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMStructAttributeList (class GALGAS_lstringlist inArgument0
+                                                                 COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMTargetSelfPropertyName (class GALGAS_lstring inArgument0
+                                                                    COMMA_LOCATION_ARGS) ;
+
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST getter_mSourceExpression (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist getter_mStructAttributeList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mTargetSelfPropertyName (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Optional Methods
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_selfPropertyAssignmentInstructionAST class
+
+
+//----------------------------------------------------------------------------------------------------------------------
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_selfPropertyAssignmentInstructionAST ;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// Phase 2: pointer class for @selfPropertyAssignmentInstructionAST class
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+class cPtr_selfPropertyAssignmentInstructionAST : public cPtr_semanticInstructionAST {
+//--- Attributes
+  public : GALGAS_lstring mProperty_mTargetSelfPropertyName ;
+  public : GALGAS_lstringlist mProperty_mStructAttributeList ;
+  public : GALGAS_semanticExpressionAST mProperty_mSourceExpression ;
+
+//--- Constructor
+  public : cPtr_selfPropertyAssignmentInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                                      const GALGAS_lstring & in_mTargetSelfPropertyName,
+                                                      const GALGAS_lstringlist & in_mStructAttributeList,
+                                                      const GALGAS_semanticExpressionAST & in_mSourceExpression
+                                                      COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mTargetSelfPropertyName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMTargetSelfPropertyName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mStructAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMStructAttributeList (GALGAS_lstringlist inValue COMMA_LOCATION_ARGS) ;
+  public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST getter_mSourceExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMSourceExpression (GALGAS_semanticExpressionAST inValue COMMA_LOCATION_ARGS) ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -8453,11 +8785,12 @@ class GALGAS_setterCallInstructionAST : public GALGAS_semanticInstructionAST {
 
 //--------------------------------- GALGAS constructors
   public : static class GALGAS_setterCallInstructionAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                         const class GALGAS_lstring & inOperand1,
-                                                                         const class GALGAS_lstringlist & inOperand2,
-                                                                         const class GALGAS_lstring & inOperand3,
+                                                                         const class GALGAS_bool & inOperand1,
+                                                                         const class GALGAS_lstring & inOperand2,
+                                                                         const class GALGAS_lstringlist & inOperand3,
                                                                          const class GALGAS_lstring & inOperand4,
-                                                                         const class GALGAS_actualParameterListAST & inOperand5
+                                                                         const class GALGAS_lstring & inOperand5,
+                                                                         const class GALGAS_actualParameterListAST & inOperand6
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8466,6 +8799,9 @@ class GALGAS_setterCallInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void setter_setMActualParameterList (class GALGAS_actualParameterListAST inArgument0
                                                                  COMMA_LOCATION_ARGS) ;
+
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (class GALGAS_bool inArgument0
+                                                            COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (class GALGAS_lstring inArgument0
                                                           COMMA_LOCATION_ARGS) ;
@@ -8485,6 +8821,8 @@ class GALGAS_setterCallInstructionAST : public GALGAS_semanticInstructionAST {
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_actualParameterListAST getter_mActualParameterList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
 
@@ -8515,6 +8853,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_setterCallInstructi
 
 class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
 //--- Attributes
+  public : GALGAS_bool mProperty_mPrefixedBySelf ;
   public : GALGAS_lstring mProperty_mReceiverName ;
   public : GALGAS_lstringlist mProperty_mReceiverStructAttributes ;
   public : GALGAS_lstring mProperty_mTypeNameForCasting ;
@@ -8523,6 +8862,7 @@ class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
 
 //--- Constructor
   public : cPtr_setterCallInstructionAST (const GALGAS_location & in_mInstructionLocation,
+                                          const GALGAS_bool & in_mPrefixedBySelf,
                                           const GALGAS_lstring & in_mReceiverName,
                                           const GALGAS_lstringlist & in_mReceiverStructAttributes,
                                           const GALGAS_lstring & in_mTypeNameForCasting,
@@ -8534,6 +8874,8 @@ class cPtr_setterCallInstructionAST : public cPtr_semanticInstructionAST {
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_bool getter_mPrefixedBySelf (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG void setter_setMPrefixedBySelf (GALGAS_bool inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring getter_mReceiverName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG void setter_setMReceiverName (GALGAS_lstring inValue COMMA_LOCATION_ARGS) ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_mReceiverStructAttributes (LOCATION_ARGS) const ;

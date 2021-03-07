@@ -9,6 +9,14 @@ class @assignmentInstructionAST : @semanticInstructionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
+  @lstring mTargetSelfPropertyName
+  @lstringlist mStructAttributeList
+  @semanticExpressionAST mSourceExpression
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 #! SYNTAX
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -16,8 +24,7 @@ syntax extension galgas3InstructionsSyntax {
 
   #·····················································································································
 
-  rule <semantic_instruction>
-    !@semanticInstructionAST outInstruction {
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $identifier$ ?let mTargetVariableName
     var mStructAttributeList =@lstringlist {}
     repeat
@@ -32,7 +39,31 @@ syntax extension galgas3InstructionsSyntax {
       ![mTargetVariableName location]
       !mTargetVariableName
       !mStructAttributeList
-      !mSourceExpression}
+      !mSourceExpression
+     }
+  }
+
+  #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $self$
+    $.$
+    $identifier$ ?let mTargetVariableName
+    var mStructAttributeList =@lstringlist {}
+    repeat
+    while
+      $.$
+      $identifier$ ?let attributeName
+      mStructAttributeList += !attributeName
+    end
+    $=$
+    <expression> ?let @semanticExpressionAST mSourceExpression
+    outInstruction = @selfPropertyAssignmentInstructionAST.new {
+      ![mTargetVariableName location]
+      !mTargetVariableName
+      !mStructAttributeList
+      !mSourceExpression
+    }
   }
 
   #·····················································································································
@@ -44,6 +75,14 @@ syntax extension galgas3InstructionsSyntax {
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @assignmentInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @selfPropertyAssignmentInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -113,6 +152,60 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
       ?nameForCheckingFormalParameterUsing
     ]
   end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
+    !targetType
+    !targetVariableCppName
+    !nameForCheckingFormalParameterUsing
+    !self.mStructAttributeList
+    !expression
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
+  ?let @lstring inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+{
+  var @unifiedTypeMap-proxy targetType
+  var @string targetVariableCppName
+  var @string nameForCheckingFormalParameterUsing
+  if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+    error self.mTargetSelfPropertyName: "'self' cannot be used in this context"
+    : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+  elsif [inAnalysisContext.mSelfTypeProxy isNull] then
+    error self.mTargetSelfPropertyName: "'self' object is not mutable"
+    : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+  else
+    let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+    [propertyMap searchKey !self.mTargetSelfPropertyName ?* ?targetType]
+    nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+    targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty
+     + "mProperty_"+ [[self.mTargetSelfPropertyName string] identifierRepresentation]
+  end
+#--- Get target variable type
+  for () in self.mStructAttributeList do
+    let propertyMap = [targetType mPropertyMap]
+    [propertyMap searchKey !mValue ?let isPublic ?targetType]
+    if not isPublic then
+      error mValue : " inaccessible property (due to its 'private' qualifier)"
+    end
+  end
+#--- Analyze source expression
+  [self.mSourceExpression analyzeSemanticExpression
+    !inUsefulnessCallerEntityName
+    !?ioUsefulEntitiesGraph
+    !targetType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration expression
+  ]
+#--- Check assignment type compatibility
+  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !self.mInstructionLocation !?expression)
 #--- Generate instruction
   ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
     !targetType

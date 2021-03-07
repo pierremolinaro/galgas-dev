@@ -62,7 +62,6 @@ proc compileBeforeClauseGalgas3
       !@localConstantList.emptyList # No local constant
       !@typedPropertyList.emptyList # No attribute (not a method)
       !mutablePropertyList: @typedPropertyList.emptyList # No attribute (not a method)
-      !""
       !mInstructionList
       !mEndOfInstructionList
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
@@ -118,7 +117,6 @@ private proc compileProgramRulesGalgas3
       !@localConstantList.emptyList # No local constant
       !@typedPropertyList.emptyList # No attribute (not a method)
       !mutablePropertyList: @typedPropertyList.emptyList # No attribute (not a method)
-      !""
       !mInstructionList
       !mEndOfInstructionList
       ?semanticInstructionListForGeneration
@@ -131,7 +129,8 @@ private proc compileProgramRulesGalgas3
         !"programRule_" + [ruleIndex string]
         !routineSignature
         !true # Generate static
-        !semanticInstructionListForGeneration}
+        !semanticInstructionListForGeneration
+      }
     ruleIndex ++
   end
 }
@@ -163,7 +162,6 @@ proc compileAfterClauseGalgas3
       !@localConstantList.emptyList # No local constant
       !@typedPropertyList.emptyList # No attribute (not a method)
       !mutablePropertyList: @typedPropertyList.emptyList # No attribute (not a method)
-      !""
       !mInstructionList
       !mEndOfInstructionList
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
@@ -205,6 +203,7 @@ proc compileProgramComponentGalgas3
     !@unifiedTypeMap-proxy.null
     !""
     !@unifiedTypeMap-proxy.null
+    !""
   }
 #--- Analyse 'before' instructions
   @programListForGeneration decoratedDeclarationListForGeneration = {}

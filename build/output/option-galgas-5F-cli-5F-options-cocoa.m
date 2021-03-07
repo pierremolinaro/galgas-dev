@@ -107,8 +107,8 @@ void enterOptionsFor_galgas_5F_cli_5F_options (NSMutableArray * ioBoolOptionArra
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
     identifier:@"propertyAccessRequiresSelf"
-    commandChar:112
-    commandString:@"property-access-reqsuires-self"
+    commandChar:0
+    commandString:@"property-access-requires-self"
     comment:@"'self' is required for accessing properties in getter, setter and methods"
     defaultValue:@""
   ] ;

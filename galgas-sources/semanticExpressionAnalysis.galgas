@@ -602,6 +602,7 @@ struct @analysisContext {
   @unifiedTypeMap-proxy mSelfCopyTypeProxy # isNull if outside a extension
   @string mSelfObjectCppName
   @unifiedTypeMap-proxy mSelfTypeProxy # isNull if outside a setter extension
+  @string mSelfObjectCppPrefixForAccessingProperty # i.e. "ioObject->", ...
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -10,6 +10,7 @@ enum @incDecKind {
 #·····················································································································*
 
 class @incDecInstructionAST : @semanticInstructionAST {
+  @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
   @incDecKind mKind
@@ -18,6 +19,7 @@ class @incDecInstructionAST : @semanticInstructionAST {
 #·····················································································································*
 
 class @incDecNoOVFInstructionAST : @semanticInstructionAST {
+  @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
   @incDecKind mKind
@@ -45,6 +47,20 @@ syntax extension galgas3InstructionsSyntax {
   #·····················································································································
 
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    <semantic_instruction_inc_dec> !prefixedBySelf: false ?outInstruction
+  }
+  
+ #·····················································································································
+
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $self$
+    $.$
+    <semantic_instruction_inc_dec> !prefixedBySelf: true ?outInstruction
+  }
+  
+  #·····················································································································
+
+  rule <semantic_instruction_inc_dec> ?prefixedBySelf: let @bool inPrefixedBySelf !@semanticInstructionAST outInstruction {
     $identifier$ ?let mReceiverName
     var mStructAttributeList =@lstringlist {}
     repeat
@@ -57,6 +73,7 @@ syntax extension galgas3InstructionsSyntax {
       $++$
       outInstruction = @incDecInstructionAST.new {
         ![mReceiverName location]
+        !inPrefixedBySelf
         !mReceiverName
         !mStructAttributeList
         !.increment
@@ -65,6 +82,7 @@ syntax extension galgas3InstructionsSyntax {
       $&++$
       outInstruction = @incDecNoOVFInstructionAST.new {
         ![mReceiverName location]
+        !inPrefixedBySelf
         !mReceiverName
         !mStructAttributeList
         !.increment
@@ -73,6 +91,7 @@ syntax extension galgas3InstructionsSyntax {
       $&--$
       outInstruction = @incDecNoOVFInstructionAST.new {
         ![mReceiverName location]
+        !inPrefixedBySelf
         !mReceiverName
         !mStructAttributeList
         !.decrement
@@ -81,6 +100,7 @@ syntax extension galgas3InstructionsSyntax {
       $--$
       outInstruction = @incDecInstructionAST.new {
         ![mReceiverName location]
+        !inPrefixedBySelf
         !mReceiverName
         !mStructAttributeList
         !.decrement
@@ -153,14 +173,39 @@ override method @selfIncDecNoOVFInstructionAST enterInstructionInSemanticContext
 override method @incDecInstructionAST analyzeSemanticInstruction
   ?let @lstring unused inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
-  ?let @analysisContext unused inAnalysisContext
+  ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 {
 #--- Check target variable
-  @unifiedTypeMap-proxy targetType
-  @string targetVariableCppName
-  [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?targetVariableCppName ?*]
+  var @unifiedTypeMap-proxy targetType
+  var @string targetVariableCppName
+  var @string nameForCheckingFormalParameterUsing
+  if self.mPrefixedBySelf then
+    if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+      error self.mReceiverName: "'self' cannot be used in this context"
+      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+    elsif [inAnalysisContext.mSelfTypeProxy isNull] then
+      error self.mReceiverName: "'self' object is not mutable"
+      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+    else
+      let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+      [propertyMap searchKey !self.mReceiverName ?* ?targetType]
+      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [self.mReceiverName.string identifierRepresentation]
+    end
+  else
+    [!?ioVariableMap searchForReadWriteAccess
+       !self.mReceiverName
+       ?targetType
+       ?targetVariableCppName
+       ?nameForCheckingFormalParameterUsing
+    ]  
+  end
+#  @unifiedTypeMap-proxy targetType
+#  @string targetVariableCppName
+#  [!?ioVariableMap searchForReadWriteAccess !self.mReceiverName ?targetType ?targetVariableCppName ?*]
+#---
   for () in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]

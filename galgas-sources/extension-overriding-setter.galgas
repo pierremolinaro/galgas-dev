@@ -118,14 +118,20 @@ override method @overridingExtensionSetterAST semanticAnalysis
     error self.mOverridingExtensionSetterName:"this setter is not declared by a super class"
   end
 #--- Analyze instruction list
-  var formalParameterListForGeneration =@formalParameterListForGeneration {}
+  @formalParameterListForGeneration formalParameterListForGeneration = {}
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
+#  if [[selfType mTypeKindEnum] isClassType] then
+#    selfObjectName = "object"
+#  else
+#    selfObjectName = "ioObject"
+#   end
   let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
     !selfType
     !"object"
     !selfType
+    !"object->"
   }
   analyzeRoutineBody (
     !nameForUsefulness
@@ -135,7 +141,7 @@ override method @overridingExtensionSetterAST semanticAnalysis
     !@localConstantList.emptyList
     !@typedPropertyList.emptyList
     !mutablePropertyList: [selfType mAllTypedAttributeList]
-    !"object->"
+#    !"object->"
     !self.mOverridingExtensionSetterInstructionList
     !self.mEndOfSetterDeclarationLocation
     ?semanticInstructionListForGeneration

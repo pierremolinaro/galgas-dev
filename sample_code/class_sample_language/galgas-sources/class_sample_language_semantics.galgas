@@ -26,13 +26,13 @@ abstract method @declarationAST buildGraph
 
 override method @classWithoutSuperClassAST buildGraph
   ?!@inheritanceGraph ioGraph {
-  [!?ioGraph addNode !mClassName !self]
+  [!?ioGraph addNode !self.mClassName !self]
 }
 
 override method @classWithSuperClassAST buildGraph
   ?!@inheritanceGraph ioGraph {
-  [!?ioGraph addNode !mClassName !self]
-  [!?ioGraph addEdge  !mClassName !mSuperClassName]
+  [!?ioGraph addNode !self.mClassName !self]
+  [!?ioGraph addEdge  !self.mClassName !self.mSuperClassName]
 }
 
 
@@ -41,11 +41,11 @@ abstract method @declarationAST generateCode
 
 override method @classWithoutSuperClassAST generateCode
   ?!@string ioCodeToGenerate {
-  ioCodeToGenerate += "class " + mClassName + " { } ;\n"
+  ioCodeToGenerate += "class " + self.mClassName + " { } ;\n"
 }
 
 override method @classWithSuperClassAST generateCode
   ?!@string ioCodeToGenerate {
-  ioCodeToGenerate += "class " + mClassName + " : " + mSuperClassName + " { } ;\n"
+  ioCodeToGenerate += "class " + self.mClassName + " : " + self.mSuperClassName + " { } ;\n"
 }
 

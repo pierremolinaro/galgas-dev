@@ -6229,6 +6229,8 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
 
   public : GALGAS_unifiedTypeMap_2D_proxy mProperty_mSelfTypeProxy ;
 
+  public : GALGAS_string mProperty_mSelfObjectCppPrefixForAccessingProperty ;
+
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
   public : VIRTUAL_IN_DEBUG void drop (void) ;
@@ -6247,7 +6249,8 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
                                    const GALGAS_predefinedTypes & in_mPredefinedTypes,
                                    const GALGAS_unifiedTypeMap_2D_proxy & in_mSelfCopyTypeProxy,
                                    const GALGAS_string & in_mSelfObjectCppName,
-                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mSelfTypeProxy) ;
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mSelfTypeProxy,
+                                   const GALGAS_string & in_mSelfObjectCppPrefixForAccessingProperty) ;
 
 //-- Start of generic part --*
 
@@ -6264,7 +6267,8 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
                                                                 const class GALGAS_predefinedTypes & inOperand1,
                                                                 const class GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
                                                                 const class GALGAS_string & inOperand3,
-                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand4
+                                                                const class GALGAS_unifiedTypeMap_2D_proxy & inOperand4,
+                                                                const class GALGAS_string & inOperand5
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of getter 'description'
@@ -6284,6 +6288,8 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mSelfCopyTypeProxy (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mSelfObjectCppName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string getter_mSelfObjectCppPrefixForAccessingProperty (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy getter_mSelfTypeProxy (LOCATION_ARGS) const ;
 

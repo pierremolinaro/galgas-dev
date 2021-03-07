@@ -41,7 +41,7 @@ getter @uintlist sum -> @uint {
 }
 
 getter @lstring op -> @string {
-  result = string + " !"
+  result = self.string + " !"
 }
 
 #------------ Extension methods
@@ -57,12 +57,12 @@ method @uintlist sum !@uint outResult {
 }
 
 method @lstring op !@string outResult {
-  outResult = string + " !"
+  outResult = self.string + " !"
 }
 
 #------------ Extension setters
 setter @lstring appendInt ?let@uint inValue {
-  string += [inValue string]
+  self.string += [inValue string]
 }
 
 setter @uintlist appendSquare ?let@uint inValue {

@@ -3,7 +3,7 @@
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 class @plusEqualElementsInstructionAST : @semanticInstructionAST {
-#  @bool mPrefixedBySelf
+  @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
   @actualOutputExpressionList mExpressions
@@ -12,7 +12,7 @@ class @plusEqualElementsInstructionAST : @semanticInstructionAST {
 #······················································································································*
 
 class @plusEqualExpressionInstructionAST : @semanticInstructionAST {
-#  @bool mPrefixedBySelf
+  @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
   @semanticExpressionAST mExpression
@@ -21,7 +21,7 @@ class @plusEqualExpressionInstructionAST : @semanticInstructionAST {
 #······················································································································*
 
 class @minusEqualExpressionInstructionAST : @semanticInstructionAST {
-#  @bool mPrefixedBySelf
+  @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
   @semanticExpressionAST mExpression
@@ -30,7 +30,7 @@ class @minusEqualExpressionInstructionAST : @semanticInstructionAST {
 #······················································································································*
 
 class @mulEqualExpressionInstructionAST : @semanticInstructionAST {
-#  @bool mPrefixedBySelf
+  @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
   @semanticExpressionAST mExpression
@@ -39,7 +39,7 @@ class @mulEqualExpressionInstructionAST : @semanticInstructionAST {
 #······················································································································*
 
 class @divEqualExpressionInstructionAST : @semanticInstructionAST {
-#  @bool mPrefixedBySelf
+  @bool mPrefixedBySelf
   @lstring mReceiverName
   @lstringlist mStructAttributeList
   @semanticExpressionAST mExpression
@@ -58,16 +58,16 @@ syntax extension galgas3InstructionsSyntax {
   }
   #·····················································································································
 
-#  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
-#    $self$
-#    $.$
-#    <semantic_instruction_beginning_with_identifier> !prefixedBySelf: true ?outInstruction
-#  }
+  rule <semantic_instruction> !@semanticInstructionAST outInstruction {
+    $self$
+    $.$
+    <semantic_instruction_beginning_with_identifier> !prefixedBySelf: true ?outInstruction
+  }
 
   #·····················································································································
 
   rule <semantic_instruction_beginning_with_identifier>
-        ?prefixedBySelf: let @bool unused inHasSelfPrefix
+        ?prefixedBySelf: let @bool inHasSelfPrefix
         !@semanticInstructionAST outInstruction
   {
     $identifier$ ?let @lstring receiverName
@@ -84,7 +84,7 @@ syntax extension galgas3InstructionsSyntax {
       <expression> ?let @semanticExpressionAST expression
       outInstruction = @minusEqualExpressionInstructionAST.new {
         !instructionLocation
-#        !inHasSelfPrefix
+        !inHasSelfPrefix
         !receiverName
         !mStructAttributeList
         !expression
@@ -95,7 +95,7 @@ syntax extension galgas3InstructionsSyntax {
         <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
         outInstruction = @plusEqualElementsInstructionAST.new {
           !instructionLocation
-#          !inHasSelfPrefix
+          !inHasSelfPrefix
           !receiverName
           !mStructAttributeList
           !expressionList
@@ -104,7 +104,7 @@ syntax extension galgas3InstructionsSyntax {
         <expression> ?let @semanticExpressionAST expression
         outInstruction = @plusEqualExpressionInstructionAST.new {
           !instructionLocation
-#          !inHasSelfPrefix
+          !inHasSelfPrefix
           !receiverName
           !mStructAttributeList
           !expression
@@ -115,7 +115,7 @@ syntax extension galgas3InstructionsSyntax {
       <expression> ?let @semanticExpressionAST expression
       outInstruction = @mulEqualExpressionInstructionAST.new {
         !instructionLocation
-#        !inHasSelfPrefix
+        !inHasSelfPrefix
         !receiverName
         !mStructAttributeList
         !expression
@@ -125,7 +125,7 @@ syntax extension galgas3InstructionsSyntax {
       <expression> ?let @semanticExpressionAST expression
       outInstruction = @divEqualExpressionInstructionAST.new {
         !instructionLocation
-#        !inHasSelfPrefix
+        !inHasSelfPrefix
         !receiverName
         !mStructAttributeList
         !expression
@@ -190,13 +190,38 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 {
+#--- Check target variable, or self.property
+  var @unifiedTypeMap-proxy targetType
+  var @string targetVariableCppName
+  var @string nameForCheckingFormalParameterUsing
+  if self.mPrefixedBySelf then
+    if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+      error self.mReceiverName: "'self' cannot be used in this context"
+      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+    elsif [inAnalysisContext.mSelfTypeProxy isNull] then
+      error self.mReceiverName: "'self' object is not mutable"
+      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+    else
+      let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+      [propertyMap searchKey !self.mReceiverName ?* ?targetType]
+      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+    end
+  else
+    [!?ioVariableMap searchForReadWriteAccess
+      !self.mReceiverName
+      ?targetType
+      ?targetVariableCppName
+      ?nameForCheckingFormalParameterUsing
+    ]
+  end
 #--- Check target variable
-  [!?ioVariableMap searchForReadWriteAccess
-    !self.mReceiverName 
-    ?@unifiedTypeMap-proxy targetType
-    ?@string targetVariableCppName
-    ?@string nameForCheckingFormalParameterUsing
-  ]
+#  [!?ioVariableMap searchForReadWriteAccess
+#    !self.mReceiverName 
+#    ?@unifiedTypeMap-proxy targetType
+#    ?@string targetVariableCppName
+#    ?@string nameForCheckingFormalParameterUsing
+#  ]
   for () in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
@@ -241,13 +266,38 @@ override method @minusEqualExpressionInstructionAST analyzeSemanticInstruction #
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 {
+#--- Check target variable, or self.property
+  var @unifiedTypeMap-proxy targetType
+  var @string targetVariableCppName
+  var @string nameForCheckingFormalParameterUsing
+  if self.mPrefixedBySelf then
+    if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+      error self.mReceiverName: "'self' cannot be used in this context"
+      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+    elsif [inAnalysisContext.mSelfTypeProxy isNull] then
+      error self.mReceiverName: "'self' object is not mutable"
+      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+    else
+      let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+      [propertyMap searchKey !self.mReceiverName ?* ?targetType]
+      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+    end
+  else
+    [!?ioVariableMap searchForReadWriteAccess
+      !self.mReceiverName
+      ?targetType
+      ?targetVariableCppName
+      ?nameForCheckingFormalParameterUsing
+    ]
+  end
 #--- Check target variable
-  [!?ioVariableMap searchForReadWriteAccess
-    !self.mReceiverName 
-    ?@unifiedTypeMap-proxy targetType
-    ?@string targetVariableCppName
-    ?@string nameForCheckingFormalParameterUsing
-  ]
+#  [!?ioVariableMap searchForReadWriteAccess
+#    !self.mReceiverName 
+#    ?@unifiedTypeMap-proxy targetType
+#    ?@string targetVariableCppName
+#    ?@string nameForCheckingFormalParameterUsing
+#  ]
   for () in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
@@ -292,13 +342,38 @@ override method @mulEqualExpressionInstructionAST analyzeSemanticInstruction # *
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 {
+#--- Check target variable, or self.property
+  var @unifiedTypeMap-proxy targetType
+  var @string targetVariableCppName
+  var @string nameForCheckingFormalParameterUsing
+  if self.mPrefixedBySelf then
+    if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+      error self.mReceiverName: "'self' cannot be used in this context"
+      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+    elsif [inAnalysisContext.mSelfTypeProxy isNull] then
+      error self.mReceiverName: "'self' object is not mutable"
+      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+    else
+      let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+      [propertyMap searchKey !self.mReceiverName ?* ?targetType]
+      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+    end
+  else
+    [!?ioVariableMap searchForReadWriteAccess
+      !self.mReceiverName
+      ?targetType
+      ?targetVariableCppName
+      ?nameForCheckingFormalParameterUsing
+    ]
+  end
 #--- Check target variable
-  [!?ioVariableMap searchForReadWriteAccess
-    !self.mReceiverName 
-    ?@unifiedTypeMap-proxy targetType
-    ?@string targetVariableCppName
-    ?@string nameForCheckingFormalParameterUsing
-  ]
+#  [!?ioVariableMap searchForReadWriteAccess
+#    !self.mReceiverName 
+#    ?@unifiedTypeMap-proxy targetType
+#    ?@string targetVariableCppName
+#    ?@string nameForCheckingFormalParameterUsing
+#  ]
   for () in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
@@ -343,13 +418,38 @@ override method @divEqualExpressionInstructionAST analyzeSemanticInstruction # /
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 {
+#--- Check target variable, or self.property
+  var @unifiedTypeMap-proxy targetType
+  var @string targetVariableCppName
+  var @string nameForCheckingFormalParameterUsing
+  if self.mPrefixedBySelf then
+    if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+      error self.mReceiverName: "'self' cannot be used in this context"
+      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+    elsif [inAnalysisContext.mSelfTypeProxy isNull] then
+      error self.mReceiverName: "'self' object is not mutable"
+      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+    else
+      let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+      [propertyMap searchKey !self.mReceiverName ?* ?targetType]
+      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+    end
+  else
+    [!?ioVariableMap searchForReadWriteAccess
+      !self.mReceiverName
+      ?targetType
+      ?targetVariableCppName
+      ?nameForCheckingFormalParameterUsing
+    ]
+  end
 #--- Check target variable
-  [!?ioVariableMap searchForReadWriteAccess
-    !self.mReceiverName 
-    ?@unifiedTypeMap-proxy targetType
-    ?@string targetVariableCppName
-    ?@string nameForCheckingFormalParameterUsing
-  ]
+#  [!?ioVariableMap searchForReadWriteAccess
+#    !self.mReceiverName 
+#    ?@unifiedTypeMap-proxy targetType
+#    ?@string targetVariableCppName
+#    ?@string nameForCheckingFormalParameterUsing
+#  ]
   for () in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]
@@ -392,14 +492,41 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
+  ?!@variableMap ioVariableMap
+{
+#--- Check target variable, or self.property
+  var @unifiedTypeMap-proxy targetType
+  var @string targetVariableCppName
+  var @string nameForCheckingFormalParameterUsing
+  if self.mPrefixedBySelf then
+    if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+      error self.mReceiverName: "'self' cannot be used in this context"
+      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+    elsif [inAnalysisContext.mSelfTypeProxy isNull] then
+      error self.mReceiverName: "'self' object is not mutable"
+      : targetType, nameForCheckingFormalParameterUsing, targetVariableCppName
+    else
+      let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+      [propertyMap searchKey !self.mReceiverName ?* ?targetType]
+      nameForCheckingFormalParameterUsing = inAnalysisContext.mSelfObjectCppName
+      targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mReceiverName string] identifierRepresentation]
+    end
+  else
+    [!?ioVariableMap searchForReadWriteAccess
+      !self.mReceiverName
+      ?targetType
+      ?targetVariableCppName
+      ?nameForCheckingFormalParameterUsing
+    ]
+  end
+
 #--- Check target variable
-  [!?ioVariableMap searchForReadWriteAccess
-    !self.mReceiverName
-    ?var targetType
-    ?let targetVariableCppName
-    ?let nameForCheckingFormalParameterUsing
-  ]
+#  [!?ioVariableMap searchForReadWriteAccess
+#    !self.mReceiverName
+#    ?targetType
+#    ?targetVariableCppName
+#    ?nameForCheckingFormalParameterUsing
+#  ]
   for () in self.mStructAttributeList do
     let propertyMap = [targetType mPropertyMap]
     [propertyMap searchKey !mValue ?let isPublic  ?targetType]

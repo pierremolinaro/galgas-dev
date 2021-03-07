@@ -1953,8 +1953,8 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_printPredefinedLexicalA
 
 C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_propertyAccessRequiresSelf ("galgas_cli_options",
                                          "propertyAccessRequiresSelf",
-                                         112,
-                                         "property-access-reqsuires-self",
+                                         0,
+                                         "property-access-requires-self",
                                          "'self' is required for accessing properties in getter, setter and methods") ;
 
 //----------------------------------------------------------------------------------------------------------------------

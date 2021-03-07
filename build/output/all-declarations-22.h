@@ -730,11 +730,10 @@ void routine_analyzeRoutineBody (const class GALGAS_lstring constinArgument0,
                                  const class GALGAS_localConstantList constinArgument4,
                                  const class GALGAS_typedPropertyList constinArgument5,
                                  const class GALGAS_typedPropertyList constinArgument6,
-                                 const class GALGAS_string constinArgument7,
-                                 const class GALGAS_semanticInstructionListAST constinArgument8,
-                                 const class GALGAS_location constinArgument9,
-                                 class GALGAS_semanticInstructionListForGeneration & outArgument10,
-                                 class GALGAS_formalParameterListForGeneration & outArgument11,
+                                 const class GALGAS_semanticInstructionListAST constinArgument7,
+                                 const class GALGAS_location constinArgument8,
+                                 class GALGAS_semanticInstructionListForGeneration & outArgument9,
+                                 class GALGAS_formalParameterListForGeneration & outArgument10,
                                  class C_Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 

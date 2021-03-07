@@ -348,7 +348,65 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
 #--- Generate actual parameter
   ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
     !parameterType
-    !targetVariableCppName}
+    !targetVariableCppName
+  }
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @inputActualSelfPropertyParameterAST checkAgainstFormalArgument
+  ?let @lstring unused inUsefulnessCallerEntityName
+  ?!@usefulEntitiesGraph unused ioUsefulEntitiesGraph
+  ?let @analysisContext inAnalysisContext
+  ?let @lstring inFormalSelector
+  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap unused ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@stringset unused ioExclusiveVariableSet
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
+{
+  if inFormalArgumentPassingMode != .argumentOut then
+    error self.mActualSelector
+    :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+    + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+  elsif inFormalSelector.string != self.mActualSelector.string then
+     error self.mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
+  end
+  var @unifiedTypeMap-proxy parameterType
+  var @string targetVariableCppName
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error self.mInputActualSelfPropertyName: "'self' cannot be used in this context"
+    : parameterType, targetVariableCppName
+  else
+    let propertyMap = [inAnalysisContext.mSelfTypeProxy mPropertyMap]
+    [propertyMap searchKey !self.mInputActualSelfPropertyName ?* ?parameterType]
+    targetVariableCppName = inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[self.mInputActualSelfPropertyName string] identifierRepresentation]
+  end
+
+#  [!?ioVariableMap searchForWriteAccess
+#    !self.mInputActualSelfPropertyName
+#    ?let parameterType
+#    ?let targetVariableCppName
+#    ?*
+#  ]
+#--- Check type
+  if inFormalArgumentType != parameterType then
+    error self.mInputActualSelfPropertyName
+    :"the parameter object has the '@" + [parameterType key]
+    + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
+  end
+#--- Check for exclusive access
+#  if [ioExclusiveVariableSet hasKey ![self.mInputActualSelfPropertyName string]] then
+#    error self.mInputActualSelfPropertyName
+#    :"this variable is already named as input or output/input effective parameter"
+#  end
+#  ioExclusiveVariableSet += ![self.mInputActualSelfPropertyName string]
+#--- Generate actual parameter
+  ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
+    !parameterType
+    !targetVariableCppName
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -541,6 +599,11 @@ abstract method @actualParameterAST enterParameterInSemanticContext ?!@unifiedTy
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 override method @inputActualExistingVariableParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+override method @inputActualSelfPropertyParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

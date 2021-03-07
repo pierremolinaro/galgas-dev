@@ -150,6 +150,15 @@ rule <actual_parameter_list>
       !selector
       !inputActualParameterName
     }
+  while # input parameter, existing variable
+    $?$ ?let selector
+    $self$
+    $.$
+    $identifier$ ?let inputActualParameterName
+    outActualParameterList += !@inputActualSelfPropertyParameterAST.new {
+      !selector
+      !inputActualParameterName
+    }
   while  # input parameter, new variable
     $?$ ?let selector
     $var$
@@ -163,7 +172,8 @@ rule <actual_parameter_list>
     outActualParameterList += !@inputActualNewVariableParameterAST.new {
       !selector
       !declarationTypeName
-      !inputActualParameterName}
+      !inputActualParameterName
+    }
   while  # input parameter, new variable, explicit type
     $?$ ?let selector
     $@type$ ?let @lstring declarationTypeName

@@ -164,7 +164,6 @@ proc analyzeRoutineBody
   ?let @localConstantList inLocalConstantList
   ?let @typedPropertyList inNonMutableTypedAttributeList
   ?mutablePropertyList: let @typedPropertyList inMutableTypedAttributeList
-  ?let @string inAttributeVariableNamePrefix
   ?let @semanticInstructionListAST inInstructionList
   ?let @location inEndOfMethodLocation
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
@@ -185,22 +184,22 @@ proc analyzeRoutineBody
       [!?variableMap insertNonMutableAttribute
         !mPropertyName
         !mPropertyTypeProxy
-        !inAttributeVariableNamePrefix + "mProperty_"+ [[mPropertyName string] identifierRepresentation]
+        !inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[mPropertyName string] identifierRepresentation]
         !inAnalysisContext.mSelfObjectCppName
       ]
     end
   end
 #--- Enter mutable instance attributes
-#  if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
+  if not [option galgas_cli_options.propertyAccessRequiresSelf value] then
     for () in inMutableTypedAttributeList do
       [!?variableMap insertMutableAttribute
         !mPropertyName
         !mPropertyTypeProxy
-        !inAttributeVariableNamePrefix + "mProperty_"+ [[mPropertyName string] identifierRepresentation]
+        !inAnalysisContext.mSelfObjectCppPrefixForAccessingProperty + "mProperty_"+ [[mPropertyName string] identifierRepresentation]
         !inAnalysisContext.mSelfObjectCppName
       ]
     end
-#  end
+  end
 #--- Enter formal arguments
   buildLocalVariableMapAndSignature (
     !inAnalysisContext.mSemanticContext
@@ -309,7 +308,9 @@ override method @procDeclarationAST semanticAnalysis
     !inPredefinedTypes
     !@unifiedTypeMap-proxy.null
     !""
-    !@unifiedTypeMap-proxy.null}
+    !@unifiedTypeMap-proxy.null
+    !""
+  }
   analyzeRoutineBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
@@ -318,7 +319,6 @@ override method @procDeclarationAST semanticAnalysis
     !@localConstantList {}
     !@typedPropertyList {}
     !mutablePropertyList: @typedPropertyList {}
-    !""
     !self.mRoutineInstructionList
     !self.mEndOfRoutineInstructionList
     ?instructionList
@@ -444,7 +444,9 @@ override method @functionDeclarationAST semanticAnalysis
     !inPredefinedTypes
     !@unifiedTypeMap-proxy.null
     !""
-    !@unifiedTypeMap-proxy.null}
+    !@unifiedTypeMap-proxy.null
+    !""
+  }
   analyzeFunctionBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
@@ -500,7 +502,9 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     !inPredefinedTypes
     !@unifiedTypeMap-proxy.null
     !""
-    !@unifiedTypeMap-proxy.null}
+    !@unifiedTypeMap-proxy.null
+    !""
+  }
   analyzeFunctionBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
@@ -1795,6 +1799,7 @@ proc semanticAnalysisOfSyntaxComponent
     !@unifiedTypeMap-proxy.null
     !""
     !@unifiedTypeMap-proxy.null
+    !""
   }
 #--- Rule list
   @uint selectMethodCount = 0

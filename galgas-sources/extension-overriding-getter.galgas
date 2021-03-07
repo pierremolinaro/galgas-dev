@@ -146,7 +146,8 @@ override method @overridingExtensionGetterAST semanticAnalysis
     !selfType
     !"object"
     !@unifiedTypeMap-proxy.null
-  }
+     !"object."
+ }
   analyzeFunctionBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph

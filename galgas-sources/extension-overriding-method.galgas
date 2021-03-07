@@ -125,7 +125,9 @@ override method @overridingExtensionMethodAST semanticAnalysis
     !inPredefinedTypes
     !selfType
     !"object"
-    !@unifiedTypeMap-proxy.null}
+    !@unifiedTypeMap-proxy.null
+    !"object->"
+  }
   analyzeRoutineBody (
     !nameForUsefulness
     !?ioUsefulEntitiesGraph
@@ -137,7 +139,7 @@ override method @overridingExtensionMethodAST semanticAnalysis
        else @typedPropertyList.emptyList
      end
     !mutablePropertyList:@typedPropertyList.emptyList
-    !"object->"
+#    !"object->"
     !self.mOverridingExtensionMethodInstructionList
     !self.mEndOfMethodLocation
     ?semanticInstructionListForGeneration
@@ -163,7 +165,8 @@ override method @overridingExtensionMethodAST semanticAnalysis
       ![self.mOverridingExtensionMethodName string]
       !formalParameterListForGeneration
       ![selfType mAllTypedAttributeList]
-      !semanticInstructionListForGeneration}
+      !semanticInstructionListForGeneration
+    }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

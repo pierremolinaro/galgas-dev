@@ -25,15 +25,22 @@ syntax extension galgas3InstructionsSyntax {
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $log$
     let instructionLocation = @location.here
-    var logList =@logListAST {}
+    @logListAST logList = {}
     repeat
       select
-        $identifier$ ?let @lstring loggedVariableName
+        $identifier$ ?let loggedVariableName
         logList += !loggedVariableName !@varInExpressionAST.new {!loggedVariableName}
+      or
+        $self$
+        $.$
+        $identifier$ ?let propertyName
+        logList +=
+         !propertyName
+         !@structPropertyAccessExpressionAST.new {!propertyName.location !@selfInExpressionAST.new {!propertyName.location} !propertyName}
       or
         $"string"$ ?let logMessage
         $:$
-        <expression> ?let @semanticExpressionAST logExpression
+        <expression> ?let logExpression
         logList += !logMessage !logExpression
       end
     while
@@ -85,7 +92,8 @@ override method @logInstructionAST analyzeSemanticInstruction
   #--- Generate instruction
     ioInstructionListForGeneration += !@logInstructionForGeneration.new {
       !mLogMessage
-      !expression}  
+      !expression
+    }  
   end
 }
 
@@ -105,10 +113,17 @@ override method @logInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
-  [self.mLogExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string logVar]
+  ?!@string ioGeneratedCode
+{
+  [self.mLogExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex 
+    !?ioUnusedVariableCppNameSet
+    ?let @string logVar
+  ]
   ioGeneratedCode += logVar + ".log (" + [self.mLogMessage utf8Representation]
-  + " " + [[self.mLogMessage location] commaSourceFile] + ") ;\n"
+  ioGeneratedCode += " " + [[self.mLogMessage location] commaSourceFile] + ") ;\n"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

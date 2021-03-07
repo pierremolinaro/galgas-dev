@@ -131,6 +131,7 @@ override method @extensionSetterAST semanticAnalysis
     !selfType
     !selfObjectName
     !selfType
+    !selfObjectAccessor
   }
   analyzeRoutineBody (
     !nameForUsefulness
@@ -140,7 +141,7 @@ override method @extensionSetterAST semanticAnalysis
     !{}
     !{}
     !mutablePropertyList:[selfType mAllTypedAttributeList]
-    !selfObjectAccessor
+#    !selfObjectAccessor
     !self.mExtensionSetterInstructionList
     !self.mEndOfSetterDeclarationLocation
     ?semanticInstructionListForGeneration

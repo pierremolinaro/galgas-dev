@@ -43,7 +43,7 @@ option galgas_cli_options {
 
   @bool displayUnicodeLexicalTestFunctions : '\0', "display-lexical-test-functions" -> "Display Unicode Lexical Test Functions"
 
-  @bool propertyAccessRequiresSelf : 'p', "property-access-reqsuires-self" -> "'self' is required for accessing properties in getter, setter and methods"
+  @bool propertyAccessRequiresSelf : '\0', "property-access-requires-self" -> "'self' is required for accessing properties in getter, setter and methods"
 
   @uint macosxSDK : '\0', "macosx" -> "Generate an Xcode project for OS X"
 }

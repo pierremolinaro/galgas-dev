@@ -81,8 +81,8 @@ abstract method @instructionAST semanticAnalysis
 override method @varDeclarationAST semanticAnalysis
   ?!@variableMap ioVariableMap
   ?!@instructionListForGeneration ioInstructionListForGeneration {
-  let @string cppName = "var_" + [mVarName identifierRepresentation] + "_" + [mVarName.location locationIndex]
-  [!?ioVariableMap declareVariable !mVarName !cppName]
+  let @string cppName = "var_" + [self.mVarName identifierRepresentation] + "_" + [self.mVarName.location locationIndex]
+  [!?ioVariableMap declareVariable !self.mVarName !cppName]
   ioInstructionListForGeneration += !@varDeclarationForGeneration.new { !cppName}
 }
 
@@ -92,8 +92,8 @@ override method @printVariableAST semanticAnalysis
   ?!@variableMap ioVariableMap
   ?!@instructionListForGeneration ioInstructionListForGeneration {
   @string cppName
-  [!?ioVariableMap searchForReadAccess !mVarName ?cppName]
-  ioInstructionListForGeneration += !@printVariableForGeneration.new { ![mVarName string] !cppName}
+  [!?ioVariableMap searchForReadAccess !self.mVarName ?cppName]
+  ioInstructionListForGeneration += !@printVariableForGeneration.new { ![self.mVarName string] !cppName}
 }
 
 #---------------------------------------------------------------------------*
@@ -103,10 +103,10 @@ override method @assignmentAST semanticAnalysis
   ?!@instructionListForGeneration ioInstructionListForGeneration {
 #--- Expression
   @expressionForGeneration expression
-  [mSourceExpression expSemanticAnalysis !?ioVariableMap ?expression]
+  [self.mSourceExpression expSemanticAnalysis !?ioVariableMap ?expression]
 #--- Target variable
   @string cppName
-  [!?ioVariableMap searchForWriteAccess !mTargetVarName ?cppName]
+  [!?ioVariableMap searchForWriteAccess !self.mTargetVarName ?cppName]
 #---
   ioInstructionListForGeneration += !@assignmentForGeneration.new { !cppName !expression}
 }
@@ -123,7 +123,7 @@ override method @varInExpressionAST expSemanticAnalysis
   ?!@variableMap ioVariableMap
   !@expressionForGeneration outExpression {
   @string cppName
-  [!?ioVariableMap searchForReadAccess !mVarName ?cppName]
+  [!?ioVariableMap searchForReadAccess !self.mVarName ?cppName]
   outExpression = @varInExpressionForGeneration.new { !cppName}
 }
 
@@ -132,7 +132,7 @@ override method @varInExpressionAST expSemanticAnalysis
 override method @cstInExpressionAST expSemanticAnalysis
   ?!@variableMap unused ioVariableMap
   !@expressionForGeneration outExpression {
-  outExpression = @cstInExpressionForGeneration.new { ![mConstant uint]}
+  outExpression = @cstInExpressionForGeneration.new { ![self.mConstant uint]}
 }
 
 #---------------------------------------------------------------------------*

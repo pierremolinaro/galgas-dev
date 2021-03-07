@@ -143,6 +143,7 @@ override method @extensionGetterAST semanticAnalysis
     !selfType
     !selfObjectName
     !@unifiedTypeMap-proxy.null
+    !selfObjectAccessor
   }
   @unifiedTypeMap-proxy returnType
   @string returnVariableCppName

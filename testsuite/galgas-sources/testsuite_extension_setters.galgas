@@ -22,12 +22,12 @@ class @TestExtensionSetter : @abstractTestExtensionSetter {
 }
 
 setter @TestExtensionSetter setter3 ?let@uint inArg {
-  [!?mString appendSpacesUntilColumn!inArg]
+  [!?self.mString appendSpacesUntilColumn!inArg]
 }
 
 
 setter @TestExtensionSetter setter1 ?!@uint ioArg {
-  mInteger = mInteger + ioArg
+  self.mInteger = self.mInteger + ioArg
   ioArg ++
 }
 
@@ -39,7 +39,7 @@ class @overridingTestExtensionSetter : @abstractOverridingTestExtensionSetter {
 
 setter @TestExtensionSetter setter2 ?!@uint ioArg ?let@string inS {
   [!?self setter1 !?ioArg]
-  mString += inS
+  self.mString += inS
 }
 
 abstract setter @abstractTestExtensionSetter m
