@@ -407,6 +407,38 @@ Retourne le caractère situé à l'indice \ggs!inIndex! de la valeur du récepte
 
 
 
+\subsectionGetter{commandWithArguments}{string}
+
+\begin{galgasbox}
+getter commandWithArguments ?@stringlist inArguments -> @sint
+\end{galgasbox}
+Exécute la commande \emph{shell} dont le nom est la valeur du récepteur, avec les arguments désignés par la valeur de \texttt{inArguments}. La sortie de la commande est affichée sur la console. Quand la commande est terminée, sa valeur de sortie est retournée.
+
+Contrairement au \refGetterPage{string}{system}, des espaces sont acceptés dans le nom de la commande et dans les arguments.
+
+\begin{galgas}
+let r = ["cp" commandWithArguments !{!"fichierA.txt", !"fichierB.txt"}]
+if r == 0S then
+  # Ok, pas d'erreur
+else
+  # Erreur
+end
+\end{galgas}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \subsectionGetter{componentsSeparatedByString}{string}
 
 \begin{galgasbox}
@@ -804,7 +836,27 @@ Si la longueur de la valeur du récepteur est non nulle, retourne son premier ca
 getter here -> @lstring
 \end{galgasbox}
 
-Retourne un \ggs!@lstring! dont le champ \ggs!string! est la valeur du récepteur, et dont le champ \ggs!location! désigne la position courante de l'analyse. L'expression \ggs![s here]! est équivalente à \ggs*@lstring.new{!s !@location.here}*.
+Retourne un \ggs!@lstring! dont le champ \ggs!string! est la valeur du récepteur, et dont le champ \ggs!location! désigne la position courante de l'analyse. L'expression \ggs![s here]! est équivalente à \ggs*@lstring.new{!s !.here}*.
+
+
+
+
+
+
+
+
+
+
+
+
+\subsectionGetter{hiddenCommandWithArguments}{string}
+
+\begin{galgasbox}
+getter hiddenCommandWithArguments ?@stringlist inArguments -> @string
+\end{galgasbox}
+Exécute la commande \emph{shell} dont le nom est la valeur du récepteur, avec les arguments désignés par la valeur de \texttt{inArguments}. Quand la commande est terminée, la sortie de la commande est retournée.
+
+Contrairement au \refGetterPage{string}{popen}, des espaces sont acceptés dans le nom de la commande et dans les arguments.
 
 
 
@@ -1451,9 +1503,10 @@ Retourne la sous-chaîne de caractères extraite de la valeur du récepteur à p
 getter system -> @sint
 \end{galgasbox}
 
-Appelle la routine C \texttt{system} avec la valeur du récepteur en argument. La valeur retournée par cet appel est la valeur retournée par ce \emph{getter}.
 
+Exécute la commande \emph{shell} avec la valeur du récepteur en argument. La valeur retournée par cet appel est la valeur retournée par ce \emph{getter}. On peut exécuter plusieurs commandes séquentiellement en les séparant par un point-virgule. La sortie de la commande est affichée sur la console.
 
+Contrairement au \refGetterPage{string}{commandWithArguments}, les espaces dans les arguments doivent être explicitement échappés.
 
 
 

@@ -785,6 +785,20 @@ override method @stringPredefinedTypeAST getGetterMap
   enterBaseGetterWithArgument (
     !?outMap
     !?ioUnifiedTypeMap
+    !"commandWithArguments" !"stringlist" !"inArguments"
+    !returnedTypeName: "sint"
+    !hasCompilerArgument: true
+  )
+  enterBaseGetterWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
+    !"hiddenCommandWithArguments" !"stringlist" !"inArguments"
+    !returnedTypeName: "string"
+    !hasCompilerArgument: true
+  )
+  enterBaseGetterWithArgument (
+    !?outMap
+    !?ioUnifiedTypeMap
     !"characterAtIndex" !"uint" !"inIndex"
     !returnedTypeName:"char"
     !hasCompilerArgument:true

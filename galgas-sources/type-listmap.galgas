@@ -149,7 +149,7 @@ override method @listmapDeclarationAST enterInSemanticContext
   for () in listTypedAttributeList do
     addAssignOperatorDescription += !["" nowhere] !mPropertyTypeProxy !mPropertyName.string
   end
-#--- Add Categories
+#--- Add extensions
   addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext

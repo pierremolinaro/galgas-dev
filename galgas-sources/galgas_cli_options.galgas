@@ -39,9 +39,9 @@ option galgas_cli_options {
 
   @bool emitSyntaxDiagrams : '\0', "emit-syntax-diagrams" -> "Emit grammar syntax diagrams in TEX files"
 
-  @bool checkEntityUsefulness : '\0', "check-usefulness" -> "Check Entity Usefulness"
-
   @bool displayUnicodeLexicalTestFunctions : '\0', "display-lexical-test-functions" -> "Display Unicode Lexical Test Functions"
+
+  @bool checkEntityUsefulness : '\0', "check-usefulness" -> "Check Entity Usefulness"
 
   @bool propertyAccessRequiresSelf : '\0', "property-access-requires-self" -> "'self' is required for accessing properties in getter, setter and methods"
 

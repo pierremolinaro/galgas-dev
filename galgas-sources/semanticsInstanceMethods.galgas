@@ -2,7 +2,7 @@
 #                                                                                                                      *
 #  semantics definitions for semantics component                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2010, ..., 2019 Pierre Molinaro.                                                                      *
+#  Copyright (C) 2010, ..., 2021 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : pierre@pcmolinaro.name                                                                                     *
 #                                                                                                                      *
@@ -194,6 +194,21 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
     !@methodQualifier.isBasic
     !"" # No error message
   ]
+#--- commandWithArguments
+#  argList = {}
+#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"stringlist" ?t]
+#  argList += !["arguments" nowhere] !t !.argumentConstantIn !"inArguments"
+#  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?t]
+#  argList += !["output" nowhere] !t !.argumentOut !"outOutputString"
+#  [!?outInstanceMethodMap insertKey
+#    !@lstring.new {!"command" !.here}
+#    !.definedAsMember
+#    !argList
+#    !.here
+#    !true
+#    !.isBasic
+#    !"" # No error message
+#  ]
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
