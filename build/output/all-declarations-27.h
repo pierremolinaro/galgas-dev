@@ -308,6 +308,7 @@ void routine_projectGeneration (const class GALGAS_unifiedTypeMap constinArgumen
                                 const class GALGAS_stringlist constinArgument10,
                                 const class GALGAS_stringlist constinArgument11,
                                 const class GALGAS_stringlist constinArgument12,
+                                const class GALGAS_stringlist constinArgument13,
                                 class C_Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 
@@ -350,6 +351,7 @@ void routine_updateGalgas_33_Targets (const class GALGAS_string constinArgument0
                                       class GALGAS_stringset & ioArgument14,
                                       const class GALGAS_stringlist constinArgument15,
                                       const class GALGAS_stringlist constinArgument16,
+                                      const class GALGAS_stringlist constinArgument17,
                                       class C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 

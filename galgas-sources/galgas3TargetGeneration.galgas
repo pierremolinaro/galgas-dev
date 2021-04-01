@@ -287,6 +287,7 @@ proc updateGalgas3Targets
   ?!@stringset ioAllProductFileSet
   ?let @stringlist inHandCodedSourceAppFileList
   ?let @stringlist inHandCodedLinkAppFileList
+  ?let @stringlist inHandCodedLinkToolFileList
 {
   let projectDirectory = [inProjectSourceFilePath stringByDeletingLastPathComponent]
 #--- Update project header
@@ -541,7 +542,7 @@ proc updateGalgas3Targets
     !inHandCodedSourceDirectorySet
     !handCodedSourceToolFileList
     !toolCppFileList
-    !linkOptionForLinkingFrameworkWithTool
+    !linkOptionForLinkingFrameworkWithTool + inHandCodedLinkToolFileList
     !libpmPath
   ]
   let jsonFileListPath = [inProjectSourceFilePath stringByDeletingLastPathComponent] + "/build/output/file-list.json"

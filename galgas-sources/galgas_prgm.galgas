@@ -164,6 +164,7 @@ private proc compileProject
     end
   end
 #---------------------------------- Hand coded source files
+  @stringlist handCodedLinkToolFileList = {}
   @stringlist handCodedLinkAppFileList = {}
   @stringlist handCodedSourceAppFileList = {}
   @stringlist handCodedSourceToolFileList = {}
@@ -192,6 +193,8 @@ private proc compileProject
       else
         handCodedSourceDirectorySet += !directory
       end
+    elsif mFeatureName.string == "tool-link" then
+      handCodedLinkToolFileList += !mFeatureValue.string
     elsif mFeatureName.string == "app-link" then
       handCodedLinkAppFileList += !mFeatureValue.string
     elsif mFeatureName.string == "libpmAtPath" then
@@ -323,6 +326,7 @@ private proc compileProject
       !frameworkToolFileList
       !handCodedSourceAppFileList
       !handCodedLinkAppFileList
+      !handCodedLinkToolFileList
     )
   end
 }
@@ -347,6 +351,7 @@ private proc projectGeneration
   ?let @stringlist inFrameworkToolFileList
   ?let @stringlist inHandCodedSourceAppFileList
   ?let @stringlist inHandCodedLinkAppFileList
+  ?let @stringlist inHandCodedLinkToolFileList
 {
   var appProductFileList = inAppProductFileList
 #---------------------------------- File generation
@@ -404,6 +409,7 @@ private proc projectGeneration
     @stringset ignoredFeatureSet = {}
     ignoredFeatureSet += !"tool-framework"
     ignoredFeatureSet += !"tool-source"
+    ignoredFeatureSet += !"tool-link"
     ignoredFeatureSet += !"app-source"
     @projectQualifiedFeatureMap projectQualifiedFeatureMap = {}
     for () in inProjectComponentAST.mQualifiedFeatureList do
@@ -432,6 +438,7 @@ private proc projectGeneration
       !?allProductFileSet
       !inHandCodedSourceAppFileList
       !inHandCodedLinkAppFileList
+      !inHandCodedLinkToolFileList
     )
   end
 #---------------------------------- Remove useless files
