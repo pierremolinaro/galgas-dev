@@ -4,7 +4,7 @@
 //
 //  This file is part of libpm library                                                           
 //
-//  Copyright (C) 1994, ..., 2019 Pierre Molinaro.
+//  Copyright (C) 1994, ..., 2021 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -79,49 +79,34 @@
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------
-//  C++ pre-C++98: __cplusplus is 1.
-//  C++98: __cplusplus is 199711L.
-//  C++98 + TR1: This reads as C++98 and there is no way to check that I know of.
-//  C++11: __cplusplus is 201103L.
-//  C++14: __cplusplus is 201402L.
-//  C++17: __cplusplus is 201703L.
-//----------------------------------------------------------------------------------------------------------------------
 
 #ifdef REDEFINE_NEW_DELETE_OPERATORS
-  #if __cplusplus >= 201103L
-    void * operator new (size_t inSizeInBytes) {
-  #else
-    void * operator new (size_t inSizeInBytes) throw (std::bad_alloc) {
-  #endif
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    if (gAllocProloguePendings <= 0) {
-      gBlockAllocatedWithoutUsingMacroMyNew ++ ;
-    }
-    gAllocProloguePendings -- ;
-  #endif
-  void * result = NULL ;
-  if (inSizeInBytes > 0) {
-    result = ::myAllocRoutine (inSizeInBytes) ;
-    if (NULL == result) {
-      throw std::bad_alloc () ;
-    }
-    #ifdef REGISTER_ALLOCATION_STATS
-      gCurrentObjectCount ++ ;
-      gAllocatedObjectCount ++ ;
+  void * operator new (size_t inSizeInBytes) {
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      if (gAllocProloguePendings <= 0) {
+        gBlockAllocatedWithoutUsingMacroMyNew ++ ;
+      }
+      gAllocProloguePendings -- ;
     #endif
+    void * result = NULL ;
+    if (inSizeInBytes > 0) {
+      result = ::myAllocRoutine (inSizeInBytes) ;
+      if (NULL == result) {
+        throw std::bad_alloc () ;
+      }
+      #ifdef REGISTER_ALLOCATION_STATS
+        gCurrentObjectCount ++ ;
+        gAllocatedObjectCount ++ ;
+      #endif
+    }
+    return result ;
   }
-  return result ;
-}
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------
 
 #ifdef REDEFINE_NEW_DELETE_OPERATORS
-  #if __cplusplus >= 201103L
-    void * operator new [] (size_t inSizeInBytes) {
-  #else
-    void * operator new [] (size_t inSizeInBytes) throw (std::bad_alloc) {
-  #endif
+  void * operator new [] (size_t inSizeInBytes) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
       if (gAllocProloguePendings <= 0) {
         gBlockAllocatedWithoutUsingMacroMyNewArray ++ ;
@@ -146,35 +131,53 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 #ifdef REDEFINE_NEW_DELETE_OPERATORS
-//  #if __cplusplus >= 201703
-//    void operator delete (void * inPointer) {
-//  #else
-    void operator delete (void * inPointer) throw () {
-//  #endif
-  if (inPointer != NULL) {
-    ::myFreeRoutine (inPointer) ;
-    #ifdef REGISTER_ALLOCATION_STATS
-      gCurrentObjectCount -- ;
-    #endif
-  } 
-}
+  void operator delete (void * inPointer) noexcept {
+    if (inPointer != NULL) {
+      ::myFreeRoutine (inPointer) ;
+      #ifdef REGISTER_ALLOCATION_STATS
+        gCurrentObjectCount -- ;
+      #endif
+    } 
+  }
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------
 
 #ifdef REDEFINE_NEW_DELETE_OPERATORS
-//  #if __cplusplus >= 201703
-//    void operator delete [] (void * inPointer) {
-//  #else
-    void operator delete [] (void * inPointer) throw () {
-//  #endif
-  if (inPointer != NULL) {
-    ::myFreeRoutine (inPointer) ;
-    #ifdef REGISTER_ALLOCATION_STATS
-      gCurrentArrayCount -- ;
-    #endif
-  } 
-}
+  void operator delete (void * inPointer, std::size_t) noexcept {
+    if (inPointer != NULL) {
+      ::myFreeRoutine (inPointer) ;
+      #ifdef REGISTER_ALLOCATION_STATS
+        gCurrentArrayCount -- ;
+      #endif
+    }
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifdef REDEFINE_NEW_DELETE_OPERATORS
+  void operator delete [] (void * inPointer) noexcept {
+    if (inPointer != NULL) {
+      ::myFreeRoutine (inPointer) ;
+      #ifdef REGISTER_ALLOCATION_STATS
+        gCurrentArrayCount -- ;
+      #endif
+    }
+  }
+#endif
+
+//----------------------------------------------------------------------------------------------------------------------
+
+#ifdef REDEFINE_NEW_DELETE_OPERATORS
+  void operator delete [] (void * inPointer, std::size_t) noexcept {
+    if (inPointer != NULL) {
+      ::myFreeRoutine (inPointer) ;
+      #ifdef REGISTER_ALLOCATION_STATS
+        gCurrentArrayCount -- ;
+      #endif
+    }
+  }
 #endif
 
 //----------------------------------------------------------------------------------------------------------------------

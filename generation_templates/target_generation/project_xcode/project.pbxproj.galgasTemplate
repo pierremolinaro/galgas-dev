@@ -324,6 +324,7 @@ end
     %!DEFAULT_CONFIGURATION_REF% /* Default */ = {
       isa = XCBuildConfiguration;
       buildSettings = {
+        CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 %
 for () in DEFAULT_CONFIGURATION_SETTING_LIST do
 %      %!mValue% ;\n%

@@ -67,7 +67,7 @@ def C_CompilerOptions (platformOptions):
 
 def Cpp_CompilerOptions (platformOptions):
   result = platformOptions
-  result.append ("-std=c++11")
+  result.append ("-std=c++14")
   result.append ("-Woverloaded-virtual")
   return result
 

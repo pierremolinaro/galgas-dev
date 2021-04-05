@@ -62,6 +62,7 @@ private filewrapper targetGalgas3GenerationFileWrapper in "../generation_templat
     ?@string APPLICATION_BUNDLE_BASE
     ?@string VERSION_STRING
     ?@stringset HANDLED_EXTENSION_SET
+    ?@string MACOSX_DEPLOYMENT_TARGET
 
   template makefile_build_xcode "project_xcode/build.command"
 
@@ -314,6 +315,17 @@ proc updateGalgas3Targets
   else
     macCodeSign = ["" nowhere]
   end
+#----------------------------------------------------------- MacOSDeployment
+  @string MACOSX_DEPLOYMENT_TARGET
+  with "MacOSDeployment" in inProjectQualifiedFeatureMap  do
+    if mFeatureValue.string == "" then
+      error mFeatureValue:"the %MacOSDeployment attribute should not be empty" : MACOSX_DEPLOYMENT_TARGET
+    else
+      MACOSX_DEPLOYMENT_TARGET = mFeatureValue
+    end
+  else
+    MACOSX_DEPLOYMENT_TARGET = ["10.10" nowhere]
+  end
 #----------------------------------------------------------- LIBPM path
   @string libpmPath
   with "libpmAtPath" in inProjectQualifiedFeatureMap  do
@@ -355,7 +367,6 @@ proc updateGalgas3Targets
   @stringset generationFeatures = {}
 #--- Check xcode target architectures
   @string SDK = ""
-  @string MACOSX_DEPLOYMENT_TARGET = ""
   for (value) in inTargetFeatureList do
     if [availableGenerationFeatures hasKey !value.string] then
       if [generationFeatures hasKey !value.string] then
@@ -369,70 +380,60 @@ proc updateGalgas3Targets
           error value: macOsDuplicateMessage
         end
         SDK = "macosx10.6"
-        MACOSX_DEPLOYMENT_TARGET = "10.6"
     #--- Lion
       elsif value.string == "Lion" then
         if (SDK != "") then
           error value: macOsDuplicateMessage
         end
         SDK = "macosx10.7"
-        MACOSX_DEPLOYMENT_TARGET = "10.7"
     #--- Mountain Lion
       elsif value.string == "MountainLion" then
         if (SDK != "") then
           error value: macOsDuplicateMessage
         end
         SDK = "macosx10.8"
-        MACOSX_DEPLOYMENT_TARGET = "10.8"
     #--- Mavericks
       elsif value.string == "Mavericks" then
         if (SDK != "") then
           error value: macOsDuplicateMessage
         end
         SDK = "macosx10.9"
-        MACOSX_DEPLOYMENT_TARGET = "10.9"
     #--- Yosemite
       elsif value.string == "Yosemite" then
         if (SDK != "") then
           error value: macOsDuplicateMessage
         end
         SDK = "macosx10.10"
-        MACOSX_DEPLOYMENT_TARGET = "10.10"
     #--- ElCapitanYosemite
       elsif value.string == "ElCapitanYosemite" then
         if (SDK != "") then
           error value: macOsDuplicateMessage
         end
         SDK = "macosx10.11"
-        MACOSX_DEPLOYMENT_TARGET = "10.10"
     #--- ElCapitan
       elsif value.string == "ElCapitan" then
         if (SDK != "") then
           error value: macOsDuplicateMessage
         end
         SDK = "macosx10.11"
-        MACOSX_DEPLOYMENT_TARGET = "10.11"
     #--- ElCapitan Sierra
       elsif value.string == "SierraElCapitan" then
         if (SDK != "") then
           error value: macOsDuplicateMessage
         end
         SDK = "macosx10.12"
-        MACOSX_DEPLOYMENT_TARGET = "10.11"
     #--- Sierra
       elsif value.string == "Sierra" then
         if (SDK != "") then
           error value: macOsDuplicateMessage
         end
         SDK = "macosx10.12"
-        MACOSX_DEPLOYMENT_TARGET = "10.12"
     #--- Lastest MacOS
       elsif value.string == "LatestMacOS" then
         if (SDK != "") then
           error value: macOsDuplicateMessage
         end
         SDK = "macosx"
-        MACOSX_DEPLOYMENT_TARGET = "10.10"
       else
         generationFeatures += !value.string
       end
@@ -453,7 +454,6 @@ proc updateGalgas3Targets
 #--- Generation of Xcode project given by command line option ?
   if [option galgas_cli_options.macosxSDK value] != 0 then
     SDK = "macosx10." + [option galgas_cli_options.macosxSDK value]
-    MACOSX_DEPLOYMENT_TARGET = "10." + [option galgas_cli_options.macosxSDK value]
   end
 #--- Check Cocoa features
   if SDK != "", not [inProjectQualifiedFeatureMap hasKey !"applicationBundleBase"] then
@@ -564,6 +564,7 @@ proc updateGalgas3Targets
       !applicationBundleBase
       !inProjectVersionString
       !inHandledExtensionSet
+      !MACOSX_DEPLOYMENT_TARGET
     ]
     [InfoPlistContents writeToFileWhenDifferentContents !dir +"/Info.plist" ?*]
   #--- Build.command
@@ -590,6 +591,11 @@ proc updateGalgas3Targets
     var xcodeProject = @XcodeProjectDescriptor.default
     xcodeProject.mApplicationBundleName = applicationBundleBase
     xcodeProject.mProjectName = inTargetName
+    var headerSearchPaths = "HEADER_SEARCH_PATHS = (\"../build/output\", \"../build/libpm\", \"../build/user-headers\""
+    for directory in inHandCodedSourceDirectorySet do
+      headerSearchPaths += ", \"" + directory + "\""
+    end   
+    headerSearchPaths += ")"
   #--- Default build configuration
     @stringlist xcodeSettingList = {
       !"ALWAYS_SEARCH_USER_PATHS = NO",
@@ -623,7 +629,7 @@ proc updateGalgas3Targets
       !"GCC_WARN_UNUSED_LABEL = YES",
       !"GCC_WARN_UNUSED_VALUE = YES",
       !"GCC_WARN_UNUSED_VARIABLE = YES",
-      !"HEADER_SEARCH_PATHS = (\"../build/output\", \"../build/libpm\", \"../build/user-headers\", \"../hand_coded_sources/**\")",
+      !headerSearchPaths,
       !"SDKROOT = " + SDK,
       !"COPY_PHASE_STRIP = NO"
     }
@@ -776,10 +782,6 @@ proc updateGalgas3Targets
         !"main.m",
         !"PMCancelButtonForPanel.h",
         !"PMCancelButtonForPanel.m",
-#        !"PMDownloadData.h",
-#        !"PMDownloadData.m",
-#        !"PMDownloadFile.h",
-#        !"PMDownloadFile.m",
         !"PMOkButtonForPanel.h",
         !"PMOkButtonForPanel.m"
       }
@@ -1357,31 +1359,51 @@ proc updateGalgas3Targets
     ]
     [!?xcodeProject placeGroupAsMainGroup !groupRef:frameworkGroupRef]
   #--- Add Mach O release target
+    @stringlist settingList = {
+      !"GCC_OPTIMIZATION_LEVEL = 2",
+      !"GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)",
+      !"GCC_WARN_UNUSED_PARAMETER = YES"
+    }
+    if [inHandCodedLinkToolFileList length] > 0 then
+      var s = "OTHER_LDFLAGS=("
+      for (toolLink) in inHandCodedLinkToolFileList
+        do s += "\"" + toolLink + "\""
+        between s += ","
+      end
+      s += ")"
+      settingList += !s
+    end
     [!?xcodeProject addToolTarget
       !targetName:inTargetName + " tool"
       !productFileName:inTargetName
       !sources:buildCFileRefListForTool + buildCppFileRefListForTool + mm_FileRefList
       !frameworkRefs:toolFrameworksFileRefList
-      !buildConfigurationSettingList:{
-        !"GCC_OPTIMIZATION_LEVEL = 2",
-        !"GCC_PREPROCESSOR_DEFINITIONS = (DO_NOT_GENERATE_CHECKINGS)",
-        !"GCC_WARN_UNUSED_PARAMETER = YES"
-      }
+      !buildConfigurationSettingList: settingList
       ?targetRef:let releaseTargetRef
       ?productFileRef:let releaseProductFileRef
     ]
   #--- Add Mach O debug target
+    settingList = {
+      !"GCC_OPTIMIZATION_LEVEL = 0",
+      !"GCC_GENERATE_DEBUGGING_SYMBOLS = YES",
+      !"GCC_PREPROCESSOR_DEFINITIONS = ()",
+      !"GCC_WARN_UNUSED_PARAMETER = YES"
+    }
+    if [inHandCodedLinkToolFileList length] > 0 then
+      var s = "OTHER_LDFLAGS=("
+      for (toolLink) in inHandCodedLinkToolFileList
+        do s += "\"" + toolLink + "\""
+        between s += ","
+      end
+      s += ")"
+      settingList += !s
+    end
     [!?xcodeProject addToolTarget
       !targetName:inTargetName + " tool debug"
       !productFileName:inTargetName+"-debug"
       !sources:buildCFileRefListForTool + buildCppFileRefListForTool + mm_FileRefList
       !frameworkRefs:toolFrameworksFileRefList
-      !buildConfigurationSettingList:{
-        !"GCC_OPTIMIZATION_LEVEL = 0",
-        !"GCC_GENERATE_DEBUGGING_SYMBOLS = YES",
-        !"GCC_PREPROCESSOR_DEFINITIONS = ()",
-        !"GCC_WARN_UNUSED_PARAMETER = YES"
-      }
+      !buildConfigurationSettingList: settingList
       ?targetRef:let debugTargetRef
       ?productFileRef:let debugProductFileRef
     ]

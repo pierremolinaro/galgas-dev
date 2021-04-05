@@ -200,6 +200,7 @@ private proc compileProject
     elsif mFeatureName.string == "libpmAtPath" then
     elsif mFeatureName.string == "applicationBundleBase" then
     elsif mFeatureName.string == "macCodeSign" then
+    elsif mFeatureName.string == "MacOSDeployment" then
     else
       error mFeatureName : "unknown feature"
     end

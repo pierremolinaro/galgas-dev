@@ -1,11 +1,11 @@
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  'C_Lexique' : an abstract lexique class ;                                                    
-//  Galgas generated scanner classes inherit from this class.                                    
+//  'C_Lexique' : an abstract lexique class ;
+//  Galgas generated scanner classes inherit from this class.
 //
-//  This file is part of libpm library                                                           
+//  This file is part of libpm library
 //
-//  Copyright (C) 1996, ..., 2020 Pierre Molinaro.
+//  Copyright (C) 1996, ..., 2021 Pierre Molinaro.
 //
 //  e-mail : pierre@pcmolinaro.name
 //
@@ -802,7 +802,8 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
   performLexicalAnalysis () ;
   if (! executionModeIsLexicalAnalysisOnly ()) {
   //--- Variables for generating syntax tree in a form suitable for graphviz
-    const bool produceSyntaxTree = gOption_galgas_5F_builtin_5F_options_outputConcreteSyntaxTree.mValue ;
+    const bool produceSyntaxTree = gOption_galgas_5F_builtin_5F_options_outputConcreteSyntaxTree.mValue
+       && (sourceFilePath ().stringByDeletingPathExtension () != "") ;
     C_String syntaxTreeDescriptionString ;
     TC_Array <uint32_t> productionUniqueNameStack ;
     uint32_t uniqueProductionNameIndex = 0 ;
@@ -1040,10 +1041,10 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
   //--- Output graphviz file
     if (produceSyntaxTree) {
       syntaxTreeDescriptionString << "}\n" ;
-      const C_String filePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
-      // printf ("filePath: '%s'\n", filePath.cString (HERE)) ;
+      const C_String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
+      // printf ("sourceFilePath: '%s', dotFilePath: '%s'\n", sourceFilePath ().cString (HERE), dotFilePath.cString (HERE)) ;
       GALGAS_bool fileWritten ;
-      GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (filePath), fileWritten, this COMMA_HERE) ;
+      GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
     }
   //--- Set current read location to 0
     listForSecondPassParsing.copyIntoArray (mArrayForSecondPassParsing) ;
@@ -1148,7 +1149,8 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
             "  Initial State: S0\n" ;
     }
   //--- Variables for generating syntax tree in a form suitable for graphviz
-    const bool produceSyntaxTree = gOption_galgas_5F_builtin_5F_options_outputConcreteSyntaxTree.mValue ;
+    const bool produceSyntaxTree = gOption_galgas_5F_builtin_5F_options_outputConcreteSyntaxTree.mValue
+       && (sourceFilePath ().stringByDeletingPathExtension () != "") ;
     C_String syntaxTreeDescriptionString ;
     TC_Array <C_String> shiftedElementStack ;
     shiftedElementStack.appendObject ("TOP") ;
@@ -1345,10 +1347,10 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
   //--- Output graphviz file
     if (produceSyntaxTree) {
       syntaxTreeDescriptionString << "}\n" ;
-      const C_String filePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
-      // printf ("filePath: '%s'\n", filePath.cString (HERE)) ;
+      const C_String dotFilePath = sourceFilePath ().stringByDeletingPathExtension () + ".dot" ;
+      // printf ("sourceFilePath: '%s', dotFilePath: '%s'\n", sourceFilePath ().cString (HERE), dotFilePath.cString (HERE)) ;
       GALGAS_bool fileWritten ;
-      GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (filePath), fileWritten, this COMMA_HERE) ;
+      GALGAS_string (syntaxTreeDescriptionString).method_writeToFileWhenDifferentContents (GALGAS_string (dotFilePath), fileWritten, this COMMA_HERE) ;
     }
     if (executionModeIsSyntaxAnalysisOnly ()) {
       co << "*** END OF PARSING (success: " << (result ? "yes" : "no") << ") ***\n" ;

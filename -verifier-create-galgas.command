@@ -4,6 +4,8 @@ DIR=`dirname $0` &&
 GALGAS=`dirname $0`/makefile-macosx/galgas-debug &&
 TEST=TEST_GALGAS &&
 rm -fr ${DIR}/${TEST} &&
+rm -fr ${DIR}/${TEST} &&
+rm -fr ${DIR}/${TEST} &&
 echo "---------------- BUILD GALGAS --------------------------" &&
 cd ${DIR}/makefile-macosx && python ./build.py &&
 echo "---------------- CREATE PROJECT --------------------------" &&

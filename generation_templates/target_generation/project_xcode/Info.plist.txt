@@ -19,7 +19,7 @@
  <key>CFBundleSignature</key>
  <string>????</string>
  <key>LSMinimumSystemVersion</key>
- <string>10.10</string>
+ <string>%!MACOSX_DEPLOYMENT_TARGET%</string>
  <key>CFBundleShortVersionString</key>
  <string>%!VERSION_STRING%</string>
  <key>NSMainNibFile</key>
