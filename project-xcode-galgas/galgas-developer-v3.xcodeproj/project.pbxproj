@@ -503,7 +503,6 @@
 		CFC89AB11BAF10D6002AF9C2 /* check-gmp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC89AB01BAF10D6002AF9C2 /* check-gmp.cpp */; };
 		CFC89AB21BAF10D6002AF9C2 /* check-gmp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC89AB01BAF10D6002AF9C2 /* check-gmp.cpp */; };
 		CFC8D409250E78E100F2CA09 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC8D408250E78E100F2CA09 /* Sparkle.framework */; };
-		CFC8D40C250E794D00F2CA09 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = CFC8D40B250E794D00F2CA09 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFC8FE1618637C510035BBBE /* closeSourceFile.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CFC8FE1518637C510035BBBE /* closeSourceFile.tiff */; };
 		CFCA2EA11C331E8500AB04B8 /* C_galgas_quiet_option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFAC1A091C3318B800465212 /* C_galgas_quiet_option.cpp */; };
 		CFCA2EA51C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCA2EA21C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp */; };
@@ -550,12 +549,14 @@
 		CFE167840E8E7A2B00AFDAFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE167820E8E7A2B00AFDAFC /* main.m */; };
 		CFE71EC515010F3500EAD989 /* cEnumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE71EC415010F3500EAD989 /* cEnumerator_range.cpp */; };
 		CFE71EC615010F3500EAD989 /* cEnumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE71EC415010F3500EAD989 /* cEnumerator_range.cpp */; };
+		CFEE48272655B4A50060F266 /* Sparkle.framework in Copy Sparkle Framework */ = {isa = PBXBuildFile; fileRef = CFF1F6012655B2AE00FB19C9 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CFEE63DC147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE63DB147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m */; };
 		CFEE63E0147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE63DF147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m */; };
 		CFEEE0FC1A064DE800E38AAC /* all-declarations-25.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEE0FA1A064DE800E38AAC /* all-declarations-25.cpp */; };
 		CFEEE0FD1A064DE800E38AAC /* all-declarations-25.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEEE0FA1A064DE800E38AAC /* all-declarations-25.cpp */; };
 		CFEF3A7D12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
 		CFEF3A7E12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
+		CFF1F6022655B2AE00FB19C9 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFF1F6012655B2AE00FB19C9 /* Sparkle.framework */; };
 		CFF8BF00126614D9001B7E61 /* cPtr_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */; };
 		CFF8BF01126614D9001B7E61 /* cPtr_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */; };
 		CFF991AA110B6CA40055EE27 /* C_SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */; };
@@ -592,14 +593,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CFC8D40A250E792300F2CA09 /* CopyFiles */ = {
+		CFEE48262655B49D0060F266 /* Copy Sparkle Framework */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CFC8D40C250E794D00F2CA09 /* Sparkle.framework in CopyFiles */,
+				CFEE48272655B4A50060F266 /* Sparkle.framework in Copy Sparkle Framework */,
 			);
+			name = "Copy Sparkle Framework";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -1038,7 +1040,6 @@
 		CFC51EEE10D3BBB4008BF80F /* GALGAS_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_type.cpp; sourceTree = "<group>"; };
 		CFC89AB01BAF10D6002AF9C2 /* check-gmp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "check-gmp.cpp"; sourceTree = "<group>"; };
 		CFC8D408250E78E100F2CA09 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = "sparkle-framework/Sparkle.framework"; sourceTree = "<group>"; };
-		CFC8D40B250E794D00F2CA09 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = "sparkle-framework/Sparkle.framework"; sourceTree = "<group>"; };
 		CFC8FE1518637C510035BBBE /* closeSourceFile.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = closeSourceFile.tiff; sourceTree = "<group>"; };
 		CFC92D7C11181F6300ACA25F /* GALGAS_binaryset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_binaryset.cpp; sourceTree = "<group>"; };
 		CFCA2EA21C331FF300AB04B8 /* AC_GALGAS_enumAssociatedValues.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GALGAS_enumAssociatedValues.cpp; sourceTree = "<group>"; };
@@ -1100,6 +1101,7 @@
 		CFEEE0FA1A064DE800E38AAC /* all-declarations-25.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-25.cpp"; sourceTree = "<group>"; };
 		CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = cIndexingDictionary.cpp; sourceTree = "<group>"; };
 		CFEF3A7A12A04C0F007CA2D8 /* cIndexingDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = cIndexingDictionary.h; sourceTree = "<group>"; };
+		CFF1F6012655B2AE00FB19C9 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = cPtr_object.cpp; sourceTree = "<group>"; };
 		CFF8BEFD126614D9001B7E61 /* cPtr_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = cPtr_object.h; sourceTree = "<group>"; };
 		CFF98D7C058CCDE200176BCE /* galgas.1 */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = text.man; path = galgas.1; sourceTree = "<group>"; };
@@ -1124,6 +1126,7 @@
 			files = (
 				CFBA184C250EB0D500624240 /* Security.framework in Frameworks */,
 				CF6DF25209E3F3A700506859 /* Cocoa.framework in Frameworks */,
+				CFF1F6022655B2AE00FB19C9 /* Sparkle.framework in Frameworks */,
 				CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */,
 				CFC8D409250E78E100F2CA09 /* Sparkle.framework in Frameworks */,
 			);
@@ -1165,7 +1168,7 @@
 		2A37F4AAFDCFA73011CA2CEA /* essai_cocoa */ = {
 			isa = PBXGroup;
 			children = (
-				CFC8D40B250E794D00F2CA09 /* Sparkle.framework */,
+				CFF1F6012655B2AE00FB19C9 /* Sparkle.framework */,
 				CF1150611CAA986E00E08852 /* generation_templates */,
 				CF23743319967BE20061D2D8 /* Generated by GALGAS */,
 				CFF53737057A4E9400854C83 /* Hand Coded Sources */,
@@ -1916,7 +1919,7 @@
 				CF6DF22809E3F3A700506859 /* Resources */,
 				CF6DF23A09E3F3A700506859 /* Sources */,
 				CF6DF25109E3F3A700506859 /* Frameworks */,
-				CFC8D40A250E792300F2CA09 /* CopyFiles */,
+				CFEE48262655B49D0060F266 /* Copy Sparkle Framework */,
 			);
 			buildRules = (
 			);
@@ -2764,7 +2767,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development: pierre@pcmolinaro.name (U399CP39LD)";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -2772,7 +2775,8 @@
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/sparkle-framework",
+					"$(PROJECT_DIR)/Sparkle.framework",
+					"$(PROJECT_DIR)",
 				);
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
