@@ -29,9 +29,13 @@ let BUILD_KIND = ProductKind.release
 //--------------------------------------------------------------------------------------------------
 
 let NOTES : [String] = []
-let BUGFIXES : [String] = []
-let CHANGES : [String] = ["Compatibility with MacOS Big Sur"]
-let NEWS : [String] = []
+let BUGFIXES : [String] = ["Compatibility with MacOS Big Sur"]
+let CHANGES : [String] = ["C++ compilation requires C++11"]
+let NEWS : [String] = [
+  "Added optional methods to enumerations",
+  "Added @string getter 'commandWithArguments'",
+  "Added @string getter 'hiddenCommandWithArgument
+]
 
 //--------------------------------------------------------------------------------------------------
 //   FOR PRINTING IN COLOR
