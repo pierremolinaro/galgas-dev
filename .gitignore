@@ -279,3 +279,4 @@ TSWLatexianTemp*
 
 # expex forward references with \gathertags
 *-tags.tex
+TEST_GALGAS/**

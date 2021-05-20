@@ -1953,8 +1953,9 @@
 						ProvisioningStyle = Automatic;
 					};
 					CF6DF20D09E3F3A700506859 = {
+						DevelopmentTeam = YW8QY74J2A;
 						DevelopmentTeamName = "PIERRE MOLINARO (Personal Team)";
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 0;
@@ -2767,12 +2768,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_CXX0X_EXTENSIONS = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEPLOYMENT_LOCATION = NO;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YW8QY74J2A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Sparkle.framework",
@@ -2796,6 +2798,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(LD_RUNPATH_SEARCH_PATHS_$(IS_MACCATALYST)) @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.ec-nantes.irccyn.molinaro.cocoaGalgas";
 				PRODUCT_NAME = cocoaGalgas;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
