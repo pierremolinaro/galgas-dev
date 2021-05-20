@@ -34,7 +34,7 @@ let CHANGES : [String] = ["C++ compilation requires C++11"]
 let NEWS : [String] = [
   "Added optional methods to enumerations",
   "Added @string getter 'commandWithArguments'",
-  "Added @string getter 'hiddenCommandWithArgument
+  "Added @string getter 'hiddenCommandWithArgument"
 ]
 
 //--------------------------------------------------------------------------------------------------
