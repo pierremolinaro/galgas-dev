@@ -184,8 +184,8 @@
 #ifndef DO_NOT_GENERATE_CHECKINGS
   class cPointerDescriptor {
     public: const void * mPointer ;
-    public: struct cPointerDescriptor * mInfPtr ;
-    public: struct cPointerDescriptor * mSupPtr ;
+    public: cPointerDescriptor * mInfPtr ;
+    public: cPointerDescriptor * mSupPtr ;
     public: const char * mSourceFileName ;
     public: int mSourceLine ;
     public: int32_t mUniquePointerID ;
