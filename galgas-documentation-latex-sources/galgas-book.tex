@@ -27,8 +27,8 @@
 \usepackage{fontspec}
 %\setmainfont[Ligatures=TeX, Scale=1.2]{GillSans} % , Titillium, 
 \setmainfont[Ligatures=TeX]{Titillium}
-\setmonofont[Ligatures=NoCommon, Scale=0.8]{Menlo}
-\setsansfont[Ligatures=NoCommon, Scale=0.8]{Menlo}
+\setmonofont[Ligatures=NoCommon, Scale=0.95]{Consolas}
+\setsansfont[Ligatures=NoCommon, Scale=0.95]{Consolas}
 \usepackage{polyglossia}
 \setdefaultlanguage{french}
 
@@ -293,14 +293,14 @@
 \makeatletter
 \def\@part[#1]#2{\ifnum \c@secnumdepth >-2\relax
         \refstepcounter{part}%
-        \addcontentsline{toc}{part}{\Roman{part} \thepart
-        \hspace{1em}#1}\else
+        \addcontentsline{toc}{part}{\thepart\hspace{1em}#1}
+        \else
         \addcontentsline{toc}{part}{#1}\fi
    \markboth{}{}%
    {\centering
     \interlinepenalty \@M
     \ifnum \c@secnumdepth >-2\relax
-      \huge\bf \partname~\thepart
+      \huge\bf \thepart
     \par
     \vskip 20\p@\fi
     \Huge \bf
