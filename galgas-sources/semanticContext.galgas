@@ -452,8 +452,8 @@ proc addExtensions
   end
 #------------------------  Extension getters
   if [inExtensionGetterMapForBuildingContext hasKey ![inTypeName string]] then
-    @extensionGetterMapForType extensionGetterMapForType
-    [inExtensionGetterMapForBuildingContext searchKey !inTypeName ?extensionGetterMapForType]
+#    @extensionGetterMapForType extensionGetterMapForType
+    [inExtensionGetterMapForBuildingContext searchKey !inTypeName ?let extensionGetterMapForType]
     for () in extensionGetterMapForType do
       @functionSignature formalArgumentList = {}
       for () in mInputFormalParameterList do

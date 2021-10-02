@@ -170,7 +170,7 @@ override method @classDeclarationAST enterInSemanticContext
         !mKind
         !mParameterList
         !mHasCompilerArgument
-        !@methodQualifier. isInherited
+        !.isInherited
         !"" # No error message
       ] 
     end
@@ -261,10 +261,8 @@ override method @classDeclarationAST enterInSemanticContext
     for () in mAttributeList do
       if [mValue string] == "setter" then
         warning mValue : "obsolete attribute: setter is implicitly generated for a public property"
-#        hasSetter = true
       elsif [mValue string] == "nogetter" then
         warning mValue : "obsolete attribute: use 'private' qualifier"
-#        hasGetter = false
       elsif [mValue string] == "selector" then
         hasSelector = true
       end
@@ -297,7 +295,7 @@ override method @classDeclarationAST enterInSemanticContext
       ]
     end
   end
-#--- Add Categories
+#--- Add Extensions
   addExtensions (
     !inExtensionMethodMapForBuildingContext
     !inExtensionGetterMapForBuildingContext

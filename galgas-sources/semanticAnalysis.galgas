@@ -1806,12 +1806,6 @@ proc semanticAnalysisOfSyntaxComponent
   @ruleDeclarationList ruleDeclarationList = {}
   @uint newRuleIndex = 0
   for () in inRuleList do
-  #--- Useful entities graph
-#    let nameForUsefulness = ruleNameForUsefulEntitiesGraph (!inSyntaxComponentName !mNonterminalName)
-#    if not [ioUsefulEntitiesGraph isNodeDefined !nameForUsefulness] then
-#      [!?ioUsefulEntitiesGraph addNode !nameForUsefulness !nameForUsefulness]
-#      [!?ioUsefulEntitiesGraph addEdge !inSyntaxComponentUsefulnessName !nameForUsefulness]
-#    end
   #---
     @ruleLabelImplementationList ruleLabelImplementationList = {}
     @uint localSelectMethodCount = selectMethodCount

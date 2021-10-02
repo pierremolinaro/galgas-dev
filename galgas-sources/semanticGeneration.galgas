@@ -1730,3 +1730,20 @@ proc generatePredefinedTypeFiles
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#                                                                                                                      *
+#           G E N E R A T I O N    F I L E W R A P P E R S                                                             *
+#                                                                                                                      *
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+filewrapper semanticFileGenerationTemplate in "../generation_templates/semantic_generation" {
+}{
+}{
+  template semanticFileHeader "semantic-file.h.galgasTemplate"
+    ?@string COMPONENT_NAME
+    ?@stringlist IMPORTED_COMPONENT_LIST
+
+  template semanticFileImplementation "semantic-file.cpp.galgasTemplate"
+    ?@stringlist IMPORTED_COMPONENT_LIST
+}
+                            
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
