@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,7 @@
 		CF12C0BE1D043E610060778F /* all-predefined-types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF12C0BD1D043E610060778F /* all-predefined-types.cpp */; };
 		CF12C0C01D043E8B0060778F /* all-predefined-types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF12C0BD1D043E610060778F /* all-predefined-types.cpp */; };
 		CF13F11A1861CD5700A875A4 /* PMTableViewRefusesFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = CF13F1191861CD5700A875A4 /* PMTableViewRefusesFirstResponder.m */; };
+		CF186592270C9CE1008D283C /* GGSUpdateCocoaGalgas.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF20C0AB160DE46800AC054C /* GGSUpdateCocoaGalgas.xib */; };
 		CF1AA5911979A9240095B745 /* C_HTMLString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1AA58F1979A9240095B745 /* C_HTMLString.cpp */; };
 		CF1AA5921979A9240095B745 /* C_HTMLString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1AA58F1979A9240095B745 /* C_HTMLString.cpp */; };
 		CF1C0C8F14E844C200F79BD0 /* AC_FileHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1C0C8E14E844C200F79BD0 /* AC_FileHandle.cpp */; };
@@ -35,7 +36,6 @@
 		CF1C0C9A14E8502300F79BD0 /* C_BinaryFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1C0C9714E8502300F79BD0 /* C_BinaryFileWrite.cpp */; };
 		CF206C091D54772A00CC4135 /* C_IssueWithFixIt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF206C071D54772A00CC4135 /* C_IssueWithFixIt.cpp */; };
 		CF206C0A1D54772A00CC4135 /* C_IssueWithFixIt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF206C071D54772A00CC4135 /* C_IssueWithFixIt.cpp */; };
-		CF20C0AD160DE46800AC054C /* GGSUpdateCocoaGalgas.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF20C0AB160DE46800AC054C /* GGSUpdateCocoaGalgas.xib */; };
 		CF23744C19967C4F0061D2D8 /* all-declarations-0.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF23743819967C4F0061D2D8 /* all-declarations-0.cpp */; };
 		CF23744D19967C4F0061D2D8 /* all-declarations-0.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF23743819967C4F0061D2D8 /* all-declarations-0.cpp */; };
 		CF23744E19967C4F0061D2D8 /* all-declarations-1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF23743919967C4F0061D2D8 /* all-declarations-1.cpp */; };
@@ -1940,7 +1940,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1230;
-				ORGANIZATIONNAME = IRCCyN;
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					CF6DF12309E3F23700506859 = {
 						DevelopmentTeam = YW8QY74J2A;
@@ -1968,7 +1968,7 @@
 				};
 			};
 			buildConfigurationList = CF0DA6A4085630E800F38E67 /* Build configuration list for PBXProject "galgas-developer-v3" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -1999,12 +1999,12 @@
 				CF6DF22909E3F3A700506859 /* Credits.rtf in Resources */,
 				CF6DF22A09E3F3A700506859 /* InfoPlist.strings in Resources */,
 				CF6DF22B09E3F3A700506859 /* galgasApplication.icns in Resources */,
+				CF186592270C9CE1008D283C /* GGSUpdateCocoaGalgas.xib in Resources */,
 				CF6DF22C09E3F3A700506859 /* galgasDocuments.icns in Resources */,
 				CF6DF23009E3F3A700506859 /* I_Stop.tiff in Resources */,
 				CF06F5CB1049592F005F03FA /* MainMenu.xib in Resources */,
 				CFFE6C9014861DFB00FD9FF8 /* OC_GGS_Document.xib in Resources */,
 				CF51F02315C9200E00387A48 /* PMDebug.xib in Resources */,
-				CF20C0AD160DE46800AC054C /* GGSUpdateCocoaGalgas.xib in Resources */,
 				CFC8FE1618637C510035BBBE /* closeSourceFile.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2684,6 +2684,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = YW8QY74J2A;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_ENABLE_ASM_KEYWORD = NO;
 				GCC_ENABLE_PASCAL_STRINGS = NO;
@@ -2725,11 +2726,13 @@
 					"../libpm/**",
 				);
 				INSTALL_PATH = /usr/local/bin;
+				MACH_O_TYPE = mh_execute;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				OSACOMPILE_EXECUTE_ONLY = YES;
 				SDKROOT = macosx;
+				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 				SYMROOT = "build-developer-v3";
-				VALID_ARCHS = x86_64;
 			};
 			name = Default;
 		};
@@ -2737,6 +2740,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
+				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEPLOYMENT_LOCATION = NO;
 				DEVELOPMENT_TEAM = YW8QY74J2A;
@@ -2772,7 +2776,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
+				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEPLOYMENT_LOCATION = NO;
 				DEVELOPMENT_TEAM = YW8QY74J2A;
@@ -2796,7 +2800,10 @@
 				);
 				INFOPLIST_FILE = "Info-developer.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
-				LD_RUNPATH_SEARCH_PATHS = "$(LD_RUNPATH_SEARCH_PATHS_$(IS_MACCATALYST)) @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(LD_RUNPATH_SEARCH_PATHS_$(IS_MACCATALYST))",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.ec-nantes.irccyn.molinaro.cocoaGalgas";
 				PRODUCT_NAME = cocoaGalgas;
 				PROVISIONING_PROFILE_SPECIFIER = "";
