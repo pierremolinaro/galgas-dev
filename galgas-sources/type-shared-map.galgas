@@ -69,7 +69,7 @@ list @sharedMapAttributeListAST {
 
 #·······················································································································
 
-class @sharedMapDeclarationAST : @semanticDeclarationAST {
+shared class @sharedMapDeclarationAST : @semanticDeclarationAST {
   @lstring mMapTypeName
   @lstringlist mAttributeList
   @propertyInCollectionListAST mPropertyList
@@ -1115,7 +1115,7 @@ override method @sharedMapDeclarationAST semanticAnalysis
 #   CODE GENERATION                                                                                                    *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @sharedMapTypeForGeneration : @semanticTypeForGeneration {
+shared class @sharedMapTypeForGeneration : @semanticTypeForGeneration {
   @lstring mMapTypeName
   @typedPropertyList mTypedAttributeList
   @insertMethodListAST mInsertMethodList

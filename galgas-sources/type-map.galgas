@@ -33,7 +33,7 @@ list @insertOrReplaceDeclarationListAST {
 
 #·······················································································································
 
-class @mapDeclarationAST : @semanticDeclarationAST {
+shared class @mapDeclarationAST : @semanticDeclarationAST {
   @lstring mMapTypeName
   @lstringlist mAttributeList
   @propertyInCollectionListAST mPropertyList
@@ -667,7 +667,7 @@ override method @mapDeclarationAST semanticAnalysis
 #   CODE GENERATION                                                                                                    *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @mapTypeForGeneration : @semanticTypeForGeneration {
+shared class @mapTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-proxy mElementTypeProxy
   @lstring mMapTypeName
   @typedPropertyList mTypedAttributeList

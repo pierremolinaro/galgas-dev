@@ -2,40 +2,32 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  abstract class @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  abstract shared class @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   }
 
   #·····················································································································
 
-  class @grammarInstructionSyntaxDirectedTranslationResultNone :
+  shared class @grammarInstructionSyntaxDirectedTranslationResultNone :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   }
 
   #·····················································································································
 
-  class @grammarInstructionSyntaxDirectedTranslationDropResult :
+  shared class @grammarInstructionSyntaxDirectedTranslationDropResult :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
     @location mLocation
   }
 
   #·····················································································································
 
-  class @grammarInstructionSyntaxDirectedTranslationResultInVar :
+  shared class @grammarInstructionSyntaxDirectedTranslationResultInVar :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
     @lstring mActualParameterName
   }
 
   #·····················································································································
 
-  class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar :
-    @abstractGrammarInstructionSyntaxDirectedTranslationResult {
-    @lstring mActualParameterTypeName
-    @lstring mActualParameterName
-  }
-
-  #·····················································································································
-
-  class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst :
+  shared class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar :
     @abstractGrammarInstructionSyntaxDirectedTranslationResult {
     @lstring mActualParameterTypeName
     @lstring mActualParameterName
@@ -43,7 +35,15 @@
 
   #·····················································································································
 
-  class @grammarInFileInstructionAST : @semanticInstructionAST {
+  shared class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst :
+    @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+    @lstring mActualParameterTypeName
+    @lstring mActualParameterName
+  }
+
+  #·····················································································································
+
+  shared class @grammarInFileInstructionAST : @semanticInstructionAST {
     @lstring mGrammarComponentName
     @lstring mLabelName
     @semanticExpressionAST mSourceExpression
@@ -54,7 +54,7 @@
 
   #·····················································································································
 
-  class @grammarInStringInstructionAST : @semanticInstructionAST {
+  shared class @grammarInStringInstructionAST : @semanticInstructionAST {
     @lstring mGrammarComponentName
     @lstring mLabelName
     @semanticExpressionAST mSourceExpression
@@ -367,7 +367,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
 #! GENERATION (source file)
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  class @grammarInstructionWithSourceFileForGeneration : @semanticInstructionForGeneration {
+  shared class @grammarInstructionWithSourceFileForGeneration : @semanticInstructionForGeneration {
     @location mInstructionLocation
     @string mGrammarName
     @string mLabelName
@@ -438,7 +438,7 @@ override method @grammarInStringInstructionAST analyzeSemanticInstruction
 #! GENERATION (source string)
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-  class @grammarInstructionWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
+  shared class @grammarInstructionWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
     @location mInstructionLocation
     @string mGrammarName
     @string mLabelName

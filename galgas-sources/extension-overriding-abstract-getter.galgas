@@ -2,7 +2,7 @@
 #   AST                                                                                                                *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
+shared class @overridingAbstractExtensionGetterAST : @semanticDeclarationAST {
   @lstring mTypeName
   @lstring mAbstractExtensionGetterName
   @formalInputParameterListAST mAbstractExtensionGetterFormalInputParameterList

@@ -2,11 +2,39 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @multiplicationExpressionAST,
-      @multiplicationExpressionNoOverflowAST,
-      @divisionExpressionAST,
-      @divisionExpressionNoOverflowAST,
-      @moduloExpressionAST : @semanticExpressionAST {
+shared class @multiplicationExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#·······················································································································
+
+shared class @multiplicationExpressionNoOverflowAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#·······················································································································
+
+shared class @divisionExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#·······················································································································
+
+shared class @divisionExpressionNoOverflowAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#·······················································································································
+
+shared class @moduloExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -109,11 +137,13 @@ override method @multiplicationExpressionNoOverflowAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @multiplicationExpressionNoOverflowForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
-    !rightExpression}
+    !.multiply_operation_no_ovf
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -164,11 +194,13 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @multiplicationExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
-    !rightExpression}
+    !.multiply_operation
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -218,10 +250,11 @@ override method @divisionExpressionNoOverflowAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @divisionExpressionNoOverflowForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
+    !.divide_operation_no_ovf
     !rightExpression
   }
 }
@@ -273,11 +306,13 @@ override method @divisionExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @divisionExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
-    !rightExpression}
+    !.divide_operation
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -327,125 +362,13 @@ override method @moduloExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @moduloExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
-    !rightExpression}
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#! CODE GENERATION
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-class @multiplicationExpressionForGeneration,
-      @multiplicationExpressionNoOverflowForGeneration,
-      @divisionExpressionForGeneration,
-      @divisionExpressionNoOverflowForGeneration,
-      @moduloExpressionForGeneration : @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression
-  @semanticExpressionForGeneration mRightExpression
-}
-
-#·····················································································································
-
-override method @multiplicationExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  @string leftTemporaryOperand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
-#--- Right operand
-  @string rightTemporaryOperand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
-#--- Generate Comparison
-  outCppExpression = leftTemporaryOperand + ".multiply_operation ("
-                  + rightTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ")"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-}
-
-#·····················································································································
-
-override method @multiplicationExpressionNoOverflowForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  @string leftTemporaryOperand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
-#--- Right operand
-  @string rightTemporaryOperand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
-#--- Generate Comparison
-  outCppExpression = leftTemporaryOperand + ".multiply_operation_no_ovf (" + rightTemporaryOperand + ")"
-}
-
-#·····················································································································
-
-override method @divisionExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  @string leftTemporaryOperand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
-#--- Right operand
-  @string rightTemporaryOperand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
-#--- Generate Comparison
-  outCppExpression = leftTemporaryOperand + ".divide_operation ("
-                  + rightTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ")"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-}
-
-#·····················································································································
-
-override method @divisionExpressionNoOverflowForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  @string leftTemporaryOperand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
-#--- Right operand
-  @string rightTemporaryOperand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
-#--- Generate Comparison
-  outCppExpression = leftTemporaryOperand + ".divide_operation_no_ovf (" + rightTemporaryOperand + ")"
-}
-
-#·····················································································································
-
-override method @moduloExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  @string leftTemporaryOperand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
-#--- Right operand
-  @string rightTemporaryOperand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
-#--- Generate Comparison
-  outCppExpression = leftTemporaryOperand + ".modulo_operation ("
-                  + rightTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ")"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    !.modulo_operation
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

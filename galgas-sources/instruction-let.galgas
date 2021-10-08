@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
+shared class @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
   @bool mIsConstant
   @lstring mOptionalTypeName
   @lstring mVariableName
@@ -11,14 +11,14 @@ class @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstructio
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @undefinedLocalConstantDeclarationAST : @semanticInstructionAST {
+shared class @undefinedLocalConstantDeclarationAST : @semanticInstructionAST {
   @lstring mConstantTypeName
   @lstring mConstantName
 }
 
 #·····················································································································*
 
-class @localConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
+shared class @localConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
   @lstring mVariableName
   @semanticExpressionAST mSourceExpression
 }
@@ -199,14 +199,14 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
 #! GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @undefinedLocalConstantDeclarationForGeneration : @semanticInstructionForGeneration {
+shared class @undefinedLocalConstantDeclarationForGeneration : @semanticInstructionForGeneration {
   @unifiedTypeMap-proxy mTargetType
   @string mCppVariableName
 }
 
 #······················································································································*
 
-class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
+shared class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
   @unifiedTypeMap-proxy mTargetType
   @bool mIsConstant
   @string mCppVariableName

@@ -276,11 +276,13 @@ override method @templateAndOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @andExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
-    !rightExpression}
+    !.operator_and
+    !rightExpression
+  }
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -316,11 +318,13 @@ override method @templateOrOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @orExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
-    !rightExpression}
+    !.operator_or
+    !rightExpression
+  }
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -356,11 +360,13 @@ override method @templateXorOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @xorExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
-    !rightExpression}
+    !.operator_xor
+    !rightExpression
+  }
 }
  
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -804,11 +810,13 @@ override method @templateAddOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @addExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
-    !rightExpression}
+    !.add
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -846,11 +854,13 @@ override method @templateSubOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @subExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
-    !rightExpression}
+    !.sub
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -888,11 +898,13 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @multiplicationExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
-    !rightExpression}
+    !.multiply_operation
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -930,11 +942,13 @@ override method @templateDivideOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @divisionExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
-    !rightExpression}
+    !.divide_operation
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -972,11 +986,13 @@ override method @templateModuloOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @moduloExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
-    !rightExpression}
+    !.modulo_operation
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -1081,11 +1097,13 @@ override method @templateEqualTestAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @equalExpressionForGeneration.new {
+    outExpression = @comparisonExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !self.mOperatorLocation
       !leftExpression
-      !rightExpression}
+      !.equal
+      !rightExpression
+    }
   end
 }
 
@@ -1120,11 +1138,13 @@ override method @templateNonEqualTestAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @notEqualExpressionForGeneration.new {
+    outExpression = @comparisonExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !self.mOperatorLocation
       !leftExpression
-      !rightExpression}
+      !.notEqual
+      !rightExpression
+    }
   end
 }
 
@@ -1163,11 +1183,13 @@ override method @templateStrictInfTestAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @strictLowerExpressionForGeneration.new {
+    outExpression = @comparisonExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !self.mOperatorLocation
       !leftExpression
-      !rightExpression}
+      !.lowerThan
+      !rightExpression
+    }
   end
 }
 
@@ -1206,11 +1228,13 @@ override method @templateInfOrEqualTestAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @lowerOrEqualExpressionForGeneration.new {
+    outExpression = @comparisonExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !self.mOperatorLocation
       !leftExpression
-      !rightExpression}
+      !.lowerOrEqual
+      !rightExpression
+    }
   end
 }
 
@@ -1249,11 +1273,13 @@ override method @templateStrictSupTestAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @strictGreaterExpressionForGeneration.new {
+    outExpression = @comparisonExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !self.mOperatorLocation
       !leftExpression
-      !rightExpression}
+      !.greaterThan
+      !rightExpression
+    }
   end
 }
 
@@ -1292,11 +1318,13 @@ override method @templateSupOrEqualTestAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @greaterOrEqualExpressionForGeneration.new {
+    outExpression = @comparisonExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !self.mOperatorLocation
       !leftExpression
-      !rightExpression}
+      !.greaterOrEqual
+      !rightExpression
+    }
   end
 }
 
@@ -1335,11 +1363,13 @@ override method @templateLeftShiftOperationAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @leftShiftExpressionForGeneration.new {
+    outExpression = @binaryOperatorExpressionForGeneration.new {
       !leftType
       !self.mOperatorLocation
       !leftExpression
-      !rightExpression}
+      !.leftShift
+      !rightExpression
+    }
   end
 }
 
@@ -1378,11 +1408,13 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @rightShiftExpressionForGeneration.new {
+    outExpression = @binaryOperatorExpressionForGeneration.new {
       !leftType
       !self.mOperatorLocation
       !leftExpression
-      !rightExpression}
+      !.rightShift
+      !rightExpression
+    }
   end
 }
 

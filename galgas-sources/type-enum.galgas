@@ -2,7 +2,7 @@
 #!   AST                                                                                                               *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @enumDeclarationAST : @semanticDeclarationAST {
+shared class @enumDeclarationAST : @semanticDeclarationAST {
   @lstring mEnumTypeName
   @enumConstantList mConstantList
   @lstring mDefaultConstantName
@@ -302,7 +302,7 @@ list @enumConstantListForGeneration {
 
 #·······················································································································
 
-class @enumTypeForGeneration : @semanticTypeForGeneration {
+shared class @enumTypeForGeneration : @semanticTypeForGeneration {
   @enumConstantListForGeneration mConstantList
 }
 

@@ -9,7 +9,7 @@ list @logListAST {
 
 #·····················································································································*
 
-class @logInstructionAST : @semanticInstructionAST {
+shared class @logInstructionAST : @semanticInstructionAST {
   @logListAST mLogList
 }
 
@@ -101,7 +101,7 @@ override method @logInstructionAST analyzeSemanticInstruction
 #! GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @logInstructionForGeneration : @semanticInstructionForGeneration {
+shared class @logInstructionForGeneration : @semanticInstructionForGeneration {
   @lstring mLogMessage
   @semanticExpressionForGeneration mLogExpression
 }

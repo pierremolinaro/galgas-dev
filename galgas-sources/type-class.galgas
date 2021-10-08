@@ -2,7 +2,7 @@
 #   AST                                                                                                                *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @classDeclarationAST : @semanticDeclarationAST {
+shared class @classDeclarationAST : @semanticDeclarationAST {
   @bool mIsAbstract
   @bool mIsShared
   @lstring mClassTypeName
@@ -17,8 +17,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
 
 syntax extension galgas3DeclarationsSyntax {
 
-  rule <declaration>
-   ?!@galgas3DeclarationAST ioDeclarations {
+  rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     @bool isAbstract
     @bool isShared
     select
@@ -39,13 +38,10 @@ syntax extension galgas3DeclarationsSyntax {
       end
     end
     $class$
-    var classNameList =@lstringlist {}
-    repeat
-      $@type$ ?var @lstring className indexing classDefinition
-      classNameList += !className
-    while
-      $,$
+    if [option galgas_cli_options.errorOnNotSharedClassDeclaration value] & not isShared then
+      error .here : "not shared"
     end
+    $@type$ ?let @lstring className indexing classDefinition
     @lstring mSuperClassName # Empty if no super class
     select
       mSuperClassName = ["" nowhere]
@@ -70,17 +66,15 @@ syntax extension galgas3DeclarationsSyntax {
       $;$
     end
     $}$
-    for () in classNameList do
-      ioDeclarations.mDeclarationList += !@classDeclarationAST.new {
-        !false # Is not predefined
-        !isAbstract
-        !isShared
-        !mValue
-        !mSuperClassName # Empty if no super class
-        !classFeatureList
-        !propertyList
-      }
-    end
+    ioDeclarations.mDeclarationList += !@classDeclarationAST.new {
+      !false # Is not predefined
+      !isAbstract
+      !isShared
+      !className
+      !mSuperClassName # Empty if no super class
+      !classFeatureList
+      !propertyList
+    }
   }
 
 }
@@ -481,7 +475,7 @@ override method @classDeclarationAST semanticAnalysis
 #   CODE GENERATION                                                                                                    *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @classTypeForGeneration : @semanticTypeForGeneration {
+shared class @classTypeForGeneration : @semanticTypeForGeneration {
   @bool mIsAbstract
   @bool mIsShared
   @unifiedTypeMap-proxy mSuperClass # Null if no super class

@@ -2,7 +2,7 @@
 #   AST                                                                                                                *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @mapProxyDeclarationAST : @semanticDeclarationAST {
+shared class @mapProxyDeclarationAST : @semanticDeclarationAST {
   @lstring mMapProxyTypeName
   @lstring mAssociatedMapTypeName
 }
@@ -256,7 +256,7 @@ override method @mapProxyDeclarationAST semanticAnalysis
 #   CODE GENERATION                                                                                                    *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @mapProxyTypeForGeneration : @semanticTypeForGeneration {
+shared class @mapProxyTypeForGeneration : @semanticTypeForGeneration {
   @unifiedTypeMap-proxy mAssociatedMapTypeProxy
   @typedPropertyList mAssociatedMapTypedAttributeList
   @mapSearchMethodListAST mSearchMethodList

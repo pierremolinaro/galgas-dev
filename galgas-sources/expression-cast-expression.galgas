@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @testDynamicClassInExpressionAST : @semanticExpressionAST {
+shared class @testDynamicClassInExpressionAST : @semanticExpressionAST {
   @semanticExpressionAST mReceiverExpression
   @location mEndOfReceiverExpression
   @dynamicTypeComparisonKind mTypeComparisonKind
@@ -20,7 +20,7 @@ enum @dynamicTypeComparisonKind {
 
 #·····················································································································
 
-class @castInExpressionAST : @semanticExpressionAST {
+shared class @castInExpressionAST : @semanticExpressionAST {
   @semanticExpressionAST mReceiverExpression
   @location mEndOfReceiverExpression
   @lstring mTypeName
@@ -207,7 +207,7 @@ override method @castInExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @testDynamicClassInExpressionForGeneration : @semanticExpressionForGeneration {
+shared class @testDynamicClassInExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression
   @dynamicTypeComparisonKind mTypeComparisonKind
   @unifiedTypeMap-proxy mCastType
@@ -298,7 +298,7 @@ override method @castInExpressionForGeneration generateExpression
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @extractObjectInExpressionForGeneration : @semanticExpressionForGeneration {
+shared class @extractObjectInExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression
   @string mTypeName
 }

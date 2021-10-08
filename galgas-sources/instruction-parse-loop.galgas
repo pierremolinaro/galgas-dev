@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @parseLoopInstruction : @syntaxInstructionAST {
+shared class @parseLoopInstruction : @syntaxInstructionAST {
   @semanticExpressionAST mVariantExpression
   @location mEndOfVariantExpression
   @semanticExpressionAST mWhileExpression
@@ -155,7 +155,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
 #! GENERATION TYPES
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @parseLoopInstructionForGeneration : @syntaxInstructionForGeneration {
+shared class @parseLoopInstructionForGeneration : @syntaxInstructionForGeneration {
   @semanticExpressionForGeneration mVariantExpression
   @semanticExpressionForGeneration mWhileExpression
   @semanticInstructionListForGeneration mInstructionList

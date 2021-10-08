@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @loopInstructionAST : @semanticInstructionAST {
+shared class @loopInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mVariantExpression
   @location mEndOfVariantExpression
   @semanticInstructionListAST mFirstInstructions
@@ -164,7 +164,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
 #! GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @loopInstructionForGeneration : @semanticInstructionForGeneration {
+shared class @loopInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @semanticExpressionForGeneration mVariantExpression
   @semanticInstructionListForGeneration mFirstInstructions

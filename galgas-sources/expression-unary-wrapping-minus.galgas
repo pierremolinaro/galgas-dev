@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @unaryWrappingMinusExpressionAST : @semanticExpressionAST {
+shared class @unaryWrappingMinusExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mExpression
 }
@@ -74,7 +74,7 @@ override method @unaryWrappingMinusExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @unaryWrappingMinusExpressionForGeneration : @semanticExpressionForGeneration {
+shared class @unaryWrappingMinusExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mExpression
 }
 

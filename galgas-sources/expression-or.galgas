@@ -2,11 +2,39 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @orExpressionAST,
-      @orShortExpressionAST,
-      @xorExpressionAST,
-      @closedSliceExpressionAST,
-      @openedSliceExpressionAST : @semanticExpressionAST {
+shared class @orExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#·····················································································································
+
+shared class @orShortExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#·····················································································································
+
+shared class @xorExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#·····················································································································
+
+shared class @closedSliceExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#·····················································································································
+
+shared class @openedSliceExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -108,10 +136,11 @@ let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
     !self.mOperatorLocation
     !?rightExpression
   )  
-  outExpression = @orExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
+    !.operator_or
     !rightExpression
   }
 }
@@ -217,10 +246,11 @@ override method @xorExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @xorExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
+    !.operator_xor
     !rightExpression
   }
 }
@@ -339,33 +369,23 @@ override method @openedSliceExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @orShortExpressionForGeneration,
-      @orExpressionForGeneration,
-      @xorExpressionForGeneration,
-      @openedSliceExpressionForGeneration,
-      @closedSliceExpressionForGeneration : @semanticExpressionForGeneration {
+shared class @orShortExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mLeftExpression
   @semanticExpressionForGeneration mRightExpression
 }
 
 #·····················································································································
 
-override method @orExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  @string leftTemporaryOperand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
-#--- Right operand
-  @string rightTemporaryOperand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
-#--- Generate Comparison
-  outCppExpression = leftTemporaryOperand + ".operator_or ("
-                   + rightTemporaryOperand  + [self.mLocation commaSourceFile] + ")"
+shared class @openedSliceExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mLeftExpression
+  @semanticExpressionForGeneration mRightExpression
+}
+
+#·····················································································································
+
+shared class @closedSliceExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mLeftExpression
+  @semanticExpressionForGeneration mRightExpression
 }
 
 #·····················································································································
@@ -402,37 +422,6 @@ override method @orShortExpressionForGeneration generateExpression
   [!?ioGeneratedCode decIndentation !2]
   ioGeneratedCode += "}\n"
   outCppExpression = testVar
-}
-
-#·····················································································································
-
-override method @xorExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression
-{
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  [self.mLeftExpression generateExpression
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?let leftTemporaryOperand
-  ]
-#--- Right operand
-  [self.mRightExpression generateExpression
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?let rightTemporaryOperand
-  ]
-#--- Generate Comparison
-  outCppExpression = leftTemporaryOperand + ".operator_xor ("
-                  +  rightTemporaryOperand + [self.mLocation commaSourceFile] + ")"
 }
 
 #·····················································································································

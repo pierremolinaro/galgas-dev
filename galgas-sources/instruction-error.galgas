@@ -17,7 +17,7 @@ list @fixitListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @errorInstructionAST : @semanticInstructionAST {
+shared class @errorInstructionAST : @semanticInstructionAST {
   @semanticExpressionAST mLocationExpression
   @semanticExpressionAST mMessageExpression
   @lstringlist mBuiltVariableList
@@ -381,7 +381,7 @@ method @fixitListForGeneration generateFixIt
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @errorInstructionForGeneration : @semanticInstructionForGeneration {
+shared class @errorInstructionForGeneration : @semanticInstructionForGeneration {
   @location mInstructionLocation
   @semanticExpressionForGeneration mReceiverExpression
   @semanticExpressionForGeneration mErrorExpression

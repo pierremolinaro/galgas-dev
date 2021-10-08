@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @selectInstruction : @syntaxInstructionAST {
+shared class @selectInstruction : @syntaxInstructionAST {
   @listOfSyntaxInstructionList mSelectBranchList
   @location mEndOf_select_instruction
 }
@@ -137,7 +137,7 @@ override method @selectInstruction analyzeSyntaxInstruction
 #! GENERATION TYPES
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
+shared class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
   @string mSyntaxComponentName
   @uint mChoiceIndex
   @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration

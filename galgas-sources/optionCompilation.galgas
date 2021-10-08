@@ -20,7 +20,7 @@ list @commandLineOptionListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @optionComponentDeclarationAST : @semanticDeclarationAST {
+shared class @optionComponentDeclarationAST : @semanticDeclarationAST {
   @lstring mOptionComponentName
   @commandLineOptionListAST mOptions
 }
@@ -225,7 +225,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
+shared class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @bool mIsPredefined
   @string mOptionComponentName
   @commandLineOptionMap mBoolOptionMap

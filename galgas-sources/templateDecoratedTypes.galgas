@@ -15,19 +15,19 @@
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @templateInstructionStringForGeneration : @templateInstructionForGeneration {
+shared class @templateInstructionStringForGeneration : @templateInstructionForGeneration {
   @string mTemplateString
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @templateInstructionExpressionForGeneration : @templateInstructionForGeneration {
+shared class @templateInstructionExpressionForGeneration : @templateInstructionForGeneration {
   @semanticExpressionForGeneration mExpression
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @templateBlockInstructionForGeneration : @templateInstructionForGeneration {
+shared class @templateBlockInstructionForGeneration : @templateInstructionForGeneration {
   @semanticExpressionForGeneration mExpression
   @location mLocation
   @templateInstructionListForGeneration mBlockInstructionList
@@ -35,17 +35,17 @@ class @templateBlockInstructionForGeneration : @templateInstructionForGeneration
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @templateInstructionGetColumnLocationForGeneration : @templateInstructionForGeneration {
+shared class @templateInstructionGetColumnLocationForGeneration : @templateInstructionForGeneration {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @templateInstructionGotoColumnLocationForGeneration : @templateInstructionForGeneration {
+shared class @templateInstructionGotoColumnLocationForGeneration : @templateInstructionForGeneration {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @templateInstructionForeachForGeneration : @templateInstructionForGeneration {
+shared class @templateInstructionForeachForGeneration : @templateInstructionForGeneration {
   @bool mIsAscending
   @semanticExpressionForGeneration mExpression
   @string mEnumeratorCppName
@@ -65,7 +65,7 @@ list @templateInstructionIfBranchListForGeneration {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @templateInstructionIfForGeneration : @templateInstructionForGeneration {
+shared class @templateInstructionIfForGeneration : @templateInstructionForGeneration {
   @templateInstructionIfBranchListForGeneration mTemplateInstructionIfBranchList
   @templateInstructionListForGeneration mElseInstructionList
 }

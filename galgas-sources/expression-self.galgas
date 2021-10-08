@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @selfInExpressionAST : @semanticExpressionAST {
+shared class @selfInExpressionAST : @semanticExpressionAST {
   @location mSelfLocation
 }
 
@@ -54,7 +54,7 @@ override method @selfInExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @selfInExpressionForGeneration : @semanticExpressionForGeneration {
+shared class @selfInExpressionForGeneration : @semanticExpressionForGeneration {
   @string mSelfCppName
 }
 

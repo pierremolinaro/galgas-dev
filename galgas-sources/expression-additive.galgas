@@ -2,12 +2,47 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @rightShiftExpressionAST,
-      @leftShiftExpressionAST,
-      @addExpressionAST,
-      @addExpressionNoOverflowAST,
-      @subExpressionAST,
-      @subExpressionNoOverflowAST : @semanticExpressionAST {
+shared class @rightShiftExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#·······················································································································
+
+shared class @leftShiftExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#·······················································································································
+
+shared class @addExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#·······················································································································
+
+shared class @addExpressionNoOverflowAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#·······················································································································
+
+shared class @subExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#·······················································································································
+
+shared class @subExpressionNoOverflowAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -126,16 +161,13 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
     error self.mOperatorLocation
     : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
     :outExpression
-#  elsif [rightType key] != "uint" then
-#    error self.mOperatorLocation
-#    : "for a shift operator, right operand type should be '@uint': it is '@" + [rightType key] + "'"
-#    :outExpression
   else
   #--- Generate expression
-    outExpression = @rightShiftExpressionForGeneration.new {
+    outExpression = @binaryOperatorExpressionForGeneration.new {
       !leftType
       !self.mOperatorLocation
       !leftExpression
+      !.rightShift
       !rightExpression
     }
   end
@@ -200,10 +232,11 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @leftShiftExpressionForGeneration.new {
+    outExpression = @binaryOperatorExpressionForGeneration.new {
       !leftType
       !self.mOperatorLocation
       !leftExpression
+      !.leftShift
       !rightExpression
     }
   end
@@ -265,10 +298,11 @@ override method @addExpressionNoOverflowAST analyzeSemanticExpression
       !leftBigint.mValue + rightBigint.mValue
     }
   else
-    outExpression = @addExpressionNoOverflowForGeneration.new {
+    outExpression = @binaryOperatorExpressionForGeneration.new {
       !leftType
       !self.mOperatorLocation
       !leftExpression
+      !.addNoOverflow
       !rightExpression
     }
   end
@@ -329,10 +363,11 @@ override method @addExpressionAST analyzeSemanticExpression
       !leftBigint.mValue + rightBigint.mValue
     }
   else
-    outExpression = @addExpressionForGeneration.new {
+    outExpression = @binaryOperatorExpressionForGeneration.new {
       !leftType
       !self.mOperatorLocation
       !leftExpression
+      !.add
       !rightExpression
     }
   end
@@ -394,10 +429,11 @@ override method @subExpressionNoOverflowAST analyzeSemanticExpression
       !leftBigint.mValue - rightBigint.mValue
     }
   else
-    outExpression = @subExpressionNoOverflowForGeneration.new {
+    outExpression = @binaryOperatorExpressionForGeneration.new {
       !leftType
       !self.mOperatorLocation
       !leftExpression
+      !.subNoOverflow
       !rightExpression
     }
   end
@@ -458,10 +494,11 @@ override method @subExpressionAST analyzeSemanticExpression
       !leftBigint.mValue - rightBigint.mValue
     }
   else
-    outExpression = @subExpressionForGeneration.new {
+    outExpression = @binaryOperatorExpressionForGeneration.new {
       !leftType
       !self.mOperatorLocation
       !leftExpression
+      !.sub
       !rightExpression
     }
   end
@@ -471,19 +508,34 @@ override method @subExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @rightShiftExpressionForGeneration,
-      @leftShiftExpressionForGeneration,
-      @addExpressionForGeneration,
-      @addExpressionNoOverflowForGeneration,
-      @subExpressionForGeneration,
-      @subExpressionNoOverflowForGeneration : @semanticExpressionForGeneration {
+enum @binaryOperator {
+  case rightShift
+  case leftShift
+  case add
+  case addNoOverflow
+  case sub
+  case subNoOverflow
+  case operator_and
+  case operator_or
+  case operator_xor
+  case multiply_operation_no_ovf
+  case multiply_operation
+  case divide_operation
+  case divide_operation_no_ovf
+  case modulo_operation
+}
+
+#·····················································································································
+
+shared class @binaryOperatorExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mLeftExpression
+  @binaryOperator mOperator
   @semanticExpressionForGeneration mRightExpression
 }
 
 #·····················································································································
 
-override method @rightShiftExpressionForGeneration generateExpression
+override method @binaryOperatorExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -497,132 +549,59 @@ override method @rightShiftExpressionForGeneration generateExpression
   @string rightTemporaryOperand
   [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
 #--- Generate Comparison
-  outCppExpression = leftTemporaryOperand + ".right_shift_operation ("
-                   + rightTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ")"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-}
-
-#·····················································································································
-
-override method @leftShiftExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  @string leftTemporaryOperand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
-#--- Right operand
-  @string rightTemporaryOperand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
-#--- Generate Comparison
-  outCppExpression = leftTemporaryOperand + ".left_shift_operation ("
-                   +  rightTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ")"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-}
-
-#·····················································································································
-
-override method @addExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression
-{
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  [self.mLeftExpression generateExpression
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?let @string leftTemporaryOperand
-  ]
-#--- Right operand
-  [self.mRightExpression generateExpression
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?let @string rightTemporaryOperand
-  ]
-#--- Generate Comparison
-  outCppExpression = leftTemporaryOperand + ".add_operation ("
-                   + rightTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ")"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-}
-
-#·····················································································································
-
-override method @addExpressionNoOverflowForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression
-{
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  [self.mLeftExpression generateExpression
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?let @string leftTemporaryOperand
-  ]
-#--- Right operand
-  [self.mRightExpression generateExpression
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?let @string rightTemporaryOperand
-  ]
-#--- Generate Comparison
-  outCppExpression = leftTemporaryOperand + ".add_operation_no_ovf (" + rightTemporaryOperand + ")"
-}
-
-#·····················································································································
-
-override method @subExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  @string leftTemporaryOperand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
-#--- Right operand
-  @string rightTemporaryOperand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
-#--- Generate Comparison
-  outCppExpression = leftTemporaryOperand + ".substract_operation ("
-                  + rightTemporaryOperand + ", " + compilerCppName () + [self.mLocation commaSourceFile] + ")"
-  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
-}
-
-#·····················································································································
-
-override method @subExpressionNoOverflowForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  @string leftTemporaryOperand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
-#--- Right operand
-  @string rightTemporaryOperand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
-#--- Generate Comparison
-  outCppExpression = leftTemporaryOperand + ".substract_operation_no_ovf (" + rightTemporaryOperand + ")"
+  @string operatorString
+  @bool hasCompilerOption
+  switch self.mOperator
+  case rightShift    :
+    operatorString = "right_shift_operation"
+    hasCompilerOption = true
+  case leftShift     :
+    operatorString = "left_shift_operation"
+    hasCompilerOption = true
+  case add           :
+    operatorString = "add_operation"
+    hasCompilerOption = true
+  case addNoOverflow :
+    operatorString = "add_operation_no_ovf"
+    hasCompilerOption = true
+  case sub           :
+    operatorString = "substract_operation"
+    hasCompilerOption = true
+  case subNoOverflow :
+    operatorString = "substract_operation_no_ovf"
+    hasCompilerOption = true
+  case operator_and :
+    operatorString = "operator_and"
+    hasCompilerOption = false
+  case operator_or :
+    operatorString = "operator_or"
+    hasCompilerOption = false
+  case operator_xor :
+    operatorString = "operator_xor"
+    hasCompilerOption = false
+  case multiply_operation_no_ovf :
+    operatorString = "multiply_operation_no_ovf"
+    hasCompilerOption = true
+  case multiply_operation :
+    operatorString = "multiply_operation"
+    hasCompilerOption = true
+  case divide_operation :
+    operatorString = "divide_operation"
+    hasCompilerOption = true
+  case divide_operation_no_ovf :
+    operatorString = "divide_operation_no_ovf"
+    hasCompilerOption = true
+  case modulo_operation :
+    operatorString = "modulo_operation"
+    hasCompilerOption = true
+  end
+  outCppExpression = leftTemporaryOperand + "." + operatorString + " ("
+  outCppExpression += rightTemporaryOperand
+  if hasCompilerOption then
+    outCppExpression += ", " + compilerCppName ()
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  end
+  outCppExpression += [self.mLocation commaSourceFile] + ")"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

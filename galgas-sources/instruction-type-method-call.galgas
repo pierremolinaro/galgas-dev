@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @typeMethodCallInstructionAST : @semanticInstructionAST {
+shared class @typeMethodCallInstructionAST : @semanticInstructionAST {
   @lstring mTypeName
   @lstring mMethodName
   @actualParameterListAST mActualParameterList
@@ -85,7 +85,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
 #! GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @typeMethodCallInstructionForGeneration : @semanticInstructionForGeneration {
+shared class @typeMethodCallInstructionForGeneration : @semanticInstructionForGeneration {
   @lstring mTypeName
   @lstring mMethodName
   @actualParameterListForGeneration mActualParameterList

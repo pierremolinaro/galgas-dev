@@ -2,7 +2,7 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @structPropertyAccessExpressionAST : @semanticExpressionAST {
+shared class @structPropertyAccessExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mExpression
   @lstring mStructFieldName
@@ -84,7 +84,7 @@ override method @structPropertyAccessExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @structPropertyAccessExpressionForGeneration : @semanticExpressionForGeneration {
+shared class @structPropertyAccessExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mExpression
   @string mStructFieldName
 }

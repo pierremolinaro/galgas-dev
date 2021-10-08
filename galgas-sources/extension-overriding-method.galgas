@@ -2,7 +2,7 @@
 #   AST                                                                                                                *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @overridingExtensionMethodAST : @semanticDeclarationAST {
+shared class @overridingExtensionMethodAST : @semanticDeclarationAST {
   @lstring mTypeName
   @lstring mOverridingExtensionMethodName
   @formalParameterListAST mOverridingExtensionMethodFormalParameterList
@@ -195,7 +195,7 @@ override method @overridingExtensionMethodAST buildExtensionListMaps
 #   CODE GENERATION                                                                                                    *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @overridingExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
+shared class @overridingExtensionMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMap-proxy mReceiverType
   @string mBaseTypeName
   @string mExtensionMethodName

@@ -1,13 +1,13 @@
 
 
-abstract class @cExpression {
+abstract shared class @cExpression {
 }
 
-class @cConst : @cExpression {
+shared class @cConst : @cExpression {
   @luint mValue
 }
   
-class @cAdd : @cExpression {
+shared class @cAdd : @cExpression {
   @cExpression mLeftExpression
   @cExpression mRightExpression
 }

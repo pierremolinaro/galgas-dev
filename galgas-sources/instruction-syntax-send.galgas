@@ -2,7 +2,7 @@
 #! AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @syntaxSendInstruction : @syntaxInstructionAST {
+shared class @syntaxSendInstruction : @syntaxInstructionAST {
   @semanticExpressionAST mExpression
 }
 
@@ -83,7 +83,7 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
 #! GENERATION TYPES
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
+shared class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
   @semanticExpressionForGeneration mExpression
 }
 

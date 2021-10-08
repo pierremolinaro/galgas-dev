@@ -45,6 +45,8 @@ option galgas_cli_options {
 
   @bool propertyAccessRequiresSelf : '\0', "property-access-requires-self" -> "'self' is required for accessing properties in getter, setter and methods"
 
+  @bool errorOnNotSharedClassDeclaration : '\0', "error-on-not-shared-class-declaration" -> "'shared class' declaration is required"
+
   @bool warnsAnomynousForInstructionEnumeratedObject : '\0', "warns-anonymous-for-instruction" -> "warns on anonymous 'for' instruction enumerated object ('for () in ...')"
 
   @uint macosxSDK : '\0', "macosx" -> "Generate an Xcode project for OS X"

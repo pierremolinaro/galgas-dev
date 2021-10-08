@@ -13,7 +13,7 @@
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @semanticExpressionAST {
+abstract shared class @semanticExpressionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -103,12 +103,12 @@ list @formalInputParameterListAST {
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @actualParameterAST {
+abstract shared class @actualParameterAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @outputActualParameterAST : @actualParameterAST {
+shared class @outputActualParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @semanticExpressionAST mOutputActualParameterExpression
   @location mEndOfExpressionLocation
@@ -116,7 +116,7 @@ class @outputActualParameterAST : @actualParameterAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @outputInputActualParameterAST : @actualParameterAST {
+shared class @outputInputActualParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mOutputInputActualParameterName
   @lstringlist mStructAttributeList
@@ -124,34 +124,34 @@ class @outputInputActualParameterAST : @actualParameterAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @outputInputSingleJokerParameterAST : @actualParameterAST {
+shared class @outputInputSingleJokerParameterAST : @actualParameterAST {
   @lstring mActualSelector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @outputInputJokerParameterAST : @actualParameterAST {
+shared class @outputInputJokerParameterAST : @actualParameterAST {
   @location mQualifierLocation
   @uint mJokerIndex
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputActualExistingVariableParameterAST : @actualParameterAST {
+shared class @inputActualExistingVariableParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mInputActualParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputActualSelfPropertyParameterAST : @actualParameterAST {
+shared class @inputActualSelfPropertyParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mInputActualSelfPropertyName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputActualNewVariableParameterAST : @actualParameterAST {
+shared class @inputActualNewVariableParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mInputOptionalActualTypeName
   @lstring mInputActualParameterName
@@ -159,7 +159,7 @@ class @inputActualNewVariableParameterAST : @actualParameterAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputActualNewConstantParameterAST : @actualParameterAST {
+shared class @inputActualNewConstantParameterAST : @actualParameterAST {
   @lstring mActualSelector
   @lstring mInputOptionalActualTypeName
   @lstring mInputActualParameterName
@@ -168,13 +168,13 @@ class @inputActualNewConstantParameterAST : @actualParameterAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputSingleJokerActualParameterAST : @actualParameterAST {
+shared class @inputSingleJokerActualParameterAST : @actualParameterAST {
   @lstring mActualSelector
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputJokerActualParameterAST : @actualParameterAST {
+shared class @inputJokerActualParameterAST : @actualParameterAST {
   @location mQualifierLocation
   @uint mJokerIndex
 }
@@ -191,30 +191,30 @@ list @actualParameterListAST {
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @abstractInputParameter {
+abstract shared class @abstractInputParameter {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputParameterAnonymousVariable : @abstractInputParameter {
+shared class @inputParameterAnonymousVariable : @abstractInputParameter {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputParameterVariable : @abstractInputParameter {
+shared class @inputParameterVariable : @abstractInputParameter {
   @lstring mActualParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputParameterDeclaredVariable : @abstractInputParameter {
+shared class @inputParameterDeclaredVariable : @abstractInputParameter {
   @lstring mActualParameterTypeName
   @lstring mActualParameterName
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @inputParameterDeclaredConstant : @abstractInputParameter {
+shared class @inputParameterDeclaredConstant : @abstractInputParameter {
   @lstring mActualParameterTypeName
   @lstring mActualParameterName
 }
@@ -228,13 +228,13 @@ list @actualInputParameterListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @syntaxInstructionAST {
+abstract shared class @syntaxInstructionAST {
   @location mInstructionLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @semanticInstructionAST : @syntaxInstructionAST {
+abstract shared class @semanticInstructionAST : @syntaxInstructionAST {
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -255,7 +255,7 @@ list @semanticDeclarationListAST {
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @externRoutineDeclarationAST : @semanticDeclarationAST {
+shared class @externRoutineDeclarationAST : @semanticDeclarationAST {
   @bool mIsInternal
   @lstring mRoutineName
   @formalParameterListAST mFormalArgumentList
@@ -267,7 +267,7 @@ class @externRoutineDeclarationAST : @semanticDeclarationAST {
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @procDeclarationAST : @externRoutineDeclarationAST {
+shared class @procDeclarationAST : @externRoutineDeclarationAST {
   @semanticInstructionListAST mRoutineInstructionList
   @location mEndOfRoutineInstructionList
 }
@@ -278,7 +278,7 @@ class @procDeclarationAST : @externRoutineDeclarationAST {
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @externFunctionDeclarationAST : @semanticDeclarationAST {
+shared class @externFunctionDeclarationAST : @semanticDeclarationAST {
   @lstring mFunctionName
   @formalInputParameterListAST mFormalArgumentList
   @lstring mResultTypeName
@@ -290,7 +290,7 @@ class @externFunctionDeclarationAST : @semanticDeclarationAST {
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @functionDeclarationAST : @externFunctionDeclarationAST {
+shared class @functionDeclarationAST : @externFunctionDeclarationAST {
   @lstring mResultVariableName
   @semanticInstructionListAST mFunctionInstructionList
   @location mEndOfFunctionInstructionList
@@ -304,7 +304,7 @@ class @functionDeclarationAST : @externFunctionDeclarationAST {
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @onceFunctionDeclarationAST : @semanticDeclarationAST {
+shared class @onceFunctionDeclarationAST : @semanticDeclarationAST {
   @lstring mFunctionName
   @lstring mResultTypeName
   @lstring mResultVariableName
@@ -350,7 +350,7 @@ list @filewrapperTemplateListAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @filewrapperDeclarationAST : @semanticDeclarationAST {
+shared class @filewrapperDeclarationAST : @semanticDeclarationAST {
   @bool mIsInternal
   @string mSourceFileAbsolutePath
   @lstring mFilewrapperName
@@ -419,7 +419,7 @@ list @listOfSyntaxInstructionList {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
+shared class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
   @lstring mSyntaxComponentName
   @lstring mLexiqueName 
   @nonterminalDeclarationListAST mNonterminalDeclarationList
@@ -429,7 +429,7 @@ class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @galgas3GrammarComponentAST : @semanticDeclarationAST {
+shared class @galgas3GrammarComponentAST : @semanticDeclarationAST {
   @lbool mHasIndexing
   @lstring mGrammarComponentName
   @lstring mGrammarClass

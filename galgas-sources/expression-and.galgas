@@ -2,8 +2,15 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @andShortExpressionAST,
-      @andExpressionAST : @semanticExpressionAST {
+shared class @andShortExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#·······················································································································
+
+shared class @andExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
   @semanticExpressionAST mRightExpression
@@ -88,11 +95,13 @@ override method @andExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @andExpressionForGeneration.new {
+  outExpression = @binaryOperatorExpressionForGeneration.new {
     !leftType
     !self.mOperatorLocation
     !leftExpression
-    !rightExpression}
+    !.operator_and
+    !rightExpression
+  }
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -153,40 +162,9 @@ override method @andShortExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @andExpressionForGeneration,
-      @andShortExpressionForGeneration : @semanticExpressionForGeneration {
+shared class @andShortExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mLeftExpression
   @semanticExpressionForGeneration mRightExpression
-}
-
-#·····················································································································
-
-override method @andExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  [self.mLeftExpression generateExpression
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?let @string leftTemporaryOperand
-  ]
-#--- Right operand
-  [self.mRightExpression generateExpression
-    !?ioGeneratedCode
-    !?ioInclusionSet
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?let @string rightTemporaryOperand
-  ]
-#--- Generate Comparison
-  outCppExpression = leftTemporaryOperand + ".operator_and ("
-                  + rightTemporaryOperand + [self.mLocation commaSourceFile] + ")"
 }
 
 #·····················································································································

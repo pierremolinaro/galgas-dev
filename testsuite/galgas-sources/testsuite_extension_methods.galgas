@@ -1,6 +1,6 @@
 
 
-class @TestExtensionMethod {}
+shared class @TestExtensionMethod {}
 
 method @TestExtensionMethod method1 {
 }

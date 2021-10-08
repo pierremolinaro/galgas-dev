@@ -2,14 +2,21 @@
 #!   AST
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class@equalExpressionAST,
-      @notEqualExpressionAST,
-      @lowerOrEqualExpressionAST,
-      @greaterOrEqualExpressionAST,
-      @strictGreaterExpressionAST,
-      @strictLowerExpressionAST : @semanticExpressionAST {
+enum @comparison { 
+  case equal 
+  case notEqual 
+  case lowerOrEqual 
+  case lowerThan 
+  case greaterOrEqual 
+  case greaterThan
+}
+
+#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+shared class @comparisonExpressionAST : @semanticExpressionAST {
   @location mOperatorLocation
   @semanticExpressionAST mLeftExpression
+  @comparison mComparison
   @semanticExpressionAST mRightExpression
 }
 
@@ -29,37 +36,37 @@ syntax extension galgas3ExpressionSyntax {
       $==$
       let leftOperand = outExpression
       <simple_expression> ?let rightOperand
-      outExpression = @equalExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.equal !rightOperand}
     while
       let operatorLocation = @location.here
       $!=$
       let leftOperand = outExpression
       <simple_expression> ?let rightOperand
-      outExpression = @notEqualExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.notEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $<=$
       let leftOperand = outExpression
       <simple_expression> ?let rightOperand
-      outExpression = @lowerOrEqualExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.lowerOrEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $>=$
       let leftOperand = outExpression
       <simple_expression> ?let rightOperand
-      outExpression = @greaterOrEqualExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.greaterOrEqual !rightOperand}
     while
       let operatorLocation = @location.here
       $>$
       let leftOperand = outExpression
       <simple_expression> ?let rightOperand
-      outExpression = @strictGreaterExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.greaterThan !rightOperand}
     while
       let operatorLocation = @location.here
       $<$
       let leftOperand = outExpression
       <simple_expression> ?let rightOperand
-      outExpression = @strictLowerExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
+      outExpression = @comparisonExpressionAST.new {!operatorLocation !leftOperand !.lowerThan !rightOperand}
     end
   }
 
@@ -71,7 +78,7 @@ syntax extension galgas3ExpressionSyntax {
 #! SEMANTICS
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-override method @equalExpressionAST enterExpressionInSemanticContext
+override method @comparisonExpressionAST enterExpressionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
@@ -80,7 +87,7 @@ override method @equalExpressionAST enterExpressionInSemanticContext
 
 #·····················································································································
 
-override method @equalExpressionAST analyzeSemanticExpression
+override method @comparisonExpressionAST analyzeSemanticExpression
   ?let @lstring inUsefulnessCallerEntityName
   ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
   ?let @unifiedTypeMap-proxy inInferenceType
@@ -107,295 +114,31 @@ override method @equalExpressionAST analyzeSemanticExpression
     !?ioVariableMap 
     ?@semanticExpressionForGeneration rightExpression
   ]
+#--- Operator name
+  var @string operatorName
+  switch self.mComparison
+  case equal : operatorName = "=="
+  case notEqual : operatorName = "!="
+  case lowerOrEqual : operatorName = "<="
+  case lowerThan : operatorName = "<"
+  case greaterOrEqual : operatorName = ">="
+  case greaterThan : operatorName = ">"
+  end
 #--- Check operator availability
   checkDiadicOperator (
     !leftType
     ![rightExpression mResultType]
     !true # Always available
-    !"=="
+    !operatorName
     !self.mOperatorLocation
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @equalExpressionForGeneration.new {
+  outExpression = @comparisonExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mBoolType
     !self.mOperatorLocation
     !leftExpression
-    !rightExpression
-  }
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @notEqualExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-#·····················································································································
-
-override method @notEqualExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inInferenceType
-  ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
-#--- Left expression analysis
-  [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inInferenceType
-    !inAnalysisContext
-    !?ioVariableMap
-    ?let @semanticExpressionForGeneration leftExpression
-  ]
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-#--- Right expression analysis
-  [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !leftType
-    !inAnalysisContext
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration rightExpression
-  ]
-#--- Check operator availability
-  checkDiadicOperator (
-    !leftType
-    ![rightExpression mResultType]
-    !true # Always available
-    !"!="
-    !self.mOperatorLocation
-    !?rightExpression
-  )  
-#--- Generate expression
-  outExpression = @notEqualExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mBoolType
-    !self.mOperatorLocation
-    !leftExpression
-    !rightExpression
-  }
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @lowerOrEqualExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-#·····················································································································
-
-override method @lowerOrEqualExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inInferenceType
-  ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
-#--- Left expression analysis
-  [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inInferenceType
-    !inAnalysisContext
-    !?ioVariableMap
-    ?let @semanticExpressionForGeneration leftExpression
-  ]
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-#--- Right expression analysis
-  [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !leftType
-    !inAnalysisContext
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration rightExpression
-  ]
-#--- Check operator availability
-  checkDiadicOperator (
-    !leftType
-    ![rightExpression mResultType]
-    ![[leftType mHandledOperatorFlags] isComparable]
-    !"<="
-    !self.mOperatorLocation
-    !?rightExpression
-  )  
-#--- Generate expression
-  outExpression = @lowerOrEqualExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mBoolType
-    !self.mOperatorLocation
-    !leftExpression
-    !rightExpression
-  }
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @greaterOrEqualExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-#·····················································································································
-
-override method @greaterOrEqualExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inInferenceType
-  ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
-#--- Left expression analysis
-  [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inInferenceType
-    !inAnalysisContext
-    !?ioVariableMap
-    ?let @semanticExpressionForGeneration leftExpression
-  ]
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-#--- Right expression analysis
-  [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !leftType
-    !inAnalysisContext
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration rightExpression
-  ]
-#--- Check operator availability
-  checkDiadicOperator (
-    !leftType
-    ![rightExpression mResultType]
-    ![[leftType mHandledOperatorFlags] isComparable]
-    !">="
-    !self.mOperatorLocation
-    !?rightExpression
-  )  
-#--- Generate expression
-  outExpression = @greaterOrEqualExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mBoolType
-    !self.mOperatorLocation
-    !leftExpression
-    !rightExpression
-  }
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @strictGreaterExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-#·····················································································································
-
-override method @strictGreaterExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inInferenceType
-  ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
-#--- Left expression analysis
-  [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inInferenceType
-    !inAnalysisContext
-    !?ioVariableMap
-    ?let @semanticExpressionForGeneration leftExpression
-  ]
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-#--- Right expression analysis
-  [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !leftType
-    !inAnalysisContext
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration rightExpression
-  ]
-#--- Check operator availability
-  checkDiadicOperator (
-    !leftType
-    ![rightExpression mResultType]
-    ![[leftType mHandledOperatorFlags] isComparable]
-    !">"
-    !self.mOperatorLocation
-    !?rightExpression
-  )  
-#--- Generate expression
-  outExpression = @strictGreaterExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mBoolType
-    !self.mOperatorLocation
-    !leftExpression
-    !rightExpression
-  }
-}
-
-#———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-
-override method @strictLowerExpressionAST enterExpressionInSemanticContext
-  ?!@unifiedTypeMap ioTypeMap
-{
-  [self.mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
-  [self.mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
-}
-
-#·····················································································································
-
-override method @strictLowerExpressionAST analyzeSemanticExpression
-  ?let @lstring inUsefulnessCallerEntityName
-  ?!@usefulEntitiesGraph ioUsefulEntitiesGraph
-  ?let @unifiedTypeMap-proxy inInferenceType
-  ?let @analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression {
-#--- Left expression analysis
-  [self.mLeftExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !inInferenceType
-    !inAnalysisContext
-    !?ioVariableMap
-    ?let @semanticExpressionForGeneration leftExpression
-  ]
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
-#--- Right expression analysis
-  [self.mRightExpression analyzeSemanticExpression
-    !inUsefulnessCallerEntityName
-    !?ioUsefulEntitiesGraph
-    !leftType
-    !inAnalysisContext
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration rightExpression
-  ]
-#--- Check operator availability
-  checkDiadicOperator (
-    !leftType
-    ![rightExpression mResultType]
-    ![[leftType mHandledOperatorFlags] isComparable]
-    !"<"
-    !self.mOperatorLocation
-    !?rightExpression
-  )  
-#--- Generate expression
-  outExpression = @strictLowerExpressionForGeneration.new {
-    !inAnalysisContext.mPredefinedTypes.mBoolType
-    !self.mOperatorLocation
-    !leftExpression
+    !self.mComparison
     !rightExpression
   }
 }
@@ -404,19 +147,15 @@ override method @strictLowerExpressionAST analyzeSemanticExpression
 #! CODE GENERATION
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @equalExpressionForGeneration,
-      @notEqualExpressionForGeneration,
-      @lowerOrEqualExpressionForGeneration,
-      @greaterOrEqualExpressionForGeneration,
-      @strictGreaterExpressionForGeneration,
-      @strictLowerExpressionForGeneration : @semanticExpressionForGeneration {
+shared class @comparisonExpressionForGeneration : @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mLeftExpression
+  @comparison mComparison
   @semanticExpressionForGeneration mRightExpression
 }
 
 #·····················································································································
 
-override method @equalExpressionForGeneration generateExpression
+override method @comparisonExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -429,103 +168,18 @@ override method @equalExpressionForGeneration generateExpression
 #--- Right operand
   @string rightTemporaryOperand
   [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
+#--- Operator name
+  var @string operatorName
+  switch self.mComparison
+  case equal : operatorName = "kIsEqual"
+  case notEqual : operatorName = "kIsNotEqual"
+  case lowerOrEqual : operatorName = "kIsInfOrEqual"
+  case lowerThan : operatorName = "kIsStrictInf"
+  case greaterOrEqual : operatorName = "kIsSupOrEqual"
+  case greaterThan : operatorName = "kIsStrictSup"
+  end
 #--- Generate Comparison
-  outCppExpression = "GALGAS_bool (kIsEqual, " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
-}
-
-#·····················································································································
-
-override method @notEqualExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  @string leftTemporaryOperand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
-#--- Right operand
-  @string rightTemporaryOperand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
-#--- Generate Comparison
-  outCppExpression = "GALGAS_bool (kIsNotEqual, " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
-}
-
-#·····················································································································
-
-override method @lowerOrEqualExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  @string leftTemporaryOperand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
-#--- Right operand
-  @string rightTemporaryOperand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
-#--- Generate Comparison
-  outCppExpression = "GALGAS_bool (kIsInfOrEqual, " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
-}
-
-#·····················································································································
-
-override method @greaterOrEqualExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  @string leftTemporaryOperand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
-#--- Right operand
-  @string rightTemporaryOperand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
-#--- Generate Comparison
-  outCppExpression = "GALGAS_bool (kIsSupOrEqual, " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
-}
-
-#·····················································································································
-
-override method @strictGreaterExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  @string leftTemporaryOperand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
-#--- Right operand
-  @string rightTemporaryOperand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
-#--- Generate Comparison
-  outCppExpression = "GALGAS_bool (kIsStrictSup, " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
-}
-
-#·····················································································································
-
-override method @strictLowerExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression {
-  [[self.mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet]
-#--- Left operand
-  @string leftTemporaryOperand
-  [self.mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand]
-#--- Right operand
-  @string rightTemporaryOperand
-  [self.mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand]
-#--- Generate Comparison
-  outCppExpression = "GALGAS_bool (kIsStrictInf, " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
+  outCppExpression = "GALGAS_bool (" + operatorName + ", " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————

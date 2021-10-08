@@ -23,7 +23,7 @@
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-abstract class @abstractSyntaxInstructionForGrammarAnalysis %generatedInSeparateFile {
+abstract shared class @abstractSyntaxInstructionForGrammarAnalysis %generatedInSeparateFile {
   @location mStartLocation
 }
 
@@ -78,7 +78,7 @@ sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+shared class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   @lstring mTerminalSymbolName
   @uint mTerminalSymbolIndex
 }
@@ -89,7 +89,7 @@ class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGram
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+shared class @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   @lstring mNonterminalSymbolName
   @uint mNonterminalSymbolIndex
 }
@@ -110,7 +110,7 @@ list @branchListForGrammarAnalysis {
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+shared class @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   @branchListForGrammarAnalysis mSelectBranchList
   @uint mAddedNonTerminalSymbolIndex
 }
@@ -121,7 +121,7 @@ class @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGramma
 #                                                                                                                      *
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-class @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+shared class @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
   @branchListForGrammarAnalysis mRepeatBranchList
   @uint mAddedNonTerminalSymbolIndex
 }
