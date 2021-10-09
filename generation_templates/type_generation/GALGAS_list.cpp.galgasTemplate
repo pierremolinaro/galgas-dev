@@ -5,29 +5,29 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
-  public : GALGAS_%!TYPE_IDENTIFIER%_2D_element mObject ;
+  public: GALGAS_%!TYPE_IDENTIFIER%_2D_element mObject ;
 
 //--- Constructors
-  public : cCollectionElement_%!TYPE_IDENTIFIER% (%?^
+  public: cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   for () in ATTRIBUTE_LIST
     do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
   end
 %\n%
 !^%COMMA_LOCATION_ARGS) ;
-  public : cCollectionElement_%!TYPE_IDENTIFIER% (const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inElement COMMA_LOCATION_ARGS) ;
+  public: cCollectionElement_%!TYPE_IDENTIFIER% (const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inElement COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cCollectionElement * copy (void) ;
+  public: virtual cCollectionElement * copy (void) ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+  public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------

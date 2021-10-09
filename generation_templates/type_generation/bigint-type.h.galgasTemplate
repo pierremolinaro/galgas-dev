@@ -6,23 +6,23 @@
 
 class GALGAS_bigint : public AC_GALGAS_root {
 //--------------------------------- Private properties
-  private : bool mIsValid ;
-  private : C_BigInt mValue ;
+  private: bool mIsValid ;
+  private: C_BigInt mValue ;
 
 //--------------------------------- Accessors
-  public : inline bool isValid (void) const { return mIsValid ; }
-  public : inline C_BigInt bigintValue (void) const { return mValue ; }
-  public : VIRTUAL_IN_DEBUG void drop (void) ;
+  public: inline bool isValid (void) const { return mIsValid ; }
+  public: inline C_BigInt bigintValue (void) const { return mValue ; }
+  public: VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_bigint (void) ;
+  public: GALGAS_bigint (void) ;
 
 //--------------------------------- Constructor
-  public : GALGAS_bigint (const C_BigInt & inValue) ;
-  public : GALGAS_bigint (const char * inDecimalString, C_Compiler * inCompiler COMMA_LOCATION_ARGS) ;
+  public: GALGAS_bigint (const C_BigInt & inValue) ;
+  public: GALGAS_bigint (const char * inDecimalString, C_Compiler * inCompiler COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Destructor
-  public : virtual ~ GALGAS_bigint (void) ;
+  public: virtual ~ GALGAS_bigint (void) ;
 
 %
 

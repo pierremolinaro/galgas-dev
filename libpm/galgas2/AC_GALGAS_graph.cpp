@@ -26,28 +26,28 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class cGraphNode {
-  public : cGraphNode * mInfPtr ;
-  public : cGraphNode * mSupPtr ;
-  public : int32_t mBalance ;
-  public : const C_String mKey ;
-  public : const uint32_t mNodeID ;
-  public : capCollectionElement mAttributes ;
-  public : GALGAS_location mDefinitionLocation ;
-  public : TC_UniqueArray <GALGAS_location> mReferenceLocationArray ;
-  public : bool mIsDefined ;
+  public: cGraphNode * mInfPtr ;
+  public: cGraphNode * mSupPtr ;
+  public: int32_t mBalance ;
+  public: const C_String mKey ;
+  public: const uint32_t mNodeID ;
+  public: capCollectionElement mAttributes ;
+  public: GALGAS_location mDefinitionLocation ;
+  public: TC_UniqueArray <GALGAS_location> mReferenceLocationArray ;
+  public: bool mIsDefined ;
 
 //--- Constructors
-  public : cGraphNode (const C_String & inKey,
+  public: cGraphNode (const C_String & inKey,
                        const uint32_t inNodeID) ;
 
-  public : cGraphNode (cGraphNode * inNode) ;
+  public: cGraphNode (cGraphNode * inNode) ;
 
 //--- Destructor
-  public : virtual ~ cGraphNode (void) ;
+  public: virtual ~ cGraphNode (void) ;
 
 //--- No copy
-  private : cGraphNode (const cGraphNode &) ;
-  private : cGraphNode & operator = (const cGraphNode &) ;
+  private: cGraphNode (const cGraphNode &) ;
+  private: cGraphNode & operator = (const cGraphNode &) ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -61,102 +61,102 @@ cGraphNode::~ cGraphNode (void) {
 
 class cSharedGraph : public C_SharedObject {
 //--------------------------------- Attributes
-  private : cGraphNode * mRoot ;
-  public : inline const cGraphNode * root (void) const { return mRoot ; }
-  private : C_DirectedGraph mDirectedGraph ;
-  private : TC_UniqueArray <cGraphNode *> mNodeArray ;
+  private: cGraphNode * mRoot ;
+  public: inline const cGraphNode * root (void) const { return mRoot ; }
+  private: C_DirectedGraph mDirectedGraph ;
+  private: TC_UniqueArray <cGraphNode *> mNodeArray ;
 
 //--- Constructor
-  public : cSharedGraph (LOCATION_ARGS) ;
+  public: cSharedGraph (LOCATION_ARGS) ;
 
 //--- Destructor
-  public : virtual ~ cSharedGraph (void) ;
+  public: virtual ~ cSharedGraph (void) ;
 
 //--- Count
-  public : inline uint32_t allNodeCount (void) const { return (uint32_t) mNodeArray.count () ; }
+  public: inline uint32_t allNodeCount (void) const { return (uint32_t) mNodeArray.count () ; }
 
 //--- isNodeDefined
-  public : bool isNodeDefined (const C_String & inKey) const ;
+  public: bool isNodeDefined (const C_String & inKey) const ;
 
 //--- locationForKey
-  public : GALGAS_location locationForKey (const C_String & inKey,
+  public: GALGAS_location locationForKey (const C_String & inKey,
                                            C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) const ;
 
 //--- Internal methods
-  public : void description (C_String & ioString,
+  public: void description (C_String & ioString,
                              const int32_t inIndentation) const ;
 
-  public : void copyFrom (const cSharedGraph * inSource) ;
+  public: void copyFrom (const cSharedGraph * inSource) ;
 
-  public : void copyReversedGraphFrom (const cSharedGraph * inSource) ;
+  public: void copyReversedGraphFrom (const cSharedGraph * inSource) ;
 
-  public : int32_t graphCompare (const cSharedGraph * inOperand) const ;
+  public: int32_t graphCompare (const cSharedGraph * inOperand) const ;
 
-  public : cGraphNode * findOrAddNodeForKey (const C_String & inKey) ;
+  public: cGraphNode * findOrAddNodeForKey (const C_String & inKey) ;
 
-  protected : cGraphNode * internalInsert (cGraphNode * & ioRootPtr,
+  protected: cGraphNode * internalInsert (cGraphNode * & ioRootPtr,
                                            const C_String & inKey,
                                            bool & ioExtension) ;
 
-  public : void internalAddNode (const GALGAS_lstring & inKey,
+  public: void internalAddNode (const GALGAS_lstring & inKey,
                                  const char * inErrorMessage,
                                  const capCollectionElement & inAttributes,
                                  C_Compiler * inCompiler
                                  COMMA_LOCATION_ARGS) ;
 
-  public : void addEdge (const C_String & inSourceNodeKey,
+  public: void addEdge (const C_String & inSourceNodeKey,
                          const GALGAS_location & inSourceNodeLocation,
                          const C_String & inTargetNodeKey,
                          const GALGAS_location & inTargetNodeLocation) ;
 
-  public : void removeEdgesToDominators (LOCATION_ARGS) ;
+  public: void removeEdgesToDominators (LOCATION_ARGS) ;
 
-  public : void removeEdgesToNode (const C_String & inNodeName,
+  public: void removeEdgesToNode (const C_String & inNodeName,
                                    C_Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
-  public : void internalTopologicalSort (capCollectionElementArray & outSortedList,
+  public: void internalTopologicalSort (capCollectionElementArray & outSortedList,
                                          GALGAS_lstringlist & outSortedNodeKeyList,
                                          capCollectionElementArray & outUnsortedList,
                                          GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
 
 
-  public : void internalFindCircularities (capCollectionElementArray & outInfoList,
+  public: void internalFindCircularities (capCollectionElementArray & outInfoList,
                                            GALGAS_lstringlist & outNodeKeyList) const ;
 
-  public : void internalNodesWithNoPredecessor (capCollectionElementArray & outInfoList,
+  public: void internalNodesWithNoPredecessor (capCollectionElementArray & outInfoList,
                                                 GALGAS_lstringlist & outNodeKeyList) const ;
 
-  public : void internalNodesWithNoSuccessor (capCollectionElementArray & outInfoList,
+  public: void internalNodesWithNoSuccessor (capCollectionElementArray & outInfoList,
                                               GALGAS_lstringlist & outNodeKeyList) const ;
 
-  public : void internalDepthFirstTopologicalSort (capCollectionElementArray & outSortedList,
+  public: void internalDepthFirstTopologicalSort (capCollectionElementArray & outSortedList,
                                                    GALGAS_lstringlist & outSortedNodeKeyList,
                                                    capCollectionElementArray & outUnsortedList,
                                                    GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
 
-  public : void subGraph (AC_GALGAS_graph & outResultingGraph,
+  public: void subGraph (AC_GALGAS_graph & outResultingGraph,
                           const GALGAS_lstringlist & inStartNodes,
                           const GALGAS_stringset & inNodesToExclude,
                           C_Compiler * inCompiler
                           COMMA_LOCATION_ARGS) const ;
 
-  public : GALGAS_stringlist keyList (void) const ;
+  public: GALGAS_stringlist keyList (void) const ;
 
-  public : GALGAS_lstringlist lkeyList (void) const ;
+  public: GALGAS_lstringlist lkeyList (void) const ;
 
-  public : C_String getter_graphviz (void) const ;
+  public: C_String getter_graphviz (void) const ;
 
-  public : void edges (GALGAS__32_stringlist & ioList) const ;
+  public: void edges (GALGAS__32_stringlist & ioList) const ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    public : void checkGraph (LOCATION_ARGS) const ;
+    public: void checkGraph (LOCATION_ARGS) const ;
   #endif
 
 //--- No copy
-  private : cSharedGraph (const cSharedGraph &) ;
-  private : cSharedGraph & operator = (const cSharedGraph &) ;
+  private: cSharedGraph (const cSharedGraph &) ;
+  private: cSharedGraph & operator = (const cSharedGraph &) ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------

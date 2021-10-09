@@ -6,15 +6,15 @@
 
 class cMapElement : public cCollectionElement {
 //--- Attribut
-  public : GALGAS_lstring mProperty_lkey ;
+  public: GALGAS_lstring mProperty_lkey ;
 
 //--- Default constructor
-  public : cMapElement (const GALGAS_lstring & inLKey
+  public: cMapElement (const GALGAS_lstring & inLKey
                         COMMA_LOCATION_ARGS) ;
 
 //--- No copy
-  private : cMapElement (const cMapElement &) ;
-  private : cMapElement & operator = (const cMapElement &) ;
+  private: cMapElement (const cMapElement &) ;
+  private: cMapElement & operator = (const cMapElement &) ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------

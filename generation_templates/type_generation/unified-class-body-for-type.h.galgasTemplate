@@ -1,10 +1,10 @@
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
-  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+  protected: virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_%!TYPE_IDENTIFIER% extractObject (%?^%const GALGAS_object & inObject,
+  public: static GALGAS_%!TYPE_IDENTIFIER% extractObject (%?^%const GALGAS_object & inObject,
                %!^%C_Compiler * inCompiler
                %!^%COMMA_LOCATION_ARGS) ;
 
@@ -12,7 +12,7 @@
 if [CONSTRUCTOR_MAP count] > 0 then
   %//--------------------------------- GALGAS constructors\n%
   for () in CONSTRUCTOR_MAP do
-    %  public : static class GALGAS_%![mReturnedType identifierRepresentation]% constructor_%![[lkey string] identifierRepresentation]% (%?^
+    %  public: static class GALGAS_%![mReturnedType identifierRepresentation]% constructor_%![[lkey string] identifierRepresentation]% (%?^
     for () in mArgumentTypeList
       do index IDX %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]
       between %,\n%!^
@@ -33,57 +33,57 @@ end
 
 if [SUPPORTED_OPERATORS generateCopyConstructorAndAssignmentOperator] then
 %//--------------------------------- Handle copy
-  public : GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
-  public : GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;\n\n%
+  public: GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
+  public: GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS infixShiftOperator] then
   %//--------------------------------- << and >> shift operators\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const GALGAS_uint inShiftOperand,\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const GALGAS_uint inShiftOperand,\n%
   !^%class C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const GALGAS_bigint inShiftOperand,\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% left_shift_operation (%?^%const GALGAS_bigint inShiftOperand,\n%
   !^%class C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const GALGAS_uint inShiftOperand,\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const GALGAS_uint inShiftOperand,\n%
   !^%class C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const GALGAS_bigint inShiftOperand,\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const GALGAS_bigint inShiftOperand,\n%
   !^%class C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS plusEqualOperatorWithExpression] then
   %//--------------------------------- += operator (with expression)\n%
-  %  public : VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%
+  %  public: VIRTUAL_IN_DEBUG void plusAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%
   %                                                       class C_Compiler * inCompiler\n%
   %                                                       COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS minusEqualOperatorWithExpression] then
   %//--------------------------------- -= operator (with expression)\n%
-  %  public : VIRTUAL_IN_DEBUG void minusAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%
+  %  public: VIRTUAL_IN_DEBUG void minusAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%
   %                                                        class C_Compiler * inCompiler\n%
   %                                                        COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS mulEqualOperatorWithExpression] then
   %//--------------------------------- *= operator (with expression)\n%
-  %  public : VIRTUAL_IN_DEBUG void mulAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%
+  %  public: VIRTUAL_IN_DEBUG void mulAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%
   %                                                      class C_Compiler * inCompiler\n%
   %                                                      COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS divEqualOperatorWithExpression] then
   %//--------------------------------- /= operator (with expression)\n%
-  %  public : VIRTUAL_IN_DEBUG void divAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%
+  %  public: VIRTUAL_IN_DEBUG void divAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand,\n%
   %                                                      class C_Compiler * inCompiler\n%
   %                                                      COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
 %//--------------------------------- += operator (with list of field expressions)
-  public : VIRTUAL_IN_DEBUG void addAssign_operation (%?^
+  public: VIRTUAL_IN_DEBUG void addAssign_operation (%?^
   for () in ADD_ASSIGN_ARGUMENT_LIST
   do index IDX %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
@@ -97,119 +97,119 @@ end
 
 if [SUPPORTED_OPERATORS infixAndOperator] then
   %//--------------------------------- & operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_and (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_and (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS infixOrOperator] then
   %//--------------------------------- | operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_or (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_or (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS infixXorOperator] then
   %//--------------------------------- ^ operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_xor (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_xor (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS prefixNotOperator] then
   %//--------------------------------- not operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_not (LOCATION_ARGS) const ;\n\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_not (LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS prefixTildeOperator] then
   %//--------------------------------- ~ operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_tilde (LOCATION_ARGS) const ;\n\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_tilde (LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS infixAddOperator] then
   %//--------------------------------- + operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% add_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% add_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS infixAddOperatorNoOVF] then
   %//--------------------------------- &+ operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% add_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% add_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS infixSubOperatorNoOVF] then
   %//--------------------------------- &- operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% substract_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% substract_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS infixSubOperator] then
   %//--------------------------------- - operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% substract_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% substract_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS infixMulOperator] then
   %//--------------------------------- * operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% multiply_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% multiply_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS infixMulOperatorNoOVF] then
   %//--------------------------------- &* operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% multiply_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% multiply_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS infixDivOperator] then
   %//--------------------------------- / operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% divide_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% divide_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS infixDivOperatorNoOVF] then
   %//--------------------------------- &/ operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% divide_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% divide_operation_no_ovf (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS infixModOperator] then
   %//--------------------------------- mod operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% modulo_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% modulo_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS prefixMinusOperator] then
   %//--------------------------------- prefix - operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_unary_minus (%?^%C_Compiler * inCompiler\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_unary_minus (%?^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS prefixMinusOperatorNoOVF] then
   %//--------------------------------- prefix &- operator\n%
-  %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_unary_minus_no_ovf (void) const ;\n\n%
+  %  public: VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_unary_minus_no_ovf (void) const ;\n\n%
 end
 
 if [SUPPORTED_OPERATORS incDecOperator] then
   %//--------------------------------- ++, -- operators\n%
-  %  public : VIRTUAL_IN_DEBUG void increment_operation (%?^%C_Compiler * inCompiler\n%
+  %  public: VIRTUAL_IN_DEBUG void increment_operation (%?^%C_Compiler * inCompiler\n%
         !^%COMMA_LOCATION_ARGS) ;\n\n%
-  %  public : VIRTUAL_IN_DEBUG void decrement_operation (%?^%C_Compiler * inCompiler\n%
+  %  public: VIRTUAL_IN_DEBUG void decrement_operation (%?^%C_Compiler * inCompiler\n%
         !^%COMMA_LOCATION_ARGS) ;\n\n%
 end
 if [SUPPORTED_OPERATORS incDecOperatorNoOVF] then
   %//--------------------------------- &++, &-- operators\n%
-  %  public : VIRTUAL_IN_DEBUG void increment_operation_no_overflow (void) ;\n\n%
-  %  public : VIRTUAL_IN_DEBUG void decrement_operation_no_overflow (void) ;\n\n%
+  %  public: VIRTUAL_IN_DEBUG void increment_operation_no_overflow (void) ;\n\n%
+  %  public: VIRTUAL_IN_DEBUG void decrement_operation_no_overflow (void) ;\n\n%
 end
 if [SUPPORTED_OPERATORS generateDescriptionGetterUtilityMethod] then
   %//--------------------------------- Implementation of getter 'description'\n%
-  %  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,\n%
+  %  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,\n%
   %                                              const int32_t inIndentation) const ;\n%
 end
 
 if not [SUPPORTED_OPERATORS doNotGenererateObjectCompare] then
 %//--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;
+  public: typeComparisonResult objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;
 %end
 
 
@@ -219,7 +219,7 @@ if not [SUPPORTED_OPERATORS doNotGenererateObjectCompare] then
 for () in MODIFIER_MAP do
   if mKind == [@methodKind definedAsMember] then
     if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
-      %  public : VIRTUAL_IN_DEBUG void setter_%![[lkey string] identifierRepresentation]% (%?^
+      %  public: VIRTUAL_IN_DEBUG void setter_%![[lkey string] identifierRepresentation]% (%?^
       for () in mParameterList do index IDX
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
           %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
@@ -257,7 +257,7 @@ end
 for () in INSTANCE_METHOD_MAP do
   if mKind == [@methodKind definedAsMember] then
     if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
-      %  public : VIRTUAL_IN_DEBUG void method_%![[lkey string] identifierRepresentation]% (%?^
+      %  public: VIRTUAL_IN_DEBUG void method_%![[lkey string] identifierRepresentation]% (%?^
       for () in mParameterList do index IDX
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
           %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
@@ -292,7 +292,7 @@ end
 %//--------------------------------- Class Methods
 %
 for () in CLASS_METHOD_MAP do
-  %  public : static void class_method_%![[lkey string] identifierRepresentation]% (%?^
+  %  public: static void class_method_%![[lkey string] identifierRepresentation]% (%?^
   for () in mParameterList do index IDX
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
@@ -349,7 +349,7 @@ for () in GETTER_MAP do
 #      %) const ; */\n\n%
   case definedAsMember :
     if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
-      %  public : VIRTUAL_IN_DEBUG class GALGAS_% ![mReturnedType identifierRepresentation] % getter_% ![[lkey string] identifierRepresentation] % (%?^
+      %  public: VIRTUAL_IN_DEBUG class GALGAS_% ![mReturnedType identifierRepresentation] % getter_% ![[lkey string] identifierRepresentation] % (%?^
       for () in mArgumentTypeList
         do index IDX %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]
         between %,\n% !^
@@ -376,7 +376,7 @@ end
 //--------------------------------- Optional Methods
 %
 for () in OPTIONAL_METHOD_MAP do
-   %  public : VIRTUAL_IN_DEBUG bool optional_% ![[lkey string] identifierRepresentation] % (%?^
+   %  public: VIRTUAL_IN_DEBUG bool optional_% ![[lkey string] identifierRepresentation] % (%?^
   for () in mArgumentTypeList
     do index IDX
       if mInputArgument then
@@ -392,16 +392,16 @@ end
 
 %
 //--------------------------------- Introspection
-  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+  public: VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 %
 if [SUPPORTED_OPERATORS generateEnumerationHelperMethods] then
 %//--------------------------------- Enumeration helper methods
-  protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
+  protected: VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray) const ;
 
 %end
 
 if [SUPPORTED_OPERATORS supportWithAccessor] then
-  %  public : VIRTUAL_IN_DEBUG cMapElement_%!TYPE_IDENTIFIER% * readWriteAccessForWithInstruction (%?^%C_Compiler * inCompiler,\n%
+  %  public: VIRTUAL_IN_DEBUG cMapElement_%!TYPE_IDENTIFIER% * readWriteAccessForWithInstruction (%?^%C_Compiler * inCompiler,\n%
   !^%const GALGAS_string & inKey\n%
   !^%COMMA_LOCATION_ARGS) ;\n\n%
 end
@@ -419,16 +419,16 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 //----------------------------------------------------------------------------------------------------------------------
 
 class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
-  public : cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
+  public: cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
      %!^%const typeEnumerationOrder inOrder) ;
 
 //--- Current element access\n%
   for () in ENUMERATION_DESCRIPTOR_LIST do
-%  public : class GALGAS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+%  public: class GALGAS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
   end
   if not [ENUMERATED_OBJECT_TYPE isNull] then
 %//--- Current element access\n%
-%  public : class GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
+%  public: class GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
   end
 %} ;\n%
 end

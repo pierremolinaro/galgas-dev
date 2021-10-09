@@ -6,22 +6,22 @@
 
 class GALGAS_double : public AC_GALGAS_root {
 //--------------------------------- Private data members
-  private : bool mIsValid ;
-  private : double mDoubleValue ;
+  private: bool mIsValid ;
+  private: double mDoubleValue ;
 
 //--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
-  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
-  public : inline double doubleValue (void) const { return mDoubleValue ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
+  public: inline double doubleValue (void) const { return mDoubleValue ; }
 
 //--------------------------------- Default constructor
-  public : GALGAS_double (void) ;
+  public: GALGAS_double (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_double constructor_default (LOCATION_ARGS) ;
+  public: static GALGAS_double constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_double (const double inValue) ;
+  public: GALGAS_double (const double inValue) ;
 
 %
 

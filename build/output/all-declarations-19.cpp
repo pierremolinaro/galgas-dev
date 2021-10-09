@@ -4916,10 +4916,13 @@ typeComparisonResult cPtr_assignmentInstructionForGeneration::dynamicObjectCompa
     result = mProperty_mNameForCheckingFormalParameterUsing.objectCompare (p->mProperty_mNameForCheckingFormalParameterUsing) ;
   }
   if (kOperandEqual == result) {
-    result = mProperty_mStructAttributeList.objectCompare (p->mProperty_mStructAttributeList) ;
+    result = mProperty_mOptionalProperty.objectCompare (p->mProperty_mOptionalProperty) ;
   }
   if (kOperandEqual == result) {
     result = mProperty_mSourceExpression.objectCompare (p->mProperty_mSourceExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mProperty_mSourceLocation.objectCompare (p->mProperty_mSourceLocation) ;
   }
   return result ;
 }
@@ -4961,12 +4964,13 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 GALGAS_assignmentInstructionForGeneration GALGAS_assignmentInstructionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTargetType,
                                                                                                       const GALGAS_string & inAttribute_mTargetCppName,
                                                                                                       const GALGAS_string & inAttribute_mNameForCheckingFormalParameterUsing,
-                                                                                                      const GALGAS_lstringlist & inAttribute_mStructAttributeList,
-                                                                                                      const GALGAS_semanticExpressionForGeneration & inAttribute_mSourceExpression
+                                                                                                      const GALGAS_string & inAttribute_mOptionalProperty,
+                                                                                                      const GALGAS_semanticExpressionForGeneration & inAttribute_mSourceExpression,
+                                                                                                      const GALGAS_location & inAttribute_mSourceLocation
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_assignmentInstructionForGeneration result ;
-  if (inAttribute_mTargetType.isValid () && inAttribute_mTargetCppName.isValid () && inAttribute_mNameForCheckingFormalParameterUsing.isValid () && inAttribute_mStructAttributeList.isValid () && inAttribute_mSourceExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_assignmentInstructionForGeneration (inAttribute_mTargetType, inAttribute_mTargetCppName, inAttribute_mNameForCheckingFormalParameterUsing, inAttribute_mStructAttributeList, inAttribute_mSourceExpression COMMA_THERE)) ;
+  if (inAttribute_mTargetType.isValid () && inAttribute_mTargetCppName.isValid () && inAttribute_mNameForCheckingFormalParameterUsing.isValid () && inAttribute_mOptionalProperty.isValid () && inAttribute_mSourceExpression.isValid () && inAttribute_mSourceLocation.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_assignmentInstructionForGeneration (inAttribute_mTargetType, inAttribute_mTargetCppName, inAttribute_mNameForCheckingFormalParameterUsing, inAttribute_mOptionalProperty, inAttribute_mSourceExpression, inAttribute_mSourceLocation COMMA_THERE)) ;
   }
   return result ;
 }
@@ -5027,20 +5031,20 @@ GALGAS_string cPtr_assignmentInstructionForGeneration::getter_mNameForCheckingFo
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist GALGAS_assignmentInstructionForGeneration::getter_mStructAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstringlist result ;
+GALGAS_string GALGAS_assignmentInstructionForGeneration::getter_mOptionalProperty (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
   if (NULL != mObjectPtr) {
     const cPtr_assignmentInstructionForGeneration * p = (const cPtr_assignmentInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_assignmentInstructionForGeneration) ;
-    result = p->mProperty_mStructAttributeList ;
+    result = p->mProperty_mOptionalProperty ;
   }
   return result ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-GALGAS_lstringlist cPtr_assignmentInstructionForGeneration::getter_mStructAttributeList (UNUSED_LOCATION_ARGS) const {
-  return mProperty_mStructAttributeList ;
+GALGAS_string cPtr_assignmentInstructionForGeneration::getter_mOptionalProperty (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mOptionalProperty ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5059,6 +5063,24 @@ GALGAS_semanticExpressionForGeneration GALGAS_assignmentInstructionForGeneration
 
 GALGAS_semanticExpressionForGeneration cPtr_assignmentInstructionForGeneration::getter_mSourceExpression (UNUSED_LOCATION_ARGS) const {
   return mProperty_mSourceExpression ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_location GALGAS_assignmentInstructionForGeneration::getter_mSourceLocation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_assignmentInstructionForGeneration * p = (const cPtr_assignmentInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_assignmentInstructionForGeneration) ;
+    result = p->mProperty_mSourceLocation ;
+  }
+  return result ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+GALGAS_location cPtr_assignmentInstructionForGeneration::getter_mSourceLocation (UNUSED_LOCATION_ARGS) const {
+  return mProperty_mSourceLocation ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5120,21 +5142,21 @@ void cPtr_assignmentInstructionForGeneration::setter_setMNameForCheckingFormalPa
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void GALGAS_assignmentInstructionForGeneration::setter_setMStructAttributeList (GALGAS_lstringlist inValue
-                                                                                COMMA_LOCATION_ARGS) {
+void GALGAS_assignmentInstructionForGeneration::setter_setMOptionalProperty (GALGAS_string inValue
+                                                                             COMMA_LOCATION_ARGS) {
   if (NULL != mObjectPtr) {
     insulate (THERE) ;
     cPtr_assignmentInstructionForGeneration * p = (cPtr_assignmentInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_assignmentInstructionForGeneration) ;
-    p->mProperty_mStructAttributeList = inValue ;
+    p->mProperty_mOptionalProperty = inValue ;
   }
 }
 
 //----------------------------------------------------------------------------------------------------------------------
 
-void cPtr_assignmentInstructionForGeneration::setter_setMStructAttributeList (GALGAS_lstringlist inValue
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  mProperty_mStructAttributeList = inValue ;
+void cPtr_assignmentInstructionForGeneration::setter_setMOptionalProperty (GALGAS_string inValue
+                                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mOptionalProperty = inValue ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5157,21 +5179,42 @@ void cPtr_assignmentInstructionForGeneration::setter_setMSourceExpression (GALGA
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+
+void GALGAS_assignmentInstructionForGeneration::setter_setMSourceLocation (GALGAS_location inValue
+                                                                           COMMA_LOCATION_ARGS) {
+  if (NULL != mObjectPtr) {
+    insulate (THERE) ;
+    cPtr_assignmentInstructionForGeneration * p = (cPtr_assignmentInstructionForGeneration *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_assignmentInstructionForGeneration) ;
+    p->mProperty_mSourceLocation = inValue ;
+  }
+}
+
+//----------------------------------------------------------------------------------------------------------------------
+
+void cPtr_assignmentInstructionForGeneration::setter_setMSourceLocation (GALGAS_location inValue
+                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  mProperty_mSourceLocation = inValue ;
+}
+
+//----------------------------------------------------------------------------------------------------------------------
 //Pointer class for @assignmentInstructionForGeneration class
 //----------------------------------------------------------------------------------------------------------------------
 
 cPtr_assignmentInstructionForGeneration::cPtr_assignmentInstructionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTargetType,
                                                                                   const GALGAS_string & in_mTargetCppName,
                                                                                   const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
-                                                                                  const GALGAS_lstringlist & in_mStructAttributeList,
-                                                                                  const GALGAS_semanticExpressionForGeneration & in_mSourceExpression
+                                                                                  const GALGAS_string & in_mOptionalProperty,
+                                                                                  const GALGAS_semanticExpressionForGeneration & in_mSourceExpression,
+                                                                                  const GALGAS_location & in_mSourceLocation
                                                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
 mProperty_mTargetType (in_mTargetType),
 mProperty_mTargetCppName (in_mTargetCppName),
 mProperty_mNameForCheckingFormalParameterUsing (in_mNameForCheckingFormalParameterUsing),
-mProperty_mStructAttributeList (in_mStructAttributeList),
-mProperty_mSourceExpression (in_mSourceExpression) {
+mProperty_mOptionalProperty (in_mOptionalProperty),
+mProperty_mSourceExpression (in_mSourceExpression),
+mProperty_mSourceLocation (in_mSourceLocation) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -5189,9 +5232,11 @@ void cPtr_assignmentInstructionForGeneration::description (C_String & ioString,
   ioString << ", " ;
   mProperty_mNameForCheckingFormalParameterUsing.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mProperty_mStructAttributeList.description (ioString, inIndentation+1) ;
+  mProperty_mOptionalProperty.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mProperty_mSourceExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mProperty_mSourceLocation.description (ioString, inIndentation+1) ;
   ioString << "]" ;
 }
 
@@ -5199,7 +5244,7 @@ void cPtr_assignmentInstructionForGeneration::description (C_String & ioString,
 
 acPtr_class * cPtr_assignmentInstructionForGeneration::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_assignmentInstructionForGeneration (mProperty_mTargetType, mProperty_mTargetCppName, mProperty_mNameForCheckingFormalParameterUsing, mProperty_mStructAttributeList, mProperty_mSourceExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_assignmentInstructionForGeneration (mProperty_mTargetType, mProperty_mTargetCppName, mProperty_mNameForCheckingFormalParameterUsing, mProperty_mOptionalProperty, mProperty_mSourceExpression, mProperty_mSourceLocation COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -13518,35 +13563,4 @@ static void defineExtensionMethod_templateLiteralSInt_36__34_ExpressionAST_templ
 //----------------------------------------------------------------------------------------------------------------------
 
 C_PrologueEpilogue gMethod_templateLiteralSInt_36__34_ExpressionAST_templateExpressionAnalysis (defineExtensionMethod_templateLiteralSInt_36__34_ExpressionAST_templateExpressionAnalysis, NULL) ;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//Overriding extension method '@templateLiteralCharExpressionAST templateExpressionAnalysis'
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-static void extensionMethod_templateLiteralCharExpressionAST_templateExpressionAnalysis (const cPtr_templateExpressionAST * inObject,
-                                                                                         const GALGAS_lstring /* constinArgument_inUsefulnessCallerEntityName */,
-                                                                                         GALGAS_usefulEntitiesGraph & /* ioArgument_ioUsefulEntitiesGraph */,
-                                                                                         const GALGAS_templateAnalysisContext constinArgument_inAnalysisContext,
-                                                                                         GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
-                                                                                         C_Compiler * /* inCompiler */
-                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_templateLiteralCharExpressionAST * object = (const cPtr_templateLiteralCharExpressionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_templateLiteralCharExpressionAST) ;
-  const GALGAS_templateLiteralCharExpressionAST temp_0 = object ;
-  const GALGAS_templateLiteralCharExpressionAST temp_1 = object ;
-  outArgument_outExpression = GALGAS_literalCharExpressionForGeneration::constructor_new (constinArgument_inAnalysisContext.getter_mPredefinedTypes (HERE).getter_mCharType (HERE), temp_0.getter_mLiteralChar (HERE).getter_location (SOURCE_FILE ("templateAnalysis.galgas", 475)), temp_1.getter_mLiteralChar (HERE).getter_char (SOURCE_FILE ("templateAnalysis.galgas", 476))  COMMA_SOURCE_FILE ("templateAnalysis.galgas", 473)) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-static void defineExtensionMethod_templateLiteralCharExpressionAST_templateExpressionAnalysis (void) {
-  enterExtensionMethod_templateExpressionAnalysis (kTypeDescriptor_GALGAS_templateLiteralCharExpressionAST.mSlotID,
-                                                   extensionMethod_templateLiteralCharExpressionAST_templateExpressionAnalysis) ;
-}
-
-//----------------------------------------------------------------------------------------------------------------------
-
-C_PrologueEpilogue gMethod_templateLiteralCharExpressionAST_templateExpressionAnalysis (defineExtensionMethod_templateLiteralCharExpressionAST_templateExpressionAnalysis, NULL) ;
 

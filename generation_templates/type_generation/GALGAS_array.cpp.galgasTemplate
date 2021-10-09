@@ -5,13 +5,13 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class cPtr_%!TYPE_IDENTIFIER% : public C_SharedObject {
-  private : GALGAS_%!ELEMENT_TYPE_IDENTIFIER% * mObjectArray ;
+  private: GALGAS_%!ELEMENT_TYPE_IDENTIFIER% * mObjectArray ;
 %for () in DIMENSION_LIST do
-%  private : uint32_t mSize%!mValue% ;
+%  private: uint32_t mSize%!mValue% ;
 % end
 %
 //--- Constructor
-  public : cPtr_%!TYPE_IDENTIFIER% (%?^
+  public: cPtr_%!TYPE_IDENTIFIER% (%?^
 for () in DIMENSION_LIST
   do !^%const uint32_t inSize%!mValue
   between %,\n%
@@ -19,32 +19,32 @@ end
 %
    %!^%COMMA_LOCATION_ARGS) ;
 
-  public : cPtr_%!TYPE_IDENTIFIER% (%?^%const cPtr_%!TYPE_IDENTIFIER% * inPointer
+  public: cPtr_%!TYPE_IDENTIFIER% (%?^%const cPtr_%!TYPE_IDENTIFIER% * inPointer
       %!^%COMMA_LOCATION_ARGS) ;
 
 //--- Destructor
-  public : virtual ~ cPtr_%!TYPE_IDENTIFIER% (void) ;
+  public: virtual ~ cPtr_%!TYPE_IDENTIFIER% (void) ;
 
 //--- No copy
-  private : cPtr_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% &) ;
-  private : cPtr_%!TYPE_IDENTIFIER% & operator = (const cPtr_%!TYPE_IDENTIFIER% &) ;
+  private: cPtr_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% &) ;
+  private: cPtr_%!TYPE_IDENTIFIER% & operator = (const cPtr_%!TYPE_IDENTIFIER% &) ;
 
 //--- Comparison
-  public : VIRTUAL_IN_DEBUG typeComparisonResult objectCompare (const cPtr_%!TYPE_IDENTIFIER% * inOperand) const ;
+  public: VIRTUAL_IN_DEBUG typeComparisonResult objectCompare (const cPtr_%!TYPE_IDENTIFIER% * inOperand) const ;
 
 //--- 
 %for () in DIMENSION_LIST do
-%  public : inline uint32_t size%!mValue% (void) const { return mSize%!mValue% ; }
+%  public: inline uint32_t size%!mValue% (void) const { return mSize%!mValue% ; }
 % end
 %
 
-  public : VIRTUAL_IN_DEBUG GALGAS_%!ELEMENT_TYPE_IDENTIFIER% objectAtAbsoluteIndex (const int32_t inIndex) const ;
+  public: VIRTUAL_IN_DEBUG GALGAS_%!ELEMENT_TYPE_IDENTIFIER% objectAtAbsoluteIndex (const int32_t inIndex) const ;
 
-  public : VIRTUAL_IN_DEBUG void setObjectAtAbsoluteIndex (const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inObject,
+  public: VIRTUAL_IN_DEBUG void setObjectAtAbsoluteIndex (const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inObject,
                                                            const int32_t inIndex) ;
 
 //--- 
-  public : VIRTUAL_IN_DEBUG int32_t indexForIndexes (%
+  public: VIRTUAL_IN_DEBUG int32_t indexForIndexes (%
 for () in DIMENSION_LIST
  before ?^
  do !^%const uint32_t inSize%!mValue%,\n%
@@ -53,7 +53,7 @@ for () in DIMENSION_LIST
   %!^%COMMA_LOCATION_ARGS) const ;
 
 //--- 
-  public : VIRTUAL_IN_DEBUG void setSize (%?^
+  public: VIRTUAL_IN_DEBUG void setSize (%?^
 for () in DIMENSION_LIST
  do !^%const uint32_t inSize%!mValue
  between %,\n%

@@ -14,39 +14,39 @@ class cVocabulary ;
 class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acPtr_class {
 //--- START OF USER ZONE 2
 
-  public : virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) = 0 ;
+  public: virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) = 0 ;
 
-  public : virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
+  public: virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                                   const C_String & inSyntaxComponentName,
                                                   int32_t & ioCount) = 0 ;
 
-  public : virtual void buildRightDerivation (const int32_t inTerminalSymbolsCount,
+  public: virtual void buildRightDerivation (const int32_t inTerminalSymbolsCount,
                                               const int32_t inOriginalGrammarSymbolCount,
                                               TC_UniqueArray <int16_t> & ioInstructionsList) = 0 ;
 
-  public : virtual void buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
+  public: virtual void buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
                                                          const int32_t inOriginalGrammarSymbolCount,
                                                          const C_String & inSyntaxComponentName,
                                                          cPureBNFproductionsList & ioProductions) = 0 ;
 
 //--- END OF USER ZONE 2
 //--- Attributes
-  public : GALGAS_location mProperty_mStartLocation ;
+  public: GALGAS_location mProperty_mStartLocation ;
 
 //--- Constructor
-  public : cPtr_abstractSyntaxInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation
-                                                             COMMA_LOCATION_ARGS) ;
+  public: cPtr_abstractSyntaxInstructionForGrammarAnalysis (const GALGAS_location & in_mStartLocation
+                                                            COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location getter_mStartLocation (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG void setter_setMStartLocation (GALGAS_location inValue COMMA_LOCATION_ARGS) ;
+  public: VIRTUAL_IN_DEBUG GALGAS_location getter_mStartLocation (LOCATION_ARGS) const ;
+  public: VIRTUAL_IN_DEBUG void setter_setMStartLocation (GALGAS_location inValue COMMA_LOCATION_ARGS) ;
 //--- Description
-  public : virtual void description (C_String & ioString,
-                                     const int32_t inIndentation) const = 0 ;
+  public: virtual void description (C_String & ioString,
+                                    const int32_t inIndentation) const = 0 ;
 
-  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
+  public: virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
 
-  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
+  public: virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
 
 } ;
 

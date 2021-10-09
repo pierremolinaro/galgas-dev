@@ -61,28 +61,28 @@ static const utf32 kEmptyUTF32String [1] = {TO_UNICODE (0)} ;
 //----------------------------------------------------------------------------------------------------------------------
 
 class cEmbeddedString : public C_SharedObject {
-  public : uint32_t mCapacity ; // Maximun allowed length of the following C string
-  public : uint32_t mLength ; // Current length of the following C string
-  public : char * mEncodedCString ;
-  public : utf32 * mString ; // Zero terminated string
+  public: uint32_t mCapacity ; // Maximun allowed length of the following C string
+  public: uint32_t mLength ; // Current length of the following C string
+  public: char * mEncodedCString ;
+  public: utf32 * mString ; // Zero terminated string
 
-  public : cEmbeddedString (const uint32_t inCapacity COMMA_LOCATION_ARGS) ;
+  public: cEmbeddedString (const uint32_t inCapacity COMMA_LOCATION_ARGS) ;
 
-  public : cEmbeddedString (const cEmbeddedString * inEmbeddedString,
+  public: cEmbeddedString (const cEmbeddedString * inEmbeddedString,
                             const uint32_t inCapacity
                             COMMA_LOCATION_ARGS) ;
 
-  public : virtual ~cEmbeddedString (void) ;
+  public: virtual ~cEmbeddedString (void) ;
 
 //--- No copy
-  private : cEmbeddedString (const cEmbeddedString &) ;
-  private : cEmbeddedString & operator = (const cEmbeddedString &) ;
+  private: cEmbeddedString (const cEmbeddedString &) ;
+  private: cEmbeddedString & operator = (const cEmbeddedString &) ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    public : void checkEmbeddedString (LOCATION_ARGS) const ;
+    public: void checkEmbeddedString (LOCATION_ARGS) const ;
   #endif
 
-  public : void reallocEmbeddedString (const uint32_t inCapacity) ;
+  public: void reallocEmbeddedString (const uint32_t inCapacity) ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------

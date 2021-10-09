@@ -6,24 +6,24 @@
 
 class GALGAS_uint : public AC_GALGAS_root {
 //--------------------------------- Private data members
-  private : bool mIsValid ;
-  private : uint32_t mUIntValue ;
+  private: bool mIsValid ;
+  private: uint32_t mUIntValue ;
 
 //--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
-  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
-  public : inline uint32_t uintValue (void) const { return mUIntValue ; }
-  public : inline void increment (void) { mUIntValue ++ ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
+  public: inline uint32_t uintValue (void) const { return mUIntValue ; }
+  public: inline void increment (void) { mUIntValue ++ ; }
 
 //--------------------------------- Default constructor
-  public : GALGAS_uint (void) ;
+  public: GALGAS_uint (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_uint constructor_default (LOCATION_ARGS) ;
+  public: static GALGAS_uint constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Native constructors
-  public : GALGAS_uint (const uint32_t inValue) ;
-  public : GALGAS_uint (const bool inValid, const uint32_t inValue) ;
+  public: GALGAS_uint (const uint32_t inValue) ;
+  public: GALGAS_uint (const bool inValid, const uint32_t inValue) ;
 
 %
 

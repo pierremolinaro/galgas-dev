@@ -6,22 +6,22 @@
 
 class GALGAS_char : public AC_GALGAS_root {
 //--------------------------------- Private data members
-  private : bool mIsValid ;
-  private : utf32 mCharValue ;
+  private: bool mIsValid ;
+  private: utf32 mCharValue ;
 
 //--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
-  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
-  public : inline utf32 charValue (void) const { return mCharValue ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
+  public: inline utf32 charValue (void) const { return mCharValue ; }
 
 //--------------------------------- Default constructor
-  public : GALGAS_char (void) ;
+  public: GALGAS_char (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_char constructor_default (LOCATION_ARGS) ;
+  public: static GALGAS_char constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_char (const utf32 inValue) ;
+  public: GALGAS_char (const utf32 inValue) ;
 
 %
 

@@ -8,25 +8,31 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Properties
 %
 for () in PROPERTY_LIST do
-  %  public : GALGAS_%![mPropertyTypeProxy identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n\n%
+  %  public: GALGAS_%![mPropertyTypeProxy identifierRepresentation]% mProperty_%![mPropertyName identifierRepresentation]% ;\n\n%
 end%//--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public : VIRTUAL_IN_DEBUG void drop (void) ;
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public: VIRTUAL_IN_DEBUG void drop (void) ;
 
 %if HAS_DEFAULT_CONSTRUCTOR then
 %//--------------------------------- Default GALGAS constructor
-  public : static GALGAS_%!TYPE_IDENTIFIER% constructor_default (LOCATION_ARGS) ;
+  public: static GALGAS_%!TYPE_IDENTIFIER% constructor_default (LOCATION_ARGS) ;
 
 %
 end
 %//--------------------------------- Default constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
-//--------------------------------- Virtual destructor (in debug mode)
-  public : virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
+//--------------------------------- Property setters
+%
+for () in PROPERTY_LIST do
+  %  public: inline void setter_set%![[mPropertyName stringByCapitalizingFirstCharacter] identifierRepresentation]% (const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & inValue COMMA_UNUSED_LOCATION_ARGS) {\n%
+  %    mProperty_%![mPropertyName identifierRepresentation]% = inValue ;\n% 
+  %  }\n\n%
+end%//--------------------------------- Virtual destructor (in debug mode)
+  public: virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (%?^
+  public: GALGAS_%!TYPE_IDENTIFIER% (%?^
 for () in PROPERTY_LIST
   do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   between %,\n%!^

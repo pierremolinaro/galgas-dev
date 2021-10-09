@@ -57,56 +57,56 @@ static bool operator == (const structDependanceEdge & inOperand1,
 
 class cSharedUniqueMapRoot : public C_SharedObject {
 //--------------------------------- Attributes
-  private : cUniqueMapNode * mRoot ;
-  private : uint32_t mNodeCount ;
-  protected : cSharedUniqueMapRoot * mOverridenMap ;
-  private : TC_UniqueArray <structDependanceEdge> mDependenceEdges ;
+  private: cUniqueMapNode * mRoot ;
+  private: uint32_t mNodeCount ;
+  protected: cSharedUniqueMapRoot * mOverridenMap ;
+  private: TC_UniqueArray <structDependanceEdge> mDependenceEdges ;
 
 //--- For automaton and block overrides
-  public : const cBranchOverrideTransformationDescriptor * mBranchBehaviourArray ;
-  public : uint32_t mBranchBehaviourArraySize ;
-  public : const cBranchOverrideCompatibilityDescriptor * mBranchCombinationArray ;
-  public : uint32_t mBranchCombinationArraySize ;
-  public : const char * mOverrideName ;
-  public : uint32_t mBeginBranchCount ;
-  public : uint32_t mEndBranchCount ;
-  public : uint32_t mStateArrayLevel ;
+  public: const cBranchOverrideTransformationDescriptor * mBranchBehaviourArray ;
+  public: uint32_t mBranchBehaviourArraySize ;
+  public: const cBranchOverrideCompatibilityDescriptor * mBranchCombinationArray ;
+  public: uint32_t mBranchCombinationArraySize ;
+  public: const char * mOverrideName ;
+  public: uint32_t mBeginBranchCount ;
+  public: uint32_t mEndBranchCount ;
+  public: uint32_t mStateArrayLevel ;
   
 //--------------------------------- Accessors
-  public : inline const cUniqueMapNode * root (void) const { return mRoot ; }
-  public : inline uint32_t count (void) const { return mNodeCount ; }
+  public: inline const cUniqueMapNode * root (void) const { return mRoot ; }
+  public: inline uint32_t count (void) const { return mNodeCount ; }
 
 //--------------------------------- Constructor
-  protected : cSharedUniqueMapRoot (LOCATION_ARGS) ;
+  protected: cSharedUniqueMapRoot (LOCATION_ARGS) ;
 
 //--------------------------------- Virtual destructor
-  public : virtual ~ cSharedUniqueMapRoot (void) ;
+  public: virtual ~ cSharedUniqueMapRoot (void) ;
 
 //--------------------------------- No copy
-  private : cSharedUniqueMapRoot (const cSharedUniqueMapRoot &) ;
-  private : cSharedUniqueMapRoot & operator = (const cSharedUniqueMapRoot &) ;
+  private: cSharedUniqueMapRoot (const cSharedUniqueMapRoot &) ;
+  private: cSharedUniqueMapRoot & operator = (const cSharedUniqueMapRoot &) ;
 
 //--------------------------------- EnterEdge
-  public : void enterEdge (cUniqueMapNode * inSource,
+  public: void enterEdge (cUniqueMapNode * inSource,
                            cUniqueMapNode * inTarget) ;
 
 //--------------------------------- Edge graphviz representation
-  public : VIRTUAL_IN_DEBUG C_String edgeGraphvizRepresentation (void) const ;
+  public: VIRTUAL_IN_DEBUG C_String edgeGraphvizRepresentation (void) const ;
 
 //--------------------------------- internalTopologicalSort
-  public : VIRTUAL_IN_DEBUG void internalTopologicalSort (GALGAS_lstringlist & outSortedNodeKeyList,
+  public: VIRTUAL_IN_DEBUG void internalTopologicalSort (GALGAS_lstringlist & outSortedNodeKeyList,
                                                           GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
 
 //--------------------------------- Unsolved Proxy Count
-  public : VIRTUAL_IN_DEBUG uint32_t unsolvedProxyCount (void) const ;
+  public: VIRTUAL_IN_DEBUG uint32_t unsolvedProxyCount (void) const ;
 
 //--------------------------------- Attribute read access
-  private : VIRTUAL_IN_DEBUG const cUniqueMapNode * findNodeForKeyInMapOrInOverridenMaps (const GALGAS_string & inKey,
+  private: VIRTUAL_IN_DEBUG const cUniqueMapNode * findNodeForKeyInMapOrInOverridenMaps (const GALGAS_string & inKey,
                                                                                     C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Insert
-  protected : VIRTUAL_IN_DEBUG cUniqueMapNode * performInsert (capCollectionElement & inAttributes,
+  protected: VIRTUAL_IN_DEBUG cUniqueMapNode * performInsert (capCollectionElement & inAttributes,
                                                                C_Compiler * inCompiler,
                                                                const uint32_t inInitialState,
                                                                const char * inInsertErrorMessage,
@@ -115,67 +115,67 @@ class cSharedUniqueMapRoot : public C_SharedObject {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Search
-  private : VIRTUAL_IN_DEBUG cUniqueMapNode * findEntryInMap (const C_String & inKey,
+  private: VIRTUAL_IN_DEBUG cUniqueMapNode * findEntryInMap (const C_String & inKey,
                                                         const cSharedUniqueMapRoot * inFirstMap) const ;
 
-  public : VIRTUAL_IN_DEBUG void findNearestKey (const C_String & inKey,
+  public: VIRTUAL_IN_DEBUG void findNearestKey (const C_String & inKey,
                                                  TC_UniqueArray <C_String> & ioNearestKeyArray) const ;
 
-  protected : VIRTUAL_IN_DEBUG cUniqueMapNode * performSearch (const GALGAS_lstring & inKey,
+  protected: VIRTUAL_IN_DEBUG cUniqueMapNode * performSearch (const GALGAS_lstring & inKey,
                                                          C_Compiler * inCompiler,
                                                          const char * inSearchErrorMessage
                                                          COMMA_LOCATION_ARGS) const ;
 
-  protected : VIRTUAL_IN_DEBUG const cMapElement * searchForReadingAttribute (const GALGAS_string & inKey,
+  protected: VIRTUAL_IN_DEBUG const cMapElement * searchForReadingAttribute (const GALGAS_string & inKey,
                                                                               C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const ;
 
-  protected : VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GALGAS_string & inKey,
+  protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GALGAS_string & inKey,
                                                                           C_Compiler * inCompiler
                                                                           COMMA_LOCATION_ARGS) ;
 
-  protected : VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GALGAS_lstring & inKey,
+  protected: VIRTUAL_IN_DEBUG cMapElement * searchForReadWriteAttribute (const GALGAS_lstring & inKey,
                                                                           C_Compiler * inCompiler,
                                                                           const char * inSearchErrorMessage
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Readers
-  protected : VIRTUAL_IN_DEBUG GALGAS_bool getter_hasKey (const GALGAS_string & inKey
+  protected: VIRTUAL_IN_DEBUG GALGAS_bool getter_hasKey (const GALGAS_string & inKey
                                                           COMMA_LOCATION_ARGS) const ;
 
-  protected : VIRTUAL_IN_DEBUG GALGAS_location getter_locationForKey (const GALGAS_string & inKey,
+  protected: VIRTUAL_IN_DEBUG GALGAS_location getter_locationForKey (const GALGAS_string & inKey,
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const ;
 
-  protected : VIRTUAL_IN_DEBUG GALGAS_stringset getter_allKeys (LOCATION_ARGS) const ;
+  protected: VIRTUAL_IN_DEBUG GALGAS_stringset getter_allKeys (LOCATION_ARGS) const ;
 
-  protected : VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_allKeyList (LOCATION_ARGS) const ;
+  protected: VIRTUAL_IN_DEBUG GALGAS_lstringlist getter_allKeyList (LOCATION_ARGS) const ;
 
 //--------------------------------- Implementation of reader 'description'
-  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+  public: VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation,
                                               const uint32_t inLevel) const ;
 
 //--------------------------------- Internal method for enumeration
-  protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
+  protected: VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray) const ;
 
 //--------------------------------- Comparison
-  public : VIRTUAL_IN_DEBUG typeComparisonResult mapCompare (const cSharedUniqueMapRoot * inOperand) const ;
+  public: VIRTUAL_IN_DEBUG typeComparisonResult mapCompare (const cSharedUniqueMapRoot * inOperand) const ;
 
 //--------------------------------- Internal method for inserting proxy
-  protected : VIRTUAL_IN_DEBUG cUniqueMapNode * performInsertProxy (const C_String & inKey,
+  protected: VIRTUAL_IN_DEBUG cUniqueMapNode * performInsertProxy (const C_String & inKey,
                                                                     const GALGAS_location & inLocation) ;
 
-  protected : VIRTUAL_IN_DEBUG void unsolvedProxyKeyList (GALGAS_lstringlist & ioList) const ;
+  protected: VIRTUAL_IN_DEBUG void unsolvedProxyKeyList (GALGAS_lstringlist & ioList) const ;
 
 //--------------------------------- Check Map Automatons state
-  public : VIRTUAL_IN_DEBUG void checkAutomatonStates (const GALGAS_location & inErrorLocation,
+  public: VIRTUAL_IN_DEBUG void checkAutomatonStates (const GALGAS_location & inErrorLocation,
                                                        const cMapAutomatonFinalIssue inAutomatonFinalIssueArray [],
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Begin override for block
-  public : VIRTUAL_IN_DEBUG void openOverride (const cBranchOverrideTransformationDescriptor inBranchBehaviourArray [],
+  public: VIRTUAL_IN_DEBUG void openOverride (const cBranchOverrideTransformationDescriptor inBranchBehaviourArray [],
                                                const uint32_t inBranchBehaviourSize,
                                                const cBranchOverrideCompatibilityDescriptor inBranchCombinationArray [],
                                                const uint32_t inBranchCombinationSize,
@@ -184,15 +184,15 @@ class cSharedUniqueMapRoot : public C_SharedObject {
                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- End override for block
-  public : VIRTUAL_IN_DEBUG void closeOverride (const GALGAS_location & inErrorLocation,
+  public: VIRTUAL_IN_DEBUG void closeOverride (const GALGAS_location & inErrorLocation,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Branch Handling
-  public : VIRTUAL_IN_DEBUG void openBranch (C_Compiler * inCompiler
+  public: VIRTUAL_IN_DEBUG void openBranch (C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void closeBranch (const GALGAS_location & inErrorLocation,
+  public: VIRTUAL_IN_DEBUG void closeBranch (const GALGAS_location & inErrorLocation,
                                               const cMapAutomatonFinalIssue inAutomatonFinalIssueArray [],
                                               #ifndef DO_NOT_GENERATE_CHECKINGS
                                                 const uint32_t inAutomatonStateCount,
@@ -202,7 +202,7 @@ class cSharedUniqueMapRoot : public C_SharedObject {
 
 //--------------------------------- Check Map
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    private : VIRTUAL_IN_DEBUG void checkMap (LOCATION_ARGS) const ;
+    private: VIRTUAL_IN_DEBUG void checkMap (LOCATION_ARGS) const ;
   #endif
 
 //--------------------------------- Friend
@@ -217,20 +217,20 @@ class cSharedUniqueMapRoot : public C_SharedObject {
 
 class cSharedProxy : public C_SharedObject {
 //--- Attribute
-  public : cUniqueMapNode * mNode ;
+  public: cUniqueMapNode * mNode ;
   
 //--- Constructor
-  public : cSharedProxy (cUniqueMapNode * inNode COMMA_LOCATION_ARGS) ;
+  public: cSharedProxy (cUniqueMapNode * inNode COMMA_LOCATION_ARGS) ;
   
 //--- Destructor
-  protected : virtual ~ cSharedProxy (void) ;
+  protected: virtual ~ cSharedProxy (void) ;
 
 //--- Detach proxy
-  protected : void detachProxy (void) ;
+  protected: void detachProxy (void) ;
 
 //--- No copy
-  private : cSharedProxy (const cSharedProxy &) ;
-  private : cSharedProxy & operator = (const cSharedProxy &) ;
+  private: cSharedProxy (const cSharedProxy &) ;
+  private: cSharedProxy & operator = (const cSharedProxy &) ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -240,35 +240,35 @@ class cSharedProxy : public C_SharedObject {
 //----------------------------------------------------------------------------------------------------------------------
 
 class cUniqueMapNode {
-  public : cUniqueMapNode * mInfPtr ;
-  public : cUniqueMapNode * mSupPtr ;
-  public : int32_t mBalance ;
-  public : const C_String mKey ;
-  public : GALGAS_location mDefinitionLocation ;
-  public : capCollectionElement mAttributes ;
-  private : cSharedProxy * mProxy ;
-  public : TC_UniqueArray <GALGAS_location> mInvocationLocationArray ;
+  public: cUniqueMapNode * mInfPtr ;
+  public: cUniqueMapNode * mSupPtr ;
+  public: int32_t mBalance ;
+  public: const C_String mKey ;
+  public: GALGAS_location mDefinitionLocation ;
+  public: capCollectionElement mAttributes ;
+  private: cSharedProxy * mProxy ;
+  public: TC_UniqueArray <GALGAS_location> mInvocationLocationArray ;
 //--- For state
-  public : uint32_t mCurrentState ;
-  public : cOverrideStateDescriptor * mStateArray ;
-  public : uint32_t mStateArraySize ;
+  public: uint32_t mCurrentState ;
+  public: cOverrideStateDescriptor * mStateArray ;
+  public: uint32_t mStateArraySize ;
 
 //--- Constructor
-  public : cUniqueMapNode (const C_String & inKey,
+  public: cUniqueMapNode (const C_String & inKey,
                            const uint32_t inInitialState,
                            capCollectionElement & inAttributes) ;
 
 //--- Solved ?
-  public : inline VIRTUAL_IN_DEBUG bool isSolved (void) const {
+  public: inline VIRTUAL_IN_DEBUG bool isSolved (void) const {
     return NULL != mAttributes.ptr () ;
   }
 
 //--- Destructor
-  public : virtual ~ cUniqueMapNode (void) ;
+  public: virtual ~ cUniqueMapNode (void) ;
 
 //--- No copy
-  private : cUniqueMapNode (const cUniqueMapNode &) ;
-  private : cUniqueMapNode & operator = (const cUniqueMapNode &) ;
+  private: cUniqueMapNode (const cUniqueMapNode &) ;
+  private: cUniqueMapNode & operator = (const cUniqueMapNode &) ;
 
 //--- Friends
   friend class cSharedProxy ;
@@ -766,13 +766,13 @@ void AC_GALGAS_uniqueMap::setter_enterEdge (const GALGAS_lstring & inSource,
 //----------------------------------------------------------------------------------------------------------------------
 
 class cTopologicalSortElement {
-  public : uint32_t mDependencyCount ;
-  public : TC_Array <int32_t> mDependenceArray ; // Node indexes of nodes after current node
-  public : int32_t mExplorationLink ;
-  public : GALGAS_lstring mKey ;
+  public: uint32_t mDependencyCount ;
+  public: TC_Array <int32_t> mDependenceArray ; // Node indexes of nodes after current node
+  public: int32_t mExplorationLink ;
+  public: GALGAS_lstring mKey ;
 
 //--- Constructor
-  public : cTopologicalSortElement (void) ;
+  public: cTopologicalSortElement (void) ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------

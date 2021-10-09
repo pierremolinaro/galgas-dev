@@ -16,25 +16,25 @@ AC_OutputStream & operator << (AC_OutputStream & inStream,
 
 class GALGAS_string : public AC_GALGAS_root {
 //--------------------------------- Private data members
-  private : bool mIsValid ;
-  private : C_String mString ;
+  private: bool mIsValid ;
+  private: C_String mString ;
 
 //--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
-  public : VIRTUAL_IN_DEBUG void drop (void) ;
-  public : inline C_String stringValue (void) const { return mString ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
+  public: VIRTUAL_IN_DEBUG void drop (void) ;
+  public: inline C_String stringValue (void) const { return mString ; }
 
 //--------------------------------- Default constructor
-  public : GALGAS_string (void) ;
+  public: GALGAS_string (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_string constructor_default (LOCATION_ARGS) ;
+  public: static GALGAS_string constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Constructor for making an empty string
-  public : static GALGAS_string makeEmptyString (void) ;
+  public: static GALGAS_string makeEmptyString (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_string (const C_String & inValue) ;
+  public: GALGAS_string (const C_String & inValue) ;
 
 %
 

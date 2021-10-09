@@ -6,25 +6,25 @@
 
 class GALGAS_type : public AC_GALGAS_root {
 //--------------------------------- Private data members
-  private : const C_galgas_type_descriptor * mTypeDescriptor ;
+  private: const C_galgas_type_descriptor * mTypeDescriptor ;
 
 //--------------------------------- Accessors
-  public : inline bool isValid (void) const { return NULL != mTypeDescriptor ; }
-  public : inline void drop (void) { mTypeDescriptor = NULL ; }
-  public : inline const C_galgas_type_descriptor * typeValue (void) const { return mTypeDescriptor ; }
+  public: inline bool isValid (void) const { return NULL != mTypeDescriptor ; }
+  public: inline void drop (void) { mTypeDescriptor = NULL ; }
+  public: inline const C_galgas_type_descriptor * typeValue (void) const { return mTypeDescriptor ; }
 
 //--------------------------------- Default constructor
-  public : GALGAS_type (void) ;
+  public: GALGAS_type (void) ;
 
 //--------------------------------- Destructor (virtual in debug mode)
-  public : virtual ~ GALGAS_type (void) ;
+  public: virtual ~ GALGAS_type (void) ;
 
 //--------------------------------- Handle copy
-  public : GALGAS_type (const GALGAS_type & inSource) ;
-  public : GALGAS_type & operator = (const GALGAS_type & inSource) ;
+  public: GALGAS_type (const GALGAS_type & inSource) ;
+  public: GALGAS_type & operator = (const GALGAS_type & inSource) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_type (const C_galgas_type_descriptor * inValue) ;
+  public: GALGAS_type (const C_galgas_type_descriptor * inValue) ;
 
 %
 

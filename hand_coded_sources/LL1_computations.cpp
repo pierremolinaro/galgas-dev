@@ -32,15 +32,15 @@
 
 class cAffichagePremiersProduction : public C_bdd_value_traversing {
 //--- Attributs
-  protected : C_HTMLString & mFichierBNF ;
-  protected : const cVocabulary & mVocabulary ;
+  protected: C_HTMLString & mFichierBNF ;
+  protected: const cVocabulary & mVocabulary ;
 
 //--- Constructeur
-  public : cAffichagePremiersProduction (C_HTMLString & inHTMLfile,
+  public: cAffichagePremiersProduction (C_HTMLString & inHTMLfile,
                                          const cVocabulary & inVocabulary) ;
 
 //--- Methode virtelle appelee pour chaque valeur
-  public : virtual void action (const bool tableauDesValeurs [],
+  public: virtual void action (const bool tableauDesValeurs [],
                                 const uint32_t nombreVariables) ;
 } ;
   
@@ -203,18 +203,18 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
 
 class cEcrireNonTerminal : public C_bdd_value_traversing {
 //--- Attributs
-  protected : C_HTMLString & mFichierBNF ;
-  protected : const cVocabulary & mVocabulary ;
-  protected : C_String aNomClasseLexique ;
-  protected : int16_t aIndice ;
+  protected: C_HTMLString & mFichierBNF ;
+  protected: const cVocabulary & mVocabulary ;
+  protected: C_String aNomClasseLexique ;
+  protected: int16_t aIndice ;
 
 //--- Constructeur
-  public : cEcrireNonTerminal (C_HTMLString & inHTMLfile,
+  public: cEcrireNonTerminal (C_HTMLString & inHTMLfile,
                                const cVocabulary & inVocabulary,
                                const C_String & nomClasseLexique) ;
 
 //--- Methode virtuelle appelee pour chaque valeur
-  public : virtual void action (const bool tableauDesValeurs [],
+  public: virtual void action (const bool tableauDesValeurs [],
                                 const uint32_t nombreVariables) ;
 } ;
   
@@ -282,13 +282,13 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
 //----------------------------------------------------------------------------------------------------------------------
 
 class C_ProductionNameDescriptor {
-  public : C_String mName ;
-  public : C_String mFileName ;
-  public : uint32_t mLineNumber ;
+  public: C_String mName ;
+  public: C_String mFileName ;
+  public: uint32_t mLineNumber ;
   
-  public : C_ProductionNameDescriptor (void) ;
+  public: C_ProductionNameDescriptor (void) ;
   
-  public : C_ProductionNameDescriptor (const C_String & inName,
+  public: C_ProductionNameDescriptor (const C_String & inName,
                                        const C_String & inFileName,
                                        const uint32_t inLineNumber) ;
 } ;

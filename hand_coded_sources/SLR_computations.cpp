@@ -35,15 +35,15 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class c_LR0_item {
-  public : int32_t mProductionRuleIndex ;
-  public : int32_t mLocationIndex ;
+  public: int32_t mProductionRuleIndex ;
+  public: int32_t mLocationIndex ;
 //--- Default constructor
-  public : c_LR0_item (void) ;
+  public: c_LR0_item (void) ;
 //--- Constructor
-  public : c_LR0_item (const int32_t inProductionRuleIndex,
+  public: c_LR0_item (const int32_t inProductionRuleIndex,
                        const int32_t inLocationIndex) ;
 //--- Compare two items
-  public : static int32_t compare_LR0_items (const c_LR0_item & inItem1,
+  public: static int32_t compare_LR0_items (const c_LR0_item & inItem1,
                                             const c_LR0_item & inItem2) ;
 } ;
 
@@ -88,46 +88,46 @@ compare_LR0_items (const c_LR0_item & inItem1,
 
 class c_LR0_items_set {
 //--- Private data
-  private : TC_UniqueArray <c_LR0_item> mItemsSet ;
+  private: TC_UniqueArray <c_LR0_item> mItemsSet ;
 
 //--- Default constructor
-  public : c_LR0_items_set (void) ;
+  public: c_LR0_items_set (void) ;
 
 //--- Add a new LR0 item (returns false if already present)
-  public : bool add_LR0_item (const int32_t inProductionRuleIndex,
+  public: bool add_LR0_item (const int32_t inProductionRuleIndex,
                               const int32_t inLocationIndex) ;
 
 //--- Get transitions LR0 item set from a state for a symbol
-  public : void getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
+  public: void getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
                                    const int32_t inSymbol,
                                    c_LR0_items_set & out_LR0_item_set) ;
 
 //--- Closing the LR0 items set
-  public : void close_items_set (const cPureBNFproductionsList & inProductionRules,
+  public: void close_items_set (const cPureBNFproductionsList & inProductionRules,
                                  const int32_t inTerminalSymbolsCount) ;
 
 //--- Empty set ?
-  public : bool isEmptySet (void) const ;
+  public: bool isEmptySet (void) const ;
 
 //--- Display LR0 items set
-  public : void display (const cPureBNFproductionsList & inProductionRules,
+  public: void display (const cPureBNFproductionsList & inProductionRules,
                          const cVocabulary & inVocabulary,
                          C_HTMLString & inHTMLfile) ;
 
 //--- Compare two items sets
-  public : static int32_t compare_LR0_items_sets (const c_LR0_items_set & inItemsSet1,
+  public: static int32_t compare_LR0_items_sets (const c_LR0_items_set & inItemsSet1,
                                                    const c_LR0_items_set & inItemsSet2) ;
 
 //--- Search from a LR0 items set (used for building 'reduce' actions of SLR table)
-  public : void getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
+  public: void getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
                                                     TC_UniqueArray <int32_t> & outProductionsSet,
                                                     bool & outAcceptCondition) ;
 
 //--- Handle Copy
-  public : c_LR0_items_set (const c_LR0_items_set &) ;
+  public: c_LR0_items_set (const c_LR0_items_set &) ;
 
 //--- No assignment
-  private : c_LR0_items_set & operator = (const c_LR0_items_set &) ;
+  private: c_LR0_items_set & operator = (const c_LR0_items_set &) ;
 
 //--- Friend
   friend void swap (c_LR0_items_set & ioOperand1, c_LR0_items_set & ioOperand2) ;
@@ -308,23 +308,23 @@ void swap (c_LR0_items_set & ioOperand1, c_LR0_items_set & ioOperand2) {
 //----------------------------------------------------------------------------------------------------------------------
 
 class cLR0_items_sets_AVL_tree {
-  public : cLR0_items_sets_AVL_tree * mPtrToInf ;
-  public : cLR0_items_sets_AVL_tree * mPtrToSup ;
-  private : const int32_t mInfo ;
-  public : int32_t mBalance ;
-  protected : cLR0_items_sets_AVL_tree (const int32_t inInfo) ;
-  public : virtual ~cLR0_items_sets_AVL_tree (void) ;
-  private : int32_t compare (const c_LR0_items_set & in_LR0_items_set,
+  public: cLR0_items_sets_AVL_tree * mPtrToInf ;
+  public: cLR0_items_sets_AVL_tree * mPtrToSup ;
+  private: const int32_t mInfo ;
+  public: int32_t mBalance ;
+  protected: cLR0_items_sets_AVL_tree (const int32_t inInfo) ;
+  public: virtual ~cLR0_items_sets_AVL_tree (void) ;
+  private: int32_t compare (const c_LR0_items_set & in_LR0_items_set,
                          const TC_UniqueArray <c_LR0_items_set> & in_LR0_items_sets_array) ;
-  public : static int32_t recursiveSearchOrInsert
+  public: static int32_t recursiveSearchOrInsert
                          (cLR0_items_sets_AVL_tree * & ioRootPointer,
                           c_LR0_items_set & io_LR0_items_set,
                           TC_UniqueArray <c_LR0_items_set> & io_LR0_items_sets_array,
                           bool & outExtension) ;
 
 //--- No copy
-  private : cLR0_items_sets_AVL_tree (cLR0_items_sets_AVL_tree &) ;
-  private : cLR0_items_sets_AVL_tree & operator = (cLR0_items_sets_AVL_tree &) ;
+  private: cLR0_items_sets_AVL_tree (cLR0_items_sets_AVL_tree &) ;
+  private: cLR0_items_sets_AVL_tree & operator = (cLR0_items_sets_AVL_tree &) ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -492,39 +492,39 @@ recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
 
 class c_LR0_items_sets_collection {
 //--- Default constructor and destructor
-  public : c_LR0_items_sets_collection (void) ;
-  public : virtual ~c_LR0_items_sets_collection (void) ;
+  public: c_LR0_items_sets_collection (void) ;
+  public: virtual ~c_LR0_items_sets_collection (void) ;
 
 //--- No copy
-  private : c_LR0_items_sets_collection (c_LR0_items_sets_collection &) ;
-  private : c_LR0_items_sets_collection & operator = (c_LR0_items_sets_collection &) ;
+  private: c_LR0_items_sets_collection (c_LR0_items_sets_collection &) ;
+  private: c_LR0_items_sets_collection & operator = (c_LR0_items_sets_collection &) ;
 
 //--- Search or insert a LR0 items set (return set index)
-  public : int32_t searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) ;
+  public: int32_t searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) ;
 
 //--- States count
-  public : int32_t getStatesCount (void) ;
+  public: int32_t getStatesCount (void) ;
 
 //--- Get transitions LR0 item set from a state for a symbol
-  public : void getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
+  public: void getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
                                    const int32_t inStateIndex,
                                    const int32_t inSymbol,
                                    c_LR0_items_set & out_LR0_item_set) ;
 
 //--- Display LR0 items set
-  public : void display (const cPureBNFproductionsList & inProductionRules,
+  public: void display (const cPureBNFproductionsList & inProductionRules,
                          const cVocabulary & inVocabulary,
                          C_HTMLString & inHTMLfile) ;
 
 //--- Search from a LR0 items set (used for building 'reduce' actions of SLR table)
-  public : void getProductionsWhereLocationIsRight (const int32_t inStateIndex,
+  public: void getProductionsWhereLocationIsRight (const int32_t inStateIndex,
                                                     const cPureBNFproductionsList & inProductionRules,
                                                     TC_UniqueArray <int32_t> & outProductionsSet,
                                                     bool & outAcceptCondition) ;
 
 //--- Private data
-  private : TC_UniqueArray <c_LR0_items_set> m_LR0_items_sets_array ;
-  private : cLR0_items_sets_AVL_tree * mRoot ;
+  private: TC_UniqueArray <c_LR0_items_set> m_LR0_items_sets_array ;
+  private: cLR0_items_sets_AVL_tree * mRoot ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -606,10 +606,10 @@ getProductionsWhereLocationIsRight (const int32_t inStateIndex,
 //----------------------------------------------------------------------------------------------------------------------
 
 class c_LR0_automaton_transition {
-  public : int32_t mSourceState ;
-  public : int32_t mAction ;
-  public : int32_t mTargetState ;
-  public : c_LR0_automaton_transition (const int32_t inSourceState,
+  public: int32_t mSourceState ;
+  public: int32_t mAction ;
+  public: int32_t mTargetState ;
+  public: c_LR0_automaton_transition (const int32_t inSourceState,
                                        const int32_t inAction,
                                        const int32_t inTargetState) ;
 } ;

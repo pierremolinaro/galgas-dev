@@ -4,7 +4,7 @@
 
 shared class @assignmentInstructionAST : @semanticInstructionAST {
   @lstring mTargetVariableName
-  @lstringlist mStructAttributeList
+  @lstring mOptionalProperty
   @semanticExpressionAST mSourceExpression
 }
 
@@ -12,7 +12,7 @@ shared class @assignmentInstructionAST : @semanticInstructionAST {
 
 shared class @selfPropertyAssignmentInstructionAST : @semanticInstructionAST {
   @lstring mTargetSelfPropertyName
-  @lstringlist mStructAttributeList
+  @lstring mOptionalProperty
   @semanticExpressionAST mSourceExpression
 }
 
@@ -26,19 +26,20 @@ syntax extension galgas3InstructionsSyntax {
 
   rule <semantic_instruction> !@semanticInstructionAST outInstruction {
     $identifier$ ?let mTargetVariableName
-    var mStructAttributeList =@lstringlist {}
-    repeat
-    while
+    @lstring optionalProperty
+    select
+      optionalProperty = ["" nowhere]
+    or
       $.$
       $identifier$ ?let attributeName
-      mStructAttributeList += !attributeName
+      optionalProperty = attributeName
     end
     $=$
     <expression> ?let @semanticExpressionAST mSourceExpression
     outInstruction = @assignmentInstructionAST.new {
       ![mTargetVariableName location]
       !mTargetVariableName
-      !mStructAttributeList
+      !optionalProperty
       !mSourceExpression
      }
   }
@@ -49,19 +50,20 @@ syntax extension galgas3InstructionsSyntax {
     $self$
     $.$
     $identifier$ ?let mTargetVariableName
-    var mStructAttributeList =@lstringlist {}
-    repeat
-    while
+    @lstring optionalProperty
+    select
+      optionalProperty = ["" nowhere]
+    or
       $.$
       $identifier$ ?let attributeName
-      mStructAttributeList += !attributeName
+      optionalProperty = attributeName
     end
     $=$
     <expression> ?let @semanticExpressionAST mSourceExpression
     outInstruction = @selfPropertyAssignmentInstructionAST.new {
       ![mTargetVariableName location]
       !mTargetVariableName
-      !mStructAttributeList
+      !optionalProperty
       !mSourceExpression
     }
   }
@@ -101,7 +103,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
 {
 #--- Get target variable type
   @unifiedTypeMap-proxy targetType
-  if [self.mStructAttributeList length] == 0 then
+  if self.mOptionalProperty.string == "" then
     [!?ioVariableMap neutralAccess
       !self.mTargetVariableName
       ?targetType
@@ -115,13 +117,13 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
       ?*
       ?*
     ]
-    for () in self.mStructAttributeList do
+#    for () in self.mStructAttributeList do
       let propertyMap = [targetType mPropertyMap]
-      [propertyMap searchKey !mValue ?let isPublic  ?targetType]
+      [propertyMap searchKey !self.mOptionalProperty ?let isPublic  ?targetType]
       if not isPublic then
-        error mValue : " inaccessible property (due to its 'private' qualifier)"
+        error self.mOptionalProperty : " inaccessible property (due to its 'private' qualifier)"
       end
-    end
+#    end
   end
 #--- Analyze source expression
   [self.mSourceExpression analyzeSemanticExpression
@@ -133,11 +135,16 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     ?@semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypeWithImplicitGetterCall (!targetType ![expression mResultType] !self.mInstructionLocation !?expression)
+  checkAssignmentTypeWithImplicitGetterCall (
+    !targetType
+    ![expression mResultType]
+    !self.mInstructionLocation
+    !?expression
+  )
 #--- Get target variable
   @string targetVariableCppName
   @string nameForCheckingFormalParameterUsing
-  if [self.mStructAttributeList length] == 0 then
+  if self.mOptionalProperty.string == "" then
     [!?ioVariableMap searchForWriteAccess
       !self.mTargetVariableName
       ?*
@@ -157,8 +164,9 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     !targetType
     !targetVariableCppName
     !nameForCheckingFormalParameterUsing
-    !self.mStructAttributeList
+    !self.mOptionalProperty
     !expression
+    !self.mTargetVariableName.location
   }
 }
 
@@ -188,11 +196,11 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
      + "mProperty_"+ [[self.mTargetSelfPropertyName string] identifierRepresentation]
   end
 #--- Get target variable type
-  for () in self.mStructAttributeList do
+  if self.mOptionalProperty.string != "" then
     let propertyMap = [targetType mPropertyMap]
-    [propertyMap searchKey !mValue ?let isPublic ?targetType]
+    [propertyMap searchKey !self.mOptionalProperty ?let isPublic ?targetType]
     if not isPublic then
-      error mValue : " inaccessible property (due to its 'private' qualifier)"
+      error self.mOptionalProperty : " inaccessible property (due to its 'private' qualifier)"
     end
   end
 #--- Analyze source expression
@@ -211,8 +219,9 @@ override method @selfPropertyAssignmentInstructionAST analyzeSemanticInstruction
     !targetType
     !targetVariableCppName
     !nameForCheckingFormalParameterUsing
-    !self.mStructAttributeList
+    !self.mOptionalProperty
     !expression
+    !self.mTargetSelfPropertyName.location
   }
 }
 
@@ -224,8 +233,9 @@ shared class @assignmentInstructionForGeneration : @semanticInstructionForGenera
   @unifiedTypeMap-proxy mTargetType
   @string mTargetCppName
   @string mNameForCheckingFormalParameterUsing
-  @lstringlist mStructAttributeList
+  @string mOptionalProperty
   @semanticExpressionForGeneration mSourceExpression
+  @location mSourceLocation
 }
 
 #———————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -249,11 +259,13 @@ override method @assignmentInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !self.mNameForCheckingFormalParameterUsing]
 #---
   [self.mTargetType addHeaderFileName !?ioInclusionSet]
-  @string receiverCppName = self.mTargetCppName
-  for () in self.mStructAttributeList do
-    receiverCppName += ".mProperty_" + [[mValue string] identifierRepresentation]
+  if self.mOptionalProperty == "" then
+    ioGeneratedCode += self.mTargetCppName + " = " + sourceVar + " ;\n"
+  else
+    ioGeneratedCode += self.mTargetCppName + ".setter_set" 
+    ioGeneratedCode += [[self.mOptionalProperty stringByCapitalizingFirstCharacter] identifierRepresentation]
+    ioGeneratedCode += " (" + sourceVar + " COMMA_" + [self.mSourceLocation sourceFile] + ") ;\n"
   end
-  ioGeneratedCode += receiverCppName + " = " + sourceVar + " ;\n"
   [!?ioUnusedVariableCppNameSet removeKey !self.mTargetCppName]
 }
 

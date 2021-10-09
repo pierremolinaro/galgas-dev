@@ -6,16 +6,16 @@
 
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Properties
-  private : uint64_t mFlags ;
-  private : bool mIsValid ;
+  private: uint64_t mFlags ;
+  private: bool mIsValid ;
 
 //--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
-  public : VIRTUAL_IN_DEBUG void drop (void) ;
+  public: VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public: VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Private constructor
-  private : GALGAS_%!TYPE_IDENTIFIER% (const uint64_t inFlags) ;
+  private: GALGAS_%!TYPE_IDENTIFIER% (const uint64_t inFlags) ;
 

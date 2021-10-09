@@ -6,13 +6,13 @@
 
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_%!TYPE_IDENTIFIER% (const capCollectionElementArray & inSharedArray) ;
+  public: GALGAS_%!TYPE_IDENTIFIER% (const capCollectionElementArray & inSharedArray) ;
 
 //--------------------------------- Element constructor
-  public : static void makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
+  public: static void makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
   for () in ATTRIBUTE_LIST
     do %,\n%!^%const class GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
   end

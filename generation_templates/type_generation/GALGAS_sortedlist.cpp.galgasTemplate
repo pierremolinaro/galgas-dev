@@ -5,10 +5,10 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
-  public : GALGAS_%!TYPE_IDENTIFIER%_2D_element mObject ;
+  public: GALGAS_%!TYPE_IDENTIFIER%_2D_element mObject ;
 
 //--- Constructor
-  public : cSortedListElement_%!TYPE_IDENTIFIER% (%?^
+  public: cSortedListElement_%!TYPE_IDENTIFIER% (%?^
   for () in ATTRIBUTE_LIST
     do %const GALGAS_%![mPropertyTypeProxy identifierRepresentation]% & in_%![mPropertyName identifierRepresentation]
     between %,\n%!^
@@ -17,19 +17,19 @@ class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
 !^%COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method that checks that all attributes are valid
-  public : virtual bool isValid (void) const ;
+  public: virtual bool isValid (void) const ;
 
 //--- Virtual method that returns a copy of current object
-  public : virtual cSortedListElement * copy (void) ;
+  public: virtual cSortedListElement * copy (void) ;
 
 //--- Virtual method for comparing elements
-  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public: virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+ public: virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 
 //--- Virtual method that comparing element for sorting
-  public : virtual typeComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
+  public: virtual typeComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------

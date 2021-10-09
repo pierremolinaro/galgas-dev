@@ -1,6 +1,6 @@
 
 //--- Terminal symbols enumeration
-  public : enum {kToken_%
+  public: enum {kToken_%
     for () in [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
       %,\n   kToken_% ![[mTerminalName string] identifierRepresentation]
     end
@@ -8,28 +8,28 @@
 %
   for () in DELIMITOR_LIST_LIST do
     %\n//--- Key words table '%![mName string]%'\n%
-    %  public : static int16_t search_into_%![mName string]% (const C_String & inSearchedString) ;\n%
+    %  public: static int16_t search_into_%![mName string]% (const C_String & inSearchedString) ;\n%
   end
 %  
 
 //--- Assign from attribute
 %
   for () in [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
-    %  public : GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% synthetizedAttribute_%![lkey identifierRepresentation]% (void) const ;\n%
+    %  public: GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% synthetizedAttribute_%![lkey identifierRepresentation]% (void) const ;\n%
   end
 %
 
 //--- Attribute access
 %
   for () in [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
-    %  public : %![mLexicalType cppTypeName]% attributeValue_%![lkey identifierRepresentation]% (void) const ;\n%
+    %  public: %![mLexicalType cppTypeName]% attributeValue_%![lkey identifierRepresentation]% (void) const ;\n%
   end
 %
 
 //--- Indexing keys
 %
   for () in INDEXING_LIST
-  before %  public : enum {%
+  before %  public: enum {%
   do %\n    kIndexing_%![mIndexName identifierRepresentation]
   between %,%
   after %\n  } ;\n%
@@ -38,29 +38,29 @@
 //--- Unicode test functions
 %
   for () in UNICODE_TEST_FUNCTIONS
-  do %  public : static bool %![mFunctionName identifierRepresentation]% (const utf32 inUnicodeCharacter) ;\n%
+  do %  public: static bool %![mFunctionName identifierRepresentation]% (const utf32 inUnicodeCharacter) ;\n%
   end
 %
 //--- Indexing directory
-  protected : virtual C_String indexingDirectory (void) const ;
+  protected: virtual C_String indexingDirectory (void) const ;
 
 //--- Parse lexical token
-  protected : virtual bool parseLexicalToken (void) ;
+  protected: virtual bool parseLexicalToken (void) ;
 
 //--- Get terminal message
-  protected : virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
+  protected: virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
-  public : virtual int16_t terminalVocabularyCount (void) const { return %![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]% ; }
+  public: virtual int16_t terminalVocabularyCount (void) const { return %![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]% ; }
 
 //--- Get Token String
-  public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
+  public: virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
 
 //--- Enter Token
-  protected : void enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & ioToken) ;
+  protected: void enterToken (cTokenFor_%!LEXIQUE_IDENTIFIER% & ioToken) ;
 
 //--- Style name for Latex
-  protected : virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const ;
-  protected : virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const ;
+  protected: virtual C_String styleNameForIndex (const uint32_t inStyleIndex) const ;
+  protected: virtual uint32_t styleIndexForTerminal (const int32_t inTerminalIndex) const ;
 } ;
 

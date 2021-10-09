@@ -6879,61 +6879,61 @@ GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserCla
   result << in_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 7)).stringValue () ;
   result << " {\n"
     "//--- Virtual destructor\n"
-    "  public : virtual ~ cParser_" ;
+    "  public: virtual ~ cParser_" ;
   result << in_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 9)).stringValue () ;
   result << " (void) {}\n"
     "\n"
     "//--- Non terminal declarations\n" ;
-  GALGAS_uint index_537_ (0) ;
+  GALGAS_uint index_536_ (0) ;
   if (in_NONTERMINAL_5F_MAP.isValid ()) {
-    cEnumerator_nonterminalMap enumerator_537 (in_NONTERMINAL_5F_MAP, kENUMERATION_UP) ;
-    while (enumerator_537.hasCurrentObject ()) {
-      GALGAS_uint index_571_ (0) ;
-      if (enumerator_537.current_mLabelMap (HERE).isValid ()) {
-        cEnumerator_nonterminalLabelMap enumerator_571 (enumerator_537.current_mLabelMap (HERE), kENUMERATION_UP) ;
-        while (enumerator_571.hasCurrentObject ()) {
-          result << "  protected : virtual void nt_" ;
-          result << enumerator_537.current_lkey (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 14)).stringValue () ;
+    cEnumerator_nonterminalMap enumerator_536 (in_NONTERMINAL_5F_MAP, kENUMERATION_UP) ;
+    while (enumerator_536.hasCurrentObject ()) {
+      GALGAS_uint index_570_ (0) ;
+      if (enumerator_536.current_mLabelMap (HERE).isValid ()) {
+        cEnumerator_nonterminalLabelMap enumerator_570 (enumerator_536.current_mLabelMap (HERE), kENUMERATION_UP) ;
+        while (enumerator_570.hasCurrentObject ()) {
+          result << "  protected: virtual void nt_" ;
+          result << enumerator_536.current_lkey (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 14)).stringValue () ;
           result << "_" ;
-          result << enumerator_571.current_lkey (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 14)).stringValue () ;
+          result << enumerator_570.current_lkey (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 14)).stringValue () ;
           result << " (" ;
           columnMarker = result.currentColumn () ;
-          GALGAS_uint index_729_IDX (0) ;
-          if (enumerator_571.current_mSignature (HERE).isValid ()) {
-            cEnumerator_formalParameterSignature enumerator_729 (enumerator_571.current_mSignature (HERE), kENUMERATION_UP) ;
-            while (enumerator_729.hasCurrentObject ()) {
-              const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_729.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 16)))).boolEnum () ;
+          GALGAS_uint index_727_IDX (0) ;
+          if (enumerator_570.current_mSignature (HERE).isValid ()) {
+            cEnumerator_formalParameterSignature enumerator_727 (enumerator_570.current_mSignature (HERE), kENUMERATION_UP) ;
+            while (enumerator_727.hasCurrentObject ()) {
+              const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, enumerator_727.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 16)))).boolEnum () ;
               if (kBoolTrue == test_0) {
                 result << "const class GALGAS_" ;
-                result << enumerator_729.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 17)).stringValue () ;
+                result << enumerator_727.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 17)).stringValue () ;
                 result << " constinArgument" ;
-                result << index_729_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 17)).stringValue () ;
+                result << index_727_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 17)).stringValue () ;
               }else if (kBoolFalse == test_0) {
-                const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_729.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 18)))).boolEnum () ;
+                const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, enumerator_727.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 18)))).boolEnum () ;
                 if (kBoolTrue == test_1) {
                   result << "class GALGAS_" ;
-                  result << enumerator_729.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 19)).stringValue () ;
+                  result << enumerator_727.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 19)).stringValue () ;
                   result << " & ioArgument" ;
-                  result << index_729_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 19)).stringValue () ;
+                  result << index_727_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 19)).stringValue () ;
                 }else if (kBoolFalse == test_1) {
-                  const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_729.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 20)))).boolEnum () ;
+                  const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, enumerator_727.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 20)))).boolEnum () ;
                   if (kBoolTrue == test_2) {
                     result << "class GALGAS_" ;
-                    result << enumerator_729.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 21)).stringValue () ;
+                    result << enumerator_727.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 21)).stringValue () ;
                     result << " & outArgument" ;
-                    result << index_729_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 21)).stringValue () ;
+                    result << index_727_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 21)).stringValue () ;
                   }else if (kBoolFalse == test_2) {
                     result << "class GALGAS_" ;
-                    result << enumerator_729.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 23)).stringValue () ;
+                    result << enumerator_727.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 23)).stringValue () ;
                     result << " inArgument" ;
-                    result << index_729_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 23)).stringValue () ;
+                    result << index_727_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 23)).stringValue () ;
                   }
                 }
               }
               result << ",\n" ;
               result.appendSpacesUntilColumn (columnMarker) ;
-              index_729_IDX.increment () ;
-              enumerator_729.gotoNextObject () ;
+              index_727_IDX.increment () ;
+              enumerator_727.gotoNextObject () ;
             }
           }
           const enumGalgasBool test_3 = in_HAS_5F_TRANSLATE_5F_FEATURE.boolEnum () ;
@@ -6948,12 +6948,12 @@ GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserCla
           result << in_LEXIQUE_5F_NAME.stringValue () ;
           result << " * inLexique) = 0 ;\n"
             "\n" ;
-          index_571_.increment () ;
-          enumerator_571.gotoNextObject () ;
+          index_570_.increment () ;
+          enumerator_570.gotoNextObject () ;
         }
       }
-      result << "  protected : virtual void nt_" ;
-      result << enumerator_537.current_lkey (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 33)).stringValue () ;
+      result << "  protected: virtual void nt_" ;
+      result << enumerator_536.current_lkey (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 33)).stringValue () ;
       result << "_parse (" ;
       columnMarker = result.currentColumn () ;
       const enumGalgasBool test_4 = in_HAS_5F_TRANSLATE_5F_FEATURE.boolEnum () ;
@@ -6970,74 +6970,74 @@ GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserCla
         "\n" ;
       const enumGalgasBool test_5 = in_HAS_5F_INDEXING.boolEnum () ;
       if (kBoolTrue == test_5) {
-        result << "  protected : virtual void nt_" ;
-        result << enumerator_537.current_lkey (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 40)).stringValue () ;
+        result << "  protected: virtual void nt_" ;
+        result << enumerator_536.current_lkey (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 40)).stringValue () ;
         result << "_indexing (class C_Lexique_" ;
         result << in_LEXIQUE_5F_NAME.stringValue () ;
         result << " * inLexique) = 0 ;\n"
           "\n" ;
       }else if (kBoolFalse == test_5) {
       }
-      index_537_.increment () ;
-      enumerator_537.gotoNextObject () ;
+      index_536_.increment () ;
+      enumerator_536.gotoNextObject () ;
     }
   }
   result << "\n"
     "//--- Rule declarations\n" ;
-  GALGAS_uint index_2150_ (0) ;
+  GALGAS_uint index_2146_ (0) ;
   if (in_RULE_5F_DECLARATION_5F_LIST.isValid ()) {
-    cEnumerator_ruleDeclarationList enumerator_2150 (in_RULE_5F_DECLARATION_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_2150.hasCurrentObject ()) {
-      GALGAS_uint index_2190_ (0) ;
-      if (enumerator_2150.current_mLabelImplementationList (HERE).isValid ()) {
-        cEnumerator_ruleLabelImplementationList enumerator_2190 (enumerator_2150.current_mLabelImplementationList (HERE), kENUMERATION_UP) ;
-        while (enumerator_2190.hasCurrentObject ()) {
-          result << "  protected : void rule_" ;
+    cEnumerator_ruleDeclarationList enumerator_2146 (in_RULE_5F_DECLARATION_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_2146.hasCurrentObject ()) {
+      GALGAS_uint index_2186_ (0) ;
+      if (enumerator_2146.current_mLabelImplementationList (HERE).isValid ()) {
+        cEnumerator_ruleLabelImplementationList enumerator_2186 (enumerator_2146.current_mLabelImplementationList (HERE), kENUMERATION_UP) ;
+        while (enumerator_2186.hasCurrentObject ()) {
+          result << "  protected: void rule_" ;
           result << in_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 46)).stringValue () ;
           result << "_" ;
-          result << enumerator_2150.current_mNonterminalName (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 46)).stringValue () ;
+          result << enumerator_2146.current_mNonterminalName (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 46)).stringValue () ;
           result << "_i" ;
-          result << enumerator_2150.current_mRuleIndex (HERE).getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 46)).stringValue () ;
+          result << enumerator_2146.current_mRuleIndex (HERE).getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 46)).stringValue () ;
           result << "_" ;
-          result << enumerator_2190.current_mLabelName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 46)).stringValue () ;
+          result << enumerator_2186.current_mLabelName (HERE).getter_string (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 46)).stringValue () ;
           result << " (" ;
           columnMarker = result.currentColumn () ;
-          GALGAS_uint index_2419_IDX (0) ;
-          if (enumerator_2190.current_mSignature (HERE).isValid ()) {
-            cEnumerator_formalParameterSignature enumerator_2419 (enumerator_2190.current_mSignature (HERE), kENUMERATION_UP) ;
-            while (enumerator_2419.hasCurrentObject ()) {
-              const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_2419.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 48)))).boolEnum () ;
+          GALGAS_uint index_2414_IDX (0) ;
+          if (enumerator_2186.current_mSignature (HERE).isValid ()) {
+            cEnumerator_formalParameterSignature enumerator_2414 (enumerator_2186.current_mSignature (HERE), kENUMERATION_UP) ;
+            while (enumerator_2414.hasCurrentObject ()) {
+              const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_2414.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentConstantIn (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 48)))).boolEnum () ;
               if (kBoolTrue == test_6) {
                 result << "const GALGAS_" ;
-                result << enumerator_2419.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 49)).stringValue () ;
+                result << enumerator_2414.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 49)).stringValue () ;
                 result << " constinArgument" ;
-                result << index_2419_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 49)).stringValue () ;
+                result << index_2414_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 49)).stringValue () ;
               }else if (kBoolFalse == test_6) {
-                const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, enumerator_2419.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 50)))).boolEnum () ;
+                const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, enumerator_2414.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentInOut (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 50)))).boolEnum () ;
                 if (kBoolTrue == test_7) {
                   result << "GALGAS_" ;
-                  result << enumerator_2419.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 51)).stringValue () ;
+                  result << enumerator_2414.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 51)).stringValue () ;
                   result << " & ioArgument" ;
-                  result << index_2419_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 51)).stringValue () ;
+                  result << index_2414_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 51)).stringValue () ;
                 }else if (kBoolFalse == test_7) {
-                  const enumGalgasBool test_8 = GALGAS_bool (kIsEqual, enumerator_2419.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 52)))).boolEnum () ;
+                  const enumGalgasBool test_8 = GALGAS_bool (kIsEqual, enumerator_2414.current_mFormalArgumentPassingMode (HERE).objectCompare (GALGAS_formalArgumentPassingModeAST::constructor_argumentOut (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 52)))).boolEnum () ;
                   if (kBoolTrue == test_8) {
                     result << "GALGAS_" ;
-                    result << enumerator_2419.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 53)).stringValue () ;
+                    result << enumerator_2414.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 53)).stringValue () ;
                     result << " & outArgument" ;
-                    result << index_2419_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 53)).stringValue () ;
+                    result << index_2414_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 53)).stringValue () ;
                   }else if (kBoolFalse == test_8) {
                     result << "GALGAS_" ;
-                    result << enumerator_2419.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 55)).stringValue () ;
+                    result << enumerator_2414.current_mFormalArgumentType (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 55)).stringValue () ;
                     result << " inArgument" ;
-                    result << index_2419_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 55)).stringValue () ;
+                    result << index_2414_IDX.getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 55)).stringValue () ;
                   }
                 }
               }
               result << ",\n" ;
               result.appendSpacesUntilColumn (columnMarker) ;
-              index_2419_IDX.increment () ;
-              enumerator_2419.gotoNextObject () ;
+              index_2414_IDX.increment () ;
+              enumerator_2414.gotoNextObject () ;
             }
           }
           const enumGalgasBool test_9 = in_HAS_5F_TRANSLATE_5F_FEATURE.boolEnum () ;
@@ -7052,16 +7052,16 @@ GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserCla
           result << in_LEXIQUE_5F_NAME.stringValue () ;
           result << " * inLexique) ;\n"
             "\n" ;
-          index_2190_.increment () ;
-          enumerator_2190.gotoNextObject () ;
+          index_2186_.increment () ;
+          enumerator_2186.gotoNextObject () ;
         }
       }
-      result << "  protected : void rule_" ;
+      result << "  protected: void rule_" ;
       result << in_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 64)).stringValue () ;
       result << "_" ;
-      result << enumerator_2150.current_mNonterminalName (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 64)).stringValue () ;
+      result << enumerator_2146.current_mNonterminalName (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 64)).stringValue () ;
       result << "_i" ;
-      result << enumerator_2150.current_mRuleIndex (HERE).getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 64)).stringValue () ;
+      result << enumerator_2146.current_mRuleIndex (HERE).getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 64)).stringValue () ;
       result << "_parse (" ;
       columnMarker = result.currentColumn () ;
       const enumGalgasBool test_10 = in_HAS_5F_TRANSLATE_5F_FEATURE.boolEnum () ;
@@ -7078,39 +7078,39 @@ GALGAS_string filewrapperTemplate_syntaxFileGenerationTemplate_syntaxAnalyserCla
         "\n" ;
       const enumGalgasBool test_11 = in_HAS_5F_INDEXING.boolEnum () ;
       if (kBoolTrue == test_11) {
-        result << "  protected : void rule_" ;
+        result << "  protected: void rule_" ;
         result << in_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 70)).stringValue () ;
         result << "_" ;
-        result << enumerator_2150.current_mNonterminalName (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 70)).stringValue () ;
+        result << enumerator_2146.current_mNonterminalName (HERE).getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 70)).stringValue () ;
         result << "_i" ;
-        result << enumerator_2150.current_mRuleIndex (HERE).getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 70)).stringValue () ;
+        result << enumerator_2146.current_mRuleIndex (HERE).getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 70)).stringValue () ;
         result << "_indexing (C_Lexique_" ;
         result << in_LEXIQUE_5F_NAME.stringValue () ;
         result << " * inLexique) ;\n"
           "\n" ;
       }else if (kBoolFalse == test_11) {
       }
-      index_2150_.increment () ;
-      enumerator_2150.gotoNextObject () ;
+      index_2146_.increment () ;
+      enumerator_2146.gotoNextObject () ;
     }
   }
   result << "\n"
     "\n"
     "//--- Select methods\n" ;
-  GALGAS_uint index_3914_ (0) ;
+  GALGAS_uint index_3907_ (0) ;
   if (in_SELECT_5F_METHOD_5F_LIST.isValid ()) {
-    cEnumerator_uintlist enumerator_3914 (in_SELECT_5F_METHOD_5F_LIST, kENUMERATION_UP) ;
-    while (enumerator_3914.hasCurrentObject ()) {
-      result << "  protected : virtual int32_t select_" ;
+    cEnumerator_uintlist enumerator_3907 (in_SELECT_5F_METHOD_5F_LIST, kENUMERATION_UP) ;
+    while (enumerator_3907.hasCurrentObject ()) {
+      result << "  protected: virtual int32_t select_" ;
       result << in_COMPONENT_5F_NAME.getter_identifierRepresentation (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 76)).stringValue () ;
       result << "_" ;
-      result << enumerator_3914.current_mValue (HERE).getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 76)).stringValue () ;
+      result << enumerator_3907.current_mValue (HERE).getter_string (SOURCE_FILE ("syntax-analyser-class.galgasTemplate", 76)).stringValue () ;
       result << " (C_Lexique_" ;
       result << in_LEXIQUE_5F_NAME.stringValue () ;
       result << " *) = 0 ;\n"
         "\n" ;
-      index_3914_.increment () ;
-      enumerator_3914.gotoNextObject () ;
+      index_3907_.increment () ;
+      enumerator_3907.gotoNextObject () ;
     }
   }
   result << "\n"

@@ -5179,8 +5179,8 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       GALGAS_string var_newIntermediateFilePath_27978 = constinArgument_inProjectSourceFilePath.getter_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.galgas", 588)).add_operation (GALGAS_string ("/build/output/file-list-for-xcode-project.txt"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 588)) ;
       ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("file-list-for-xcode-project.txt")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 589)) ;
       GALGAS_XcodeProjectDescriptor var_xcodeProject_28262 = GALGAS_XcodeProjectDescriptor::constructor_default (SOURCE_FILE ("galgas3TargetGeneration.galgas", 591)) ;
-      var_xcodeProject_28262.mProperty_mApplicationBundleName = var_applicationBundleBase_26399 ;
-      var_xcodeProject_28262.mProperty_mProjectName = constinArgument_inTargetName ;
+      var_xcodeProject_28262.setter_setMApplicationBundleName (var_applicationBundleBase_26399 COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 592)) ;
+      var_xcodeProject_28262.setter_setMProjectName (constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 593)) ;
       GALGAS_string var_headerSearchPaths_28431 = GALGAS_string ("HEADER_SEARCH_PATHS = (\"../build/output\", \"../build/libpm\", \"../build/user-headers\"") ;
       cEnumerator_stringset enumerator_28576 (constinArgument_inHandCodedSourceDirectorySet, kENUMERATION_UP) ;
       while (enumerator_28576.hasCurrentObject ()) {

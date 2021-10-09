@@ -6,10 +6,10 @@
 
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Default constructor
-  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+  public: GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Enumeration
-  public : typedef enum {
+  public: typedef enum {
     kNotBuilt%
     for () in CONSTANT_LIST do
       %,\n    kEnum_%![mConstantName identifierRepresentation]
@@ -20,15 +20,15 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Private data member
 %
 if HAS_ASSOCIATED_VALUES then
-  %  private : AC_GALGAS_enumAssociatedValues mAssociatedValues ;\n%
-  %  public : VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {\n%
+  %  private: AC_GALGAS_enumAssociatedValues mAssociatedValues ;\n%
+  %  public: VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {\n%
   %    return mAssociatedValues.unsafePointer () ;\n%
   %  }\n\n%
 end
-%  private : enumeration mEnum ;
+%  private: enumeration mEnum ;
 
 //--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return kNotBuilt != mEnum ; }
-  public : VIRTUAL_IN_DEBUG inline void drop (void) { mEnum = kNotBuilt ; }
-  public : inline enumeration enumValue (void) const { return mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const { return kNotBuilt != mEnum ; }
+  public: VIRTUAL_IN_DEBUG inline void drop (void) { mEnum = kNotBuilt ; }
+  public: inline enumeration enumValue (void) const { return mEnum ; }
 

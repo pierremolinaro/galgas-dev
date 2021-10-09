@@ -24,30 +24,30 @@
 //----------------------------------------------------------------------------------------------------------------------
 
 class cDecisionTableElement {
-  private : int32_t mParameter ;
-  public : inline int32_t parameter (void) const { return mParameter ; }
+  private: int32_t mParameter ;
+  public: inline int32_t parameter (void) const { return mParameter ; }
 
-  public : typedef enum {kUndefinedState, kDecisionShift, kDecisionReduce, kDecisionAccept} enumDecision ;
-  private : enumDecision mDecision ;
-  public : inline enumDecision decision (void) const { return mDecision ; }
+  public: typedef enum {kUndefinedState, kDecisionShift, kDecisionReduce, kDecisionAccept} enumDecision ;
+  private: enumDecision mDecision ;
+  public: inline enumDecision decision (void) const { return mDecision ; }
 
-  public : inline bool isInUndefinedState (void) const {
+  public: inline bool isInUndefinedState (void) const {
     return mDecision == kUndefinedState ;
   }
 
-  public : cDecisionTableElement (void) ;
+  public: cDecisionTableElement (void) ;
 
-  public : cDecisionTableElement (const cDecisionTableElement & inSource) ;
+  public: cDecisionTableElement (const cDecisionTableElement & inSource) ;
 
-  public : cDecisionTableElement & operator = (const cDecisionTableElement & inSource) ;
+  public: cDecisionTableElement & operator = (const cDecisionTableElement & inSource) ;
 
-  private : cDecisionTableElement (const int32_t inParameter, const enumDecision inDecision) ;
+  private: cDecisionTableElement (const int32_t inParameter, const enumDecision inDecision) ;
   
-  public : static cDecisionTableElement shiftDecision (const int32_t inNextState) ;
+  public: static cDecisionTableElement shiftDecision (const int32_t inNextState) ;
 
-  public : static cDecisionTableElement reduceDecision (const int32_t inReduceProduction) ;
+  public: static cDecisionTableElement reduceDecision (const int32_t inReduceProduction) ;
 
-  public : static cDecisionTableElement acceptDecision (void) ;
+  public: static cDecisionTableElement acceptDecision (void) ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------

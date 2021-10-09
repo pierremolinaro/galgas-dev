@@ -6,23 +6,23 @@
 
 class GALGAS_stringset : public AC_GALGAS_root {
 //--------------------------------- Private data members
-  private : class cSharedStringsetRoot * mSharedRoot ;
+  private: class cSharedStringsetRoot * mSharedRoot ;
 
 //--------------------------------- Accessors
-  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSharedRoot != NULL ; }
-  public : VIRTUAL_IN_DEBUG void drop (void) ;
+  public: VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSharedRoot != NULL ; }
+  public: VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_stringset (void) ;
+  public: GALGAS_stringset (void) ;
 
 //--------------------------------- Destructor (virtual in debug mode)
-  public : virtual ~ GALGAS_stringset (void) ;
+  public: virtual ~ GALGAS_stringset (void) ;
 
 //--------------------------------- In debug mode : check method
-  protected : void checkStringset (LOCATION_ARGS) const ;
+  protected: void checkStringset (LOCATION_ARGS) const ;
 
 //--------------------------------- Insulate
-  protected : void insulate (LOCATION_ARGS) ;
+  protected: void insulate (LOCATION_ARGS) ;
 
 %
 

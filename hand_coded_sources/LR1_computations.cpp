@@ -48,12 +48,12 @@ computeHashCode (const int32_t inProductionRuleIndex,
 //----------------------------------------------------------------------------------------------------------------------
 
 class c_LR1_item {
-  public : const int32_t mLocationIndex ;
-  public : const int32_t mTerminalSymbol ;
-  public : const int32_t mProductionRuleIndex ;
-  public : const uint32_t mHashCode ;
+  public: const int32_t mLocationIndex ;
+  public: const int32_t mTerminalSymbol ;
+  public: const int32_t mProductionRuleIndex ;
+  public: const uint32_t mHashCode ;
 //--- Constructor
-  public : inline c_LR1_item (const int32_t inProductionRuleIndex,
+  public: inline c_LR1_item (const int32_t inProductionRuleIndex,
                               const int32_t inLocationIndex,
                               const int32_t inTerminalSymbol) :
   mLocationIndex (inLocationIndex),
@@ -63,7 +63,7 @@ class c_LR1_item {
   }
 
 //--- Compare two items
-  public : inline static int32_t
+  public: inline static int32_t
   compare_LR1_items (const c_LR1_item & inItem1,
                      const c_LR1_item & inItem2) ;
 } ;
@@ -96,23 +96,23 @@ compare_LR1_items (const c_LR1_item & inItem1,
 //----------------------------------------------------------------------------------------------------------------------
 
 class cLR1_items_AVL_tree {
-  public : cLR1_items_AVL_tree * mPtrToInf ;
-  public : cLR1_items_AVL_tree * mPtrToSup ;
-  public : const c_LR1_item mLR1item ;
-  public : int32_t mBalance ;
+  public: cLR1_items_AVL_tree * mPtrToInf ;
+  public: cLR1_items_AVL_tree * mPtrToSup ;
+  public: const c_LR1_item mLR1item ;
+  public: int32_t mBalance ;
 
-  protected : cLR1_items_AVL_tree (const c_LR1_item & inLR1item) ;
+  protected: cLR1_items_AVL_tree (const c_LR1_item & inLR1item) ;
 
-  public : virtual ~cLR1_items_AVL_tree (void) ;
+  public: virtual ~cLR1_items_AVL_tree (void) ;
 
-  public : static cLR1_items_AVL_tree * // Return inserted object, or NULL
+  public: static cLR1_items_AVL_tree * // Return inserted object, or NULL
   recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
                                   const c_LR1_item & in_LR1_item,
                                   bool & outExtension) ;
 
 //--- No copy
-  private : cLR1_items_AVL_tree (cLR1_items_AVL_tree &) ;
-  private : cLR1_items_AVL_tree & operator = (cLR1_items_AVL_tree &) ;
+  private: cLR1_items_AVL_tree (cLR1_items_AVL_tree &) ;
+  private: cLR1_items_AVL_tree & operator = (cLR1_items_AVL_tree &) ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -254,58 +254,58 @@ recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
 
 class cLR1ItemUniqueArray {
 //--- Default Constructor
-  public : cLR1ItemUniqueArray (void) ;
+  public: cLR1ItemUniqueArray (void) ;
   
 //--- Allocation Constructor (empty array)
-  public : cLR1ItemUniqueArray (const int32_t inAllocatedSize COMMA_LOCATION_ARGS) ;
+  public: cLR1ItemUniqueArray (const int32_t inAllocatedSize COMMA_LOCATION_ARGS) ;
   
 //--- Virtual Destructor
-  public : virtual ~cLR1ItemUniqueArray (void) ;
+  public: virtual ~cLR1ItemUniqueArray (void) ;
 
 //--- No copy
-  private : cLR1ItemUniqueArray (const cLR1ItemUniqueArray &) ;
-  private : cLR1ItemUniqueArray & operator = (const cLR1ItemUniqueArray &) ;
+  private: cLR1ItemUniqueArray (const cLR1ItemUniqueArray &) ;
+  private: cLR1ItemUniqueArray & operator = (const cLR1ItemUniqueArray &) ;
 
 //--- Get Count
-  public : inline int32_t count (void) const { return mCount ; }
+  public: inline int32_t count (void) const { return mCount ; }
 
 //--- Get allocated capacity
-  public : inline int32_t capacity (void) const { return mCapacity ; }
+  public: inline int32_t capacity (void) const { return mCapacity ; }
 
 //--- Methods for making room
-  public : void makeRoom (const int32_t inNewCapacity) ;
+  public: void makeRoom (const int32_t inNewCapacity) ;
 
 //--- Remove all objects (no deallocation)
-  public : inline void clear (void) { mCount = 0 ; }
+  public: inline void clear (void) { mCount = 0 ; }
 
 //--- Remove all objects and deallocate
-  public : void free (void) ;
+  public: void free (void) ;
   
 //--- Add objects at the end of the array
-  public : void appendObject (const cLR1_items_AVL_tree * inValue) ;
+  public: void appendObject (const cLR1_items_AVL_tree * inValue) ;
 
 //--- Array access (with index checking)
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    public : const c_LR1_item & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) ;
-    public : const c_LR1_item & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
+    public: const c_LR1_item & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) ;
+    public: const c_LR1_item & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
   #endif
 
 //--- Array access (without index checking)
   #ifdef DO_NOT_GENERATE_CHECKINGS
-    public : inline const c_LR1_item & operator () (const int32_t inIndex) { return mArray [inIndex]->mLR1item ; }
-    public : inline const c_LR1_item & operator () (const int32_t inIndex) const { return mArray [inIndex]->mLR1item ; }
+    public: inline const c_LR1_item & operator () (const int32_t inIndex) { return mArray [inIndex]->mLR1item ; }
+    public: inline const c_LR1_item & operator () (const int32_t inIndex) const { return mArray [inIndex]->mLR1item ; }
   #endif
 
 //--- Index checking
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    protected : void checkIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
-    protected : void checkIndexForInsertion (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
+    protected: void checkIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
+    protected: void checkIndexForInsertion (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
   #endif
 
 //--- Protected attributes
-  protected : const cLR1_items_AVL_tree * * mArray ;
-  protected : int32_t mCount ;
-  protected : int32_t mCapacity ;
+  protected: const cLR1_items_AVL_tree * * mArray ;
+  protected: int32_t mCount ;
+  protected: int32_t mCapacity ;
 
 //--- swap
   friend void swap (cLR1ItemUniqueArray & ioOperand1,
@@ -477,66 +477,66 @@ void cLR1ItemUniqueArray::appendObject (const cLR1_items_AVL_tree * inValue) {
 
 class c_LR1_items_set {
 //--- Private data
-  private : cLR1ItemUniqueArray mItemsSet ;
-  private : cLR1_items_AVL_tree * mRoot ;
-  private : uint32_t mHashCode ;
-  private : bool mArrayIsSorted ;
+  private: cLR1ItemUniqueArray mItemsSet ;
+  private: cLR1_items_AVL_tree * mRoot ;
+  private: uint32_t mHashCode ;
+  private: bool mArrayIsSorted ;
 
 //--- Default constructor
-  public : c_LR1_items_set (void) ;
+  public: c_LR1_items_set (void) ;
 
 //--- Destructor
-  public : virtual ~c_LR1_items_set (void) ;
+  public: virtual ~c_LR1_items_set (void) ;
 
 //--- No copy
-  private : c_LR1_items_set (const c_LR1_items_set &) ;
-  private : c_LR1_items_set & operator = (const c_LR1_items_set &) ;
+  private: c_LR1_items_set (const c_LR1_items_set &) ;
+  private: c_LR1_items_set & operator = (const c_LR1_items_set &) ;
 
 //--- Add a new LR1 item (returns false if already present)
-  public : void add_LR1_item (const int32_t inProductionRuleIndex,
+  public: void add_LR1_item (const int32_t inProductionRuleIndex,
                               const int32_t inLocationIndex,
                               const int32_t inTerminalSymbol) ;
-  protected : void
+  protected: void
   recursiveBuildSortedArray (cLR1_items_AVL_tree * inPointer) ;
 
 //--- Get transitions LR1 item set from a state for a symbol
-  public : void
+  public: void
   getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
                      const int32_t inSymbol,
                      c_LR1_items_set & out_LR1_item_set) ;
 
 //--- Closing the LR1 items set
-  public : void
+  public: void
   close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
                        const int32_t inTerminalSymbolsCount,
                        const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFIRSTarray,
                        const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array) ;
 
-  public : void clear (void) ;
+  public: void clear (void) ;
 
 //--- Empty set ?
-  public : bool isEmptySet (void) const ;
+  public: bool isEmptySet (void) const ;
 
 //--- Display LR1 items set
-  public : void
+  public: void
   display (const cPureBNFproductionsList & inProductionRules,
            const cVocabulary & inVocabulary,
            C_HTMLString & inHTMLfile) const ;
 
 //--- Compare two items sets
-  public : static
+  public: static
   int32_t compare_LR1_items_sets (c_LR1_items_set & inItemsSet1,
                                  c_LR1_items_set & inItemsSet2) ;
 
 //--- Search from a LR1 items set (used for building 'reduce' actions of LR table)
-  public : void
+  public: void
   getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
                                       TC_UniqueArray <int32_t> & outProductionsSet,
                                       TC_UniqueArray <int32_t> & outTerminalArray,
                                       bool & outAcceptCondition) ;
 
 //--- Hash code
-  public : inline uint32_t hashCode (void) const { return mHashCode ; }
+  public: inline uint32_t hashCode (void) const { return mHashCode ; }
 
 //--- Friend
   friend void swap (c_LR1_items_set & ioOperand1, c_LR1_items_set & ioOperand2) ;
@@ -777,28 +777,28 @@ void swap (c_LR1_items_set & ioOperand1, c_LR1_items_set & ioOperand2) {
 //----------------------------------------------------------------------------------------------------------------------
 
 class cLR1_items_sets_AVL_tree {
-  public : cLR1_items_sets_AVL_tree * mPtrToInf ;
-  public : cLR1_items_sets_AVL_tree * mPtrToSup ;
-  private : const int32_t mInfoIndex ;
-  public : int32_t mBalance ;
+  public: cLR1_items_sets_AVL_tree * mPtrToInf ;
+  public: cLR1_items_sets_AVL_tree * mPtrToSup ;
+  private: const int32_t mInfoIndex ;
+  public: int32_t mBalance ;
 
-  protected : cLR1_items_sets_AVL_tree (const int32_t inInfo) ;
+  protected: cLR1_items_sets_AVL_tree (const int32_t inInfo) ;
 
-  public : virtual ~cLR1_items_sets_AVL_tree (void) ;
+  public: virtual ~cLR1_items_sets_AVL_tree (void) ;
 
-  private : int32_t
+  private: int32_t
   compare (c_LR1_items_set & in_LR1_items_set,
            TC_UniqueArray <c_LR1_items_set> & in_LR1_items_sets_array) ;
 
-  public : static int32_t
+  public: static int32_t
   recursiveSearchOrInsert (cLR1_items_sets_AVL_tree * & ioRootPointer,
                            c_LR1_items_set & io_LR1_items_set,
                            TC_UniqueArray <c_LR1_items_set> & io_LR1_items_sets_array,
                            bool & outExtension) ;
 
 //--- No copy
-  private : cLR1_items_sets_AVL_tree (cLR1_items_sets_AVL_tree &) ;
-  private : cLR1_items_sets_AVL_tree & operator = (cLR1_items_sets_AVL_tree &) ;
+  private: cLR1_items_sets_AVL_tree (cLR1_items_sets_AVL_tree &) ;
+  private: cLR1_items_sets_AVL_tree & operator = (cLR1_items_sets_AVL_tree &) ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -958,40 +958,40 @@ static const uint32_t kSlotCount = 46489 ;
 
 class c_LR1_items_sets_collection {
 //--- Default constructor and destructor
-  public : c_LR1_items_sets_collection (void) ;
-  public : virtual ~c_LR1_items_sets_collection (void) ;
+  public: c_LR1_items_sets_collection (void) ;
+  public: virtual ~c_LR1_items_sets_collection (void) ;
 
 //--- No copy
-  private : c_LR1_items_sets_collection (c_LR1_items_sets_collection &) ;
-  private : c_LR1_items_sets_collection & operator = (c_LR1_items_sets_collection &) ;
+  private: c_LR1_items_sets_collection (c_LR1_items_sets_collection &) ;
+  private: c_LR1_items_sets_collection & operator = (c_LR1_items_sets_collection &) ;
 
 //--- Search or insert a LR1 items set (return set index)
-  public : int32_t searchOrInsert_LR1_itemSet (c_LR1_items_set & ioItemSet) ;
+  public: int32_t searchOrInsert_LR1_itemSet (c_LR1_items_set & ioItemSet) ;
 
 //--- States count
-  public : int32_t getStateCount (void) ;
+  public: int32_t getStateCount (void) ;
 
 //--- Get transitions LR1 item set from a state for a symbol
-  public : void getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
+  public: void getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
                                    const int32_t inStateIndex,
                                    const int32_t inSymbol,
                                    c_LR1_items_set & out_LR1_item_set) ;
 
 //--- Display LR1 items set
-  public : void display (const cPureBNFproductionsList & inProductionRules,
+  public: void display (const cPureBNFproductionsList & inProductionRules,
                          const cVocabulary & inVocabulary,
                          C_HTMLString & inHTMLfile) const ;
 
 //--- Search from a LR1 items set (used for building 'reduce' actions of SLR table)
-  public : void getProductionsWhereLocationIsRight (const int32_t inStateIndex,
+  public: void getProductionsWhereLocationIsRight (const int32_t inStateIndex,
                                                     const cPureBNFproductionsList & inProductionRules,
                                                     TC_UniqueArray <int32_t> & outProductionsSet,
                                                     TC_UniqueArray <int32_t> & outTerminalArray,
                                                     bool & outAcceptCondition) ;
 
 //--- Private data
-  private : TC_UniqueArray <c_LR1_items_set> m_LR1_items_sets_array ;
-  private : cLR1_items_sets_AVL_tree * mRoot [kSlotCount] ;
+  private: TC_UniqueArray <c_LR1_items_set> m_LR1_items_sets_array ;
+  private: cLR1_items_sets_AVL_tree * mRoot [kSlotCount] ;
 } ;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1079,10 +1079,10 @@ void c_LR1_items_sets_collection::getProductionsWhereLocationIsRight (const int3
 //----------------------------------------------------------------------------------------------------------------------
 
 class c_LR1_automaton_transition {
-  public : const int32_t mSourceState ;
-  public : const int32_t mAction ;
-  public : const int32_t mTargetState ;
-  public : inline c_LR1_automaton_transition (const int32_t inSourceState,
+  public: const int32_t mSourceState ;
+  public: const int32_t mAction ;
+  public: const int32_t mTargetState ;
+  public: inline c_LR1_automaton_transition (const int32_t inSourceState,
                                               const int32_t inAction,
                                               const int32_t inTargetState) :
     mSourceState (inSourceState),
