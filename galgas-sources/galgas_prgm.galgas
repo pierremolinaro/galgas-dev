@@ -65,7 +65,7 @@ before {
 case . "galgas"
 message "a GALGAS source file"
 grammar galgas3Grammar
-?sourceFilePath:@lstring inSourceFile {
+?sourceFilePath: @lstring inSourceFile {
 #--- Search for a project file in parent directory
   let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
   let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !{!"galgasProject"}]

@@ -1266,16 +1266,16 @@ static void extensionMethod_sharedMapTypeForGeneration_appendDeclaration_31_ (co
   const cPtr_sharedMapTypeForGeneration * object = (const cPtr_sharedMapTypeForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_sharedMapTypeForGeneration) ;
   const GALGAS_sharedMapTypeForGeneration temp_0 = object ;
-  cEnumerator_typedPropertyList enumerator_45339 (temp_0.getter_mTypedAttributeList (HERE), kENUMERATION_UP) ;
-  while (enumerator_45339.hasCurrentObject ()) {
-    extensionMethod_addHeaderFileName_31_ (enumerator_45339.current_mPropertyTypeProxy (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1170)) ;
-    enumerator_45339.gotoNextObject () ;
+  cEnumerator_typedPropertyList enumerator_45373 (temp_0.getter_mTypedAttributeList (HERE), kENUMERATION_UP) ;
+  while (enumerator_45373.hasCurrentObject ()) {
+    extensionMethod_addHeaderFileName_31_ (enumerator_45373.current_mPropertyTypeProxy (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1171)) ;
+    enumerator_45373.gotoNextObject () ;
   }
   const GALGAS_sharedMapTypeForGeneration temp_1 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_2 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_3 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_4 = object ;
-  outArgument_outHeader = GALGAS_string (filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeHeader_31_ (inCompiler, temp_1.getter_mTypeProxy (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1174)), temp_2.getter_mTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1175)), temp_3.getter_mTypedAttributeList (HERE), temp_4.getter_mSearchMethodList (HERE) COMMA_SOURCE_FILE ("type-shared-map.galgas", 1173))) ;
+  outArgument_outHeader = GALGAS_string (filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeHeader_31_ (inCompiler, temp_1.getter_mTypeProxy (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1175)), temp_2.getter_mTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1176)), temp_3.getter_mTypedAttributeList (HERE), temp_4.getter_mSearchMethodList (HERE) COMMA_SOURCE_FILE ("type-shared-map.galgas", 1174))) ;
   const GALGAS_sharedMapTypeForGeneration temp_5 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_6 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_7 = object ;
@@ -1289,7 +1289,7 @@ static void extensionMethod_sharedMapTypeForGeneration_appendDeclaration_31_ (co
   const GALGAS_sharedMapTypeForGeneration temp_15 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_16 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_17 = object ;
-  outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, temp_5.getter_mTypeProxy (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1180)), temp_6.getter_mTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1181)), temp_7.getter_mTypeProxy (HERE).getter_mIsConcrete (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1182)), temp_8.getter_mTypeProxy (HERE).getter_mConstructorMap (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1183)), temp_9.getter_mTypeProxy (HERE).getter_mGetterMap (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1184)), temp_10.getter_mTypeProxy (HERE).getter_mSetterMap (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1185)), temp_11.getter_mTypeProxy (HERE).getter_mInstanceMethodMap (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1186)), temp_12.getter_mTypeProxy (HERE).getter_mClassMethodMap (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1187)), temp_13.getter_mTypeProxy (HERE).getter_mOptionalMethodMap (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1188)), temp_14.getter_mTypeProxy (HERE).getter_mEnumerationDescriptor (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1189)), temp_15.getter_mTypeProxy (HERE).getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1190)), temp_16.getter_mTypeProxy (HERE).getter_mAddAssignOperatorArguments (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1191)), temp_17.getter_mTypeProxy (HERE).getter_mTypeForEnumeratedElement (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1192)) COMMA_SOURCE_FILE ("type-shared-map.galgas", 1179))), inCompiler  COMMA_SOURCE_FILE ("type-shared-map.galgas", 1179)) ;
+  outArgument_outHeader.plusAssign_operation(GALGAS_string (filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType (inCompiler, temp_5.getter_mTypeProxy (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1181)), temp_6.getter_mTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1182)), temp_7.getter_mTypeProxy (HERE).getter_mIsConcrete (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1183)), temp_8.getter_mTypeProxy (HERE).getter_mConstructorMap (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1184)), temp_9.getter_mTypeProxy (HERE).getter_mGetterMap (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1185)), temp_10.getter_mTypeProxy (HERE).getter_mSetterMap (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1186)), temp_11.getter_mTypeProxy (HERE).getter_mInstanceMethodMap (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1187)), temp_12.getter_mTypeProxy (HERE).getter_mClassMethodMap (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1188)), temp_13.getter_mTypeProxy (HERE).getter_mOptionalMethodMap (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1189)), temp_14.getter_mTypeProxy (HERE).getter_mEnumerationDescriptor (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1190)), temp_15.getter_mTypeProxy (HERE).getter_mHandledOperatorFlags (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1191)), temp_16.getter_mTypeProxy (HERE).getter_mAddAssignOperatorArguments (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1192)), temp_17.getter_mTypeProxy (HERE).getter_mTypeForEnumeratedElement (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1193)) COMMA_SOURCE_FILE ("type-shared-map.galgas", 1180))), inCompiler  COMMA_SOURCE_FILE ("type-shared-map.galgas", 1180)) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1320,7 +1320,7 @@ static void extensionMethod_sharedMapTypeForGeneration_appendDeclaration_32_ (co
   const GALGAS_sharedMapTypeForGeneration temp_0 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_1 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_2 = object ;
-  outArgument_outHeader = GALGAS_string (filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeHeader_32_ (inCompiler, temp_0.getter_mTypeProxy (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1204)), temp_1.getter_mTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1205)), temp_2.getter_mTypedAttributeList (HERE) COMMA_SOURCE_FILE ("type-shared-map.galgas", 1203))) ;
+  outArgument_outHeader = GALGAS_string (filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeHeader_32_ (inCompiler, temp_0.getter_mTypeProxy (HERE).getter_key (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1205)), temp_1.getter_mTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1206)), temp_2.getter_mTypedAttributeList (HERE) COMMA_SOURCE_FILE ("type-shared-map.galgas", 1204))) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1349,13 +1349,13 @@ static void extensionMethod_sharedMapTypeForGeneration_appendSpecificImplementat
   const cPtr_sharedMapTypeForGeneration * object = (const cPtr_sharedMapTypeForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_sharedMapTypeForGeneration) ;
   const GALGAS_sharedMapTypeForGeneration temp_0 = object ;
-  extensionMethod_addHeaderFileName (temp_0.getter_mTypeProxy (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1216)) ;
-  GALGAS_keySortedList var_keySortedList_47065 = GALGAS_keySortedList::constructor_emptySortedList (SOURCE_FILE ("type-shared-map.galgas", 1217)) ;
+  extensionMethod_addHeaderFileName (temp_0.getter_mTypeProxy (HERE), ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1217)) ;
+  GALGAS_keySortedList var_keySortedList_47099 = GALGAS_keySortedList::constructor_emptySortedList (SOURCE_FILE ("type-shared-map.galgas", 1218)) ;
   const GALGAS_sharedMapTypeForGeneration temp_1 = object ;
-  cEnumerator_mapAutomatonStateMap enumerator_47138 (temp_1.getter_mMapAutomatonStateMap (HERE), kENUMERATION_UP) ;
-  while (enumerator_47138.hasCurrentObject ()) {
-    var_keySortedList_47065.addAssign_operation (enumerator_47138.current_lkey (HERE).getter_string (HERE), enumerator_47138.current_mStateIndex (HERE)  COMMA_SOURCE_FILE ("type-shared-map.galgas", 1219)) ;
-    enumerator_47138.gotoNextObject () ;
+  cEnumerator_mapAutomatonStateMap enumerator_47172 (temp_1.getter_mMapAutomatonStateMap (HERE), kENUMERATION_UP) ;
+  while (enumerator_47172.hasCurrentObject ()) {
+    var_keySortedList_47099.addAssign_operation (enumerator_47172.current_lkey (HERE).getter_string (HERE), enumerator_47172.current_mStateIndex (HERE)  COMMA_SOURCE_FILE ("type-shared-map.galgas", 1220)) ;
+    enumerator_47172.gotoNextObject () ;
   }
   const GALGAS_sharedMapTypeForGeneration temp_2 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_3 = object ;
@@ -1367,7 +1367,7 @@ static void extensionMethod_sharedMapTypeForGeneration_appendSpecificImplementat
   const GALGAS_sharedMapTypeForGeneration temp_9 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_10 = object ;
   const GALGAS_sharedMapTypeForGeneration temp_11 = object ;
-  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeSpecificImplementation (inCompiler, temp_2.getter_mTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1222)), temp_3.getter_mTypedAttributeList (HERE), temp_4.getter_mInsertMethodList (HERE), temp_5.getter_mSearchMethodList (HERE), temp_6.getter_mMapAutomatonStateMap (HERE), temp_7.getter_mMapAutomatonActionMap (HERE), temp_8.getter_mMapStateSortedList (HERE), temp_9.getter_mMapOverrideList (HERE), var_keySortedList_47065, temp_10.getter_mShadowBehaviour (HERE), temp_11.getter_mShadowMessage (HERE) COMMA_SOURCE_FILE ("type-shared-map.galgas", 1221))) ;
+  outArgument_outImplementation = GALGAS_string (filewrapperTemplate_sharedMapGenerationTemplate_uniqueMapTypeSpecificImplementation (inCompiler, temp_2.getter_mTypeProxy (HERE).getter_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("type-shared-map.galgas", 1223)), temp_3.getter_mTypedAttributeList (HERE), temp_4.getter_mInsertMethodList (HERE), temp_5.getter_mSearchMethodList (HERE), temp_6.getter_mMapAutomatonStateMap (HERE), temp_7.getter_mMapAutomatonActionMap (HERE), temp_8.getter_mMapStateSortedList (HERE), temp_9.getter_mMapOverrideList (HERE), var_keySortedList_47099, temp_10.getter_mShadowBehaviour (HERE), temp_11.getter_mShadowMessage (HERE) COMMA_SOURCE_FILE ("type-shared-map.galgas", 1222))) ;
 }
 
 //----------------------------------------------------------------------------------------------------------------------

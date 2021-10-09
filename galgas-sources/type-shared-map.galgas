@@ -91,6 +91,7 @@ syntax extension galgas3DeclarationsSyntax {
   rule <declaration> ?!@galgas3DeclarationAST ioDeclarations {
     $shared$
     $map$
+#    warning .here : "shared map"
   #--- Map type name
     $@type$ ?let @lstring mMapTypeName indexing uniquemapDefinition, mapProxyDefinition "-proxy"
     let mapProxyTypeName = @lstring.new {!mMapTypeName.string + "-proxy" !mMapTypeName.location}
